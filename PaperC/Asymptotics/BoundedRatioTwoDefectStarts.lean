@@ -560,7 +560,7 @@ theorem equalKernelDefectBases_eq_empty
     (hhigh : B ^ 2 + 1 < N) :
     equalKernelDefectBases N M B = ∅ := by
   classical
-  apply Finset.eq_empty_iff_forall_not_mem.mpr
+  apply Finset.eq_empty_iff_forall_notMem.mpr
   intro base hbase
   rw [mem_equalKernelDefectBases] at hbase
   rcases hbase with

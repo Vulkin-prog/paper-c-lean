@@ -211,7 +211,7 @@ theorem uniformBigOOn_add
   have hfN := hf N ((le_max_left _ _).trans hN) L hNL
   have hgN := hg N ((le_max_right _ _).trans hN) L hNL
   calc
-    |f N L + g N L| ≤ |f N L| + |g N L| := abs_add _ _
+    |f N L + g N L| ≤ |f N L| + |g N L| := abs_add_le _ _
     _ ≤ Kf * |scale N L| + Kg * |scale N L| :=
       add_le_add hfN hgN
     _ = (Kf + Kg) * |scale N L| := by ring

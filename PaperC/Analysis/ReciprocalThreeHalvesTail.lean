@@ -1,4 +1,4 @@
-import Mathlib.Analysis.SpecialFunctions.Integrals
+import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
 import Mathlib.Analysis.SumIntegralComparisons
 
 /-!
@@ -87,7 +87,7 @@ theorem sum_Ioc_rpow_neg_three_halves_le
       _ = 2 * (Real.sqrt B)⁻¹ := by
         rw [Real.rpow_neg (Nat.cast_nonneg B), ← Real.sqrt_eq_rpow]
   · have : Finset.Ioc B X = ∅ := by
-      apply Finset.eq_empty_iff_forall_not_mem.mpr
+      apply Finset.eq_empty_iff_forall_notMem.mpr
       intro n hn
       simp only [Finset.mem_Ioc] at hn
       exact hBX (hn.1.trans_le hn.2).le

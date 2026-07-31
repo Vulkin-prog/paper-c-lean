@@ -1,7 +1,7 @@
 import PaperC.Diophantine.GeneralizedPell
 import Mathlib.Analysis.SpecialFunctions.Log.Base
 import Mathlib.Analysis.SpecialFunctions.Log.Monotone
-import Mathlib.Data.Complex.ExponentialBounds
+import Mathlib.Analysis.Complex.ExponentialBounds
 
 /-!
 # From the Nicolas--Robin divisor estimate to the Pell envelope

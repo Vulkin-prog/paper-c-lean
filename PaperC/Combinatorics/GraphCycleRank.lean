@@ -188,7 +188,7 @@ theorem ker_representedEdgeMap_le_cycleSpace
       exact hwv (hwr.trans this)
     have hv_mem : v ∈ Finset.univ.filter (fun w : V ↦ component w = c) := by
       simp [hvc]
-    rw [Finset.sum_eq_add_sum_diff_singleton hv_mem] at hsum
+    rw [Finset.sum_eq_add_sum_sdiff_singleton_of_mem hv_mem] at hsum
     have hdiff :
         ∑ w ∈ (Finset.univ.filter (fun w : V ↦ component w = c)) \ {v},
           incidenceMap left right x w = 0 := by

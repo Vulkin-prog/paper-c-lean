@@ -60,7 +60,7 @@ theorem shifted_runLength_mem
         ≤
         |(L : ℝ) - Real.log N / Real.log 2| +
           |((E + 1 : ℕ) : ℝ)| :=
-      abs_add _ _
+      abs_add_le _ _
     _ ≤ C + ((E + 1 : ℕ) : ℝ) := by
       exact add_le_add hrun (by
         rw [abs_of_nonneg]
@@ -228,7 +228,7 @@ theorem markTailProbability_eventual_geometric_bound
             (ε / 2) / (2 : ℝ) ^ (E + 1) := by
         ring
       _ ≤ lam / (2 : ℝ) ^ (E + 1) + ε / 2 :=
-        add_le_add_left herr _
+        add_le_add_right herr _
   exact htail.trans (by linarith)
 
 /--
@@ -311,7 +311,7 @@ theorem markTailProbabilities_uniformly_tight
       Tendsto (fun E : ℕ => lam / (2 : ℝ) ^ (E + 1))
         atTop (𝓝 0) := by
     have hinv := tendsto_inv_atTop_zero.comp hpow
-    simpa only [div_eq_mul_inv, mul_zero] using
+    simpa only [div_eq_mul_inv, Function.comp_apply, mul_zero] using
       tendsto_const_nhds.mul hinv
   have hevent :
       ∀ᶠ E : ℕ in atTop,

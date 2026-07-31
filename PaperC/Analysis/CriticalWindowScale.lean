@@ -182,7 +182,6 @@ theorem requiredRadius_cast_le
       ((7 : ℝ) * H / Real.log H) / (A : ℝ) =
           ((7 : ℝ) * ((H : ℝ) / (A : ℝ))) / Real.log H := by
         field_simp
-        ring
       _ ≤ (7 * (Real.log N / 256)) / Real.log H :=
         div_le_div_of_nonneg_right hseven hlogHpos.le
       _ = 7 * Real.log N / (256 * Real.log H) := by ring
@@ -230,7 +229,7 @@ theorem scaled_log_le_of_log_comparisons
       have hupperNonpos : c₂ * Real.log (N : ℝ) ≤ 0 :=
         mul_nonpos_of_nonneg_of_nonpos hc₂.le hlogNnonpos
       have hHpos : 0 < (H : ℝ) := by positivity
-      exact (hHpos.trans_le hwindow.2.2.2).not_le hupperNonpos
+      exact (not_le_of_gt (hHpos.trans_le hwindow.2.2.2)) hupperNonpos
     have hNreal : (1 : ℝ) < (N : ℝ) :=
       (Real.log_pos_iff (Nat.cast_nonneg N)).mp hlogNpos
     have hN : 2 ≤ N := by exact_mod_cast hNreal
@@ -302,7 +301,7 @@ theorem one_zero_two_four_mul_log_le_self
   calc
     1024 * (Real.log y + Real.log 2048)
         ≤ 1024 * (y + Real.log 2048) :=
-      mul_le_mul_of_nonneg_left (add_le_add_right hlogy _) (by norm_num)
+      mul_le_mul_of_nonneg_left (add_le_add_left hlogy _) (by norm_num)
     _ = x / 2 + 1024 * Real.log 2048 := by
       dsimp [y]
       ring
@@ -377,14 +376,13 @@ theorem log_comparisons_of_criticalLogThreshold
     calc
       512 / c₁ = c₁ * (512 / (c₁ * c₁)) := by
         field_simp
-        ring
       _ ≤ c₁ * x :=
         mul_le_mul_of_nonneg_left hxcoeff hc₁.le
       _ ≤ (H : ℝ) := hwindow.2.2.1
   have hT :
       (logarithmicCap N : ℝ) ≤ 2 * x := by
     dsimp only [logarithmicCap, x]
-    exact Nat.ceil_le_two_mul (by linarith)
+    exact (Nat.ceil_lt_add_one hxpos.le).le.trans (by linarith)
   have hxH :
       x ≤ (H : ℝ) / c₁ := by
     apply (le_div_iff₀ hc₁).2

@@ -334,8 +334,10 @@ theorem abs_boundedCommonGoodRate_sub_fullRate_eq_badMass
       (boundedFullStartRate N M L : ℝ)| =
         boundedBadStartProbabilityMass N M L Y := by
   rw [boundedCommonConditionalGoodPoissonRate_eq hN hL hLY]
-  unfold boundedFullStartRate
-  simp only [NNReal.coe_mk]
+  have hrate :
+      (boundedFullStartRate N M L : ℝ) =
+        boundedFullStartMean N M L := rfl
+  rw [hrate]
   rw [boundedFullStartMean_eq_goodParameter_add_badMass
     hN hL hLY]
   rw [sub_add_cancel_left, abs_neg]

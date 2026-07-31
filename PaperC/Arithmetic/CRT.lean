@@ -60,7 +60,7 @@ theorem satisfies_iff_modEq_representative
             (Nat.chineseRemainderOfList
               residue modulus indices hcoprime : ℕ)
               [MOD modulus j] :=
-      (Nat.modEq_list_prod_iff' hcoprime).mp hx
+      (Nat.modEq_list_map_prod_iff hcoprime).mp hx
     exact (hall i hi).trans
       ((Nat.chineseRemainderOfList
         residue modulus indices hcoprime).property i hi)

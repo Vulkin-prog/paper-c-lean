@@ -45,7 +45,7 @@ lemma inv_sqrt_nat_le_two_mul_sqrt_sub (n : ℕ) (hn : 1 ≤ n) :
   have hsum : Real.sqrt n + Real.sqrt ((n - 1 : ℕ) : ℝ) ≤ 2 * Real.sqrt n := by
     calc
       Real.sqrt n + Real.sqrt ((n - 1 : ℕ) : ℝ) ≤ Real.sqrt n + Real.sqrt n :=
-        add_le_add_left hroot _
+        add_le_add_right hroot _
       _ = 2 * Real.sqrt n := (two_mul _).symm
   calc
     1 = (Real.sqrt n) ^ 2 - (Real.sqrt ((n - 1 : ℕ) : ℝ)) ^ 2 :=
@@ -81,15 +81,14 @@ theorem sum_Icc_rpow_neg_one_half_le (H : ℕ) :
       rw [hset, Finset.sum_insert hnotmem]
       rw [rpow_neg_one_half_eq_inv_sqrt _ (Nat.cast_nonneg _)]
       have hterm := inv_sqrt_nat_le_two_mul_sqrt_sub (H + 1) (by omega)
-      simp only [Nat.cast_add, Nat.cast_one, Nat.add_sub_cancel,
-        add_sub_cancel_right] at hterm ⊢
+      simp only [Nat.cast_add, Nat.cast_one, Nat.add_sub_cancel] at hterm ⊢
       calc
         (Real.sqrt ((H : ℝ) + 1))⁻¹ +
               ∑ n ∈ Finset.Icc 1 H, (n : ℝ) ^ (-(1 / 2 : ℝ))
             ≤ (Real.sqrt ((H : ℝ) + 1))⁻¹ + 2 * Real.sqrt H :=
-              add_le_add_left ih _
+              add_le_add_right ih _
         _ ≤ 2 * (Real.sqrt ((H : ℝ) + 1) - Real.sqrt H) + 2 * Real.sqrt H :=
-          add_le_add_right hterm _
+          add_le_add_left hterm _
         _ = 2 * Real.sqrt ((H : ℝ) + 1) := by ring
 
 /-- The same estimate written with reciprocal square roots. -/

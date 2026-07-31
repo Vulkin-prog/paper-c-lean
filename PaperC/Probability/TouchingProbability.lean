@@ -51,7 +51,7 @@ theorem touchingProbability_eq_uniformSolutionProbability
   apply congrArg Finset.card
   ext ω
   simp only [Finset.mem_filter, Finset.mem_univ, true_and]
-  simpa only [startAt] using
+  simpa only [startAt, mem_solutionSet_iff] using
     (touchingSystem_eq_touchingRhs_iff ω hL).symm
 
 /--

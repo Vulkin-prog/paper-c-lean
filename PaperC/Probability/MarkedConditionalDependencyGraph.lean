@@ -153,8 +153,8 @@ theorem not_markedAdjacent_self
 def markedDependencyGraph (N L E : ℕ) :
     SimpleGraph (MarkedIndex N L E) where
   Adj α β := MarkedAdjacent α β
-  symm := fun _ _ h ↦ markedAdjacent_symm h
-  loopless := fun α h ↦ not_markedAdjacent_self α h
+  symm := ⟨fun _ _ h ↦ markedAdjacent_symm h⟩
+  loopless := ⟨fun α h ↦ not_markedAdjacent_self α h⟩
 
 @[simp]
 theorem markedDependencyGraph_adj

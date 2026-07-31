@@ -331,7 +331,7 @@ theorem real_log_le_two_mul_height
         (B : ℝ) * (2 * Real.log 2) := by
     apply (div_le_iff₀ (by positivity :
       0 < (2 : ℝ) * Real.log 2)).mp
-    convert hlower using 1 <;> ring
+    simpa only [div_eq_mul_inv, one_mul, mul_comm] using hlower
   calc
     Real.log (N : ℝ) ≤
         (B : ℝ) * (2 * Real.log 2) := hscaled
@@ -422,7 +422,7 @@ theorem boundedRatioCutoff_and_log_le
         (1 + Real.log ((κ₀ + 1 : ℕ) : ℝ)) *
             ((L + 1 : ℕ) : ℝ) +
           2 * ((L + 1 : ℕ) : ℝ) :=
-      add_le_add_right hcoeffHeight _
+      by linarith
     _ =
         twoSingletonHarmonicCoefficient κ₀ *
           ((L + 1 : ℕ) : ℝ) := by
@@ -780,7 +780,6 @@ theorem twoSingletonPrimeExponent_le_criticalRatio_eventually :
           3 * Real.sqrt (2 * (B : ℝ)) /
             (3 * ((Nat.log 2 B / 2 : ℕ) : ℝ)) := by
         field_simp
-        ring
       _ ≤
           3 * Real.sqrt (2 * (B : ℝ)) /
             Real.log (B : ℝ) := by

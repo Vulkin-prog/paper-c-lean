@@ -152,7 +152,7 @@ theorem exists_mem_dyadicShell
   | succ J ih =>
       by_cases hx : x < 2 ^ J * N
       · obtain ⟨r, hrJ, hr⟩ := ih hx
-        exact ⟨r, Nat.lt.step hrJ, hr⟩
+        exact ⟨r, Nat.lt_succ_of_lt hrJ, hr⟩
       · refine ⟨J, Nat.lt_succ_self J, ?_⟩
         rw [mem_dyadicShell]
         constructor
@@ -301,7 +301,7 @@ theorem card_boundedRatioBlock_modClass_cast_le_kappa
         ((M - N : ℕ) : ℚ) / (q : ℚ) + 1 :=
       card_boundedRatioBlock_modClass_cast_le N M v q hq hNM
     _ ≤ (((κ₀ * N : ℕ) : ℚ) / (q : ℚ)) + 1 := by
-      apply add_le_add_right
+      apply add_le_add_left
       apply (div_le_div_iff_of_pos_right
         (by exact_mod_cast hq : (0 : ℚ) < (q : ℚ))).2
       exact_mod_cast (Nat.sub_le M N).trans hM

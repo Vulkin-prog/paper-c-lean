@@ -118,9 +118,15 @@ theorem sum_four_pow_componentCount_eq_fibers
   have hfiber :=
     Finset.sum_fiberwise_of_maps_to'
       hmaps (fun r : ℕ ↦ 4 ^ r)
-  symm
-  simpa only [population, count, literalSigmaZeroPairsOfCount,
-    Finset.sum_const, nsmul_eq_mul, mul_comm] using hfiber
+  have hfiber_eq (r : ℕ) :
+      population.filter (fun pair ↦ count pair = r) =
+        literalSigmaZeroPairsOfCount N A L r hN := by
+    ext pair
+    simp only [Finset.mem_filter, literalSigmaZeroPairsOfCount,
+      population, count]
+  simp_rw [hfiber_eq] at hfiber
+  convert hfiber.symm using 1
+  simp only [Finset.sum_const, nsmul_eq_mul, Nat.cast_id, mul_comm]
 
 /--
 The literal certificate-weight sum is bounded by the ambient-cover
@@ -534,7 +540,9 @@ theorem sigmaZeroQuadraticResidualMass_uniformQuadratic
     unfold sigmaZeroQuadraticEnvelope
     positivity
   rw [abs_of_nonneg hleftNonneg, abs_of_nonneg hrightNonneg]
-  simpa only [sigmaZeroQuadraticResidualMassTotal, hNtwo] using hfinite
+  unfold sigmaZeroQuadraticResidualMassTotal
+  rw [dif_pos hNtwo]
+  exact hfinite
 
 end
 

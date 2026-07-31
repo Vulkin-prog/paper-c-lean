@@ -733,8 +733,12 @@ theorem spatialLaplaceError_uniformLittleOOne_of_homogeneousMass
           badStartProbabilityMassReal N L
             (terminalPrimeCutoff (L + 1)))
         (fun _ _ ↦ 1) := by
-    simpa only [badStartProbabilityMassReal,
-      BadStartMassCritical.terminalBadStartProbabilityMass] using
+    change
+      UniformLittleOOn
+        (CriticalRunWindow.InRunLengthWindow C)
+        BadStartMassCritical.terminalBadStartProbabilityMass
+        (fun _ _ ↦ 1)
+    exact
       BadStartMassCritical.terminalBadStartProbabilityMass_uniformLittleOOne
         hC
   have hbOne :=

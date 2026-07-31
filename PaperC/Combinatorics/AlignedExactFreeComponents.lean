@@ -271,7 +271,7 @@ theorem card_residualComponents_le_card_exactFree_add_two
       (components.filter P).card +
           (components.filter fun C ↦ ¬P C).card =
         components.card :=
-    Finset.filter_card_add_filter_neg_card_eq_card
+    Finset.card_filter_add_card_filter_not
       (s := components) P
   have hbad :
       (components.filter fun C ↦ ¬P C).card ≤ 2 := by
@@ -279,7 +279,7 @@ theorem card_residualComponents_le_card_exactFree_add_two
     · have hempty :
           components.filter (fun C ↦ ¬P C) = ∅ := by
         ext C
-        simp only [Finset.mem_filter, Finset.not_mem_empty,
+        simp only [Finset.mem_filter, Finset.notMem_empty,
           iff_false, not_and]
         intro hC
         exact not_not_intro
@@ -294,7 +294,7 @@ theorem card_residualComponents_le_card_exactFree_add_two
       · have hempty :
             components.filter (fun C ↦ ¬P C) = ∅ := by
           ext C
-          simp only [Finset.mem_filter, Finset.not_mem_empty,
+          simp only [Finset.mem_filter, Finset.notMem_empty,
             iff_false, not_and]
           intro _hC
           exact not_not_intro

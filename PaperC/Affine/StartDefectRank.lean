@@ -121,10 +121,10 @@ private theorem valueBit_single
     have hqr : q ≠ r := Ne.symm hrq
     have hqr' :
         (⟨⟨p, Nat.lt_succ_of_le hpM⟩, hp⟩ : PrimeUpTo M) ≠ r := by
-      simpa only [q] using hqr
+      exact hqr
     have hrq' :
         r ≠ (⟨⟨p, Nat.lt_succ_of_le hpM⟩, hp⟩ : PrimeUpTo M) := by
-      simpa only [q] using hrq
+      exact hrq
     simp [Pi.single_apply, hrq']
 
 /--
@@ -165,7 +165,7 @@ private theorem exists_large_prime_coordinate_of_not_hDefective
     {H n : ℕ} (h : ¬DefectivePredicate.HDefective H n) :
     ∃ p : ℕ, p.Prime ∧ H < p ∧ parityVec n p ≠ 0 := by
   simp only [DefectivePredicate.HDefective] at h
-  push_neg at h
+  push Not at h
   exact h
 
 /--

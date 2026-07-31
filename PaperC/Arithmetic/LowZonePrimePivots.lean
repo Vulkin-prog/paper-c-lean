@@ -540,7 +540,6 @@ theorem sqrt_window_le_of_gap
   let s := Nat.sqrt (x - 1)
   have hsPos : 1 ≤ s := by
     apply (Nat.le_sqrt).2
-    dsimp only [s]
     omega
   have hxUpper :
       x - 1 < (s + 1) * (s + 1) := by
@@ -595,7 +594,7 @@ theorem card_intermediatePrimes_eq_primeCount_sub
       exact ⟨⟨hp, hpL⟩, by
         by_contra hnot
         exact hpB ⟨hp, by omega⟩⟩
-  rw [hset, Finset.card_sdiff hsubset]
+  rw [hset, Finset.card_sdiff_of_subset hsubset]
   rw [← PrimeCountBridge.count_eq_card_smallPrimesUpTo,
     ← PrimeCountBridge.count_eq_card_smallPrimesUpTo]
 
@@ -791,13 +790,21 @@ theorem startProbability_le_inv_two_pow_card_intermediatePrimes
         div_le_div_of_nonneg_right hpow (by positivity)
       _ = (1 : ℚ) /
           (2 : ℚ) ^ (intermediatePrimes x L).card := by
+        let k := (intermediatePrimes x L).card
+        have hk : k ≤ L := by simpa only [k] using hcard
+        change (2 : ℚ) ^ (L - k) / (2 : ℚ) ^ L =
+          (1 : ℚ) / (2 : ℚ) ^ k
         have hpowNe :
-            (2 : ℚ) ^ (L - (intermediatePrimes x L).card) ≠ 0 := by
+            (2 : ℚ) ^ (L - k) ≠ 0 := by
           positivity
-        rw [show L =
-          (L - (intermediatePrimes x L).card) +
-            (intermediatePrimes x L).card by omega,
-          pow_add]
+        have hpowL :
+            (2 : ℚ) ^ L = (2 : ℚ) ^ (L - k) * (2 : ℚ) ^ k := by
+          calc
+            (2 : ℚ) ^ L = (2 : ℚ) ^ ((L - k) + k) :=
+              congrArg (fun n : ℕ ↦ (2 : ℚ) ^ n)
+                (Nat.sub_add_cancel hk).symm
+            _ = (2 : ℚ) ^ (L - k) * (2 : ℚ) ^ k := pow_add _ _ _
+        rw [hpowL]
         field_simp
 
 end

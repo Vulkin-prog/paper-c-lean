@@ -115,9 +115,11 @@ theorem card_largeComponents_le_two_mul
       (∑ C ∈ components, (if 3 ≤ size C then 1 else 0)) =
         (largeComponents components size).card := by
     classical
-    simpa only [largeComponents] using
-      (Finset.sum_boole
-        (α := ℕ) (fun C : ι ↦ 3 ≤ size C) components)
+    rw [largeComponents,
+      Finset.card_eq_sum_ite (Finset.filter_subset _ _)]
+    apply Finset.sum_congr rfl
+    intro C hC
+    simp [hC]
   have hexcess :
       2 * components.card +
           (largeComponents components size).card ≤

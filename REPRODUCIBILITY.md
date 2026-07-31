@@ -2,17 +2,38 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.42.0`
-- Lean : `v4.19.0`
-- mathlib : `v4.19.0`
+- paper_c_lean : `0.43.0`
+- Lean : `v4.32.2`
+- mathlib : `v4.32.2`
 - PDF cible, SHA-256 :
   `23a5db3c8d024cab3fb8ca9f8f1443f40cf9502b1fb6682a331f5948f57a3336`
 - racine unique de l’archive : `paper_c_lean/`
+- archive de livraison : `paper_c_lean_v043.zip`
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles.
 
-## Périmètre du jalon 0.42
+## Périmètre du jalon 0.43
+
+La v043 est une migration de toolchain uniquement. Elle porte Lean et mathlib
+de `v4.19.0` à `v4.32.2`, adapte les imports déplacés ainsi que les alias
+d’API retirés des corps de preuve, et conserve à l’identique les
+déclarations, les signatures publiques et le registre d’audit de la v042.
+Les sept familles d’imports adaptées sont :
+
+- `Data.Complex.ExponentialBounds` vers
+  `Analysis.Complex.ExponentialBounds` ;
+- `Analysis.SpecialFunctions.Integrals` vers
+  `Analysis.SpecialFunctions.Integrals.Basic` ;
+- `Algebra.GeomSum` vers `Algebra.Field.GeomSum` ;
+- `NumberTheory.ArithmeticFunction` vers
+  `NumberTheory.ArithmeticFunction.Misc` ;
+- `Combinatorics.SimpleGraph.Path` vers
+  `Combinatorics.SimpleGraph.Paths` ;
+- `RingTheory.DedekindDomain.Ideal` vers
+  `RingTheory.DedekindDomain.Ideal.Lemmas` ;
+- `Probability.Distributions.Poisson` vers
+  `Probability.Distributions.Poisson.Basic`.
 
 La v042 conserve la fermeture du §14 obtenue en v040 sous forme de
 caractérisation par fonctionnels de Laplace. Elle conserve le modèle produit
@@ -59,10 +80,11 @@ Le prédicat public marqué est formulé littéralement avec
 `infiniteFullMarkedLaplaceExpectation`; le cutoff porté par un test compact
 sert uniquement à appliquer l’égalité complète/tronquée et l’argument fini
 de Stein--Chen, non à remplacer la fonctionnelle source de l’endpoint.
-Mathlib `v4.19.0` ne possède pas l’API de mesures ponctuelles/topologie vague
-qui permettrait de reformuler cette même conclusion comme un `Tendsto` de
-lois. La conversion abstraite des transformées inverses en masses atomiques
-est désormais prouvée dans `DirichletAtomConvergence`, après l’encodage
+Le dépôt ne s’appuie pas actuellement sur une API mathlib de mesures
+ponctuelles munie de la topologie vague qui permettrait de reformuler cette
+même conclusion comme un `Tendsto` de lois. La conversion abstraite des
+transformées inverses en masses atomiques est désormais prouvée dans
+`DirichletAtomConvergence`, après l’encodage
 injectif des vecteurs par `PrimeEncodedCountVector`.
 `PrimeEncodedCountLaplace` construit la loi source poussée et l’identifie
 aux tests constants \(s\log p_e\), tandis que `PoissonVectorMass` calcule les
@@ -76,9 +98,12 @@ find PaperC -name '*.lean' -type f | wc -l
 find PaperC -name '*.lean' -type f -print0 | xargs -0 wc -l | tail -n 1
 ```
 
-La v042 contient **373 modules** et **142 319 lignes Lean**.
+La v043 contient **373 modules** et **142 840 lignes Lean**. Les **521 lignes**
+supplémentaires par rapport à la v042 sont uniquement des adaptations de corps
+de preuve à Lean 4.32.2 ; les modules et les signatures publiques sont
+inchangés.
 
-Le jalon 0.42 conserve la décharge de l’interface interne de Pell généralisé :
+Le jalon 0.43 conserve la décharge de l’interface interne de Pell généralisé :
 
 - `GeneralizedPell` traduit les solutions en éléments de `Zsqrtd`, prouve
   que leur idéal principal divise \((M)\), puis transforme l’égalité de deux
@@ -109,7 +134,7 @@ directement ces entrées externes. Ils ne consomment aucun pont
 leurs variantes fondées sur l’enveloppe spécialisée et les quatre API legacy
 ouvertes. Il ne reste aucun pont `internal/open` dans le registre.
 
-Le jalon 0.42 conserve tous les résultats antérieurs, notamment les deux
+Le jalon 0.43 conserve tous les résultats antérieurs, notamment les deux
 dernières estimations sectorielles qualitatives de la section 17 :
 
 - `PrimeFactorsFactorialBound`,
@@ -273,6 +298,7 @@ Ces commandes doivent être lancées depuis une extraction neuve de l'archive,
 sans répertoire `.lake` hérité d'une version antérieure :
 
 ```bash
+lake exe cache get
 lake build
 node scripts/generate_audit.mjs --check
 lake env lean AuditCheck.lean
@@ -280,10 +306,10 @@ node scripts/verify_audit.mjs
 rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' .
 ```
 
-Les quatre premières commandes doivent réussir. La dernière ne doit produire
+Les cinq premières commandes doivent réussir. La dernière ne doit produire
 aucune ligne.
 
-Pour la livraison 0.42, la validation de publication doit être rejouée depuis
+Pour la livraison 0.43, la validation de publication doit être rejouée depuis
 deux arbres indépendants dépourvus de `.lake/build`, dont une extraction du
 ZIP final. Dans chacun, le build doit se terminer par
 `Build completed successfully`. L’audit doit produire une sortie pour chaque
@@ -334,7 +360,7 @@ manifeste distingue les dépendances fondationnelles imprimées par Lean des
 hypothèses ordinaires, invisibles à `#print axioms`; il associe donc à chaque
 théorème public un statut conditionnel/inconditionnel, la liste des ponts
 qu’il prend comme prémisses directes, leur nature `external | internal` et
-leur état `open | discharged`. Les comptes v042 publiés ci-dessus sont ceux
+leur état `open | discharged`. Les comptes v043 publiés ci-dessus sont ceux
 du manifeste régénéré.
 `ReviewAxioms.lean` est conservé comme sélection historique des
 résultats structurants, mais n'est plus la liste canonique. Chaque sortie de
@@ -348,8 +374,8 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v042.zip
-unzip -Z1 paper_c_lean_v042.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v043.zip
+unzip -Z1 paper_c_lean_v043.zip | rg -v '^paper_c_lean/'
 ```
 
 La seconde commande ne doit produire aucune ligne. L'archive ne doit contenir

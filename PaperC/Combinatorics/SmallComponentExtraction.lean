@@ -79,7 +79,7 @@ theorem card_smallMembers_add_card_largeMembers
         (largeMembers family size K).card =
       family.card := by
   simpa [smallMembers, largeMembers] using
-    (Finset.filter_card_add_filter_neg_card_eq_card
+    (Finset.card_filter_add_card_filter_not
       (s := family) (fun i ↦ size i ≤ K))
 
 /--

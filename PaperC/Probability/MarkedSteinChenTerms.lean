@@ -367,7 +367,6 @@ theorem markedBOneFinite_le_commonSteinBOne
       rw [show 2 * (L + E + 1) = 2 * (L + 1) + 2 * E by omega,
         pow_add]
       field_simp
-      ring
 
 /-! ## Exact averaging of the second term -/
 

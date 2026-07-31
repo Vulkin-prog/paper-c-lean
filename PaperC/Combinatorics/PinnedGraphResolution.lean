@@ -1,5 +1,5 @@
 import PaperC.Arithmetic.ParityVector
-import Mathlib.Combinatorics.SimpleGraph.Connectivity.WalkCounting
+import Mathlib.Combinatorics.SimpleGraph.Connectivity.Finite
 import Mathlib.LinearAlgebra.Dimension.Constructions
 
 set_option maxHeartbeats 800000
@@ -146,7 +146,7 @@ theorem componentRestriction_injective
     have hvc :
         G.connectedComponentMk v =
           G.connectedComponentMk c.out := by
-      simpa only [c] using c.out_eq.symm
+      simpa only [c, ConnectedComponent, connectedComponentMk] using c.out_eq.symm
     calc
       f.1 v = f.1 c.out :=
         eq_of_connectedComponentMk_eq G f hvc

@@ -40,7 +40,7 @@ theorem scaledRungeCoefficientUpTo_natAbs_le
   have hnatAbsCast :
       ((RungeTruncation.scaledRungeCoefficientUpTo γ m).natAbs : ℚ) =
         |((RungeTruncation.scaledRungeCoefficientUpTo γ m : ℤ) : ℚ)| := by
-    rw [Int.cast_natAbs, Int.cast_abs]
+    rw [Nat.cast_natAbs, Int.cast_abs]
   have hcast :
       ((RungeTruncation.scaledRungeCoefficientUpTo γ m).natAbs : ℚ) ≤
         (((16 * R) ^ (2 * k) : ℕ) : ℚ) := by
@@ -70,7 +70,7 @@ theorem coeff_integralRungeTruncation_natAbs_le
     ((RungeTruncation.integralRungeTruncation γ).coeff n).natAbs ≤
       (k + 1) * (16 * R) ^ (2 * k) := by
   rw [RungeTruncation.integralRungeTruncation,
-    Polynomial.finset_sum_coeff]
+    Polynomial.finsetSum_coeff]
   calc
     (∑ m ∈ Finset.range (k + 1),
           (Polynomial.monomial (k - m)
@@ -79,7 +79,7 @@ theorem coeff_integralRungeTruncation_natAbs_le
       ∑ m ∈ Finset.range (k + 1),
         ((Polynomial.monomial (k - m)
           (RungeTruncation.scaledRungeCoefficientUpTo γ m)).coeff n).natAbs :=
-      nat_abs_sum_le _ _
+      Int.natAbs_sum_le _ _
     _ ≤ ∑ _m ∈ Finset.range (k + 1),
           (16 * R) ^ (2 * k) := by
       apply Finset.sum_le_sum

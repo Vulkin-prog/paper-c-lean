@@ -147,7 +147,7 @@ theorem tree_edgeSum_linearIndependent_of_private_nonroot
     intro n
     rw [TreeBoundary.mem_boundary]
     rw [← Nat.not_even_iff_odd]
-    push_neg
+    push Not
     have hcoord :
         l.sum (fun e c => c * edgeSum x e.1 (pivot n)) = 0 := by
       have h :=
@@ -187,11 +187,11 @@ theorem tree_edgeSum_linearIndependent_of_private_nonroot
               (fun e : Sym2 V => n.1 ∈ e) =
             (l.support.filter fun e : G.edgeSet => n.1 ∈ e.1).map
               (Function.Embedding.subtype G.edgeSet) := by
-        ext e
-        simp
+        exact Finset.filter_map
       rw [TreeBoundary.edgeValueFinset, hfilter, Finset.card_map]
+      rfl
     rw [hcard]
-    exact ZMod.eq_zero_iff_even.mp hcast
+    exact ZMod.natCast_eq_zero_iff_even.mp hcast
   have hboundary :
       TreeBoundary.boundary
           (TreeBoundary.edgeValueFinset l.support) = ∅ := by
@@ -221,8 +221,12 @@ theorem tree_edgeSum_linearIndependent_of_private_nonroot
         TreeBoundary.boundary
           (TreeBoundary.edgeValueFinset
             (∅ : TreeBoundary.EdgeSubset G))
-    rw [hboundary]
-    simp [TreeBoundary.edgeValueFinset]
+    have hempty :
+        TreeBoundary.edgeValueFinset
+            (G := G) (∅ : TreeBoundary.EdgeSubset G) = ∅ := by
+      ext e
+      simp [TreeBoundary.mem_edgeValueFinset]
+    rw [hboundary, hempty, TreeBoundary.boundary_empty]
   exact Finsupp.support_eq_empty.mp hsupport
 
 /--
@@ -269,7 +273,7 @@ theorem tree_parityEdge_linearIndependent_of_large_odd_primes
   apply tree_edgeSum_linearIndependent_of_private_nonroot
     G hG r (fun n => parityVec (label n)) privatePrime
   · intro n
-    rw [parityVec_apply, ZMod.eq_one_iff_odd]
+    rw [parityVec_apply, ZMod.natCast_eq_one_iff_odd]
     exact hodd n
   · intro n m hmn
     rw [parityVec_apply]
@@ -327,7 +331,7 @@ theorem tree_projectedParityEdge_linearIndependent_of_large_odd_primes
   apply tree_edgeSum_linearIndependent_of_private_nonroot
     G hG r (fun n => parityVecAbove Y (label n)) projectedPrime
   · intro n
-    rw [parityVecAbove_apply, parityVec_apply, ZMod.eq_one_iff_odd]
+    rw [parityVecAbove_apply, parityVec_apply, ZMod.natCast_eq_one_iff_odd]
     exact hodd n
   · intro n m hmn
     rw [parityVecAbove_apply, parityVec_apply]

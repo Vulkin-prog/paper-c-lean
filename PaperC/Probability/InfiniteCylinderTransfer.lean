@@ -147,7 +147,7 @@ theorem valueBit_restrictToFinite_eq_infiniteValueBit
     by_cases hprime : p.Prime
     · simp [hprime]
     · simp [hprime, parityVec_apply,
-        Nat.factorization_eq_zero_of_non_prime n hprime]
+        Nat.factorization_eq_zero_of_not_prime n hprime]
   have hinfinite :
       infiniteValueBit ω n =
         ∑ p ∈ Finset.range (M + 1),

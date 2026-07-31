@@ -76,7 +76,11 @@ def differenceSupport {n : ℕ} (x y : BinaryWord n) : Finset (Fin n) :=
 theorem hammingDist_eq_card_differenceSupport {n : ℕ} (x y : BinaryWord n) :
     hammingDist x y = (differenceSupport x y).card := by
   rw [hammingDist_eq_hammingNorm]
-  rfl
+  change hammingNorm (-x + y) = hammingNorm (x - y)
+  congr 1
+  funext i
+  simp only [Pi.neg_apply, Pi.add_apply, Pi.sub_apply,
+    ZMod.neg_eq_self_mod_two, sub_eq_add_neg]
 
 /-- For fixed `x`, taking the difference support is a bijection from words to
 coordinate subsets. -/
@@ -264,7 +268,11 @@ theorem minDistanceAbove_submoduleCodewords {n d : ℕ}
     have hcval := congrArg Subtype.val hc
     simpa [c] using hcval
   have hc := hweight c hcne
-  simpa [hammingDist_eq_hammingNorm, c] using hc
+  rw [hammingDist_eq_hammingNorm]
+  simpa only [show -x + y = x - y by
+    funext i
+    simp only [Pi.neg_apply, Pi.add_apply, Pi.sub_apply,
+      ZMod.neg_eq_self_mod_two, sub_eq_add_neg]] using hc
 
 /-- Sphere-packing bound for a binary linear code, in dimension form. -/
 theorem hamming_bound_submodule {n t : ℕ}

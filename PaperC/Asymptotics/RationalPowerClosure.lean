@@ -1,7 +1,7 @@
 import PaperC.Asymptotics.ExpSqrtLog
 import PaperC.Asymptotics.RationalPowers
 import PaperC.Asymptotics.ThreeHalvesPower
-import Mathlib.Data.Real.Sqrt
+import Mathlib.Analysis.Real.Sqrt
 
 /-!
 # Closure properties for uniform rational-power bounds
@@ -146,7 +146,7 @@ theorem add_fiveThird_threeHalves
       |f N L + g N L| ≤ 2 * m := by
     calc
       |f N L + g N L| ≤ |f N L| + |g N L| :=
-        abs_add _ _
+        abs_add_le _ _
       _ ≤ m + m :=
         add_le_add (le_max_left _ _) (le_max_right _ _)
       _ = 2 * m := by ring

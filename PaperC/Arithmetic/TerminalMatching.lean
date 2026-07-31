@@ -281,9 +281,9 @@ theorem largeOddKernel_eq_one_iff_isDefective
       mem_largeOddPrimeSupport_vertexLabel.mpr
         ⟨hp, hvp⟩
     rw [hempty] at hmem
-    exact Finset.not_mem_empty p hmem
+    exact Finset.notMem_empty p hmem
   · intro hdef
-    apply Finset.eq_empty_iff_forall_not_mem.mpr
+    apply Finset.eq_empty_iff_forall_notMem.mpr
     intro p hp
     have hpData :=
       mem_largeOddPrimeSupport_vertexLabel.mp hp

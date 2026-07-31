@@ -1,5 +1,5 @@
 import PaperC.Analysis.SpatialMarkedParameters
-import Mathlib.Probability.Distributions.Poisson
+import Mathlib.Probability.Distributions.Poisson.Basic
 
 /-!
 # Poisson Laplace functionals
@@ -39,7 +39,7 @@ theorem poissonLaplaceTransform_eq
             (Nat.factorial k : ℝ))
         (Real.exp ((r : ℝ) * Real.exp (-s))) := by
     simpa only [Real.exp_eq_exp_ℝ] using
-      (NormedSpace.expSeries_div_hasSum_exp ℝ
+      (NormedSpace.expSeries_div_hasSum_exp
         ((r : ℝ) * Real.exp (-s)))
   unfold poissonLaplaceTransform
   calc

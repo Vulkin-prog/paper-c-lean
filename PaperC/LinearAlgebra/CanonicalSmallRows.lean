@@ -636,7 +636,7 @@ theorem canonicalArithmeticSmallRowMatrix_prime_inr
         hnonzero)
       (PrimesUpTo.smallPrime (L + 1) j)
   simpa only [componentVertexProduct,
-    Finsupp.finset_sum_apply, one_mul] using hparity.symm
+    Finsupp.finsetSum_apply, one_mul] using hparity.symm
 
 /-! ## Matrix evaluation equals evaluation of the concrete boundary -/
 

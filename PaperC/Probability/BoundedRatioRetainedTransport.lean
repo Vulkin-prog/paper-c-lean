@@ -104,13 +104,20 @@ theorem boundedFullStartLaw_eq_retainedStartLaw
       (TheoremSixteenTwo.retainedStartIndices M j)
       (fun x hx ↦ two_le_of_mem_retainedStartIndices hcut hx)
       (fun x hx ↦ retained_window_le_boundedRatioCutoff hx)
-  simpa only [FiniteCylinderCountTransport.boundedFullStartLaw,
-    FiniteCylinderCountTransport.boundedFullStartCount,
-    FiniteCylinderCountTransport.startCountOn,
-    TheoremSixteenTwo.retainedStartLaw,
-    TheoremSixteenTwo.globalUniformPMF,
-    TheoremSixteenTwo.retainedStartCount,
-    boundedRatioBlock_div_eq_retainedStartIndices] using htransport.symm
+  change
+    SectionThirteenFiniteBound.finiteNatLaw
+        (SectionThirteenCouplings.fullUniformPMF
+          (PropositionSixteenOne.boundedRatioCutoff M L))
+        (FiniteCylinderCountTransport.startCountOn
+          (TheoremSixteenTwo.retainedStartIndices M j) L
+          (PropositionSixteenOne.boundedRatioCutoff M L)) =
+      SectionThirteenFiniteBound.finiteNatLaw
+        (SectionThirteenCouplings.fullUniformPMF
+          (TheoremSixteenTwo.globalCylinderCutoff M L))
+        (FiniteCylinderCountTransport.startCountOn
+          (TheoremSixteenTwo.retainedStartIndices M j) L
+          (TheoremSixteenTwo.globalCylinderCutoff M L))
+  exact htransport.symm
 
 /--
 The exact local first moment is the retained first moment on the common

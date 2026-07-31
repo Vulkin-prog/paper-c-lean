@@ -763,7 +763,7 @@ theorem card_leftBaseShapeFiber_degree_at_least_three_le_residual
       have hheight :=
         leftEvertseBadInteger_le_cutoffPow
           hN shape hpair (by simpa only [D] using hd)
-      simpa only [Int.natAbs_ofNat] using hheight
+      simpa only [Int.natAbs_natCast] using hheight
     calc
       (leftBaseShapeFiber
           N M A L K base shape).card ≤
@@ -831,7 +831,7 @@ theorem card_rightBaseShapeFiber_degree_at_least_three_le_residual
       have hheight :=
         rightEvertseBadInteger_le_cutoffPow
           hN shape hpair (by simpa only [D] using hd)
-      simpa only [Int.natAbs_ofNat] using hheight
+      simpa only [Int.natAbs_natCast] using hheight
     calc
       (rightBaseShapeFiber
           N M A L K base shape).card ≤

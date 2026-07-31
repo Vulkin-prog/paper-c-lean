@@ -75,6 +75,8 @@ private theorem abs_finiteUniformAverage_sub_const_le
     unfold finiteUniformAverage
     rw [Finset.sum_sub_distrib, Finset.sum_const, nsmul_eq_mul]
     field_simp
+    rw [Finset.card_univ]
+    ring
   rw [hcenter]
   unfold finiteUniformAverage
   rw [abs_div, abs_of_pos hcard]
@@ -277,7 +279,7 @@ theorem conditionalRetainedMarkedLaplace_le
       (fun α ↦ hg ((α.1.1 : ℝ) / (N : ℝ)) α.2.1)
       (hasExactDependencyGraph_conditionedMarkedIndicator hL σ)
   rw [conditionedMarked_thinnedParameter_eq_retained hN hL g σ] at hfinite
-  simpa only [
+  simpa only [finitePMFExpectation,
     exponentialFunctional_conditionedMarkedIndicator_eq_retained] using
       hfinite
 

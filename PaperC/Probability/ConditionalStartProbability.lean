@@ -253,7 +253,17 @@ private theorem valueBit_extendLarge_single
         intro h
         apply hrq'
         exact congrArg Subtype.val h
-      simp [extendLarge, hrY, Pi.single_apply, hlarge, q, qLarge]
+      have hvalue :
+          extendLarge M Y
+              (Pi.single qLarge (1 : F₂) : LargeSample M Y) r = 0 := by
+        change
+          (if h : Y < r.1.1 then
+              ((Pi.single qLarge (1 : F₂) : LargeSample M Y) ⟨r, h⟩)
+            else 0) = 0
+        rw [dif_pos hrY]
+        simp only [Pi.single_apply]
+        exact if_neg hlarge
+      rw [hvalue, zero_mul]
     · simp [extendLarge, hrY]
 
 private theorem large_relation_prime_equation
@@ -295,7 +305,7 @@ private theorem exists_large_prime_coordinate_of_not_hDefective
     {Y n : ℕ} (h : ¬HDefective Y n) :
     ∃ p : ℕ, p.Prime ∧ Y < p ∧ parityVec n p ≠ 0 := by
   simp only [HDefective] at h
-  push_neg at h
+  push Not at h
   exact h
 
 private theorem parityVec_eq_zero_of_private

@@ -700,7 +700,6 @@ theorem lemma_fifteen_three
           mul_le_mul_of_nonneg_left hlogSqN (sq_nonneg c₂)
         _ = (N : ℝ) / 4 := by
           field_simp [hc₂.ne']
-          ring
     have hreal :
         ((((L + 1) ^ 2 + 2 : ℕ) : ℝ)) < (N : ℝ) := by
       have hquarter' :

@@ -139,7 +139,7 @@ theorem toZsqrtd_act
     (s : ℤ × ℤ) :
     toZsqrtd D (act u s) =
       (u : ℤ√(D : ℤ)) * toZsqrtd D s := by
-  ext <;> simp only [act, toZsqrtd, Zsqrtd.mul_re, Zsqrtd.mul_im,
+  ext <;> simp only [act, toZsqrtd, Zsqrtd.re_mul, Zsqrtd.im_mul,
     toZsqrtd_re, toZsqrtd_im]
   · change
       u.x * s.1 + (D : ℤ) * (u.y * s.2) =
@@ -159,6 +159,7 @@ theorem act_preserves_equation
         (D : ℤ) * (act u s).2 ^ 2 = M := by
   have huNorm : (u : ℤ√(D : ℤ)).norm = 1 := by
     rw [Zsqrtd.norm_def]
+    change u.x * u.x - (D : ℤ) * u.y * u.y = 1
     simpa only [pow_two, mul_assoc] using u.prop
   rw [generalizedPellEquation_iff_norm,
     toZsqrtd_act, Zsqrtd.norm_mul, huNorm,
@@ -281,9 +282,9 @@ theorem pellUnit_y_natAbs_le
   have hcrossRaw := congrArg Zsqrtd.im hprod
   have hcross :
       M * u.y = s.1 * t.2 - s.2 * t.1 := by
-    simpa only [Zsqrtd.mul_im, Zsqrtd.star_re, Zsqrtd.star_im,
-      toZsqrtd_re, toZsqrtd_im, Zsqrtd.intCast_re,
-      Zsqrtd.intCast_im, Pell.Solution₁.y, sub_eq_add_neg,
+    simpa only [Zsqrtd.im_mul, Zsqrtd.re_star, Zsqrtd.im_star,
+      toZsqrtd_re, toZsqrtd_im, Zsqrtd.re_intCast,
+      Zsqrtd.im_intCast, Pell.Solution₁.y, sub_eq_add_neg,
       neg_mul, zero_mul, add_zero] using hcrossRaw.symm
   calc
     u.y.natAbs ≤ M.natAbs * u.y.natAbs :=
@@ -313,7 +314,9 @@ theorem two_pow_le_y_pow_succ
   intro n
   induction n with
   | zero =>
-      simpa only [pow_zero, zero_add, pow_one] using hε.2.1
+      have hy : 0 < ε.y := hε.2.1
+      simp only [pow_zero, zero_add, pow_one]
+      omega
   | succ n ih =>
       have hxpow :
           0 < (ε ^ (n + 1)).x :=
@@ -371,8 +374,8 @@ theorem two_pow_pred_natAbs_le_y_natAbs_zpow
       cases k with
       | zero => exact (hn rfl).elim
       | succ k =>
-          simpa only [Int.natAbs_ofNat, Nat.succ_sub_one,
-            Int.ofNat_eq_coe, zpow_natCast] using
+          simpa only [Int.natAbs_natCast, Nat.succ_sub_one,
+            Int.ofNat_eq_natCast, zpow_natCast] using
             two_pow_le_y_natAbs_pow_succ hε k
   | negSucc k =>
       simpa only [Int.natAbs_negSucc, Nat.succ_sub_one,
@@ -753,7 +756,7 @@ theorem scaleImag_height
     (hy : s.2.natAbs ≤ H) :
     (scaleImag b s).2.natAbs ≤ b * H := by
   dsimp only [scaleImag]
-  rw [Int.natAbs_mul, Int.natAbs_ofNat]
+  rw [Int.natAbs_mul, Int.natAbs_natCast]
   exact Nat.mul_le_mul_left b hy
 
 /--

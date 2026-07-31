@@ -139,9 +139,9 @@ theorem residualExpression_fiber_card_cast_le
   have hchannel :=
     channelCells_card_cast_le_maxStep
       L a b ha hb hab (h - d)
-  convert hchannel using 1
-  push_cast
-  ring
+  exact hchannel.trans_eq (by
+    push_cast
+    ring)
 
 /--
 Finite form of the residual-cell estimate (7.3).
@@ -162,7 +162,7 @@ theorem residualPrimeCells_card_cast_le
   let s := residualPrimeCells L a b p h
   let f : ℤ × ℤ → ℤ := residualChannelExpression a b h
   let t := residualValueEnvelope L a b p
-  have hmaps : s.toSet.MapsTo f t := by
+  have hmaps : (s : Set (ℤ × ℤ)).MapsTo f t := by
     intro cell hcell
     have hvalue :
         f cell ∈ residualChannelValues L a b p h := by

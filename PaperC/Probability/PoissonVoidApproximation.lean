@@ -52,7 +52,13 @@ theorem summable_matchingPoissonLaw
     {Ω : Type u} {ι : Type v} [Fintype Ω] [Fintype ι]
     (μ : FinitePMF Ω) (X : ι → Ω → Bool) :
     Summable (matchingPoissonLaw μ X) := by
-  exact (poissonPMFRealSum (poissonRate μ X)).summable
+  have hmatching :
+      matchingPoissonLaw μ X = fun k : ℕ ↦
+        Real.exp (-(poissonRate μ X : ℝ)) *
+          (poissonRate μ X : ℝ) ^ k / (Nat.factorial k : ℝ) := by
+    rfl
+  rw [hmatching]
+  exact (hasSum_one_poissonMeasure (poissonRate μ X)).summable
 
 /-- The zero atom of the matching Poisson law. -/
 theorem matchingPoissonLaw_zero
@@ -60,8 +66,14 @@ theorem matchingPoissonLaw_zero
     (μ : FinitePMF Ω) (X : ι → Ω → Bool) :
     matchingPoissonLaw μ X 0 =
       Real.exp (-(poissonParameter μ X)) := by
-  unfold matchingPoissonLaw poissonPMFReal poissonRate
+  have hzero :
+      matchingPoissonLaw μ X 0 =
+        Real.exp (-(poissonRate μ X : ℝ)) *
+          (poissonRate μ X : ℝ) ^ 0 / (Nat.factorial 0 : ℝ) := by
+    rfl
+  rw [hzero]
   norm_num
+  rfl
 
 /-- A single atom is bounded by twice half-`ℓ¹` total variation. -/
 theorem abs_mass_zero_sub_le_two_mul_natTotalVariation
@@ -116,7 +128,12 @@ theorem abs_indicatorSumLaw_zero_sub_matching_le
       (summable_indicatorSumLaw μ X)
       (summable_matchingPoissonLaw μ X)
       (indicatorSumLaw_nonneg μ X)
-      (fun k ↦ poissonPMFReal_nonneg)
+      (fun k ↦ by
+        rw [show matchingPoissonLaw μ X k =
+            Real.exp (-(poissonRate μ X : ℝ)) *
+              (poissonRate μ X : ℝ) ^ k / (Nat.factorial k : ℝ) by
+          rfl]
+        positivity)
   simpa only [natTotalVariation, totalVariationToPoisson] using h
 
 /--

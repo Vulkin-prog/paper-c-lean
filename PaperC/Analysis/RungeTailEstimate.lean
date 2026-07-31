@@ -77,7 +77,6 @@ theorem summable_coefficientSeriesTerm
   have hgeom : Summable (fun m : ℕ ↦ (2 * R / U) ^ m) :=
     summable_geometric_of_norm_lt_one hq1
   exact Summable.of_norm_bounded
-    (fun m : ℕ ↦ M * (2 * R / U) ^ m)
     (hgeom.mul_left M)
     (norm_coefficientSeriesTerm_le hR hU hc)
 
@@ -176,7 +175,7 @@ theorem eval_rungeTruncation_eq_pow_mul_partialSum
         ∑ m ∈ Finset.range (k + 1),
           RungeCoefficients.rungeCoefficient γ m / u ^ m := by
   classical
-  rw [RungeTruncation.rungeTruncation, Polynomial.eval_finset_sum,
+  rw [RungeTruncation.rungeTruncation, Polynomial.eval_finsetSum,
     Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro m hm
@@ -190,7 +189,6 @@ theorem eval_rungeTruncation_eq_pow_mul_partialSum
           (u ^ (k - m) * u ^ m) := by ring
     _ = RungeCoefficients.rungeCoefficient γ m * u ^ k := by
       rw [pow_sub_mul_pow u hmk]
-    _ = u ^ k * RungeCoefficients.rungeCoefficient γ m := by ring
 
 /-- The real-valued version of the rational Runge coefficient. -/
 noncomputable def realRungeCoefficient

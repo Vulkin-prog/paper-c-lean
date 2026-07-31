@@ -52,7 +52,6 @@ theorem residualPrimeMass_le
       have hp0 : (p : ℚ) ≠ 0 := by
         exact_mod_cast (hP p hp).ne'
       field_simp [hp0]
-      ring
     _ = C * (1 + B / q) *
         ((∑ p ∈ P, (1 : ℚ) / (p : ℚ)) +
           q * B * ∑ p ∈ P, (1 : ℚ) / (p : ℚ) ^ 2) := by

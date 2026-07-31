@@ -144,7 +144,7 @@ theorem card_correctedDefectiveVertices
       exactDefectiveVertices_subset_defectiveVertices
     simp only [correctedDefectiveVertices, correctedDefectCount,
       if_pos hm]
-    rw [Finset.card_sdiff hsubset,
+    rw [Finset.card_sdiff_of_subset hsubset,
       card_exactDefectiveVertices hb]
     rfl
   · simp [correctedDefectiveVertices, correctedDefectCount, hm,

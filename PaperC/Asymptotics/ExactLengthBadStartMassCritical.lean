@@ -69,12 +69,12 @@ theorem commonExactRowCount_in_runLengthWindow
   calc
     |(L : ℝ) - Real.log N / Real.log 2 + (E + 1 : ℕ)| ≤
         |(L : ℝ) - Real.log N / Real.log 2| + |((E + 1 : ℕ) : ℝ)| :=
-      abs_add _ _
+      abs_add_le _ _
     _ = |(L : ℝ) - Real.log N / Real.log 2| + (E + 1 : ℕ) := by
       congr 1
       exact abs_of_nonneg (Nat.cast_nonneg _)
     _ ≤ C + (E + 1 : ℕ) :=
-      add_le_add_right hrun _
+      add_le_add hrun (le_refl _)
 
 /-! ## Common-length normalizations -/
 
@@ -225,7 +225,7 @@ private theorem uniformLittleOOne_add
   have hg' := hNg N ((le_max_right _ _).trans hN) L hrun
   simp only [abs_one, mul_one] at hf' hg' ⊢
   calc
-    |f N L + g N L| ≤ |f N L| + |g N L| := abs_add _ _
+    |f N L + g N L| ≤ |f N L| + |g N L| := abs_add_le _ _
     _ ≤ ε / 2 + ε / 2 := add_le_add hf' hg'
     _ = ε := by ring
 
@@ -338,10 +338,12 @@ theorem lemma_fourteen_seven_finiteCylinder
             exactLengthProbabilityMass N (excessRowCount L e)
               (removedExactLengthStarts N L E) : ℚ) : ℝ))
       (fun _ _ => 1) := by
-  simpa only [totalRemovedExactLengthProbabilityMassReal,
-    totalRemovedExactLengthProbabilityMass,
-    removedExactLengthProbabilityMass] using
-      totalRemovedExactLengthProbabilityMassReal_uniformLittleOOne hC E
+  change
+    UniformLittleOOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      (totalRemovedExactLengthProbabilityMassReal E)
+      (fun _ _ => 1)
+  exact totalRemovedExactLengthProbabilityMassReal_uniformLittleOOne hC E
 
 /--
 **Lemma 14.7 under the source infinite Rademacher law.**
@@ -368,9 +370,13 @@ theorem lemma_fourteen_seven
         (fun N L =>
           totalRemovedInfiniteExactLengthProbability N L E)
         (fun _ _ => 1) := by
-    simpa only [totalRemovedExactLengthProbabilityMassReal,
-      totalRemovedInfiniteExactLengthProbability_eq_finiteMass] using
-        totalRemovedExactLengthProbabilityMassReal_uniformLittleOOne hC E
+    rw [show
+      (fun N L => totalRemovedInfiniteExactLengthProbability N L E) =
+        totalRemovedExactLengthProbabilityMassReal E by
+          funext N L
+          exact
+            totalRemovedInfiniteExactLengthProbability_eq_finiteMass N L E]
+    exact totalRemovedExactLengthProbabilityMassReal_uniformLittleOOne hC E
   simpa only [totalRemovedInfiniteExactLengthProbability] using hsource
 
 end

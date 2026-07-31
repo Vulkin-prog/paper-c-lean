@@ -58,7 +58,7 @@ theorem prime_of_parityVec_ne_zero
     Nat.Prime p := by
   by_contra hprime
   simp only [parityVec_apply,
-    Nat.factorization_eq_zero_of_non_prime n hprime, Nat.cast_zero] at hp
+    Nat.factorization_eq_zero_of_not_prime n hprime, Nat.cast_zero] at hp
   exact hp rfl
 
 /--

@@ -503,7 +503,7 @@ theorem four_pow_maxCanonicalCorrectedDefectCount_uniformSubpolynomial
       _ =
           (2 * K) * Real.log N / Real.log (Real.log N) := by
         ring
-  simpa only [pow_mul, pow_two] using htwo
+  simpa [pow_mul, pow_two] using htwo
 
 end
 

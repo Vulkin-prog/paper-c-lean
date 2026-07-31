@@ -1,5 +1,5 @@
 import PaperC.Arithmetic.ChebyshevPrimeCount
-import Mathlib.Algebra.GeomSum
+import Mathlib.Algebra.Field.GeomSum
 import Mathlib.Algebra.Order.Field.Basic
 import Mathlib.Algebra.Order.BigOperators.Ring.Finset
 import Mathlib.Data.Rat.Lemmas
@@ -325,7 +325,6 @@ private theorem sum_inv_sq_dyadicPrimes_le_geometric
               1 / ((2 ^ K : ℕ) : ℚ)) := by
           push_cast
           field_simp
-          ring
 
 /--
 Explicit reciprocal-square estimate on `(B, B * 2^K]`, uniform in `K`.

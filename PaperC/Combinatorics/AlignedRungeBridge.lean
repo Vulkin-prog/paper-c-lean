@@ -273,6 +273,8 @@ private theorem prod_scaledOccurrenceLabel_aux
   | @insert v s hv ih =>
       cases v with
       | inl v =>
+          have hvIsLeft : IsLeftOccurrence (Sum.inl v) := trivial
+          have hvNotRight : ¬IsRightOccurrence (Sum.inl v) := id
           have hvLeft :
               Sum.inl v ∉ s.filter IsLeftOccurrence := by
             intro hmem
@@ -280,12 +282,14 @@ private theorem prod_scaledOccurrenceLabel_aux
           rw [Finset.prod_insert hv, ih]
           simp only [scaledOccurrenceLabel,
             Affine.twoStartCompleteVertexLabel,
-            Finset.filter_insert, IsLeftOccurrence,
-            IsRightOccurrence, if_true, if_false]
-          rw [Finset.card_insert_of_not_mem hvLeft, pow_succ]
+            Finset.filter_insert, hvIsLeft, hvNotRight,
+            if_true, if_false]
+          rw [Finset.card_insert_of_notMem hvLeft, pow_succ]
           rw [Finset.prod_insert hv]
           ring
       | inr v =>
+          have hvNotLeft : ¬IsLeftOccurrence (Sum.inr v) := id
+          have hvIsRight : IsRightOccurrence (Sum.inr v) := trivial
           have hvRight :
               Sum.inr v ∉ s.filter IsRightOccurrence := by
             intro hmem
@@ -293,9 +297,9 @@ private theorem prod_scaledOccurrenceLabel_aux
           rw [Finset.prod_insert hv, ih]
           simp only [scaledOccurrenceLabel,
             Affine.twoStartCompleteVertexLabel,
-            Finset.filter_insert, IsLeftOccurrence,
-            IsRightOccurrence, if_true, if_false]
-          rw [Finset.card_insert_of_not_mem hvRight, pow_succ]
+            Finset.filter_insert, hvNotLeft, hvIsRight,
+            if_true, if_false]
+          rw [Finset.card_insert_of_notMem hvRight, pow_succ]
           rw [Finset.prod_insert hv]
           ring
 
@@ -566,7 +570,7 @@ theorem abs_alignedShift_le
       change
         |(a : ℤ) * channelVertexOffset v| ≤
           ((3 * H * (L + 1) : ℕ) : ℤ)
-      rw [abs_mul, abs_of_nonneg (Int.ofNat_nonneg a)]
+      rw [abs_mul, abs_of_nonneg (Int.natCast_nonneg a)]
       have hoff := abs_channelVertexOffset_le v
       have haH' : (a : ℤ) ≤ H := by exact_mod_cast haH
       have hnonneg : (0 : ℤ) ≤ |channelVertexOffset v| := abs_nonneg _
@@ -578,7 +582,7 @@ theorem abs_alignedShift_le
             (H : ℤ) * |channelVertexOffset v| :=
           mul_le_mul_of_nonneg_right haH' hnonneg
         _ ≤ (H : ℤ) * (L + 1 : ℕ) :=
-          mul_le_mul_of_nonneg_left hoff' (Int.ofNat_nonneg H)
+          mul_le_mul_of_nonneg_left hoff' (Int.natCast_nonneg H)
         _ ≤ ((3 * H * (L + 1) : ℕ) : ℤ) := by
           push_cast
           nlinarith
@@ -592,9 +596,9 @@ theorem abs_alignedShift_le
       calc
         |alignedShift a b h (Sum.inr v)| =
             |h + (b : ℤ) * channelVertexOffset v| := rfl
-        _ ≤ |h| + |(b : ℤ) * channelVertexOffset v| := abs_add _ _
+        _ ≤ |h| + |(b : ℤ) * channelVertexOffset v| := abs_add_le _ _
         _ = |h| + (b : ℤ) * |channelVertexOffset v| := by
-          rw [abs_mul, abs_of_nonneg (Int.ofNat_nonneg b)]
+          rw [abs_mul, abs_of_nonneg (Int.natCast_nonneg b)]
         _ ≤
             ((2 * H * (L + 1) : ℕ) : ℤ) +
               (H : ℤ) * (L + 1 : ℕ) := by
@@ -604,7 +608,7 @@ theorem abs_alignedShift_le
                 (H : ℤ) * |channelVertexOffset v| :=
               mul_le_mul_of_nonneg_right hbH' hnonneg
             _ ≤ (H : ℤ) * (L + 1 : ℕ) :=
-              mul_le_mul_of_nonneg_left hoff' (Int.ofNat_nonneg H)
+              mul_le_mul_of_nonneg_left hoff' (Int.natCast_nonneg H)
         _ = ((3 * H * (L + 1) : ℕ) : ℤ) := by
           push_cast
           ring

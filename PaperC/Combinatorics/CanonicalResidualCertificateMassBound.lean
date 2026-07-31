@@ -88,7 +88,7 @@ theorem canonicalResidualAmbient_admissibleCertificateSolutionMass_le
         (((2 * N : ℕ) : ℚ) *
           (((4 : ℚ) * residualPrimeMass L a b h) ^ r /
             (r.factorial : ℚ))) := by
-    simpa [canonicalResidualAmbientCellModulus] using hlemma
+    exact hlemma
   have hmass :=
     ResidualChannelLemmaSevenTwo.residualPrimeMass_le
       ha hb hab hqTwo hB hm

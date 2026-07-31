@@ -274,6 +274,7 @@ theorem card_startDefectIndicesAt_le_of_le
       (startDefectIndicesAt B x Q).card := by
   apply Finset.card_le_card_of_injOn (Fin.castLE hqQ)
   · intro j hj
+    change Fin.castLE hqQ j ∈ startDefectIndicesAt B x Q
     rw [mem_startDefectIndicesAt]
     simpa using (mem_startDefectIndicesAt.mp hj)
   · intro i hi j hj hij
@@ -625,9 +626,23 @@ theorem removedExactLengthProbabilityMass_cast_le_terminalEnvelope
     unfold removedExactLengthStarts
     exact card_terminalBadStarts_terminalPrimeCutoff_le_scale
       (show 1 ≤ N by omega) hW
+  have hdiv :
+      ((removedExactLengthStarts N L E).card : ℝ) /
+          (2 : ℝ) ^ excessRowCount L e ≤
+        (2 * commonExactRowCount L E *
+            Real.sqrt (dyadicCutoff N (commonExactRowCount L E)) *
+            Real.exp
+              (terminalBadStartScaleExponent
+                (exactLengthBaseCutoff L E))) /
+          (2 : ℝ) ^ excessRowCount L e :=
+    div_le_div_of_nonneg_right hcard
+      (pow_nonneg (show (0 : ℝ) ≤ 2 by norm_num) _)
   exact hcast.trans
-    (add_le_add_left
-      (div_le_div_of_nonneg_right hcard (by positivity)) _)
+    (add_le_add_right hdiv
+      (2 *
+        ((terminalDefectWeightMass N (excessRowCount L e)
+          (exactLengthBaseCutoff L E) : ℚ) : ℝ) /
+        (2 : ℝ) ^ excessRowCount L e))
 
 /--
 Terminal-envelope form of the full finite sum over `0 ≤ e ≤ E`.

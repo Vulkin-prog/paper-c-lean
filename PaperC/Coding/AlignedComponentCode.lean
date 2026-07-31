@@ -85,7 +85,7 @@ theorem componentLeftCount_add_rightCount
   unfold componentLeftCount componentRightCount
   rw [hfilter]
   exact
-    Finset.filter_card_add_filter_neg_card_eq_card
+    Finset.card_filter_add_card_filter_not
       (s := componentVertices x y L C) IsLeftOccurrence
 
 /-- The small-prime block of the column attached to one component. -/
@@ -148,7 +148,7 @@ theorem kernelWord_leftCount_even
         0 := by
     simpa using hzero
   exact even_iff_two_dvd.mpr
-    ((ZMod.natCast_zmod_eq_zero_iff_dvd
+    ((ZMod.natCast_eq_zero_iff
       (∑ i ∈ HammingBound.wordSupport word,
         componentLeftCount x y L (component i)) 2).mp hcast)
 
@@ -178,7 +178,7 @@ theorem kernelWord_rightCount_even
         0 := by
     simpa using hzero
   exact even_iff_two_dvd.mpr
-    ((ZMod.natCast_zmod_eq_zero_iff_dvd
+    ((ZMod.natCast_eq_zero_iff
       (∑ i ∈ HammingBound.wordSupport word,
         componentRightCount x y L (component i)) 2).mp hcast)
 
@@ -208,7 +208,7 @@ theorem kernelWord_componentProducts_square
         ∃ j : Fin (PrimesUpTo.count (L + 1)),
           PrimesUpTo.smallPrime (L + 1) j = p
     · obtain ⟨j, rfl⟩ := hp
-      rw [Finsupp.finset_sum_apply]
+      rw [Finsupp.finsetSum_apply]
       simp only [Finsupp.zero_apply]
       rw [DefectCodeRank.sum_wordSupport_eq_weighted_sum]
       have hzero :=

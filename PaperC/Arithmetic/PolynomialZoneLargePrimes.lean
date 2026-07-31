@@ -226,7 +226,7 @@ theorem existsUnique_index_dvd_of_mem_largePrimeFactors
       p ∣ consecutiveProduct n k :=
     Nat.dvd_of_mem_primeFactors (mem_largePrimeFactors.mp hp).1
   obtain ⟨i, hi, hpi⟩ :=
-    (hpPrime.prime.dvd_finset_prod_iff
+    (hpPrime.prime.dvd_finsetProd_iff
       (fun i : ℕ ↦ n + i)).mp hpProd
   have hik : i < k := Finset.mem_range.mp hi
   refine ⟨i, ⟨hik, hpi⟩, ?_⟩
@@ -526,7 +526,7 @@ theorem card_squareful_add_card_simple
       (largePrimeFactors B n k).card := by
   classical
   simpa [squarefulLargePrimeFactors, simpleLargePrimeFactors] using
-    (Finset.filter_card_add_filter_neg_card_eq_card
+    (Finset.card_filter_add_card_filter_not
       (s := largePrimeFactors B n k)
       (p := fun p ↦ ∃ i < k, p ^ 2 ∣ n + i))
 
@@ -576,7 +576,7 @@ theorem largePrimeFactors_sub_three_div_two_le_nondefective
     card_simpleLargePrimeFactors_le_two_mul_nondefective
       hn hkB hcubic
   have hpartition := card_squareful_add_card_simple B n k
-  apply Nat.div_le_of_le_mul'
+  apply Nat.div_le_of_le_mul
   omega
 
 /--

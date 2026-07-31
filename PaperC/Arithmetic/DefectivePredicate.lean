@@ -37,7 +37,7 @@ theorem hDefective_iff_even_factorization (H n : ℕ) :
     HDefective H n ↔
       ∀ p : ℕ, p.Prime → H < p → 2 ∣ n.factorization p := by
   simp only [HDefective, parityVec_apply,
-    ZMod.natCast_zmod_eq_zero_iff_dvd]
+    ZMod.natCast_eq_zero_iff]
 
 /--
 Equivalent support formulation: every nonzero prime coordinate of the parity
@@ -86,7 +86,7 @@ theorem hDefective_of_HDefectRepresentation
         rep.value_eq hparity
     rw [DefectRepresentation.defectPart] at hp_dvd
     obtain ⟨q, hq, hpq⟩ :=
-      (hp.prime.dvd_finset_prod_iff id).mp hp_dvd
+      (hp.prime.dvd_finsetProd_iff id).mp hp_dvd
     have hq_small := mem_smallPrimesUpTo.mp (rep.support_subset hq)
     have hp_eq_q : p = q :=
       (Nat.prime_dvd_prime_iff_eq hp hq_small.1).mp hpq
@@ -163,7 +163,7 @@ theorem canonical_odd_mul_sq_decomposition
       (fun p e₁ e₂ ↦ pow_add p e₁ e₂)
   calc
     n = n.factorization.prod powIndex :=
-      (Nat.factorization_prod_pow_eq_self hn).symm
+      (Nat.prod_factorization_pow_eq_self hn).symm
     _ = (oddFactorization n + 2 • halfFactorization n).prod powIndex := by
       rw [factorization_eq_odd_add_two_half]
     _ = (oddFactorization n).prod powIndex *

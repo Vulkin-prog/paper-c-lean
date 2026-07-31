@@ -90,10 +90,10 @@ theorem exactUnit_large_factorization_odd_iff
   obtain ⟨hXt, htY⟩ :=
     exactUnit_large_parity_eq h hp hpB
   constructor
-  · rw [← ZMod.ne_zero_iff_odd, ← ZMod.ne_zero_iff_odd]
+  · rw [← ZMod.natCast_ne_zero_iff_odd, ← ZMod.natCast_ne_zero_iff_odd]
     change parityVec X p ≠ 0 ↔ parityVec t p ≠ 0
     rw [hXt]
-  · rw [← ZMod.ne_zero_iff_odd, ← ZMod.ne_zero_iff_odd]
+  · rw [← ZMod.natCast_ne_zero_iff_odd, ← ZMod.natCast_ne_zero_iff_odd]
     change parityVec t p ≠ 0 ↔ parityVec Y p ≠ 0
     rw [htY]
 

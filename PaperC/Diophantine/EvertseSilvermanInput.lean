@@ -1,5 +1,5 @@
 import Mathlib.Data.Nat.Squarefree
-import Mathlib.NumberTheory.ArithmeticFunction
+import Mathlib.NumberTheory.ArithmeticFunction.Misc
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
 
@@ -317,7 +317,7 @@ private theorem nonzeroSplitQuadraticEquation_atMost
       positiveSolutions.card + nonpositiveSolutions.card =
         s.card := by
     simpa only [positiveSolutions, nonpositiveSolutions] using
-      (Finset.filter_card_add_filter_neg_card_eq_card
+      (Finset.card_filter_add_card_filter_not
         (s := s) (fun solution : ℤ × ℤ => 0 < solution.2))
   calc
     s.card =
@@ -419,7 +419,7 @@ private theorem splitQuadraticEquation_atMost
   have hpartition :
       zeroSolutions.card + nonzeroSolutions.card = s.card := by
     simpa only [zeroSolutions, nonzeroSolutions] using
-      (Finset.filter_card_add_filter_neg_card_eq_card
+      (Finset.card_filter_add_card_filter_not
         (s := s) (fun solution : ℤ × ℤ => solution.2 = 0))
   calc
     s.card =

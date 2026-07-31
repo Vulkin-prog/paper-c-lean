@@ -523,7 +523,7 @@ theorem jointStartProbability_eq_zero_of_overlap
         ∅ := by
     ext ω
     simp only [Finset.mem_filter, Finset.mem_univ, true_and,
-      Finset.not_mem_empty, iff_false]
+      Finset.notMem_empty, iff_false]
     exact startEvents_disjoint_of_dist_lt hxy hdist
   rw [hempty]
   simp
@@ -1068,8 +1068,16 @@ theorem abs_dyadicSecondFactorialMoment_sub_baseline_le
             touchingBase| +
           |jointPairMass N L (separatedOffDiagPairs N L) -
             separatedBase| := by
-      exact (abs_add _ _).trans
-        (add_le_add_right (abs_add _ _) _)
+      let a : ℚ := -overlapBase
+      let b : ℚ :=
+        jointPairMass N L (touchingOffDiagPairs N L) - touchingBase
+      let c : ℚ :=
+        jointPairMass N L (separatedOffDiagPairs N L) - separatedBase
+      change |a + b + c| ≤ |a| + |b| + |c|
+      calc
+        |a + b + c| ≤ |a + b| + |c| := abs_add_le _ _
+        _ ≤ (|a| + |b|) + |c| :=
+          add_le_add_left (abs_add_le _ _) _
     _ ≤
         ((overlappingPairs N L).card : ℚ) / d +
           (TouchingMass.touchingMass N L : ℚ) / d +
@@ -1082,7 +1090,7 @@ theorem abs_dyadicSecondFactorialMoment_sub_baseline_le
           abs_of_nonneg (div_nonneg (by positivity) hd.le)]
       rw [hoverlap]
       exact add_le_add
-        (add_le_add_left
+        (add_le_add_right
           (by
             simpa only [touchingBase, d] using htouch)
           (((overlappingPairs N L).card : ℚ) / d))
@@ -1467,9 +1475,9 @@ theorem factorialBaselinePoissonError_eq
     factorialBaselinePoissonError N L =
       -(N : ℝ) / (2 : ℝ) ^ (2 * L) := by
   rw [factorialBaselinePoissonError, factorialBaseline_eq]
-  simp only [Rat.cast_div, Rat.cast_natCast, map_pow, Rat.cast_ofNat,
-    criticalMean]
-  rw [Nat.cast_mul, Nat.cast_sub hN]
+  unfold criticalMean
+  push_cast
+  rw [Nat.cast_sub hN]
   rw [show 2 * L = L * 2 by omega, pow_mul]
   field_simp
   ring
@@ -1517,7 +1525,6 @@ theorem factorialBaselinePoissonError_uniformLittleOOne
     unfold criticalMean
     rw [show 2 * L = L * 2 by omega, pow_mul]
     field_simp
-    ring
   rw [factorialBaselinePoissonError_eq hNone, abs_div, abs_neg,
     abs_of_nonneg hNpos.le, abs_of_pos (pow_pos (by norm_num) (2 * L))]
   simp only [abs_one, mul_one]
@@ -1559,7 +1566,7 @@ private theorem uniformLittleOOne_of_uniformNegativeHalfPower
   have hbound :=
     hN₀ N ((le_max_right _ _).trans hN) L hNL
   simp only [abs_mul, abs_of_nonneg hNpos.le, abs_one, mul_one] at hbound ⊢
-  apply (mul_le_mul_left hNpos).mp
+  apply (mul_le_mul_iff_right₀ hNpos).mp
   simpa only [mul_comm] using hbound
 
 /-- Real first-moment error from the critical Poisson parameter. -/
@@ -1575,8 +1582,13 @@ theorem dyadicFirstMomentPoissonError_uniformLittleOOne
       dyadicFirstMomentPoissonError
       (fun _ _ => 1) := by
   apply uniformLittleOOne_of_uniformNegativeHalfPower
-  simpa only [dyadicFirstMomentPoissonError, criticalMean] using
-    CriticalRunWindow.firstMoment_error_uniformNegativeHalfPower hC
+  change
+    UniformNegativeHalfPowerSubpolynomialOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun N L =>
+        (dyadicExpectation N L : ℝ) -
+          (N : ℝ) / (2 : ℝ) ^ L)
+  exact CriticalRunWindow.firstMoment_error_uniformNegativeHalfPower hC
 
 /-- Real second-factorial-moment error from `λ²`. -/
 noncomputable def dyadicSecondFactorialPoissonError

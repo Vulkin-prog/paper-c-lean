@@ -1,6 +1,6 @@
 import PaperC.Probability.FinitePMF
 import Mathlib.Combinatorics.SimpleGraph.Finite
-import Mathlib.Probability.Distributions.Poisson
+import Mathlib.Probability.Distributions.Poisson.Basic
 
 set_option maxHeartbeats 1200000
 

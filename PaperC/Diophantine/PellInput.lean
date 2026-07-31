@@ -13,7 +13,7 @@ Lemma 9.2 of Paper C counts integral solutions of
 
 `A z² - C w² = e`
 
-in a polynomial box.  Mathlib 4.19 contains useful material about the
+in a polynomial box.  Mathlib contains useful material about the
 homogeneous Pell equation, but not the ideal-divisor, unit-orbit and uniform
 divisor-bound package used here for an arbitrary right-hand side.
 
@@ -170,7 +170,6 @@ private theorem product_not_isSquare_of_ratio_not_isSquare
         ((A : ℚ) * (C : ℚ)) /
           ((C : ℚ) * (C : ℚ)) := by
       field_simp
-      ring
     _ = (q * q) / ((C : ℚ) * (C : ℚ)) := by
       rw [hq']
     _ = (q / (C : ℚ)) * (q / (C : ℚ)) := by
@@ -239,7 +238,7 @@ private theorem original_maps_to_generalized
     calc
       ((A : ℤ) * solution.1).natAbs =
           A * solution.1.natAbs := by
-        rw [Int.natAbs_mul, Int.natAbs_ofNat]
+        rw [Int.natAbs_mul, Int.natAbs_natCast]
       _ ≤ N ^ K * N ^ K := hproduct
       _ = N ^ (K + K) := by rw [← pow_add]
       _ = N ^ (2 * K) := by ring_nf
@@ -280,7 +279,7 @@ theorem pellPolynomialBox_of_generalizedPell
     calc
       ((A : ℤ) * e).natAbs =
           A * e.natAbs := by
-        rw [Int.natAbs_mul, Int.natAbs_ofNat]
+        rw [Int.natAbs_mul, Int.natAbs_natCast]
       _ ≤ N ^ K * N ^ K := hbound
       _ = N ^ (K + K) := by rw [← pow_add]
       _ = N ^ (2 * K) := by ring_nf

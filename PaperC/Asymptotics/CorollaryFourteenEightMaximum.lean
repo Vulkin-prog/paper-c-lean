@@ -133,7 +133,6 @@ theorem fullMaskedDyadicCount_eq_zero_iff
   classical
   unfold fullMaskedDyadicCount
   simp
-  rw [Finset.filter_eq_empty_iff]
 
 /-- The zero atom of the finite count law is the finite no-start probability. -/
 theorem fullMaskedDyadicStartLaw_zero_eq_finiteUniform
@@ -188,9 +187,15 @@ theorem shiftedMaskedTargetPoissonLaw_zero
     maskedTargetPoissonLaw (L + m + 1) (dyadicBlock N) 0 =
       Real.exp
         (-((N : ℝ) / (2 : ℝ) ^ (L + m + 1))) := by
+  have hrate :
+      (maskedTargetPoissonRate
+          (L + m + 1) (dyadicBlock N) : ℝ) =
+        (N : ℝ) / (2 : ℝ) ^ (L + m + 1) := by
+    change
+      ((dyadicBlock N).card : ℝ) / (2 : ℝ) ^ (L + m + 1) = _
+    rw [TouchingPairs.card_dyadicBlock]
   unfold maskedTargetPoissonLaw poissonPMFReal
-    maskedTargetPoissonRate
-  simp only [TouchingPairs.card_dyadicBlock, NNReal.coe_mk,
+  simp only [hrate,
     pow_zero, Nat.factorial_zero, Nat.cast_one, mul_one, div_one]
 
 /--

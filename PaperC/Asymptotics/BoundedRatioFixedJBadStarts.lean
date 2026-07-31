@@ -172,7 +172,7 @@ theorem inRunLengthWindow_div_twoPow
         |(L : ℝ) - Real.log (M : ℕ) / Real.log 2| +
           |Real.log (M : ℕ) / Real.log 2 -
             Real.log (M / 2 ^ j : ℕ) / Real.log 2| :=
-      abs_add _ _
+      abs_add_le _ _
     _ ≤ fixedJWindowConstant C j := by
       exact add_le_add hrun hlogDifferenceAbs
 

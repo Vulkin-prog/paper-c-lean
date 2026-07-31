@@ -285,7 +285,7 @@ theorem highBlockProbabilityMass_le_of_exceptional_card_le
   have hweight :
       0 ≤ (2 : ℝ) ^ u / (2 : ℝ) ^ L := by positivity
   exact (highBlockProbabilityMass_le hN hL hmax).trans
-    (add_le_add_left
+    (add_le_add_right
       (mul_le_mul_of_nonneg_right hcount hweight) _)
 
 /--

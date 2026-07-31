@@ -54,7 +54,9 @@ theorem factorization_primeCode {d : ℕ} (k : Fin d → ℕ)
       Finsupp.applyAddHom (Nat.nth Nat.Prime e.1)
         (∑ x : Fin d,
           k x • Finsupp.single (Nat.nth Nat.Prime x.1) 1) = k e
-    rw [map_sum (Finsupp.applyAddHom (Nat.nth Nat.Prime e.1))]
+    rw [map_sum
+      (Finsupp.applyAddHom (Nat.nth Nat.Prime e.1) :
+        (ℕ →₀ ℕ) →+ ℕ)]
     rw [Finset.sum_eq_single e]
     · simp [Finsupp.single_apply]
     · intro j _ hj

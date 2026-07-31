@@ -131,6 +131,9 @@ theorem canonicalResidualComponentCount_le_envelope_of_mem_shallowCoreSector
       hMκ hpair
   have hdensity :=
     (mem_boundedRatioShallowCorePairs.mp hbounding).2
+  change
+    HasCoreDensityAtMostThreeSixteenths
+      A L pair.1.1 pair.1.2 at hdensity
   unfold HasCoreDensityAtMostThreeSixteenths at hdensity
   unfold shallowCoreComponentEnvelope
   apply (Nat.le_div_iff_mul_le (by norm_num : 0 < 16)).2

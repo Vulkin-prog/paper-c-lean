@@ -1,5 +1,38 @@
 # Journal des versions
 
+## 0.43.0
+
+- Migration strictement technique de Lean/mathlib `v4.19.0` vers
+  `v4.32.2`. Le contenu mathématique de la v042 est conservé à l’identique :
+  aucune déclaration ni signature publique, aucun endpoint canonique ou
+  legacy et aucune entrée du registre d’audit ne sont ajoutés, supprimés ou
+  modifiés.
+- Sept familles d’imports mathlib déplacées ou scindées sont adaptées :
+  `Data.Complex.ExponentialBounds` vers
+  `Analysis.Complex.ExponentialBounds`,
+  `Analysis.SpecialFunctions.Integrals` vers
+  `Analysis.SpecialFunctions.Integrals.Basic`, `Algebra.GeomSum` vers
+  `Algebra.Field.GeomSum`, `NumberTheory.ArithmeticFunction` vers
+  `NumberTheory.ArithmeticFunction.Misc`,
+  `Combinatorics.SimpleGraph.Path` vers
+  `Combinatorics.SimpleGraph.Paths`,
+  `RingTheory.DedekindDomain.Ideal` vers
+  `RingTheory.DedekindDomain.Ideal.Lemmas` et
+  `Probability.Distributions.Poisson` vers
+  `Probability.Distributions.Poisson.Basic`.
+- Les corps de preuve utilisent les noms d’API 4.32.2 pour les alias retirés
+  (notamment `Finset.*notMem`, les casts de `ZMod`, les projections de
+  `Zsqrtd`, la factorisation naturelle, les sommes de graphes et la
+  continuité sur `Set.univ`). Ces adaptations ne changent aucun énoncé.
+- La v043 conserve les 373 modules de la v042 et compte 142 840 lignes Lean ;
+  les 521 lignes supplémentaires sont uniquement des adaptations de corps de
+  preuve à Lean 4.32.2. Elle conserve 3 971 théorèmes et 5 lemmes publics, soit
+  3 976 déclarations ;
+  3 978 cibles d’audit, dont 3 825 résultats inconditionnels et 151
+  conditionnels ; 13 ponts, répartis en huit `external` et cinq `internal`,
+  dont sept `open` tous `external` et six `discharged`. L’archive de livraison
+  est `paper_c_lean_v043.zip` et conserve l’unique racine `paper_c_lean/`.
+
 ## 0.42.0
 
 - Ajout de l’unique endpoint public

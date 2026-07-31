@@ -67,7 +67,7 @@ theorem parityVec_eq_zero_iff_exists_sq {n : ℕ} (hn : n ≠ 0) :
   · intro hparity
     have heven : ∀ p : ℕ, 2 ∣ n.factorization p := by
       intro p
-      rw [← ZMod.natCast_zmod_eq_zero_iff_dvd]
+      rw [← ZMod.natCast_eq_zero_iff]
       have hp := DFunLike.congr_fun hparity p
       simpa only [parityVec_apply, Finsupp.zero_apply] using hp
     let halfFactorization : ℕ →₀ ℕ :=
@@ -78,7 +78,7 @@ theorem parityVec_eq_zero_iff_exists_sq {n : ℕ} (hn : n ≠ 0) :
       exact Nat.prime_of_mem_primeFactors
         (Finsupp.support_mapRange hp)
     have hrpos : 0 < r := by
-      exact Nat.prod_pow_pos_of_zero_not_mem_support fun hzero =>
+      exact Nat.prod_pow_pos_of_zero_notMem_support fun hzero =>
         Nat.not_prime_zero (hprime 0 hzero)
     have hrfactorization : r.factorization = halfFactorization :=
       Nat.prod_pow_factorization_eq_self hprime

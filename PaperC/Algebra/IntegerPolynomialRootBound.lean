@@ -38,7 +38,7 @@ theorem coeff_natAbs_le_integerPolynomialHeight (p : ℤ[X]) (n : ℕ) :
     (p.coeff n).natAbs ≤ integerPolynomialHeight p := by
   by_cases hn : n ∈ p.support
   · exact Finset.le_sup (f := fun m ↦ (p.coeff m).natAbs) hn
-  · rw [Polynomial.not_mem_support_iff.mp hn]
+  · rw [Polynomial.notMem_support_iff.mp hn]
     simp [integerPolynomialHeight]
 
 /-- The nonnegative norm of an integer viewed in `ℝ` is its natural absolute
@@ -63,7 +63,7 @@ theorem cauchyBound_map_intCast_le_height_add_one (p : ℤ[X]) :
     Polynomial.leadingCoeff_ne_zero.mpr hp
   have hleading_one :
       (1 : ℝ≥0) ≤ ‖(p.map (Int.castRingHom ℝ)).leadingCoeff‖₊ := by
-    rw [Polynomial.leadingCoeff_map' Int.cast_injective]
+    rw [Polynomial.leadingCoeff_map_of_injective Int.cast_injective]
     change (1 : ℝ≥0) ≤ ‖(p.leadingCoeff : ℝ)‖₊
     rw [nnnorm_intCast_real]
     exact_mod_cast
@@ -77,7 +77,7 @@ theorem cauchyBound_map_intCast_le_height_add_one (p : ℤ[X]) :
     rw [nnnorm_intCast_real]
     exact_mod_cast coeff_natAbs_le_integerPolynomialHeight p n
   rw [Polynomial.cauchyBound]
-  apply add_le_add_right
+  apply add_le_add_left
   calc
     (Finset.range (p.map (Int.castRingHom ℝ)).natDegree).sup
           (fun n ↦ ‖(p.map (Int.castRingHom ℝ)).coeff n‖₊) /

@@ -334,7 +334,6 @@ theorem smallProductComponentFactor_uniformSubpolynomial
             ((8 / Real.log 2) *
               Real.log N) * (d : ℝ) := by
           field_simp [hlogTwoPos.ne']
-          ring
     norm_num only [Nat.cast_mul, Nat.cast_ofNat]
     calc
       2 * (smallProductComponentExponent N L : ℝ) ≤
@@ -345,7 +344,12 @@ theorem smallProductComponentFactor_uniformSubpolynomial
       _ = D * Real.log N / Real.log (Real.log N) := by
         dsimp only [D]
         ring
-  simpa only [smallProductComponentFactor, pow_mul, pow_two] using htwo
+  change
+    UniformSubpolynomialOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun N L =>
+        (((4 ^ smallProductComponentExponent N L : ℕ) : ℝ)))
+  simpa [pow_mul, pow_two] using htwo
 
 /-! ## Finite `σ=0` and `σ>0` branches -/
 
@@ -909,8 +913,13 @@ theorem boundedRationalMassFourEnvelope_uniformQuadratic
       abs_of_nonneg hresidual]
   have hproduct :=
     UniformLinear.mul hlinearN hlinearResidual
-  simpa only [admissible, boundedRationalMassFourEnvelope] using
-    hproduct
+  change
+    UniformRationalPowerSubpolynomialOn 2 1 admissible
+      (fun N L =>
+        (N : ℝ) *
+          ((N : ℝ) *
+            boundedRationalMassFourResidual C κ₀ N L))
+  exact hproduct
 
 /-- Every admissible endpoint's base-four mass lies below the common envelope. -/
 theorem boundedRationalMass_four_cast_le_envelope
@@ -1028,7 +1037,13 @@ theorem sigmaZeroEnvelope_uniformQuadratic
       abs_of_nonneg hres]
   have hproduct :=
     UniformLinear.mul hlinearN hlinearResidual
-  simpa only [admissible, residual, sigmaZeroEnvelope] using hproduct
+  change
+    UniformRationalPowerSubpolynomialOn 2 1 admissible
+      (fun N L =>
+        (N : ℝ) *
+          ((N : ℝ) *
+            ((κ₀ : ℝ) ^ 2 * smallProductLoss κ₀ A N L)))
+  exact hproduct
 
 theorem positiveSigmaEnvelope_uniformQuadratic
     {C : ℝ} (hC : 0 ≤ C) (κ₀ A : ℕ) :
@@ -1041,7 +1056,13 @@ theorem positiveSigmaEnvelope_uniformQuadratic
         (fun N L => 2 * smallProductLoss κ₀ A N L) :=
     ExpSqrtLog.uniformSubpolynomialOn_const_mul 2
       (smallProductLoss_uniformSubpolynomial hC κ₀ A)
-  simpa only [positiveSigmaEnvelope] using
+  change
+    UniformRationalPowerSubpolynomialOn 2 1
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun N L =>
+        (2 * smallProductLoss κ₀ A N L) *
+          boundedRationalMassFourEnvelope C κ₀ N L)
+  exact
     UniformRationalPower.mul_subpolynomial (by omega : 0 < 1)
       (boundedRationalMassFourEnvelope_uniformQuadratic hC κ₀)
       hfactor
@@ -1051,7 +1072,13 @@ theorem smallProductQuadraticEnvelope_uniformQuadratic
     UniformRationalPowerSubpolynomialOn 2 1
       (CriticalRunWindow.InRunLengthWindow C)
       (smallProductQuadraticEnvelope C κ₀ A) := by
-  simpa only [smallProductQuadraticEnvelope] using
+  change
+    UniformRationalPowerSubpolynomialOn 2 1
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun N L =>
+        sigmaZeroEnvelope κ₀ A N L +
+          positiveSigmaEnvelope C κ₀ A N L)
+  exact
     UniformRationalPower.add_quadratic
       (sigmaZeroEnvelope_uniformQuadratic hC κ₀ A)
       (positiveSigmaEnvelope_uniformQuadratic hC κ₀ A)

@@ -86,7 +86,7 @@ theorem halfLog_mul_card_highPrimes_le (H : ℕ) :
           = cutoff H ^ (highPrimes H).card := by
             simp [cutoff, pow_mul]
       _ ≤ primorial H := cutoff_pow_card_highPrimes_le_primorial H
-      _ ≤ 4 ^ H := primorial_le_4_pow H
+      _ ≤ 4 ^ H := primorial_le_four_pow H
       _ = 2 ^ (2 * H) := by norm_num [pow_mul]
   exact (Nat.pow_le_pow_iff_right (by omega : 1 < 2)).mp hpow
 
@@ -98,7 +98,7 @@ private theorem card_highPrimes_le_div (H : ℕ)
 
 private theorem card_low_add_card_high (H : ℕ) :
     (lowPrimes H).card + (highPrimes H).card = (primes H).card := by
-  exact Finset.filter_card_add_filter_neg_card_eq_card
+  exact Finset.card_filter_add_card_filter_not
     (s := primes H) (fun p ↦ p < cutoff H)
 
 /--
@@ -211,7 +211,7 @@ Fully simplified Chebyshev-type estimate with a numerical constant:
 `⌊log₂ H⌋ · π(H) ≤ 7H` for every `H ≥ 4`.
 
 Here `π(H)` is exactly the coordinate count `PrimesUpTo.count H`.  This is a
-direct finite consequence of `primorial_le_4_pow`; no analytic estimate for
+direct finite consequence of `primorial_le_four_pow`; no analytic estimate for
 primes is assumed.
 -/
 theorem log_mul_count_le_seven_mul {H : ℕ} (hH : 4 ≤ H) :

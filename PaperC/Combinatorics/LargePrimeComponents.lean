@@ -66,7 +66,10 @@ theorem componentVertices_nonempty
     (C : (largePrimeGraph x y L).ConnectedComponent) :
     (componentVertices x y L C).Nonempty := by
   obtain ⟨v, hv⟩ := C.exists_rep
-  exact ⟨v, by simpa [mem_componentVertices] using hv⟩
+  refine ⟨v, ?_⟩
+  rw [mem_componentVertices]
+  change Quot.mk (largePrimeGraph x y L).Reachable v = C
+  exact hv
 
 /-- A complete label lies weakly above the left endpoint minus one. -/
 theorem startCompleteVertexLabel_lower
@@ -247,7 +250,7 @@ theorem component_large_parity_eq_zero
             (fun z ↦ z ∈ primeOccurrences x y L p) =
           ∅ := by
       ext z
-      simp only [Finset.mem_filter, Finset.not_mem_empty,
+      simp only [Finset.mem_filter, Finset.notMem_empty,
         iff_false]
       rintro ⟨hzC, hzp⟩
       rw [hocc] at hzp
@@ -302,7 +305,7 @@ theorem component_large_parity_eq_zero
               (fun z ↦ z ∈ primeOccurrences x y L p) =
             ∅ := by
         ext z
-        simp only [Finset.mem_filter, Finset.not_mem_empty,
+        simp only [Finset.mem_filter, Finset.notMem_empty,
           iff_false]
         rintro ⟨hzC, hzp⟩
         rw [hocc] at hzp

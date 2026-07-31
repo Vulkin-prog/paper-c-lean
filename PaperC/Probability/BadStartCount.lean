@@ -114,11 +114,9 @@ theorem terminalBadIncidenceCode_injective :
     congrArg Prod.fst h
   have hoffset : j = j' :=
     congrArg Prod.snd h
-  simp only [terminalBadIncidenceCode] at hsum hoffset
   apply Prod.ext
-  · simp only
-    omega
-  · simpa using hoffset
+  · omega
+  · exact hoffset
 
 /-- The recoded incidences all lie in the bounded unit-kernel product. -/
 theorem image_terminalBadIncidenceCode_subset

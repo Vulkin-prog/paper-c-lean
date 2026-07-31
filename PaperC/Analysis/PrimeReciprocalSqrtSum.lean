@@ -454,7 +454,7 @@ theorem sum_smallPrimesUpTo_inv_sqrt_le_two_mul
     apply div_le_div_of_nonneg_right _ hqNonneg
     exact mul_le_mul_of_nonneg_left hcover (by norm_num)
   exact (sum_smallPrimesUpTo_inv_sqrt_le hH).trans
-    (add_le_add_left hsecond _)
+    (add_le_add_right hsecond _)
 
 /--
 The corresponding Euler-product envelope, in reciprocal-square-root

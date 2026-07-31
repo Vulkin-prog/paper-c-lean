@@ -118,11 +118,11 @@ theorem blockOddPart_isSmoothAt
     Nat.dvd_of_mem_primeFactors hp
   rw [blockOddPart] at hpDiv
   obtain ⟨d, hd, hpKernel⟩ :=
-    (hpPrime.prime.dvd_finset_prod_iff
+    (hpPrime.prime.dvd_finsetProd_iff
       (fun d : ℕ ↦ canonicalOddPart (m + d))).mp hpDiv
   rw [canonicalOddPart] at hpKernel
   obtain ⟨q, hq, hpq⟩ :=
-    (hpPrime.prime.dvd_finset_prod_iff id).mp hpKernel
+    (hpPrime.prime.dvd_finsetProd_iff id).mp hpKernel
   have hqSmall :=
     oddPrimeSupport_subset_smallPrimesUpTo
       (hdefective d hd) hq

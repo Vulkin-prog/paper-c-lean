@@ -123,7 +123,7 @@ theorem even_hammingNorm_of_mem_ker_augmentedColumnMap {m r : ℕ}
       _ = ∑ i : Fin m, x i * 1 := sum_wordSupport_eq_weighted_sum x _
       _ = 0 := by simpa using hlast
   exact even_iff_two_dvd.mpr
-    ((ZMod.natCast_zmod_eq_zero_iff_dvd (hammingNorm x) 2).mp hweight)
+    ((ZMod.natCast_eq_zero_iff (hammingNorm x) 2).mp hweight)
 
 /-- The small-prime parity column of an integer. -/
 noncomputable def smallParityColumn {r : ℕ} (smallPrime : Fin r → ℕ) (n : ℕ) :
@@ -186,7 +186,7 @@ theorem square_product_of_mem_ker_augmentedParityMap {m r : ℕ}
   · ext p
     by_cases hp : ∃ j : Fin r, smallPrime j = p
     · obtain ⟨j, rfl⟩ := hp
-      rw [Finsupp.finset_sum_apply]
+      rw [Finsupp.finsetSum_apply]
       simp only [Finsupp.zero_apply]
       rw [sum_wordSupport_eq_weighted_sum]
       exact defectCode_kernel_coordinate smallPrime f x hx j

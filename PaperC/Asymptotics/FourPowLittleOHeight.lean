@@ -81,7 +81,6 @@ theorem uniformSubpolynomialOn_four_pow_of_uniformLittleO_height
       _ = (D / (D + 1)) * Real.log N := by
         dsimp [ε]
         field_simp
-        ring
       _ ≤ 1 * Real.log N := by
         apply mul_le_mul_of_nonneg_right _ hlogN.le
         exact (div_le_one hDplus).2 (by linarith)

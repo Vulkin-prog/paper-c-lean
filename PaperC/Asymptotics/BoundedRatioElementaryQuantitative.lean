@@ -176,9 +176,12 @@ theorem smallPrimeProduct_dyadic_uniformSevenFourths
           (boundedIntrinsicTerminalPredicate 3 K)
           .smallPrimeProduct N (2 * N) L) := by
   apply uniformRationalPowerInBoundedRatioWindow_dyadic
-  simpa only [
-    BoundedRatioSmallProductSector.UniformSevenFourthsInBoundedRatioWindow,
-    UniformRationalPowerInBoundedRatioWindow] using
+  change
+    BoundedRatioSmallProductSector.UniformSevenFourthsInBoundedRatioWindow
+      C 2
+      (BoundedRatioSmallProductSector.smallProductSectorLinearMass 3
+        (boundedIntrinsicTerminalPredicate 3 K))
+  exact
     BoundedRatioSmallProductSector.smallProductSectorLinearMass_uniformSevenFourths
       hC 2 3 (by norm_num)
       (boundedIntrinsicTerminalPredicate 3 K)

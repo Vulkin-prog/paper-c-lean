@@ -242,6 +242,19 @@ private theorem sum_indicator_fixedChannelPairs
   rw [hfilter]
   simp [mul_comm]
 
+private theorem sum_indicator_fixedChannelFiber
+    {N A L : ℕ} (hN : 2 ≤ N) (key : PositiveChannelKey) (W : ℕ) :
+    (∑ pair ∈ positiveSigmaSmallProductPairs N A L hN,
+        if pair ∈ fixedChannelFiber N A L hN key
+          then W else 0) =
+      W * (fixedChannelFiber N A L hN key).card := by
+  change
+    (∑ pair ∈ positiveSigmaSmallProductPairs N A L hN,
+        if pair ∈ fixedChannelPairs N A L key.a key.b key.h key.r hN
+          then W else 0) =
+      W * (fixedChannelPairs N A L key.a key.b key.h key.r hN).card
+  exact sum_indicator_fixedChannelPairs hN W
+
 /--
 Finite global positive-`σ` grouping.  The hypothesis `hD` is the explicit
 uniform envelope for `D#`; all systematic and residual-certificate factors
@@ -319,10 +332,9 @@ theorem positiveSigmaQuadraticResidualMass_le_channelCertificateMass
     _ =
         4 ^ D * positiveSigmaChannelCertificateMass N A L hN := by
       rw [Finset.sum_comm]
-      simp only [fixedChannelFiber]
-      simp_rw [sum_indicator_fixedChannelPairs hN]
+      simp_rw [sum_indicator_fixedChannelFiber hN]
       unfold positiveSigmaChannelCertificateMass
-      simp only [fixedChannelFiber, Finset.mul_sum]
+      simp only [Finset.mul_sum]
       ring
 
 end

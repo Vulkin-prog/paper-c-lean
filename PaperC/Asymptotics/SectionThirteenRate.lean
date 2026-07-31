@@ -486,7 +486,7 @@ theorem one_add_log_three_mul_uniformSubpolynomial
             Real.exp (2 * Real.sqrt (Real.log N)) +
               (1 + Real.log 3) *
                 Real.exp (2 * Real.sqrt (Real.log N)) :=
-          add_le_add_left
+          add_le_add_right
             (by
               simpa only [mul_one] using
                 mul_le_mul_of_nonneg_left hexpOne hcoeff)

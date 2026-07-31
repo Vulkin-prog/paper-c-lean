@@ -1,5 +1,5 @@
 name = "paper_c_lean"
-version = "0.42.0"
+version = "0.43.0"
 defaultTargets = ["PaperC"]
 
 [[lean_lib]]
@@ -8,4 +8,4 @@ name = "PaperC"
 [[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4.git"
-rev = "v4.19.0"
+rev = "v4.32.2"

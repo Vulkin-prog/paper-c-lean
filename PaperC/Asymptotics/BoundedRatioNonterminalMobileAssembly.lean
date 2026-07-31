@@ -177,7 +177,14 @@ theorem mobileDegreeAtLeastTwoEnvelope_uniformSubpolynomial
       (ExpSqrtLog.uniformSubpolynomialOn_mul
         hleft hright)
       hevertse
-  simpa only [mobileDegreeAtLeastTwoEnvelope] using hproduct
+  change
+    UniformSubpolynomialOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun N L =>
+        degreeTwoFixedFiberResidual κ₀ cLeft N L *
+          degreeTwoFixedFiberResidual κ₀ cRight N L *
+          (evertseCommonFixedFiberResidual κ₀ N L : ℝ))
+  exact hproduct
 
 /--
 The common mobile product is eventually at least one; the threshold is
@@ -609,9 +616,16 @@ theorem moderateNonterminalHostEnvelope_uniformLinear
   have hproduct :=
     UniformLinear.subpolynomial_mul
       hshapes hmaximum
-  simpa only [
-      moderateNonterminalHostEnvelope,
-      linearMobile] using hproduct
+  change
+    UniformLinearSubpolynomialOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun N L =>
+        componentShapeEnvelope N L *
+          max (Q₂ N L)
+            ((κ₀ : ℝ) * (N : ℝ) *
+              mobileDegreeAtLeastTwoEnvelope
+                κ₀ cLeft cRight N L))
+  exact hproduct
 
 /--
 Conditional closure of the moderate host count.

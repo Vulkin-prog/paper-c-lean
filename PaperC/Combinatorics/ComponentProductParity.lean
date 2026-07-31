@@ -139,7 +139,7 @@ theorem componentVertexProduct_large_parity_eq_zero
         ∑ v ∈ componentVertices x y L C,
           parityVec
             (Affine.twoStartCompleteVertexLabel x y L v) p := by
-      rw [Finsupp.finset_sum_apply]
+      rw [Finsupp.finsetSum_apply]
     _ = 0 :=
       component_large_parity_eq_zero
         (show 1 ≤ x by omega) (show 1 ≤ y by omega)

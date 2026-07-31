@@ -30,7 +30,8 @@ theorem card_Ico_modEq_le_ceil_length
       ((b : ℚ) - (v : ℚ)) / (r : ℚ) =
         ((a : ℚ) - (v : ℚ)) / (r : ℚ) +
           (((b - a : ℤ) : ℚ) / (r : ℚ)) := by
-    field_simp
+    rw [Int.cast_sub]
+    ring
   have hadd :=
     Int.ceil_add_le
       (((a : ℚ) - (v : ℚ)) / (r : ℚ))

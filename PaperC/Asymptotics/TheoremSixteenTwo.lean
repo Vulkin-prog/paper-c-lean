@@ -345,7 +345,7 @@ theorem exists_discarded_start_of_counts_ne
     ∃ x ∈ discardedStartIndices M j₀,
       startAt ω x L := by
   by_contra hnone
-  push_neg at hnone
+  push Not at hnone
   apply hne
   rw [globalStartCount_eq_discarded_add_retained hcut]
   have hzero :
@@ -869,10 +869,16 @@ theorem boundedFullStartLaw_eq_retainedStartLaw
       (retainedStartIndices M j)
       (fun x hx ↦ two_le_of_mem_retainedStartIndices hcut hx)
       (fun x hx ↦ retained_window_le_boundedRatioCutoff hx)
-  simpa only [boundedFullStartLaw, boundedFullStartCount,
-    FiniteCylinderCountTransport.startCountOn,
-    retainedStartLaw, globalUniformPMF, retainedStartCount,
-    boundedRatioBlock_div_eq_retainedStartIndices] using htransport.symm
+  change
+    finiteNatLaw
+        (fullUniformPMF (boundedRatioCutoff M L))
+        (startCountOn (retainedStartIndices M j) L
+          (boundedRatioCutoff M L)) =
+      finiteNatLaw
+        (fullUniformPMF (globalCylinderCutoff M L))
+        (startCountOn (retainedStartIndices M j) L
+          (globalCylinderCutoff M L))
+  exact htransport.symm
 
 /-- The local exact mean is the retained mean on the global cylinder. -/
 theorem boundedFullStartMean_eq_retainedStartMean
@@ -932,9 +938,12 @@ private theorem retainedStartLaw_poisson_uniformLittleOOne
         (fun N M L ↦
           BoundedRatioSteinChenSecondTerm.boundedConditionalBTwoAverage
             N M L (TerminalPrimeCutoff.terminalPrimeCutoff (L + 1))) := by
-    simpa only [terminalBoundedConditionalBTwoAverage] using
-      (terminalBoundedConditionalBTwoAverage_uniformLittleOOne
-        hCfixed (2 ^ (j + 1)) hR2)
+    change
+      BoundedRatioBadStarts.UniformLittleOOneInBoundedRatioWindow
+        (fixedJWindowConstant C j) (2 ^ (j + 1))
+        terminalBoundedConditionalBTwoAverage
+    exact terminalBoundedConditionalBTwoAverage_uniformLittleOOne
+      hCfixed (2 ^ (j + 1)) hR2
   have hbounded :=
     boundedFullStartLaw_poisson_uniformLittleOOne
       hCfixed (2 ^ (j + 1)) hAGG hbTwo
@@ -1273,8 +1282,10 @@ private theorem global_totalVariation_uniformLittleOOne_of_truncation
         (retainedStartRate M L j₀)
         (globalStartRate M L)).trans
         (by
-          simpa only [retainedStartRate, globalStartRate,
-            NNReal.coe_mk, abs_sub_comm] using hmean)
+          change
+            |retainedStartMean M L j₀ - globalStartMean M L| ≤
+              ε / 8
+          simpa only [abs_sub_comm] using hmean)
   have hglobalLaw := summable_globalStartLaw M L
   have hretainedLaw := summable_retainedStartLaw M L j₀
   have hretainedPois :=
@@ -1321,7 +1332,7 @@ private theorem global_totalVariation_uniformLittleOOne_of_truncation
           natTotalVariation
             (poissonPMFReal (retainedStartRate M L j₀))
             (poissonPMFReal (globalStartRate M L)) := by
-      exact add_le_add_right htriangleOne _
+      exact add_le_add htriangleOne le_rfl
     _ ≤ (ε / 8 + ε / 2) + ε / 8 := by
       gcongr
       exact htruncate.trans htail
@@ -1500,7 +1511,7 @@ private theorem global_mean_asymptotic_of_truncation
           abs_sub _ _
         _ ≤ _ := by
           gcongr
-          exact abs_add _ _
+          exact abs_add_le _ _
     _ ≤ ε * a / 4 + ε * a / 4 + ε * a / 4 := by
       gcongr
       rw [abs_of_nonneg
@@ -1554,7 +1565,6 @@ private theorem global_empty_probability_asymptotic_of_totalVariation
       ((poissonPMFRealSum (globalStartRate M L)).summable)
       (globalStartLaw_nonneg M L)
       (fun _ ↦ poissonPMFReal_nonneg)
-  rw [poissonPMFReal_zero_eq_exp_neg] at hpoint
   have hpoint' :
       |globalStartLaw M L 0 -
           Real.exp (-globalStartMean M L)| ≤
@@ -1562,7 +1572,15 @@ private theorem global_empty_probability_asymptotic_of_totalVariation
           natTotalVariation
             (globalStartLaw M L)
             (poissonPMFReal (globalStartRate M L)) := by
-    simpa only [globalStartRate, NNReal.coe_mk] using hpoint
+    change
+      |globalStartLaw M L 0 -
+          Real.exp (-(globalStartRate M L : ℝ))| ≤
+        2 *
+          natTotalVariation
+            (globalStartLaw M L)
+            (poissonPMFReal (globalStartRate M L))
+    rw [← poissonPMFReal_zero_eq_exp_neg]
+    exact hpoint
   simp only [globalEmptyProbability, abs_one, mul_one]
   exact hpoint'.trans (by linarith)
 

@@ -186,7 +186,7 @@ theorem card_residualComponents
       exactNondefectiveComponents_subset_nontrivial
         ha hb hab hx hy hheight hsmall
     simp only [residualComponents, residualComponentCount, if_pos hm]
-    rw [Finset.card_sdiff hsubset,
+    rw [Finset.card_sdiff_of_subset hsubset,
       card_exactNondefectiveComponents
         ha hb hab hx hy hheight hsmall]
     rfl

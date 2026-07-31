@@ -233,7 +233,11 @@ noncomputable def ambientCertificate
   dsimp [T]
   rw [Finset.card_image_of_injective _
     (componentAmbientCell_injective (A := A) hN hpair)]
-  simpa using
+  simpa [ambientModulus, ambientPrimeModulus, ambientLeftResidue,
+    componentAmbientCell, componentAmbientPrime,
+    CRT.labeledCellModulus,
+    canonicalResidualCertificateModulus,
+    canonicalResidualCertificateLeftResidue] using
     card_canonicalResidualCertificateIndex
       (two_le_of_mem_dyadicBlock hN
         (mem_separatedDyadicPairs.mp hpair).1)
@@ -389,11 +393,14 @@ theorem left_modEq_componentAmbientCell
     (C : CanonicalResidualCertificateIndex A x y L) :
     x ≡ ambientLeftResidue (componentAmbientCell hN hpair C)
       [MOD ambientModulus (componentAmbientCell hN hpair C)] := by
-  simpa using
-    canonicalResidual_left_modEq
-      (A := A) (L := L)
-      (pair_left_one_le hN hpair)
-      (pair_right_one_le hN hpair) C
+  change x ≡ canonicalResidualCertificateLeftResidue
+      (pair_left_one_le hN hpair) (pair_right_one_le hN hpair) C
+    [MOD canonicalResidualCertificateModulus
+      (pair_left_one_le hN hpair) (pair_right_one_le hN hpair) C]
+  exact canonicalResidual_left_modEq
+    (A := A) (L := L)
+    (pair_left_one_le hN hpair)
+    (pair_right_one_le hN hpair) C
 
 /-- The right start satisfies the ambient congruence of every component. -/
 theorem right_modEq_componentAmbientCell
@@ -403,11 +410,14 @@ theorem right_modEq_componentAmbientCell
     (C : CanonicalResidualCertificateIndex A x y L) :
     y ≡ ambientRightResidue (componentAmbientCell hN hpair C)
       [MOD ambientModulus (componentAmbientCell hN hpair C)] := by
-  simpa using
-    canonicalResidual_right_modEq
-      (A := A) (L := L)
-      (pair_left_one_le hN hpair)
-      (pair_right_one_le hN hpair) C
+  change y ≡ canonicalResidualCertificateRightResidue
+      (pair_left_one_le hN hpair) (pair_right_one_le hN hpair) C
+    [MOD canonicalResidualCertificateModulus
+      (pair_left_one_le hN hpair) (pair_right_one_le hN hpair) C]
+  exact canonicalResidual_right_modEq
+    (A := A) (L := L)
+    (pair_left_one_le hN hpair)
+    (pair_right_one_le hN hpair) C
 
 /-- The left start satisfies all congruences in the ambient certificate. -/
 theorem left_satisfies_ambientCertificate

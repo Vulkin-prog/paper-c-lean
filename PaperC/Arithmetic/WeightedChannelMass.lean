@@ -261,7 +261,7 @@ theorem weightedChannelMass_le_small_add_large
     · exact sum_weightedChannelMassAtHeight_ge_three_le L
   · have hempty : Icc 2 L = ∅ := by
       ext q
-      simp only [mem_Icc, Finset.not_mem_empty, iff_false]
+      simp only [mem_Icc, Finset.notMem_empty, iff_false]
       omega
     simp [weightedChannelMass, hempty]
 

@@ -65,7 +65,8 @@ theorem quotientFunctional_ne_zero_iff
     ext v
     have hv :=
       LinearMap.congr_fun hquot (S.mkQ v)
-    simpa using hv
+    change lambda v = 0 at hv
+    exact hv
 
 /--
 Regard a smaller ambient submodule `S ≤ W` as a submodule of the type `W`.

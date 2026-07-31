@@ -76,13 +76,13 @@ theorem of_cube_bound
         (|f N L| ^ 3) ^ k := by
       rw [pow_mul]
     _ ≤ ((N : ℝ) ^ p * |s N L|) ^ k :=
-      pow_le_pow_left₀ (by positivity)
+      pow_le_pow_left₀ (pow_nonneg (abs_nonneg _) _)
         (hNb N hNbN L hNL) k
     _ = (N : ℝ) ^ (p * k) * |s N L| ^ k := by
       rw [mul_pow, pow_mul]
     _ ≤ (N : ℝ) ^ (p * k) * (N : ℝ) :=
       mul_le_mul_of_nonneg_left
-        (hNs N hNsN L hNL) (by positivity)
+        (hNs N hNsN L hNL) (pow_nonneg (Nat.cast_nonneg _) _)
     _ = (N : ℝ) ^ (p * k + 1) := by
       rw [pow_succ]
 

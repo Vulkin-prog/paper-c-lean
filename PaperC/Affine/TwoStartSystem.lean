@@ -474,7 +474,7 @@ theorem exists_twoStartCompleteBoundary_ne_zero
     apply twoStartCompleteBoundary_injective L
     simpa using hzero
   by_contra h
-  push_neg at h
+  push Not at h
   apply hb
   funext v
   exact h v

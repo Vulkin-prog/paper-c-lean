@@ -174,7 +174,7 @@ theorem canonical_lateSectors_eq_deepCorePairs
           .terminal) =
       deepCorePairs N A L hN := by
   simpa [canonicalSectionElevenSectorPairs,
-    canonicalSectionElevenTests] using
+    canonicalSectionElevenTests, sectionElevenSectorPairs] using
     (sectionEleven_lateSectors_eq_deepCorePairs
       (N := N) (A := A) (L := L) hN
       (fun pair ↦

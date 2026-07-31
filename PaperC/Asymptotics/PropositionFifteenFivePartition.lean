@@ -75,7 +75,7 @@ theorem highDyadicBlocks_pairwiseDisjoint (L : ℕ) :
           highDyadicBase L * 2 ^ b := by
       exact Nat.mul_le_mul_left _
         (Nat.pow_le_pow_right (by norm_num) (by omega))
-    exact (hxa'.2.trans_le hpow).not_le hxb'.1
+    exact (not_le_of_gt (hxa'.2.trans_le hpow)) hxb'.1
   rcases lt_or_gt_of_ne hkl with horder | horder
   · exact hforward horder
   · exact (hforward horder).symm
@@ -174,7 +174,7 @@ theorem sum_activeDyadicBases_le_cutoff
       exact (Finset.mem_filter.mp hkActive).2
     have hxUpper :=
       (Finset.mem_Ico.mp
-        (by simpa only [blocks] using hxBlock)).2
+        (by simpa only [blocks, highDyadicBlock] using hxBlock)).2
     rw [Finset.mem_range]
     calc
       x < highDyadicBase L * 2 ^ (k + 1) := hxUpper
@@ -257,7 +257,7 @@ theorem deepStartProbabilityMass_le_low_add_blocks
       ext x
       simp]
     rw [Finset.sum_union Finset.disjoint_sdiff]
-    exact add_le_add_left
+    exact add_le_add_right
       (Finset.sum_le_sum_of_subset_of_nonneg
         Finset.sdiff_subset (fun x _ _ ↦ hnonneg x)) _
   have hblocks :
@@ -502,9 +502,21 @@ theorem twice_highZoneExceptionalEnvelope_uniformLittleOOne
   intro M hM L hrun
   have hbound := hM₀ M hM L hrun
   simp only [abs_one, mul_one] at hbound ⊢
-  rw [abs_mul]
-  norm_num
-  linarith
+  calc
+    |2 *
+        ((L : ℝ) *
+          Real.exp (K * (L : ℝ) / Real.log (L : ℝ)) *
+          (2 : ℝ) ^
+            (1 - BalasubramanianShoreyInput.gap (L + 1) θ))| =
+        2 *
+          |(L : ℝ) *
+            Real.exp (K * (L : ℝ) / Real.log (L : ℝ)) *
+            (2 : ℝ) ^
+              (1 - BalasubramanianShoreyInput.gap (L + 1) θ)| := by
+      rw [abs_mul, abs_of_nonneg (by norm_num : (0 : ℝ) ≤ 2)]
+    _ ≤ 2 * (ε / 2) :=
+      mul_le_mul_of_nonneg_left hbound (by norm_num)
+    _ = ε := by ring
 
 /-- The sum of the low and high remainders is still uniform little-oh. -/
 theorem completeRemainder_uniformLittleOOne

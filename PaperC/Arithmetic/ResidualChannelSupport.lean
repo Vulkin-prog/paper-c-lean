@@ -47,7 +47,7 @@ theorem residualPrimeCells_eq_empty_of_cutoff_le
     (hp : p.Prime)
     (hcutoff : 4 * Nat.max a b * (L + 1) ≤ p) :
     residualPrimeCells L a b p h = ∅ := by
-  rw [eq_empty_iff_forall_not_mem]
+  rw [Finset.eq_empty_iff_forall_notMem]
   intro cell hcell
   have hpLt :
       p < 4 * Nat.max a b * (L + 1) :=
@@ -63,7 +63,7 @@ theorem residualVertexPrimeCells_eq_empty_of_cutoff_le
     (hp : p.Prime)
     (hcutoff : 4 * Nat.max a b * (L + 1) ≤ p) :
     residualVertexPrimeCells L a b p h = ∅ := by
-  rw [eq_empty_iff_forall_not_mem]
+  rw [Finset.eq_empty_iff_forall_notMem]
   intro cell hcell
   have hpLt :
       p < 4 * Nat.max a b * (L + 1) :=

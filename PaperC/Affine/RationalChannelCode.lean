@@ -78,10 +78,10 @@ theorem channelUnitCell_mem_channelCells
   · rw [mem_offsetBox]
     exact ⟨
       (by
-        simpa only [mem_offsetInterval] using
+        simpa only [channelUnitCell, mem_offsetInterval] using
           channelVertexOffset_mem_offsetInterval unit.1.1),
       (by
-        simpa only [mem_offsetInterval] using
+        simpa only [channelUnitCell, mem_offsetInterval] using
           channelVertexOffset_mem_offsetInterval unit.1.2)⟩
   · exact mem_rationalChannelUnits.mp unit.2
 
@@ -91,7 +91,7 @@ def offsetVertexOfMem
     Fin (L + 1) := by
   refine ⟨(i + 1).toNat, ?_⟩
   have hibounds := mem_offsetInterval.mp hi
-  rw [Int.toNat_lt'' (by omega)]
+  rw [Int.toNat_lt (by omega)]
   omega
 
 @[simp]
@@ -216,7 +216,10 @@ def selectedChannelUnits
 private theorem f2_eq_indicator_ne_zero (z : F₂) :
     z = if z ≠ 0 then 1 else 0 := by
   classical
-  fin_cases z <;> simp
+  by_cases hz : z = 0
+  · simp [hz]
+  · have hz1 : z = 1 := Fin.eq_one_of_ne_zero z hz
+    simp [hz1]
 
 /-- Coordinate sum equals the selected-subset cardinality modulo two. -/
 theorem coordinateSum_eq_selectedChannelUnits_card
@@ -236,7 +239,7 @@ theorem coordinateSum_eq_selectedChannelUnits_card
     _ = ((selectedChannelUnits c).card : F₂) := by
       simpa only [selectedChannelUnits] using
         (Finset.sum_boole
-          (α := F₂)
+          (R := F₂)
           (fun unit : ChannelUnit L a b h => c unit ≠ 0)
           Finset.univ)
 
@@ -252,7 +255,7 @@ theorem mem_evenChannelSelection_iff_even_card
   rw [LinearMap.mem_ker,
     coordinateSum_eq_selectedChannelUnits_card,
     even_iff_two_dvd]
-  exact ZMod.natCast_zmod_eq_zero_iff_dvd
+  exact ZMod.natCast_eq_zero_iff
     (selectedChannelUnits c).card 2
 
 theorem coordinateSum_surjective
@@ -1021,7 +1024,7 @@ theorem max_channelCoefficients_le_length
     Finset.card_pos.mp (by omega)
   obtain ⟨cell₁, hcell₁⟩ := hnonempty
   obtain ⟨cell₂, hcell₂, hne₂₁⟩ :=
-    Finset.exists_ne_of_one_lt_card hcard cell₁
+    Finset.exists_mem_ne hcard cell₁
   have hbounds :=
     channel_coefficients_le_length_of_mem
       ha hb hab hcell₁ hcell₂ hne₂₁.symm

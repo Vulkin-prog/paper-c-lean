@@ -207,7 +207,8 @@ theorem measure_constantTail (x : ℕ) :
 theorem ae_not_constantTail (x : ℕ) :
     ∀ᵐ ω ∂infiniteRademacherMeasure, ω ∉ constantTail x := by
   rw [ae_iff]
-  simpa only [Set.mem_setOf_eq, not_not] using measure_constantTail x
+  simpa only [Set.mem_setOf_eq, not_not, Set.setOf_mem_eq] using
+    measure_constantTail x
 
 /--
 **Lemma 14.4 (almost-sure finiteness of runs), source-exact form.**
@@ -222,7 +223,7 @@ theorem lemma_fourteen_four :
   filter_upwards [ae_all_iff.2 ae_not_constantTail] with ω hω
   intro x _hx
   by_contra h
-  push_neg at h
+  push Not at h
   exact hω x h
 
 end InfiniteRademacher

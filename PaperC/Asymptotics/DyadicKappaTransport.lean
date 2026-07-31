@@ -93,7 +93,7 @@ theorem separatedBoundedRatioPairs_two_mul_eq_empty_of_not_two_le
     PropositionSixteenOne.separatedBoundedRatioPairs
         N (2 * N) L =
       ∅ := by
-  apply Finset.eq_empty_iff_forall_not_mem.mpr
+  apply Finset.eq_empty_iff_forall_notMem.mpr
   intro pair hpair
   have hp :=
     PropositionSixteenOne.mem_separatedBoundedRatioPairs.mp hpair

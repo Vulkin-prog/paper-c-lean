@@ -9,12 +9,12 @@ import PaperC.Probability.FullMarkedLaplaceTransfer
 This module packages the two source-law Laplace-functional limits and the
 final mark tightness estimate in theorem-level predicates.
 
-Mathlib `v4.19.0` has no standard topology of locally finite point measures
-suited to the manuscript.  Accordingly, the public endpoint is the complete
-Laplace characterization of the limiting Poisson point processes.  For the
-marked process, a compactly supported test includes a finite cutoff in the
-discrete mark coordinate; the theorem quantifies over every such cutoff and
-is paired with uniform tightness of the marks.
+The formalization does not depend on a standard topology of locally finite
+point measures.  Its public endpoint is instead the complete Laplace
+characterization of the limiting Poisson point processes.  For the marked
+process, a compactly supported test includes a finite cutoff in the discrete
+mark coordinate; the theorem quantifies over every such cutoff and is paired
+with uniform tightness of the marks.
 -/
 
 open scoped BigOperators Topology

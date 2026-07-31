@@ -224,8 +224,7 @@ theorem measure_infiniteMaximumAtMostEvent_eq_no_longStart
   filter_upwards
     [ae_mem_infiniteMaximumAtMostEvent_iff_no_longStart
       (N := N) (L := L) (m := m) hN] with ω hω
-  exact propext (by
-    simpa only [Set.mem_compl_iff] using hω)
+  exact propext hω
 
 /--
 Exact complement formula.  This is the deterministic reduction behind the

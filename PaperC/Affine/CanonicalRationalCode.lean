@@ -226,8 +226,20 @@ theorem rationalSigma_eq_canonicalMultiplicity_sub_one
         (RelationSpace (twoStartSystem M x y L))
   | some c =>
       simp only
+      let S : Submodule F₂
+          (RelationSpace (twoStartSystem M x y L)) :=
+        if 2 ≤ candidateMultiplicity L c then
+          rationalCodeForCandidate M x y L (L + 1) ((L + 1) ^ A)
+            hx hy c
+        else
+          ⊥
+      change Module.finrank F₂ S = candidateMultiplicity L c - 1
       by_cases hm : 2 ≤ candidateMultiplicity L c
-      · rw [if_pos hm]
+      · have hS :
+            S = rationalCodeForCandidate M x y L (L + 1) ((L + 1) ^ A)
+              hx hy c := by
+          simp [S, hm]
+        rw [(LinearEquiv.ofEq S _ hS).finrank_eq]
         have hmpos : 0 < candidateMultiplicity L c := by
           omega
         unfold rationalCodeForCandidate candidateMultiplicity
@@ -236,9 +248,12 @@ theorem rationalSigma_eq_canonicalMultiplicity_sub_one
             (candidate_fst_pos c) (candidate_snd_pos c)
             hx hy (hheight := rfl)
             (hm := by
-              simpa [candidateMultiplicity] using hmpos)
-      · rw [if_neg hm]
-        rw [finrank_bot F₂
+              simpa [candidateMultiplicity, pairChannelError] using hmpos)
+      · have hS :
+            S = (⊥ : Submodule F₂
+              (RelationSpace (twoStartSystem M x y L))) := by
+          simp [S, hm]
+        rw [(LinearEquiv.ofEq S _ hS).finrank_eq, finrank_bot F₂
           (RelationSpace (twoStartSystem M x y L))]
         omega
 

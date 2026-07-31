@@ -155,7 +155,6 @@ theorem rungeScale_lt_of_log_budget
       _ = (172 * (A + 6 : ℕ) * D) *
             ((B : ℝ) / Real.log (Real.log B)) := by
         field_simp [hlogBpos.ne', hloglogBpos.ne']
-        ring
   have hcoefficientNonneg :
       0 ≤ (172 * (A + 6 : ℕ) * D : ℝ) := by
     positivity

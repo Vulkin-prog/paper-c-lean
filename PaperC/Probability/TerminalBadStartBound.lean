@@ -188,7 +188,7 @@ theorem terminalBadStartPrimeExponent_le_scaleExponent
           56 * Real.sqrt (2 * terminalPrimeScale B) /
             ((Nat.log 2 B / 2 : ℕ) : ℝ)
   simpa only [Nat.cast_mul, Nat.cast_ofNat] using
-    (add_le_add_left hratio (2 * Real.sqrt (rootCutoff Y)))
+    (add_le_add_right hratio (2 * Real.sqrt (rootCutoff Y)))
 
 /--
 The scale exponent admits a completely real-variable envelope in which the
@@ -290,15 +290,9 @@ theorem terminalBadStartScaleExponent_le_readableExponent
       _ = 168 * Real.sqrt 2 * B /
             Real.sqrt (Real.log B) := by
         rw [hsqrtScale, hsqrtTwoLog]
-        have hlogEq :
-            Real.log (B : ℝ) =
-              Real.sqrt (Real.log B) *
-                Real.sqrt (Real.log B) := by
-          exact (Real.mul_self_sqrt hlogBpos.le).symm
-        rw [hlogEq]
-        field_simp
+        field_simp [hlogBpos.ne', hsqrtLogPos.ne']
         ring_nf
-        rw [Real.sq_sqrt hlogBpos.le]
+        rw [Real.sq_sqrt (x := Real.log (B : ℝ)) hlogBpos.le]
   change
     2 * Real.sqrt (rootCutoff Y) +
           56 * Real.sqrt (2 * terminalPrimeScale B) /

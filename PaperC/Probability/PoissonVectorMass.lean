@@ -69,8 +69,10 @@ theorem hasSum_pi_prod_general
       rw [← (Fin.consEquiv (fun _ : Fin (d + 1) ↦ ℕ)).hasSum_iff]
       convert hpair using 1
       · funext x
-        simp only [Function.comp_apply, Fin.prod_univ_succ,
-          Fin.consEquiv_apply, Fin.cons_zero, Fin.cons_succ,
+        simp only [Function.comp_apply, Fin.consEquiv,
+          Equiv.coe_fn_mk,
+          Fin.prod_univ_succ,
+          Fin.cons_zero, Fin.cons_succ,
           head, tail, tailMass]
       · simp only [Fin.prod_univ_succ, tailSum]
 

@@ -47,7 +47,8 @@ private theorem sqrtLog_mul_primeCount_le
   let q := Nat.sqrt (Nat.log 2 B)
   let X := smallHeightPrimeCutoff L
   have hqOne : 1 ≤ q := by
-    simpa only [q, B] using hqpos
+    dsimp only [q, B]
+    omega
   have hX :
       X = 4 * q * B := by
     simp only [X, q, B, smallHeightPrimeCutoff]
@@ -224,15 +225,17 @@ theorem smallHeightResidualComponentEnvelope_uniformLittleO
       (2 : ℝ) ≤
         (ε / 2) * ((L + 1 : ℕ) : ℝ) := by
     have hscaled :
-        (4 : ℝ) <
+      (4 : ℝ) <
           ((L + 1 : ℕ) : ℝ) * ε :=
       (div_lt_iff₀ hε).1 hfourHeight
-    nlinarith
-  rw [abs_of_nonneg
-      (show 0 ≤
-        (smallHeightResidualComponentEnvelope L : ℝ) by positivity),
-    abs_of_nonneg
-      (show 0 ≤ ((L + 1 : ℕ) : ℝ) by positivity)]
+    have hreorder :
+        (ε / 2) * ((L + 1 : ℕ) : ℝ) =
+          (((L + 1 : ℕ) : ℝ) * ε) / 2 := by
+      ring
+    rw [hreorder]
+    linarith only [hscaled]
+  rw [abs_of_nonneg (Nat.cast_nonneg _),
+    abs_of_nonneg (Nat.cast_nonneg _)]
   unfold smallHeightResidualComponentEnvelope
   norm_num only [Nat.cast_add, Nat.cast_ofNat]
   calc

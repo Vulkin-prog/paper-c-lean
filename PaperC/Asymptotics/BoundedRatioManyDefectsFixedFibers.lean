@@ -979,7 +979,8 @@ private theorem natSolutionToInt_degreeTwoPellHeight
         exact Nat.add_le_add_right
           (Int.natAbs_add_le _ _) _
       _ ≤ 2 * solution.1 + (L + 1) + (L + 1) := by
-        simpa using
+        norm_num only [Int.natAbs_mul, Int.natAbs_natCast]
+        exact
           Nat.add_le_add
             (Nat.add_le_add_left hshiftZero (2 * solution.1))
             hshiftOne
@@ -1003,7 +1004,7 @@ private theorem natSolutionToInt_degreeTwoPellHeight
   have hsecond :
       (2 * (solution.2 : ℤ)).natAbs ≤
         degreeTwoPellHeight Y L := by
-    simp only [Int.natAbs_mul, Int.natAbs_ofNat]
+    simp only [Int.natAbs_mul, Int.natAbs_natCast]
     unfold degreeTwoPellHeight
     exact (Nat.mul_le_mul_left 2 hv).trans
       (Nat.mul_le_mul_left 2
@@ -1510,10 +1511,13 @@ theorem card_leftBaseShapeFiber_degree_two_of_pell_boxes
     simpa only [heq] using
       offsetProductNatFiber_degree_two_one_atMost_divisors
         (Y := M) shape.2 hdegree
-  · simp only [heq, if_neg]
-    simpa only [leftNormalizedCoefficient] using
-      offsetProductNatFiber_degree_two_atMost_of_pell
-        shape.2 hdegree (hPell d hd heq)
+  · rw [if_neg heq]
+    change HasAtMostSolutions
+      (offsetProductNatFiber shape.2
+        (squarefreeKernel (d * shapeLeftProduct shape (base + 1))) M)
+      (Q d)
+    exact offsetProductNatFiber_degree_two_atMost_of_pell
+      shape.2 hdegree (hPell d hd heq)
 
 /-- Symmetric complete finite degree-two bound. -/
 theorem card_rightBaseShapeFiber_degree_two_of_pell_boxes
@@ -1550,10 +1554,13 @@ theorem card_rightBaseShapeFiber_degree_two_of_pell_boxes
     simpa only [heq] using
       offsetProductNatFiber_degree_two_one_atMost_divisors
         (Y := M) shape.1 hdegree
-  · simp only [heq, if_neg]
-    simpa only [rightNormalizedCoefficient] using
-      offsetProductNatFiber_degree_two_atMost_of_pell
-        shape.1 hdegree (hPell d hd heq)
+  · rw [if_neg heq]
+    change HasAtMostSolutions
+      (offsetProductNatFiber shape.1
+        (squarefreeKernel (d * shapeRightProduct shape (base + 1))) M)
+      (Q d)
+    exact offsetProductNatFiber_degree_two_atMost_of_pell
+      shape.1 hdegree (hPell d hd heq)
 
 /--
 Direct generalized-Pell closure of the left degree-two branch.  Its three
@@ -1604,17 +1611,20 @@ theorem card_leftBaseShapeFiber_degree_two_of_generalizedPell
     simpa only [heq] using
       offsetProductNatFiber_degree_two_one_atMost_divisors
         (Y := M) shape.2 hdegree
-  · simp only [heq, if_neg]
+  · rw [if_neg heq]
     have hePos :
         0 < leftNormalizedCoefficient shape base d :=
       leftNormalizedCoefficient_pos shape base d
     have heTwo :
         2 ≤ leftNormalizedCoefficient shape base d := by
       omega
-    simpa only [leftNormalizedCoefficient] using
-      hX₀ X hX L shape.2 hdegree
-        (shapeLeftProduct shape (base + 1)) d M
-        heTwo (hcoefficient d hd) hdelta hheight
+    change HasAtMostSolutions
+      (offsetProductNatFiber shape.2
+        (squarefreeKernel (d * shapeLeftProduct shape (base + 1))) M)
+      ⌈PellInput.expLogLogBound c X⌉₊
+    exact hX₀ X hX L shape.2 hdegree
+      (shapeLeftProduct shape (base + 1)) d M
+      heTwo (hcoefficient d hd) hdelta hheight
 
 /-- Symmetric direct generalized-Pell closure. -/
 theorem card_rightBaseShapeFiber_degree_two_of_generalizedPell
@@ -1661,17 +1671,20 @@ theorem card_rightBaseShapeFiber_degree_two_of_generalizedPell
     simpa only [heq] using
       offsetProductNatFiber_degree_two_one_atMost_divisors
         (Y := M) shape.1 hdegree
-  · simp only [heq, if_neg]
+  · rw [if_neg heq]
     have hePos :
         0 < rightNormalizedCoefficient shape base d :=
       rightNormalizedCoefficient_pos shape base d
     have heTwo :
         2 ≤ rightNormalizedCoefficient shape base d := by
       omega
-    simpa only [rightNormalizedCoefficient] using
-      hX₀ X hX L shape.1 hdegree
-        (shapeRightProduct shape (base + 1)) d M
-        heTwo (hcoefficient d hd) hdelta hheight
+    change HasAtMostSolutions
+      (offsetProductNatFiber shape.1
+        (squarefreeKernel (d * shapeRightProduct shape (base + 1))) M)
+      ⌈PellInput.expLogLogBound c X⌉₊
+    exact hX₀ X hX L shape.1 hdegree
+      (shapeRightProduct shape (base + 1)) d M
+      heTwo (hcoefficient d hd) hdelta hheight
 
 /-! ### Automatic polynomial-height bookkeeping on actual fibres -/
 

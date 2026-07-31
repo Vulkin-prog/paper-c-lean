@@ -29,9 +29,11 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 doit donc rester vide. Cela certifie seulement les modules présents, pas les
 69 pages du manuscrit.
 
-La version Lean `0.42.0` conserve la fermeture de la chaîne interne du §14,
-le nettoyage legacy de la v041 et ajoute l’endpoint canonique autonome du
-théorème 1.4, raccordé directement à la masse mère quantitative. Les sommes
+La version du projet `0.43.0` reprend sans changement mathématique la v042 et
+migre la toolchain de Lean/mathlib `v4.19.0` vers `v4.32.2`. Elle conserve la
+fermeture de la chaîne interne du §14, le nettoyage legacy de la v041 et
+l’endpoint canonique autonome du théorème 1.4, raccordé directement à la
+masse mère quantitative. Les sommes
 de Riemann dyadiques, les paramètres amincis spatial et marqué, le graphe de
 dépendance marqué, ses deux termes de Stein--Chen, les transferts exacts
 cylindre--loi source et la dé-troncation sont assemblés. Sous les quatre
@@ -207,7 +209,8 @@ prend seulement Evertse--Silverman et les deux corollaires de littérature
 qui reconstruisent Pell. La v041 retire les six adaptateurs sectoriels
 intermédiaires et les variantes recevant directement Pell ; seuls les
 endpoints canoniques et les assemblages génériques directs sont conservés.
-La toolchain reste gelée en Lean/mathlib `v4.19.0`.
+La toolchain de la v043 est gelée en Lean/mathlib `v4.32.2`. Cette migration
+n’altère aucune signature canonique ni aucune entrée du registre d’audit.
 
 Pour le théorème 16.2, avec l’hypothèse source \(C>0\), Lean définit le
 compte global \(Z_M\) sur un cylindre fini commun, prouve le couplage de
@@ -247,6 +250,7 @@ tension uniforme. Les métriques de publication sont reproduites dans
 `paper_c_lean/`. Les fichiers du projet se trouvent immédiatement sous cette
 racine. Ce contrat est stable pour les versions suivantes : ni archive à plat,
 ni double emboîtement `paper_c_lean/paper_c_lean/`.
+L’archive de la présente livraison est `paper_c_lean_v043.zip`.
 
 ## Modules certifiés
 
@@ -1309,8 +1313,12 @@ avec le modèle infini n'est revendiquée hors de la zone couverte.
 
 ## Compilation
 
-Le projet fixe Lean `v4.19.0` et mathlib `v4.19.0`.
-Le manifeste Mathlib est conservé sans modification depuis la v018.
+Le projet fixe Lean `v4.32.2` et mathlib `v4.32.2`. Le fichier
+`lean-toolchain`, le fichier `lakefile.toml` et le manifeste Lake verrouillent
+cette toolchain pour la v043. Le dépôt contient 373 modules et 142 840 lignes
+Lean. Les 521 lignes supplémentaires par rapport à la v042 proviennent
+exclusivement des adaptations de corps de preuve à Lean 4.32.2 ; le nombre de
+modules et les signatures publiques sont inchangés.
 
 ```bash
 lake exe cache get
@@ -1336,13 +1344,14 @@ est le registre des ponts de `audit_manifest.json` et d'`AXIOM_AUDIT.md` :
 chaque entrée porte `kind: external | internal` et
 `status: open | discharged`, et chaque théorème public conditionnel est
 marqué avec la liste exacte et la nature des ponts qu’il prend comme
-prémisses directes. En v042, les interfaces de 9.10, 9.2, 17.26, 17.28,
+prémisses directes. En v043, les interfaces de 9.10, 9.2, 17.26, 17.28,
 17.30 et l’ancienne enveloppe Nicolas--Robin portent
 `status: discharged`. `kind: internal` décrit une provenance et ne signifie
 donc pas, à lui seul, qu’une dette reste ouverte. Les cinq interfaces
 `internal` sont toutes `discharged`; les sept entrées `open` sont toutes
-`external`. Le manifeste v042 recense 3 971 théorèmes et 5 lemmes publics,
-3 978 cibles d’audit, 3 825 résultats inconditionnels et 151 conditionnels,
+`external`. Le manifeste v043 recense 3 971 théorèmes et 5 lemmes publics,
+soit 3 976 déclarations, 3 978 cibles d’audit, 3 825 résultats
+inconditionnels et 151 conditionnels,
 ainsi que 13 ponts — huit `external`, cinq `internal`, sept `open` et six
 `discharged`. Ces comptes sont reproduits dans `REPRODUCIBILITY.md`.
 

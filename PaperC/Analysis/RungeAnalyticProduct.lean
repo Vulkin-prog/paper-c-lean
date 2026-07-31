@@ -1,8 +1,8 @@
 import PaperC.Analysis.RungePowerSeries
 import Mathlib.Analysis.Normed.Ring.InfiniteSum
-import Mathlib.Analysis.NormedSpace.FunctionSeries
+import Mathlib.Analysis.Normed.Group.FunctionSeries
 import Mathlib.Analysis.SpecificLimits.Normed
-import Mathlib.Data.Real.Sqrt
+import Mathlib.Analysis.Real.Sqrt
 import Mathlib.Topology.Order.IntermediateValue
 
 /-!
@@ -20,6 +20,15 @@ namespace RungeAnalyticProduct
 
 open Finset
 open scoped BigOperators
+
+-- The coefficient-ring argument of `PowerSeries.coeff` became implicit in
+-- Lean 4.32.  This local compatibility syntax keeps the public statements
+-- below textually unchanged.
+local macro:max "PowerSeries.coeff" R:term:arg n:term:arg : term =>
+  `(@PowerSeries.coeff $R _ $n)
+
+local macro:max "PowerSeries.C" R:term:arg : term =>
+  `(@PowerSeries.C $R _)
 
 /-- The `n`th term of the real half-binomial series at `x`. -/
 noncomputable def halfBinomialTerm (x : ℝ) (n : ℕ) : ℝ :=
@@ -42,9 +51,9 @@ theorem norm_halfBinomialTerm_le (x : ℝ) (n : ℕ) :
 /-- Absolute convergence of the half-binomial series on `|x| < 1`. -/
 theorem summable_halfBinomialTerm {x : ℝ} (hx : |x| < 1) :
     Summable (halfBinomialTerm x) := by
-  apply Summable.of_norm_bounded (fun n : ℕ ↦ |x| ^ n)
+  exact Summable.of_norm_bounded
     (summable_geometric_of_lt_one (abs_nonneg x) hx)
-  exact norm_halfBinomialTerm_le x
+    (norm_halfBinomialTerm_le x)
 
 /-- Absolute summability, kept explicitly for Cauchy products. -/
 theorem summable_norm_halfBinomialTerm {x : ℝ} (hx : |x| < 1) :
@@ -135,7 +144,7 @@ theorem halfBinomialSum_sq {x : ℝ} (hx : |x| < 1) :
         | zero =>
             simp
         | succ n =>
-            simp [PowerSeries.coeff_X]
+            simp
   rw [hexplicit]
   have hfinite :
       HasSum
@@ -148,7 +157,7 @@ theorem halfBinomialSum_sq {x : ℝ} (hx : |x| < 1) :
       by_cases hn0 : n = 0
       · simp [hn0]
       · by_cases hn1 : n = 1
-        · simp [hn0, hn1]
+        · simp [hn1]
         · simp [hn0, hn1]
   exact hfinite.tsum_eq
 
@@ -168,9 +177,8 @@ theorem abs_halfBinomialSum_sub_one_le {x : ℝ} (hx : |x| < 1) :
   rw [hsplit, add_sub_cancel_left]
   have hgeom :
       Summable fun n : ℕ ↦ |x| ^ (n + 1) := by
-    simpa [Nat.succ_eq_add_one] using
-      (summable_geometric_of_lt_one (abs_nonneg x) hx).comp_injective
-        Nat.succ_injective
+    have hbase := summable_geometric_of_lt_one (abs_nonneg x) hx
+    simpa only [pow_succ'] using Summable.mul_left |x| hbase
   have htailNorm :
       ‖∑' n : ℕ, halfBinomialTerm x (n + 1)‖ ≤
         ∑' n : ℕ, |x| ^ (n + 1) := by
@@ -187,6 +195,7 @@ theorem abs_halfBinomialSum_sub_one_le {x : ℝ} (hx : |x| < 1) :
         (1 - |x|)⁻¹ - 1 := htailNorm
     _ = |x| / (1 - |x|) := by
       field_simp
+      ring
 
 /-- On the closed half disk the analytic branch has nonnegative sign. -/
 theorem halfBinomialSum_nonneg_of_abs_le_half
@@ -328,8 +337,9 @@ theorem hasSum_sqrtFactorSeries
         ((RungeCoefficients.halfChoose n : ℚ) : ℝ) *
           ((γ : ℝ) * z) ^ n)
       (halfBinomialSum ((γ : ℝ) * z)) := by
-  simpa [halfBinomialTerm] using
-    (hasSum_halfBinomialTerm hz)
+  change HasSum (halfBinomialTerm ((γ : ℝ) * z))
+    (halfBinomialSum ((γ : ℝ) * z))
+  exact hasSum_halfBinomialTerm hz
 
 /--
 On the full convergence disk, the Runge factor sums to the positive real

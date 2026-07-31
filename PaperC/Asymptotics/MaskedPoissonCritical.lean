@@ -604,8 +604,12 @@ theorem maskedCommonGoodPoissonRate_eq
         (maskedConditionedGoodIndicator N L Y mask 0) : ℝ≥0) : ℝ) =
       ((maskedGoodStarts N L Y mask).card : ℝ) /
         (2 : ℝ) ^ L := by
-  unfold poissonRate poissonParameter
-  simp only [NNReal.coe_mk]
+  change
+    (∑ x,
+      marginal
+        (largeUniformPMF (dyadicCutoff N L) Y)
+        (maskedConditionedGoodIndicator N L Y mask 0) x) =
+      ((maskedGoodStarts N L Y mask).card : ℝ) / (2 : ℝ) ^ L
   simp_rw [marginal_maskedConditionedGoodIndicator
     mask hN hL hLY 0]
   rw [← Finset.sum_subtype
@@ -646,8 +650,10 @@ theorem abs_maskedCommonRate_sub_targetRate_eq
         ((maskedTerminalBadStarts N L Y mask).card : ℝ) /
           (2 : ℝ) ^ L := by
   rw [maskedCommonGoodPoissonRate_eq mask hN hL hLY]
-  unfold maskedTargetPoissonRate
-  simp only [NNReal.coe_mk]
+  change
+    |((maskedGoodStarts N L Y mask).card : ℝ) / (2 : ℝ) ^ L -
+        (mask.card : ℝ) / (2 : ℝ) ^ L| =
+      ((maskedTerminalBadStarts N L Y mask).card : ℝ) / (2 : ℝ) ^ L
   have hcard :
       ((maskedGoodStarts N L Y mask).card : ℝ) +
           ((maskedTerminalBadStarts N L Y mask).card : ℝ) =
@@ -767,6 +773,8 @@ theorem averagedMaskedConditionalGoodLaw_eq_fullMaskedGoodStartLaw
     (N L Y : ℕ) (mask : Finset ℕ) :
     averagedMaskedConditionalGoodLaw N L Y mask =
       fullMaskedGoodStartLaw N L Y mask := by
+  classical
+  rw [fullMaskedGoodStartLaw_eq_finiteNatLaw]
   funext k
   let P : SampleSpace (dyadicCutoff N L) → Prop :=
     fun ω ↦ fullMaskedGoodStartCount N L Y mask ω = k
@@ -780,9 +788,21 @@ theorem averagedMaskedConditionalGoodLaw_eq_fullMaskedGoodStartLaw
     rw [eventProbability_fullUniformPMF_eq,
       finiteUniformProbability_eq_uniformEventProbability]
   rw [← hfull] at htotal
+  have hfinite :
+      finiteNatLaw
+          (fullUniformPMF (dyadicCutoff N L))
+          (fullMaskedGoodStartCount N L Y mask) k =
+        eventProbability
+          (fullUniformPMF (dyadicCutoff N L)) P := by
+    unfold finiteNatLaw eventProbability
+    apply Finset.sum_congr rfl
+    intro ω _hω
+    by_cases hk : fullMaskedGoodStartCount N L Y mask ω = k <;>
+      simp [P, hk]
+  rw [hfinite]
   simpa only [averagedMaskedConditionalGoodLaw,
     maskedConditionalGoodLaw, indicatorSumLaw,
-    fullMaskedGoodStartLaw, P,
+    P,
     conditionedMaskedIndicatorSum_eq_fullMaskedGoodStartCount] using htotal
 
 /-! ## Coupling the good and complete masked counts -/
@@ -848,7 +868,7 @@ theorem exists_bad_start_of_fullMaskedGood_ne_fullMaskedDyadic
     ∃ x ∈ terminalBadStarts N L Y, startAt ω x L := by
   classical
   by_contra h
-  push_neg at h
+  push Not at h
   apply hne
   rw [fullMaskedGoodStartCount_eq_sum]
   unfold fullMaskedDyadicCount
@@ -1099,10 +1119,13 @@ theorem maskedPoissonTotalVariation_uniformLittleOOne_of_homogeneousMass
         (CriticalRunWindow.InRunLengthWindow C)
         (fun N L ↦ badStartProbabilityMassReal N L (terminalY L))
         (fun _ _ ↦ 1) := by
-    simpa only [terminalY, badStartProbabilityMassReal,
-      BadStartMassCritical.terminalBadStartProbabilityMass] using
-      BadStartMassCritical.terminalBadStartProbabilityMass_uniformLittleOOne
-        hC
+    change
+      UniformLittleOOn
+        (CriticalRunWindow.InRunLengthWindow C)
+        BadStartMassCritical.terminalBadStartProbabilityMass
+        (fun _ _ ↦ 1)
+    exact
+      BadStartMassCritical.terminalBadStartProbabilityMass_uniformLittleOOne hC
   have hbOne :=
     SteinChenCritical.steinBOne_uniformLittleOOne hC
   have hbTwo :=

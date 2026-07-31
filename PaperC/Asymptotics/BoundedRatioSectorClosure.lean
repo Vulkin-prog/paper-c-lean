@@ -59,8 +59,8 @@ theorem pairValue_mem_boundedRelationalHosts_of_mem_activeSectorPairs
     PropositionSixteenOne.mem_separatedBoundedRatioPairs.mp pair.2
   apply mem_boundedRelationalHosts.mpr
   refine ⟨hp.1, hp.2.1, hp.2.2, ?_⟩
-  simpa only [pairRho, boundedRatioCutoff] using
-    pairRho_pos_of_mem_activeSectorPairs hpair
+  change 0 < pairRho pair
+  exact pairRho_pos_of_mem_activeSectorPairs hpair
 
 /-- The unbundled active sector population is contained in the exact
 bounded relational-host population. -/

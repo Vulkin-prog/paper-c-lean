@@ -55,9 +55,8 @@ theorem coe_independentPoissonExactLengthRate
     (lam : ℝ≥0) (e : ℕ) :
     ((independentPoissonExactLengthRate lam e : ℝ≥0) : ℝ) =
       (lam : ℝ) / (2 : ℝ) ^ (e + 1) := by
-  simp only [independentPoissonExactLengthRate, geometricMarkWeight,
-    NNReal.coe_mk]
-  ring
+  change (lam : ℝ) * geometricMarkWeight e = _
+  simp only [geometricMarkWeight, div_eq_mul_inv, one_mul]
 
 /--
 Joint point mass of the independent Poisson vector with coordinates
@@ -99,10 +98,14 @@ theorem hasSum_encodedIndependentPoissonExactLengthLaw
     HasSum (encodedIndependentPoissonExactLengthLaw lam E) 1 := by
   unfold encodedIndependentPoissonExactLengthLaw
   apply hasSum_injectivePushforwardMass primeCode_injective
-  simpa only [independentPoissonExactLengthVectorMass] using
-    hasSum_independentPoissonVectorMass
-      (fun e : Fin (E + 1) ↦
-        independentPoissonExactLengthRate lam e.1)
+  change HasSum
+    (fun k : Fin (E + 1) → ℕ ↦
+      ∏ e : Fin (E + 1),
+        poissonPMFReal
+          (independentPoissonExactLengthRate lam e.1) (k e)) 1
+  exact hasSum_independentPoissonVectorMass
+    (fun e : Fin (E + 1) ↦
+      independentPoissonExactLengthRate lam e.1)
 
 @[simp]
 theorem encodedIndependentPoissonExactLengthLaw_zero

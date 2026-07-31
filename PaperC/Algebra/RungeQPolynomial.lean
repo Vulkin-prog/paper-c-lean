@@ -36,6 +36,12 @@ namespace RungeQPolynomial
 open Finset Polynomial
 open scoped BigOperators
 
+-- The coefficient-ring argument of `PowerSeries.coeff` became implicit in
+-- Lean 4.32.  This local compatibility syntax keeps the public statements
+-- below textually unchanged.
+local macro:max "PowerSeries.coeff" R:term:arg n:term:arg : term =>
+  `(@PowerSeries.coeff $R _ $n)
+
 /-- The integral polynomial `G(T) = ∏ ν, (T + γ ν)`. -/
 noncomputable def integerSplitProduct
     {d : ℕ} (γ : Fin d → ℤ) : ℤ[X] :=
@@ -98,6 +104,7 @@ private theorem int_natAbs_finset_prod
   | @insert i s hi ih =>
       simp [Finset.prod_insert, hi, Int.natAbs_mul, ih]
 
+set_option linter.unusedVariables false in
 /--
 Vieta's formula gives a uniform coefficient bound for `G`.  The factor
 `2^d` counts subsets, while `R^d` bounds every elementary product.
@@ -129,7 +136,7 @@ theorem coeff_integerSplitProduct_natAbs_le
         ∑ t ∈
             (Finset.univ : Finset (Fin d)).powersetCard (d - n),
           (∏ i ∈ t, γ i).natAbs :=
-        nat_abs_sum_le _ _
+        Int.natAbs_sum_le _ _
       _ ≤
         ∑ _t ∈
             (Finset.univ : Finset (Fin d)).powersetCard (d - n),
@@ -159,7 +166,7 @@ theorem coeff_integerSplitProduct_natAbs_le
         simp
       _ ≤ 2 ^ d * R ^ d := by
         gcongr
-        exact (Nat.choose_le_two_pow d (d - n) hd).le
+        exact Nat.choose_le_two_pow d (d - n)
   · have hdegree : d < n := lt_of_not_ge hn
     rw [Polynomial.coeff_eq_zero_of_natDegree_lt]
     · simp
@@ -216,7 +223,7 @@ theorem forwardRungeTruncation_eq_trunc
       PowerSeries.trunc (k + 1)
         (RungePowerSeries.rungeProductSeries γ) := by
   classical
-  rw [forwardRungeTruncation, PowerSeries.trunc,
+  rw [forwardRungeTruncation, PowerSeries.trunc_apply,
     Nat.Ico_zero_eq_range]
   apply Finset.sum_congr rfl
   intro m _
@@ -296,7 +303,7 @@ private theorem reflect_reciprocalProductOn
   | empty =>
       simp
   | @insert i s hi ih =>
-      rw [Finset.card_insert_of_not_mem hi,
+      rw [Finset.card_insert_of_notMem hi,
         Finset.prod_insert hi, Finset.prod_insert hi]
       rw [show s.card + 1 = 1 + s.card by omega]
       rw [Polynomial.reflect_mul

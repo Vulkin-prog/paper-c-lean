@@ -72,7 +72,6 @@ theorem spatialThinnedParameter_eq_scale_mul
         dyadicRiemannSum N (spatialRetention g) := by
   unfold spatialThinnedParameter criticalSpatialScale dyadicRiemannSum
   field_simp
-  ring
 
 /--
 Source-facing parameter limit for Section 14.2.  Along arbitrary sequences
@@ -145,10 +144,14 @@ theorem hasSum_geometricMarkWeight :
     (hasSum_geometric_two :
       HasSum (fun e : ℕ ↦ (1 / 2 : ℝ) ^ e) 2)
   have hhalf := h.mul_left (1 / 2 : ℝ)
-  convert hhalf using 1
-  · funext e
+  have hfun :
+      (fun e : ℕ ↦ (1 / 2 : ℝ) * (1 / 2 : ℝ) ^ e) =
+        geometricMarkWeight := by
+    funext e
     rw [geometricMarkWeight_eq_half_pow, pow_succ']
-  · norm_num
+  rw [hfun] at hhalf
+  norm_num at hhalf
+  exact hhalf
 
 theorem tsum_geometricMarkWeight :
     ∑' e : ℕ, geometricMarkWeight e = 1 :=
@@ -252,7 +255,7 @@ theorem continuous_markedRetentionIntegrand
     ContinuousOn (markedRetentionIntegrand E g)
       (Set.Icc (1 : ℝ) 2) := by
   unfold markedRetentionIntegrand
-  apply continuousOn_finset_sum
+  apply continuousOn_finsetSum
   intro e he
   exact continuousOn_const.mul
     (continuousOn_spatialRetention
@@ -279,7 +282,7 @@ theorem integral_markedRetentionIntegrand
           ∫ t in Set.Ico (1 : ℝ) 2,
             spatialRetention (fun u ↦ g u e) t := by
   unfold markedRetentionIntegrand
-  rw [integral_finset_sum]
+  rw [integral_finsetSum]
   · apply Finset.sum_congr rfl
     intro e he
     rw [integral_const_mul]
@@ -322,18 +325,19 @@ theorem tendsto_markedThinnedParameter
           geometricMarkWeight e *
             (rate * ∫ t in Set.Ico (1 : ℝ) 2,
               spatialRetention (fun u ↦ g u e) t))) := by
-    apply tendsto_finset_sum
+    apply tendsto_finsetSum
     intro e he
     exact (tendsto_spatialThinnedParameter hN hscale
       (hg e (Nat.le_of_lt_succ (Finset.mem_range.mp he)))).const_mul
         (geometricMarkWeight e)
   rw [integral_markedRetentionIntegrand hg]
   convert hsum using 1
-  congr 2
-  rw [Finset.mul_sum]
-  apply Finset.sum_congr rfl
-  intro e he
-  ring
+  · rfl
+  · apply congrArg nhds
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro e he
+    ring
 
 /--
 The fixed-`E` marked Laplace exponent converges to the Poisson exponent.

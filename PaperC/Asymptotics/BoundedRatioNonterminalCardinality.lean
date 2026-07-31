@@ -954,7 +954,6 @@ theorem terminalRankGapFactor_uniformLittleOOne
     have hcancel : δ * T = 1 / ε := by
       dsimp only [T]
       field_simp
-      ring
     rw [hcancel] at hmul
     have hdiv := (div_le_iff₀ hε).mp hmul
     simpa only [y, one_mul, mul_comm] using hdiv
@@ -973,10 +972,17 @@ theorem terminalRankGapFactor_uniformLittleOOne
       (Cterm := Cterm) (K := K) (N := N) hBtwo
   rw [abs_of_nonneg
     (terminalRankGapFactor_nonneg Cterm K N L), abs_one, mul_one]
-  exact hgap.trans (by
-    convert hdecay using 1
-    · simp only [δ, y]
-      ring)
+  calc
+    terminalRankGapFactor Cterm K N L ≤
+        Real.exp
+          (-(K * Real.log 2 - Cterm) *
+            (Real.sqrt ((L + 1 : ℕ) : ℝ) /
+              Real.log ((L + 1 : ℕ) : ℝ))) := hgap
+    _ = Real.exp (-y) := by
+      congr 1
+      dsimp only [δ, y]
+      ring
+    _ ≤ ε := hdecay
 
 /--
 Consequently the minimal high-density envelope is uniformly `o(N²)`.

@@ -170,7 +170,15 @@ theorem degreeAssemblyEnvelope_uniformHalfPower
   have hall :=
     UniformHalfPower.mul_subpolynomial
       hbothPell hhighRate
-  simpa only [degreeAssemblyEnvelope] using hall
+  change
+    UniformHalfPowerSubpolynomialOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun N L =>
+        degreeOneFixedFiberEnvelope κ₀ N L *
+          degreeTwoFixedFiberResidual κ₀ cLeft N L *
+          degreeTwoFixedFiberResidual κ₀ cRight N L *
+          highEnvelope N L)
+  exact hall
 
 /-! ## Direct closure of the many-defects sector -/
 

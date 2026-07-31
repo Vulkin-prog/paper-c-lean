@@ -109,7 +109,7 @@ theorem abs_natAbs_sub_rungeTruncation_le_real
   have hscaledNatAbs :
       RungeScaling.scaledRungeValue U s =
         ((a.natAbs : ℕ) : ℝ) := by
-    rw [hscaled, ← Int.cast_abs, ← Int.cast_natAbs]
+    rw [hscaled, ← Int.cast_abs, ← Nat.cast_natAbs]
   have hz :
       ∀ i, |(γ i : ℝ) * (1 / (U : ℝ))| ≤ 1 / 2 :=
     fun i ↦ abs_cast_shift_div_le_half hU (hγ i)

@@ -133,11 +133,9 @@ theorem channel_coefficients_le_length
     intro htzero
     apply hne
     apply Prod.ext
-    · dsimp
-      have : cell₁.1 - cell₂.1 = 0 := by simpa [htzero] using hfirst
+    · have : cell₁.1 - cell₂.1 = 0 := by simpa [htzero] using hfirst
       omega
-    · dsimp
-      have : cell₁.2 - cell₂.2 = 0 := by simpa [htzero] using hsecond
+    · have : cell₁.2 - cell₂.2 = 0 := by simpa [htzero] using hsecond
       omega
   have ht_abs : (1 : ℤ) ≤ |t| := (Int.one_le_abs ht)
   have ha_nonneg : (0 : ℤ) ≤ (a : ℤ) := by positivity

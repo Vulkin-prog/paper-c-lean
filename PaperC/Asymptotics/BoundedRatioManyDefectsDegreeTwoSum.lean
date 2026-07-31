@@ -260,7 +260,7 @@ private theorem expLogLogBound_one_le_of_large
   unfold PellInput.expLogLogBound
   rw [Real.one_le_exp_iff]
   have := mul_nonneg hc hratio
-  convert this using 1 <;> ring
+  simpa only [mul_div_assoc] using this
 
 /--
 Beyond the elementary logarithmic threshold the residual is at least one.
@@ -336,7 +336,7 @@ private theorem expLogLogBound_mono_on_large
   apply Real.exp_le_exp.mpr
   have hscaled :=
     mul_le_mul_of_nonneg_left (hmono X Y hX₀ hXY) hc
-  convert hscaled using 1 <;> ring
+  simpa only [mul_div_assoc] using hscaled
 
 private theorem natCeil_expLogLogBound_cast_le_twice
     {c : ℝ} (hc : 0 ≤ c) {X : ℕ}
@@ -355,7 +355,7 @@ private theorem natCeil_expLogLogBound_cast_le_twice
     _ ≤
         PellInput.expLogLogBound c X +
           PellInput.expLogLogBound c X :=
-      add_le_add_left hone _
+      add_le_add_right hone _
     _ = 2 * PellInput.expLogLogBound c X := by ring
 
 /-! ## Finite domination, uniformly in the fixed base and shape -/

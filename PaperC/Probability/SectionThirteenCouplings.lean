@@ -140,6 +140,8 @@ theorem averagedConditionalGoodLaw_eq_fullGoodStartLaw
     (N L Y : ℕ) :
     averagedConditionalGoodLaw N L Y =
       fullGoodStartLaw N L Y := by
+  classical
+  rw [fullGoodStartLaw_eq_finiteNatLaw]
   funext k
   let P : SampleSpace (dyadicCutoff N L) → Prop :=
     fun ω ↦ fullGoodStartCount N L Y ω = k
@@ -153,8 +155,20 @@ theorem averagedConditionalGoodLaw_eq_fullGoodStartLaw
     rw [eventProbability_fullUniformPMF_eq,
       finiteUniformProbability_eq_uniformEventProbability]
   rw [← hfull] at htotal
+  have hfinite :
+      finiteNatLaw
+          (fullUniformPMF (dyadicCutoff N L))
+          (fullGoodStartCount N L Y) k =
+        eventProbability
+          (fullUniformPMF (dyadicCutoff N L)) P := by
+    unfold finiteNatLaw eventProbability
+    apply Finset.sum_congr rfl
+    intro ω _hω
+    by_cases hk : fullGoodStartCount N L Y ω = k <;>
+      simp [P, hk]
+  rw [hfinite]
   simpa only [averagedConditionalGoodLaw, conditionalGoodLaw,
-    indicatorSumLaw, fullGoodStartLaw, P,
+    indicatorSumLaw, P,
     conditionedGoodIndicatorSum_eq_fullGoodStartCount] using htotal
 
 /-! ## Disagreement and the finite bad-start union bound -/
@@ -186,7 +200,7 @@ theorem exists_bad_start_of_fullGoodStartCount_ne_dyadicCount
     ∃ x ∈ terminalBadStarts N L Y, startAt ω x L := by
   classical
   by_contra h
-  push_neg at h
+  push Not at h
   apply hne
   rw [fullGoodStartCount_eq_sum]
   unfold dyadicCount
@@ -391,6 +405,13 @@ theorem natTotalVariation_poisson_le_one_sub_exp_of_le
           poissonPMFReal_nonneg
         nlinarith
     rw [tsum_congr habs]
+    change
+      (2 : ℝ)⁻¹ *
+          (∑' b : ℕ,
+            (1 - c) *
+              (Real.exp (-(r : ℝ)) * (r : ℝ) ^ b /
+                (b.factorial : ℝ))) =
+        (2 : ℝ)⁻¹ * (1 - c)
     rw [hp.tsum_mul_left]
     rw [(poissonPMFRealSum r).tsum_eq]
     ring
@@ -412,7 +433,15 @@ theorem natTotalVariation_poisson_le_one_sub_exp_of_le
       · dsimp only [c]
         linarith [scaled_poissonPMFReal_le_of_le hrs k]
     rw [tsum_congr habs]
-    rw [hq.tsum_sub hcp]
+    change
+      (2 : ℝ)⁻¹ *
+          (∑' b : ℕ, (
+            (Real.exp (-(s : ℝ)) * (s : ℝ) ^ b /
+                (b.factorial : ℝ)) -
+              c * (Real.exp (-(r : ℝ)) * (r : ℝ) ^ b /
+                (b.factorial : ℝ)))) =
+        (2 : ℝ)⁻¹ * (1 - c)
+    rw [hq.tsum_sub (hp.mul_left c)]
     rw [(poissonPMFRealSum s).tsum_eq,
       hp.tsum_mul_left,
       (poissonPMFRealSum r).tsum_eq]
@@ -423,6 +452,14 @@ theorem natTotalVariation_poisson_le_one_sub_exp_of_le
       (fun _k ↦ poissonPMFReal_nonneg)
       (fun _k ↦ mul_nonneg hc0 poissonPMFReal_nonneg)
       (fun _k ↦ poissonPMFReal_nonneg)
+  change
+    natTotalVariation (poissonPMFReal r) (poissonPMFReal s) ≤
+      natTotalVariation
+          (poissonPMFReal r)
+          (fun k ↦ c * poissonPMFReal r k) +
+        natTotalVariation
+          (fun k ↦ c * poissonPMFReal r k)
+          (poissonPMFReal s) at htriangle
   rw [hfirst, hsecond] at htriangle
   linarith
 
@@ -471,8 +508,12 @@ theorem commonConditionalGoodPoissonRate_eq
         (conditionedGoodIndicator N L Y 0) : ℝ≥0) : ℝ) =
       ((goodStarts N L Y).card : ℝ) /
         (2 : ℝ) ^ L := by
-  unfold poissonRate poissonParameter
-  simp only [NNReal.coe_mk]
+  change
+    (∑ x,
+      marginal
+        (largeUniformPMF (dyadicCutoff N L) Y)
+        (conditionedGoodIndicator N L Y 0) x) =
+      ((goodStarts N L Y).card : ℝ) / (2 : ℝ) ^ L
   simp_rw [marginal_conditionedGoodIndicator_eq_baseline
     hN hL hLY 0]
   simp only [Finset.sum_const, nsmul_eq_mul,
@@ -511,8 +552,10 @@ theorem abs_commonGoodPoissonRate_sub_targetRate_eq
         ((terminalBadStarts N L Y).card : ℝ) /
           (2 : ℝ) ^ L := by
   rw [commonConditionalGoodPoissonRate_eq hN hL hLY]
-  unfold targetPoissonRate
-  simp only [NNReal.coe_mk]
+  change
+    |((goodStarts N L Y).card : ℝ) / (2 : ℝ) ^ L -
+        (N : ℝ) / (2 : ℝ) ^ L| =
+      ((terminalBadStarts N L Y).card : ℝ) / (2 : ℝ) ^ L
   have hcard :
       ((goodStarts N L Y).card : ℝ) +
           ((terminalBadStarts N L Y).card : ℝ) =

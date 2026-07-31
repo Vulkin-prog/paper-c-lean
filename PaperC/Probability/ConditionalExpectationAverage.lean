@@ -90,6 +90,8 @@ theorem finiteUniformAverage_largePMFExpectation_eq_full
       (Fintype.card (LargeSample M Y) : ℝ) ≠ 0 := by
     positivity
   field_simp [mul_comm]
+  push_cast
+  ring
 
 /--
 The measure-theoretic integral under the finite Rademacher product law is
@@ -106,7 +108,7 @@ theorem finiteRademacherIntegral_eq_uniformPMFExpectation
       Integrable F (finiteRademacherMeasure M) :=
     ⟨(measurable_of_finite F).aestronglyMeasurable,
       HasFiniteIntegral.of_finite⟩
-  rw [integral_fintype F hIntegrable]
+  rw [integral_fintype hIntegrable]
   unfold finitePMFExpectation
   apply Finset.sum_congr rfl
   intro σ _hσ

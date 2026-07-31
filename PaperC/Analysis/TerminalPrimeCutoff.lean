@@ -1,5 +1,5 @@
 import Mathlib.Algebra.Order.Floor.Semiring
-import Mathlib.Data.Complex.ExponentialBounds
+import Mathlib.Analysis.Complex.ExponentialBounds
 
 /-!
 # The terminal prime cutoff

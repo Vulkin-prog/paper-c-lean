@@ -132,7 +132,7 @@ theorem littleOOne
     exact_mod_cast (show 0 < N by omega)
   have hbound := hNf N hNfN L hNL
   simp only [abs_mul, abs_of_pos hNpos, abs_one, mul_one] at hbound ⊢
-  apply (mul_le_mul_left hNpos).mp
+  apply le_of_mul_le_mul_left ?_ hNpos
   simpa only [mul_comm] using hbound
 
 end UniformNegativeHalfPower

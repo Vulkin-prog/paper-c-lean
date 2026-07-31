@@ -1,6 +1,6 @@
 import PaperC.Asymptotics.RationalPowers
 import PaperC.Asymptotics.ThreeHalvesPower
-import Mathlib.Data.Real.Sqrt
+import Mathlib.Analysis.Real.Sqrt
 
 /-!
 # Quadratic closure and square-root interpolation
@@ -66,7 +66,7 @@ theorem add_quadratic
       |f N L + g N L| ≤ 2 * m := by
     calc
       |f N L + g N L| ≤ |f N L| + |g N L| :=
-        abs_add _ _
+        abs_add_le _ _
       _ ≤ m + m :=
         add_le_add (le_max_left _ _) (le_max_right _ _)
       _ = 2 * m := by ring

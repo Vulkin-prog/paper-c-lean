@@ -181,7 +181,8 @@ theorem infiniteExactLengthEvent_measure_eq_finiteProbabilityAtCutoff
     ← Measure.map_apply (measurable_restrictToFinite M)
       (measurableSet_finiteExactLengthEvent M x q),
     map_infiniteRademacherMeasure_restrictToFinite]
-  simpa only [finiteExactLengthProbabilityAtCutoff] using
+  simpa only [finiteExactLengthProbabilityAtCutoff,
+    finiteExactLengthEvent] using
     finiteRademacherMeasure_event_eq_uniformEventProbability
       (fun σ : SampleSpace M => exactLengthAt σ x q)
 

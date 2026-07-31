@@ -10,7 +10,7 @@ Private and local declarations are deliberately excluded.
 
 Public theorems/lemmas: 3976.
 Additional proof-bearing public definitions: 2.
-Source digest (SHA-256): c72b20c1292af2ff6546d6dbcc873582b5daf91542959bf4ccc85d424e34b86b.
+Source digest (SHA-256): f3cfe99a1e730f9ae072e11df7beeb2530e850a6bca755e80dac2b1e4c1e8407.
 -/
 
 #print axioms PaperC.Affine.CanonicalRationalCode.candidate_coprime

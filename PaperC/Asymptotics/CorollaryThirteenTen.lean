@@ -80,6 +80,8 @@ theorem dependencyEdgeHarmonicTerm_uniformBigO
   have hbig :=
     rationalPower_uniformBigO_natPowerDivLogLogSquared
       (p := 1) (q := 1) (r := 2) (by omega) hrat
+  change UniformBigOOn admissible _
+    quadraticDivLogLogSquaredScale at hbig
   change UniformBigOOn admissible _ _ at hbig ⊢
   convert hbig using 1
   · funext N L
@@ -113,6 +115,8 @@ theorem dependencyEdgeLinearTerm_uniformBigO
   have hbig :=
     rationalPower_uniformBigO_natPowerDivLogLogSquared
       (p := 1) (q := 1) (r := 2) (by omega) hrat
+  change UniformBigOOn admissible _
+    quadraticDivLogLogSquaredScale at hbig
   change UniformBigOOn admissible _ _ at hbig ⊢
   convert hbig using 1
   · funext N L
@@ -442,8 +446,11 @@ theorem dyadicLength_uniformBigO
   have hbig :=
     SectionThirteenRate.rationalPower_uniformBigO_natPowerDivLogLogSquared
       (p := 1) (q := 1) (r := 2) (by omega) hrat
-  simpa only [natPowerDivLogLogSquaredScale,
-    quadraticDivLogLogSquaredScale] using hbig
+  change UniformBigOOn
+    (CriticalRunWindow.InRunLengthWindow C)
+    (fun N _ ↦ (N : ℝ))
+    quadraticDivLogLogSquaredScale at hbig
+  exact hbig
 
 /-- The complete ordered touching population has the same rate. -/
 theorem touchingOffDiagPairs_uniformBigO
@@ -500,8 +507,11 @@ theorem touchingMass_uniformBigO
   have hbig :=
     SectionThirteenRate.rationalPower_uniformBigO_natPowerDivLogLogSquared
       (p := 1) (q := 1) (r := 2) (by omega) hrat
-  simpa only [natPowerDivLogLogSquaredScale,
-    quadraticDivLogLogSquaredScale] using hbig
+  change UniformBigOOn
+    (CriticalRunWindow.InRunLengthWindow C)
+    (fun N L ↦ (TouchingMass.touchingMass N L : ℝ))
+    quadraticDivLogLogSquaredScale at hbig
+  exact hbig
 
 /--
 Exact transport of any quantitative homogeneous-mass estimate to the
@@ -540,7 +550,14 @@ theorem steinBOneNumerator_uniformBigO
     PropositionElevenThree.uniformBigOOn_add
       (dyadicLength_uniformBigO (C := C))
       (orderedDependencyEdges_terminalCutoff_uniformBigO hC)
-  simpa only [SteinChenCritical.steinBOneNumerator] using hsum
+  change UniformBigOOn
+    (CriticalRunWindow.InRunLengthWindow C)
+    (fun N L ↦
+      (N : ℝ) +
+        ((orderedDependencyEdges N L
+          (terminalPrimeCutoff (L + 1))).card : ℝ))
+    quadraticDivLogLogSquaredScale
+  exact hsum
 
 /--
 Quantitative numerator estimate for the averaged second Stein--Chen term,
@@ -756,8 +773,11 @@ theorem corollary_thirteen_ten_uniformBigO_of_averagedConditional
         (fun N L ↦
           badStartProbabilityMassReal N L (terminalY L))
         inverseLogLogSquaredRate := by
-    simpa only [terminalY, badStartProbabilityMassReal,
-      BadStartMassCritical.terminalBadStartProbabilityMass] using
+    change UniformBigOOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      BadStartMassCritical.terminalBadStartProbabilityMass
+      inverseLogLogSquaredRate
+    exact
       SectionThirteenRate.terminalBadStartProbabilityMass_uniformBigO_explicitRate
         hC
   have hcount :

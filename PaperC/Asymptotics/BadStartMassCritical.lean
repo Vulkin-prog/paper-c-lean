@@ -286,7 +286,7 @@ private theorem uniformLittleOOne_add
   have hg' := hNg N ((le_max_right _ _).trans hN) L hNL
   simp only [abs_one, mul_one] at hf' hg' ⊢
   calc
-    |f N L + g N L| ≤ |f N L| + |g N L| := abs_add _ _
+    |f N L + g N L| ≤ |f N L| + |g N L| := abs_add_le _ _
     _ ≤ ε / 2 + ε / 2 := add_le_add hf' hg'
     _ = ε := by ring
 

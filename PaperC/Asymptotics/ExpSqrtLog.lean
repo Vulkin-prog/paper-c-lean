@@ -1,6 +1,6 @@
 import PaperC.Asymptotics.Uniform
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Data.Real.Sqrt
+import Mathlib.Analysis.Real.Sqrt
 
 /-!
 # Exponential square-root logarithms are subpolynomial

@@ -297,10 +297,10 @@ theorem mixedLengthSystem_apply_embedding
   cases i with
   | inl i =>
       simp only [mixedIndexEmbedding, twoStartSystem_apply_inl,
-        mixedLengthSystem_apply_inl, startSystem_apply, Fin.coe_castLE]
+        mixedLengthSystem_apply_inl, startSystem_apply, Fin.val_castLE]
   | inr i =>
       simp only [mixedIndexEmbedding, twoStartSystem_apply_inr,
-        mixedLengthSystem_apply_inr, startSystem_apply, Fin.coe_castLE]
+        mixedLengthSystem_apply_inr, startSystem_apply, Fin.val_castLE]
 
 /--
 Dotting a common row vector with zero-extended coefficients is the same as

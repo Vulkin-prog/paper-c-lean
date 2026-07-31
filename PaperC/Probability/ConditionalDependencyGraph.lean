@@ -158,7 +158,6 @@ theorem finiteUniformProbability_and_eq_mul_of_product_support
       (Nat.card_ne_zero.mpr
         ⟨inferInstance, inferInstance⟩ : Nat.card B ≠ 0)
   field_simp [hA, hB]
-  ring
 
 /-! ## Extensional dependence on `Πₓ(Y)` -/
 

@@ -95,7 +95,7 @@ theorem natTotalVariation_triangle
         calc
           |p k - r k| =
               |(p k - q k) + (q k - r k)| := by ring_nf
-          _ ≤ |p k - q k| + |q k - r k| := abs_add _ _)
+          _ ≤ |p k - q k| + |q k - r k| := abs_add_le _ _)
       (hpq.add hqr)
   unfold natTotalVariation
   calc
@@ -261,7 +261,10 @@ theorem hasSum_finiteNatLaw
           Finset.mem_image.mpr ⟨ω, Finset.mem_univ _, rfl⟩
         simp [hmem]
       _ = 1 := μ.sum_prob
-  have hfinite := hasSum_sum_of_ne_finset_zero hout
+  have hfinite :
+      HasSum (finiteNatLaw μ Z)
+        (∑ k ∈ support, finiteNatLaw μ Z k) :=
+    hasSum_sum_of_ne_finset_zero hout
   rw [hsum] at hfinite
   exact hfinite
 

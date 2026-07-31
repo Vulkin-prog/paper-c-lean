@@ -124,8 +124,13 @@ theorem terminalBTwoMajorantNumerator_uniformLittleOInBoundedRatioWindow
       hC κ₀
   have htouchEdge :=
     uniformLittleOInBoundedRatioWindow_add htouch hedge
-  simpa only [terminalBTwoMajorantNumerator] using
-    uniformLittleOInBoundedRatioWindow_add htouchEdge hR2
+  change UniformLittleOInBoundedRatioWindow C κ₀
+    (fun N M L =>
+      (2 : ℝ) * M +
+        ((boundedOrderedDependencyEdges N M L
+          (terminalPrimeCutoff (L + 1))).card : ℝ) +
+        R2κ N M L)
+  exact uniformLittleOInBoundedRatioWindow_add htouchEdge hR2
 
 /-! ## Adequacy of the terminal cutoff -/
 

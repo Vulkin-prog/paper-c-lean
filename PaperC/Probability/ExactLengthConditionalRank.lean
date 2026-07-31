@@ -360,7 +360,7 @@ theorem relationSpace_le_ker_representedEdgeMap
   simpa only [representedEdgeMap,
     Fintype.linearCombination_apply, representedEdgeVector,
     Finset.sum_apply, Pi.smul_apply, smul_eq_mul,
-    LinearMap.zero_apply] using hrelp
+    LinearMap.zero_apply, Pi.zero_apply] using hrelp
 
 /--
 Graph-theoretic relation-defect bound.  It combines the exact row

@@ -116,7 +116,6 @@ theorem one_add_auxiliaryHeightExpression_le_paperScale
         Nat.pow_le_pow_right hbase hexp
       _ ≤ A := by
         apply Nat.pow_le_pow_left
-        dsimp [A]
         have hk8 : 8 ≤ 128 * k := by omega
         exact Nat.mul_le_mul_right R hk8
   have hcoeff :

@@ -449,9 +449,13 @@ theorem terminalPopulationEnvelope_uniformThreeQuarter
     card_possibleKernelValues_uniformThreeQuarter hC κ₀
   have hpartner :=
     terminalPartnerEnvelope_uniformSubpolynomial hC hc κ₀
-  simpa only [terminalPopulationEnvelope] using
-    (UniformRationalPower.mul_subpolynomial
-      (p := 3) (q := 4) (by omega) hkernel hpartner)
+  change UniformRationalPowerSubpolynomialOn 3 4
+    (CriticalRunWindow.InRunLengthWindow C)
+    (fun N L ↦
+      terminalPartnerEnvelope κ₀ c N L *
+        (possibleKernelValues κ₀ N L).card)
+  exact UniformRationalPower.mul_subpolynomial
+    (p := 3) (q := 4) (by omega) hkernel hpartner
 
 /-! ## The source-exact seven-fourths mass envelope -/
 
@@ -508,8 +512,13 @@ theorem terminalRankMassEnvelope_uniformSevenFourths
       (p := 3) (q := 4) (by omega) hpopulation hconstant
   have hshifted :=
     UniformRationalPower.natPower_mul (r := 1) hscaled
-  simpa only [terminalRankMassEnvelope, pow_one, Nat.one_mul,
-    Nat.add_comm] using hshifted
+  change UniformRationalPowerSubpolynomialOn 7 4
+    (CriticalRunWindow.InRunLengthWindow C)
+    (fun N L ↦
+      (N : ℝ) *
+        ((8 * CriticalRunWindow.balanceConstant C) *
+          terminalPopulationEnvelope κ₀ c N L))
+  simpa only [pow_one, Nat.one_mul, Nat.add_comm] using hshifted
 
 /-! ## Eventual finite domination in the critical window -/
 

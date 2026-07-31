@@ -561,7 +561,13 @@ theorem terminalKernelCountResidual_uniformSubpolynomial
           ((L + 1 : ℕ) : ℝ) *
             Real.exp (8 * Real.sqrt ((L + 1 : ℕ) : ℝ))) :=
     ExpSqrtLog.uniformSubpolynomialOn_mul hlinear hexponential
-  simpa only [terminalKernelCountResidual] using
+  change UniformSubpolynomialOn
+    (CriticalRunWindow.InRunLengthWindow C)
+    (fun _ L =>
+      (128 * (κ₀ + 1 : ℝ) ^ 3) *
+        (((L + 1 : ℕ) : ℝ) *
+          Real.exp (8 * Real.sqrt ((L + 1 : ℕ) : ℝ))))
+  exact
     ExpSqrtLog.uniformSubpolynomialOn_const_mul
       (128 * (κ₀ + 1 : ℝ) ^ 3) hproduct
 

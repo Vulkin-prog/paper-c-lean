@@ -514,7 +514,7 @@ theorem uniformLittleOInBoundedRatioWindow_add
   intro N hN M L hNM hMκ hrun
   calc
     |f N M L + g N M L| ≤
-        |f N M L| + |g N M L| := abs_add _ _
+        |f N M L| + |g N M L| := abs_add_le _ _
     _ ≤
         (ε / 2) * |(N : ℝ) ^ 2| +
           (ε / 2) * |(N : ℝ) ^ 2| :=
@@ -685,7 +685,7 @@ theorem alignedDeepCoreSector_eventually_empty
   intro N hN M L hrun hNtwo
   have hNlarge : Nalign ≤ N :=
     (le_max_right _ _).trans hN
-  apply Finset.eq_empty_iff_forall_not_mem.mpr
+  apply Finset.eq_empty_iff_forall_notMem.mpr
   intro pair hpair
   have hsector :
       boundedRatioSectorOf A hNtwo terminal pair =

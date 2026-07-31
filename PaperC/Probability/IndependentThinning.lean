@@ -270,7 +270,7 @@ theorem eventProbability_all_true_eq_prod
       have := h i his
       simp_all
     · rw [if_neg h]
-      push_neg at h
+      push Not at h
       obtain ⟨i, his, hnotTrue⟩ := h
       have hfalse : ξ i = false := by
         cases hi : ξ i
@@ -347,7 +347,7 @@ theorem eventProbability_coordinateEvent_eq_prod
       rintro ⟨his, hnot⟩
       exact hnot (h i his)
     · rw [if_neg h]
-      push_neg at h
+      push Not at h
       obtain ⟨i, his, hnot⟩ := h
       symm
       apply Finset.prod_eq_zero (Finset.mem_univ i)
@@ -807,8 +807,12 @@ theorem hasExactDependencyGraph_thinnedIndicator
     hasExactDependencyGraph_combineIndicator
       μ (bernoulliProductPMF q hq0 hq1)
       X coordinateIndicator G hDependency hcoordinates Bool.and
-  simpa only [thinnedIndicator, combineIndicator,
-    coordinateIndicator] using hcombine
+  have hfamily :
+      thinnedIndicator X =
+        combineIndicator Bool.and X coordinateIndicator := by
+    rfl
+  rw [hfamily]
+  exact hcombine
 
 /-- Marginals are multiplied by their retention probabilities. -/
 theorem marginal_thinnedIndicator

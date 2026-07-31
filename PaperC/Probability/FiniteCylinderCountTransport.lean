@@ -785,7 +785,7 @@ theorem exists_bad_start_of_boundedGood_ne_full
       startAt ω x L := by
   classical
   by_contra h
-  push_neg at h
+  push Not at h
   apply hne
   unfold boundedFullGoodStartCount boundedFullStartCount startCountOn
   apply Finset.sum_subset Finset.sdiff_subset

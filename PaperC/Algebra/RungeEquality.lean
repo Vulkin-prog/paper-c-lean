@@ -63,7 +63,7 @@ private theorem rungeScale_sq_natAbs
     (RungeQPolynomial.rungeScale k ^ 2).natAbs =
       2 ^ (4 * k) := by
   simp only [RungeQPolynomial.rungeScale, Int.natAbs_pow,
-    Int.natAbs_ofNat]
+    Int.natAbs_natCast]
   rw [← pow_mul]
   congr 1
   omega

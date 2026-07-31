@@ -176,10 +176,10 @@ theorem componentHammingRadius_cast_le
     _ ≤ (q + 1 : ℕ) := by exact_mod_cast htupper
     _ = (q : ℝ) + 1 := by push_cast; ring
     _ ≤ (64 * (B : ℝ)) / (d : ℝ) + 1 :=
-      add_le_add_right hqcast 1
+      add_le_add_left hqcast 1
     _ ≤ (64 * (B : ℝ)) / (d : ℝ) +
           (B : ℝ) / (d : ℝ) :=
-      add_le_add_left hone _
+      add_le_add_right hone _
     _ = 65 * (B : ℝ) / (d : ℝ) := by ring
     _ = 65 * (B : ℝ) /
         ((Nat.log 2 B : ℝ) *
@@ -388,7 +388,7 @@ theorem componentHammingRadius_conditions
       _ = t * (ell + 1) := by ring
   have hdiv :
       (r + 2) / t ≤ ell + 1 := by
-    apply Nat.div_le_of_le_mul'
+    apply Nat.div_le_of_le_mul
     simpa [Nat.mul_comm] using hrplus
   have hexponent :
       (r + 2) / t + 1 ≤ ell + 2 :=

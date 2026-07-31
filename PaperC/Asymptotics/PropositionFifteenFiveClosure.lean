@@ -349,7 +349,7 @@ theorem lowHeightProbabilityMass_le_lowPolynomialRemainder
       ext x
       simp]
     rw [Finset.sum_union Finset.disjoint_sdiff]
-    exact add_le_add_left
+    exact add_le_add_right
       (Finset.sum_le_sum_of_subset_of_nonneg
         Finset.sdiff_subset (fun x _ _ ↦ hnonneg x)) _
   have hlow :

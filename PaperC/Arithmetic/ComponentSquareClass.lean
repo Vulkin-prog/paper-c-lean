@@ -67,7 +67,7 @@ theorem largeOddKernel_componentProduct_eq_one
       parityVec_prod C (fun n : ℕ ↦ n) hnonzero]
     simpa using hlarge p hpPrime hpB
   rw [largeOddKernel_eq_one_iff_support_eq_empty]
-  apply Finset.eq_empty_iff_forall_not_mem.mpr
+  apply Finset.eq_empty_iff_forall_notMem.mpr
   intro p hp
   have hpData := prime_and_large_of_mem_largeOddPrimeSupport hp
   exact (mem_largeOddPrimeSupport_iff.mp hp).2

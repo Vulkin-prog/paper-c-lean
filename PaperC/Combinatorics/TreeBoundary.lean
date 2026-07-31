@@ -342,7 +342,7 @@ def evenCompletion (r : V) (S : Finset {v : V // v ≠ r}) : EvenVertexSubset V 
     ⟨U, hU⟩
   else
     ⟨insert r U, by
-      rw [Finset.card_insert_of_not_mem (root_not_mem_nonRootValueFinset r S)]
+      rw [Finset.card_insert_of_notMem (root_not_mem_nonRootValueFinset r S)]
       exact (Nat.not_even_iff_odd.mp hU).add_one⟩
 
 @[simp]
@@ -364,7 +364,7 @@ theorem evenCompletion_deleteRoot (r : V) (S : EvenVertexSubset V) :
       exact Nat.not_even_iff_odd.mp (Nat.even_add_one.mp h)
     simp [evenCompletion, nonRootValueFinset_deleteRoot,
       Nat.not_even_iff_odd.mpr hOddErase, Finset.insert_erase hr]
-  · have hErase : S.1.erase r = S.1 := Finset.erase_eq_of_not_mem hr
+  · have hErase : S.1.erase r = S.1 := Finset.erase_eq_of_notMem hr
     simp [evenCompletion, nonRootValueFinset_deleteRoot, hErase, S.2, hr]
 
 /-- Even vertex subsets are canonically equivalent to arbitrary subsets after deleting one root. -/
@@ -390,7 +390,7 @@ theorem card_evenVertexSubset (r : V) :
 theorem card_edgeSubset_eq_evenVertexSubset {G : SimpleGraph V} [DecidableRel G.Adj]
     (hG : G.IsTree) :
     Fintype.card (EdgeSubset G) = Fintype.card (EvenVertexSubset V) := by
-  let r : V := Classical.choice hG.isConnected.nonempty
+  let r : V := Classical.choice hG.connected.nonempty
   rw [Fintype.card_finset, card_evenVertexSubset r]
   rw [← G.edgeFinset_card]
   congr 1
@@ -404,7 +404,7 @@ even-cardinality vertex subsets.
 theorem boundaryMap_bijective_of_isTree {G : SimpleGraph V} [DecidableRel G.Adj]
     (hG : G.IsTree) : Function.Bijective (boundaryMap G) :=
   (Fintype.bijective_iff_surjective_and_card (boundaryMap G)).mpr
-    ⟨boundaryMap_surjective_of_connected hG.isConnected,
+    ⟨boundaryMap_surjective_of_connected hG.connected,
       card_edgeSubset_eq_evenVertexSubset hG⟩
 
 /-- The boundary bijection packaged as a Lean equivalence. -/

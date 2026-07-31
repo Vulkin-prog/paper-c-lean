@@ -1,9 +1,9 @@
 import Mathlib.Data.Multiset.Interval
-import Mathlib.NumberTheory.ArithmeticFunction
+import Mathlib.NumberTheory.ArithmeticFunction.Misc
 import Mathlib.NumberTheory.NumberField.Basic
 import Mathlib.NumberTheory.RamificationInertia.Galois
 import Mathlib.RingTheory.Coprime.Lemmas
-import Mathlib.RingTheory.DedekindDomain.Ideal
+import Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas
 import Mathlib.RingTheory.Int.Basic
 import Mathlib.RingTheory.UniqueFactorizationDomain.Finite
 
@@ -53,9 +53,8 @@ theorem span_intCast_eq_span_natAbs
     Ideal.span ({(M : 𝓞 K)} : Set (𝓞 K)) =
       Ideal.span ({(M.natAbs : 𝓞 K)} : Set (𝓞 K)) := by
   rw [Ideal.span_singleton_eq_span_singleton]
-  convert (Int.associated_natAbs M).map
-    (algebraMap ℤ (𝓞 K)) using 1
-  exact (map_natCast (algebraMap ℤ (𝓞 K)) M.natAbs).symm
+  simpa only [algebraMap_int_eq, Int.coe_castRingHom, Int.cast_natCast] using
+    (Int.associated_natAbs M).map (algebraMap ℤ (𝓞 K))
 
 /-- The ideal `(p)` of `ℤ` is maximal when `p` is a natural prime. -/
 theorem span_natPrime_isMaximal {p : ℕ} (hp : p.Prime) :
@@ -87,7 +86,7 @@ theorem span_natCast_eq_prod_primeFactors
   congr 2
   norm_cast
   rw [← Nat.prod_factorization_eq_prod_primeFactors]
-  exact_mod_cast (Nat.factorization_prod_pow_eq_self hn).symm
+  exact_mod_cast (Nat.prod_factorization_pow_eq_self hn).symm
 
 /-! ## Exact divisor cardinality in a Dedekind domain -/
 
@@ -111,11 +110,11 @@ def idealDivisorFactorsEquiv
           hI hJ).mp I.property⟩
   invFun s := by
     refine ⟨s.1.prod, ?_⟩
-    simpa only [prod_normalizedFactors_eq_self hJ] using
+    simpa only [Ideal.prod_normalizedFactors_eq_self hJ] using
       Multiset.prod_dvd_prod_of_le s.2
   left_inv I := by
     apply Subtype.ext
-    exact prod_normalizedFactors_eq_self
+    exact Ideal.prod_normalizedFactors_eq_self
       (by
         intro h
         have hbot : (⊥ : Ideal R) ∣ J := h ▸ I.property
@@ -150,6 +149,29 @@ theorem natCard_idealDivisors_eq_prod_factorCounts
 
 /-! ## Coprime assembly of factor-count products -/
 
+/- `CancelCommMonoidWithZero` was split into a data class and a
+proposition-valued cancellation mixin in Lean 4.32.  Keeping this small
+compatibility layer preserves the public type of `factorCountProduct` while
+allowing its implicit argument to be synthesized from the new classes. -/
+set_option linter.deprecated false
+section CancelCommMonoidWithZeroCompatibility
+
+attribute [class] CancelCommMonoidWithZero
+
+private instance (priority := 100) oldCancelCommMonoidWithZeroOfNew
+    {R : Type*} [CommMonoidWithZero R] [IsCancelMulZero R] :
+    CancelCommMonoidWithZero R where
+  toCommMonoidWithZero := inferInstance
+  toIsLeftCancelMulZero := inferInstance
+
+private instance (priority := 100) oldCancelCommMonoidWithZeroToNew
+    {R : Type*} [self : CancelCommMonoidWithZero R] :
+    CommMonoidWithZero R := self.toCommMonoidWithZero
+
+private instance (priority := 100) oldCancelCommMonoidWithZeroToIsCancel
+    {R : Type*} [self : CancelCommMonoidWithZero R] : IsCancelMulZero R :=
+  self.toIsLeftCancelMulZero.to_isCancelMulZero
+
 /-- The product occurring in the exact divisor-cardinality formula. -/
 noncomputable def factorCountProduct
     {R : Type*} [CancelCommMonoidWithZero R]
@@ -157,6 +179,9 @@ noncomputable def factorCountProduct
     (x : R) : ℕ :=
   ∏ p ∈ (UniqueFactorizationMonoid.normalizedFactors x).toFinset,
     ((UniqueFactorizationMonoid.normalizedFactors x).count p + 1)
+
+end CancelCommMonoidWithZeroCompatibility
+set_option linter.deprecated true
 
 /-- The normalized factors of coprime elements are disjoint.  This
 semiring-level form applies to the multiplicative semiring of ideals. -/
@@ -278,14 +303,15 @@ theorem factorCountProduct_mappedPrimePower_le
   let e : ℕ := Ideal.ramificationIdxIn p (𝓞 K)
   let f : ℕ := Ideal.inertiaDegIn p (𝓞 K)
   have hJ : J ≠ ⊥ := Ideal.map_ne_bot_of_ne_bot hp
-  have ht_support : t.toFinset = primesOverFinset p (𝓞 K) := by
-    simp only [t, J, primesOverFinset,
+  have ht_support :
+      t.toFinset = IsDedekindDomain.primesOverFinset p (𝓞 K) := by
+    simp only [t, J, IsDedekindDomain.primesOverFinset,
       UniqueFactorizationMonoid.factors_eq_normalizedFactors]
   have hcount (P : Ideal (𝓞 K)) (hP : P ∈ t.toFinset) :
       t.count P = e := by
     have hPover : P ∈ Ideal.primesOver p (𝓞 K) := by
-      rw [← coe_primesOverFinset hp (𝓞 K)]
-      simpa only [Finset.mem_coe, ← ht_support] using hP
+      exact (Ideal.mem_primesOver_iff_mem_normalizedFactors (𝓞 K) hp).mpr
+        (Multiset.mem_toFinset.mp hP)
     letI : P.IsPrime := hPover.1
     letI : P.LiesOver p := hPover.2
     have hPmem : P ∈ t := Multiset.mem_toFinset.mp hP
@@ -293,24 +319,28 @@ theorem factorCountProduct_mappedPrimePower_le
       intro hPbot
       have hbotmem : (⊥ : Ideal (𝓞 K)) ∈ t := by
         simpa only [hPbot] using hPmem
-      exact UniqueFactorizationMonoid.zero_not_mem_normalizedFactors J
+      exact UniqueFactorizationMonoid.zero_notMem_normalizedFactors J
         (by simpa only [Ideal.zero_eq_bot] using hbotmem)
     calc
       t.count P =
-          Ideal.ramificationIdx (algebraMap ℤ (𝓞 K)) p P :=
+          P.ramificationIdx ℤ :=
         (Ideal.IsDedekindDomain.ramificationIdx_eq_normalizedFactors_count
-          hJ hPover.1 hP0).symm
+          p P hJ).symm
       _ = e :=
-        (Ideal.ramificationIdxIn_eq_ramificationIdx p P ℚ K).symm
+        (Ideal.ramificationIdxIn_eq_ramificationIdx p P Gal(K/ℚ)).symm
   have hcard : t.toFinset.card = r := by
-    rw [ht_support, ← Set.ncard_coe_Finset,
-      coe_primesOverFinset hp (𝓞 K)]
+    rw [ht_support, ← Set.ncard_coe_finset,
+      IsDedekindDomain.coe_primesOverFinset hp (𝓞 K)]
   have hr : 1 ≤ r :=
-    one_le_primesOver_ncard p (𝓞 K)
-  have hfund : r * (e * f) = 2 := by
-    simpa only [r, e, f, Algebra.IsQuadraticExtension.finrank_eq_two] using
-      (Ideal.ncard_primesOver_mul_ramificationIdxIn_mul_inertiaDegIn
-        hp (𝓞 K) ℚ K)
+    IsDedekindDomain.one_le_primesOver_ncard p (𝓞 K)
+  have hfund : r * (e * f) = 2 :=
+    calc
+      r * (e * f) = Nat.card Gal(K/ℚ) := by
+        simpa only [r, e, f] using
+          (Ideal.ncard_primesOver_mul_ramificationIdxIn_mul_inertiaDegIn
+            p (𝓞 K) Gal(K/ℚ))
+      _ = Module.finrank ℚ K := IsGalois.card_aut_eq_finrank ℚ K
+      _ = 2 := Algebra.IsQuadraticExtension.finrank_eq_two ℚ K
   unfold factorCountProduct
   rw [UniqueFactorizationMonoid.normalizedFactors_pow]
   change
@@ -481,8 +511,8 @@ theorem natCard_idealDivisors_span_natCast_le_tauSq
   calc
     Nat.card {I : Ideal (𝓞 K) // I ∣ J} =
         factorCountProduct J := by
-      simpa only [factorCountProduct] using
-        (natCard_idealDivisors_eq_prod_factorCounts J hJ)
+      unfold factorCountProduct
+      exact natCard_idealDivisors_eq_prod_factorCounts J hJ
     _ ≤ n.divisors.card ^ 2 :=
       factorCountProduct_span_natCast_le_tauSq K n hn
 

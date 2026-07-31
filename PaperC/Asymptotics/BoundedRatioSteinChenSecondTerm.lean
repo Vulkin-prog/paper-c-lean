@@ -524,7 +524,7 @@ theorem boundedJointPairMass_overlap_eq_zero
         ∅ := by
     ext ω
     simp only [Finset.mem_filter, Finset.mem_univ, true_and,
-      Finset.not_mem_empty, iff_false]
+      Finset.notMem_empty, iff_false]
     exact startEvents_disjoint_of_dist_lt
       (BoundedRatioSteinChen.ne_of_mem_boundedOrderedDependencyEdges
         (mem_boundedOverlapDependencyEdges.mp hpair).1)
@@ -938,7 +938,7 @@ theorem touchingDefectIndices_eq_empty_of_boundedGood
       x + L ∈ BoundedRatioSteinChen.boundedGoodStarts N M L Y) :
     Affine.TouchingDefectRank.touchingDefectIndices x L = ∅ := by
   classical
-  apply Finset.eq_empty_iff_forall_not_mem.mpr
+  apply Finset.eq_empty_iff_forall_notMem.mpr
   intro s hs
   have hsDefective :
       DefectivePredicate.HDefective

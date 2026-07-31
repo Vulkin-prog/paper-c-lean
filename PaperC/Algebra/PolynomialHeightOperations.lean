@@ -33,7 +33,7 @@ theorem coeff_mul_natAbs_le_degree_mul_height
           p.coeff x.1 * q.coeff x.2).natAbs
         ≤ ∑ x ∈ Finset.antidiagonal n,
             (p.coeff x.1 * q.coeff x.2).natAbs :=
-      nat_abs_sum_le _ _
+      Int.natAbs_sum_le _ _
     _ = ∑ x ∈ Finset.antidiagonal n,
           (p.coeff x.1).natAbs * (q.coeff x.2).natAbs := by
       apply Finset.sum_congr rfl

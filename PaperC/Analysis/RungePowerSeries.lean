@@ -24,6 +24,15 @@ namespace RungePowerSeries
 open Finset PowerSeries
 open scoped BigOperators
 
+-- The coefficient-ring arguments of `PowerSeries.coeff` and `PowerSeries.C`
+-- became implicit in Lean 4.32.  These file-local compatibility forms retain
+-- the public statement syntax used by v042 without introducing declarations.
+local macro:max "PowerSeries.coeff" R:term:arg n:term:arg : term =>
+  `(@PowerSeries.coeff $R _ $n)
+
+local macro:max "PowerSeries.C" R:term:arg : term =>
+  `(@PowerSeries.C $R _)
+
 /-- The binomial series `(1 + γ X)^(1/2)` over the rationals. -/
 noncomputable def sqrtFactorSeries (γ : ℤ) : PowerSeries ℚ :=
   PowerSeries.rescale (γ : ℚ)
@@ -84,7 +93,7 @@ theorem binomialSeries_half_sq :
   ext n
   simp only [PowerSeries.binomialSeries_coeff, smul_eq_mul, mul_one]
   rw [show Ring.choose (1 : ℚ) n = (Nat.choose 1 n : ℚ) from
-    Ring.choose_eq_nat_choose 1 n]
+    Ring.choose_natCast 1 n]
   cases n with
   | zero =>
       simp

@@ -1,5 +1,5 @@
 import PaperC.Combinatorics.LargePrimeOccurrences
-import Mathlib.Combinatorics.SimpleGraph.Path
+import Mathlib.Combinatorics.SimpleGraph.Paths
 
 set_option maxHeartbeats 1200000
 
@@ -45,9 +45,11 @@ def largePrimeGraph (x y L : ℕ) :
         v ∈ primeOccurrences x y L p ∧
         w ∈ primeOccurrences x y L p
   symm := by
+    constructor
     rintro v w ⟨hvw, p, hp, hv, hw⟩
     exact ⟨hvw.symm, p, hp, hw, hv⟩
   loopless := by
+    constructor
     intro v hv
     exact hv.1 rfl
 

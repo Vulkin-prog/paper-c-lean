@@ -1,6 +1,6 @@
 import Mathlib.Algebra.Order.BigOperators.Group.Finset
 import Mathlib.Algebra.Order.BigOperators.Ring.Finset
-import Mathlib.Combinatorics.Enumerative.Catalan
+import Mathlib.Combinatorics.Enumerative.Catalan.Basic
 import Mathlib.Data.Finsupp.Multiset
 import Mathlib.Data.Nat.Choose.Bounds
 import Mathlib.Data.Rat.Lemmas
@@ -25,10 +25,6 @@ open Finset
 open scoped BigOperators
 
 noncomputable instance instBinomialRingRat : BinomialRing ℚ where
-  nsmul_right_injective {n} hn r s hrs := by
-    have hrs' : (n : ℚ) * r = (n : ℚ) * s := by
-      simpa only [nsmul_eq_mul] using hrs
-    exact mul_left_cancel₀ (show (n : ℚ) ≠ 0 by exact_mod_cast hn) hrs'
   multichoose r n :=
     (n.factorial : ℚ)⁻¹ * Polynomial.smeval (ascPochhammer ℕ n) r
   factorial_nsmul_multichoose r n := by
@@ -86,7 +82,7 @@ private theorem abs_half_step_le_one (n : ℕ) :
 theorem abs_halfChoose_le_one (j : ℕ) : |halfChoose j| ≤ 1 := by
   induction j with
   | zero =>
-      simp [halfChoose, Ring.choose_zero_right]
+      simp [halfChoose]
   | succ j ih =>
       rw [halfChoose, choose_succ_eq, abs_mul]
       calc
@@ -144,21 +140,20 @@ theorem halfChoose_succ_eq_catalan (n : ℕ) :
       ring_nf
       simp only [Nat.add_comm 1 n]
       linear_combination
-        4 * (-1 : ℚ) ^ n * (2 : ℚ) ^ (n * 2) * hcat
+        2 * hcat
 
 /-- Multiplying `(1/2 choose j)` by `2^(2j)` gives an integer. -/
 theorem two_pow_two_mul_halfChoose_isInt (j : ℕ) :
     ∃ z : ℤ, (2 : ℚ) ^ (2 * j) * halfChoose j = (z : ℚ) := by
   cases j with
   | zero =>
-      exact ⟨1, by simp [halfChoose, Ring.choose_zero_right]⟩
+      exact ⟨1, by simp [halfChoose]⟩
   | succ n =>
       refine ⟨2 * (-1 : ℤ) ^ n * (catalan n : ℤ), ?_⟩
       rw [halfChoose_succ_eq_catalan]
       rw [show 2 * (n + 1) = (2 * n + 1) + 1 by omega, pow_succ]
       push_cast
       field_simp
-      ring
 
 /-- Weak compositions of `m` into `d` labelled parts. -/
 abbrev WeakComposition (d m : ℕ) :=
@@ -199,8 +194,7 @@ theorem card_weakComposition_le_two_pow
     subst m
     subst d
     norm_num
-  have hn : 0 < d + m - 1 := by omega
-  exact (Nat.choose_le_two_pow (d + m - 1) m hn).le.trans
+  exact (Nat.choose_le_two_pow (d + m - 1) m).trans
     (Nat.pow_le_pow_right (n := 2) (by norm_num) (by omega))
 
 /-- The finite multi-index sum which is the coefficient `c_m` in the
@@ -377,7 +371,6 @@ theorem abs_rungeCoefficient_le_eight_mul_pow
     _ ≤ (2 : ℚ) ^ (d + d) * R ^ d := by
       gcongr
       · norm_num
-      · exact hR
     _ = (4 * R) ^ d := by
       rw [pow_add, ← mul_pow]
       ring_nf

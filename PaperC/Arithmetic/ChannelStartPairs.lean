@@ -205,11 +205,15 @@ theorem card_dyadicBlock_modClass_le_one_add_div
           (q : ℚ)⌉ ≤
         ((N / q + 1 : ℕ) : ℤ) :=
     Int.ceil_le.mpr (by
-      norm_num only [Int.cast_sub, Int.cast_natCast,
+      have hcast :
+          ((((N / q + 1 : ℕ) : ℤ) : ℚ)) =
+            ((N / q + 1 : ℕ) : ℚ) := by
+        norm_cast
+      rw [hcast]
+      simpa only [Int.cast_sub, Int.cast_natCast,
         Int.cast_mul, Int.cast_ofNat, Nat.cast_mul, Nat.cast_ofNat,
-        Nat.cast_add, Nat.cast_one]
-      convert hquotient using 1
-      all_goals ring_nf)
+        Nat.cast_add, Nat.cast_one, two_mul, add_sub_cancel_left]
+        using hquotient)
   have hcardInt :
       ({x ∈ dyadicBlock N | x ≡ v [MOD q]}.card : ℤ) ≤
         ((N / q + 1 : ℕ) : ℤ) := by

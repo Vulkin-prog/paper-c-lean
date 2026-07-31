@@ -154,8 +154,13 @@ theorem terminalBOneNumerator_uniformLittleOInBoundedRatioWindow
   have hedge :=
     boundedOrderedDependencyEdges_terminalCutoff_uniformLittleOInBoundedRatioWindow
       hC κ₀
-  simpa only [terminalBOneNumerator] using
-    uniformLittleOInBoundedRatioWindow_add hgood hedge
+  change UniformLittleOInBoundedRatioWindow C κ₀
+    (fun N M L =>
+      ((boundedGoodStarts N M L
+        (terminalPrimeCutoff (L + 1))).card : ℝ) +
+      ((boundedOrderedDependencyEdges N M L
+        (terminalPrimeCutoff (L + 1))).card : ℝ))
+  exact uniformLittleOInBoundedRatioWindow_add hgood hedge
 
 /--
 Uniform `o(1)` for a terminal `b₁`, with the sample assignment quantified

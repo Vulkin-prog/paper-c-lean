@@ -251,7 +251,6 @@ theorem residualPrimeMass_le
           (mul_nonneg hqPosQ.le hBPosQ.le)
       _ = 28 * (q : ℚ) / (Nat.log 2 B : ℚ) := by
         field_simp
-        ring
   have hinner :
       (∑ p ∈ P, (1 : ℚ) / (p : ℚ)) +
           (q : ℚ) * (B : ℚ) *

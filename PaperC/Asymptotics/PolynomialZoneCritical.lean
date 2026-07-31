@@ -101,7 +101,7 @@ theorem card_startDefect_add_card_startNondefect
   classical
   simpa [BadStartMass.startDefectIndicesAt,
     startNondefectIndicesAt] using
-    (Finset.filter_card_add_filter_neg_card_eq_card
+    (Finset.card_filter_add_card_filter_not
       (s := (Finset.univ : Finset (Fin L)))
       (p := fun j : Fin L ↦ HDefective B (x + j.1)))
 

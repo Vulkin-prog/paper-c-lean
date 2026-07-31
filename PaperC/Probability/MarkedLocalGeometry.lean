@@ -145,7 +145,7 @@ theorem mixedExactLengthProbability_same_start_eq_zero
         ∅ := by
     ext ω
     simp only [Finset.mem_filter, Finset.mem_univ, true_and,
-      Finset.not_mem_empty, iff_false]
+      Finset.notMem_empty, iff_false]
     rintro ⟨hExactQ, hExactR⟩
     exact exactLengthEvents_same_start_incompatible
       hq hr hqr hExactQ hExactR
@@ -168,7 +168,7 @@ theorem mixedExactLengthProbability_eq_zero_of_strict_overlap
         ∅ := by
     ext ω
     simp only [Finset.mem_filter, Finset.mem_univ, true_and,
-      Finset.not_mem_empty, iff_false]
+      Finset.notMem_empty, iff_false]
     rintro ⟨hExactX, hExactY⟩
     exact exactLengthEvents_incompatible_of_strict_overlap
       hxy hoverlap hExactX hExactY

@@ -106,7 +106,7 @@ theorem card_defectsInInterval_lt_of_log
       ∀ i p, Nat.Prime p → p ∣ s i → p ≤ H := by
     intro i p hp hps
     obtain ⟨q, hqSupport, hpq⟩ :=
-      (hp.prime.dvd_finset_prod_iff id).mp (by simpa only [s] using hps)
+      (hp.prime.dvd_finsetProd_iff id).mp (by simpa only [s] using hps)
     have hqSmall := hsupport i hqSupport
     have hqPrime := (DefectCounting.mem_smallPrimesUpTo.mp hqSmall).1
     have hpqEq : p = q :=
@@ -203,8 +203,8 @@ theorem card_defectsInInterval_lt_of_log_of_count_ratio
           Nat.mul_le_mul_right (2 ^ (A + 1)) htTwo
   · have hdiv :
         (PrimesUpTo.count H + 1) / t ≤ A := by
-      apply Nat.div_le_of_le_mul'
-      simpa [Nat.mul_comm] using hratio
+      exact Nat.div_le_of_le_mul
+        (by simpa [Nat.mul_comm] using hratio)
     have hexponent :
         (PrimesUpTo.count H + 1) / t + 1 ≤ A + 1 :=
       Nat.add_le_add_right hdiv 1

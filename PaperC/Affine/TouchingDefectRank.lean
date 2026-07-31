@@ -355,7 +355,7 @@ private theorem exists_large_prime_coordinate_of_not_hDefective
     {H n : ℕ} (h : ¬DefectivePredicate.HDefective H n) :
     ∃ p : ℕ, p.Prime ∧ H < p ∧ parityVec n p ≠ 0 := by
   simp only [DefectivePredicate.HDefective] at h
-  push_neg at h
+  push Not at h
   exact h
 
 /--

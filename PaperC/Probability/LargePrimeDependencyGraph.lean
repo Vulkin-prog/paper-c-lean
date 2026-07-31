@@ -121,8 +121,8 @@ theorem not_largePrimeAdjacent_self
 def largePrimeDependencyGraph (N L Y : ℕ) :
     SimpleGraph {x : ℕ // x ∈ goodStarts N L Y} where
   Adj x y := LargePrimeAdjacent L Y x.1 y.1
-  symm := fun _ _ h ↦ largePrimeAdjacent_symm h
-  loopless := fun x h ↦ not_largePrimeAdjacent_self L Y x.1 h
+  symm := ⟨fun _ _ h ↦ largePrimeAdjacent_symm h⟩
+  loopless := ⟨fun x h ↦ not_largePrimeAdjacent_self L Y x.1 h⟩
 
 @[simp]
 theorem largePrimeDependencyGraph_adj

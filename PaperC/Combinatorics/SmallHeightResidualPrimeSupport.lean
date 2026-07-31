@@ -99,7 +99,7 @@ theorem abs_residualVertexExpression_lt_four_mul_max_of_candidate
           (|pairChannelError x y c.1.1 c.1.2| +
             |(c.1.2 : ℤ) * j|) +
             |(c.1.1 : ℤ) * i| :=
-        add_le_add_right (abs_add _ _) _
+        add_le_add_left (abs_add_le _ _) _
   have hsum :
       |pairChannelError x y c.1.1 c.1.2 +
           (c.1.2 : ℤ) * j - (c.1.1 : ℤ) * i| <
@@ -116,20 +116,18 @@ theorem abs_residualVertexExpression_lt_four_mul_max_of_candidate
             (c.1.2 : ℤ) * ((L + 1 : ℕ) : ℤ) +
               (c.1.1 : ℤ) * ((L + 1 : ℕ) : ℤ) :=
         add_le_add
-          (add_le_add_left hsecond _)
+          (add_le_add_right hsecond _)
           hfirst
       _ <
           (((c.1.1 + c.1.2) * (L + 1) : ℕ) : ℤ) +
             (c.1.2 : ℤ) * ((L + 1 : ℕ) : ℤ) +
               (c.1.1 : ℤ) * ((L + 1 : ℕ) : ℤ) :=
-        add_lt_add_right
-          (add_lt_add_right hcandidate
-            ((c.1.2 : ℤ) * ((L + 1 : ℕ) : ℤ)))
-          ((c.1.1 : ℤ) * ((L + 1 : ℕ) : ℤ))
+        by linarith
       _ ≤ (4 : ℤ) * (q : ℤ) * ((L + 1 : ℕ) : ℤ) := by
         push_cast
         nlinarith
-  simpa only [residualVertexExpression_apply, i, j, q] using hsum
+  simpa only [residualVertexExpression_apply, i, j, q,
+    Nat.cast_mul, Nat.cast_ofNat] using hsum
 
 /--
 Every nonexact canonical residual certificate has its selected prime below
@@ -244,7 +242,7 @@ theorem card_exactCanonicalResidualCertificates_le_two_of_choice
         exactCanonicalResidualCertificates hx hy c = ∅ := by
       ext C
       simp only [mem_exactCanonicalResidualCertificates,
-        Finset.not_mem_empty, iff_false]
+        Finset.notMem_empty, iff_false]
       exact
         canonicalResidualCertificates_not_onChannel_of_choice
           hx hy c hchoice (by simpa only [m] using hmTwo) C
@@ -255,7 +253,7 @@ theorem card_exactCanonicalResidualCertificates_le_two_of_choice
           exactCanonicalResidualCertificates hx hy c = ∅ := by
         ext C
         simp only [mem_exactCanonicalResidualCertificates,
-          Finset.not_mem_empty, iff_false]
+          Finset.notMem_empty, iff_false]
         intro hexact
         have hunit :
             ((canonicalResidualCertificates hx hy C).left,
@@ -409,7 +407,7 @@ theorem canonicalResidualComponentCount_le_two_add_primeCount_of_choice
             C ∈ canonicalResidualComponents A x y L} := by
     simpa only [exactCanonicalResidualCertificates,
       nonexactCanonicalResidualCertificates, Finset.card_univ] using
-      (Finset.filter_card_add_filter_neg_card_eq_card
+      (Finset.card_filter_add_card_filter_not
         (s := Finset.univ)
         (fun C :
           {C : (largePrimeGraph x y L).ConnectedComponent //

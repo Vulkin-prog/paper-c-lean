@@ -164,7 +164,7 @@ theorem exists_nonzero_kernel_word_hammingNorm_le {m r t : ℕ}
   let C : Submodule F₂ (Fin m → F₂) :=
     LinearMap.ker (twoAugmentedColumnMap columns leftBit rightBit)
   by_contra hno
-  push_neg at hno
+  push Not at hno
   have hweight : HammingBound.MinWeightAbove C (2 * t) := by
     intro c hc
     have hcval : (c : Fin m → F₂) ≠ 0 := by

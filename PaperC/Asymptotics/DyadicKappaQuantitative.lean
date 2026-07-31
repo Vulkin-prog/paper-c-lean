@@ -51,9 +51,15 @@ private theorem rationalPower_uniformBigO_quadraticLogLog
   have h :=
     SectionThirteenRate.rationalPower_uniformBigO_natPowerDivLogLogSquared
       (p := p) (q := q) (r := 2) hpq hf
-  simpa only [
-    SectionThirteenRate.natPowerDivLogLogSquaredScale,
-    SectionThirteenRate.quadraticDivLogLogSquaredScale] using h
+  change UniformBigOOn
+    (CriticalRunWindow.InRunLengthWindow C) f
+    (fun N _L ↦
+      (N : ℝ) ^ 2 / (Real.log (Real.log N)) ^ 2)
+  change UniformBigOOn
+    (CriticalRunWindow.InRunLengthWindow C) f
+    (fun N _L ↦
+      (N : ℝ) ^ 2 / (Real.log (Real.log N)) ^ 2) at h
+  exact h
 
 /-! ## The two quantitative branches of sector six -/
 
@@ -300,10 +306,9 @@ theorem everySector_dyadic_uniformBigO
           (BoundedRatioElementaryQuantitative.shallowCore_dyadic_uniformThirtyOneSixteenths
             hC K)
   | alignedDeepCore =>
-      simpa only [
-        SectionThirteenRate.quadraticDivLogLogSquaredScale] using
-        BoundedRatioElementaryQuantitative.alignedDeepCore_dyadic_uniformBigO
-          hC K
+      exact
+        BoundedRatioElementaryQuantitative.alignedDeepCore_dyadic_uniformBigO_of_scale
+          hC K SectionThirteenRate.quadraticDivLogLogSquaredScale
   | manyDefects =>
       have hbounded :=
         BoundedRatioManyDefectsAssembly.manyDefectsSector_uniformThreeHalves

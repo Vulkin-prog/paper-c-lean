@@ -51,9 +51,11 @@ theorem gapFactor_tendsto_atTop (θ : ℝ) :
           Real.log (Real.log (Real.log (k : ℝ))) /
             Real.log (Real.log (k : ℝ)))
         atTop (𝓝 0) := by
-    simpa only [Function.comp_apply] using
-      Real.isLittleO_log_id_atTop.tendsto_div_nhds_zero.comp
-        hloglog
+    convert
+        Real.isLittleO_log_id_atTop.tendsto_div_nhds_zero.comp
+          hloglog
+      using 1
+    simp [Function.comp_def]
   refine tendsto_atTop.2 ?_
   intro A
   have hratioHalf :
@@ -302,7 +304,6 @@ theorem highZoneExceptionalEnvelope_tendsto_zero
               3 * Real.log (L : ℝ) / Real.log 2) *
                 Real.log 2 := by
           field_simp [ne_of_gt hlogTwo]
-          ring
         _ ≤ gap (L + 1) θ * Real.log 2 :=
           mul_le_mul_of_nonneg_right (hgap L hL₀) hlogTwo.le
     have hgapScaled' :

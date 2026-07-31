@@ -788,7 +788,11 @@ theorem componentShapeEnvelope_uniformSubpolynomial
   have hsquared :=
     uniformSubpolynomialOn_pow_fixed
       hscaled 2 (by omega)
-  simpa only [componentShapeEnvelope] using hsquared
+  change
+    UniformSubpolynomialOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun _ L ↦ (11 * (((L + 1 : ℕ) : ℝ)) ^ 10) ^ 2)
+  exact hsquared
 
 /-- The literal run-length window eventually lies in the genuine high zone
 needed to eliminate equal squarefree kernels. -/

@@ -1189,7 +1189,7 @@ theorem attachedPairComponents_card_sub_one_le_incident
     card_nonexceptionalPairComponents_le_incident
       (A := A) hN hMκ hL pair
   have hpartition :=
-    Finset.filter_card_add_filter_neg_card_eq_card
+    Finset.card_filter_add_card_filter_not
       (s := attachedPairComponents A pair)
       (fun C ↦
         kernelThreshold κ₀ N L <

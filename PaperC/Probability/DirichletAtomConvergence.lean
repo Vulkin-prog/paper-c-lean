@@ -191,7 +191,7 @@ theorem scaledInversePowerTail_le
         scaledInversePowerTerm p m s (i + (m + 1))) ≤
         ∑' i : ℕ,
           p (i + (m + 1)) * tailRatio m ^ s :=
-      tsum_le_tsum hterm hleft (hshift.mul_right _)
+      hleft.tsum_le_tsum hterm (hshift.mul_right _)
     _ =
         (∑' i : ℕ, p (i + (m + 1))) * tailRatio m ^ s := by
       rw [tsum_mul_right]
@@ -269,7 +269,7 @@ theorem tendsto_atoms_of_inversePowerTransforms
                     scaledInversePowerTerm q m s j)) := by
           apply Filter.Tendsto.sub
           · exact (htransform s).const_mul _
-          · apply tendsto_finset_sum
+          · apply tendsto_finsetSum
             intro j hj
             have hjm : j < m := Finset.mem_range.mp hj
             unfold scaledInversePowerTerm

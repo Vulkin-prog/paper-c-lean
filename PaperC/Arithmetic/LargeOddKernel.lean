@@ -1,6 +1,6 @@
 import PaperC.Arithmetic.DefectivePredicate
 import Mathlib.Data.Nat.Squarefree
-import Mathlib.NumberTheory.ArithmeticFunction
+import Mathlib.NumberTheory.ArithmeticFunction.Misc
 
 /-!
 # The large odd kernel
@@ -56,7 +56,7 @@ theorem mem_oddPrimeSupport_iff_parityVec_ne_zero {n p : ℕ} :
     p ∈ oddPrimeSupport n ↔ parityVec n p ≠ 0 := by
   simp only [oddPrimeSupport, oddFactorization, parityVec,
     Finsupp.mem_support_iff, Finsupp.mapRange_apply, ne_eq,
-    ZMod.natCast_zmod_eq_zero_iff_dvd]
+    ZMod.natCast_eq_zero_iff]
   constructor
   · intro h hp
     exact h (Nat.mod_eq_zero_of_dvd hp)
@@ -118,12 +118,12 @@ theorem mem_largeOddPrimeSupport_iff_prime_large_odd {B n p : ℕ} :
   · intro hp
     exact ⟨(prime_and_large_of_mem_largeOddPrimeSupport hp).1,
       (prime_and_large_of_mem_largeOddPrimeSupport hp).2,
-      ZMod.ne_zero_iff_odd.mp (by
+      ZMod.natCast_ne_zero_iff_odd.mp (by
         simpa only [parityVec_apply] using
           (mem_largeOddPrimeSupport_iff.mp hp).2)⟩
   · rintro ⟨_hpPrime, hpB, hpOdd⟩
     rw [mem_largeOddPrimeSupport_iff, parityVec_apply]
-    exact ⟨hpB, ZMod.ne_zero_iff_odd.mpr hpOdd⟩
+    exact ⟨hpB, ZMod.natCast_ne_zero_iff_odd.mpr hpOdd⟩
 
 /-- Complete valuation characterization of the small support. -/
 theorem mem_smallOddPrimeSupport_iff_prime_small_odd {B n p : ℕ} :
@@ -133,12 +133,12 @@ theorem mem_smallOddPrimeSupport_iff_prime_small_odd {B n p : ℕ} :
   · intro hp
     exact ⟨(prime_and_small_of_mem_smallOddPrimeSupport hp).1,
       (prime_and_small_of_mem_smallOddPrimeSupport hp).2,
-      ZMod.ne_zero_iff_odd.mp (by
+      ZMod.natCast_ne_zero_iff_odd.mp (by
         simpa only [parityVec_apply] using
           (mem_smallOddPrimeSupport_iff.mp hp).2)⟩
   · rintro ⟨_hpPrime, hpB, hpOdd⟩
     rw [mem_smallOddPrimeSupport_iff, parityVec_apply]
-    exact ⟨hpB, ZMod.ne_zero_iff_odd.mpr hpOdd⟩
+    exact ⟨hpB, ZMod.natCast_ne_zero_iff_odd.mpr hpOdd⟩
 
 /-- The large support is a finite subset of the prime factors of `n`. -/
 theorem largeOddPrimeSupport_subset_primeFactors (B n : ℕ) :
@@ -300,7 +300,7 @@ theorem smallOddPrimeSupport_union_largeOddPrimeSupport (B n : ℕ) :
   constructor
   · rintro (⟨hp, _⟩ | ⟨hp, _⟩) <;> exact hp
   · intro hp
-    exact (le_or_lt p B).elim
+    exact (le_or_gt p B).elim
       (fun hpB ↦ Or.inl ⟨hp, hpB⟩)
       (fun hpB ↦ Or.inr ⟨hp, hpB⟩)
 
@@ -410,7 +410,7 @@ theorem factorization_largeOddKernel (B n p : ℕ) :
       ((prime_dvd_largeOddKernel_iff
         (prime_and_large_of_mem_largeOddPrimeSupport hp).1).mpr hp)
   · rw [if_neg hp]
-    apply Finsupp.not_mem_support_iff.mp
+    apply Finsupp.notMem_support_iff.mp
     rw [Nat.support_factorization, primeFactors_largeOddKernel]
     exact hp
 
@@ -426,7 +426,7 @@ theorem factorization_smallOddPart (B n p : ℕ) :
       ((prime_dvd_smallOddPart_iff
         (prime_and_small_of_mem_smallOddPrimeSupport hp).1).mpr hp)
   · rw [if_neg hp]
-    apply Finsupp.not_mem_support_iff.mp
+    apply Finsupp.notMem_support_iff.mp
     rw [Nat.support_factorization, primeFactors_smallOddPart]
     exact hp
 
@@ -454,9 +454,9 @@ theorem largeOddKernel_eq_one_iff_hDefective (B n : ℕ) :
     have hpMem :=
       (parityVec_ne_zero_iff_mem_largeOddPrimeSupport hpPrime hpB).mp hpParity
     rw [hs] at hpMem
-    exact Finset.not_mem_empty p hpMem
+    exact Finset.notMem_empty p hpMem
   · intro h
-    apply Finset.eq_empty_iff_forall_not_mem.mpr
+    apply Finset.eq_empty_iff_forall_notMem.mpr
     intro p hpMem
     have hpData := prime_and_large_of_mem_largeOddPrimeSupport hpMem
     exact (mem_largeOddPrimeSupport_iff.mp hpMem).2

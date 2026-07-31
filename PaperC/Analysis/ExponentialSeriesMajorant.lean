@@ -22,7 +22,7 @@ theorem sum_range_pow_div_factorial_le_exp
   exact
     sum_le_hasSum (Finset.range R)
       (fun r hr ↦ div_nonneg (pow_nonneg hx r) (by positivity))
-      (NormedSpace.expSeries_div_hasSum_exp ℝ x)
+      (NormedSpace.expSeries_div_hasSum_exp x)
 
 /-- Rational finite sums, cast to `ℝ`, obey the same exponential bound. -/
 theorem ratCast_sum_range_pow_div_factorial_le_exp

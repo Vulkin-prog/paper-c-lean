@@ -1,7 +1,7 @@
 import PaperC.Asymptotics.CriticalChannelPowers
 import PaperC.Asymptotics.RationalPowers
 import PaperC.Combinatorics.ShallowCorePairs
-import Mathlib.Data.Real.Archimedean
+import Mathlib.Algebra.Order.Archimedean.Real.Basic
 
 /-!
 # The shallow-core density factor in the critical window

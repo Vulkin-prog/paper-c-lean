@@ -281,7 +281,10 @@ theorem markedBTwoSplitEnvelope_eq_add
   intro β _hβ
   by_cases hzero :
       α.1.1 = β.1.1 ∨ MarkedStrictOverlap α β
-  · simp [hzero]
+  · rcases hzero with hstart | hoverlap
+    · have hstart' : α.1 = β.1 := Subtype.ext hstart
+      simp [hstart']
+    · simp [hoverlap]
   · simp only [hzero, if_false]
     by_cases hlocal :
         Nat.dist α.1.1 β.1.1 ≤ markedCommonRowCount L E
@@ -378,13 +381,6 @@ theorem markedLocalRelationEnvelope_le
       split_ifs <;> positivity
     _ = ((markedLocalPairs N L E).card : ℚ) * W := by
       unfold markedLocalPairs
-      change
-        (∑ α in (Finset.univ : Finset (MarkedIndex N L E)),
-          ∑ β in (Finset.univ : Finset (MarkedIndex N L E)),
-            if α.1.1 ≠ β.1.1 ∧
-                Nat.dist α.1.1 β.1.1 ≤ markedCommonRowCount L E then
-              W
-            else 0) = _
       rw [← Finset.sum_product']
       rw [← Finset.sum_filter]
       simp
@@ -461,11 +457,22 @@ theorem markedSeparatedRelationEnvelope_eq_sigmaSum
   intro β _hβ
   by_cases hzero :
       α.1.1 = β.1.1 ∨ MarkedStrictOverlap α β
-  · simp [hzero]
+  · rcases hzero with hstart | hoverlap
+    · have hstart' : α.1 = β.1 := Subtype.ext hstart
+      simp [hstart']
+    · simp [hoverlap]
   · by_cases hsep :
         markedCommonRowCount L E < Nat.dist α.1.1 β.1.1
-    · simp [hzero, hsep]
-    · simp [hzero, hsep]
+    · have hstart : α.1 ≠ β.1 :=
+        fun h ↦ hzero (Or.inl (congrArg Subtype.val h))
+      have hoverlap : ¬MarkedStrictOverlap α β :=
+        fun h ↦ hzero (Or.inr h)
+      simp [hstart, hoverlap, hsep]
+    · have hstart : α.1 ≠ β.1 :=
+        fun h ↦ hzero (Or.inl (congrArg Subtype.val h))
+      have hoverlap : ¬MarkedStrictOverlap α β :=
+        fun h ↦ hzero (Or.inr h)
+      simp [hstart, hoverlap, hsep]
 
 abbrev CommonSeparatedPair (N L E : ℕ) :=
   {pair : ℕ × ℕ //

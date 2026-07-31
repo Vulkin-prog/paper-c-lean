@@ -1,5 +1,5 @@
 import PaperC.Asymptotics.RationalPowers
-import Mathlib.Data.Real.Archimedean
+import Mathlib.Algebra.Order.Archimedean.Real.Basic
 
 /-!
 # From rational-power bounds to uniform little-oh

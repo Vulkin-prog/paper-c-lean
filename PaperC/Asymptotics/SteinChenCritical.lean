@@ -232,7 +232,15 @@ theorem steinBOneNumerator_uniformLittleOQuadratic
       hC
   have hsum :=
     PropositionElevenTwo.uniformLittleOOn_add hN hedge
-  simpa only [steinBOneNumerator] using hsum
+  change
+    UniformLittleOOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun N L =>
+        (N : ℝ) +
+          ((LargePrimeDependencyGraph.orderedDependencyEdges N L
+            (terminalPrimeCutoff (L + 1))).card : ℝ))
+      (fun N _ => (N : ℝ) ^ 2)
+  exact hsum
 
 /--
 First part of Lemma 13.8:

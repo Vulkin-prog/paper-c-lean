@@ -1,5 +1,5 @@
 import PaperC.Asymptotics.Uniform
-import Mathlib.Data.Real.Sqrt
+import Mathlib.Analysis.Real.Sqrt
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
 /-!

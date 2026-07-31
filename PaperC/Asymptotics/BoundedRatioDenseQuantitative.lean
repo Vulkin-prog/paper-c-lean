@@ -226,7 +226,6 @@ theorem sqrtLog_div_loglog_le_heightScale_eventually
             (Real.sqrt (Real.log N) /
               Real.log (Real.log N))) := by
       field_simp [hη.ne']
-      ring
     _ ≤
         (2 / η) *
           (Real.sqrt ((L + 1 : ℕ) : ℝ) /

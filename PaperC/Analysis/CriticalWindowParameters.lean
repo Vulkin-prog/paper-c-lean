@@ -1,6 +1,6 @@
 import PaperC.Analysis.WeightedDefectMass
 import Mathlib.Algebra.Order.Floor.Div
-import Mathlib.Data.Complex.ExponentialBounds
+import Mathlib.Analysis.Complex.ExponentialBounds
 
 /-!
 # Explicit parameters in the logarithmic critical window

@@ -668,7 +668,11 @@ theorem componentNormalizedEquation_atMost_of_evertseSilverman
               componentLeftProduct
                 pair.1.1 pair.1.2 L C) : ℤ)) := by
   have hcoords := pair_coordinates_two_le hN pair
-  simpa only [componentNormalizedEquation] using
+  change HasAtMostSolutions
+    (ComponentNormalization.normalizedShiftedEquation
+      (componentLeftProduct pair.1.1 pair.1.2 L C) d
+      (componentRightShift pair.1.1 pair.1.2 L C)) _
+  exact
     ComponentNormalization.normalizedShiftedEquation_atMost_of_evertseSilverman
       hES
       (componentRightShift pair.1.1 pair.1.2 L C)

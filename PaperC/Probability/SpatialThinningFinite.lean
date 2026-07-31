@@ -86,7 +86,7 @@ theorem thinnedCount_eq_zero_iff
     · rfl
     · exact (hnot hi).elim
   · intro h i _hi
-    push_neg
+    push Not
     intro hiActive hiTrue
     have := h i hiActive
     simp_all
@@ -116,7 +116,7 @@ theorem voidIndicator_mul_product_eq
     simp_all
   · rw [if_neg hvoid]
     unfold NoRetainedActive at hvoid
-    push_neg at hvoid
+    push Not at hvoid
     obtain ⟨i, hiActive, hiRetained⟩ := hvoid
     have hiTrue : ξ i = true := by
       cases h : ξ i

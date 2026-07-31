@@ -145,7 +145,7 @@ private theorem natGridPoint_mem
           (n := N) (v := natGridPoint N x)).2
       intro i
       refine ⟨(x : ℤ), ?_⟩
-      simp only [natGridPoint, algebraMap_int_eq, Int.cast_natCast]
+      simp only [natGridPoint, algebraMap_int_eq, map_natCast]
       field_simp
     exact hmem
 
@@ -174,7 +174,12 @@ private noncomputable def gridInteger
   letI : NeZero N := ⟨hN.ne'⟩
   exact Classical.choose
     ((BoxIntegral.unitPartition.mem_smul_span_iff.mp
-      (by simpa only [integerLattice] using z.2.2)) Unit.unit)
+      (by
+        change z.1 ∈
+          (N : ℝ)⁻¹ •
+            (Submodule.span ℤ
+              (Set.range (Pi.basisFun ℝ Unit)) : Set Line)
+        simpa only [integerLattice] using z.2.2)) Unit.unit)
 
 private theorem gridInteger_spec
     (N : ℕ) (hN : 0 < N)
@@ -184,7 +189,12 @@ private theorem gridInteger_spec
   letI : NeZero N := ⟨hN.ne'⟩
   exact Classical.choose_spec
     ((BoxIntegral.unitPartition.mem_smul_span_iff.mp
-      (by simpa only [integerLattice] using z.2.2)) Unit.unit)
+      (by
+        change z.1 ∈
+          (N : ℝ)⁻¹ •
+            (Submodule.span ℤ
+              (Set.range (Pi.basisFun ℝ Unit)) : Set Line)
+        simpa only [integerLattice] using z.2.2)) Unit.unit)
 
 private theorem gridInteger_nonneg
     (N : ℕ) (hN : 0 < N)
@@ -323,7 +333,7 @@ theorem dyadicClamp_eq_self
 private theorem continuous_clampExtension
     {f : ℝ → ℝ} (hf : ContinuousOn f (Set.Icc (1 : ℝ) 2)) :
     Continuous (fun t ↦ f (dyadicClamp t)) := by
-  rw [continuous_iff_continuousOn_univ]
+  rw [← continuousOn_univ]
   exact hf.comp continuous_dyadicClamp.continuousOn
     (fun t _ht ↦ dyadicClamp_mem_Icc t)
 

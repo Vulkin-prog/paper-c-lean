@@ -177,7 +177,15 @@ theorem residualFactor_uniformSubpolynomial
         (ExpSqrtLog.uniformSubpolynomialOn_mul hlinear hconst)
         hexponential)
       hbinary
-  simpa only [residualFactor] using hproduct
+  change
+    UniformSubpolynomialOn (Admissible c₁ c₂)
+      (fun N H =>
+        (H + 1 : ℝ) * Real.sqrt 3 * Real.exp (2 * Real.sqrt H) *
+          ((2 ^ (2 *
+            RungeLogarithmicGrowth.cappedRadius N H
+              (CriticalWindowParameters.logarithmicCap N) *
+            2 ^ (CriticalWindowParameters.codingConstant c₁ c₂ + 1)) : ℕ) : ℝ))
+  exact hproduct
 
 /--
 Fully quantified form of equation (3.4):

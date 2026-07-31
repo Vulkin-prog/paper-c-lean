@@ -62,8 +62,12 @@ theorem theorem_one_four_canonical
       UniformNegativeHalfPowerSubpolynomialOn
         (CriticalRunWindow.InRunLengthWindow C)
         dyadicFirstMomentPoissonError := by
-    simpa only [dyadicFirstMomentPoissonError, criticalMean] using
-      CriticalRunWindow.firstMoment_error_uniformNegativeHalfPower hC
+    change
+      UniformNegativeHalfPowerSubpolynomialOn
+        (CriticalRunWindow.InRunLengthWindow C)
+        (fun N L =>
+          (dyadicExpectation N L : ℝ) - (N : ℝ) / (2 : ℝ) ^ L)
+    exact CriticalRunWindow.firstMoment_error_uniformNegativeHalfPower hC
   have hseparated :
       UniformLittleOOn
         (CriticalRunWindow.InRunLengthWindow C)
@@ -94,7 +98,15 @@ theorem theorem_one_four_canonical
       PropositionElevenTwo.uniformLittleOOn_add hoverlap htouch
     have hall :=
       PropositionElevenTwo.uniformLittleOOn_add hlocal hseparated
-    simpa only [factorialErrorNumerator] using hall
+    change
+      UniformLittleOOn
+        (CriticalRunWindow.InRunLengthWindow C)
+        (fun N L =>
+          (overlappingPairs N L).card +
+            TouchingMass.touchingMass N L +
+              jointDefectMass N L (separatedOffDiagPairs N L))
+        (fun N _ => (N : ℝ) ^ 2)
+    exact hall
   have hfiniteMoment :
       UniformLittleOOn
         (CriticalRunWindow.InRunLengthWindow C)
@@ -232,12 +244,12 @@ theorem theorem_one_four_canonical
         _ ≤
             |dyadicFirstMomentPoissonError N L + criticalMean N L| +
               |criticalMean N L| :=
-          abs_add _ _
+          abs_add_le _ _
         _ ≤
             (|dyadicFirstMomentPoissonError N L| +
               |criticalMean N L|) + |criticalMean N L| := by
-          exact add_le_add_right
-            (abs_add
+          exact add_le_add_left
+            (abs_add_le
               (dyadicFirstMomentPoissonError N L)
               (criticalMean N L)) _
         _ ≤ (1 + B) + B := by
@@ -285,8 +297,8 @@ theorem theorem_one_four_canonical
                 |dyadicFirstMomentPoissonError N L|) +
                   |(dyadicExpectation N L : ℝ) ^ 2 -
                     (criticalMean N L) ^ 2| := by
-            exact add_le_add_right
-              (abs_add
+            exact add_le_add_left
+              (abs_add_le
                 (dyadicSecondFactorialPoissonError N L)
                 (dyadicFirstMomentPoissonError N L)) _
       _ ≤ δ + δ + δ * (2 * B + 1) := by

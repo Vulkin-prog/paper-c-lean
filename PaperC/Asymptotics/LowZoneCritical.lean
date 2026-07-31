@@ -4,7 +4,7 @@ import PaperC.Asymptotics.Uniform
 import PaperC.Probability.BadStartMass
 import Mathlib.Algebra.Order.BigOperators.Group.Finset
 import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
-import Mathlib.Data.Real.Sqrt
+import Mathlib.Analysis.Real.Sqrt
 
 set_option maxHeartbeats 1200000
 
@@ -720,9 +720,9 @@ theorem primeNumberTheorem_implies_lowZonePrimeGrowth_power
           ((Nat.sqrt (x + L) + 1 +
               lowZonePrimeRank L : ℕ) : ℝ) <
             (PrimesUpTo.count L : ℝ) := by
-        apply (mul_lt_mul_right hscalePos).mp
-        exact
-          hsmallScaled.trans_le htargetScaled |>.trans hpntScaled
+        exact lt_of_mul_lt_mul_right
+          (hsmallScaled.trans_le htargetScaled |>.trans hpntScaled)
+          hscalePos.le
       have hsmallPrimeNat :
           Nat.sqrt (x + L) + 1 + lowZonePrimeRank L <
             PrimesUpTo.count L := by

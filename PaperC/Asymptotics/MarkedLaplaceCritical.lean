@@ -127,10 +127,13 @@ theorem markedBTwoSplitReal_uniformLittleOOne
       (CriticalRunWindow.InRunLengthWindow C)
       (markedBTwoSplitReal E)
       (fun _ _ ↦ 1) := by
-  simpa only [markedBTwoSplitReal,
-    MarkedSteinChenCritical.markedBTwoSplitEnvelopeReal] using
-    (MarkedSteinChenCritical.markedBTwoSplitEnvelopeReal_uniformLittleOOne
-      hC E hES hPell)
+  change UniformLittleOOn
+    (CriticalRunWindow.InRunLengthWindow C)
+    (fun N L ↦ ((markedBTwoSplitEnvelope N L E : ℚ) : ℝ))
+    (fun _ _ ↦ 1)
+  exact
+    MarkedSteinChenCritical.markedBTwoSplitEnvelopeReal_uniformLittleOOne
+      hC E hES hPell
 
 /--
 A uniform `o(1)` estimate restricts to every critical sequence whose first
@@ -313,8 +316,9 @@ theorem sectionFourteenFour_laplaceFunctional_of_bTwo
             markedBTwoAverageReal E (N n) (L n))
   have herror : Tendsto error atTop (𝓝 0) := by
     dsimp only [error]
-    convert hremoved.add ((hbOne.add hbTwo).const_mul 4) using 1 <;>
-      ring
+    simpa only [totalRemovedInfiniteExactLengthProbability, mul_add,
+      mul_comm, Nat.add_comm, zero_add, add_zero, zero_mul, mul_zero] using
+      hremoved.add ((hbOne.add hbTwo).const_mul 4)
   obtain ⟨Nwindow, hNwindow⟩ :=
     CriticalRunWindow.firstMomentWindow_eventually hC
   have hvalid :

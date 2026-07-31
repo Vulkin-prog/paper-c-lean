@@ -201,6 +201,23 @@ noncomputable def sectorResidualMassNat
     (canonicalSectionElevenSectorPairs
       N A L hN smallRowRank rankBudget sector)
 
+private theorem canonicalSectionElevenSectorPairs_eq_sectionElevenSectorPairs
+    {N A L : ℕ} (hN : 2 ≤ N)
+    (smallRowRank : SeparatedDyadicPair N L → ℕ)
+    (rankBudget : ℕ) (sector : ResidualSector) :
+    canonicalSectionElevenSectorPairs
+        N A L hN smallRowRank rankBudget sector =
+      sectionElevenSectorPairs A hN
+        (fun pair ↦
+          pair ∈ CanonicalTerminalPopulation.terminalPairsAtBudget
+            N A L hN smallRowRank rankBudget)
+        sector := by
+  classical
+  ext pair
+  simp only [mem_canonicalSectionElevenSectorPairs,
+    mem_sectionElevenSectorPairs]
+  rfl
+
 /--
 Exact fiberwise disintegration of the residual mass over all seven sectors.
 -/
@@ -223,10 +240,19 @@ theorem residualMassNat_eq_sum_sectors
       (Finset.univ : Finset (SeparatedDyadicPair N L))
       (sectorOf tests)
       weight
+  have hsector (sector : ResidualSector) :
+      (Finset.univ.filter fun pair ↦
+          sectorOf tests pair = sector) =
+        canonicalSectionElevenSectorPairs
+          N A L hN smallRowRank rankBudget sector := by
+    ext pair
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and,
+      mem_canonicalSectionElevenSectorPairs]
+    rfl
+  simp_rw [hsector] at hfiber
   unfold residualMassNat linearResidualMass
   simpa only [tests, weight, sectorResidualMassNat,
-    canonicalSectionElevenSectorPairs,
-    sectorPopulation] using hfiber.symm
+    linearResidualMass] using hfiber.symm
 
 /--
 Summation over the union of two distinct canonical sectors is additive.
@@ -309,13 +335,15 @@ theorem sectorResidualMass_smallPrimeProduct_eq
             N A L hN (smallRowRank N L) (rankBudget N L)
             .smallPrimeProduct =
           smallProductPairs N A L hN := by
-      simpa only [canonicalSectionElevenSectorPairs,
-        canonicalSectionElevenTests] using
-        (sectionElevenSectorPairs_one_eq_smallProductPairs
-          hN
-          (fun pair ↦
-            pair ∈ CanonicalTerminalPopulation.terminalPairsAtBudget
-              N A L hN (smallRowRank N L) (rankBudget N L)))
+      exact
+        (canonicalSectionElevenSectorPairs_eq_sectionElevenSectorPairs
+          hN (smallRowRank N L) (rankBudget N L)
+          .smallPrimeProduct).trans
+          (sectionElevenSectorPairs_one_eq_smallProductPairs
+            hN
+            (fun pair ↦
+              pair ∈ CanonicalTerminalPopulation.terminalPairsAtBudget
+                N A L hN (smallRowRank N L) (rankBudget N L)))
     rw [hpop]
     rfl
   · simp [sectorResidualMass,
@@ -342,13 +370,15 @@ theorem sectorResidualMass_smallCanonicalHeight_eq
             .smallCanonicalHeight =
           SmallHeightLargeProductPairs.smallHeightLargeProductPairs
             N A L hN := by
-      simpa only [canonicalSectionElevenSectorPairs,
-        canonicalSectionElevenTests] using
-        (sectionElevenSectorPairs_two_eq_smallHeightLargeProductPairs
-          hN
-          (fun pair ↦
-            pair ∈ CanonicalTerminalPopulation.terminalPairsAtBudget
-              N A L hN (smallRowRank N L) (rankBudget N L)))
+      exact
+        (canonicalSectionElevenSectorPairs_eq_sectionElevenSectorPairs
+          hN (smallRowRank N L) (rankBudget N L)
+          .smallCanonicalHeight).trans
+          (sectionElevenSectorPairs_two_eq_smallHeightLargeProductPairs
+            hN
+            (fun pair ↦
+              pair ∈ CanonicalTerminalPopulation.terminalPairsAtBudget
+                N A L hN (smallRowRank N L) (rankBudget N L)))
     rw [hpop]
     rfl
   · simp [sectorResidualMass,
@@ -374,13 +404,15 @@ theorem sectorResidualMass_shallowCore_eq
             N A L hN (smallRowRank N L) (rankBudget N L)
             .shallowCore =
           ShallowCorePairs.shallowCorePairs N A L hN := by
-      simpa only [canonicalSectionElevenSectorPairs,
-        canonicalSectionElevenTests] using
-        (sectionElevenSectorPairs_three_eq_shallowCorePairs
-          hN
-          (fun pair ↦
-            pair ∈ CanonicalTerminalPopulation.terminalPairsAtBudget
-              N A L hN (smallRowRank N L) (rankBudget N L)))
+      exact
+        (canonicalSectionElevenSectorPairs_eq_sectionElevenSectorPairs
+          hN (smallRowRank N L) (rankBudget N L)
+          .shallowCore).trans
+          (sectionElevenSectorPairs_three_eq_shallowCorePairs
+            hN
+            (fun pair ↦
+              pair ∈ CanonicalTerminalPopulation.terminalPairsAtBudget
+                N A L hN (smallRowRank N L) (rankBudget N L)))
     rw [hpop]
     rfl
   · simp [sectorResidualMass,
@@ -494,7 +526,7 @@ theorem alignedDeepCoreSector_eventually_empty
   refine ⟨max 2 Nalign, le_max_left _ _, ?_⟩
   intro N hN L hrun hNtwo
   have hNlarge : Nalign ≤ N := (le_max_right _ _).trans hN
-  apply Finset.eq_empty_iff_forall_not_mem.mpr
+  apply Finset.eq_empty_iff_forall_notMem.mpr
   intro pair hpair
   have hsector :
       canonicalSectionElevenSectorOf
@@ -567,7 +599,7 @@ theorem uniformLittleOOn_add
   intro N hN L hNL
   calc
     |f N L + g N L| ≤ |f N L| + |g N L| :=
-      abs_add _ _
+      abs_add_le _ _
     _ ≤
         (ε / 2) * |scale N L| +
           (ε / 2) * |scale N L| :=

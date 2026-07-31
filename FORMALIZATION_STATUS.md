@@ -12,10 +12,13 @@ Légende :
 Dans le registre d’audit, `kind: external | internal` décrit la provenance
 de l’énoncé. Le champ distinct `status: open | discharged` indique si
 l’interface reste nécessaire : seul `open` constitue une dette actuelle. En
-v042, les cinq interfaces `internal` sont toutes `discharged`; les sept
+v043, après la migration sans changement mathématique vers Lean/mathlib
+`v4.32.2`, les cinq interfaces `internal` sont toutes `discharged`; les sept
 interfaces `open` sont toutes `external`. Le manifeste recense 3 971
 théorèmes et 5 lemmes publics, 3 978 cibles, 3 825 résultats
-inconditionnels et 151 conditionnels.
+inconditionnels et 151 conditionnels. Il conserve 13 ponts : huit
+`external`, cinq `internal`, sept `open` tous `external` et six
+`discharged`.
 
 ## Sections 1–3
 
