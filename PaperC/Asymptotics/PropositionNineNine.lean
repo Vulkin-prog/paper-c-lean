@@ -39,9 +39,10 @@ subpolynomial, while the critical run-length window makes `2^B` linear in
 `N`.  Consequently, a uniform `N^(1/2+o_C(1))` bound for the number of
 hosts implies the claimed `N^(3/2+o_C(1))` mass bound.
 
-The host-count premise is retained explicitly.  Its proof is precisely the
-still-unassembled Diophantine passage combining Lemmas 9.4 and 9.8 with the
-bounded-component extraction.
+The module records the exact finite host cover, the pointwise residual
+weight, and their proof-independent real product estimate.  The canonical
+bounded-ratio mass proof counts its concrete host populations directly, so
+no aggregate host-count premise is exposed here.
 -/
 
 namespace PaperC
@@ -663,7 +664,7 @@ theorem residualWeightEnvelope_uniformLinear
       norm_num only [Nat.cast_pow, Nat.cast_ofNat]
       ring
 
-/-! ## Products and the conditional Proposition 9.9 closure -/
+/-! ## Products and proof-independent Proposition 9.9 quantities -/
 
 /--
 The product of a uniform half-power count and a uniform linear weight is a
@@ -728,9 +729,9 @@ noncomputable def hostCount
   else 0
 
 /--
-The concrete two-branch cover consumed by the remaining Diophantine
-argument.  Its first term fixes the first block as the two-defect start;
-the second term fixes the second block.
+The concrete two-branch cover of the active population.  Its first term
+fixes the first block as the two-defect start; the second term fixes the
+second block.
 -/
 noncomputable def orientedHostCoverCount
     (A N L : ℕ) : ℝ :=
@@ -745,50 +746,6 @@ theorem hostCount_le_orientedHostCoverCount
     hostCount A N L ≤ orientedHostCoverCount A N L := by
   simp only [hostCount, orientedHostCoverCount, dif_pos hN]
   exact_mod_cast card_activeHosts_le_oriented_sum hN
-
-/--
-Internal bridge statement for the still-unassembled oriented host count in
-Proposition 9.9.
-
-Unlike the published Evertse--Silverman input, this proposition is a
-formalization debt internal to Paper C.  The literal population has now
-been reduced in Lean to its active part, split according to the block
-carrying two concrete defects, and equipped with a canonical residual
-component of support at most ten.  Lemmas 9.4 and 9.8 provide the
-fixed-parameter Diophantine reductions, but their summation over offsets,
-square classes and bounded-component certificates is not yet assembled.
--/
-/- AUDIT_BRIDGE
-{
-  "id": "PCv07c-P9.9-host-count",
-  "kind": "internal",
-  "status": "open",
-  "lean_name": "PaperC.PropositionNineNine.HostCountStatement",
-  "citation": {
-    "authors": ["Brice Pouly"],
-    "title": "Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue",
-    "version": "7c, juillet 2026",
-    "target_pdf_sha256": "23a5db3c8d024cab3fb8ca9f8f1443f40cf9502b1fb6682a331f5948f57a3336",
-    "locator": "Proposition 9.9, démonstration, p. 32"
-  },
-  "source_statement": {
-    "verbatim": "Le nombre total d’hôtes est donc N^{1/2+o_C(1)}.",
-    "source_url": "paper_C_complete_v07c.pdf#page=32",
-    "verification": "manual_primary_source_check_required"
-  },
-  "manuscript_locator": {
-    "result": "Proposition 9.9",
-    "equation": "host count in the proof",
-    "pages": "32"
-  },
-  "formalization_relation": "legacy host-count API for the literal Proposition 9.9 population: zero-mass pairs are deleted and the remaining finite geometry is reduced as stated, but the canonical kappa mass proof bypasses this fixed-shape N^(1/2+o(1)) interface through direct bounded-ratio sector estimates; it remains open and nonblocking"
-}
-AUDIT_BRIDGE -/
-def HostCountStatement
-    (C : ℝ) (A : ℕ) : Prop :=
-  UniformHalfPowerSubpolynomialOn
-    (CriticalRunWindow.InRunLengthWindow C)
-    (orientedHostCoverCount A)
 
 /--
 Proof-independent real linear residual mass of the same population.
@@ -822,60 +779,6 @@ theorem linearMass_le_hostCount_mul_residualWeightEnvelope
     exact_mod_cast hfinite
   simpa only [linearMass, hostCount, dif_pos hN,
     residualWeightEnvelope] using hcast
-
-/--
-Conditional, fully quantified form of Proposition 9.9.
-
-The sole premise is the missing Diophantine host count
-`N^(1/2+o_C(1))`.  All residual-weight, defect-envelope and critical-window
-bookkeeping is discharged internally.
--/
-theorem proposition_nine_nine_uniformThreeHalves
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ)
-    (hhosts : HostCountStatement C A) :
-    UniformThreeHalvesSubpolynomialOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (linearMass A) := by
-  unfold HostCountStatement at hhosts
-  have hactiveHosts :
-      UniformHalfPowerSubpolynomialOn
-        (CriticalRunWindow.InRunLengthWindow C)
-        (hostCount A) := by
-    apply UniformHalfPower.mono hhosts
-    refine ⟨2, ?_⟩
-    intro N hN L _hrun
-    have hhostNonneg : 0 ≤ hostCount A N L := by
-      unfold hostCount
-      simp only [dif_pos hN]
-      positivity
-    have hcoverNonneg :
-        0 ≤ orientedHostCoverCount A N L := by
-      unfold orientedHostCoverCount
-      simp only [dif_pos hN]
-      positivity
-    rw [abs_of_nonneg hhostNonneg,
-      abs_of_nonneg hcoverNonneg]
-    exact hostCount_le_orientedHostCoverCount hN
-  have hproduct :
-      UniformThreeHalvesSubpolynomialOn
-        (CriticalRunWindow.InRunLengthWindow C)
-        (fun N L =>
-          hostCount A N L * residualWeightEnvelope A N L) :=
-    halfPower_mul_linear hactiveHosts
-      (residualWeightEnvelope_uniformLinear hC A)
-  apply UniformThreeHalves.mono hproduct
-  refine ⟨2, ?_⟩
-  intro N hN L _hrun
-  have hmassNonneg : 0 ≤ linearMass A N L := by
-    simp only [linearMass, dif_pos hN]
-    positivity
-  have hproductNonneg :
-      0 ≤ hostCount A N L * residualWeightEnvelope A N L := by
-    unfold hostCount residualWeightEnvelope
-    simp only [dif_pos hN]
-    positivity
-  rw [abs_of_nonneg hmassNonneg, abs_of_nonneg hproductNonneg]
-  exact linearMass_le_hostCount_mul_residualWeightEnvelope hN
 
 end
 

@@ -3,17 +3,13 @@ import PaperC.Asymptotics.SectionThirteenRate
 set_option maxHeartbeats 1800000
 
 /-!
-# A single saving interface for the nonterminal sector
+# Asymptotic scale comparison tools
 
-Proposition 9.11 and Corollary 11.3 expose two views of the same internal
-formalization debt: a saving on the sixth, nonterminal sector.  The
-quantitative view is strictly stronger than the qualitative one, provided
-its exponential constant is positive.
-
-This module records that implication directly between the two already
-registered interfaces.  It introduces no new bridge proposition: the
-positive quantitative hypothesis remains textually visible in every public
-signature that consumes it.
+This module records the generic transitivity lemmas used to pass from a
+quantitative big-O estimate to a qualitative little-o estimate.  In
+particular, both `N²/(log log N)²` and the positive Corollary 11.3
+exponential scale are uniformly little-o of `N²`.  These are derived
+analytic comparisons and introduce no bridge proposition.
 -/
 
 namespace PaperC
@@ -164,27 +160,6 @@ theorem uniformBigO_quantitativeHomogeneousScale_implies_littleO_quadratic
       (fun N _ ↦ (N : ℝ) ^ 2) :=
   uniformBigOOn_trans_uniformLittleOOn hf
     (quantitativeHomogeneousScale_uniformLittleO_quadratic hc)
-
-/--
-Any honest positive-rate instance of the quantitative Corollary 11.3
-interface discharges the older qualitative Proposition 9.11/Proposition
-11.2 interface.  Both registered statements remain explicit in this public
-signature, so the generated condition audit records the implication
-faithfully.
--/
-theorem nonterminalSectorMass_of_quantitative
-    {C : ℝ} {A : ℕ} {c : ℝ}
-    {smallRowRank : SmallRowRankFamily}
-    {rankBudget : RankBudgetFamily}
-    (hc : 0 < c)
-    (hquant :
-      NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget) :
-    NonterminalSectorMassStatement
-      C A smallRowRank rankBudget := by
-  exact
-    uniformBigO_quantitativeHomogeneousScale_implies_littleO_quadratic
-      hc hquant
 
 end
 

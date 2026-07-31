@@ -289,9 +289,43 @@ theorem commonSteinBTwoNumerator_shift_uniformLittleOQuadratic
           N (markedCommonRowCount L E))
       (fun N _ ↦ (N : ℝ) ^ 2) := by
   have hshiftNonneg : 0 ≤ C + (E + 1 : ℕ) := by positivity
-  have hhomBig :=
-    DyadicKappaQuantitative.homogeneousMass_uniformBigO_of_generalizedPell
-      hshiftNonneg hES hPell
+  have hhomBig :
+      UniformBigOOn
+        (CriticalRunWindow.InRunLengthWindow (C + (E + 1 : ℕ)))
+        (PropositionElevenTwo.homogeneousMass 3)
+        SectionThirteenRate.quadraticDivLogLogSquaredScale := by
+    obtain ⟨Q₂, hQ₂Rate, hQ₂Nonneg, hQ₂Dom⟩ :=
+      BoundedRatioTwoSingletonCritical.exists_twoSingletonShapeFiberEnvelope
+        hshiftNonneg 2 3
+    obtain ⟨Cterm, hCterm, hhostsTwo⟩ :=
+      BoundedRatioTwoSingletonCritical.exists_sizeTwoComponentHostEnvelope
+        hshiftNonneg 2 3
+    obtain ⟨hostEnvelope, hhostRate, hhostNonneg, hhostsTen⟩ :=
+      BoundedRatioNonterminalMobileAssembly.evertseSilverman_generalizedPell_imply_exists_moderateNonterminalHostEnvelope
+        hshiftNonneg 2 3 hES hPell Q₂ hQ₂Rate hQ₂Nonneg hQ₂Dom
+    have hlogTwo : 0 < Real.log 2 :=
+      Real.log_pos (by norm_num)
+    let K : ℝ := (2 * Cterm + 1) / Real.log 2
+    have hK : 0 ≤ K := by
+      dsimp only [K]
+      exact div_nonneg (by linarith) hlogTwo.le
+    have hthreshold : 2 * Cterm < K * Real.log 2 := by
+      dsimp only [K]
+      rw [div_mul_cancel₀ _ hlogTwo.ne']
+      linarith
+    have hR2κ :=
+      DyadicKappaQuantitative.R2κ_dyadic_uniformBigO
+        hshiftNonneg hCterm hK hthreshold hES hPell hostEnvelope
+          hhostRate hhostNonneg hhostsTen hhostsTwo
+    have heq :
+        PropositionElevenTwo.homogeneousMass 3 =
+          fun N L ↦ PropositionSixteenOne.R2κ N (2 * N) L := by
+      funext N L
+      exact
+        DyadicKappaTransport.homogeneousMass_eq_R2κ_two_mul
+          3 N L
+    rw [heq]
+    exact hR2κ
   have hhomLittle :=
     NonterminalSectorSaving.uniformBigOOn_trans_uniformLittleOOn
       hhomBig
@@ -466,8 +500,8 @@ The sharper marked relation envelope satisfies
 
 `b₂^(E) = o_{C,E}(1)`.
 
-No C11.3, P9.9, or T10.1 interface occurs in the signature: the separated
-mass is supplied by the canonical bounded-ratio mother-mass proof.
+The separated mass is supplied by the canonical bounded-ratio mother-mass
+proof.
 -/
 theorem markedBTwoSplitEnvelopeReal_uniformLittleOOne
     {C : ℝ} (hC : 0 ≤ C) (E : ℕ)
@@ -697,27 +731,6 @@ theorem retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoSplitEnvelope
     _ = ε := by ring
 
 /--
-Canonical retained marked Stein--Chen convergence.  The historical internal
-interfaces C11.3, P9.9, and T10.1 have disappeared from the signature.
--/
-theorem retainedMarkedTotalVariation_uniformLittleOOne_of_generalizedPell
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    {C : ℝ} (hC : 0 ≤ C) (E : ℕ)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hPell :
-      PellInput.GeneralizedPellPolynomialBoxStatement) :
-    UniformLittleOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (retainedMarkedTotalVariation E)
-      (fun _ _ ↦ 1) :=
-  retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoSplitEnvelope
-    hAGG hC E
-      (markedBTwoSplitEnvelopeReal_uniformLittleOOne
-        hC E hES hPell)
-
-/--
 Canonical retained marked Stein--Chen convergence, conditional only on
 the four source-level literature inputs AGG, Evertse--Silverman,
 Halter--Koch, and Nicolas--Robin.
@@ -736,10 +749,10 @@ theorem retainedMarkedTotalVariation_uniformLittleOOne_canonical
       (CriticalRunWindow.InRunLengthWindow C)
       (retainedMarkedTotalVariation E)
       (fun _ _ ↦ 1) :=
-  retainedMarkedTotalVariation_uniformLittleOOne_of_generalizedPell
-    hAGG hC E hES
-      (PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
-        hConductor hDivisor)
+  retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoSplitEnvelope
+    hAGG hC E
+      (markedBTwoSplitEnvelopeReal_uniformLittleOOne_canonical
+        hC E hES hConductor hDivisor)
 
 end
 

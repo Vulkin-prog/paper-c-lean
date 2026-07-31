@@ -11,11 +11,11 @@ explicit rate
 
 `1 / (log log N)^2`.
 
-The only arithmetic input not already proved in Section 13 is precisely the
-quantitative sector-six interface of Corollary 11.3.  The dependency-edge
-rate below is derived from the elementary harmonic estimate in
-`SectionThirteenRate`; no PNT, Mertens theorem, primitive assumption, or additional bridge
-is introduced.
+All arithmetic dependence is factored through one quantitative
+homogeneous-mass estimate.  The canonical endpoint obtains that estimate
+from the bounded-ratio `κ` proof.  The dependency-edge rate below is derived
+from the elementary harmonic estimate in `SectionThirteenRate`; no PNT,
+Mertens theorem, primitive assumption, or additional bridge is introduced.
 -/
 
 namespace PaperC
@@ -507,9 +507,7 @@ theorem touchingMass_uniformBigO
 Exact transport of any quantitative homogeneous-mass estimate to the
 separated defect numerator used by Stein--Chen.
 
-This mass-level entry point is the one used by the canonical
-bounded-ratio proof.  The historical Corollary 11.3 wrapper below is kept
-for callers that still provide the three sector interfaces separately.
+This mass-level entry point is used by the canonical bounded-ratio proof.
 -/
 theorem separatedDefectMass_uniformBigO_of_homogeneousMass
     {C : ℝ} (A : ℕ)
@@ -530,32 +528,6 @@ theorem separatedDefectMass_uniformBigO_of_homogeneousMass
   rw [
     SectionTwelveMoments.jointDefectMass_separated_cast_eq_homogeneousMass
       (A := A) hN]
-
-/-- Historical Corollary 11.3 entry point for the same transport. -/
-theorem separatedDefectMass_uniformBigO
-    {C : ℝ} (hC : 0 ≤ C)
-    (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : PropositionElevenTwo.SmallRowRankFamily)
-    (rankBudget : PropositionElevenTwo.RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 < c)
-    (hnonterminal :
-      PropositionElevenThree.NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget)
-    (hterminal :
-      PropositionElevenTwo.TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (fun N L ↦
-        (SectionTwelveMoments.jointDefectMass N L
-          (SectionTwelveMoments.separatedOffDiagPairs N L) : ℝ))
-      quadraticDivLogLogSquaredScale := by
-  apply separatedDefectMass_uniformBigO_of_homogeneousMass A
-  exact
-    SectionThirteenRate.homogeneousMass_uniformBigO_quadraticLogLogSquared
-      hC A hA smallRowRank rankBudget hhosts hc
-      hnonterminal hterminal
 
 /-- Quantitative numerator estimate for the first Stein--Chen term. -/
 theorem steinBOneNumerator_uniformBigO
@@ -598,28 +570,6 @@ theorem steinBTwoNumerator_uniformBigO_of_separatedDefectMass
     PropositionElevenThree.uniformBigOOn_add hsecond hseparated
   unfold SteinChenCritical.steinBTwoNumerator
   simpa only [add_assoc] using hall
-
-/-- Historical sector-interface wrapper for the second numerator. -/
-theorem steinBTwoNumerator_uniformBigO
-    {C : ℝ} (hC : 0 ≤ C)
-    (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : PropositionElevenTwo.SmallRowRankFamily)
-    (rankBudget : PropositionElevenTwo.RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 < c)
-    (hnonterminal :
-      PropositionElevenThree.NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget)
-    (hterminal :
-      PropositionElevenTwo.TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      SteinChenCritical.steinBTwoNumerator
-      quadraticDivLogLogSquaredScale :=
-  steinBTwoNumerator_uniformBigO_of_separatedDefectMass hC
-    (separatedDefectMass_uniformBigO hC A hA
-      smallRowRank rankBudget hhosts hc hnonterminal hterminal)
 
 /-! ## Quantitative Stein--Chen terms -/
 
@@ -722,28 +672,6 @@ theorem steinBTwoAverage_uniformBigO_explicitRate_of_numerator
   unfold SteinChenCritical.steinBTwoNumerator
   rfl
 
-/-- Historical sector-interface wrapper for the averaged second term. -/
-theorem steinBTwoAverage_uniformBigO_explicitRate
-    {C : ℝ} (hC : 0 ≤ C)
-    (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : PropositionElevenTwo.SmallRowRankFamily)
-    (rankBudget : PropositionElevenTwo.RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 < c)
-    (hnonterminal :
-      PropositionElevenThree.NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget)
-    (hterminal :
-      PropositionElevenTwo.TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      SteinChenCritical.steinBTwoAverageReal
-      inverseLogLogSquaredRate :=
-  steinBTwoAverage_uniformBigO_explicitRate_of_numerator hC
-    (steinBTwoNumerator_uniformBigO hC A hA
-      smallRowRank rankBudget hhosts hc hnonterminal hterminal)
-
 /--
 The uniformly averaged conditional good-start law satisfies the explicit
 AGG rate once the averaged second Stein--Chen term is controlled.
@@ -802,40 +730,12 @@ theorem
             SteinChenCritical.steinBTwoAverageReal N L)| :=
       le_abs_self _
 
-/--
-Historical sector-interface wrapper.  The only external hypothesis is the
-registered Arratia--Goldstein--Gordon theorem.
--/
-theorem averagedConditionalGoodTotalVariation_uniformBigO_explicitRate
-    {C : ℝ} (hC : 0 ≤ C)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : PropositionElevenTwo.SmallRowRankFamily)
-    (rankBudget : PropositionElevenTwo.RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 < c)
-    (hnonterminal :
-      PropositionElevenThree.NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget)
-    (hterminal :
-      PropositionElevenTwo.TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      ConditionalAGGCritical.averagedConditionalGoodTotalVariation
-      inverseLogLogSquaredRate :=
-  averagedConditionalGoodTotalVariation_uniformBigO_explicitRate_of_steinBTwo
-    hC hAGG
-    (steinBTwoAverage_uniformBigO_explicitRate hC A hA
-      smallRowRank rankBudget hhosts hc hnonterminal hterminal)
-
 /-! ## Final assembly -/
 
 /--
 Corollary 13.10 from a quantitative estimate for the averaged conditional
-good-start law.  This is the arithmetic-agnostic final assembly used by
-both the historical and canonical paths.
+good-start law.  This is the arithmetic-agnostic final assembly used by the
+canonical path.
 -/
 theorem corollary_thirteen_ten_uniformBigO_of_averagedConditional
     {C : ℝ} (hC : 0 ≤ C)
@@ -912,8 +812,7 @@ theorem corollary_thirteen_ten_uniformBigO_of_averagedConditional
 
 /--
 Mass-level form of Corollary 13.10.  All arithmetic enters through the
-single homogeneous-mass estimate, so canonical κ proofs need not recreate
-the historical sector interfaces.
+single homogeneous-mass estimate supplied by the canonical `κ` proof.
 -/
 theorem corollary_thirteen_ten_uniformBigO_of_homogeneousMass
     {C : ℝ} (hC : 0 ≤ C)
@@ -945,113 +844,6 @@ theorem corollary_thirteen_ten_uniformBigO_of_homogeneousMass
       hC hconditional
 
 /--
-Corollary 13.10 in the literal critical run-length window, through the
-historical sector interfaces.
--/
-theorem corollary_thirteen_ten_uniformBigO
-    {C : ℝ} (hC : 0 ≤ C)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : PropositionElevenTwo.SmallRowRankFamily)
-    (rankBudget : PropositionElevenTwo.RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 < c)
-    (hnonterminal :
-      PropositionElevenThree.NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget)
-    (hterminal :
-      PropositionElevenTwo.TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      SectionThirteenCritical.fullDyadicTargetPoissonTotalVariation
-      inverseLogLogSquaredRate :=
-  corollary_thirteen_ten_uniformBigO_of_averagedConditional hC
-    (averagedConditionalGoodTotalVariation_uniformBigO_explicitRate
-      hC hAGG A hA smallRowRank rankBudget
-      hhosts hc hnonterminal hterminal)
-
-/--
-Theorem 1.1 is the introductory restatement of Corollary 13.10.  This public
-alias keeps the theorem-level audit attached to the exact final manuscript
-result rather than only to its section-13 name.
--/
-theorem theorem_one_one_uniformBigO
-    {C : ℝ} (hC : 0 ≤ C)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : PropositionElevenTwo.SmallRowRankFamily)
-    (rankBudget : PropositionElevenTwo.RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 < c)
-    (hnonterminal :
-      PropositionElevenThree.NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget)
-    (hterminal :
-      PropositionElevenTwo.TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      SectionThirteenCritical.fullDyadicTargetPoissonTotalVariation
-      inverseLogLogSquaredRate :=
-  corollary_thirteen_ten_uniformBigO
-    hC hAGG A hA smallRowRank rankBudget
-    hhosts hc hnonterminal hterminal
-
-/-! ## Canonical theorem-level entry points -/
-
-/--
-Corollary 13.10 with the mother mass supplied directly by the bounded-ratio
-`κ` proofs.
-
-The historical interfaces C11.3, P9.9, and T10.1 do not occur in this
-signature.  The remaining assumptions are precisely the registered
-Arratia--Goldstein--Gordon, Evertse--Silverman, and generalized-Pell
-literature inputs.
--/
-theorem corollary_thirteen_ten_uniformBigO_canonical_of_generalizedPell
-    {C : ℝ} (hC : 0 ≤ C)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hPell :
-      PellInput.GeneralizedPellPolynomialBoxStatement) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      SectionThirteenCritical.fullDyadicTargetPoissonTotalVariation
-      inverseLogLogSquaredRate :=
-  corollary_thirteen_ten_uniformBigO_of_homogeneousMass
-    hC hAGG 3
-      (DyadicKappaQuantitative.homogeneousMass_uniformBigO_of_generalizedPell
-        hC hES hPell)
-
-/--
-Compatibility wrapper for the former specialized Nicolas--Robin Pell
-envelope.
--/
-theorem corollary_thirteen_ten_uniformBigO_canonical_of_pellEnvelope
-    {C : ℝ} (hC : 0 ≤ C)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
-    (hDivisor :
-      PellInput.NicolasRobinPellEnvelopeStatement) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      SectionThirteenCritical.fullDyadicTargetPoissonTotalVariation
-      inverseLogLogSquaredRate :=
-  corollary_thirteen_ten_uniformBigO_canonical_of_generalizedPell
-    hC hAGG hES
-      (PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin
-        hConductor hDivisor)
-
-/--
 Canonical Corollary 13.10 with the generalized-Pell package discharged from
 the quadratic-order comparison and the source-shaped Nicolas--Robin
 logarithmic divisor inequality.
@@ -1070,53 +862,10 @@ theorem corollary_thirteen_ten_uniformBigO_canonical
       (CriticalRunWindow.InRunLengthWindow C)
       SectionThirteenCritical.fullDyadicTargetPoissonTotalVariation
       inverseLogLogSquaredRate :=
-  corollary_thirteen_ten_uniformBigO_canonical_of_generalizedPell
-    hC hAGG hES
-      (PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
-        hConductor hDivisor)
-
-/--
-Canonical theorem-level form of Theorem 1.1.
-
-Its arithmetic mother-mass input is constructed internally from the
-bounded-ratio `κ` sector proofs, so no aggregate Section 9--11 interface is
-assumed.
--/
-theorem theorem_one_one_uniformBigO_canonical_of_generalizedPell
-    {C : ℝ} (hC : 0 ≤ C)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hPell :
-      PellInput.GeneralizedPellPolynomialBoxStatement) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      SectionThirteenCritical.fullDyadicTargetPoissonTotalVariation
-      inverseLogLogSquaredRate :=
-  corollary_thirteen_ten_uniformBigO_canonical_of_generalizedPell
-    hC hAGG hES hPell
-
-/--
-Compatibility wrapper for the former specialized Nicolas--Robin Pell
-envelope at the Theorem 1.1 endpoint.
--/
-theorem theorem_one_one_uniformBigO_canonical_of_pellEnvelope
-    {C : ℝ} (hC : 0 ≤ C)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
-    (hDivisor :
-      PellInput.NicolasRobinPellEnvelopeStatement) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      SectionThirteenCritical.fullDyadicTargetPoissonTotalVariation
-      inverseLogLogSquaredRate :=
-  corollary_thirteen_ten_uniformBigO_canonical_of_pellEnvelope
-    hC hAGG hES hConductor hDivisor
+  corollary_thirteen_ten_uniformBigO_of_homogeneousMass
+    hC hAGG 3
+      (DyadicKappaQuantitative.homogeneousMass_uniformBigO
+        hC hES hConductor hDivisor)
 
 /--
 Canonical theorem-level form of Theorem 1.1 with only source-shaped external

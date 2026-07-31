@@ -1,5 +1,29 @@
 # Journal des versions
 
+## 0.41.0
+
+- Nettoyage strict de l’API publique legacy, sans changement des signatures
+  canoniques. Les quatre interfaces `internal/open` C11.3, P9.9, P9.11 et
+  T10.1, ainsi que leurs 27 consommateurs publics, sont supprimées. Le
+  registre ne contient désormais aucun pont `internal/open`.
+- Les douze endpoints prenant directement l’ancien paquet Pell ou son
+  enveloppe spécialisée (`_of_generalizedPell` et `_of_pellEnvelope`) sont
+  supprimés au profit de leurs endpoints canoniques. Les six adaptateurs
+  sectoriels intermédiaires de la proposition 16.1 et du théorème 16.2
+  (`_of_sector_estimates`, `_of_manyDefectsEstimate(s)` et
+  `_of_nonterminalEstimate(s)`) sont supprimés eux aussi.
+- Les six entrées `discharged` sont conservées avec leurs théorèmes de
+  décharge : l’ancienne enveloppe Nicolas--Robin, Pell généralisé, 9.10,
+  17.26, 17.28 et 17.30. Les assemblages génériques directs
+  `proposition_sixteen_one` et `theorem_sixteen_two` restent disponibles et
+  assurent notamment la traçabilité des trois interfaces sectorielles
+  déchargées.
+- Lean et mathlib restent gelés en `v4.19.0`. La v041 contient 372 modules et
+  142 015 lignes Lean. Le manifeste final recense 3 970 théorèmes et 5
+  lemmes publics, soit 3 975 déclarations, 3 977 cibles d’audit et 13 ponts —
+  huit `external`, cinq `internal`, sept `open` tous `external` et six
+  `discharged` — soit 3 825 résultats inconditionnels et 150 conditionnels.
+
 ## 0.40.0
 
 - La proposition 14.2 emprunte désormais la même masse mère quantitative

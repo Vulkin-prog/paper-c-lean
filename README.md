@@ -29,8 +29,9 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 doit donc rester vide. Cela certifie seulement les modules présents, pas les
 69 pages du manuscrit.
 
-La version Lean `0.40.0` ferme la chaîne interne du §14. Les sommes de
-Riemann dyadiques, les paramètres amincis spatial et marqué, le graphe de
+La version Lean `0.41.0` conserve la fermeture de la chaîne interne du §14
+et nettoie les anciennes routes publiques devenues redondantes. Les sommes
+de Riemann dyadiques, les paramètres amincis spatial et marqué, le graphe de
 dépendance marqué, ses deux termes de Stein--Chen, les transferts exacts
 cylindre--loi source et la dé-troncation sont assemblés. Sous les quatre
 entrées de littérature explicites Arratia--Goldstein--Gordon,
@@ -118,14 +119,15 @@ sous Evertse--Silverman et les deux entrées externes précédentes.
 
 Les entrées canoniques
 `corollary_thirteen_ten_uniformBigO_canonical` et
-`theorem_one_one_uniformBigO_canonical` n’emploient donc plus les interfaces
-historiques C11.3, P9.9 et T10.1. Leur liste exacte de ponts est AGG et
+`theorem_one_one_uniformBigO_canonical` ont pour liste exacte de ponts AGG,
 Evertse--Silverman, la comparaison de conducteur de Halter–Koch et
 Nicolas–Robin,
 tous de nature `external`. Aucun pont `internal/open` ne remonte donc au
 théorème 1.1 canonique : c’est le jalon « inconditionnel modulo littérature ».
-Les anciennes signatures prenant directement Pell restent disponibles sous
-le suffixe `_of_generalizedPell`.
+La v041 supprime les anciennes signatures prenant directement Pell ou son
+enveloppe spécialisée, ainsi que les quatre interfaces C11.3, P9.9, P9.11 et
+T10.1 et leurs consommateurs publics. Les signatures canoniques restent
+inchangées.
 
 Cette version conserve aussi la fermeture sans pont des lemmes 17.14–17.16
 et de l’instance \(\alpha=3/16\) de 17.17, ainsi que la population terminale
@@ -197,16 +199,14 @@ l’appelant. Les API canoniques de la proposition 16.1 et du théorème 16.2
 construisent donc ce secteur elles-mêmes à partir de Pell.
 
 Les trois interfaces historiques 17.26, 17.28 et 17.30 restent enregistrées
-pour les assemblages génériques et la compatibilité historique, avec le
+pour les deux assemblages génériques directs et la traçabilité, avec le
 statut `discharged`; l’interface historique de 9.10 porte désormais le même
 statut. L’API canonique n’en consomme aucune. La proposition 16.1 canonique
 prend seulement Evertse--Silverman et les deux corollaires de littérature
-qui reconstruisent Pell. Les signatures historiques
-demeurent disponibles sous des noms explicites
-`_of_sector_estimates`, `_of_manyDefectsEstimate` et
-`_of_nonterminalEstimate`; la signature directe historique de Pell porte le
-suffixe `_of_generalizedPell`. La toolchain reste gelée en Lean/mathlib
-`v4.19.0`.
+qui reconstruisent Pell. La v041 retire les six adaptateurs sectoriels
+intermédiaires et les variantes recevant directement Pell ; seuls les
+endpoints canoniques et les assemblages génériques directs sont conservés.
+La toolchain reste gelée en Lean/mathlib `v4.19.0`.
 
 Pour le théorème 16.2, avec l’hypothèse source \(C>0\), Lean définit le
 compte global \(Z_M\) sur un cylindre fini commun, prouve le couplage de
@@ -503,25 +503,29 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
   trois à l'interface Evertse--Silverman, puis établit la paramétrisation
   canonique
   \(X=ecu^2,\ Y=(d/e)cv^2\), sa réciproque, son unicité et les bornes de ses
-  paramètres. Les entrées diophantiennes non encore formalisées restent des
-  hypothèses explicites, classées `external` ou `internal` dans le registre,
-  et les sommations asymptotiques de 9.4--9.5 restent à assembler.
+  paramètres. `BoundedRatioManyDefectsDegreeTwoSum`,
+  `BoundedRatioManyDefectsEvertseSum` et
+  `BoundedRatioManyDefectsDegreeAssembly` assemblent désormais les
+  sommations asymptotiques de 9.4--9.5, sous Evertse--Silverman et le pont
+  Pell déchargé ; seules les entrées de littérature restent ouvertes.
 - `PaperC.Combinatorics.DeepCoreSmallComponent` et
   `PaperC.Diophantine.MultipleDefects` certifient les réductions finies des
   lemmes 9.6--9.8 : extraction d'une composante de taille bornée sous une
   hypothèse de densité, injection de deux défauts vers une équation de Pell,
   transfert exact du cardinal et factorisation de la branche de même classe.
-  Le raccord aux populations d'hôtes et les sommes sur les paramètres lisses
-  ne sont pas encore fermés.
+  `BoundedRatioNonterminalHostCounts`,
+  `BoundedRatioNonterminalRealHosts` et
+  `BoundedRatioNonterminalAssembly` ferment le raccord aux populations
+  d'hôtes et les sommes sur les paramètres lisses, sous les mêmes entrées.
 - `PaperC.Asymptotics.PropositionNineNine` définit la population exacte du
   cœur profond avec \(\sigma=0\) et \(D^\#\ge3\), prouve les enveloppes
-  finies de poids et de masse, puis ferme uniformément
-  \(N^{1/2+o_C(1)}N^{1+o_C(1)}=N^{3/2+o_C(1)}\). L'unique prémisse finale,
-  `HostCountStatement`, est un pont **interne** strictement réduit : les
-  paires de masse nulle sont retirées, chaque hôte actif porte une composante
-  canonique de support entre 2 et 10 et appartient à l’une des deux branches
-  orientées possédant deux défauts concrets. Il reste à sommer les réductions
-  de 9.4 et 9.8 sur leurs paramètres.
+  finies de poids et de masse et retire les paires de masse nulle. Chaque
+  hôte actif porte une composante canonique de support entre 2 et 10 et
+  appartient à l’une des deux branches orientées possédant deux défauts
+  concrets. La v041 supprime l’ancienne interface de compte d’hôtes et son
+  endpoint asymptotique : la route canonique de masse mère utilise à la place
+  les comptes directs à rapport borné. L’API arbitraire à formes fixées de
+  9.9 n’est plus revendiquée comme endpoint public.
 - `PaperC.LinearAlgebra.NonalignedCoreRank`,
   `PaperC.LinearAlgebra.CanonicalExactRank`,
   `PaperC.LinearAlgebra.CanonicalSmallRows`,
@@ -564,7 +568,7 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
   Le compte des partenaires est conditionnel aux deux entrées externes qui
   reconstruisent Pell. Les majorants asymptotiques des premières
   coordonnées et des fibres ainsi que l’assemblage canonique sont maintenant
-  fermés ; l’API générique de T10.1 demeure seulement comme wrapper legacy.
+  fermés. L’ancien wrapper générique de T10.1 est supprimé en v041.
 - `PaperC.Combinatorics.SectionElevenPartition` et
   `CanonicalSectionElevenPartition` formalisent les six tests ordonnés du
   lemme 11.1. Les sept secteurs couvrent toutes les paires séparées, sont
@@ -575,40 +579,37 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
   identifie exactement le secteur 7 à sa partie canoniquement non alignée ;
   l'identification de la fonction de rang et du budget au seuil asymptotique
   du manuscrit reste explicite.
-- `PaperC.Asymptotics.PropositionElevenTwo` certifie conditionnellement la
+- `PaperC.Asymptotics.PropositionElevenTwo` conserve le noyau fini de la
   proposition 11.2. Lean prouve l'identité
   \(2^{\sigma+\tau}-1=(2^\sigma-1)+2^\sigma(2^\tau-1)\), les sommes finies
   associées et la désintégration dans les sept secteurs. Les secteurs 1–5
   sont raccordés aux propositions 7.3–7.5, au théorème 8.1 et à la
-  proposition 9.9. La conclusion uniforme \(R_2(N,L)=o_C(N^2)\) garde dans
-  sa signature les trois dettes internes réelles : compte d'hôtes 9.9,
-  masse non terminale hors \(T_K\) de 9.11 et masse terminale de 10.1.
-  Elle est en outre paramétrée par les familles fournies
-  `smallRowRank` et `rankBudget` ; leur identification au vrai
-  \(\widetilde k\) et au seuil \(K\sqrt B/\log B\) fait partie du raccord
-  décrit par les deux derniers ponts, mais ces données ordinaires ne sont pas
-  elles-mêmes des entrées séparées du registre.
-- `PaperC.Asymptotics.PropositionElevenThree` formalise conditionnellement le
-  corollaire 11.3 à son échelle littérale
+  proposition 9.9. La v041 retire l’ancien assemblage public paramétré par
+  `smallRowRank` et `rankBudget`, ainsi que ses trois interfaces internes.
+  La conclusion uniforme utilisée par les endpoints canoniques est désormais
+  fournie exclusivement par la masse mère quantitative à rapport borné.
+- `PaperC.Asymptotics.PropositionElevenThree` conserve le calcul des cinq
+  secteurs élémentaires et le calcul d’assemblage à l’échelle littérale du
+  corollaire 11.3,
   \[
     R_2(N,L)\ll_C N^2
       \exp\!\left(-c\frac{\sqrt{\log N}}{\log\log N}\right).
   \]
-  Les six contributions déjà munies d'une économie de puissance sont
-  transportées en Lean vers cette échelle. Le seul nouveau pont interne est
-  limité au sixième secteur non terminal et garde donc visible la dette
-  quantitative exacte ; les ponts internes antérieurs de 9.9 et 10.1 restent
-  également explicites dans le théorème final.
-- `PaperC.Probability.SectionTwelveMoments` ferme conditionnellement la
+  Les anciennes conclusions publiques consommant le taux abstrait du sixième
+  secteur, le compte d’hôtes 9.9 et la masse terminale 10.1 sont supprimées.
+  `DyadicKappaQuantitative` fournit directement la conclusion canonique.
+- `PaperC.Probability.SectionTwelveMoments` conserve le noyau exact de la
   déduction des moments du §12 dans le cylindre fini. Les paires hors
   diagonale sont partitionnées en chevauchement strict, contact et
-  séparation ; Lean prouve l'identité exacte du second moment factoriel,
+  séparation ; Lean prouve les identités exactes du second moment factoriel,
   \[
   \mathbb E[(Z)_2]-(N)_2\,2^{-2L}=o_C(1),\qquad
   \mathbb E[(Z)_2]-\lambda_N^2=o_C(1),
   \]
-  puis \(\operatorname{Var}(Z)-\lambda_N=o_C(1)\). Chacun des théorèmes
-  publics finaux expose directement les trois ponts de la proposition 11.2.
+  et de la variance à partir d’une estimation homogène fournie. Les trois
+  anciens endpoints publics qui recevaient les interfaces de 9.9, 9.11 et
+  10.1 sont supprimés ; la v041 ne revendique plus cette route legacy comme
+  endpoint autonome du théorème 1.4.
 - `PaperC.Analysis.TerminalPrimeCutoff`,
   `PrimeReciprocalSqrtSum`, `PaperC.Probability.BadStartCount` et
   `TerminalBadStartBound`, puis `BadStartMass`, formalisent les noyaux des
@@ -682,7 +683,7 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
   Le premier terme vérifie inconditionnellement \(b_1=o_C(1)\). Le second
   est décomposé en chevauchement, contact et séparation ; son majorant fini
   et \(\mathbb E b_2=o_C(1)\) sont prouvés sous la conclusion de la
-  proposition 11.2, donc sous ses trois ponts internes nommés.
+  proposition 11.2 fournie comme prémisse explicite.
   `PaperC.Probability.ConditionalAGGAverage` prouve la décomposition exacte
   `SampleSpace ≃ SmallSample × LargeSample`, puis la loi totale uniforme.
   Les moyennes conditionnelles de \(b_1\) et \(b_2\) sont ainsi identifiées
@@ -692,22 +693,22 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
   et inégalité de couplage entre lois naturelles finies. Ensemble, ces
   modules donnent le majorant fini explicite du corollaire 13.9 à partir des
   mauvais starts et des termes de Stein–Chen.
-  `PaperC.Asymptotics.ConditionalAGGCritical` en déduit que la variation
-  totale conditionnelle moyenne est uniformément \(o_C(1)\) au cutoff
-  littéral, sous AGG et les trois ponts internes déjà visibles de 11.2.
+  La v041 retire l’ancien endpoint qui reconstruisait cette prémisse à partir
+  des trois interfaces internes de 11.2.
   `PaperC.Probability.SectionThirteenCouplings` identifie ensuite la loi
   moyenne à la loi du bon compte sur le cylindre complet, couple celui-ci au
   compte de tous les starts, et prouve directement
   \(d_{\rm TV}(\mathrm{Pois}(r),\mathrm{Pois}(s))\le|r-s|\). La différence
   des paramètres vaut exactement \(\#D_Y2^{-L}\).
-  `PaperC.Asymptotics.SectionThirteenCritical` assemble enfin le corollaire
-  13.9 complet :
+  La route quantitative canonique assemble directement la conclusion plus
+  forte du corollaire 13.10 :
   \[
     d_{\rm TV}\!\left(\mathcal L(Z_{N,L}),
       \mathrm{Pois}(N2^{-L})\right)=o_C(1).
   \]
-  `PaperC.Asymptotics.SectionThirteenRate` transporte maintenant le terme
-  arithmétique quantitatif de 11.3 à travers la normalisation \(2^{-2L}\).
+  Les anciens endpoints qualitatifs autonomes du corollaire 13.9 et le
+  transport sectoriel abstrait de 11.3 sont supprimés ; les lemmes finis et
+  les raccords canoniques restent disponibles.
   Lean prouve notamment
   \[
     e^{-c\sqrt{\log N}/\log\log N}
@@ -730,11 +731,10 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
       =O((\log\log N)^{-2})
   \]
   uniformément dans \(\lvert L-\log_2N\rvert\le C\). L’entrée canonique
-  dépend seulement d’AGG, d’Evertse--Silverman et de Pell ; les interfaces
-  C11.3, P9.9 et T10.1 ne figurent plus dans sa signature. L’ancienne entrée
-  sectorielle reste disponible. La formule intermédiaire plus fine de 13.6
-  n'est pas revendiquée : la borne harmonique plus grossière suffit au taux
-  final.
+  dépend seulement d’AGG, d’Evertse--Silverman, de Halter--Koch et de
+  Nicolas--Robin. Les anciennes entrées sectorielles et Pell directes sont
+  supprimées. La formule intermédiaire plus fine de 13.6 n'est pas
+  revendiquée : la borne harmonique plus grossière suffit au taux final.
 - `PaperC.Probability.MaskedFirstMoment` et
   `PaperC.Asymptotics.MaskedFirstMomentCritical`, avec
   `PaperC.Asymptotics.LogLogRunWindow`, ferment uniformément le premier
@@ -758,8 +758,8 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
   \]
   L’endpoint canonique prend exactement AGG, Evertse--Silverman,
   Halter--Koch et Nicolas--Robin. Les anciennes interfaces internes de la
-  proposition 11.2 restent disponibles dans les wrappers historiques, mais
-  ne remontent plus à cette signature.
+  proposition 11.2 et leurs wrappers publics sont supprimés en v041 ; la
+  signature canonique est inchangée.
 - `PaperC.Probability.SpatialThinningFinite`,
   `IndependentThinning`, `LaplaceVoidClosure` et
   `PoissonLaplaceFunctional` construisent la loi produit des variables
@@ -1082,11 +1082,14 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
   théorème public assemble directement la proposition 15.5 et la proposition
   16.1 quantifiée pour tout \(C'>0\) et tout \(\kappa_0\ge2\), avec une
   famille terminale autorisée à dépendre de ces paramètres ; l’estimation
-  d’arêtes est elle aussi fournie pour tout \(C'>0\). L’API générique expose
-  les trois interfaces sectorielles. L’API canonique construit les trois
-  secteurs profonds : elle n’expose plus ni \(K\), ni famille terminale, ni
-  hypothèse de la section 17. Seuls AGG, PNT, Laishram--Shorey,
-  Balasubramanian--Shorey, Evertse--Silverman et Pell restent visibles.
+  d’arêtes est elle aussi fournie pour tout \(C'>0\). L’assemblage générique
+  direct expose les trois interfaces sectorielles `discharged`; les trois
+  adaptateurs intermédiaires qui permettaient de les fournir par étapes sont
+  supprimés en v041. L’API canonique construit les trois secteurs profonds :
+  elle n’expose plus ni \(K\), ni famille terminale, ni hypothèse de la
+  section 17. Seuls AGG, PNT, Laishram--Shorey,
+  Balasubramanian--Shorey, Evertse--Silverman, Halter--Koch et
+  Nicolas--Robin restent visibles.
   L’interface arithmétique de 9.10 et l’interface agrégée fixe-ratio ont
   disparu de ce chemin canonique.
 - `PaperC.LinearAlgebra.PrivatePivots` et
@@ -1328,11 +1331,15 @@ est le registre des ponts de `audit_manifest.json` et d'`AXIOM_AUDIT.md` :
 chaque entrée porte `kind: external | internal` et
 `status: open | discharged`, et chaque théorème public conditionnel est
 marqué avec la liste exacte et la nature des ponts qu’il prend comme
-prémisses directes. En v040, les interfaces de 9.10, 9.2, 17.26, 17.28,
+prémisses directes. En v041, les interfaces de 9.10, 9.2, 17.26, 17.28,
 17.30 et l’ancienne enveloppe Nicolas--Robin portent
 `status: discharged`. `kind: internal` décrit une provenance et ne signifie
-donc pas, à lui seul, qu’une dette reste ouverte. Les comptes exacts du
-manifeste v040 sont reproduits dans `REPRODUCIBILITY.md`.
+donc pas, à lui seul, qu’une dette reste ouverte. Les cinq interfaces
+`internal` sont toutes `discharged`; les sept entrées `open` sont toutes
+`external`. Le manifeste v041 recense 3 970 théorèmes et 5 lemmes publics,
+3 977 cibles d’audit, 3 825 résultats inconditionnels et 150 conditionnels,
+ainsi que 13 ponts — huit `external`, cinq `internal`, sept `open` et six
+`discharged`. Ces comptes sont reproduits dans `REPRODUCIBILITY.md`.
 
 Le parseur du générateur couvre aussi le format où `theorem` ou `lemma` est
 seul sur une ligne et où le nom commence sur la suivante. Cette correction
@@ -1362,43 +1369,27 @@ déchargée de compatibilité.
 - l’ancienne spécialisation éventuelle aux paramètres polynomialement
   bornés de 9.2, désormais `discharged` par ce module.
 
-Parmi les interfaces `internal`, restent `open` uniquement les quatre API
-historiques et génériques : le compte d’hôtes de la proposition 9.9, la masse
-hors \(T_K\) de la proposition 9.11, la masse terminale du théorème 10.1 et
-le taux du sixième secteur du corollaire 11.3. Elles ne sont consommées par
-aucun endpoint canonique. Les interfaces correspondant aux lemmes 9.2, 9.10,
-17.26, 17.28 et 17.30 sont conservées avec `status: discharged` pour la
-compatibilité et la traçabilité historique.
-
-Parmi les interfaces internes historiques, Pell, 9.10, 17.26, 17.28 et
-17.30 sont désormais `discharged`. Les quatre interfaces P9.9, P9.11,
-T10.1 et C11.3 restent ouvertes pour les API génériques ou les énoncés
-historiques, mais ne bloquent plus le théorème principal canonique. Celui-ci
-ne propage donc aucun pont `internal/open` : la formule « inconditionnel
-modulo littérature » décrit exactement sa frontière actuelle, constituée
-uniquement des résultats externes enregistrés.
-
-Le compte d’hôtes 9.9 est limité aux deux branches orientées portant deux
-défauts et une composante canonique de support entre 2 et 10. Cette
-obligation reste plus amont que les fermetures désormais prouvées de 17.26
-et 17.28. L’équivalence de 9.10, elle, est obtenue directement par
-l’équivalence relations--noyau dans la branche non alignée, sous couverture
-des deux frontières. De même, la forme quantitative du sixième secteur
-exigée par le corollaire 11.3 reste distincte du petit-oh qualitatif fermé au
-lemme 17.28.
+Les cinq interfaces `internal` correspondent à Pell, 9.10, 17.26, 17.28 et
+17.30 ; elles sont toutes `discharged` et conservées pour la traçabilité.
+Les anciennes interfaces P9.9, P9.11, T10.1 et C11.3 ont été supprimées avec
+leurs endpoints publics génériques. Il ne reste donc aucun pont
+`internal/open`. La formule « inconditionnel modulo littérature » décrit
+exactement la frontière des endpoints canoniques, constituée uniquement des
+sept résultats externes encore ouverts.
 
 Le lemme 17.26 assemble maintenant ses sommes de diviseurs signés et
 d’Evertse--Silverman ; le lemme 17.28 assemble les comptes d’hôtes mobiles et
 deux-singletons et choisit lui-même \(K\) ; le lemme 17.30 était déjà fermé
 sous Pell et utilise désormais le théorème Lean de 9.10 sans hypothèse
-supplémentaire. Les théorèmes canoniques 16.1 et 16.2 ne prennent donc plus
-aucune de ces quatre interfaces historiques. L’identité de marginale
+supplémentaire. Les théorèmes canoniques 16.1 et 16.2 ne prennent donc aucun
+pont interne. L’identité de marginale
 entre deux cutoffs finis, les bornes de mauvais départs, \(b_1\), \(b_2\),
 le mélange, le couplage, la moyenne et l’arrondi du bord sont également
 déchargés. L’ancienne interface `BoundedRangePoissonApproximation` n’est plus
-enregistrée. Le théorème 16.2 générique conserve ses wrappers sectoriels,
-mais sa variante canonique principale ne reçoit plus ni seuil \(K\), ni
-famille terminale, ni prémisse de la section 17.
+enregistrée. Le théorème 16.2 générique direct conserve les trois prémisses
+sectorielles `discharged`, mais ses adaptateurs intermédiaires ont été
+supprimés. Sa variante canonique principale ne reçoit plus ni seuil \(K\),
+ni famille terminale, ni prémisse de la section 17.
 
 Le lemme quantitatif de Runge, la proposition 3.2, le corollaire 3.3, les
 deux parties du lemme 3.4, les lemmes 4.2--4.3, les lemmes 5.1--5.2 et 5.5,
@@ -1419,28 +1410,22 @@ littérale \(P^\#>N\), hors petite hauteur, avec
 \(R_{\rm res}\le N^{31/16+o_C(1)}=o_C(N^2)\). La partition exacte des
 secteurs 7.3--7.5 et du cœur profond restant est également certifiée.
 Restent notamment la généralisation littérale de l'instance
-\(\alpha=3/16\) du théorème 8.1 à un paramètre positif arbitraire, le compte
-d’hôtes général de 9.9 et les API génériques ouvertes de 9.11 et 10.1. La
-preuve interne de Pell est déchargée ; seules ses deux entrées de littérature
-Halter--Koch et Nicolas--Robin restent explicites. La proposition 11.2
-et le §12 sont maintenant assemblés
-conditionnellement sous les trois interfaces dédiées de 9.9, 9.11 et 10.1 ;
-ces interfaces sont des API legacy qui ne remontent pas aux endpoints
-canoniques. Le taux du corollaire 11.3 est désormais
-assemblé sous un pont interne supplémentaire, limité au sixième secteur
-quantitatif. Les lemmes 13.3–13.5, les termes du
+\(\alpha=3/16\) du théorème 8.1 à un paramètre positif arbitraire. La preuve
+interne de Pell est déchargée ; seules ses deux entrées de littérature
+Halter--Koch et Nicolas--Robin restent explicites. Les anciennes routes
+publiques arbitraires de 9.9–11.3 et du §12 ont été retirées en v041 ; leurs
+noyaux finis restent dans les modules, tandis que la masse mère canonique est
+fournie par les preuves \(κ\). Les lemmes 13.3–13.5, les termes du
 lemme 13.8 et le raccord booléen complet à l’interface AGG sont maintenant
-certifiés. Le corollaire 13.9 complet est assemblé, des couplages finis
-jusqu’au petit-oh uniforme pour la loi du compte dyadique entier. Le
-corollaire 13.10 complet est désormais assemblé : le terme d'arêtes au
-cutoff terminal, les termes quantitatifs de Stein–Chen et le triangle de
-variation totale donnent le taux uniforme
+certifiés. La conclusion qualitative du corollaire 13.9 découle de l’endpoint
+canonique quantitatif, plutôt que d’une seconde route publique legacy. Le
+corollaire 13.10 assemble le terme d'arêtes au cutoff terminal, les termes
+quantitatifs de Stein–Chen et le triangle de variation totale pour donner le
+taux uniforme
 \(O((\log\log N)^{-2})\). Cette conclusion est la forme quantitative
-conditionnelle du théorème 1.1 dans le cylindre fini. Sa nouvelle entrée
+conditionnelle du théorème 1.1 dans le cylindre fini. Son entrée
 canonique utilise AGG, Evertse--Silverman, Halter--Koch et l’inégalité
-logarithmique Nicolas--Robin, sans
-`HostCountStatement`, `NonterminalSectorQuantitativeStatement` ni
-`TerminalSectorMassStatement`. Le
+logarithmique Nicolas--Robin. Le
 \(o_C(N^2)\) de 13.6 est certifié au cutoff littéral. La proposition 14.1
 est fermée dans la fenêtre log-log du manuscrit et la proposition 14.2
 canonique utilise désormais AGG et la masse mère quantitative \(κ\), sans
@@ -1459,21 +1444,19 @@ R_2(N,L)\ll_C N^2
 \qquad c_R=c_R(A,C)>0.
 \]
 
-Le chaînon est donc présent dans le manuscrit. L’ancienne formalisation
-sectorielle de 11.3 reste conditionnelle à ses interfaces historiques. La
-voie canonique les contourne maintenant : elle construit la masse mère
-quantitative depuis les preuves \(κ\), puis injecte cette unique estimation
-dans l’assemblage probabiliste de
+Le chaînon est donc présent dans le manuscrit. La v041 supprime l’ancienne
+formalisation publique sectorielle de 11.3 et conserve la voie canonique :
+elle construit la masse mère quantitative depuis les preuves \(κ\), puis
+injecte cette unique estimation dans l’assemblage probabiliste de
 `PaperC.Asymptotics.CorollaryThirteenTen`.
 
 ## Ordre recommandé pour la suite
 
-1. Décharger, pour les API historiques et génériques, le compte d'hôtes 9.9,
-   les interfaces ouvertes de 9.11 et 10.1 et le taux quantitatif du sixième
-   secteur de la formulation historique du corollaire 11.3. Ces entrées
-   legacy ne bloquent plus les théorèmes canoniques.
-2. Généraliser de l’encodage rationnel déjà disponible à l’énoncé littéral
+1. Généraliser de l’encodage rationnel déjà disponible à l’énoncé littéral
    pour tout réel \(\alpha>0\) du théorème 8.1.
+2. Si un endpoint autonome du théorème 1.4 est souhaité, raccorder le noyau
+   fini du §12 directement à la masse mère canonique, sans réintroduire les
+   anciennes interfaces génériques.
 3. Si une API mathlib stable apparaît, transporter les caractérisations de
    Laplace déjà prouvées vers une formulation équivalente en convergence
    vague de mesures ponctuelles.

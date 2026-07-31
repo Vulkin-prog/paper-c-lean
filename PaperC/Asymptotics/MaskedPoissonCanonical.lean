@@ -14,9 +14,8 @@ proves the stronger rate
 `R₂(N,L)=O(N²/(log log N)²)`
 
 directly from the two source-shaped arithmetic inputs used by the
-generalized-Pell argument.  Composing the two rates removes the historical
-Corollary 11.3 / Proposition 9.9 / Theorem 10.1 interfaces from the public
-signature of Proposition 14.2.
+generalized-Pell argument.  Composing the two rates supplies Proposition
+14.2 with the required qualitative mother-mass estimate.
 -/
 
 namespace PaperC

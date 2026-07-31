@@ -3,18 +3,15 @@ import PaperC.Asymptotics.PropositionElevenTwo
 set_option maxHeartbeats 1800000
 
 /-!
-# Corollary 11.3: a quantitative homogeneous-mass envelope
+# Power-saving sectors at the Corollary 11.3 scale
 
 The qualitative Proposition 11.2 already disintegrates the homogeneous
 mass into the systematic term and the seven literal sectors of Lemma 11.1.
-This module keeps that exact disintegration and upgrades every sector with a
-genuine power saving to the slower exponential scale occurring in
-Corollary 11.3.
-
-Only sector six needs a new input.  Its interface is deliberately narrower
-than the whole corollary: it mentions just the concrete nonterminal sector
-mass.  Thus the proof does not hide the already formalized power-saving
-sectors behind an aggregate hypothesis.
+This module defines the slower exponential scale occurring in Corollary
+11.3 and upgrades the systematic term and every already closed sector with
+a genuine power saving to that scale.  The complete canonical homogeneous
+mass is assembled directly from the bounded-ratio sector proofs in
+`DyadicKappaQuantitative`.
 -/
 
 namespace PaperC
@@ -196,47 +193,6 @@ theorem rationalPower_uniformBigO_quantitativeHomogeneousScale
     unfold quantitativeHomogeneousScale
     positivity
   simpa only [one_mul, abs_of_nonneg hscaleNonneg] using hroot
-
-/-!
-The only new arithmetic interface.  It is exactly sector (6), not the whole
-homogeneous sum.
--/
-
-/- AUDIT_BRIDGE
-{
-  "id": "PCv07c-C11.3-nonterminal-sector-rate",
-  "kind": "internal",
-  "status": "open",
-  "lean_name": "PaperC.PropositionElevenThree.NonterminalSectorQuantitativeStatement",
-  "citation": {
-    "authors": ["Brice Pouly"],
-    "title": "Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue",
-    "version": "7c, juillet 2026",
-    "target_pdf_sha256": "23a5db3c8d024cab3fb8ca9f8f1443f40cf9502b1fb6682a331f5948f57a3336",
-    "locator": "Corollaire 11.3, démonstration, p. 37"
-  },
-  "source_statement": {
-    "verbatim": "Le secteur (6) économise exp((C_term − K log 2)√B/log B) par la proposition 9.11, et K log 2 > 2C_term rend l’exposant inférieur à −C_term√B/log B.",
-    "source_url": "paper_C_complete_v07c.pdf#page=37",
-    "verification": "manual_primary_source_check_required"
-  },
-  "manuscript_locator": {
-    "result": "Corollaire 11.3",
-    "equation": "quantitative saving in sector (6)",
-    "pages": "37"
-  },
-  "formalization_relation": "legacy generic sixth-sector API, retained for independent callers: the canonical dyadic mother-mass and Theorem 1.1 routes bypass it via the proved bounded-ratio kappa decomposition, so this open bridge is nonblocking for every canonical theorem-level endpoint"
-}
-AUDIT_BRIDGE -/
-def NonterminalSectorQuantitativeStatement
-    (C : ℝ) (A : ℕ) (c : ℝ)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily) : Prop :=
-  UniformBigOOn
-    (CriticalRunWindow.InRunLengthWindow C)
-    (sectorResidualMass A smallRowRank rankBudget
-      .nonterminal)
-    (quantitativeHomogeneousScale c)
 
 /-! ## Big-O assembly calculus -/
 
@@ -441,155 +397,6 @@ theorem alignedDeepCoreSector_uniformBigO_quantitative
       sectorResidualMassNat, hempty, linearResidualMass,
       Finset.sum_empty, Nat.cast_zero]
   simp [hmass]
-
-/-- Sector five inherits the `N^(3/2+o(1))` estimate conditional only on
-the already registered Proposition 9.9 host-count interface. -/
-theorem manyDefectsSector_uniformBigO_quantitative
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 ≤ c) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (sectorResidualMass A smallRowRank rankBudget
-        .manyDefects)
-      (quantitativeHomogeneousScale c) := by
-  have hthreeHalves :
-      UniformRationalPowerSubpolynomialOn 3 2
-        (CriticalRunWindow.InRunLengthWindow C)
-        (sectorResidualMass A smallRowRank rankBudget
-          .manyDefects) := by
-    apply UniformRationalPower.mono
-      (PropositionNineNine.proposition_nine_nine_uniformThreeHalves
-        hC A hhosts)
-    refine ⟨2, ?_⟩
-    intro N hN L _hrun
-    have hleft :
-        0 ≤ sectorResidualMass A smallRowRank rankBudget
-          .manyDefects N L := by
-      simp [sectorResidualMass, hN]
-    have hright : 0 ≤ PropositionNineNine.linearMass A N L := by
-      simp [PropositionNineNine.linearMass, hN]
-    rw [abs_of_nonneg hleft, abs_of_nonneg hright]
-    exact sectorResidualMass_manyDefects_le
-      hN smallRowRank rankBudget
-  exact
-    rationalPower_uniformBigO_quantitativeHomogeneousScale
-      (p := 3) (q := 2) (by omega) hthreeHalves hc
-
-/-- Sector seven inherits the `N^(7/4+o(1))` terminal estimate already
-registered for Theorem 10.1. -/
-theorem terminalSector_uniformBigO_quantitative
-    {C : ℝ} {A : ℕ}
-    {smallRowRank : SmallRowRankFamily}
-    {rankBudget : RankBudgetFamily}
-    (hterminal :
-      TerminalSectorMassStatement
-        C A smallRowRank rankBudget)
-    {c : ℝ} (hc : 0 ≤ c) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (sectorResidualMass A smallRowRank rankBudget
-        .terminal)
-      (quantitativeHomogeneousScale c) :=
-  rationalPower_uniformBigO_quantitativeHomogeneousScale
-    (p := 7) (q := 4) (by omega) hterminal hc
-
-/-! ## Complete Corollary 11.3 -/
-
-/-- Every residual sector has the quantitative rate once the sole new
-sixth-sector interface is supplied. -/
-theorem everySector_uniformBigO_quantitative
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 ≤ c)
-    (hnonterminal :
-      NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget)
-    (hterminal :
-      TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    ∀ sector : ResidualSector,
-      UniformBigOOn
-        (CriticalRunWindow.InRunLengthWindow C)
-        (sectorResidualMass A smallRowRank rankBudget sector)
-        (quantitativeHomogeneousScale c) := by
-  intro sector
-  cases sector with
-  | smallPrimeProduct =>
-      exact smallPrimeProductSector_uniformBigO_quantitative
-        hC A smallRowRank rankBudget hc
-  | smallCanonicalHeight =>
-      exact smallCanonicalHeightSector_uniformBigO_quantitative
-        hC A hA smallRowRank rankBudget hc
-  | shallowCore =>
-      exact shallowCoreSector_uniformBigO_quantitative
-        hC A smallRowRank rankBudget hc
-  | alignedDeepCore =>
-      exact alignedDeepCoreSector_uniformBigO_quantitative
-        hC A smallRowRank rankBudget c
-  | manyDefects =>
-      exact manyDefectsSector_uniformBigO_quantitative
-        hC A smallRowRank rankBudget hhosts hc
-  | nonterminal =>
-      exact hnonterminal
-  | terminal =>
-      exact terminalSector_uniformBigO_quantitative
-        hterminal hc
-
-/--
-Corollary 11.3 in fully quantified conditional form.
-
-The conclusion is the literal homogeneous mass `R₂(N,L)`.  The only new
-premise beyond Proposition 11.2 is the narrow quantitative sixth-sector
-interface above.
--/
-theorem corollary_eleven_three_uniformBigO
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 < c)
-    (hnonterminal :
-      NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget)
-    (hterminal :
-      TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (homogeneousMass A)
-      (quantitativeHomogeneousScale c) := by
-  have hsystematic :=
-    systematicMass_uniformBigO_quantitative
-      hC A hA hc.le
-  have hsectors :
-      UniformBigOOn
-        (CriticalRunWindow.InRunLengthWindow C)
-        (fun N L ↦
-          ∑ sector : ResidualSector,
-            sectorResidualMass A smallRowRank rankBudget
-              sector N L)
-        (quantitativeHomogeneousScale c) :=
-    uniformBigOOn_fintype_sum
-      (everySector_uniformBigO_quantitative
-        hC A hA smallRowRank rankBudget
-        hhosts hc.le hnonterminal hterminal)
-  have htotal := uniformBigOOn_add hsystematic hsectors
-  have heq :
-      homogeneousMass A =
-        fun N L ↦ systematicMass A N L +
-          ∑ sector : ResidualSector,
-            sectorResidualMass A smallRowRank rankBudget
-              sector N L := by
-    funext N L
-    rw [homogeneousMass_eq_systematic_add_residual,
-      residualMass_eq_sum_sectorResidualMass]
-  rw [heq]
-  exact htotal
 
 end
 

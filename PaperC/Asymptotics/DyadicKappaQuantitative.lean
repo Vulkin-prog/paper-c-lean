@@ -12,9 +12,8 @@ set_option maxHeartbeats 3600000
 /-!
 # Quantitative dyadic mother mass from the bounded-ratio `κ` proofs
 
-The historical route to Corollary 11.3 asks separately for the generic
-interfaces C11.3, P9.9, and T10.1.  The bounded-ratio theory proves the
-canonical masses needed at the dyadic endpoint more directly:
+The bounded-ratio theory proves the canonical masses needed at the dyadic
+endpoint directly:
 
 * all elementary sectors keep their fixed rational-power saving;
 * the many-defects sector follows from Evertse--Silverman and generalized
@@ -24,8 +23,8 @@ canonical masses needed at the dyadic endpoint more directly:
 * the canonical terminal branch is `N^(7/4+o(1))` under generalized Pell.
 
 This module sums those literal masses at `M = 2N`, then uses the exact
-transport in `DyadicKappaTransport`.  Thus its public mother-mass theorem
-does not pass through any of the three historical aggregate interfaces.
+transport in `DyadicKappaTransport` to obtain its public mother-mass
+theorem.
 -/
 
 namespace PaperC
@@ -394,28 +393,27 @@ theorem R2κ_dyadic_uniformBigO
   rw [R2κ_eq_systematic_add_sum_sectors
     hN (boundedIntrinsicTerminalPredicate 3 K)]
 
-/-!
-## Canonical mother-mass theorem
-
-The envelope witnesses and the terminal threshold are now constructed
-inside Lean.  Consequently the public signature contains neither C11.3,
-P9.9, nor T10.1.
--/
-
 /--
-The dyadic homogeneous mother mass has the quantitative rate required by
-Corollary 13.10, directly from the bounded-ratio `κ` proofs.
+The canonical mother-mass theorem with the source-shaped Nicolas--Robin
+divisor inequality.  All polynomial-height and unit-orbit postprocessing is
+constructed internally.
 -/
-theorem homogeneousMass_uniformBigO_of_generalizedPell
+theorem homogeneousMass_uniformBigO
     {C : ℝ} (hC : 0 ≤ C)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hPell :
-      PellInput.GeneralizedPellPolynomialBoxStatement) :
+    (hConductor :
+      PellInput.QuadraticOrderConductorFiberBoundStatement)
+    (hDivisor :
+      PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformBigOOn
       (CriticalRunWindow.InRunLengthWindow C)
       (PropositionElevenTwo.homogeneousMass 3)
       SectionThirteenRate.quadraticDivLogLogSquaredScale := by
+  have hPell :
+      PellInput.GeneralizedPellPolynomialBoxStatement :=
+    PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
+      hConductor hDivisor
   obtain ⟨Q₂, hQ₂Rate, hQ₂Nonneg, hQ₂Dom⟩ :=
     exists_twoSingletonShapeFiberEnvelope hC 2 3
   obtain ⟨Cterm, hCterm, hhostsTwo⟩ :=
@@ -446,49 +444,6 @@ theorem homogeneousMass_uniformBigO_of_generalizedPell
         3 N L
   rw [heq]
   exact hR2κ
-
-/--
-Compatibility wrapper for the former specialized Nicolas--Robin Pell
-envelope.
--/
-theorem homogeneousMass_uniformBigO_of_pellEnvelope
-    {C : ℝ} (hC : 0 ≤ C)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
-    (hDivisor :
-      PellInput.NicolasRobinPellEnvelopeStatement) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (PropositionElevenTwo.homogeneousMass 3)
-      SectionThirteenRate.quadraticDivLogLogSquaredScale :=
-  homogeneousMass_uniformBigO_of_generalizedPell
-    hC hES
-      (PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin
-        hConductor hDivisor)
-
-/--
-The canonical mother-mass theorem with the source-shaped Nicolas--Robin
-divisor inequality.  All polynomial-height and unit-orbit postprocessing is
-constructed internally.
--/
-theorem homogeneousMass_uniformBigO
-    {C : ℝ} (hC : 0 ≤ C)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
-    (hDivisor :
-      PellInput.NicolasRobinDivisorLogBoundStatement) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (PropositionElevenTwo.homogeneousMass 3)
-      SectionThirteenRate.quadraticDivLogLogSquaredScale :=
-  homogeneousMass_uniformBigO_of_generalizedPell
-    hC hES
-      (PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
-        hConductor hDivisor)
 
 end
 

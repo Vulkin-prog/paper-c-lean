@@ -11,8 +11,8 @@ in `SteinChenTerms`.
 * The averaged second term has numerator
   `T_N + E_Y + touchingMass + separatedDefectMass`.
   The first three summands are unconditional.  The last is transported from
-  the public conclusion of Proposition 11.2 through the exact public
-  identification in `SectionTwelveMoments`.
+  an explicit homogeneous-mass estimate through the exact identification in
+  `SectionTwelveMoments`.
 
 Division by `2^(2L)` turns every `o_C(N²)` numerator into `o_C(1)` because
 `N / 2^L` is uniformly bounded in the literal critical window.
@@ -123,8 +123,8 @@ theorem touchingOffDiagPairs_uniformLittleOQuadratic
     SectionTwelveMoments.uniformLittleOQuadratic_of_uniformLinear hlinear
 
 /--
-Transport of the public Proposition 11.2 conclusion to the exact separated
-defect mass used in `SteinChenTerms`.
+Transport of a homogeneous-mass estimate to the exact separated defect mass
+used in `SteinChenTerms`.
 -/
 theorem separatedDefectMass_uniformLittleOQuadratic
     {C : ℝ} {A : ℕ}
@@ -278,8 +278,8 @@ theorem steinBOne_uniformLittleOOne
   simpa only [steinBOneNumerator] using hbound
 
 /--
-The complete finite numerator for the averaged second term is
-`o_C(N²)`, assuming exactly the public Proposition 11.2 conclusion.
+The complete finite numerator for the averaged second term is `o_C(N²)`
+under the explicit homogeneous-mass hypothesis.
 -/
 theorem steinBTwoNumerator_uniformLittleOQuadratic
     {C : ℝ} (hC : 0 ≤ C) {A : ℕ}
@@ -311,8 +311,7 @@ theorem steinBTwoNumerator_uniformLittleOQuadratic
   simpa only [add_assoc] using hall
 
 /--
-Averaged second Stein--Chen term from the public conclusion of
-Proposition 11.2.
+Averaged second Stein--Chen term from the homogeneous-mass hypothesis.
 -/
 theorem steinBTwoAverage_uniformLittleOOne_of_propositionElevenTwo
     {C : ℝ} (hC : 0 ≤ C) {A : ℕ}
@@ -384,33 +383,6 @@ theorem steinBTwoAverage_uniformLittleOOne_of_propositionElevenTwo
     (by positivity : 0 ≤ (2 : ℝ) ^ (2 * L)))] at hbound
   apply hfinite.trans
   simpa only [steinBTwoNumerator] using hbound
-
-/--
-Second part of Lemma 13.8, with exactly the named public hypotheses of
-Proposition 11.2.
--/
-theorem steinBTwoAverage_uniformLittleOOne
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : PropositionElevenTwo.SmallRowRankFamily)
-    (rankBudget : PropositionElevenTwo.RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    (hnonterminal :
-      PropositionElevenTwo.NonterminalSectorMassStatement
-        C A smallRowRank rankBudget)
-    (hterminal :
-      PropositionElevenTwo.TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformLittleOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      steinBTwoAverageReal
-      (fun _ _ => 1) := by
-  apply
-    steinBTwoAverage_uniformLittleOOne_of_propositionElevenTwo
-      hC
-  exact
-    PropositionElevenTwo.proposition_eleven_two_uniformLittleOQuadratic
-      hC A hA smallRowRank rankBudget
-      hhosts hnonterminal hterminal
 
 end
 

@@ -22,15 +22,14 @@ dyadic pairs.  The residual summand is further disintegrated over the
 canonical seven-sector partition of Lemma 11.1.  Both the cover and all
 disjointness needed by this disintegration are theorems, not assumptions.
 
-The first three residual sectors are connected to Propositions 7.3--7.5.
-The aligned deep-core sector is eventually empty by the closed form of
-Theorem 8.1.  Sector five is dominated by the literal population of
-Proposition 9.9.  The remaining two asymptotic inputs are exposed by the
-named propositions `NonterminalSectorMassStatement` and
-`TerminalSectorMassStatement`.  They are internal assembly debts for
-Proposition 9.11 and Theorem 10.1, respectively.
+The first three residual sectors are connected to Propositions 7.3--7.5,
+and the aligned deep-core sector is eventually empty by the closed form of
+Theorem 8.1.  For the fifth and seventh sectors this module records the
+exact finite domination statements used by the later bounded-ratio
+assembly.  The complete canonical homogeneous-mass estimate is constructed
+in `DyadicKappaQuantitative`, without an aggregate open interface.
 
-The final theorem is stated with the repository's fully quantified
+All asymptotic conclusions below use the repository's fully quantified
 `UniformLittleOOn`; no informal use of `o(N²)` is hidden in a comment.
 -/
 
@@ -618,7 +617,7 @@ theorem uniformLittleOOn_fintype_sum
   intro i _hi
   exact hF i
 
-/-! ## Closed sectors and named remaining interfaces -/
+/-! ## Closed sectors and finite terminal reductions -/
 
 /-- Proposition 5.4 gives the required systematic little-oh estimate. -/
 theorem systematicMass_uniformLittleOQuadratic
@@ -746,87 +745,6 @@ theorem alignedDeepCoreSector_uniformLittleOQuadratic
   rw [hmass, abs_zero]
   exact mul_nonneg hε.le (abs_nonneg _)
 
-/-- Sector five is little-oh, conditional only on Proposition 9.9's host count. -/
-theorem manyDefectsSector_uniformLittleOQuadratic
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A) :
-    UniformLittleOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (sectorResidualMass A smallRowRank rankBudget
-        .manyDefects)
-      (fun N _ ↦ (N : ℝ) ^ 2) := by
-  have hthreeHalves :
-      UniformThreeHalvesSubpolynomialOn
-        (CriticalRunWindow.InRunLengthWindow C)
-        (sectorResidualMass A smallRowRank rankBudget
-          .manyDefects) := by
-    apply UniformThreeHalves.mono
-      (PropositionNineNine.proposition_nine_nine_uniformThreeHalves
-        hC A hhosts)
-    refine ⟨2, ?_⟩
-    intro N hN L _hrun
-    have hleft :
-        0 ≤ sectorResidualMass A smallRowRank rankBudget
-          .manyDefects N L := by
-      simp [sectorResidualMass, hN]
-    have hright : 0 ≤ PropositionNineNine.linearMass A N L := by
-      simp [PropositionNineNine.linearMass, hN]
-    rw [abs_of_nonneg hleft, abs_of_nonneg hright]
-    exact sectorResidualMass_manyDefects_le
-      hN smallRowRank rankBudget
-  have hrational :
-      UniformRationalPowerSubpolynomialOn 3 2
-        (CriticalRunWindow.InRunLengthWindow C)
-        (sectorResidualMass A smallRowRank rankBudget
-          .manyDefects) := by
-    simpa only [UniformThreeHalvesSubpolynomialOn,
-      UniformRationalPowerSubpolynomialOn] using hthreeHalves
-  exact UniformRationalPower.littleO_natPower_of_lt
-    (p := 3) (q := 2) (r := 2) (by omega) hrational
-
-/--
-Named internal interface for Proposition 9.11's sixth-sector mass.
-It is exactly the manuscript's `o_C(N²)` conclusion, with every quantifier
-made explicit; no stronger power bound is inserted.
--/
-/- AUDIT_BRIDGE
-{
-  "id": "PCv07c-P9.11-nonterminal-sector-mass",
-  "kind": "internal",
-  "status": "open",
-  "lean_name": "PaperC.PropositionElevenTwo.NonterminalSectorMassStatement",
-  "citation": {
-    "authors": ["Brice Pouly"],
-    "title": "Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue",
-    "version": "7c, juillet 2026",
-    "target_pdf_sha256": "23a5db3c8d024cab3fb8ca9f8f1443f40cf9502b1fb6682a331f5948f57a3336",
-    "locator": "Proposition 9.11, énoncé, p. 33"
-  },
-  "source_statement": {
-    "verbatim": "Il existe une constante K = K(A, C) > 0, fixée avant N, telle que la masse du coeur profond non aligné en dehors de T_K soit o_C(N^2).",
-    "source_url": "paper_C_complete_v07c.pdf#page=33",
-    "verification": "manual_primary_source_check_required"
-  },
-  "manuscript_locator": {
-    "result": "Proposition 9.11",
-    "equation": "mass outside T_K",
-    "pages": "33"
-  },
-  "formalization_relation": "legacy arbitrary-family API: its canonical bounded-ratio instance is absorbed by the proved nonterminal assembly and therefore does not propagate to canonical theorem-level endpoints; the unrestricted smallRowRank/rankBudget statement remains open and nonblocking"
-}
-AUDIT_BRIDGE -/
-def NonterminalSectorMassStatement
-    (C : ℝ) (A : ℕ)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily) : Prop :=
-  UniformLittleOOn
-    (CriticalRunWindow.InRunLengthWindow C)
-    (sectorResidualMass A smallRowRank rankBudget
-      .nonterminal)
-    (fun N _ ↦ (N : ℝ) ^ 2)
-
 /--
 The seventh sector is a subset of the complete integer-budget terminal
 population used by Theorem 10.1.
@@ -878,199 +796,6 @@ theorem terminalSectorResidualMassNat_le_card_mul_weight
       hN smallRowRank rankBudget).trans
     (CanonicalTerminalPopulation.terminalResidualMassAtBudget_le
       hN smallRowRank rankBudget)
-
-/--
-Named internal interface for Theorem 10.1's terminal weighted mass.
-The exponent is the manuscript's `N^(7/4+o_C(1))`.
--/
-/- AUDIT_BRIDGE
-{
-  "id": "PCv07c-T10.1-terminal-sector-mass",
-  "kind": "internal",
-  "status": "open",
-  "lean_name": "PaperC.PropositionElevenTwo.TerminalSectorMassStatement",
-  "citation": {
-    "authors": ["Brice Pouly"],
-    "title": "Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue",
-    "version": "7c, juillet 2026",
-    "target_pdf_sha256": "23a5db3c8d024cab3fb8ca9f8f1443f40cf9502b1fb6682a331f5948f57a3336",
-    "locator": "Théorème 10.1, équation (10.2), p. 34 ; démonstration, étape 4, p. 36"
-  },
-  "source_statement": {
-    "verbatim": "et ∑_{(x,y)∈T_K} (2^{τ(x,y)} − 1) ≤ N^{7/4+o_C(1)} = o(N^2).",
-    "source_url": "paper_C_complete_v07c.pdf#page=34",
-    "verification": "manual_primary_source_check_required"
-  },
-  "manuscript_locator": {
-    "result": "Theorem 10.1",
-    "equation": "(10.2)",
-    "pages": "34–36"
-  },
-  "formalization_relation": "legacy arbitrary-family endpoint: the canonical terminal population and bounded-ratio summation are proved and bypass this interface in every canonical theorem-level route; no exact transport for arbitrary smallRowRank/rankBudget is claimed, so the generic bridge remains open and nonblocking"
-}
-AUDIT_BRIDGE -/
-def TerminalSectorMassStatement
-    (C : ℝ) (A : ℕ)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily) : Prop :=
-  UniformRationalPowerSubpolynomialOn 7 4
-    (CriticalRunWindow.InRunLengthWindow C)
-    (sectorResidualMass A smallRowRank rankBudget
-      .terminal)
-
-/-- The named sixth-sector interface implies quadratic little-oh. -/
-theorem nonterminalSector_uniformLittleOQuadratic
-    {C : ℝ} {A : ℕ}
-    {smallRowRank : SmallRowRankFamily}
-    {rankBudget : RankBudgetFamily}
-    (hnonterminal :
-      NonterminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformLittleOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (sectorResidualMass A smallRowRank rankBudget
-        .nonterminal)
-      (fun N _ ↦ (N : ℝ) ^ 2) :=
-  hnonterminal
-
-/-- The named seventh-sector interface implies quadratic little-oh. -/
-theorem terminalSector_uniformLittleOQuadratic
-    {C : ℝ} {A : ℕ}
-    {smallRowRank : SmallRowRankFamily}
-    {rankBudget : RankBudgetFamily}
-    (hterminal :
-      TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformLittleOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (sectorResidualMass A smallRowRank rankBudget
-        .terminal)
-      (fun N _ ↦ (N : ℝ) ^ 2) :=
-  UniformRationalPower.littleO_natPower_of_lt
-    (p := 7) (q := 4) (r := 2) (by omega) hterminal
-
-/--
-All seven residual sectors are uniformly negligible once the three named
-deep-nonaligned inputs have been supplied.
--/
-theorem everySector_uniformLittleOQuadratic
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    (hnonterminal :
-      NonterminalSectorMassStatement
-        C A smallRowRank rankBudget)
-    (hterminal :
-      TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    ∀ sector : ResidualSector,
-      UniformLittleOOn
-        (CriticalRunWindow.InRunLengthWindow C)
-        (sectorResidualMass A smallRowRank rankBudget sector)
-        (fun N _ ↦ (N : ℝ) ^ 2) := by
-  intro sector
-  cases sector with
-  | smallPrimeProduct =>
-      exact smallPrimeProductSector_uniformLittleOQuadratic
-        hC A smallRowRank rankBudget
-  | smallCanonicalHeight =>
-      exact smallCanonicalHeightSector_uniformLittleOQuadratic
-        hC A hA smallRowRank rankBudget
-  | shallowCore =>
-      exact shallowCoreSector_uniformLittleOQuadratic
-        hC A smallRowRank rankBudget
-  | alignedDeepCore =>
-      exact alignedDeepCoreSector_uniformLittleOQuadratic
-        hC A smallRowRank rankBudget
-  | manyDefects =>
-      exact manyDefectsSector_uniformLittleOQuadratic
-        hC A smallRowRank rankBudget hhosts
-  | nonterminal =>
-      exact nonterminalSector_uniformLittleOQuadratic hnonterminal
-  | terminal =>
-      exact terminalSector_uniformLittleOQuadratic hterminal
-
-/--
-Conditional closure of the complete residual term in (11.1).
--/
-theorem residualMass_uniformLittleOQuadratic
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    (hnonterminal :
-      NonterminalSectorMassStatement
-        C A smallRowRank rankBudget)
-    (hterminal :
-      TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformLittleOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (residualMass A)
-      (fun N _ ↦ (N : ℝ) ^ 2) := by
-  have hsum :
-      UniformLittleOOn
-        (CriticalRunWindow.InRunLengthWindow C)
-        (fun N L ↦
-          ∑ sector : ResidualSector,
-            sectorResidualMass A smallRowRank rankBudget
-              sector N L)
-        (fun N _ ↦ (N : ℝ) ^ 2) :=
-    uniformLittleOOn_fintype_sum
-      (everySector_uniformLittleOQuadratic
-        hC A hA smallRowRank rankBudget
-        hhosts hnonterminal hterminal)
-  have heq :
-      residualMass A =
-        fun N L ↦
-          ∑ sector : ResidualSector,
-            sectorResidualMass A smallRowRank rankBudget
-              sector N L := by
-    funext N L
-    exact residualMass_eq_sum_sectorResidualMass
-      A smallRowRank rankBudget N L
-  rw [heq]
-  exact hsum
-
-/--
-Proposition 11.2 in fully quantified conditional form.
-
-The conclusion is the literal homogeneous sum over separated ordered pairs.
-The systematic term and sectors one through four are unconditional; sector
-five uses the named host-count interface of Proposition 9.9; sectors six and
-seven use the two explicit internal statements above.
--/
-theorem proposition_eleven_two_uniformLittleOQuadratic
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    (hnonterminal :
-      NonterminalSectorMassStatement
-        C A smallRowRank rankBudget)
-    (hterminal :
-      TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformLittleOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (homogeneousMass A)
-      (fun N _ ↦ (N : ℝ) ^ 2) := by
-  have hsystematic :=
-    systematicMass_uniformLittleOQuadratic hC A hA
-  have hresidual :=
-    residualMass_uniformLittleOQuadratic
-      hC A hA smallRowRank rankBudget
-      hhosts hnonterminal hterminal
-  have hsum := uniformLittleOOn_add hsystematic hresidual
-  have heq :
-      homogeneousMass A =
-        fun N L ↦
-          systematicMass A N L + residualMass A N L := by
-    funext N L
-    exact homogeneousMass_eq_systematic_add_residual A N L
-  rw [heq]
-  exact hsum
 
 end
 

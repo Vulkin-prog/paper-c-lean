@@ -513,32 +513,6 @@ theorem halfPower_uniformBigO_linearDivLogLogSquared
     rationalPower_uniformBigO_natPowerDivLogLogSquared
       (p := 1) (q := 2) (r := 1) (by omega) hrat
 
-/--
-Corollary 11.3 immediately yields the quadratic
-`N²/(log log N)²` numerator bound needed in Section 13.
--/
-theorem homogeneousMass_uniformBigO_quadraticLogLogSquared
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 < c)
-    (hnonterminal :
-      NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget)
-    (hterminal :
-      TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (homogeneousMass A)
-      quadraticDivLogLogSquaredScale :=
-  uniformBigOOn_trans
-    (PropositionElevenThree.corollary_eleven_three_uniformBigO
-      hC A hA smallRowRank rankBudget hhosts hc
-      hnonterminal hterminal)
-    (quantitativeHomogeneousScale_uniformBigO_loglogSquared hc)
-
 /-! ## Exact dyadic normalization -/
 
 /--
@@ -783,35 +757,6 @@ theorem terminalBadStartProbabilityMass_uniformBigO_explicitRate
   rw [abs_of_nonneg hprobNonneg,
     abs_of_nonneg (add_nonneg hdefectNonneg hcountNonneg)]
   exact hfinite
-
-/-- The normalized arithmetic term `2^(-2L) R₂(N,L)` has exactly the
-Corollary 13.10 logarithmic rate. -/
-theorem normalizedHomogeneousMass_uniformBigO_explicitRate
-    {C : ℝ} (hC : 0 ≤ C) (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : SmallRowRankFamily)
-    (rankBudget : RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    {c : ℝ} (hc : 0 < c)
-    (hnonterminal :
-      NonterminalSectorQuantitativeStatement
-        C A c smallRowRank rankBudget)
-    (hterminal :
-      TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    UniformBigOOn
-      (CriticalRunWindow.InRunLengthWindow C)
-      (fun N L ↦ homogeneousMass A N L /
-        (2 : ℝ) ^ (2 * L))
-      inverseLogLogSquaredRate := by
-  apply normalizedQuadraticLogLog_uniformBigO hC
-    (homogeneousMass_uniformBigO_quadraticLogLogSquared
-      hC A hA smallRowRank rankBudget hhosts hc
-      hnonterminal hterminal)
-  intro N L
-  unfold homogeneousMass
-  split_ifs
-  · positivity
-  · exact le_rfl
 
 /-! ## A sharper finite edge estimate without Mertens -/
 

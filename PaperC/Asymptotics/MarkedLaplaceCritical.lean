@@ -386,45 +386,6 @@ theorem sectionFourteenFour_laplaceFunctional_of_split
     (markedBTwoAverageReal_uniformLittleOOne_of_split hC E hSplit)
 
 /--
-Section 14.4 with the generalized-Pell estimate supplied at its
-source-shaped arithmetic boundary.
--/
-theorem sectionFourteenFour_laplaceFunctional_of_generalizedPell
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    {C rate : ℝ} (hC : 0 ≤ C) {E : ℕ}
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hPell :
-      PellInput.GeneralizedPellPolynomialBoxStatement)
-    {N L : ℕ → ℕ} {g : ℝ → ℕ → ℝ}
-    (hN : Tendsto N atTop atTop)
-    (hwindow :
-      ∀ᶠ n in atTop,
-        CriticalRunWindow.InRunLengthWindow C (N n) (L n))
-    (hscale :
-      Tendsto
-        (fun n ↦ criticalSpatialScale (N n) (L n))
-        atTop (𝓝 rate))
-    (hg :
-      ∀ e ≤ E,
-        ContinuousOn (fun t ↦ g t e) (Set.Icc (1 : ℝ) 2))
-    (hg0 : ∀ t e, 0 ≤ g t e) :
-    Tendsto
-      (fun n ↦
-        infiniteMarkedLaplaceExpectation (N n) (L n) E g)
-      atTop
-      (𝓝 (Real.exp
-        (-(rate * ∫ t in Set.Ico (1 : ℝ) 2,
-          ∑ e ∈ Finset.range (E + 1),
-            (1 / (2 : ℝ) ^ (e + 1)) *
-              (1 - Real.exp (-g t e)))))) := by
-  apply
-    sectionFourteenFour_laplaceFunctional_of_split
-      hAGG hC hN hwindow hscale hg hg0
-  exact markedBTwoSplitReal_uniformLittleOOne hC E hES hPell
-
-/--
 Section 14.4 under the canonical `κ` arithmetic route.
 
 The source marked Laplace expectation converges for every fixed mark cutoff.
@@ -465,15 +426,12 @@ theorem sectionFourteenFour_laplaceFunctional
             (1 / (2 : ℝ) ^ (e + 1)) *
               (1 - Real.exp (-g t e)))))) := by
   apply
-    sectionFourteenFour_laplaceFunctional_of_generalizedPell
-      hAGG hC hES
+    sectionFourteenFour_laplaceFunctional_of_split
+      hAGG hC hN hwindow hscale hg hg0
+  exact
+    markedBTwoSplitReal_uniformLittleOOne hC E hES
       (PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
         hConductor hDivisor)
-  · exact hN
-  · exact hwindow
-  · exact hscale
-  · exact hg
-  · exact hg0
 
 end
 

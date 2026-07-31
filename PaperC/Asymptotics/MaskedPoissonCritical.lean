@@ -20,8 +20,8 @@ On the full cylinder, deleting masked bad starts is controlled by the same
 bad-start union bound as in Section 13, while the Poisson parameter changes
 by at most `#D_Y / 2^L`.  Thus the final majorant is independent of the mask.
 
-The theorem is conditional exactly on the published AGG statement and the
-three existing internal Proposition 11.2 interfaces.  No new bridge is
+The reusable asymptotic theorem below is conditional on the published AGG
+statement and one explicit homogeneous-mass estimate.  No new bridge is
 introduced.
 -/
 
@@ -1075,9 +1075,8 @@ quantifier:
 for every `ε>0`, all sufficiently large critical `(N,L)` and every
 deterministic `mask ⊆ I_N` have total-variation error at most `ε`.
 
-The arithmetic hypothesis is only the public qualitative mother-mass
-conclusion `R₂=o(N²)`.  This factorization lets both the historical
-Proposition 11.2 route and the canonical `κ` route reuse the same proof.
+The arithmetic hypothesis is only the qualitative mother-mass conclusion
+`R₂=o(N²)`, allowing the canonical `κ` route to reuse this proof.
 -/
 theorem maskedPoissonTotalVariation_uniformLittleOOne_of_homogeneousMass
     {C : ℝ} (hC : 0 ≤ C)
@@ -1190,37 +1189,6 @@ theorem maskedPoissonTotalVariation_uniformLittleOOne_of_homogeneousMass
       le_abs_self _
     _ ≤ ε := by
       simpa only [abs_one, mul_one] using hsmall
-
-/--
-Historical Proposition 14.2 wrapper through the three generic interfaces
-of Proposition 11.2.  The canonical route is supplied in
-`MaskedPoissonCanonical`.
--/
-theorem maskedPoissonTotalVariation_uniformLittleOOne
-    {C : ℝ} (hC : 0 ≤ C)
-    (hAGG : ArratiaGoldsteinGordonStatement)
-    (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : PropositionElevenTwo.SmallRowRankFamily)
-    (rankBudget : PropositionElevenTwo.RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    (hnonterminal :
-      PropositionElevenTwo.NonterminalSectorMassStatement
-        C A smallRowRank rankBudget)
-    (hterminal :
-      PropositionElevenTwo.TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
-    ∀ ε : ℝ, 0 < ε →
-      ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
-        ∀ L : ℕ, CriticalRunWindow.InRunLengthWindow C N L →
-          ∀ mask : Finset ℕ, mask ⊆ dyadicBlock N →
-            maskedPoissonTotalVariation N L mask ≤ ε := by
-  apply
-    maskedPoissonTotalVariation_uniformLittleOOne_of_homogeneousMass
-      hC hAGG
-  exact
-    PropositionElevenTwo.proposition_eleven_two_uniformLittleOQuadratic
-      hC A hA smallRowRank rankBudget
-      hhosts hnonterminal hterminal
 
 end
 

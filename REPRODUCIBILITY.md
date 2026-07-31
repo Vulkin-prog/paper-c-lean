@@ -2,7 +2,7 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.40.0`
+- paper_c_lean : `0.41.0`
 - Lean : `v4.19.0`
 - mathlib : `v4.19.0`
 - PDF cible, SHA-256 :
@@ -12,11 +12,11 @@
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles.
 
-## Périmètre du jalon 0.40
+## Périmètre du jalon 0.41
 
-La v040 ferme le §14 sous forme de caractérisation par fonctionnels de
-Laplace. Elle conserve le modèle produit infini, le lemme 14.4, la
-décomposition exacte et le lemme 14.7 de la v039, puis ajoute :
+La v041 conserve la fermeture du §14 obtenue en v040 sous forme de
+caractérisation par fonctionnels de Laplace. Elle conserve le modèle produit
+infini, le lemme 14.4, la décomposition exacte et le lemme 14.7, notamment :
 
 - les sommes de Riemann dyadiques et les limites des paramètres aminci
   spatial et marqué ;
@@ -33,6 +33,15 @@ décomposition exacte et le lemme 14.7 de la v039, puis ajoute :
   support fini en marques ;
 - la tension uniforme des marques, la loi limite du maximum et les
   transferts exacts du vecteur des comptes.
+
+Le changement propre à la v041 est un nettoyage d’API par suppressions : les
+quatre interfaces `internal/open` de 9.9, 9.11, 10.1 et 11.3 et leurs 27
+consommateurs publics disparaissent ; douze endpoints recevant directement
+Pell ou son ancienne enveloppe et six adaptateurs sectoriels intermédiaires
+disparaissent également. Les signatures canoniques sont inchangées. Les six
+interfaces `discharged`, ainsi que les deux assemblages génériques directs
+de 16.1 et 16.2 qui consomment les trois interfaces sectorielles historiques,
+sont conservés.
 
 La convergence PPP est revendiquée exactement par sa famille complète de
 fonctionnels de Laplace et, dans le cas marqué, par la tension uniforme.
@@ -57,9 +66,9 @@ find PaperC -name '*.lean' -type f | wc -l
 find PaperC -name '*.lean' -type f -print0 | xargs -0 wc -l | tail -n 1
 ```
 
-La v040 contient **372 modules** et **143 797 lignes Lean**.
+La v041 contient **372 modules** et **142 015 lignes Lean**.
 
-Le jalon 0.40 conserve la décharge de l’interface interne de Pell généralisé :
+Le jalon 0.41 conserve la décharge de l’interface interne de Pell généralisé :
 
 - `GeneralizedPell` traduit les solutions en éléments de `Zsqrtd`, prouve
   que leur idéal principal divise \((M)\), puis transforme l’égalité de deux
@@ -86,11 +95,11 @@ L’ancienne enveloppe spécialisée `NR83-T1-divisor-bound` est conservée avec
 
 Les théorèmes canoniques de masse mère, 13.10, 1.1, 16.1 et 16.2 exposent
 directement ces entrées externes. Ils ne consomment aucun pont
-`internal/open`; leurs anciennes signatures directes restent disponibles
-sous les suffixes `_of_generalizedPell` et `_of_pellEnvelope`. C11.3, P9.9,
-P9.11 et T10.1 sont conservés comme API legacy ouvertes mais non bloquantes.
+`internal/open`. La v041 supprime les anciennes signatures directes Pell,
+leurs variantes fondées sur l’enveloppe spécialisée et les quatre API legacy
+ouvertes. Il ne reste aucun pont `internal/open` dans le registre.
 
-Le jalon 0.40 conserve tous les résultats de la v039, notamment les deux
+Le jalon 0.41 conserve tous les résultats antérieurs, notamment les deux
 dernières estimations sectorielles qualitatives de la section 17 :
 
 - `PrimeFactorsFactorialBound`,
@@ -147,7 +156,9 @@ La géométrie de densité est simultanément paramétrée par des entiers
 \(3/16,\ K=10\) reste un corollaire portant les mêmes noms publics.
 
 Les trois interfaces historiques 17.26, 17.28 et 17.30 restent enregistrées
-pour les API génériques avec `status: discharged`; l’interface historique
+pour les deux assemblages génériques directs avec `status: discharged`; les
+six adaptateurs sectoriels intermédiaires de 16.1 et 16.2 sont supprimés.
+L’interface historique
 de 9.10 porte désormais le même statut, ainsi que l’interface de 9.2. Les API
 canoniques de 16.1 et 16.2 n’en consomment aucune. La première reçoit
 seulement Evertse--Silverman, Halter--Koch et Nicolas--Robin. La seconde ne
@@ -204,10 +215,11 @@ exactement la partie canoniquement non alignée de ce proxy.
 Le manifeste conserve la distinction indépendante entre `kind` et `status`.
 Les interfaces 9.2 et 9.10 rejoignent 17.26, 17.28 et 17.30 avec
 `status: discharged`; seul `status: open` signale une dette actuelle.
-Il recense 17 interfaces — huit `external` et neuf `internal` — dont onze
-`open` et six `discharged`, ainsi que **4 020 théorèmes ou lemmes
-publics**, **4 022 cibles d’audit**, **3 825 résultats inconditionnels** et
-**195 conditionnels**.
+Il recense 13 interfaces — huit `external` et cinq `internal` — dont sept
+`open`, toutes `external`, et six `discharged`. Il recense en outre **3 970
+théorèmes** et **5 lemmes** publics, soit **3 975 déclarations**, **3 977
+cibles d’audit**, **3 825 résultats inconditionnels** et **150
+conditionnels**. Il ne reste aucune interface `internal/open`.
 
 Le parseur de `scripts/generate_audit.mjs` reconnaît en v035 les déclarations
 où `theorem` ou `lemma` est seul sur une ligne et le nom commence sur la
@@ -261,7 +273,7 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 Les quatre premières commandes doivent réussir. La dernière ne doit produire
 aucune ligne.
 
-Pour la livraison 0.40, la validation de publication doit être rejouée depuis
+Pour la livraison 0.41, la validation de publication doit être rejouée depuis
 deux arbres indépendants dépourvus de `.lake/build`, dont une extraction du
 ZIP final. Dans chacun, le build doit se terminer par
 `Build completed successfully`. L’audit doit produire une sortie pour chaque
@@ -270,10 +282,11 @@ conservées de l’audit historique. Toutes les listes doivent rester incluses
 dans `[propext, Classical.choice, Quot.sound]`. Le contrôle du générateur doit
 retrouver exactement les comptes du manifeste final régénéré et enregistrer
 9.2, 9.10, 17.26, 17.28, 17.30 et l’ancienne enveloppe Nicolas--Robin avec
-`status: discharged`. Il doit retrouver 17 interfaces — huit `external`,
-neuf `internal`, onze `open` et six `discharged` — ainsi que 4 020
-déclarations publiques, 4 022 cibles, 3 825 résultats inconditionnels et
-195 conditionnels. Le scan des constructions interdites doit rester vide.
+`status: discharged`. Il doit retrouver 13 interfaces — huit `external`,
+cinq `internal`, sept `open` toutes `external` et six `discharged` — ainsi
+que 3 970 théorèmes et 5 lemmes publics, 3 977 cibles, 3 825 résultats
+inconditionnels et 150 conditionnels. Il ne doit retrouver aucune interface
+`internal/open`. Le scan des constructions interdites doit rester vide.
 
 Pour inspecter les dépendances logiques d'un théorème particulier :
 
@@ -311,10 +324,8 @@ manifeste distingue les dépendances fondationnelles imprimées par Lean des
 hypothèses ordinaires, invisibles à `#print axioms`; il associe donc à chaque
 théorème public un statut conditionnel/inconditionnel, la liste des ponts
 qu’il prend comme prémisses directes, leur nature `external | internal` et
-leur état `open | discharged`. La v040 doit reporter les comptes exacts des
-ponts et des théorèmes conditionnels depuis le manifeste régénéré ; les
-placeholders visibles de ce document doivent être remplacés seulement après
-cette étape.
+leur état `open | discharged`. Les comptes v041 publiés ci-dessus sont ceux
+du manifeste régénéré.
 `ReviewAxioms.lean` est conservé comme sélection historique des
 résultats structurants, mais n'est plus la liste canonique. Chaque sortie de
 l'audit exhaustif doit être une sous-liste de
@@ -327,8 +338,8 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v040.zip
-unzip -Z1 paper_c_lean_v040.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v041.zip
+unzip -Z1 paper_c_lean_v041.zip | rg -v '^paper_c_lean/'
 ```
 
 La seconde commande ne doit produire aucune ligne. L'archive ne doit contenir

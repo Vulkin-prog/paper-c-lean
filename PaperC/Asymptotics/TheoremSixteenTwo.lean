@@ -1656,215 +1656,6 @@ theorem theorem_sixteen_two
     global_empty_probability_asymptotic_of_totalVariation hTV⟩
 
 /--
-Theorem 16.2 with the canonical intrinsic `T_K` family from Section 17.
-
-The function `K` may depend on the fixed ratio bound `κ₀`, exactly as the
-constant `Cterm(κ₀)` in Lemmas 17.23 and 17.28.  Unlike the more general
-assembly theorem above, callers cannot substitute an unrelated terminal
-predicate.
--/
-theorem theorem_sixteen_two_canonical_of_sector_estimates
-    {C : ℝ} (hC : 0 < C)
-    (hpnt :
-      PrimeNumberTheoremInput.PrimeNumberTheoremStatement)
-    (hLS :
-      LaishramShoreyInput.LaishramShoreyStatement)
-    (hPell :
-      PellInput.GeneralizedPellPolynomialBoxStatement)
-    (hBS :
-      BalasubramanianShoreyInput.BalasubramanianShoreyStatement)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (K : ℕ → ℝ)
-    (hmany :
-      ∀ C' : ℝ, 0 < C' →
-        ∀ κ₀ : ℕ, 2 ≤ κ₀ →
-          PropositionSixteenOne.ManyDefectsSectorStabilityStatement
-            C' κ₀ 3
-              (boundedIntrinsicTerminalPredicate 3 (K κ₀)))
-    (hnonterminal :
-      ∀ C' : ℝ, 0 < C' →
-        ∀ κ₀ : ℕ, 2 ≤ κ₀ →
-          PropositionSixteenOne.NonterminalSectorStabilityStatement
-            C' κ₀ 3
-              (boundedIntrinsicTerminalPredicate 3 (K κ₀)))
-    (hterminal :
-      ∀ C' : ℝ, 0 < C' →
-        ∀ κ₀ : ℕ, 2 ≤ κ₀ →
-          PropositionSixteenOne.TerminalSectorStabilityStatement
-            C' κ₀ 3
-              (boundedIntrinsicTerminalPredicate 3 (K κ₀))) :
-    TheoremSixteenTwoStatement C :=
-  theorem_sixteen_two hC hpnt hLS hPell hBS hAGG hES
-    (fun _C' κ₀ =>
-      boundedIntrinsicTerminalPredicate 3 (K κ₀))
-    hmany hnonterminal hterminal
-
-/--
-Historical canonical wrapper with an explicit family of Lemma 17.26
-many-defects estimates.
-
-The terminal-sector argument is constructed uniformly for every bounded
-ratio from generalized Pell; the source-exact Lemma 9.10 equivalence is
-proved internally.  This wrapper is retained for callers that already
-provide the many-defects estimates; the principal canonical theorem below
-constructs them from Evertse--Silverman and Pell.
--/
-theorem theorem_sixteen_two_canonical_of_manyDefectsEstimates
-    {C : ℝ} (hC : 0 < C)
-    (hpnt :
-      PrimeNumberTheoremInput.PrimeNumberTheoremStatement)
-    (hLS :
-      LaishramShoreyInput.LaishramShoreyStatement)
-    (hPell :
-      PellInput.GeneralizedPellPolynomialBoxStatement)
-    (hBS :
-      BalasubramanianShoreyInput.BalasubramanianShoreyStatement)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (K : ℕ → ℝ)
-    (hK :
-      ∀ κ₀ : ℕ, 2 ≤ κ₀ → 0 ≤ K κ₀)
-    (hmany :
-      ∀ C' : ℝ, 0 < C' →
-        ∀ κ₀ : ℕ, 2 ≤ κ₀ →
-          PropositionSixteenOne.ManyDefectsSectorStabilityStatement
-            C' κ₀ 3
-              (boundedIntrinsicTerminalPredicate 3 (K κ₀)))
-    (hnonterminal :
-      ∀ C' : ℝ, 0 < C' →
-        ∀ κ₀ : ℕ, 2 ≤ κ₀ →
-          PropositionSixteenOne.NonterminalSectorStabilityStatement
-            C' κ₀ 3
-              (boundedIntrinsicTerminalPredicate 3 (K κ₀))) :
-    TheoremSixteenTwoStatement C := by
-  apply
-    theorem_sixteen_two_canonical_of_sector_estimates
-      hC hpnt hLS hPell hBS hAGG hES K hmany hnonterminal
-  intro C' hC' κ₀ hκ₀
-  exact
-    BoundedRatioTerminalSummation.intrinsicTerminalSectorStability
-      hC'.le κ₀ 3 (K κ₀) hκ₀ (by norm_num)
-      (hK κ₀ hκ₀)
-
-/--
-Historical canonical wrapper with an explicit family of Lemma 17.28
-nonterminal estimates.  Lemmas 17.26 and 17.30 are constructed internally.
-It is retained for callers that already provide the sixth-sector estimate.
--/
-theorem theorem_sixteen_two_canonical_of_nonterminalEstimates
-    {C : ℝ} (hC : 0 < C)
-    (hpnt :
-      PrimeNumberTheoremInput.PrimeNumberTheoremStatement)
-    (hLS :
-      LaishramShoreyInput.LaishramShoreyStatement)
-    (hPell :
-      PellInput.GeneralizedPellPolynomialBoxStatement)
-    (hBS :
-      BalasubramanianShoreyInput.BalasubramanianShoreyStatement)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (K : ℕ → ℝ)
-    (hK :
-      ∀ κ₀ : ℕ, 2 ≤ κ₀ → 0 ≤ K κ₀)
-    (hnonterminal :
-      ∀ C' : ℝ, 0 < C' →
-        ∀ κ₀ : ℕ, 2 ≤ κ₀ →
-          PropositionSixteenOne.NonterminalSectorStabilityStatement
-            C' κ₀ 3
-              (boundedIntrinsicTerminalPredicate 3 (K κ₀))) :
-    TheoremSixteenTwoStatement C := by
-  exact
-    theorem_sixteen_two_canonical_of_manyDefectsEstimates
-      hC hpnt hLS hPell hBS hAGG hES K hK
-      (fun C' hC' κ₀ _hκ₀ =>
-        BoundedRatioManyDefectsAssembly.manyDefectsSectorStability
-          hC'.le κ₀ 3
-          (boundedIntrinsicTerminalPredicate 3 (K κ₀)))
-      hnonterminal
-
-/--
-Theorem 16.2 with the canonical intrinsic terminal populations.
-
-For every critical-window constant and fixed ratio bound, Proposition 16.1
-now constructs all three deep-sector estimates internally.  In particular,
-the nonterminal Lemma 17.28 chooses its own admissible threshold `K`; no
-family of terminal predicates or Section 17 estimates remains in this
-principal API.
--/
-theorem theorem_sixteen_two_canonical_of_generalizedPell
-    {C : ℝ} (hC : 0 < C)
-    (hpnt :
-      PrimeNumberTheoremInput.PrimeNumberTheoremStatement)
-    (hLS :
-      LaishramShoreyInput.LaishramShoreyStatement)
-    (hPell :
-      PellInput.GeneralizedPellPolynomialBoxStatement)
-    (hBS :
-      BalasubramanianShoreyInput.BalasubramanianShoreyStatement)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement) :
-    TheoremSixteenTwoStatement C := by
-  have htrunc : PropositionFifteenFiveStatement C :=
-    PropositionFifteenFivePartition.proposition_fifteen_five
-      hC.le hpnt hLS hPell hBS
-  have hpropositionSixteenOne :
-      ∀ C' : ℝ, 0 < C' →
-        ∀ κ₀ : ℕ, 2 ≤ κ₀ →
-          PropositionSixteenOneStatement C' κ₀ := by
-    intro C' hC' κ₀ hκ₀
-    exact
-      PropositionSixteenOne.proposition_sixteen_one_canonical_of_generalizedPell
-        hC'.le hκ₀ hES hPell
-  have hbounded :
-      BoundedRangePoissonConclusion C :=
-    boundedRangePoissonConclusion hC.le hAGG
-      hpropositionSixteenOne
-  have hTV :=
-    global_totalVariation_uniformLittleOOne_of_truncation
-      htrunc hbounded
-  exact
-    ⟨hTV,
-      global_mean_asymptotic_of_truncation
-        hC.le htrunc hbounded,
-      global_empty_probability_asymptotic_of_totalVariation hTV⟩
-
-/--
-Compatibility wrapper for the former specialized Nicolas--Robin Pell
-envelope.
--/
-theorem theorem_sixteen_two_canonical_of_pellEnvelope
-    {C : ℝ} (hC : 0 < C)
-    (hpnt :
-      PrimeNumberTheoremInput.PrimeNumberTheoremStatement)
-    (hLS :
-      LaishramShoreyInput.LaishramShoreyStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
-    (hDivisor :
-      PellInput.NicolasRobinPellEnvelopeStatement)
-    (hBS :
-      BalasubramanianShoreyInput.BalasubramanianShoreyStatement)
-    (hAGG :
-      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
-    (hES :
-      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement) :
-    TheoremSixteenTwoStatement C :=
-  theorem_sixteen_two_canonical_of_generalizedPell
-    hC hpnt hLS
-      (PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin
-        hConductor hDivisor)
-      hBS hAGG hES
-
-/--
 Canonical Theorem 16.2 with no manuscript-internal generalized-Pell
 antecedent.  The latter is reconstructed from the conductor comparison and
 the source-shaped Nicolas--Robin logarithmic divisor inequality.
@@ -1885,12 +1676,34 @@ theorem theorem_sixteen_two_canonical
       ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement) :
-    TheoremSixteenTwoStatement C :=
-  theorem_sixteen_two_canonical_of_generalizedPell
-    hC hpnt hLS
-      (PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
-        hConductor hDivisor)
-      hBS hAGG hES
+    TheoremSixteenTwoStatement C := by
+  have hPell :
+      PellInput.GeneralizedPellPolynomialBoxStatement :=
+    PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
+      hConductor hDivisor
+  have htrunc : PropositionFifteenFiveStatement C :=
+    PropositionFifteenFivePartition.proposition_fifteen_five
+      hC.le hpnt hLS hPell hBS
+  have hpropositionSixteenOne :
+      ∀ C' : ℝ, 0 < C' →
+        ∀ κ₀ : ℕ, 2 ≤ κ₀ →
+          PropositionSixteenOneStatement C' κ₀ := by
+    intro C' hC' κ₀ hκ₀
+    exact
+      PropositionSixteenOne.proposition_sixteen_one_canonical
+        hC'.le hκ₀ hES hConductor hDivisor
+  have hbounded :
+      BoundedRangePoissonConclusion C :=
+    boundedRangePoissonConclusion hC.le hAGG
+      hpropositionSixteenOne
+  have hTV :=
+    global_totalVariation_uniformLittleOOne_of_truncation
+      htrunc hbounded
+  exact
+    ⟨hTV,
+      global_mean_asymptotic_of_truncation
+        hC.le htrunc hbounded,
+      global_empty_probability_asymptotic_of_totalVariation hTV⟩
 
 end
 end TheoremSixteenTwo
