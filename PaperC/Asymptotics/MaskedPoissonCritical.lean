@@ -1075,22 +1075,19 @@ quantifier:
 for every `ε>0`, all sufficiently large critical `(N,L)` and every
 deterministic `mask ⊆ I_N` have total-variation error at most `ε`.
 
-The hypotheses are precisely AGG and the three already registered internal
-interfaces used for Proposition 11.2.
+The arithmetic hypothesis is only the public qualitative mother-mass
+conclusion `R₂=o(N²)`.  This factorization lets both the historical
+Proposition 11.2 route and the canonical `κ` route reuse the same proof.
 -/
-theorem maskedPoissonTotalVariation_uniformLittleOOne
+theorem maskedPoissonTotalVariation_uniformLittleOOne_of_homogeneousMass
     {C : ℝ} (hC : 0 ≤ C)
     (hAGG : ArratiaGoldsteinGordonStatement)
-    (A : ℕ) (hA : 1 ≤ A)
-    (smallRowRank : PropositionElevenTwo.SmallRowRankFamily)
-    (rankBudget : PropositionElevenTwo.RankBudgetFamily)
-    (hhosts : PropositionNineNine.HostCountStatement C A)
-    (hnonterminal :
-      PropositionElevenTwo.NonterminalSectorMassStatement
-        C A smallRowRank rankBudget)
-    (hterminal :
-      PropositionElevenTwo.TerminalSectorMassStatement
-        C A smallRowRank rankBudget) :
+    {A : ℕ}
+    (hhomogeneous :
+      UniformLittleOOn
+        (CriticalRunWindow.InRunLengthWindow C)
+        (PropositionElevenTwo.homogeneousMass A)
+        (fun N _ ↦ (N : ℝ) ^ 2)) :
     ∀ ε : ℝ, 0 < ε →
       ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
         ∀ L : ℕ, CriticalRunWindow.InRunLengthWindow C N L →
@@ -1110,9 +1107,8 @@ theorem maskedPoissonTotalVariation_uniformLittleOOne
   have hbOne :=
     SteinChenCritical.steinBOne_uniformLittleOOne hC
   have hbTwo :=
-    SteinChenCritical.steinBTwoAverage_uniformLittleOOne
-      hC A hA smallRowRank rankBudget
-      hhosts hnonterminal hterminal
+    SteinChenCritical.steinBTwoAverage_uniformLittleOOne_of_propositionElevenTwo
+      hC hhomogeneous
   have hterms :=
     PropositionElevenTwo.uniformLittleOOn_add hbOne hbTwo
   have hcount :
@@ -1194,6 +1190,37 @@ theorem maskedPoissonTotalVariation_uniformLittleOOne
       le_abs_self _
     _ ≤ ε := by
       simpa only [abs_one, mul_one] using hsmall
+
+/--
+Historical Proposition 14.2 wrapper through the three generic interfaces
+of Proposition 11.2.  The canonical route is supplied in
+`MaskedPoissonCanonical`.
+-/
+theorem maskedPoissonTotalVariation_uniformLittleOOne
+    {C : ℝ} (hC : 0 ≤ C)
+    (hAGG : ArratiaGoldsteinGordonStatement)
+    (A : ℕ) (hA : 1 ≤ A)
+    (smallRowRank : PropositionElevenTwo.SmallRowRankFamily)
+    (rankBudget : PropositionElevenTwo.RankBudgetFamily)
+    (hhosts : PropositionNineNine.HostCountStatement C A)
+    (hnonterminal :
+      PropositionElevenTwo.NonterminalSectorMassStatement
+        C A smallRowRank rankBudget)
+    (hterminal :
+      PropositionElevenTwo.TerminalSectorMassStatement
+        C A smallRowRank rankBudget) :
+    ∀ ε : ℝ, 0 < ε →
+      ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+        ∀ L : ℕ, CriticalRunWindow.InRunLengthWindow C N L →
+          ∀ mask : Finset ℕ, mask ⊆ dyadicBlock N →
+            maskedPoissonTotalVariation N L mask ≤ ε := by
+  apply
+    maskedPoissonTotalVariation_uniformLittleOOne_of_homogeneousMass
+      hC hAGG
+  exact
+    PropositionElevenTwo.proposition_eleven_two_uniformLittleOQuadratic
+      hC A hA smallRowRank rankBudget
+      hhosts hnonterminal hterminal
 
 end
 

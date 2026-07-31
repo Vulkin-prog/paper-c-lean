@@ -29,26 +29,53 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 doit donc rester vide. Cela certifie seulement les modules présents, pas les
 69 pages du manuscrit.
 
-La version Lean `0.39.0` ajoute le modèle de Rademacher infini requis par la
-section 14 et prouve le lemme 14.4 dans sa forme presque sûre simultanée.
-Sa projection sur tout ensemble fini de coordonnées est exactement la loi
-uniforme des cylindres déjà utilisée dans le dépôt.
-`InfiniteExactLengthProbabilityTransfer` montre en outre que chaque
-événement de longueur exacte est la préimage mesurable de son cylindre
-adéquat et identifie exactement sa probabilité rationnelle finie à sa mesure
-sous la loi produit infinie. Lean prouve ensuite l’existence et l’unicité de
-l’excès d’une plage, sa forme cardinale
-\(J_{x,L}=\sum_eK_{x,e}\), l’inclusion de dé-troncation \(e>E\), les
-annulations locales du processus marqué et le lemme 14.7 sous cette vraie
-loi source :
+La version Lean `0.40.0` ferme la chaîne interne du §14. Les sommes de
+Riemann dyadiques, les paramètres amincis spatial et marqué, le graphe de
+dépendance marqué, ses deux termes de Stein--Chen, les transferts exacts
+cylindre--loi source et la dé-troncation sont assemblés. Sous les quatre
+entrées de littérature explicites Arratia--Goldstein--Gordon,
+Evertse--Silverman, Halter--Koch et Nicolas--Robin, Lean prouve les limites
+des fonctionnels de Laplace
 \[
-  \sum_{e=0}^{E}\sum_{x\in D(L+E+1)}
-    \mathbb P_\infty(K_{x,e}=1)=o_{C,E}(1).
+ \mathbb E e^{-\int g\,d\Xi_{N,L}}
+ \longrightarrow
+ \exp\!\left(-\lambda\int_1^2(1-e^{-g(t)})\,dt\right)
 \]
-Cette avancée ne signifie pas que les 69 pages sont toutes formalisées. Le
-processus marqué complet demande encore l’assemblage Stein--Chen, les
-limites de Riemann, la convergence PPP/Laplace et le passage final de la
-troncature au processus non tronqué.
+et, pour tout cutoff fixe contenant le support discret des marques,
+\[
+ \mathbb E e^{-\int g\,d\widehat\Xi_{N,L}}
+ \longrightarrow
+ \exp\!\left(-\lambda\int_1^2
+   \sum_{e\ge0}2^{-(e+1)}(1-e^{-g(t,e)})\,dt\right).
+\]
+Ici le membre de gauche marqué est lui aussi littéral : le module
+`FullMarkedLaplaceTransfer` définit la fonctionnelle source complète en
+sommant sur tous les excès finis. Dès que \(g(t,e)=0\) pour \(e>E\), Lean
+prouve son égalité point par point, puis en espérance, avec la fonctionnelle
+tronquée à laquelle s’applique l’argument fini de Stein--Chen. L’endpoint
+public quantifie donc directement sur
+`infiniteFullMarkedLaplaceExpectation`, et non sur un substitut tronqué.
+La probabilité d’une marque \(>E\) a un `limsup` au plus
+\(\lambda2^{-(E+1)}\), ce qui donne la tension uniforme finale. Ces
+fonctionnels complets constituent la caractérisation formelle des deux PPP ;
+mathlib ne fournissant pas encore un espace standard de mesures ponctuelles
+avec topologie vague, le dépôt n’introduit pas un faux objet topologique
+uniquement pour reformuler cette conclusion.
+
+Le lemme 14.4, l’unicité presque sûre de l’excès,
+\(J_{x,L}=\sum_eK_{x,e}\), le lemme 14.7 et les transferts de cylindres de la
+v0.39 restent la base de cette fermeture. La loi du maximum du corollaire
+14.8 est également conclue canoniquement. Pour le vecteur fini des comptes,
+les lois source/retenue et leur couplage sont exacts.
+`PrimeEncodedCountVector` injecte le vecteur dans les entiers positifs par
+les puissances des premiers ; `PrimeEncodedCountLaplace` identifie
+exactement la loi source poussée et ses transformées aux tests constants
+\(s\log p_e\). `PoissonVectorMass` effectue le même calcul pour la cible
+produit--Poisson, et `DirichletAtomConvergence` transforme la convergence de
+toutes ces transformées en convergence de chaque atome. Le théorème
+`corollary_fourteen_eight_counts` ferme ainsi le vecteur des comptes sous les
+quatre seules entrées de littérature canoniques, sans prémisse de loi
+retenue ni nouveau pont.
 
 Le jalon Lean `0.38.0` a déchargé l’interface interne de Pell généralisé du
 lemme 9.2. Le nouveau module `PaperC.Diophantine.GeneralizedPell` formalise
@@ -208,8 +235,9 @@ prend plus ni seuil \(K\), ni famille terminale, ni estimation de la section
 Balasubramanian--Shorey, AGG et Evertse--Silverman (`external`), ainsi que
 les deux entrées externes qui déchargent Pell (Halter–Koch et
 Nicolas–Robin). Elle n’ajoute aucune dette d’assemblage probabiliste ni
-aucun pont interne ouvert. La convergence PPP n'est pas revendiquée. Les métriques de
-publication sont reproduites dans
+aucun pont interne ouvert. Les convergences PPP du §14 sont désormais
+certifiées par leurs fonctionnels de Laplace et, pour les marques, par la
+tension uniforme. Les métriques de publication sont reproduites dans
 [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
 
 ## Contrat d'archive
@@ -714,9 +742,10 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
   fenêtre littérale
   \(\lvert L-\log_2N\rvert\le C_\star\log\log N\). L’enveloppe obtenue est
   \(N^{-1/2+o(1)}\), donc uniformément \(o(1)\), sans pont.
-- `PaperC.Probability.MaskedSteinChen` et
-  `PaperC.Asymptotics.MaskedPoissonCritical` ferment conditionnellement la
-  proposition 14.2. Le graphe original reste un graphe de dépendance exact
+- `PaperC.Probability.MaskedSteinChen`,
+  `PaperC.Asymptotics.MaskedPoissonCritical` et
+  `PaperC.Asymptotics.MaskedPoissonCanonical` ferment la proposition 14.2
+  modulo littérature seulement. Le graphe original reste un graphe de dépendance exact
   après annulation déterministe des indicatrices hors masque ; ses termes
   \(b_1,b_2\) sont dominés par leurs versions complètes. Lean identifie la
   loi conditionnelle moyenne à la loi du compte masqué sur le cylindre
@@ -727,17 +756,25 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
     d_{\rm TV}\!\left(\mathcal L(Z_{N,L}(A_N)),
       \operatorname{Pois}(|A_N|2^{-L})\right)=o_C(1).
   \]
-  Les hypothèses sont exactement AGG et les trois ponts internes déjà
-  visibles de la proposition 11.2.
-- `PaperC.Probability.SpatialThinningFinite` construit la loi produit des
-  variables auxiliaires de Bernoulli et prouve l'identité finie
+  L’endpoint canonique prend exactement AGG, Evertse--Silverman,
+  Halter--Koch et Nicolas--Robin. Les anciennes interfaces internes de la
+  proposition 11.2 restent disponibles dans les wrappers historiques, mais
+  ne remontent plus à cette signature.
+- `PaperC.Probability.SpatialThinningFinite`,
+  `IndependentThinning`, `LaplaceVoidClosure` et
+  `PoissonLaplaceFunctional` construisent la loi produit des variables
+  auxiliaires de Bernoulli et prouvent l'identité finie
   \[
     \mathbb P(W_g=0\mid(J_x)_x)
       =\exp\!\left(-\sum_{x:J_x=1}g_x\right),
   \]
-  ainsi que les dominations élémentaires des sommes amincies. Ce module ne
-  revendique ni la limite de Riemann ni la convergence vers un processus de
-  Poisson.
+  ainsi que les dominations des termes amincis et l’erreur AGG
+  \(4(b_1+b_2)\). `SpatialRiemannSums`,
+  `SpatialMarkedParameters`, `ConditionalExpectationAverage`,
+  `InfiniteLaplaceTransfer` et `SpatialLaplaceCritical` raccordent cette
+  identité à la somme de Riemann littérale et à l’espérance sous la vraie loi
+  source. Le théorème final est le fonctionnel de Laplace de
+  \(\operatorname{PPP}(\lambda\,dt)\).
 - `PaperC.Model.InfiniteRademacher` construit la loi produit infinie des
   signes premiers et prouve le lemme 14.4 sans pont. Une queue constante
   forcerait tous les bits premiers assez tardifs à zéro, événement de mesure
@@ -775,8 +812,8 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
     \mathbb P(K_{x,q}K_{y,r}=1\mid\mathcal F_Y)
       \le 2^{1-q-r}.
   \]
-  L’instanciation arithmétique simultanée de ces hypothèses structurales
-  reste séparée et n’est pas masquée par un pont.
+  L’instanciation arithmétique simultanée de ces hypothèses structurales est
+  effectuée en aval par les modules Stein--Chen marqués, sans pont ajouté.
 - `PaperC.Probability.ExactLengthBadStartMass` et
   `PaperC.Asymptotics.ExactLengthBadStartMassCritical` ferment le lemme
   14.7. La masse retirée est séparée entre supports déjà défectifs et
@@ -793,6 +830,48 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
   ont masse jointe nulle. Les intersections de support aux offsets
   \(L+e\) et \(L+e+1\) sont calculées exactement, préparant les contributions
   locales de Stein--Chen.
+- `MarkedConditionalDependencyGraph`, `TwoStartLocalRank`,
+  `MarkedSteinChenTerms` et `MarkedSteinChenSplitBound` ferment le calcul
+  marqué. Les paires locales sont injectées dans une population
+  \(O_E(N(L+E))\) et leur rang conjoint est borné par \(E+1\). Les paires
+  séparées sont injectées dans les arêtes communes et leur défaut de rang
+  est dominé par la masse homogène à \(Q=L+E+1\).
+  `MarkedSteinChenCritical` transporte les bornes canoniques \(κ\) et obtient
+  \(b_1,b_2=o_{C,E}(1)\) sans pont interne.
+- `MarkedLaplaceFiniteClosure` compare exactement le fonctionnel complet au
+  fonctionnel retenu par la masse du lemme 14.7 et contrôle la correction du
+  paramètre. `MarkedLaplaceCritical` combine ces estimations aux limites de
+  Riemann pour chaque cutoff fixé.
+  `PaperC.Probability.FullMarkedLaplaceTransfer` définit séparément la
+  fonctionnelle source littéralement complète, dont la somme intérieure
+  parcourt tous les excès \(e\in\mathbb N_0\), et prouve qu’un test nul
+  au-dessus de \(E\) donne exactement la fonctionnelle tronquée, point par
+  point et après intégration. `MarkedDetruncationCritical` établit ensuite
+  \[
+    \limsup_N\mathbb P(\text{une marque}>E)
+      \le\lambda2^{-(E+1)}
+  \]
+  et la tension uniforme quand \(E\to\infty\). Enfin
+  `CorollaryFourteenEightMaximum` prouve
+  \(\mathbb P(M_{N,L}\le m)\to
+  \exp(-\lambda2^{-(m+1)})\) par la route canonique.
+- `PrimeEncodedCountVector`, `PrimeEncodedCountLaplace`,
+  `PoissonVectorMass` et `DirichletAtomConvergence` ferment l’autre partie
+  du corollaire 14.8. Le codage par puissances des premiers est injectif ;
+  les transformées inverses de la loi source sont exactement les
+  fonctionnelles marquées aux tests \(s\log p_e\), celles de la cible sont
+  le produit des transformées de Poisson, et l’inversion de Dirichlet donne
+  la convergence de chaque atome du vecteur. L’endpoint canonique ne prend
+  que AGG, Evertse--Silverman, Halter--Koch et Nicolas--Robin.
+- `PaperC.Asymptotics.SectionFourteenClosure` fournit les deux endpoints
+  publics `theorem_one_two_ii_laplace` et
+  `theorem_one_two_iii_laplace_and_tightness`. Le second quantifie sur une
+  structure de test continu positif munie de son témoin de support fini en
+  marques, porte littéralement sur `infiniteFullMarkedLaplaceExpectation`,
+  utilise l’égalité complète/tronquée de `FullMarkedLaplaceTransfer`,
+  identifie la somme finie de la cible à la série complète sur
+  \(\mathbb N_0\), puis associe la convergence de Laplace à la tension
+  uniforme.
 - `PaperC.Arithmetic.LowZonePrimePivots` et
   `PaperC.Asymptotics.LowZoneCritical` certifient le noyau fini du lemme
   15.1 : supports des premiers intermédiaires, indépendance linéaire, rang,
@@ -1249,13 +1328,11 @@ est le registre des ponts de `audit_manifest.json` et d'`AXIOM_AUDIT.md` :
 chaque entrée porte `kind: external | internal` et
 `status: open | discharged`, et chaque théorème public conditionnel est
 marqué avec la liste exacte et la nature des ponts qu’il prend comme
-prémisses directes. En v039, les interfaces de 9.10, 9.2, 17.26, 17.28,
+prémisses directes. En v040, les interfaces de 9.10, 9.2, 17.26, 17.28,
 17.30 et l’ancienne enveloppe Nicolas--Robin portent
 `status: discharged`. `kind: internal` décrit une provenance et ne signifie
-donc pas, à lui seul, qu’une dette reste ouverte. Le manifeste v039 recense
-17 interfaces — huit `external` et neuf `internal` — dont onze `open` et
-six `discharged`. Il inventorie 3 681 théorèmes ou lemmes publics, 3 683
-cibles d’audit, 3 521 résultats inconditionnels et 160 conditionnels.
+donc pas, à lui seul, qu’une dette reste ouverte. Les comptes exacts du
+manifeste v040 sont reproduits dans `REPRODUCIBILITY.md`.
 
 Le parseur du générateur couvre aussi le format où `theorem` ou `lemma` est
 seul sur une ligne et où le nom commence sur la suivante. Cette correction
@@ -1365,10 +1442,10 @@ logarithmique Nicolas--Robin, sans
 `HostCountStatement`, `NonterminalSectorQuantitativeStatement` ni
 `TerminalSectorMassStatement`. Le
 \(o_C(N^2)\) de 13.6 est certifié au cutoff littéral. La proposition 14.1
-est fermée dans la fenêtre log-log du manuscrit et la proposition 14.2 est
-désormais assemblée conditionnellement sous AGG et les trois ponts internes
-de 11.2. L’identité de Laplace finie de l’amincissement spatial est prouvée,
-mais la convergence PPP reste à construire. Le lemme 15.1 possède son noyau
+est fermée dans la fenêtre log-log du manuscrit et la proposition 14.2
+canonique utilise désormais AGG et la masse mère quantitative \(κ\), sans
+pont interne. Les identités de Laplace, leurs limites de Riemann, le calcul
+Stein--Chen marqué et la dé-troncation du §14 sont assemblés. Le lemme 15.1 possède son noyau
 fini complet et sa conclusion ne
 dépend plus que du pont externe PNT : l’ancienne dette interne du gap a été
 déchargée.
@@ -1397,8 +1474,6 @@ dans l’assemblage probabiliste de
    legacy ne bloquent plus les théorèmes canoniques.
 2. Généraliser de l’encodage rationnel déjà disponible à l’énoncé littéral
    pour tout réel \(\alpha>0\) du théorème 8.1.
-3. Assembler le graphe de dépendance marqué et ses termes \(b_1,b_2\) à
-   partir du lemme 14.7, des systèmes mixtes et des annulations locales
-   désormais prouvés.
-4. Formaliser les limites de Riemann, la convergence des fonctionnels de
-   Laplace et la dé-troncation probabiliste du processus marqué.
+3. Si une API mathlib stable apparaît, transporter les caractérisations de
+   Laplace déjà prouvées vers une formulation équivalente en convergence
+   vague de mesures ponctuelles.

@@ -2,7 +2,7 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.39.0`
+- paper_c_lean : `0.40.0`
 - Lean : `v4.19.0`
 - mathlib : `v4.19.0`
 - PDF cible, SHA-256 :
@@ -12,28 +12,54 @@
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles.
 
-## Périmètre du jalon 0.39
+## Périmètre du jalon 0.40
 
-La v039 étend le modèle fini par la loi produit infinie de Rademacher,
-formalise le lemme 14.4 et la décomposition presque sûre en longueurs
-exactes. `InfiniteExactLengthProbabilityTransfer` prouve que ces événements
-sont mesurables, les identifie aux préimages de leurs cylindres adéquats et
-égale exactement leur mesure infinie à la probabilité rationnelle finie. Le
-petit-oh du lemme 14.7 est d’abord établi sur le cylindre par
-`lemma_fourteen_seven_finiteCylinder`, puis `lemma_fourteen_seven` le
-transporte à la vraie loi infinie, sans hypothèse supplémentaire. La version
-ajoute aussi les annulations et intersections de support de la géométrie
-locale marquée. Le processus marqué/PPP complet n’est pas encore revendiqué.
+La v040 ferme le §14 sous forme de caractérisation par fonctionnels de
+Laplace. Elle conserve le modèle produit infini, le lemme 14.4, la
+décomposition exacte et le lemme 14.7 de la v039, puis ajoute :
 
-La v039 contient **342 modules** et **131 715 lignes Lean**. Ces métriques
-se reproduisent par :
+- les sommes de Riemann dyadiques et les limites des paramètres aminci
+  spatial et marqué ;
+- l’amincissement indépendant générique et l’identité exacte
+  vide--fonctionnel exponentiel ;
+- le graphe de dépendance marqué, les bornes locales de rang, la séparation
+  locale/éloignée et les petits-oh canoniques de \(b_1,b_2\) ;
+- les identités exactes entre intégrales, PMF finies et loi source infinie ;
+- les limites de Laplace des PPP spatial et marqué sous AGG,
+  Evertse--Silverman, Halter--Koch et Nicolas--Robin ;
+- `FullMarkedLaplaceTransfer`, qui définit la fonctionnelle marquée source
+  complète par une somme sur tous les excès et l’identifie exactement,
+  point par point puis en espérance, à la version tronquée pour tout test à
+  support fini en marques ;
+- la tension uniforme des marques, la loi limite du maximum et les
+  transferts exacts du vecteur des comptes.
+
+La convergence PPP est revendiquée exactement par sa famille complète de
+fonctionnels de Laplace et, dans le cas marqué, par la tension uniforme.
+Le prédicat public marqué est formulé littéralement avec
+`infiniteFullMarkedLaplaceExpectation`; le cutoff porté par un test compact
+sert uniquement à appliquer l’égalité complète/tronquée et l’argument fini
+de Stein--Chen, non à remplacer la fonctionnelle source de l’endpoint.
+Mathlib `v4.19.0` ne possède pas l’API de mesures ponctuelles/topologie vague
+qui permettrait de reformuler cette même conclusion comme un `Tendsto` de
+lois. La conversion abstraite des transformées inverses en masses atomiques
+est désormais prouvée dans `DirichletAtomConvergence`, après l’encodage
+injectif des vecteurs par `PrimeEncodedCountVector`.
+`PrimeEncodedCountLaplace` construit la loi source poussée et l’identifie
+aux tests constants \(s\log p_e\), tandis que `PoissonVectorMass` calcule les
+transformées de la cible produit--Poisson. Le wrapper canonique du
+corollaire 14.8 est donc fermé sans prémisse de convergence supplémentaire.
+
+Les métriques exactes du jalon se reproduisent par :
 
 ```bash
 find PaperC -name '*.lean' -type f | wc -l
 find PaperC -name '*.lean' -type f -print0 | xargs -0 wc -l | tail -n 1
 ```
 
-Le jalon 0.39 conserve la décharge de l’interface interne de Pell généralisé :
+La v040 contient **372 modules** et **143 797 lignes Lean**.
+
+Le jalon 0.40 conserve la décharge de l’interface interne de Pell généralisé :
 
 - `GeneralizedPell` traduit les solutions en éléments de `Zsqrtd`, prouve
   que leur idéal principal divise \((M)\), puis transforme l’égalité de deux
@@ -64,7 +90,7 @@ directement ces entrées externes. Ils ne consomment aucun pont
 sous les suffixes `_of_generalizedPell` et `_of_pellEnvelope`. C11.3, P9.9,
 P9.11 et T10.1 sont conservés comme API legacy ouvertes mais non bloquantes.
 
-Le jalon 0.39 conserve tous les résultats de la v038, notamment les deux
+Le jalon 0.40 conserve tous les résultats de la v039, notamment les deux
 dernières estimations sectorielles qualitatives de la section 17 :
 
 - `PrimeFactorsFactorialBound`,
@@ -179,9 +205,9 @@ Le manifeste conserve la distinction indépendante entre `kind` et `status`.
 Les interfaces 9.2 et 9.10 rejoignent 17.26, 17.28 et 17.30 avec
 `status: discharged`; seul `status: open` signale une dette actuelle.
 Il recense 17 interfaces — huit `external` et neuf `internal` — dont onze
-`open` et six `discharged`, ainsi que **3 681 théorèmes ou lemmes
-publics**, **3 683 cibles d’audit**, **3 521 résultats inconditionnels** et
-**160 conditionnels**.
+`open` et six `discharged`, ainsi que **4 020 théorèmes ou lemmes
+publics**, **4 022 cibles d’audit**, **3 825 résultats inconditionnels** et
+**195 conditionnels**.
 
 Le parseur de `scripts/generate_audit.mjs` reconnaît en v035 les déclarations
 où `theorem` ou `lemma` est seul sur une ligne et le nom commence sur la
@@ -235,7 +261,7 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 Les quatre premières commandes doivent réussir. La dernière ne doit produire
 aucune ligne.
 
-Pour la livraison 0.39, la validation de publication doit être rejouée depuis
+Pour la livraison 0.40, la validation de publication doit être rejouée depuis
 deux arbres indépendants dépourvus de `.lake/build`, dont une extraction du
 ZIP final. Dans chacun, le build doit se terminer par
 `Build completed successfully`. L’audit doit produire une sortie pour chaque
@@ -245,9 +271,9 @@ dans `[propext, Classical.choice, Quot.sound]`. Le contrôle du générateur doi
 retrouver exactement les comptes du manifeste final régénéré et enregistrer
 9.2, 9.10, 17.26, 17.28, 17.30 et l’ancienne enveloppe Nicolas--Robin avec
 `status: discharged`. Il doit retrouver 17 interfaces — huit `external`,
-neuf `internal`, onze `open` et six `discharged` — ainsi que 3 681
-déclarations publiques, 3 683 cibles, 3 521 résultats inconditionnels et
-160 conditionnels. Le scan des constructions interdites doit rester vide.
+neuf `internal`, onze `open` et six `discharged` — ainsi que 4 020
+déclarations publiques, 4 022 cibles, 3 825 résultats inconditionnels et
+195 conditionnels. Le scan des constructions interdites doit rester vide.
 
 Pour inspecter les dépendances logiques d'un théorème particulier :
 
@@ -285,7 +311,7 @@ manifeste distingue les dépendances fondationnelles imprimées par Lean des
 hypothèses ordinaires, invisibles à `#print axioms`; il associe donc à chaque
 théorème public un statut conditionnel/inconditionnel, la liste des ponts
 qu’il prend comme prémisses directes, leur nature `external | internal` et
-leur état `open | discharged`. La v039 doit reporter les comptes exacts des
+leur état `open | discharged`. La v040 doit reporter les comptes exacts des
 ponts et des théorèmes conditionnels depuis le manifeste régénéré ; les
 placeholders visibles de ce document doivent être remplacés seulement après
 cette étape.
@@ -301,8 +327,8 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v039.zip
-unzip -Z1 paper_c_lean_v039.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v040.zip
+unzip -Z1 paper_c_lean_v040.zip | rg -v '^paper_c_lean/'
 ```
 
 La seconde commande ne doit produire aucune ligne. L'archive ne doit contenir

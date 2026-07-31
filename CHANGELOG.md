@@ -1,5 +1,79 @@
 # Journal des versions
 
+## 0.40.0
+
+- La proposition 14.2 emprunte désormais la même masse mère quantitative
+  canonique que le théorème 1.1. Son endpoint
+  `maskedPoissonTotalVariation_uniformLittleOOne` n’expose que
+  Arratia--Goldstein--Gordon, Evertse--Silverman, Halter--Koch et
+  Nicolas--Robin. Les interfaces internes historiques C11.3, P9.9 et T10.1
+  ne remontent plus au théorème 1.2(i).
+- `SpatialRiemannSums` prouve la limite de la somme de Riemann dyadique
+  littérale. `SpatialMarkedParameters` en déduit les limites exactes des
+  paramètres spatial et marqué, au facteur critique
+  \(\lambda_N=N2^{-L}\), ainsi que la loi géométrique
+  \(\nu(\{e\})=2^{-(e+1)}\).
+- L’amincissement indépendant est formalisé au niveau d’une famille finie
+  munie d’un graphe de dépendance exact. L’événement de vide est identifié
+  exactement au fonctionnel exponentiel, et l’application d’AGG donne une
+  erreur au plus \(4(b_1+b_2)\). Les intégrales sur les cylindres finis, les
+  espérances sous PMF et les espérances sous la loi produit infinie sont
+  reliées par des identités exactes.
+- La chaîne spatiale du §14.2 assemble la suppression puis la réintégration
+  des mauvais starts, les deux termes de Stein--Chen, le paramètre aminci et
+  la limite de Riemann. Elle conclut, sous les quatre seules entrées de
+  littérature précédentes, à la convergence du fonctionnel de Laplace
+  source vers celui de \(\operatorname{PPP}(\lambda\,dt)\).
+- Pour le §14.4, Lean construit le graphe de dépendance marqué sur les
+  indices \((x,e)\), prouve les marginales conditionnelles, les annulations
+  même-start/chevauchement et le rang local des deux arbres. La séparation
+  locale/éloignée ramène le terme \(b_2\) à une population
+  \(O_E(N(L+E))\), au compte d’arêtes et à la masse homogène en longueur
+  \(Q=L+E+1\). La route quantitative \(κ\) rend ainsi \(b_1,b_2=o_{C,E}(1)\)
+  sans nouveau pont interne.
+- Le fonctionnel marqué tronqué à cutoff fixé est comparé au fonctionnel
+  retenu par la masse exacte du lemme 14.7 ; leurs paramètres diffèrent
+  d’au plus
+  \((E+1)2^E\,\#D(Q)/2^Q=o_{C,E}(1)\). Pour tout test continu positif dont
+  le support en marques est contenu dans \(\{0,\ldots,E\}\),
+  `FullMarkedLaplaceTransfer` définit en outre la fonctionnelle source
+  littéralement complète, avec somme sur tous les excès, et prouve son
+  égalité point par point puis en espérance avec la fonctionnelle tronquée.
+  L’endpoint public porte donc bien sur l’espérance de cette fonctionnelle
+  source complète et converge vers le fonctionnel de
+  \(\operatorname{PPP}(\lambda\,dt\otimes\nu)\).
+- La dé-troncation finale est explicite : la probabilité de voir une marque
+  \(>E\) a un `limsup` au plus
+  \(\lambda2^{-(E+1)}\), puis tend uniformément vers zéro quand \(E\to\infty\).
+  La partie maximum du corollaire 14.8 est fermée canoniquement :
+  \(\mathbb P(M_{N,L}\le m)\to
+  \exp(-\lambda2^{-(m+1)})\). Le transfert exact du vecteur des comptes est
+  également formalisé. `PrimeEncodedCountVector` encode injectivement un
+  vecteur par les puissances des premiers et `DirichletAtomConvergence`
+  prouve, par extraction inductive et contrôle géométrique de la queue, que
+  la convergence de toutes les transformées inverses implique celle de
+  chaque atome. `PrimeEncodedCountLaplace` identifie exactement la loi
+  source poussée et les tests constants \(s\log p_e\) ;
+  `PoissonVectorMass` identifie la cible produit--Poisson. Le théorème
+  `corollary_fourteen_eight_counts` conclut donc la convergence de chaque
+  atome du vecteur sous les quatre entrées canoniques de littérature, sans
+  prémisse de loi retenue ni pont supplémentaire.
+- L’endpoint formel de convergence PPP est donc, honnêtement, la famille
+  complète des fonctionnels de Laplace avec tension uniforme des marques.
+  Aucun espace de mesures ponctuelles ni topologie vague fictifs ne sont
+  introduits. `SectionFourteenClosure` expose directement
+  `theorem_one_two_ii_laplace` et
+  `theorem_one_two_iii_laplace_and_tightness`; ce dernier est formulé avec
+  `infiniteFullMarkedLaplaceExpectation`. Pour un test muni d’un témoin de
+  support fini, la fonctionnelle source complète y est identifiée exactement
+  à sa version tronquée et la somme finie de la cible à la série complète
+  sur \(\mathbb N_0\).
+- Lean et mathlib restent gelés en `v4.19.0`. La v040 contient 372 modules
+  et 143 797 lignes Lean. Le manifeste recense 4 020 théorèmes ou lemmes
+  publics, 4 022 cibles d’audit et 17 ponts — huit `external`, neuf
+  `internal`, onze `open` et six `discharged` — soit 3 825 résultats
+  inconditionnels et 195 conditionnels.
+
 ## 0.39.0
 
 - Le modèle de Rademacher étendu sur tous les premiers est construit dans
