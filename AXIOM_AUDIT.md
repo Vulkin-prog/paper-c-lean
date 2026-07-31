@@ -12,11 +12,16 @@ lake env lean AuditCheck.lean
 ```
 
 `audit_manifest.json` contient la même liste triée de noms et son empreinte
-des sources. Pour la v043, l’audit couvre chaque déclaration publique
+des sources. Pour la v044, l’audit couvre chaque déclaration publique
 `theorem`/`lemma` et deux constructions publiques porteuses de preuves ; les
 comptes exacts sont inscrits par le générateur dans le manifeste. Les
 déclarations privées ne sont pas des cibles séparées, mais leurs dépendances
 sont visibles transitivement dans les résultats publics.
+
+La cible courante du manifeste est l’édition anglaise v08 ; l’édition
+française v08 synchronisée est enregistrée séparément sous `source_pdf_fr`.
+Les citations attachées aux ponts conservent leur provenance historique v07c,
+sans modifier les identifiants, natures ou statuts du registre.
 
 L'audit utilise Lean `v4.32.2` sur le point d'entrée `PaperC.Main`. La liste
 admise reste `[propext, Classical.choice, Quot.sound]`; toute apparition de

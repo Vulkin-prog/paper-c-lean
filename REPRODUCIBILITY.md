@@ -2,23 +2,31 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.43.0`
+- paper_c_lean : `0.44.0`
 - Lean : `v4.32.2`
 - mathlib : `v4.32.2`
-- PDF cible, SHA-256 :
-  `23a5db3c8d024cab3fb8ca9f8f1443f40cf9502b1fb6682a331f5948f57a3336`
+- PDF cible anglais (69 pages), SHA-256 :
+  `601f8cb4a7b0e2058287128888af202c94c2d938550eff7012eed94ab7366112`
+- PDF source français synchronisé (71 pages), SHA-256 :
+  `53e361154f4b503fa00eb3de558f60dbb763492a801b094322d4e8c471bccf28`
 - racine unique de l’archive : `paper_c_lean/`
-- archive de livraison : `paper_c_lean_v043.zip`
+- archive de livraison : `paper_c_lean_v044.zip`
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles.
 
-## Périmètre du jalon 0.43
+## Périmètre du jalon 0.44
 
-La v043 est une migration de toolchain uniquement. Elle porte Lean et mathlib
-de `v4.19.0` à `v4.32.2`, adapte les imports déplacés ainsi que les alias
-d’API retirés des corps de preuve, et conserve à l’identique les
-déclarations, les signatures publiques et le registre d’audit de la v042.
+La v044 est une re-synchronisation documentaire à contenu Lean gelé. Elle
+fait de l’édition anglaise v08 la cible de soumission et enregistre l’édition
+française v08 comme source synchronisée. Elle conserve exactement les 3 976
+déclarations publiques, leurs signatures, les 3 978 cibles d’audit et le
+registre de 13 ponts de la v043. La toolchain reste Lean/mathlib `v4.32.2`.
+
+La v043 avait porté Lean et mathlib de `v4.19.0` à `v4.32.2`, adapté les
+imports déplacés ainsi que les alias d’API retirés des corps de preuve, et
+conservé à l’identique les déclarations, les signatures publiques et le
+registre d’audit de la v042.
 Les sept familles d’imports adaptées sont :
 
 - `Data.Complex.ExponentialBounds` vers
@@ -34,6 +42,12 @@ Les sept familles d’imports adaptées sont :
   `RingTheory.DedekindDomain.Ideal.Lemmas` ;
 - `Probability.Distributions.Poisson` vers
   `Probability.Distributions.Poisson.Basic`.
+
+Les deux empreintes du manuscrit se contrôlent par :
+
+```bash
+sha256sum paper_C_complete_v08_en.pdf paper_C_complete_v08.pdf
+```
 
 La v042 conserve la fermeture du §14 obtenue en v040 sous forme de
 caractérisation par fonctionnels de Laplace. Elle conserve le modèle produit
@@ -98,9 +112,9 @@ find PaperC -name '*.lean' -type f | wc -l
 find PaperC -name '*.lean' -type f -print0 | xargs -0 wc -l | tail -n 1
 ```
 
-La v043 contient **373 modules** et **142 840 lignes Lean**. Les **521 lignes**
-supplémentaires par rapport à la v042 sont uniquement des adaptations de corps
-de preuve à Lean 4.32.2 ; les modules et les signatures publiques sont
+La v044 conserve **373 modules** et **142 840 lignes Lean**. Les **521 lignes**
+ajoutées en v043 par rapport à la v042 sont uniquement des adaptations de
+corps de preuve à Lean 4.32.2 ; les modules et les signatures publiques sont
 inchangés.
 
 Le jalon 0.43 conserve la décharge de l’interface interne de Pell généralisé :
@@ -309,7 +323,7 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 Les cinq premières commandes doivent réussir. La dernière ne doit produire
 aucune ligne.
 
-Pour la livraison 0.43, la validation de publication doit être rejouée depuis
+Pour la livraison 0.44, la validation de publication doit être rejouée depuis
 deux arbres indépendants dépourvus de `.lake/build`, dont une extraction du
 ZIP final. Dans chacun, le build doit se terminer par
 `Build completed successfully`. L’audit doit produire une sortie pour chaque
@@ -360,7 +374,7 @@ manifeste distingue les dépendances fondationnelles imprimées par Lean des
 hypothèses ordinaires, invisibles à `#print axioms`; il associe donc à chaque
 théorème public un statut conditionnel/inconditionnel, la liste des ponts
 qu’il prend comme prémisses directes, leur nature `external | internal` et
-leur état `open | discharged`. Les comptes v043 publiés ci-dessus sont ceux
+leur état `open | discharged`. Les comptes v044 publiés ci-dessus sont ceux
 du manifeste régénéré.
 `ReviewAxioms.lean` est conservé comme sélection historique des
 résultats structurants, mais n'est plus la liste canonique. Chaque sortie de
@@ -374,8 +388,8 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v043.zip
-unzip -Z1 paper_c_lean_v043.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v044.zip
+unzip -Z1 paper_c_lean_v044.zip | rg -v '^paper_c_lean/'
 ```
 
 La seconde commande ne doit produire aucune ligne. L'archive ne doit contenir

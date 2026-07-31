@@ -1,5 +1,45 @@
 # Journal des versions
 
+## 0.44.0
+
+- Documentation-and-manifest-only resynchronization with the mathematical
+  and Lean content frozen. The 3,976 public declarations and their
+  signatures, the 3,978 audit targets, the 13-entry bridge registry (seven
+  `external/open`, six `discharged`), and the Lean/mathlib `v4.32.2`
+  toolchain are unchanged. No Lean source file is modified and the project
+  still contains no `sorry`. The unchanged split is 3,971 theorems and five
+  lemmas, 3,825 unconditional and 151 conditional results, and eight
+  `external` versus five `internal` bridges.
+- The submission target is now the 69-page English edition
+  `paper_C_complete_v08_en.pdf`, SHA-256
+  `601f8cb4a7b0e2058287128888af202c94c2d938550eff7012eed94ab7366112`.
+  The synchronized 71-page French original is recorded in the new
+  `source_pdf_fr` field as `paper_C_complete_v08.pdf`, SHA-256
+  `53e361154f4b503fa00eb3de558f60dbb763492a801b094322d4e8c471bccf28`.
+  The audit generator records both entries in `audit_manifest.json`, and its
+  `--check` mode validates both.
+- Statement fidelity was checked directly against the French editions v07c
+  and v08. All 103 numbered theorem, proposition, lemma, and corollary
+  statements have the same kind, number, title, and mathematical content;
+  extraction-normalized comparison was supplemented by visual checks where
+  page breaks changed. The v07c-to-v08 diff is
+  editorial only: it adds a “Formal verification” paragraph at the end of
+  the introduction and a full section before the conclusion, adds a citation
+  sentence at the end of the proof of Lemma 9.2 explaining the respective
+  Halter–Koch and Nicolas–Robin roles, adds two bibliography entries
+  (including the NR83 DOI), and incorporates editorial changes arising from
+  the formal-section counter-reviews. No mathematical statement transcribed
+  in Lean has changed.
+- Sections 2 through 17 retain their numbering. The new formal-verification
+  section is Section 18 and shifts the conclusion from Section 18 to Section
+  19; a repository-wide search found no source reference to either late
+  section number requiring an update.
+- `README.md` and `FORMALIZATION_STATUS.md` are now in English and use the
+  terminology of the English paper: *constant stretch*, *channel*, *host*,
+  *defect*, *exact-free*, *scope*, *Chen–Stein*, *upper bound*, and
+  *saving*. The delivery archive is `paper_c_lean_v044.zip`, with the single
+  root `paper_c_lean/`.
+
 ## 0.43.0
 
 - Migration strictement technique de Lean/mathlib `v4.19.0` vers

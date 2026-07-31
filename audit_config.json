@@ -1,7 +1,11 @@
 {
   "schema_version": 1,
   "target_pdf": {
-    "filename": "paper_C_complete_v07c.pdf",
-    "sha256": "23a5db3c8d024cab3fb8ca9f8f1443f40cf9502b1fb6682a331f5948f57a3336"
+    "filename": "paper_C_complete_v08_en.pdf",
+    "sha256": "601f8cb4a7b0e2058287128888af202c94c2d938550eff7012eed94ab7366112"
+  },
+  "source_pdf_fr": {
+    "filename": "paper_C_complete_v08.pdf",
+    "sha256": "53e361154f4b503fa00eb3de558f60dbb763492a801b094322d4e8c471bccf28"
   }
 }

@@ -67,16 +67,38 @@ const auditConfig = JSON.parse(fs.readFileSync(auditConfigPath, 'utf8'));
 if (auditConfig.schema_version !== 1) {
   throw new Error('unsupported audit_config.json schema_version');
 }
+const validatePdfEntry = (field, entry) => {
+  if (
+    entry === null ||
+    typeof entry !== 'object' ||
+    Array.isArray(entry) ||
+    Object.keys(entry).sort().join(',') !== 'filename,sha256' ||
+    typeof entry.filename !== 'string' ||
+    entry.filename.length === 0 ||
+    !entry.filename.endsWith('.pdf') ||
+    !/^[0-9a-f]{64}$/.test(entry.sha256)
+  ) {
+    throw new Error(`audit_config.json has an invalid ${field} entry`);
+  }
+};
+validatePdfEntry('target_pdf', auditConfig.target_pdf);
+validatePdfEntry('source_pdf_fr', auditConfig.source_pdf_fr);
 if (
-  !auditConfig.target_pdf ||
-  typeof auditConfig.target_pdf.filename !== 'string' ||
-  !/^[0-9a-f]{64}$/.test(auditConfig.target_pdf.sha256)
+  auditConfig.target_pdf.filename === auditConfig.source_pdf_fr.filename ||
+  auditConfig.target_pdf.sha256 === auditConfig.source_pdf_fr.sha256
 ) {
-  throw new Error('audit_config.json has an invalid target_pdf entry');
+  throw new Error('target_pdf and source_pdf_fr must identify distinct files');
 }
 const readme = fs.readFileSync(readmePath, 'utf8');
-if (!readme.includes(auditConfig.target_pdf.sha256)) {
-  throw new Error('README.md does not contain the configured target PDF SHA-256');
+for (const field of ['target_pdf', 'source_pdf_fr']) {
+  for (const key of ['filename', 'sha256']) {
+    if (readme.includes(auditConfig[field][key])) {
+      continue;
+    }
+    throw new Error(
+      `README.md does not contain the configured ${field} ${key}`,
+    );
+  }
 }
 
 const sourceFiles = execFileSync(
@@ -399,13 +421,14 @@ function parseBridgeMarkers(relativePath, rawSource) {
         `${relativePath}: bridge ${metadata.id} has invalid verbatim_is_excerpt`,
       );
     }
+    // Per-bridge manuscript citations are immutable historical provenance.
+    // The synchronized current editions are recorded at manifest top level.
     if (
       metadata.citation.target_pdf_sha256 !== undefined &&
-      metadata.citation.target_pdf_sha256 !==
-        auditConfig.target_pdf.sha256
+      !/^[0-9a-f]{64}$/.test(metadata.citation.target_pdf_sha256)
     ) {
       throw new Error(
-        `${relativePath}: bridge ${metadata.id} cites a different target PDF`,
+        `${relativePath}: bridge ${metadata.id} has an invalid historical target PDF SHA-256`,
       );
     }
 
@@ -1251,6 +1274,7 @@ const manifest = {
   project: 'paper_c_lean',
   project_version: versionMatch[1],
   target_pdf: auditConfig.target_pdf,
+  source_pdf_fr: auditConfig.source_pdf_fr,
   audit_file: 'AuditCheck.lean',
   import: 'PaperC.Main',
   source_glob: 'PaperC/**/*.lean',

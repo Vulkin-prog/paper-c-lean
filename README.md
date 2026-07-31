@@ -1,1238 +1,1186 @@
-# Formalisation Lean du papier C
+# Lean formalization of Paper C
 
-Ce dépôt accompagne le manuscrit :
+This repository accompanies the manuscript:
 
-> *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages
-> constantes d'une fonction aléatoire complètement multiplicative de
-> Rademacher étendue*, Brice Pouly, version 7c, juillet 2026.
+> *A critical Poisson law in a dyadic block — Starting points of long constant
+> stretches of an extended Rademacher random completely multiplicative
+> function*, Brice Pouly, version 8 (English edition), July 2026.
 
-Empreinte SHA-256 du PDF analysé :
-`23a5db3c8d024cab3fb8ca9f8f1443f40cf9502b1fb6682a331f5948f57a3336`.
+Target manuscript: `paper_C_complete_v08_en.pdf` (69 pages), SHA-256
+`601f8cb4a7b0e2058287128888af202c94c2d938550eff7012eed94ab7366112`.
 
-## Statut
+Synchronized French source: `paper_C_complete_v08.pdf` (71 pages), SHA-256
+`53e361154f4b503fa00eb3de558f60dbb763492a801b094322d4e8c471bccf28`.
 
-Ce dépôt est un **noyau formel compilable en cours d'extension**, et non encore une
-certification du théorème principal. Il sépare volontairement :
+## Status
 
-1. les objets et lemmes effectivement prouvés par Lean ;
-2. les obligations arithmétiques, probabilistes et diophantiennes restant à
-   formaliser ;
-3. les résultats externes qui ne peuvent pas être remplacés honnêtement par
-   des axiomes si l'objectif est une certification.
+This repository is an **extensible, compilable formal core**; it is not yet a
+certification of the main theorem. It deliberately distinguishes:
 
-Le code livré ne contient ni `sorry` ni axiome mathématique ajouté. La commande
+1. the objects and lemmas actually proved by Lean;
+2. the arithmetic, probabilistic, and Diophantine obligations that remain to
+   be formalized;
+3. external results that cannot honestly be replaced by axioms when the goal
+   is certification.
+
+The delivered code contains neither `sorry` nor any added mathematical axiom.
+The command
 
 ```bash
 rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' PaperC
 ```
 
-doit donc rester vide. Cela certifie seulement les modules présents, pas les
-69 pages du manuscrit.
+must therefore return no matches. This certifies only the modules present, not
+the 69-page target manuscript or its synchronized 71-page French source.
 
-La version du projet `0.43.0` reprend sans changement mathématique la v042 et
-migre la toolchain de Lean/mathlib `v4.19.0` vers `v4.32.2`. Elle conserve la
-fermeture de la chaîne interne du §14, le nettoyage legacy de la v041 et
-l’endpoint canonique autonome du théorème 1.4, raccordé directement à la
-masse mère quantitative. Les sommes
-de Riemann dyadiques, les paramètres amincis spatial et marqué, le graphe de
-dépendance marqué, ses deux termes de Stein--Chen, les transferts exacts
-cylindre--loi source et la dé-troncation sont assemblés. Sous les quatre
-entrées de littérature explicites Arratia--Goldstein--Gordon,
-Evertse--Silverman, Halter--Koch et Nicolas--Robin, Lean prouve les limites
-des fonctionnels de Laplace
+Project version `0.44.0` resynchronizes the manifest and documentation with
+the two version 8 manuscript editions, without changing any mathematical
+content. It carries v043 forward, whose only project-wide change was the
+Lean/mathlib migration from `v4.19.0` to `v4.32.2`. It retains
+the closure of the internal §14 chain, the v041 legacy cleanup, and the
+standalone canonical endpoint for Theorem 1.4, connected directly to the
+quantitative mother mass. The dyadic Riemann sums, spatially and markedly
+thinned parameters, marked dependency graph, its two Chen–Stein terms, exact
+cylinder--source-law transfers, and detruncation have all been assembled.
+Under the four explicit literature inputs Arratia--Goldstein--Gordon,
+Evertse--Silverman, Halter--Koch, and Nicolas--Robin, Lean proves the limits of
+the Laplace functionals
 \[
  \mathbb E e^{-\int g\,d\Xi_{N,L}}
  \longrightarrow
  \exp\!\left(-\lambda\int_1^2(1-e^{-g(t)})\,dt\right)
 \]
-et, pour tout cutoff fixe contenant le support discret des marques,
+and, for every fixed cutoff containing the discrete support of the marks,
 \[
  \mathbb E e^{-\int g\,d\widehat\Xi_{N,L}}
  \longrightarrow
  \exp\!\left(-\lambda\int_1^2
    \sum_{e\ge0}2^{-(e+1)}(1-e^{-g(t,e)})\,dt\right).
 \]
-Ici le membre de gauche marqué est lui aussi littéral : le module
-`FullMarkedLaplaceTransfer` définit la fonctionnelle source complète en
-sommant sur tous les excès finis. Dès que \(g(t,e)=0\) pour \(e>E\), Lean
-prouve son égalité point par point, puis en espérance, avec la fonctionnelle
-tronquée à laquelle s’applique l’argument fini de Stein--Chen. L’endpoint
-public quantifie donc directement sur
-`infiniteFullMarkedLaplaceExpectation`, et non sur un substitut tronqué.
-La probabilité d’une marque \(>E\) a un `limsup` au plus
-\(\lambda2^{-(E+1)}\), ce qui donne la tension uniforme finale. Ces
-fonctionnels complets constituent la caractérisation formelle des deux PPP ;
-mathlib ne fournissant pas encore un espace standard de mesures ponctuelles
-avec topologie vague, le dépôt n’introduit pas un faux objet topologique
-uniquement pour reformuler cette conclusion.
+Here the marked left-hand side is literal as well: the
+`FullMarkedLaplaceTransfer` module defines the complete source functional by
+summing over all finite excesses. As soon as \(g(t,e)=0\) for \(e>E\), Lean
+proves its pointwise equality, and then equality in expectation, with the
+truncated functional to which the finite Chen–Stein argument applies. The
+public endpoint therefore quantifies directly over
+`infiniteFullMarkedLaplaceExpectation`, not over a truncated surrogate. The
+probability of a mark \(>E\) has `limsup` at most
+\(\lambda2^{-(E+1)}\), yielding the final uniform tightness. These complete
+functionals constitute the formal characterization of the two PPPs. Since
+mathlib does not yet provide a standard space of point measures with the vague
+topology, the repository does not introduce an artificial topological object
+merely to restate this conclusion.
 
-Le lemme 14.4, l’unicité presque sûre de l’excès,
-\(J_{x,L}=\sum_eK_{x,e}\), le lemme 14.7 et les transferts de cylindres de la
-v0.39 restent la base de cette fermeture. La loi du maximum du corollaire
-14.8 est également conclue canoniquement. Pour le vecteur fini des comptes,
-les lois source/retenue et leur couplage sont exacts.
-`PrimeEncodedCountVector` injecte le vecteur dans les entiers positifs par
-les puissances des premiers ; `PrimeEncodedCountLaplace` identifie
-exactement la loi source poussée et ses transformées aux tests constants
-\(s\log p_e\). `PoissonVectorMass` effectue le même calcul pour la cible
-produit--Poisson, et `DirichletAtomConvergence` transforme la convergence de
-toutes ces transformées en convergence de chaque atome. Le théorème
-`corollary_fourteen_eight_counts` ferme ainsi le vecteur des comptes sous les
-quatre seules entrées de littérature canoniques, sans prémisse de loi
-retenue ni nouveau pont.
+Lemma 14.4, almost-sure uniqueness of the excess,
+\(J_{x,L}=\sum_eK_{x,e}\), Lemma 14.7, and the v0.39 cylinder transfers remain
+the basis of this closure. The maximum law in Corollary 14.8 is also concluded
+canonically. For the finite vector of counts, the source/retained laws and
+their coupling are exact. `PrimeEncodedCountVector` injects the vector into
+the positive integers through prime powers; `PrimeEncodedCountLaplace`
+identifies exactly the pushed-forward source law and its transforms with the
+constant tests \(s\log p_e\). `PoissonVectorMass` performs the same computation
+for the product--Poisson target, and `DirichletAtomConvergence` turns
+convergence of all these transforms into convergence of each atom. Thus the
+theorem `corollary_fourteen_eight_counts` closes the count vector under the
+four canonical literature inputs alone, with no retained-law premise and no
+new bridge.
 
-Le jalon Lean `0.38.0` a déchargé l’interface interne de Pell généralisé du
-lemme 9.2. Le nouveau module `PaperC.Diophantine.GeneralizedPell` formalise
-la traduction en idéaux principaux, le quotient de deux générateurs d’une
-même fibre comme unité de Pell, la croissance exponentielle des unités, le
-contrôle logarithmique par la hauteur, le comptage fini des orbites et la
-réduction au noyau carré-libre. Il en déduit
-`GeneralizedPellPolynomialBoxStatement` à partir de deux corollaires
-classiques étroits et explicitement audités : la comparaison de conducteur
-entre \(\mathbb Z[\sqrt D]\) et l’ordre maximal (Halter–Koch) et l’enveloppe
-divisorielle (Nicolas–Robin). Le facteur \(\tau(|M|)^2\) n’est pas admis :
-`QuadraticIdealDivisors` le prouve dans Lean par factorisation unique des
-idéaux et théorie de décomposition quadratique. L’ancien pont
-`PCv07c-L9.2-generalized-Pell` porte désormais
-`status: discharged`.
+Lean milestone `0.38.0` discharged the internal generalized-Pell interface of
+Lemma 9.2. The new `PaperC.Diophantine.GeneralizedPell` module formalizes the
+translation into principal ideals, the quotient of two generators in the same
+fiber as a Pell unit, exponential unit growth, logarithmic control by height,
+finite orbit counting, and reduction to the squarefree kernel. It derives
+`GeneralizedPellPolynomialBoxStatement` from two narrow classical corollaries
+that are audited explicitly: conductor comparison between
+\(\mathbb Z[\sqrt D]\) and the maximal order (Halter–Koch), and the divisor
+envelope (Nicolas–Robin). The factor \(\tau(|M|)^2\) is not assumed:
+`QuadraticIdealDivisors` proves it in Lean by unique factorization of ideals
+and quadratic decomposition theory. The former bridge
+`PCv07c-L9.2-generalized-Pell` now has `status: discharged`.
 
-La v0.39 resserre encore la frontière bibliographique :
-`PaperC.Diophantine.PellDivisorEnvelope` part de l’inégalité logarithmique
-directe de Nicolas--Robin sur le nombre de diviseurs. Lean prouve ensuite
-la substitution de hauteur polynomiale, le traitement des petits arguments,
-le carré du facteur divisoriel et l’absorption du compte logarithmique des
-unités. L’ancienne enveloppe spécialisée
-`NicolasRobinPellEnvelopeStatement` reste comme wrapper
-`NR83-T1-divisor-bound` déchargé ; les endpoints canoniques prennent
-désormais `NR83-T1-divisor-log-bound`.
+Version 0.39 narrows the bibliographic boundary further:
+`PaperC.Diophantine.PellDivisorEnvelope` starts from Nicolas--Robin's direct
+logarithmic inequality for the divisor function. Lean then proves the
+polynomial-height substitution, treatment of small arguments, squaring of the
+divisor factor, and absorption of the logarithmic unit count. The former
+specialized envelope `NicolasRobinPellEnvelopeStatement` remains as the
+discharged `NR83-T1-divisor-bound` wrapper; canonical endpoints now take
+`NR83-T1-divisor-log-bound`.
 
-La chaîne de masse mère dyadique identifie exactement
+The dyadic mother-mass chain identifies exactly
 \[
   R_2(N,L)=R_{2,\kappa}(N,2N,L),
 \]
-conserve sur cette spécialisation les taux \(3/2\), \(7/4\), \(31/16\) et
-\(5/3\) des secteurs à économie de puissance, puis transporte le gain
-exponentiel de la branche non terminale dense. La somme des sept secteurs
-donne directement
+preserves on this specialization the rates \(3/2\), \(7/4\), \(31/16\), and
+\(5/3\) of the power-saving sectors, and then transports the exponential gain
+from the dense nonterminal branch. Summing the seven sectors gives directly
 \[
   R_2(N,L)=O_C\!\left(
     \frac{N^2}{(\log\log N)^2}\right)
 \]
-sous Evertse--Silverman et les deux entrées externes précédentes.
+under Evertse--Silverman and the two preceding external inputs.
 
-Les entrées canoniques
-`corollary_thirteen_ten_uniformBigO_canonical` et
-`theorem_one_one_uniformBigO_canonical` ont pour liste exacte de ponts AGG,
-Evertse--Silverman, la comparaison de conducteur de Halter–Koch et
-Nicolas–Robin,
-tous de nature `external`. Aucun pont `internal/open` ne remonte donc au
-théorème 1.1 canonique : c’est le jalon « inconditionnel modulo littérature ».
-La v041 supprime les anciennes signatures prenant directement Pell ou son
-enveloppe spécialisée, ainsi que les quatre interfaces C11.3, P9.9, P9.11 et
-T10.1 et leurs consommateurs publics. Les signatures canoniques restent
-inchangées.
+The canonical entries
+`corollary_thirteen_ten_uniformBigO_canonical` and
+`theorem_one_one_uniformBigO_canonical` have the exact bridge list AGG,
+Evertse--Silverman, Halter–Koch conductor comparison, and Nicolas–Robin, all
+of kind `external`. Thus no `internal/open` bridge propagates to canonical
+Theorem 1.1: this is the "unconditional modulo the literature" milestone.
+Version 041 removes the old signatures taking Pell or its specialized
+envelope directly, along with the four interfaces C11.3, P9.9, P9.11, and
+T10.1 and their public consumers. The canonical signatures remain unchanged.
 
-Cette version conserve aussi la fermeture sans pont des lemmes 17.14–17.16
-et de l’instance \(\alpha=3/16\) de 17.17, ainsi que la population terminale
-canonique
+This version also retains the bridge-free closure of Lemmas 17.14–17.16 and
+the \(\alpha=3/16\) instance of 17.17, as well as the canonical terminal
+population
 \[
   T_K=\{s+\widetilde k\le
     \lfloor K\sqrt B/\log B\rfloor\}
 \]
-Elle ferme maintenant les trois secteurs profonds de la proposition 16.1
-sous les seules entrées externes déjà enregistrées : Evertse--Silverman,
-Halter–Koch et Nicolas–Robin.
+It now closes the three deep sectors of Proposition 16.1 under only the
+already registered external inputs: Evertse--Silverman, Halter–Koch, and
+Nicolas–Robin.
 
-L’équivalence arithmétique du lemme 9.10 est désormais prouvée dans sa portée
-source exacte. Lorsque
-`canonicalReducedCandidate? x y (L + 1) ((L + 1) ^ A) = none`, le code
-rationnel canonique est nul et les coordonnées corrigées de cardinal
-\(D^\#+c^\#\) paramètrent tout l’espace des solutions des grands premiers.
-Sous \(L+1\le M\), \(x+L\le M\) et \(y+L\le M\), Lean envoie la frontière
-de chaque relation complète dans le noyau de la matrice concrète formée des
-lignes des petits premiers et des deux parités de blocs. L’injectivité et la
-surjectivité de ce morphisme sont prouvées, puis donnent l’équivalence
-linéaire relations--noyau et, puisque le code rationnel est nul,
-l’équivalence quotient résiduel--noyau. L’interface auditée de 9.10 est
-conservée avec `status: discharged`.
+The arithmetic equivalence of Lemma 9.10 is now proved in its exact source
+scope. When
+`canonicalReducedCandidate? x y (L + 1) ((L + 1) ^ A) = none`, the canonical
+rational code is zero, and the corrected coordinates of
+cardinality \(D^\#+c^\#\) parametrize the full solution space for the large
+primes. Under \(L+1\le M\), \(x+L\le M\), and \(y+L\le M\), Lean maps the
+boundary of each complete relation into the kernel of the concrete matrix
+formed by the small-prime rows and the two block parities. Injectivity and
+surjectivity of this map are proved, yielding the linear
+relations--kernel equivalence and, because the rational code is zero, the
+residual-quotient--kernel equivalence. The audited 9.10 interface is retained
+with `status: discharged`.
 
-Pour 17.26, Lean couvre la population active littérale par les bases \(x-1\)
-de fenêtres contenant deux défauts et par les formes finies des composantes,
-puis désintègre chaque fibre fixée par son coefficient carré-libre lisse.
-Le degré un satisfait l’enveloppe \(N^{1/2+o(1)}\). Le degré deux est injecté
-dans Pell lorsque son coefficient normalisé est au moins deux, et dans les
-paires de diviseurs signées de \(\Delta^2\) lorsque ce coefficient vaut un.
-Le degré au moins trois est injecté dans Evertse--Silverman. Les facteurs
-factoriels contrôlant \(\omega(n)\), les sommes de diviseurs et la somme
-Evertse--Silverman sont désormais prouvés uniformément \(N^{o(1)}\), puis
-les degrés, les bases et les formes sont agrégés. Lean obtient ainsi
+For 17.26, Lean covers the literal active population by the bases \(x-1\) of
+windows containing two defects and by finite component shapes, then
+disintegrates each fixed fiber by its smooth squarefree coefficient. Degree
+one satisfies the \(N^{1/2+o(1)}\) envelope. Degree two injects into Pell when
+its normalized coefficient is at least two, and into signed divisor pairs of
+\(\Delta^2\) when that coefficient is one. Degree at least three injects into
+Evertse--Silverman. The factorial factors controlling \(\omega(n)\), divisor
+sums, and the Evertse--Silverman sum are now proved uniformly
+\(N^{o(1)}\); degrees, bases, and shapes are then aggregated. Lean thereby
+obtains
 \[
   N^{3/2+o_{C,\kappa_0}(1)}
     =o_{C,\kappa_0}(N^2)
 \]
-sans interface propre à 17.26.
+with no dedicated interface for 17.26.
 
-Pour 17.28, Lean suit la dichotomie littérale du manuscrit.
-Lorsque \(3c^\#\le2B\), un compte direct des hôtes à composante de taille au
-plus dix est assemblé depuis les fibres mobiles de degrés \(2\) et au moins
-trois, sous Pell et Evertse--Silverman. Lorsque \(2B<3c^\#\), une composante
-de taille deux existe. Lean formalise la paramétrisation des deux singletons,
-la somme harmonique et le produit eulérien, puis établit un compte global
+For 17.28, Lean follows the manuscript's literal dichotomy. When
+\(3c^\#\le2B\), a direct count of hosts with a component of size at most ten
+is assembled from the mobile fibers of degrees \(2\) and at least three,
+under Pell and Evertse--Silverman. When \(2B<3c^\#\), a component of size two
+exists. Lean formalizes the two-singleton parametrization, harmonic sum, and
+Euler product, and then establishes the global count
 \[
   N\exp\!\left(C_{\rm term}\frac{\sqrt B}{\log B}\right).
 \]
-L’union globale sur les formes utilise le majorant sûr \(9B^4\), et non le
-facteur \(B^2\) affiné de la preuve source ; cette perte polynomiale est
-absorbée dans \(C_{\rm term}\) et ne change pas le taux. Après extraction de
-\(2^{R_K(B)+1}\), le choix formalisé
+The global union over shapes uses the safe upper bound \(9B^4\), rather than
+the refined \(B^2\) factor from the source proof; this polynomial loss is
+absorbed into \(C_{\rm term}\) and does not change the rate. After extracting
+\(2^{R_K(B)+1}\), the formalized choice
 \[
   K=\frac{2C_{\rm term}+1}{\log2}
 \]
-donne \(2C_{\rm term}<K\log2\) et le petit-oh requis, sans interface propre à
-17.28.
+yields \(2C_{\rm term}<K\log2\) and the required little-oh, with no dedicated
+interface for 17.28.
 
-Pour 17.30, Lean ferme l’incidence des premiers starts et la sommation
-uniforme des fibres de partenaires sous Pell, remplace le compte des petites
-parties par l’enveloppe de Chebyshev, puis prouve
-\(\#T_K\le N^{3/4+o(1)}\) et
-\(\sum_{T_K}(2^\tau-1)\le N^{7/4+o(1)}=o(N^2)\). Le transport entre la
-population de rang et la population intrinsèque applique directement le
-théorème non aligné de 9.10, sans hypothèse arithmétique fournie par
-l’appelant. Les API canoniques de la proposition 16.1 et du théorème 16.2
-construisent donc ce secteur elles-mêmes à partir de Pell.
+For 17.30, Lean closes the incidence of first starts and uniform summation of
+partner fibers under Pell, replaces the small-subset count by the Chebyshev
+envelope, and then proves \(\#T_K\le N^{3/4+o(1)}\) and
+\(\sum_{T_K}(2^\tau-1)\le N^{7/4+o(1)}=o(N^2)\). The transfer between the rank
+population and the intrinsic population applies the nonaligned theorem of
+9.10 directly, with no arithmetic hypothesis supplied by the caller. The
+canonical APIs of Proposition 16.1 and Theorem 16.2 therefore construct this
+sector themselves from Pell.
 
-Les trois interfaces historiques 17.26, 17.28 et 17.30 restent enregistrées
-pour les deux assemblages génériques directs et la traçabilité, avec le
-statut `discharged`; l’interface historique de 9.10 porte désormais le même
-statut. L’API canonique n’en consomme aucune. La proposition 16.1 canonique
-prend seulement Evertse--Silverman et les deux corollaires de littérature
-qui reconstruisent Pell. La v041 retire les six adaptateurs sectoriels
-intermédiaires et les variantes recevant directement Pell ; seuls les
-endpoints canoniques et les assemblages génériques directs sont conservés.
-La toolchain de la v043 est gelée en Lean/mathlib `v4.32.2`. Cette migration
-n’altère aucune signature canonique ni aucune entrée du registre d’audit.
+The three historical interfaces 17.26, 17.28, and 17.30 remain registered for
+the two direct generic assemblies and for traceability, with status
+`discharged`; the historical interface of 9.10 now has the same status. The
+canonical API consumes none of them. Canonical Proposition 16.1 takes only
+Evertse--Silverman and the two literature corollaries that reconstruct Pell.
+Version 041 removes the six intermediate sector adapters and the variants
+receiving Pell directly; only canonical endpoints and direct generic
+assemblies are retained. The v044 toolchain remains frozen at Lean/mathlib
+`v4.32.2`. This migration changes neither canonical signatures nor audit
+registry entries.
 
-Pour le théorème 16.2, avec l’hypothèse source \(C>0\), Lean définit le
-compte global \(Z_M\) sur un cylindre fini commun, prouve le couplage de
-troncature, le recentrage de Poisson et le double passage dans l’ordre
-\(j_0\) puis \(M\). Il obtient
+For Theorem 16.2, under the source hypothesis \(C>0\), Lean defines the global
+count \(Z_M\) on a common finite cylinder, proves the truncation coupling,
+Poisson recentering, and the iterated passage first in \(j_0\) and then in
+\(M\). It obtains
 \[
  d_{\rm TV}(\mathcal L(Z_M),\operatorname{Pois}(\Lambda_M))\to0,\qquad
  \Lambda_M=(1+o_C(1))M2^{-L},
 \]
-ainsi que \(\mathbb P(Z_M=0)=e^{-\Lambda_M}+o_C(1)\), sous les entrées
-enregistrées de la proposition 15.5 et du passage à rapport borné.
-L’invariance de la marginale et de la loi lors de l’agrandissement du
-cylindre est une équivalence finie prouvée. Les modules à rapport borné
-certifient désormais le cardinal et la masse des mauvais départs, les
-petits-oh de \(b_1\) et de la moyenne de \(b_2\), le mélange des lois
-conditionnelles, le couplage bon/complet, la moyenne retenue et son erreur
-d’arrondi. `BoundedRatioPoissonAssembly` assemble ces résultats sous AGG et
-la proposition 16.1, puis `TheoremSixteenTwo` les transporte exactement vers
-le compte retenu et ferme le double passage. L’ancienne interface
-interne agrégée `BoundedRangePoissonApproximation` est supprimée.
+as well as \(\mathbb P(Z_M=0)=e^{-\Lambda_M}+o_C(1)\), under the registered
+inputs of Proposition 15.5 and the bounded-ratio passage. Marginal and law
+invariance under cylinder enlargement is a proved finite equivalence. The
+bounded-ratio modules now certify the cardinality and mass of bad starts, the
+little-oh estimates for \(b_1\) and the mean of \(b_2\), the mixture of
+conditional laws, the good/complete coupling, the retained mean, and its
+rounding error. `BoundedRatioPoissonAssembly` assembles these results under
+AGG and Proposition 16.1, after which `TheoremSixteenTwo` transfers them
+exactly to the retained count and closes the iterated passage. The former
+aggregate internal interface `BoundedRangePoissonApproximation` is removed.
 
-Le théorème public générique 16.2 conserve les trois interfaces sectorielles
-pour un classifieur terminal arbitraire. Sa variante canonique principale ne
-prend plus ni seuil \(K\), ni famille terminale, ni estimation de la section
-17. Ses seules prémisses non formalisées sont PNT, Laishram--Shorey,
-Balasubramanian--Shorey, AGG et Evertse--Silverman (`external`), ainsi que
-les deux entrées externes qui déchargent Pell (Halter–Koch et
-Nicolas–Robin). Elle n’ajoute aucune dette d’assemblage probabiliste ni
-aucun pont interne ouvert. Les convergences PPP du §14 sont désormais
-certifiées par leurs fonctionnels de Laplace et, pour les marques, par la
-tension uniforme. Les métriques de publication sont reproduites dans
+Generic public Theorem 16.2 retains the three sector interfaces for an
+arbitrary terminal classifier. Its principal canonical variant no longer
+takes a threshold \(K\), a terminal family, or a Section 17 estimate. Its only
+unformalized premises are PNT, Laishram--Shorey,
+Balasubramanian--Shorey, AGG, and Evertse--Silverman (`external`), together
+with the two external inputs discharging Pell (Halter–Koch and
+Nicolas–Robin). It adds neither probabilistic assembly debt nor any open
+internal bridge. The §14 PPP convergences are now certified by their Laplace
+functionals and, for marks, by uniform tightness. Publication metrics are
+reproduced in
 [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
 
-## Contrat d'archive
+## Archive contract
 
-À partir de la version 0.19, toute archive publiée possède une unique racine
-`paper_c_lean/`. Les fichiers du projet se trouvent immédiatement sous cette
-racine. Ce contrat est stable pour les versions suivantes : ni archive à plat,
-ni double emboîtement `paper_c_lean/paper_c_lean/`.
-L’archive de la présente livraison est `paper_c_lean_v043.zip`.
+Starting with version 0.19, every published archive has a single
+`paper_c_lean/` root. Project files sit immediately beneath that root. This
+contract is stable for subsequent versions: neither a flat archive nor a
+double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
+`paper_c_lean_v044.zip`.
 
-## Modules certifiés
+## Certified modules
 
-- `PaperC.Arithmetic.ParityVector` : vecteur des valuations premières modulo
-  deux et compatibilité avec la multiplication.
-- `PaperC.Arithmetic.CRT` : un certificat de congruences deux à deux
-  premières définit une classe unique modulo le produit, avec une interface
-  certifiée entre `Nat.ModEq` et les congruences entières.
-- `PaperC.Arithmetic.IntervalCongruence` : majorants exacts du nombre de
-  représentants d'une classe dans un intervalle et dans un produit de deux
-  intervalles, utilisés par les remplacements R3--R5.
-- `PaperC.Arithmetic.CertificateCount` : composition de l'unicité CRT et du
-  comptage d'intervalle, donnant directement le majorant
-  « longueur / produit des moduli \(+1\) » pour un certificat fini, ainsi que
-  sa forme rectangulaire à deux variables. Sous \(P\le N\) et pour des
-  intervalles de longueur au plus \(C_0N\), Lean absorbe aussi le terme
-  terminal et obtient \((C_0+1)N/P\), respectivement son carré.
-- `PaperC.Arithmetic.StartResidue` : classe résiduelle canonique d'un offset
-  de start et équivalence exacte
+- `PaperC.Arithmetic.ParityVector`: vector of prime valuations modulo two and
+  compatibility with multiplication.
+- `PaperC.Arithmetic.CRT`: a certificate of pairwise coprime congruences
+  defines a unique class modulo the product, with a certified interface
+  between `Nat.ModEq` and integer congruences.
+- `PaperC.Arithmetic.IntervalCongruence`: exact upper bounds for the number of
+  representatives of a class in an interval and in a product of two
+  intervals, used by replacements R3--R5.
+- `PaperC.Arithmetic.CertificateCount`: composition of CRT uniqueness and
+  interval counting, directly giving the upper bound
+  "length / product of moduli \(+1\)" for a finite certificate, as well as its
+  two-variable rectangular form. Under \(P\le N\), and for intervals of
+  length at most \(C_0N\), Lean also absorbs the terminal term and obtains
+  \((C_0+1)N/P\), and respectively its square.
+- `PaperC.Arithmetic.StartResidue`: canonical residue class of a start offset
+  and the exact equivalence
   \(x\equiv r_{p,v}\pmod p\iff
-  p\mid\operatorname{label}(x,v)\), qui relie les cellules arithmétiques au
-  CRT naturel.
-- `PaperC.Arithmetic.ChannelGeometry` : géométrie entière d'un canal,
-  direction primitive de la différence de deux cellules et bornes
+  p\mid\operatorname{label}(x,v)\), connecting arithmetic cells to the natural
+  CRT.
+- `PaperC.Arithmetic.ChannelGeometry`: integer geometry of a channel,
+  primitive direction of the difference of two cells, and bounds
   \(a,b\le L\).
-- `PaperC.Arithmetic.ChannelUniqueness` : argument déterminant exact donnant
-  l'unicité de deux codes rationnels réduits dans un canal assez étroit
-  (cœur arithmétique du lemme 5.2).
-- `PaperC.Arithmetic.ChannelCount` : projections injectives des cellules d'un
-  canal et majorant exact par le plus grand pas primitif, soit le facteur
-  géométrique \(1+B/\max(a,b)\) du lemme 7.2.
+- `PaperC.Arithmetic.ChannelUniqueness`: exact determinant argument yielding
+  uniqueness of two reduced rational codes in a sufficiently narrow channel
+  (the arithmetic core of Lemma 5.2).
+- `PaperC.Arithmetic.ChannelCount`: injective projections of channel cells and
+  an exact upper bound by the largest primitive step, namely the geometric
+  factor \(1+B/\max(a,b)\) of Lemma 7.2.
 - `PaperC.Arithmetic.ResidualChannelCells`, `ResidualChannelCount`,
   `ResidualChannelSupport`, `ResidualPrimeMass`,
-  `DyadicPrimeReciprocalSums` et `ResidualChannelLemmaSevenTwo` :
-  définition exacte de \(\Delta=h+bj-ai\), des cellules résiduelles
-  \(p\mid\Delta\ne0\), de leur support premier fini et de leurs fibres par
-  valeur de \(\Delta\). Lean prouve
+  `DyadicPrimeReciprocalSums`, and `ResidualChannelLemmaSevenTwo`: exact
+  definition of \(\Delta=h+bj-ai\), the residual cells
+  \(p\mid\Delta\ne0\), their finite prime support, and their fibers by value
+  of \(\Delta\). Lean proves
   \[
   E_p\le
   \left(1+\frac{8qB}{p}\right)\left(1+\frac Bq\right),
   \qquad p<4qB,
   \]
-  puis, par coquilles dyadiques et la borne de Chebyshev déjà certifiée,
+  and then, by dyadic shells and the already certified Chebyshev bound,
   \[
   \sum_p\frac{E_p}{p}\le
   \frac{896B}{\lfloor\log_2B\rfloor}.
   \]
-  Le support choisi est démontré complet : tout agrandissement du cutoff
-  premier n'ajoute que des termes nuls. Cela certifie le lemme 7.2 dans une
-  formulation finie effective, sous les hypothèses explicites du papier
-  \(m\ge2\), \(2\le q\le L\) et \(B=L+1\ge4\).
-- `PaperC.Affine.StartBoundaryRange`, `RelationBoundaryIff` et
-  `RationalChannelCode` : la frontière complète est exactement
-  l'hyperplan des vecteurs pairs; les équations premières caractérisent
-  exactement les relations; les sous-ensembles pairs des unités d'un canal
-  donnent un code injectif de dimension \(m-1\), avec critère de non-nullité
-  \(m\ge2\) et caractère affine
-  \(1_{\{i=-1\}}+1_{\{j=-1\}}\). Cela certifie le lemme 5.1.
+  The chosen support is proved complete: enlarging the prime cutoff adds only
+  zero terms. This certifies Lemma 7.2 in an effective finite formulation,
+  under the paper's explicit hypotheses \(m\ge2\), \(2\le q\le L\), and
+  \(B=L+1\ge4\).
+- `PaperC.Affine.StartBoundaryRange`, `RelationBoundaryIff`, and
+  `RationalChannelCode`: the complete boundary is exactly the hyperplane of
+  even vectors; the prime equations characterize the relations exactly; even
+  subsets of the units of a channel give an injective code of dimension
+  \(m-1\), with nonzero criterion \(m\ge2\) and affine character
+  \(1_{\{i=-1\}}+1_{\{j=-1\}}\). This certifies Lemma 5.1.
 - `PaperC.Arithmetic.CanonicalChannel`,
   `PaperC.Asymptotics.CanonicalChannelWindow`,
-  `PaperC.Affine.CanonicalRationalCode` et
-  `PaperC.Asymptotics.CanonicalRationalCodeWindow` : sélection finie du
-  rapport réduit canonique, unicité uniforme par déterminant, construction
-  de \(S_{\rm rat}\), \(\sigma,\tau\), branche exacte \(m_{\rm ex}\le1\), et
-  couverture de tout code non nul. Cela certifie le lemme 5.2.
+  `PaperC.Affine.CanonicalRationalCode`, and
+  `PaperC.Asymptotics.CanonicalRationalCodeWindow`: finite selection of the
+  canonical reduced ratio, uniform uniqueness by determinant, construction
+  of \(S_{\rm rat}\), \(\sigma,\tau\), the exact \(m_{\rm ex}\le1\) branch,
+  and coverage of every nonzero code. This certifies Lemma 5.2.
 - `PaperC.Arithmetic.ChannelEnumeration`,
   `ChannelMultiplicityBounds`, `ChannelStartPairs`,
   `SeparatedSmallChannels`, `HeightTwoPairCount`,
-  `WeightedChannelMass` et `RationalMassFinite`, avec les modules
-  asymptotiques `CriticalChannelPowers`, `RationalPowers`,
-  `CriticalRationalMassEnvelopes`, `CriticalRationalMass` et
-  `WeightedChannelMassCritical` : comptages finis des rapports, hauteurs,
-  unités et couples de starts, traitement frontal \(q=2\), puis preuves
-  uniformes \(N^{4/3+o_C(1)}\), \(N^{5/3+o_C(1)}\) et
-  \(N^{1+o_C(1)}\). Ils certifient la proposition 5.4 et le lemme 5.5.
+  `WeightedChannelMass`, and `RationalMassFinite`, together with the
+  asymptotic modules `CriticalChannelPowers`, `RationalPowers`,
+  `CriticalRationalMassEnvelopes`, `CriticalRationalMass`, and
+  `WeightedChannelMassCritical`: finite counts of ratios, heights, units, and
+  pairs of starts, treatment of the boundary case \(q=2\), followed by the
+  uniform proofs \(N^{4/3+o_C(1)}\), \(N^{5/3+o_C(1)}\), and
+  \(N^{1+o_C(1)}\). They certify Proposition 5.4 and Lemma 5.5.
 - `PaperC.Combinatorics.LargePrimeOccurrences`,
-  `LargePrimeGraph`, `PinnedGraphResolution` et
-  `LargePrimeGraphResolution` : construction du graphe des grands premiers,
-  identification exacte de ses équations avec \(W_{>B}(x,y)\), puis
-  équivalence linéaire canonique avec une coordonnée libre par composante non
-  épinglée. Lean prouve
-  \(\dim W_{>B}=D+c\), identifie \(D\) au nombre littéral de sommets
-  défectueux et obtient \(D+2c\le2(L+1)\). Cela certifie entièrement le
-  lemme 6.1.
-- `PaperC.Arithmetic.ComponentSquareClass` et
-  `PaperC.Combinatorics.LargePrimeComponents` : sur toute composante non
-  épinglée de deux starts positifs séparés, les parités aux premiers
-  \(p>L+1\) s'annulent et le produit des labels s'écrit
-  \(d z^2\), où \(d>0\) est carré-libre et tous ses diviseurs premiers sont
-  \(\le L+1\). Le représentant \(d\) et la racine positive sont canoniques et
-  uniques. Cela certifie la conclusion de classe carrée du lemme 6.2.
-- `PaperC.Arithmetic.ExactUnitLargeKernel` et
-  `PaperC.Combinatorics.ExactUnitIsolation` : pour une unité exacte dont les
-  coefficients primitifs sont sous le cutoff, les deux occurrences ont le
-  même noyau impair grand. Si ce noyau vaut un, elles sont toutes deux
-  défectueuses; sinon elles sont adjacentes et forment à elles seules une
-  composante non épinglée de cardinal deux. Deux unités distinctes d'un même
-  canal positif ont en outre des paires d'occurrences disjointes et
-  déterminent des composantes distinctes; dans la branche non défective,
-  celles-ci restent non épinglées et de cardinal deux. Cela certifie
-  entièrement le lemme 6.3 sous ses hypothèses explicites de positivité,
-  coprimalité, hauteur et cutoff.
+  `LargePrimeGraph`, `PinnedGraphResolution`, and
+  `LargePrimeGraphResolution`: construction of the large-prime graph, exact
+  identification of its equations with \(W_{>B}(x,y)\), and then a canonical
+  linear equivalence with one free coordinate per unpinned component. Lean
+  proves \(\dim W_{>B}=D+c\), identifies \(D\) with the literal number of
+  defective vertices, and obtains \(D+2c\le2(L+1)\). This certifies Lemma 6.1
+  in full.
+- `PaperC.Arithmetic.ComponentSquareClass` and
+  `PaperC.Combinatorics.LargePrimeComponents`: on every unpinned component of
+  two separated positive starts, the parities at primes \(p>L+1\) vanish and
+  the product of the labels is \(d z^2\), where \(d>0\) is squarefree and all
+  its prime divisors are \(\le L+1\). The representative \(d\) and positive
+  root are canonical and unique. This certifies the square-class conclusion
+  of Lemma 6.2.
+- `PaperC.Arithmetic.ExactUnitLargeKernel` and
+  `PaperC.Combinatorics.ExactUnitIsolation`: for an exact unit whose primitive
+  coefficients lie below the cutoff, both occurrences have the same large
+  odd kernel. If this kernel is one, both are defective; otherwise they are
+  adjacent and alone form an unpinned component of cardinality two. Moreover,
+  two distinct units in the same positive channel have disjoint pairs of
+  occurrences and determine distinct components; in the nondefective branch,
+  these remain unpinned and of cardinality two. This certifies Lemma 6.3 in
+  full under its explicit positivity, coprimality, height, and cutoff
+  hypotheses.
 - `PaperC.LinearAlgebra.QuotientParity`,
   `CanonicalResidualQuotient`,
   `PaperC.Combinatorics.LargePrimeRelationBoundary`,
-  `ResidualComponentCounts` et `DefectiveVertexIntervalBound` :
-  interprétation littérale de \(\tau\) comme dimension de
-  \(R(x,y)/S_{\rm rat}\), injection de la frontière des relations dans
-  \(W_{>B}\), perte d'une dimension par la parité du bloc gauche, partition
-  \(m=d+n\), définitions exactes de \(D^\#\) et \(c^\#\), puis
+  `ResidualComponentCounts`, and `DefectiveVertexIntervalBound`: literal
+  interpretation of \(\tau\) as the dimension of
+  \(R(x,y)/S_{\rm rat}\), injection of the relation boundary into
+  \(W_{>B}\), loss of one dimension through left-block parity, partition
+  \(m=d+n\), exact definitions of \(D^\#\) and \(c^\#\), and then
   \[
   \tau\le D^\#+c^\#,\qquad D^\#+2c^\#\le2B.
   \]
-  Les sommets défectueux sont injectés dans les deux ensembles de défauts
-  d'intervalle; la proposition 3.2 donne ensuite, avec quantificateurs
-  uniformes sous la fenêtre critique,
-  \(D^\#\ll_C B/\log B\). Cela certifie le lemme 6.4 dans le modèle fini,
-  sous les hypothèses géométriques explicites du papier.
+  The defective vertices inject into the two sets of interval defects;
+  Proposition 3.2 then gives, with uniform quantifiers in the critical window,
+  \(D^\#\ll_C B/\log B\). This certifies Lemma 6.4 in the finite model under
+  the paper's explicit geometric hypotheses.
 - `PaperC.Combinatorics.ResidualCertificates`,
   `OneUnitResidualExceptions`, `CanonicalResidualComponents`,
-  `CanonicalResidualPrimeProduct` et
-  `CanonicalResidualCRTCertificate` :
-  construction concrète de \(C_{\rm res}\), preuve
-  \(\lvert C_{\rm res}\rvert=c^\#\), choix du plus petit premier puis de la
-  cellule lexicographiquement minimale dans chaque composante, et famille
-  canonique de cardinal \(c^\#\). Lean vérifie que les offsets gauches sont
-  distincts, que les offsets droits le sont aussi, que les premiers
-  \(p_s>B\) sont distincts, qu'ils divisent \(x+i_s\) et \(y+j_s\), et que
-  \(h+bj_s-ai_s\ne0\) lorsque \(m\ge2\). Lorsque \(m=1\), toute exception
-  appartient à la famille des composantes rencontrant les deux occurrences
-  de l'unique unité, dont le cardinal est au plus deux. Cela certifie le
-  lemme 6.5. Le produit canonique \(P^\#\) est en outre défini, positif, possède
-  exactement \(c^\#\) facteurs et porte une dichotomie formelle
-  \(P^\#\le N\) / \(P^\#>N\). Le certificat complet associé a ce produit,
-  est admissible exactement dans la première branche, et les deux starts
-  satisfont toutes ses congruences.
-- `PaperC.Affine.System` : systèmes affines finis sur
-  \(\mathbf F_2\), compatibilité, fibres et comptage exact par le noyau.
-- `PaperC.Affine.Probability` et `PaperC.Affine.Fourier` : probabilité
-  uniforme exacte d'une fibre et identité de Fourier division-free du
-  lemme 2.1.
-- `PaperC.Affine.Normalization` : caractère des relations, paramètres
-  \(\eta,\rho\), normalisation exacte de la somme signée et inégalité
-  \(\lvert\eta2^\rho-1\rvert\le 2^\rho-1\) du lemme 2.1.
-- `PaperC.Combinatorics.TreeBoundary` : frontière d'un ensemble fini
-  d'arêtes, additivité par différence symétrique, existence sur un graphe
-  connexe et bijection existence--unicité entre sous-ensembles d'arêtes d'un
-  arbre et parties paires de sommets (lemme 2.2).
+  `CanonicalResidualPrimeProduct`, and
+  `CanonicalResidualCRTCertificate`: concrete construction of
+  \(C_{\rm res}\), proof that \(\lvert C_{\rm res}\rvert=c^\#\), selection of
+  the smallest prime and then the lexicographically least cell in each
+  component, and a canonical family of cardinality \(c^\#\). Lean verifies
+  that the left offsets are distinct, as are the right offsets; that the
+  primes \(p_s>B\) are distinct; that they divide \(x+i_s\) and \(y+j_s\);
+  and that \(h+bj_s-ai_s\ne0\) when \(m\ge2\). When \(m=1\), every exception
+  belongs to the family of components meeting both occurrences of the unique
+  unit, whose cardinality is at most two. This certifies Lemma 6.5. The
+  canonical product \(P^\#\) is also defined, is positive, has exactly
+  \(c^\#\) factors, and carries a formal \(P^\#\le N\) / \(P^\#>N\)
+  dichotomy. The associated complete certificate has this product, is
+  admissible exactly in the first branch, and both starts satisfy all its
+  congruences.
+- `PaperC.Affine.System`: finite affine systems over \(\mathbf F_2\),
+  compatibility, fibers, and exact counting by the kernel.
+- `PaperC.Affine.Probability` and `PaperC.Affine.Fourier`: exact uniform
+  probability of a fiber and the division-free Fourier identity of Lemma 2.1.
+- `PaperC.Affine.Normalization`: relation character, parameters
+  \(\eta,\rho\), exact normalization of the signed sum, and the inequality
+  \(\lvert\eta2^\rho-1\rvert\le 2^\rho-1\) from Lemma 2.1.
+- `PaperC.Combinatorics.TreeBoundary`: boundary of a finite edge set,
+  additivity under symmetric difference, existence on a connected graph, and
+  an existence--uniqueness bijection between edge subsets of a tree and even
+  vertex subsets (Lemma 2.2).
 - `PaperC.Combinatorics.CertificateSummation`,
-  `CertificateCRTInstantiation`, `CertificateCellFamilies` et
-  `CertificateLemmaSevenOne`, avec
-  `PaperC.Analysis.ExponentialSeriesMajorant` : passage des certificats
-  ordonnés aux certificats non ordonnés, premiers distincts donc copremiers,
-  condition \(P\le N\), comptes CRT pondérés 1D/2D, facteur exact \(1/r!\),
-  regroupement des cellules donnant \(u\sum_pE_p/p\) et
-  \(uM\sum_p1/p^2\), sommation sur toutes les tailles possibles et
-  majoration par la série exponentielle. Cela certifie le lemme 7.1 dans sa
-  formulation finie exacte.
+  `CertificateCRTInstantiation`, `CertificateCellFamilies`, and
+  `CertificateLemmaSevenOne`, together with
+  `PaperC.Analysis.ExponentialSeriesMajorant`: passage from ordered to
+  unordered certificates, distinct primes and hence coprimality, condition
+  \(P\le N\), weighted 1D/2D CRT counts, exact \(1/r!\) factor, grouping of
+  cells giving \(u\sum_pE_p/p\) and \(uM\sum_p1/p^2\), summation over all
+  possible sizes, and an upper bound by the exponential series. This certifies
+  Lemma 7.1 in its exact finite formulation.
 - `PaperC.Combinatorics.ResidualMasses`,
   `PropositionSevenThreeSigmaZeroCover`,
   `PositiveSigmaFixedChannelCover`, `PositiveSigmaFixedChannelBound`,
-  `PositiveSigmaGlobalGrouping` et `PositiveSigmaKeyMassBound`, avec les
-  modules asymptotiques `CorrectedDefectEnvelope`,
+  `PositiveSigmaGlobalGrouping`, and `PositiveSigmaKeyMassBound`, together
+  with the asymptotic modules `CorrectedDefectEnvelope`,
   `SigmaZeroQuadraticCritical`, `ResidualCertificateMassCritical`,
-  `PositiveSigmaQuadraticCritical`, `QuadraticAndInterpolationClosure` et
-  `PropositionSevenThreeCritical` : définition littérale des masses
-  \(Q_{\rm res}\) et \(R_{\rm res}\) du secteur \(P^\#\le N\), partition
-  exacte selon \(\sigma=0\) ou \(\sigma>0\), couverture CRT bidimensionnelle
-  de la branche exceptionnelle, puis regroupement sans double comptage de la
-  branche systématique par les clés finies \((q,a,b,h,r)\). Les enveloppes
-  explicites utilisent respectivement
-  \(\exp(112B/\lfloor\log_2B\rfloor)\) et
-  \(\exp(3584B/\lfloor\log_2B\rfloor)\), ainsi que le maximum fini du défaut
-  corrigé. Lean en déduit, uniformément dans la fenêtre critique,
+  `PositiveSigmaQuadraticCritical`, `QuadraticAndInterpolationClosure`, and
+  `PropositionSevenThreeCritical`: literal definition of the masses
+  \(Q_{\rm res}\) and \(R_{\rm res}\) in the \(P^\#\le N\) sector, exact
+  partition according to \(\sigma=0\) or \(\sigma>0\), two-dimensional CRT
+  coverage of the exceptional branch, and then grouping of the systematic
+  branch without double counting by the finite keys \((q,a,b,h,r)\). The
+  explicit envelopes respectively use
+  \(\exp(112B/\lfloor\log_2B\rfloor)\) and
+  \(\exp(3584B/\lfloor\log_2B\rfloor)\), together with the finite maximum of
+  the corrected defect. Lean deduces, uniformly in the critical window,
   \[
   Q_{\rm res}\le N^{2+o_C(1)},\qquad
   R_{\rm res}\le N^{7/4+o_C(1)},
   \]
-  la seconde borne étant obtenue par l'interpolation finie (6.6). Cela
-  certifie entièrement la proposition 7.3 sous ses hypothèses explicites.
-- Les modules `SmallHeightLargeProductPairs`,
+  with the second bound obtained by finite interpolation (6.6). This fully
+  certifies Proposition 7.3 under its explicit hypotheses.
+- The modules `SmallHeightLargeProductPairs`,
   `SmallHeightResidualPrimeSupport`, `SmallHeightResidualComponentEnvelope`,
-  `SmallHeightTauEnvelope` et `SmallHeightLargeProductMassBound`, avec les
-  modules asymptotiques `SmallHeightComponentEnvelopeCritical`,
+  `SmallHeightTauEnvelope`, and `SmallHeightLargeProductMassBound`, together
+  with the asymptotic modules `SmallHeightComponentEnvelopeCritical`,
   `SmallHeightTauEnvelopeCritical`, `SmallHeightSigmaZeroCritical`,
-  `SmallHeightPositiveSigmaCritical` et `PropositionSevenFourCritical`,
-  formalisent le secteur \(P^\#>N\) de petite hauteur canonique
-  \(q\le\sqrt{\log(L+1)}\). Lean construit une enveloppe finie du nombre de
-  composantes résiduelles, sépare exactement les branches \(\sigma=0\) et
-  \(\sigma>0\), puis démontre, pour \(C\ge0\) et \(A\ge1\), uniformément dans
-  la fenêtre critique,
+  `SmallHeightPositiveSigmaCritical`, and `PropositionSevenFourCritical`
+  formalize the canonical small-height \(P^\#>N\) sector
+  \(q\le\sqrt{\log(L+1)}\). Lean constructs a finite envelope for the number
+  of residual components, separates the \(\sigma=0\) and \(\sigma>0\)
+  branches exactly, and then proves, for \(C\ge0\) and \(A\ge1\), uniformly
+  in the critical window,
   \[
-  Q_{\rm res}^{\rm petite\ hauteur}\le N^{5/3+o_C(1)},\qquad
-  R_{\rm res}^{\rm petite\ hauteur}\le N^{19/12+o_C(1)}.
+  Q_{\rm res}^{\rm small\ height}\le N^{5/3+o_C(1)},\qquad
+  R_{\rm res}^{\rm small\ height}\le N^{19/12+o_C(1)}.
   \]
-  La seconde majoration implique en particulier
-  \(R_{\rm res}^{\rm petite\ hauteur}=o_C(N^2)\). Cela certifie la
-  proposition 7.4 sous ses hypothèses explicites, sans affirmer
-  d'équivalence asymptotique ni certifier le théorème principal.
+  The second upper bound implies in particular
+  \(R_{\rm res}^{\rm small\ height}=o_C(N^2)\). This certifies
+  Proposition 7.4 under its explicit hypotheses, without asserting an
+  asymptotic equivalence or certifying the main theorem.
 - `PaperC.Combinatorics.SmallComponentExtraction`,
   `AlignedExactFreeComponents`, `ComponentProductParity`,
   `AlignedRungeBridge`, `AlignedCoreExclusion`,
-  `AlignedDeepCoreExtraction` et les modules de code
+  `AlignedDeepCoreExtraction`, and the coding modules
   `TwoParityColumnCode`, `AlignedComponentCode`,
-  `AlignedComponentHamming` certifient le cœur fini du théorème 8.1.
-  Lean retire au plus deux composantes rencontrant les unités exactes,
-  extrait une famille de petites composantes, construit la matrice
-  \(\Phi\) avec ses deux parités de blocs, trouve un mot court, en déduit un
-  produit carré et des racines distinctes, puis applique Runge. Pour le cœur
-  profond de la partition déjà certifiée, \(B\ge32\) et
-  \(3B<16c^\#\) donnent explicitement au moins \(B/16\) composantes
-  exact-free de taille au plus \(43\). Le rayon entier
+  `AlignedComponentHamming` certify the finite core of Theorem 8.1. Lean
+  removes at most two components meeting the exact units, extracts a family
+  of small components, constructs the matrix \(\Phi\) with its two block
+  parities, finds a short word, deduces a square product and distinct roots,
+  and then applies Runge. For the deep core of the already certified
+  partition, \(B\ge32\) and \(3B<16c^\#\) explicitly yield at least \(B/16\)
+  exact-free components of size at most \(43\). The integer radius
   \[
   t(B)=\left\lceil
     \frac{64B}{\lfloor\log_2B\rfloor
       \lfloor\log_2\lfloor\log_2B\rfloor\rfloor}
   \right\rceil
   \]
-  satisfait uniformément le budget de Hamming. Lean ferme aussi
-  \(2R\le ax\) et toute la plage des inégalités de Runge
-  \(1\le k\le43t(B)\), puis prouve finalement qu'aucun cœur aligné
-  \(3B<16c^\#\), de hauteur \(H\le B^A\), ne subsiste pour \(N\) assez
-  grand dans \(\lvert L-\log_2N\rvert\le C\).
-- `PaperC.Diophantine.EvertseSilvermanInput` formalise l'interface exacte du
-  lemme 9.1 sans transformer le résultat cité en déclaration globale. Le
-  pont externe est une hypothèse explicite sur les abscisses \(X\) pour
-  lesquelles \(Z^2=e\prod_r(X+h_r)\) possède une solution \(Z\ne0\), avec le
-  majorant \(7^{4+9|S|}\). Lean prouve qu'il existe au plus deux ordonnées
-  pour chaque abscisse, retrouve donc le facteur deux de (9.2), prouve
-  séparément qu'il existe au plus \(d\) solutions avec \(Z=0\), puis utilise
-  l'injection
-  \((X,Y)\mapsto(X,eY)\) pour obtenir le majorant correspondant pour
-  \(\prod_r(X+h_r)=eY^2\). Cette implication est certifiée ; le théorème
-  d'Evertse--Silverman lui-même reste à importer ou à formaliser.
-- `PaperC.Diophantine.PellInput` et
-  `PaperC.Diophantine.PellRealExponent` formalisent les réductions des
-  lemmes 9.2 et 17.19 pour tout exposant
+  uniformly satisfies the Hamming budget. Lean also closes \(2R\le ax\) and
+  the entire range of Runge inequalities \(1\le k\le43t(B)\), and finally
+  proves that no aligned core with \(3B<16c^\#\) and height \(H\le B^A\)
+  remains for sufficiently large \(N\) in
+  \(\lvert L-\log_2N\rvert\le C\).
+- `PaperC.Diophantine.EvertseSilvermanInput` formalizes the exact interface of
+  Lemma 9.1 without turning the cited result into a global declaration. The
+  external bridge is an explicit hypothesis on the abscissae \(X\) for which
+  \(Z^2=e\prod_r(X+h_r)\) has a solution \(Z\ne0\), with upper bound
+  \(7^{4+9|S|}\). Lean proves that there are at most two ordinates for each
+  abscissa, thus recovering the factor two in (9.2); proves separately that
+  there are at most \(d\) solutions with \(Z=0\); and then uses the injection
+  \((X,Y)\mapsto(X,eY)\) to obtain the corresponding upper bound for
+  \(\prod_r(X+h_r)=eY^2\). This implication is certified; the
+  Evertse--Silverman theorem itself remains to be imported or formalized.
+- `PaperC.Diophantine.PellInput` and
+  `PaperC.Diophantine.PellRealExponent` formalize the reductions of Lemmas 9.2
+  and 17.19 for every exponent
   \(K_0\in\mathbb R_{>0}\). `GeneralizedPell`,
-  `QuadraticIdealDivisors` et `PellDivisorEnvelope` déchargent le pont
-  interne : idéaux, orbites d’unités, hauteurs et enveloppe divisorielle
-  sont reconstruits en Lean à partir des seules entrées externes
-  Halter--Koch et Nicolas--Robin. Lean prouve aussi l'injection
-  \((z,w)\mapsto(Az,w)\), l'identité avec
-  \(X^2-ACw^2=Ae\), la non-carréité de \(AC\), toutes les bornes de hauteur
-  et le transfert exact du cardinal. Lean passe à
-  \(J=\lceil K_0\rceil\), puis choisit
-  \(H=\lfloor N^{K_0}\rfloor\) afin d’obtenir exactement le prédicat source
-  \(|z|,|w|\le N^{K_0}\). Cette adaptation n’ajoute aucune hypothèse
-  diophantienne.
-- `PaperC.Diophantine.ComponentNormalization` et
-  `SingletonProductParametrization` certifient les noyaux arithmétiques des
-  lemmes 9.3--9.5. Lean construit le facteur carré-libre canonique de
-  \(PQ=dz^2\), prouve son unicité et la borne \(e\le dP\), traite exactement
-  le degré un, réduit injectivement le degré deux à Pell et le degré au moins
-  trois à l'interface Evertse--Silverman, puis établit la paramétrisation
-  canonique
-  \(X=ecu^2,\ Y=(d/e)cv^2\), sa réciproque, son unicité et les bornes de ses
-  paramètres. `BoundedRatioManyDefectsDegreeTwoSum`,
-  `BoundedRatioManyDefectsEvertseSum` et
-  `BoundedRatioManyDefectsDegreeAssembly` assemblent désormais les
-  sommations asymptotiques de 9.4--9.5, sous Evertse--Silverman et le pont
-  Pell déchargé ; seules les entrées de littérature restent ouvertes.
-- `PaperC.Combinatorics.DeepCoreSmallComponent` et
-  `PaperC.Diophantine.MultipleDefects` certifient les réductions finies des
-  lemmes 9.6--9.8 : extraction d'une composante de taille bornée sous une
-  hypothèse de densité, injection de deux défauts vers une équation de Pell,
-  transfert exact du cardinal et factorisation de la branche de même classe.
+  `QuadraticIdealDivisors`, and `PellDivisorEnvelope` discharge the internal
+  bridge: ideals, unit orbits, heights, and the divisor envelope are rebuilt
+  in Lean from the external Halter--Koch and Nicolas--Robin inputs alone. Lean
+  also proves the injection \((z,w)\mapsto(Az,w)\), the identity with
+  \(X^2-ACw^2=Ae\), nonsquareness of \(AC\), all height bounds, and exact
+  cardinality transfer. Lean passes to \(J=\lceil K_0\rceil\), then chooses
+  \(H=\lfloor N^{K_0}\rfloor\) to obtain exactly the source predicate
+  \(|z|,|w|\le N^{K_0}\). This adaptation adds no Diophantine hypothesis.
+- `PaperC.Diophantine.ComponentNormalization` and
+  `SingletonProductParametrization` certify the arithmetic cores of Lemmas
+  9.3--9.5. Lean constructs the canonical squarefree factor of \(PQ=dz^2\),
+  proves its uniqueness and the bound \(e\le dP\), treats degree one exactly,
+  injectively reduces degree two to Pell and degree at least three to the
+  Evertse--Silverman interface, and then establishes the canonical
+  parametrization \(X=ecu^2,\ Y=(d/e)cv^2\), its converse, its uniqueness,
+  and bounds for its parameters. `BoundedRatioManyDefectsDegreeTwoSum`,
+  `BoundedRatioManyDefectsEvertseSum`, and
+  `BoundedRatioManyDefectsDegreeAssembly` now assemble the asymptotic sums of
+  9.4--9.5 under Evertse--Silverman and the discharged Pell bridge; only the
+  literature inputs remain open.
+- `PaperC.Combinatorics.DeepCoreSmallComponent` and
+  `PaperC.Diophantine.MultipleDefects` certify the finite reductions of Lemmas
+  9.6--9.8: extraction of a bounded-size component under a density hypothesis,
+  injection of two defects into a Pell equation, exact cardinality transfer,
+  and factorization of the same-class branch.
   `BoundedRatioNonterminalHostCounts`,
-  `BoundedRatioNonterminalRealHosts` et
-  `BoundedRatioNonterminalAssembly` ferment le raccord aux populations
-  d'hôtes et les sommes sur les paramètres lisses, sous les mêmes entrées.
-- `PaperC.Asymptotics.PropositionNineNine` définit la population exacte du
-  cœur profond avec \(\sigma=0\) et \(D^\#\ge3\), prouve les enveloppes
-  finies de poids et de masse et retire les paires de masse nulle. Chaque
-  hôte actif porte une composante canonique de support entre 2 et 10 et
-  appartient à l’une des deux branches orientées possédant deux défauts
-  concrets. La v041 supprime l’ancienne interface de compte d’hôtes et son
-  endpoint asymptotique : la route canonique de masse mère utilise à la place
-  les comptes directs à rapport borné. L’API arbitraire à formes fixées de
-  9.9 n’est plus revendiquée comme endpoint public.
+  `BoundedRatioNonterminalRealHosts`, and
+  `BoundedRatioNonterminalAssembly` close the connection to host populations
+  and the sums over smooth parameters under the same inputs.
+- `PaperC.Asymptotics.PropositionNineNine` defines the exact deep-core
+  population with \(\sigma=0\) and \(D^\#\ge3\), proves finite weight and mass
+  envelopes, and removes zero-mass pairs. Each active host carries a canonical
+  component with support between 2 and 10 and belongs to one of the two
+  oriented branches with two concrete defects. Version 041 removes the former
+  host-count interface and its asymptotic endpoint: the canonical mother-mass
+  route uses direct bounded-ratio counts instead. The arbitrary fixed-shape
+  API of 9.9 is no longer claimed as a public endpoint.
 - `PaperC.LinearAlgebra.NonalignedCoreRank`,
   `PaperC.LinearAlgebra.CanonicalExactRank`,
   `PaperC.LinearAlgebra.CanonicalSmallRows`,
-  `PaperC.Combinatorics.TerminalComponentCount` et
-  `PaperC.Arithmetic.TerminalMatching` formalisent les noyaux des lemmes
-  9.10--9.12. Lean construit les familles canoniques de cardinal
-  \(D^\#\) et \(c^\#\), puis la vraie matrice des petites lignes, à
-  \(\pi(L+1)+2\) lignes : premiers \(p\le L+1\) et deux parités de blocs.
-  Sous \(L+1\le M\), les colonnes synthétisent injectivement des solutions
-  concrètes des grands premiers, et leur noyau est exactement caractérisé par
-  les frontières uniques de relations. Dans la branche source non alignée
-  `canonicalReducedCandidate? = none`, Lean prouve que la synthèse des
-  coordonnées est surjective sur tout l’espace des grands premiers. Sous les
-  couvertures \(x+L\le M\) et \(y+L\le M\), les frontières complètes
-  donnent alors une équivalence linéaire entre relations et noyau concret.
-  Le code rationnel étant nul, cette équivalence descend au quotient
-  résiduel et prouve sans pont
-  \(\tau+\widetilde k=D^\#+c^\#\). Le compte combinatoire donne au moins
-  \(B-3s\) composantes de taille deux ; leurs noyaux sont non triviaux, égaux
-  dans une composante, premiers entre composantes, et leur produit divise un
-  déterminant non nul borné explicitement.
+  `PaperC.Combinatorics.TerminalComponentCount`, and
+  `PaperC.Arithmetic.TerminalMatching` formalize the cores of Lemmas
+  9.10--9.12. Lean constructs the canonical families of cardinalities
+  \(D^\#\) and \(c^\#\), and then the actual small-row matrix with
+  \(\pi(L+1)+2\) rows: primes \(p\le L+1\) and two block parities. Under
+  \(L+1\le M\), the columns injectively synthesize concrete large-prime
+  solutions, and their kernel is characterized exactly by the unique
+  boundaries of relations. In the nonaligned source branch
+  `canonicalReducedCandidate? = none`, Lean proves that coordinate synthesis
+  is surjective onto the full large-prime space. Under the coverage conditions
+  \(x+L\le M\) and \(y+L\le M\), the complete boundaries then give a linear
+  equivalence between relations and the concrete kernel. Since the rational
+  code is zero, this equivalence descends to the residual quotient and proves,
+  with no bridge, \(\tau+\widetilde k=D^\#+c^\#\). The combinatorial count
+  gives at least \(B-3s\) components of size two; their kernels are
+  nontrivial, equal within a component, coprime across components, and their
+  product divides an explicitly bounded nonzero determinant.
 - `PaperC.Arithmetic.TerminalKernelCount`,
   `PaperC.Combinatorics.CanonicalTerminalPopulation`,
-  `PaperC.Combinatorics.TerminalClosureCounting` et
-  `PaperC.Diophantine.TerminalPartnerPell` certifient les étapes finies de la
-  proposition 9.11 et de la fermeture terminale du théorème 10.1. Pour
-  \(s=B-c^\#\), la famille résiduelle canonique possède au moins \(B-3s\)
-  composantes de taille deux. Un proxy fini de \(T_K\), paramétré par la
-  fonction représentant \(\widetilde k\) et par un budget entier, est
-  raccordé aux fibres de premiers départs et de partenaires ; Lean prouve
-  \(\tau\le B+2\) et
-  \(\mathrm{masse}(T_K)\le\#T_K\,4\,2^B\). S'y ajoutent l'unicité du facteur
-  au-dessus du seuil, le double comptage, la réduction injective des
-  partenaires à Pell, et
+  `PaperC.Combinatorics.TerminalClosureCounting`, and
+  `PaperC.Diophantine.TerminalPartnerPell` certify the finite steps of
+  Proposition 9.11 and the terminal closure of Theorem 10.1. For
+  \(s=B-c^\#\), the canonical residual family has at least \(B-3s\)
+  components of size two. A finite proxy for \(T_K\), parametrized by the
+  function representing \(\widetilde k\) and by an integer budget, is
+  connected to first-start and partner fibers; Lean proves \(\tau\le B+2\)
+  and \(\mathrm{mass}(T_K)\le\#T_K\,4\,2^B\). This is supplemented by
+  uniqueness of the factor above the threshold, double counting, injective
+  reduction of partners to Pell, and
   \[
   \#A_{B,T}(X)\le
   2\sqrt X\sqrt T\prod_{p\le B}(1+p^{-1/2})
   \le2\sqrt X\sqrt T\,e^{2\sqrt B}.
   \]
-  Le compte des partenaires est conditionnel aux deux entrées externes qui
-  reconstruisent Pell. Les majorants asymptotiques des premières
-  coordonnées et des fibres ainsi que l’assemblage canonique sont maintenant
-  fermés. L’ancien wrapper générique de T10.1 est supprimé en v041.
-- `PaperC.Combinatorics.SectionElevenPartition` et
-  `CanonicalSectionElevenPartition` formalisent les six tests ordonnés du
-  lemme 11.1. Les sept secteurs couvrent toutes les paires séparées, sont
-  deux à deux disjoints et déterminent un secteur unique. Les trois premiers
-  coïncident exactement avec les populations déjà certifiées de la section
-  7, et l'union des quatre derniers est exactement le cœur profond. Le
-  second module instancie le test terminal par le proxy à budget entier et
-  identifie exactement le secteur 7 à sa partie canoniquement non alignée ;
-  l'identification de la fonction de rang et du budget au seuil asymptotique
-  du manuscrit reste explicite.
-- `PaperC.Asymptotics.PropositionElevenTwo` conserve le noyau fini de la
-  proposition 11.2. Lean prouve l'identité
-  \(2^{\sigma+\tau}-1=(2^\sigma-1)+2^\sigma(2^\tau-1)\), les sommes finies
-  associées et la désintégration dans les sept secteurs. Les secteurs 1–5
-  sont raccordés aux propositions 7.3–7.5, au théorème 8.1 et à la
-  proposition 9.9. La v041 retire l’ancien assemblage public paramétré par
-  `smallRowRank` et `rankBudget`, ainsi que ses trois interfaces internes.
-  La conclusion uniforme utilisée par les endpoints canoniques est désormais
-  fournie exclusivement par la masse mère quantitative à rapport borné.
-- `PaperC.Asymptotics.PropositionElevenThree` conserve le calcul des cinq
-  secteurs élémentaires et le calcul d’assemblage à l’échelle littérale du
-  corollaire 11.3,
+  Partner counting is conditional on the two external inputs that reconstruct
+  Pell. The asymptotic upper bounds for first coordinates and fibers, as well
+  as the canonical assembly, are now closed. The former generic T10.1 wrapper
+  is removed in v041.
+- `PaperC.Combinatorics.SectionElevenPartition` and
+  `CanonicalSectionElevenPartition` formalize the six ordered tests of Lemma
+  11.1. The seven sectors cover all separated pairs, are pairwise disjoint,
+  and determine a unique sector. The first three coincide exactly with the
+  already certified populations of Section 7, and the union of the last four
+  is exactly the deep core. The second module instantiates the terminal test
+  with the integer-budget proxy and identifies Sector 7 exactly with its
+  canonically nonaligned part; identification of the rank function and budget
+  with the manuscript's asymptotic threshold remains explicit.
+- `PaperC.Asymptotics.PropositionElevenTwo` retains the finite core of
+  Proposition 11.2. Lean proves the identity
+  \(2^{\sigma+\tau}-1=(2^\sigma-1)+2^\sigma(2^\tau-1)\), the associated
+  finite sums, and disintegration into the seven sectors. Sectors 1–5 are
+  connected to Propositions 7.3–7.5, Theorem 8.1, and Proposition 9.9.
+  Version 041 removes the former public assembly parametrized by
+  `smallRowRank` and `rankBudget`, along with its three internal interfaces.
+  The uniform conclusion used by canonical endpoints is now supplied
+  exclusively by the quantitative bounded-ratio mother mass.
+- `PaperC.Asymptotics.PropositionElevenThree` retains the computation for the
+  five elementary sectors and the assembly computation at the literal scale
+  of Corollary 11.3,
   \[
     R_2(N,L)\ll_C N^2
       \exp\!\left(-c\frac{\sqrt{\log N}}{\log\log N}\right).
   \]
-  Les anciennes conclusions publiques consommant le taux abstrait du sixième
-  secteur, le compte d’hôtes 9.9 et la masse terminale 10.1 sont supprimées.
-  `DyadicKappaQuantitative` fournit directement la conclusion canonique.
-- `PaperC.Probability.SectionTwelveMoments` conserve le noyau exact de la
-  déduction des moments du §12 dans le cylindre fini. Les paires hors
-  diagonale sont partitionnées en chevauchement strict, contact et
-  séparation ; Lean prouve les identités exactes du second moment factoriel,
+  The former public conclusions consuming the abstract rate for the sixth
+  sector, the 9.9 host count, and the 10.1 terminal mass are removed.
+  `DyadicKappaQuantitative` supplies the canonical conclusion directly.
+- `PaperC.Probability.SectionTwelveMoments` retains the exact core of the §12
+  moment deduction in the finite cylinder. Off-diagonal pairs are partitioned
+  into strict overlap, contact, and separation; Lean proves the exact
+  identities for the second factorial moment,
   \[
   \mathbb E[(Z)_2]-(N)_2\,2^{-2L}=o_C(1),\qquad
   \mathbb E[(Z)_2]-\lambda_N^2=o_C(1),
   \]
-  et de la variance à partir d’une estimation homogène fournie. Les trois
-  anciens endpoints publics qui recevaient les interfaces de 9.9, 9.11 et
-  10.1 restent supprimés. La v042 ajoute
-  `PaperC.SectionTwelveMoments.theorem_one_four_canonical`, qui raccorde ce
-  noyau directement à la masse mère quantitative et conclut simultanément au
-  taux du premier moment, au petit-oh du second moment factoriel, à
-  \(R_2(N,L)=o_C(N^2)\) et au petit-oh de la variance. Ses seules hypothèses
-  externes sont Evertse--Silverman, Halter--Koch et Nicolas--Robin.
+  and the variance from a supplied homogeneous estimate. The three former
+  public endpoints receiving the 9.9, 9.11, and 10.1 interfaces remain
+  removed. Version 042 adds
+  `PaperC.SectionTwelveMoments.theorem_one_four_canonical`, which connects
+  this core directly to the quantitative mother mass and simultaneously
+  concludes the first-moment rate, the little-oh for the second factorial
+  moment, \(R_2(N,L)=o_C(N^2)\), and the little-oh for the variance. Its only
+  external hypotheses are Evertse--Silverman, Halter--Koch, and
+  Nicolas--Robin.
 - `PaperC.Analysis.TerminalPrimeCutoff`,
-  `PrimeReciprocalSqrtSum`, `PaperC.Probability.BadStartCount` et
-  `TerminalBadStartBound`, puis `BadStartMass`, formalisent les noyaux des
-  lemmes 13.3–13.4. Le seuil est
-  littéralement \(Y=\lfloor B^2\log B\rfloor\), avec \(B\le Y\le B^3\)
-  pour \(B\ge2\).
-  Lean injecte les incidences de mauvais starts et conserve le produit
-  eulérien exact. Une décomposition dyadique fondée uniquement sur la borne
-  de Chebyshev certifiée donne, pour \(H\ge16\),
+  `PrimeReciprocalSqrtSum`, `PaperC.Probability.BadStartCount`, and
+  `TerminalBadStartBound`, followed by `BadStartMass`, formalize the cores of
+  Lemmas 13.3–13.4. The threshold is literally
+  \(Y=\lfloor B^2\log B\rfloor\), with \(B\le Y\le B^3\) for \(B\ge2\).
+  Lean injects the incidences of bad starts and retains the exact Euler
+  product. A dyadic decomposition based only on the certified Chebyshev bound
+  gives, for \(H\ge16\),
   \[
   \sum_{p\le H}p^{-1/2}\le
   2\sqrt{\operatorname{rootCutoff}(H)}
   +\frac{56\sqrt{2H}}{\lfloor\log_2H\rfloor/2},
   \qquad \operatorname{rootCutoff}(H)^2\le H.
   \]
-  Pour \(N\ge1\) et \(B\ge16\), cette estimation donne sans pont au seuil
-  terminal l'enveloppe explicite
+  For \(N\ge1\) and \(B\ge16\), this estimate gives, without a bridge, the
+  explicit envelope at the terminal threshold
   \[
   \#D_Y\le2L\sqrt{2N+L}\,
   \exp\!\left(
     2\sqrt{\sqrt{B^2\log B}}+
     168\sqrt2\,\frac B{\sqrt{\log B}}\right).
   \]
-  Les modules `TerminalBadStartsCritical` et `BadStartMassCritical`
-  ferment les deux raccords : l'exponentielle terminale est uniformément
-  sous-polynomiale, donc
-  \(\#D_Y=N^{1/2+o_C(1)}\), \(\#D_Y=o_C(N)\) et
-  \(2^{-L}\#D_Y=o_C(1)\). De plus,
-  `terminalDefectWeightMass` est dominée exactement par la masse de défauts
-  de la proposition 3.2. Lean conclut ainsi
-  \(\sum_{x\in D_Y}\mathbb P(J_{x,L}=1)=o_C(1)\), sans pont.
-- `PaperC.Probability.LargePrimeDependencyGraph` et
-  `PaperC.Analysis.DependencyEdgeBound`, puis
-  `PaperC.Asymptotics.DependencyEdgesCritical`, construisent les supports
-  \(\Pi_x(Y)\), le graphe simple des bons starts et sa couverture par un
-  premier partagé. Ils donnent
+  The modules `TerminalBadStartsCritical` and `BadStartMassCritical` close
+  both connections: the terminal exponential is uniformly subpolynomial, so
+  \(\#D_Y=N^{1/2+o_C(1)}\), \(\#D_Y=o_C(N)\), and
+  \(2^{-L}\#D_Y=o_C(1)\). Moreover, `terminalDefectWeightMass` is bounded
+  exactly by the defect mass of Proposition 3.2. Lean thus concludes
+  \(\sum_{x\in D_Y}\mathbb P(J_{x,L}=1)=o_C(1)\), with no bridge.
+- `PaperC.Probability.LargePrimeDependencyGraph` and
+  `PaperC.Analysis.DependencyEdgeBound`, followed by
+  `PaperC.Asymptotics.DependencyEdgesCritical`, construct the supports
+  \(\Pi_x(Y)\), the simple graph of good starts, and its coverage by a shared
+  prime. They give
   \[
-  E_Y\le(L+1)^2\sum_{\substack{Y<p\le3N\\p\ {\rm premier}}}(N/p+1)^2
+  E_Y\le(L+1)^2\sum_{\substack{Y<p\le3N\\p\ {\rm prime}}}(N/p+1)^2
   \]
-  puis le majorant entièrement explicite
+  and then the fully explicit upper bound
   \[
   (L+1)^2\left(
     \frac{28N^2}{Y\lfloor\log_2Y\rfloor}
     +\frac{6N^2}{Y}+3N\right).
   \]
-  Au cutoff littéral \(Y=\lfloor(L+1)^2\log(L+1)\rfloor\), Lean le réduit à
-  \(E_Y\le37N^2/m\) dès \(m\le\log(L+1)\), puis prouve uniformément
-  \(E_Y=o_C(N^2)\) dans la fenêtre critique, sans aucun pont.
-  La conclusion asymptotique (13.6) est donc certifiée ; la formule plus
-  précise du manuscrit contenant \(NB^2\log\log N\) n'est pas reproduite,
-  car le majorant intermédiaire plus grossier suffit au petit-oh.
-- `PaperC.Probability.ConditionalDependencyGraph` et
-  `ConditionalAGGInstantiation` ferment le lemme 13.5 et son raccord à
-  l’interface AGG dans le cylindre fini. Lean prouve que chaque événement
-  conditionné dépend seulement de \(\Pi_x(Y)\), puis sa factorisation contre
-  l’événement joint d’une famille arbitraire de bons non-voisins. La loi
-  uniforme des coordonnées restantes est une `FinitePMF`; sa marginale vaut
-  exactement \(2^{-L}\). Pour tout start, tout ensemble extérieur et toute
-  affectation booléenne de cet ensemble — pas seulement le motif où tous les
-  événements sont vrais — Lean prouve la factorisation requise par
-  `HasExactDependencyGraph`. L’application du pont externe AGG au cylindre
-  concret est donc un théorème Lean direct.
-- `PaperC.Probability.ArratiaGoldsteinGordonInput` enregistre le théorème
-  13.7 comme pont `external`. Il définit une famille finie d'indicatrices,
-  les voisinages fermés, l'indépendance exacte hors voisinage, \(b_1,b_2\),
-  la loi de la somme et la distance totale à la loi de Poisson. La
-  conséquence \(d_{\rm TV}\le2(b_1+b_2)\) n'est jamais postulée : elle doit
-  être fournie explicitement comme hypothèse citée.
-- `PaperC.Probability.SteinChenTerms` et
-  `PaperC.Asymptotics.SteinChenCritical` formalisent le lemme 13.8.
-  Le premier terme vérifie inconditionnellement \(b_1=o_C(1)\). Le second
-  est décomposé en chevauchement, contact et séparation ; son majorant fini
-  et \(\mathbb E b_2=o_C(1)\) sont prouvés sous la conclusion de la
-  proposition 11.2 fournie comme prémisse explicite.
-  `PaperC.Probability.ConditionalAGGAverage` prouve la décomposition exacte
-  `SampleSpace ≃ SmallSample × LargeSample`, puis la loi totale uniforme.
-  Les moyennes conditionnelles de \(b_1\) et \(b_2\) sont ainsi identifiées
-  exactement aux termes finis de 13.8, sans nouveau pont.
-  `PaperC.Probability.SectionThirteenFiniteBound` ajoute le calcul autonome
-  de variation totale : symétrie, triangle, convexité d’un mélange uniforme
-  et inégalité de couplage entre lois naturelles finies. Ensemble, ces
-  modules donnent le majorant fini explicite du corollaire 13.9 à partir des
-  mauvais starts et des termes de Stein–Chen.
-  La v041 retire l’ancien endpoint qui reconstruisait cette prémisse à partir
-  des trois interfaces internes de 11.2.
-  `PaperC.Probability.SectionThirteenCouplings` identifie ensuite la loi
-  moyenne à la loi du bon compte sur le cylindre complet, couple celui-ci au
-  compte de tous les starts, et prouve directement
-  \(d_{\rm TV}(\mathrm{Pois}(r),\mathrm{Pois}(s))\le|r-s|\). La différence
-  des paramètres vaut exactement \(\#D_Y2^{-L}\).
-  La route quantitative canonique assemble directement la conclusion plus
-  forte du corollaire 13.10 :
+  At the literal cutoff \(Y=\lfloor(L+1)^2\log(L+1)\rfloor\), Lean reduces it
+  to \(E_Y\le37N^2/m\) as soon as \(m\le\log(L+1)\), and then proves
+  \(E_Y=o_C(N^2)\) uniformly in the critical window, with no bridge. Thus the
+  asymptotic conclusion (13.6) is certified; the more precise manuscript
+  formula containing \(NB^2\log\log N\) is not reproduced, because the
+  coarser intermediate upper bound suffices for the little-oh.
+- `PaperC.Probability.ConditionalDependencyGraph` and
+  `ConditionalAGGInstantiation` close Lemma 13.5 and its connection to the
+  AGG interface in the finite cylinder. Lean proves that each conditioned
+  event depends only on \(\Pi_x(Y)\), and then its factorization against the
+  joint event of an arbitrary family of good non-neighbors. The uniform law
+  of the remaining coordinates is a `FinitePMF`; its marginal is exactly
+  \(2^{-L}\). For every start, every outside set, and every Boolean assignment
+  on that set—not merely the pattern in which all events hold—Lean proves the
+  factorization required by `HasExactDependencyGraph`. Applying the external
+  AGG bridge to the concrete cylinder is therefore a direct Lean theorem.
+- `PaperC.Probability.ArratiaGoldsteinGordonInput` registers Theorem 13.7 as
+  an `external` bridge. It defines a finite family of indicators, closed
+  neighborhoods, exact independence outside a neighborhood, \(b_1,b_2\), the
+  law of the sum, and total variation distance to the Poisson law. The
+  consequence \(d_{\rm TV}\le2(b_1+b_2)\) is never postulated: it must be
+  supplied explicitly as the cited hypothesis.
+- `PaperC.Probability.SteinChenTerms` and
+  `PaperC.Asymptotics.SteinChenCritical` formalize Lemma 13.8. The first term
+  unconditionally satisfies \(b_1=o_C(1)\). The second is decomposed into
+  overlap, contact, and separation; its finite upper bound and
+  \(\mathbb E b_2=o_C(1)\) are proved under the conclusion of Proposition
+  11.2, supplied as an explicit premise.
+  `PaperC.Probability.ConditionalAGGAverage` proves the exact decomposition
+  `SampleSpace ≃ SmallSample × LargeSample`, followed by the uniform total
+  law. The conditional means of \(b_1\) and \(b_2\) are thereby identified
+  exactly with the finite terms of 13.8, with no new bridge.
+  `PaperC.Probability.SectionThirteenFiniteBound` adds the standalone total
+  variation calculation: symmetry, triangle inequality, convexity of a
+  uniform mixture, and a coupling inequality between finite natural-valued
+  laws. Together, these modules give the explicit finite upper bound in
+  Corollary 13.9 from the bad starts and Chen–Stein terms. Version 041 removes
+  the former endpoint that reconstructed this premise from the three internal
+  interfaces of 11.2.
+  `PaperC.Probability.SectionThirteenCouplings` then identifies the averaged
+  law with the law of the good count on the complete cylinder, couples it to
+  the count of all starts, and proves directly
+  \(d_{\rm TV}(\mathrm{Pois}(r),\mathrm{Pois}(s))\le|r-s|\). The parameter
+  difference is exactly \(\#D_Y2^{-L}\). The canonical quantitative route
+  directly assembles the stronger conclusion of Corollary 13.10:
   \[
     d_{\rm TV}\!\left(\mathcal L(Z_{N,L}),
       \mathrm{Pois}(N2^{-L})\right)=o_C(1).
   \]
-  Les anciens endpoints qualitatifs autonomes du corollaire 13.9 et le
-  transport sectoriel abstrait de 11.3 sont supprimés ; les lemmes finis et
-  les raccords canoniques restent disponibles.
-  Lean prouve notamment
+  The former standalone qualitative endpoints of Corollary 13.9 and the
+  abstract sector transfer of 11.3 are removed; the finite lemmas and
+  canonical connections remain available. In particular, Lean proves
   \[
     e^{-c\sqrt{\log N}/\log\log N}
       =O_c((\log\log N)^{-2})
   \]
-  Il établit aussi ce taux pour le cardinal normalisé des mauvais starts, la
-  contribution pondérée des défauts terminaux et leur masse de probabilité
-  complète. `PaperC.Asymptotics.DyadicKappaTransport` identifie la masse
-  mère à la spécialisation \(M=2N\) de \(R_{2,\kappa}\).
-  `BoundedRatioElementaryQuantitative`, `BoundedRatioDenseQuantitative` et
-  `DyadicKappaQuantitative` préservent les taux sectoriels, assemblent les
-  branches modérée et dense du sixième secteur et somment les sept masses.
-  `PaperC.Asymptotics.CorollaryThirteenTen` spécialise ensuite la borne
-  harmonique des arêtes au cutoff terminal, prouve leur taux critique,
-  reconstruit quantitativement \(b_1\) et \(\mathbb E b_2\), applique AGG
-  puis assemble le triangle final de variation totale. Lean obtient ainsi
+  It also establishes this rate for the normalized cardinality of bad starts,
+  the weighted contribution of terminal defects, and their full probability
+  mass. `PaperC.Asymptotics.DyadicKappaTransport` identifies the mother mass
+  with the \(M=2N\) specialization of \(R_{2,\kappa}\).
+  `BoundedRatioElementaryQuantitative`, `BoundedRatioDenseQuantitative`, and
+  `DyadicKappaQuantitative` preserve the sector rates, assemble the moderate
+  and dense branches of the sixth sector, and sum the seven masses.
+  `PaperC.Asymptotics.CorollaryThirteenTen` then specializes the harmonic edge
+  bound at the terminal cutoff, proves its critical rate, quantitatively
+  reconstructs \(b_1\) and \(\mathbb E b_2\), applies AGG, and assembles the
+  final total variation triangle. Lean thereby obtains
   \[
     d_{\rm TV}\!\left(\mathcal L(Z_{N,L}),
       \operatorname{Pois}(N2^{-L})\right)
       =O((\log\log N)^{-2})
   \]
-  uniformément dans \(\lvert L-\log_2N\rvert\le C\). L’entrée canonique
-  dépend seulement d’AGG, d’Evertse--Silverman, de Halter--Koch et de
-  Nicolas--Robin. Les anciennes entrées sectorielles et Pell directes sont
-  supprimées. La formule intermédiaire plus fine de 13.6 n'est pas
-  revendiquée : la borne harmonique plus grossière suffit au taux final.
-- `PaperC.Probability.MaskedFirstMoment` et
-  `PaperC.Asymptotics.MaskedFirstMomentCritical`, avec
-  `PaperC.Asymptotics.LogLogRunWindow`, ferment uniformément le premier
-  moment de la proposition 14.1 pour tous les masques déterministes dans la
-  fenêtre littérale
-  \(\lvert L-\log_2N\rvert\le C_\star\log\log N\). L’enveloppe obtenue est
-  \(N^{-1/2+o(1)}\), donc uniformément \(o(1)\), sans pont.
+  uniformly in \(\lvert L-\log_2N\rvert\le C\). The canonical entry depends
+  only on AGG, Evertse--Silverman, Halter--Koch, and Nicolas--Robin. The former
+  sector inputs and direct Pell inputs are removed. The finer intermediate
+  formula of 13.6 is not claimed: the coarser harmonic bound suffices for the
+  final rate.
+- `PaperC.Probability.MaskedFirstMoment` and
+  `PaperC.Asymptotics.MaskedFirstMomentCritical`, together with
+  `PaperC.Asymptotics.LogLogRunWindow`, close the first moment of Proposition
+  14.1 uniformly for all deterministic masks in the literal window
+  \(\lvert L-\log_2N\rvert\le C_\star\log\log N\). The resulting envelope is
+  \(N^{-1/2+o(1)}\), and hence uniformly \(o(1)\), with no bridge.
 - `PaperC.Probability.MaskedSteinChen`,
-  `PaperC.Asymptotics.MaskedPoissonCritical` et
-  `PaperC.Asymptotics.MaskedPoissonCanonical` ferment la proposition 14.2
-  modulo littérature seulement. Le graphe original reste un graphe de dépendance exact
-  après annulation déterministe des indicatrices hors masque ; ses termes
-  \(b_1,b_2\) sont dominés par leurs versions complètes. Lean identifie la
-  loi conditionnelle moyenne à la loi du compte masqué sur le cylindre
-  complet, couple ce compte après retrait de \(D_Y\), contrôle exactement la
-  perte de paramètre puis prouve, uniformément pour tout
+  `PaperC.Asymptotics.MaskedPoissonCritical`, and
+  `PaperC.Asymptotics.MaskedPoissonCanonical` close Proposition 14.2 modulo
+  the literature alone. The original graph remains an exact dependency graph
+  after deterministic cancellation of indicators outside the mask; its
+  \(b_1,b_2\) terms are bounded by their complete versions. Lean identifies
+  the averaged conditional law with the law of the masked count on the
+  complete cylinder, couples this count after removing \(D_Y\), controls the
+  parameter loss exactly, and then proves, uniformly for every
   \(A_N\subseteq I_N\),
   \[
     d_{\rm TV}\!\left(\mathcal L(Z_{N,L}(A_N)),
       \operatorname{Pois}(|A_N|2^{-L})\right)=o_C(1).
   \]
-  L’endpoint canonique prend exactement AGG, Evertse--Silverman,
-  Halter--Koch et Nicolas--Robin. Les anciennes interfaces internes de la
-  proposition 11.2 et leurs wrappers publics sont supprimés en v041 ; la
-  signature canonique est inchangée.
+  The canonical endpoint takes exactly AGG, Evertse--Silverman,
+  Halter--Koch, and Nicolas--Robin. The former internal interfaces of
+  Proposition 11.2 and their public wrappers are removed in v041; the
+  canonical signature is unchanged.
 - `PaperC.Probability.SpatialThinningFinite`,
-  `IndependentThinning`, `LaplaceVoidClosure` et
-  `PoissonLaplaceFunctional` construisent la loi produit des variables
-  auxiliaires de Bernoulli et prouvent l'identité finie
+  `IndependentThinning`, `LaplaceVoidClosure`, and
+  `PoissonLaplaceFunctional` construct the product law of the auxiliary
+  Bernoulli variables and prove the finite identity
   \[
     \mathbb P(W_g=0\mid(J_x)_x)
       =\exp\!\left(-\sum_{x:J_x=1}g_x\right),
   \]
-  ainsi que les dominations des termes amincis et l’erreur AGG
+  together with the bounds on the thinned terms and the AGG error
   \(4(b_1+b_2)\). `SpatialRiemannSums`,
   `SpatialMarkedParameters`, `ConditionalExpectationAverage`,
-  `InfiniteLaplaceTransfer` et `SpatialLaplaceCritical` raccordent cette
-  identité à la somme de Riemann littérale et à l’espérance sous la vraie loi
-  source. Le théorème final est le fonctionnel de Laplace de
+  `InfiniteLaplaceTransfer`, and `SpatialLaplaceCritical` connect this
+  identity to the literal Riemann sum and to expectation under the true
+  source law. The final theorem is the Laplace functional of
   \(\operatorname{PPP}(\lambda\,dt)\).
-- `PaperC.Model.InfiniteRademacher` construit la loi produit infinie des
-  signes premiers et prouve le lemme 14.4 sans pont. Une queue constante
-  forcerait tous les bits premiers assez tardifs à zéro, événement de mesure
-  nulle puisque ses cylindres de longueur \(N\) ont masse \(2^{-N}\).
-  `InfiniteCylinderTransfer` prouve que toute projection finie est
-  exactement la loi uniforme antérieure et que les valeurs multiplicatives
-  coïncident sur les entiers couverts par le cutoff.
-- `PaperC.Probability.InfiniteExactLengthProbabilityTransfer` spécialise
-  cette image-loi aux événements de longueur exacte. Il prouve leur
-  mesurabilité, les identifie à la préimage de l’événement fini lorsque le
-  cutoff couvre \(x+q-1\), puis transforme exactement leur mesure infinie en
-  probabilité uniforme rationnelle. La même identité est établie pour la
-  double somme entière des starts retirés du lemme 14.7.
-- `ExactLengthDecomposition` et
-  `InfiniteExactLengthDecomposition` donnent presque sûrement, pour tout
-  \(x\ge2\) et \(L\ge1\), un unique excès \(e\) sur l’événement de start.
-  La forme cardinale vaut \(1\) sur ce dernier et \(0\) hors de celui-ci.
-  Ils prouvent aussi \(e>E\Rightarrow J_{x,L+E+1}=1\), l’inclusion utilisée
-  dans la dé-troncation des marques.
-- `PaperC.Probability.MixedLengthAffine` certifie le lemme 14.5 dans le
-  cylindre fini. Les événements de longueurs exactes \(q_e=L+e+1\) et
-  \(q_f=L+f+1\) sont une unique fibre affine mixte, dont la probabilité vaut
-  exactement
-  \(2^{-q_e-q_f}\eta_{e,f}2^{\rho_{e,f}}\). Lorsque \(e,f\le E\),
-  l’extension par zéro des coefficients de lignes injecte l’espace des
-  relations mixtes dans celui des deux systèmes de longueur
-  \(Q=L+E+1\), et Lean en déduit \(\rho_{e,f}\le\rho_Q\), sans pont.
-- `PaperC.Probability.ExactLengthConditionalRank` formalise le noyau fini du
-  lemme 14.7 après fixation des petits premiers. Les systèmes exacts sur
-  `LargeSample` satisfont les identités \(\eta2^\rho/2^m\). Une réalisation
-  des lignes par les arêtes, les pivots privés et le contrôle de l’espace
-  cyclique donnent la marginale exacte \(2^{-q}\) dans le cas forêt et,
-  lorsque le nombre cyclomatique local est au plus un,
+- `PaperC.Model.InfiniteRademacher` constructs the infinite product law of the
+  prime signs and proves Lemma 14.4 without a bridge. A constant tail would
+  force all sufficiently late prime bits to zero, a null event because its
+  cylinders of length \(N\) have mass \(2^{-N}\). `InfiniteCylinderTransfer`
+  proves that every finite projection is exactly the preceding uniform law
+  and that multiplicative values coincide on integers covered by the cutoff.
+- `PaperC.Probability.InfiniteExactLengthProbabilityTransfer` specializes
+  this image law to exact-length events. It proves their measurability,
+  identifies them with the preimage of the finite event when the cutoff covers
+  \(x+q-1\), and then transforms their infinite measure exactly into a
+  rational uniform probability. The same identity is established for the full
+  double sum over starts removed in Lemma 14.7.
+- `ExactLengthDecomposition` and `InfiniteExactLengthDecomposition` give,
+  almost surely, a unique excess \(e\) on the start event for every \(x\ge2\)
+  and \(L\ge1\). The cardinal form is \(1\) on that event and \(0\) outside
+  it. They also prove \(e>E\Rightarrow J_{x,L+E+1}=1\), the inclusion used in
+  mark detruncation.
+- `PaperC.Probability.MixedLengthAffine` certifies Lemma 14.5 in the finite
+  cylinder. The exact-length events \(q_e=L+e+1\) and \(q_f=L+f+1\) form a
+  unique mixed affine fiber whose probability is exactly
+  \(2^{-q_e-q_f}\eta_{e,f}2^{\rho_{e,f}}\). When \(e,f\le E\), zero extension
+  of the row coefficients injects the mixed-relation space into that of the
+  two systems of length \(Q=L+E+1\), and Lean deduces
+  \(\rho_{e,f}\le\rho_Q\), with no bridge.
+- `PaperC.Probability.ExactLengthConditionalRank` formalizes the finite core
+  of Lemma 14.7 after the small primes have been fixed. The exact systems on
+  `LargeSample` satisfy the identities \(\eta2^\rho/2^m\). A realization of
+  the rows by edges, private pivots, and control of the cycle space gives the
+  exact marginal \(2^{-q}\) in the forest case and, when the local cyclomatic
+  number is at most one,
   \[
     \mathbb P(K_{x,q}K_{y,r}=1\mid\mathcal F_Y)
       \le 2^{1-q-r}.
   \]
-  L’instanciation arithmétique simultanée de ces hypothèses structurales est
-  effectuée en aval par les modules Stein--Chen marqués, sans pont ajouté.
-- `PaperC.Probability.ExactLengthBadStartMass` et
-  `PaperC.Asymptotics.ExactLengthBadStartMassCritical` ferment le lemme
-  14.7. La masse retirée est séparée entre supports déjà défectifs et
-  systèmes de rang plein, sommée sur \(0\le e\le E\), puis normalisée à la
-  longueur commune \(Q=L+E+1\). Le compte direct sur les sommets non-racines
-  coûte un facteur \(2\) par rapport à la constante affichée dans le papier,
-  sans changer la conclusion uniforme \(o_{C,E}(1)\).
-  `lemma_fourteen_seven_finiteCylinder` est l’étape intermédiaire sur les
-  probabilités rationnelles du cylindre ; `lemma_fourteen_seven` remplace
-  exactement chaque terme par
-  \(\mathbb P_\infty(K_{x,e}=1)\) et porte donc sur la loi infinie source.
-- `PaperC.Probability.MarkedLocalGeometry` prouve directement que deux
-  marques distinctes au même start et deux starts strictement chevauchants
-  ont masse jointe nulle. Les intersections de support aux offsets
-  \(L+e\) et \(L+e+1\) sont calculées exactement, préparant les contributions
-  locales de Stein--Chen.
+  The simultaneous arithmetic instantiation of these structural hypotheses is
+  carried out downstream by the marked Chen–Stein modules, with no added
+  bridge.
+- `PaperC.Probability.ExactLengthBadStartMass` and
+  `PaperC.Asymptotics.ExactLengthBadStartMassCritical` close Lemma 14.7. The
+  removed mass is separated between already defective supports and full-rank
+  systems, summed over \(0\le e\le E\), and then normalized at the common
+  length \(Q=L+E+1\). Direct counting on non-root vertices costs a factor
+  \(2\) relative to the constant displayed in the paper, without changing the
+  uniform conclusion \(o_{C,E}(1)\).
+  `lemma_fourteen_seven_finiteCylinder` is the intermediate step for the
+  rational probabilities on the cylinder; `lemma_fourteen_seven` replaces
+  each term exactly by \(\mathbb P_\infty(K_{x,e}=1)\) and therefore concerns
+  the infinite source law.
+- `PaperC.Probability.MarkedLocalGeometry` proves directly that two distinct
+  marks at the same start and two strictly overlapping starts have zero joint
+  mass. Support intersections at offsets \(L+e\) and \(L+e+1\) are computed
+  exactly, preparing the local Chen–Stein contributions.
 - `MarkedConditionalDependencyGraph`, `TwoStartLocalRank`,
-  `MarkedSteinChenTerms` et `MarkedSteinChenSplitBound` ferment le calcul
-  marqué. Les paires locales sont injectées dans une population
-  \(O_E(N(L+E))\) et leur rang conjoint est borné par \(E+1\). Les paires
-  séparées sont injectées dans les arêtes communes et leur défaut de rang
-  est dominé par la masse homogène à \(Q=L+E+1\).
-  `MarkedSteinChenCritical` transporte les bornes canoniques \(κ\) et obtient
-  \(b_1,b_2=o_{C,E}(1)\) sans pont interne.
-- `MarkedLaplaceFiniteClosure` compare exactement le fonctionnel complet au
-  fonctionnel retenu par la masse du lemme 14.7 et contrôle la correction du
-  paramètre. `MarkedLaplaceCritical` combine ces estimations aux limites de
-  Riemann pour chaque cutoff fixé.
-  `PaperC.Probability.FullMarkedLaplaceTransfer` définit séparément la
-  fonctionnelle source littéralement complète, dont la somme intérieure
-  parcourt tous les excès \(e\in\mathbb N_0\), et prouve qu’un test nul
-  au-dessus de \(E\) donne exactement la fonctionnelle tronquée, point par
-  point et après intégration. `MarkedDetruncationCritical` établit ensuite
+  `MarkedSteinChenTerms`, and `MarkedSteinChenSplitBound` close the marked
+  calculation. Local pairs inject into a population \(O_E(N(L+E))\), and
+  their joint rank is bounded by \(E+1\). Separated pairs inject into common
+  edges, and their rank defect is bounded by the homogeneous mass at
+  \(Q=L+E+1\). `MarkedSteinChenCritical` transports the canonical \(κ\) bounds
+  and obtains \(b_1,b_2=o_{C,E}(1)\) with no internal bridge.
+- `MarkedLaplaceFiniteClosure` compares the complete and retained functionals
+  exactly using the mass in Lemma 14.7 and controls the parameter correction.
+  `MarkedLaplaceCritical` combines these estimates with the Riemann limits for
+  each fixed cutoff. `PaperC.Probability.FullMarkedLaplaceTransfer`
+  separately defines the literally complete source functional, whose inner
+  sum ranges over all excesses \(e\in\mathbb N_0\), and proves that a test
+  vanishing above \(E\) gives exactly the truncated functional, pointwise and
+  after integration. `MarkedDetruncationCritical` then establishes
   \[
-    \limsup_N\mathbb P(\text{une marque}>E)
+    \limsup_N\mathbb P(\text{a mark}>E)
       \le\lambda2^{-(E+1)}
   \]
-  et la tension uniforme quand \(E\to\infty\). Enfin
-  `CorollaryFourteenEightMaximum` prouve
+  and uniform tightness as \(E\to\infty\). Finally,
+  `CorollaryFourteenEightMaximum` proves
   \(\mathbb P(M_{N,L}\le m)\to
-  \exp(-\lambda2^{-(m+1)})\) par la route canonique.
+  \exp(-\lambda2^{-(m+1)})\) through the canonical route.
 - `PrimeEncodedCountVector`, `PrimeEncodedCountLaplace`,
-  `PoissonVectorMass` et `DirichletAtomConvergence` ferment l’autre partie
-  du corollaire 14.8. Le codage par puissances des premiers est injectif ;
-  les transformées inverses de la loi source sont exactement les
-  fonctionnelles marquées aux tests \(s\log p_e\), celles de la cible sont
-  le produit des transformées de Poisson, et l’inversion de Dirichlet donne
-  la convergence de chaque atome du vecteur. L’endpoint canonique ne prend
-  que AGG, Evertse--Silverman, Halter--Koch et Nicolas--Robin.
-- `PaperC.Asymptotics.SectionFourteenClosure` fournit les deux endpoints
-  publics `theorem_one_two_ii_laplace` et
-  `theorem_one_two_iii_laplace_and_tightness`. Le second quantifie sur une
-  structure de test continu positif munie de son témoin de support fini en
-  marques, porte littéralement sur `infiniteFullMarkedLaplaceExpectation`,
-  utilise l’égalité complète/tronquée de `FullMarkedLaplaceTransfer`,
-  identifie la somme finie de la cible à la série complète sur
-  \(\mathbb N_0\), puis associe la convergence de Laplace à la tension
-  uniforme.
-- `PaperC.Arithmetic.LowZonePrimePivots` et
-  `PaperC.Asymptotics.LowZoneCritical` certifient le noyau fini du lemme
-  15.1 : supports des premiers intermédiaires, indépendance linéaire, rang,
-  identité
-  \(r(x)=\pi(L)-\pi(\sqrt{x+L})\) et borne sommée. La conclusion \(o(1)\)
-  ne demande plus de pont interne : Lean déduit le gap entier de
-  \(x\le L^{2-\varepsilon}\) et établit lui-même la décroissance de
-  l’enveloppe. Le seul pont `external` est désormais l’énoncé source
-  \(\pi(t)\log t/t\to1\) du théorème des nombres premiers ; Lean en dérive
-  la minoration uniforme
-  \(3\log_2L\le\pi(L)-\pi(\sqrt{x+L})\) dans toute la zone du manuscrit.
+  `PoissonVectorMass`, and `DirichletAtomConvergence` close the other part of
+  Corollary 14.8. Prime-power encoding is injective; the inverse transforms of
+  the source law are exactly the marked functionals at tests \(s\log p_e\),
+  those of the target are the product of the Poisson transforms, and Dirichlet
+  inversion yields convergence of each vector atom. The canonical endpoint
+  takes only AGG, Evertse--Silverman, Halter--Koch, and Nicolas--Robin.
+- `PaperC.Asymptotics.SectionFourteenClosure` supplies the two public
+  endpoints `theorem_one_two_ii_laplace` and
+  `theorem_one_two_iii_laplace_and_tightness`. The latter quantifies over a
+  positive continuous test structure carrying its witness of finite support
+  in marks, literally concerns `infiniteFullMarkedLaplaceExpectation`, uses
+  the complete/truncated equality from `FullMarkedLaplaceTransfer`, identifies
+  the finite target sum with the full series on \(\mathbb N_0\), and then
+  combines Laplace convergence with uniform tightness.
+- `PaperC.Arithmetic.LowZonePrimePivots` and
+  `PaperC.Asymptotics.LowZoneCritical` certify the finite core of Lemma 15.1:
+  intermediate-prime supports, linear independence, rank, the identity
+  \(r(x)=\pi(L)-\pi(\sqrt{x+L})\), and the summed bound. The \(o(1)\)
+  conclusion no longer requires an internal bridge: Lean deduces the integer
+  gap from \(x\le L^{2-\varepsilon}\) and itself establishes decay of the
+  envelope. The sole `external` bridge is now the source statement
+  \(\pi(t)\log t/t\to1\) of the prime number theorem; Lean derives from it the
+  uniform lower bound \(3\log_2L\le\pi(L)-\pi(\sqrt{x+L})\) throughout the
+  manuscript's zone.
 - `PaperC.Arithmetic.LaishramShoreyInput`,
-  `PolynomialZoneLargePrimes` et
-  `PaperC.Asymptotics.PolynomialZoneCritical`, puis
-  `PaperC.Asymptotics.PolynomialZoneSum`, ferment conditionnellement le
-  lemme 15.2. Le corollaire 1 de Laishram–Shorey est un pont `external`
-  transcrit avec son minimum et sa correction \(\delta(B)\) exacts. Lean
-  retire les premiers \(\le B\), attache chaque premier restant à un unique
-  sommet, écarte le sur-ensemble des premiers dont le carré divise un sommet
-  — de cardinal au plus trois — et borne par deux le nombre de grands
-  premiers simples par sommet. Il obtient ainsi le minorant fini exact des
-  sommets non \(B\)-défectueux, le spécialise à
-  \(B=L+1,\ L+2<x\le2L^2\), puis le transporte dans la borne de probabilité
-  (15.1). Le PNT source donne aussi formellement le minorant de rang
-  \(c_3B/\log B\) avec \(c_3=1/32\). Lean somme ensuite toutes les
-  probabilités de la bande littérale \(L+2<x\le2L^2\) et prouve que cette
-  masse tend vers zéro sous les deux ponts externes LS04 et PNT.
+  `PolynomialZoneLargePrimes`, and
+  `PaperC.Asymptotics.PolynomialZoneCritical`, followed by
+  `PaperC.Asymptotics.PolynomialZoneSum`, conditionally close Lemma 15.2.
+  Corollary 1 of Laishram–Shorey is an `external` bridge transcribed with its
+  exact minimum and correction \(\delta(B)\). Lean removes the primes
+  \(\le B\), attaches each remaining prime to a unique vertex, discards the
+  superset of primes whose square divides a vertex—of cardinality at most
+  three—and bounds by two the number of simple large primes per vertex. It
+  thereby obtains the exact finite lower bound for non-\(B\)-defective
+  vertices, specializes it to \(B=L+1,\ L+2<x\le2L^2\), and then transports
+  it into the probability bound (15.1). The source PNT also formally gives the
+  rank lower bound \(c_3B/\log B\), with \(c_3=1/32\). Lean then sums all
+  probabilities over the literal band \(L+2<x\le2L^2\) and proves that this
+  mass tends to zero under the two external bridges LS04 and PNT.
 - `PaperC.Arithmetic.SquarefreeSmoothCount`,
   `PaperC.Asymptotics.SquarefreeSmoothCritical`,
-  `PaperC.Asymptotics.HighZoneTwoDefects` et
-  `PaperC.Asymptotics.LemmaFifteenThree` ferment conditionnellement le lemme
-  15.3. Les noyaux carrés-libres \(B\)-friables sont injectés dans les
-  sous-ensembles des premiers \(\le B\), d'où le majorant exact
-  \(2^{\pi(B)}\), puis son échelle \(\exp(O(B/\log B))\) sous PNT. Lean
-  assemble aussi le compte fini sur deux noyaux et deux offsets, construit
-  les noyaux canoniques des sommets défectueux, exclut le cas de deux noyaux
-  égaux dans la zone haute et couvre effectivement chaque fenêtre à deux
-  défauts par l'union finie correspondante. Sous l’interface de Pell,
-  désormais déchargée depuis ses deux entrées de littérature,
-  le cardinal est borné par
+  `PaperC.Asymptotics.HighZoneTwoDefects`, and
+  `PaperC.Asymptotics.LemmaFifteenThree` conditionally close Lemma 15.3.
+  Squarefree \(B\)-smooth kernels inject into subsets of the primes \(\le B\),
+  giving the exact upper bound \(2^{\pi(B)}\), and then its
+  \(\exp(O(B/\log B))\) scale under PNT. Lean also assembles the finite count
+  over two kernels and two offsets, constructs the canonical kernels of the
+  defective vertices, excludes the case of two equal kernels in the high
+  zone, and effectively covers every two-defect window by the corresponding
+  finite union. Under the Pell interface, now discharged by its two literature
+  inputs, the cardinality is bounded by
   \[
     \#\mathcal D_B(3N)^2 B^2
       \exp\!\bigl(c\log(3N)/\log\log(3N)\bigr).
   \]
-  Lean combine ensuite ces facteurs et compare uniformément
-  \(\log(3N)/\log\log(3N)\) à l'échelle critique du paramètre supérieur
-  \(M\). Il obtient exactement, avec une constante et un seuil indépendants
-  du sous-bloc,
+  Lean then combines these factors and uniformly compares
+  \(\log(3N)/\log\log(3N)\) with the critical scale of the upper parameter
+  \(M\). It obtains exactly, with a constant and threshold independent of the
+  subblock,
   \[
     \#\{x\in[N,2N):m_x\ge2\}
       \le \exp(KL/\log L),
     \qquad 2L^2\le N\le M,
   \]
-  lorsque \(\lvert L-\log_2M\rvert\le C\). Les seuls ponts enregistrés sont
-  PNT et les entrées de littérature du Pell généralisé (`external`).
-- `PaperC.Arithmetic.BalasubramanianShoreyInput` enregistre le théorème 1 de
-  Balasubramanian–Shorey comme pont `external`, avec les équations, les
-  conditions de densité et la source primaire. Le module
-  `BalasubramanianShoreyMaximum` prouve ensuite la décomposition canonique du
-  produit des sommets défectueux, la friabilité du facteur restant et la
-  conclusion littérale du lemme 15.4 :
+  when \(\lvert L-\log_2M\rvert\le C\). The only registered bridges are PNT
+  and the literature inputs for generalized Pell (`external`).
+- `PaperC.Arithmetic.BalasubramanianShoreyInput` registers Theorem 1 of
+  Balasubramanian–Shorey as an `external` bridge, with the equations, density
+  conditions, and primary source. The `BalasubramanianShoreyMaximum` module
+  then proves the canonical decomposition of the product of defective
+  vertices, smoothness of the remaining factor, and the literal conclusion of
+  Lemma 15.4:
   \[
     m_x\le B-g_B,\qquad g_B=B-\mu_B(\theta_0),
   \]
-  pour \(B\) assez grand et \(x>B^2+2\), sous ce pont externe.
+  for sufficiently large \(B\) and \(x>B^2+2\), under this external bridge.
 - `PaperC.Asymptotics.PropositionFifteenFive`,
-  `PropositionFifteenFiveDecay`, `PropositionFifteenFiveClosure` et
-  `PropositionFifteenFivePartition` ferment conditionnellement la
-  proposition 15.5. Lean définit la masse
-  littérale des starts \(2\le x<M/2^{j_0}\), couvre la zone
-  \(x\le2L^2\) par les lemmes 15.1–15.2, insère simultanément les lemmes
-  15.3–15.4 dans chaque bloc supérieur et prouve
+  `PropositionFifteenFiveDecay`, `PropositionFifteenFiveClosure`, and
+  `PropositionFifteenFivePartition` conditionally close Proposition 15.5.
+  Lean defines the literal mass of starts \(2\le x<M/2^{j_0}\), covers the
+  zone \(x\le2L^2\) with Lemmas 15.1–15.2, inserts Lemmas 15.3–15.4
+  simultaneously into each upper block, and proves
   \[
     L\,e^{KL/\log L}\,2^{1-g_L}\longrightarrow0.
   \]
-  La somme géométrique finie donne explicitement \(O(2^{-j_0})\), et le
-  prédicat `DeepTruncationDoubleLimit` encode l'ordre
-  \(j_0\to\infty\), puis \(M\to\infty\). La partition finie part de
-  \(2L^2+1\), couvre exactement la zone haute par des blocs adjacents jusqu'au
-  cutoff \(M/2^{j_0}\), traite le dernier bloc par son enveloppe entière et
-  utilise au plus \(2L\) blocs. Le théorème public
-  `PropositionFifteenFivePartition.proposition_fifteen_five` assemble ainsi
-  la borne globale \(O_C(2^{-j_0})+o_M(1)\) et la double limite exacte, sous
-  PNT, Laishram--Shorey et Balasubramanian--Shorey (`external`) et le Pell
-  généralisé (`internal`), sans hypothèse de partition résiduelle.
-- `PaperC.Combinatorics.BoundedRatioGeometry` et
-  `PaperC.Asymptotics.BoundedRatioRationalMass` certifient le site nouveau
-  du lemme 17.5. Pour \(U(N,M)=[N,M)\), Lean prouve le cardinal exact de
-  l’intervalle et des majorants de classes et de canaux, sépare le canal
-  volumique \(q=2\) des hauteurs \(q\ge3\), puis obtient la borne uniforme
-  \(16(\kappa_0+1)(L+1)^4N2^{\lfloor L/2\rfloor}\). Sa conversion
-  asymptotique borne sans pont la masse systématique par
-  \(N^{3/2+o_{C,\kappa_0}(1)}=o_{C,\kappa_0}(N^2)\). La somme purement
-  géométrique du lemme 17.6 est inchangée et sa borne linéaire
-  sous-polynomiale déjà certifiée est réexportée.
+  The finite geometric sum explicitly gives \(O(2^{-j_0})\), and the predicate
+  `DeepTruncationDoubleLimit` encodes the order \(j_0\to\infty\), followed by
+  \(M\to\infty\). The finite partition starts at \(2L^2+1\), covers the high
+  zone exactly by adjacent blocks up to the cutoff \(M/2^{j_0}\), treats the
+  last block by its integer envelope, and uses at most \(2L\) blocks. The
+  public theorem
+  `PropositionFifteenFivePartition.proposition_fifteen_five` thus assembles
+  the global bound \(O_C(2^{-j_0})+o_M(1)\) and the exact double limit under
+  PNT, Laishram--Shorey, and Balasubramanian--Shorey (`external`) and
+  generalized Pell (`internal`), with no residual-partition hypothesis.
+- `PaperC.Combinatorics.BoundedRatioGeometry` and
+  `PaperC.Asymptotics.BoundedRatioRationalMass` certify the new setting of
+  Lemma 17.5. For \(U(N,M)=[N,M)\), Lean proves the exact cardinality of the
+  interval and upper bounds for classes and channels, separates the volumetric
+  channel \(q=2\) from heights \(q\ge3\), and then obtains the uniform bound
+  \(16(\kappa_0+1)(L+1)^4N2^{\lfloor L/2\rfloor}\). Its asymptotic conversion
+  bounds the systematic mass, with no bridge, by
+  \(N^{3/2+o_{C,\kappa_0}(1)}=o_{C,\kappa_0}(N^2)\). The purely geometric sum
+  of Lemma 17.6 is unchanged, and its already certified subpolynomial linear
+  bound is re-exported.
 - `PaperC.Combinatorics.BoundedRatioRelationalHosts`,
   `BoundedRatioResidualMasses`,
   `PaperC.Asymptotics.BoundedRatioRelationalHostsCritical`,
-  `BoundedRatioCorrectedDefectEnvelope` et `BoundedRatioSectorClosure`
-  fournissent le socle commun des secteurs 17.14–17.16. Le compte d’hôtes
-  est effectué directement sur \([N,M)\), au cutoff exact \(M+L\), sans
-  couverture dyadique. Les masses linéaire et quadratique sont reliées par
-  Cauchy–Schwarz, tandis que les maxima uniformes de défaut corrigé et les
-  enveloppes indépendantes de \(M\) sont transportés dans la fenêtre
-  critique.
+  `BoundedRatioCorrectedDefectEnvelope`, and `BoundedRatioSectorClosure`
+  supply the common foundation for Sectors 17.14–17.16. Host counting is
+  performed directly on \([N,M)\), at the exact cutoff \(M+L\), with no
+  dyadic coverage. The linear and quadratic masses are connected by
+  Cauchy–Schwarz, while uniform maxima of the corrected defect and envelopes
+  independent of \(M\) are transported into the critical window.
 - `PaperC.Asymptotics.BoundedRatioSmallProductSector`,
   `BoundedRatioSmallHeightSector`,
-  `BoundedRatioShallowCoreSigmaCritical` et
-  `BoundedRatioShallowCoreSector` ferment respectivement les lemmes
-  17.14–17.16. Les deux premiers secteurs donnent
-  \(Q_{\rm res}\le N^{2+o(1)}\) et
-  \(R_{\rm res}\le N^{7/4+o(1)}\). Le troisième donne
-  \(Q_{\rm res}\le N^{19/8+o(1)}\) et
-  \(R_{\rm res}\le N^{31/16+o(1)}\). Les trois petits-oh quadratiques sont
-  des théorèmes Lean sans hypothèse de pont.
-- `PaperC.Asymptotics.PropositionSixteenOne` définit la quantité littérale
-  \(R_{2,\kappa}(N,L)\), prouve les identités de poids et construit, pour
-  toute famille terminale fournie, les sept fibres ordonnées de la
-  partition 17.31. Le module `BoundedRatioSectorAligned` transporte
-  l’exclusion alignée au seul minorant commun \(N\), ce qui ferme sans pont
-  l’instance \(\alpha=3/16\) du lemme 17.17, même à travers deux sous-blocs.
-  `PropositionSixteenOneCore` sépare ce noyau du wrapper public afin d’éviter
-  les cycles d’import. Le théorème générique assemble la proposition 16.1
-  sous les trois interfaces `internal` des secteurs profonds (5)–(7).
-  Le théorème canonique construit désormais les secteurs (5) et (6) depuis
-  Evertse--Silverman et Pell, choisit lui-même le seuil terminal de (6), puis
-  construit (7) depuis Pell et le théorème Lean source-exact de 9.10. Il ne
-  prend donc plus aucune interface sectorielle de la section 17 ni hypothèse
-  arithmétique de 9.10.
+  `BoundedRatioShallowCoreSigmaCritical`, and
+  `BoundedRatioShallowCoreSector` respectively close Lemmas 17.14–17.16. The
+  first two sectors give \(Q_{\rm res}\le N^{2+o(1)}\) and
+  \(R_{\rm res}\le N^{7/4+o(1)}\). The third gives
+  \(Q_{\rm res}\le N^{19/8+o(1)}\) and
+  \(R_{\rm res}\le N^{31/16+o(1)}\). All three quadratic little-oh estimates
+  are Lean theorems with no bridge hypothesis.
+- `PaperC.Asymptotics.PropositionSixteenOne` defines the literal quantity
+  \(R_{2,\kappa}(N,L)\), proves the weight identities, and constructs, for
+  every supplied terminal family, the seven ordered fibers of Partition
+  17.31. The `BoundedRatioSectorAligned` module transports aligned exclusion
+  to the sole common lower bound \(N\), closing the \(\alpha=3/16\) instance
+  of Lemma 17.17 without a bridge, even across two subblocks.
+  `PropositionSixteenOneCore` separates this core from the public wrapper to
+  avoid import cycles. The generic theorem assembles Proposition 16.1 under
+  the three `internal` interfaces of deep Sectors (5)–(7). The canonical
+  theorem now constructs Sectors (5) and (6) from Evertse--Silverman and Pell,
+  chooses the terminal threshold of (6) itself, and then constructs (7) from
+  Pell and the source-exact Lean theorem for 9.10. It therefore no longer
+  takes any Section 17 sector interface or 9.10 arithmetic hypothesis.
 - `PaperC.Combinatorics.BoundedRatioCanonicalTerminalPopulation`,
   `BoundedRatioIntrinsicTerminalPopulation`,
   `PaperC.Asymptotics.BoundedRatioComponentNormalization`,
   `BoundedRatioComponentHosts`, `BoundedRatioTwoDefectStarts`,
   `BoundedRatioDistinctKernelTwoDefects`, `BoundedRatioManyDefectsReduction`,
-  `BoundedRatioTerminalClosure` et `BoundedRatioTerminalFibers` fixent la
-  population terminale, normalisent les composantes et isolent les
-  invariants finis des secteurs 17.26–17.30.
-- `PaperC.Asymptotics.BoundedRatioManyDefectsFibers` couvre les hôtes actifs
-  littéraux par les fibres à base de fenêtre contenant deux défauts et forme
-  fixée. `BoundedRatioManyDefectsFixedFibers` désintègre ensuite ces fibres
-  par coefficient carré-libre : degré un fermé, degré deux réduit à Pell ou
-  aux diviseurs signés, degré au moins trois réduit à Evertse--Silverman,
-  avec hauteurs polynomiales automatiques.
-  `BoundedRatioManyDefectsDegreeTwoSum` et
-  `BoundedRatioManyDefectsEvertseSum` ferment les deux sommes
-  subpolynomiales explicites ; le premier s’appuie notamment sur les bornes
-  factorielles de `PrimeFactorsFactorialBound`.
-  `BoundedRatioManyDefectsRealFibers`,
-  `BoundedRatioManyDefectsDegreeAssembly` et
-  `BoundedRatioManyDefectsAssembly` agrègent ensuite les degrés, les bases et
-  les formes et ferment intégralement 17.26 sous les seuls ponts ES et Pell.
-- `PaperC.Asymptotics.BoundedRatioNonterminalClosure` ferme le calcul des
-  poids de 17.28. `BoundedRatioNonterminalCardinality` remplace le critère
-  global laissé en v033 par la dichotomie source exacte et ferme les deux
-  branches sous les comptes directs d’hôtes de tailles dix et deux.
-  `BoundedRatioNonterminalHostCounts` et
-  `BoundedRatioNonterminalRealHosts` désintègrent exactement les formes
-  selon la branche mobile ou deux-singletons.
-  `BoundedRatioTwoSingletonHosts` prouve l’injection arithmétique, la somme
-  harmonique et le produit eulérien ; `BoundedRatioTwoSingletonCritical`
-  absorbe le facteur global sûr \(9B^4\) et fournit
+  `BoundedRatioTerminalClosure`, and `BoundedRatioTerminalFibers` fix the
+  terminal population, normalize the components, and isolate the finite
+  invariants of Sectors 17.26–17.30.
+- `PaperC.Asymptotics.BoundedRatioManyDefectsFibers` covers the literal active
+  hosts by fibers with a window base containing two defects and a fixed shape.
+  `BoundedRatioManyDefectsFixedFibers` then disintegrates these fibers by
+  squarefree coefficient: degree one is closed, degree two is reduced to Pell
+  or signed divisors, and degree at least three is reduced to
+  Evertse--Silverman, with automatic polynomial heights.
+  `BoundedRatioManyDefectsDegreeTwoSum` and
+  `BoundedRatioManyDefectsEvertseSum` close the two explicit subpolynomial
+  sums; the former relies in particular on the factorial bounds from
+  `PrimeFactorsFactorialBound`. `BoundedRatioManyDefectsRealFibers`,
+  `BoundedRatioManyDefectsDegreeAssembly`, and
+  `BoundedRatioManyDefectsAssembly` then aggregate degrees, bases, and shapes,
+  and close 17.26 in full under only the ES and Pell bridges.
+- `PaperC.Asymptotics.BoundedRatioNonterminalClosure` closes the 17.28 weight
+  calculation. `BoundedRatioNonterminalCardinality` replaces the global
+  criterion left in v033 with the exact source dichotomy and closes both
+  branches under the direct host counts of sizes ten and two.
+  `BoundedRatioNonterminalHostCounts` and
+  `BoundedRatioNonterminalRealHosts` disintegrate the shapes exactly according
+  to the mobile or two-singleton branch. `BoundedRatioTwoSingletonHosts`
+  proves the arithmetic injection, harmonic sum, and Euler product;
+  `BoundedRatioTwoSingletonCritical` absorbs the safe global factor \(9B^4\)
+  and supplies
   \(N\exp(C_{\rm term}\sqrt B/\log B)\).
-  `BoundedRatioNonterminalMobileAssembly` construit la branche modérée sous
-  ES et Pell, et `BoundedRatioNonterminalAssembly` choisit
-  \(K=(2C_{\rm term}+1)/\log2\) pour fermer intégralement 17.28.
-- `PaperC.Asymptotics.BoundedRatioTerminalPartnerClosure` construit les
-  fibres de partenaires de rang. `BoundedRatioTerminalSummation` en somme
-  uniformément les premiers starts sous Pell, prouve les exposants
-  \(3/4\) et \(7/4\), puis transporte exactement la conclusion vers la
-  population intrinsèque par le théorème non aligné de 9.10, sans prémisse
-  fournie. Ce dernier secteur n’est donc plus une dette propre de l’API
-  canonique.
+  `BoundedRatioNonterminalMobileAssembly` constructs the moderate branch
+  under ES and Pell, and `BoundedRatioNonterminalAssembly` chooses
+  \(K=(2C_{\rm term}+1)/\log2\) to close 17.28 in full.
+- `PaperC.Asymptotics.BoundedRatioTerminalPartnerClosure` constructs the rank
+  partner fibers. `BoundedRatioTerminalSummation` uniformly sums first starts
+  under Pell, proves the exponents \(3/4\) and \(7/4\), and then transports
+  the conclusion exactly to the intrinsic population through the nonaligned
+  theorem of 9.10, with no supplied premise. This last sector is therefore no
+  longer a dedicated debt of the canonical API.
 - `PaperC.Asymptotics.BoundedRatioSteinChen`,
-  `BoundedRatioBadStarts`, `BoundedRatioWeightedDefect` et
-  `BoundedRatioSteinChenRates` construisent les bons et mauvais départs de
-  \([N,M)\), leur graphe conditionnel exact et leur cylindre uniforme.
-  Lean prouve la marginale \(2^{-L}\), le paramètre conditionnel et sa
-  correction exacte, puis les bornes uniformes
-  \(\#D_Y=N^{1/2+o_{C,\kappa_0}(1)}\) et
-  \(\sum_{x\in D_Y}\mathbb P(J_x)=o_{C,\kappa_0}(1)\). Il établit aussi
-  \(b_1=o_{C,\kappa_0}(1)\), ainsi que sa spécialisation sur
-  \([M/2^j,M)\) pour tout \(j\) fixé.
+  `BoundedRatioBadStarts`, `BoundedRatioWeightedDefect`, and
+  `BoundedRatioSteinChenRates` construct the good and bad starts in
+  \([N,M)\), their exact conditional graph, and their uniform cylinder. Lean
+  proves the marginal \(2^{-L}\), the conditional parameter and its exact
+  correction, and then the uniform bounds
+  \(\#D_Y=N^{1/2+o_{C,\kappa_0}(1)}\) and
+  \(\sum_{x\in D_Y}\mathbb P(J_x)=o_{C,\kappa_0}(1)\). It also establishes
+  \(b_1=o_{C,\kappa_0}(1)\), as well as its specialization to
+  \([M/2^j,M)\) for every fixed \(j\).
 - `PaperC.Probability.FiniteCylinderCountTransport`,
-  `PaperC.Asymptotics.BoundedRatioSteinChenSecondTerm` et
-  `BoundedRatioSteinChenSecondTermCritical` prouvent le transport exact des
-  lois entre cutoffs, la loi totale finie, la partition
-  chevauchement/contact/séparation du second terme et
-  \(\mathbb E b_2=o_{C,\kappa_0}(1)\). La branche séparée est dominée par
-  \(R_{2,\kappa}\), la branche de contact possède la marginale jointe exacte,
-  et le comptage d’arêtes vérifie
+  `PaperC.Asymptotics.BoundedRatioSteinChenSecondTerm`, and
+  `BoundedRatioSteinChenSecondTermCritical` prove exact law transfer between
+  cutoffs, the finite total law, the overlap/contact/separation partition of
+  the second term, and \(\mathbb E b_2=o_{C,\kappa_0}(1)\). The separated
+  branch is bounded by \(R_{2,\kappa}\), the contact branch has the exact
+  joint marginal, and edge counting satisfies
   \(E_{Y,U}=o_{C,\kappa_0}(N^2)\).
 - `PaperC.Asymptotics.BoundedRatioPoissonAssembly`,
   `BoundedRatioFixedJBadStarts`,
-  `PaperC.Probability.BoundedRatioRetainedTransport` et
-  `PaperC.Asymptotics.TheoremSixteenTwo` assemblent AGG, le mélange
-  conditionnel, le couplage bon/complet, le déplacement du paramètre, la
-  moyenne et l’arrondi exact du bord \(M/2^j\). Les lemmes de transport
-  nécessaires sont intégrés aussi dans `TheoremSixteenTwo` afin d’éviter un
-  cycle d’import. Ils ferment sans pont interne supplémentaire les lemmes
-  17.34–17.37 et le raccord au compte retenu.
-- `PaperC.Asymptotics.TheoremSixteenTwo` construit sur un même cylindre les
-  comptes global et retenu, leurs lois, leurs espérances et leurs paramètres
-  de Poisson. Les estimations de couplage, le triangle TV, le recentrage,
-  l’ordre des limites, l’équivalent de \(\Lambda_M\) et la probabilité de
-  vide sont prouvés dans Lean. La compatibilité de marginale entre le
-  cylindre global et chaque cylindre local est maintenant obtenue par une
-  décomposition en produit des coordonnées premières, sans hypothèse. Le
-  théorème public assemble directement la proposition 15.5 et la proposition
-  16.1 quantifiée pour tout \(C'>0\) et tout \(\kappa_0\ge2\), avec une
-  famille terminale autorisée à dépendre de ces paramètres ; l’estimation
-  d’arêtes est elle aussi fournie pour tout \(C'>0\). L’assemblage générique
-  direct expose les trois interfaces sectorielles `discharged`; les trois
-  adaptateurs intermédiaires qui permettaient de les fournir par étapes sont
-  supprimés en v041. L’API canonique construit les trois secteurs profonds :
-  elle n’expose plus ni \(K\), ni famille terminale, ni hypothèse de la
-  section 17. Seuls AGG, PNT, Laishram--Shorey,
-  Balasubramanian--Shorey, Evertse--Silverman, Halter--Koch et
-  Nicolas--Robin restent visibles.
-  L’interface arithmétique de 9.10 et l’interface agrégée fixe-ratio ont
-  disparu de ce chemin canonique.
-- `PaperC.LinearAlgebra.PrivatePivots` et
-  `PaperC.Probability.ConditionalStartProbability` certifient le lemme 13.1
-  et le corollaire 13.2 dans le cylindre fini. Lean scinde exactement les
-  coordonnées \(p\le Y\) et \(p>Y\), traduit le système après fixation
-  arbitraire des petits premiers, puis utilise les pivots privés pour prouver
-  la surjectivité de la partie grande hors \(D_Y\). Chaque fibre conditionnée
-  vérifie
+  `PaperC.Probability.BoundedRatioRetainedTransport`, and
+  `PaperC.Asymptotics.TheoremSixteenTwo` assemble AGG, the conditional
+  mixture, the good/complete coupling, parameter displacement, the mean, and
+  exact rounding at the boundary \(M/2^j\). The necessary transport lemmas are
+  also integrated into `TheoremSixteenTwo` to avoid an import cycle. They
+  close Lemmas 17.34–17.37 and the connection to the retained count with no
+  additional internal bridge.
+- `PaperC.Asymptotics.TheoremSixteenTwo` constructs on a single cylinder the
+  global and retained counts, their laws, their expectations, and their
+  Poisson parameters. The coupling estimates, TV triangle, recentering, order
+  of limits, asymptotic equivalent of \(\Lambda_M\), and void probability are
+  proved in Lean. Marginal compatibility between the global cylinder and each
+  local cylinder is now obtained by a product decomposition of the prime
+  coordinates, with no hypothesis. The public theorem directly assembles
+  Proposition 15.5 and Proposition 16.1, quantified for every \(C'>0\) and
+  every \(\kappa_0\ge2\), with a terminal family allowed to depend on these
+  parameters; the edge estimate is likewise supplied for every \(C'>0\). The
+  direct generic assembly exposes the three `discharged` sector interfaces;
+  the three intermediate adapters that supplied them in stages are removed in
+  v041. The canonical API constructs the three deep sectors: it no longer
+  exposes \(K\), a terminal family, or any Section 17 hypothesis. Only AGG,
+  PNT, Laishram--Shorey, Balasubramanian--Shorey, Evertse--Silverman,
+  Halter--Koch, and Nicolas--Robin remain visible. The arithmetic interface of
+  9.10 and the aggregate fixed-ratio interface have disappeared from this
+  canonical route.
+- `PaperC.LinearAlgebra.PrivatePivots` and
+  `PaperC.Probability.ConditionalStartProbability` certify Lemma 13.1 and
+  Corollary 13.2 in the finite cylinder. Lean splits the coordinates
+  \(p\le Y\) and \(p>Y\) exactly, translates the system after arbitrary
+  fixation of the small primes, and then uses private pivots to prove
+  surjectivity of the large part outside \(D_Y\). Each conditioned fiber
+  satisfies
   \[
-  \#\mathrm{solutions}\,2^L=\#\mathrm{affectations\ grandes},
+  \#\mathrm{solutions}\,2^L=\#\mathrm{large\ assignments},
   \]
-  donc possède exactement la probabilité \(2^{-L}\). Cette égalité représente
-  le conditionnement par la loi uniforme sur le cylindre restant, sans
-  recourir à une API mesure-théorique.
-- `PaperC.Combinatorics.GraphCycleRank` et
-  `PaperC.Combinatorics.CycleSpaceDimension` : les dépendances entre vecteurs
-  d'arêtes sont cycliques, la dimension de l'espace cyclique est majorée par
-  la forme tronquée sûre \(|E|-(|V|-|C|)\), et la borne de rang du lemme 14.6
-  en découle sous une hypothèse explicite de connexité aux racines.
-- `PaperC.Coding.HammingBound` : volume exact des boules binaires,
-  disjonction à distance minimale et borne de Hamming, y compris la forme de
-  codimension utilisée en section 3 sous l'hypothèse réelle
-  \(\dim C\ge n-r\), ainsi que les deux inégalités
-  \(2^{n-r}\sum_{j\le t}\binom nj\le2^n\) et
-  \(\sum_{j\le t}\binom nj\le2^r\) de (3.5).
+  and therefore has probability exactly \(2^{-L}\). This equality represents
+  conditioning by the uniform law on the remaining cylinder, without relying
+  on a measure-theoretic API.
+- `PaperC.Combinatorics.GraphCycleRank` and
+  `PaperC.Combinatorics.CycleSpaceDimension`: dependencies between edge
+  vectors are cyclic, the dimension of the cycle space is bounded by the safe
+  truncated form \(|E|-(|V|-|C|)\), and the rank bound of Lemma 14.6 follows
+  under an explicit root-connectivity hypothesis.
+- `PaperC.Coding.HammingBound`: exact volume of binary balls, disjointness at
+  minimum distance, and the Hamming bound, including the codimension form used
+  in Section 3 under the actual hypothesis \(\dim C\ge n-r\), together with
+  the two inequalities
+  \(2^{n-r}\sum_{j\le t}\binom nj\le2^n\) and
+  \(\sum_{j\le t}\binom nj\le2^r\) from (3.5).
 - `PaperC.Coding.DefectCodeRank`, `DefectCodeRunge`,
   `DefectCodeRepresentation`, `DefectCodeDistance`,
   `DefectCodeProposition`, `RungeDefectApplication`,
-  `HammingDefectBound` et `DefectCodeHamming` : rang--nullité exact de la
-  matrice de défaut augmentée, poids pair, déduction de la couverture complète
-  des coordonnées premières depuis \(f=s a^2\), produit carré, réindexation
-  d'un mot non nul en \(d=2k\ge2\) données de Runge, distance minimale, raccord
-  complet à (3.5) et borne finie
-  \(m<2t\,2^{(r+1)/t+1}\). La comparaison terminale unique
-  \((128(2t)R)^{4t}<U\) exclut tous les mots courts.
-- `PaperC.Arithmetic.PrimesUpTo`, `PrimeCountBridge` et
-  `ChebyshevPrimeCount` : énumération croissante canonique des premiers
-  \(p\le H\), identification avec le finset arithmétique et borne élémentaire
-  \(\lfloor\log_2H\rfloor\pi(H)\le7H\), sans théorème des nombres premiers.
-- `PaperC.Arithmetic.DefectCounting`, `WeightedDefectCounting` et
-  `DefectivePredicate` : équivalence, pour \(n>0\), entre \(K_H(n)=1\) et une
-  représentation \(n=s a^2\) à support premier \(\le H\), puis comptages
-  grossier et pondéré, dont
+  `HammingDefectBound`, and `DefectCodeHamming`: exact rank--nullity for the
+  augmented defect matrix, even weight, deduction of complete prime-coordinate
+  coverage from \(f=s a^2\), square product, reindexing of a nonzero word into
+  \(d=2k\ge2\) Runge data, minimum distance, complete connection to (3.5), and
+  the finite bound \(m<2t\,2^{(r+1)/t+1}\). The single terminal comparison
+  \((128(2t)R)^{4t}<U\) excludes all short words.
+- `PaperC.Arithmetic.PrimesUpTo`, `PrimeCountBridge`, and
+  `ChebyshevPrimeCount`: canonical increasing enumeration of primes \(p\le H\),
+  identification with the arithmetic finset, and the elementary bound
+  \(\lfloor\log_2H\rfloor\pi(H)\le7H\), with no prime number theorem.
+- `PaperC.Arithmetic.DefectCounting`, `WeightedDefectCounting`, and
+  `DefectivePredicate`: for \(n>0\), equivalence between \(K_H(n)=1\) and a
+  representation \(n=s a^2\) with prime support \(\le H\), followed by coarse
+  and weighted counts, including
   \[
   \#\mathcal D_H^+(X)\le
   \sqrt X\prod_{p\le H}(1+p^{-1/2}).
   \]
 - `PaperC.Analysis.RungeLogarithmicGrowth`, `ReciprocalSqrtSum`,
-  `SmoothEulerProduct`, `DefectGlobalBound` et `WeightedDefectMass`, avec
-  `PaperC.Coding.CanonicalDefectCode`, `IntervalDefectBound` et
-  `PaperC.Combinatorics.IntervalDefectAggregation` : rayon entier par
-  plancher logarithmique, branchement concret du code aux défauts d'un
-  intervalle, produit eulérien \(\le e^{2\sqrt H}\), double comptage des
-  intervalles et majorant fini uniforme assemblé précédant (3.4).
+  `SmoothEulerProduct`, `DefectGlobalBound`, and `WeightedDefectMass`, together
+  with `PaperC.Coding.CanonicalDefectCode`, `IntervalDefectBound`, and
+  `PaperC.Combinatorics.IntervalDefectAggregation`: integer radius through a
+  logarithmic floor, concrete connection of the code to the defects of an
+  interval, Euler product \(\le e^{2\sqrt H}\), double counting of intervals,
+  and the assembled uniform finite upper bound preceding (3.4).
 - `PaperC.Analysis.CriticalWindowParameters`, `CriticalWindowScale`,
-  `DefectPointwiseRate`, `CriticalWeightedDefect` et
-  `CriticalPointwiseIntervals` : fermeture complète de la proposition 3.2.
-  Le rayon et son budget sont valides uniformément sous
-  \(c_1\log N\le H\le c_2\log N\), tout intervalle admissible possède
-  \(O_{c_1,c_2}(\log N/\log\log N)\) défauts, et la masse de (3.4) vérifie
-  la formulation quantifiée de \(N^{1/2+o(1)}\).
-- `PaperC.Asymptotics.ExpSqrtLog`, `CappedRadiusDyadic`, `HalfPower` et
-  `LinearPower` :
-  enveloppes uniformes pour \(e^{C\sqrt{\log N}}\), \(H+1\), le facteur
-  dyadique de Hamming et leurs produits ; définitions kernel-checkées de
-  \(N^{1/2+o(1)}\), \(N^{-1/2+o(1)}\) et \(N^{1+o(1)}\).
-- `PaperC.Combinatorics.RungeCoefficients` et
-  `PaperC.Analysis.RungePowerSeries` : développement binomial formel de
-  \(\prod_\nu(1+\gamma_\nu X)^{1/2}\), identification exacte de son
-  coefficient \(c_m\) à la somme sur les compositions faibles, intégralité
-  de \(2^dc_m\) pour \(2m\le d\), majorant
-  \(\lvert c_m\rvert\le(8R)^d\) dans la plage utile, et identité formelle
+  `DefectPointwiseRate`, `CriticalWeightedDefect`, and
+  `CriticalPointwiseIntervals`: complete closure of Proposition 3.2. The
+  radius and its budget are uniformly valid under
+  \(c_1\log N\le H\le c_2\log N\); every admissible interval has
+  \(O_{c_1,c_2}(\log N/\log\log N)\) defects; and the mass in (3.4) satisfies
+  the quantified formulation of \(N^{1/2+o(1)}\).
+- `PaperC.Asymptotics.ExpSqrtLog`, `CappedRadiusDyadic`, `HalfPower`, and
+  `LinearPower`: uniform envelopes for \(e^{C\sqrt{\log N}}\), \(H+1\), the
+  dyadic Hamming factor, and their products; kernel-checked definitions of
+  \(N^{1/2+o(1)}\), \(N^{-1/2+o(1)}\), and \(N^{1+o(1)}\).
+- `PaperC.Combinatorics.RungeCoefficients` and
+  `PaperC.Analysis.RungePowerSeries`: formal binomial expansion of
+  \(\prod_\nu(1+\gamma_\nu X)^{1/2}\), exact identification of its
+  coefficient \(c_m\) with the sum over weak compositions, integrality of
+  \(2^dc_m\) for \(2m\le d\), the upper bound
+  \(\lvert c_m\rvert\le(8R)^d\) in the useful range, and the formal identity
   \(F(X)^2=\prod_\nu(1+\gamma_\nu X)\).
-- Les modules `RungeAnalyticProduct`, `RungeTailEstimate`, `RungeScaling`,
+- The modules `RungeAnalyticProduct`, `RungeTailEstimate`, `RungeScaling`,
   `RungeEstimate`, `RungeTruncationBounds`, `RungeQPolynomial`,
-  `RungeEquality`, `RungeNonEquality` et `RungeBound`, avec les modules
-  précédents de coefficients, traduction et séparation dyadique, certifient
-  **entièrement le lemme 3.1**. Lean vérifie la convergence du produit de
-  séries, la branche positive, (3.3), les deux branches dyadique et
-  polynomiale, \(\deg Q\le k-1\), la hauteur de \(Q\), puis
+  `RungeEquality`, `RungeNonEquality`, and `RungeBound`, together with the
+  preceding coefficient, translation, and dyadic-separation modules,
+  **certify Lemma 3.1 in full**. Lean verifies convergence of the series
+  product, the positive branch, (3.3), the dyadic and polynomial branches,
+  \(\deg Q\le k-1\), the height of \(Q\), and then
   \[
   U\le(128\,dR)^{2d}\qquad(d=2k\ge2).
   \]
-  La constante absolue existentielle du manuscrit est donc instanciée par
+  The manuscript's existential absolute constant is therefore instantiated as
   \(C_0=128\).
-- `PaperC.Runs.Starts` : définition additive exacte d'un start et
-  incompatibilité de deux starts qui se chevauchent
-  (lemme 3.4(i)).
+- `PaperC.Runs.Starts`: exact additive definition of a start and
+  incompatibility of two overlapping starts (Lemma 3.4(i)).
 - `PaperC.Affine.TouchingSystem`, `TouchingDefectRank`,
   `PaperC.Combinatorics.TouchingPairs`, `PaperC.Analysis.TouchingMass`,
-  `TouchingWindow` et `CriticalTouchingPairs` : système affine de deux starts
-  à distance \(L\), frontière injective de leur arbre joint de \(2L\) arêtes,
-  borne du défaut de rang par les défauts de \([x,x+2L]\), comptage des deux
-  orientations et preuve complète du lemme 3.4(ii) sous
-  \(\lvert L-\log_2N\rvert\le C\) :
+  `TouchingWindow`, and `CriticalTouchingPairs`: affine system of two starts
+  at distance \(L\), injective boundary of their joint tree with \(2L\) edges,
+  a bound on the rank defect by the defects in \([x,x+2L]\), counting of both
+  orientations, and a complete proof of Lemma 3.4(ii) under
+  \(\lvert L-\log_2N\rvert\le C\):
   \[
   \sum_{\substack{x,y\in I_N\\|x-y|=L}}
     (2^{\rho(x,y)}-1)\le N^{1+o_C(1)}
   \]
-  au sens uniforme quantifié.
-- `PaperC.Model.FiniteRademacher` : modèle fini cylindrique de la fonction
-  complètement multiplicative aléatoire et variable de comptage dyadique.
-- `PaperC.Affine.StartSystem` : identification du start avec le système affine
-  de la section 2.
-- `PaperC.Probability.StartProbability` : raccord exact entre la probabilité
-  cylindrique d'un start et le comptage de sa fibre affine.
-- `PaperC.Probability.TouchingProbability` : probabilité cylindrique exacte
-  de deux starts touchants, normalisation
-  \(\eta2^\rho/2^{2L}\) et borne absolue par
-  \((2^m-1)/2^{2L}\) sous \(\rho\le m\).
-- `PaperC.Probability.FactorialMoment` et
-  `PaperC.Probability.FiniteExpectation` : identité algébrique du second
-  moment factoriel, puis preuve exacte de
-  \(\mathbb E Z_{N,L}=\sum_x\mathbb P(J_{x,L})\) dans le cylindre fini.
+  in the quantified uniform sense.
+- `PaperC.Model.FiniteRademacher`: finite cylindrical model of the random
+  completely multiplicative function and dyadic counting variable.
+- `PaperC.Affine.StartSystem`: identification of a start with the affine
+  system of Section 2.
+- `PaperC.Probability.StartProbability`: exact connection between the
+  cylindrical probability of a start and the count of its affine fiber.
+- `PaperC.Probability.TouchingProbability`: exact cylindrical probability of
+  two touching starts, normalization \(\eta2^\rho/2^{2L}\), and absolute
+  bound by \((2^m-1)/2^{2L}\) under \(\rho\le m\).
+- `PaperC.Probability.FactorialMoment` and
+  `PaperC.Probability.FiniteExpectation`: algebraic identity for the second
+  factorial moment, followed by an exact proof of
+  \(\mathbb E Z_{N,L}=\sum_x\mathbb P(J_{x,L})\) in the finite cylinder.
 - `PaperC.Affine.StartDefectRank`,
-  `PaperC.Probability.DefectFirstMoment`, `CriticalFirstMoment` et
-  `CriticalRunWindow` : injection des relations du start-tree dans les
-  sommets défectueux, formule finie du premier moment, puis preuve du
-  corollaire 3.3 sous sa fenêtre littérale
-  \(\lvert L-\log_2N\rvert\le C\), avec erreur
+  `PaperC.Probability.DefectFirstMoment`, `CriticalFirstMoment`, and
+  `CriticalRunWindow`: injection of start-tree relations into defective
+  vertices, the finite first-moment formula, followed by a proof of Corollary
+  3.3 in its literal window \(\lvert L-\log_2N\rvert\le C\), with error
   \(N^{-1/2+o_C(1)}\).
-- `PaperC.Probability.FinitePMF` : noyau fini de variation totale.
-- `PaperC.Asymptotics.Uniform` : quantificateurs explicites pour les notations
-  asymptotiques uniformes.
+- `PaperC.Probability.FinitePMF`: finite core of total variation.
+- `PaperC.Asymptotics.Uniform`: explicit quantifiers for uniform asymptotic
+  notation.
 - `PaperC.Affine.TwoStartSystem`,
   `PaperC.Affine.RelationalPrimeAssignment`,
   `PaperC.Arithmetic.LargeOddKernel`,
-  `PaperC.Combinatorics.LargeKernelAssignments` et
-  `PaperC.Combinatorics.RelationalHosts` : système affine de deux starts,
-  sélection canonique d'une occurrence non nulle, affectation unique de
-  chaque premier \(p>L+1\) de valuation impaire à une occurrence du bloc
-  opposé, puis regroupement CRT des starts par affectation. Lean obtient
-  exactement
+  `PaperC.Combinatorics.LargeKernelAssignments`, and
+  `PaperC.Combinatorics.RelationalHosts`: affine system of two starts,
+  canonical selection of a nonzero occurrence, unique assignment of each
+  prime \(p>L+1\) with odd valuation to an occurrence in the opposite block,
+  and then CRT grouping of starts by assignment. Lean obtains exactly
   \[
   H_2(N,L)\le
   8(L+1)N\sum_{1\le n\le3N}
@@ -1241,84 +1189,79 @@ L’archive de la présente livraison est `paper_c_lean_v043.zip`.
 - `PaperC.Arithmetic.LargeKernelWeightedCounting`,
   `PaperC.Analysis.ReciprocalThreeHalvesTail`,
   `PaperC.Analysis.LargeEulerProduct`,
-  `PaperC.Analysis.RelationalHostBound` et
+  `PaperC.Analysis.RelationalHostBound`, and
   `PaperC.Asymptotics.ThreeHalvesPower`,
-  `PaperC.Asymptotics.RelationalHostsThreeHalves` : décomposition canonique
-  \(n=a^2ur\), majoration des deux produits eulériens sans théorème des
-  nombres premiers, et fermeture de la borne finie
+  `PaperC.Asymptotics.RelationalHostsThreeHalves`: canonical decomposition
+  \(n=a^2ur\), upper bounds for the two Euler products without the prime
+  number theorem, and closure of the finite bound
   \[
   H_2(N,L)\le
   8(L+1)N\sqrt{3N}\,e^{4\sqrt{L+1}}.
   \]
-  Sous \(L+1\le C\log N\), ce majorant donne la formulation uniforme
-  quantifiée de \(H_2(N,L)\le N^{3/2+o_C(1)}\), puis Lean la transporte à
-  la fenêtre littérale \(\lvert L-\log_2N\rvert\le C\), ce qui certifie le
-  lemme 4.2.
-- `PaperC.Analysis.RelationalInterpolation` : Cauchy--Schwarz fini sur un
-  sous-ensemble quelconque des hôtes relationnels, avec majorants séparés
-  pour leur cardinal et la somme des carrés. Le calcul d'exposants de (4.3)
-  est aussi vérifié explicitement :
-  \(N^{3/2+\varepsilon}\) et
-  \(N^{5/2-\delta+\varepsilon}\) donnent
-  \(N^{2-\delta/2+\varepsilon}\). Sa version éventuelle uniforme certifie le
-  lemme 4.3.
+  Under \(L+1\le C\log N\), this upper bound gives the quantified uniform
+  formulation \(H_2(N,L)\le N^{3/2+o_C(1)}\), which Lean then transports to
+  the literal window \(\lvert L-\log_2N\rvert\le C\), certifying Lemma 4.2.
+- `PaperC.Analysis.RelationalInterpolation`: finite Cauchy--Schwarz on an
+  arbitrary subset of relational hosts, with separate upper bounds for their
+  cardinality and the sum of squares. The exponent calculation in (4.3) is
+  also verified explicitly: \(N^{3/2+\varepsilon}\) and
+  \(N^{5/2-\delta+\varepsilon}\) give
+  \(N^{2-\delta/2+\varepsilon}\). Its eventual uniform version certifies
+  Lemma 4.3.
 
-La table détaillée entre le manuscrit et Lean se trouve dans
-[`FORMALIZATION_STATUS.md`](FORMALIZATION_STATUS.md). Le contrôle des
-dépendances logiques est exécuté par
-[`AuditCheck.lean`](AuditCheck.lean), dont la liste exhaustive et stable est
-également fournie dans
-[`audit_manifest.json`](audit_manifest.json). Le compte rendu humain reste
-consigné dans [`AXIOM_AUDIT.md`](AXIOM_AUDIT.md).
+The detailed correspondence table between the manuscript and Lean is in
+[`FORMALIZATION_STATUS.md`](FORMALIZATION_STATUS.md). Logical-dependency
+checking is performed by [`AuditCheck.lean`](AuditCheck.lean), whose exhaustive
+and stable list is also provided in
+[`audit_manifest.json`](audit_manifest.json). The human-readable report
+remains recorded in [`AXIOM_AUDIT.md`](AXIOM_AUDIT.md).
 
-`#print axioms` ne détecte pas les hypothèses ordinaires passées en
-arguments. Ici, « inconditionnel » signifie uniquement « ne dépend d'aucun
-pont enregistré ». Le registre distingue :
+`#print axioms` does not detect ordinary hypotheses passed as arguments. Here,
+"unconditional" means only "depends on no registered bridge." The registry
+distinguishes:
 
-- `external` : résultat publié vérifiable contre sa source, comme
-  Evertse--Silverman ;
-- `internal` : argument provenant de la preuve du manuscrit, comme le Pell
-  généralisé ou un raccord d'assemblage ;
-- `open` : pont encore requis par au moins une API canonique concernée ;
-- `discharged` : interface historique conservée et vérifiable, mais dont la
-  conclusion a maintenant été reconstruite dans Lean à partir d’entrées
-  plus amont.
+- `external`: a published result verifiable against its source, such as
+  Evertse--Silverman;
+- `internal`: an argument originating in the manuscript's proof, such as
+  generalized Pell or an assembly connection;
+- `open`: a bridge still required by at least one relevant canonical API;
+- `discharged`: a retained and verifiable historical interface whose
+  conclusion has now been reconstructed in Lean from further-upstream inputs.
 
-`kind` décrit donc la provenance, tandis que seul `status: open` signale une
-dette restante. L'inventaire, le statut et la propagation de chaque pont par
-théorème figurent dans `audit_manifest.json` et `AXIOM_AUDIT.md`. Le
-manifeste porte également l'empreinte du PDF cible et la transcription
-sourcée de chaque énoncé.
+Thus `kind` describes provenance, while only `status: open` signals remaining
+debt. The inventory, status, and theorem-by-theorem propagation of each bridge
+appear in `audit_manifest.json` and `AXIOM_AUDIT.md`. The manifest also carries
+the two edition digests—`target_pdf` for the English submission edition and
+`source_pdf_fr` for the synchronized French source—together with the sourced
+transcription of each statement.
 
-## Pourquoi le modèle probabiliste est d'abord fini
+## Why the probabilistic model is finite first
 
-Pour une fenêtre contenue dans \([1,M]\), tous les événements considérés ne
-dépendent que des signes des nombres premiers \(p\le M\). Le dépôt travaille
-donc d'abord sur l'espace fini
+For a window contained in \([1,M]\), all events under consideration depend
+only on the signs of primes \(p\le M\). The repository therefore works first
+on the finite space
 
 \[
-\Omega_M=\{0,1\}^{\{p\le M:p\ {\rm premier}\}},
+\Omega_M=\{0,1\}^{\{p\le M:p\ {\rm prime}\}},
 \]
 
-muni de la loi uniforme. Cette représentation est extensionnellement la
-restriction cylindrique du produit infini, mais évite de faire intervenir les
-produits infinis et l'espérance conditionnelle avant qu'ils ne soient
-nécessaires.
+equipped with the uniform law. Extensionally, this representation is the
+cylindrical restriction of the infinite product, but it avoids introducing
+infinite products and conditional expectation before they are needed.
 
-Le cutoff `dyadicCutoff N L = 2*N + L` couvre bien toutes les fenêtres dont le
-début appartient à `dyadicBlock N`. La fonction générique
-`startProbability N L x` reste définie hors de ce bloc, mais elle y désigne
-alors seulement la probabilité dans ce cylindre tronqué; aucune identification
-avec le modèle infini n'est revendiquée hors de la zone couverte.
+The cutoff `dyadicCutoff N L = 2*N + L` covers all windows whose start belongs
+to `dyadicBlock N`. The generic function `startProbability N L x` remains
+defined outside this block, but there it denotes only the probability in this
+truncated cylinder; no identification with the infinite model is claimed
+outside the covered zone.
 
-## Compilation
+## Building
 
-Le projet fixe Lean `v4.32.2` et mathlib `v4.32.2`. Le fichier
-`lean-toolchain`, le fichier `lakefile.toml` et le manifeste Lake verrouillent
-cette toolchain pour la v043. Le dépôt contient 373 modules et 142 840 lignes
-Lean. Les 521 lignes supplémentaires par rapport à la v042 proviennent
-exclusivement des adaptations de corps de preuve à Lean 4.32.2 ; le nombre de
-modules et les signatures publiques sont inchangés.
+The project pins Lean `v4.32.2` and mathlib `v4.32.2`. The `lean-toolchain`
+file, `lakefile.toml`, and the Lake manifest lock this toolchain for v044. The
+repository contains 373 modules and 142,840 lines of Lean. The 521 additional
+lines relative to v042 come exclusively from proof-body adaptations to Lean
+4.32.2; the module count and public signatures are unchanged.
 
 ```bash
 lake exe cache get
@@ -1327,130 +1270,116 @@ lake env lean AuditCheck.lean
 node scripts/verify_audit.mjs
 ```
 
-La dernière commande constitue l'audit exhaustif : elle exécute un
-`#print axioms` pour chaque théorème ou lemme public, ainsi que pour les deux
-constructions publiques porteuses de preuves conservées de l'audit
-historique. `verify_audit.mjs` rejoue cette commande, vérifie qu’une sortie
-correspond à chaque cible du manifeste régénéré et refuse automatiquement
-tout élément hors de la liste blanche fondationnelle. Le fichier généré et
-le manifeste se vérifient avant publication par :
+The last command is the exhaustive audit: it executes `#print axioms` for every
+public theorem or lemma, and for the two public proof-carrying constructions
+retained from the historical audit. `verify_audit.mjs` replays this command,
+checks that an output corresponds to every target in the regenerated manifest,
+and automatically rejects anything outside the foundational allowlist. The
+generated file and manifest are checked before publication with:
 
 ```bash
 node scripts/generate_audit.mjs --check
 ```
 
-L'audit d'axiomes ne détecte pas les hypothèses ordinaires. Leur inventaire
-est le registre des ponts de `audit_manifest.json` et d'`AXIOM_AUDIT.md` :
-chaque entrée porte `kind: external | internal` et
-`status: open | discharged`, et chaque théorème public conditionnel est
-marqué avec la liste exacte et la nature des ponts qu’il prend comme
-prémisses directes. En v043, les interfaces de 9.10, 9.2, 17.26, 17.28,
-17.30 et l’ancienne enveloppe Nicolas--Robin portent
-`status: discharged`. `kind: internal` décrit une provenance et ne signifie
-donc pas, à lui seul, qu’une dette reste ouverte. Les cinq interfaces
-`internal` sont toutes `discharged`; les sept entrées `open` sont toutes
-`external`. Le manifeste v043 recense 3 971 théorèmes et 5 lemmes publics,
-soit 3 976 déclarations, 3 978 cibles d’audit, 3 825 résultats
-inconditionnels et 151 conditionnels,
-ainsi que 13 ponts — huit `external`, cinq `internal`, sept `open` et six
-`discharged`. Ces comptes sont reproduits dans `REPRODUCIBILITY.md`.
+The axiom audit does not detect ordinary hypotheses. Their inventory is the
+bridge registry in `audit_manifest.json` and `AXIOM_AUDIT.md`: each entry has
+`kind: external | internal` and `status: open | discharged`, and each
+conditional public theorem is marked with the exact list and kind of bridges
+it takes as direct premises. In v044, the interfaces for 9.10, 9.2, 17.26,
+17.28, and 17.30, as well as the former Nicolas--Robin envelope, have
+`status: discharged`. `kind: internal` describes provenance and therefore does
+not by itself mean that debt remains open. All five `internal` interfaces are
+`discharged`; all seven `open` entries are `external`. The v044 manifest lists
+3,971 public theorems and 5 public lemmas, for 3,976 declarations, 3,978 audit
+targets, 3,825 unconditional results, and 151 conditional results, together
+with 13 bridges—eight `external`, five `internal`, seven `open`, and six
+`discharged`. These counts are reproduced in `REPRODUCIBILITY.md`.
 
-Le parseur du générateur couvre aussi le format où `theorem` ou `lemma` est
-seul sur une ligne et où le nom commence sur la suivante. Cette correction
-réintègre six déclarations, dont trois historiques, que l’ancien parseur
-n’inventoriait pas.
+The generator parser also covers the format in which `theorem` or `lemma`
+appears alone on one line and the name begins on the next. This correction
+reinstates six declarations, including three historical ones, that the former
+parser did not inventory.
 
-## Ce qui bloque encore la certification complète
+## What still blocks complete certification
 
-Les résultats externes sont isolés des dettes internes. Huit interfaces
-externes sont désormais enregistrées : sept restent ouvertes et l’ancienne
-enveloppe Nicolas--Robin spécialisée est conservée comme interface
-déchargée de compatibilité.
+External results are isolated from internal debt. Eight external interfaces
+are now registered: seven remain open, and the former specialized
+Nicolas--Robin envelope is retained as a discharged compatibility interface.
 
-- Evertse–Silverman (lemme 9.1), dont l'interface conditionnelle exacte est
-  formalisée ;
-- Arratia–Goldstein–Gordon / Stein–Chen (théorème 13.7), désormais représenté
-  par une interface finie exacte ;
-- le théorème des nombres premiers, sous sa forme source
-  \(\pi(t)\log t/t\to1\), utilisé dans le lemme 15.1 ;
-- le corollaire 1 de Laishram–Shorey utilisé dans le lemme 15.2 ;
-- le théorème 1 de Balasubramanian–Shorey utilisé dans le lemme 15.4.
-- le corollaire quantitatif de la théorie des idéaux d’ordres quadratiques
-  utilisé pour colorier une fibre de norme par au plus \(4\tau(|M|)^2\)
-  idéaux principaux ;
-- le théorème de Nicolas–Robin sur le nombre de diviseurs, sous la forme
-  logarithmique directe utilisée par `PellDivisorEnvelope` ;
-- l’ancienne spécialisation éventuelle aux paramètres polynomialement
-  bornés de 9.2, désormais `discharged` par ce module.
+- Evertse–Silverman (Lemma 9.1), whose exact conditional interface is
+  formalized;
+- Arratia–Goldstein–Gordon / Chen–Stein (Theorem 13.7), now represented by an
+  exact finite interface;
+- the prime number theorem, in its source form \(\pi(t)\log t/t\to1\), used in
+  Lemma 15.1;
+- Corollary 1 of Laishram–Shorey, used in Lemma 15.2;
+- Theorem 1 of Balasubramanian–Shorey, used in Lemma 15.4;
+- the quantitative corollary from ideal theory in quadratic orders, used to
+  color a norm fiber by at most \(4\tau(|M|)^2\) principal ideals;
+- the Nicolas–Robin theorem on the divisor function, in the direct logarithmic
+  form used by `PellDivisorEnvelope`;
+- the former eventual specialization to polynomially bounded parameters in
+  9.2, now `discharged` by this module.
 
-Les cinq interfaces `internal` correspondent à Pell, 9.10, 17.26, 17.28 et
-17.30 ; elles sont toutes `discharged` et conservées pour la traçabilité.
-Les anciennes interfaces P9.9, P9.11, T10.1 et C11.3 ont été supprimées avec
-leurs endpoints publics génériques. Il ne reste donc aucun pont
-`internal/open`. La formule « inconditionnel modulo littérature » décrit
-exactement la frontière des endpoints canoniques, constituée uniquement des
-sept résultats externes encore ouverts.
+The five `internal` interfaces correspond to Pell, 9.10, 17.26, 17.28, and
+17.30; all are `discharged` and retained for traceability. The former P9.9,
+P9.11, T10.1, and C11.3 interfaces were removed with their generic public
+endpoints. Thus no `internal/open` bridge remains. The phrase "unconditional
+modulo the literature" describes the boundary of the canonical endpoints
+exactly: it consists solely of the seven external results that remain open.
 
-Le lemme 17.26 assemble maintenant ses sommes de diviseurs signés et
-d’Evertse--Silverman ; le lemme 17.28 assemble les comptes d’hôtes mobiles et
-deux-singletons et choisit lui-même \(K\) ; le lemme 17.30 était déjà fermé
-sous Pell et utilise désormais le théorème Lean de 9.10 sans hypothèse
-supplémentaire. Les théorèmes canoniques 16.1 et 16.2 ne prennent donc aucun
-pont interne. L’identité de marginale
-entre deux cutoffs finis, les bornes de mauvais départs, \(b_1\), \(b_2\),
-le mélange, le couplage, la moyenne et l’arrondi du bord sont également
-déchargés. L’ancienne interface `BoundedRangePoissonApproximation` n’est plus
-enregistrée. Le théorème 16.2 générique direct conserve les trois prémisses
-sectorielles `discharged`, mais ses adaptateurs intermédiaires ont été
-supprimés. Sa variante canonique principale ne reçoit plus ni seuil \(K\),
-ni famille terminale, ni prémisse de la section 17.
+Lemma 17.26 now assembles its signed-divisor and Evertse--Silverman sums;
+Lemma 17.28 assembles the mobile-host and two-singleton counts and chooses
+\(K\) itself; Lemma 17.30 was already closed under Pell and now uses the Lean
+theorem for 9.10 with no additional hypothesis. Canonical Theorems 16.1 and
+16.2 therefore take no internal bridge. The marginal identity between two
+finite cutoffs, the bad-start bounds, \(b_1\), \(b_2\), the mixture, coupling,
+mean, and boundary rounding are also discharged. The former
+`BoundedRangePoissonApproximation` interface is no longer registered. The
+direct generic Theorem 16.2 retains the three `discharged` sector premises,
+but its intermediate adapters have been removed. Its principal canonical
+variant no longer receives a threshold \(K\), a terminal family, or a Section
+17 premise.
 
-Le lemme quantitatif de Runge, la proposition 3.2, le corollaire 3.3, les
-deux parties du lemme 3.4, les lemmes 4.2--4.3, les lemmes 5.1--5.2 et 5.5,
-la proposition 5.4, ainsi que les lemmes 6.1 et 6.4--6.5 sont maintenant
-entièrement certifiés dans le modèle fini sous leurs hypothèses explicites.
-La conclusion de classe carrée du lemme 6.2 et le lemme 6.3, y compris la
-disjonction des paires d'occurrences et la distinction des composantes
-associées aux unités distinctes, sont également certifiés. Cela comprend la
-fermeture uniforme des seuils de la fenêtre critique, les quantificateurs
-remplaçant \(O_{c_1,c_2}\), \(N^{1/2+o(1)}\) et
-\(N^{-1/2+o_C(1)}\), ainsi que les rangs du start-tree et du double arbre
-touchant. Les lemmes 7.1 et 7.2, ainsi que les propositions 7.3, 7.4 et 7.5, sont
-maintenant certifiés dans leurs formulations finies effectives, avec des
-constantes explicites. Pour la proposition 7.5, Lean conserve la population
-littérale \(P^\#>N\), hors petite hauteur, avec
-\(16c^\#\le3(L+1)\), puis prouve
-\(Q_{\rm res}\le N^{19/8+o_C(1)}\) et
-\(R_{\rm res}\le N^{31/16+o_C(1)}=o_C(N^2)\). La partition exacte des
-secteurs 7.3--7.5 et du cœur profond restant est également certifiée.
-Restent notamment la généralisation littérale de l'instance
-\(\alpha=3/16\) du théorème 8.1 à un paramètre positif arbitraire. La preuve
-interne de Pell est déchargée ; seules ses deux entrées de littérature
-Halter--Koch et Nicolas--Robin restent explicites. Les anciennes routes
-publiques arbitraires de 9.9–11.3 et du §12 ont été retirées en v041 ; leurs
-noyaux finis restent dans les modules, tandis que la masse mère canonique est
-fournie par les preuves \(κ\). Les lemmes 13.3–13.5, les termes du
-lemme 13.8 et le raccord booléen complet à l’interface AGG sont maintenant
-certifiés. La conclusion qualitative du corollaire 13.9 découle de l’endpoint
-canonique quantitatif, plutôt que d’une seconde route publique legacy. Le
-corollaire 13.10 assemble le terme d'arêtes au cutoff terminal, les termes
-quantitatifs de Stein–Chen et le triangle de variation totale pour donner le
-taux uniforme
-\(O((\log\log N)^{-2})\). Cette conclusion est la forme quantitative
-conditionnelle du théorème 1.1 dans le cylindre fini. Son entrée
-canonique utilise AGG, Evertse--Silverman, Halter--Koch et l’inégalité
-logarithmique Nicolas--Robin. Le
-\(o_C(N^2)\) de 13.6 est certifié au cutoff littéral. La proposition 14.1
-est fermée dans la fenêtre log-log du manuscrit et la proposition 14.2
-canonique utilise désormais AGG et la masse mère quantitative \(κ\), sans
-pont interne. Les identités de Laplace, leurs limites de Riemann, le calcul
-Stein--Chen marqué et la dé-troncation du §14 sont assemblés. Le lemme 15.1 possède son noyau
-fini complet et sa conclusion ne
-dépend plus que du pont externe PNT : l’ancienne dette interne du gap a été
-déchargée.
+The quantitative Runge lemma, Proposition 3.2, Corollary 3.3, both parts of
+Lemma 3.4, Lemmas 4.2--4.3, Lemmas 5.1--5.2 and 5.5, Proposition 5.4, and
+Lemmas 6.1 and 6.4--6.5 are now fully certified in the finite model under their
+explicit hypotheses. The square-class conclusion of Lemma 6.2 and Lemma 6.3,
+including disjointness of occurrence pairs and distinction of components
+associated with distinct units, are also certified. This includes uniform
+closure of the critical-window thresholds, the quantifiers replacing
+\(O_{c_1,c_2}\), \(N^{1/2+o(1)}\), and \(N^{-1/2+o_C(1)}\), and the ranks of
+the start tree and double touching tree. Lemmas 7.1 and 7.2 and Propositions
+7.3, 7.4, and 7.5 are now certified in their effective finite formulations,
+with explicit constants. For Proposition 7.5, Lean retains the literal
+population \(P^\#>N\), outside small height, with \(16c^\#\le3(L+1)\), and
+then proves \(Q_{\rm res}\le N^{19/8+o_C(1)}\) and
+\(R_{\rm res}\le N^{31/16+o_C(1)}=o_C(N^2)\). The exact partition of Sectors
+7.3--7.5 and the remaining deep core is also certified. Outstanding work
+notably includes generalizing the literal \(\alpha=3/16\) instance of Theorem
+8.1 to an arbitrary positive parameter. The internal Pell proof is discharged;
+only its two Halter--Koch and Nicolas--Robin literature inputs remain explicit.
+The former arbitrary public routes through 9.9–11.3 and §12 were removed in
+v041; their finite cores remain in the modules, while the canonical mother
+mass is supplied by the \(κ\)-proofs. Lemmas 13.3–13.5, the terms in Lemma
+13.8, and the complete Boolean connection to the AGG interface are now
+certified. The qualitative conclusion of Corollary 13.9 follows from the
+quantitative canonical endpoint, rather than from a second legacy public
+route. Corollary 13.10 assembles the edge term at the terminal cutoff, the
+quantitative Chen–Stein terms, and the total variation triangle to give the
+uniform rate \(O((\log\log N)^{-2})\). This conclusion is the conditional
+quantitative form of Theorem 1.1 in the finite cylinder. Its canonical entry
+uses AGG, Evertse--Silverman, Halter--Koch, and the Nicolas--Robin logarithmic
+inequality. The \(o_C(N^2)\) in 13.6 is certified at the literal cutoff.
+Proposition 14.1 is closed in the manuscript's log-log window, and canonical
+Proposition 14.2 now uses AGG and the quantitative \(κ\) mother mass, with no
+internal bridge. The Laplace identities, their Riemann limits, the marked
+Chen–Stein calculation, and §14 detruncation are assembled. Lemma 15.1 has
+its complete finite core, and its conclusion now depends only on the external
+PNT bridge: the former internal gap debt has been discharged.
 
-La version 7c contient désormais le corollaire 11.3, qui énonce explicitement
-la version quantitative requise pour le taux du corollaire 13.10 :
+Version 8 retains Corollary 11.3, which explicitly states the
+quantitative version required for the rate in Corollary 13.10:
 
 \[
 R_2(N,L)\ll_C N^2
@@ -1458,16 +1387,16 @@ R_2(N,L)\ll_C N^2
 \qquad c_R=c_R(A,C)>0.
 \]
 
-Le chaînon est donc présent dans le manuscrit. La v041 supprime l’ancienne
-formalisation publique sectorielle de 11.3 et conserve la voie canonique :
-elle construit la masse mère quantitative depuis les preuves \(κ\), puis
-injecte cette unique estimation dans l’assemblage probabiliste de
+The link is therefore present in the manuscript. Version 041 removes the
+former public sector formalization of 11.3 and retains the canonical route: it
+constructs the quantitative mother mass from the \(κ\)-proofs, and then injects
+this single estimate into the probabilistic assembly in
 `PaperC.Asymptotics.CorollaryThirteenTen`.
 
-## Ordre recommandé pour la suite
+## Recommended next steps
 
-1. Généraliser de l’encodage rationnel déjà disponible à l’énoncé littéral
-   pour tout réel \(\alpha>0\) du théorème 8.1.
-2. Si une API mathlib stable apparaît, transporter les caractérisations de
-   Laplace déjà prouvées vers une formulation équivalente en convergence
-   vague de mesures ponctuelles.
+1. Generalize the existing rational encoding to the literal statement of
+   Theorem 8.1 for every real \(\alpha>0\).
+2. If a stable mathlib API becomes available, transport the already proved
+   Laplace characterizations to an equivalent formulation in vague convergence
+   of point measures.
