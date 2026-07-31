@@ -14,7 +14,7 @@ This module completes the finite averaging layer of §14.4.
 * `markedBTwoAverage` is the exact average (over the fixed small-prime
   coordinates) of the conditional second AGG term.
 * `markedBTwoRelationEnvelope` is an explicit finite upper bound obtained
-  from Lemma 14.5.  Same-start marks contribute zero; every other summand is
+  from Lemma 14.6.  Same-start marks contribute zero; every other summand is
   bounded by the common length-`Q` relation defect divided by
   `2^(2(L+1))`.
 * averaging the pointwise AGG theorem gives a total-variation bound for the
@@ -522,7 +522,7 @@ theorem mixedExactLengthProbability_eq_zero_of_markedStrictOverlap
       hbackward.1 hbackward.2
 
 /--
-Lemma 14.5 gives a common-`Q` pointwise bound for every pair with distinct
+Lemma 14.6 gives a common-`Q` pointwise bound for every pair with distinct
 starts.
 -/
 theorem mixedExactLengthProbability_le_commonRelation
@@ -595,7 +595,7 @@ theorem mixedExactLengthProbability_le_orderedCommonRelation
       mixedExactLengthProbability_le_commonRelation hL β α
 
 /--
-Concrete local form of Lemma 14.7.  For a nonzero marked pair at distance at
+Concrete local form of Lemma 14.8.  For a nonzero marked pair at distance at
 most the common length `Q`, the common two-star relation defect is bounded
 by the fixed number `E+1`.
 -/

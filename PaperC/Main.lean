@@ -176,6 +176,10 @@ import PaperC.Asymptotics.BoundedRatioTerminalSummation
 import PaperC.Asymptotics.PropositionSixteenOne
 import PaperC.Asymptotics.BoundedRatioSteinChen
 import PaperC.Asymptotics.TheoremSixteenTwo
+import PaperC.Asymptotics.TheoremSixteenTwoInfiniteModel
+import PaperC.Asymptotics.TheoremSixteenTwoRecentered
+import PaperC.Asymptotics.MaskedPoissonRate
+import PaperC.Asymptotics.CorollaryPrefixLawCanonical
 import PaperC.Asymptotics.Uniform
 import PaperC.Runs.Starts
 import PaperC.Model.FiniteRademacher
@@ -309,6 +313,7 @@ import PaperC.Diophantine.EvertseSilvermanInput
 import PaperC.Diophantine.PellInput
 import PaperC.Diophantine.QuadraticIdealDivisors
 import PaperC.Diophantine.GeneralizedPell
+import PaperC.Diophantine.HalterKochConductorDescent
 import PaperC.Diophantine.PellDivisorEnvelope
 import PaperC.Diophantine.PellRealExponent
 import PaperC.Diophantine.ComponentNormalization

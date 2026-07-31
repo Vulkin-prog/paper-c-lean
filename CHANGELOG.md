@@ -1,5 +1,101 @@
 # Journal des versions
 
+## 0.45.0
+
+- Mathematical resynchronization with the two counter-reviewed version 8
+  editions, while retaining Lean and mathlib `v4.32.2` and a source tree free
+  of `sorry`, `admit`, added axioms, `unsafe`, and `partial` declarations.
+  The 13-entry bridge registry is unchanged: eight `external` and five
+  `internal` entries, seven `open` (all `external`) and six `discharged`.
+  The final source contains 381 modules and 146,353 Lean lines. The regenerated
+  manifest lists 4,065 theorems and five lemmas: 4,070 public declarations,
+  4,072 audit targets, 3,912 results with no registered bridge premise, and
+  158 conditional results. All 3,976 v044 public names remain; v045 adds 94
+  and changes no earlier signature.
+- `PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical` now
+  states the printed quantitative endpoint of Corollary 11.3 literally:
+  there is a uniform `c_R > 0` for which
+  \(R_2(N,L)\ll_C N^2\exp(-c_R\sqrt{\log N}/\log\log N)\).
+  Lean chooses one constant valid in all seven sectors, transports the
+  polynomial-saving sectors to this common scale, retains the exponential
+  envelope of the nonterminal sector, and sums the sector bounds. Its only
+  open inputs are Evertse--Silverman, Halter--Koch, and Nicolas--Robin.
+- The Halter--Koch boundary is now certifiable at theorem-and-page level:
+  Theorem 1.1.6(1)(b), pp. 4--5; Definition 5.1.6 and Theorem
+  5.1.7(1),(3), pp. 118--119; Theorem 5.2.3(1),(2), p. 125; and Theorem
+  5.2.5(1), pp. 126--127 of *Quadratic Irrationals* (2013), DOI
+  `10.1201/b14968`. These are the conductor/order, unit-index, and fixed
+  principal-ideal generator results used by the descent. The new compiled
+  module `HalterKochConductorDescent` factors the remaining source boundary
+  into conductor index `1` or `2`, a unit quotient of cardinality at most
+  three, and equality of generator cosets. It then derives
+  `QuadraticOrderConductorFiberBoundStatement` explicitly. The historical
+  “four colours” are not attributed to the book: Lean proves the sole slack
+  as the injection `Fin 3 → Fin 4`. The order embedding and unit-quotient
+  instantiation are still external, so this strengthens the documentation
+  and formal reduction without falsely discharging the registered bridge.
+- The source product law is now exposed directly. The public random variable
+  `infiniteDyadicStartCount`, the exact law identity
+  `infiniteDyadicStartCount_law_eq_fullDyadicStartLaw`, and
+  `theorem_one_one_infinite_model` give the requested infinite-law form of
+  Theorem 1.1. The analogous `infiniteGlobalStartCount`, exact cylinder-law
+  identity, and `theorem_sixteen_two_infinite_model` give Theorem 16.2 on the
+  same source law.
+- The three counter-reviewed mathematical additions are mechanized. First,
+  the global law is recentered from its exact mean `Λ_M` to the printed
+  parameter `M 2⁻ᴸ`, using
+  `d_TV(Pois(λ), Pois(μ)) ≤ 1-exp(-|λ-μ|) ≤ |λ-μ|`; the
+  wrapper also supplies the recentered void probability. Second, Remark
+  14.3 is exposed at the uniform rate
+  \(O_C((\log\log N)^{-2})\) for every deterministic mask: positivity
+  dominates the induced-subgraph `b₁,b₂` terms before averaging, and
+  the coupling and parameter displacement are absorbed by the full-block
+  corrections. Third, the finite-prefix observable
+  \(W_{M,L}\) is defined literally, its zero event is proved exactly equal
+  to \(\{R_M<L\}\), and its law on the infinite product model is coupled to
+  the global interior count. The left boundary has exact mass
+  \(2^{-\pi(L)}\); the overflowing starts are a Proposition 14.1 mask at
+  the shifted base \(M-L+2\), with baseline \(O(L2^{-L})\) and masked error
+  \(O(M^{-1/2+o(1)})\). The resulting Corollary 16.4 gives both
+  \(d_{\rm TV}(\mathcal L(W_{M,L}),\operatorname{Pois}(M2^{-L}))=o_C(1)\)
+  and \(\mathbb P(R_M<L)=\exp(-M2^{-L})+o_C(1)\).
+- `README.md` now uses the reviewer-exact scope statement: this is a formal
+  proof of the canonical endpoints, conditional on seven explicitly
+  registered external propositions; it is not yet an unconditional kernel
+  certification until those seven propositions have themselves been
+  formalized. `FORMALIZATION_STATUS.md` records the infinite wrappers,
+  recentering, masked rate, prefix law, and the exact residual status of the
+  Halter--Koch bridge.
+- Statement fidelity was rechecked against both definitive PDFs. Every one
+  of the 103 previously numbered theorem, proposition, lemma, and corollary
+  statements remains present with the same mathematical content; all 57
+  previously numbered displayed equations remain present as well. In
+  particular, no clause previously transcribed into Lean changed. The new
+  material is additive: Remark 14.3, Corollary 16.4, Remark 16.5, and the
+  recentered conclusion accompanying Theorem 16.2. The exact-mean theorem
+  and all prior Lean signatures are retained.
+- The remaining PDF diff is editorial: the “Formal verification” section is
+  rewritten (the former restriction around 13.6 is described as a harmonic
+  estimate, the scope of 11.3 and the dependency table are corrected, the
+  `v4.32.2` toolchain and fingerprint mechanism are recorded); LS04 is
+  pinpointed to Corollary 1; residual French text is removed from the
+  English edition; the abstracts, scope, and conclusion are aligned with
+  the corollary; the AI declaration is nominative; and `\pdftrailerid{}`
+  makes the builds deterministic. Inserting Remark 14.3 shifts the former
+  Remark 14.3 to 14.4, Lemmas 14.4--14.7 to 14.5--14.8, and Corollary 14.8
+  to 14.9. The manuscript sections, including Sections 2--17, are unchanged;
+  repository documentation was updated to the new local numbering and no
+  Lean identifier or theorem signature was renamed.
+- The target is `paper_C_complete_v08_en.pdf`, SHA-256
+  `a7d4bc20de3a823d66a37a8833be041de091703f152b78a71dc69d1185dcf929`;
+  the synchronized French source is `paper_C_complete_v08.pdf`, SHA-256
+  `a1e00de33dea14845ab09bb71ad34d591cccc37ea1e238914933fb644bbfa0e2`.
+  Both values are checked by the audit generator and `--check`. Independent
+  inspection of the supplied byte streams gives 71 physical pages for the
+  English file (its final page contains references [34]--[35]), rather than
+  the 70 stated in the delivery note, and 72 pages for the French file. The
+  fingerprints match the requested definitive builds byte for byte.
+
 ## 0.44.0
 
 - Documentation-and-manifest-only resynchronization with the mathematical

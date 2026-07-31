@@ -11,13 +11,13 @@ For a fixed mark cutoff `E`, the vector
 depends only on the finite prime cylinder at the common row count
 `Q = L + E + 1`.  This file records the exact image-law transfer for both
 the complete vector and the vector restricted to the retained starts of
-Lemma 14.7.
+Lemma 14.8.
 
 It also isolates the deterministic coupling used after the marked
 Stein--Chen argument: the complete and retained vectors can differ only if
 one of the removed exact-length events occurs.  Consequently every joint
 atom differs by at most the literal removed probability mass from
-Lemma 14.7.
+Lemma 14.8.
 -/
 
 open scoped BigOperators ENNReal symmDiff
@@ -398,7 +398,7 @@ theorem infiniteCountVector_disagreement_subset_removed
 
 /--
 The source probability of any complete/retained vector disagreement is at
-most the literal double sum appearing in Lemma 14.7.
+most the literal double sum appearing in Lemma 14.8.
 -/
 theorem infiniteRemovedExactLengthEvent_measureReal_le_mass
     (N L E : ℕ) :

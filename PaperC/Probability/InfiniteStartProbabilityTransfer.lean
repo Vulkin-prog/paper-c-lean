@@ -1,4 +1,5 @@
 import PaperC.Probability.InfiniteExactLengthProbabilityTransfer
+import PaperC.Probability.SectionThirteenCouplings
 
 /-!
 # Infinite-law transfer for ordinary start events
@@ -20,9 +21,13 @@ open MeasureTheory Set
 namespace PaperC
 namespace InfiniteStartProbabilityTransfer
 
+open ArratiaGoldsteinGordonInput
 open InfiniteRademacher
 open InfiniteCylinderTransfer
 open InfiniteExactLengthProbabilityTransfer
+open ConditionalAGGAverage
+open SectionThirteenCouplings
+open SectionThirteenFiniteBound
 
 /- Keep the measurable structure definitionally identical to the one used by
 the infinite product model. -/
@@ -174,6 +179,121 @@ theorem infiniteDyadicStartEvent_measure_toReal_le_expectation
       apply Finset.sum_congr rfl
       intro x hx
       rfl
+
+/-! ## Exact law of the complete dyadic start count -/
+
+/--
+The complete dyadic start count, now read directly as a random variable on
+the infinite Rademacher product space.
+
+This is the source-model version of `dyadicCount`: it observes the same
+finite collection of start events, but evaluates them through
+`infiniteValueBit` instead of first restricting the sample to a prime
+cylinder.
+-/
+noncomputable def infiniteDyadicStartCount
+    (N L : ℕ) (ω : InfiniteSample) : ℕ := by
+  classical
+  exact ∑ x ∈ dyadicBlock N,
+    if StartEvent (infiniteValueBit ω) x L then 1 else 0
+
+/-- Restriction to the canonical dyadic cylinder preserves the count. -/
+theorem dyadicCount_restrictToFinite_eq_infiniteDyadicStartCount
+    (N L : ℕ) (ω : InfiniteSample) :
+    dyadicCount N L (restrictToFinite (dyadicCutoff N L) ω) =
+      infiniteDyadicStartCount N L ω := by
+  classical
+  unfold dyadicCount infiniteDyadicStartCount
+  apply Finset.sum_congr rfl
+  intro x hx
+  have hxUpper : x < 2 * N :=
+    (Finset.mem_Ico.mp (by simpa [dyadicBlock] using hx)).2
+  have hcut : x + L ≤ dyadicCutoff N L := by
+    unfold dyadicCutoff
+    omega
+  have hiff :=
+    startAt_restrictToFinite_iff
+      (M := dyadicCutoff N L) (x := x) (L := L) ω hcut
+  by_cases hstart : StartEvent (infiniteValueBit ω) x L
+  · simp [hstart, hiff.mpr hstart]
+  · have hfinite :
+        ¬ startAt (restrictToFinite (dyadicCutoff N L) ω) x L :=
+      fun h => hstart (hiff.mp h)
+    simp [hstart, hfinite]
+
+/-- One atom of the infinite dyadic count. -/
+def infiniteDyadicStartCountEvent
+    (N L k : ℕ) : Set InfiniteSample :=
+  {ω | infiniteDyadicStartCount N L ω = k}
+
+/-- The matching atom on the canonical finite cylinder. -/
+def finiteDyadicStartCountEvent
+    (N L k : ℕ) : Set (DyadicSample N L) :=
+  {σ | dyadicCount N L σ = k}
+
+/-- Every infinite count atom is the preimage of its finite-cylinder atom. -/
+theorem infiniteDyadicStartCountEvent_eq_preimage
+    (N L k : ℕ) :
+    infiniteDyadicStartCountEvent N L k =
+      restrictToFinite (dyadicCutoff N L) ⁻¹'
+        finiteDyadicStartCountEvent N L k := by
+  ext ω
+  change
+    infiniteDyadicStartCount N L ω = k ↔
+      dyadicCount N L (restrictToFinite (dyadicCutoff N L) ω) = k
+  exact iff_of_eq
+    (congrArg (fun count => count = k)
+      (dyadicCount_restrictToFinite_eq_infiniteDyadicStartCount
+        N L ω)).symm
+
+/-- Finite-cylinder count atoms are measurable. -/
+theorem measurableSet_finiteDyadicStartCountEvent
+    (N L k : ℕ) :
+    MeasurableSet (finiteDyadicStartCountEvent N L k) :=
+  Set.toFinite (finiteDyadicStartCountEvent N L k) |>.measurableSet
+
+/-- Infinite-product count atoms are measurable cylinders. -/
+theorem measurableSet_infiniteDyadicStartCountEvent
+    (N L k : ℕ) :
+    MeasurableSet (infiniteDyadicStartCountEvent N L k) := by
+  rw [infiniteDyadicStartCountEvent_eq_preimage]
+  exact
+    (measurable_restrictToFinite (dyadicCutoff N L))
+      (measurableSet_finiteDyadicStartCountEvent N L k)
+
+/-- Mass function of the dyadic count under the infinite product law. -/
+noncomputable def infiniteDyadicStartLaw
+    (N L k : ℕ) : ℝ :=
+  (infiniteRademacherMeasure
+    (infiniteDyadicStartCountEvent N L k)).toReal
+
+/--
+The law of `infiniteDyadicStartCount` is exactly the already audited
+finite-cylinder law `fullDyadicStartLaw`.
+-/
+theorem infiniteDyadicStartCount_law_eq_fullDyadicStartLaw
+    (N L : ℕ) :
+    infiniteDyadicStartLaw N L = fullDyadicStartLaw N L := by
+  funext k
+  classical
+  unfold infiniteDyadicStartLaw
+  rw [infiniteDyadicStartCountEvent_eq_preimage,
+    ← Measure.map_apply
+      (measurable_restrictToFinite (dyadicCutoff N L))
+      (measurableSet_finiteDyadicStartCountEvent N L k),
+    map_infiniteRademacherMeasure_restrictToFinite]
+  simp only [finiteDyadicStartCountEvent]
+  rw [finiteRademacherMeasure_event_eq_uniformEventProbability,
+    ENNReal.toReal_ofReal]
+  · rw [← finiteUniformProbability_eq_uniformEventProbability,
+      ← eventProbability_fullUniformPMF_eq]
+    unfold fullDyadicStartLaw finiteNatLaw eventProbability
+    apply Finset.sum_congr rfl
+    intro ω _hω
+    by_cases hcount : dyadicCount N L ω = k <;> simp [hcount]
+  · apply Rat.cast_nonneg.mpr
+    unfold uniformEventProbability
+    positivity
 
 end
 

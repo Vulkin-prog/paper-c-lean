@@ -1,19 +1,19 @@
 {
   "schema_version": 4,
   "project": "paper_c_lean",
-  "project_version": "0.44.0",
+  "project_version": "0.45.0",
   "target_pdf": {
     "filename": "paper_C_complete_v08_en.pdf",
-    "sha256": "601f8cb4a7b0e2058287128888af202c94c2d938550eff7012eed94ab7366112"
+    "sha256": "a7d4bc20de3a823d66a37a8833be041de091703f152b78a71dc69d1185dcf929"
   },
   "source_pdf_fr": {
     "filename": "paper_C_complete_v08.pdf",
-    "sha256": "53e361154f4b503fa00eb3de558f60dbb763492a801b094322d4e8c471bccf28"
+    "sha256": "a1e00de33dea14845ab09bb71ad34d591cccc37ea1e238914933fb644bbfa0e2"
   },
   "audit_file": "AuditCheck.lean",
   "import": "PaperC.Main",
   "source_glob": "PaperC/**/*.lean",
-  "source_digest_sha256": "f3cfe99a1e730f9ae072e11df7beeb2530e850a6bca755e80dac2b1e4c1e8407",
+  "source_digest_sha256": "5e11b921f1141778d910dc3f7181d1f348bf5986e806ddf4147b136ea7bbb312",
   "selection": {
     "include": "explicit public theorem or lemma declarations under namespace PaperC",
     "exclude": [
@@ -26,10 +26,10 @@
       "generated/internal declarations"
     ]
   },
-  "theorem_count": 3976,
+  "theorem_count": 4070,
   "theorem_kind_counts": {
     "lemma": 5,
-    "theorem": 3971
+    "theorem": 4065
   },
   "conditionality_scope": {
     "meaning": "registered external and internal bridge hypotheses",
@@ -213,31 +213,34 @@
         "publisher": "Chapman & Hall/CRC",
         "year": 2013,
         "isbn": "9781466591837",
-        "locator": "Chapter 5, Quadratic orders: Units in quadratic orders; Structure of ideals in quadratic orders; An application: some binary Diophantine equations; Prime ideals and multiplicative ideal theory"
+        "doi": "10.1201/b14968",
+        "locator": "Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
       },
       "source_statement": {
-        "verbatim": "The book highlights the connection between Gauss's theory of binary forms and the arithmetic of quadratic orders.",
+        "verbatim": "O_{Δf²} = ℤ + f O_Δ and [O_Δ : O_{Δf²}] = f.",
         "verbatim_is_excerpt": true,
         "displayed_formulas": {
           "norm_fibre": "N(x + y√D) = x² - Dy² = M",
           "maximal_order_divisor": "J(x,y) divides (M) in the maximal quadratic order",
-          "conductor_colour": "c(x,y) belongs to a set of four conductor colours",
+          "order_conductor": "ℤ[√D] has conductor 2 when D ≡ 1 (mod 4), and conductor 1 otherwise",
+          "unit_cosets": "[O_Kˣ : ℤ[√D]ˣ] ≤ 3",
+          "lean_colour_padding": "Fin 3 → Fin 4",
           "descent": "J(s) = J(t) and c(s) = c(t) imply (s) = (t) in ℤ[√D]"
         },
-        "source_url": "https://www.routledge.com/product/isbn/9781466591837",
-        "verification": "manual_primary_source_check_required",
-        "verification_note": "This bridge isolates only the conductor-two descent from the maximal order to ℤ[√D]. Lean separately proves the full τ(|M|)² count of maximal-order ideal divisors, equality-of-principal-ideal to Pell-unit conversion, unit growth, and height counting.",
-        "sha256": "c0842c5378a8703c8d3a12216169fc1cc4ff3faa683a13dbc79aee757d79b3aa"
+        "source_url": "https://doi.org/10.1201/b14968",
+        "verification": "manually checked against the cited theorem statements and proofs on 2026-07-31",
+        "verification_note": "Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction.",
+        "sha256": "7e76325fcfebfc30c06d97024307828308a3f7105b99e6dbe8daec328ba43910"
       },
       "manuscript_locator": {
         "result": "Lemma 9.2",
         "equation": "(α)(conjugate α) = (M)",
         "pages": "28–29"
       },
-      "formalization_relation": "external conductor comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of four conductor colours, and equality of both data descends to equality of principal ideals in ℤ[√D]; Lean proves the τ(|M|)² bound for maximal-order ideal divisors and all unit-orbit, height, finite-cardinality and squarefree-reduction consequences",
+      "formalization_relation": "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences",
       "declaration": {
         "source": "PaperC/Diophantine/GeneralizedPell.lean",
-        "line": 118,
+        "line": 123,
         "statement_sha256": "ebf752f15ffbace8e7d9cce1e7cebd30e11d0f9b12bb5beda970f467f98c253d"
       }
     },
@@ -314,7 +317,7 @@
       "formalization_relation": "discharged legacy envelope retained for compatibility: PellDivisorEnvelope derives it from NR83-T1-divisor-log-bound, proving in Lean the polynomial substitution, small-argument split, squaring of the divisor count, and absorption of the explicit logarithmic unit-orbit factor",
       "declaration": {
         "source": "PaperC/Diophantine/GeneralizedPell.lean",
-        "line": 537,
+        "line": 542,
         "statement_sha256": "37fe907c4219e8d34f747e8e061da5e4ab5214492de896f61865a49871bcb678"
       }
     },
@@ -542,14 +545,14 @@
       }
     }
   ],
-  "unconditional_theorem_count": 3825,
-  "conditional_theorem_count": 151,
+  "unconditional_theorem_count": 3912,
+  "conditional_theorem_count": 158,
   "conditional_theorem_counts_by_hypothesis_kind": {
-    "external": 113,
+    "external": 120,
     "internal": 59
   },
   "conditional_theorem_counts_by_hypothesis_status": {
-    "open": 113,
+    "open": 120,
     "discharged": 60
   },
   "theorem_records": [
@@ -12466,7 +12469,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.coe_independentPoissonExactLengthRate",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 54,
+      "line": 57,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12474,7 +12477,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.corollary_fourteen_eight_counts",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 361,
+      "line": 364,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
@@ -12487,7 +12490,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.corollary_fourteen_eight_counts_of_averaged_conditional_law",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 316,
+      "line": 319,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12495,7 +12498,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.corollary_fourteen_eight_counts_of_retained_finite_law",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 250,
+      "line": 253,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12503,7 +12506,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.encodedIndependentPoissonExactLengthLaw_nonneg",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 90,
+      "line": 93,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12511,7 +12514,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.encodedIndependentPoissonExactLengthLaw_primeCode",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 120,
+      "line": 123,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12519,7 +12522,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.encodedIndependentPoissonExactLengthLaw_zero",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 111,
+      "line": 114,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12527,7 +12530,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.hasSum_encodedIndependentPoissonExactLengthLaw",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 96,
+      "line": 99,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12535,7 +12538,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.independentPoissonExactLengthVectorMass_nonneg",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 72,
+      "line": 75,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12543,7 +12546,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.inversePowerTransform_encodedIndependentPoissonExactLengthLaw",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 132,
+      "line": 135,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12551,7 +12554,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.inversePowerTransform_encodedIndependentPoissonExactLengthLaw_eq_limit",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 166,
+      "line": 169,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12559,7 +12562,7 @@
       "name": "PaperC.CorollaryFourteenEightCounts.totalRemovedInfiniteExactLengthProbability_tendsto_zero",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
-      "line": 208,
+      "line": 211,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12567,7 +12570,7 @@
       "name": "PaperC.CorollaryFourteenEightMaximum.abs_infiniteMaximumAtMostProbability_sub_exp_le",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean",
-      "line": 205,
+      "line": 208,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12575,7 +12578,7 @@
       "name": "PaperC.CorollaryFourteenEightMaximum.corollary_fourteen_eight_maximum",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean",
-      "line": 235,
+      "line": 238,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
@@ -12588,7 +12591,7 @@
       "name": "PaperC.CorollaryFourteenEightMaximum.fullMaskedDyadicCount_eq_zero_iff",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean",
-      "line": 129,
+      "line": 132,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12596,7 +12599,7 @@
       "name": "PaperC.CorollaryFourteenEightMaximum.fullMaskedDyadicStartLaw_zero_eq_finiteUniform",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean",
-      "line": 138,
+      "line": 141,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12604,7 +12607,7 @@
       "name": "PaperC.CorollaryFourteenEightMaximum.infiniteMaximumAtMostProbability_eq_finiteLaw_zero",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean",
-      "line": 174,
+      "line": 177,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12612,7 +12615,7 @@
       "name": "PaperC.CorollaryFourteenEightMaximum.infiniteNoDyadicStartEvent_eq_preimage",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean",
-      "line": 68,
+      "line": 71,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12620,7 +12623,7 @@
       "name": "PaperC.CorollaryFourteenEightMaximum.infiniteNoDyadicStartProbability_eq_finiteUniform",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean",
-      "line": 107,
+      "line": 110,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12628,7 +12631,7 @@
       "name": "PaperC.CorollaryFourteenEightMaximum.measurableSet_finiteNoDyadicStartEvent",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean",
-      "line": 60,
+      "line": 63,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12636,7 +12639,311 @@
       "name": "PaperC.CorollaryFourteenEightMaximum.shiftedMaskedTargetPoissonLaw_zero",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean",
-      "line": 185,
+      "line": 188,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.boundary_or_exists_overflow_start_of_counts_ne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 407,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.disagreementProbability_prefix_global_le",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 441,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.finitePrefixStartCount_restrictToFinite_eq_infinitePrefixStartCount",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 246,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.globalStartIndices_eq_prefixInterior_union_overflow",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 385,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.infinitePrefixBoundaryEvent_eq_preimage",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 612,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.infinitePrefixBoundaryEvent_subset_zeroPrefix",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 676,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.infinitePrefixStartCountEvent_eq_preimage",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 318,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.infinitePrefixStartCount_eq_zero_iff_longest_lt",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 231,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.infinitePrefixStartCount_law_eq_prefixStartLaw",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 354,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.measurableSet_finitePrefixStartCountEvent",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 332,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.measurableSet_infinitePrefixBoundaryEvent",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 642,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.measurableSet_infinitePrefixStartCountEvent",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 336,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.natTotalVariation_prefix_global_le",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 529,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixBoundaryProbability_eq_measure",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 652,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixBoundaryProbability_le_geometric",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 706,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixConstantStretchLengths_nonempty",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 51,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixConstantStretch_length_le",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 65,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixHasConstantStretch_iff_boundary_or_start",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 137,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixHasConstantStretch_mono",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 72,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixInterior_overflow_disjoint",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 394,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixLongestConstantStretch_lt_iff",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 84,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixLongestStretchBelowProbability_eq_measure",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 791,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixOverflowBase_in_runLengthWindow",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 727,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixOverflowStartIndices_card_le",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 561,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixOverflowStartIndices_eq",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 546,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixOverflowStartIndices_subset_dyadicBlock",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 551,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixOverflowStartMass_eq_maskedDyadicExpectation",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 568,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLaw.prefixStartCount_eq_zero_iff_longest_lt",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "line": 208,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLawCanonical.corollary_prefix_law_canonical",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean",
+      "line": 320,
+      "conditionality": "conditionnel",
+      "hypotheses": [
+        "ADGR07-PNT",
+        "AGG89-T1-finite-dependency-b3-zero",
+        "BS93-Theorem-1",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "LS04-Corollary-1",
+        "NR83-T1-divisor-log-bound"
+      ]
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLawCanonical.finitePrefixBoundaryProbability_eq_infinite",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean",
+      "line": 34,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLawCanonical.finitePrefixBoundaryProbability_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean",
+      "line": 45,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLawCanonical.infinitePrefixEmptyProbability_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean",
+      "line": 190,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLawCanonical.infinitePrefixLongestStretchBelowProbability_eq_empty",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean",
+      "line": 267,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLawCanonical.infinitePrefixLongestStretchBelowProbability_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean",
+      "line": 278,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLawCanonical.infinitePrefixStartLaw_poisson_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean",
+      "line": 172,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLawCanonical.prefixRange_eventually",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean",
+      "line": 62,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryPrefixLawCanonical.prefixStartLaw_poisson_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean",
+      "line": 99,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12644,7 +12951,7 @@
       "name": "PaperC.CorollaryThirteenTen.averagedConditionalGoodTotalVariation_uniformBigO_explicitRate_of_steinBTwo",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 696,
+      "line": 698,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero"
@@ -12654,7 +12961,7 @@
       "name": "PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_canonical",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 871,
+      "line": 873,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
@@ -12667,7 +12974,7 @@
       "name": "PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_of_averagedConditional",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 757,
+      "line": 759,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12675,7 +12982,7 @@
       "name": "PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_of_homogeneousMass",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 837,
+      "line": 839,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero"
@@ -12685,7 +12992,7 @@
       "name": "PaperC.CorollaryThirteenTen.dependencyEdgeHarmonicTerm_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 51,
+      "line": 53,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12693,7 +13000,7 @@
       "name": "PaperC.CorollaryThirteenTen.dependencyEdgeLinearTerm_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 94,
+      "line": 96,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12701,7 +13008,7 @@
       "name": "PaperC.CorollaryThirteenTen.dependencyEdgeMainTerm_le",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 136,
+      "line": 138,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12709,7 +13016,7 @@
       "name": "PaperC.CorollaryThirteenTen.dependencyEdgeMainTerm_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 284,
+      "line": 286,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12717,7 +13024,7 @@
       "name": "PaperC.CorollaryThirteenTen.dyadicLength_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 437,
+      "line": 439,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12725,7 +13032,7 @@
       "name": "PaperC.CorollaryThirteenTen.orderedDependencyEdges_terminalCutoff_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 347,
+      "line": 349,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12733,7 +13040,7 @@
       "name": "PaperC.CorollaryThirteenTen.runLengthAddOneSquared_uniformSubpolynomial",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 39,
+      "line": 41,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12741,7 +13048,7 @@
       "name": "PaperC.CorollaryThirteenTen.separatedDefectMass_uniformBigO_of_homogeneousMass",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 522,
+      "line": 524,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12749,7 +13056,7 @@
       "name": "PaperC.CorollaryThirteenTen.steinBOneNumerator_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 543,
+      "line": 545,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12757,7 +13064,7 @@
       "name": "PaperC.CorollaryThirteenTen.steinBOne_uniformBigO_explicitRate",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 594,
+      "line": 596,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12765,7 +13072,7 @@
       "name": "PaperC.CorollaryThirteenTen.steinBTwoAverage_uniformBigO_explicitRate_of_numerator",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 636,
+      "line": 638,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12773,15 +13080,28 @@
       "name": "PaperC.CorollaryThirteenTen.steinBTwoNumerator_uniformBigO_of_separatedDefectMass",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 566,
+      "line": 568,
       "conditionality": "inconditionnel",
       "hypotheses": []
+    },
+    {
+      "name": "PaperC.CorollaryThirteenTen.theorem_one_one_infinite_model",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
+      "line": 919,
+      "conditionality": "conditionnel",
+      "hypotheses": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ]
     },
     {
       "name": "PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 894,
+      "line": 896,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
@@ -12794,7 +13114,7 @@
       "name": "PaperC.CorollaryThirteenTen.touchingMass_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 492,
+      "line": 494,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12802,7 +13122,7 @@
       "name": "PaperC.CorollaryThirteenTen.touchingOffDiagPairs_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 456,
+      "line": 458,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14330,7 +14650,7 @@
       "name": "PaperC.DyadicKappaQuantitative.R2κ_dyadic_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/DyadicKappaQuantitative.lean",
-      "line": 339,
+      "line": 521,
       "conditionality": "conditionnel",
       "hypotheses": [
         "ES86-T1b-Q-split-n2",
@@ -14338,10 +14658,22 @@
       ]
     },
     {
+      "name": "PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/DyadicKappaQuantitative.lean",
+      "line": 823,
+      "conditionality": "conditionnel",
+      "hypotheses": [
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ]
+    },
+    {
       "name": "PaperC.DyadicKappaQuantitative.everySector_dyadic_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/DyadicKappaQuantitative.lean",
-      "line": 255,
+      "line": 437,
       "conditionality": "conditionnel",
       "hypotheses": [
         "ES86-T1b-Q-split-n2",
@@ -14352,7 +14684,7 @@
       "name": "PaperC.DyadicKappaQuantitative.highDensityMass_dyadic_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/DyadicKappaQuantitative.lean",
-      "line": 140,
+      "line": 212,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14360,7 +14692,7 @@
       "name": "PaperC.DyadicKappaQuantitative.homogeneousMass_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/DyadicKappaQuantitative.lean",
-      "line": 406,
+      "line": 588,
       "conditionality": "conditionnel",
       "hypotheses": [
         "ES86-T1b-Q-split-n2",
@@ -14380,7 +14712,7 @@
       "name": "PaperC.DyadicKappaQuantitative.nonterminalSector_dyadic_uniformBigO",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/DyadicKappaQuantitative.lean",
-      "line": 208,
+      "line": 336,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -16781,10 +17113,34 @@
       "hypotheses": []
     },
     {
+      "name": "PaperC.InfiniteStartProbabilityTransfer.dyadicCount_restrictToFinite_eq_infiniteDyadicStartCount",
+      "kind": "theorem",
+      "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
+      "line": 201,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartCountEvent_eq_preimage",
+      "kind": "theorem",
+      "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
+      "line": 235,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartCount_law_eq_fullDyadicStartLaw",
+      "kind": "theorem",
+      "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
+      "line": 274,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
       "name": "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartEvent_eq_biUnion",
       "kind": "theorem",
       "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
-      "line": 112,
+      "line": 117,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -16792,7 +17148,7 @@
       "name": "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartEvent_measure_toReal_le_expectation",
       "kind": "theorem",
       "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
-      "line": 130,
+      "line": 135,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -16800,7 +17156,7 @@
       "name": "PaperC.InfiniteStartProbabilityTransfer.infiniteStartEvent_eq_preimage",
       "kind": "theorem",
       "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
-      "line": 47,
+      "line": 52,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -16808,7 +17164,7 @@
       "name": "PaperC.InfiniteStartProbabilityTransfer.infiniteStartEvent_measure_eq_startProbability",
       "kind": "theorem",
       "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
-      "line": 72,
+      "line": 77,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -16816,7 +17172,15 @@
       "name": "PaperC.InfiniteStartProbabilityTransfer.infiniteStartProbability_eq_startProbability",
       "kind": "theorem",
       "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
-      "line": 95,
+      "line": 100,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.InfiniteStartProbabilityTransfer.measurableSet_finiteDyadicStartCountEvent",
+      "kind": "theorem",
+      "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
+      "line": 250,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -16824,7 +17188,15 @@
       "name": "PaperC.InfiniteStartProbabilityTransfer.measurableSet_finiteStartEvent",
       "kind": "theorem",
       "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
-      "line": 55,
+      "line": 60,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.InfiniteStartProbabilityTransfer.measurableSet_infiniteDyadicStartCountEvent",
+      "kind": "theorem",
+      "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
+      "line": 256,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -16832,7 +17204,7 @@
       "name": "PaperC.InfiniteStartProbabilityTransfer.measurableSet_infiniteDyadicStartEvent",
       "kind": "theorem",
       "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
-      "line": 119,
+      "line": 124,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -16840,7 +17212,7 @@
       "name": "PaperC.InfiniteStartProbabilityTransfer.measurableSet_infiniteStartEvent",
       "kind": "theorem",
       "source": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
-      "line": 60,
+      "line": 65,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20269,6 +20641,31 @@
       "hypotheses": []
     },
     {
+      "name": "PaperC.MaskedPoissonRate.maskedPoissonTotalVariation_uniformBigO_canonical",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/MaskedPoissonRate.lean",
+      "line": 123,
+      "conditionality": "conditionnel",
+      "hypotheses": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ]
+    },
+    {
+      "name": "PaperC.MaskedPoissonRate.maskedRateEnvelope_uniformBigO_canonical",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/MaskedPoissonRate.lean",
+      "line": 53,
+      "conditionality": "conditionnel",
+      "hypotheses": [
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ]
+    },
+    {
       "name": "PaperC.MaskedSteinChen.abs_maskedPoissonParameter_sub_good_le",
       "kind": "theorem",
       "source": "PaperC/Probability/MaskedSteinChen.lean",
@@ -20770,7 +21167,7 @@
       "name": "PaperC.PellInput.act_injective",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 189,
+      "line": 194,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20778,7 +21175,7 @@
       "name": "PaperC.PellInput.act_inv",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 169,
+      "line": 174,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20786,7 +21183,7 @@
       "name": "PaperC.PellInput.act_preserves_equation",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 153,
+      "line": 158,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20794,7 +21191,7 @@
       "name": "PaperC.PellInput.card_pellUnits_y_natAbs_le",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 418,
+      "line": 423,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20802,7 +21199,7 @@
       "name": "PaperC.PellInput.card_samePrincipalIdeal_solutionFiber",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 555,
+      "line": 560,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20834,7 +21231,7 @@
       "name": "PaperC.PellInput.exists_squarefree_reduction",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 769,
+      "line": 774,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20869,7 +21266,7 @@
       "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 833,
+      "line": 838,
       "conditionality": "conditionnel",
       "hypotheses": [
         "HK13-QO-conductor-fibres",
@@ -20890,7 +21287,7 @@
       "name": "PaperC.PellInput.hasAtMostSolutionsReal_of_squarefree_reduction",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 792,
+      "line": 797,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20906,7 +21303,7 @@
       "name": "PaperC.PellInput.natAbs_exponent_le_log_add_one",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 389,
+      "line": 394,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20978,7 +21375,7 @@
       "name": "PaperC.PellInput.pellUnit_y_natAbs_le",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 258,
+      "line": 263,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20986,7 +21383,15 @@
       "name": "PaperC.PellInput.principalIdeal_dvd_intCast",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 201,
+      "line": 206,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent",
+      "kind": "theorem",
+      "source": "PaperC/Diophantine/HalterKochConductorDescent.lean",
+      "line": 146,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20994,7 +21399,7 @@
       "name": "PaperC.PellInput.same_principalIdeal_gives_pell_unit",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 220,
+      "line": 225,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -21002,7 +21407,7 @@
       "name": "PaperC.PellInput.scaleImag_height",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 754,
+      "line": 759,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -21010,7 +21415,7 @@
       "name": "PaperC.PellInput.scaleImag_injective",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 744,
+      "line": 749,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -21018,7 +21423,7 @@
       "name": "PaperC.PellInput.scaleImag_preserves_equation",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 731,
+      "line": 736,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -21026,7 +21431,7 @@
       "name": "PaperC.PellInput.squarefreeGeneralizedPellBox_atMost_of_conductorComparison",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 629,
+      "line": 634,
       "conditionality": "conditionnel",
       "hypotheses": [
         "HK13-QO-conductor-fibres"
@@ -21036,7 +21441,7 @@
       "name": "PaperC.PellInput.toZsqrtd_act",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 137,
+      "line": 142,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -21060,7 +21465,7 @@
       "name": "PaperC.PellInput.two_pow_le_y_natAbs_pow_succ",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 352,
+      "line": 357,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -21068,7 +21473,7 @@
       "name": "PaperC.PellInput.two_pow_le_y_pow_succ",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 310,
+      "line": 315,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -21076,7 +21481,7 @@
       "name": "PaperC.PellInput.two_pow_pred_natAbs_le_y_natAbs_zpow",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 368,
+      "line": 373,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -21950,6 +22355,294 @@
       "kind": "theorem",
       "source": "PaperC/Asymptotics/PositiveSigmaQuadraticCritical.lean",
       "line": 94,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.card_primeUpTo_eq_primeCounting",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 58,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.finitePrefixBoundaryEvent_eq_singleton_zero",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 122,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryEvent_eq_preimage",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 148,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryProbability_eq",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 192,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryProbability_tendsto_zero",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 200,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryProbability_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 216,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.measurableSet_finitePrefixBoundaryEvent",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 154,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.measurableSet_infinitePrefixBoundaryEvent",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 158,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.measure_infinitePrefixBoundaryEvent",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 168,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.measure_prefixBoundaryEvent_infiniteValueBit",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 180,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.prefixBoundaryEvent_restrictToFinite_iff",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 128,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.prefixBoundaryEvent_valueBit_iff_eq_zero",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 96,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.valueBit_one",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 88,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixBoundaryProbability.valueBit_primeUpTo",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "line": 69,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.boundary_or_overflow_start_of_finitePrefix_ne_global",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 90,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.commonCylinderStartProbability_eq_shiftedStartProbability",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 235,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.const_div_sqrt_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 433,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.disagreementProbability_finitePrefix_global_le",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 104,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.finitePrefixBoundaryProbability_eq_infinitePrefixBoundaryProbability",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 599,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.finitePrefixBoundaryProbability_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 608,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.finitePrefixStartCount_eq_globalStartCount_of_no_exceptions",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 68,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.natTotalVariation_finitePrefix_global_le",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 204,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.natTotalVariation_finitePrefix_global_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 655,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.natTotalVariation_prefixStartLaw_global_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 695,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixGlobalCouplingCost_nonneg",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 629,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixGlobalCouplingCost_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 639,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixInteriorStartIndices_subset_globalStartIndices",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 59,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixOverflowBaseline_le_invSqrt",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 367,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixOverflowBaseline_nonneg",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 360,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixOverflowBaseline_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 459,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixOverflowStartIndices_card_le",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 354,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixOverflowStartIndices_subset_dyadicBlock",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 223,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixOverflowStartProbabilityMass_eq_maskedDyadicExpectation",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 261,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixOverflowStartProbabilityMass_nonneg",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 54,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.prefixOverflowStartProbabilityMass_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 508,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PrefixOverflowCoupling.shiftedPrefixBase_inRunLengthWindow",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "line": 279,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30255,6 +30948,14 @@
       "hypotheses": []
     },
     {
+      "name": "PaperC.TheoremSixteenTwo.globalStartCount_restrictToFinite_eq_infiniteGlobalStartCount",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean",
+      "line": 53,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
       "name": "PaperC.TheoremSixteenTwo.globalStartIndices_eq_discarded_union_retained",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
@@ -30295,6 +30996,30 @@
       "hypotheses": []
     },
     {
+      "name": "PaperC.TheoremSixteenTwo.infiniteGlobalEmptyProbability_eq_globalEmptyProbability",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean",
+      "line": 160,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.TheoremSixteenTwo.infiniteGlobalStartCountEvent_eq_preimage",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean",
+      "line": 91,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.TheoremSixteenTwo.infiniteGlobalStartCount_law_eq_globalStartLaw",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean",
+      "line": 130,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
       "name": "PaperC.TheoremSixteenTwo.lowerBalanceConstant_le_criticalScale",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
@@ -30307,6 +31032,22 @@
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
       "line": 1097,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.TheoremSixteenTwo.measurableSet_finiteGlobalStartCountEvent",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean",
+      "line": 107,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.TheoremSixteenTwo.measurableSet_infiniteGlobalStartCountEvent",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean",
+      "line": 113,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30433,6 +31174,22 @@
       ]
     },
     {
+      "name": "PaperC.TheoremSixteenTwo.theorem_sixteen_two_infinite_model",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean",
+      "line": 194,
+      "conditionality": "conditionnel",
+      "hypotheses": [
+        "ADGR07-PNT",
+        "AGG89-T1-finite-dependency-b3-zero",
+        "BS93-Theorem-1",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "LS04-Corollary-1",
+        "NR83-T1-divisor-log-bound"
+      ]
+    },
+    {
       "name": "PaperC.TheoremSixteenTwo.two_le_of_mem_retainedStartIndices",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
@@ -30471,6 +31228,46 @@
       "line": 493,
       "conditionality": "inconditionnel",
       "hypotheses": []
+    },
+    {
+      "name": "PaperC.TheoremSixteenTwoRecentered.coe_criticalScaleRate",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean",
+      "line": 35,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.TheoremSixteenTwoRecentered.globalEmptyProbability_recentered_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean",
+      "line": 123,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.TheoremSixteenTwoRecentered.globalStartLaw_recentered_uniformLittleOOne",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean",
+      "line": 41,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.TheoremSixteenTwoRecentered.theorem_sixteen_two_recentered_canonical",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean",
+      "line": 189,
+      "conditionality": "conditionnel",
+      "hypotheses": [
+        "ADGR07-PNT",
+        "AGG89-T1-finite-dependency-b3-zero",
+        "BS93-Theorem-1",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "LS04-Corollary-1",
+        "NR83-T1-divisor-log-bound"
+      ]
     },
     {
       "name": "PaperC.TouchingMass.maxTouchingRho_cast_le",
@@ -32754,7 +33551,7 @@
     }
   ],
   "additional_target_count": 2,
-  "audit_target_count": 3978,
+  "audit_target_count": 4072,
   "audit_targets": [
     "PaperC.Affine.CanonicalRationalCode.candidate_coprime",
     "PaperC.Affine.CanonicalRationalCode.candidate_fst_pos",
@@ -34248,6 +35045,43 @@
     "PaperC.CorollaryFourteenEightMaximum.infiniteNoDyadicStartProbability_eq_finiteUniform",
     "PaperC.CorollaryFourteenEightMaximum.measurableSet_finiteNoDyadicStartEvent",
     "PaperC.CorollaryFourteenEightMaximum.shiftedMaskedTargetPoissonLaw_zero",
+    "PaperC.CorollaryPrefixLaw.boundary_or_exists_overflow_start_of_counts_ne",
+    "PaperC.CorollaryPrefixLaw.disagreementProbability_prefix_global_le",
+    "PaperC.CorollaryPrefixLaw.finitePrefixStartCount_restrictToFinite_eq_infinitePrefixStartCount",
+    "PaperC.CorollaryPrefixLaw.globalStartIndices_eq_prefixInterior_union_overflow",
+    "PaperC.CorollaryPrefixLaw.infinitePrefixBoundaryEvent_eq_preimage",
+    "PaperC.CorollaryPrefixLaw.infinitePrefixBoundaryEvent_subset_zeroPrefix",
+    "PaperC.CorollaryPrefixLaw.infinitePrefixStartCountEvent_eq_preimage",
+    "PaperC.CorollaryPrefixLaw.infinitePrefixStartCount_eq_zero_iff_longest_lt",
+    "PaperC.CorollaryPrefixLaw.infinitePrefixStartCount_law_eq_prefixStartLaw",
+    "PaperC.CorollaryPrefixLaw.measurableSet_finitePrefixStartCountEvent",
+    "PaperC.CorollaryPrefixLaw.measurableSet_infinitePrefixBoundaryEvent",
+    "PaperC.CorollaryPrefixLaw.measurableSet_infinitePrefixStartCountEvent",
+    "PaperC.CorollaryPrefixLaw.natTotalVariation_prefix_global_le",
+    "PaperC.CorollaryPrefixLaw.prefixBoundaryProbability_eq_measure",
+    "PaperC.CorollaryPrefixLaw.prefixBoundaryProbability_le_geometric",
+    "PaperC.CorollaryPrefixLaw.prefixConstantStretchLengths_nonempty",
+    "PaperC.CorollaryPrefixLaw.prefixConstantStretch_length_le",
+    "PaperC.CorollaryPrefixLaw.prefixHasConstantStretch_iff_boundary_or_start",
+    "PaperC.CorollaryPrefixLaw.prefixHasConstantStretch_mono",
+    "PaperC.CorollaryPrefixLaw.prefixInterior_overflow_disjoint",
+    "PaperC.CorollaryPrefixLaw.prefixLongestConstantStretch_lt_iff",
+    "PaperC.CorollaryPrefixLaw.prefixLongestStretchBelowProbability_eq_measure",
+    "PaperC.CorollaryPrefixLaw.prefixOverflowBase_in_runLengthWindow",
+    "PaperC.CorollaryPrefixLaw.prefixOverflowStartIndices_card_le",
+    "PaperC.CorollaryPrefixLaw.prefixOverflowStartIndices_eq",
+    "PaperC.CorollaryPrefixLaw.prefixOverflowStartIndices_subset_dyadicBlock",
+    "PaperC.CorollaryPrefixLaw.prefixOverflowStartMass_eq_maskedDyadicExpectation",
+    "PaperC.CorollaryPrefixLaw.prefixStartCount_eq_zero_iff_longest_lt",
+    "PaperC.CorollaryPrefixLawCanonical.corollary_prefix_law_canonical",
+    "PaperC.CorollaryPrefixLawCanonical.finitePrefixBoundaryProbability_eq_infinite",
+    "PaperC.CorollaryPrefixLawCanonical.finitePrefixBoundaryProbability_uniformLittleOOne",
+    "PaperC.CorollaryPrefixLawCanonical.infinitePrefixEmptyProbability_uniformLittleOOne",
+    "PaperC.CorollaryPrefixLawCanonical.infinitePrefixLongestStretchBelowProbability_eq_empty",
+    "PaperC.CorollaryPrefixLawCanonical.infinitePrefixLongestStretchBelowProbability_uniformLittleOOne",
+    "PaperC.CorollaryPrefixLawCanonical.infinitePrefixStartLaw_poisson_uniformLittleOOne",
+    "PaperC.CorollaryPrefixLawCanonical.prefixRange_eventually",
+    "PaperC.CorollaryPrefixLawCanonical.prefixStartLaw_poisson_uniformLittleOOne",
     "PaperC.CorollaryThirteenTen.averagedConditionalGoodTotalVariation_uniformBigO_explicitRate_of_steinBTwo",
     "PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_canonical",
     "PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_of_averagedConditional",
@@ -34264,6 +35098,7 @@
     "PaperC.CorollaryThirteenTen.steinBOne_uniformBigO_explicitRate",
     "PaperC.CorollaryThirteenTen.steinBTwoAverage_uniformBigO_explicitRate_of_numerator",
     "PaperC.CorollaryThirteenTen.steinBTwoNumerator_uniformBigO_of_separatedDefectMass",
+    "PaperC.CorollaryThirteenTen.theorem_one_one_infinite_model",
     "PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical",
     "PaperC.CorollaryThirteenTen.touchingMass_uniformBigO",
     "PaperC.CorollaryThirteenTen.touchingOffDiagPairs_uniformBigO",
@@ -34458,6 +35293,7 @@
     "PaperC.DirichletAtomConvergence.tailRatio_nonneg",
     "PaperC.DirichletAtomConvergence.tendsto_atoms_of_inversePowerTransforms",
     "PaperC.DyadicKappaQuantitative.R2κ_dyadic_uniformBigO",
+    "PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical",
     "PaperC.DyadicKappaQuantitative.everySector_dyadic_uniformBigO",
     "PaperC.DyadicKappaQuantitative.highDensityMass_dyadic_uniformBigO",
     "PaperC.DyadicKappaQuantitative.homogeneousMass_uniformBigO",
@@ -34762,12 +35598,17 @@
     "PaperC.InfiniteRademacher.measure_zeroTail",
     "PaperC.InfiniteRademacher.phase_eq_one_iff",
     "PaperC.InfiniteRademacher.zeroTail_subset_zeroPrefix",
+    "PaperC.InfiniteStartProbabilityTransfer.dyadicCount_restrictToFinite_eq_infiniteDyadicStartCount",
+    "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartCountEvent_eq_preimage",
+    "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartCount_law_eq_fullDyadicStartLaw",
     "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartEvent_eq_biUnion",
     "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartEvent_measure_toReal_le_expectation",
     "PaperC.InfiniteStartProbabilityTransfer.infiniteStartEvent_eq_preimage",
     "PaperC.InfiniteStartProbabilityTransfer.infiniteStartEvent_measure_eq_startProbability",
     "PaperC.InfiniteStartProbabilityTransfer.infiniteStartProbability_eq_startProbability",
+    "PaperC.InfiniteStartProbabilityTransfer.measurableSet_finiteDyadicStartCountEvent",
     "PaperC.InfiniteStartProbabilityTransfer.measurableSet_finiteStartEvent",
+    "PaperC.InfiniteStartProbabilityTransfer.measurableSet_infiniteDyadicStartCountEvent",
     "PaperC.InfiniteStartProbabilityTransfer.measurableSet_infiniteDyadicStartEvent",
     "PaperC.InfiniteStartProbabilityTransfer.measurableSet_infiniteStartEvent",
     "PaperC.IntervalDefectAggregation.mem_defectsInInterval",
@@ -35189,6 +36030,8 @@
     "PaperC.MaskedPoissonCritical.summable_abs_maskedConditional_sub_common",
     "PaperC.MaskedPoissonCritical.summable_maskedCommonGoodPoissonLaw",
     "PaperC.MaskedPoissonCritical.summable_maskedConditionalGoodLaw",
+    "PaperC.MaskedPoissonRate.maskedPoissonTotalVariation_uniformBigO_canonical",
+    "PaperC.MaskedPoissonRate.maskedRateEnvelope_uniformBigO_canonical",
     "PaperC.MaskedSteinChen.abs_maskedPoissonParameter_sub_good_le",
     "PaperC.MaskedSteinChen.card_maskedGoodStarts_le",
     "PaperC.MaskedSteinChen.card_maskedGood_add_card_bad",
@@ -35277,6 +36120,7 @@
     "PaperC.PellInput.pellUnitOrbitEnvelope_le_log",
     "PaperC.PellInput.pellUnit_y_natAbs_le",
     "PaperC.PellInput.principalIdeal_dvd_intCast",
+    "PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent",
     "PaperC.PellInput.same_principalIdeal_gives_pell_unit",
     "PaperC.PellInput.scaleImag_height",
     "PaperC.PellInput.scaleImag_injective",
@@ -35395,6 +36239,42 @@
     "PaperC.PositiveSigmaQuadraticCritical.positiveSigmaQuadraticResidualMass_uniformQuadratic",
     "PaperC.PositiveSigmaQuadraticCritical.runLengthAddTwo_uniformSubpolynomial",
     "PaperC.PositiveSigmaQuadraticCritical.uniformQuadratic_mul_subpolynomial",
+    "PaperC.PrefixBoundaryProbability.card_primeUpTo_eq_primeCounting",
+    "PaperC.PrefixBoundaryProbability.finitePrefixBoundaryEvent_eq_singleton_zero",
+    "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryEvent_eq_preimage",
+    "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryProbability_eq",
+    "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryProbability_tendsto_zero",
+    "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryProbability_uniformLittleOOne",
+    "PaperC.PrefixBoundaryProbability.measurableSet_finitePrefixBoundaryEvent",
+    "PaperC.PrefixBoundaryProbability.measurableSet_infinitePrefixBoundaryEvent",
+    "PaperC.PrefixBoundaryProbability.measure_infinitePrefixBoundaryEvent",
+    "PaperC.PrefixBoundaryProbability.measure_prefixBoundaryEvent_infiniteValueBit",
+    "PaperC.PrefixBoundaryProbability.prefixBoundaryEvent_restrictToFinite_iff",
+    "PaperC.PrefixBoundaryProbability.prefixBoundaryEvent_valueBit_iff_eq_zero",
+    "PaperC.PrefixBoundaryProbability.valueBit_one",
+    "PaperC.PrefixBoundaryProbability.valueBit_primeUpTo",
+    "PaperC.PrefixOverflowCoupling.boundary_or_overflow_start_of_finitePrefix_ne_global",
+    "PaperC.PrefixOverflowCoupling.commonCylinderStartProbability_eq_shiftedStartProbability",
+    "PaperC.PrefixOverflowCoupling.const_div_sqrt_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.disagreementProbability_finitePrefix_global_le",
+    "PaperC.PrefixOverflowCoupling.finitePrefixBoundaryProbability_eq_infinitePrefixBoundaryProbability",
+    "PaperC.PrefixOverflowCoupling.finitePrefixBoundaryProbability_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.finitePrefixStartCount_eq_globalStartCount_of_no_exceptions",
+    "PaperC.PrefixOverflowCoupling.natTotalVariation_finitePrefix_global_le",
+    "PaperC.PrefixOverflowCoupling.natTotalVariation_finitePrefix_global_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.natTotalVariation_prefixStartLaw_global_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.prefixGlobalCouplingCost_nonneg",
+    "PaperC.PrefixOverflowCoupling.prefixGlobalCouplingCost_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.prefixInteriorStartIndices_subset_globalStartIndices",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowBaseline_le_invSqrt",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowBaseline_nonneg",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowBaseline_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowStartIndices_card_le",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowStartIndices_subset_dyadicBlock",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowStartProbabilityMass_eq_maskedDyadicExpectation",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowStartProbabilityMass_nonneg",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowStartProbabilityMass_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.shiftedPrefixBase_inRunLengthWindow",
     "PaperC.PrimeCountBridge.count_eq_card_smallPrimesUpTo",
     "PaperC.PrimeEncodedCountLaplace.continuousOn_primeLogTest",
     "PaperC.PrimeEncodedCountLaplace.finiteEncodedExactLengthCountLaw_nonneg",
@@ -36424,13 +37304,19 @@
     "PaperC.TheoremSixteenTwo.discarded_retained_disjoint",
     "PaperC.TheoremSixteenTwo.exists_discarded_start_of_counts_ne",
     "PaperC.TheoremSixteenTwo.globalStartCount_eq_discarded_add_retained",
+    "PaperC.TheoremSixteenTwo.globalStartCount_restrictToFinite_eq_infiniteGlobalStartCount",
     "PaperC.TheoremSixteenTwo.globalStartIndices_eq_discarded_union_retained",
     "PaperC.TheoremSixteenTwo.globalStartLaw_nonneg",
     "PaperC.TheoremSixteenTwo.globalStartMean_eq_discarded_add_retained",
     "PaperC.TheoremSixteenTwo.globalStartMean_eq_expectation",
     "PaperC.TheoremSixteenTwo.globalStartMean_nonneg",
+    "PaperC.TheoremSixteenTwo.infiniteGlobalEmptyProbability_eq_globalEmptyProbability",
+    "PaperC.TheoremSixteenTwo.infiniteGlobalStartCountEvent_eq_preimage",
+    "PaperC.TheoremSixteenTwo.infiniteGlobalStartCount_law_eq_globalStartLaw",
     "PaperC.TheoremSixteenTwo.lowerBalanceConstant_le_criticalScale",
     "PaperC.TheoremSixteenTwo.lowerBalanceConstant_pos",
+    "PaperC.TheoremSixteenTwo.measurableSet_finiteGlobalStartCountEvent",
+    "PaperC.TheoremSixteenTwo.measurableSet_infiniteGlobalStartCountEvent",
     "PaperC.TheoremSixteenTwo.natTotalVariation_global_retained_le_deepMass",
     "PaperC.TheoremSixteenTwo.natTotalVariation_global_retained_le_discardedMass",
     "PaperC.TheoremSixteenTwo.poissonPMFReal_zero_eq_exp_neg",
@@ -36444,11 +37330,16 @@
     "PaperC.TheoremSixteenTwo.summable_retainedStartLaw",
     "PaperC.TheoremSixteenTwo.theorem_sixteen_two",
     "PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical",
+    "PaperC.TheoremSixteenTwo.theorem_sixteen_two_infinite_model",
     "PaperC.TheoremSixteenTwo.two_le_of_mem_retainedStartIndices",
     "PaperC.TheoremSixteenTwo.two_pow_le_of_two_le_div",
     "PaperC.TheoremSixteenTwo.uniformEventProbability_startAt_cutoff_invariant",
     "PaperC.TheoremSixteenTwo.valueBit_assemble_eq_local",
     "PaperC.TheoremSixteenTwo.valueBit_extendSmall_eq_local",
+    "PaperC.TheoremSixteenTwoRecentered.coe_criticalScaleRate",
+    "PaperC.TheoremSixteenTwoRecentered.globalEmptyProbability_recentered_uniformLittleOOne",
+    "PaperC.TheoremSixteenTwoRecentered.globalStartLaw_recentered_uniformLittleOOne",
+    "PaperC.TheoremSixteenTwoRecentered.theorem_sixteen_two_recentered_canonical",
     "PaperC.TouchingMass.maxTouchingRho_cast_le",
     "PaperC.TouchingMass.touchingLower_mem_dyadicBlock",
     "PaperC.TouchingMass.touchingMass_cast_le_two_mul_two_pow_maxTouchingRho",
@@ -38228,6 +39119,43 @@
     "PaperC.CorollaryFourteenEightMaximum.infiniteNoDyadicStartProbability_eq_finiteUniform",
     "PaperC.CorollaryFourteenEightMaximum.measurableSet_finiteNoDyadicStartEvent",
     "PaperC.CorollaryFourteenEightMaximum.shiftedMaskedTargetPoissonLaw_zero",
+    "PaperC.CorollaryPrefixLaw.boundary_or_exists_overflow_start_of_counts_ne",
+    "PaperC.CorollaryPrefixLaw.disagreementProbability_prefix_global_le",
+    "PaperC.CorollaryPrefixLaw.finitePrefixStartCount_restrictToFinite_eq_infinitePrefixStartCount",
+    "PaperC.CorollaryPrefixLaw.globalStartIndices_eq_prefixInterior_union_overflow",
+    "PaperC.CorollaryPrefixLaw.infinitePrefixBoundaryEvent_eq_preimage",
+    "PaperC.CorollaryPrefixLaw.infinitePrefixBoundaryEvent_subset_zeroPrefix",
+    "PaperC.CorollaryPrefixLaw.infinitePrefixStartCountEvent_eq_preimage",
+    "PaperC.CorollaryPrefixLaw.infinitePrefixStartCount_eq_zero_iff_longest_lt",
+    "PaperC.CorollaryPrefixLaw.infinitePrefixStartCount_law_eq_prefixStartLaw",
+    "PaperC.CorollaryPrefixLaw.measurableSet_finitePrefixStartCountEvent",
+    "PaperC.CorollaryPrefixLaw.measurableSet_infinitePrefixBoundaryEvent",
+    "PaperC.CorollaryPrefixLaw.measurableSet_infinitePrefixStartCountEvent",
+    "PaperC.CorollaryPrefixLaw.natTotalVariation_prefix_global_le",
+    "PaperC.CorollaryPrefixLaw.prefixBoundaryProbability_eq_measure",
+    "PaperC.CorollaryPrefixLaw.prefixBoundaryProbability_le_geometric",
+    "PaperC.CorollaryPrefixLaw.prefixConstantStretchLengths_nonempty",
+    "PaperC.CorollaryPrefixLaw.prefixConstantStretch_length_le",
+    "PaperC.CorollaryPrefixLaw.prefixHasConstantStretch_iff_boundary_or_start",
+    "PaperC.CorollaryPrefixLaw.prefixHasConstantStretch_mono",
+    "PaperC.CorollaryPrefixLaw.prefixInterior_overflow_disjoint",
+    "PaperC.CorollaryPrefixLaw.prefixLongestConstantStretch_lt_iff",
+    "PaperC.CorollaryPrefixLaw.prefixLongestStretchBelowProbability_eq_measure",
+    "PaperC.CorollaryPrefixLaw.prefixOverflowBase_in_runLengthWindow",
+    "PaperC.CorollaryPrefixLaw.prefixOverflowStartIndices_card_le",
+    "PaperC.CorollaryPrefixLaw.prefixOverflowStartIndices_eq",
+    "PaperC.CorollaryPrefixLaw.prefixOverflowStartIndices_subset_dyadicBlock",
+    "PaperC.CorollaryPrefixLaw.prefixOverflowStartMass_eq_maskedDyadicExpectation",
+    "PaperC.CorollaryPrefixLaw.prefixStartCount_eq_zero_iff_longest_lt",
+    "PaperC.CorollaryPrefixLawCanonical.corollary_prefix_law_canonical",
+    "PaperC.CorollaryPrefixLawCanonical.finitePrefixBoundaryProbability_eq_infinite",
+    "PaperC.CorollaryPrefixLawCanonical.finitePrefixBoundaryProbability_uniformLittleOOne",
+    "PaperC.CorollaryPrefixLawCanonical.infinitePrefixEmptyProbability_uniformLittleOOne",
+    "PaperC.CorollaryPrefixLawCanonical.infinitePrefixLongestStretchBelowProbability_eq_empty",
+    "PaperC.CorollaryPrefixLawCanonical.infinitePrefixLongestStretchBelowProbability_uniformLittleOOne",
+    "PaperC.CorollaryPrefixLawCanonical.infinitePrefixStartLaw_poisson_uniformLittleOOne",
+    "PaperC.CorollaryPrefixLawCanonical.prefixRange_eventually",
+    "PaperC.CorollaryPrefixLawCanonical.prefixStartLaw_poisson_uniformLittleOOne",
     "PaperC.CorollaryThirteenTen.averagedConditionalGoodTotalVariation_uniformBigO_explicitRate_of_steinBTwo",
     "PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_canonical",
     "PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_of_averagedConditional",
@@ -38244,6 +39172,7 @@
     "PaperC.CorollaryThirteenTen.steinBOne_uniformBigO_explicitRate",
     "PaperC.CorollaryThirteenTen.steinBTwoAverage_uniformBigO_explicitRate_of_numerator",
     "PaperC.CorollaryThirteenTen.steinBTwoNumerator_uniformBigO_of_separatedDefectMass",
+    "PaperC.CorollaryThirteenTen.theorem_one_one_infinite_model",
     "PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical",
     "PaperC.CorollaryThirteenTen.touchingMass_uniformBigO",
     "PaperC.CorollaryThirteenTen.touchingOffDiagPairs_uniformBigO",
@@ -38438,6 +39367,7 @@
     "PaperC.DirichletAtomConvergence.tailRatio_nonneg",
     "PaperC.DirichletAtomConvergence.tendsto_atoms_of_inversePowerTransforms",
     "PaperC.DyadicKappaQuantitative.R2κ_dyadic_uniformBigO",
+    "PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical",
     "PaperC.DyadicKappaQuantitative.everySector_dyadic_uniformBigO",
     "PaperC.DyadicKappaQuantitative.highDensityMass_dyadic_uniformBigO",
     "PaperC.DyadicKappaQuantitative.homogeneousMass_uniformBigO",
@@ -38742,12 +39672,17 @@
     "PaperC.InfiniteRademacher.measure_zeroTail",
     "PaperC.InfiniteRademacher.phase_eq_one_iff",
     "PaperC.InfiniteRademacher.zeroTail_subset_zeroPrefix",
+    "PaperC.InfiniteStartProbabilityTransfer.dyadicCount_restrictToFinite_eq_infiniteDyadicStartCount",
+    "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartCountEvent_eq_preimage",
+    "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartCount_law_eq_fullDyadicStartLaw",
     "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartEvent_eq_biUnion",
     "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartEvent_measure_toReal_le_expectation",
     "PaperC.InfiniteStartProbabilityTransfer.infiniteStartEvent_eq_preimage",
     "PaperC.InfiniteStartProbabilityTransfer.infiniteStartEvent_measure_eq_startProbability",
     "PaperC.InfiniteStartProbabilityTransfer.infiniteStartProbability_eq_startProbability",
+    "PaperC.InfiniteStartProbabilityTransfer.measurableSet_finiteDyadicStartCountEvent",
     "PaperC.InfiniteStartProbabilityTransfer.measurableSet_finiteStartEvent",
+    "PaperC.InfiniteStartProbabilityTransfer.measurableSet_infiniteDyadicStartCountEvent",
     "PaperC.InfiniteStartProbabilityTransfer.measurableSet_infiniteDyadicStartEvent",
     "PaperC.InfiniteStartProbabilityTransfer.measurableSet_infiniteStartEvent",
     "PaperC.IntervalDefectAggregation.mem_defectsInInterval",
@@ -39168,6 +40103,8 @@
     "PaperC.MaskedPoissonCritical.summable_abs_maskedConditional_sub_common",
     "PaperC.MaskedPoissonCritical.summable_maskedCommonGoodPoissonLaw",
     "PaperC.MaskedPoissonCritical.summable_maskedConditionalGoodLaw",
+    "PaperC.MaskedPoissonRate.maskedPoissonTotalVariation_uniformBigO_canonical",
+    "PaperC.MaskedPoissonRate.maskedRateEnvelope_uniformBigO_canonical",
     "PaperC.MaskedSteinChen.abs_maskedPoissonParameter_sub_good_le",
     "PaperC.MaskedSteinChen.card_maskedGoodStarts_le",
     "PaperC.MaskedSteinChen.card_maskedGood_add_card_bad",
@@ -39256,6 +40193,7 @@
     "PaperC.PellInput.pellUnitOrbitEnvelope_le_log",
     "PaperC.PellInput.pellUnit_y_natAbs_le",
     "PaperC.PellInput.principalIdeal_dvd_intCast",
+    "PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent",
     "PaperC.PellInput.same_principalIdeal_gives_pell_unit",
     "PaperC.PellInput.scaleImag_height",
     "PaperC.PellInput.scaleImag_injective",
@@ -39373,6 +40311,42 @@
     "PaperC.PositiveSigmaQuadraticCritical.positiveSigmaQuadraticResidualMass_uniformQuadratic",
     "PaperC.PositiveSigmaQuadraticCritical.runLengthAddTwo_uniformSubpolynomial",
     "PaperC.PositiveSigmaQuadraticCritical.uniformQuadratic_mul_subpolynomial",
+    "PaperC.PrefixBoundaryProbability.card_primeUpTo_eq_primeCounting",
+    "PaperC.PrefixBoundaryProbability.finitePrefixBoundaryEvent_eq_singleton_zero",
+    "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryEvent_eq_preimage",
+    "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryProbability_eq",
+    "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryProbability_tendsto_zero",
+    "PaperC.PrefixBoundaryProbability.infinitePrefixBoundaryProbability_uniformLittleOOne",
+    "PaperC.PrefixBoundaryProbability.measurableSet_finitePrefixBoundaryEvent",
+    "PaperC.PrefixBoundaryProbability.measurableSet_infinitePrefixBoundaryEvent",
+    "PaperC.PrefixBoundaryProbability.measure_infinitePrefixBoundaryEvent",
+    "PaperC.PrefixBoundaryProbability.measure_prefixBoundaryEvent_infiniteValueBit",
+    "PaperC.PrefixBoundaryProbability.prefixBoundaryEvent_restrictToFinite_iff",
+    "PaperC.PrefixBoundaryProbability.prefixBoundaryEvent_valueBit_iff_eq_zero",
+    "PaperC.PrefixBoundaryProbability.valueBit_one",
+    "PaperC.PrefixBoundaryProbability.valueBit_primeUpTo",
+    "PaperC.PrefixOverflowCoupling.boundary_or_overflow_start_of_finitePrefix_ne_global",
+    "PaperC.PrefixOverflowCoupling.commonCylinderStartProbability_eq_shiftedStartProbability",
+    "PaperC.PrefixOverflowCoupling.const_div_sqrt_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.disagreementProbability_finitePrefix_global_le",
+    "PaperC.PrefixOverflowCoupling.finitePrefixBoundaryProbability_eq_infinitePrefixBoundaryProbability",
+    "PaperC.PrefixOverflowCoupling.finitePrefixBoundaryProbability_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.finitePrefixStartCount_eq_globalStartCount_of_no_exceptions",
+    "PaperC.PrefixOverflowCoupling.natTotalVariation_finitePrefix_global_le",
+    "PaperC.PrefixOverflowCoupling.natTotalVariation_finitePrefix_global_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.natTotalVariation_prefixStartLaw_global_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.prefixGlobalCouplingCost_nonneg",
+    "PaperC.PrefixOverflowCoupling.prefixGlobalCouplingCost_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.prefixInteriorStartIndices_subset_globalStartIndices",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowBaseline_le_invSqrt",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowBaseline_nonneg",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowBaseline_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowStartIndices_card_le",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowStartIndices_subset_dyadicBlock",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowStartProbabilityMass_eq_maskedDyadicExpectation",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowStartProbabilityMass_nonneg",
+    "PaperC.PrefixOverflowCoupling.prefixOverflowStartProbabilityMass_uniformLittleOOne",
+    "PaperC.PrefixOverflowCoupling.shiftedPrefixBase_inRunLengthWindow",
     "PaperC.PrimeCountBridge.count_eq_card_smallPrimesUpTo",
     "PaperC.PrimeEncodedCountLaplace.continuousOn_primeLogTest",
     "PaperC.PrimeEncodedCountLaplace.finiteEncodedExactLengthCountLaw_nonneg",
@@ -40402,13 +41376,19 @@
     "PaperC.TheoremSixteenTwo.discarded_retained_disjoint",
     "PaperC.TheoremSixteenTwo.exists_discarded_start_of_counts_ne",
     "PaperC.TheoremSixteenTwo.globalStartCount_eq_discarded_add_retained",
+    "PaperC.TheoremSixteenTwo.globalStartCount_restrictToFinite_eq_infiniteGlobalStartCount",
     "PaperC.TheoremSixteenTwo.globalStartIndices_eq_discarded_union_retained",
     "PaperC.TheoremSixteenTwo.globalStartLaw_nonneg",
     "PaperC.TheoremSixteenTwo.globalStartMean_eq_discarded_add_retained",
     "PaperC.TheoremSixteenTwo.globalStartMean_eq_expectation",
     "PaperC.TheoremSixteenTwo.globalStartMean_nonneg",
+    "PaperC.TheoremSixteenTwo.infiniteGlobalEmptyProbability_eq_globalEmptyProbability",
+    "PaperC.TheoremSixteenTwo.infiniteGlobalStartCountEvent_eq_preimage",
+    "PaperC.TheoremSixteenTwo.infiniteGlobalStartCount_law_eq_globalStartLaw",
     "PaperC.TheoremSixteenTwo.lowerBalanceConstant_le_criticalScale",
     "PaperC.TheoremSixteenTwo.lowerBalanceConstant_pos",
+    "PaperC.TheoremSixteenTwo.measurableSet_finiteGlobalStartCountEvent",
+    "PaperC.TheoremSixteenTwo.measurableSet_infiniteGlobalStartCountEvent",
     "PaperC.TheoremSixteenTwo.natTotalVariation_global_retained_le_deepMass",
     "PaperC.TheoremSixteenTwo.natTotalVariation_global_retained_le_discardedMass",
     "PaperC.TheoremSixteenTwo.poissonPMFReal_zero_eq_exp_neg",
@@ -40422,11 +41402,16 @@
     "PaperC.TheoremSixteenTwo.summable_retainedStartLaw",
     "PaperC.TheoremSixteenTwo.theorem_sixteen_two",
     "PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical",
+    "PaperC.TheoremSixteenTwo.theorem_sixteen_two_infinite_model",
     "PaperC.TheoremSixteenTwo.two_le_of_mem_retainedStartIndices",
     "PaperC.TheoremSixteenTwo.two_pow_le_of_two_le_div",
     "PaperC.TheoremSixteenTwo.uniformEventProbability_startAt_cutoff_invariant",
     "PaperC.TheoremSixteenTwo.valueBit_assemble_eq_local",
     "PaperC.TheoremSixteenTwo.valueBit_extendSmall_eq_local",
+    "PaperC.TheoremSixteenTwoRecentered.coe_criticalScaleRate",
+    "PaperC.TheoremSixteenTwoRecentered.globalEmptyProbability_recentered_uniformLittleOOne",
+    "PaperC.TheoremSixteenTwoRecentered.globalStartLaw_recentered_uniformLittleOOne",
+    "PaperC.TheoremSixteenTwoRecentered.theorem_sixteen_two_recentered_canonical",
     "PaperC.TouchingMass.maxTouchingRho_cast_le",
     "PaperC.TouchingMass.touchingLower_mem_dyadicBlock",
     "PaperC.TouchingMass.touchingMass_cast_le_two_mul_two_pow_maxTouchingRho",

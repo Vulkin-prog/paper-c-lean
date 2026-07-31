@@ -4,7 +4,7 @@ import PaperC.Probability.MixedLengthAffine
 # Almost-sure exact-length decomposition: deterministic core
 
 This module isolates the deterministic statement used immediately after
-Lemma 14.4.  If a start of length at least `L` eventually changes value, then
+Lemma 14.5.  If a start of length at least `L` eventually changes value, then
 there is a unique excess `e` for which the exact-length event with
 `qₑ = L + e + 1` rows occurs.
 

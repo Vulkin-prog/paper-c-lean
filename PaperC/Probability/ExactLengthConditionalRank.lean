@@ -7,7 +7,7 @@ set_option maxHeartbeats 1800000
 /-!
 # Conditional rank bounds for exact-length events
 
-This file isolates the finite probabilistic core used in Lemma 14.7 and in
+This file isolates the finite probabilistic core used in Lemma 14.8 and in
 the local part of the marked-process argument following it.
 
 After the coordinates at primes at most `Y` have been fixed, the remaining
@@ -186,7 +186,7 @@ theorem conditionedExactLengthProbability_eq_eta_mul_two_pow_rho_div
   simp
 
 /--
-Pointwise rank bound used in the first case of Lemma 14.7.
+Pointwise rank bound used in the first case of Lemma 14.8.
 -/
 theorem conditionedExactLengthProbability_le_of_relationRho
     {M Y x q d : ℕ} {σ : SmallSample M Y}
@@ -364,7 +364,7 @@ theorem relationSpace_le_ker_representedEdgeMap
 
 /--
 Graph-theoretic relation-defect bound.  It combines the exact row
-realization, Lemma 14.6's private-pivot inclusion, and the proved dimension
+realization, Lemma 14.7's private-pivot inclusion, and the proved dimension
 bound for the binary cycle space.
 -/
 theorem relationRho_le_cyclomaticNumber_of_privatePivots
@@ -439,7 +439,7 @@ The structural hypotheses say precisely that the conditioned rows are the
 edge vectors of a finite graph, that all but one chosen root per component
 have private coordinates, and that the graph has cyclomatic number at most
 one.  These are the finite facts verified in the local geometry discussion
-after Lemma 14.7.
+after Lemma 14.8.
 -/
 theorem conditionedMixedLengthProbability_le_local_of_privatePivots
     {M Y x y q r : ℕ} {σ : SmallSample M Y}
@@ -482,7 +482,7 @@ Tree/forest specialization for a single exact-length event.
 If its conditioned rows are the represented edges of a graph satisfying the
 private-pivot hypotheses and having cyclomatic number zero, then the row
 relation space is trivial and the conditional probability is exactly
-`2^(-q)`.  This is the finite rank argument in the second case of Lemma 14.7.
+`2^(-q)`.  This is the finite rank argument in the second case of Lemma 14.8.
 -/
 theorem conditionedExactLengthProbability_eq_baseline_of_privatePivots
     {M Y x q : ℕ} {σ : SmallSample M Y}

@@ -7,7 +7,7 @@ set_option maxHeartbeats 1800000
 /-!
 # Removed exact-length starts in the critical window
 
-This file closes the asymptotic summation in Lemma 14.7.
+This file closes the asymptotic summation in Lemma 14.8.
 
 For fixed maximal excess `E`, put
 
@@ -268,7 +268,7 @@ theorem totalRemovedExactLengthEnvelope_uniformLittleOOne
     ((E + 1 : ℝ) * (2 : ℝ) ^ E) (by positivity) hsum
 
 /--
-Lemma 14.7, in the manuscript's literal uniform form:
+Lemma 14.8, in the manuscript's literal uniform form:
 
 `sum_{e=0}^E sum_{x in D(Q)} P(K_{x,e}=1) = o_{C,E}(1)`.
 -/
@@ -323,7 +323,7 @@ theorem totalRemovedExactLengthProbabilityMassReal_uniformLittleOOne
   exact hfinite.trans henv
 
 /--
-Source-facing name for Lemma 14.7:
+Source-facing name for Lemma 14.8:
 
 `∑_{e=0}^E ∑_{x∈D(Q)} P(K_{x,e}=1) = o_{C,E}(1)`,
 
@@ -346,7 +346,7 @@ theorem lemma_fourteen_seven_finiteCylinder
   exact totalRemovedExactLengthProbabilityMassReal_uniformLittleOOne hC E
 
 /--
-**Lemma 14.7 under the source infinite Rademacher law.**
+**Lemma 14.8 under the source infinite Rademacher law.**
 
 The preceding cylinder estimate and the exact image-law transfer give
 

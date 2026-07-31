@@ -23,7 +23,7 @@ The estimate is then averaged exactly over the small-prime assignment.
 The two deterministic comparison terms are kept separate:
 
 * the functional comparison is bounded by the complete removed
-  exact-length probability mass from Lemma 14.7;
+  exact-length probability mass from Lemma 14.8;
 * the Poisson-parameter comparison is bounded by
   `(E+1) 2^E · #D(Q)/2^Q`.
 
@@ -590,7 +590,7 @@ theorem eventProbability_uniform_exactLength_eq_infinite
 
 /--
 The expectation-level functional comparison is bounded by the exact source
-mass appearing in Lemma 14.7.
+mass appearing in Lemma 14.8.
 -/
 theorem abs_fullMarkedExpectation_sub_retained_le_removedMass
     {N L E : ℕ} {g : ℝ → ℕ → ℝ}

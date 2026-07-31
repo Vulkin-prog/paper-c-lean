@@ -1,5 +1,6 @@
 import PaperC.Asymptotics.DyadicKappaQuantitative
 import PaperC.Asymptotics.SectionThirteenRate
+import PaperC.Probability.InfiniteStartProbabilityTransfer
 
 set_option maxHeartbeats 2400000
 
@@ -23,6 +24,7 @@ namespace CorollaryThirteenTen
 
 open BadStartCount
 open LargePrimeDependencyGraph
+open InfiniteStartProbabilityTransfer
 open SectionThirteenCouplings
 open SectionThirteenCritical
 open SectionThirteenFiniteBound
@@ -907,6 +909,43 @@ theorem theorem_one_one_uniformBigO_canonical
       inverseLogLogSquaredRate :=
   corollary_thirteen_ten_uniformBigO_canonical
     hC hAGG hES hConductor hDivisor
+
+/--
+Theorem 1.1 stated directly for the dyadic start-count random variable on the
+infinite Rademacher product law.  Exact cylinder transfer identifies this law
+with `fullDyadicStartLaw`, so the quantitative conclusion and its external
+hypotheses are unchanged.
+-/
+theorem theorem_one_one_infinite_model
+    {C : ℝ} (hC : 0 ≤ C)
+    (hAGG :
+      ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
+    (hES :
+      EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
+    (hConductor :
+      PellInput.QuadraticOrderConductorFiberBoundStatement)
+    (hDivisor :
+      PellInput.NicolasRobinDivisorLogBoundStatement) :
+    UniformBigOOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun N L =>
+        SectionThirteenFiniteBound.natTotalVariation
+          (infiniteDyadicStartLaw N L)
+          (targetPoissonLaw N L))
+      inverseLogLogSquaredRate := by
+  have hfinite :=
+    theorem_one_one_uniformBigO_canonical
+      hC hAGG hES hConductor hDivisor
+  change
+    UniformBigOOn
+      (CriticalRunWindow.InRunLengthWindow C)
+      (fun N L =>
+        SectionThirteenFiniteBound.natTotalVariation
+          (fullDyadicStartLaw N L)
+          (targetPoissonLaw N L))
+      inverseLogLogSquaredRate at hfinite
+  simpa only [infiniteDyadicStartCount_law_eq_fullDyadicStartLaw] using
+    hfinite
 
 end
 

@@ -7,7 +7,7 @@ import PaperC.Probability.InfiniteStartProbabilityTransfer
 For a start of base length `L`, the mark `e` records that the run changes for
 the first time at offset `L + e`.  Consequently, the occurrence of a mark
 strictly larger than `E` forces an ordinary start of length `L + E + 1`.
-Conversely, under the almost-sure tail-change statement of Lemma 14.4, every
+Conversely, under the almost-sure tail-change statement of Lemma 14.5, every
 such longer start has a finite exact mark strictly larger than `E`.
 
 This file records both directions at event level, as well as the exact
@@ -91,7 +91,7 @@ theorem infiniteMarkTailEvent_subset_longStartEvent
 
 /--
 The converse deterministic statement, assuming eventual change at every
-start in the block.  It makes explicit the only place where Lemma 14.4 is
+start in the block.  It makes explicit the only place where Lemma 14.5 is
 used in the final de-truncation.
 -/
 theorem longStartEvent_subset_infiniteMarkTailEvent_of_tailChanges
@@ -125,7 +125,7 @@ theorem mem_infiniteMarkTailEvent_iff_longStartEvent_of_tailChanges
     longStartEvent_subset_infiniteMarkTailEvent_of_tailChanges hChange⟩
 
 /--
-Lemma 14.4 turns the deterministic inclusion into an almost-sure equality of
+Lemma 14.5 turns the deterministic inclusion into an almost-sure equality of
 events, simultaneously for every start in the fixed dyadic block.
 -/
 theorem ae_mem_infiniteMarkTailEvent_iff_longStartEvent
@@ -228,7 +228,7 @@ theorem measure_infiniteMaximumAtMostEvent_eq_no_longStart
 
 /--
 Exact complement formula.  This is the deterministic reduction behind the
-last assertion of Corollary 14.8; scalar Poisson convergence for the longer
+last assertion of Corollary 14.9; scalar Poisson convergence for the longer
 run immediately yields the displayed limit.
 -/
 theorem measure_infiniteMaximumAtMostEvent_eq_one_sub_longStart

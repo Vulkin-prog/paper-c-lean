@@ -4,7 +4,7 @@ import PaperC.Probability.ExactLengthDecomposition
 /-!
 # Exact run lengths in the infinite Rademacher model
 
-Lemma 14.4 makes the deterministic exact-length decomposition applicable
+Lemma 14.5 makes the deterministic exact-length decomposition applicable
 almost surely.  This module records the resulting event-level identity
 
 `J_{x,L} = ∑ e, K_{x,e}`
@@ -28,7 +28,7 @@ downstream module. -/
 local instance instMeasurableSpaceF2Discrete : MeasurableSpace F₂ := ⊤
 
 /--
-Bit-valued form of Lemma 14.4.  Distinct integer phases have distinct
+Bit-valued form of Lemma 14.5.  Distinct integer phases have distinct
 underlying parity bits.
 -/
 theorem ae_tailChangesAt_infiniteValueBit :
@@ -59,7 +59,7 @@ theorem ae_startEvent_iff_existsUnique_exactLengthEvent :
     hL (hω x hx)
 
 /--
-Fixed-parameter version matching the line immediately following Lemma 14.4
+Fixed-parameter version matching the line immediately following Lemma 14.5
 in the manuscript.
 -/
 theorem ae_startEvent_iff_existsUnique_exactLengthEvent_fixed

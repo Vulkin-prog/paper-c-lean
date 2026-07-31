@@ -3,7 +3,10 @@ import PaperC.Asymptotics.MaskedPoissonCanonical
 import PaperC.Probability.PoissonVoidApproximation
 
 /-!
-# Corollary 14.8: law of the maximum exact excess
+# Corollary 14.9: law of the maximum exact excess
+
+The module and public identifiers retain their pre-v045 `FourteenEight`
+spelling for API compatibility; only the manuscript locator moved.
 
 The exact de-truncation identity says that
 
@@ -230,7 +233,7 @@ theorem abs_infiniteMaximumAtMostProbability_sub_exp_le
       (fun _ => poissonPMFReal_nonneg)
 
 /--
-Corollary 14.8, maximum part, through the canonical arithmetic route.
+Corollary 14.9, maximum part, through the canonical arithmetic route.
 -/
 theorem corollary_fourteen_eight_maximum
     {C lam : ℝ} (hC : 0 ≤ C)

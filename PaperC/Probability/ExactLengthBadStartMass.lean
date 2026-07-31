@@ -7,7 +7,7 @@ set_option maxHeartbeats 1800000
 /-!
 # Removed-start mass for exact run lengths
 
-This file supplies the finite summation step in Lemma 14.7.
+This file supplies the finite summation step in Lemma 14.8.
 
 For an exact excess `e`, put
 
@@ -339,7 +339,7 @@ theorem exactLengthProbabilityMass_terminalBadStarts_eq_split
 
 /--
 Generic finite two-window estimate.  This is the reusable algebraic core of
-Lemma 14.7 before inserting the manuscript parameters.
+Lemma 14.8 before inserting the manuscript parameters.
 -/
 theorem exactLengthProbabilityMass_terminalBadStarts_le_two_windows
     {N q Q B Y : ℕ}
@@ -363,11 +363,11 @@ theorem exactLengthProbabilityMass_terminalBadStarts_le_two_windows
 
 /-! ## Manuscript specialization -/
 
-/-- Common row count `Q = L + E + 1` in Lemma 14.7. -/
+/-- Common row count `Q = L + E + 1` in Lemma 14.8. -/
 def commonExactRowCount (L E : ℕ) : ℕ :=
   excessRowCount L E
 
-/-- Base private-prime cutoff `W = Q + 1` in Lemma 14.7. -/
+/-- Base private-prime cutoff `W = Q + 1` in Lemma 14.8. -/
 def exactLengthBaseCutoff (L E : ℕ) : ℕ :=
   commonExactRowCount L E + 1
 
@@ -408,7 +408,7 @@ theorem baseDefectiveExactLengthStarts_subset_removed
     simp [exactLengthBaseCutoff, commonExactRowCount, excessRowCount]
 
 /--
-Exact form of the defect/good-start split at the parameters of Lemma 14.7.
+Exact form of the defect/good-start split at the parameters of Lemma 14.8.
 -/
 theorem removedExactLengthProbabilityMass_eq_split
     {N L e E : ℕ}
@@ -496,7 +496,7 @@ def totalRemovedExactLengthProbabilityMass
     removedExactLengthProbabilityMass N L e E
 
 /--
-Finite full form of Lemma 14.7.
+Finite full form of Lemma 14.8.
 
 All `E+1` exact-length masses are dominated by a single common-support
 weighted mass and the single removed-set cardinality:

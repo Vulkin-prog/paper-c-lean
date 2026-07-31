@@ -2,20 +2,30 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.44.0`
+- paper_c_lean : `0.45.0`
 - Lean : `v4.32.2`
 - mathlib : `v4.32.2`
-- PDF cible anglais (69 pages), SHA-256 :
-  `601f8cb4a7b0e2058287128888af202c94c2d938550eff7012eed94ab7366112`
-- PDF source français synchronisé (71 pages), SHA-256 :
-  `53e361154f4b503fa00eb3de558f60dbb763492a801b094322d4e8c471bccf28`
+- PDF cible anglais (71 pages dans le fichier portant cette empreinte), SHA-256 :
+  `a7d4bc20de3a823d66a37a8833be041de091703f152b78a71dc69d1185dcf929`
+- PDF source français synchronisé (72 pages), SHA-256 :
+  `a1e00de33dea14845ab09bb71ad34d591cccc37ea1e238914933fb644bbfa0e2`
 - racine unique de l’archive : `paper_c_lean/`
-- archive de livraison : `paper_c_lean_v044.zip`
+- archive de livraison : `paper_c_lean_v045.zip`
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles.
 
-## Périmètre du jalon 0.44
+## Périmètre du jalon 0.45
+
+La v045 conserve Lean/mathlib `v4.32.2` et le registre de 13 ponts (sept
+`external/open`, six `discharged`). Elle ajoute les endpoints canoniques du
+corollaire 11.3, des lois produit infinies, du recentrage de 16.2, du taux
+masqué et de la loi du préfixe. La frontière Halter--Koch est désormais
+rattachée à des théorèmes et pages précis, et la conversion des trois classes
+d’unités en `Fin 4` est prouvée dans Lean. Les métriques exactes ci-dessous
+sont celles du manifeste v045 régénéré.
+
+### Historique v044–v043
 
 La v044 est une re-synchronisation documentaire à contenu Lean gelé. Elle
 fait de l’édition anglaise v08 la cible de soumission et enregistre l’édition
@@ -111,6 +121,16 @@ Les métriques exactes du jalon se reproduisent par :
 find PaperC -name '*.lean' -type f | wc -l
 find PaperC -name '*.lean' -type f -print0 | xargs -0 wc -l | tail -n 1
 ```
+
+La v045 contient **381 modules** et **146 353 lignes Lean**. Le manifeste
+recense **4 065 théorèmes** et **5 lemmes**, soit **4 070 déclarations
+publiques** et **4 072 cibles d’audit** (les deux cibles supplémentaires sont
+les constructions historiques explicitement retenues par la liste blanche).
+Le partage est de **3 912 résultats sans prémisse de pont enregistrée** et
+**158 résultats conditionnels**. Par rapport à la v044 gelée, 94 noms publics
+sont ajoutés, aucun n’est supprimé et aucune signature antérieure n’est
+modifiée. Le registre reste exactement à 13 ponts : huit `external`, cinq
+`internal`, sept `open` tous `external`, et six `discharged`.
 
 La v044 conserve **373 modules** et **142 840 lignes Lean**. Les **521 lignes**
 ajoutées en v043 par rapport à la v042 sont uniquement des adaptations de
@@ -388,8 +408,8 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v044.zip
-unzip -Z1 paper_c_lean_v044.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v045.zip
+unzip -Z1 paper_c_lean_v045.zip | rg -v '^paper_c_lean/'
 ```
 
 La seconde commande ne doit produire aucune ligne. L'archive ne doit contenir

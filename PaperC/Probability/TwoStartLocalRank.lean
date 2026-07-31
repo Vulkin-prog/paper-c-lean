@@ -7,7 +7,7 @@ set_option maxHeartbeats 1800000
 /-!
 # The concrete two-star rank estimate
 
-This file instantiates the graph/private-pivot interface of Lemma 14.6 for
+This file instantiates the graph/private-pivot interface of Lemma 14.7 for
 two equal-length start systems whose bases are at distance `d ≤ Q`.
 
 For oriented starts `x < x+d`, the union of the two displayed stars has

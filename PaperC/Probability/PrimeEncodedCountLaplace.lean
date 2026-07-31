@@ -20,7 +20,7 @@ the first `E + 1` primes raised to its coordinates.  This file identifies:
   `s * log (Nat.nth Nat.Prime e)`.
 
 All identities here are exact and finite.  The asymptotic marked Laplace
-theorem is used only later, in Corollary 14.8.
+theorem is used only later, in Corollary 14.9.
 -/
 
 open scoped BigOperators Topology

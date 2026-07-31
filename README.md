@@ -6,16 +6,19 @@ This repository accompanies the manuscript:
 > stretches of an extended Rademacher random completely multiplicative
 > function*, Brice Pouly, version 8 (English edition), July 2026.
 
-Target manuscript: `paper_C_complete_v08_en.pdf` (69 pages), SHA-256
-`601f8cb4a7b0e2058287128888af202c94c2d938550eff7012eed94ab7366112`.
+Target manuscript: `paper_C_complete_v08_en.pdf` (71 physical pages in the
+file carrying the definitive fingerprint), SHA-256
+`a7d4bc20de3a823d66a37a8833be041de091703f152b78a71dc69d1185dcf929`.
 
-Synchronized French source: `paper_C_complete_v08.pdf` (71 pages), SHA-256
-`53e361154f4b503fa00eb3de558f60dbb763492a801b094322d4e8c471bccf28`.
+Synchronized French source: `paper_C_complete_v08.pdf` (72 pages), SHA-256
+`a1e00de33dea14845ab09bb71ad34d591cccc37ea1e238914933fb644bbfa0e2`.
 
 ## Status
 
-This repository is an **extensible, compilable formal core**; it is not yet a
-certification of the main theorem. It deliberately distinguishes:
+This repository is a **formal proof of the canonical endpoints, conditional
+on seven explicitly registered external propositions; it is not yet an
+unconditional kernel certification until those seven propositions have
+themselves been formalized**. It deliberately distinguishes:
 
 1. the objects and lemmas actually proved by Lean;
 2. the arithmetic, probabilistic, and Diophantine obligations that remain to
@@ -31,12 +34,18 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 ```
 
 must therefore return no matches. This certifies only the modules present, not
-the 69-page target manuscript or its synchronized 71-page French source.
+the complete 71-page target manuscript or its synchronized 72-page French
+source.
 
-Project version `0.44.0` resynchronizes the manifest and documentation with
-the two version 8 manuscript editions, without changing any mathematical
-content. It carries v043 forward, whose only project-wide change was the
-Lean/mathlib migration from `v4.19.0` to `v4.32.2`. It retains
+Project version `0.45.0` synchronizes the formalization with the
+counter-reviewed additions to the two version 8 manuscript editions. It adds
+the exact exponential wrapper for Corollary 11.3, source-law wrappers for
+Theorems 1.1 and 16.2, the recentered global Poisson endpoint, the uniform
+masked rate, and the finite-prefix law. The Halter--Koch bridge now records
+the exact theorem and page chain and a compiled `Fin 3 → Fin 4` derivation;
+the seven-open-bridge boundary is unchanged. It carries v044 forward, whose
+only project-wide change before that was the Lean/mathlib migration from
+`v4.19.0` to `v4.32.2`. It retains
 the closure of the internal §14 chain, the v041 legacy cleanup, and the
 standalone canonical endpoint for Theorem 1.4, connected directly to the
 quantitative mother mass. The dyadic Riemann sums, spatially and markedly
@@ -71,9 +80,9 @@ mathlib does not yet provide a standard space of point measures with the vague
 topology, the repository does not introduce an artificial topological object
 merely to restate this conclusion.
 
-Lemma 14.4, almost-sure uniqueness of the excess,
-\(J_{x,L}=\sum_eK_{x,e}\), Lemma 14.7, and the v0.39 cylinder transfers remain
-the basis of this closure. The maximum law in Corollary 14.8 is also concluded
+Lemma 14.5, almost-sure uniqueness of the excess,
+\(J_{x,L}=\sum_eK_{x,e}\), Lemma 14.8, and the v0.39 cylinder transfers remain
+the basis of this closure. The maximum law in Corollary 14.9 is also concluded
 canonically. For the finite vector of counts, the source/retained laws and
 their coupling are exact. `PrimeEncodedCountVector` injects the vector into
 the positive integers through prime powers; `PrimeEncodedCountLaplace`
@@ -98,6 +107,14 @@ envelope (Nicolas–Robin). The factor \(\tau(|M|)^2\) is not assumed:
 and quadratic decomposition theory. The former bridge
 `PCv07c-L9.2-generalized-Pell` now has `status: discharged`.
 
+The remaining Halter--Koch boundary is now cited exactly: Theorem
+1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3),
+pp. 118–119; Theorem 5.2.3(1),(2), p. 125; and Theorem 5.2.5(1),
+pp. 126–127. These results give conductor one or two and at most three unit
+cosets. `HalterKochConductorDescent` proves that this source-shaped statement
+implies the registered API, explicitly padding `Fin 3` into the historical
+`Fin 4`; the fourth colour is not attributed to the source.
+
 Version 0.39 narrows the bibliographic boundary further:
 `PaperC.Diophantine.PellDivisorEnvelope` starts from Nicolas--Robin's direct
 logarithmic inequality for the divisor function. Lean then proves the
@@ -113,7 +130,14 @@ The dyadic mother-mass chain identifies exactly
 \]
 preserves on this specialization the rates \(3/2\), \(7/4\), \(31/16\), and
 \(5/3\) of the power-saving sectors, and then transports the exponential gain
-from the dense nonterminal branch. Summing the seven sectors gives directly
+from the dense nonterminal branch. Summing the seven sectors now gives the
+canonical statement printed as Corollary 11.3,
+\[
+  R_2(N,L)=O_C\!\left(N^2
+    \exp\!\left(-c_R\frac{\sqrt{\log N}}{\log\log N}\right)\right),
+  \qquad c_R>0.
+\]
+In particular it gives
 \[
   R_2(N,L)=O_C\!\left(
     \frac{N^2}{(\log\log N)^2}\right)
@@ -205,7 +229,7 @@ canonical API consumes none of them. Canonical Proposition 16.1 takes only
 Evertse--Silverman and the two literature corollaries that reconstruct Pell.
 Version 041 removes the six intermediate sector adapters and the variants
 receiving Pell directly; only canonical endpoints and direct generic
-assemblies are retained. The v044 toolchain remains frozen at Lean/mathlib
+assemblies are retained. The v045 toolchain remains frozen at Lean/mathlib
 `v4.32.2`. This migration changes neither canonical signatures nor audit
 registry entries.
 
@@ -218,7 +242,40 @@ Poisson recentering, and the iterated passage first in \(j_0\) and then in
  \Lambda_M=(1+o_C(1))M2^{-L},
 \]
 as well as \(\mathbb P(Z_M=0)=e^{-\Lambda_M}+o_C(1)\), under the registered
-inputs of Proposition 15.5 and the bounded-ratio passage. Marginal and law
+inputs of Proposition 15.5 and the bounded-ratio passage.
+`TheoremSixteenTwoRecentered` now completes the Poisson coupling step and
+exposes the printed form
+\[
+ d_{\rm TV}(\mathcal L(Z_M),\operatorname{Pois}(M2^{-L}))\to0,
+ \qquad
+ \mathbb P(Z_M=0)=e^{-M2^{-L}}+o_C(1).
+\]
+`TheoremSixteenTwoInfiniteModel` defines the literal count on the infinite
+Rademacher product space and proves exact equality with the finite-cylinder
+law before transporting the canonical theorem. Likewise,
+`infiniteDyadicStartCount`, its exact law identity, and
+`theorem_one_one_infinite_model` place Theorem 1.1 directly on the source law.
+`CorollaryPrefixLaw` defines the finite-prefix observable literally,
+including the exceptional start at (x=1), and proves the exact deterministic
+identity
+\[
+  \{W_{M,L}=0\}=\{R_M<L\}.
+\]
+The source-law transfer identifies its infinite-product law with a common
+finite cylinder. `PrefixBoundaryProbability` proves that the left-boundary
+event has exact mass (2^{-\pi(L)}). `PrefixOverflowCoupling` identifies the
+right-overflow contribution with the masked first moment at
+(N'=M-L+2), transports the critical window, and proves that the boundary
+plus overflow coupling cost is uniformly (o_C(1)). Finally,
+`CorollaryPrefixLawCanonical` combines this coupling with the recentered
+Theorem 16.2 and exposes Corollary 16.4 directly on
+`infinitePrefixStartCount`:
+\[
+ d_{\rm TV}(\mathcal L(W_{M,L}),\operatorname{Pois}(M2^{-L}))=o_C(1),
+ \qquad
+ \mathbb P(R_M<L)=e^{-M2^{-L}}+o_C(1).
+\]
+Marginal and law
 invariance under cylinder enlargement is a proved finite equivalence. The
 bounded-ratio modules now certify the cardinality and mass of bad starts, the
 little-oh estimates for \(b_1\) and the mean of \(b_2\), the mixture of
@@ -246,7 +303,7 @@ Starting with version 0.19, every published archive has a single
 `paper_c_lean/` root. Project files sit immediately beneath that root. This
 contract is stable for subsequent versions: neither a flat archive nor a
 double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
-`paper_c_lean_v044.zip`.
+`paper_c_lean_v045.zip`.
 
 ## Certified modules
 
@@ -742,6 +799,12 @@ double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
   Halter--Koch, and Nicolas--Robin. The former internal interfaces of
   Proposition 11.2 and their public wrappers are removed in v041; the
   canonical signature is unchanged.
+- `PaperC.Asymptotics.MaskedPoissonRate` closes Remark 14.3 at its printed
+  quantitative strength. The induced-subgraph \(b_1,b_2\) sums are dominated
+  term by term before the small-prime expectation, while the coupling and
+  parameter displacement are absorbed by the two positive full-block
+  corrections. Hence the preceding display is uniformly
+  \(O_C((\log\log N)^{-2})\) over all masks.
 - `PaperC.Probability.SpatialThinningFinite`,
   `IndependentThinning`, `LaplaceVoidClosure`, and
   `PoissonLaplaceFunctional` construct the product law of the auxiliary
@@ -758,7 +821,7 @@ double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
   source law. The final theorem is the Laplace functional of
   \(\operatorname{PPP}(\lambda\,dt)\).
 - `PaperC.Model.InfiniteRademacher` constructs the infinite product law of the
-  prime signs and proves Lemma 14.4 without a bridge. A constant tail would
+  prime signs and proves Lemma 14.5 without a bridge. A constant tail would
   force all sufficiently late prime bits to zero, a null event because its
   cylinders of length \(N\) have mass \(2^{-N}\). `InfiniteCylinderTransfer`
   proves that every finite projection is exactly the preceding uniform law
@@ -768,13 +831,13 @@ double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
   identifies them with the preimage of the finite event when the cutoff covers
   \(x+q-1\), and then transforms their infinite measure exactly into a
   rational uniform probability. The same identity is established for the full
-  double sum over starts removed in Lemma 14.7.
+  double sum over starts removed in Lemma 14.8.
 - `ExactLengthDecomposition` and `InfiniteExactLengthDecomposition` give,
   almost surely, a unique excess \(e\) on the start event for every \(x\ge2\)
   and \(L\ge1\). The cardinal form is \(1\) on that event and \(0\) outside
   it. They also prove \(e>E\Rightarrow J_{x,L+E+1}=1\), the inclusion used in
   mark detruncation.
-- `PaperC.Probability.MixedLengthAffine` certifies Lemma 14.5 in the finite
+- `PaperC.Probability.MixedLengthAffine` certifies Lemma 14.6 in the finite
   cylinder. The exact-length events \(q_e=L+e+1\) and \(q_f=L+f+1\) form a
   unique mixed affine fiber whose probability is exactly
   \(2^{-q_e-q_f}\eta_{e,f}2^{\rho_{e,f}}\). When \(e,f\le E\), zero extension
@@ -782,7 +845,7 @@ double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
   two systems of length \(Q=L+E+1\), and Lean deduces
   \(\rho_{e,f}\le\rho_Q\), with no bridge.
 - `PaperC.Probability.ExactLengthConditionalRank` formalizes the finite core
-  of Lemma 14.7 after the small primes have been fixed. The exact systems on
+  of Lemma 14.8 after the small primes have been fixed. The exact systems on
   `LargeSample` satisfy the identities \(\eta2^\rho/2^m\). A realization of
   the rows by edges, private pivots, and control of the cycle space gives the
   exact marginal \(2^{-q}\) in the forest case and, when the local cyclomatic
@@ -795,7 +858,7 @@ double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
   carried out downstream by the marked Chen–Stein modules, with no added
   bridge.
 - `PaperC.Probability.ExactLengthBadStartMass` and
-  `PaperC.Asymptotics.ExactLengthBadStartMassCritical` close Lemma 14.7. The
+  `PaperC.Asymptotics.ExactLengthBadStartMassCritical` close Lemma 14.8. The
   removed mass is separated between already defective supports and full-rank
   systems, summed over \(0\le e\le E\), and then normalized at the common
   length \(Q=L+E+1\). Direct counting on non-root vertices costs a factor
@@ -817,7 +880,7 @@ double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
   \(Q=L+E+1\). `MarkedSteinChenCritical` transports the canonical \(κ\) bounds
   and obtains \(b_1,b_2=o_{C,E}(1)\) with no internal bridge.
 - `MarkedLaplaceFiniteClosure` compares the complete and retained functionals
-  exactly using the mass in Lemma 14.7 and controls the parameter correction.
+  exactly using the mass in Lemma 14.8 and controls the parameter correction.
   `MarkedLaplaceCritical` combines these estimates with the Riemann limits for
   each fixed cutoff. `PaperC.Probability.FullMarkedLaplaceTransfer`
   separately defines the literally complete source functional, whose inner
@@ -834,7 +897,7 @@ double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
   \exp(-\lambda2^{-(m+1)})\) through the canonical route.
 - `PrimeEncodedCountVector`, `PrimeEncodedCountLaplace`,
   `PoissonVectorMass`, and `DirichletAtomConvergence` close the other part of
-  Corollary 14.8. Prime-power encoding is injective; the inverse transforms of
+  Corollary 14.9. Prime-power encoding is injective; the inverse transforms of
   the source law are exactly the marked functionals at tests \(s\log p_e\),
   those of the target are the product of the Poisson transforms, and Dirichlet
   inversion yields convergence of each vector atom. The canonical endpoint
@@ -1071,7 +1134,7 @@ double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
 - `PaperC.Combinatorics.GraphCycleRank` and
   `PaperC.Combinatorics.CycleSpaceDimension`: dependencies between edge
   vectors are cyclic, the dimension of the cycle space is bounded by the safe
-  truncated form \(|E|-(|V|-|C|)\), and the rank bound of Lemma 14.6 follows
+  truncated form \(|E|-(|V|-|C|)\), and the rank bound of Lemma 14.7 follows
   under an explicit root-connectivity hypothesis.
 - `PaperC.Coding.HammingBound`: exact volume of binary balls, disjointness at
   minimum distance, and the Hamming bound, including the codimension form used
@@ -1258,10 +1321,14 @@ outside the covered zone.
 ## Building
 
 The project pins Lean `v4.32.2` and mathlib `v4.32.2`. The `lean-toolchain`
-file, `lakefile.toml`, and the Lake manifest lock this toolchain for v044. The
-repository contains 373 modules and 142,840 lines of Lean. The 521 additional
-lines relative to v042 come exclusively from proof-body adaptations to Lean
-4.32.2; the module count and public signatures are unchanged.
+file, `lakefile.toml`, and the Lake manifest lock this toolchain for v045.
+The repository contains 381 modules and 146,353 lines of Lean. The generated
+manifest records 4,065 theorems and five lemmas, hence 4,070 public
+declarations and 4,072 audit targets: 3,912 declarations have no registered
+bridge premise and 158 are conditional. Relative to the content-frozen v044,
+v045 adds eight modules and 94 public declarations; it removes no public name
+and changes no earlier signature. The earlier 521-line increase from v042 to
+v043 consisted exclusively of proof-body adaptations to Lean 4.32.2.
 
 ```bash
 lake exe cache get
@@ -1285,15 +1352,13 @@ The axiom audit does not detect ordinary hypotheses. Their inventory is the
 bridge registry in `audit_manifest.json` and `AXIOM_AUDIT.md`: each entry has
 `kind: external | internal` and `status: open | discharged`, and each
 conditional public theorem is marked with the exact list and kind of bridges
-it takes as direct premises. In v044, the interfaces for 9.10, 9.2, 17.26,
+it takes as direct premises. In v045, the interfaces for 9.10, 9.2, 17.26,
 17.28, and 17.30, as well as the former Nicolas--Robin envelope, have
 `status: discharged`. `kind: internal` describes provenance and therefore does
 not by itself mean that debt remains open. All five `internal` interfaces are
-`discharged`; all seven `open` entries are `external`. The v044 manifest lists
-3,971 public theorems and 5 public lemmas, for 3,976 declarations, 3,978 audit
-targets, 3,825 unconditional results, and 151 conditional results, together
-with 13 bridges—eight `external`, five `internal`, seven `open`, and six
-`discharged`. These counts are reproduced in `REPRODUCIBILITY.md`.
+`discharged`; all seven `open` entries are `external`. The v045 manifest's
+declaration, audit-target, and conditionality counts are reproduced in
+`REPRODUCIBILITY.md`.
 
 The generator parser also covers the format in which `theorem` or `lemma`
 appears alone on one line and the name begins on the next. This correction
@@ -1314,8 +1379,10 @@ Nicolas--Robin envelope is retained as a discharged compatibility interface.
   Lemma 15.1;
 - Corollary 1 of Laishram–Shorey, used in Lemma 15.2;
 - Theorem 1 of Balasubramanian–Shorey, used in Lemma 15.4;
-- the quantitative corollary from ideal theory in quadratic orders, used to
-  color a norm fiber by at most \(4\tau(|M|)^2\) principal ideals;
+- the cited order/unit comparison of Halter--Koch, used to colour a norm
+  fibre by at most three unit cosets; Lean embeds those three values in the
+  historical `Fin 4` API and combines them with its proved
+  \(\tau(|M|)^2\) ideal-divisor bound;
 - the Nicolas–Robin theorem on the divisor function, in the direct logarithmic
   form used by `PellDivisorEnvelope`;
 - the former eventual specialization to polynomially bounded parameters in
@@ -1387,11 +1454,12 @@ R_2(N,L)\ll_C N^2
 \qquad c_R=c_R(A,C)>0.
 \]
 
-The link is therefore present in the manuscript. Version 041 removes the
-former public sector formalization of 11.3 and retains the canonical route: it
-constructs the quantitative mother mass from the \(κ\)-proofs, and then injects
-this single estimate into the probabilistic assembly in
-`PaperC.Asymptotics.CorollaryThirteenTen`.
+Version 045 now exposes this formula itself as
+`PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical`. The theorem
+chooses \(c_R>0\), transports every polynomial-saving sector to the common
+exponential scale, adds the nonterminal exponential sector, and specializes
+the bounded-ratio mother mass back to the literal \(R_2\). The harmonic
+consequence continues to feed `PaperC.Asymptotics.CorollaryThirteenTen`.
 
 ## Recommended next steps
 

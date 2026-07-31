@@ -9,7 +9,7 @@ set_option maxHeartbeats 800000
 /-!
 # Private pivots and the binary cycle space
 
-This file isolates the linear-combinatorial core of Paper C, Lemma 14.6.  We use an oriented
+This file isolates the linear-combinatorial core of Paper C, Lemma 14.7.  We use an oriented
 presentation of a finite undirected multigraph: an edge `e` has endpoints `left e` and `right e`.
 The orientation is immaterial over `F₂`.
 

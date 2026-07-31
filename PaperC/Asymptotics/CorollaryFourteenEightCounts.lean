@@ -6,7 +6,10 @@ import PaperC.Probability.PoissonVectorMass
 import PaperC.Probability.PrimeEncodedCountLaplace
 
 /-!
-# Corollary 14.8: the finite vector of exact-length counts
+# Corollary 14.9: the finite vector of exact-length counts
+
+The module and public identifiers retain their pre-v045 `FourteenEight`
+spelling for API compatibility; only the manuscript locator moved.
 
 For fixed `E`, convergence in law of a vector in `ℕ^(E+1)` is recorded
 pointwise on every joint atom.  The target mass is the product of the
@@ -203,7 +206,7 @@ def ExactLengthCountVectorConvergesToIndependentPoisson
 
 /--
 Along any sequence in the critical window, the complete removed
-exact-length mass from Lemma 14.7 tends to zero.
+exact-length mass from Lemma 14.8 tends to zero.
 -/
 theorem totalRemovedInfiniteExactLengthProbability_tendsto_zero
     {C : ℝ} (hC : 0 ≤ C) (E : ℕ)
@@ -240,7 +243,7 @@ theorem totalRemovedInfiniteExactLengthProbability_tendsto_zero
   exact hbound.trans_lt (by linarith)
 
 /--
-The other half of Corollary 14.8, reduced to the literal retained
+The other half of Corollary 14.9, reduced to the literal retained
 finite-cylinder law supplied by the marked Stein--Chen/thinning argument.
 
 The hypothesis is not an opaque statement: for every joint atom `k`, it is
@@ -352,7 +355,7 @@ Section 14.4 into convergence of every joint atom.
 -/
 
 /--
-Corollary 14.8 under the canonical arithmetic and probabilistic inputs.
+Corollary 14.9 under the canonical arithmetic and probabilistic inputs.
 
 There is no additional retained-law, convergence-determining, or
 de-truncation premise: those steps are discharged respectively by the

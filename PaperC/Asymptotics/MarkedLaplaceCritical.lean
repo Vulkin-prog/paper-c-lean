@@ -14,7 +14,7 @@ literal source law.
 For a fixed `E`, the complete marked functional is compared with the family
 obtained by deleting `D(L+E+1)`.  The three approximation terms are:
 
-* the removed exact-length mass of Lemma 14.7;
+* the removed exact-length mass of Lemma 14.8;
 * the marked first Stein--Chen term;
 * the averaged marked second Stein--Chen term.
 

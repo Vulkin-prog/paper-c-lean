@@ -11,7 +11,7 @@ of the paper.  A sample is an infinite sequence of independent uniform
 `F₂`-bits.  Coordinate `k` is assigned to the `k`-th prime; the value at an
 integer is the parity pairing with its prime factorization.
 
-The main result is the source-exact form of Lemma 14.4: almost surely no tail
+The main result is the source-exact form of Lemma 14.5: almost surely no tail
 of the resulting completely multiplicative function is constant.  The proof
 uses only the product-measure API from mathlib:
 
@@ -211,7 +211,7 @@ theorem ae_not_constantTail (x : ℕ) :
     measure_constantTail x
 
 /--
-**Lemma 14.4 (almost-sure finiteness of runs), source-exact form.**
+**Lemma 14.5 (almost-sure finiteness of runs), source-exact form.**
 
 Almost surely, for every integer `x ≥ 2`, some `n ≥ x` has value different
 from the value at `x`.  Equivalently, no constant run extends indefinitely.

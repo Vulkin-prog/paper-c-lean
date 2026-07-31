@@ -22,7 +22,7 @@ uniform, its event measure is exactly
 `ENNReal.ofReal ((uniformEventProbability P : ℚ) : ℝ)`.
 
 The final theorem specializes this statement to the cutoff
-`dyadicCutoff N q` used in Lemma 14.7.
+`dyadicCutoff N q` used in Lemma 14.8.
 -/
 
 open scoped ENNReal
@@ -186,10 +186,10 @@ theorem infiniteExactLengthEvent_measure_eq_finiteProbabilityAtCutoff
     finiteRademacherMeasure_event_eq_uniformEventProbability
       (fun σ : SampleSpace M => exactLengthAt σ x q)
 
-/-! ## Source reading of the probability used in Lemma 14.7 -/
+/-! ## Source reading of the probability used in Lemma 14.8 -/
 
 /--
-The rational exact-length probability used in Lemma 14.7 is exactly the
+The rational exact-length probability used in Lemma 14.8 is exactly the
 source probability under the infinite Rademacher product law.
 
 The block assumptions are precisely those used by the finite estimates.  The
@@ -221,7 +221,7 @@ def infiniteExactLengthProbability (x q : ℕ) : ℝ :=
 
 /--
 Real form of the dyadic specialization.  This is the pointwise replacement
-needed to read the rational summands in Lemma 14.7 as source probabilities.
+needed to read the rational summands in Lemma 14.8 as source probabilities.
 -/
 theorem infiniteExactLengthProbability_eq_exactLengthProbability
     {N q x : ℕ} (hx : x ∈ dyadicBlock N) :
@@ -243,7 +243,7 @@ def totalRemovedInfiniteExactLengthProbability
       infiniteExactLengthProbability x (excessRowCount L e)
 
 /--
-Exact source/cylinder identity for the whole left-hand side of Lemma 14.7.
+Exact source/cylinder identity for the whole left-hand side of Lemma 14.8.
 No asymptotic estimate is used here.
 -/
 theorem totalRemovedInfiniteExactLengthProbability_eq_finiteMass

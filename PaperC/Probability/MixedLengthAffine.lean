@@ -6,7 +6,7 @@ set_option maxHeartbeats 1800000
 /-!
 # Mixed-length affine systems
 
-This file formalizes the finite affine core of Lemma 14.5.
+This file formalizes the finite affine core of Lemma 14.6.
 
 For a row count `q ≥ 2`, an exact run based at `x` uses the same homogeneous
 rows as `startSystem M x q`.  Its right-hand side is one at the left boundary
@@ -19,7 +19,7 @@ The first main theorem is the exact normalized identity
 `P(K(x,q) ∩ K(y,r)) = 2^(-q-r) η 2^ρ`
 
 in the finite prime-sign cylinder.  The second main theorem proves the
-monotonicity assertion from Lemma 14.5: if `q,r ≤ Q`, zero-extension of row
+monotonicity assertion from Lemma 14.6: if `q,r ≤ Q`, zero-extension of row
 coefficients embeds the mixed relation space into the relation space of the
 two common length-`Q` systems.  In particular its dimension is no larger.
 
@@ -56,7 +56,7 @@ Bit-valued version of the exact-run event represented by `exactLengthRhs`.
 
 For `q = L + e + 1`, its middle condition says that the values from `x`
 through `x + L + e - 1` are constant, while the first and last equations give
-the two sign changes in the statement of Lemma 14.5.
+the two sign changes in the statement of Lemma 14.6.
 -/
 def ExactLengthEvent (g : ℕ → F₂) (x q : ℕ) : Prop :=
   g (x - 1) + g x = 1 ∧
@@ -202,7 +202,7 @@ theorem mixedExactLengthProbability_eq_uniformSolutionProbability
 
 /--
 Exact affine identity at arbitrary mixed row counts.  This is the first
-assertion of Lemma 14.5 in finite-cylinder form.
+assertion of Lemma 14.6 in finite-cylinder form.
 -/
 theorem mixedExactLengthProbability_eq_eta_mul_two_pow_rho_div
     (M x y q r : ℕ) (hq : 2 ≤ q) (hr : 2 ≤ r) :
@@ -391,7 +391,7 @@ theorem mixedRelationEmbedding_injective
 
 /--
 Relation defect cannot increase when the two shorter row sets are embedded
-in common length-`Q` row sets.  This is the second assertion of Lemma 14.5.
+in common length-`Q` row sets.  This is the second assertion of Lemma 14.6.
 -/
 theorem mixed_relationRho_le_common
     {M x y q r Q : ℕ} (hq : q ≤ Q) (hr : r ≤ Q) :
@@ -409,7 +409,7 @@ def excessRowCount (L e : ℕ) : ℕ :=
   L + e + 1
 
 /--
-Lemma 14.5's normalized identity, with the manuscript parameters displayed
+Lemma 14.6's normalized identity, with the manuscript parameters displayed
 verbatim.
 -/
 theorem mixedExcessProbability_eq_eta_mul_two_pow_rho_div
@@ -434,7 +434,7 @@ theorem mixedExcessProbability_eq_eta_mul_two_pow_rho_div
     omega
 
 /--
-Lemma 14.5's defect domination for `e,f ≤ E` and
+Lemma 14.6's defect domination for `e,f ≤ E` and
 `Q = L + E + 1`.
 -/
 theorem mixedExcess_relationRho_le_common

@@ -23,7 +23,7 @@ indexed by the non-root vertices.  Rank-nullity therefore gives
 
 `finrank cycleSpace ≤ |E| - |V| + |C|`.
 
-This is the inequality needed in Lemma 14.6.  Loops and parallel edges are allowed; connectivity,
+This is the inequality needed in Lemma 14.7.  Loops and parallel edges are allowed; connectivity,
 rather than simplicity, is the essential hypothesis.
 -/
 
@@ -268,7 +268,7 @@ theorem finrank_cycleSpace_le_cyclomaticNumber
   omega
 
 /--
-Lemma 14.6, nullity form, with the graph connectivity hypothesis in place of the former
+Lemma 14.7, nullity form, with the graph connectivity hypothesis in place of the former
 dimension hypothesis `hcycle`.
 -/
 theorem finrank_ker_representedEdgeMap_le_cyclomaticNumber
@@ -288,7 +288,7 @@ theorem finrank_ker_representedEdgeMap_le_cyclomaticNumber
         left right component root hroot hconnected)
 
 /--
-Lemma 14.6, nullity form with truncation-safe cyclomatic arithmetic.
+Lemma 14.7, nullity form with truncation-safe cyclomatic arithmetic.
 -/
 theorem finrank_ker_representedEdgeMap_le_card_edges_sub_nonRoot
     (vertexVector : V → P → F₂) (left right : E → V)
@@ -307,7 +307,7 @@ theorem finrank_ker_representedEdgeMap_le_card_edges_sub_nonRoot
       left right component root hroot hconnected)
 
 /--
-Lemma 14.6 in the paper's rank form: private pivots on every non-root vertex give rank at least
+Lemma 14.7 in the paper's rank form: private pivots on every non-root vertex give rank at least
 `|V| - |C|`.
 -/
 theorem card_vertices_sub_components_le_rank_representedEdgeMap

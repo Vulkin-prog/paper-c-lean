@@ -55,8 +55,10 @@ extends it to a divisor of `(M)` in the maximal quadratic order.  The
 number of such maximal-order ideal divisors is proved below in Lean, using
 unique factorization of ideals and quadratic splitting.  The sole remaining
 order-theoretic input is the conductor-two comparison when
-`D ≡ 1 (mod 4)`: four colours suffice to descend equality of extended ideals
-back to equality of principal ideals in `ℤ[√D]`.
+`D ≡ 1 (mod 4)`.  Halter--Koch gives index three for the only nonmaximal
+unit-group case (and index one otherwise).  The implementation embeds these
+three unit cosets in `Fin 4`; the fourth value is padding, not a fourth
+source-theoretic class.
 -/
 
 structure QuadraticOrderConductorData (D : ℕ) (M : ℤ) where
@@ -92,27 +94,30 @@ structure QuadraticOrderConductorData (D : ℕ) (M : ℤ) where
     "publisher": "Chapman & Hall/CRC",
     "year": 2013,
     "isbn": "9781466591837",
-    "locator": "Chapter 5, Quadratic orders: Units in quadratic orders; Structure of ideals in quadratic orders; An application: some binary Diophantine equations; Prime ideals and multiplicative ideal theory"
+    "doi": "10.1201/b14968",
+    "locator": "Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
   },
   "source_statement": {
-    "verbatim": "The book highlights the connection between Gauss's theory of binary forms and the arithmetic of quadratic orders.",
+    "verbatim": "O_{Δf²} = ℤ + f O_Δ and [O_Δ : O_{Δf²}] = f.",
     "verbatim_is_excerpt": true,
     "displayed_formulas": {
       "norm_fibre": "N(x + y√D) = x² - Dy² = M",
       "maximal_order_divisor": "J(x,y) divides (M) in the maximal quadratic order",
-      "conductor_colour": "c(x,y) belongs to a set of four conductor colours",
+      "order_conductor": "ℤ[√D] has conductor 2 when D ≡ 1 (mod 4), and conductor 1 otherwise",
+      "unit_cosets": "[O_Kˣ : ℤ[√D]ˣ] ≤ 3",
+      "lean_colour_padding": "Fin 3 → Fin 4",
       "descent": "J(s) = J(t) and c(s) = c(t) imply (s) = (t) in ℤ[√D]"
     },
-    "source_url": "https://www.routledge.com/product/isbn/9781466591837",
-    "verification": "manual_primary_source_check_required",
-    "verification_note": "This bridge isolates only the conductor-two descent from the maximal order to ℤ[√D]. Lean separately proves the full τ(|M|)² count of maximal-order ideal divisors, equality-of-principal-ideal to Pell-unit conversion, unit growth, and height counting."
+    "source_url": "https://doi.org/10.1201/b14968",
+    "verification": "manually checked against the cited theorem statements and proofs on 2026-07-31",
+    "verification_note": "Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction."
   },
   "manuscript_locator": {
     "result": "Lemma 9.2",
     "equation": "(α)(conjugate α) = (M)",
     "pages": "28–29"
   },
-  "formalization_relation": "external conductor comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of four conductor colours, and equality of both data descends to equality of principal ideals in ℤ[√D]; Lean proves the τ(|M|)² bound for maximal-order ideal divisors and all unit-orbit, height, finite-cardinality and squarefree-reduction consequences"
+  "formalization_relation": "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences"
 }
 AUDIT_BRIDGE -/
 def QuadraticOrderConductorFiberBoundStatement : Prop :=

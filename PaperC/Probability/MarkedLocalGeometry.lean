@@ -4,7 +4,7 @@ import PaperC.Probability.ExactLengthDecomposition
 # Deterministic local geometry of exact-length marks
 
 This module formalizes the zero-probability cases in the local geometry
-discussion following Lemma 14.7.
+discussion following Lemma 14.8.
 
 * two distinct exact lengths at the same start are incompatible;
 * if `x < y` and the left exact run has not yet reached its right change at
