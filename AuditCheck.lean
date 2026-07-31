@@ -8,9 +8,9 @@ It contains one `#print axioms` command for every explicit public
 `theorem` or `lemma` declaration under `PaperC`.
 Private and local declarations are deliberately excluded.
 
-Public theorems/lemmas: 3975.
+Public theorems/lemmas: 3976.
 Additional proof-bearing public definitions: 2.
-Source digest (SHA-256): bfd7f56a7d996ce82e155916c716cf23653bd3791cc5f4bd50905a5da5541598.
+Source digest (SHA-256): c72b20c1292af2ff6546d6dbcc873582b5daf91542959bf4ccc85d424e34b86b.
 -/
 
 #print axioms PaperC.Affine.CanonicalRationalCode.candidate_coprime
@@ -3284,6 +3284,7 @@ Source digest (SHA-256): bfd7f56a7d996ce82e155916c716cf23653bd3791cc5f4bd50905a5
 #print axioms PaperC.SectionTwelveMoments.overlappingPairs_uniformLittleOQuadratic
 #print axioms PaperC.SectionTwelveMoments.relationRho_twoStartSystem_cutoff_invariant
 #print axioms PaperC.SectionTwelveMoments.separatedOffDiagPairs_eq_separatedDyadicPairs
+#print axioms PaperC.SectionTwelveMoments.theorem_one_four_canonical
 #print axioms PaperC.SectionTwelveMoments.touchingLower_add_mem_dyadicBlock
 #print axioms PaperC.SectionTwelveMoments.touchingMass_uniformLittleOQuadratic
 #print axioms PaperC.SectionTwelveMoments.touchingOffDiagPairs_eq_touchingPairs

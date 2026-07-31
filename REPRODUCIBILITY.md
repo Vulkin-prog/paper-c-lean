@@ -2,7 +2,7 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.41.0`
+- paper_c_lean : `0.42.0`
 - Lean : `v4.19.0`
 - mathlib : `v4.19.0`
 - PDF cible, SHA-256 :
@@ -12,9 +12,9 @@
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles.
 
-## Périmètre du jalon 0.41
+## Périmètre du jalon 0.42
 
-La v041 conserve la fermeture du §14 obtenue en v040 sous forme de
+La v042 conserve la fermeture du §14 obtenue en v040 sous forme de
 caractérisation par fonctionnels de Laplace. Elle conserve le modèle produit
 infini, le lemme 14.4, la décomposition exacte et le lemme 14.7, notamment :
 
@@ -33,6 +33,16 @@ infini, le lemme 14.4, la décomposition exacte et le lemme 14.7, notamment :
   support fini en marques ;
 - la tension uniforme des marques, la loi limite du maximum et les
   transferts exacts du vecteur des comptes.
+
+Le changement propre à la v042 est l’ajout de l’unique déclaration publique
+`PaperC.SectionTwelveMoments.theorem_one_four_canonical`. Elle raccorde le
+noyau fini du §12 directement à la masse mère quantitative et conclut au taux
+du premier moment, au petit-oh du second moment factoriel, à
+\(R_2(N,L)=o_C(N^2)\) et au petit-oh de la variance. Ses hypothèses sont
+exactement `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres` et
+`NR83-T1-divisor-log-bound`, sous-ensemble strict des quatre références
+externes autorisées. Les 3 975 signatures publiques antérieures et le
+registre des 13 ponts sont inchangés.
 
 Le changement propre à la v041 est un nettoyage d’API par suppressions : les
 quatre interfaces `internal/open` de 9.9, 9.11, 10.1 et 11.3 et leurs 27
@@ -66,9 +76,9 @@ find PaperC -name '*.lean' -type f | wc -l
 find PaperC -name '*.lean' -type f -print0 | xargs -0 wc -l | tail -n 1
 ```
 
-La v041 contient **372 modules** et **142 015 lignes Lean**.
+La v042 contient **373 modules** et **142 319 lignes Lean**.
 
-Le jalon 0.41 conserve la décharge de l’interface interne de Pell généralisé :
+Le jalon 0.42 conserve la décharge de l’interface interne de Pell généralisé :
 
 - `GeneralizedPell` traduit les solutions en éléments de `Zsqrtd`, prouve
   que leur idéal principal divise \((M)\), puis transforme l’égalité de deux
@@ -93,13 +103,13 @@ L’ancienne enveloppe spécialisée `NR83-T1-divisor-bound` est conservée avec
 `status: discharged`.
 `PCv07c-L9.2-generalized-Pell` est désormais `discharged`.
 
-Les théorèmes canoniques de masse mère, 13.10, 1.1, 16.1 et 16.2 exposent
+Les théorèmes canoniques de masse mère, 1.4, 13.10, 1.1, 16.1 et 16.2 exposent
 directement ces entrées externes. Ils ne consomment aucun pont
 `internal/open`. La v041 supprime les anciennes signatures directes Pell,
 leurs variantes fondées sur l’enveloppe spécialisée et les quatre API legacy
 ouvertes. Il ne reste aucun pont `internal/open` dans le registre.
 
-Le jalon 0.41 conserve tous les résultats antérieurs, notamment les deux
+Le jalon 0.42 conserve tous les résultats antérieurs, notamment les deux
 dernières estimations sectorielles qualitatives de la section 17 :
 
 - `PrimeFactorsFactorialBound`,
@@ -216,9 +226,9 @@ Le manifeste conserve la distinction indépendante entre `kind` et `status`.
 Les interfaces 9.2 et 9.10 rejoignent 17.26, 17.28 et 17.30 avec
 `status: discharged`; seul `status: open` signale une dette actuelle.
 Il recense 13 interfaces — huit `external` et cinq `internal` — dont sept
-`open`, toutes `external`, et six `discharged`. Il recense en outre **3 970
-théorèmes** et **5 lemmes** publics, soit **3 975 déclarations**, **3 977
-cibles d’audit**, **3 825 résultats inconditionnels** et **150
+`open`, toutes `external`, et six `discharged`. Il recense en outre **3 971
+théorèmes** et **5 lemmes** publics, soit **3 976 déclarations**, **3 978
+cibles d’audit**, **3 825 résultats inconditionnels** et **151
 conditionnels**. Il ne reste aucune interface `internal/open`.
 
 Le parseur de `scripts/generate_audit.mjs` reconnaît en v035 les déclarations
@@ -273,7 +283,7 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 Les quatre premières commandes doivent réussir. La dernière ne doit produire
 aucune ligne.
 
-Pour la livraison 0.41, la validation de publication doit être rejouée depuis
+Pour la livraison 0.42, la validation de publication doit être rejouée depuis
 deux arbres indépendants dépourvus de `.lake/build`, dont une extraction du
 ZIP final. Dans chacun, le build doit se terminer par
 `Build completed successfully`. L’audit doit produire une sortie pour chaque
@@ -284,8 +294,8 @@ retrouver exactement les comptes du manifeste final régénéré et enregistrer
 9.2, 9.10, 17.26, 17.28, 17.30 et l’ancienne enveloppe Nicolas--Robin avec
 `status: discharged`. Il doit retrouver 13 interfaces — huit `external`,
 cinq `internal`, sept `open` toutes `external` et six `discharged` — ainsi
-que 3 970 théorèmes et 5 lemmes publics, 3 977 cibles, 3 825 résultats
-inconditionnels et 150 conditionnels. Il ne doit retrouver aucune interface
+que 3 971 théorèmes et 5 lemmes publics, 3 978 cibles, 3 825 résultats
+inconditionnels et 151 conditionnels. Il ne doit retrouver aucune interface
 `internal/open`. Le scan des constructions interdites doit rester vide.
 
 Pour inspecter les dépendances logiques d'un théorème particulier :
@@ -324,7 +334,7 @@ manifeste distingue les dépendances fondationnelles imprimées par Lean des
 hypothèses ordinaires, invisibles à `#print axioms`; il associe donc à chaque
 théorème public un statut conditionnel/inconditionnel, la liste des ponts
 qu’il prend comme prémisses directes, leur nature `external | internal` et
-leur état `open | discharged`. Les comptes v041 publiés ci-dessus sont ceux
+leur état `open | discharged`. Les comptes v042 publiés ci-dessus sont ceux
 du manifeste régénéré.
 `ReviewAxioms.lean` est conservé comme sélection historique des
 résultats structurants, mais n'est plus la liste canonique. Chaque sortie de
@@ -338,8 +348,8 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v041.zip
-unzip -Z1 paper_c_lean_v041.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v042.zip
+unzip -Z1 paper_c_lean_v042.zip | rg -v '^paper_c_lean/'
 ```
 
 La seconde commande ne doit produire aucune ligne. L'archive ne doit contenir

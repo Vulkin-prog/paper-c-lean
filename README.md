@@ -29,8 +29,9 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 doit donc rester vide. Cela certifie seulement les modules présents, pas les
 69 pages du manuscrit.
 
-La version Lean `0.41.0` conserve la fermeture de la chaîne interne du §14
-et nettoie les anciennes routes publiques devenues redondantes. Les sommes
+La version Lean `0.42.0` conserve la fermeture de la chaîne interne du §14,
+le nettoyage legacy de la v041 et ajoute l’endpoint canonique autonome du
+théorème 1.4, raccordé directement à la masse mère quantitative. Les sommes
 de Riemann dyadiques, les paramètres amincis spatial et marqué, le graphe de
 dépendance marqué, ses deux termes de Stein--Chen, les transferts exacts
 cylindre--loi source et la dé-troncation sont assemblés. Sous les quatre
@@ -608,8 +609,12 @@ ni double emboîtement `paper_c_lean/paper_c_lean/`.
   \]
   et de la variance à partir d’une estimation homogène fournie. Les trois
   anciens endpoints publics qui recevaient les interfaces de 9.9, 9.11 et
-  10.1 sont supprimés ; la v041 ne revendique plus cette route legacy comme
-  endpoint autonome du théorème 1.4.
+  10.1 restent supprimés. La v042 ajoute
+  `PaperC.SectionTwelveMoments.theorem_one_four_canonical`, qui raccorde ce
+  noyau directement à la masse mère quantitative et conclut simultanément au
+  taux du premier moment, au petit-oh du second moment factoriel, à
+  \(R_2(N,L)=o_C(N^2)\) et au petit-oh de la variance. Ses seules hypothèses
+  externes sont Evertse--Silverman, Halter--Koch et Nicolas--Robin.
 - `PaperC.Analysis.TerminalPrimeCutoff`,
   `PrimeReciprocalSqrtSum`, `PaperC.Probability.BadStartCount` et
   `TerminalBadStartBound`, puis `BadStartMass`, formalisent les noyaux des
@@ -1331,13 +1336,13 @@ est le registre des ponts de `audit_manifest.json` et d'`AXIOM_AUDIT.md` :
 chaque entrée porte `kind: external | internal` et
 `status: open | discharged`, et chaque théorème public conditionnel est
 marqué avec la liste exacte et la nature des ponts qu’il prend comme
-prémisses directes. En v041, les interfaces de 9.10, 9.2, 17.26, 17.28,
+prémisses directes. En v042, les interfaces de 9.10, 9.2, 17.26, 17.28,
 17.30 et l’ancienne enveloppe Nicolas--Robin portent
 `status: discharged`. `kind: internal` décrit une provenance et ne signifie
 donc pas, à lui seul, qu’une dette reste ouverte. Les cinq interfaces
 `internal` sont toutes `discharged`; les sept entrées `open` sont toutes
-`external`. Le manifeste v041 recense 3 970 théorèmes et 5 lemmes publics,
-3 977 cibles d’audit, 3 825 résultats inconditionnels et 150 conditionnels,
+`external`. Le manifeste v042 recense 3 971 théorèmes et 5 lemmes publics,
+3 978 cibles d’audit, 3 825 résultats inconditionnels et 151 conditionnels,
 ainsi que 13 ponts — huit `external`, cinq `internal`, sept `open` et six
 `discharged`. Ces comptes sont reproduits dans `REPRODUCIBILITY.md`.
 
@@ -1454,9 +1459,6 @@ injecte cette unique estimation dans l’assemblage probabiliste de
 
 1. Généraliser de l’encodage rationnel déjà disponible à l’énoncé littéral
    pour tout réel \(\alpha>0\) du théorème 8.1.
-2. Si un endpoint autonome du théorème 1.4 est souhaité, raccorder le noyau
-   fini du §12 directement à la masse mère canonique, sans réintroduire les
-   anciennes interfaces génériques.
-3. Si une API mathlib stable apparaît, transporter les caractérisations de
+2. Si une API mathlib stable apparaît, transporter les caractérisations de
    Laplace déjà prouvées vers une formulation équivalente en convergence
    vague de mesures ponctuelles.

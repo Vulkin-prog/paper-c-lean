@@ -1,5 +1,24 @@
 # Journal des versions
 
+## 0.42.0
+
+- Ajout de l’unique endpoint public
+  `PaperC.SectionTwelveMoments.theorem_one_four_canonical`. Il raccorde
+  directement le noyau fini du §12 à la masse mère quantitative canonique et
+  conclut simultanément au taux du premier moment, au petit-oh du second
+  moment factoriel, à \(R_2(N,L)=o_C(N^2)\) et au petit-oh de la variance.
+- Ses hypothèses de littérature sont exactement
+  `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres` et
+  `NR83-T1-divisor-log-bound`, sous-ensemble strict des quatre références
+  externes autorisées. Le registre des 13 ponts est inchangé et aucune
+  interface `internal`, `discharged` ou legacy n’est réintroduite.
+- Les 3 975 signatures publiques de la v041 restent inchangées : la v042
+  ajoute un nom et n’en supprime aucun. Lean et mathlib restent gelés en
+  `v4.19.0`. Le dépôt contient 373 modules et 142 319 lignes Lean ; le
+  manifeste recense 3 971 théorèmes et 5 lemmes publics, soit 3 976
+  déclarations, 3 978 cibles d’audit, 3 825 résultats inconditionnels et 151
+  conditionnels.
+
 ## 0.41.0
 
 - Nettoyage strict de l’API publique legacy, sans changement des signatures

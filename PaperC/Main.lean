@@ -300,6 +300,7 @@ import PaperC.Probability.ExactLengthConditionalRank
 import PaperC.Probability.ExactLengthBadStartMass
 import PaperC.Probability.MarkedLocalGeometry
 import PaperC.Probability.SectionTwelveMoments
+import PaperC.Asymptotics.TheoremOneFourCanonical
 import PaperC.Probability.SteinChenTerms
 import PaperC.Probability.SectionThirteenFiniteBound
 import PaperC.Probability.SectionThirteenCouplings

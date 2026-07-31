@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "project": "paper_c_lean",
-  "project_version": "0.41.0",
+  "project_version": "0.42.0",
   "target_pdf": {
     "filename": "paper_C_complete_v07c.pdf",
     "sha256": "23a5db3c8d024cab3fb8ca9f8f1443f40cf9502b1fb6682a331f5948f57a3336"
@@ -9,7 +9,7 @@
   "audit_file": "AuditCheck.lean",
   "import": "PaperC.Main",
   "source_glob": "PaperC/**/*.lean",
-  "source_digest_sha256": "bfd7f56a7d996ce82e155916c716cf23653bd3791cc5f4bd50905a5da5541598",
+  "source_digest_sha256": "c72b20c1292af2ff6546d6dbcc873582b5daf91542959bf4ccc85d424e34b86b",
   "selection": {
     "include": "explicit public theorem or lemma declarations under namespace PaperC",
     "exclude": [
@@ -22,10 +22,10 @@
       "generated/internal declarations"
     ]
   },
-  "theorem_count": 3975,
+  "theorem_count": 3976,
   "theorem_kind_counts": {
     "lemma": 5,
-    "theorem": 3970
+    "theorem": 3971
   },
   "conditionality_scope": {
     "meaning": "registered external and internal bridge hypotheses",
@@ -539,13 +539,13 @@
     }
   ],
   "unconditional_theorem_count": 3825,
-  "conditional_theorem_count": 150,
+  "conditional_theorem_count": 151,
   "conditional_theorem_counts_by_hypothesis_kind": {
-    "external": 112,
+    "external": 113,
     "internal": 59
   },
   "conditional_theorem_counts_by_hypothesis_status": {
-    "open": 112,
+    "open": 113,
     "discharged": 60
   },
   "theorem_records": [
@@ -27050,6 +27050,18 @@
       "hypotheses": []
     },
     {
+      "name": "PaperC.SectionTwelveMoments.theorem_one_four_canonical",
+      "kind": "theorem",
+      "source": "PaperC/Asymptotics/TheoremOneFourCanonical.lean",
+      "line": 26,
+      "conditionality": "conditionnel",
+      "hypotheses": [
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ]
+    },
+    {
       "name": "PaperC.SectionTwelveMoments.touchingLower_add_mem_dyadicBlock",
       "kind": "theorem",
       "source": "PaperC/Probability/SectionTwelveMoments.lean",
@@ -32738,7 +32750,7 @@
     }
   ],
   "additional_target_count": 2,
-  "audit_target_count": 3977,
+  "audit_target_count": 3978,
   "audit_targets": [
     "PaperC.Affine.CanonicalRationalCode.candidate_coprime",
     "PaperC.Affine.CanonicalRationalCode.candidate_fst_pos",
@@ -36011,6 +36023,7 @@
     "PaperC.SectionTwelveMoments.overlappingPairs_uniformLittleOQuadratic",
     "PaperC.SectionTwelveMoments.relationRho_twoStartSystem_cutoff_invariant",
     "PaperC.SectionTwelveMoments.separatedOffDiagPairs_eq_separatedDyadicPairs",
+    "PaperC.SectionTwelveMoments.theorem_one_four_canonical",
     "PaperC.SectionTwelveMoments.touchingLower_add_mem_dyadicBlock",
     "PaperC.SectionTwelveMoments.touchingMass_uniformLittleOQuadratic",
     "PaperC.SectionTwelveMoments.touchingOffDiagPairs_eq_touchingPairs",
@@ -39988,6 +40001,7 @@
     "PaperC.SectionTwelveMoments.overlappingPairs_uniformLittleOQuadratic",
     "PaperC.SectionTwelveMoments.relationRho_twoStartSystem_cutoff_invariant",
     "PaperC.SectionTwelveMoments.separatedOffDiagPairs_eq_separatedDyadicPairs",
+    "PaperC.SectionTwelveMoments.theorem_one_four_canonical",
     "PaperC.SectionTwelveMoments.touchingLower_add_mem_dyadicBlock",
     "PaperC.SectionTwelveMoments.touchingMass_uniformLittleOQuadratic",
     "PaperC.SectionTwelveMoments.touchingOffDiagPairs_eq_touchingPairs",

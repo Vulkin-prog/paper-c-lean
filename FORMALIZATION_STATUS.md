@@ -12,10 +12,10 @@ Légende :
 Dans le registre d’audit, `kind: external | internal` décrit la provenance
 de l’énoncé. Le champ distinct `status: open | discharged` indique si
 l’interface reste nécessaire : seul `open` constitue une dette actuelle. En
-v041, les cinq interfaces `internal` sont toutes `discharged`; les sept
-interfaces `open` sont toutes `external`. Le manifeste recense 3 970
-théorèmes et 5 lemmes publics, 3 977 cibles, 3 825 résultats
-inconditionnels et 150 conditionnels.
+v042, les cinq interfaces `internal` sont toutes `discharged`; les sept
+interfaces `open` sont toutes `external`. Le manifeste recense 3 971
+théorèmes et 5 lemmes publics, 3 978 cibles, 3 825 résultats
+inconditionnels et 151 conditionnels.
 
 ## Sections 1–3
 
@@ -24,7 +24,7 @@ inconditionnels et 150 conditionnels.
 | Th. 1.1 | Loi de Poisson critique et taux TV | **Prouvé conditionnellement dans le cylindre fini, modulo littérature seulement.** Lean assemble dans la fenêtre critique littérale le taux uniforme \(d_{\rm TV}(\mathcal L(Z_{N,L}),\operatorname{Pois}(N2^{-L}))\ll_C(\log\log N)^{-2}\). La masse mère est construite directement depuis les preuves à rapport borné au point \(M=2N\). Les seuls ponts de `theorem_one_one_uniformBigO_canonical` sont AGG, Evertse–Silverman, la comparaison de conducteur quadratique de Halter–Koch et la borne divisorielle de Nicolas–Robin, tous `external`. Les anciennes variantes recevant directement Pell ou les interfaces sectorielles ont été supprimées ; la signature canonique est inchangée |
 | Th. 1.2(i) | Masques déterministes | **Prouvé conditionnellement, modulo littérature seulement.** La proposition 14.1 est prouvée dans la fenêtre littérale \(\lvert L-\log_2N\rvert\le C_\star\log\log N\). La proposition 14.2 est assemblée uniformément pour tous les masques dans la fenêtre critique : \(d_{\rm TV}(\mathcal L(Z_{N,L}(A_N)),\mathrm{Pois}(|A_N|2^{-L}))=o_C(1)\). Son endpoint canonique prend exactement AGG, Evertse–Silverman, Halter–Koch et Nicolas–Robin ; aucun pont `internal/open` ne remonte à sa signature |
 | Th. 1.2(ii–iii) | PPP spatial et marqué | **Prouvé sous forme de caractérisation complète par fonctionnels de Laplace, modulo littérature seulement.** Les espérances sous la loi infinie convergent vers les fonctionnels de \(\operatorname{PPP}(\lambda\,dt)\) et de \(\operatorname{PPP}(\lambda\,dt\otimes\nu)\), \(\nu(\{e\})=2^{-(e+1)}\), pour tout test continu positif à support compact en marques. La tension uniforme est prouvée par \(\limsup_N\mathbb P(\text{marque}>E)\le\lambda2^{-(E+1)}\). Mathlib ne fournissant pas encore une API de mesures ponctuelles/topologie vague adaptée, la formulation `Tendsto` de lois de processus n’est pas dupliquée artificiellement |
-| Th. 1.4 | Moments et somme homogène | **Noyau fini formalisé ; ancien endpoint conditionnel retiré.** Lean conserve les identités exactes du §12 et la déduction des erreurs de moment à partir d’une estimation homogène fournie. La v041 supprime les trois anciens endpoints publics fondés sur les interfaces génériques de 9.9, 9.11 et 10.1. Aucun endpoint autonome du théorème 1.4 n’est revendiqué dans cette version ; un futur raccord devra utiliser directement la masse mère canonique |
+| Th. 1.4 | Moments et somme homogène | **Prouvé conditionnellement, modulo littérature seulement.** `theorem_one_four_canonical` raccorde directement le noyau fini du §12 à la masse mère quantitative et conclut, dans la fenêtre critique, au taux du premier moment, au petit-oh du second moment factoriel, à \(R_2(N,L)=o_C(N^2)\) et au petit-oh de la variance. Ses seules hypothèses sont Evertse–Silverman, Halter–Koch et Nicolas–Robin (`external`). Les trois endpoints legacy supprimés en v041 ne sont pas réintroduits |
 | Lem. 2.1 | Système affine, compatibilité et taille des fibres | **Prouvé dans le modèle affine fini** : identité de Fourier entière, caractère des relations, normalisation par \(\eta 2^\rho\), compatibilité, comptage exact des fibres, probabilité rationnelle et borne \(\lvert\eta2^\rho-1\rvert\le2^\rho-1\) |
 | Lem. 2.2 | Relations, parties paires d'un arbre et produits carrés | **Prouvé** : équivalence « somme des parités nulle ⇔ produit carré », additivité de la frontière, existence sur tout graphe connexe et bijection existence--unicité entre sous-ensembles d'arêtes d'un arbre et parties paires de sommets |
 | Lem. 3.1 | Runge quantitatif | **Prouvé**, sans axiome ajouté, avec la constante absolue explicite \(C_0=128\) : développement et convergence des séries, sélection de la branche positive, (3.2), estimation complète (3.3), séparation dyadique, construction/non-nullité de \(Q\), annulation des coefficients hauts donnant \(\deg Q\le k-1\), hauteur uniforme et borne de Cauchy. L'énoncé final est \(U\le(128\,dR)^{2d}\) pour \(d=2k\ge2\), sous les hypothèses exactes du manuscrit |
@@ -68,7 +68,7 @@ inconditionnels et 150 conditionnels.
 | Th. 10.1 | Fermeture terminale | **Instance canonique prouvée ; wrapper générique retiré.** Lean certifie l'unicité au-dessus du seuil, les doubles comptages, la somme pondérée, la réduction injective du partenaire à Pell, la borne exacte de \(A_{B,T}(X)\), la désintégration terminale et le majorant « premiers départs × partenaires ». La chaîne canonique assemble aussi \(\#T_K\le N^{3/4+o(1)}\) et la masse \(N^{7/4+o(1)}\) sous le Pell désormais déchargé. La v041 supprime l’ancien endpoint pour des familles arbitraires `smallRowRank/rankBudget` |
 | Lem. 11.1 | Partition exhaustive | **Prouvé pour les six tests ordonnés et les cinq tests arithmétiques canoniques.** Les sept populations couvrent toutes les paires séparées, sont deux à deux disjointes et donnent un secteur unique ; les secteurs 1–3 sont exactement ceux de la section 7 et l'union des secteurs 4–7 est le cœur profond. Le test terminal générique à budget entier reste défini ; la route canonique instancie directement la population intrinsèque et son seuil dans les preuves à rapport borné |
 | Prop. 11.2, Cor. 11.3 | Somme homogène absolue, forme quantitative | **Masse mère canonique prouvée modulo littérature ; endpoints historiques retirés.** `DyadicKappaTransport` prouve \(R_2(N,L)=R_{2,\kappa}(N,2N,L)\), et `DyadicKappaQuantitative` somme les taux \(3/2\), \(7/4\), \(31/16\), \(5/3\) et le gain dense exponentiel des sept secteurs. Il en résulte directement \(R_2(N,L)=O_C(N^2/(\log\log N)^2)\) sous Evertse–Silverman, Halter–Koch et Nicolas–Robin. La v041 supprime les assemblages publics abstraits de 11.2 et 11.3 et leurs quatre interfaces `internal/open` |
-| §12 | Déduction des moments | **Noyau fini prouvé ; endpoints legacy retirés.** Les couples hors diagonale sont partitionnés exactement en chevauchement strict, contact et séparation ; Lean conserve l'identité du second moment factoriel, les bornes finies et les identités d’erreur pour le second moment et la variance. L’implication à partir d’une estimation homogène reste dans le noyau interne, mais les trois conclusions publiques qui recevaient les interfaces génériques de 9.9, 9.11 et 10.1 sont supprimées en v041 |
+| §12 | Déduction des moments | **Prouvé et raccordé canoniquement ; endpoints legacy retirés.** Les couples hors diagonale sont partitionnés exactement en chevauchement strict, contact et séparation ; Lean conserve l'identité du second moment factoriel, les bornes finies et les identités d’erreur pour le second moment et la variance. La v042 raccorde ces briques à la masse mère quantitative dans `theorem_one_four_canonical`. Les trois conclusions publiques qui recevaient les interfaces génériques de 9.9, 9.11 et 10.1 restent supprimées |
 
 ## Sections 13–14
 
@@ -106,15 +106,12 @@ inconditionnels et 150 conditionnels.
 1. Généraliser les constantes de l'instance \(\alpha=3/16\) du théorème 8.1
    à un paramètre réel positif arbitraire ; l'instance utilisée par la
    partition de la section 7 est entièrement fermée.
-2. Si un endpoint autonome du théorème 1.4 est requis, raccorder le noyau
-   fini du §12 à la masse mère canonique sans réintroduire les quatre
-   interfaces legacy supprimées.
-3. Conserver les interfaces historiques 9.2, 9.10, 17.26, 17.28 et 17.30 avec
+2. Conserver les interfaces historiques 9.2, 9.10, 17.26, 17.28 et 17.30 avec
    `status: discharged` pour la traçabilité ; aucune n’est désormais requise
-   par les API canoniques 1.1, 13.10, 16.1 et 16.2.
-4. Réserver l'interprétation « modèle complet » de `startProbability N L x`
+   par les API canoniques 1.1, 1.4, 13.10, 16.1 et 16.2.
+3. Réserver l'interprétation « modèle complet » de `startProbability N L x`
    aux fenêtres dont tous les sommets sont sous `dyadicCutoff N L`; c'est le
    cas des `x ∈ dyadicBlock N`. Hors de cette zone, la définition actuelle est
    volontairement celle d'un cylindre premier tronqué.
-5. Porter explicitement les hypothèses \(n\ge1\), \(x\ge2\) des énoncés
+4. Porter explicitement les hypothèses \(n\ge1\), \(x\ge2\) des énoncés
    arithmétiques du papier lorsque les API génériques autorisent aussi zéro.

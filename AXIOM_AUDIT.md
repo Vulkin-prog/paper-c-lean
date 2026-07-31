@@ -44,9 +44,9 @@ son interface peut rester exposée pour compatibilité historique. Ce statut
 porte sur le projet dans son ensemble : un ancien théorème peut donc encore
 prendre explicitement un pont `discharged` comme prémisse.
 
-Ponts enregistrés : 13. Théorèmes publics inconditionnels : 3825. Théorèmes publics conditionnels : 150.
-Répartition des ponts par provenance : 8 external, 5 internal. Théorèmes conditionnels par nature de pont (un théorème mixte compterait dans chaque catégorie) : 112 external, 59 internal.
-Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionnels par statut de pont (un théorème mixte compterait dans chaque catégorie) : 112 open, 60 discharged.
+Ponts enregistrés : 13. Théorèmes publics inconditionnels : 3825. Théorèmes publics conditionnels : 151.
+Répartition des ponts par provenance : 8 external, 5 internal. Théorèmes conditionnels par nature de pont (un théorème mixte compterait dans chaque catégorie) : 113 external, 59 internal.
+Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionnels par statut de pont (un théorème mixte compterait dans chaque catégorie) : 113 open, 60 discharged.
 
 | Identifiant | Nature | Statut | Proposition Lean | Déchargé par | Source primaire | Localisation |
 |---|---|---|---|---|---|---|
@@ -3517,6 +3517,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.SectionTwelveMoments.overlappingPairs_uniformLittleOQuadratic` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:1252` |
 | `PaperC.SectionTwelveMoments.relationRho_twoStartSystem_cutoff_invariant` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:745` |
 | `PaperC.SectionTwelveMoments.separatedOffDiagPairs_eq_separatedDyadicPairs` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:232` |
+| `PaperC.SectionTwelveMoments.theorem_one_four_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/TheoremOneFourCanonical.lean:26` |
 | `PaperC.SectionTwelveMoments.touchingLower_add_mem_dyadicBlock` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:814` |
 | `PaperC.SectionTwelveMoments.touchingMass_uniformLittleOQuadratic` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:1262` |
 | `PaperC.SectionTwelveMoments.touchingOffDiagPairs_eq_touchingPairs` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:214` |
