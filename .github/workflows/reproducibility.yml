@@ -17,6 +17,10 @@ jobs:
       - name: Check out the certified triplet
         uses: actions/checkout@v4
 
+      # generate_audit.mjs enumerates sources with ripgrep, absent from runners.
+      - name: Install ripgrep
+        run: sudo apt-get update && sudo apt-get install -y ripgrep
+
       # Review-prescribed order: PDF bytes, source digest, build, audit
       # generation, kernel audit, then final manifest consistency.
       - name: Verify certified PDF bytes
