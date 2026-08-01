@@ -5,13 +5,25 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const argumentsSet = new Set(process.argv.slice(2));
+const supportedArguments = new Set([
+  '--check',
+  '--check-pdfs',
+  '--check-source-digest',
+]);
 for (const argument of argumentsSet) {
-  if (argument !== '--check') {
+  if (!supportedArguments.has(argument)) {
     throw new Error(`unknown argument: ${argument}`);
   }
 }
+if (argumentsSet.size > 1) {
+  throw new Error(
+    '`--check`, `--check-pdfs`, and `--check-source-digest` are mutually exclusive',
+  );
+}
 
 const checkOnly = argumentsSet.has('--check');
+const checkPdfsOnly = argumentsSet.has('--check-pdfs');
+const checkSourceDigestOnly = argumentsSet.has('--check-source-digest');
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
 const sourceRoot = path.join(projectRoot, 'PaperC');
@@ -75,6 +87,7 @@ const validatePdfEntry = (field, entry) => {
     Object.keys(entry).sort().join(',') !== 'filename,sha256' ||
     typeof entry.filename !== 'string' ||
     entry.filename.length === 0 ||
+    path.basename(entry.filename) !== entry.filename ||
     !entry.filename.endsWith('.pdf') ||
     !/^[0-9a-f]{64}$/.test(entry.sha256)
   ) {
@@ -89,6 +102,45 @@ if (
 ) {
   throw new Error('target_pdf and source_pdf_fr must identify distinct files');
 }
+
+const verifiedPdfEntries = {};
+for (const field of ['target_pdf', 'source_pdf_fr']) {
+  const entry = auditConfig[field];
+  const pdfPath = path.join(projectRoot, entry.filename);
+  if (!fs.existsSync(pdfPath)) {
+    throw new Error(
+      `${field} PDF is missing: ${entry.filename}`,
+    );
+  }
+  const pdfBytes = fs.readFileSync(pdfPath);
+  const actualSha256 = crypto
+    .createHash('sha256')
+    .update(pdfBytes)
+    .digest('hex');
+  if (actualSha256 !== entry.sha256) {
+    throw new Error(
+      `${field} PDF SHA-256 mismatch for ${entry.filename}: ` +
+      `expected ${entry.sha256}, got ${actualSha256}`,
+    );
+  }
+  verifiedPdfEntries[field] = {
+    filename: entry.filename,
+    sha256: actualSha256,
+    byte_length: pdfBytes.length,
+  };
+}
+
+if (checkPdfsOnly) {
+  fs.writeSync(
+    process.stdout.fd,
+    `verified target_pdf ${verifiedPdfEntries.target_pdf.sha256} ` +
+    `(${verifiedPdfEntries.target_pdf.byte_length} bytes); ` +
+    `source_pdf_fr ${verifiedPdfEntries.source_pdf_fr.sha256} ` +
+    `(${verifiedPdfEntries.source_pdf_fr.byte_length} bytes)\n`,
+  );
+  process.exit(0);
+}
+
 const readme = fs.readFileSync(readmePath, 'utf8');
 for (const field of ['target_pdf', 'source_pdf_fr']) {
   for (const key of ['filename', 'sha256']) {
@@ -287,6 +339,37 @@ for (const relativePath of sourceFiles) {
   }
 }
 
+const digest = sourceDigest.digest('hex');
+
+if (checkSourceDigestOnly) {
+  if (!fs.existsSync(manifestPath)) {
+    throw new Error('audit_manifest.json is missing');
+  }
+  let checkedManifest;
+  try {
+    checkedManifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  } catch (error) {
+    throw new Error(`audit_manifest.json is not valid JSON: ${error.message}`);
+  }
+  if (!/^[0-9a-f]{64}$/.test(checkedManifest.source_digest_sha256 ?? '')) {
+    throw new Error(
+      'audit_manifest.json has an invalid source_digest_sha256 field',
+    );
+  }
+  if (checkedManifest.source_digest_sha256 !== digest) {
+    throw new Error(
+      'PaperC source digest mismatch: ' +
+      `manifest records ${checkedManifest.source_digest_sha256}, ` +
+      `computed ${digest}`,
+    );
+  }
+  fs.writeSync(
+    process.stdout.fd,
+    `verified PaperC source digest ${digest}\n`,
+  );
+  process.exit(0);
+}
+
 declarations.sort((left, right) => binaryCompare(left.name, right.name));
 const duplicateNames = declarations.filter(
   (declaration, index) =>
@@ -342,6 +425,29 @@ function parseBridgeMarkers(relativePath, rawSource) {
           `has an invalid ${field}`,
         );
       }
+    }
+    if (
+      metadata.manuscript_locator.reference !== undefined &&
+      /^(?:\[\d+\]|\d+)$/.test(metadata.manuscript_locator.reference)
+    ) {
+      throw new Error(
+        `${relativePath}: bridge ${metadata.id} uses a fragile numeric ` +
+        'manuscript bibliography reference; use bibliography_key or author-year',
+      );
+    }
+    if (
+      metadata.manuscript_locator.bibliography_key !== undefined &&
+      (
+        typeof metadata.manuscript_locator.bibliography_key !== 'string' ||
+        !/^[A-Za-z][A-Za-z0-9:_-]*$/.test(
+          metadata.manuscript_locator.bibliography_key,
+        )
+      )
+    ) {
+      throw new Error(
+        `${relativePath}: bridge ${metadata.id} has an invalid ` +
+        'manuscript bibliography_key',
+      );
     }
     if (!['external', 'internal'].includes(metadata.kind)) {
       throw new Error(
@@ -1028,7 +1134,6 @@ if (!versionMatch) {
   throw new Error('project version not found in lakefile.toml');
 }
 
-const digest = sourceDigest.digest('hex');
 const auditContent = [
   'import PaperC.Main',
   '',

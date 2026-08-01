@@ -11,7 +11,7 @@ Legend:
 In the audit registry, `kind: external | internal` records the provenance of
 the statement. The separate field `status: open | discharged` records whether
 the interface is still required: only `open` constitutes current formalization
-debt. In v0.45.0, with Lean/mathlib unchanged at `v4.32.2`, all five
+debt. In v0.46.0, with Lean/mathlib unchanged at `v4.32.2`, all five
 `internal` interfaces remain `discharged`, while all seven `open` interfaces
 remain `external`. The 13-entry registry is unchanged: eight `external`, five
 `internal`, seven `open` (all `external`), and six `discharged`. Exact

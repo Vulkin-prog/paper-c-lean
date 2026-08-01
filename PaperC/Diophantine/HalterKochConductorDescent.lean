@@ -16,13 +16,50 @@ quadratic-order argument behind it is sharper:
 * inside a fixed extended-principal-ideal fibre, order-principal ideals
   are exactly the cosets of that unit quotient.
 
-The present repository does not yet contain the order embedding
-`ℤ[√D] → O_K` needed to instantiate those three facts from Mathlib
-objects.  `HalterKochConductorDescentData` therefore records precisely this
-source boundary, with the unit quotient kept as an abstract finite type.
-The theorem at the end proves, in Lean, that this sharper three-coset
-statement implies the existing four-colour bridge.  The only cardinality
-slack is the explicit injection `Fin 3 → Fin 4`.
+## Why the maximal-order shortcut is not a local replacement in this encoding
+
+The manuscript's maximal-order proof is mathematically sound: one may send
+`α = X + Y√D` directly to the principal ideal `(α)` of `O_K`, count all
+ideal divisors of `(M)` there, and allow every unit of `O_K` when counting the
+generators of a fixed ideal.  Enlarging the acting unit group can only enlarge
+the resulting upper bound, so the *paper proof* does not intrinsically need a
+descent to `ℤ[√D]`.
+
+The current Lean proof, however, splits that argument at a different boundary.
+`QuadraticIdealDivisors.quadraticIdealDivisorTauSq` performs the maximal-order
+ideal count, but the quantitative generator count is
+`card_samePrincipalIdeal_solutionFiber`.  Its input is equality of principal
+ideals in the concrete ring `Zsqrtd`, and
+`same_principalIdeal_gives_pell_unit` turns precisely that equality into a
+`Pell.Solution₁`.  The subsequent uniform bound uses the integral `x,y`
+coordinates of this Pell unit in `pellUnit_y_natAbs_le`, followed by the
+explicit geometric growth theorem `two_pow_le_y_pow_succ`.  Equality after
+extension to `O_K` gives only a quotient in `(O_K)ˣ`; it does **not** supply a
+`Pell.Solution₁`, since a maximal-order unit need not preserve `ℤ[√D]`
+when `D ≡ 1 (mod 4)`.
+
+Mathlib 4.32.2 contains the abstract Dirichlet unit theorem (in particular
+`NumberField.Units.exist_unique_eq_mul_prod`, `fundSystem`, and the unit
+lattice), but it does not provide the replacement needed here as one packaged
+result: a concrete integral-basis description of `O_{ℚ(√D)}` connected to
+`Zsqrtd`, together with a **uniform quantitative** height-box count for the
+maximal-order unit orbit.  The available lattice result
+`unitLattice_inter_ball_finite` proves finiteness, not the explicit logarithmic
+bound uniform in the varying squarefree `D` required by Lemma 9.2.  A direct
+maximal-order implementation would therefore have to construct the quadratic
+field and both real embeddings, prove the coordinate/embedding height
+comparison, specialize Dirichlet rank to one, bound torsion, and prove a
+uniform positive lower bound for the fundamental logarithm before replacing
+the complete orbit-counting block above.  That is a substantive refactor, not
+a proof of the present bridge from existing Mathlib lemmas.
+
+The present repository also does not yet contain the concrete order embedding
+`ℤ[√D] → O_K` and integral-basis comparison needed for the alternative
+conductor descent.  `HalterKochConductorDescentData` therefore records precisely
+this source boundary, with the unit quotient kept as an abstract finite type.
+The theorem at the end proves, in Lean, that this sharper three-coset statement
+implies the existing four-colour bridge.  The only cardinality slack is the
+explicit injection `Fin 3 → Fin 4`.
 
 No new `AUDIT_BRIDGE` is introduced here: this file factors and explains
 the already registered Halter--Koch boundary.

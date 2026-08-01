@@ -1,0 +1,63 @@
+name: Reproducibility audit
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Check out the certified triplet
+        uses: actions/checkout@v4
+
+      # Review-prescribed order: PDF bytes, source digest, build, audit
+      # generation, kernel audit, then final manifest consistency.
+      - name: Verify certified PDF bytes
+        run: node scripts/generate_audit.mjs --check-pdfs
+
+      - name: Verify checked-in Lean source digest
+        run: node scripts/generate_audit.mjs --check-source-digest
+
+      - name: Set up the pinned Lean toolchain
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Build the project
+        run: lake build
+
+      - name: Generate the exhaustive audit
+        run: node scripts/generate_audit.mjs
+
+      - name: Run the generated kernel audit and capture its log
+        run: |
+          mkdir -p ci-logs
+          set -o pipefail
+          lake env lean AuditCheck.lean 2>&1 | tee ci-logs/AuditCheck.log
+
+      - name: Verify audit exhaustiveness and the axiom allowlist
+        run: node scripts/verify_audit.mjs --input ci-logs/AuditCheck.log
+
+      - name: Preserve the kernel audit log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-c-kernel-audit-${{ github.sha }}
+          path: ci-logs/AuditCheck.log
+          if-no-files-found: error
+
+      - name: Verify the final manifest and generated artifacts
+        run: |
+          node scripts/generate_audit.mjs --check
+          git diff --exit-code -- AuditCheck.lean audit_manifest.json AXIOM_AUDIT.md

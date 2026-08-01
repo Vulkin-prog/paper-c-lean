@@ -2,28 +2,27 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.45.0`
+- paper_c_lean : `0.46.0`
 - Lean : `v4.32.2`
 - mathlib : `v4.32.2`
 - PDF cible anglais (71 pages dans le fichier portant cette empreinte), SHA-256 :
-  `a7d4bc20de3a823d66a37a8833be041de091703f152b78a71dc69d1185dcf929`
+  `e466e3ea5cd328af67fa6a1f92909bba30cdc3d9a9a8a3bb46c8fb616e8d5924`
 - PDF source français synchronisé (72 pages), SHA-256 :
-  `a1e00de33dea14845ab09bb71ad34d591cccc37ea1e238914933fb644bbfa0e2`
+  `5e4a1ff5d448972cc8aaae39b09a9d80c9c01cf11e5f75f993817726acd90b9b`
 - racine unique de l’archive : `paper_c_lean/`
-- archive de livraison : `paper_c_lean_v045.zip`
+- archive de livraison : `paper_c_lean_v046.zip`
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles.
 
-## Périmètre du jalon 0.45
+## Périmètre du jalon 0.46
 
-La v045 conserve Lean/mathlib `v4.32.2` et le registre de 13 ponts (sept
-`external/open`, six `discharged`). Elle ajoute les endpoints canoniques du
-corollaire 11.3, des lois produit infinies, du recentrage de 16.2, du taux
-masqué et de la loi du préfixe. La frontière Halter--Koch est désormais
-rattachée à des théorèmes et pages précis, et la conversion des trois classes
-d’unités en `Fin 4` est prouvée dans Lean. Les métriques exactes ci-dessous
-sont celles du manifeste v045 régénéré.
+La v046 conserve Lean/mathlib `v4.32.2`, le contenu mathématique de la v045 et
+le registre de 13 ponts (sept `external/open`, six `discharged`). Elle rend le
+triplet manuscrits--sources--audit auto-contenu : les deux PDF certifiés sont
+inclus dans l’archive et leurs octets réels sont hachés avant le build. Les
+citations du registre utilisent des clés bibliographiques stables. Les
+métriques exactes ci-dessous sont celles du manifeste v046 régénéré.
 
 ### Historique v044–v043
 
@@ -122,7 +121,7 @@ find PaperC -name '*.lean' -type f | wc -l
 find PaperC -name '*.lean' -type f -print0 | xargs -0 wc -l | tail -n 1
 ```
 
-La v045 contient **381 modules** et **146 353 lignes Lean**. Le manifeste
+La v046 contient **381 modules** et **146 390 lignes Lean**. Le manifeste
 recense **4 065 théorèmes** et **5 lemmes**, soit **4 070 déclarations
 publiques** et **4 072 cibles d’audit** (les deux cibles supplémentaires sont
 les constructions historiques explicitement retenues par la liste blanche).
@@ -329,21 +328,38 @@ revendiquées.
 ## Vérifications attendues
 
 Ces commandes doivent être lancées depuis une extraction neuve de l'archive,
-sans répertoire `.lake` hérité d'une version antérieure :
+sans répertoire `.lake/build` hérité d'une version antérieure. Après la mise
+en place ponctuelle des dépendances (`lake exe cache get`), l’ordre de la CI
+et de la validation de release est exactement le suivant :
 
 ```bash
-lake exe cache get
+node scripts/generate_audit.mjs --check-pdfs
+node scripts/generate_audit.mjs --check-source-digest
 lake build
+node scripts/generate_audit.mjs
+mkdir -p ci-logs
+lake env lean AuditCheck.lean 2>&1 | tee ci-logs/AuditCheck.log
+node scripts/verify_audit.mjs --input ci-logs/AuditCheck.log
 node scripts/generate_audit.mjs --check
-lake env lean AuditCheck.lean
-node scripts/verify_audit.mjs
+```
+
+Le premier contrôle ouvre et hache les octets réels des deux PDF ; il échoue
+si l’un d’eux manque ou diffère de `audit_config.json`. Le deuxième recalcule
+le digest de tous les fichiers `PaperC/**/*.lean` et le compare au manifeste
+versionné. La génération de l’audit vient seulement après le build. La sortie
+de l’unique exécution Lean est conservée, puis vérifiée pour l’exhaustivité et
+la liste blanche. Le `--check` final hache à nouveau les deux PDF et exige que
+les trois artefacts générés soient exactement à jour. Le workflow public
+`.github/workflows/reproducibility.yml` applique cet ordre, archive
+`AuditCheck.log`, puis garde le contrôle du manifeste comme dernière étape.
+
+Le scan d’hygiène indépendant ci-dessous ne doit produire aucune ligne :
+
+```bash
 rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' .
 ```
 
-Les cinq premières commandes doivent réussir. La dernière ne doit produire
-aucune ligne.
-
-Pour la livraison 0.44, la validation de publication doit être rejouée depuis
+Pour la livraison 0.46, la validation de publication doit être rejouée depuis
 deux arbres indépendants dépourvus de `.lake/build`, dont une extraction du
 ZIP final. Dans chacun, le build doit se terminer par
 `Build completed successfully`. L’audit doit produire une sortie pour chaque
@@ -354,8 +370,8 @@ retrouver exactement les comptes du manifeste final régénéré et enregistrer
 9.2, 9.10, 17.26, 17.28, 17.30 et l’ancienne enveloppe Nicolas--Robin avec
 `status: discharged`. Il doit retrouver 13 interfaces — huit `external`,
 cinq `internal`, sept `open` toutes `external` et six `discharged` — ainsi
-que 3 971 théorèmes et 5 lemmes publics, 3 978 cibles, 3 825 résultats
-inconditionnels et 151 conditionnels. Il ne doit retrouver aucune interface
+que 4 065 théorèmes et 5 lemmes publics, 4 072 cibles, 3 912 résultats
+inconditionnels et 158 conditionnels. Il ne doit retrouver aucune interface
 `internal/open`. Le scan des constructions interdites doit rester vide.
 
 Pour inspecter les dépendances logiques d'un théorème particulier :
@@ -387,14 +403,17 @@ triés, sans doublon, sont reproduits dans `audit_manifest.json`.
 
 `scripts/generate_audit.mjs` dérive `AuditCheck.lean`, le schéma versionné de
 `audit_manifest.json` et le registre délimité de `AXIOM_AUDIT.md` directement
-des sources Lean. Son mode `--check` échoue si l'un des trois est périmé. Le
-script `scripts/verify_audit.mjs` exécute l’audit, exige exactement une sortie
-par cible du manifeste et contrôle automatiquement la liste blanche. Le
-manifeste distingue les dépendances fondationnelles imprimées par Lean des
+des sources Lean. Ses modes `--check-pdfs` et `--check-source-digest` ferment
+les deux préconditions du build ; son mode `--check` les rejoue et échoue si
+l'un des trois artefacts générés est périmé. Le script
+`scripts/verify_audit.mjs` peut exécuter l’audit lui-même ou relire le journal
+fourni par `--input` ; il exige exactement une sortie par cible du manifeste
+et contrôle automatiquement la liste blanche. Le manifeste distingue les
+dépendances fondationnelles imprimées par Lean des
 hypothèses ordinaires, invisibles à `#print axioms`; il associe donc à chaque
 théorème public un statut conditionnel/inconditionnel, la liste des ponts
 qu’il prend comme prémisses directes, leur nature `external | internal` et
-leur état `open | discharged`. Les comptes v044 publiés ci-dessus sont ceux
+leur état `open | discharged`. Les comptes v046 publiés ci-dessus sont ceux
 du manifeste régénéré.
 `ReviewAxioms.lean` est conservé comme sélection historique des
 résultats structurants, mais n'est plus la liste canonique. Chaque sortie de
@@ -408,12 +427,14 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v045.zip
-unzip -Z1 paper_c_lean_v045.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v046.zip
+unzip -Z1 paper_c_lean_v046.zip | rg -v '^paper_c_lean/'
 ```
 
 La seconde commande ne doit produire aucune ligne. L'archive ne doit contenir
-ni `.lake`, ni `.git`, ni un second répertoire `paper_c_lean/` imbriqué.
+ni `.lake`, ni `.git`, ni un second répertoire `paper_c_lean/` imbriqué. Elle
+doit en revanche contenir à sa racine les deux PDF certifiés, afin que les
+contrôles d’empreinte soient exécutables hors ligne.
 
 ## Limite de cette vérification
 

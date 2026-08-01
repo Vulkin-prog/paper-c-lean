@@ -1,5 +1,72 @@
 # Journal des versions
 
+## 0.46.0
+
+- Reproducibility resynchronization with Lean and mathlib still pinned to
+  `v4.32.2`, no `sorry`, no added axiom, and no change to mathematical Lean
+  content or public signatures. The source has 381 modules and 146,390 Lean
+  lines. The manifest still records 4,065 theorems and five lemmas: 4,070
+  public declarations, 4,072 audit targets, 3,912 results without a registered
+  bridge premise, and 158 conditional results. The 13-entry registry is
+  unchanged: eight `external`, five `internal`, seven `open` (all external),
+  and six `discharged`.
+- The manuscript--sources--audit triplet is now self-contained and checked
+  against bytes rather than metadata strings. Both certified PDFs are shipped
+  at the archive root. `generate_audit.mjs` reads each file, computes its
+  SHA-256 digest, and compares it with `audit_config.json` during generation,
+  `--check-pdfs`, and the final `--check`; a missing PDF or a one-byte mismatch
+  is fatal. `--check-source-digest` independently compares the real
+  `PaperC/**/*.lean` source digest with the checked-in manifest.
+- The public reproducibility workflow follows the reviewer-prescribed order:
+  real PDF fingerprints, checked-in source digest, `lake build`, audit
+  generation, one logged `lake env lean AuditCheck.lean` run, exhaustive
+  allowlist validation of that log, and final manifest/generated-artifact
+  consistency. The 4,072-entry kernel log is preserved as a CI artifact; the
+  final manifest check remains the last validation step.
+- Bibliographic references in bridge provenance no longer depend on manuscript
+  numbering. The stale Laishram--Shorey `[20]` locator is now
+  `LaishramShorey2004`, and the Balasubramanian--Shorey locator is
+  `BalasubramanianShorey1993`. The generator rejects a reintroduced bare
+  numeric bibliography reference. In the final manuscript bibliography,
+  Laishram--Shorey is entry `[22]`, while `[20]` is Kallenberg.
+- The maximal-order shortcut suggested for the Halter--Koch boundary was
+  checked and is mathematically valid for the printed proof: enlarging from
+  order units to all maximal-order units only increases the upper bound.
+  It is not a local replacement in the present Lean architecture.
+  `quadraticIdealDivisorTauSq` already counts ideals in `O_K`, but
+  `card_samePrincipalIdeal_solutionFiber` then uses equality in `Zsqrtd` to
+  produce an integral `Pell.Solution₁` and obtain the explicit logarithmic
+  orbit bound uniformly in squarefree `D`. Mathlib 4.32.2 supplies the
+  abstract Dirichlet unit theorem and lattice finiteness, but not this concrete
+  uniform height-box count for maximal-order units. The precise obstruction
+  and required refactor are documented in `HalterKochConductorDescent`; the
+  Halter--Koch bridge therefore remains open for v046, with no change to its
+  interface or status. A direct maximal-order refactor is deferred to v047.
+- Statement fidelity was rechecked independently against the v045 and v046
+  English and French PDFs. All four files have the same ordered inventory of
+  113 numbered items: seven theorems, 12 propositions, 77 lemmas, eight
+  corollaries, and nine remarks. All 104 theorem/proposition/lemma/corollary
+  statements and all nine remarks are unchanged. The 57 numbered equations
+  retain both their labels and displayed contents. In particular, no
+  mathematical statement previously transcribed in Lean changed.
+- The PDF diff is exclusively editorial and documentary: a first-page
+  conditional-formalization note, an introductory pointer to Corollary 16.4,
+  a reader-oriented parameter-hierarchy sentence, the existing proof of
+  Corollary 11.3 expanded into five explicit assembly steps, Section 18
+  updated to the v045 metrics and conditional terminology, Corollary 16.4
+  added to the dependency table, DOI/freeze wording and dates harmonized, and
+  the moderate-tail perspective clarified. The Corollary 11.3 endpoint itself
+  is unchanged. Visual checks of the affected and final pages in both editions
+  found no clipping, overlap, broken glyph, unreadable table, or blank trailing
+  page.
+- The definitive target is `paper_C_complete_v08_en.pdf`, 847,785 bytes and
+  71 physical pages, SHA-256
+  `e466e3ea5cd328af67fa6a1f92909bba30cdc3d9a9a8a3bb46c8fb616e8d5924`.
+  The synchronized French source is `paper_C_complete_v08.pdf`, 854,960 bytes
+  and 72 physical pages, SHA-256
+  `5e4a1ff5d448972cc8aaae39b09a9d80c9c01cf11e5f75f993817726acd90b9b`.
+  Both supplied byte streams match these fingerprints exactly.
+
 ## 0.45.0
 
 - Mathematical resynchronization with the two counter-reviewed version 8

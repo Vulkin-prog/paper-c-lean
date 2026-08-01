@@ -2821,7 +2821,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.PellInput.pellUnitOrbitEnvelope_le_log` | inconditionnel | — | — | — | `PaperC/Diophantine/PellDivisorEnvelope.lean:202` |
 | `PaperC.PellInput.pellUnit_y_natAbs_le` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:263` |
 | `PaperC.PellInput.principalIdeal_dvd_intCast` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:206` |
-| `PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent` | inconditionnel | — | — | — | `PaperC/Diophantine/HalterKochConductorDescent.lean:146` |
+| `PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent` | inconditionnel | — | — | — | `PaperC/Diophantine/HalterKochConductorDescent.lean:183` |
 | `PaperC.PellInput.same_principalIdeal_gives_pell_unit` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:225` |
 | `PaperC.PellInput.scaleImag_height` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:759` |
 | `PaperC.PellInput.scaleImag_injective` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:749` |

@@ -8,10 +8,10 @@ This repository accompanies the manuscript:
 
 Target manuscript: `paper_C_complete_v08_en.pdf` (71 physical pages in the
 file carrying the definitive fingerprint), SHA-256
-`a7d4bc20de3a823d66a37a8833be041de091703f152b78a71dc69d1185dcf929`.
+`e466e3ea5cd328af67fa6a1f92909bba30cdc3d9a9a8a3bb46c8fb616e8d5924`.
 
 Synchronized French source: `paper_C_complete_v08.pdf` (72 pages), SHA-256
-`a1e00de33dea14845ab09bb71ad34d591cccc37ea1e238914933fb644bbfa0e2`.
+`5e4a1ff5d448972cc8aaae39b09a9d80c9c01cf11e5f75f993817726acd90b9b`.
 
 ## Status
 
@@ -37,13 +37,15 @@ must therefore return no matches. This certifies only the modules present, not
 the complete 71-page target manuscript or its synchronized 72-page French
 source.
 
-Project version `0.45.0` synchronizes the formalization with the
-counter-reviewed additions to the two version 8 manuscript editions. It adds
-the exact exponential wrapper for Corollary 11.3, source-law wrappers for
-Theorems 1.1 and 16.2, the recentered global Poisson endpoint, the uniform
-masked rate, and the finite-prefix law. The Halter--Koch bridge now records
-the exact theorem and page chain and a compiled `Fin 3 → Fin 4` derivation;
-the seven-open-bridge boundary is unchanged. It carries v044 forward, whose
+Project version `0.46.0` makes the manuscript, source digest, build, and audit
+an indivisible reproducibility triplet. Both certified PDFs are included in
+the repository and are hashed from their actual bytes before any build. The
+mathematical Lean content is unchanged from v045, which added the exact
+exponential wrapper for Corollary 11.3, source-law wrappers for Theorems 1.1
+and 16.2, the recentered global Poisson endpoint, the uniform masked rate,
+and the finite-prefix law. The Halter--Koch bridge records the exact theorem
+and page chain and a compiled `Fin 3 → Fin 4` derivation; the seven-open-bridge
+boundary is unchanged. The project carries v044 forward, whose
 only project-wide change before that was the Lean/mathlib migration from
 `v4.19.0` to `v4.32.2`. It retains
 the closure of the internal §14 chain, the v041 legacy cleanup, and the
@@ -229,7 +231,7 @@ canonical API consumes none of them. Canonical Proposition 16.1 takes only
 Evertse--Silverman and the two literature corollaries that reconstruct Pell.
 Version 041 removes the six intermediate sector adapters and the variants
 receiving Pell directly; only canonical endpoints and direct generic
-assemblies are retained. The v045 toolchain remains frozen at Lean/mathlib
+assemblies are retained. The v046 toolchain remains frozen at Lean/mathlib
 `v4.32.2`. This migration changes neither canonical signatures nor audit
 registry entries.
 
@@ -303,7 +305,8 @@ Starting with version 0.19, every published archive has a single
 `paper_c_lean/` root. Project files sit immediately beneath that root. This
 contract is stable for subsequent versions: neither a flat archive nor a
 double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
-`paper_c_lean_v045.zip`.
+`paper_c_lean_v046.zip`. It includes both certified PDFs at the project root,
+so every fingerprint check is executable offline from a fresh extraction.
 
 ## Certified modules
 
@@ -1321,42 +1324,52 @@ outside the covered zone.
 ## Building
 
 The project pins Lean `v4.32.2` and mathlib `v4.32.2`. The `lean-toolchain`
-file, `lakefile.toml`, and the Lake manifest lock this toolchain for v045.
-The repository contains 381 modules and 146,353 lines of Lean. The generated
+file, `lakefile.toml`, and the Lake manifest lock this toolchain for v046.
+The repository contains 381 modules and 146,390 lines of Lean. The generated
 manifest records 4,065 theorems and five lemmas, hence 4,070 public
 declarations and 4,072 audit targets: 3,912 declarations have no registered
 bridge premise and 158 are conditional. Relative to the content-frozen v044,
-v045 adds eight modules and 94 public declarations; it removes no public name
+v045 added eight modules and 94 public declarations; v046 removes no public name
 and changes no earlier signature. The earlier 521-line increase from v042 to
 v043 consisted exclusively of proof-body adaptations to Lean 4.32.2.
 
+Fetch the dependency cache once with `lake exe cache get` when needed. The
+release and CI checks then run in this exact order:
+
 ```bash
-lake exe cache get
+node scripts/generate_audit.mjs --check-pdfs
+node scripts/generate_audit.mjs --check-source-digest
 lake build
-lake env lean AuditCheck.lean
-node scripts/verify_audit.mjs
-```
-
-The last command is the exhaustive audit: it executes `#print axioms` for every
-public theorem or lemma, and for the two public proof-carrying constructions
-retained from the historical audit. `verify_audit.mjs` replays this command,
-checks that an output corresponds to every target in the regenerated manifest,
-and automatically rejects anything outside the foundational allowlist. The
-generated file and manifest are checked before publication with:
-
-```bash
+node scripts/generate_audit.mjs
+mkdir -p ci-logs
+lake env lean AuditCheck.lean 2>&1 | tee ci-logs/AuditCheck.log
+node scripts/verify_audit.mjs --input ci-logs/AuditCheck.log
 node scripts/generate_audit.mjs --check
 ```
+
+The first command hashes the actual bytes of both repository PDFs and fails if
+either file is absent or differs from `audit_config.json`. The second compares
+the checked-in manifest with a digest of every `PaperC/**/*.lean` source. Only
+then is the project built and the exhaustive audit regenerated. The single
+`AuditCheck.lean` run executes `#print axioms` for every public theorem or
+lemma and for the two historical public proof-carrying constructions.
+`verify_audit.mjs` reads its preserved log, requires one output for every
+manifest target, and rejects anything outside the foundational allowlist. The
+final `--check` hashes both PDFs again and verifies that `AuditCheck.lean`,
+`audit_manifest.json`, and the generated registry in `AXIOM_AUDIT.md` are
+exactly current. The public workflow implementing this sequence is
+`.github/workflows/reproducibility.yml`; it archives `AuditCheck.log` as a CI
+artifact.
 
 The axiom audit does not detect ordinary hypotheses. Their inventory is the
 bridge registry in `audit_manifest.json` and `AXIOM_AUDIT.md`: each entry has
 `kind: external | internal` and `status: open | discharged`, and each
 conditional public theorem is marked with the exact list and kind of bridges
-it takes as direct premises. In v045, the interfaces for 9.10, 9.2, 17.26,
+it takes as direct premises. In v046, the interfaces for 9.10, 9.2, 17.26,
 17.28, and 17.30, as well as the former Nicolas--Robin envelope, have
 `status: discharged`. `kind: internal` describes provenance and therefore does
 not by itself mean that debt remains open. All five `internal` interfaces are
-`discharged`; all seven `open` entries are `external`. The v045 manifest's
+`discharged`; all seven `open` entries are `external`. The v046 manifest's
 declaration, audit-target, and conditionality counts are reproduced in
 `REPRODUCIBILITY.md`.
 

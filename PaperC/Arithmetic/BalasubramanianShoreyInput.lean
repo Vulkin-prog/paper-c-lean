@@ -102,7 +102,7 @@ is an equivalent reformulation because `k` is a natural number.
   "manuscript_locator": {
     "result": "Lemma 15.4",
     "pages": "50–51",
-    "reference": "[3]"
+    "bibliography_key": "BalasubramanianShorey1993"
   },
   "formalization_relation": "equivalent finset reformulation of the distinct offsets and their product; P⁺(b)≤k is expressed as every prime factor of b being at most k; the real absolute bound C₂ is replaced by its natural ceiling; published effectivity is not encoded"
 }

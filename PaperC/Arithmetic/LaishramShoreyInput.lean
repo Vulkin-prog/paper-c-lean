@@ -5,7 +5,7 @@ import Mathlib.Data.Nat.Factorization.Basic
 # Laishram--Shorey input for a product of consecutive integers
 
 This module records, without strengthening it, Corollary 1 of Laishram and
-Shorey [20].  All subsequent manipulations of the bound (discarding the
+Shorey (2004).  All subsequent manipulations of the bound (discarding the
 nonnegative correction term and extracting primes above the window length)
 are carried out in Lean.
 -/
@@ -15,12 +15,12 @@ namespace LaishramShoreyInput
 
 open scoped BigOperators
 
-/-- The product `Δ(n,k) = n(n+1)⋯(n+k-1)` used in [20]. -/
+/-- The product `Δ(n,k) = n(n+1)⋯(n+k-1)` used by Laishram--Shorey (2004). -/
 def consecutiveProduct (n k : ℕ) : ℕ :=
   ∏ i ∈ Finset.range k, (n + i)
 
 /--
-The correction term `δ(k)` appearing in Corollary 1 of [20].
+The correction term `δ(k)` appearing in Corollary 1 of Laishram--Shorey (2004).
 
 It is `3` for `k=2`, `2` for `3≤k≤6`, `1` for `7≤k≤16`, and `0`
 thereafter.
@@ -60,7 +60,7 @@ is exactly the floor in the printed statement.
   "manuscript_locator": {
     "result": "Lemma 15.2",
     "pages": "49–50",
-    "reference": "[20]"
+    "bibliography_key": "LaishramShorey2004"
   },
   "formalization_relation": "exact natural-number transcription; primeFactors.card is ω, PrimesUpTo.count is π, and Nat division by 4 is the printed floor"
 }

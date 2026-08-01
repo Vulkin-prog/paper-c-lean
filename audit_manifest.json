@@ -1,19 +1,19 @@
 {
   "schema_version": 4,
   "project": "paper_c_lean",
-  "project_version": "0.45.0",
+  "project_version": "0.46.0",
   "target_pdf": {
     "filename": "paper_C_complete_v08_en.pdf",
-    "sha256": "a7d4bc20de3a823d66a37a8833be041de091703f152b78a71dc69d1185dcf929"
+    "sha256": "e466e3ea5cd328af67fa6a1f92909bba30cdc3d9a9a8a3bb46c8fb616e8d5924"
   },
   "source_pdf_fr": {
     "filename": "paper_C_complete_v08.pdf",
-    "sha256": "a1e00de33dea14845ab09bb71ad34d591cccc37ea1e238914933fb644bbfa0e2"
+    "sha256": "5e4a1ff5d448972cc8aaae39b09a9d80c9c01cf11e5f75f993817726acd90b9b"
   },
   "audit_file": "AuditCheck.lean",
   "import": "PaperC.Main",
   "source_glob": "PaperC/**/*.lean",
-  "source_digest_sha256": "5e11b921f1141778d910dc3f7181d1f348bf5986e806ddf4147b136ea7bbb312",
+  "source_digest_sha256": "79c38e5717613a44222f613d4144d37ddcacb3aaa99b1fc4f861ca119f87233a",
   "selection": {
     "include": "explicit public theorem or lemma declarations under namespace PaperC",
     "exclude": [
@@ -158,7 +158,7 @@
       "manuscript_locator": {
         "result": "Lemma 15.4",
         "pages": "50–51",
-        "reference": "[3]"
+        "bibliography_key": "BalasubramanianShorey1993"
       },
       "formalization_relation": "equivalent finset reformulation of the distinct offsets and their product; P⁺(b)≤k is expressed as every prime factor of b being at most k; the real absolute bound C₂ is replaced by its natural ceiling; published effectivity is not encoded",
       "declaration": {
@@ -269,7 +269,7 @@
       "manuscript_locator": {
         "result": "Lemma 15.2",
         "pages": "49–50",
-        "reference": "[20]"
+        "bibliography_key": "LaishramShorey2004"
       },
       "formalization_relation": "exact natural-number transcription; primeFactors.card is ω, PrimesUpTo.count is π, and Nat division by 4 is the printed floor",
       "declaration": {
@@ -21391,7 +21391,7 @@
       "name": "PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent",
       "kind": "theorem",
       "source": "PaperC/Diophantine/HalterKochConductorDescent.lean",
-      "line": 146,
+      "line": 183,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },

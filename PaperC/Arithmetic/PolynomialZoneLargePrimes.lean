@@ -174,7 +174,7 @@ theorem primeFactors_card_sub_primeCount_le_largePrimeFactors_card
         rw [← PrimeCountBridge.count_eq_card_smallPrimesUpTo]
   omega
 
-/-- The exact finite lower bound on large primes obtained from [20]. -/
+/-- The exact finite lower bound on large primes obtained from Laishram--Shorey (2004). -/
 theorem laishramShorey_largePrimeFactors
     (hLS : LaishramShoreyStatement)
     {n k : ℕ} (hk : 2 ≤ k) (hnk : k < n) :
