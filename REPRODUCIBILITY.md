@@ -2,27 +2,33 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.46.0`
+- paper_c_lean : `0.47.0`
 - Lean : `v4.32.2`
 - mathlib : `v4.32.2`
 - PDF cible anglais (71 pages dans le fichier portant cette empreinte), SHA-256 :
-  `e466e3ea5cd328af67fa6a1f92909bba30cdc3d9a9a8a3bb46c8fb616e8d5924`
+  `2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927`
 - PDF source français synchronisé (72 pages), SHA-256 :
-  `5e4a1ff5d448972cc8aaae39b09a9d80c9c01cf11e5f75f993817726acd90b9b`
+  `c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5`
 - racine unique de l’archive : `paper_c_lean/`
-- archive de livraison : `paper_c_lean_v046.zip`
+- archive de livraison : `paper_c_lean_v047.zip`
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles.
 
-## Périmètre du jalon 0.46
+## Périmètre du jalon 0.47
 
-La v046 conserve Lean/mathlib `v4.32.2`, le contenu mathématique de la v045 et
-le registre de 13 ponts (sept `external/open`, six `discharged`). Elle rend le
-triplet manuscrits--sources--audit auto-contenu : les deux PDF certifiés sont
-inclus dans l’archive et leurs octets réels sont hachés avant le build. Les
-citations du registre utilisent des clés bibliographiques stables. Les
-métriques exactes ci-dessous sont celles du manifeste v046 régénéré.
+La v047 conserve Lean/mathlib `v4.32.2`, tout le contenu mathématique de la
+v045 et le registre de 13 ponts (sept `external/open`, six `discharged`). Elle
+ferme le défaut racine de la v046 : `PaperC.lean`, cible de la bibliothèque
+Lake, appartient désormais au digest, au recensement des déclarations, à la
+recherche des ponts et à l’import de l’audit. Le manifeste expose l’ensemble
+exact `source_fileset: ["PaperC.lean", "PaperC/**/*.lean"]`, et le générateur
+l’énumère avec `fs` sans dépendre de `rg`. Deux gardes automatiques vérifient
+le digest et l’inventaire sur ce fichier. La v046 avait rendu le triplet
+manuscrits--sources--audit auto-contenu et introduit le hachage des octets
+réels des deux PDF. Les comptes de déclarations ci-dessous proviennent du
+manifeste v047 régénéré ; les nombres de fichiers et de lignes sont reproduits
+par les commandes mécaniques indiquées plus bas.
 
 ### Historique v044–v043
 
@@ -117,11 +123,13 @@ corollaire 14.8 est donc fermé sans prémisse de convergence supplémentaire.
 Les métriques exactes du jalon se reproduisent par :
 
 ```bash
-find PaperC -name '*.lean' -type f | wc -l
-find PaperC -name '*.lean' -type f -print0 | xargs -0 wc -l | tail -n 1
+{ printf '%s\n' PaperC.lean; find PaperC -name '*.lean' -type f; } | wc -l
+{ printf '%s\0' PaperC.lean; find PaperC -name '*.lean' -type f -print0; } | xargs -0 wc -l | tail -n 1
 ```
 
-La v046 contient **381 modules** et **146 390 lignes Lean**. Le manifeste
+La v047 contient **381 modules sous `PaperC/`**, plus le module racine
+`PaperC.lean`, soit **382 fichiers sources audités** et **146 391 lignes
+Lean**. Le manifeste
 recense **4 065 théorèmes** et **5 lemmes**, soit **4 070 déclarations
 publiques** et **4 072 cibles d’audit** (les deux cibles supplémentaires sont
 les constructions historiques explicitement retenues par la liste blanche).
@@ -335,6 +343,8 @@ et de la validation de release est exactement le suivant :
 ```bash
 node scripts/generate_audit.mjs --check-pdfs
 node scripts/generate_audit.mjs --check-source-digest
+rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' PaperC.lean PaperC
+node scripts/test_audit_root_guards.mjs
 lake build
 node scripts/generate_audit.mjs
 mkdir -p ci-logs
@@ -345,21 +355,28 @@ node scripts/generate_audit.mjs --check
 
 Le premier contrôle ouvre et hache les octets réels des deux PDF ; il échoue
 si l’un d’eux manque ou diffère de `audit_config.json`. Le deuxième recalcule
-le digest de tous les fichiers `PaperC/**/*.lean` et le compare au manifeste
-versionné. La génération de l’audit vient seulement après le build. La sortie
-de l’unique exécution Lean est conservée, puis vérifiée pour l’exhaustivité et
-la liste blanche. Le `--check` final hache à nouveau les deux PDF et exige que
-les trois artefacts générés soient exactement à jour. Le workflow public
-`.github/workflows/reproducibility.yml` applique cet ordre, archive
-`AuditCheck.log`, puis garde le contrôle du manifeste comme dernière étape.
+le digest de l’ensemble exact `PaperC.lean` plus `PaperC/**/*.lean` et le
+compare au manifeste versionné. Le scan d’hygiène couvre explicitement ces
+deux branches ; l’absence de correspondance est le résultat attendu. Les deux
+gardes travaillent sur des copies temporaires et prouvent qu’une modification
+de `PaperC.lean` invalide le digest et qu’un théorème public ajouté à la racine
+entre dans l’inventaire et reçoit son `#print axioms`. La génération de
+l’audit vient seulement après le build. La sortie de l’unique exécution Lean
+est conservée, puis vérifiée pour l’exhaustivité et la liste blanche. Le
+`--check` final hache à nouveau les deux PDF et exige que les trois artefacts
+générés soient exactement à jour. Le workflow public
+`.github/workflows/reproducibility.yml` applique cet ordre : le contrôle du
+manifeste est la dernière validation, après laquelle `AuditCheck.log` est
+archivé. Le générateur ne dépend plus de `rg` ; le workflow installe
+néanmoins explicitement `ripgrep` juste avant le scan d’hygiène.
 
 Le scan d’hygiène indépendant ci-dessous ne doit produire aucune ligne :
 
 ```bash
-rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' .
+rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' PaperC.lean PaperC
 ```
 
-Pour la livraison 0.46, la validation de publication doit être rejouée depuis
+Pour la livraison 0.47, la validation de publication doit être rejouée depuis
 deux arbres indépendants dépourvus de `.lake/build`, dont une extraction du
 ZIP final. Dans chacun, le build doit se terminer par
 `Build completed successfully`. L’audit doit produire une sortie pour chaque
@@ -393,7 +410,7 @@ suivants :
 Les petits calculs décidables de ce dépôt utilisent donc `decide`, pas
 `native_decide`.
 
-`AuditCheck.lean` importe le point d'entrée public `PaperC.Main` et applique
+`AuditCheck.lean` importe le point d'entrée racine `PaperC` et applique
 un `#print axioms` à chaque déclaration publique explicite `theorem` ou
 `lemma` sous `PaperC`. Les déclarations `private` et `local` sont exclues :
 leurs dépendances remontent transitivement dans les théorèmes publics qui les
@@ -401,7 +418,8 @@ utilisent. Deux équivalences linéaires publiques porteuses de preuves, déjà
 présentes dans l'audit historique, sont ajoutées explicitement. Les noms
 triés, sans doublon, sont reproduits dans `audit_manifest.json`.
 
-`scripts/generate_audit.mjs` dérive `AuditCheck.lean`, le schéma versionné de
+`scripts/generate_audit.mjs` énumère nativement l’ensemble exact enregistré
+dans `source_fileset`, puis dérive `AuditCheck.lean`, le schéma versionné de
 `audit_manifest.json` et le registre délimité de `AXIOM_AUDIT.md` directement
 des sources Lean. Ses modes `--check-pdfs` et `--check-source-digest` ferment
 les deux préconditions du build ; son mode `--check` les rejoue et échoue si
@@ -413,7 +431,7 @@ dépendances fondationnelles imprimées par Lean des
 hypothèses ordinaires, invisibles à `#print axioms`; il associe donc à chaque
 théorème public un statut conditionnel/inconditionnel, la liste des ponts
 qu’il prend comme prémisses directes, leur nature `external | internal` et
-leur état `open | discharged`. Les comptes v046 publiés ci-dessus sont ceux
+leur état `open | discharged`. Les comptes v047 publiés ci-dessus sont ceux
 du manifeste régénéré.
 `ReviewAxioms.lean` est conservé comme sélection historique des
 résultats structurants, mais n'est plus la liste canonique. Chaque sortie de
@@ -427,8 +445,8 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v046.zip
-unzip -Z1 paper_c_lean_v046.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v047.zip
+unzip -Z1 paper_c_lean_v047.zip | rg -v '^paper_c_lean/'
 ```
 
 La seconde commande ne doit produire aucune ligne. L'archive ne doit contenir

@@ -2,10 +2,10 @@
   "schema_version": 1,
   "target_pdf": {
     "filename": "paper_C_complete_v08_en.pdf",
-    "sha256": "e466e3ea5cd328af67fa6a1f92909bba30cdc3d9a9a8a3bb46c8fb616e8d5924"
+    "sha256": "2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927"
   },
   "source_pdf_fr": {
     "filename": "paper_C_complete_v08.pdf",
-    "sha256": "5e4a1ff5d448972cc8aaae39b09a9d80c9c01cf11e5f75f993817726acd90b9b"
+    "sha256": "c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5"
   }
 }

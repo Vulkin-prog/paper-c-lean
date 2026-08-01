@@ -17,17 +17,39 @@ jobs:
       - name: Check out the certified triplet
         uses: actions/checkout@v4
 
-      # generate_audit.mjs enumerates sources with ripgrep, absent from runners.
-      - name: Install ripgrep
-        run: sudo apt-get update && sudo apt-get install -y ripgrep
-
-      # Review-prescribed order: PDF bytes, source digest, build, audit
-      # generation, kernel audit, then final manifest consistency.
+      # Review-prescribed order: PDF bytes, source digest, source hygiene,
+      # build, audit generation, kernel audit, audit-log verification, then
+      # final manifest consistency.
       - name: Verify certified PDF bytes
         run: node scripts/generate_audit.mjs --check-pdfs
 
       - name: Verify checked-in Lean source digest
         run: node scripts/generate_audit.mjs --check-source-digest
+
+      - name: Install ripgrep
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ripgrep
+
+      - name: Check Lean source hygiene
+        shell: bash
+        run: |
+          set +e
+          matches="$(rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' PaperC.lean PaperC)"
+          status=$?
+          set -e
+          if [ "$status" -eq 0 ]; then
+            printf '%s\n' "$matches"
+            echo 'Forbidden Lean source token found.' >&2
+            exit 1
+          fi
+          if [ "$status" -ne 1 ]; then
+            echo "ripgrep hygiene scan failed with status $status." >&2
+            exit "$status"
+          fi
+
+      - name: Test root-module audit guards
+        run: node scripts/test_audit_root_guards.mjs
 
       - name: Set up the pinned Lean toolchain
         uses: leanprover/lean-action@v1
@@ -53,6 +75,11 @@ jobs:
       - name: Verify audit exhaustiveness and the axiom allowlist
         run: node scripts/verify_audit.mjs --input ci-logs/AuditCheck.log
 
+      - name: Verify the final manifest and generated artifacts
+        run: |
+          node scripts/generate_audit.mjs --check
+          git diff --exit-code -- AuditCheck.lean audit_manifest.json AXIOM_AUDIT.md
+
       - name: Preserve the kernel audit log
         if: always()
         uses: actions/upload-artifact@v4
@@ -60,8 +87,3 @@ jobs:
           name: paper-c-kernel-audit-${{ github.sha }}
           path: ci-logs/AuditCheck.log
           if-no-files-found: error
-
-      - name: Verify the final manifest and generated artifacts
-        run: |
-          node scripts/generate_audit.mjs --check
-          git diff --exit-code -- AuditCheck.lean audit_manifest.json AXIOM_AUDIT.md

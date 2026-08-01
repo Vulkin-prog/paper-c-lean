@@ -1,5 +1,64 @@
 # Journal des versions
 
+## 0.47.0
+
+- Final root-audit closure with Lean and mathlib still pinned to `v4.32.2`.
+  Every one of the 382 Lean source files is byte-for-byte unchanged from
+  v046: the 381 modules under `PaperC/` plus the library root `PaperC.lean`,
+  for 146,391 lines in the now complete source fileset. Public names,
+  signatures, theorem records, audit targets, bridge records, kinds, and
+  statuses are identical to v046: 4,065 theorems and five lemmas, 4,070
+  public declarations, 4,072 audit targets, 3,912 results without a
+  registered bridge premise, 158 conditional results, and 13 bridges split
+  into seven `external/open` and six `discharged` entries.
+- The blocking root-module counterexample is closed. Source discovery now
+  uses Node's native `fs` API and covers exactly `PaperC.lean` together with
+  `PaperC/**/*.lean`; the root therefore enters the source digest, declaration
+  parser, and bridge-marker search. Manifest schema 5 replaces `source_glob`
+  by the exact field
+  `source_fileset: ["PaperC.lean", "PaperC/**/*.lean"]`. The regenerated
+  digest is
+  `f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999`,
+  and `AuditCheck.lean` now imports the actual library root `PaperC`.
+- Two isolated regression guards reproduce the reviewer attacks directly.
+  Appending any change to `PaperC.lean` makes `--check-source-digest` fail;
+  adding a public theorem there adds its source record, inventory entry,
+  audit target, and generated `#print axioms` command. The generator itself
+  no longer requires `rg`. The public workflow retains an explicit
+  `Install ripgrep` step for the separate hygiene scan and scans both
+  `PaperC.lean` and `PaperC/` for `sorry`, `axiom`, `admit`, `native_decide`,
+  `unsafe`, and `partial`.
+- The CI order is now the complete review-prescribed chain: real PDF-byte
+  checks, checked-in root-inclusive source digest, root-inclusive hygiene and
+  regression guards, `lake build`, audit generation, one logged
+  `lake env lean AuditCheck.lean` execution, exhaustive allowlist verification,
+  and final manifest/generated-artifact consistency. Only after the final
+  check is the real kernel log archived under the exact `${{ github.sha }}`.
+- The certified triplet is resynchronized with the frozen submission files.
+  The English target `paper_C_complete_v08_en.pdf` has 71 physical pages and
+  848,890 bytes, SHA-256
+  `2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927`.
+  The synchronized French source `paper_C_complete_v08.pdf` has 72 pages and
+  856,320 bytes, SHA-256
+  `c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5`.
+  Both byte streams match the supplied deterministic builds exactly.
+- Statement fidelity was checked mechanically and visually against v046.
+  The ordered inventory of 113 numbered statements and remarks is identical,
+  all 57 numbered equations retain their labels and content, and all 483
+  displayed formulas have zero divergence. Mathematical-font glyph streams
+  are identical page by page. The only changed raster pages are English
+  1 and 67--69 and French 1, 68, and 70, exactly where the freeze date,
+  ORCID `0009-0008-8491-2467`, two occurrences of DOI
+  `10.5281/zenodo.21735482` per edition, and the two English Code availability
+  language corrections occur. No mathematical statement, in particular no
+  statement transcribed in Lean, changed.
+- The repository root now carries the official Apache License 2.0 text for
+  the Lean code. The README records that both included manuscript PDFs are
+  licensed under CC BY 4.0. The maximal-order Halter--Koch refactor is
+  explicitly deferred until after the freeze; no Diophantine module,
+  mathematical proof body, bridge interface, or canonical signature is
+  changed in v047.
+
 ## 0.46.0
 
 - Reproducibility resynchronization with Lean and mathlib still pinned to
