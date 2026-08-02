@@ -26,6 +26,7 @@ WORK_ROOT=
 SETUP_LOG=
 CURRENT_UNIT=
 RUN_SUCCEEDED=false
+SYSTEMD_PREFLIGHT_LOG=
 
 usage() {
   cat <<'EOF'
@@ -100,6 +101,10 @@ on_exit() {
   local status=$?
   trap - EXIT INT TERM
   set +e
+
+  if [[ -n "$SYSTEMD_PREFLIGHT_LOG" && -f "$SYSTEMD_PREFLIGHT_LOG" ]]; then
+    rm -f -- "$SYSTEMD_PREFLIGHT_LOG"
+  fi
 
   if [[ -n "$CURRENT_UNIT" ]]; then
     note "stopping transient unit $CURRENT_UNIT.service"
@@ -182,7 +187,7 @@ export PATH="/usr/bin:/bin:$HOME/.elan/bin"
 
 for command_name in \
   bash cat cp curl date df dirname elan env find git grep id install lake mkdir \
-  mktemp mv node realpath rm sed sha256sum sleep sort stat systemctl \
+  mktemp mv node realpath rm sed setpriv sha256sum sleep sort stat systemctl \
   systemd-detect-virt systemd-run tar tee touch tr truncate uname xargs zstd; do
   require_command "$command_name"
 done
@@ -367,6 +372,7 @@ LAKE_BIN=$(realpath "$LAKE_COMMAND")
 GIT_BIN=$(command -v git)
 NODE_BIN=$(command -v node)
 SCRIPT_BIN=$(command -v script)
+SETPRIV_BIN=$(command -v setpriv)
 SYSTEMD_RUN_BIN=$(command -v systemd-run)
 SYSTEMCTL_BIN=$(command -v systemctl)
 SHA256SUM_BIN=$(command -v sha256sum)
@@ -427,6 +433,7 @@ verify_all_system_binaries() {
   verify_system_binary "$GIT_BIN" /usr/bin/git /usr/bin/git
   verify_system_binary "$NODE_BIN" /usr/bin/node /usr/bin/node /usr/bin/nodejs
   verify_system_binary "$SCRIPT_BIN" /usr/bin/script /usr/bin/script
+  verify_system_binary "$SETPRIV_BIN" /usr/bin/setpriv /usr/bin/setpriv
   verify_system_binary \
     "$SYSTEMD_RUN_BIN" /usr/bin/systemd-run /usr/bin/systemd-run
   verify_system_binary "$SYSTEMCTL_BIN" /usr/bin/systemctl /usr/bin/systemctl
@@ -450,11 +457,12 @@ SCRIPT_SHA=$("$SHA256SUM_BIN" "$SCRIPT_PATH" | sed 's/[[:space:]].*$//')
 compute_system_binary_state() {
   local name actual resolved digest index
   local -a names=(
-    git node script systemd_run systemctl sha256sum truncate touch rm mv
+    git node script setpriv systemd_run systemctl sha256sum truncate touch rm mv
   )
   local -a paths=(
-    "$GIT_BIN" "$NODE_BIN" "$SCRIPT_BIN" "$SYSTEMD_RUN_BIN" "$SYSTEMCTL_BIN"
-    "$SHA256SUM_BIN" "$TRUNCATE_BIN" "$TOUCH_BIN" "$RM_BIN" "$MV_BIN"
+    "$GIT_BIN" "$NODE_BIN" "$SCRIPT_BIN" "$SETPRIV_BIN" "$SYSTEMD_RUN_BIN"
+    "$SYSTEMCTL_BIN" "$SHA256SUM_BIN" "$TRUNCATE_BIN" "$TOUCH_BIN"
+    "$RM_BIN" "$MV_BIN"
   )
   for index in "${!names[@]}"; do
     name=${names[$index]}
@@ -513,6 +521,19 @@ TRANSIENT_SECURITY_ASSERTION+=' && /usr/bin/grep -Eq "^CapAmb:[[:space:]]*0+$" /
 TRANSIENT_SECURITY_ASSERTION+=' && /usr/bin/grep -Eq "^NoNewPrivs:[[:space:]]*1$" /proc/self/status'
 TRANSIENT_SECURITY_ASSERTION+=' && echo transient_security_context=passed'
 
+# pam_systemd gives CAP_WAKE_ALARM to local user sessions and user@.service on
+# current Ubuntu releases. A transient --user unit is forked by that independent
+# manager, not by this already-clean launcher. Drop the manager's inheritable
+# capability inside every payload, while retaining systemd's NNP property and
+# the fail-closed assertions above.
+TRANSIENT_PRIVILEGE_DROP=(
+  "$SETPRIV_BIN"
+  --inh-caps=-all
+  --ambient-caps=-all
+  --no-new-privs
+  --
+)
+
 set +e
 SHELL=/bin/bash "$SCRIPT_BIN" --quiet --return --flush \
   --output-limit 16M \
@@ -530,17 +551,25 @@ SYSTEMD_PREFLIGHT=(
   --user --pty --wait --collect
   -E "PATH=$TRUSTED_BASE_PATH"
   --working-directory "$SOURCE_ROOT"
-  -- /bin/bash -c "$TRANSIENT_SECURITY_ASSERTION"
+  -- "${TRANSIENT_PRIVILEGE_DROP[@]}" /bin/bash -c "$TRANSIENT_SECURITY_ASSERTION"
 )
 SYSTEMD_PREFLIGHT_COMMAND=$(quote_command "${SYSTEMD_PREFLIGHT[@]}")
+SYSTEMD_PREFLIGHT_LOG=$(mktemp "${TMPDIR:-/tmp}/paper-c-systemd-preflight.XXXXXX")
 set +e
 SHELL=/bin/bash "$SCRIPT_BIN" --quiet --return --flush \
-  --output-limit 16M --command "$SYSTEMD_PREFLIGHT_COMMAND" /dev/null \
+  --output-limit 16M --command "$SYSTEMD_PREFLIGHT_COMMAND" "$SYSTEMD_PREFLIGHT_LOG" \
   >/dev/null 2>&1
 SYSTEMD_PREFLIGHT_STATUS=$?
 set -e
-[[ $SYSTEMD_PREFLIGHT_STATUS -eq 0 ]] || \
+if [[ $SYSTEMD_PREFLIGHT_STATUS -ne 0 ]]; then
+  note 'systemd --user PTY wrapper diagnostic follows:' >&2
+  sed -n '1,80l' "$SYSTEMD_PREFLIGHT_LOG" >&2
+  rm -f -- "$SYSTEMD_PREFLIGHT_LOG"
+  SYSTEMD_PREFLIGHT_LOG=
   die 'the systemd --user PTY wrapper probe failed'
+fi
+rm -f -- "$SYSTEMD_PREFLIGHT_LOG"
+SYSTEMD_PREFLIGHT_LOG=
 
 SYSTEMD_FAILURE_UNIT="paper-c-exit-probe-$$"
 SYSTEMD_FAILURE_PREFLIGHT=(
@@ -552,7 +581,8 @@ SYSTEMD_FAILURE_PREFLIGHT=(
   --user --pty --wait --collect
   -E "PATH=$TRUSTED_BASE_PATH"
   --working-directory "$SOURCE_ROOT"
-  -- /bin/bash -c "$TRANSIENT_SECURITY_ASSERTION || exit 38; exit 37"
+  -- "${TRANSIENT_PRIVILEGE_DROP[@]}" /bin/bash -c \
+  "$TRANSIENT_SECURITY_ASSERTION || exit 38; exit 37"
 )
 SYSTEMD_FAILURE_COMMAND=$(quote_command "${SYSTEMD_FAILURE_PREFLIGHT[@]}")
 CURRENT_UNIT=$SYSTEMD_FAILURE_UNIT
@@ -951,6 +981,7 @@ NODE
     echo "launcher_no_new_privs=$NO_NEW_PRIVS"
     echo 'transient_no_new_privs_required=true'
     echo 'transient_zero_capabilities_required=true'
+    echo 'transient_capability_drop_method=setpriv'
     echo "execution_uid=$(id -u)"
     echo "execution_gid=$(id -g)"
     echo 'runner_os=Linux'
@@ -1097,7 +1128,7 @@ NODE
     -E "EXPECTED_ELAN_HOME=$EXPECTED_ELAN_HOME"
     -E "EXPECTED_LAKE_BIN=$LAKE_BIN"
     --working-directory "$project"
-    -- /bin/bash -c "$probe_shell"
+    -- "${TRANSIENT_PRIVILEGE_DROP[@]}" /bin/bash -c "$probe_shell"
   )
   local probe_command
   probe_command=$(quote_command "${probe_run[@]}")
@@ -1153,7 +1184,7 @@ NODE
     -E "COMPARATOR_LANDRUN=$LANDRUN_BIN"
     -E "COMPARATOR_LEAN4EXPORT=$LEAN4EXPORT_BIN"
     --working-directory "$project"
-    -- /bin/bash -c "$comparator_shell"
+    -- "${TRANSIENT_PRIVILEGE_DROP[@]}" /bin/bash -c "$comparator_shell"
   )
   local run_command
   run_command=$(quote_command "${run[@]}")

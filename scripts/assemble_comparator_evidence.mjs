@@ -110,7 +110,8 @@ if (sandboxed) {
   }
   if (field('launcher_no_new_privs') !== '1' ||
       field('transient_no_new_privs_required') !== 'true' ||
-      field('transient_zero_capabilities_required') !== 'true') {
+      field('transient_zero_capabilities_required') !== 'true' ||
+      field('transient_capability_drop_method') !== 'setpriv') {
     throw new Error('sandboxed run lacks the required capability context');
   }
   if (lines.filter(
@@ -129,6 +130,7 @@ if (sandboxed) {
     ['git', ['/usr/bin/git', ['/usr/bin/git']]],
     ['node', ['/usr/bin/node', ['/usr/bin/node', '/usr/bin/nodejs']]],
     ['script', ['/usr/bin/script', ['/usr/bin/script']]],
+    ['setpriv', ['/usr/bin/setpriv', ['/usr/bin/setpriv']]],
     ['systemd_run', ['/usr/bin/systemd-run', ['/usr/bin/systemd-run']]],
     ['systemctl', ['/usr/bin/systemctl', ['/usr/bin/systemctl']]],
     ['sha256sum', [

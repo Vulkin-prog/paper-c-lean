@@ -1701,9 +1701,9 @@ SHA-256 before use.
 
 Update to the exact commit to be certified and require a completely clean
 checkout, including no untracked files.  Run the preflight first, then the
-full verifier from an interactive terminal.  The stock `setpriv` wrapper
-removes the `CAP_WAKE_ALARM` capability that `pam_systemd` may place in local
-Ubuntu sessions; the clean `PATH` prevents user-installed commands from
+full verifier from an interactive terminal.  The outer stock `setpriv` wrapper
+removes the `CAP_WAKE_ALARM` capability that `pam_systemd` may place in the
+calling Ubuntu session; the clean `PATH` prevents user-installed commands from
 shadowing the audited Ubuntu and Elan binaries:
 
 ```bash
@@ -1731,9 +1731,15 @@ links to GNU-prefixed binaries.  The runner accepts those provider layouts
 only through the fixed `/usr/bin` invocation paths, validates the resolved
 targets as root-owned and non-writable by group/others, and records them in
 the evidence.  Their canonical parent directories receive the same ownership
-and write-permission checks.  The launcher and every transient Comparator unit
-must also report zero inheritable/permitted/effective/ambient capabilities and
-`NoNewPrivs=1`; the evidence validator requires both transient markers.
+and write-permission checks.  Since `systemd --user` is an independent manager
+and may retain `CAP_WAKE_ALARM` even after the calling shell is cleaned, the
+runner also audits and fingerprints `/usr/bin/setpriv` and invokes it inside
+each of the four transient payloads.  The systemd `NoNewPrivileges=yes`
+property remains mandatory.  The launcher and every transient Comparator unit
+must report zero inheritable/permitted/effective/ambient capabilities and
+`NoNewPrivs=1`; the evidence validator requires both transient markers and the
+recorded inner capability-drop method.  A failed initial systemd probe prints
+a bounded diagnostic transcript before stopping.
 
 The Comparator phase may be quiet for a while: its raw pseudo-terminal stream
 is written to evidence files instead of being replayed to the invoking

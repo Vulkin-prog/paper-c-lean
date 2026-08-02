@@ -652,10 +652,10 @@ PATH="/usr/bin:/bin:$HOME/.elan/bin" \
   ./scripts/run_hardened_comparator.sh
 ```
 
-La première commande ne doit rien afficher. `setpriv` retire notamment
-`CAP_WAKE_ALARM`, que `pam_systemd` peut placer dans une session Ubuntu locale,
-et le `PATH` restreint empêche qu’un outil utilisateur masque les binaires
-Ubuntu et Elan audités. Un terminal `tmux` convient, mais
+La première commande ne doit rien afficher. Le `setpriv` extérieur retire
+notamment `CAP_WAKE_ALARM`, que `pam_systemd` peut placer dans la session Ubuntu
+appelante, et le `PATH` restreint empêche qu’un outil utilisateur masque les
+binaires Ubuntu et Elan audités. Un terminal `tmux` convient, mais
 le script refuse `sudo`, les pipes, `nohup`, les tâches d’IDE, les conteneurs et
 les descripteurs standard redirigés. Il construit les outils aux commits
 épinglés, prépare chacun des deux checkouts immédiatement avant sa cible et
@@ -671,8 +671,14 @@ cibles résolues appartiennent à root et ne sont modifiables ni par le groupe
 ni par les autres utilisateurs, applique le même contrôle à leurs répertoires
 parents canoniques, puis consigne ces cibles dans les preuves. Le lanceur et
 chaque unité Comparator transitoire doivent en outre constater quatre jeux de
-capabilities nuls et `NoNewPrivs=1` ; le validateur exige les deux marqueurs
-transitoires correspondants.
+capabilities nuls et `NoNewPrivs=1`. Le gestionnaire `systemd --user` étant
+indépendant du shell appelant, il peut conserver `CAP_WAKE_ALARM` après le
+nettoyage extérieur. Le lanceur audite donc également `/usr/bin/setpriv`, le
+consigne avec son SHA-256 et l’exécute à l’intérieur de chacun des quatre
+payloads transitoires, sans retirer la propriété systemd
+`NoNewPrivileges=yes`. Le validateur exige les deux marqueurs transitoires et
+la méthode de retrait interne enregistrée. Si le premier probe systemd échoue,
+un diagnostic borné est affiché avant l’arrêt.
 
 La phase Comparator peut rester silencieuse : son flux PTY brut est conservé
 dans les preuves, sans être rejoué dans le terminal appelant, afin qu’une

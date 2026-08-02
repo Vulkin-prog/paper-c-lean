@@ -95,8 +95,12 @@
   root-owned Rust and GNU coreutils-provider symlink layouts are accepted
   without accepting user-path shadowing, and documented the clean `setpriv`
   invocation required by local sessions carrying `CAP_WAKE_ALARM`. The runner
-  and evidence validator now also require zero capabilities plus
-  `NoNewPrivs=1` inside each transient probe and Comparator unit.
+  now audits the same binary and invokes it inside all four user-manager
+  payloads, because `systemd --user` retains its own inheritable capability
+  state independently of the cleaned caller. The evidence validator requires
+  that inner drop method, zero capabilities, and `NoNewPrivs=1` inside each
+  transient probe and Comparator unit; failed initial probes now expose a
+  bounded diagnostic transcript.
 - Hardened the CI availability test after a hosted-runner PTY attachment
   stalled both Comparator targets before their first observable startup
   marker. As a conservative hosted-CI policy, captured non-TTY stdio is now

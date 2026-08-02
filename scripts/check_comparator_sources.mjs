@@ -135,6 +135,7 @@ if (hardenedRunner !== null) {
     ['GIT_BIN', 'git'],
     ['NODE_BIN', 'node'],
     ['SCRIPT_BIN', 'script'],
+    ['SETPRIV_BIN', 'setpriv'],
     ['SYSTEMD_RUN_BIN', 'systemd-run'],
     ['SYSTEMCTL_BIN', 'systemctl'],
     ['SHA256SUM_BIN', 'sha256sum'],
@@ -211,6 +212,29 @@ if (hardenedRunner !== null) {
       'NoNewPrivileges security contexts.',
     );
   }
+  const transientPrivilegeDropUses = hardenedRunner.match(
+    /"\$\{TRANSIENT_PRIVILEGE_DROP\[@\]\}"/g,
+  ) ?? [];
+  if (transientPrivilegeDropUses.length !== 4 ||
+      !hardenedRunner.includes('TRANSIENT_PRIVILEGE_DROP=(') ||
+      !hardenedRunner.includes(
+        'verify_system_binary "$SETPRIV_BIN" /usr/bin/setpriv /usr/bin/setpriv',
+      ) ||
+      !hardenedRunner.includes('  "$SETPRIV_BIN"\n') ||
+      !hardenedRunner.includes('  --inh-caps=-all\n') ||
+      !hardenedRunner.includes('  --ambient-caps=-all\n') ||
+      !hardenedRunner.includes('  --no-new-privs\n')) {
+    fail(
+      `${hardenedRunnerFile} does not clean capabilities inside all four ` +
+      'systemd user-manager payloads.',
+    );
+  }
+  if (!hardenedRunner.includes('SYSTEMD_PREFLIGHT_LOG=$(mktemp ') ||
+      !hardenedRunner.includes(
+        "note 'systemd --user PTY wrapper diagnostic follows:'",
+      )) {
+    fail(`${hardenedRunnerFile} suppresses initial systemd probe diagnostics.`);
+  }
   if (hardenedRunner.includes('/usr/bin/*|/usr/lib/cargo/bin/coreutils/*)')) {
     fail(`${hardenedRunnerFile} contains an over-broad system target pattern.`);
   }
@@ -222,6 +246,7 @@ if (evidenceAssembler !== null) {
     'launcher_no_new_privs',
     'transient_no_new_privs_required',
     'transient_zero_capabilities_required',
+    'transient_capability_drop_method',
     'transient_security_context=passed',
     'system_binary_${name}_path',
     'system_binary_${name}_resolved',
