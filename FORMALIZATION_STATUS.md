@@ -11,7 +11,7 @@ Legend:
 In the audit registry, `kind: external | internal` records the provenance of
 the statement. The separate field `status: open | discharged` records whether
 the interface is still required: only `open` constitutes current formalization
-debt. In v0.47.0, with Lean/mathlib unchanged at `v4.32.2`, all five
+debt. In v0.48.0, with Lean/mathlib unchanged at `v4.32.2`, all five
 `internal` interfaces remain `discharged`, while all seven `open` interfaces
 remain `external`. The 13-entry registry is unchanged: eight `external`, five
 `internal`, seven `open` (all `external`), and six `discharged`. Exact
@@ -21,11 +21,59 @@ audit targets, split into 3,912 declarations without a registered bridge
 premise and 158 conditional declarations. They are reproduced in
 `REPRODUCIBILITY.md`.
 
+## External semantic audit boundary (v0.48.0)
+
+The 382-file v0.47.0 core is byte-identical in v0.48.0.  This release adds a
+human-readable Mathlib-only boundary and solution wrappers; it does not add a
+mathematical lemma to the Paper C core or change a canonical signature.
+
+| Target | Statement and proof route | Present status |
+|---|---|---|
+| `Challenge.lean` / `Solution.lean` | `paper_c_theorem_one_one_finite_cylinder`, the quantitative finite-cylinder form of Theorem 1.1 (printed/PDF p. 3), closed by `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical` | `Solution.lean` directly reproduces the complete declarative interface in the fresh `PaperCAudit` namespace. The Challenge has its single intentional `by sorry`; Solution has none. The main configuration passed an **unsandboxed Comparator semantic smoke test** in a clean checkout with Lean default-kernel acceptance and exit 0. The run used `root`, fake-landrun, and an `LD_PRELOAD` shim, so it is not the hardened release run. |
+| `ChallengeTransfer.lean` / `SolutionTransfer.lean` | `paper_c_theorem_one_one_infinite_finite_law_identity`, the exact equality between the infinite-product law and the finite-cylinder law | `SolutionTransfer.lean` directly reproduces the transfer interface. The independent transfer configuration also passed an **unsandboxed Comparator semantic smoke test** in its own clean checkout with Lean default-kernel acceptance and exit 0, under the same root/fake-landrun/`LD_PRELOAD` limitations. |
+| `formalization.yaml` v0.3 | Generated with `audit_manifest.json` from schema-2 `audit_config.json`; maps manuscript items, pages, declarations, files, consumed bridges, conditionality, and Comparator coverage | Generated metadata is a deterministic audit artifact. Its review status is `agent-reviewed`; completeness of the editorial item list still requires human review. |
+
+The finite-cylinder statement takes exactly the four ordinary literature
+premises consumed by the canonical endpoint:
+
+| Premise | Registered bridge | Formalization relation |
+|---|---|---|
+| Arratia--Goldstein--Gordon | `AGG89-T1-finite-dependency-b3-zero` | Finite dependency-neighborhood theorem with `b₃ = 0`, used for the Chen--Stein TV bound |
+| Evertse--Silverman | `ES86-T1b-Q-split-n2` | Split quadratic, exponent-two specialization supplying the abscissa count of Lemma 9.1 |
+| Halter--Koch | `HK13-QO-conductor-fibres` | Conductor and unit-coset comparison used to reconstruct the generalized-Pell bound in Lemma 9.2 |
+| Nicolas--Robin | `NR83-T1-divisor-log-bound` | Direct logarithmic divisor inequality used in the same Pell reconstruction |
+
+They are explicit propositions and theorem arguments, not Lean axioms.  The
+main Challenge presents the observable on the finite uniform cylinder of
+primes up to `2*N+L`; the transfer target records the exact relation to the
+paper's infinite product.  `UniformBigOOn` expands all uniformity quantifiers,
+the critical window is `|L-log N/log 2| ≤ C`, and total variation uses the
+half-`ℓ¹` normalization.  The interface accepts `C ≥ 0`, a harmless
+strengthening of the paper's `C > 0`.  The global longest-run result is not in
+this Comparator surface.  `Solution.lean` makes explicit the two
+non-definitional record translations needed to connect the readable interface
+to the frozen core: the Arratia--Goldstein--Gordon finite-probability record
+and the Halter--Koch quadratic-order conductor record.
+
+Both JSON configurations explicitly permit only `propext`, `Quot.sound`, and
+`Classical.choice`, and both have `enable_nanoda: false`. Nanoda is not
+installed or claimed. The two challenge placeholders are counted separately
+from the proof-side `sorry_count = 0`.  The main smoke-test transcript is
+`comparator/transcripts/theorem_one_one_unsandboxed.txt`, SHA-256
+`b61738cb6fd4a08068da493821a6c9b608c2fb5ed28916778bf7950024c2b4e8`;
+the transfer transcript is
+`comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt`, SHA-256
+`1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f`.
+Neither run establishes sandbox isolation, non-privileged execution, or a
+second-kernel result. Publication remains blocked until both configurations
+pass the official hardened real-landrun plus `systemd-run` procedure under a
+non-privileged user.
+
 ## Sections 1–3
 
 | Manuscript | Content | Status |
 |---|---|---|
-| Th. 1.1 | Critical Poisson law and TV rate | **Conditionally proved on both the finite cylinder and the infinite source law, modulo the literature only.** In the exact critical window, Lean assembles the uniform rate \(d_{\rm TV}(\mathcal L(Z_{N,L}),\operatorname{Pois}(N2^{-L}))\ll_C(\log\log N)^{-2}\). The random variable `infiniteDyadicStartCount` is defined on the infinite Rademacher product space, its law is proved exactly equal to `fullDyadicStartLaw`, and `theorem_one_one_infinite_model` transports the same endpoint without any new premise. The only bridges are AGG, Evertse–Silverman, Halter–Koch's quadratic-order comparison, and the Nicolas–Robin divisor bound, all `external` |
+| Th. 1.1 | Critical Poisson law and TV rate | **Conditionally proved on both the finite cylinder and the infinite source law, modulo the literature only.** In the exact critical window, Lean assembles the uniform rate \(d_{\rm TV}(\mathcal L(Z_{N,L}),\operatorname{Pois}(N2^{-L}))\ll_C(\log\log N)^{-2}\). The random variable `infiniteDyadicStartCount` is defined on the infinite Rademacher product space, its law is proved exactly equal to `fullDyadicStartLaw`, and `theorem_one_one_infinite_model` transports the same endpoint without any new premise. The only bridges are AGG, Evertse–Silverman, Halter–Koch's quadratic-order comparison, and the Nicolas–Robin divisor bound, all `external`. The v0.48.0 finite-cylinder and transfer boundaries expose these two steps separately; both passed clean-checkout unsandboxed semantic smoke tests with Lean default-kernel acceptance and exit 0, but neither run met the sandbox, non-privileged, or second-kernel conditions of a release certificate |
 | Th. 1.2(i) | Deterministic masks | **Conditionally proved, modulo the literature only.** Proposition 14.1 is proved in the exact window \(\lvert L-\log_2N\rvert\le C_\star\log\log N\). Proposition 14.2 is assembled uniformly for all masks in the critical window: \(d_{\rm TV}(\mathcal L(Z_{N,L}(A_N)),\mathrm{Pois}(|A_N|2^{-L}))=o_C(1)\). Its canonical endpoint assumes exactly AGG, Evertse–Silverman, Halter–Koch, and Nicolas–Robin; no `internal/open` bridge reaches its signature |
 | Th. 1.2(ii–iii) | Spatial and marked PPPs | **Proved as a complete characterization by Laplace functionals, modulo the literature only.** Expectations under the infinite law converge to the functionals of \(\operatorname{PPP}(\lambda\,dt)\) and \(\operatorname{PPP}(\lambda\,dt\otimes\nu)\), where \(\nu(\{e\})=2^{-(e+1)}\), for every nonnegative continuous test function with compact support in the marks. Uniform tightness is proved through \(\limsup_N\mathbb P(\text{mark}>E)\le\lambda2^{-(E+1)}\). Because mathlib does not yet provide a suitable API for point measures and the vague topology, a `Tendsto` formulation for the process laws is not duplicated artificially |
 | Th. 1.4 | Moments and the homogeneous sum | **Conditionally proved, modulo the literature only.** `theorem_one_four_canonical` connects the finite kernel of §12 directly to the quantitative master mass bound and establishes, in the critical window, the first-moment rate, the little-oh estimate for the second factorial moment, \(R_2(N,L)=o_C(N^2)\), and the little-oh estimate for the variance. Its only assumptions are Evertse–Silverman, Halter–Koch, and Nicolas–Robin (`external`). The three legacy endpoints removed in v041 have not been reintroduced |

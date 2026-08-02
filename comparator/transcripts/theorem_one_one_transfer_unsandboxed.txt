@@ -1,0 +1,2713 @@
+2026-08-01T19:23:59+02:00
+mode=unsandboxed Comparator semantic smoke test (non-certifying)
+sandboxed=false
+nanoda=disabled
+execution_user=root; this managed container rejected setresuid/setgroups, so the run cannot satisfy the non-privileged certificate condition
+environment_note=LD_PRELOAD proc-exe compatibility shim required by this container; this run is not a hardened certificate
+paper_c_commit=3da2f56c5d0827b88059fc30d23e8f9236ccf131
+tracked_worktree_dirty_count=0
+config=comparator/theorem_one_one_transfer.json
+078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743  comparator/theorem_one_one_transfer.json
+comparator_fileset_digest_sha256=646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5
+lean_commit=f3b06c705e6c85f5314019d5d3baab0fec5b580c
+mathlib_commit=905b95818eb32af7874a58b427f50c1711a5e96c
+comparator_commit=51491237b1d2f96cca203af9c34bced6fe38e0d8
+lean4export_commit=af5aa64bb914c3c2c781f378088dbd38acf4f804
+landrun_commit=811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
+Lean (version 4.32.2, x86_64-unknown-linux-gnu, commit f3b06c705e6c85f5314019d5d3baab0fec5b580c, Release)
+Lake version 5.0.0-src+f3b06c7 (Lean version 4.32.2)
+5f0f8a2f42ddb0c45c0fd2879f404f185253b7ed002f916a4fd7dfb35ebbef77  /tmp/paperc-v048-tools-bin/comparator
+d5a4291fa53476cfd3de4ef225e4021bd82c4dee1731320c128585b098cc7db9  /tmp/paperc-v048-tools-bin/lean4export
+167507c89d8b3c7667ad78b50df7b19f89883751a01efd1457404fa34a994e8b  /tmp/paperc-v048-tools-bin/fake-landrun.sh
+08903322d4fa8c705dfcd8af7e9b838d977f97f2820f959738c3afc8cf61366c  /tmp/comparator-research.8trgVE/landrun/landrun
+8fa1d4ec68df59e90350b936911055a80b10740276ad94a53d1df310412eb800  /tmp/lean-proc-exe-shim.so
+uid=0(root) gid=0(root) groups=0(root)
+preexisting_project_olean_count=0
+preexisting_solution_transfer_olean_count=0
+command=env LD_PRELOAD=/tmp/lean-proc-exe-shim.so LEAN_SYSROOT=/tmp/lean-4.32.2-dist/lean-4.32.2-linux PATH=/tmp/lean-4.32.2-dist/lean-4.32.2-linux/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin COMPARATOR_LANDRUN=/tmp/paperc-v048-tools-bin/fake-landrun.sh COMPARATOR_LEAN4EXPORT=/tmp/paperc-v048-tools-bin/lean4export lake env /tmp/paperc-v048-tools-bin/comparator comparator/theorem_one_one_transfer.json
+Building ChallengeTransfer
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build ChallengeTransfer
+⚠ [3204/3206] Built Challenge (2.0s)
+warning: Challenge.lean:424:2: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: Challenge.lean:479:2: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: Challenge.lean:714:8: declaration uses `sorry`
+⚠ [3205/3206] Built ChallengeTransfer (1.7s)
+warning: ChallengeTransfer.lean:96:8: declaration uses `sorry`
+Build completed successfully (3206 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/paperc-v048-tools-bin/lean4export ChallengeTransfer -- paper_c_theorem_one_one_infinite_finite_law_identity propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[paper_c_theorem_one_one_infinite_finite_law_identity, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from ChallengeTransfer
+Building SolutionTransfer
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build SolutionTransfer
+✔ [3242/3274] Built PaperC.Arithmetic.CRT (1.7s)
+✔ [3243/3274] Built PaperC.Arithmetic.ParityVector (1.9s)
+⚠ [3244/3274] Built PaperC.Runs.Starts (1.9s)
+warning: PaperC/Runs/Starts.lean:45:2: Left-hand side of simp theorem has a variable as head symbol. This means the theorem will be tried on every simp step, which can be expensive. This may be acceptable for `local` or `scoped` simp lemmas.
+Use `set_option warning.simp.varHead false` to disable this warning.
+⚠ [3245/3274] Built PaperC.Arithmetic.DefectCounting (1.9s)
+warning: PaperC/Arithmetic/DefectCounting.lean:59:2: Left-hand side of simp theorem has a variable as head symbol. This means the theorem will be tried on every simp step, which can be expensive. This may be acceptable for `local` or `scoped` simp lemmas.
+Use `set_option warning.simp.varHead false` to disable this warning.
+warning: PaperC/Arithmetic/DefectCounting.lean:87:4: This simp argument is unused:
+  and_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [valuesForSupport, Nat.lt_succ_iff, eq_comm, and_comm, a̵n̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵and_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Arithmetic/DefectCounting.lean:87:19: This simp argument is unused:
+  and_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [valuesForSupport, Nat.lt_succ_iff, eq_comm, and_comm, a̵n̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵a̵n̵d̵_̵a̵s̵s̵o̵c̵]̵a̲n̲d̲_̲l̲e̲f̲t̲_̲c̲o̲m̲m̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3246/3278] Built PaperC.Arithmetic.IntervalCongruence (2.0s)
+✔ [3247/3278] Built PaperC.Analysis.ReciprocalSqrtSum (2.7s)
+✔ [3248/3278] Built PaperC.Affine.System (2.0s)
+⚠ [3249/3278] Built PaperC.Combinatorics.TreeBoundary (3.0s)
+warning: PaperC/Combinatorics/TreeBoundary.lean:159:25: This simp argument is unused:
+  true_implies
+
+Hint: Omit it from the simp argument list.
+  simp only [huv, ne_eq, t̵r̵u̵e̵_̵i̵m̵p̵l̵i̵e̵s̵,̵ ̵Finset.mem_insert, Finset.mem_singleton]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Combinatorics/TreeBoundary.lean:368:57: This simp argument is unused:
+  hErase
+
+Hint: Omit it from the simp argument list.
+  simp [evenCompletion, nonRootValueFinset_deleteRoot, h̵E̵r̵a̵s̵e̵,̵ ̵S.2, hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3250/3278] Built PaperC.Arithmetic.DefectParitySupport (1.8s)
+✔ [3251/3278] Built PaperC.Arithmetic.ChannelGeometry (1.0s)
+ℹ [3252/3279] Built PaperC.Analysis.ReciprocalThreeHalvesTail (3.0s)
+info: PaperC/Analysis/ReciprocalThreeHalvesTail.lean:69:10: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [3253/3287] Built PaperC.Arithmetic.WeightedDefectCounting (2.2s)
+warning: PaperC/Arithmetic/WeightedDefectCounting.lean:45:60: This simp argument is unused:
+  and_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [positiveValuesForSupport, mem_valuesForSupport_iff,̵ ̵a̵n̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Arithmetic/WeightedDefectCounting.lean:54:52: This simp argument is unused:
+  and_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [positiveDefectValues, mem_defectValues_iff,̵ ̵a̵n̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3257/3287] Built PaperC.Model.FiniteRademacher (2.4s)
+✔ [3258/3287] Built PaperC.Arithmetic.CertificateCount (2.1s)
+✔ [3259/3290] Built PaperC.Analysis.SmoothEulerProduct (2.2s)
+✔ [3260/3291] Built PaperC.Arithmetic.DefectivePredicate (1.6s)
+✔ [3261/3295] Built PaperC.Arithmetic.ChannelCount (1.0s)
+⚠ [3262/3297] Built PaperC.LinearAlgebra.PrivatePivots (2.4s)
+warning: PaperC/LinearAlgebra/PrivatePivots.lean:107:62: This simp argument is unused:
+  han
+
+Hint: Omit it from the simp argument list.
+  simp [edgeSum, hdiag, hprivate a han, Sym2.mem_iff,̵ ̵h̵a̵n̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3263/3297] Built PaperC.Arithmetic.ChannelUniqueness (4.3s)
+warning: PaperC/Arithmetic/ChannelUniqueness.lean:25:5: Variable name `ha` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Arithmetic/ChannelUniqueness.lean:25:31: Variable name `ha'` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3264/3308] Built PaperC.Affine.Fourier (3.2s)
+warning: PaperC/Affine/Fourier.lean:269:26: This simp argument is unused:
+  hu
+
+Hint: Omit it from the simp argument list.
+  simp [hu,̵ ̵h̵u̵f]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3266/3311] Built PaperC.Analysis.LargeEulerProduct (2.8s)
+✔ [3269/3311] Built PaperC.Arithmetic.PrimesUpTo (1.6s)
+✔ [3270/3312] Built PaperC.Affine.StartSystem (2.3s)
+✔ [3271/3312] Built PaperC.Arithmetic.LargeOddKernel (2.1s)
+⚠ [3272/3312] Built PaperC.Combinatorics.PinnedGraphResolution (3.3s)
+warning: PaperC/Combinatorics/PinnedGraphResolution.lean:55:0: automatically included section variable(s) unused in theorem `PaperC.PinnedGraphResolution.mem_pinnedGraphSpace`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/PinnedGraphResolution.lean:63:0: automatically included section variable(s) unused in theorem `PaperC.PinnedGraphResolution.eq_of_walk`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/PinnedGraphResolution.lean:175:0: automatically included section variable(s) unused in theorem `PaperC.PinnedGraphResolution.componentExtension_eq_of_adj`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/PinnedGraphResolution.lean:199:0: automatically included section variable(s) unused in theorem `PaperC.PinnedGraphResolution.componentExtension_eq_zero_of_mem`:
+  [Fintype V]
+  [DecidableEq V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableEq V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [3273/3312] Built PaperC.Arithmetic.ResidualPrimeMass (1.7s)
+✔ [3274/3312] Built PaperC.Arithmetic.ChannelEnumeration (2.3s)
+✔ [3275/3312] Built PaperC.Arithmetic.CanonicalChannel (2.3s)
+✔ [3276/3317] Built PaperC.Arithmetic.PrimeCountBridge (1.9s)
+✔ [3277/3317] Built PaperC.Arithmetic.DyadicGap (1.9s)
+✔ [3280/3317] Built PaperC.Affine.Normalization (2.9s)
+✔ [3281/3318] Built PaperC.Analysis.DefectGlobalBound (2.3s)
+✔ [3282/3324] Built PaperC.Arithmetic.ComponentSquareClass (2.2s)
+✔ [3283/3324] Built PaperC.Arithmetic.ExactUnitLargeKernel (2.4s)
+✔ [3288/3324] Built PaperC.Arithmetic.SeparatedSmallChannels (2.1s)
+✔ [3289/3324] Built PaperC.Arithmetic.ChannelMultiplicityBounds (2.5s)
+✔ [3290/3324] Built PaperC.Algebra.RungeSplitProduct (2.4s)
+✔ [3291/3335] Built PaperC.Arithmetic.PrimeNumberTheoremInput (2.0s)
+✔ [3298/3336] Built PaperC.Algebra.IntegerPolynomialRootBound (2.6s)
+⚠ [3300/3336] Built PaperC.Arithmetic.LargeKernelWeightedCounting (3.7s)
+warning: PaperC/Arithmetic/LargeKernelWeightedCounting.lean:297:44: This simp argument is unused:
+  Finset.prod_div_distrib
+
+Hint: Omit it from the simp argument list.
+  simp only [largeSupportDenominatorWeight, Finset.prod_d̵i̵v̵_̵d̵i̵s̵t̵r̵i̵b̵,̵
+  ̵ ̵ ̵ ̵ ̵F̵i̵n̵s̵e̵t̵.̵p̵r̵o̵d̵_̵const, Finset.prod_mul_distrib,
+      Finset.prod_inv_distrib, div_eq_mul_inv, mul_inv_rev]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3301/3337] Built PaperC.Arithmetic.ChebyshevPrimeCount (2.6s)
+⚠ [3302/3343] Built PaperC.Affine.TwoStartSystem (4.4s)
+warning: PaperC/Affine/TwoStartSystem.lean:154:8: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [startIncidenceColumn, startPrivateVertex, startBaseVertex, startRootVertex,
+  ̲  ̲ ̲ ̲ ̲ ̲startTipVertex, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hi0]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TwoStartSystem.lean:163:25: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [startIncidenceColumn, startPrivateVertex, startBaseVertex, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hi0, htip_ne_center,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲htip_ne_center.symm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TwoStartSystem.lean:164:24: This simp argument is unused:
+  htip_ne_center.symm
+
+Hint: Omit it from the simp argument list.
+  simp [startIncidenceColumn, startPrivateVertex, startBaseVertex, Pi.single_apply, hi0,
+          h̵t̵i̵p̵_̵n̵e̵_̵c̵e̵n̵t̵e̵r̵,̵ ̵h̵t̵i̵p̵_̵n̵e̵_̵c̵e̵n̵t̵e̵r̵.̵s̵y̵m̵m̵]̵h̲t̲i̲p̲_̲n̲e̲_̲c̲e̲n̲t̲e̲r̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TwoStartSystem.lean:181:42: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [startIncidenceColumn, hiRoot, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵hroot_ne_base, hroot_ne_tip, hij]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TwoStartSystem.lean:201:27: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [startIncidenceColumn, startPrivateVertex, startBaseVertex, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hi0, hj0, htip_ne_root,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲htip_ne_center, hij]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TwoStartSystem.lean:214:27: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [startIncidenceColumn, startPrivateVertex, startBaseVertex, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hi0, hj0, htip_ne_center,
+  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲htip_ne_tip, hij]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3303/3343] Built PaperC.Arithmetic.ChannelStartPairs (3.4s)
+✔ [3304/3343] Built PaperC.Arithmetic.WeightedChannelMass (3.3s)
+✔ [3305/3343] Built PaperC.Arithmetic.HeightTwoPairCount (3.8s)
+✔ [3306/3343] Built PaperC.Algebra.PolynomialHeightOperations (3.2s)
+✔ [3307/3343] Built PaperC.Combinatorics.RungeCoefficients (4.5s)
+✔ [3308/3343] Built PaperC.Arithmetic.RungeNumerics (3.2s)
+⚠ [3309/3343] Built PaperC.Arithmetic.TerminalKernelCount (5.2s)
+warning: PaperC/Arithmetic/TerminalKernelCount.lean:243:17: This simp argument is unused:
+  id_eq
+
+Hint: Omit it from the simp argument list.
+  simp only [i̵d̵_̵e̵q̵,̵ ̵mul_inv_rev, Finset.prod_inv_distrib]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3310/3358] Built PaperC.Arithmetic.StartResidue (2.6s)
+warning: PaperC/Arithmetic/StartResidue.lean:79:33: This simp argument is unused:
+  if_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [startResidue, hv, i̵f̵_̵n̵e̵g̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵startCompleteVertexLabel]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3311/3358] Built PaperC.Arithmetic.WeightedResidualChannelMass (2.5s)
+✔ [3314/3360] Built PaperC.Arithmetic.DyadicPrimeReciprocalSums (5.0s)
+⚠ [3315/3366] Built PaperC.Affine.RelationalPrimeAssignment (2.8s)
+warning: PaperC/Affine/RelationalPrimeAssignment.lean:46:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hrq']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3316/3366] Built PaperC.Analysis.RungePowerSeries (2.7s)
+✔ [3317/3366] Built PaperC.Analysis.RungeScaling (2.9s)
+⚠ [3318/3367] Built PaperC.Affine.StartBoundaryRange (2.9s)
+warning: PaperC/Affine/StartBoundaryRange.lean:97:10: This simp argument is unused:
+  Module.finrank_pi
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵M̵o̵d̵u̵l̵e̵.̵f̵i̵n̵r̵a̵n̵k̵_̵p̵i̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/StartBoundaryRange.lean:105:8: This simp argument is unused:
+  Module.finrank_pi
+
+Hint: Omit it from the simp argument list.
+  simp [̵M̵o̵d̵u̵l̵e̵.̵f̵i̵n̵r̵a̵n̵k̵_̵p̵i̵]̵ ̵at hnullity
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3319/3367] Built PaperC.Analysis.GeometricTail (2.9s)
+✔ [3320/3367] Built PaperC.Arithmetic.RungeTranslation (1.3s)
+✔ [3321/3367] Built PaperC.Combinatorics.IntervalDefectAggregation (1.2s)
+✔ [3322/3367] Built PaperC.Probability.FactorialMoment (1.4s)
+✔ [3323/3368] Built PaperC.Algebra.RungeTruncation (1.9s)
+⚠ [3324/3368] Built PaperC.Coding.HammingBound (2.8s)
+warning: PaperC/Coding/HammingBound.lean:63:38: This simp argument is unused:
+  hi
+
+Hint: Omit it from the simp argument list.
+  simp [wordOfSupport, wordSupport, hi̵,̵ ̵h̵one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Coding/HammingBound.lean:140:28: This simp argument is unused:
+  Nat.lt_succ_iff
+
+Hint: Omit it from the simp argument list.
+  simp [smallSupports, p,̵ ̵N̵a̵t̵.̵l̵t̵_̵s̵u̵c̵c̵_̵i̵f̵f̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Coding/HammingBound.lean:198:12: This simp argument is unused:
+  Fintype.card_fun
+
+Hint: Omit it from the simp argument list.
+  simp [F̵i̵n̵t̵y̵p̵e̵.̵c̵a̵r̵d̵_̵f̵u̵n̵,̵ ̵ZMod.card]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3325/3368] Built PaperC.Affine.Probability (2.7s)
+✔ [3326/3372] Built PaperC.Probability.FiniteExpectation (2.3s)
+✔ [3327/3372] Built PaperC.Arithmetic.LaishramShoreyInput (2.7s)
+✔ [3328/3372] Built PaperC.Analysis.RungeAnalyticProduct (4.0s)
+⚠ [3329/3372] Built PaperC.Combinatorics.LargeKernelAssignments (4.1s)
+warning: PaperC/Combinatorics/LargeKernelAssignments.lean:49:4: This simp argument is unused:
+  Fintype.card_congr (Equiv.refl (LargePrimeIndex L n))
+
+Hint: Omit it from the simp argument list.
+  simp [allAssignments, LargePrimeAssignment, LargePrimeIndex,̵
+  ̵ ̵ ̵ ̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵c̵a̵r̵d̵_̵c̵o̵n̵g̵r̵ ̵(̵E̵q̵u̵i̵v̵.̵r̵e̵f̵l̵ ̵(̵L̵a̵r̵g̵e̵P̵r̵i̵m̵e̵I̵n̵d̵e̵x̵ ̵L̵ ̵n̵)̵)̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Combinatorics/LargeKernelAssignments.lean:97:46: This simp argument is unused:
+  if_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [startCompleteVertexLabel, hw0,̵ ̵i̵f̵_̵n̵e̵g̵] at hlabel
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3330/3373] Built PaperC.Algebra.RungeTruncationBounds (2.8s)
+✔ [3331/3373] Built PaperC.Algebra.RungeDichotomy (2.5s)
+✔ [3332/3376] Built PaperC.Analysis.RungeTailEstimate (3.7s)
+✔ [3333/3376] Built PaperC.Coding.HammingDefectBound (2.5s)
+⚠ [3334/3379] Built PaperC.Coding.DefectCodeRank (2.7s)
+warning: PaperC/Coding/DefectCodeRank.lean:106:10: This simp argument is unused:
+  hxi
+
+Hint: Omit it from the simp argument list.
+  simp [hxi̵,̵ ̵h̵x̵one]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3335/3379] Built PaperC.Probability.StartProbability (2.5s)
+✔ [3336/3379] Built PaperC.Arithmetic.BalasubramanianShoreyInput (2.4s)
+✔ [3337/3380] Built PaperC.Probability.BadStartCount (2.0s)
+⚠ [3340/3380] Built PaperC.Affine.RationalChannelCode (6.2s)
+warning: PaperC/Affine/RationalChannelCode.lean:284:8: This simp argument is unused:
+  Module.finrank_pi
+
+Hint: Omit it from the simp argument list.
+  simp [̵M̵o̵d̵u̵l̵e̵.̵f̵i̵n̵r̵a̵n̵k̵_̵p̵i̵]̵ ̵at hnullity
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:570:12: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hvertex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:580:12: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hvertex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:613:6: This simp argument is unused:
+  startRootVertex
+
+Hint: Omit it from the simp argument list.
+  simp [startIncidenceColumn, startBaseVertex, startTipVertex, s̵t̵a̵r̵t̵R̵o̵o̵t̵V̵e̵r̵t̵e̵x̵,̵ ̵startCompleteVertexLabel,
+  ̲  ̲ ̲ ̲Pi.single_apply, hi, add_mul, Finset.sum_add_distrib]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:1046:33: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [startIncidenceColumn, startBaseVertex, startTipVertex, startRootVertex, startRhs, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:1048:33: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [startIncidenceColumn, startBaseVertex, startTipVertex, startRootVertex, startRhs, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:1123:10: This simp argument is unused:
+  hoff
+
+Hint: Omit it from the simp argument list.
+  simp [ho̵f̵f̵,̵ ̵h̵v, Pi.single_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:1123:20: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [hoff, hv,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:1129:20: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [hoff, hv,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:1146:10: This simp argument is unused:
+  hoff
+
+Hint: Omit it from the simp argument list.
+  simp [ho̵f̵f̵,̵ ̵h̵v, Pi.single_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:1146:20: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [hoff, hv,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/RationalChannelCode.lean:1152:20: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [hoff, hv,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3341/3380] Built PaperC.Analysis.ExponentialSeriesMajorant (2.4s)
+✔ [3342/3380] Built PaperC.Coding.DefectCodeRunge (2.3s)
+✔ [3343/3381] Built PaperC.Arithmetic.PrimeFactorsFactorialBound (2.8s)
+✔ [3344/3384] Built PaperC.Coding.DefectCodeHamming (2.4s)
+✔ [3345/3391] Built PaperC.Analysis.RungeEstimate (2.9s)
+✔ [3346/3391] Built PaperC.Arithmetic.SquarefreeSmoothCount (2.2s)
+✔ [3347/3391] Built PaperC.Algebra.RungeQPolynomial (4.3s)
+✔ [3348/3391] Built PaperC.Asymptotics.Uniform (1.5s)
+✔ [3350/3391] Built PaperC.Arithmetic.BalasubramanianShoreyMaximum (4.0s)
+✔ [3351/3391] Built PaperC.Combinatorics.TouchingPairs (1.9s)
+✔ [3352/3394] Built PaperC.Coding.DefectCodeRepresentation (2.5s)
+✔ [3353/3395] Built PaperC.Affine.TouchingSystem (2.4s)
+✔ [3354/3397] Built PaperC.Arithmetic.ResidualChannelCells (3.0s)
+✔ [3355/3397] Built PaperC.Algebra.RungeNonEquality (2.8s)
+✔ [3356/3400] Built PaperC.Asymptotics.HalfPower (2.5s)
+⚠ [3357/3401] Built PaperC.Affine.CanonicalRationalCode (5.1s)
+warning: PaperC/Affine/CanonicalRationalCode.lean:78:38: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  simp [canonicalReducedCandidate?, hs̵,̵ ̵h̵empty]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3358/3401] Built PaperC.Algebra.RungeEquality (3.2s)
+warning: PaperC/Algebra/RungeEquality.lean:66:4: This simp argument is unused:
+  Int.natAbs_natCast
+
+Hint: Omit it from the simp argument list.
+  simp only [RungeQPolynomial.rungeScale, Int.natAbs_pow,̵
+  ̵ ̵ ̵ ̵ ̵I̵n̵t̵.̵n̵a̵t̵A̵b̵s̵_̵n̵a̵t̵C̵a̵s̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3359/3401] Built PaperC.Analysis.TouchingMass (2.4s)
+✔ [3360/3401] Built PaperC.Coding.DefectCodeDistance (3.2s)
+⚠ [3361/3403] Built PaperC.Arithmetic.ResidualVertexPrimeCellCount (2.6s)
+warning: PaperC/Arithmetic/ResidualVertexPrimeCellCount.lean:43:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [3362/3404] Built PaperC.Asymptotics.ExpSqrtLog (3.9s)
+✔ [3363/3404] Built PaperC.Arithmetic.ResidualChannelCount (3.5s)
+✔ [3364/3405] Built PaperC.Coding.DefectCodeProposition (2.9s)
+✔ [3365/3405] Built PaperC.Arithmetic.RationalMassFinite (4.1s)
+✔ [3366/3409] Built PaperC.Analysis.PrimeReciprocalSqrtSum (4.4s)
+✔ [3367/3412] Built PaperC.Algebra.RungeBound (3.8s)
+✔ [3368/3412] Built PaperC.Probability.LargePrimeDependencyGraph (4.8s)
+✔ [3369/3420] Built PaperC.Asymptotics.LinearPower (3.3s)
+✔ [3370/3420] Built PaperC.Analysis.TerminalPrimeCutoff (4.6s)
+ℹ [3371/3422] Built PaperC.Combinatorics.RelationalHosts (4.1s)
+info: PaperC/Combinatorics/RelationalHosts.lean:395:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [3372/3423] Built PaperC.Arithmetic.ResidualChannelSupport (1.8s)
+✔ [3373/3423] Built PaperC.Asymptotics.RationalPowers (2.0s)
+ℹ [3374/3423] Built PaperC.Analysis.RelationalInterpolation (2.6s)
+info: PaperC/Analysis/RelationalInterpolation.lean:175:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [3375/3427] Built PaperC.Affine.RelationBoundaryIff (2.4s)
+warning: PaperC/Affine/RelationBoundaryIff.lean:34:6: This simp argument is unused:
+  startRootVertex
+
+Hint: Omit it from the simp argument list.
+  simp [startIncidenceColumn, startBaseVertex, startTipVertex, s̵t̵a̵r̵t̵R̵o̵o̵t̵V̵e̵r̵t̵e̵x̵,̵ ̵startCompleteVertexLabel,
+  ̲  ̲ ̲ ̲Pi.single_apply, hi, add_mul, Finset.sum_add_distrib]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3376/3428] Built PaperC.Coding.RungeDefectApplication (2.8s)
+✔ [3377/3428] Built PaperC.LinearAlgebra.QuotientParity (2.9s)
+✔ [3378/3449] Built PaperC.Analysis.DependencyEdgeBound (3.2s)
+✔ [3379/3449] Built PaperC.Asymptotics.ThreeHalvesPower (2.4s)
+✔ [3380/3449] Built PaperC.Analysis.RelationalHostBound (3.5s)
+✔ [3381/3450] Built PaperC.Asymptotics.LinearProduct (2.3s)
+✔ [3382/3469] Built PaperC.Combinatorics.CertificateCellFamilies (2.1s)
+✔ [3383/3469] Built PaperC.Asymptotics.RationalPowerLittleO (2.0s)
+⚠ [3384/3478] Built PaperC.Combinatorics.CertificateSummation (2.9s)
+warning: PaperC/Combinatorics/CertificateSummation.lean:40:0: automatically included section variable(s) unused in theorem `PaperC.CRT.unorderedCertificate_subset`:
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/CertificateSummation.lean:46:0: automatically included section variable(s) unused in theorem `PaperC.CRT.unorderedCertificate_card`:
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [3385/3480] Built PaperC.Asymptotics.RationalPowerClosure (3.9s)
+✔ [3386/3481] Built PaperC.Analysis.RungeLogarithmicGrowth (4.6s)
+✔ [3387/3481] Built PaperC.Asymptotics.QuadraticAndInterpolationClosure (4.1s)
+✔ [3388/3487] Built PaperC.Combinatorics.SmallComponentExtraction (3.3s)
+✔ [3389/3488] Built PaperC.Arithmetic.ResidualChannelLemmaSevenTwo (7.1s)
+✔ [3390/3498] Built PaperC.Coding.TwoParityColumnCode (4.1s)
+✔ [3391/3515] Built PaperC.Asymptotics.FourPowLittleOHeight (6.3s)
+⚠ [3394/3515] Built PaperC.Combinatorics.CertificateCRTInstantiation (5.4s)
+warning: PaperC/Combinatorics/CertificateCRTInstantiation.lean:52:0: automatically included section variable(s) unused in theorem `PaperC.CRT.certificate_pairwise_coprime`:
+  [Fintype ι]
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype ι] [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [3395/3515] Built PaperC.Asymptotics.ShallowCoreRationalClosure (3.0s)
+⚠ [3396/3519] Built PaperC.Combinatorics.TerminalClosureCounting (2.8s)
+warning: PaperC/Combinatorics/TerminalClosureCounting.lean:113:23: This simp argument is unused:
+  Finset.mem_product
+
+Hint: Omit it from the simp argument list.
+  simp only [incidences, Finset.card_eq_sum_ones, F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵f̵i̵l̵t̵e̵r̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵p̵r̵o̵d̵u̵c̵t̵]̵F̲i̲n̲s̲e̲t̲.̲s̲u̲m̲_̲f̲i̲l̲t̲e̲r̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Combinatorics/TerminalClosureCounting.lean:225:12: This simp argument is unused:
+  Nat.mul_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [̵N̵a̵t̵.̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵N̵a̵t̵.̵m̵u̵l̵_̵c̵o̵m̵m̵,̵[̲N̲a̲t̲.̲m̲u̲l̲_̲c̲o̲m̲m̲,̲ Nat.mul_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3397/3519] Built PaperC.Probability.FinitePMF (2.7s)
+✔ [3398/3522] Built PaperC.Combinatorics.TerminalComponentCount (3.3s)
+✔ [3399/3526] Built PaperC.Coding.CanonicalDefectCode (3.5s)
+✔ [3400/3526] Built PaperC.Asymptotics.CappedRadiusDyadic (4.2s)
+✔ [3401/3535] Built PaperC.Combinatorics.CertificatePopulationCover (3.3s)
+✔ [3402/3553] Built PaperC.Combinatorics.CertificateLemmaSevenOne (3.5s)
+⚠ [3403/3553] Built PaperC.Combinatorics.GraphCycleRank (4.6s)
+warning: PaperC/Combinatorics/GraphCycleRank.lean:66:0: automatically included section variable(s) unused in theorem `PaperC.GraphCycleRank.incidenceVector_apply`:
+  [Fintype V]
+  [Fintype E]
+  [DecidableEq E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype E] [DecidableEq E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/GraphCycleRank.lean:84:0: automatically included section variable(s) unused in theorem `PaperC.GraphCycleRank.incidenceMap_apply_eq_privateCoordinate`:
+  [Fintype C]
+  [DecidableEq C]
+  [Fintype P]
+  [DecidableEq P]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype C] [DecidableEq C] [Fintype P] [DecidableEq P] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/GraphCycleRank.lean:122:0: automatically included section variable(s) unused in theorem `PaperC.GraphCycleRank.sum_incidenceMap_on_component_eq_zero`:
+  [Fintype C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [3404/3561] Built PaperC.Diophantine.EvertseSilvermanInput (3.5s)
+⚠ [3406/3564] Built PaperC.Probability.ArratiaGoldsteinGordonInput (3.9s)
+warning: PaperC/Probability/ArratiaGoldsteinGordonInput.lean:248:2: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+✔ [3410/3564] Built PaperC.Coding.IntervalDefectBound (4.3s)
+✔ [3411/3564] Built PaperC.Model.InfiniteRademacher (4.6s)
+✔ [3414/3564] Built PaperC.LinearAlgebra.CanonicalResidualQuotient (3.0s)
+✔ [3415/3564] Built PaperC.Asymptotics.SquarefreeSmoothCritical (3.5s)
+⚠ [3416/3564] Built PaperC.Combinatorics.CycleSpaceDimension (3.8s)
+warning: PaperC/Combinatorics/CycleSpaceDimension.lean:82:0: automatically included section variable(s) unused in theorem `PaperC.CycleSpaceDimension.endpointVector_self`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/CycleSpaceDimension.lean:86:26: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [endpointVector, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Combinatorics/CycleSpaceDimension.lean:86:46: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: PaperC/Combinatorics/CycleSpaceDimension.lean:88:0: automatically included section variable(s) unused in theorem `PaperC.CycleSpaceDimension.endpointVector_add_endpointVector`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/CycleSpaceDimension.lean:91:60: This simp argument is unused:
+  Pi.zero_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [endpointVector, Pi.add_apply, Pi.single_apply,̵ ̵P̵i̵.̵z̵e̵r̵o̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Combinatorics/CycleSpaceDimension.lean:95:0: automatically included section variable(s) unused in theorem `PaperC.CycleSpaceDimension.incidenceVector_mem_range`:
+  [Fintype V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/CycleSpaceDimension.lean:137:0: automatically included section variable(s) unused in theorem `PaperC.CycleSpaceDimension.rootedEndpointVector_apply_self`:
+  [Fintype V]
+  [Fintype C]
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype C] [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/CycleSpaceDimension.lean:143:0: automatically included section variable(s) unused in theorem `PaperC.CycleSpaceDimension.rootedEndpointVector_apply_ne`:
+  [Fintype V]
+  [Fintype C]
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [Fintype C] [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: PaperC/Combinatorics/CycleSpaceDimension.lean:187:0: automatically included section variable(s) unused in theorem `PaperC.CycleSpaceDimension.card_nonRoot`:
+  [DecidableEq C]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq C] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [3417/3564] Built PaperC.Diophantine.PellInput (3.7s)
+⚠ [3419/3564] Built PaperC.Combinatorics.BoundedRatioGeometry (7.7s)
+warning: PaperC/Combinatorics/BoundedRatioGeometry.lean:180:5: Variable name `hN` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Combinatorics/BoundedRatioGeometry.lean:180:18: Variable name `hκ₀` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Combinatorics/BoundedRatioGeometry.lean:206:5: Variable name `hN` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Combinatorics/BoundedRatioGeometry.lean:206:18: Variable name `hκ₀` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Combinatorics/BoundedRatioGeometry.lean:334:5: Variable name `ha` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Combinatorics/BoundedRatioGeometry.lean:367:5: Variable name `a` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3420/3564] Built PaperC.Probability.InfiniteCylinderTransfer (3.7s)
+✔ [3421/3564] Built PaperC.Probability.SectionThirteenFiniteBound (4.3s)
+✔ [3422/3611] Built PaperC.Analysis.DefectPointwiseRate (3.4s)
+✔ [3812/3977] Built PaperC.Analysis.WeightedDefectMass (3.4s)
+✔ [3813/3977] Built PaperC.Diophantine.ComponentNormalization (3.5s)
+✔ [3814/3979] Built PaperC.Diophantine.MultipleDefects (4.0s)
+⚠ [3815/3983] Built PaperC.Affine.TouchingDefectRank (8.5s)
+warning: PaperC/Affine/TouchingDefectRank.lean:263:17: This simp argument is unused:
+  hjlast
+
+Hint: Omit it from the simp argument list.
+  simp [touchingInteriorBoundary, touchingIncidence, hj0, h̵j̵l̵a̵s̵t̵,̵ ̵Finset.sum_add_distrib]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:263:25: This simp argument is unused:
+  Finset.sum_add_distrib
+
+Hint: Omit it from the simp argument list.
+  simp [touchingInteriorBoundary, touchingIncidence, hj0, h̵j̵l̵a̵s̵t̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵a̵d̵d̵_̵d̵i̵s̵t̵r̵i̵b̵]̵h̲j̲l̲a̲s̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:265:17: This simp argument is unused:
+  hjlast
+
+Hint: Omit it from the simp argument list.
+  simp [touchingInteriorBoundary, touchingIncidence, hj0, h̵j̵l̵a̵s̵t̵,̵ ̵Finset.sum_add_distrib]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:265:25: This simp argument is unused:
+  Finset.sum_add_distrib
+
+Hint: Omit it from the simp argument list.
+  simp [touchingInteriorBoundary, touchingIncidence, hj0, h̵j̵l̵a̵s̵t̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵a̵d̵d̵_̵d̵i̵s̵t̵r̵i̵b̵]̵h̲j̲l̲a̲s̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:294:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hrq']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:542:16: This simp argument is unused:
+  hroot
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, h̵r̵o̵o̵t̵,̵ ̵hileaf, hi0, hiz, z]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:542:36: This simp argument is unused:
+  hiz
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, hroot, hileaf, hi0, h̵i̵z̵,̵ ̵z]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:557:18: This simp argument is unused:
+  hroot
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, h̵r̵o̵o̵t̵,̵ ̵hx, hj0, hi0, hjz, z]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:557:34: This simp argument is unused:
+  hi0
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, hroot, hx, hj0, h̵i̵0̵,̵ ̵hjz, z]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:561:18: This simp argument is unused:
+  hroot
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, h̵r̵o̵o̵t̵,̵ ̵hx, hileaf, hj0, hi0, hij, hjz, z]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:596:36: This simp argument is unused:
+  hlastj
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, hy, hright, hjlast, h̵l̵a̵s̵t̵j̵,̵ ̵hi0, z, last]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:596:49: This simp argument is unused:
+  z
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, hy, hright, hjlast, hlastj, hi0, z̵,̵ ̵last]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:596:52: This simp argument is unused:
+  last
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, hy, hright, hjlast, hlastj, hi0, z̵,̵ ̵l̵a̵s̵t̵]̵z̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:633:25: This simp argument is unused:
+  hleft
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, hroot, hx, h̵l̵e̵f̵t̵,̵ ̵hi0]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:656:29: This simp argument is unused:
+  hiz
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, hileaf, hi0, h̵i̵z̵,̵ ̵z]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Affine/TouchingDefectRank.lean:671:32: This simp argument is unused:
+  hi0
+
+Hint: Omit it from the simp argument list.
+  simp [touchingEdgeParity, touchingIncidence, hcenter, hj0, h̵i̵0̵,̵ ̵hjz, z]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3816/3986] Built PaperC.Affine.StartDefectRank (6.2s)
+warning: PaperC/Affine/StartDefectRank.lean:128:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hrq']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3817/3987] Built PaperC.Diophantine.TerminalPartnerPell (5.6s)
+✔ [3818/3988] Built PaperC.Analysis.CriticalWindowParameters (3.9s)
+ℹ [3819/4010] Built PaperC.Combinatorics.BoundedRatioRelationalHosts (6.9s)
+info: PaperC/Combinatorics/BoundedRatioRelationalHosts.lean:601:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [3820/4011] Built PaperC.Diophantine.QuadraticIdealDivisors (5.0s)
+✔ [3821/4013] Built PaperC.Probability.DefectFirstMoment (4.2s)
+✔ [3822/4013] Built PaperC.Diophantine.SingletonProductParametrization (4.2s)
+✔ [3823/4013] Built PaperC.Asymptotics.HighZoneTwoDefects (5.8s)
+✔ [3824/4014] Built PaperC.Asymptotics.PropositionFifteenFiveDecay (6.3s)
+⚠ [3825/4015] Built PaperC.Probability.ConditionalStartProbability (6.7s)
+warning: PaperC/Probability/ConditionalStartProbability.lean:247:26: This simp argument is unused:
+  qLarge
+
+Hint: Omit it from the simp argument list.
+  simp [extendLarge, q, q̵L̵a̵r̵g̵e̵,̵ ̵hpY]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/ConditionalStartProbability.lean:565:45: This simp argument is unused:
+  one_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [Fintype.card_fin, Nat.cast_one, o̵n̵e̵_̵m̵u̵l̵,̵ ̵pow_zero,
+  ̵  ̵ ̵ ̵mul_one] at hfourier
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3826/4015] Built PaperC.Probability.SpatialThinningFinite (4.7s)
+✔ [3827/4035] Built PaperC.Probability.TouchingProbability (5.3s)
+✔ [3846/4035] Built PaperC.Probability.BadStartMass (5.2s)
+⚠ [3847/4035] Built PaperC.Diophantine.GeneralizedPell (7.2s)
+warning: PaperC/Diophantine/GeneralizedPell.lean:148:4: This simp argument is unused:
+  toZsqrtd_re
+
+Hint: Omit it from the simp argument list.
+  simp only [act, toZsqrtd, Zsqrtd.re_mul, Zsqrtd.im_mul, t̵o̵Z̵s̵q̵r̵t̵d̵_̵r̵e̵,̵ ̵toZsqrtd_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Diophantine/GeneralizedPell.lean:148:17: This simp argument is unused:
+  toZsqrtd_im
+
+Hint: Omit it from the simp argument list.
+  simp only [act, toZsqrtd, Zsqrtd.re_mul, Zsqrtd.im_mul, t̵o̵Z̵s̵q̵r̵t̵d̵_̵r̵e̵,̵ ̵t̵o̵Z̵s̵q̵r̵t̵d̵_̵i̵m̵]̵t̲o̲Z̲s̲q̲r̲t̲d̲_̲r̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3848/4035] Built PaperC.Diophantine.PellRealExponent (3.1s)
+⚠ [3849/4036] Built PaperC.Asymptotics.BoundedRatioTwoDefectStarts (5.3s)
+warning: PaperC/Asymptotics/BoundedRatioTwoDefectStarts.lean:427:32: This simp argument is unused:
+  and_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [equalKernelDefectBases,̵ ̵a̵n̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3850/4040] Built PaperC.Analysis.CriticalWindowScale (9.0s)
+✔ [3851/4040] Built PaperC.Analysis.SpatialRiemannSums (4.7s)
+⚠ [3852/4040] Built PaperC.Arithmetic.LowZonePrimePivots (6.8s)
+warning: PaperC/Arithmetic/LowZonePrimePivots.lean:62:28: This simp argument is unused:
+  and_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [intermediatePrimes,̵ ̵a̵n̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Arithmetic/LowZonePrimePivots.lean:419:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hji]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Arithmetic/LowZonePrimePivots.lean:518:24: This simp argument is unused:
+  Module.finrank_pi
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵M̵o̵d̵u̵l̵e̵.̵f̵i̵n̵r̵a̵n̵k̵_̵p̵i̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Arithmetic/LowZonePrimePivots.lean:630:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hrq']
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Arithmetic/LowZonePrimePivots.lean:733:24: This simp argument is unused:
+  Module.finrank_pi
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵M̵o̵d̵u̵l̵e̵.̵f̵i̵n̵r̵a̵n̵k̵_̵p̵i̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3853/4040] Built PaperC.Probability.ConditionalDependencyGraph (6.3s)
+warning: PaperC/Probability/ConditionalDependencyGraph.lean:200:33: This simp argument is unused:
+  largeCoordinatePrime
+
+Hint: Omit it from the simp argument list.
+  simp [extendLarge, hpY, q, l̵a̵r̵g̵e̵C̵o̵o̵r̵d̵i̵n̵a̵t̵e̵P̵r̵i̵m̵e̵,̵ ̵hq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/ConditionalDependencyGraph.lean:776:10: This simp argument is unused:
+  Module.finrank_fin_fun
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵M̵o̵d̵u̵l̵e̵.̵f̵i̵n̵r̵a̵n̵k̵_̵f̵i̵n̵_̵f̵u̵n̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/ConditionalDependencyGraph.lean:819:10: This simp argument is unused:
+  Module.finrank_fin_fun
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵M̵o̵d̵u̵l̵e̵.̵f̵i̵n̵r̵a̵n̵k̵_̵f̵i̵n̵_̵f̵u̵n̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3854/4044] Built PaperC.Diophantine.HalterKochConductorDescent (3.4s)
+✔ [3855/4056] Built PaperC.Probability.MaskedFirstMoment (4.9s)
+⚠ [3856/4057] Built PaperC.Arithmetic.PolynomialZoneLargePrimes (8.3s)
+warning: PaperC/Arithmetic/PolynomialZoneLargePrimes.lean:71:34: Variable name `B` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3857/4057] Built PaperC.Analysis.SpatialMarkedParameters (4.8s)
+✔ [3859/4067] Built PaperC.Probability.TerminalBadStartBound (5.0s)
+⚠ [3860/4067] Built PaperC.Probability.DirichletAtomConvergence (5.8s)
+warning: PaperC/Probability/DirichletAtomConvergence.lean:59:17: Variable name `hp0` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Probability/DirichletAtomConvergence.lean:60:5: Variable name `hp` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3861/4067] Built PaperC.Analysis.CriticalWeightedDefect (7.9s)
+✔ [3862/4067] Built PaperC.Probability.PoissonVoidApproximation (6.1s)
+⚠ [3863/4067] Built PaperC.Probability.PoissonLaplaceFunctional (4.2s)
+warning: PaperC/Probability/PoissonLaplaceFunctional.lean:25:12: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/PoissonLaplaceFunctional.lean:47:8: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/PoissonLaplaceFunctional.lean:55:13: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+⚠ [3864/4067] Built PaperC.Probability.CriticalFirstMoment (3.7s)
+warning: PaperC/Probability/CriticalFirstMoment.lean:65:22: This simp argument is unused:
+  map_pow
+
+Hint: Omit it from the simp argument list.
+  simp only [Rat.cast_abs, Rat.cast_sub, Rat.cast_natCast,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵Rat.cast_div, m̵a̵p̵_̵p̵o̵w̵,̵ ̵Rat.cast_ofNat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/CriticalFirstMoment.lean:65:31: This simp argument is unused:
+  Rat.cast_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp only [Rat.cast_abs, Rat.cast_sub, Rat.cast_natCast, Rat.cast_div, m̵a̵p̵_̵p̵o̵w̵,̵ ̵R̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]̵m̲a̲p̲_̲p̲o̲w̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/CriticalFirstMoment.lean:74:49: This simp argument is unused:
+  map_pow
+
+Hint: Omit it from the simp argument list.
+  simp only [Rat.cast_div, Rat.cast_natCast, m̵a̵p̵_̵p̵o̵w̵,̵ ̵Rat.cast_ofNat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/CriticalFirstMoment.lean:74:58: This simp argument is unused:
+  Rat.cast_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp only [Rat.cast_div, Rat.cast_natCast, map_pow,̵ ̵R̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3865/4067] Built PaperC.Diophantine.PellDivisorEnvelope (12s)
+⚠ [3866/4067] Built PaperC.Probability.IndependentThinning (5.4s)
+warning: PaperC/Probability/IndependentThinning.lean:45:15: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  simp only [̵P̵r̵o̵d̵.̵f̵s̵t̵,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵,̵[̲P̲r̲o̲d̲.̲s̲n̲d̲,̲ ← Finset.mul_sum, ν.sum_prob, mul_one, μ.sum_prob]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:45:25: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  simp only [Prod.fst, P̵r̵o̵d̵.̵s̵n̵d̵,̵ ̵← Finset.mul_sum, ν.sum_prob, mul_one, μ.sum_prob]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:59:13: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  simp only [̵P̵r̵o̵d̵.̵f̵s̵t̵,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]̵[̲P̲r̲o̲d̲.̲s̲n̲d̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:59:23: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  simp only [Prod.fst,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:687:15: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  simp only [̵P̵r̵o̵d̵.̵f̵s̵t̵,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]̵[̲P̲r̲o̲d̲.̲s̲n̲d̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:687:25: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  simp only [Prod.fst,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:699:15: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  simp only [̵P̵r̵o̵d̵.̵f̵s̵t̵,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]̵[̲P̲r̲o̲d̲.̲s̲n̲d̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:699:25: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  simp only [Prod.fst,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:715:15: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  simp only [̵P̵r̵o̵d̵.̵f̵s̵t̵,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]̵[̲P̲r̲o̲d̲.̲s̲n̲d̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:715:25: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  simp only [Prod.fst,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:979:13: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  simp only [̵P̵r̵o̵d̵.̵f̵s̵t̵,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]̵[̲P̲r̲o̲d̲.̲s̲n̲d̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/IndependentThinning.lean:979:23: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  simp only [Prod.fst,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3867/4067] Built PaperC.Probability.PoissonVectorMass (3.7s)
+warning: PaperC/Probability/PoissonVectorMass.lean:92:21: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/PoissonVectorMass.lean:93:31: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Probability/PoissonVectorMass.lean:99:21: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/PoissonVectorMass.lean:102:15: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/PoissonVectorMass.lean:103:15: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Probability/PoissonVectorMass.lean:104:13: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Probability/PoissonVectorMass.lean:110:21: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/PoissonVectorMass.lean:124:10: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/PoissonVectorMass.lean:131:6: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/PoissonVectorMass.lean:137:21: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Probability/PoissonVectorMass.lean:145:12: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/PoissonVectorMass.lean:149:25: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Probability/PoissonVectorMass.lean:154:12: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Probability/PoissonVectorMass.lean:155:15: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+✔ [3868/4067] Built PaperC.Analysis.CriticalPointwiseIntervals (8.0s)
+✔ [3869/4067] Built PaperC.Probability.LaplaceVoidClosure (2.9s)
+✔ [3870/4067] Built PaperC.Probability.CriticalRunWindow (5.3s)
+✔ [3871/4067] Built PaperC.Combinatorics.LargePrimeOccurrences (72s)
+✔ [3872/4067] Built PaperC.Asymptotics.LowZoneCritical (15s)
+⚠ [3873/4067] Built PaperC.Asymptotics.RelationalHostsThreeHalves (3.2s)
+warning: PaperC/Asymptotics/RelationalHostsThreeHalves.lean:105:41: This simp argument is unused:
+  Nat.cast_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.cast_add, Nat.cast_one, Nat.cast_m̵u̵l̵,̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵ofNat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Asymptotics/RelationalHostsThreeHalves.lean:105:55: This simp argument is unused:
+  Nat.cast_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.cast_add, Nat.cast_one, Nat.cast_mul,̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3874/4067] Built PaperC.Asymptotics.CanonicalChannelWindow (3.2s)
+✔ [3875/4067] Built PaperC.Analysis.TouchingWindow (3.5s)
+✔ [3876/4067] Built PaperC.Asymptotics.CriticalChannelPowers (3.4s)
+⚠ [3877/4067] Built PaperC.Coding.TheoremEightHammingBudget (3.9s)
+warning: PaperC/Coding/TheoremEightHammingBudget.lean:86:10: This simp argument is unused:
+  L
+
+Hint: Omit it from the simp argument list.
+  simp [L̵,̵ ̵ell, hB] at hloglog
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Coding/TheoremEightHammingBudget.lean:86:13: This simp argument is unused:
+  ell
+
+Hint: Omit it from the simp argument list.
+  simp [L, e̵l̵l̵,̵ ̵hB] at hloglog
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Coding/TheoremEightHammingBudget.lean:124:10: This simp argument is unused:
+  L
+
+Hint: Omit it from the simp argument list.
+  simp [L̵,̵ ̵ell, hB] at hloglog
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Coding/TheoremEightHammingBudget.lean:124:13: This simp argument is unused:
+  ell
+
+Hint: Omit it from the simp argument list.
+  simp [L, e̵l̵l̵,̵ ̵hB] at hloglog
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Coding/TheoremEightHammingBudget.lean:552:46: exponent 16384 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+✔ [3878/4067] Built PaperC.Asymptotics.ExpLogDivLogLog (4.1s)
+✔ [3879/4067] Built PaperC.Combinatorics.LargePrimeGraph (2.4s)
+✔ [3880/4067] Built PaperC.Analysis.CriticalTouchingPairs (2.0s)
+✔ [3881/4067] Built PaperC.Asymptotics.CanonicalRationalCodeWindow (3.1s)
+✔ [3882/4067] Built PaperC.Asymptotics.LogLogRunWindow (6.7s)
+✔ [3883/4067] Built PaperC.Asymptotics.BoundedRatioRelationalHostsCritical (3.5s)
+✔ [3884/4067] Built PaperC.Asymptotics.WeightedChannelMassCritical (3.6s)
+✔ [3885/4067] Built PaperC.Asymptotics.AlignedRungeGrowth (7.6s)
+✔ [3886/4067] Built PaperC.Asymptotics.CriticalRationalMassEnvelopes (4.1s)
+✔ [3887/4067] Built PaperC.Asymptotics.ResidualCertificateMassCritical (2.5s)
+✔ [3888/4067] Built PaperC.Combinatorics.LargePrimeComponents (2.1s)
+✔ [3889/4067] Built PaperC.Asymptotics.CriticalRationalMass (2.3s)
+⚠ [3890/4067] Built PaperC.Combinatorics.LargePrimeGraphResolution (1.0s)
+warning: PaperC/Combinatorics/LargePrimeGraphResolution.lean:170:5: Variable name `hx` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Combinatorics/LargePrimeGraphResolution.lean:170:18: Variable name `hy` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3891/4067] Built PaperC.Asymptotics.BoundedRatioRationalMass (2.5s)
+✔ [3892/4067] Built PaperC.Combinatorics.ComponentProductParity (2.0s)
+⚠ [3893/4067] Built PaperC.Asymptotics.DependencyEdgesCritical (4.7s)
+warning: PaperC/Asymptotics/DependencyEdgesCritical.lean:299:4: 'norm_num at hcast ⊢' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [3894/4067] Built PaperC.LinearAlgebra.NonalignedCoreRank (2.3s)
+⚠ [3895/4067] Built PaperC.Combinatorics.ExactUnitIsolation (2.4s)
+warning: PaperC/Combinatorics/ExactUnitIsolation.lean:282:5: Variable name `hx` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Combinatorics/ExactUnitIsolation.lean:282:18: Variable name `hy` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Combinatorics/ExactUnitIsolation.lean:432:6: Try `simp at hblock` instead of `simpa using hblock`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: PaperC/Combinatorics/ExactUnitIsolation.lean:435:6: Try `simp at hblock` instead of `simpa using hblock`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [3896/4067] Built PaperC.Coding.AlignedComponentCode (2.3s)
+⚠ [3897/4067] Built PaperC.Arithmetic.TerminalMatching (2.6s)
+warning: PaperC/Arithmetic/TerminalMatching.lean:275:4: Try this: intro hempty p hp hvp
+✔ [3898/4067] Built PaperC.Asymptotics.TerminalBadStartsCritical (3.2s)
+✔ [3899/4067] Built PaperC.Combinatorics.LargePrimeRelationBoundary (2.0s)
+✔ [3900/4067] Built PaperC.Asymptotics.PolynomialZoneCritical (26s)
+✔ [3901/4067] Built PaperC.Coding.AlignedComponentHamming (2.0s)
+⚠ [3902/4067] Built PaperC.Asymptotics.BoundedRatioDistinctKernelTwoDefects (5.3s)
+warning: PaperC/Asymptotics/BoundedRatioDistinctKernelTwoDefects.lean:76:35: This simp argument is unused:
+  and_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [distinctKernelDefectBases,̵ ̵a̵n̵d̵_̵a̵s̵s̵o̵c̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3903/4067] Built PaperC.Combinatorics.ResidualComponentCounts (2.6s)
+✔ [3904/4067] Built PaperC.Asymptotics.PolynomialZoneSum (3.0s)
+✔ [3905/4067] Built PaperC.Combinatorics.DefectiveVertexIntervalBound (3.2s)
+✔ [3906/4067] Built PaperC.Asymptotics.BadStartMassCritical (5.9s)
+✔ [3907/4067] Built PaperC.Asymptotics.CorrectedDefectEnvelope (2.7s)
+✔ [3908/4067] Built PaperC.Asymptotics.MaskedFirstMomentCritical (6.8s)
+✔ [3909/4067] Built PaperC.Asymptotics.LemmaFifteenThree (11s)
+✔ [3910/4067] Built PaperC.Asymptotics.PropositionFifteenFive (3.4s)
+⚠ [3911/4067] Built PaperC.Asymptotics.PropositionFifteenFiveClosure (3.0s)
+warning: PaperC/Asymptotics/PropositionFifteenFiveClosure.lean:266:13: This simp argument is unused:
+  sub_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [s̵u̵b̵_̵z̵e̵r̵o̵,̵ ̵abs_one, mul_one] at hbound
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3912/4067] Built PaperC.Combinatorics.ResidualCertificates (29s)
+✔ [3913/4067] Built PaperC.Combinatorics.OneUnitResidualExceptions (1.4s)
+⚠ [3914/4067] Built PaperC.Asymptotics.PropositionFifteenFivePartition (2.9s)
+warning: PaperC/Asymptotics/PropositionFifteenFivePartition.lean:405:33: This simp argument is unused:
+  one_div
+
+Hint: Omit it from the simp argument list.
+  simp only [div_eq_mul_inv, o̵n̵e̵_̵d̵i̵v̵,̵ ̵inv_pow]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: PaperC/Asymptotics/PropositionFifteenFivePartition.lean:705:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [3915/4067] Built PaperC.Combinatorics.CanonicalResidualComponents (3.3s)
+✔ [3916/4067] Built PaperC.Combinatorics.CanonicalResidualCellMembership (1.7s)
+✔ [3917/4067] Built PaperC.Combinatorics.DeepCoreSmallComponent (1.9s)
+✔ [3918/4067] Built PaperC.Combinatorics.AlignedExactFreeComponents (1.9s)
+✔ [3919/4067] Built PaperC.Combinatorics.CanonicalResidualPrimeProduct (2.6s)
+✔ [3920/4067] Built PaperC.Combinatorics.AlignedRungeBridge (2.6s)
+✔ [3921/4067] Built PaperC.Combinatorics.ResidualMasses (2.4s)
+✔ [3922/4067] Built PaperC.Combinatorics.SmallHeightResidualPrimeSupport (3.4s)
+✔ [3923/4067] Built PaperC.Combinatorics.AlignedCoreExclusion (1.8s)
+✔ [3924/4067] Built PaperC.Combinatorics.SmallHeightLargeProductPairs (2.1s)
+✔ [3925/4067] Built PaperC.Combinatorics.CanonicalResidualCRTCertificate (4.8s)
+✔ [3926/4067] Built PaperC.Combinatorics.AlignedDeepCoreExtraction (2.1s)
+✔ [3927/4067] Built PaperC.Combinatorics.SmallHeightResidualComponentEnvelope (2.6s)
+✔ [3928/4067] Built PaperC.Combinatorics.ShallowCorePairs (2.7s)
+✔ [3929/4067] Built PaperC.LinearAlgebra.CanonicalExactRank (5.6s)
+⚠ [3930/4067] Built PaperC.Asymptotics.TheoremEightAlignedClosure (3.9s)
+warning: PaperC/Asymptotics/TheoremEightAlignedClosure.lean:245:40: exponent 16384 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+✔ [3931/4067] Built PaperC.Combinatorics.SectionSevenPartition (2.9s)
+✔ [3932/4067] Built PaperC.Combinatorics.SigmaZeroAmbientCertificate (5.6s)
+✔ [3933/4067] Built PaperC.Combinatorics.SmallHeightTauEnvelope (3.8s)
+✔ [3934/4067] Built PaperC.Asymptotics.ShallowCoreDensityCritical (4.1s)
+✔ [3935/4067] Built PaperC.Combinatorics.ShallowCoreMassBound (3.4s)
+✔ [3936/4067] Built PaperC.Asymptotics.ShallowCoreSigmaCritical (6.8s)
+✔ [3937/4067] Built PaperC.Asymptotics.PropositionNineNineHostGeometry (4.0s)
+✔ [3938/4067] Built PaperC.Asymptotics.BoundedRatioSectorAligned (4.6s)
+✔ [3939/4067] Built PaperC.Combinatorics.CanonicalResidualAmbientCertificate (12s)
+⚠ [3940/4067] Built PaperC.Combinatorics.SectionElevenPartition (7.5s)
+warning: PaperC/Combinatorics/SectionElevenPartition.lean:265:45: This simp argument is unused:
+  hsector
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵s̵e̵c̵t̵o̵r̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Combinatorics/SectionElevenPartition.lean:344:25: This simp argument is unused:
+  hchoice
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵c̵h̵o̵i̵c̵e̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Combinatorics/SectionElevenPartition.lean:355:25: This simp argument is unused:
+  hchoice
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵c̵h̵o̵i̵c̵e̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Combinatorics/SectionElevenPartition.lean:567:8: This simp argument is unused:
+  HasSmallCanonicalPrimeProduct
+
+Hint: Omit it from the simp argument list.
+  simp [HasS̵m̵a̵l̵l̵C̵a̵n̵o̵n̵i̵c̵a̵l̵P̵r̵i̵m̵e̵P̵r̵o̵d̵u̵c̵t̵,̵
+  ̵ ̵ ̵ ̵ ̵H̵a̵s̵LargeCanonicalPrimeProduct]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Combinatorics/SectionElevenPartition.lean:582:8: This simp argument is unused:
+  HasSmallCanonicalPrimeProduct
+
+Hint: Omit it from the simp argument list.
+  simp [HasS̵m̵a̵l̵l̵C̵a̵n̵o̵n̵i̵c̵a̵l̵P̵r̵i̵m̵e̵P̵r̵o̵d̵u̵c̵t̵,̵
+  ̵ ̵ ̵ ̵ ̵H̵a̵s̵LargeCanonicalPrimeProduct]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3941/4067] Built PaperC.Combinatorics.SmallHeightPositiveSigmaSystematicBound (4.8s)
+✔ [3942/4067] Built PaperC.Asymptotics.PropositionSevenFiveCritical (6.6s)
+✔ [3943/4067] Built PaperC.Combinatorics.SmallHeightLargeProductMassBound (8.7s)
+✔ [3944/4067] Built PaperC.Asymptotics.PropositionNineNine (6.2s)
+⚠ [3945/4067] Built PaperC.Combinatorics.PositiveSigmaFixedChannelCover (6.2s)
+warning: PaperC/Combinatorics/PositiveSigmaFixedChannelCover.lean:213:0: Definition `witnessOfFirstCoordinate` is a proposition; use `theorem` instead of `def`
+
+Note: This linter can be disabled with `set_option linter.defProp false`
+✔ [3946/4067] Built PaperC.Combinatorics.CanonicalResidualCertificateMassBound (6.1s)
+✔ [3947/4067] Built PaperC.Asymptotics.SmallHeightComponentEnvelopeCritical (18s)
+✔ [3948/4067] Built PaperC.Combinatorics.CanonicalTerminalPopulation (15s)
+✔ [3949/4067] Built PaperC.Combinatorics.PositiveSigmaFixedChannelBound (2.0s)
+✔ [3950/4067] Built PaperC.Asymptotics.SmallHeightTauEnvelopeCritical (2.1s)
+✔ [3951/4067] Built PaperC.Combinatorics.CanonicalSectionElevenPartition (2.7s)
+ℹ [3952/4067] Built PaperC.Combinatorics.PositiveSigmaGlobalGrouping (2.5s)
+info: PaperC/Combinatorics/PositiveSigmaGlobalGrouping.lean:338:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [3953/4067] Built PaperC.LinearAlgebra.CanonicalSmallRows (19s)
+warning: PaperC/LinearAlgebra/CanonicalSmallRows.lean:223:21: This simp argument is unused:
+  eq_comm
+
+Hint: Omit it from the simp argument list.
+  simp [componentVertices_defective_eq_singleton
+         ̲ ̲(isDefective_of_mem_canonicalCorrectedDefectiveVertices v.2),
+      Pi.single_apply,̵ ̵e̵q̵_̵c̵o̵m̵m̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/LinearAlgebra/CanonicalSmallRows.lean:595:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/LinearAlgebra/CanonicalSmallRows.lean:597:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hne]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/LinearAlgebra/CanonicalSmallRows.lean:699:8: This simp argument is unused:
+  canonicalCoreBoundarySynthesis
+
+Hint: Omit it from the simp argument list.
+  simp [̵c̵a̵n̵o̵n̵i̵c̵a̵l̵C̵o̵r̵e̵B̵o̵u̵n̵d̵a̵r̵y̵S̵y̵n̵t̵h̵e̵s̵i̵s̵,̵ ̵s̵m̵u̵l̵_̵e̵q̵_̵m̵u̵l̵,̵[̲s̲m̲u̲l̲_̲e̲q̲_̲m̲u̲l̲,̲ mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/LinearAlgebra/CanonicalSmallRows.lean:726:8: This simp argument is unused:
+  canonicalCoreBoundarySynthesis
+
+Hint: Omit it from the simp argument list.
+  simp [̵c̵a̵n̵o̵n̵i̵c̵a̵l̵C̵o̵r̵e̵B̵o̵u̵n̵d̵a̵r̵y̵S̵y̵n̵t̵h̵e̵s̵i̵s̵,̵ ̵s̵m̵u̵l̵_̵e̵q̵_̵m̵u̵l̵,̵[̲s̲m̲u̲l̲_̲e̲q̲_̲m̲u̲l̲,̲ mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3954/4067] Built PaperC.Asymptotics.SmallHeightPositiveSigmaCritical (2.3s)
+✔ [3955/4067] Built PaperC.Asymptotics.SmallHeightSigmaZeroCritical (2.5s)
+✔ [3956/4067] Built PaperC.Combinatorics.PositiveSigmaKeyMassBound (2.7s)
+✔ [3957/4067] Built PaperC.Asymptotics.PropositionSevenFourCritical (2.3s)
+✔ [3958/4067] Built PaperC.Combinatorics.PropositionSevenThreeSigmaZeroCover (22s)
+✔ [3959/4067] Built PaperC.Asymptotics.PositiveSigmaQuadraticCritical (2.4s)
+✔ [3960/4067] Built PaperC.Asymptotics.SigmaZeroQuadraticCritical (3.3s)
+✔ [3961/4067] Built PaperC.Asymptotics.PropositionSevenThreeCritical (3.1s)
+✔ [3962/4067] Built PaperC.Asymptotics.PropositionElevenTwo (2.9s)
+⚠ [3963/4067] Built PaperC.Asymptotics.PropositionSixteenOneCore (3.2s)
+warning: PaperC/Asymptotics/PropositionSixteenOneCore.lean:274:5: Variable name `hN` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3964/4067] Built PaperC.Asymptotics.PropositionElevenThree (3.9s)
+⚠ [3965/4067] Built PaperC.Probability.SectionTwelveMoments (4.3s)
+warning: PaperC/Probability/SectionTwelveMoments.lean:100:8: This simp argument is unused:
+  hcard
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵c̵a̵r̵d̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/SectionTwelveMoments.lean:1372:49: This simp argument is unused:
+  map_pow
+
+Hint: Omit it from the simp argument list.
+  simp only [Rat.cast_div, Rat.cast_natCast, m̵a̵p̵_̵p̵o̵w̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵Rat.cast_ofNat, factorialErrorNumerator]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/SectionTwelveMoments.lean:1373:8: This simp argument is unused:
+  Rat.cast_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp only [Rat.cast_div, Rat.cast_natCast, map_pow, R̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵,̵ ̵factorialErrorNumerator]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3966/4067] Built PaperC.Asymptotics.DyadicKappaTransport (3.9s)
+✔ [3967/4067] Built PaperC.Combinatorics.BoundedRatioResidualMasses (4.4s)
+✔ [3968/4067] Built PaperC.Asymptotics.BoundedRatioComponentNormalization (5.5s)
+✔ [3969/4067] Built PaperC.Probability.SteinChenTerms (5.5s)
+✔ [3970/4067] Built PaperC.Asymptotics.BoundedRatioShallowCoreSigmaCritical (7.0s)
+✔ [3971/4067] Built PaperC.Probability.MixedLengthAffine (6.3s)
+✔ [3972/4067] Built PaperC.Asymptotics.BoundedRatioSectorClosure (4.8s)
+⚠ [3973/4067] Built PaperC.Probability.MaskedSteinChen (4.8s)
+warning: PaperC/Probability/MaskedSteinChen.lean:131:4: This simp argument is unused:
+  Finset.mem_product
+
+Hint: Omit it from the simp argument list.
+  simp only [mem_maskedClosedDependencyPairs,
+  ̵  ̵ ̵ ̵SteinChenTerms.mem_closedDependencyPairs,
+      Finset.mem_p̵r̵o̵d̵uc̵t̵,̵ ̵F̵i̵ns̵e̵t̵.̵m̵e̵m̵_̵u̵n̵ion, Finset.mem_diag,
+  ̵  ̵ ̵ ̵mem_maskedGoodStarts, mem_maskedDependencyEdges]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/MaskedSteinChen.lean:300:33: This simp argument is unused:
+  and_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [maskedTerminalBadStarts, a̵n̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵and_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3974/4067] Built PaperC.Asymptotics.SteinChenCritical (5.2s)
+✔ [3975/4067] Built PaperC.Probability.ExactLengthDecomposition (4.6s)
+✔ [3976/4067] Built PaperC.Probability.ExactLengthConditionalRank (4.9s)
+⚠ [3977/4067] Built PaperC.Asymptotics.BoundedRatioComponentHosts (6.8s)
+warning: PaperC/Asymptotics/BoundedRatioComponentHosts.lean:425:14: This simp argument is unused:
+  leftVertices
+
+Hint: Omit it from the simp argument list.
+  simp [l̵e̵f̵t̵V̵e̵r̵t̵i̵c̵e̵s̵,̵ ̵IsLeftOccurrence, hv]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Asymptotics/BoundedRatioComponentHosts.lean:477:14: This simp argument is unused:
+  rightVertices
+
+Hint: Omit it from the simp argument list.
+  simp [r̵i̵g̵h̵t̵V̵e̵r̵t̵i̵c̵e̵s̵,̵ ̵IsRightOccurrence, hv]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Asymptotics/BoundedRatioComponentHosts.lean:786:6: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  simp only [oneOffsetToOneShift, oneOffsetBase,
+  ̵  ̵ ̵ ̵ ̵ ̵oneOffsetNatShift, hi, if_pos,
+       ̵ ̵ComponentNormalization.oneShiftEquation,
+  ̵  ̵ ̵ ̵ ̵ ̵Prod.f̵st̵,̵ ̵P̵r̵o̵d̵.̵s̵nd, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Asymptotics/BoundedRatioComponentHosts.lean:786:16: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  simp only [oneOffsetToOneShift, oneOffsetBase,
+  ̵  ̵ ̵ ̵ ̵ ̵oneOffsetNatShift, hi, if_pos,
+       ̵ ̵ComponentNormalization.oneShiftEquation,
+  ̵  ̵ ̵ ̵ ̵ ̵Prod.fst, P̵r̵o̵d̵.̵s̵n̵d̵,̵ ̵add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Asymptotics/BoundedRatioComponentHosts.lean:791:29: This simp argument is unused:
+  if_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [oneOffsetToOneShift, oneOffsetBase,
+  ̵  ̵ ̵ ̵ ̵ ̵oneOffsetNatShift, hi, ̵i̵f̵_̵n̵e̵g̵,̵
+       ̵ ̵ComponentNormalization.oneShiftEquation,
+  ̵  ̵ ̵ ̵ ̵ ̵Prod.fst, Prod.snd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Asymptotics/BoundedRatioComponentHosts.lean:793:6: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  simp only [oneOffsetToOneShift, oneOffsetBase,
+  ̵  ̵ ̵ ̵ ̵ ̵oneOffsetNatShift, hi, if_neg,
+       ̵ ̵ComponentNormalization.oneShiftEquation,
+  ̵  ̵ ̵ ̵ ̵ ̵Prod.f̵st̵,̵ ̵P̵r̵o̵d̵.̵s̵nd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Asymptotics/BoundedRatioComponentHosts.lean:793:16: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  simp only [oneOffsetToOneShift, oneOffsetBase,
+  ̵  ̵ ̵ ̵ ̵ ̵oneOffsetNatShift, hi, if_neg,
+       ̵ ̵ComponentNormalization.oneShiftEquation,
+  ̵  ̵ ̵ ̵ ̵ ̵Prod.fst,̵ ̵P̵r̵o̵d̵.̵s̵n̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Asymptotics/BoundedRatioComponentHosts.lean:816:20: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  simp only [oneOffsetToOneShift, oneOffsetBase, hi, i̵f̵_̵p̵o̵s̵,̵ ̵P̵r̵o̵d̵.̵f̵s̵t̵]̵i̲f̲_̲p̲o̲s̲]̲ at hfst
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3978/4067] Built PaperC.Asymptotics.BoundedRatioCorrectedDefectEnvelope (12s)
+⚠ [3979/4067] Built PaperC.Probability.ConditionalAGGInstantiation (7.2s)
+warning: PaperC/Probability/ConditionalAGGInstantiation.lean:56:18: This simp argument is unused:
+  Rat.cast_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp only [div_eq_mul_inv, Rat.cast_mul, Rat.cast_natCast, R̵a̵t̵.̵c̵a̵s̵t̵_̵i̵n̵v̵,̵ ̵R̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]̵R̲a̲t̲.̲c̲a̲s̲t̲_̲i̲n̲v̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3980/4067] Built PaperC.Combinatorics.BoundedRatioCanonicalTerminalPopulation (14s)
+✔ [3981/4067] Built PaperC.Probability.InfiniteExactLengthDecomposition (2.8s)
+✔ [3982/4067] Built PaperC.Probability.MarkedLocalGeometry (4.5s)
+⚠ [3983/4067] Built PaperC.Probability.ExactLengthBadStartMass (5.1s)
+warning: PaperC/Probability/ExactLengthBadStartMass.lean:403:15: This simp argument is unused:
+  baseDefectiveExactLengthStarts
+
+Hint: Omit it from the simp argument list.
+  simp only [̵b̵a̵s̵e̵D̵e̵f̵e̵c̵t̵i̵v̵e̵E̵x̵a̵c̵t̵L̵e̵n̵g̵t̵h̵S̵t̵a̵r̵t̵s̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵r̵e̵m̵o̵v̵e̵d̵E̵x̵a̵c̵t̵L̵e̵n̵g̵t̵h̵S̵t̵a̵r̵t̵s̵,̵[̲r̲e̲m̲o̲v̲e̲d̲E̲x̲a̲c̲t̲L̲e̲n̲g̲t̲h̲S̲t̲a̲r̲t̲s̲,̲ commonExactRowCount]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/ExactLengthBadStartMass.lean:404:6: This simp argument is unused:
+  removedExactLengthStarts
+
+Hint: Omit it from the simp argument list.
+  simp only [baseDefectiveExactLengthStarts, r̵e̵m̵o̵v̵e̵d̵E̵x̵a̵c̵t̵L̵e̵n̵g̵t̵h̵S̵t̵a̵r̵t̵s̵,̵ ̵commonExactRowCount]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3984/4067] Built PaperC.Asymptotics.BoundedRatioManyDefectsReduction (5.6s)
+⚠ [3985/4067] Built PaperC.Probability.TwoStartLocalRank (6.1s)
+warning: PaperC/Probability/TwoStartLocalRank.lean:139:21: Variable name `hv` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Probability/TwoStartLocalRank.lean:211:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hr]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/TwoStartLocalRank.lean:228:14: This simp argument is unused:
+  RowsRepresentedByGraph
+
+Hint: Omit it from the simp argument list.
+  simp [̵R̵o̵w̵s̵R̵e̵p̵r̵e̵s̵e̵n̵t̵e̵d̵B̵y̵G̵r̵a̵p̵h̵,̵ ̵r̵e̵p̵r̵e̵s̵e̵n̵t̵e̵d̵E̵d̵g̵e̵V̵e̵c̵t̵o̵r̵,̵[̲r̲e̲p̲r̲e̲s̲e̲n̲t̲e̲d̲E̲d̲g̲e̲V̲e̲c̲t̲o̲r̲,̲ localVertexVector, localVertexLabel, localTwoStarLeft,
+          localTwoStarRight, valueBit_primeSingle, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/TwoStartLocalRank.lean:232:14: This simp argument is unused:
+  RowsRepresentedByGraph
+
+Hint: Omit it from the simp argument list.
+  simp [̵R̵o̵w̵s̵R̵e̵p̵r̵e̵s̵e̵n̵t̵e̵d̵B̵y̵G̵r̵a̵p̵h̵,̵ ̵r̵e̵p̵r̵e̵s̵e̵n̵t̵e̵d̵E̵d̵g̵e̵V̵e̵c̵t̵o̵r̵,̵[̲r̲e̲p̲r̲e̲s̲e̲n̲t̲e̲d̲E̲d̲g̲e̲V̲e̲c̲t̲o̲r̲,̲ localVertexVector, localVertexLabel, localTwoStarLeft,
+          localTwoStarRight, valueBit_primeSingle, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/TwoStartLocalRank.lean:239:14: This simp argument is unused:
+  RowsRepresentedByGraph
+
+Hint: Omit it from the simp argument list.
+  simp [̵R̵o̵w̵s̵R̵e̵p̵r̵e̵s̵e̵n̵t̵e̵d̵B̵y̵G̵r̵a̵p̵h̵,̵ ̵r̵e̵p̵r̵e̵s̵e̵n̵t̵e̵d̵E̵d̵g̵e̵V̵e̵c̵t̵o̵r̵,̵[̲r̲e̲p̲r̲e̲s̲e̲n̲t̲e̲d̲E̲d̲g̲e̲V̲e̲c̲t̲o̲r̲,̲ localVertexVector, localVertexLabel, localTwoStarLeft,
+          localTwoStarRight, valueBit_primeSingle, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/TwoStartLocalRank.lean:244:14: This simp argument is unused:
+  RowsRepresentedByGraph
+
+Hint: Omit it from the simp argument list.
+  simp [̵R̵o̵w̵s̵R̵e̵p̵r̵e̵s̵e̵n̵t̵e̵d̵B̵y̵G̵r̵a̵p̵h̵,̵ ̵r̵e̵p̵r̵e̵s̵e̵n̵t̵e̵d̵E̵d̵g̵e̵V̵e̵c̵t̵o̵r̵,̵[̲r̲e̲p̲r̲e̲s̲e̲n̲t̲e̲d̲E̲d̲g̲e̲V̲e̲c̲t̲o̲r̲,̲ localVertexVector, localVertexLabel, localTwoStarLeft,
+          localTwoStarRight, valueBit_primeSingle, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3986/4067] Built PaperC.Asymptotics.BoundedRatioShallowCoreSector (4.9s)
+⚠ [3987/4067] Built PaperC.Probability.ConditionalAGGAverage (5.9s)
+warning: PaperC/Probability/ConditionalAGGAverage.lean:170:3: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Probability/ConditionalAGGAverage.lean:176:2: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+✔ [3988/4067] Built PaperC.Asymptotics.BoundedRatioNonterminalClosure (5.7s)
+✔ [3989/4067] Built PaperC.Asymptotics.BoundedRatioSmallHeightSector (8.1s)
+✔ [3990/4067] Built PaperC.Asymptotics.BoundedRatioSmallProductSector (8.9s)
+✔ [3991/4067] Built PaperC.Probability.InfiniteExactLengthProbabilityTransfer (4.3s)
+✔ [3992/4067] Built PaperC.Asymptotics.BoundedRatioTerminalClosure (6.3s)
+✔ [3993/4067] Built PaperC.Asymptotics.ConditionalAGGCritical (3.2s)
+✔ [3994/4067] Built PaperC.Probability.ConditionalExpectationAverage (3.4s)
+✔ [3995/4067] Built PaperC.Asymptotics.BoundedRatioManyDefectsFibers (6.4s)
+⚠ [3996/4067] Built PaperC.Probability.MarkedConditionalDependencyGraph (8.8s)
+warning: PaperC/Probability/MarkedConditionalDependencyGraph.lean:324:12: This simp argument is unused:
+  exactLengthBaseCutoff
+
+Hint: Omit it from the simp argument list.
+  simp [markedCommonRowCount, commonExactRowCount, e̵x̵a̵c̵t̵L̵e̵n̵g̵t̵h̵B̵a̵s̵e̵C̵u̵t̵o̵f̵f̵,̵ ̵excessRowCount]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3997/4067] Built PaperC.Probability.SectionThirteenCouplings (6.8s)
+warning: PaperC/Probability/SectionThirteenCouplings.lean:117:18: This simp argument is unused:
+  Rat.cast_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp only [div_eq_mul_inv, Rat.cast_mul, Rat.cast_natCast, R̵a̵t̵.̵c̵a̵s̵t̵_̵i̵n̵v̵,̵ ̵R̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]̵R̲a̲t̲.̲c̲a̲s̲t̲_̲i̲n̲v̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/SectionThirteenCouplings.lean:336:8: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:337:6: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:349:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:375:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:375:28: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:386:14: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Probability/SectionThirteenCouplings.lean:387:14: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Probability/SectionThirteenCouplings.lean:388:34: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:392:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:393:23: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:398:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:399:18: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:400:22: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:404:23: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:405:10: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Probability/SectionThirteenCouplings.lean:416:9: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Probability/SectionThirteenCouplings.lean:420:23: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:421:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:426:15: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:427:14: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:428:12: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:429:18: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:445:9: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Probability/SectionThirteenCouplings.lean:447:7: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Probability/SectionThirteenCouplings.lean:452:16: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Probability/SectionThirteenCouplings.lean:453:31: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Probability/SectionThirteenCouplings.lean:454:16: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Probability/SectionThirteenCouplings.lean:456:23: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:456:42: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:458:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:459:23: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:461:23: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:462:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:473:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:473:28: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:500:2: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:591:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:595:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Probability/SectionThirteenCouplings.lean:654:11: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Probability/SectionThirteenCouplings.lean:658:10: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+⚠ [3998/4067] Built PaperC.Asymptotics.ExactLengthBadStartMassCritical (5.8s)
+warning: PaperC/Asymptotics/ExactLengthBadStartMassCritical.lean:162:35: This simp argument is unused:
+  exactLengthBaseCutoff
+
+Hint: Omit it from the simp argument list.
+  simp only [Q, massQ, countQ,̵ ̵e̵x̵a̵c̵t̵L̵e̵n̵g̵t̵h̵B̵a̵s̵e̵C̵u̵t̵o̵f̵f̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3999/4067] Built PaperC.Probability.InfiniteLaplaceTransfer (6.7s)
+✔ [4000/4067] Built PaperC.Asymptotics.BoundedRatioNonterminalCardinality (7.4s)
+⚠ [4001/4067] Built PaperC.Asymptotics.BoundedRatioSteinChen (10s)
+warning: PaperC/Asymptotics/BoundedRatioSteinChen.lean:711:18: Variable name `hNM` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Asymptotics/BoundedRatioSteinChen.lean:804:18: Variable name `hNM` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [4002/4067] Built PaperC.Asymptotics.BoundedRatioManyDefectsRealFibers (7.3s)
+✔ [4003/4067] Built PaperC.Combinatorics.BoundedRatioIntrinsicTerminalPopulation (15s)
+✔ [4004/4067] Built PaperC.Asymptotics.SectionThirteenCritical (3.3s)
+✔ [4005/4067] Built PaperC.Probability.InfiniteStartProbabilityTransfer (4.0s)
+⚠ [4006/4067] Built PaperC.Probability.MarkedSteinChenTerms (6.2s)
+warning: PaperC/Probability/MarkedSteinChenTerms.lean:321:8: This simp argument is unused:
+  Nat.cast_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp only [Finset.sum_const, nsmul_eq_mul, Nat.cast_sum,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/MarkedSteinChenTerms.lean:828:11: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Probability/MarkedSteinChenTerms.lean:832:10: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+✔ [4007/4067] Built PaperC.Asymptotics.BoundedRatioManyDefectsFixedFibers (7.0s)
+⚠ [4008/4067] Built PaperC.Asymptotics.MaskedPoissonCritical (6.3s)
+warning: PaperC/Asymptotics/MaskedPoissonCritical.lean:438:3: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/MaskedPoissonCritical.lean:443:2: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/MaskedPoissonCritical.lean:637:2: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/MaskedPoissonCritical.lean:693:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/MaskedPoissonCritical.lean:697:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/MaskedPoissonCritical.lean:1049:11: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/MaskedPoissonCritical.lean:1053:10: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+✔ [4009/4067] Built PaperC.Probability.FullMarkedLaplaceTransfer (4.4s)
+✔ [4010/4067] Built PaperC.Asymptotics.BoundedRatioBadStarts (4.9s)
+✔ [4011/4067] Built PaperC.Asymptotics.BoundedRatioDenseQuantitative (5.0s)
+⚠ [4012/4067] Built PaperC.Probability.FiniteCylinderCountTransport (5.3s)
+warning: PaperC/Probability/FiniteCylinderCountTransport.lean:316:6: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: PaperC/Probability/FiniteCylinderCountTransport.lean:316:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: PaperC/Probability/FiniteCylinderCountTransport.lean:466:6: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: PaperC/Probability/FiniteCylinderCountTransport.lean:466:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: PaperC/Probability/FiniteCylinderCountTransport.lean:663:8: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: PaperC/Probability/FiniteCylinderCountTransport.lean:762:8: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [4013/4067] Built PaperC.Probability.MarkedDetruncation (4.2s)
+✔ [4014/4067] Built PaperC.Asymptotics.BoundedRatioSteinChenRates (6.5s)
+✔ [4015/4067] Built PaperC.Probability.MarkedLaplaceFiniteClosure (5.7s)
+✔ [4016/4067] Built PaperC.Asymptotics.BoundedRatioTerminalFibers (17s)
+✔ [4017/4067] Built PaperC.Asymptotics.BoundedRatioSteinChenSecondTerm (7.7s)
+✔ [4018/4067] Built PaperC.Asymptotics.BoundedRatioNonterminalHostCounts (6.4s)
+✔ [4019/4067] Built PaperC.Asymptotics.BoundedRatioManyDefectsEvertseSum (6.4s)
+✔ [4020/4067] Built PaperC.Asymptotics.SectionThirteenRate (10s)
+⚠ [4021/4067] Built PaperC.Probability.MarkedSteinChenSplitBound (7.0s)
+warning: PaperC/Probability/MarkedSteinChenSplitBound.lean:347:14: This simp argument is unused:
+  hzero
+
+Hint: Omit it from the simp argument list.
+  simp [hz̵e̵r̵o̵,̵ ̵h̵local, W]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [4022/4067] Built PaperC.Probability.ExactLengthCountVectorTransfer (5.2s)
+✔ [4023/4067] Built PaperC.Asymptotics.MarkedDetruncationCritical (6.1s)
+⚠ [4024/4067] Built PaperC.Asymptotics.BoundedRatioWeightedDefect (7.9s)
+warning: PaperC/Asymptotics/BoundedRatioWeightedDefect.lean:51:5: Variable name `hN` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Asymptotics/BoundedRatioWeightedDefect.lean:186:5: Variable name `C` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Asymptotics/BoundedRatioWeightedDefect.lean:282:32: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: PaperC/Asymptotics/BoundedRatioWeightedDefect.lean:283:53: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [4025/4067] Built PaperC.Asymptotics.BoundedRatioSteinChenSecondTermCritical (5.8s)
+✔ [4026/4067] Built PaperC.Asymptotics.BoundedRatioNonterminalRealHosts (4.4s)
+✔ [4027/4067] Built PaperC.Asymptotics.BoundedRatioTwoSingletonHosts (4.9s)
+⚠ [4028/4067] Built PaperC.Probability.PrimeEncodedCountVector (3.5s)
+warning: PaperC/Probability/PrimeEncodedCountVector.lean:61:12: This simp argument is unused:
+  Finsupp.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵F̵i̵n̵s̵u̵p̵p̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/PrimeEncodedCountVector.lean:66:12: This simp argument is unused:
+  Finsupp.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [F̵i̵n̵s̵u̵p̵p̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hprime, hprime.symm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/PrimeEncodedCountVector.lean:66:34: This simp argument is unused:
+  hprime
+
+Hint: Omit it from the simp argument list.
+  simp [Finsupp.single_apply, hprime,̵ ̵h̵p̵r̵i̵m̵e̵.symm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Probability/PrimeEncodedCountVector.lean:155:18: This simp argument is unused:
+  Function.mem_support
+
+Hint: Omit it from the simp argument list.
+  simp only [f,̵ ̵F̵u̵n̵c̵t̵i̵o̵n̵.̵m̵e̵m̵_̵s̵u̵p̵p̵o̵r̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [4029/4067] Built PaperC.Probability.MarkedCountVectorMixture (3.7s)
+✔ [4030/4067] Built PaperC.Asymptotics.NonterminalSectorSaving (4.6s)
+⚠ [4031/4067] Built PaperC.Asymptotics.BoundedRatioPoissonAssembly (3.3s)
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:107:12: This simp argument is unused:
+  P
+
+Hint: Omit it from the simp argument list.
+  simp [P̵,̵ ̵hk]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:136:3: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:148:2: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:353:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:357:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:361:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:380:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:408:16: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:409:5: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:411:15: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:412:13: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean:467:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+✔ [4032/4067] Built PaperC.Asymptotics.BoundedRatioFixedJBadStarts (3.6s)
+✔ [4033/4067] Built PaperC.Probability.PrimeEncodedCountLaplace (2.7s)
+ℹ [4034/4067] Built PaperC.Asymptotics.BoundedRatioTwoSingletonCritical (4.8s)
+info: PaperC/Asymptotics/BoundedRatioTwoSingletonCritical.lean:1119:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [4035/4067] Built PaperC.Asymptotics.BoundedRatioTerminalPartnerClosure (23s)
+✔ [4036/4067] Built PaperC.Asymptotics.BoundedRatioTerminalSummation (5.1s)
+✔ [4037/4067] Built PaperC.Asymptotics.BoundedRatioElementaryQuantitative (2.0s)
+⚠ [4038/4067] Built PaperC.Asymptotics.BoundedRatioManyDefectsDegreeTwoSum (5.7s)
+warning: PaperC/Asymptotics/BoundedRatioManyDefectsDegreeTwoSum.lean:477:22: This simp argument is unused:
+  if_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [heq,̵ ̵i̵f̵_̵n̵e̵g̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: PaperC/Asymptotics/BoundedRatioManyDefectsDegreeTwoSum.lean:637:22: This simp argument is unused:
+  if_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [heq,̵ ̵i̵f̵_̵n̵e̵g̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [4039/4067] Built PaperC.Asymptotics.BoundedRatioManyDefectsDegreeAssembly (3.9s)
+✔ [4040/4067] Built PaperC.Asymptotics.BoundedRatioManyDefectsAssembly (2.0s)
+✔ [4041/4067] Built PaperC.Asymptotics.BoundedRatioNonterminalMobileAssembly (6.2s)
+✔ [4042/4067] Built PaperC.Asymptotics.BoundedRatioNonterminalAssembly (2.5s)
+✔ [4043/4067] Built PaperC.Asymptotics.DyadicKappaQuantitative (3.0s)
+✔ [4044/4067] Built PaperC.Asymptotics.PropositionSixteenOne (2.4s)
+✔ [4045/4067] Built PaperC.Asymptotics.MaskedPoissonCanonical (2.5s)
+⚠ [4046/4067] Built PaperC.Asymptotics.SpatialLaplaceCritical (3.7s)
+warning: PaperC/Asymptotics/SpatialLaplaceCritical.lean:368:5: Variable name `hg0` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [4047/4067] Built PaperC.Asymptotics.MarkedSteinChenCritical (4.0s)
+✔ [4048/4067] Built PaperC.Asymptotics.TheoremOneFourCanonical (4.3s)
+⚠ [4049/4067] Built PaperC.Asymptotics.CorollaryFourteenEightMaximum (4.2s)
+warning: PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean:200:32: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  NNReal → Measure ℕ
+instead of
+  NNReal → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean:233:16: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : NNReal} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `measureReal_nonneg x`).
+warning: PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean:229:15: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+✔ [4050/4067] Built PaperC.Asymptotics.CorollaryThirteenTen (6.8s)
+⚠ [4051/4067] Built PaperC.Asymptotics.TheoremSixteenTwo (5.4s)
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:738:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:738:6: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:770:18: Variable name `hcut` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:817:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:930:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:968:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:974:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1206:4: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1207:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1226:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1258:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1277:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1278:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1292:5: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1294:5: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1300:15: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1305:15: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1306:15: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1317:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1320:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1322:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1323:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1331:13: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1333:13: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1334:13: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1541:13: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1556:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1565:8: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1567:15: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1574:13: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1581:13: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwo.lean:1598:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+ℹ [4052/4067] Built PaperC.Asymptotics.MarkedLaplaceCritical (3.5s)
+info: PaperC/Asymptotics/MarkedLaplaceCritical.lean:263:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [4053/4067] Built PaperC.Asymptotics.MaskedPoissonRate (2.8s)
+✔ [4054/4067] Built PaperC.Probability.BoundedRatioRetainedTransport (2.8s)
+⚠ [4055/4067] Built PaperC.Asymptotics.TheoremSixteenTwoInfiniteModel (2.9s)
+warning: PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean:176:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  NNReal → Measure ℕ
+instead of
+  NNReal → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean:221:13: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  NNReal → Measure ℕ
+instead of
+  NNReal → ℕ → ℝ
+⚠ [4056/4067] Built PaperC.Asymptotics.TheoremSixteenTwoRecentered (2.9s)
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:49:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:73:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:94:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:95:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:102:8: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:103:8: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:105:15: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:106:15: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:111:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:114:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:116:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:117:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:141:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:149:8: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:151:15: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:153:6: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:163:8: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:166:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:178:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+✔ [4057/4067] Built PaperC.Asymptotics.SectionFourteenClosure (2.8s)
+⚠ [4058/4067] Built PaperC.Asymptotics.CorollaryFourteenEightCounts (3.1s)
+warning: PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:72:4: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:80:37: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : MeasureTheory.Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `MeasureTheory.measureReal_nonneg x`).
+warning: PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:107:8: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+✔ [4059/4067] Built PaperC.Asymptotics.CorollaryPrefixLaw (3.9s)
+✔ [4060/4067] Built PaperC.Asymptotics.PrefixBoundaryProbability (3.3s)
+✔ [4061/4067] Built PaperC.Asymptotics.PrefixOverflowCoupling (4.4s)
+⚠ [4062/4067] Built PaperC.Asymptotics.CorollaryPrefixLawCanonical (2.8s)
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:107:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:127:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:138:16: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:139:5: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:143:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:147:13: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:156:15: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `measureReal_nonneg x`).
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:161:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:165:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:180:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:207:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:223:16: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:224:5: `ProbabilityTheory.poissonPMFRealSum` has been deprecated: Use `ProbabilityTheory.hasSum_one_poissonMeasure` instead
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:226:15: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:227:12: `ProbabilityTheory.poissonPMFReal_nonneg` has been deprecated: Use `MeasureTheory.measureReal_nonneg` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Type u_1} {x : MeasurableSpace α} {μ : Measure α} {s : Set α}, 0 ≤ μ.real s
+instead of
+  ∀ {r : ℝ≥0} {n : ℕ}, 0 ≤ poissonPMFReal r n
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.poissonPMFReal_nonneg` to `measureReal_nonneg x`).
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:230:10: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:233:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:240:6: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:252:8: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:255:9: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:309:11: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+✔ [4063/4067] Built PaperC.Main (2.2s)
+✔ [4064/4067] Built PaperC (3.1s)
+⚠ [4065/4067] Built Solution (4.9s)
+warning: Solution.lean:425:2: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+warning: Solution.lean:480:2: `ProbabilityTheory.poissonPMFReal` has been deprecated: Use `ProbabilityTheory.poissonMeasure` instead
+
+Note: The updated constant has a different type:
+  ℝ≥0 → MeasureTheory.Measure ℕ
+instead of
+  ℝ≥0 → ℕ → ℝ
+✔ [4066/4067] Built SolutionTransfer (2.8s)
+Build completed successfully (4067 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/paperc-v048-tools-bin/lean4export SolutionTransfer -- paper_c_theorem_one_one_infinite_finite_law_identity propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[paper_c_theorem_one_one_infinite_finite_law_identity, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from SolutionTransfer
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!
+exit_code=0

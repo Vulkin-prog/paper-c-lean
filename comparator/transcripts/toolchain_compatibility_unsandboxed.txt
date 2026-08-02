@@ -1,0 +1,334 @@
+2026-08-01T14:28:52+00:00
+/tmp/comparator-research.8trgVE/comparator
+Lean (version 4.32.2, x86_64-unknown-linux-gnu, commit f3b06c705e6c85f5314019d5d3baab0fec5b580c, Release)
+Lake version 5.0.0-src+f3b06c7 (Lean version 4.32.2)
+51491237b1d2f96cca203af9c34bced6fe38e0d8
+af5aa64bb914c3c2c781f378088dbd38acf4f804
+5f0f8a2f42ddb0c45c0fd2879f404f185253b7ed002f916a4fd7dfb35ebbef77  .lake/build/bin/comparator
+d5a4291fa53476cfd3de4ef225e4021bd82c4dee1731320c128585b098cc7db9  .lake/packages/lean4export/.lake/build/bin/lean4export
+8fa1d4ec68df59e90350b936911055a80b10740276ad94a53d1df310412eb800  /tmp/lean-proc-exe-shim.so
+167507c89d8b3c7667ad78b50df7b19f89883751a01efd1457404fa34a994e8b  scripts/fake-landrun.sh
+COMPARATOR_LANDRUN=/tmp/comparator-research.8trgVE/comparator/scripts/fake-landrun.sh
+COMPARATOR_LEAN4EXPORT=/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export
+LD_PRELOAD=/tmp/lean-proc-exe-shim.so
+LEAN_SYSROOT=/tmp/lean-4.32.2-dist/lean-4.32.2-linux
+PATH=/tmp/lean-4.32.2-dist/lean-4.32.2-linux/bin:/opt/codex/codex-path:/root/.codex/tmp/arg0/codex-arg0HQOCpn:/opt/codex/runtimes/codex-primary-runtime/dependencies/bin/override:/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin:/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin:/opt/codex/runtimes/codex-primary-runtime/dependencies/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/codex/runtimes/codex-primary-runtime/dependencies/bin/fallback
+runtests.lean:89:68: warning: Variable name `testsDir` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+# Running tests
+
+
+## Running test: simple_kind_mismatch
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (313ms)
+warning: Challenge.lean:1:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- comm propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[comm, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+✔ [2/3] Built Solution (171ms)
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- comm propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[comm, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+uncaught exception: Illegal axiom detected: 'helper'
+
+## Running test: char_ofnat_issue
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (161ms)
+warning: Challenge.lean:1:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- boom propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[boom, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+✔ [2/3] Built Solution (57ms)
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- boom propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+PANIC at dumpConstant Export:237:48: Constant propext not found in environment.
+backtrace:
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(+0x93a5805) [0x564a34912805]
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(+0x939cf27) [0x564a34909f27]
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(lean_panic_fn_borrowed+0x2b) [0x564a3490a00b]
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(panic spec at dumpConstant (lean4export)+0x2ae) [0x564a2e84d89e]
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(List.forIn'.loop [arity↓] spec at main (lean4export)+0x2a1) [0x564a2e83f961]
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(main [λ] (lean4export)+0x167) [0x564a2e83fe37]
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(main [boxed, λ] (lean4export)+0x13) [0x564a2e8400b3]
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(<apply/3>+0x970) [0x564a34919950]
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(M.run [arity↓] (lean4export)+0x30) [0x564a2e841ed0]
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(+0x935e0c7) [0x564a348cb0c7]
+/tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export(+0x935e595) [0x564a348cb595]
+/lib/x86_64-linux-gnu/libc.so.6(+0x9caa4) [0x7f2fddc9caa4]
+/lib/x86_64-linux-gnu/libc.so.6(+0x129c6c) [0x7f2fddd29c6c]
+Exporting #[boom, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+uncaught exception: Child exited with 134
+
+## Running test: simple_axiom_issue
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (182ms)
+warning: Challenge.lean:1:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- comm propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[comm, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+✔ [2/3] Built Solution (638ms)
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- comm propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[comm, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+uncaught exception: Illegal axiom detected: 'helper'
+
+## Running test: def_hole_axiom_issue
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (169ms)
+warning: Challenge.lean:1:4: declaration uses `sorry`
+warning: Challenge.lean:3:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- foo propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce n
+Exporting #[foo, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, n] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+⚠ [2/3] Built Solution (214ms)
+warning: Solution.lean:7:18: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- foo propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce n
+Exporting #[foo, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, n] from Solution
+uncaught exception: Illegal axiom detected: 'sorryAx'
+
+## Running test: opaque_value
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (165ms)
+warning: Challenge.lean:1:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- boom propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[boom, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+✔ [2/3] Built Solution (506ms)
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- boom propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[boom, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+uncaught exception: Illegal axiom detected: 'f'
+
+## Running test: def_hole_type_mismatch
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (175ms)
+warning: Challenge.lean:1:4: declaration uses `sorry`
+warning: Challenge.lean:3:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- foo propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce n
+Exporting #[foo, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, n] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+⚠ [2/3] Built Solution (186ms)
+warning: Solution.lean:5:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- foo propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce n
+Exporting #[foo, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, n] from Solution
+uncaught exception: Const does not match between challenge and target 'n'
+
+## Running test: numeric_namespace
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge.«12.34».«5»
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge.«12.34».«5»
+⚠ [2/2] Built Challenge.«12.34».«5» (459ms)
+warning: Challenge/12.34/5.lean:2:8: declaration uses `sorry`
+Build completed successfully (2 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge.«12.34».«5» -- «123».foo propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[«123».foo, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge.«12.34».«5»
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+✔ [2/3] Built Solution (205ms)
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- «123».foo propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[«123».foo, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!
+
+## Running test: primitive_issue
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (176ms)
+warning: Challenge.lean:1:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- boom propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[boom, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+✔ [2/3] Built Solution (56ms)
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- boom propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[boom, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+uncaught exception: Const does not match between challenge and target 'Nat.shiftRight'
+
+## Running test: olean_issue
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (596ms)
+warning: Challenge.lean:1:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- boom propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[boom, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+✔ [2/3] Built Solution (1.4s)
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- boom propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[boom, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+Running Lean default kernel on solution.
+uncaught exception: while replaying declaration 'boom':
+(kernel) application type mismatch
+  @id
+    (@Eq Bool
+      (Decidable.decide (Not (@LE.le Nat instLENat badNat 9223372036854775807))
+        (instDecidableNot (@LE.le Nat instLENat badNat 9223372036854775807) (Nat.decLe badNat 9223372036854775807)))
+      Bool.true)
+    (@Eq.refl Bool Bool.true)
+argument has type
+  @Eq Bool Bool.true Bool.true
+but function has type
+  @Eq Bool
+      (Decidable.decide (Not (@LE.le Nat instLENat badNat 9223372036854775807))
+        (instDecidableNot (@LE.le Nat instLENat badNat 9223372036854775807) (Nat.decLe badNat 9223372036854775807)))
+      Bool.true →
+    @Eq Bool
+      (Decidable.decide (Not (@LE.le Nat instLENat badNat 9223372036854775807))
+        (instDecidableNot (@LE.le Nat instLENat badNat 9223372036854775807) (Nat.decLe badNat 9223372036854775807)))
+      Bool.true
+
+## Running test: simple_mismatch
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (187ms)
+warning: Challenge.lean:1:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- comm propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[comm, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+✔ [2/3] Built Solution (173ms)
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- comm propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[comm, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+uncaught exception: Challenge and solution constant kind don't match: 'comm'
+
+## Running test: def_hole_kind_mismatch
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (582ms)
+warning: Challenge.lean:1:4: declaration uses `sorry`
+warning: Challenge.lean:3:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- foo propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce n
+Exporting #[foo, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, n] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+⚠ [2/3] Built Solution (189ms)
+warning: Solution.lean:5:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- foo propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce n
+Exporting #[foo, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, n] from Solution
+uncaught exception: Solution constant is not a definition: 'n'
+
+## Running test: def_hole
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (188ms)
+warning: Challenge.lean:1:4: declaration uses `sorry`
+warning: Challenge.lean:3:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- foo propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce n
+Exporting #[foo, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, n] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+✔ [2/3] Built Solution (195ms)
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- foo propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce n
+Exporting #[foo, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce, n] from Solution
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!
+
+## Running test: simple_match
+
+info: comparatortest: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+Building Challenge
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Challenge
+⚠ [2/3] Built Challenge (480ms)
+warning: Challenge.lean:1:8: declaration uses `sorry`
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Challenge -- comm propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[comm, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+Building Solution
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec lake build Solution
+✔ [2/3] Built Solution (184ms)
+Build completed successfully (3 jobs).
+WARNING: THIS IS NOT REAL LANDRUN! UNSAFELY RUNNING exec /tmp/comparator-research.8trgVE/comparator/.lake/packages/lean4export/.lake/build/bin/lean4export Solution -- comm propext Quot.sound Classical.choice Nat.add Nat.sub Nat.mul Nat.pow Nat.gcd Nat.div Nat.mod Nat.beq Nat.ble Nat.land Nat.lor Nat.xor Nat.shiftLeft Nat.shiftRight String.ofList Char.ofNat List eagerReduce
+Exporting #[comm, propext, Quot.sound, Classical.choice, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+Running Lean default kernel on solution.
+Lean default kernel accepts the solution
+Your solution is okay!
+
+# Summary
+
+✓ simple_kind_mismatch: PASSED
+✓ char_ofnat_issue: PASSED
+✓ simple_axiom_issue: PASSED
+✓ def_hole_axiom_issue: PASSED
+✓ opaque_value: PASSED
+✓ def_hole_type_mismatch: PASSED
+✓ numeric_namespace: PASSED
+✓ primitive_issue: PASSED
+✓ olean_issue: PASSED
+✓ simple_mismatch: PASSED
+✓ def_hole_kind_mismatch: PASSED
+✓ def_hole: PASSED
+✓ simple_match: PASSED
+
+All tests passed!

@@ -1,5 +1,23 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "project": {
+    "name": "paper_c_lean",
+    "title": "Lean formalization of Paper C",
+    "authors": [
+      "Brice Pouly"
+    ],
+    "license": "Apache-2.0",
+    "concept_doi": "https://doi.org/10.5281/zenodo.21735481"
+  },
+  "core_source": {
+    "base_version": "0.47.0",
+    "fileset": [
+      "PaperC.lean",
+      "PaperC/**/*.lean"
+    ],
+    "file_count": 382,
+    "digest_sha256": "f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999"
+  },
   "target_pdf": {
     "filename": "paper_C_complete_v08_en.pdf",
     "sha256": "2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927"
@@ -7,5 +25,2905 @@
   "source_pdf_fr": {
     "filename": "paper_C_complete_v08.pdf",
     "sha256": "c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5"
-  }
+  },
+  "sources": [
+    {
+      "key": "paper-c-en-v08",
+      "title": "A critical Poisson law in a dyadic block — Starting points of long constant stretches of an extended Rademacher random completely multiplicative function",
+      "authors": [
+        "Brice Pouly"
+      ],
+      "id": "https://doi.org/10.5281/zenodo.21736677",
+      "type": "preprint",
+      "license": "CC-BY-4.0",
+      "author_contacted": "n/a",
+      "filename": "paper_C_complete_v08_en.pdf",
+      "sha256": "2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927",
+      "note": "Frozen English target edition, August 1, 2026."
+    },
+    {
+      "key": "adgr07-prime-number-theorem",
+      "title": "A formally verified proof of the prime number theorem",
+      "authors": [
+        "Jeremy Avigad",
+        "Kevin Donnelly",
+        "David Gray",
+        "Paul Raff"
+      ],
+      "id": "https://doi.org/10.1145/1297658.1297660",
+      "type": "journal article",
+      "note": "ACM Transactions on Computational Logic 9 (2007), no. 1, Article 2, 1–23."
+    },
+    {
+      "key": "agg89-chen-stein",
+      "title": "Two moments suffice for Poisson approximations: the Chen–Stein method",
+      "authors": [
+        "Richard Arratia",
+        "Larry Goldstein",
+        "Louis Gordon"
+      ],
+      "id": "https://doi.org/10.1214/aop/1176991491",
+      "type": "journal article",
+      "note": "The Annals of Probability 17 (1989), 9–25."
+    },
+    {
+      "key": "bs93-consecutive-products",
+      "title": "Squares in products from a block of consecutive integers",
+      "authors": [
+        "R. Balasubramanian",
+        "T. N. Shorey"
+      ],
+      "id": "https://doi.org/10.4064/aa-65-3-213-220",
+      "type": "journal article",
+      "note": "Acta Arithmetica 65 (1993), no. 3, 213–220."
+    },
+    {
+      "key": "es86-uniform-bounds",
+      "title": "Uniform bounds for the number of solutions to Y^n = f(X)",
+      "authors": [
+        "J.-H. Evertse",
+        "J. H. Silverman"
+      ],
+      "id": "https://doi.org/10.1017/S0305004100066068",
+      "type": "journal article",
+      "note": "Mathematical Proceedings of the Cambridge Philosophical Society 100 (1986), 237–248."
+    },
+    {
+      "key": "hk13-quadratic-irrationals",
+      "title": "Quadratic Irrationals: An Introduction to Classical Number Theory",
+      "authors": [
+        "Franz Halter-Koch"
+      ],
+      "id": "https://doi.org/10.1201/b14968",
+      "type": "textbook",
+      "isbn": "9781466591837",
+      "note": "Chapman & Hall/CRC, 2013."
+    },
+    {
+      "key": "ls04-prime-divisors",
+      "title": "Number of prime divisors in a product of consecutive integers",
+      "authors": [
+        "Shanta Laishram",
+        "T. N. Shorey"
+      ],
+      "id": "https://doi.org/10.4064/aa113-4-3",
+      "type": "journal article",
+      "note": "Acta Arithmetica 113 (2004), 327–341."
+    },
+    {
+      "key": "nr83-divisor-bound",
+      "title": "Majorations explicites pour le nombre de diviseurs de N",
+      "authors": [
+        "J.-L. Nicolas",
+        "G. Robin"
+      ],
+      "id": "https://doi.org/10.4153/CMB-1983-078-5",
+      "type": "journal article",
+      "note": "Canadian Mathematical Bulletin 26 (1983), no. 4, 485–492."
+    }
+  ],
+  "editorial": {
+    "scope": "Formalization of the canonical endpoints of Paper C, including the critical Poisson law in a dyadic block, its exact finite-cylinder/infinite-product transfer, the homogeneous-mass estimates, and the supporting arithmetic and probabilistic development. The canonical endpoints remain conditional on seven explicitly registered external literature propositions; Theorem 1.1 consumes exactly four of them.",
+    "main_result_item_ids": [
+      "Thm-1.1-finite-cylinder",
+      "Thm-1.1-infinite-finite-law-transfer",
+      "Thm-1.2-i-deterministic-masks",
+      "Thm-1.2-ii-spatial-ppp",
+      "Thm-1.2-iii-marked-ppp",
+      "Thm-1.4-moments",
+      "Thm-16.2",
+      "Cor-16.4"
+    ],
+    "paper_item_completeness_note": "Completeness of the mapped paper-item list is editorial metadata that must be checked by human rereading of the frozen paper; it is neither inferred from the Lean sources or PDF nor certified by the generator.",
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "automation": {
+      "methods": [
+        {
+          "method": "agent",
+          "models": [
+            "Claude Fable 5",
+            "Claude Opus 4.8",
+            "GPT 5.6 Sol (gpt-5.6-sol)"
+          ],
+          "framework": "Anthropic Claude and ChatGPT Work Mode / Codex",
+          "tool_setup": "AI-assisted exploration, drafting, Lean development, reconnaissance programs, iterative local Lake builds, generated declaration and bridge audits, and separate adversarial counter-audits by distinct agent instances and models from multiple providers."
+        }
+      ],
+      "notes": "Brice Pouly directed the research and selected the mathematical and release requirements. As declared on page 68 of the frozen English paper, Claude Fable 5, Claude Opus 4.8, and GPT 5.6 Sol provided substantial assistance with lemma exploration, drafting, Lean development, reconnaissance programs, and multi-provider counter-audits. GPT 5.6 Sol agents also assisted with the v0.48.0 Comparator and metadata work."
+    },
+    "fidelity": {
+      "divergences": "The principal human-readable Comparator statement uses a finite uniform cylinder because the dyadic observable depends on finitely many prime coordinates; a separate Comparator target states the exact identity with the infinite-product law. The finite-cylinder interface uses a truncated completely multiplicative function, with an explicit convention outside the prime cutoff, although the audited observable never queries that region. Total variation is displayed as the discrete half-l1 sum rather than the paper's equivalent supremum over events. UniformBigOOn makes the uniform quantifiers and the dependence on C explicit. The Lean endpoint harmlessly permits C = 0 whereas the paper states C > 0. Theorem 8.1 is closed only at alpha = 3/16, the instance consumed downstream, rather than for every alpha > 0 as stated in the paper. The role of Lemma 13.6 is discharged by a sufficient harmonic bound rather than by a declaration duplicating its displayed formulation. The spatial and marked point-process results are represented by Laplace-functional convergence together with tightness, not by direct Tendsto statements for laws in the paper's vague topology. Conditioning is formalized extensionally through equality of the relevant finite-coordinate laws rather than through a literal conditional-probability presentation. The global longest-run theorem is outside the v0.48.0 Comparator surface. The literature bridges are ordinary theorem premises, not Lean axioms."
+    },
+    "review": {
+      "status": "agent-reviewed",
+      "reviewers": [
+        "Claude Fable 5 agent instances",
+        "Claude Opus 4.8 agent instances",
+        "OpenAI GPT 5.6 Sol agent instances"
+      ],
+      "notes": "The project has undergone repeated adversarial counter-review by distinct agent instances and models from multiple providers, together with exhaustive mechanical declaration and axiom auditing. These procedures are neither independent scientific validation nor human certification, and the project has not yet received independent external human mathematical peer review. The completeness of the mapped paper-item list remains editorial metadata requiring human rereading; it is not inferred or certified by the generator. Comparator outcomes must be reported only from the recorded per-configuration status and transcript, and a semantic smoke test must not be presented as a sandboxed certificate."
+    }
+  },
+  "verification": {
+    "formalization_template": {
+      "version": "v0.3",
+      "repository": "https://github.com/mathlib-initiative/formalization.yaml",
+      "commit": "fab03cbbed1a5857de17af32de30421a734c77c6"
+    },
+    "toolchain": {
+      "lean": {
+        "version": "4.32.2",
+        "toolchain": "leanprover/lean4:v4.32.2",
+        "commit": "f3b06c705e6c85f5314019d5d3baab0fec5b580c"
+      },
+      "mathlib": {
+        "version": "v4.32.2",
+        "commit": "905b95818eb32af7874a58b427f50c1711a5e96c"
+      }
+    },
+    "comparator": {
+      "status": "unsandboxed_semantic_smoke_passed",
+      "status_note": "Both Paper C Comparator configurations exited 0 and were accepted by Lean's default kernel in clean checkouts. These runs used fake-landrun, root, and a container-specific LD_PRELOAD compatibility shim, so they are unsandboxed semantic smoke tests only. They do not satisfy the hardened, non-privileged certificate conditions; publication remains blocked pending the official landrun plus systemd-run execution.",
+      "tools": {
+        "comparator": {
+          "repository": "https://github.com/leanprover/comparator",
+          "commit": "51491237b1d2f96cca203af9c34bced6fe38e0d8"
+        },
+        "lean4export": {
+          "repository": "https://github.com/leanprover/lean4export",
+          "commit": "af5aa64bb914c3c2c781f378088dbd38acf4f804"
+        },
+        "landrun": {
+          "repository": "https://github.com/Zouuup/landrun",
+          "commit": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
+        },
+        "nanoda": {
+          "installed": false,
+          "commit": null
+        }
+      },
+      "compatibility_probe": {
+        "status": "passed",
+        "scope": "upstream Comparator self-test only",
+        "sandboxed": false,
+        "counts_as_project_verification": false,
+        "transcript": "comparator/transcripts/toolchain_compatibility_unsandboxed.txt",
+        "transcript_sha256": "2ee3dcde7fee2dc4a31b1cc4395ea9f5d31f2b2526741f6f18f6463991c25cd5"
+      },
+      "fileset": [
+        "Challenge.lean",
+        "Solution.lean",
+        "ChallengeTransfer.lean",
+        "SolutionTransfer.lean",
+        "comparator/theorem_one_one.json",
+        "comparator/theorem_one_one_transfer.json"
+      ],
+      "configurations": [
+        {
+          "path": "comparator/theorem_one_one.json",
+          "status": "unsandboxed_semantic_smoke_passed",
+          "sandboxed": false,
+          "transcript": "comparator/transcripts/theorem_one_one_unsandboxed.txt",
+          "transcript_sha256": "b61738cb6fd4a08068da493821a6c9b608c2fb5ed28916778bf7950024c2b4e8",
+          "configuration_sha256_at_run": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
+          "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
+        },
+        {
+          "path": "comparator/theorem_one_one_transfer.json",
+          "status": "unsandboxed_semantic_smoke_passed",
+          "sandboxed": false,
+          "transcript": "comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt",
+          "transcript_sha256": "1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f",
+          "configuration_sha256_at_run": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
+          "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
+        }
+      ]
+    }
+  },
+  "challenge_placeholders": [
+    {
+      "file": "Challenge.lean",
+      "declaration": "paper_c_theorem_one_one_finite_cylinder",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for the finite-cylinder form of Theorem 1.1; excluded from proof sorry_count."
+    },
+    {
+      "file": "ChallengeTransfer.lean",
+      "declaration": "paper_c_theorem_one_one_infinite_finite_law_identity",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for the exact infinite-product/finite-cylinder law identity; excluded from proof sorry_count."
+    }
+  ],
+  "paper_items": [
+    {
+      "id": "Thm-1.1-finite-cylinder",
+      "paper_locator": {
+        "result": "Theorem 1.1",
+        "pages": "3",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical",
+          "file": "PaperC/Asymptotics/CorollaryThirteenTen.lean"
+        }
+      ],
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo four ordinary literature premises",
+      "comparator": {
+        "covered": true,
+        "configuration": "comparator/theorem_one_one.json",
+        "theorem_name": "paper_c_theorem_one_one_finite_cylinder",
+        "status": "unsandboxed_semantic_smoke_passed"
+      },
+      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2). The direct Solution layout passed a clean-checkout unsandboxed Comparator semantic smoke test with Lean default-kernel acceptance and exit 0; this is not the hardened release certificate. The separate transfer target covers the infinite source law."
+    },
+    {
+      "id": "Thm-1.1-infinite-finite-law-transfer",
+      "paper_locator": {
+        "result": "Theorem 1.1 model transfer",
+        "pages": "3",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.InfiniteStartProbabilityTransfer.infiniteDyadicStartCount_law_eq_fullDyadicStartLaw",
+          "file": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": true,
+        "configuration": "comparator/theorem_one_one_transfer.json",
+        "theorem_name": "paper_c_theorem_one_one_infinite_finite_law_identity",
+        "status": "unsandboxed_semantic_smoke_passed"
+      },
+      "note": "Exact identity of the infinite-product dyadic start-count law and its finite-cylinder law. The direct SolutionTransfer layout passed its own clean-checkout unsandboxed Comparator semantic smoke test with Lean default-kernel acceptance and exit 0; this is not the hardened release certificate."
+    },
+    {
+      "id": "Thm-1.2-i-deterministic-masks",
+      "paper_locator": {
+        "result": "Theorem 1.2(i)",
+        "pages": "3",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.MaskedPoissonCanonical.theorem_one_two_i",
+          "file": "PaperC/Asymptotics/MaskedPoissonCanonical.lean"
+        }
+      ],
+      "main_result_declaration": "PaperC.MaskedPoissonCanonical.theorem_one_two_i",
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo four ordinary literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The canonical masked endpoint gives the uniform critical-window o_C(1) total-variation statement for every deterministic mask."
+    },
+    {
+      "id": "Thm-1.2-ii-spatial-ppp",
+      "paper_locator": {
+        "result": "Theorem 1.2(ii)",
+        "pages": "3",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.SectionFourteenClosure.theorem_one_two_ii_laplace",
+          "file": "PaperC/Asymptotics/SectionFourteenClosure.lean"
+        },
+        {
+          "name": "PaperC.SpatialLaplaceCritical.sectionFourteenTwo_spatialLaplaceFunctional",
+          "file": "PaperC/Asymptotics/SpatialLaplaceCritical.lean"
+        }
+      ],
+      "main_result_declaration": "PaperC.SectionFourteenClosure.theorem_one_two_ii_laplace",
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved by spatial Laplace-functional characterization modulo four ordinary literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Lean proves the spatial Poisson point-process characterization through convergence of Laplace functionals. It deliberately does not duplicate the paper's vague-topology convergence as a Tendsto statement because the required point-measure API is unavailable."
+    },
+    {
+      "id": "Thm-1.2-iii-marked-ppp",
+      "paper_locator": {
+        "result": "Theorem 1.2(iii)",
+        "pages": "4",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.SectionFourteenClosure.theorem_one_two_iii_laplace_and_tightness",
+          "file": "PaperC/Asymptotics/SectionFourteenClosure.lean"
+        },
+        {
+          "name": "PaperC.MarkedLaplaceCritical.sectionFourteenFour_laplaceFunctional",
+          "file": "PaperC/Asymptotics/MarkedLaplaceCritical.lean"
+        }
+      ],
+      "main_result_declaration": "PaperC.SectionFourteenClosure.theorem_one_two_iii_laplace_and_tightness",
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved by marked Laplace-functional characterization modulo four ordinary literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Lean proves the marked Poisson point-process characterization through Laplace functionals, with the required mark-tail tightness proved in supporting modules. It does not restate vague-topology convergence as Tendsto because the required point-measure API is unavailable."
+    },
+    {
+      "id": "Thm-1.4-moments",
+      "paper_locator": {
+        "result": "Theorem 1.4",
+        "pages": "4",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.SectionTwelveMoments.theorem_one_four_canonical",
+          "file": "PaperC/Asymptotics/TheoremOneFourCanonical.lean"
+        }
+      ],
+      "main_result_declaration": "PaperC.SectionTwelveMoments.theorem_one_four_canonical",
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo three ordinary literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The canonical theorem packages the first-moment estimate, second factorial-moment control, the homogeneous-sum estimate, and the variance conclusion in the critical window."
+    },
+    {
+      "id": "Lem-2.1-affine-system",
+      "paper_locator": {
+        "result": "Lemma 2.1",
+        "pages": "8",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.Affine.affineFiber_fourier_identity",
+          "file": "PaperC/Affine/Fourier.lean"
+        },
+        {
+          "name": "PaperC.Affine.card_solution_eq_pow_finrank_of_compatible",
+          "file": "PaperC/Affine/System.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The row is a multi-part affine-fiber lemma; these declarations anchor its Fourier identity and exact compatible-fiber cardinality, rather than serving as an exhaustive declaration list."
+    },
+    {
+      "id": "Lem-2.2-tree-square-translation",
+      "paper_locator": {
+        "result": "Lemma 2.2",
+        "pages": "8–9",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.sum_parityVec_eq_zero_iff_prod_eq_sq",
+          "file": "PaperC/Arithmetic/ParityVector.lean"
+        },
+        {
+          "name": "PaperC.TreeBoundary.existsUnique_edgeSubset_boundary_eq",
+          "file": "PaperC/Combinatorics/TreeBoundary.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The statement itself crosses pages 8–9. The two anchors cover the square-product translation and the existence-and-uniqueness of the tree edge subset with prescribed even boundary."
+    },
+    {
+      "id": "Lem-3.1-quantitative-runge",
+      "paper_locator": {
+        "result": "Lemma 3.1",
+        "pages": "9",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.RungeBound.quantitative_runge",
+          "file": "PaperC/Algebra/RungeBound.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The selected endpoint is the quantitative Runge conclusion with the explicit absolute constant 128; the analytic and polynomial sublemmas are proved in supporting modules."
+    },
+    {
+      "id": "Prop-3.2-weighted-defect-mass",
+      "paper_locator": {
+        "result": "Proposition 3.2",
+        "pages": "11",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CriticalWeightedDefect.dyadicDefectMass_uniformHalfPower_on_window",
+          "file": "PaperC/Analysis/CriticalWeightedDefect.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "This is the final critical-window weighted-defect mass estimate; Lean expands the manuscript's o(1) notation through explicit uniform asymptotic predicates and admissibility hypotheses."
+    },
+    {
+      "id": "Cor-3.3-first-moment",
+      "paper_locator": {
+        "result": "Corollary 3.3",
+        "pages": "12",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CriticalFirstMoment.normalized_error_uniformHalfPower",
+          "file": "PaperC/Probability/CriticalFirstMoment.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The representative endpoint derives the normalized first-moment error from the finite affine model uniformly in the critical window."
+    },
+    {
+      "id": "Lem-3.4-i-overlapping-starts",
+      "paper_locator": {
+        "result": "Lemma 3.4(i)",
+        "pages": "13",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.SectionTwelveMoments.jointStartProbability_eq_zero_of_overlap",
+          "file": "PaperC/Probability/SectionTwelveMoments.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Lemma 3.4 is split into two editorial items here; this anchor is the exact incompatibility statement for strictly overlapping starts."
+    },
+    {
+      "id": "Lem-3.4-ii-touching-pairs",
+      "paper_locator": {
+        "result": "Lemma 3.4(ii)",
+        "pages": "13",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CriticalTouchingPairs.touchingMass_uniformLinearSubpolynomial",
+          "file": "PaperC/Analysis/CriticalTouchingPairs.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Lemma 3.4 is split into two editorial items here; this endpoint is the uniformly quantified N^(1+o_C(1)) touching-weight estimate."
+    },
+    {
+      "id": "Lem-4.2-relational-hosts",
+      "paper_locator": {
+        "result": "Lemma 4.2",
+        "pages": "13",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.RelationalHostsThreeHalves.card_relationalHosts_uniformThreeHalves_inRunLengthWindow",
+          "file": "PaperC/Asymptotics/RelationalHostsThreeHalves.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The endpoint is the run-length-window form of the N^(3/2+o_C(1)) relational-host bound; its explicit finite CRT/kernel envelope is proved upstream."
+    },
+    {
+      "id": "Lem-4.3-relational-interpolation",
+      "paper_locator": {
+        "result": "Lemma 4.3",
+        "pages": "14",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.RelationalInterpolation.sum_nonneg_and_le_sqrt_card_mul_sqrt_sum_sq",
+          "file": "PaperC/Analysis/RelationalInterpolation.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "This is the finite Cauchy–Schwarz interpolation inequality underlying the manuscript's exponent calculation."
+    },
+    {
+      "id": "Lem-5.1-rational-code",
+      "paper_locator": {
+        "result": "Lemma 5.1",
+        "pages": "15",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.Affine.RationalChannelCode.finrank_rationalCode_eq_channelCells_card_sub_one",
+          "file": "PaperC/Affine/RationalChannelCode.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The selected anchor records the m-1 dimension of the rational code. The exact-unit encoding, affine character, height bound, and degenerate m≤1 behavior are proved in the same interface family."
+    },
+    {
+      "id": "Lem-5.2-channel-uniqueness",
+      "paper_locator": {
+        "result": "Lemma 5.2",
+        "pages": "15",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.reducedChannel_unique",
+          "file": "PaperC/Arithmetic/ChannelUniqueness.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "This anchor is the determinant-based uniqueness theorem for a reduced rational channel; the uniform critical-window specialization and coverage of nonzero rational codes are derived in adjacent modules."
+    },
+    {
+      "id": "Prop-5.4-systematic-rational-mass",
+      "paper_locator": {
+        "result": "Proposition 5.4",
+        "pages": "16",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CriticalRationalMass.rationalMass_two_uniformFourThird",
+          "file": "PaperC/Asymptotics/CriticalRationalMass.lean"
+        },
+        {
+          "name": "PaperC.CriticalRationalMass.rationalMass_four_uniformFiveThird",
+          "file": "PaperC/Asymptotics/CriticalRationalMass.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The paired endpoints are the two systematic masses in the proposition, with exponents 4/3 and 5/3, each uniformly quantified in the critical window."
+    },
+    {
+      "id": "Lem-5.5-weighted-channel-sum",
+      "paper_locator": {
+        "result": "Lemma 5.5",
+        "pages": "17",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.WeightedChannelMassCritical.weightedChannelMass_uniformLinearSubpolynomial",
+          "file": "PaperC/Asymptotics/WeightedChannelMassCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "This endpoint transports the explicit finite geometry sum to the uniform N^(1+o_C(1)) critical-window bound."
+    },
+    {
+      "id": "Lem-6.1-large-prime-graph",
+      "paper_locator": {
+        "result": "Lemma 6.1",
+        "pages": "18",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.LargePrimeGraphResolution.finrank_largePrimeSolution_eq_defective_add_components",
+          "file": "PaperC/Combinatorics/LargePrimeGraphResolution.lean"
+        },
+        {
+          "name": "PaperC.LargePrimeGraphResolution.defective_add_twice_nontrivial_le",
+          "file": "PaperC/Combinatorics/LargePrimeGraphResolution.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The two anchors give the dimension formula D+c for the large-prime solution space and the D+2c≤2B component budget."
+    },
+    {
+      "id": "Lem-6.2-component-square-class",
+      "paper_locator": {
+        "result": "Lemma 6.2",
+        "pages": "18",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ComponentSquareClass.canonical_decomposition",
+          "file": "PaperC/Arithmetic/ComponentSquareClass.lean"
+        },
+        {
+          "name": "PaperC.ComponentSquareClass.decomposition_unique",
+          "file": "PaperC/Arithmetic/ComponentSquareClass.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The anchors give the canonical squarefree-times-square decomposition of an unpinned component product and its uniqueness."
+    },
+    {
+      "id": "Lem-6.3-exact-unit-isolation",
+      "paper_locator": {
+        "result": "Lemma 6.3",
+        "pages": "19",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ExactUnitIsolation.exactUnit_graph_dichotomy",
+          "file": "PaperC/Combinatorics/ExactUnitIsolation.lean"
+        },
+        {
+          "name": "PaperC.ExactUnitIsolation.distinct_channelUnits_nondefective_components",
+          "file": "PaperC/Combinatorics/ExactUnitIsolation.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The first anchor is the defective-versus-isolated-size-two dichotomy; the second records separation of components arising from distinct units under the explicit channel hypotheses."
+    },
+    {
+      "id": "Lem-6.4-quotient-core",
+      "paper_locator": {
+        "result": "Lemma 6.4",
+        "pages": "19–20",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CanonicalResidualQuotient.residualTau_eq_finrank_residualQuotient",
+          "file": "PaperC/LinearAlgebra/CanonicalResidualQuotient.lean"
+        },
+        {
+          "name": "PaperC.ResidualComponentCounts.residualTau_le_canonicalCorrected_add_residual",
+          "file": "PaperC/Combinatorics/ResidualComponentCounts.lean"
+        },
+        {
+          "name": "PaperC.DefectiveVertexIntervalBound.canonicalCorrectedDefectCount_uniform_on_window",
+          "file": "PaperC/Combinatorics/DefectiveVertexIntervalBound.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The statement crosses pages 19–20. These anchors cover τ as a quotient dimension, the corrected D#+c# rank bound, and the uniform D#≪_C B/log B estimate; the row is intentionally represented by several declarations."
+    },
+    {
+      "id": "Lem-6.5-residual-certificates",
+      "paper_locator": {
+        "result": "Lemma 6.5",
+        "pages": "20",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ResidualCertificates.card_canonicalCertificatePrimes",
+          "file": "PaperC/Combinatorics/ResidualCertificates.lean"
+        },
+        {
+          "name": "PaperC.ResidualCertificates.canonicalCertificates_not_onChannel_of_excluded",
+          "file": "PaperC/Combinatorics/ResidualCertificates.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The anchors record cardinality/injectivity of the canonical prime certificates and exclusion of aligned channel cells; further offset and divisibility fields are proved in the same module."
+    },
+    {
+      "id": "Lem-7.1-crt-certificate-summation",
+      "paper_locator": {
+        "result": "Lemma 7.1",
+        "pages": "21",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CRT.sum_labeledCell_admissibleCertificatePairSolutionMass_le_exact",
+          "file": "PaperC/Combinatorics/CertificateLemmaSevenOne.lean"
+        },
+        {
+          "name": "PaperC.CRT.sum_certificateWeightSum_le_exponentialMajorant",
+          "file": "PaperC/Combinatorics/CertificateSummation.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The grouped anchors cover the exact two-dimensional CRT mass estimate and the factorial/exponential summation of unordered certificates."
+    },
+    {
+      "id": "Lem-7.2-residual-channel-cells",
+      "paper_locator": {
+        "result": "Lemma 7.2",
+        "pages": "22",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.prime_lt_four_mul_max_of_mem_residualPrimeCells",
+          "file": "PaperC/Arithmetic/ResidualChannelCells.lean"
+        },
+        {
+          "name": "PaperC.ResidualChannelLemmaSevenTwo.residualPrimeMass_le",
+          "file": "PaperC/Arithmetic/ResidualChannelLemmaSevenTwo.lean"
+        },
+        {
+          "name": "PaperC.residualCertificateChannelEnvelope_uniformLinear",
+          "file": "PaperC/Asymptotics/ResidualCertificateMassCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "These anchors represent the cell-prime cutoff, the effective reciprocal-prime mass bound, and its uniform B/log B channel envelope."
+    },
+    {
+      "id": "Prop-7.3-small-product-sector",
+      "paper_locator": {
+        "result": "Proposition 7.3",
+        "pages": "22",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PropositionSevenThreeCritical.smallProductQuadraticResidualMass_uniformQuadratic",
+          "file": "PaperC/Asymptotics/PropositionSevenThreeCritical.lean"
+        },
+        {
+          "name": "PaperC.PropositionSevenThreeCritical.smallProductLinearResidualMass_uniformSevenFourths",
+          "file": "PaperC/Asymptotics/PropositionSevenThreeCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The two endpoints are the quadratic N^(2+o_C(1)) and interpolated linear N^(7/4+o_C(1)) residual-mass bounds for P#≤N."
+    },
+    {
+      "id": "Prop-7.4-small-height-sector",
+      "paper_locator": {
+        "result": "Proposition 7.4",
+        "pages": "24",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PropositionSevenFourCritical.smallHeightLargeProductQuadraticResidualMass_uniformFiveThird",
+          "file": "PaperC/Asymptotics/PropositionSevenFourCritical.lean"
+        },
+        {
+          "name": "PaperC.PropositionSevenFourCritical.smallHeightLargeProductLinearResidualMass_uniformNineteenTwelfths",
+          "file": "PaperC/Asymptotics/PropositionSevenFourCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The endpoints give the N^(5/3+o_C(1)) quadratic and N^(19/12+o_C(1)) interpolated linear bounds for P#>N in the small-height channel sector."
+    },
+    {
+      "id": "Prop-7.5-moderate-sector",
+      "paper_locator": {
+        "result": "Proposition 7.5",
+        "pages": "25",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PropositionSevenFiveCritical.shallowCoreQuadraticResidualMass_uniformNineteenEighths",
+          "file": "PaperC/Asymptotics/PropositionSevenFiveCritical.lean"
+        },
+        {
+          "name": "PaperC.PropositionSevenFiveCritical.shallowCoreLinearResidualMass_uniformThirtyOneSixteenths",
+          "file": "PaperC/Asymptotics/PropositionSevenFiveCritical.lean"
+        },
+        {
+          "name": "PaperC.PropositionSevenFiveCritical.shallowCoreLinearResidualMass_uniformLittleOQuadratic",
+          "file": "PaperC/Asymptotics/PropositionSevenFiveCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The Lean sector uses the α=3/16 threshold required by the later partition, yielding exponents 19/8 and 31/16 and hence o_C(N^2). This is the release's specialized instance of the paper's parameterized α presentation."
+    },
+    {
+      "id": "Thm-8.1-aligned-core-exclusion",
+      "paper_locator": {
+        "result": "Theorem 8.1",
+        "pages": "25",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.TheoremEightAlignedClosure.no_aligned_deep_core_eventually",
+          "file": "PaperC/Asymptotics/TheoremEightAlignedClosure.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved for the alpha=3/16 instance used by the canonical partition",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the paper states the exclusion for every real α>0, whereas Lean closes exactly the α=3/16 instance consumed downstream. The general constant-parametric version is not claimed."
+    },
+    {
+      "id": "Lem-9.1",
+      "paper_locator": {
+        "result": "Lemma 9.1 (Evertse-Silverman input)",
+        "pages": "27",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.EvertseSilvermanInput.shiftedSquareEquation_atMost_of_evertseSilverman",
+          "file": "PaperC/Diophantine/EvertseSilvermanInput.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved from one ordinary external literature premise",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the cited Evertse-Silverman theorem is an ordinary theorem argument, not a Lean axiom and not re-proved in Paper C. Lean proves the ordinate count, the factor two, the zero-solution correction, and the injection used to obtain the manuscript's pair count."
+    },
+    {
+      "id": "Lem-9.2",
+      "paper_locator": {
+        "result": "Lemma 9.2 (uniform Pell count in a polynomial range)",
+        "pages": "28",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
+          "file": "PaperC/Diophantine/PellDivisorEnvelope.lean"
+        }
+      ],
+      "bridge_ids": [
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo two narrow external literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The numbered statement is on p. 28; its proof continues on p. 29. The selected public theorem discharges the historical PCv07c-L9.2 bridge directly from the Halter-Koch conductor/unit comparison and the source-shaped Nicolas-Robin logarithmic divisor bound."
+    },
+    {
+      "id": "Lem-9.3",
+      "paper_locator": {
+        "result": "Lemma 9.3 (normalization of a component)",
+        "pages": "29",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ComponentNormalization.canonical_normalization",
+          "file": "PaperC/Diophantine/ComponentNormalization.lean"
+        },
+        {
+          "name": "PaperC.ComponentNormalization.canonical_normalization_polynomial_bound",
+          "file": "PaperC/Diophantine/ComponentNormalization.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The canonical squarefree normalization, uniqueness data, and the polynomial height bound are proved without a bridge."
+    },
+    {
+      "id": "Lem-9.4",
+      "paper_locator": {
+        "result": "Lemma 9.4 (one-sided count of a component)",
+        "pages": "29",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ComponentNormalization.oneShiftEquation_atMost_sqrt",
+          "file": "PaperC/Diophantine/ComponentNormalization.lean"
+        },
+        {
+          "name": "PaperC.ComponentNormalization.twoShiftPolynomialBox_of_generalizedPell",
+          "file": "PaperC/Diophantine/ComponentNormalization.lean"
+        },
+        {
+          "name": "PaperC.ComponentNormalization.normalizedShiftedEquation_atMost_of_evertseSilverman",
+          "file": "PaperC/Diophantine/ComponentNormalization.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "branchwise proof, conditional on Evertse-Silverman and the discharged generalized-Pell interface",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: there is no single public declaration reproducing the manuscript's three-case count. The degree-one, degree-two, and degree-at-least-three branches are mapped separately; the internal generalized-Pell bridge is discharged in canonical top-level APIs by Halter-Koch and Nicolas-Robin."
+    },
+    {
+      "id": "Lem-9.5",
+      "paper_locator": {
+        "result": "Lemma 9.5 (two singleton components)",
+        "pages": "30",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.SingletonProductParametrization.exists_singleton_product_parametrization",
+          "file": "PaperC/Diophantine/SingletonProductParametrization.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioTwoSingletonCritical.exists_sizeTwoComponentHostEnvelope",
+          "file": "PaperC/Asymptotics/BoundedRatioTwoSingletonCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The exact canonical parametrization and the critical-window size-two host envelope implementing the divisor summation are both proved without a bridge."
+    },
+    {
+      "id": "Lem-9.6",
+      "paper_locator": {
+        "result": "Lemma 9.6 (hosts of a bounded component)",
+        "pages": "30",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioNonterminalHostCounts.exists_card_boundedComponentHosts_le_explicit_sourceEnvelope",
+          "file": "PaperC/Asymptotics/BoundedRatioNonterminalHostCounts.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved on the canonical bounded-ratio route",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the count is exposed as the explicit source envelope used by the canonical bounded-ratio assembly, rather than as the former standalone generic interface. The generalized-Pell bridge recorded here is discharged downstream."
+    },
+    {
+      "id": "Cor-9.7",
+      "paper_locator": {
+        "result": "Corollary 9.7 (number of deep-core hosts)",
+        "pages": "31",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioComponentHosts.denseCanonicalCorePairs_subset_boundedComponentHosts",
+          "file": "PaperC/Asymptotics/BoundedRatioComponentHosts.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioNonterminalHostCounts.exists_card_boundedComponentHosts_le_explicit_sourceEnvelope",
+          "file": "PaperC/Asymptotics/BoundedRatioNonterminalHostCounts.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved on the canonical bounded-ratio route",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The structural dense-core inclusion and the bounded-component host envelope formalize the corollary. The grouped status-table label 'Lem. 9.3-9.8' is editorial shorthand; the frozen English PDF labels 9.7 as a corollary."
+    },
+    {
+      "id": "Lem-9.8",
+      "paper_locator": {
+        "result": "Lemma 9.8 (two defects in a block)",
+        "pages": "31",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioDistinctKernelTwoDefects.distinctKernelDefectBases_uniformSubpolynomial",
+          "file": "PaperC/Asymptotics/BoundedRatioDistinctKernelTwoDefects.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioTwoDefectStarts.card_equalKernelSmoothStarts_le",
+          "file": "PaperC/Asymptotics/BoundedRatioTwoDefectStarts.lean"
+        }
+      ],
+      "bridge_ids": [
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved from the discharged generalized-Pell interface",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the distinct-squareclass Pell branch and the equal-squareclass factorization/smooth sum are represented by separate declarations. The registered internal Pell bridge is discharged by the canonical Halter-Koch/Nicolas-Robin construction."
+    },
+    {
+      "id": "Prop-9.9",
+      "paper_locator": {
+        "result": "Proposition 9.9 (eliminating D# >= 3)",
+        "pages": "31",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PropositionNineNine.sigmaZeroDeepCoreAtLeastThreeDefects_linearResidualMass_le",
+          "file": "PaperC/Asymptotics/PropositionNineNine.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "finite kernel proved; former conditional endpoint removed",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: this declaration is the retained finite mass envelope. The former public theorem that consumed an abstract host-count premise was removed; the complete canonical master bound now closes this sector by direct bounded-ratio counts."
+    },
+    {
+      "id": "Lem-9.10",
+      "paper_locator": {
+        "result": "Lemma 9.10 (exact rank formula)",
+        "pages": "32",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CanonicalSmallRows.residualTau_eq_corrected_add_components_sub_arithmeticRank_of_choice_none",
+          "file": "PaperC/LinearAlgebra/CanonicalSmallRows.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved in the non-aligned source scope",
+      "comparator": {
+        "covered": false
+      },
+      "note": "This is the source-scoped, choice-none identity tau = D# + c# - rank, proved from the concrete kernel equivalence without a bridge."
+    },
+    {
+      "id": "Prop-9.11",
+      "paper_locator": {
+        "result": "Proposition 9.11 (terminal reduction)",
+        "pages": "32",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioNonterminalAssembly.intrinsicNonterminalSector_uniformLittleO_of_arithmeticEnvelopes",
+          "file": "PaperC/Asymptotics/BoundedRatioNonterminalAssembly.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "canonical conclusion proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the canonical intrinsic nonterminal sector is closed, but the former wrapper parameterized by an arbitrary rank function and budget was intentionally removed."
+    },
+    {
+      "id": "Lem-9.12",
+      "paper_locator": {
+        "result": "Lemma 9.12 (kernels and determinants of the terminal matching)",
+        "pages": "33",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.TerminalMatching.two_vertex_components_kernel_package",
+          "file": "PaperC/Arithmetic/TerminalMatching.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The public package combines the large-kernel equality, nontriviality, pairwise coprimality, determinant divisibility and non-alignment bound used in the paper."
+    },
+    {
+      "id": "Thm-10.1",
+      "paper_locator": {
+        "result": "Theorem 10.1 (closure of the terminal population)",
+        "pages": "34",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioTerminalSummation.generalizedPell_implies_intrinsicTerminalSector_uniformSevenFourths",
+          "file": "PaperC/Asymptotics/BoundedRatioTerminalSummation.lean"
+        }
+      ],
+      "bridge_ids": [
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "canonical terminal instance proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the intrinsic canonical terminal population and its N^(7/4+o(1)) closure are proved; the former generic smallRowRank/rankBudget wrapper was removed."
+    },
+    {
+      "id": "Lem-11.1",
+      "paper_locator": {
+        "result": "Lemma 11.1 (exhaustive partition of separated pairs)",
+        "pages": "35-36",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CanonicalSectionElevenPartition.canonical_lemma_eleven_one_existsUnique_sector",
+          "file": "PaperC/Combinatorics/CanonicalSectionElevenPartition.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The numbered statement itself begins on p. 35 and its seven-sector list continues on p. 36. The canonical declaration proves existence and uniqueness of the sector."
+    },
+    {
+      "id": "Prop-11.2",
+      "paper_locator": {
+        "result": "Proposition 11.2 (absolute homogeneous two-block sum)",
+        "pages": "36",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.DyadicKappaQuantitative.homogeneousMass_uniformBigO",
+          "file": "PaperC/Asymptotics/DyadicKappaQuantitative.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved by a stronger quantitative canonical endpoint",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the representative public declaration is the stronger uniform exponential envelope, which implies the manuscript's o_C(N^2) proposition. The removed legacy qualitative wrappers are not mapped."
+    },
+    {
+      "id": "Cor-11.3",
+      "paper_locator": {
+        "result": "Corollary 11.3 (quantitative form of the homogeneous sum)",
+        "pages": "36",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical",
+          "file": "PaperC/Asymptotics/DyadicKappaQuantitative.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo three external literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The canonical declaration proves the manuscript's exponential homogeneous-mass rate with explicit uniformity in the critical window."
+    },
+    {
+      "id": "Sec-12",
+      "paper_locator": {
+        "result": "Section 12 (deducing the moments; proof of Theorem 1.4)",
+        "pages": "37",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.SectionTwelveMoments.theorem_one_four_canonical",
+          "file": "PaperC/Asymptotics/TheoremOneFourCanonical.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved and connected to the canonical Theorem 1.4 endpoint",
+      "comparator": {
+        "covered": false
+      },
+      "note": "This is a section-level editorial item rather than a separate numbered theorem in Section 12. The mapped declaration is the canonical Theorem 1.4 endpoint assembled from the finite moment identities and the homogeneous-mass bound."
+    },
+    {
+      "id": "Lem-13.1",
+      "paper_locator": {
+        "result": "Lemma 13.1 (rank via private pivots)",
+        "pages": "38",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PrivatePivots.tree_projectedParityEdge_linearIndependent_of_large_odd_primes",
+          "file": "PaperC/LinearAlgebra/PrivatePivots.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The declaration is the arithmetic projected tree-edge specialization of the abstract private-pivot linear-independence criterion."
+    },
+    {
+      "id": "Cor-13.2",
+      "paper_locator": {
+        "result": "Corollary 13.2 (exact conditional marginal)",
+        "pages": "38",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ConditionalStartProbability.conditionedStartProbability_eq_baseline_of_not_terminalBad",
+          "file": "PaperC/Probability/ConditionalStartProbability.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved exactly in the finite cylinder",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Conditioning is represented extensionally by the uniform law on the remaining finite coordinates, yielding the exact probability 2^-L without a measure-theoretic conditional-probability API."
+    },
+    {
+      "id": "Lem-13.3",
+      "paper_locator": {
+        "result": "Lemma 13.3 (number of Y-defective starts)",
+        "pages": "38",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.TerminalBadStartsCritical.terminalBadStarts_terminalCutoff_uniformHalfPower",
+          "file": "PaperC/Asymptotics/TerminalBadStartsCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved in the critical window",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The selected theorem is the strong N^(1/2+o_C(1)) cardinal form, from which the manuscript's o_C(N) assertion follows."
+    },
+    {
+      "id": "Lem-13.4",
+      "paper_locator": {
+        "result": "Lemma 13.4 (probabilistic mass of the bad starts)",
+        "pages": "38",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BadStartMassCritical.terminalBadStartProbabilityMass_uniformLittleOOne",
+          "file": "PaperC/Asymptotics/BadStartMassCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The exact finite bad-start mass is connected to the weighted defect estimate and proved uniformly o_C(1)."
+    },
+    {
+      "id": "Lem-13.5",
+      "paper_locator": {
+        "result": "Lemma 13.5 (exact dependency graph)",
+        "pages": "39",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ConditionalAGGInstantiation.hasExactDependencyGraph_conditionedGoodIndicator",
+          "file": "PaperC/Probability/ConditionalAGGInstantiation.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved exactly in the finite cylinder",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The public declaration packages the factorization for arbitrary Boolean assignments to every family of non-neighbors as the exact dependency-graph interface consumed by AGG."
+    },
+    {
+      "id": "Lem-13.6",
+      "paper_locator": {
+        "result": "Lemma 13.6 (edge count)",
+        "pages": "39",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.DependencyEdgesCritical.orderedDependencyEdges_terminalCutoff_uniformLittleOQuadratic",
+          "file": "PaperC/Asymptotics/DependencyEdgesCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "sufficient critical-window edge bound proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: Lean proves the explicit finite upper bound and the o_C(N^2) consequence used later. The finer displayed asymptotic decomposition in the manuscript is not duplicated as a separate public endpoint."
+    },
+    {
+      "id": "Thm-13.7",
+      "paper_locator": {
+        "result": "Theorem 13.7 (Arratia-Goldstein-Gordon)",
+        "pages": "40",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ArratiaGoldsteinGordonInput.totalVariationToPoisson_le",
+          "file": "PaperC/Probability/ArratiaGoldsteinGordonInput.lean"
+        }
+      ],
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved from one ordinary external literature premise",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The finite-family b3=0 specialization and half-l1 total-variation normalization are explicit. The AGG theorem itself remains a registered ordinary premise."
+    },
+    {
+      "id": "Lem-13.8",
+      "paper_locator": {
+        "result": "Lemma 13.8 (Chen-Stein terms)",
+        "pages": "40",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.SteinChenTerms.steinBOne_eq_card_div",
+          "file": "PaperC/Probability/SteinChenTerms.lean"
+        },
+        {
+          "name": "PaperC.SteinChenTerms.steinBTwoAverage_le",
+          "file": "PaperC/Probability/SteinChenTerms.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "finite kernels proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the exact b1 identity and b2 finite upper bound are mapped here. Their little-oh closure from a supplied homogeneous estimate is proved elsewhere; the removed legacy route that rebuilt that estimate from abstract sector interfaces is not restored."
+    },
+    {
+      "id": "Cor-13.9",
+      "paper_locator": {
+        "result": "Corollary 13.9 (finite bound)",
+        "pages": "41",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.SectionThirteenFiniteBound.finite_corollary_thirteen_nine",
+          "file": "PaperC/Probability/SectionThirteenFiniteBound.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "finite algebraic bound proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the exact finite majorant and coupling algebra are retained. The former qualitative public route from three abstract arithmetic interfaces was removed; the canonical conclusion is obtained through the stronger rate endpoint of Corollary 13.10."
+    },
+    {
+      "id": "Cor-13.10",
+      "paper_locator": {
+        "result": "Corollary 13.10 (explicit rate)",
+        "pages": "41-42",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_canonical",
+          "file": "PaperC/Asymptotics/CorollaryThirteenTen.lean"
+        }
+      ],
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo four external literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The headline rate is stated on p. 41 and the 'more precisely' part of the same corollary continues on p. 42. The canonical Lean endpoint has exactly the four literature premises listed here."
+    },
+    {
+      "id": "Prop-14.1",
+      "paper_locator": {
+        "result": "Proposition 14.1 (uniformly masked first moment)",
+        "pages": "42",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.MaskedFirstMomentCritical.maskedFirstMomentError_uniformLittleOOne_loglogWindow",
+          "file": "PaperC/Asymptotics/MaskedFirstMomentCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved uniformly over masks",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The selected endpoint uses the exact log-log critical window of the proposition and is uniform over every deterministic mask."
+    },
+    {
+      "id": "Prop-14.2",
+      "paper_locator": {
+        "result": "Proposition 14.2 (Poisson under a mask)",
+        "pages": "43",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.MaskedPoissonCanonical.maskedPoissonTotalVariation_uniformLittleOOne",
+          "file": "PaperC/Asymptotics/MaskedPoissonCanonical.lean"
+        }
+      ],
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo four external literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The exact masked dependency graph, bad-start coupling, parameter shift and uniform TV little-oh estimate are assembled in the canonical endpoint."
+    },
+    {
+      "id": "Rem-14.3",
+      "paper_locator": {
+        "result": "Remark 14.3 (uniform rate under masks)",
+        "pages": "43",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.MaskedPoissonRate.maskedPoissonTotalVariation_uniformBigO_canonical",
+          "file": "PaperC/Asymptotics/MaskedPoissonRate.lean"
+        }
+      ],
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo four external literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The public theorem turns the manuscript remark into an explicit uniform Big-O endpoint with rate 1/(log log N)^2."
+    },
+    {
+      "id": "Sec-14.2",
+      "paper_locator": {
+        "result": "Section 14.2 (spatial process via auxiliary thinning)",
+        "pages": "43-44",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.SectionFourteenClosure.theorem_one_two_ii_laplace",
+          "file": "PaperC/Asymptotics/SectionFourteenClosure.lean"
+        }
+      ],
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved as a Laplace-functional characterization",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: Lean proves the complete spatial PPP Laplace functional under the four literature premises. It does not duplicate the paper's vague-convergence wording as a Tendsto statement for point-measure laws because the required point-process topology API is absent from mathlib."
+    },
+    {
+      "id": "Lem-14.5",
+      "paper_locator": {
+        "result": "Lemma 14.5 (almost sure finiteness of stretches)",
+        "pages": "44",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.InfiniteRademacher.lemma_fourteen_four",
+          "file": "PaperC/Model/InfiniteRademacher.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved in the infinite source model",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The theorem is source-exact: almost surely every x >= 2 has a later value different from f(x). The Lean identifier retains the earlier manuscript number 'fourteen_four'; the frozen English PDF numbers the result 14.5."
+    },
+    {
+      "id": "Lem-14.6",
+      "paper_locator": {
+        "result": "Lemma 14.6 (mixed-length affine identity)",
+        "pages": "44-45",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.MixedLengthAffine.mixedExcessProbability_eq_eta_mul_two_pow_rho_div",
+          "file": "PaperC/Probability/MixedLengthAffine.lean"
+        },
+        {
+          "name": "PaperC.MixedLengthAffine.mixedExcess_relationRho_le_common",
+          "file": "PaperC/Probability/MixedLengthAffine.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved exactly in the finite cylinder",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The statement begins at the foot of p. 44 and continues on p. 45. The two mapped declarations cover the normalized affine probability identity and the common-length rank domination."
+    },
+    {
+      "id": "Lem-14.7",
+      "paper_locator": {
+        "result": "Lemma 14.7 (private pivots and cycle space)",
+        "pages": "45",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CycleSpaceDimension.card_vertices_sub_components_le_rank_representedEdgeMap",
+          "file": "PaperC/Combinatorics/CycleSpaceDimension.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The rank lower bound is proved for the finite oriented presentation used by the project, including loops and parallel edges and explicit connectivity-to-root hypotheses."
+    },
+    {
+      "id": "Sec-14.4",
+      "paper_locator": {
+        "result": "Section 14.4 (truncated marked process)",
+        "pages": "45-47",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.SectionFourteenClosure.theorem_one_two_iii_laplace_and_tightness",
+          "file": "PaperC/Asymptotics/SectionFourteenClosure.lean"
+        }
+      ],
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved as Laplace functionals plus uniform mark tightness",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the endpoint covers the complete marked source functional for finitely supported mark tests and the uniform tightness needed for detruncation. It does not assert vague-topology convergence of point-measure laws as a separate Tendsto theorem."
+    },
+    {
+      "id": "Lem-14.8",
+      "paper_locator": {
+        "result": "Lemma 14.8 (mass of the removed starts, exact lengths)",
+        "pages": "46",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ExactLengthBadStartMassCritical.lemma_fourteen_seven",
+          "file": "PaperC/Asymptotics/ExactLengthBadStartMassCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved under the infinite source law",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The infinite-law little-oh statement is transported term by term from the finite-cylinder mass identity. The Lean identifier retains the earlier number 'fourteen_seven'; the frozen English PDF numbers the result 14.8."
+    },
+    {
+      "id": "Cor-14.9",
+      "paper_locator": {
+        "result": "Corollary 14.9 (exact-length counts and the maximum)",
+        "pages": "47-48",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CorollaryFourteenEightCounts.corollary_fourteen_eight_counts",
+          "file": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean"
+        },
+        {
+          "name": "PaperC.CorollaryFourteenEightMaximum.corollary_fourteen_eight_maximum",
+          "file": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean"
+        }
+      ],
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo four external literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The statement begins on p. 47 and continues on p. 48. The two declarations separately prove convergence of every fixed exact-length count vector and the internal dyadic-block maximum law. Their Lean namespaces retain the earlier label 'FourteenEight'; no global longest-run theorem is claimed here."
+    },
+    {
+      "id": "Lem-15.1",
+      "paper_locator": {
+        "result": "Lemma 15.1 (Low zone)",
+        "pages": "48",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.LowZoneCritical.lowZoneProbabilityMass_uniformLittleOOne_power",
+          "file": "PaperC/Asymptotics/LowZoneCritical.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ADGR07-PNT"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo the registered prime-number-theorem premise",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct endpoint for the uniform low-zone probability-mass estimate."
+    },
+    {
+      "id": "Lem-15.2",
+      "paper_locator": {
+        "result": "Lemma 15.2 (Polynomial band)",
+        "pages": "49",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PolynomialZoneSum.polynomialZoneProbabilityMass_tendsto_zero",
+          "file": "PaperC/Asymptotics/PolynomialZoneSum.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ADGR07-PNT",
+        "LS04-Corollary-1"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo two registered literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct endpoint for decay of the summed probability mass in the polynomial band."
+    },
+    {
+      "id": "Lem-15.3",
+      "paper_locator": {
+        "result": "Lemma 15.3 (Rarity of two-defect windows)",
+        "pages": "49",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.LemmaFifteenThree.lemma_fifteen_three_uniform_height_range",
+          "file": "PaperC/Asymptotics/LemmaFifteenThree.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ADGR07-PNT",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo PNT and the discharged internal Pell bridge",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct uniform-height-range form of the manuscript lemma."
+    },
+    {
+      "id": "Lem-15.4",
+      "paper_locator": {
+        "result": "Lemma 15.4 (Pointwise maximum)",
+        "pages": "50",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BalasubramanianShoreyMaximum.defectiveWindow_card_le_complement_gap_eventually",
+          "file": "PaperC/Arithmetic/BalasubramanianShoreyMaximum.lean"
+        }
+      ],
+      "bridge_ids": [
+        "BS93-Theorem-1"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo the registered Balasubramanian-Shorey premise",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct eventual pointwise defect-count bound used in the manuscript."
+    },
+    {
+      "id": "Prop-15.5",
+      "paper_locator": {
+        "result": "Proposition 15.5 (Truncation of the deep blocks)",
+        "pages": "50",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PropositionFifteenFivePartition.proposition_fifteen_five",
+          "file": "PaperC/Asymptotics/PropositionFifteenFivePartition.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ADGR07-PNT",
+        "BS93-Theorem-1",
+        "LS04-Corollary-1",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo three literature premises and the discharged internal Pell bridge",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct endpoint for the double-limit truncation of all deep blocks."
+    },
+    {
+      "id": "Prop-16.1",
+      "paper_locator": {
+        "result": "Proposition 16.1 (Absolute homogeneous sum at bounded ratio)",
+        "pages": "51",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical",
+          "file": "PaperC/Asymptotics/PropositionSixteenOne.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo the three registered canonical literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Canonical endpoint; historical internal sector bridges are not consumed by this declaration."
+    },
+    {
+      "id": "Thm-16.2",
+      "paper_locator": {
+        "result": "Theorem 16.2 (Interior global Poisson law at the critical scale)",
+        "pages": "52",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.TheoremSixteenTwoRecentered.theorem_sixteen_two_recentered_canonical",
+          "file": "PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean"
+        },
+        {
+          "name": "PaperC.TheoremSixteenTwo.theorem_sixteen_two_infinite_model",
+          "file": "PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean"
+        }
+      ],
+      "main_result_declaration": "PaperC.TheoremSixteenTwo.theorem_sixteen_two_infinite_model",
+      "bridge_ids": [
+        "ADGR07-PNT",
+        "AGG89-T1-finite-dependency-b3-zero",
+        "BS93-Theorem-1",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "LS04-Corollary-1",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved on the finite cylinder and infinite source law modulo seven literature premises",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The two declarations record the recentered finite-cylinder result and its exact infinite-model transfer; neither is covered by the v0.48 Comparator target listed here."
+    },
+    {
+      "id": "Cor-16.4",
+      "paper_locator": {
+        "result": "Corollary 16.4 (Longest-run law in the finite prefix)",
+        "pages": "53",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CorollaryPrefixLawCanonical.corollary_prefix_law_canonical",
+          "file": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean"
+        }
+      ],
+      "main_result_declaration": "PaperC.CorollaryPrefixLawCanonical.corollary_prefix_law_canonical",
+      "bridge_ids": [
+        "ADGR07-PNT",
+        "AGG89-T1-finite-dependency-b3-zero",
+        "BS93-Theorem-1",
+        "ES86-T1b-Q-split-n2",
+        "HK13-QO-conductor-fibres",
+        "LS04-Corollary-1",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo the same seven literature premises as Theorem 16.2",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct canonical endpoint for the finite-prefix longest-run law; deliberately outside the present Comparator scope."
+    },
+    {
+      "id": "Lem-17.1",
+      "paper_locator": {
+        "result": "Lemma 17.1 (Hosts at bounded ratio)",
+        "pages": "56",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioRelationalHostsCritical.card_boundedRelationalHosts_uniformThreeHalves",
+          "file": "PaperC/Asymptotics/BoundedRatioRelationalHostsCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct bounded-ratio host-count endpoint."
+    },
+    {
+      "id": "Lem-17.2",
+      "paper_locator": {
+        "result": "Lemma 17.2 (Interpolation at bounded ratio)",
+        "pages": "56",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioGeometry.boundedRatio_interpolation",
+          "file": "PaperC/Combinatorics/BoundedRatioGeometry.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct Cauchy-Schwarz interpolation statement."
+    },
+    {
+      "id": "Lem-17.3",
+      "paper_locator": {
+        "result": "Lemma 17.3 (Rational code at bounded ratio)",
+        "pages": "56",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioGeometry.boundedRatio_rationalCode_finrank",
+          "file": "PaperC/Combinatorics/BoundedRatioGeometry.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Representative direct endpoint for the finite-rank rational-code assertion."
+    },
+    {
+      "id": "Lem-17.4",
+      "paper_locator": {
+        "result": "Lemma 17.4 (Channel uniqueness at bounded ratio)",
+        "pages": "57",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioGeometry.boundedRatio_reducedChannelCandidates_card_le_one",
+          "file": "PaperC/Combinatorics/BoundedRatioGeometry.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct uniqueness bound for reduced channel candidates."
+    },
+    {
+      "id": "Lem-17.5",
+      "paper_locator": {
+        "result": "Lemma 17.5 (Rational masses at bounded ratio)",
+        "pages": "57",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioRationalMass.boundedRationalMassSup_uniformThreeHalves",
+          "file": "PaperC/Asymptotics/BoundedRatioRationalMass.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioRationalMass.boundedRationalMass_uniformLittleO_square",
+          "file": "PaperC/Asymptotics/BoundedRatioRationalMass.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The two public endpoints cover the supremum and summed rational-mass conclusions."
+    },
+    {
+      "id": "Lem-17.6",
+      "paper_locator": {
+        "result": "Lemma 17.6 (Sum of channel geometries)",
+        "pages": "57",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioGeometry.boundedRatio_weightedChannelGeometry_le",
+          "file": "PaperC/Combinatorics/BoundedRatioGeometry.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct weighted channel-geometry summation bound."
+    },
+    {
+      "id": "Lem-17.7",
+      "paper_locator": {
+        "result": "Lemma 17.7 (Large-prime graph on U)",
+        "pages": "57",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.LargePrimeGraphResolution.finrank_largePrimeSolution_eq_defective_add_components",
+          "file": "PaperC/Combinatorics/LargePrimeGraphResolution.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved through a reusable exact graph-rank core; mapping fidelity is partial",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial-fidelity mapping: the declaration is the exact generic large-prime graph identity instantiated transitively in the bounded-ratio development, rather than a theorem named specifically for U."
+    },
+    {
+      "id": "Lem-17.8",
+      "paper_locator": {
+        "result": "Lemma 17.8 (Square class of components on U)",
+        "pages": "58",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ComponentSquareClass.decomposition_unique",
+          "file": "PaperC/Arithmetic/ComponentSquareClass.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved through a reusable component-square-class core; mapping fidelity is partial",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial-fidelity mapping: this is the generic uniqueness theorem used by the U-specialized argument."
+    },
+    {
+      "id": "Lem-17.9",
+      "paper_locator": {
+        "result": "Lemma 17.9 (Exact isolation on U)",
+        "pages": "58",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ExactUnitIsolation.exactUnit_graph_dichotomy",
+          "file": "PaperC/Combinatorics/ExactUnitIsolation.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved through a reusable exact-unit core; mapping fidelity is partial",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial-fidelity mapping: the public declaration states the generic graph dichotomy specialized downstream to U."
+    },
+    {
+      "id": "Lem-17.10",
+      "paper_locator": {
+        "result": "Lemma 17.10 (Quotient core on U)",
+        "pages": "58",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CanonicalExactRank.pairTau_add_kTilde_eq_corrected_add_components",
+          "file": "PaperC/LinearAlgebra/CanonicalExactRank.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved through the canonical exact-rank identity; mapping fidelity is partial",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial-fidelity mapping: the declaration is the reusable rank identity underlying the quotient-core formula, not a literal restatement with the manuscript's U notation."
+    },
+    {
+      "id": "Lem-17.11",
+      "paper_locator": {
+        "result": "Lemma 17.11 (Residual certificates on U)",
+        "pages": "58",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.ResidualCertificates.card_canonicalCertificatePrimes",
+          "file": "PaperC/Combinatorics/ResidualCertificates.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved through the generic residual-certificate construction; mapping fidelity is partial",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial-fidelity mapping: the exact certificate-cardinality theorem is instantiated transitively in the bounded-ratio proof."
+    },
+    {
+      "id": "Lem-17.12",
+      "paper_locator": {
+        "result": "Lemma 17.12 (CRT summation on U)",
+        "pages": "58",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.CRT.sum_labeledCell_admissibleCertificatePairSolutionMass_le_exact",
+          "file": "PaperC/Combinatorics/CertificateLemmaSevenOne.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved through the exact generic CRT summation theorem; mapping fidelity is partial",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial-fidelity mapping: the reusable certificate-cell summation theorem is the exact core consumed by the U transport."
+    },
+    {
+      "id": "Lem-17.13",
+      "paper_locator": {
+        "result": "Lemma 17.13 (Cells of a channel on U)",
+        "pages": "59",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioGeometry.boundedChannelStartPairs_card_le_maxStep",
+          "file": "PaperC/Combinatorics/BoundedRatioGeometry.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct bounded-ratio cardinality bound for the cells of a channel."
+    },
+    {
+      "id": "Lem-17.14",
+      "paper_locator": {
+        "result": "Lemma 17.14 (Sector P# <= N on U)",
+        "pages": "59",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioSmallProductSector.smallProductSectorLinearMass_uniformSevenFourths",
+          "file": "PaperC/Asymptotics/BoundedRatioSmallProductSector.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct seven-fourths bound for the small-product sector."
+    },
+    {
+      "id": "Lem-17.15",
+      "paper_locator": {
+        "result": "Lemma 17.15 (Small channels on U)",
+        "pages": "59",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioSmallHeightSector.boundedSmallHeightLinearEnvelope_uniformSevenFourths",
+          "file": "PaperC/Asymptotics/BoundedRatioSmallHeightSector.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct seven-fourths envelope for the small-channel-height sector."
+    },
+    {
+      "id": "Lem-17.16",
+      "paper_locator": {
+        "result": "Lemma 17.16 (Shallow cores on U)",
+        "pages": "59",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioShallowCoreSector.boundedRatioShallowCoreLinearEnvelope_uniformThirtyOneSixteenths",
+          "file": "PaperC/Asymptotics/BoundedRatioShallowCoreSector.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct 31/16 envelope for the shallow-core sector."
+    },
+    {
+      "id": "Lem-17.17",
+      "paper_locator": {
+        "result": "Lemma 17.17 (Aligned exclusion on U)",
+        "pages": "59",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PropositionSixteenOne.alignedDeepCoreSector_uniformLittleOInBoundedRatioWindow",
+          "file": "PaperC/Asymptotics/PropositionSixteenOneCore.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved for the alpha = 3/16 instance used by Proposition 16.1; fidelity to the arbitrary-alpha paper statement is partial",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial fidelity: the paper states the exclusion for every alpha > 0, while this representative endpoint is the alpha = 3/16 instance actually consumed by the canonical assembly; the surrounding density geometry is separately parametrized."
+    },
+    {
+      "id": "Lem-17.18",
+      "paper_locator": {
+        "result": "Lemma 17.18 (Evertse-Silverman input on U)",
+        "pages": "60",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioComponentHosts.componentNormalizedEquation_atMost_of_evertseSilverman",
+          "file": "PaperC/Asymptotics/BoundedRatioComponentHosts.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo the registered Evertse-Silverman premise",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct bounded-ratio application endpoint for normalized component equations."
+    },
+    {
+      "id": "Lem-17.19",
+      "paper_locator": {
+        "result": "Lemma 17.19 (Pell in the ranges issued from U)",
+        "pages": "60",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
+          "file": "PaperC/Diophantine/PellDivisorEnvelope.lean"
+        },
+        {
+          "name": "PaperC.PellInput.pellSourceExactRealPolynomialBox_of_generalizedPell",
+          "file": "PaperC/Diophantine/PellRealExponent.lean"
+        }
+      ],
+      "bridge_ids": [
+        "HK13-QO-conductor-fibres",
+        "NR83-T1-divisor-log-bound",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved through a two-stage Pell interface; one-to-one statement fidelity is partial",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial-fidelity mapping: no single public declaration packages the manuscript range transport. The first declaration discharges the polynomial-box interface from Halter-Koch and Nicolas-Robin; the second gives the source-exact real-exponent consequence from the registered internal Pell bridge."
+    },
+    {
+      "id": "Lem-17.20",
+      "paper_locator": {
+        "result": "Lemma 17.20 (Normalization of a component on U)",
+        "pages": "60",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioComponentNormalization.exists_normalized_component_equation_with_height",
+          "file": "PaperC/Asymptotics/BoundedRatioComponentNormalization.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct existence theorem for the normalized component equation and its height control."
+    },
+    {
+      "id": "Lem-17.21",
+      "paper_locator": {
+        "result": "Lemma 17.21 (One-sided count on U)",
+        "pages": "60",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioNonterminalHostCounts.exists_card_leftBaseShapeFiber_le_mobileArithmeticBound",
+          "file": "PaperC/Asymptotics/BoundedRatioNonterminalHostCounts.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioNonterminalHostCounts.exists_card_rightBaseShapeFiber_le_mobileArithmeticBound",
+          "file": "PaperC/Asymptotics/BoundedRatioNonterminalHostCounts.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo Evertse-Silverman and the discharged internal Pell bridge",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The paired declarations record the left- and right-sided fiber counts."
+    },
+    {
+      "id": "Lem-17.22",
+      "paper_locator": {
+        "result": "Lemma 17.22 (Two singletons on U)",
+        "pages": "61",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioTwoSingletonHosts.twoSingletonParameterCount_cast_le_primeSensitive",
+          "file": "PaperC/Asymptotics/BoundedRatioTwoSingletonHosts.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct prime-sensitive parameter-count bound for two singleton components."
+    },
+    {
+      "id": "Lem-17.23",
+      "paper_locator": {
+        "result": "Lemma 17.23 (Hosts of a bounded component on U)",
+        "pages": "61",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioNonterminalHostCounts.exists_card_boundedComponentHosts_le_explicit_sourceEnvelope",
+          "file": "PaperC/Asymptotics/BoundedRatioNonterminalHostCounts.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo Evertse-Silverman and the discharged internal Pell bridge",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct explicit source-envelope form of the bounded-component host estimate."
+    },
+    {
+      "id": "Lem-17.24",
+      "paper_locator": {
+        "result": "Lemma 17.24 (Deep-core hosts on U)",
+        "pages": "61",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioComponentHosts.card_denseCanonicalCorePairs_le_of_shapeFibers",
+          "file": "PaperC/Asymptotics/BoundedRatioComponentHosts.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved as a structural reduction to shape-fiber envelopes; one-to-one statement fidelity is partial",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial-fidelity mapping: this representative theorem is the unconditional dense-core reduction; the manuscript's final asymptotic follows after inserting the separately mapped fiber envelopes."
+    },
+    {
+      "id": "Lem-17.25",
+      "paper_locator": {
+        "result": "Lemma 17.25 (Two defects in a block of U)",
+        "pages": "61",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioTwoDefectStarts.equalKernelDefectBases_eq_empty",
+          "file": "PaperC/Asymptotics/BoundedRatioTwoDefectStarts.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioDistinctKernelTwoDefects.distinctKernelDefectBases_uniformSubpolynomial",
+          "file": "PaperC/Asymptotics/BoundedRatioDistinctKernelTwoDefects.lean"
+        }
+      ],
+      "bridge_ids": [
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved after equal-kernel exclusion, modulo the discharged internal Pell bridge for distinct kernels",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The two declarations split the paper's count into the impossible equal-kernel case and the subpolynomial distinct-kernel case."
+    },
+    {
+      "id": "Lem-17.26",
+      "paper_locator": {
+        "result": "Lemma 17.26 (Eliminating multiple defects on U)",
+        "pages": "62",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioManyDefectsAssembly.manyDefectsSector_uniformLittleO",
+          "file": "PaperC/Asymptotics/BoundedRatioManyDefectsAssembly.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo Evertse-Silverman and the discharged internal Pell bridge",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct assembled little-oh endpoint for the many-defects sector."
+    },
+    {
+      "id": "Lem-17.27",
+      "paper_locator": {
+        "result": "Lemma 17.27 (Exact rank on U)",
+        "pages": "62",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioCanonicalTerminalPopulation.pairTau_add_canonicalRank_eq_corrected_add_components",
+          "file": "PaperC/Combinatorics/BoundedRatioCanonicalTerminalPopulation.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct bounded-ratio exact-rank identity for the canonical terminal population."
+    },
+    {
+      "id": "Lem-17.28",
+      "paper_locator": {
+        "result": "Lemma 17.28 (Uniform terminal reduction)",
+        "pages": "62",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioNonterminalAssembly.intrinsicNonterminalSector_uniformLittleO_of_arithmeticEnvelopes",
+          "file": "PaperC/Asymptotics/BoundedRatioNonterminalAssembly.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ES86-T1b-Q-split-n2",
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo Evertse-Silverman and the discharged internal Pell bridge",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Representative public endpoint for the uniform nonterminal reduction after the internally chosen cutoff."
+    },
+    {
+      "id": "Lem-17.29",
+      "paper_locator": {
+        "result": "Lemma 17.29 (Terminal determinants on U)",
+        "pages": "62",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioTerminalClosure.kernel_product_le_of_dvd_crossDeterminant",
+          "file": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioTerminalClosure.card_filter_kernel_above_threshold_le_one",
+          "file": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The paired declarations record determinant divisibility control and the resulting uniqueness above threshold."
+    },
+    {
+      "id": "Lem-17.30",
+      "paper_locator": {
+        "result": "Lemma 17.30 (Terminal closure on U)",
+        "pages": "63",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioTerminalSummation.generalizedPell_implies_intrinsicTerminalSector_uniformSevenFourths",
+          "file": "PaperC/Asymptotics/BoundedRatioTerminalSummation.lean"
+        }
+      ],
+      "bridge_ids": [
+        "PCv07c-L9.2-generalized-Pell"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved modulo the discharged internal Pell bridge",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct intrinsic terminal-sector seven-fourths endpoint."
+    },
+    {
+      "id": "Lem-17.31",
+      "paper_locator": {
+        "result": "Lemma 17.31 (Partition at bounded ratio)",
+        "pages": "63",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PropositionSixteenOne.boundedRatioSectorPairs_disjoint",
+          "file": "PaperC/Asymptotics/PropositionSixteenOneCore.lean"
+        },
+        {
+          "name": "PaperC.PropositionSixteenOne.boundedRatio_existsUnique_sector",
+          "file": "PaperC/Asymptotics/PropositionSixteenOneCore.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The paired declarations certify disjointness and exhaustive unique membership in the seven-sector partition."
+    },
+    {
+      "id": "Lem-17.32",
+      "paper_locator": {
+        "result": "Lemma 17.32 (Uniform assembly)",
+        "pages": "63",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.PropositionSixteenOne.proposition_sixteen_one_of_sector_estimates",
+          "file": "PaperC/Asymptotics/PropositionSixteenOneCore.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved as the generic assembly from sector estimates; one-to-one statement fidelity is partial",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Partial-fidelity mapping: the declaration is the unconditional assembly theorem parameterized by the seven sector estimates; their canonical closure is recorded under Proposition 16.1."
+    },
+    {
+      "id": "Lem-17.33",
+      "paper_locator": {
+        "result": "Lemma 17.33 (Pointwise defects and sub-blocks)",
+        "pages": "64",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioCorrectedDefectEnvelope.pointwise_all_intervals_of_sq_bounds",
+          "file": "PaperC/Asymptotics/BoundedRatioCorrectedDefectEnvelope.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioWeightedDefect.boundedTerminalDefectWeightMass_uniformHalfPower",
+          "file": "PaperC/Asymptotics/BoundedRatioWeightedDefect.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The declarations cover the pointwise interval consequence and the weighted terminal-defect mass bound."
+    },
+    {
+      "id": "Lem-17.34",
+      "paper_locator": {
+        "result": "Lemma 17.34 (Y-defective starts on U)",
+        "pages": "64",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioBadStarts.boundedTerminalBadStarts_terminalCutoff_uniformLittleO",
+          "file": "PaperC/Asymptotics/BoundedRatioBadStarts.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioWeightedDefect.boundedBadStartProbabilityMass_uniformLittleOOne",
+          "file": "PaperC/Asymptotics/BoundedRatioWeightedDefect.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The two endpoints cover the bad-start cardinality and probability-mass conclusions."
+    },
+    {
+      "id": "Lem-17.35",
+      "paper_locator": {
+        "result": "Lemma 17.35 (Marginals and conditional graph on U)",
+        "pages": "64",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioSteinChen.marginal_boundedConditionedGoodIndicator_eq_baseline",
+          "file": "PaperC/Asymptotics/BoundedRatioSteinChen.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioSteinChen.hasExactDependencyGraph_boundedConditionedGoodIndicator",
+          "file": "PaperC/Asymptotics/BoundedRatioSteinChen.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct marginal identity and exact conditional dependency-graph theorem."
+    },
+    {
+      "id": "Lem-17.36",
+      "paper_locator": {
+        "result": "Lemma 17.36 (Graph edges on U)",
+        "pages": "65",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioSteinChen.boundedOrderedDependencyEdges_terminalCutoff_uniformLittleOInBoundedRatioWindow",
+          "file": "PaperC/Asymptotics/BoundedRatioSteinChen.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Direct uniform little-oh edge-count endpoint."
+    },
+    {
+      "id": "Lem-17.37",
+      "paper_locator": {
+        "result": "Lemma 17.37 (Chen-Stein terms on U)",
+        "pages": "65",
+        "edition": "paper-c-en-v08"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioSteinChenSecondTerm.boundedConditionalBTwoAverage_le_finiteMajorant",
+          "file": "PaperC/Asymptotics/BoundedRatioSteinChenSecondTerm.lean"
+        },
+        {
+          "name": "PaperC.BoundedRatioPoissonAssembly.boundedFullStartLaw_poisson_uniformLittleOOne",
+          "file": "PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean"
+        }
+      ],
+      "bridge_ids": [
+        "AGG89-T1-finite-dependency-b3-zero"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved through the finite b2 majorant and Poisson assembly, modulo the registered AGG premise",
+      "comparator": {
+        "covered": false
+      },
+      "note": "The AGG application is an ordinary premise; Proposition 16.1 enters the surrounding assembly as a theorem argument and is therefore not a bridge id."
+    }
+  ]
 }

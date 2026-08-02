@@ -1,4 +1,127 @@
-# Journal des versions
+# Changelog
+
+## 0.48.0
+
+- Added a human-readable, Mathlib-only semantic boundary for the quantitative
+  finite-cylinder form of Paper C Theorem 1.1. `Challenge.lean` defines the
+  finite uniform Rademacher cylinder, the completely multiplicative sign
+  function, the dyadic start count and its law, the target Poisson law, the
+  half-`ℓ¹` total-variation distance, the exact critical window, and the
+  fully quantified uniform Big-O rate `1/(log log N)^2`. Its sole intentional
+  hole is the final theorem
+  `paper_c_theorem_one_one_finite_cylinder`.
+- Added `Solution.lean`, which directly reproduces the complete Challenge
+  interface in the fresh `PaperCAudit` namespace without importing the
+  Challenge, then closes the repeated global statement with the frozen core
+  endpoint
+  `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical`.
+  The theorem's only ordinary premises are the four literature statements
+  already consumed by that endpoint: Arratia--Goldstein--Gordon
+  (`AGG89-T1-finite-dependency-b3-zero`), Evertse--Silverman
+  (`ES86-T1b-Q-split-n2`), Halter--Koch
+  (`HK13-QO-conductor-fibres`), and Nicolas--Robin
+  (`NR83-T1-divisor-log-bound`). They are fully stated propositions, not Lean
+  axioms. `Solution.lean` makes the two non-definitional record translations
+  explicit and proves them: the Arratia--Goldstein--Gordon finite-probability
+  record and the Halter--Koch quadratic-order conductor record.
+- Added the independent `ChallengeTransfer.lean` / `SolutionTransfer.lean`
+  target for the exact identity between the paper's infinite-product law and
+  the finite-cylinder law, again through `PaperCAudit`.
+  `SolutionTransfer.lean` directly repeats its transfer interface without
+  importing the Challenge. The main finite-cylinder target alone does not
+  imply this transfer. The global longest-run result is deliberately excluded;
+  it consumes the other three open literature bridges and requires a later,
+  separate target.
+- Added `comparator/theorem_one_one.json` and
+  `comparator/theorem_one_one_transfer.json`. Both explicitly permit only
+  `propext`, `Quot.sound`, and `Classical.choice`, use the Lean kernel with
+  `enable_nanoda: false`, and list exactly one theorem. Nanoda is not installed
+  or claimed.
+- Recorded all fidelity choices at the trust boundary: a finite cylinder with
+  cutoff `2*N+L` rather than the infinite product in the main statement; a
+  separate exact law-transfer target; the expanded quantifiers in
+  `UniformBigOOn`; the `C`-dependent window
+  `|L-log N/log 2| ≤ C`; the half-`ℓ¹` normalization of total variation;
+  and the harmless strengthening from the paper's `C > 0` to `C ≥ 0`.
+- Upgraded `audit_config.json` to schema 2 as the single editorial source for
+  manuscript-item mapping. The generator now emits both
+  `audit_manifest.json` and the official v0.3 `formalization.yaml`, validates
+  declared names and files, bridge identifiers and conditionality, unique
+  item identifiers, and the correspondence between Comparator-covered items
+  and JSON `theorem_names`. The generated review status is honestly
+  `agent-reviewed`; completeness of the editorial item list remains a human
+  review obligation. Proof-side `sorry_count = 0` is kept separate from the
+  two intentional challenge placeholders.
+- Corrected provenance before publication: the manuscript source now uses
+  DOI `10.5281/zenodo.21736677`, the formalization records concept DOI
+  `10.5281/zenodo.21735481`, and the immutable v0.47.0 version DOI is not
+  reused. The seven external works consumed by open bridges are first-class
+  `sources` entries, and every generated `literature_dependencies[].source`
+  is resolved fail-closed to the matching DOI entry.
+- Replaced ambiguous per-target `passed` labels by
+  `unsandboxed_semantic_smoke_passed`. Transcript validation now requires
+  unique mode, sandbox, nanoda, commit, clean-worktree, configuration,
+  fileset, kernel-acceptance, Comparator-success, and `exit_code=0` markers;
+  stale or internally inconsistent evidence is rejected.
+- Split release hashing into the historical `core_source_fileset` and a new
+  `comparator_fileset`. All 382 core Lean files remain byte-for-byte identical
+  to v0.47.0, with unchanged canonical declarations and signatures. The
+  13-entry bridge registry remains unchanged, with seven `external/open` and
+  six `discharged` entries. The frozen English and French PDFs also remain
+  byte-identical, with SHA-256 values
+  `2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927`
+  and
+  `c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5`.
+- Extended the ordinary CI with a centralized import, placeholder, and
+  forbidden-token guard for the Comparator boundary, separate root
+  compilation, and deterministic checks of both generated metadata files.
+  The Comparator job is isolated in a clean
+  checkout, must not inherit Solution `.olean` files or compile Solution
+  before invoking Comparator, and is explicitly distinguished from the
+  ordinary build.
+- Added a strict manual CI release mode (`require_hardened: true`). It refuses
+  the non-certifying fallback when real landrun or the prescribed
+  `systemd-run --user --pty` wrapper is unavailable. Successful matrix jobs
+  assemble and validate one atomic transcript plus a machine-readable
+  `result-*.json` before uploading the evidence bundle.
+- Pinned the compatibility sources exactly: Lean
+  `f3b06c705e6c85f5314019d5d3baab0fec5b580c`, Mathlib
+  `905b95818eb32af7874a58b427f50c1711a5e96c`, Comparator
+  `51491237b1d2f96cca203af9c34bced6fe38e0d8`, lean4export
+  `af5aa64bb914c3c2c781f378088dbd38acf4f804`, landrun
+  `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4`, and the
+  `formalization.yaml` v0.3 template
+  `fab03cbbed1a5857de17af32de30421a734c77c6`. Because no official
+  Comparator/lean4export `v4.32.2` tag exists, the pinned lean4export source is
+  built separately with the Paper C Lean `v4.32.2` toolchain.
+- Documented three distinct workflows: the ordinary build, Comparator's
+  official fake-landrun development smoke test, and the hardened local run
+  with real landrun inside the official `systemd-run` wrapper under a
+  non-privileged user. A fake-landrun or otherwise unsandboxed run is only an
+  “unsandboxed Comparator semantic smoke test” and cannot be the release
+  certificate.
+- Both Paper C configurations passed an **unsandboxed Comparator semantic
+  smoke test**, each in a separate clean checkout: Comparator built its own
+  Challenge and Solution, the Lean default kernel accepted the solution, and
+  the process returned 0. The runs were executed as `root`, with fake-landrun
+  and an `LD_PRELOAD` compatibility shim. They therefore establish neither
+  sandbox isolation, non-privileged execution, nor a second-kernel result.
+  Nanoda is not installed and both JSON files keep `enable_nanoda: false`.
+  The main transcript is
+  `comparator/transcripts/theorem_one_one_unsandboxed.txt`, SHA-256
+  `b61738cb6fd4a08068da493821a6c9b608c2fb5ed28916778bf7950024c2b4e8`;
+  the independent transfer transcript is
+  `comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt`, SHA-256
+  `1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f`.
+  Publication remains blocked until both configurations pass the official
+  hardened real-landrun plus `systemd-run` procedure under a non-privileged
+  user and their complete hardened transcripts are archived.
+- The upstream toolchain self-test also completed under fake-landrun. Its
+  unsandboxed transcript is
+  `comparator/transcripts/toolchain_compatibility_unsandboxed.txt`, SHA-256
+  `2ee3dcde7fee2dc4a31b1cc4395ea9f5d31f2b2526741f6f18f6463991c25cd5`.
+  It did not run either Paper C configuration and is distinct from the two
+  project semantic smoke tests above.
 
 ## 0.47.0
 
