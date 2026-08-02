@@ -397,11 +397,21 @@ jobs:
       - name: Probe the official hardened wrapper
         id: hardening
         shell: bash
+        timeout-minutes: 5
         run: |
           set -u
+          stdin_is_tty=false
+          stdout_is_tty=false
+          stderr_is_tty=false
+          if [ -t 0 ]; then stdin_is_tty=true; fi
+          if [ -t 1 ]; then stdout_is_tty=true; fi
+          if [ -t 2 ]; then stderr_is_tty=true; fi
           log="$GITHUB_WORKSPACE/project/ci-logs/hardening-probe.log"
           exec > >(tee "$log") 2>&1
           available=true
+          echo "wrapper_stdin_tty=$stdin_is_tty"
+          echo "wrapper_stdout_tty=$stdout_is_tty"
+          echo "wrapper_stderr_tty=$stderr_is_tty"
           echo 'Probing landrun with the flags used by pinned Comparator.'
           if ! "$GITHUB_WORKSPACE/tools/bin/landrun" \
             --best-effort --ro / --rw /dev -ldd -add-exec -- \
@@ -429,7 +439,20 @@ jobs:
           rm -f "$write_probe"
 
           echo 'Probing the required systemd-run user wrapper.'
-          if ! timeout 20s systemd-run \
+          # Comparator's prescribed command uses `--pty`.  As a conservative
+          # hosted-CI policy, do not infer that this transport is usable from
+          # a trivial command when the workflow step's stdio is non-TTY: that
+          # probe succeeded once while both real Comparator processes then
+          # remained attached without observable startup output.  This is a
+          # fail-closed policy after an observed hang, not a claim that
+          # systemd-run intrinsically requires pre-existing terminal fds.
+          # Ordinary push/PR jobs fall back honestly; strict jobs fail closed.
+          if [ "$stdin_is_tty" != true ] || \
+             [ "$stdout_is_tty" != true ] || \
+             [ "$stderr_is_tty" != true ]; then
+            echo 'hosted-CI policy: non-TTY stdio is not approved for a certifying systemd-run --pty attempt.'
+            available=false
+          elif ! timeout 20s systemd-run \
             --property=RestrictAddressFamilies=~AF_UNIX \
             --user --pty \
             -E PATH="$PATH" \
@@ -447,12 +470,14 @@ jobs:
           steps.hardening.outputs.available != 'true'
         shell: bash
         run: |
-          echo 'Strict release evidence was requested, but real landrun and the required systemd-run user wrapper are not both available.' >&2
+          echo 'Strict hardened evidence was requested, but real landrun and an approved transport for the prescribed systemd-run user wrapper are not both available.' | tee -a "$GITHUB_WORKSPACE/project/ci-logs/hardening-probe.log" >&2
           exit 92
 
       - name: Run sandboxed Comparator with landrun and systemd-run
+        id: sandboxed_comparator
         if: steps.hardening.outputs.available == 'true'
         shell: bash
+        timeout-minutes: 60
         env:
           COMPARATOR_CONFIG: ${{ matrix.config }}
         run: |
@@ -500,10 +525,12 @@ jobs:
           exit "$status"
 
       - name: UNSANDBOXED Comparator semantic smoke test (non-certifying fallback)
+        id: unsandboxed_comparator
         if: >-
           env.REQUIRE_HARDENED != 'true' &&
           steps.hardening.outputs.available != 'true'
         shell: bash
+        timeout-minutes: 60
         env:
           COMPARATOR_CONFIG: ${{ matrix.config }}
         run: |
@@ -516,7 +543,7 @@ jobs:
             echo 'mode=unsandboxed Comparator semantic smoke test (non-certifying)'
             echo 'sandboxed=false'
             echo 'certifying=false'
-            echo 'reason=landrun and/or the required systemd-run user wrapper was unavailable'
+            echo 'reason=real landrun, the required systemd-run user wrapper, and/or an approved PTY transport was unavailable'
             echo 'nanoda=disabled'
             echo 'kernels=lean'
             printf 'command=cd %q && COMPARATOR_LANDRUN=%q COMPARATOR_LEAN4EXPORT=%q lake env %q %q\n' \
@@ -537,7 +564,10 @@ jobs:
           exit "$status"
 
       - name: Assemble and validate the atomic Comparator evidence
-        if: always()
+        if: >-
+          always() &&
+          (steps.sandboxed_comparator.outcome != 'skipped' ||
+           steps.unsandboxed_comparator.outcome != 'skipped')
         shell: bash
         run: |
           set -euo pipefail

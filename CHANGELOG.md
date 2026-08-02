@@ -84,6 +84,14 @@
   `systemd-run --user --pty` wrapper is unavailable. Successful matrix jobs
   assemble and validate one atomic transcript plus a machine-readable
   `result-*.json` before uploading the evidence bundle.
+- Hardened the CI availability test after a hosted-runner PTY attachment
+  stalled both Comparator targets before their first observable startup
+  marker. As a conservative hosted-CI policy, captured non-TTY stdio is now
+  treated as insufficient evidence for a certifying attempt with the
+  prescribed `systemd-run --user --pty` path; this is not presented as an
+  intrinsic systemd requirement. Push/PR uses the explicitly non-certifying
+  fallback, strict mode fails closed, and each Comparator execution step is
+  capped at 60 minutes.
 - Pinned the compatibility sources exactly: Lean
   `f3b06c705e6c85f5314019d5d3baab0fec5b580c`, Mathlib
   `905b95818eb32af7874a58b427f50c1711a5e96c`, Comparator

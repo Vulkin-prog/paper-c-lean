@@ -1567,11 +1567,19 @@ workflow nevertheless installs `ripgrep` explicitly before the separate
 root-inclusive hygiene scan.
 
 The workflow's two-entry Comparator matrix runs in separate clean checkouts.
-Pushes and pull requests may fall back to an explicitly non-certifying smoke
-test when the hosted runner lacks real landrun or a usable user systemd
-manager.  A manual `workflow_dispatch` with `require_hardened: true` is the
-release gate: it exits nonzero instead of falling back.  Each successful
-matrix entry assembles one atomic transcript and one `result-*.json`, and
+On the current hosted runner, pushes and pull requests use the explicitly
+non-certifying smoke test when real landrun, a usable user systemd manager, or
+an approved transport for Comparator's prescribed `--pty` wrapper is absent.
+After an actual hosted run attached both Comparator targets without producing
+their first startup marker, the workflow conservatively treats captured
+non-TTY stdio as insufficient evidence that this transport is usable.  This
+is a fail-closed CI policy, not a claim that `systemd-run --pty` intrinsically
+requires pre-existing terminal file descriptors.  A manual
+`workflow_dispatch` with `require_hardened: true` disables the fallback and is
+therefore expected to fail on the current hosted transport; the release gate
+remains the hardened local procedure below.  Each Comparator execution step
+is capped at 60 minutes, and each successful matrix entry assembles one atomic
+transcript and one `result-*.json`.  The script
 `scripts/assemble_comparator_evidence.mjs` rejects stale hashes, dirty
 checkouts, pre-existing `.olean` files, root execution, `LD_PRELOAD`, missing
 Lean-kernel acceptance markers, or an inaccurate sandbox/nanoda claim.

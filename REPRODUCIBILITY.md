@@ -714,18 +714,27 @@ infini. Dans tous les cas, Comparator construit lui-même Challenge et
 Solution ; le job CI destiné à produire cette trace ne doit compiler aucune
 Solution auparavant ni réutiliser des `.olean` produits par le job ordinaire.
 
-Si landrun ou `systemd-run --user` ne fonctionne pas sur un runner, le job CI
-doit être nommé explicitement « unsandboxed Comparator semantic smoke test ».
-Il ne remplace pas le run local durci. Le transcript de release doit contenir
-le commit du dépôt, les octets ou l’empreinte de la configuration JSON, les
-versions Lean et Mathlib, les commits et SHA-256 des outils, la commande
-exacte, toute la sortie et le code de retour.
+Si landrun, `systemd-run --user` ou un transport approuvé pour l'enveloppe
+prescrite `--pty` n'est pas disponible sur un runner, l'étape d'exécution et
+son transcript doivent être nommés explicitement « unsandboxed Comparator
+semantic smoke test ». Après le blocage réellement observé des deux cibles sur
+le runner hébergé, la CI considère par politique conservatrice que ses flux
+capturés non-TTY ne suffisent pas à établir l'utilisabilité de ce transport.
+Ce n'est pas une affirmation que `systemd-run --pty` exige intrinsèquement des
+descripteurs de terminal préexistants. Ce fallback ne remplace pas le run
+local durci. Le transcript de release doit contenir le commit du dépôt, les
+octets ou l’empreinte de la configuration JSON, les versions Lean et Mathlib,
+les commits et SHA-256 des outils, la commande exacte, toute la sortie et le
+code de retour.
 
 Le workflow distingue désormais ces deux usages par l'entrée manuelle
-`require_hardened`. À `true`, l'indisponibilité de landrun réel ou de
-`systemd-run --user` fait échouer le job avec le code 92 et interdit le
-fallback. À `false` (push/PR), le fallback reste un smoke test explicitement
-non certifiant. Après chaque succès, les trois journaux d'environnement, de
+`require_hardened`. À `true`, l'indisponibilité de landrun réel ou d'un
+transport approuvé pour `systemd-run --user --pty` fait échouer le job avec le
+code 92 et interdit le fallback. Sur le transport hébergé actuel, ce mode est
+donc destiné à échouer fermé ; la certification de release reste la procédure
+locale durcie. À `false` (push/PR), le fallback reste un smoke test
+explicitement non certifiant. Chaque étape d'exécution Comparator est limitée
+à 60 minutes. Après chaque succès, les trois journaux d'environnement, de
 sonde et d'exécution sont assemblés en un transcript atomique ;
 `scripts/assemble_comparator_evidence.mjs` recalcule les empreintes et produit
 un `result-*.json` machine-lisible avant l'archivage GitHub Actions.
