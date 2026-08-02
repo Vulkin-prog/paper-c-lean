@@ -235,6 +235,39 @@ if (hardenedRunner !== null) {
       )) {
     fail(`${hardenedRunnerFile} suppresses initial systemd probe diagnostics.`);
   }
+  const leanToolchainEnsure = hardenedRunner.indexOf(
+    '"$ELAN_BIN" run --install "$PROJECT_TOOLCHAIN" lean --version',
+  );
+  const leanToolchainVerify = hardenedRunner.indexOf(
+    'LEAN_VERSION_OUTPUT=$(probe_lean_toolchain 2>&1)',
+  );
+  const leanToolchainEnsures = hardenedRunner.match(
+    /"\$ELAN_BIN" run --install "\$PROJECT_TOOLCHAIN" lean --version/g,
+  ) ?? [];
+  if (!hardenedRunner.includes('probe_lean_toolchain() {') ||
+      leanToolchainEnsure < 0 || leanToolchainVerify < leanToolchainEnsure ||
+      leanToolchainEnsures.length !== 1 ||
+      hardenedRunner.includes('already installed') ||
+      hardenedRunner.includes('toolchain install "$PROJECT_TOOLCHAIN"') ||
+      !hardenedRunner.includes(
+        '"$ELAN_BIN" run "$PROJECT_TOOLCHAIN" lean --version',
+      ) ||
+      !hardenedRunner.includes(
+        'LEAN_VERSION_OUTPUT=$(probe_lean_toolchain 2>&1)',
+      ) ||
+      !hardenedRunner.includes('LEAN_VERSION_STATUS=$?') ||
+      !hardenedRunner.includes('if [[ $LEAN_VERSION_STATUS -ne 0 ]]') ||
+      !hardenedRunner.includes(
+        'LEAN_VERSION_COMMIT=${BASH_REMATCH[1]}',
+      ) ||
+      !hardenedRunner.includes(
+        '[[ "$LEAN_VERSION_COMMIT" == "$LEAN_COMMIT" ]]',
+      )) {
+    fail(
+      `${hardenedRunnerFile} does not idempotently ensure and exactly ` +
+      'validate the pinned Lean toolchain.',
+    );
+  }
   if (hardenedRunner.includes('/usr/bin/*|/usr/lib/cargo/bin/coreutils/*)')) {
     fail(`${hardenedRunnerFile} contains an over-broad system target pattern.`);
   }

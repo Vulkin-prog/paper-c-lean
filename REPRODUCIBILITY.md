@@ -636,7 +636,11 @@ source "$HOME/.elan/env"
 Après l’installation de `dbus-user-session`, se déconnecter puis se reconnecter
 si `systemctl --user show-environment` ne répond pas. Il ne faut jamais lancer
 le vérificateur avec `sudo`. Il est inutile d’installer Go : le script
-télécharge Go 1.24.13 et contrôle son SHA-256 officiel.
+télécharge Go 1.24.13 et contrôle son SHA-256 officiel. Si la toolchain Lean
+épinglée est déjà installée, l’interface idempotente `run --install` d’Elan la
+réutilise ; sinon elle l’installe. Une invocation indépendante analyse ensuite
+l’unique ligne de version Lean et exige l’égalité avec le commit épinglé avant
+de poursuivre.
 
 Depuis le commit exact à certifier, le checkout doit être entièrement propre,
 y compris les fichiers non suivis. Lancer ensuite :

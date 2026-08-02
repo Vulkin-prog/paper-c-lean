@@ -666,15 +666,31 @@ run_logged_in() {
   [[ $status -eq 0 ]] || die "setup command failed with status $status in $directory"
 }
 
-note "installing Lean toolchain $PROJECT_TOOLCHAIN" | tee -a "$SETUP_LOG"
+probe_lean_toolchain() {
+  env -i PATH="$TRUSTED_BASE_PATH" HOME="$HOME" \
+    ELAN_HOME="$EXPECTED_ELAN_HOME" LANG=C.UTF-8 LC_ALL=C.UTF-8 \
+    "$ELAN_BIN" run "$PROJECT_TOOLCHAIN" lean --version
+}
+
+note "ensuring Lean toolchain $PROJECT_TOOLCHAIN" | tee -a "$SETUP_LOG"
 run_logged env -i PATH="$TRUSTED_BASE_PATH" HOME="$HOME" \
   ELAN_HOME="$EXPECTED_ELAN_HOME" LANG=C.UTF-8 LC_ALL=C.UTF-8 \
-  "$ELAN_BIN" toolchain install "$PROJECT_TOOLCHAIN"
-LEAN_VERSION_OUTPUT=$(env -i PATH="$TRUSTED_BASE_PATH" HOME="$HOME" \
-  ELAN_HOME="$EXPECTED_ELAN_HOME" LANG=C.UTF-8 LC_ALL=C.UTF-8 \
-  "$ELAN_BIN" run "$PROJECT_TOOLCHAIN" lean --version)
-grep -Fq "$LEAN_COMMIT" <<<"$LEAN_VERSION_OUTPUT" || \
-  die "Lean version does not contain expected commit $LEAN_COMMIT"
+  "$ELAN_BIN" run --install "$PROJECT_TOOLCHAIN" lean --version
+set +e
+LEAN_VERSION_OUTPUT=$(probe_lean_toolchain 2>&1)
+LEAN_VERSION_STATUS=$?
+set -e
+if [[ $LEAN_VERSION_STATUS -ne 0 ]]; then
+  printf '%s\n' "$LEAN_VERSION_OUTPUT" | tee -a "$SETUP_LOG" >&2
+  die "Lean toolchain is unusable after setup: $PROJECT_TOOLCHAIN"
+fi
+LEAN_VERSION_PATTERN='^Lean \(version [^,]+, [^,]+, commit ([0-9a-f]{40}), [^)]+\)$'
+[[ "$LEAN_VERSION_OUTPUT" != *$'\n'* && \
+   "$LEAN_VERSION_OUTPUT" =~ $LEAN_VERSION_PATTERN ]] || \
+  die 'Lean version output does not have the expected single-line structure'
+LEAN_VERSION_COMMIT=${BASH_REMATCH[1]}
+[[ "$LEAN_VERSION_COMMIT" == "$LEAN_COMMIT" ]] || \
+  die "Lean version reports unexpected commit $LEAN_VERSION_COMMIT"
 printf '%s\n' "$LEAN_VERSION_OUTPUT" | tee -a "$SETUP_LOG"
 
 GO_VERSION=1.24.13

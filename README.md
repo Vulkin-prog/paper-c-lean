@@ -1697,7 +1697,11 @@ After installing `dbus-user-session`, log out and back in if
 `systemctl --user show-environment` cannot contact the user manager.  Do not
 run the verifier with `sudo`.  Go does not need to be installed: the runner
 downloads Go 1.24.13 for the current architecture and checks its official
-SHA-256 before use.
+SHA-256 before use.  The pinned Lean toolchain may already be installed: the
+runner uses Elan's idempotent `run --install` interface, which reuses it when
+present and installs it only when absent.  A separate invocation then parses
+the single-line Lean version record and requires the exact pinned commit
+before continuing.
 
 Update to the exact commit to be certified and require a completely clean
 checkout, including no untracked files.  Run the preflight first, then the

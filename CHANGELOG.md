@@ -101,6 +101,10 @@
   that inner drop method, zero capabilities, and `NoNewPrivs=1` inside each
   transient probe and Comparator unit; failed initial probes now expose a
   bounded diagnostic transcript.
+- Made pinned Lean setup safely repeatable across Elan versions that reject an
+  unconditional reinstall. The runner now uses Elan's idempotent
+  `run --install` interface, then independently parses a single structured Lean
+  version line and requires equality with the pinned 40-hex commit.
 - Hardened the CI availability test after a hosted-runner PTY attachment
   stalled both Comparator targets before their first observable startup
   marker. As a conservative hosted-CI policy, captured non-TTY stdio is now
