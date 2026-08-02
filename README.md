@@ -1670,19 +1670,79 @@ above.
 
 ### Hardened local Comparator procedure
 
-Run the following as a non-privileged user from a fresh Paper C checkout in
-which no project `.olean` has been built.  Do not reuse the ordinary-build or
-smoke-test tree.  Fetching a trusted Mathlib cache before the run is permitted.
-The generic guard rejects every `.olean` outside `.lake/packages`, rather than
-guessing the names of solution modules.  Before Comparator starts, a negative
-control also requires real landrun, invoked with Comparator's `--best-effort`
-flag set, to refuse an attempted write through a read-only-root policy.  The
-actual run uses the pinned Comparator README's `systemd-run` wrapper around
-real landrun.
+The supported reference hosts are stock Ubuntu 24.04 LTS and 26.04 LTS on
+`x86_64` or `arm64`.  Ubuntu 22.04's stock kernel and Node.js are too old for
+this release gate.  The runner requires Linux 6.2 or newer so that Landlock
+can mediate truncation as well as file creation, and Node.js 18 or newer.
 
-One outer `tee` records the repository and Mathlib commits, configuration
-hash, Lean and host-wrapper versions, tool commits and binary hashes, exact
-shell-escaped command, complete output, and final exit code in a single log:
+Install the Ubuntu prerequisites once:
+
+```bash
+sudo apt update
+sudo apt install --yes \
+  bash bsdutils build-essential ca-certificates coreutils curl \
+  dbus-user-session findutils git grep nodejs sed systemd tar zstd
+```
+
+Install the official per-user Elan distribution if `$HOME/.elan/bin/elan`
+does not already exist, then load it in the current shell:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf \
+  https://elan.lean-lang.org/elan-init.sh | sh -s -- -y
+source "$HOME/.elan/env"
+```
+
+After installing `dbus-user-session`, log out and back in if
+`systemctl --user show-environment` cannot contact the user manager.  Do not
+run the verifier with `sudo`.  Go does not need to be installed: the runner
+downloads Go 1.24.13 for the current architecture and checks its official
+SHA-256 before use.
+
+Update to the exact commit to be certified and require a completely clean
+checkout, including no untracked files.  Run the preflight first, then the
+full verifier from an interactive terminal:
+
+```bash
+git status --short
+./scripts/run_hardened_comparator.sh --preflight-only
+./scripts/run_hardened_comparator.sh
+```
+
+The first command must print nothing.  A `tmux` terminal is acceptable, but a
+pipe, `nohup`, an IDE task runner, a container, and redirected standard file
+descriptors are rejected.  The full run builds the three pinned tools, creates
+one fresh Paper C checkout immediately before each target, fetches only the
+trusted dependency cache, and runs both targets through the pinned real
+landrun inside the Comparator README's `systemd-run --user --pty` wrapper.
+Before each target it tests that real landrun refuses file creation,
+truncation, removal, and rename under the exact read-only-root policy.
+
+The Comparator phase may be quiet for a while: its raw pseudo-terminal stream
+is written to evidence files instead of being replayed to the invoking
+terminal.  This prevents an untrusted Solution from injecting terminal control
+sequences.  Failures preserve the diagnostic directory and never create a
+`SUCCESS` marker.  Only after both result JSON files pass
+`scripts/assemble_comparator_evidence.mjs` does the runner create:
+
+- an evidence directory ending in the certified commit and UTC timestamp;
+- a sibling `.tar.zst` upload bundle;
+- a sibling `.tar.zst.sha256` checksum file.
+
+The final summary is a sandboxed, non-root Comparator result accepted by the
+Lean default kernel.  It is deliberately not described as a dual-kernel
+result: both configurations keep `enable_nanoda: false`.  The trusted
+computing base still includes the recorded Ubuntu/systemd binaries, pinned
+Comparator/lean4export/landrun sources, Lean, and the downloaded Mathlib OLean
+cache.  The operational probes document the tested restrictions; they are not
+a general certification of every host-security property.
+
+<details>
+<summary>Obsolete manual sketch retained for historical comparison</summary>
+
+Do not use the following inline sketch for release evidence.  It predates the
+atomic two-target runner, its complete negative-control suite, safe PTY
+capture, and machine-readable final validation.
 
 ```bash
 PAPER_C_TOOLS="$(realpath ../paper-c-v048-tools)"
@@ -1771,18 +1831,13 @@ LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
 )
 ```
 
-The exact same procedure, from another fresh checkout, with
-`CONFIG=comparator/theorem_one_one_transfer.json` and a distinct external
-`LOG` records the independent infinite-to-finite transfer result.  Do not
-infer transfer coverage from the
-main run.  Preserve the repository commit, configuration path and SHA-256, Lean and
-Mathlib versions, all used-tool commits and binary SHA-256 values, the exact
-command, complete output, and exit status with each release transcript.  No
-hardened reference run has succeeded yet: this section remains the mandatory
-publication procedure, not a report that its sandbox and privilege conditions
-have been met.  Even when the negative control and wrapped run succeed, the log
-is evidence for those tested restrictions; it is not a general-purpose
-certification of every aspect of the host sandbox.
+</details>
+
+The automated runner always executes the main finite-cylinder and independent
+infinite-to-finite transfer configurations.  Do not infer transfer coverage
+from the main result alone.  No hardened reference run has succeeded yet: the
+existence of this runner is a reproducible release procedure, not a report
+that its host, sandbox, and non-privileged conditions have already been met.
 
 The axiom audit does not detect ordinary hypotheses. Their inventory is the
 bridge registry in `audit_manifest.json` and `AXIOM_AUDIT.md`: each entry has

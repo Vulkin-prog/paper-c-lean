@@ -66,6 +66,13 @@ jobs:
       - name: Check Comparator trust-boundary source structure
         run: node scripts/check_comparator_sources.mjs
 
+      - name: Check the hardened local runner
+        shell: bash
+        run: |
+          test -x scripts/run_hardened_comparator.sh
+          bash -n scripts/run_hardened_comparator.sh
+          scripts/run_hardened_comparator.sh --help >/dev/null
+
       - name: Test root-module audit guards
         run: node scripts/test_audit_root_guards.mjs
 

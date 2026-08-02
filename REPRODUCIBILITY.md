@@ -607,17 +607,76 @@ script fake-landrun exécute directement la commande et n’offre aucune
 isolation. Elle ne peut donc jamais servir de preuve durcie pour la
 publication.
 
-### Procédure locale durcie candidate
+### Procédure locale durcie automatisée
 
-L’exécution candidate doit partir d’un checkout propre distinct, sous un
-utilisateur non privilégié, sans aucun `.olean` du projet construit avant
-l’appel à Comparator. La garde générique rejette tous les `.olean` hors de
-`.lake/packages`. Une sonde négative exige en outre que landrun réel, même
-appelé avec `--best-effort` comme par Comparator, refuse effectivement une
-écriture sous une politique à racine en lecture seule. L’enveloppe de
-l’exécution elle-même est celle prescrite par le README du commit Comparator
-épinglé. Un unique `tee` conserve toutes les métadonnées et toute la sortie
-dans le même transcript :
+La plateforme de référence est Ubuntu 24.04 LTS ou 26.04 LTS standard, sur
+`x86_64` ou `arm64`. Ubuntu 22.04 standard n’est pas accepté : son noyau et son
+Node.js sont trop anciens pour cette barrière de publication. Le script exige
+Linux 6.2 ou ultérieur, afin que Landlock contrôle notamment la troncature, et
+Node.js 18 ou ultérieur.
+
+Installer une fois les prérequis Ubuntu :
+
+```bash
+sudo apt update
+sudo apt install --yes \
+  bash bsdutils build-essential ca-certificates coreutils curl \
+  dbus-user-session findutils git grep nodejs sed systemd tar zstd
+```
+
+Si Elan n’est pas déjà installé dans `$HOME/.elan`, installer sa distribution
+officielle pour l’utilisateur courant, puis charger son environnement :
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf \
+  https://elan.lean-lang.org/elan-init.sh | sh -s -- -y
+source "$HOME/.elan/env"
+```
+
+Après l’installation de `dbus-user-session`, se déconnecter puis se reconnecter
+si `systemctl --user show-environment` ne répond pas. Il ne faut jamais lancer
+le vérificateur avec `sudo`. Il est inutile d’installer Go : le script
+télécharge Go 1.24.13 et contrôle son SHA-256 officiel.
+
+Depuis le commit exact à certifier, le checkout doit être entièrement propre,
+y compris les fichiers non suivis. Lancer ensuite :
+
+```bash
+git status --short
+./scripts/run_hardened_comparator.sh --preflight-only
+./scripts/run_hardened_comparator.sh
+```
+
+La première commande ne doit rien afficher. Un terminal `tmux` convient, mais
+le script refuse `sudo`, les pipes, `nohup`, les tâches d’IDE, les conteneurs et
+les descripteurs standard redirigés. Il construit les outils aux commits
+épinglés, prépare chacun des deux checkouts immédiatement avant sa cible et
+utilise l’enveloppe `systemd-run --user --pty` prescrite par Comparator autour
+de landrun réel. Avant chaque cible, les contrôles négatifs exigent que la
+politique exacte à racine en lecture seule interdise la création, la
+troncature, la suppression et le renommage de fichiers.
+
+La phase Comparator peut rester silencieuse : son flux PTY brut est conservé
+dans les preuves, sans être rejoué dans le terminal appelant, afin qu’une
+Solution non fiable ne puisse y injecter des séquences de contrôle. Un échec
+préserve les diagnostics sans créer de marqueur `SUCCESS`. Après validation
+des deux résultats par `scripts/assemble_comparator_evidence.mjs`, le script
+produit un répertoire de preuves, une archive sœur `.tar.zst` et son fichier
+`.tar.zst.sha256` prêt à transmettre.
+
+Le résultat attendu certifie une exécution Comparator sandboxée et non root,
+acceptée par le noyau Lean par défaut. Il ne s’agit pas d’un résultat à deux
+noyaux : `enable_nanoda` reste à `false`. La base de confiance inclut encore
+Ubuntu/systemd enregistrés dans la trace, les sources épinglées des outils,
+Lean et le cache OLean Mathlib téléchargé. Les sondes prouvent les restrictions
+testées, pas toutes les propriétés de sécurité possibles de l’hôte.
+
+<details>
+<summary>Ancienne esquisse manuelle, conservée uniquement pour comparaison</summary>
+
+Ne pas employer le bloc ci-dessous comme preuve de release : il précède le
+lanceur atomique à deux cibles, les quatre contrôles négatifs, la capture PTY
+sûre et la validation finale machine-lisible.
 
 ```bash
 PAPER_C_TOOLS="$(realpath ../paper-c-v048-tools)"
@@ -706,13 +765,13 @@ LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
 )
 ```
 
-La cible de transfert est exécutée de la même manière depuis un autre
-checkout propre, en remplaçant `CONFIG` par
-`comparator/theorem_one_one_transfer.json` et `LOG` par un nom distinct. Un
-succès de la cible principale ne donne aucune couverture implicite du modèle
-infini. Dans tous les cas, Comparator construit lui-même Challenge et
-Solution ; le job CI destiné à produire cette trace ne doit compiler aucune
-Solution auparavant ni réutiliser des `.olean` produits par le job ordinaire.
+</details>
+
+Le lanceur automatisé exécute toujours la cible principale et la cible de
+transfert infini-vers-fini dans deux checkouts distincts. Un succès de la cible
+principale ne donne aucune couverture implicite du modèle infini. Dans tous
+les cas, Comparator construit lui-même Challenge et Solution ; aucun `.olean`
+de Solution préexistant n’est accepté.
 
 Si landrun, `systemd-run --user` ou un transport approuvé pour l'enveloppe
 prescrite `--pty` n'est pas disponible sur un runner, l'étape d'exécution et

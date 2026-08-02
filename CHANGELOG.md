@@ -84,6 +84,13 @@
   `systemd-run --user --pty` wrapper is unavailable. Successful matrix jobs
   assemble and validate one atomic transcript plus a machine-readable
   `result-*.json` before uploading the evidence bundle.
+- Added `scripts/run_hardened_comparator.sh`, the fail-closed Ubuntu 24.04/26.04
+  release launcher. It builds the pinned tools and verified Go toolchain,
+  prepares the two targets in separate fresh checkouts, exercises real
+  landrun creation/truncation/removal/rename controls, preserves a real PTY
+  around the official `systemd-run --user --pty` wrapper, validates both
+  evidence records, and emits a checksummed `.tar.zst` upload bundle. It has
+  no fake-landrun or unsandboxed fallback and does not claim a Nanoda result.
 - Hardened the CI availability test after a hosted-runner PTY attachment
   stalled both Comparator targets before their first observable startup
   marker. As a conservative hosted-CI policy, captured non-TTY stdio is now
