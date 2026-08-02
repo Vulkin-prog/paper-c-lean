@@ -108,11 +108,72 @@ if (sandboxed) {
   if (field('hardened_wrapper_available') !== 'true') {
     throw new Error('sandboxed run lacks a successful hardening probe');
   }
+  if (field('launcher_no_new_privs') !== '1' ||
+      field('transient_no_new_privs_required') !== 'true' ||
+      field('transient_zero_capabilities_required') !== 'true') {
+    throw new Error('sandboxed run lacks the required capability context');
+  }
+  if (lines.filter(
+    line => line === 'transient_security_context=passed',
+  ).length !== 2) {
+    throw new Error('sandboxed run lacks two security-context markers');
+  }
   if (!transcript.includes('landrun negative control refused the write as required.')) {
     throw new Error('sandboxed run lacks the landrun negative control marker');
   }
   if (transcript.includes('THIS IS NOT REAL LANDRUN')) {
     throw new Error('sandboxed transcript contains the fake-landrun marker');
+  }
+
+  const systemBinaryTargets = new Map([
+    ['git', ['/usr/bin/git', ['/usr/bin/git']]],
+    ['node', ['/usr/bin/node', ['/usr/bin/node', '/usr/bin/nodejs']]],
+    ['script', ['/usr/bin/script', ['/usr/bin/script']]],
+    ['systemd_run', ['/usr/bin/systemd-run', ['/usr/bin/systemd-run']]],
+    ['systemctl', ['/usr/bin/systemctl', ['/usr/bin/systemctl']]],
+    ['sha256sum', [
+      '/usr/bin/sha256sum',
+      [
+        '/usr/bin/sha256sum',
+        '/usr/bin/gnusha256sum',
+        '/usr/lib/cargo/bin/coreutils/sha256sum',
+      ],
+    ]],
+    ['truncate', [
+      '/usr/bin/truncate',
+      [
+        '/usr/bin/truncate',
+        '/usr/bin/gnutruncate',
+        '/usr/lib/cargo/bin/coreutils/truncate',
+      ],
+    ]],
+    ['touch', [
+      '/usr/bin/touch',
+      [
+        '/usr/bin/touch',
+        '/usr/bin/gnutouch',
+        '/usr/lib/cargo/bin/coreutils/touch',
+      ],
+    ]],
+    ['rm', [
+      '/usr/bin/rm',
+      ['/usr/bin/rm', '/usr/bin/gnurm', '/usr/lib/cargo/bin/coreutils/rm'],
+    ]],
+    ['mv', [
+      '/usr/bin/mv',
+      ['/usr/bin/mv', '/usr/bin/gnumv', '/usr/lib/cargo/bin/coreutils/mv'],
+    ]],
+  ]);
+  for (const [name, [expectedPath, allowedTargets]] of systemBinaryTargets) {
+    if (field(`system_binary_${name}_path`) !== expectedPath) {
+      throw new Error(`unexpected audited system path for ${name}`);
+    }
+    if (!allowedTargets.includes(field(`system_binary_${name}_resolved`))) {
+      throw new Error(`unexpected audited system target for ${name}`);
+    }
+    if (!/^[0-9a-f]{64}$/.test(field(`system_binary_${name}_sha256`))) {
+      throw new Error(`invalid audited system digest for ${name}`);
+    }
   }
 }
 

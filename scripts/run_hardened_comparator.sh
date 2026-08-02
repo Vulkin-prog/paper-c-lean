@@ -1,7 +1,17 @@
 #!/bin/bash
 
 set -Eeuo pipefail
+set +x
 umask 077
+
+# Exported Bash functions can shadow external programs even after PATH is
+# replaced. No function should exist before this script defines its own.
+INITIAL_FUNCTIONS=$(builtin declare -Fx)
+if [[ -n "$INITIAL_FUNCTIONS" ]]; then
+  printf '[paper-c-hardened] ERROR: inherited Bash functions are not accepted\n' >&2
+  exit 1
+fi
+unset INITIAL_FUNCTIONS
 
 PROGRAM=${0##*/}
 OUTPUT_ARGUMENT=
@@ -32,9 +42,9 @@ Options:
   --preflight-only       Check the host, terminal, user bus, and source tree only
   -h, --help             Show this help
 
-Run this script directly from an interactive Ubuntu 24.04+ terminal as an
-ordinary user.  Do not use sudo, nohup, a pipe, an IDE task runner, or a
-container.
+Run this script from an interactive Ubuntu 24.04 or 26.04 terminal as an
+ordinary user, through the clean PATH and setpriv invocation documented in
+README.md. Do not use sudo, nohup, a pipe, an IDE task runner, or a container.
 EOF
 }
 
@@ -166,6 +176,10 @@ done
 TIMEOUT_MINUTES=$((10#$TIMEOUT_MINUTES))
 (( TIMEOUT_MINUTES <= 1440 )) || die '--timeout-minutes must be at most 1440'
 
+# Resolve every ordinary command from the stock system directories before the
+# user-owned Elan proxy directory. The exact Elan paths are verified below.
+export PATH="/usr/bin:/bin:$HOME/.elan/bin"
+
 for command_name in \
   bash cat cp curl date df dirname elan env find git grep id install lake mkdir \
   mktemp mv node realpath rm sed sha256sum sleep sort stat systemctl \
@@ -219,8 +233,12 @@ done
 [[ "$capability_failure" == false ]] || \
   die 'effective, permitted, inheritable, and ambient capabilities must be zero'
 
+NO_NEW_PRIVS=$(/usr/bin/sed -n 's/^NoNewPrivs:[[:space:]]*//p' /proc/self/status)
+[[ "$NO_NEW_PRIVS" == 1 ]] || \
+  die 'NoNewPrivs must be set; use the documented /usr/bin/setpriv invocation'
+
 for variable_name in \
-  BASH_ENV COMPARATOR_BIN COMPARATOR_CONFIG COMPARATOR_LANDRUN \
+  BASH_ENV BASH_XTRACEFD COMPARATOR_BIN COMPARATOR_CONFIG COMPARATOR_LANDRUN \
   COMPARATOR_LEAN4EXPORT COMPARATOR_NANODA ELAN_DIST_SERVER ELAN_TOOLCHAIN \
   ELAN_UPDATE_ROOT ENV GIT_ALTERNATE_OBJECT_DIRECTORIES GIT_ATTR_NOSYSTEM \
   GIT_CEILING_DIRECTORIES GIT_COMMON_DIR GIT_CONFIG GIT_CONFIG_COUNT \
@@ -228,8 +246,9 @@ for variable_name in \
   GIT_DISCOVERY_ACROSS_FILESYSTEM GIT_EXEC_PATH GIT_INDEX_FILE \
   GIT_OBJECT_DIRECTORY GIT_SSH GIT_SSH_COMMAND GIT_SSH_VARIANT \
   GIT_TEMPLATE_DIR GIT_WORK_TREE \
-  GOWORK ELAN_HOME LAKE_HOME LD_AUDIT LD_LIBRARY_PATH LD_PRELOAD LEAN_PATH \
-  LEAN_SRC_PATH LEAN_SYSROOT LEAN_OPTS MATHLIB_CACHE_URL NODE_OPTIONS; do
+  GOWORK ELAN_HOME GZIP LAKE_HOME LD_AUDIT LD_LIBRARY_PATH LD_PRELOAD LEAN_PATH \
+  LEAN_SRC_PATH LEAN_SYSROOT LEAN_OPTS MATHLIB_CACHE_URL NODE_OPTIONS \
+  TAR_OPTIONS ZSTD_CLEVEL ZSTD_NBTHREADS; do
   if [[ -n "${!variable_name-}" ]]; then
     die "environment variable must be unset: $variable_name"
   fi
@@ -332,72 +351,167 @@ EXPECTED_CONFIGS=(
 [[ "${CONFIG_PATHS[*]}" == "${EXPECTED_CONFIGS[*]}" ]] || \
   die 'audit_config.json does not contain the two expected Comparator configurations in order'
 
-ELAN_BIN=$(realpath "$(command -v elan)")
-ELAN_BIN_DIR=$(dirname "$ELAN_BIN")
-LAKE_BIN=$(realpath "$(command -v lake)")
-GIT_BIN=$(realpath "$(command -v git)")
-NODE_BIN=$(realpath "$(command -v node)")
-SCRIPT_BIN=$(realpath "$(command -v script)")
-SYSTEMD_RUN_BIN=$(realpath "$(command -v systemd-run)")
-SYSTEMCTL_BIN=$(realpath "$(command -v systemctl)")
-SHA256SUM_BIN=$(realpath "$(command -v sha256sum)")
-TRUNCATE_BIN=$(realpath "$(command -v truncate)")
-TOUCH_BIN=$(realpath "$(command -v touch)")
-RM_BIN=$(realpath "$(command -v rm)")
-MV_BIN=$(realpath "$(command -v mv)")
-
+# Keep lexical /usr/bin paths for Ubuntu system programs. Ubuntu 26.04's
+# provider packages intentionally make several of those paths symlinks to
+# /usr/lib/cargo/bin/coreutils/* or /usr/bin/gnu*. The verifier below checks
+# both the fixed invocation path and its resolved, root-owned target.
+ELAN_COMMAND=$(command -v elan)
+LAKE_COMMAND=$(command -v lake)
 EXPECTED_ELAN_HOME=$(realpath -m -- "$HOME/.elan")
+[[ "$ELAN_COMMAND" == "$EXPECTED_ELAN_HOME/bin/elan" && \
+   "$LAKE_COMMAND" == "$EXPECTED_ELAN_HOME/bin/lake" ]] || \
+  die 'use the official per-user Elan proxies in $HOME/.elan/bin'
+ELAN_BIN=$(realpath "$ELAN_COMMAND")
+ELAN_BIN_DIR=$EXPECTED_ELAN_HOME/bin
+LAKE_BIN=$(realpath "$LAKE_COMMAND")
+GIT_BIN=$(command -v git)
+NODE_BIN=$(command -v node)
+SCRIPT_BIN=$(command -v script)
+SYSTEMD_RUN_BIN=$(command -v systemd-run)
+SYSTEMCTL_BIN=$(command -v systemctl)
+SHA256SUM_BIN=$(command -v sha256sum)
+TRUNCATE_BIN=$(command -v truncate)
+TOUCH_BIN=$(command -v touch)
+RM_BIN=$(command -v rm)
+MV_BIN=$(command -v mv)
+
 [[ "$ELAN_BIN" == "$EXPECTED_ELAN_HOME/bin/elan" && \
-   -x "$EXPECTED_ELAN_HOME/bin/lake" ]] || \
+   -f "$ELAN_BIN" && -x "$ELAN_BIN" && \
+   -f "$LAKE_BIN" && -x "$LAKE_BIN" ]] || \
   die 'use the official per-user Elan installation in $HOME/.elan'
+
+verify_root_owned_directory_chain() {
+  local directory=$1 owner mode
+  while :; do
+    owner=$(stat -Lc '%u' "$directory")
+    mode=$(stat -Lc '%a' "$directory")
+    [[ "$owner" == 0 ]] || \
+      die "system binary parent is not root-owned: $directory"
+    (( (8#$mode & 8#022) == 0 )) || \
+      die "system binary parent is group/world writable: $directory"
+    [[ "$directory" == / ]] && break
+    directory=$(dirname "$directory")
+  done
+}
 
 verify_system_binary() {
   local actual=$1
   local expected=$2
+  shift 2
   [[ "$actual" == "$expected" ]] || \
     die "expected Ubuntu system binary $expected, found $actual"
-  local owner mode
-  owner=$(stat -Lc '%u' "$actual")
-  mode=$(stat -Lc '%a' "$actual")
+  local allowed allowed_target=false owner mode resolved
+  resolved=$(realpath "$actual")
+  for allowed in "$@"; do
+    if [[ "$resolved" == "$allowed" ]]; then
+      allowed_target=true
+      break
+    fi
+  done
+  [[ "$allowed_target" == true ]] || \
+    die "system binary has an unapproved Ubuntu target: $actual -> $resolved"
+  [[ -f "$resolved" && -x "$resolved" ]] || \
+    die "system binary target is not an executable regular file: $resolved"
+
+  verify_root_owned_directory_chain "$(dirname "$actual")"
+  verify_root_owned_directory_chain "$(dirname "$resolved")"
+
+  owner=$(stat -Lc '%u' "$resolved")
+  mode=$(stat -Lc '%a' "$resolved")
   [[ "$owner" == 0 ]] || die "system binary is not root-owned: $actual"
   (( (8#$mode & 8#022) == 0 )) || \
     die "system binary is group/world writable: $actual"
 }
 
-verify_system_binary "$GIT_BIN" /usr/bin/git
-verify_system_binary "$SCRIPT_BIN" /usr/bin/script
-verify_system_binary "$SYSTEMD_RUN_BIN" /usr/bin/systemd-run
-verify_system_binary "$SYSTEMCTL_BIN" /usr/bin/systemctl
-verify_system_binary "$SHA256SUM_BIN" /usr/bin/sha256sum
-verify_system_binary "$TRUNCATE_BIN" /usr/bin/truncate
-verify_system_binary "$TOUCH_BIN" /usr/bin/touch
-verify_system_binary "$RM_BIN" /usr/bin/rm
-verify_system_binary "$MV_BIN" /usr/bin/mv
+verify_all_system_binaries() {
+  verify_system_binary "$GIT_BIN" /usr/bin/git /usr/bin/git
+  verify_system_binary "$NODE_BIN" /usr/bin/node /usr/bin/node /usr/bin/nodejs
+  verify_system_binary "$SCRIPT_BIN" /usr/bin/script /usr/bin/script
+  verify_system_binary \
+    "$SYSTEMD_RUN_BIN" /usr/bin/systemd-run /usr/bin/systemd-run
+  verify_system_binary "$SYSTEMCTL_BIN" /usr/bin/systemctl /usr/bin/systemctl
+  verify_system_binary "$SHA256SUM_BIN" /usr/bin/sha256sum \
+    /usr/bin/sha256sum /usr/bin/gnusha256sum \
+    /usr/lib/cargo/bin/coreutils/sha256sum
+  verify_system_binary "$TRUNCATE_BIN" /usr/bin/truncate \
+    /usr/bin/truncate /usr/bin/gnutruncate \
+    /usr/lib/cargo/bin/coreutils/truncate
+  verify_system_binary "$TOUCH_BIN" /usr/bin/touch \
+    /usr/bin/touch /usr/bin/gnutouch /usr/lib/cargo/bin/coreutils/touch
+  verify_system_binary "$RM_BIN" /usr/bin/rm \
+    /usr/bin/rm /usr/bin/gnurm /usr/lib/cargo/bin/coreutils/rm
+  verify_system_binary "$MV_BIN" /usr/bin/mv \
+    /usr/bin/mv /usr/bin/gnumv /usr/lib/cargo/bin/coreutils/mv
+}
+
+verify_all_system_binaries
 SCRIPT_SHA=$("$SHA256SUM_BIN" "$SCRIPT_PATH" | sed 's/[[:space:]].*$//')
 
-TRUSTED_BASE_PATH="$ELAN_BIN_DIR:/usr/bin:/bin"
+compute_system_binary_state() {
+  local name actual resolved digest index
+  local -a names=(
+    git node script systemd_run systemctl sha256sum truncate touch rm mv
+  )
+  local -a paths=(
+    "$GIT_BIN" "$NODE_BIN" "$SCRIPT_BIN" "$SYSTEMD_RUN_BIN" "$SYSTEMCTL_BIN"
+    "$SHA256SUM_BIN" "$TRUNCATE_BIN" "$TOUCH_BIN" "$RM_BIN" "$MV_BIN"
+  )
+  for index in "${!names[@]}"; do
+    name=${names[$index]}
+    actual=${paths[$index]}
+    resolved=$(realpath "$actual")
+    digest=$("$SHA256SUM_BIN" "$resolved" | sed 's/[[:space:]].*$//')
+    printf 'system_binary_%s_path=%s\n' "$name" "$actual"
+    printf 'system_binary_%s_resolved=%s\n' "$name" "$resolved"
+    printf 'system_binary_%s_sha256=%s\n' "$name" "$digest"
+  done
+}
+
+SYSTEM_BINARY_STATE=$(compute_system_binary_state)
+
+assert_system_binary_state() {
+  local current_state
+  verify_all_system_binaries
+  current_state=$(compute_system_binary_state)
+  [[ "$current_state" == "$SYSTEM_BINARY_STATE" ]] || \
+    die 'an audited Ubuntu system binary changed during the run'
+}
+
+TRUSTED_BASE_PATH="/usr/bin:/bin:$ELAN_BIN_DIR"
 export PATH="$TRUSTED_BASE_PATH"
-[[ "$(realpath "$(command -v git)")" == "$GIT_BIN" && \
+[[ "$(command -v git)" == "$GIT_BIN" && \
+   "$(realpath "$(command -v git)")" == "$(realpath "$GIT_BIN")" && \
+   "$(command -v lake)" == "$LAKE_COMMAND" && \
    "$(realpath "$(command -v lake)")" == "$LAKE_BIN" ]] || \
   die 'trusted PATH does not resolve the expected Git and Lake binaries'
 
 USER_MANAGER_ENV=$($SYSTEMCTL_BIN --user show-environment) || \
   die 'systemd --user is unavailable; install dbus-user-session and log out/in'
+if /usr/bin/grep -Eq '^BASH_FUNC_[^=]*=' <<<"$USER_MANAGER_ENV"; then
+  die 'systemd --user manager contains an exported Bash function'
+fi
 for variable_name in \
-  BASH_ENV COMPARATOR_BIN COMPARATOR_CONFIG COMPARATOR_LANDRUN \
+  BASH_ENV BASH_XTRACEFD COMPARATOR_BIN COMPARATOR_CONFIG COMPARATOR_LANDRUN \
   COMPARATOR_LEAN4EXPORT COMPARATOR_NANODA ELAN_DIST_SERVER ELAN_HOME \
   ELAN_TOOLCHAIN ELAN_UPDATE_ROOT ENV GIT_ALTERNATE_OBJECT_DIRECTORIES \
   GIT_ATTR_NOSYSTEM GIT_CEILING_DIRECTORIES GIT_COMMON_DIR GIT_CONFIG \
   GIT_CONFIG_COUNT GIT_CONFIG_GLOBAL GIT_CONFIG_PARAMETERS \
   GIT_CONFIG_SYSTEM GIT_DIR GIT_DISCOVERY_ACROSS_FILESYSTEM GIT_EXEC_PATH \
   GIT_INDEX_FILE GIT_OBJECT_DIRECTORY GIT_SSH GIT_SSH_COMMAND \
-  GIT_SSH_VARIANT GIT_TEMPLATE_DIR GIT_WORK_TREE GOWORK LAKE_HOME LD_AUDIT \
+  GIT_SSH_VARIANT GIT_TEMPLATE_DIR GIT_WORK_TREE GOWORK GZIP LAKE_HOME LD_AUDIT \
   LD_LIBRARY_PATH LD_PRELOAD LEAN_PATH LEAN_SRC_PATH LEAN_SYSROOT LEAN_OPTS \
-  MATHLIB_CACHE_URL NODE_OPTIONS; do
+  MATHLIB_CACHE_URL NODE_OPTIONS TAR_OPTIONS ZSTD_CLEVEL ZSTD_NBTHREADS; do
   if grep -Fq "$variable_name=" <<<"$USER_MANAGER_ENV"; then
     die "systemd --user manager contains forbidden environment variable: $variable_name"
   fi
 done
+
+TRANSIENT_SECURITY_ASSERTION='/usr/bin/grep -Eq "^CapInh:[[:space:]]*0+$" /proc/self/status'
+TRANSIENT_SECURITY_ASSERTION+=' && /usr/bin/grep -Eq "^CapPrm:[[:space:]]*0+$" /proc/self/status'
+TRANSIENT_SECURITY_ASSERTION+=' && /usr/bin/grep -Eq "^CapEff:[[:space:]]*0+$" /proc/self/status'
+TRANSIENT_SECURITY_ASSERTION+=' && /usr/bin/grep -Eq "^CapAmb:[[:space:]]*0+$" /proc/self/status'
+TRANSIENT_SECURITY_ASSERTION+=' && /usr/bin/grep -Eq "^NoNewPrivs:[[:space:]]*1$" /proc/self/status'
+TRANSIENT_SECURITY_ASSERTION+=' && echo transient_security_context=passed'
 
 set +e
 SHELL=/bin/bash "$SCRIPT_BIN" --quiet --return --flush \
@@ -412,10 +526,11 @@ set -e
 SYSTEMD_PREFLIGHT=(
   "$SYSTEMD_RUN_BIN"
   '--property=RestrictAddressFamilies=~AF_UNIX'
+  '--property=NoNewPrivileges=yes'
   --user --pty --wait --collect
   -E "PATH=$TRUSTED_BASE_PATH"
   --working-directory "$SOURCE_ROOT"
-  -- /usr/bin/true
+  -- /bin/bash -c "$TRANSIENT_SECURITY_ASSERTION"
 )
 SYSTEMD_PREFLIGHT_COMMAND=$(quote_command "${SYSTEMD_PREFLIGHT[@]}")
 set +e
@@ -432,11 +547,12 @@ SYSTEMD_FAILURE_PREFLIGHT=(
   "$SYSTEMD_RUN_BIN"
   "--unit=$SYSTEMD_FAILURE_UNIT"
   '--property=RestrictAddressFamilies=~AF_UNIX'
+  '--property=NoNewPrivileges=yes'
   '--property=RuntimeMaxSec=2min'
   --user --pty --wait --collect
   -E "PATH=$TRUSTED_BASE_PATH"
   --working-directory "$SOURCE_ROOT"
-  -- /bin/bash -c 'exit 37'
+  -- /bin/bash -c "$TRANSIENT_SECURITY_ASSERTION || exit 38; exit 37"
 )
 SYSTEMD_FAILURE_COMMAND=$(quote_command "${SYSTEMD_FAILURE_PREFLIGHT[@]}")
 CURRENT_UNIT=$SYSTEMD_FAILURE_UNIT
@@ -547,7 +663,8 @@ case "$(uname -m)" in
 esac
 GO_ARCHIVE="$WORK_ROOT/go${GO_VERSION}.linux-${GO_ARCH}.tar.gz"
 GO_URL="https://go.dev/dl/go${GO_VERSION}.linux-${GO_ARCH}.tar.gz"
-run_logged curl --proto '=https' --tlsv1.2 --fail --location --silent --show-error \
+run_logged curl --disable --proto '=https' --tlsv1.2 \
+  --fail --location --silent --show-error \
   "$GO_URL" --output "$GO_ARCHIVE"
 printf '%s  %s\n' "$GO_ARCHIVE_SHA" "$GO_ARCHIVE" | sha256sum --check - | \
   tee -a "$SETUP_LOG"
@@ -787,6 +904,7 @@ run_target() {
   local config_path="$project/$config_relative"
   local config_sha fileset_sha mathlib_head
 
+  assert_system_binary_state
   [[ -f "$config_path" ]] || die "Comparator configuration is missing: $config_relative"
   "$NODE_BIN" - "$config_path" <<'NODE'
 const fs = require('node:fs');
@@ -830,6 +948,9 @@ NODE
     echo 'lean4export_build_toolchain=Paper C project toolchain'
     echo 'ld_preload=unset'
     echo 'non_root=true'
+    echo "launcher_no_new_privs=$NO_NEW_PRIVS"
+    echo 'transient_no_new_privs_required=true'
+    echo 'transient_zero_capabilities_required=true'
     echo "execution_uid=$(id -u)"
     echo "execution_gid=$(id -g)"
     echo 'runner_os=Linux'
@@ -858,6 +979,15 @@ NODE
     echo "runner_script_sha256=$SCRIPT_SHA"
     echo "pty_transport_sha256=$TRANSPORT_SHA"
     echo "pty_transport_version=$TRANSPORT_VERSION"
+    printf '%s\n' "$SYSTEM_BINARY_STATE"
+    echo "git_binary_path=$GIT_BIN"
+    echo "git_binary_resolved=$(realpath "$GIT_BIN")"
+    echo "sha256sum_binary_path=$SHA256SUM_BIN"
+    echo "sha256sum_binary_resolved=$(realpath "$SHA256SUM_BIN")"
+    echo "truncate_binary_resolved=$(realpath "$TRUNCATE_BIN")"
+    echo "touch_binary_resolved=$(realpath "$TOUCH_BIN")"
+    echo "rm_binary_resolved=$(realpath "$RM_BIN")"
+    echo "mv_binary_resolved=$(realpath "$MV_BIN")"
     echo "systemd_run_binary_sha256=$(sha256sum "$SYSTEMD_RUN_BIN" | sed 's/[[:space:]].*$//')"
     echo "systemctl_binary_sha256=$(sha256sum "$SYSTEMCTL_BIN" | sed 's/[[:space:]].*$//')"
     echo "git_binary_sha256=$(sha256sum "$GIT_BIN" | sed 's/[[:space:]].*$//')"
@@ -943,11 +1073,19 @@ NODE
   echo 'landrun negative control refused the write as required.' >>"$probe_log"
 
   local probe_unit="paper-c-probe-${label//[^A-Za-z0-9]/-}-$$"
-  local probe_shell='test "$(id -u)" = "$EXPECTED_UID" && test "$PWD" = "$EXPECTED_CWD" && test "$HOME" = "$EXPECTED_HOME" && test "$ELAN_HOME" = "$EXPECTED_ELAN_HOME" && test "$(realpath "$(command -v lake)")" = "$EXPECTED_LAKE_BIN" && test -t 0 && test -t 1 && test -t 2 && echo systemd_wrapper_probe=passed'
+  local probe_shell=$TRANSIENT_SECURITY_ASSERTION
+  probe_shell+=' && test "$(id -u)" = "$EXPECTED_UID"'
+  probe_shell+=' && test "$PWD" = "$EXPECTED_CWD"'
+  probe_shell+=' && test "$HOME" = "$EXPECTED_HOME"'
+  probe_shell+=' && test "$ELAN_HOME" = "$EXPECTED_ELAN_HOME"'
+  probe_shell+=' && test "$(realpath "$(command -v lake)")" = "$EXPECTED_LAKE_BIN"'
+  probe_shell+=' && test -t 0 && test -t 1 && test -t 2'
+  probe_shell+=' && echo systemd_wrapper_probe=passed'
   local probe_run=(
     "$SYSTEMD_RUN_BIN"
     "--unit=$probe_unit"
     '--property=RestrictAddressFamilies=~AF_UNIX'
+    '--property=NoNewPrivileges=yes'
     '--property=RuntimeMaxSec=2min'
     --user --pty --wait --collect
     -E "PATH=$TRUSTED_PATH"
@@ -977,6 +1115,8 @@ NODE
   [[ $wrapper_status -eq 0 ]] || die "systemd-run wrapper probe failed for $label"
   sed 's/\r$//' "$probe_raw" | grep -Fqx 'systemd_wrapper_probe=passed' || \
     die "systemd-run wrapper probe marker is missing for $label"
+  sed 's/\r$//' "$probe_raw" | grep -Fqx 'transient_security_context=passed' || \
+    die "systemd-run security-context marker is missing for $label"
   echo 'hardened_wrapper_available=true' >>"$probe_log"
 
   assert_checkout_unchanged "$project" "immediately before $label"
@@ -992,10 +1132,13 @@ NODE
   } >"$run_log"
 
   local unit="paper-c-comparator-${label//[^A-Za-z0-9]/-}-$$"
+  local comparator_shell=$TRANSIENT_SECURITY_ASSERTION
+  comparator_shell+=' && lake env "$COMPARATOR_BIN" "$COMPARATOR_CONFIG"'
   local run=(
     "$SYSTEMD_RUN_BIN"
     "--unit=$unit"
     '--property=RestrictAddressFamilies=~AF_UNIX'
+    '--property=NoNewPrivileges=yes'
   )
   if (( TIMEOUT_MINUTES > 0 )); then
     run+=("--property=RuntimeMaxSec=${TIMEOUT_MINUTES}min")
@@ -1010,7 +1153,7 @@ NODE
     -E "COMPARATOR_LANDRUN=$LANDRUN_BIN"
     -E "COMPARATOR_LEAN4EXPORT=$LEAN4EXPORT_BIN"
     --working-directory "$project"
-    -- /bin/bash -c 'lake env "$COMPARATOR_BIN" "$COMPARATOR_CONFIG"'
+    -- /bin/bash -c "$comparator_shell"
   )
   local run_command
   run_command=$(quote_command "${run[@]}")
@@ -1029,7 +1172,10 @@ NODE
   cleanup_failed_unit_if_needed "$unit"
   CURRENT_UNIT=
   [[ $run_status -eq 0 ]] || die "Comparator target $label failed with status $run_status"
+  sed 's/\r$//' "$pty_raw" | grep -Fqx 'transient_security_context=passed' || \
+    die "Comparator security-context marker is missing for $label"
 
+  assert_system_binary_state
   [[ "$(sha256sum "$COMPARATOR_BIN" | sed 's/[[:space:]].*$//')" == "$COMPARATOR_SHA" ]] || \
     die 'Comparator binary changed during the run'
   [[ "$(sha256sum "$LEAN4EXPORT_BIN" | sed 's/[[:space:]].*$//')" == "$LEAN4EXPORT_SHA" ]] || \

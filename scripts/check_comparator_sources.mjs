@@ -7,6 +7,8 @@ import process from 'node:process';
 const root = process.cwd();
 const challengeFiles = ['Challenge.lean', 'ChallengeTransfer.lean'];
 const requiredSolutionFiles = ['Solution.lean', 'SolutionTransfer.lean'];
+const hardenedRunnerFile = 'scripts/run_hardened_comparator.sh';
+const evidenceAssemblerFile = 'scripts/assemble_comparator_evidence.mjs';
 
 function fail(message) {
   console.error(`Comparator source guard: ${message}`);
@@ -124,6 +126,113 @@ for (const file of solutionFiles) {
   }
   if (/^\s*import\s+Challenge(?:\s|\.|$)/m.test(source)) {
     fail(`${file} imports a Challenge module.`);
+  }
+}
+
+const hardenedRunner = readRequired(hardenedRunnerFile);
+if (hardenedRunner !== null) {
+  const lexicalSystemCommands = new Map([
+    ['GIT_BIN', 'git'],
+    ['NODE_BIN', 'node'],
+    ['SCRIPT_BIN', 'script'],
+    ['SYSTEMD_RUN_BIN', 'systemd-run'],
+    ['SYSTEMCTL_BIN', 'systemctl'],
+    ['SHA256SUM_BIN', 'sha256sum'],
+    ['TRUNCATE_BIN', 'truncate'],
+    ['TOUCH_BIN', 'touch'],
+    ['RM_BIN', 'rm'],
+    ['MV_BIN', 'mv'],
+  ]);
+  for (const [variable, command] of lexicalSystemCommands) {
+    const expected = `${variable}=$(command -v ${command})`;
+    const assignment = new RegExp(
+      `^${variable}=\\$\\(command -v ${command.replace('-', '\\-')}\\)$`,
+      'm',
+    );
+    if (!assignment.test(hardenedRunner)) {
+      fail(
+        `${hardenedRunnerFile} must retain the lexical system path: ${expected}`,
+      );
+    }
+  }
+  if (!hardenedRunner.includes(
+        'export PATH="/usr/bin:/bin:$HOME/.elan/bin"',
+      ) || !hardenedRunner.includes(
+        'TRUSTED_BASE_PATH="/usr/bin:/bin:$ELAN_BIN_DIR"',
+      )) {
+    fail(
+      `${hardenedRunnerFile} must put audited system paths before Elan.`,
+    );
+  }
+  for (const target of [
+    '/usr/bin/gnusha256sum',
+    '/usr/lib/cargo/bin/coreutils/sha256sum',
+    '/usr/bin/gnutruncate',
+    '/usr/lib/cargo/bin/coreutils/truncate',
+    '/usr/bin/gnutouch',
+    '/usr/lib/cargo/bin/coreutils/touch',
+    '/usr/bin/gnurm',
+    '/usr/bin/gnumv',
+  ]) {
+    if (!hardenedRunner.includes(target)) {
+      fail(
+        `${hardenedRunnerFile} is missing approved Ubuntu provider target: ` +
+        target,
+      );
+    }
+  }
+  if (!hardenedRunner.includes('resolved=$(realpath "$actual")')) {
+    fail(`${hardenedRunnerFile} does not resolve system-binary targets.`);
+  }
+  if (!hardenedRunner.includes("owner=$(stat -Lc '%u' \"$resolved\")") ||
+      !hardenedRunner.includes("mode=$(stat -Lc '%a' \"$resolved\")")) {
+    fail(
+      `${hardenedRunnerFile} does not check ownership and mode on the ` +
+      'resolved system-binary target.',
+    );
+  }
+  if (!hardenedRunner.includes("owner=$(stat -Lc '%u' \"$directory\")") ||
+      !hardenedRunner.includes("mode=$(stat -Lc '%a' \"$directory\")")) {
+    fail(
+      `${hardenedRunnerFile} does not check the resolved target's parent ` +
+      'directory chain.',
+    );
+  }
+  if (!/^INITIAL_FUNCTIONS=\$\(builtin declare -Fx\)$/m.test(hardenedRunner)) {
+    fail(`${hardenedRunnerFile} does not reject inherited Bash functions.`);
+  }
+  const noNewPrivilegesProperties = hardenedRunner.match(
+    /'--property=NoNewPrivileges=yes'/g,
+  ) ?? [];
+  if (noNewPrivilegesProperties.length !== 4 ||
+      !hardenedRunner.includes('transient_security_context=passed')) {
+    fail(
+      `${hardenedRunnerFile} does not enforce the expected transient ` +
+      'NoNewPrivileges security contexts.',
+    );
+  }
+  if (hardenedRunner.includes('/usr/bin/*|/usr/lib/cargo/bin/coreutils/*)')) {
+    fail(`${hardenedRunnerFile} contains an over-broad system target pattern.`);
+  }
+}
+
+const evidenceAssembler = readRequired(evidenceAssemblerFile);
+if (evidenceAssembler !== null) {
+  for (const requiredField of [
+    'launcher_no_new_privs',
+    'transient_no_new_privs_required',
+    'transient_zero_capabilities_required',
+    'transient_security_context=passed',
+    'system_binary_${name}_path',
+    'system_binary_${name}_resolved',
+    'system_binary_${name}_sha256',
+  ]) {
+    if (!evidenceAssembler.includes(requiredField)) {
+      fail(
+        `${evidenceAssemblerFile} does not enforce hardened evidence field: ` +
+        requiredField,
+      );
+    }
   }
 }
 

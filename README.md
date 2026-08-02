@@ -1681,7 +1681,7 @@ Install the Ubuntu prerequisites once:
 sudo apt update
 sudo apt install --yes \
   bash bsdutils build-essential ca-certificates coreutils curl \
-  dbus-user-session findutils git grep nodejs sed systemd tar zstd
+  dbus-user-session findutils git grep nodejs sed systemd tar util-linux zstd
 ```
 
 Install the official per-user Elan distribution if `$HOME/.elan/bin/elan`
@@ -1701,12 +1701,20 @@ SHA-256 before use.
 
 Update to the exact commit to be certified and require a completely clean
 checkout, including no untracked files.  Run the preflight first, then the
-full verifier from an interactive terminal:
+full verifier from an interactive terminal.  The stock `setpriv` wrapper
+removes the `CAP_WAKE_ALARM` capability that `pam_systemd` may place in local
+Ubuntu sessions; the clean `PATH` prevents user-installed commands from
+shadowing the audited Ubuntu and Elan binaries:
 
 ```bash
 git status --short
-./scripts/run_hardened_comparator.sh --preflight-only
-./scripts/run_hardened_comparator.sh
+unset LD_LIBRARY_PATH
+PATH="/usr/bin:/bin:$HOME/.elan/bin" \
+  /usr/bin/setpriv --inh-caps=-all --ambient-caps=-all --no-new-privs -- \
+  ./scripts/run_hardened_comparator.sh --preflight-only
+PATH="/usr/bin:/bin:$HOME/.elan/bin" \
+  /usr/bin/setpriv --inh-caps=-all --ambient-caps=-all --no-new-privs -- \
+  ./scripts/run_hardened_comparator.sh
 ```
 
 The first command must print nothing.  A `tmux` terminal is acceptable, but a
@@ -1717,6 +1725,15 @@ trusted dependency cache, and runs both targets through the pinned real
 landrun inside the Comparator README's `systemd-run --user --pty` wrapper.
 Before each target it tests that real landrun refuses file creation,
 truncation, removal, and rename under the exact read-only-root policy.
+Ubuntu 26.04 may implement `/usr/bin/sha256sum`, `touch`, and `truncate` as
+root-owned links into its stock Rust coreutils provider and `rm` or `mv` as
+links to GNU-prefixed binaries.  The runner accepts those provider layouts
+only through the fixed `/usr/bin` invocation paths, validates the resolved
+targets as root-owned and non-writable by group/others, and records them in
+the evidence.  Their canonical parent directories receive the same ownership
+and write-permission checks.  The launcher and every transient Comparator unit
+must also report zero inheritable/permitted/effective/ambient capabilities and
+`NoNewPrivs=1`; the evidence validator requires both transient markers.
 
 The Comparator phase may be quiet for a while: its raw pseudo-terminal stream
 is written to evidence files instead of being replayed to the invoking

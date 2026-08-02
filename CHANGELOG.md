@@ -91,6 +91,12 @@
   around the official `systemd-run --user --pty` wrapper, validates both
   evidence records, and emits a checksummed `.tar.zst` upload bundle. It has
   no fake-landrun or unsandboxed fallback and does not claim a Nanoda result.
+- Fixed that runner's Ubuntu 26.04 system-binary validation so the stock
+  root-owned Rust and GNU coreutils-provider symlink layouts are accepted
+  without accepting user-path shadowing, and documented the clean `setpriv`
+  invocation required by local sessions carrying `CAP_WAKE_ALARM`. The runner
+  and evidence validator now also require zero capabilities plus
+  `NoNewPrivs=1` inside each transient probe and Comparator unit.
 - Hardened the CI availability test after a hosted-runner PTY attachment
   stalled both Comparator targets before their first observable startup
   marker. As a conservative hosted-CI policy, captured non-TTY stdio is now

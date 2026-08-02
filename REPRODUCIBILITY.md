@@ -621,7 +621,7 @@ Installer une fois les prérequis Ubuntu :
 sudo apt update
 sudo apt install --yes \
   bash bsdutils build-essential ca-certificates coreutils curl \
-  dbus-user-session findutils git grep nodejs sed systemd tar zstd
+  dbus-user-session findutils git grep nodejs sed systemd tar util-linux zstd
 ```
 
 Si Elan n’est pas déjà installé dans `$HOME/.elan`, installer sa distribution
@@ -643,11 +643,19 @@ y compris les fichiers non suivis. Lancer ensuite :
 
 ```bash
 git status --short
-./scripts/run_hardened_comparator.sh --preflight-only
-./scripts/run_hardened_comparator.sh
+unset LD_LIBRARY_PATH
+PATH="/usr/bin:/bin:$HOME/.elan/bin" \
+  /usr/bin/setpriv --inh-caps=-all --ambient-caps=-all --no-new-privs -- \
+  ./scripts/run_hardened_comparator.sh --preflight-only
+PATH="/usr/bin:/bin:$HOME/.elan/bin" \
+  /usr/bin/setpriv --inh-caps=-all --ambient-caps=-all --no-new-privs -- \
+  ./scripts/run_hardened_comparator.sh
 ```
 
-La première commande ne doit rien afficher. Un terminal `tmux` convient, mais
+La première commande ne doit rien afficher. `setpriv` retire notamment
+`CAP_WAKE_ALARM`, que `pam_systemd` peut placer dans une session Ubuntu locale,
+et le `PATH` restreint empêche qu’un outil utilisateur masque les binaires
+Ubuntu et Elan audités. Un terminal `tmux` convient, mais
 le script refuse `sudo`, les pipes, `nohup`, les tâches d’IDE, les conteneurs et
 les descripteurs standard redirigés. Il construit les outils aux commits
 épinglés, prépare chacun des deux checkouts immédiatement avant sa cible et
@@ -655,6 +663,16 @@ utilise l’enveloppe `systemd-run --user --pty` prescrite par Comparator autour
 de landrun réel. Avant chaque cible, les contrôles négatifs exigent que la
 politique exacte à racine en lecture seule interdise la création, la
 troncature, la suppression et le renommage de fichiers.
+
+Sur Ubuntu 26.04, certains chemins `/usr/bin` sont officiellement des liens
+vers le fournisseur Rust coreutils ou vers des binaires GNU préfixés. Le
+lanceur conserve les chemins d’appel fixes `/usr/bin`, contrôle que leurs
+cibles résolues appartiennent à root et ne sont modifiables ni par le groupe
+ni par les autres utilisateurs, applique le même contrôle à leurs répertoires
+parents canoniques, puis consigne ces cibles dans les preuves. Le lanceur et
+chaque unité Comparator transitoire doivent en outre constater quatre jeux de
+capabilities nuls et `NoNewPrivs=1` ; le validateur exige les deux marqueurs
+transitoires correspondants.
 
 La phase Comparator peut rester silencieuse : son flux PTY brut est conservé
 dans les preuves, sans être rejoué dans le terminal appelant, afin qu’une
