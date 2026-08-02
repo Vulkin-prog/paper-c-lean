@@ -111,7 +111,8 @@ if (sandboxed) {
   if (field('launcher_no_new_privs') !== '1' ||
       field('transient_no_new_privs_required') !== 'true' ||
       field('transient_zero_capabilities_required') !== 'true' ||
-      field('transient_capability_drop_method') !== 'setpriv') {
+      field('transient_capability_drop_method') !== 'setpriv' ||
+      field('systemd_adjust_terminal_title') !== '0') {
     throw new Error('sandboxed run lacks the required capability context');
   }
   if (lines.filter(

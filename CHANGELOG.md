@@ -105,6 +105,12 @@
   unconditional reinstall. The runner now uses Elan's idempotent
   `run --install` interface, then independently parses a single structured Lean
   version line and requires equality with the pinned 40-hex commit.
+- Disabled systemd 259's documented interactive window-title adjustment before
+  all PTY runs. Its OSC prefix had decorated the first successful security
+  marker on a real Ubuntu 26.04 host. The runner now rejects inherited values,
+  records `SYSTEMD_ADJUST_TERMINAL_TITLE=0`, and retains exact-line marker
+  validation without permissive ANSI stripping. The preflight checks that
+  property before any download or build.
 - Hardened the CI availability test after a hosted-runner PTY attachment
   stalled both Comparator targets before their first observable startup
   marker. As a conservative hosted-CI policy, captured non-TTY stdio is now

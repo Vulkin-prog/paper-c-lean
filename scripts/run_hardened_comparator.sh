@@ -253,7 +253,7 @@ for variable_name in \
   GIT_TEMPLATE_DIR GIT_WORK_TREE \
   GOWORK ELAN_HOME GZIP LAKE_HOME LD_AUDIT LD_LIBRARY_PATH LD_PRELOAD LEAN_PATH \
   LEAN_SRC_PATH LEAN_SYSROOT LEAN_OPTS MATHLIB_CACHE_URL NODE_OPTIONS \
-  TAR_OPTIONS ZSTD_CLEVEL ZSTD_NBTHREADS; do
+  SYSTEMD_ADJUST_TERMINAL_TITLE TAR_OPTIONS ZSTD_CLEVEL ZSTD_NBTHREADS; do
   if [[ -n "${!variable_name-}" ]]; then
     die "environment variable must be unset: $variable_name"
   fi
@@ -508,11 +508,17 @@ for variable_name in \
   GIT_INDEX_FILE GIT_OBJECT_DIRECTORY GIT_SSH GIT_SSH_COMMAND \
   GIT_SSH_VARIANT GIT_TEMPLATE_DIR GIT_WORK_TREE GOWORK GZIP LAKE_HOME LD_AUDIT \
   LD_LIBRARY_PATH LD_PRELOAD LEAN_PATH LEAN_SRC_PATH LEAN_SYSROOT LEAN_OPTS \
-  MATHLIB_CACHE_URL NODE_OPTIONS TAR_OPTIONS ZSTD_CLEVEL ZSTD_NBTHREADS; do
+  MATHLIB_CACHE_URL NODE_OPTIONS SYSTEMD_ADJUST_TERMINAL_TITLE TAR_OPTIONS \
+  ZSTD_CLEVEL ZSTD_NBTHREADS; do
   if grep -Fq "$variable_name=" <<<"$USER_MANAGER_ENV"; then
     die "systemd --user manager contains forbidden environment variable: $variable_name"
   fi
 done
+
+# systemd 259 writes an OSC window-title sequence immediately before the first
+# payload byte of an interactive systemd-run --pty session. Disable that
+# transport decoration so exact security markers remain exact transcript lines.
+export SYSTEMD_ADJUST_TERMINAL_TITLE=0
 
 TRANSIENT_SECURITY_ASSERTION='/usr/bin/grep -Eq "^CapInh:[[:space:]]*0+$" /proc/self/status'
 TRANSIENT_SECURITY_ASSERTION+=' && /usr/bin/grep -Eq "^CapPrm:[[:space:]]*0+$" /proc/self/status'
@@ -567,6 +573,14 @@ if [[ $SYSTEMD_PREFLIGHT_STATUS -ne 0 ]]; then
   rm -f -- "$SYSTEMD_PREFLIGHT_LOG"
   SYSTEMD_PREFLIGHT_LOG=
   die 'the systemd --user PTY wrapper probe failed'
+fi
+if ! sed 's/\r$//' "$SYSTEMD_PREFLIGHT_LOG" | \
+    grep -Fqx 'transient_security_context=passed'; then
+  note 'systemd --user PTY marker diagnostic follows:' >&2
+  sed -n '1,80l' "$SYSTEMD_PREFLIGHT_LOG" >&2
+  rm -f -- "$SYSTEMD_PREFLIGHT_LOG"
+  SYSTEMD_PREFLIGHT_LOG=
+  die 'the systemd --user PTY security marker is not an exact line'
 fi
 rm -f -- "$SYSTEMD_PREFLIGHT_LOG"
 SYSTEMD_PREFLIGHT_LOG=
@@ -998,6 +1012,7 @@ NODE
     echo 'transient_no_new_privs_required=true'
     echo 'transient_zero_capabilities_required=true'
     echo 'transient_capability_drop_method=setpriv'
+    echo 'systemd_adjust_terminal_title=0'
     echo "execution_uid=$(id -u)"
     echo "execution_gid=$(id -g)"
     echo 'runner_os=Linux'

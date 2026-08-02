@@ -684,6 +684,16 @@ payloads transitoires, sans retirer la propriété systemd
 la méthode de retrait interne enregistrée. Si le premier probe systemd échoue,
 un diagnostic borné est affiché avant l’arrêt.
 
+Systemd 259 décore par défaut le premier octet du payload PTY interactif avec
+un titre de fenêtre OSC. Le lanceur refuse toute valeur héritée de
+`SYSTEMD_ADJUST_TERMINAL_TITLE` dans l’appelant comme dans le gestionnaire
+utilisateur, fixe ensuite sa valeur documentée à `0` avant chaque
+`systemd-run` avec PTY, puis la consigne dans les preuves durcies. Les marqueurs
+de sécurité restent ainsi des lignes exactes : le vérificateur ne les assouplit
+pas en supprimant arbitrairement des contrôles de terminal. Le préflight peu
+coûteux vérifie désormais cette propriété de ligne exacte avant tout
+téléchargement ou build.
+
 La phase Comparator peut rester silencieuse : son flux PTY brut est conservé
 dans les preuves, sans être rejoué dans le terminal appelant, afin qu’une
 Solution non fiable ne puisse y injecter des séquences de contrôle. Un échec

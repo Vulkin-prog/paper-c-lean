@@ -235,6 +235,34 @@ if (hardenedRunner !== null) {
       )) {
     fail(`${hardenedRunnerFile} suppresses initial systemd probe diagnostics.`);
   }
+  const exactTransientMarkerChecks = hardenedRunner.match(
+    /grep -Fqx 'transient_security_context=passed'/g,
+  ) ?? [];
+  const terminalTitleSetting = hardenedRunner.indexOf(
+    'export SYSTEMD_ADJUST_TERMINAL_TITLE=0',
+  );
+  const callerEnvironmentCheck = hardenedRunner.indexOf(
+    'LEAN_SYSROOT LEAN_OPTS MATHLIB_CACHE_URL NODE_OPTIONS \\\n' +
+    '  SYSTEMD_ADJUST_TERMINAL_TITLE TAR_OPTIONS',
+  );
+  const managerEnvironmentCheck = hardenedRunner.indexOf(
+    'MATHLIB_CACHE_URL NODE_OPTIONS SYSTEMD_ADJUST_TERMINAL_TITLE TAR_OPTIONS',
+  );
+  const systemdPreflight = hardenedRunner.indexOf('SYSTEMD_PREFLIGHT=(');
+  if (terminalTitleSetting < 0 ||
+      callerEnvironmentCheck < 0 ||
+      managerEnvironmentCheck < 0 ||
+      systemdPreflight < 0 ||
+      terminalTitleSetting < callerEnvironmentCheck ||
+      terminalTitleSetting < managerEnvironmentCheck ||
+      terminalTitleSetting > systemdPreflight ||
+      exactTransientMarkerChecks.length !== 3 ||
+      !hardenedRunner.includes("echo 'systemd_adjust_terminal_title=0'")) {
+    fail(
+      `${hardenedRunnerFile} does not disable systemd PTY title decoration ` +
+      'before performing exact security-marker checks.',
+    );
+  }
   const leanToolchainEnsure = hardenedRunner.indexOf(
     '"$ELAN_BIN" run --install "$PROJECT_TOOLCHAIN" lean --version',
   );
@@ -280,6 +308,7 @@ if (evidenceAssembler !== null) {
     'transient_no_new_privs_required',
     'transient_zero_capabilities_required',
     'transient_capability_drop_method',
+    'systemd_adjust_terminal_title',
     'transient_security_context=passed',
     'system_binary_${name}_path',
     'system_binary_${name}_resolved',

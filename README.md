@@ -1745,6 +1745,15 @@ must report zero inheritable/permitted/effective/ambient capabilities and
 recorded inner capability-drop method.  A failed initial systemd probe prints
 a bounded diagnostic transcript before stopping.
 
+Systemd 259 decorates the first interactive PTY payload byte with an OSC window
+title by default.  The runner rejects inherited
+`SYSTEMD_ADJUST_TERMINAL_TITLE` values in both the caller and user-manager
+environments, sets the documented value `0` before every PTY `systemd-run`, and
+records that setting in hardened evidence.  Security markers therefore remain
+exact lines; the verifier does not weaken them by stripping arbitrary terminal
+control sequences.  The inexpensive preflight now verifies this exact-line
+property before any tool download or build.
+
 The Comparator phase may be quiet for a while: its raw pseudo-terminal stream
 is written to evidence files instead of being replayed to the invoking
 terminal.  This prevents an untrusted Solution from injecting terminal control
