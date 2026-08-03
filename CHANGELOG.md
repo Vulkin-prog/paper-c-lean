@@ -1,6 +1,68 @@
 # Changelog
 
-## 0.48.0
+## 0.48.0-rc2
+
+- Recorded the published hardened, non-root Comparator evidence for both
+  targets at Paper C commit
+  `75b36254145c0983d551de11599ea5c8f68e1e51`. The authoritative archive
+  SHA-256 is
+  `bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130`;
+  the Comparator-fileset digest remains
+  `646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
+- Added two privacy-minimized JSON evidence records that bind the archived
+  transcript hashes to the exact configurations, fileset digest, source
+  commit, and kernel outcome. The host-specific raw transcripts remain only
+  in the public rc1 archive. Moved the generated Comparator status from the
+  historical unsandboxed smoke tests to
+  `sandboxed_lean_kernel_passed`. Both configurations were accepted by the
+  Lean kernel with `enable_nanoda: false`; Nanoda was not run and no
+  dual-kernel result is claimed.
+- Added four machine-indexed source-to-proposition reports in the independent
+  `literature_certificates` fileset. The reports document the AGG convention
+  and locator correction (including zero intensity and zero marginals), the
+  complete `K=L=Q` Evertse--Silverman
+  specialization, an exact safe Nicolas--Robin majorant that does not treat
+  `1.5379` as exact, and the still-open Halter--Koch source-to-record
+  construction.
+- Bound those four reports to the aggregate SHA-256
+  `6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996`,
+  independently of the frozen core and Comparator filesets.
+- Extended `audit_config.json`, the deterministic generator,
+  `audit_manifest.json` schema 7, `formalization.yaml`, the generated bridge
+  registry, CI, and the temporary-root regression test with per-report hashes
+  and an aggregate literature-certificate digest. The new documentary status
+  is explicitly distinct from Lean `open | discharged`, Comparator status,
+  and independent human review.
+- Closed the certificate directory against undeclared files, symlinks, and
+  subdirectories, and added regression tests for untracked files and
+  source-access marker drift. Current generated metadata overlays the frozen
+  source-verification wording; in particular, Halter--Koch is exposed as
+  `source_to_lean_not_established` while the historical claim remains
+  available under explicitly labelled provenance fields.
+- Clarified the trust boundary: the manuscript states Theorem 1.1
+  unconditionally, while the finite-cylinder Comparator target proves the
+  matching conclusion under four ordinary propositions. Comparator does not
+  establish the source-to-proposition implications or paper-to-Challenge
+  fidelity. The infinite-to-finite law identity remains unconditional and
+  exact.
+- Clarified provenance by separating the audited Paper C commit from the
+  pinned Comparator source commit
+  `51491237b1d2f96cca203af9c34bced6fe38e0d8` and from GitHub event SHAs used
+  in legacy hosted-artifact names. New CI artifact names use the actually
+  checked-out Paper C commit. Future `result-*.json` files also bind the
+  Challenge and Solution SHA-256 values, theorem names, permitted axioms,
+  manuscript SHA-256 values, and all pinned tool commits.
+- Recomputed both manuscript fingerprints from the repository bytes: the
+  English PDF is 848890 bytes with SHA-256
+  `2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927`,
+  and the French PDF is 856320 bytes with SHA-256
+  `c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5`.
+- This release-candidate update is documentary and additive. The 382-file
+  core, the four Challenge/Solution files, both Comparator JSON files, all
+  canonical signatures, both PDFs, the 13-entry bridge registry, and the
+  certified core and Comparator digests remain byte-identical.
+
+## 0.48.0-rc1 (historical release-candidate state)
 
 - Added a human-readable, Mathlib-only semantic boundary for the quantitative
   finite-cylinder form of Paper C Theorem 1.1. `Challenge.lean` defines the
@@ -154,9 +216,9 @@
   the independent transfer transcript is
   `comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt`, SHA-256
   `1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f`.
-  Publication remains blocked until both configurations pass the official
-  hardened real-landrun plus `systemd-run` procedure under a non-privileged
-  user and their complete hardened transcripts are archived.
+  At that stage, publication remained blocked pending the hardened real-
+  landrun plus `systemd-run` procedure under a non-privileged user. That gate
+  was subsequently satisfied by the two runs recorded in the rc2 section.
 - The upstream toolchain self-test also completed under fake-landrun. Its
   unsandboxed transcript is
   `comparator/transcripts/toolchain_compatibility_unsandboxed.txt`, SHA-256

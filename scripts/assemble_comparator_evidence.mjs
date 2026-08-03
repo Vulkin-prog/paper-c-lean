@@ -72,11 +72,41 @@ const comparatorConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 if (comparatorConfig.enable_nanoda !== false) {
   throw new Error('release evidence currently requires enable_nanoda=false');
 }
+if (!Array.isArray(comparatorConfig.theorem_names) ||
+    comparatorConfig.theorem_names.length === 0 ||
+    comparatorConfig.theorem_names.some(name => typeof name !== 'string' || name.length === 0)) {
+  throw new Error('Comparator theorem_names must be a nonempty string array');
+}
+const expectedPermittedAxioms = ['propext', 'Quot.sound', 'Classical.choice'];
+if (JSON.stringify(comparatorConfig.permitted_axioms) !==
+    JSON.stringify(expectedPermittedAxioms)) {
+  throw new Error('Comparator permitted_axioms do not match the audited whitelist');
+}
 
-const configSha256 = crypto
+const sha256File = filePath => crypto
   .createHash('sha256')
-  .update(fs.readFileSync(configPath))
+  .update(fs.readFileSync(filePath))
   .digest('hex');
+const moduleInput = moduleName => {
+  if (typeof moduleName !== 'string' ||
+      !/^[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*$/.test(moduleName)) {
+    throw new Error(`invalid Comparator module name: ${moduleName}`);
+  }
+  const relativePath = `${moduleName.replaceAll('.', '/')}.lean`;
+  const absolutePath = path.join(projectRoot, relativePath);
+  if (!fs.existsSync(absolutePath)) {
+    throw new Error(`Comparator module source is missing: ${relativePath}`);
+  }
+  return {
+    module: moduleName,
+    file: relativePath,
+    sha256: sha256File(absolutePath),
+  };
+};
+const challengeInput = moduleInput(comparatorConfig.challenge_module);
+const solutionInput = moduleInput(comparatorConfig.solution_module);
+
+const configSha256 = sha256File(configPath);
 exactLine(`${configSha256}  ${configRelativePath}`);
 
 const binaryCompare = (left, right) =>
@@ -237,11 +267,19 @@ const result = {
   configuration_sha256: configSha256,
   comparator_fileset_digest_sha256: filesetSha256,
   paper_c_commit: paperCommit,
+  theorem_names: comparatorConfig.theorem_names,
+  permitted_axioms: comparatorConfig.permitted_axioms,
+  challenge: challengeInput,
+  solution: solutionInput,
+  tool_commits: Object.fromEntries(
+    [...expectedCommits].map(([name, commit]) => [name.replace(/_commit$/, ''), commit]),
+  ),
+  manuscript_sha256: {
+    target_pdf: auditConfig.target_pdf.sha256,
+    source_pdf_fr: auditConfig.source_pdf_fr.sha256,
+  },
   transcript: path.basename(transcriptPath),
-  transcript_sha256: crypto
-    .createHash('sha256')
-    .update(fs.readFileSync(transcriptPath))
-    .digest('hex'),
+  transcript_sha256: sha256File(transcriptPath),
 };
 fs.writeFileSync(resultPath, `${JSON.stringify(result, null, 2)}\n`);
 process.stdout.write(

@@ -64,9 +64,11 @@ try {
     config.source_pdf_fr.filename,
     config.verification.comparator.compatibility_probe.transcript,
     ...config.verification.comparator.configurations
-      .map(run => run.transcript)
-      .filter(transcript => transcript !== null),
+      .map(run => run.evidence_record)
+      .filter(evidenceRecord => typeof evidenceRecord === 'string'),
     ...config.verification.comparator.fileset,
+    ...config.verification.literature_certificates.entries
+      .map(entry => entry.file),
   ]);
   for (const relativePath of fixtureFiles) {
     copyProjectFile(relativePath);
@@ -97,6 +99,122 @@ try {
   if (baselineManifest.import !== 'PaperC') {
     throw new Error('generated audit does not import the root PaperC module');
   }
+  if (
+    baselineManifest.literature_certificates.length !==
+      config.verification.literature_certificates.entries.length ||
+    !/^[0-9a-f]{64}$/.test(
+      baselineManifest.literature_certificate_digest_sha256,
+    )
+  ) {
+    throw new Error('generated audit does not record literature certificates');
+  }
+  requireSuccess(
+    runGenerator(['--check-literature-certificates']),
+    'baseline literature-certificate verification',
+  );
+
+  const evidenceRecordPath = path.join(
+    temporaryRoot,
+    config.verification.comparator.configurations[0].evidence_record,
+  );
+  const originalEvidenceRecord = fs.readFileSync(evidenceRecordPath, 'utf8');
+  fs.appendFileSync(evidenceRecordPath, '\n');
+  const evidenceRecordGuardResult = runGenerator();
+  if (
+    evidenceRecordGuardResult.status === 0 ||
+    !`${evidenceRecordGuardResult.stdout}${evidenceRecordGuardResult.stderr}`
+      .includes('Comparator evidence-record SHA-256 mismatch')
+  ) {
+    throw new Error(
+      'modifying a Comparator evidence record did not invalidate its SHA-256',
+    );
+  }
+  fs.writeFileSync(evidenceRecordPath, originalEvidenceRecord);
+
+  const unexpectedEvidenceRecordPath = path.join(
+    temporaryRoot,
+    'comparator/evidence/untracked.json',
+  );
+  fs.writeFileSync(unexpectedEvidenceRecordPath, '{}\n');
+  const unexpectedEvidenceRecordResult = runGenerator();
+  if (
+    unexpectedEvidenceRecordResult.status === 0 ||
+    !`${unexpectedEvidenceRecordResult.stdout}`
+      .concat(`${unexpectedEvidenceRecordResult.stderr}`)
+      .includes(
+        'comparator/evidence must contain exactly the configured evidence records',
+      )
+  ) {
+    throw new Error('an undeclared Comparator evidence record was not rejected');
+  }
+  fs.rmSync(unexpectedEvidenceRecordPath);
+
+  const literaturePath = path.join(
+    temporaryRoot,
+    config.verification.literature_certificates.entries[0].file,
+  );
+  const originalLiteratureSource = fs.readFileSync(literaturePath, 'utf8');
+  fs.appendFileSync(
+    literaturePath,
+    '\n<!-- Literature-certificate digest guard mutation. -->\n',
+  );
+  const literatureGuardResult = runGenerator([
+    '--check-literature-certificates',
+  ]);
+  if (
+    literatureGuardResult.status === 0 ||
+    !`${literatureGuardResult.stdout}${literatureGuardResult.stderr}`.includes(
+      'literature certificate bytes or mapping differ',
+    )
+  ) {
+    throw new Error(
+      'modifying a literature certificate did not invalidate its manifest digest',
+    );
+  }
+  fs.writeFileSync(literaturePath, originalLiteratureSource);
+
+  const unexpectedLiteraturePath = path.join(
+    temporaryRoot,
+    'literature_certificates/untracked.md',
+  );
+  fs.writeFileSync(unexpectedLiteraturePath, '# Untracked certificate\n');
+  const unexpectedLiteratureResult = runGenerator([
+    '--check-literature-certificates',
+  ]);
+  if (
+    unexpectedLiteratureResult.status === 0 ||
+    !`${unexpectedLiteratureResult.stdout}${unexpectedLiteratureResult.stderr}`.includes(
+      'directory must contain exactly the configured files',
+    )
+  ) {
+    throw new Error(
+      'an undeclared literature-certificate file was not rejected',
+    );
+  }
+  fs.rmSync(unexpectedLiteraturePath);
+
+  const primarySourceAccess =
+    config.verification.literature_certificates.entries[0]
+      .primary_source_access;
+  fs.writeFileSync(
+    literaturePath,
+    originalLiteratureSource.replace(
+      `Primary-source access: \`${primarySourceAccess}\``,
+      'Primary-source access: `not_accessed`',
+    ),
+  );
+  const accessMappingResult = runGenerator();
+  if (
+    accessMappingResult.status === 0 ||
+    !`${accessMappingResult.stdout}${accessMappingResult.stderr}`.includes(
+      `Primary-source access: \`${primarySourceAccess}\``,
+    )
+  ) {
+    throw new Error(
+      'a contradictory primary-source access marker was not rejected',
+    );
+  }
+  fs.writeFileSync(literaturePath, originalLiteratureSource);
 
   fs.appendFileSync(rootPath, '\n-- Root source-digest guard mutation.\n');
   const digestGuardResult = runGenerator(['--check-source-digest']);
@@ -171,8 +289,10 @@ try {
   }
 
   process.stdout.write(
-    'root audit guards passed: PaperC.lean changes invalidate the digest; ' +
-    'root public theorems enter the inventory and AuditCheck.lean\n',
+    'root and literature audit guards passed: PaperC.lean changes invalidate ' +
+    'the digest; root public theorems enter the inventory and AuditCheck.lean; ' +
+    'Comparator evidence mutations and undeclared evidence, undeclared ' +
+    'certificates, and access-marker drift are rejected\n',
   );
 } finally {
   fs.rmSync(temporaryRoot, {recursive: true, force: true});

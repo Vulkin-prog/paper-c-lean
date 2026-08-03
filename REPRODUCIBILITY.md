@@ -30,6 +30,16 @@ lean4export doit être compilé séparément avec la toolchain Lean de Paper C,
 et non remplacé silencieusement par le binaire construit sous la toolchain
 plus récente propre à Comparator.
 
+La contre-vérification rc2 a recalculé les octets présents dans le dépôt :
+`paper_C_complete_v08_en.pdf` est le blob Git
+`c2a733f5b8b38195760c72bfdb4d7706ed572f8b`, mesure 848890 octets et a pour
+SHA-256
+`2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927` ;
+`paper_C_complete_v08.pdf` est le blob Git
+`f8eadbbecbf618ce0dc3b33fc2aecd4da28d2197`, mesure 856320 octets et a pour
+SHA-256
+`c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5`.
+
 ## Périmètre du jalon 0.48
 
 La v0.48.0 est additive sur le plan mathématique. Les 382 sources du cœur
@@ -53,6 +63,13 @@ La nouvelle frontière humaine comprend :
 - les configurations `comparator/theorem_one_one.json` et
   `comparator/theorem_one_one_transfer.json`, avec la liste explicite
   `propext`, `Quot.sound`, `Classical.choice` et `enable_nanoda: false`.
+
+Le Théorème 1.1 est énoncé sans condition dans le manuscrit. La cible
+Comparator prouve la même conclusion sous quatre propositions ordinaires
+entièrement explicitées. Comparator vérifie cette implication ; il ne vérifie
+ni que les sources citées impliquent ces propositions, ni à lui seul la
+fidélité papier--Challenge. La cible séparée de transfert infini--fini est
+inconditionnelle et exacte.
 
 Le premier énoncé consomme exactement quatre hypothèses ordinaires :
 Arratia--Goldstein--Gordon
@@ -81,39 +98,70 @@ ponts, la concordance de la conditionnalité, l’appartenance des cibles
 Comparator à `theorem_names` et l’unicité des identifiants d’items. La
 complétude éditoriale de la liste ne peut pas être inférée automatiquement et
 reste à relire. Le statut de revue déclaré est `agent-reviewed`, non une revue
-indépendante. Les deux uniques `by sorry`, un dans chaque Challenge, sont des
-placeholders intentionnels de l’interface ; les Solutions et le cœur ont un
-compte de `sorry` nul.
+indépendante. `Challenge.lean` importe uniquement des modules Mathlib et
+`ChallengeTransfer.lean` importe exactement `Challenge`. Chaque fichier
+Challenge contient exactement un `by sorry`, sur son théorème Comparator
+nommé ; l’environnement transitif du transfert contient aussi le placeholder
+du premier Challenge. Aucune Solution n’importe un Challenge, et les Solutions
+comme le cœur ont un compte de `sorry` nul.
 
 L’ensemble du cœur et le nouvel ensemble Comparator possèdent des digests
 séparés : le SHA-256 historique du cœur est
 `f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999`
 et celui du fileset Comparator v0.48.0 est
 `646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
+Le fileset additif des quatre rapports bibliographiques rc2 a son propre
+SHA-256,
+`6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996` ;
+il n’appartient à aucun des deux filesets Lean gelés.
 `Challenge.lean` et `ChallengeTransfer.lean` sont exclus de l’audit
 « zéro sorry » des preuves mais inclus dans le digest Comparator et les gardes
 structurelles. `Solution.lean` et `SolutionTransfer.lean` ne sont jamais
 importés simultanément avec leur Challenge homonyme dans `AuditCheck.lean`.
 
-**Statut enregistré : les deux cibles Paper C ont réussi un unsandboxed
-Comparator semantic smoke test.** Chaque configuration a été exécutée dans un
-checkout propre distinct ; Comparator a construit lui-même le Challenge et la
-Solution, le noyau Lean par défaut a accepté la solution, et le processus a
-retourné 0. Ces exécutions ont toutefois été faites comme `root`, avec le shim
-fake-landrun de Comparator et un shim de compatibilité `LD_PRELOAD`. Elles ne
-valident donc ni une isolation sandbox, ni une exécution non privilégiée, ni
-un second noyau. Nanoda n’est pas installé et les deux configurations ont
-`enable_nanoda: false`.
+**Statut durci enregistré.** Les deux cibles Paper C ont réussi la procédure
+locale durcie au commit Paper C
+`75b36254145c0983d551de11599ea5c8f68e1e51`. Les exécutions ont utilisé
+landrun réel sous `systemd-run --user --pty`, un utilisateur non root, des
+capacités héritées, effectives, permises et ambiantes nulles, ainsi que
+`NoNewPrivileges`. Comparator a construit chaque paire Challenge/Solution
+dans un checkout propre distinct ; le noyau Lean par défaut a accepté les deux
+solutions avec un code de retour nul.
 
-Le transcript principal est
-`comparator/transcripts/theorem_one_one_unsandboxed.txt`, SHA-256
-`b61738cb6fd4a08068da493821a6c9b608c2fb5ed28916778bf7950024c2b4e8`.
-Le transcript indépendant de transfert est
-`comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt`, SHA-256
-`1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f`.
-La publication reste bloquée jusqu’au succès des deux configurations selon la
-procédure locale durcie avec landrun réel, l’enveloppe `systemd-run` et un
-utilisateur non privilégié, puis l’archivage des transcripts durcis complets.
+L’archive de référence est
+`paper-c-hardened-evidence-75b36254145c-20260803T060848Z.tar.zst`, publiée dans
+la release `v0.48.0-rc1`, SHA-256
+`bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130`.
+Le digest du fileset Comparator est
+`646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5` ;
+les transcripts bruts principal et transfert restent dans cette archive
+publique et ont pour SHA-256
+`5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266`
+et
+`f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421`.
+L’archive téléversée a été contre-vérifiée pour sa taille et son SHA-256
+externes, le SHA-256 du résumé, chaque entrée de `SHA256SUMS` et l’égalité
+des deux empreintes de transcript archivées. Pour ne pas dupliquer les noms
+d’hôte, chemins locaux et autres métadonnées de machine des journaux bruts,
+le dépôt ne contient que deux enregistrements `result-*.json` minimaux sous
+`comparator/evidence/`. Le générateur valide ces enregistrements, leurs propres
+SHA-256 et leurs liaisons aux configurations et au fileset ; il ne télécharge
+ni ne revalide l’asset de release GitHub.
+
+Ce résultat est limité au noyau Lean : `enable_nanoda` vaut `false` dans les
+deux configurations, Nanoda n’a pas été exécuté et aucun résultat à deux
+noyaux n’est revendiqué. Le certificat porte sur les octets inchangés du
+fileset Comparator au commit `75b36254145c...`, et non sur ce commit
+documentaire rc2. Il ne décharge pas les quatre prémisses ordinaires de
+littérature et ne certifie pas à lui seul la fidélité papier--Challenge.
+
+Les quatre rapports sous `literature_certificates/` forment un fileset séparé
+et haché. Ils consignent une contre-expertise par agents, pas une preuve Lean
+ni une revue humaine. AGG, Evertse--Silverman et Nicolas--Robin ont le statut
+documentaire `agent_checked_supports`. Halter--Koch garde le statut
+`agent_checked_with_open_gap` : la construction source→record demeure non
+établie. Ces statuts documentaires ne modifient pas le statut Lean `open` des
+quatre ponts.
 
 Un probe antérieur de compatibilité de la suite de tests upstream a également
 été exécuté sans sandbox avec fake-landrun. Son
@@ -452,6 +500,7 @@ et de la validation de release est exactement le suivant :
 ```bash
 node scripts/generate_audit.mjs --check-pdfs
 node scripts/generate_audit.mjs --check-source-digest
+node scripts/generate_audit.mjs --check-literature-certificates
 rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' PaperC.lean PaperC
 node scripts/check_comparator_sources.mjs
 node scripts/test_audit_root_guards.mjs
@@ -483,14 +532,17 @@ le digest du `core_source_fileset` exact `PaperC.lean` plus
 couvre explicitement ces deux branches ; l’absence de correspondance est le
 résultat attendu. Le script `scripts/check_comparator_sources.mjs` contrôle
 séparément les imports, les placeholders intentionnels et les tokens interdits
-de la frontière Comparator. Les deux
-gardes travaillent sur des copies temporaires et prouvent qu’une modification
+de la frontière Comparator. Les gardes temporaires prouvent qu’une modification
 de `PaperC.lean` invalide le digest et qu’un théorème public ajouté à la racine
-entre dans l’inventaire et reçoit son `#print axioms`. Les gardes d’interface
-imposent un import Mathlib seul et exactement un `by sorry` dans chacun des
-deux Challenges ; elles interdisent `sorry`, `axiom`, `admit`, `unsafe`,
-`partial` et `native_decide` dans les deux Solutions et leurs éventuels
-modules d’appui. Les artefacts générés sont contrôlés sans réécriture après les
+entre dans l’inventaire et reçoit son `#print axioms`; elles vérifient aussi
+qu’un octet modifié dans un rapport bibliographique invalide son digest. Les
+gardes d’interface imposent que `Challenge.lean` n’importe que des modules
+Mathlib et que `ChallengeTransfer.lean` importe exactement `Challenge`. Chaque
+fichier Challenge contient exactement un `by sorry`, sur le théorème
+Comparator nommé. Elles interdisent `sorry`, `axiom`, `admit`, `opaque`,
+`unsafe`, `partial`, `native_decide` et `definition_names` dans les deux
+Solutions et leurs éventuels modules d’appui. Les artefacts générés sont
+contrôlés sans réécriture après les
 builds ordinaires séparés, puis l’audit exhaustif est exécuté. La sortie de
 l’unique exécution Lean
 est conservée, puis vérifiée pour l’exhaustivité et la liste blanche. Le
@@ -554,8 +606,10 @@ dans `core_source_fileset`, calcule séparément `comparator_fileset`, puis
 dérive `AuditCheck.lean`, le schéma versionné de `audit_manifest.json`,
 `formalization.yaml` v0.3 et le registre délimité de `AXIOM_AUDIT.md`
 directement des sources Lean et de `audit_config.json` schéma 2. Ses modes
-`--check-pdfs` et `--check-source-digest` ferment
-les deux préconditions du build ; son mode `--check` les rejoue et échoue si
+`--check-pdfs`, `--check-source-digest` et
+`--check-literature-certificates` ferment les préconditions du build et lient
+séparément les octets et la cartographie des quatre rapports bibliographiques ;
+son mode `--check` les rejoue et échoue si
 l'un des quatre artefacts générés est périmé. Le script
 `scripts/verify_audit.mjs` peut exécuter l’audit lui-même ou relire le journal
 fourni par `--input` ; il exige exactement une sortie par cible du manifeste
@@ -846,7 +900,12 @@ explicitement non certifiant. Chaque étape d'exécution Comparator est limitée
 à 60 minutes. Après chaque succès, les trois journaux d'environnement, de
 sonde et d'exécution sont assemblés en un transcript atomique ;
 `scripts/assemble_comparator_evidence.mjs` recalcule les empreintes et produit
-un `result-*.json` machine-lisible avant l'archivage GitHub Actions.
+un `result-*.json` machine-lisible avant l'archivage GitHub Actions. Avec les
+scripts rc2, ce résultat contient aussi les SHA-256 de Challenge et Solution,
+la liste exacte des théorèmes et axiomes permis, les deux SHA-256 des
+manuscrits et les cinq commits d'outils. Le résumé agrégé répète les identités
+d'outils et de manuscrits communes aux deux cibles. Ces champs enrichissent
+les prochains paquets ; ils ne réécrivent pas l'archive rc1 immuable.
 
 Le succès de la sonde négative et de l'enveloppe documente les restrictions
 effectivement testées. Il ne constitue pas, à lui seul, une certification
@@ -854,15 +913,12 @@ générale de tous les mécanismes d’isolation de l’hôte ; aucune isolation
 sandbox n’est revendiquée avant une exécution réelle réussie et publiée dans
 ces conditions.
 
-Les deux exécutions Paper C non sandboxées ont réussi dans des checkouts
-propres, avec acceptation par le noyau Lean par défaut et code de retour 0.
-Elles ont été exécutées comme `root`, avec fake-landrun et le shim
-`LD_PRELOAD`, et ne satisfont donc pas les conditions du run de référence
-décrites ci-dessus. Aucun run durci avec landrun réel, `systemd-run` et un
-utilisateur non privilégié n’a encore réussi. Nanoda n’est pas installé, les
-deux JSON ont `enable_nanoda: false`, et aucun résultat de second noyau n’est
-revendiqué. La publication reste bloquée jusqu’aux deux runs durcis et à leurs
-transcripts complets.
+Les deux runs durcis de référence ont réussi au commit `75b36254145c...`.
+Les runs CI non sandboxés restent de simples smoke tests. Le suffixe d’un
+ancien artefact CI peut être le SHA d’événement GitHub et ne doit pas être
+confondu avec `paper_c_commit` ni avec le commit de l’outil Comparator. Nanoda
+n’a pas été exécuté : les deux JSON ont `enable_nanoda: false`, et aucun
+résultat de second noyau n’est revendiqué.
 
 ## Reproduction de l'archive
 
