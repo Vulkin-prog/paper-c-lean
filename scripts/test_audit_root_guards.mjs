@@ -49,18 +49,26 @@ try {
     path.join(temporaryRoot, 'PaperC'),
     {recursive: true},
   );
-  for (const relativePath of [
+  const fixtureFiles = new Set([
     'PaperC.lean',
     'README.md',
     'AXIOM_AUDIT.md',
     'AuditCheck.lean',
     'audit_config.json',
     'audit_manifest.json',
+    'lake-manifest.json',
     'lakefile.toml',
+    'lean-toolchain',
     'scripts/generate_audit.mjs',
     config.target_pdf.filename,
     config.source_pdf_fr.filename,
-  ]) {
+    config.verification.comparator.compatibility_probe.transcript,
+    ...config.verification.comparator.configurations
+      .map(run => run.transcript)
+      .filter(transcript => transcript !== null),
+    ...config.verification.comparator.fileset,
+  ]);
+  for (const relativePath of fixtureFiles) {
     copyProjectFile(relativePath);
   }
   fs.appendFileSync(
@@ -95,7 +103,7 @@ try {
   if (
     digestGuardResult.status === 0 ||
     !`${digestGuardResult.stdout}${digestGuardResult.stderr}`.includes(
-      'PaperC source digest mismatch',
+      'core digest mismatch',
     )
   ) {
     throw new Error(
@@ -110,6 +118,22 @@ try {
     'theorem auditRootGuardPublicTheorem : True := by\n' +
     '  trivial\n\n' +
     'end PaperC\n',
+  );
+  const frozenTheoremResult = runGenerator();
+  const frozenTheoremOutput =
+    `${frozenTheoremResult.stdout}${frozenTheoremResult.stderr}`;
+  const mutatedDigest = /computed ([0-9a-f]{64})/.exec(frozenTheoremOutput)?.[1];
+  if (frozenTheoremResult.status === 0 || !mutatedDigest) {
+    throw new Error(
+      'adding a root theorem did not invalidate the frozen core digest',
+    );
+  }
+  const mutatedConfigPath = path.join(temporaryRoot, 'audit_config.json');
+  const mutatedConfig = JSON.parse(fs.readFileSync(mutatedConfigPath, 'utf8'));
+  mutatedConfig.core_source.digest_sha256 = mutatedDigest;
+  fs.writeFileSync(
+    mutatedConfigPath,
+    `${JSON.stringify(mutatedConfig, null, 2)}\n`,
   );
   const theoremGuardResult = runGenerator();
   requireSuccess(theoremGuardResult, 'root public-theorem audit generation');

@@ -1,9 +1,21 @@
 name = "paper_c_lean"
-version = "0.47.0"
+version = "0.48.0"
 defaultTargets = ["PaperC"]
 
 [[lean_lib]]
 name = "PaperC"
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Solution"
+
+[[lean_lib]]
+name = "ChallengeTransfer"
+
+[[lean_lib]]
+name = "SolutionTransfer"
 
 [[require]]
 name = "mathlib"

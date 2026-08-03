@@ -6,7 +6,11 @@ This repository accompanies the manuscript:
 > stretches of an extended Rademacher random completely multiplicative
 > function*, Brice Pouly, English edition, August 1, 2026.
 
-Reserved Zenodo DOI: [`10.5281/zenodo.21735482`](https://doi.org/10.5281/zenodo.21735482).
+Paper DOI: [`10.5281/zenodo.21736677`](https://doi.org/10.5281/zenodo.21736677).
+
+Formalization concept DOI: [`10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
+Zenodo will assign a new version DOI to v0.48.0 when that release is
+published; the immutable v0.47.0 version DOI is not reused.
 
 Target manuscript: `paper_C_complete_v08_en.pdf` (71 physical pages in the
 file carrying the definitive fingerprint), SHA-256
@@ -28,8 +32,13 @@ themselves been formalized**. It deliberately distinguishes:
 3. external results that cannot honestly be replaced by axioms when the goal
    is certification.
 
-The delivered code contains neither `sorry` nor any added mathematical axiom.
-The command
+The frozen 382-file Paper C core and the solution-side Comparator wrappers
+contain neither `sorry` nor any added mathematical axiom.  The two trusted
+challenge files are different by design: `Challenge.lean` and
+`ChallengeTransfer.lean` each contain exactly one final `by sorry`, marking
+the statement to be supplied by the independently built solution.  Those two
+intentional interface placeholders are not proof debt and are counted
+separately in the generated metadata.  The command
 
 ```bash
 rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' PaperC.lean PaperC
@@ -39,7 +48,119 @@ must therefore return no matches. This certifies only the modules present, not
 the complete 71-page target manuscript or its synchronized 72-page French
 source.
 
-Project version `0.47.0` closes the root-module gap in the indivisible
+## External semantic audit boundary (v0.48.0)
+
+Version `0.48.0` adds two small Mathlib-only trust boundaries without changing
+the mathematical core:
+
+| Comparator target | Trusted statement | Solution-side interface and proof | Scope |
+|---|---|---|---|
+| `comparator/theorem_one_one.json` | `Challenge.lean` | `Solution.lean` | The quantitative finite-cylinder form of Theorem 1.1 |
+| `comparator/theorem_one_one_transfer.json` | `ChallengeTransfer.lean` | `SolutionTransfer.lean` | Exact identity of the infinite-product and finite-cylinder laws |
+
+`Challenge.lean` imports only `Mathlib`.  It defines the finite uniform
+Rademacher cylinder, the associated completely multiplicative sign function,
+the dyadic start count and its law, the Poisson law, and total variation with
+the explicit half-`ℓ¹` normalization.  Its theorem
+`paper_c_theorem_one_one_finite_cylinder` is the rate on printed/PDF page 3 of
+the frozen English manuscript.  The challenge declarations live in the fresh
+`PaperCAudit` namespace.  `Solution.lean` itself reproduces that complete
+declarative interface, with the same names, types, and bodies, without
+importing the Challenge.  It additionally imports `PaperC` and closes that
+exact statement with
+`PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical`.
+The Arratia--Goldstein--Gordon finite-probability record and the Halter--Koch
+quadratic-order conductor record are not definitionally identical to their
+core counterparts, so `Solution.lean` contains two explicit, proved record
+translations.  `SolutionTransfer.lean` likewise reproduces the declarations
+specific to the infinite-model interface without importing
+`ChallengeTransfer.lean`, then applies the frozen exact law identity.  The
+two pairs are intentionally loaded in separate environments because their
+global names coincide.
+
+The theorem takes exactly four ordinary, fully stated literature hypotheses:
+
+| Literature input | Audit bridge | Role in the paper |
+|---|---|---|
+| Arratia--Goldstein--Gordon, Theorem 1 | `AGG89-T1-finite-dependency-b3-zero` | Finite Chen--Stein bound with `b₃ = 0` |
+| Evertse--Silverman, Theorem 1(b) | `ES86-T1b-Q-split-n2` | Uniform count for the split quadratic equation used in Lemma 9.1 |
+| Halter--Koch, Theorems 1.1.6, 5.1.7, 5.2.3, 5.2.5 | `HK13-QO-conductor-fibres` | Quadratic-order conductor and unit-coset comparison used in Lemma 9.2 |
+| Nicolas--Robin, Theorem 1 | `NR83-T1-divisor-log-bound` | Direct logarithmic divisor bound used in Lemma 9.2 |
+
+These are theorem arguments, not Lean axioms.  The explicit Comparator
+allowlist in both JSON files is exactly `propext`, `Quot.sound`, and
+`Classical.choice`.
+
+The presentation differences from the manuscript are deliberate and recorded
+inside the challenge:
+
+- the main challenge uses the finite cylinder of primes at most `2*N+L`, while
+  the manuscript starts from the infinite product; the second Comparator pair
+  is required for exact transfer of the law;
+- `UniformBigOOn` expands `O_C` as one nonnegative constant and one threshold,
+  followed by all `N` beyond that threshold and all admissible `L`; the
+  threshold is uniform in `L` and may depend on `C`;
+- the critical window is exactly
+  `|L - log N / log 2| ≤ C`, so the admissible window itself depends on `C`;
+- total variation is written as one half of the discrete `ℓ¹` distance,
+  equivalent to the supremum-over-events convention used in the paper;
+- the interface proves the harmless strengthening `C ≥ 0`; the manuscript
+  states `C > 0`.
+
+The global longest-run theorem is intentionally outside this Comparator
+surface.  It consumes the other three open literature bridges and will need a
+separate audit target.
+
+**Recorded status: both Paper C targets passed an unsandboxed Comparator
+semantic smoke test.**  Each configuration ran in its own clean checkout,
+Comparator built the Challenge and Solution itself, the Lean default kernel
+accepted the solution, and the process exited with status 0.  These runs were
+performed as `root`, with Comparator's fake-landrun shim and an `LD_PRELOAD`
+compatibility shim; they establish semantic/toolchain compatibility only.
+They do not establish sandbox isolation, non-privileged execution, or a
+second-kernel result.  `nanoda` is not installed for this release candidate
+and both configurations set `enable_nanoda` to `false`.
+
+The main transcript is
+`comparator/transcripts/theorem_one_one_unsandboxed.txt`, SHA-256
+`b61738cb6fd4a08068da493821a6c9b608c2fb5ed28916778bf7950024c2b4e8`.
+The independent infinite-to-finite transfer transcript is
+`comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt`, SHA-256
+`1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f`.
+Publication of v0.48.0 remains blocked until both configurations pass the
+official hardened local procedure below with real landrun inside
+`systemd-run`, under a non-privileged user, and the complete hardened
+transcripts are attached to the release.
+
+One narrower compatibility probe has actually run: Comparator's own upstream
+self-test suite completed under the pinned sources with the official
+fake-landrun shim.  Its transcript is
+`comparator/transcripts/toolchain_compatibility_unsandboxed.txt`, SHA-256
+`2ee3dcde7fee2dc4a31b1cc4395ea9f5d31f2b2526741f6f18f6463991c25cd5`.
+This earlier transcript is an unsandboxed test of the tool combination only;
+unlike the two project smoke-test transcripts above, it did not load either
+Paper C configuration.
+
+`formalization.yaml` uses the official v0.3 format.  It and
+`audit_manifest.json` are generated deterministically from the schema-2
+`audit_config.json`, which is the sole editorial source for manuscript-item
+mapping, bridge consumption, conditionality, and Comparator coverage.  The
+generated status records the proof-side `sorry_count` separately from the two
+intentional challenge placeholders and records the present review level as
+agent-reviewed, not independent peer review.  The item list itself remains an
+editorial inventory requiring human review; it cannot be inferred completely
+from Lean or from the PDFs.
+
+The historical core fileset remains exactly `PaperC.lean` plus the 381 files
+under `PaperC/`.  Its v0.47.0 digest is retained independently from the new
+Comparator fileset.  The core SHA-256 is
+`f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999`;
+the v0.48.0 Comparator-fileset SHA-256 is
+`646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
+The two manuscript PDF byte streams and their SHA-256 fingerprints are
+unchanged.
+
+Project version `0.47.0` closed the root-module gap in the indivisible
 manuscript--sources--audit triplet. `PaperC.lean`, the library target built by
 Lake, now participates in source discovery, the digest, declaration and bridge
 inventory, and the generated kernel audit. Both certified PDFs are included
@@ -316,8 +437,21 @@ Starting with version 0.19, every published archive has a single
 `paper_c_lean/` root. Project files sit immediately beneath that root. This
 contract is stable for subsequent versions: neither a flat archive nor a
 double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
-`paper_c_lean_v047.zip`. It includes both certified PDFs at the project root,
+`paper_c_lean_v048.zip`. It includes both certified PDFs at the project root,
 so every fingerprint check is executable offline from a fresh extraction.
+Validate the generated metadata in the extracted archive with the generator's
+read-only check, not with `git diff`:
+
+```bash
+zip_check_dir="$(mktemp -d)"
+unzip -q paper_c_lean_v048.zip -d "$zip_check_dir"
+(cd "$zip_check_dir/paper_c_lean" && \
+  node scripts/check_comparator_sources.mjs && \
+  node scripts/generate_audit.mjs --check)
+```
+
+The archive intentionally contains no `.git` directory, so a Git cleanliness
+test is neither available nor required for this extraction check.
 
 ## Certified modules
 
@@ -1335,64 +1469,431 @@ outside the covered zone.
 ## Building
 
 The project pins Lean `v4.32.2` and mathlib `v4.32.2`. The `lean-toolchain`
-file, `lakefile.toml`, and the Lake manifest lock this toolchain for v047.
+file, `lakefile.toml`, and the Lake manifest lock this toolchain for v0.48.0.
 The repository contains 381 modules under `PaperC/` plus the root module
 `PaperC.lean`: 382 audited Lean source files and 146,391 lines. The generated
 manifest records 4,065 theorems and five lemmas, hence 4,070 public
 declarations and 4,072 audit targets: 3,912 declarations have no registered
 bridge premise and 158 are conditional. Relative to the content-frozen v044,
-v045 added eight modules and 94 public declarations; v046 and v047 remove no
-public name and change no earlier signature. The earlier 521-line increase
-from v042 to v043 consisted exclusively of proof-body adaptations to Lean
-4.32.2.
+v045 added eight modules and 94 public declarations; v046--v048 remove no
+public name and change no earlier core signature. The earlier 521-line
+increase from v042 to v043 consisted exclusively of proof-body adaptations to
+Lean 4.32.2.
 
-Fetch the dependency cache once with `lake exe cache get` when needed. The
-release and CI checks then run in this exact order:
+The exact source pins used by the v0.48.0 compatibility work are:
+
+| Component | Version or commit |
+|---|---|
+| Lean | `v4.32.2`, commit `f3b06c705e6c85f5314019d5d3baab0fec5b580c` |
+| Mathlib | `v4.32.2`, commit `905b95818eb32af7874a58b427f50c1711a5e96c` |
+| Comparator | `51491237b1d2f96cca203af9c34bced6fe38e0d8` |
+| lean4export | `af5aa64bb914c3c2c781f378088dbd38acf4f804` |
+| landrun | `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4` |
+| formalization.yaml v0.3 template | `fab03cbbed1a5857de17af32de30421a734c77c6` |
+
+There is no official Comparator/lean4export `v4.32.2` tag.  The exact commits
+above therefore replace a nonexistent version tag.  In particular, the
+Comparator binary and the standalone lean4export binary must both be built
+from their pinned sources with the Paper C Lean `v4.32.2` toolchain; do not
+silently build Comparator with the newer toolchain named by its source
+checkout.  These are source
+pins, not evidence of a hardened execution; the actual smoke-test and
+publication status is stated above.
+
+### Ordinary build and generated metadata
+
+Fetch the Mathlib cache once when needed.  The ordinary development and CI
+job may compile both sides explicitly:
 
 ```bash
+lake exe cache get
 node scripts/generate_audit.mjs --check-pdfs
 node scripts/generate_audit.mjs --check-source-digest
 rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' PaperC.lean PaperC
+node scripts/check_comparator_sources.mjs
 node scripts/test_audit_root_guards.mjs
-lake build
-node scripts/generate_audit.mjs
+lake build PaperC
+lake env lean Challenge.lean
+lake env lean ChallengeTransfer.lean
+lake env lean Solution.lean
+lake env lean SolutionTransfer.lean
+node scripts/generate_audit.mjs --check
 mkdir -p ci-logs
 lake env lean AuditCheck.lean 2>&1 | tee ci-logs/AuditCheck.log
 node scripts/verify_audit.mjs --input ci-logs/AuditCheck.log
 node scripts/generate_audit.mjs --check
 ```
 
-The first command hashes the actual bytes of both repository PDFs and fails if
-either file is absent or differs from `audit_config.json`. The second compares
-the checked-in manifest with the digest of the exact native-filesystem set
-recorded as `source_fileset: ["PaperC.lean", "PaperC/**/*.lean"]`. The
-hygiene scan and two isolated
-root guards then establish that changing `PaperC.lean` invalidates the digest
+When this sequence is run in a tracked checkout, the following additional
+check confirms that regeneration introduced no tracked change:
+
+```bash
+git diff --exit-code -- AuditCheck.lean audit_manifest.json formalization.yaml AXIOM_AUDIT.md
+```
+
+Do not run that Git command when validating an extracted release ZIP: an
+archive has no repository history.  In that case the preceding
+`node scripts/generate_audit.mjs --check` is the authoritative deterministic
+comparison against the generated files shipped in the archive.
+
+The PDF check hashes the actual bytes of both repository PDFs and fails if
+either file is absent or differs from `audit_config.json`. The source-digest
+check covers the exact native-filesystem set recorded as
+`core_source_fileset: ["PaperC.lean", "PaperC/**/*.lean"]`, independently of
+the Comparator fileset. The hygiene scan, `check_comparator_sources.mjs`, and
+two isolated root guards then establish the core token policy, the
+Challenge/Solution structural boundary, and that changing `PaperC.lean`
+invalidates the digest
 and that adding a public theorem there adds both an inventory record and its
-generated `#print axioms` command. Only then is the project built and the
-exhaustive audit regenerated. `AuditCheck.lean` imports `PaperC`, so the root
-module itself is loaded; the single logged run executes `#print axioms` for
-every public theorem or lemma and for the two historical public proof-carrying
-constructions.
+generated `#print axioms` command.  The interface checks require Mathlib-only
+imports and exactly one final placeholder in each Challenge, reject every
+forbidden token in both Solution files and any solution-side support module,
+and compile the four modules separately.  Only then are the shipped generated
+artifacts checked and the exhaustive audit executed. `AuditCheck.lean` imports
+`PaperC`, so the root module itself is
+loaded; the single logged run executes `#print axioms` for every public theorem
+or lemma and for the two historical public proof-carrying constructions.
 `verify_audit.mjs` reads its preserved log, requires one output for every
 manifest target, and rejects anything outside the foundational allowlist. The
 final `--check` hashes both PDFs again and verifies that `AuditCheck.lean`,
-`audit_manifest.json`, and the generated registry in `AXIOM_AUDIT.md` are
-exactly current. The public workflow implementing this sequence is
+`audit_manifest.json`, `formalization.yaml`, and the generated registry in
+`AXIOM_AUDIT.md` are exactly current.  Schema-2 `audit_config.json` is the sole
+input for the editorial item map; generation checks names, declaring files,
+bridge identifiers, conditionality, and the theorem names listed by each
+Comparator configuration. The public workflow implementing this sequence is
 `.github/workflows/reproducibility.yml`; it archives `AuditCheck.log` as a CI
 artifact. The generator's source enumeration is independent of `rg`; the
 workflow nevertheless installs `ripgrep` explicitly before the separate
 root-inclusive hygiene scan.
 
+The workflow's two-entry Comparator matrix runs in separate clean checkouts.
+On the current hosted runner, pushes and pull requests use the explicitly
+non-certifying smoke test when real landrun, a usable user systemd manager, or
+an approved transport for Comparator's prescribed `--pty` wrapper is absent.
+After an actual hosted run attached both Comparator targets without producing
+their first startup marker, the workflow conservatively treats captured
+non-TTY stdio as insufficient evidence that this transport is usable.  This
+is a fail-closed CI policy, not a claim that `systemd-run --pty` intrinsically
+requires pre-existing terminal file descriptors.  A manual
+`workflow_dispatch` with `require_hardened: true` disables the fallback and is
+therefore expected to fail on the current hosted transport; the release gate
+remains the hardened local procedure below.  Each Comparator execution step
+is capped at 60 minutes, and each successful matrix entry assembles one atomic
+transcript and one `result-*.json`.  The script
+`scripts/assemble_comparator_evidence.mjs` rejects stale hashes, dirty
+checkouts, pre-existing `.olean` files, root execution, `LD_PRELOAD`, missing
+Lean-kernel acceptance markers, or an inaccurate sandbox/nanoda claim.
+
+This ordinary build is not a Comparator certificate.  In particular, it
+compiles the solution wrappers in the same working tree and is therefore
+incompatible with Comparator's clean-checkout trust assumption.
+
+### Building the pinned Comparator tools
+
+The following one-time setup uses independent tool checkouts.  It requires
+Git, Elan/Lake, Go 1.24 or later, and a Linux host for real landrun.  The
+Comparator and lean4export are both built with Paper C's exact `v4.32.2`
+toolchain.  Comparator's source checkout names `v4.33.0-rc1`, but that is not
+the compatibility combination tested for this release.
+
+```bash
+PAPER_C_TOOLS="$(realpath ../paper-c-v048-tools)"
+mkdir -p "$PAPER_C_TOOLS/bin"
+
+git clone https://github.com/leanprover/comparator.git "$PAPER_C_TOOLS/comparator"
+git -C "$PAPER_C_TOOLS/comparator" checkout 51491237b1d2f96cca203af9c34bced6fe38e0d8
+(cd "$PAPER_C_TOOLS/comparator" && \
+  ELAN_TOOLCHAIN=leanprover/lean4:v4.32.2 lake build comparator)
+
+git clone https://github.com/leanprover/lean4export.git "$PAPER_C_TOOLS/lean4export-4.32.2"
+git -C "$PAPER_C_TOOLS/lean4export-4.32.2" checkout af5aa64bb914c3c2c781f378088dbd38acf4f804
+(cd "$PAPER_C_TOOLS/lean4export-4.32.2" && \
+  ELAN_TOOLCHAIN=leanprover/lean4:v4.32.2 lake build lean4export)
+
+git clone https://github.com/Zouuup/landrun.git "$PAPER_C_TOOLS/landrun"
+git -C "$PAPER_C_TOOLS/landrun" checkout 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
+(cd "$PAPER_C_TOOLS/landrun" && \
+  go build -trimpath -o "$PAPER_C_TOOLS/bin/landrun" cmd/landrun/main.go)
+
+git clone https://github.com/mathlib-initiative/formalization.yaml.git \
+  "$PAPER_C_TOOLS/formalization-yaml"
+git -C "$PAPER_C_TOOLS/formalization-yaml" checkout fab03cbbed1a5857de17af32de30421a734c77c6
+```
+
+For each Paper C Comparator run intended as publication evidence, save the
+exact identities and machine-dependent binary hashes in the same transcript
+as the command output.  The hardened recipe below does this atomically.  The
+following commands list the required tool fields for an exploratory run:
+
+```bash
+git -C "$PAPER_C_TOOLS/comparator" rev-parse HEAD
+git -C "$PAPER_C_TOOLS/lean4export-4.32.2" rev-parse HEAD
+git -C "$PAPER_C_TOOLS/landrun" rev-parse HEAD
+git -C "$PAPER_C_TOOLS/formalization-yaml" rev-parse HEAD
+lean --version
+lake env lean --version
+sha256sum \
+  "$PAPER_C_TOOLS/comparator/.lake/build/bin/comparator" \
+  "$PAPER_C_TOOLS/comparator/scripts/fake-landrun.sh" \
+  "$PAPER_C_TOOLS/lean4export-4.32.2/.lake/build/bin/lean4export" \
+  "$PAPER_C_TOOLS/bin/landrun"
+```
+
+This requirement is specific to the two project runs.  It is not a blanket
+claim that every historical transcript in `comparator/transcripts/` contains
+all of these fields: in particular, the earlier upstream compatibility probe
+is a narrower tool-suite log and is not publication evidence for Paper C.
+
+### Unsandboxed development smoke test
+
+Comparator's own `scripts/fake-landrun.sh` is useful for compatibility
+development on a disposable checkout.  It deliberately performs no sandboxing.
+This command is therefore an **unsandboxed Comparator semantic smoke test**,
+never the hardened publication evidence:
+
+```bash
+PAPER_C_TOOLS="$(realpath ../paper-c-v048-tools)"
+COMPARATOR_LANDRUN="$(realpath "$PAPER_C_TOOLS/comparator/scripts/fake-landrun.sh")" \
+COMPARATOR_LEAN4EXPORT="$(realpath "$PAPER_C_TOOLS/lean4export-4.32.2/.lake/build/bin/lean4export")" \
+lake env "$(realpath "$PAPER_C_TOOLS/comparator/.lake/build/bin/comparator")" \
+  comparator/theorem_one_one.json
+```
+
+The transfer smoke test substitutes
+`comparator/theorem_one_one_transfer.json`.  Both commands have actually
+completed in separate clean checkouts with Lean default-kernel acceptance and
+exit status 0.  They were run as `root` with fake-landrun and an `LD_PRELOAD`
+compatibility shim, so they show only toolchain and semantic compatibility;
+they do not establish sandbox isolation or non-privileged execution.  The
+recorded transcripts and SHA-256 values are listed in the status section
+above.
+
+### Hardened local Comparator procedure
+
+The supported reference hosts are stock Ubuntu 24.04 LTS and 26.04 LTS on
+`x86_64` or `arm64`.  Ubuntu 22.04's stock kernel and Node.js are too old for
+this release gate.  The runner requires Linux 6.2 or newer so that Landlock
+can mediate truncation as well as file creation, and Node.js 18 or newer.
+
+Install the Ubuntu prerequisites once:
+
+```bash
+sudo apt update
+sudo apt install --yes \
+  bash bsdutils build-essential ca-certificates coreutils curl \
+  dbus-user-session findutils git grep nodejs sed systemd tar util-linux zstd
+```
+
+Install the official per-user Elan distribution if `$HOME/.elan/bin/elan`
+does not already exist, then load it in the current shell:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf \
+  https://elan.lean-lang.org/elan-init.sh | sh -s -- -y
+source "$HOME/.elan/env"
+```
+
+After installing `dbus-user-session`, log out and back in if
+`systemctl --user show-environment` cannot contact the user manager.  Do not
+run the verifier with `sudo`.  Go does not need to be installed: the runner
+downloads Go 1.24.13 for the current architecture and checks its official
+SHA-256 before use.  The pinned Lean toolchain may already be installed: the
+runner uses Elan's idempotent `run --install` interface, which reuses it when
+present and installs it only when absent.  A separate invocation then parses
+the single-line Lean version record and requires the exact pinned commit
+before continuing.
+
+Update to the exact commit to be certified and require a completely clean
+checkout, including no untracked files.  Run the preflight first, then the
+full verifier from an interactive terminal.  The outer stock `setpriv` wrapper
+removes the `CAP_WAKE_ALARM` capability that `pam_systemd` may place in the
+calling Ubuntu session; the clean `PATH` prevents user-installed commands from
+shadowing the audited Ubuntu and Elan binaries:
+
+```bash
+git status --short
+unset LD_LIBRARY_PATH
+PATH="/usr/bin:/bin:$HOME/.elan/bin" \
+  /usr/bin/setpriv --inh-caps=-all --ambient-caps=-all --no-new-privs -- \
+  ./scripts/run_hardened_comparator.sh --preflight-only
+PATH="/usr/bin:/bin:$HOME/.elan/bin" \
+  /usr/bin/setpriv --inh-caps=-all --ambient-caps=-all --no-new-privs -- \
+  ./scripts/run_hardened_comparator.sh
+```
+
+The first command must print nothing.  A `tmux` terminal is acceptable, but a
+pipe, `nohup`, an IDE task runner, a container, and redirected standard file
+descriptors are rejected.  The full run builds the three pinned tools, creates
+one fresh Paper C checkout immediately before each target, fetches only the
+trusted dependency cache, and runs both targets through the pinned real
+landrun inside the Comparator README's `systemd-run --user --pty` wrapper.
+Before each target it tests that real landrun refuses file creation,
+truncation, removal, and rename under the exact read-only-root policy.
+Ubuntu 26.04 may implement `/usr/bin/sha256sum`, `touch`, and `truncate` as
+root-owned links into its stock Rust coreutils provider and `rm` or `mv` as
+links to GNU-prefixed binaries.  The runner accepts those provider layouts
+only through the fixed `/usr/bin` invocation paths, validates the resolved
+targets as root-owned and non-writable by group/others, and records them in
+the evidence.  Their canonical parent directories receive the same ownership
+and write-permission checks.  Since `systemd --user` is an independent manager
+and may retain `CAP_WAKE_ALARM` even after the calling shell is cleaned, the
+runner also audits and fingerprints `/usr/bin/setpriv` and invokes it inside
+each of the four transient payloads.  The systemd `NoNewPrivileges=yes`
+property remains mandatory.  The launcher and every transient Comparator unit
+must report zero inheritable/permitted/effective/ambient capabilities and
+`NoNewPrivs=1`; the evidence validator requires both transient markers and the
+recorded inner capability-drop method.  A failed initial systemd probe prints
+a bounded diagnostic transcript before stopping.
+
+Systemd 259 decorates the first interactive PTY payload byte with an OSC window
+title by default.  The runner rejects inherited
+`SYSTEMD_ADJUST_TERMINAL_TITLE` values in both the caller and user-manager
+environments, sets the documented value `0` before every PTY `systemd-run`, and
+records that setting in hardened evidence.  Security markers therefore remain
+exact lines; the verifier does not weaken them by stripping arbitrary terminal
+control sequences.  The inexpensive preflight now verifies this exact-line
+property before any tool download or build.
+
+Raw PTY marker checks operate directly on the transcript file and accept only
+an exact record with one optional terminal CR.  They deliberately use neither a
+permissive terminal-control filter nor an early-exit `grep -q` pipeline: with
+`pipefail`, the latter can turn a valid early match in a long transcript into a
+producer `SIGPIPE` failure.
+
+The Comparator phase may be quiet for a while: its raw pseudo-terminal stream
+is written to evidence files instead of being replayed to the invoking
+terminal.  This prevents an untrusted Solution from injecting terminal control
+sequences.  Failures preserve the diagnostic directory and never create a
+`SUCCESS` marker.  Only after both result JSON files pass
+`scripts/assemble_comparator_evidence.mjs` validation does the runner create:
+
+- an evidence directory ending in the certified commit and UTC timestamp;
+- a sibling `.tar.zst` upload bundle;
+- a sibling `.tar.zst.sha256` checksum file.
+
+Preserved `*.partial` directories and temporary work trees are forensic
+diagnostics only: do not rename, promote, or reuse them.  Evidence production
+after any failure requires a complete new run from a clean committed `HEAD`.
+
+The final summary is a sandboxed, non-root Comparator result accepted by the
+Lean default kernel.  It is deliberately not described as a dual-kernel
+result: both configurations keep `enable_nanoda: false`.  The trusted
+computing base still includes the recorded Ubuntu/systemd binaries, pinned
+Comparator/lean4export/landrun sources, Lean, and the downloaded Mathlib OLean
+cache.  The operational probes document the tested restrictions; they are not
+a general certification of every host-security property.
+
+<details>
+<summary>Obsolete manual sketch retained for historical comparison</summary>
+
+Do not use the following inline sketch for release evidence.  It predates the
+atomic two-target runner, its complete negative-control suite, safe PTY
+capture, and machine-readable final validation.
+
+```bash
+PAPER_C_TOOLS="$(realpath ../paper-c-v048-tools)"
+export COMPARATOR_BIN="$(realpath "$PAPER_C_TOOLS/comparator/.lake/build/bin/comparator")"
+export COMPARATOR_LANDRUN="$(realpath "$PAPER_C_TOOLS/bin/landrun")"
+export COMPARATOR_LEAN4EXPORT="$(realpath "$PAPER_C_TOOLS/lean4export-4.32.2/.lake/build/bin/lean4export")"
+CONFIG=comparator/theorem_one_one.json
+LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
+
+(
+  set -o pipefail
+  {
+    set -eu
+    trap 'final_status=$?; echo "exit_code=$final_status"' EXIT
+    echo "timestamp_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    echo "mode=hardened-procedure-candidate"
+    echo "uid=$(id -u)"
+    test "$(id -u)" -ne 0
+    echo "repository_commit=$(git rev-parse HEAD)"
+    tracked_dirty="$(git status --porcelain --untracked-files=no)"
+    if [ -n "$tracked_dirty" ]; then
+      echo 'tracked_dirty=FAILED'
+      printf '%s\n' "$tracked_dirty"
+      exit 88
+    fi
+    echo 'tracked_dirty_count=0'
+    echo "lean_toolchain=$(tr -d '\r\n' < lean-toolchain)"
+    echo "mathlib_version=$(git -C .lake/packages/mathlib describe --tags --exact-match)"
+    echo "mathlib_commit=$(git -C .lake/packages/mathlib rev-parse HEAD)"
+    echo "config=$CONFIG"
+    sha256sum "$CONFIG"
+    lake env lean --version
+    "$COMPARATOR_LANDRUN" --version
+    systemd-run --version | sed -n '1p'
+    echo "comparator_commit=$(git -C "$PAPER_C_TOOLS/comparator" rev-parse HEAD)"
+    echo "lean4export_commit=$(git -C "$PAPER_C_TOOLS/lean4export-4.32.2" rev-parse HEAD)"
+    echo "landrun_commit=$(git -C "$PAPER_C_TOOLS/landrun" rev-parse HEAD)"
+    sha256sum \
+      "$COMPARATOR_BIN" \
+      "$COMPARATOR_LEAN4EXPORT" \
+      "$COMPARATOR_LANDRUN"
+
+    project_oleans="$(find . -path './.lake/packages' -prune -o \
+      -type f -name '*.olean' -print)"
+    if [ -n "$project_oleans" ]; then
+      echo 'preexisting_project_oleans=FAILED'
+      printf '%s\n' "$project_oleans"
+      exit 89
+    fi
+    echo 'preexisting_project_olean_count=0'
+
+    write_probe="$(pwd)/.landrun-write-must-fail"
+    rm -f "$write_probe"
+    echo 'landrun_negative_control=running'
+    if "$COMPARATOR_LANDRUN" \
+      --best-effort --ro / --rw /dev -ldd -add-exec -- \
+      /usr/bin/touch "$write_probe"; then
+      echo 'landrun_negative_control=FAILED_write_returned_success'
+      exit 90
+    elif [ -e "$write_probe" ]; then
+      echo 'landrun_negative_control=FAILED_file_was_created'
+      exit 91
+    fi
+    echo 'landrun_negative_control=passed_write_refused'
+
+    RUN=(
+      systemd-run '--property=RestrictAddressFamilies=~AF_UNIX' --user --pty
+      -E "PATH=$PATH"
+      -E "COMPARATOR_BIN=$COMPARATOR_BIN"
+      -E "COMPARATOR_LANDRUN=$COMPARATOR_LANDRUN"
+      -E "COMPARATOR_LEAN4EXPORT=$COMPARATOR_LEAN4EXPORT"
+      -E "CONFIG=$CONFIG"
+      --working-directory="$(pwd)" --
+      bash -c 'lake env "$COMPARATOR_BIN" "$CONFIG"'
+    )
+    printf 'command='
+    printf ' %q' "${RUN[@]}"
+    printf '\n'
+    set +e
+    "${RUN[@]}"
+    status=$?
+    set -e
+    exit "$status"
+  } 2>&1 | tee "$LOG"
+  exit "${PIPESTATUS[0]}"
+)
+```
+
+</details>
+
+The automated runner always executes the main finite-cylinder and independent
+infinite-to-finite transfer configurations.  Do not infer transfer coverage
+from the main result alone.  No hardened reference run has succeeded yet: the
+existence of this runner is a reproducible release procedure, not a report
+that its host, sandbox, and non-privileged conditions have already been met.
+
 The axiom audit does not detect ordinary hypotheses. Their inventory is the
 bridge registry in `audit_manifest.json` and `AXIOM_AUDIT.md`: each entry has
 `kind: external | internal` and `status: open | discharged`, and each
 conditional public theorem is marked with the exact list and kind of bridges
-it takes as direct premises. In v047, the interfaces for 9.10, 9.2, 17.26,
+it takes as direct premises. In v0.48.0, the interfaces for 9.10, 9.2, 17.26,
 17.28, and 17.30, as well as the former Nicolas--Robin envelope, have
 `status: discharged`. `kind: internal` describes provenance and therefore does
 not by itself mean that debt remains open. All five `internal` interfaces are
-`discharged`; all seven `open` entries are `external`. The v047 manifest's
+`discharged`; all seven `open` entries are `external`. The v0.48.0 manifest's
 declaration, audit-target, and conditionality counts are reproduced in
 `REPRODUCIBILITY.md`.
 

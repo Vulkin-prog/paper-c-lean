@@ -4,9 +4,24 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      require_hardened:
+        description: >-
+          Fail unless both Comparator matrix entries complete with real landrun
+          inside the official systemd-run wrapper.
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
+
+env:
+  LEAN_COMMIT: f3b06c705e6c85f5314019d5d3baab0fec5b580c
+  MATHLIB_COMMIT: 905b95818eb32af7874a58b427f50c1711a5e96c
+  COMPARATOR_COMMIT: 51491237b1d2f96cca203af9c34bced6fe38e0d8
+  LEAN4EXPORT_COMMIT: af5aa64bb914c3c2c781f378088dbd38acf4f804
+  LANDRUN_COMMIT: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
 
 jobs:
   audit:
@@ -48,6 +63,16 @@ jobs:
             exit "$status"
           fi
 
+      - name: Check Comparator trust-boundary source structure
+        run: node scripts/check_comparator_sources.mjs
+
+      - name: Check the hardened local runner
+        shell: bash
+        run: |
+          test -x scripts/run_hardened_comparator.sh
+          bash -n scripts/run_hardened_comparator.sh
+          scripts/run_hardened_comparator.sh --help >/dev/null
+
       - name: Test root-module audit guards
         run: node scripts/test_audit_root_guards.mjs
 
@@ -63,6 +88,21 @@ jobs:
       - name: Build the project
         run: lake build
 
+      # Keep all four roots in separate Lean invocations.  Challenge and
+      # Solution intentionally redeclare the same global interface names and
+      # must never be imported into one shared environment.
+      - name: Compile Challenge separately
+        run: lake build Challenge
+
+      - name: Compile ChallengeTransfer separately
+        run: lake build ChallengeTransfer
+
+      - name: Compile Solution separately
+        run: lake build Solution
+
+      - name: Compile SolutionTransfer separately
+        run: lake build SolutionTransfer
+
       - name: Generate the exhaustive audit
         run: node scripts/generate_audit.mjs
 
@@ -76,9 +116,22 @@ jobs:
         run: node scripts/verify_audit.mjs --input ci-logs/AuditCheck.log
 
       - name: Verify the final manifest and generated artifacts
+        shell: bash
         run: |
+          set -euo pipefail
           node scripts/generate_audit.mjs --check
-          git diff --exit-code -- AuditCheck.lean audit_manifest.json AXIOM_AUDIT.md
+          generated=(
+            AuditCheck.lean
+            audit_manifest.json
+            formalization.yaml
+            AXIOM_AUDIT.md
+          )
+          git diff --exit-code -- "${generated[@]}"
+          if [ -n "$(git status --porcelain -- "${generated[@]}")" ]; then
+            git status --short -- "${generated[@]}"
+            echo 'Generated audit artifacts are not identical to the committed files.' >&2
+            exit 1
+          fi
 
       - name: Preserve the kernel audit log
         if: always()
@@ -87,3 +140,470 @@ jobs:
           name: paper-c-kernel-audit-${{ github.sha }}
           path: ci-logs/AuditCheck.log
           if-no-files-found: error
+
+  # Every matrix entry gets a separate hosted runner and a separate clean
+  # checkout.  In particular, no olean produced while checking one Solution
+  # can be observed by the next Comparator invocation.
+  comparator:
+    name: >-
+      Comparator evidence (strict hardened mode when requested; otherwise an
+      explicit non-certifying fallback is allowed) - ${{ matrix.label }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      REQUIRE_HARDENED: >-
+        ${{ github.event_name == 'workflow_dispatch' &&
+            inputs.require_hardened == true && 'true' || 'false' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: theorem-one-one
+            config: comparator/theorem_one_one.json
+          - label: infinite-finite-transfer
+            config: comparator/theorem_one_one_transfer.json
+
+    steps:
+      - name: Check out Paper C into a clean Comparator workspace
+        uses: actions/checkout@v4
+        with:
+          path: project
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          clean: true
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Check out pinned Comparator
+        uses: actions/checkout@v4
+        with:
+          repository: leanprover/comparator
+          ref: ${{ env.COMPARATOR_COMMIT }}
+          path: tools/comparator
+          clean: true
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Check out pinned lean4export
+        uses: actions/checkout@v4
+        with:
+          repository: leanprover/lean4export
+          ref: ${{ env.LEAN4EXPORT_COMMIT }}
+          path: tools/lean4export
+          clean: true
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Check out pinned landrun
+        uses: actions/checkout@v4
+        with:
+          repository: Zouuup/landrun
+          ref: ${{ env.LANDRUN_COMMIT }}
+          path: tools/landrun
+          clean: true
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Assert exact tool commits and an unprivileged runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$(id -u)" -eq 0 ]; then
+            echo 'Comparator must not run as root.' >&2
+            exit 1
+          fi
+          test "$(git -C tools/comparator rev-parse HEAD)" = "$COMPARATOR_COMMIT"
+          test "$(git -C tools/lean4export rev-parse HEAD)" = "$LEAN4EXPORT_COMMIT"
+          test "$(git -C tools/landrun rev-parse HEAD)" = "$LANDRUN_COMMIT"
+
+      - name: Validate the non-nanoda Comparator configuration
+        shell: bash
+        env:
+          COMPARATOR_CONFIG: ${{ matrix.config }}
+        run: |
+          set -euo pipefail
+          node - "$GITHUB_WORKSPACE/project/$COMPARATOR_CONFIG" <<'NODE'
+          const fs = require('node:fs');
+          const configPath = process.argv[2];
+          const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+          const expectedAxioms = ['propext', 'Quot.sound', 'Classical.choice'];
+          if (config.enable_nanoda !== false) {
+            throw new Error(`${configPath}: enable_nanoda must be false`);
+          }
+          if (JSON.stringify(config.permitted_axioms) !== JSON.stringify(expectedAxioms)) {
+            throw new Error(`${configPath}: unexpected permitted_axioms`);
+          }
+          if (!Array.isArray(config.theorem_names) || config.theorem_names.length === 0) {
+            throw new Error(`${configPath}: theorem_names must be nonempty`);
+          }
+          NODE
+
+      # Check the pristine checkout before invoking Lake: Lake may compile its
+      # own lakefile under .lake/config while preparing the Mathlib cache.
+      - name: Verify the clean project checkout contains no .olean
+        id: clean-project
+        shell: bash
+        run: |
+          set -euo pipefail
+          found="$(
+            find project \
+              -path 'project/.lake/packages' -prune -o \
+              -type f -name '*.olean' -print
+          )"
+          if [ -n "$found" ]; then
+            printf '%s\n' "$found"
+            echo 'A project .olean exists in the clean Comparator checkout.' >&2
+            exit 1
+          fi
+          echo 'preexisting_project_olean_count=0'
+          echo 'olean_count=0' >> "$GITHUB_OUTPUT"
+
+      - name: Set up the Paper C Lean 4.32.2 toolchain and Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: project
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          # Never restore or save the project's .lake directory here: a cache
+          # created by the ordinary build could contain Solution.olean.
+          use-github-cache: false
+
+      - name: Set up Go 1.24 for pinned landrun
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.x'
+          cache-dependency-path: tools/landrun/go.sum
+
+      - name: Build the pinned tools without building Paper C
+        shell: bash
+        run: |
+          set -euo pipefail
+          project_toolchain="$(tr -d '\r\n' < project/lean-toolchain)"
+
+          (
+            cd tools/comparator
+            # Comparator has no official Lean 4.32.2 tag.  Build the pinned
+            # source commit with Paper C's exact toolchain, which is the
+            # compatibility combination tested for this release.
+            elan run "$project_toolchain" lake build comparator
+          )
+          test "$(
+            git -C tools/comparator/.lake/packages/lean4export rev-parse HEAD
+          )" = "$LEAN4EXPORT_COMMIT"
+          (
+            cd tools/lean4export
+            elan run "$project_toolchain" lake build lean4export
+          )
+          mkdir -p tools/bin
+          (
+            cd tools/landrun
+            go build -trimpath -o ../bin/landrun ./cmd/landrun
+          )
+
+      - name: Record commits, versions, and executable fingerprints
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p project/ci-logs
+          dirty_count="$(git -C project status --porcelain --untracked-files=no | wc -l)"
+          if [ "$dirty_count" -ne 0 ]; then
+            git -C project status --short --untracked-files=no
+            echo 'The Comparator source checkout is not clean.' >&2
+            exit 1
+          fi
+          if [ -n "${LD_PRELOAD:-}" ]; then
+            echo 'LD_PRELOAD must be unset for Comparator evidence.' >&2
+            exit 1
+          fi
+          config_sha="$(sha256sum "project/${{ matrix.config }}" | cut -d' ' -f1)"
+          fileset_sha="$(
+            node - project/audit_config.json project <<'NODE'
+          const crypto = require('node:crypto');
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const config = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
+          const root = process.argv[3];
+          const compare = (left, right) => Buffer.from(left).compare(Buffer.from(right));
+          const files = [...config.verification.comparator.fileset].sort(compare);
+          const hash = crypto.createHash('sha256');
+          for (const relativePath of files) {
+            hash.update(relativePath);
+            hash.update('\0');
+            hash.update(fs.readFileSync(path.join(root, relativePath)));
+            hash.update('\0');
+          }
+          process.stdout.write(hash.digest('hex'));
+          NODE
+          )"
+          {
+            echo "timestamp=$(date --iso-8601=seconds)"
+            echo "github_repository=$GITHUB_REPOSITORY"
+            echo "github_sha=$GITHUB_SHA"
+            echo "github_run_id=$GITHUB_RUN_ID"
+            echo "github_run_attempt=$GITHUB_RUN_ATTEMPT"
+            echo "paper_c_commit=$(git -C project rev-parse HEAD)"
+            echo "tracked_worktree_dirty_count=$dirty_count"
+            echo "preexisting_project_olean_count=${{ steps.clean-project.outputs.olean_count }}"
+            echo "comparator_commit=$(git -C tools/comparator rev-parse HEAD)"
+            echo "lean4export_commit=$(git -C tools/lean4export rev-parse HEAD)"
+            echo "landrun_commit=$(git -C tools/landrun rev-parse HEAD)"
+            echo "lean_commit=$LEAN_COMMIT"
+            echo "mathlib_commit=$MATHLIB_COMMIT"
+            echo "config=${{ matrix.config }}"
+            echo "$config_sha  ${{ matrix.config }}"
+            echo "comparator_fileset_digest_sha256=$fileset_sha"
+            echo "project_toolchain=$(tr -d '\r\n' < project/lean-toolchain)"
+            echo 'comparator_source_toolchain='"$(tr -d '\r\n' < tools/comparator/lean-toolchain)"
+            echo 'comparator_build_toolchain=Paper C project toolchain'
+            echo 'lean4export_build_toolchain=Paper C project toolchain'
+            echo 'ld_preload=unset'
+            echo 'non_root=true'
+            echo "execution_uid=$(id -u)"
+            echo "execution_gid=$(id -g)"
+            echo "runner_os=${RUNNER_OS:-unknown}"
+            echo "runner_arch=${RUNNER_ARCH:-unknown}"
+            echo "uname=$(uname -a)"
+            echo "os_release=$(tr '\n' ';' < /etc/os-release)"
+            systemd --version | sed -n '1p'
+            node -e '
+              const fs = require("node:fs");
+              const manifest = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+              const mathlib = manifest.packages.find(pkg => pkg.name === "mathlib");
+              if (!mathlib) throw new Error("mathlib missing from lake-manifest.json");
+              console.log(`mathlib_manifest_revision=${mathlib.rev}`);
+              console.log(`mathlib_manifest_input_revision=${mathlib.inputRev}`);
+            ' project/lake-manifest.json
+            (
+              cd project
+              lean --version
+              lake --version
+            )
+            (
+              cd tools/comparator
+              project_toolchain="$(tr -d '\r\n' < "$GITHUB_WORKSPACE/project/lean-toolchain")"
+              elan run "$project_toolchain" lean --version
+              elan run "$project_toolchain" lake --version
+            )
+            go version
+            if mathlib_checkout_commit="$(
+              git -C project/.lake/packages/mathlib rev-parse HEAD 2>/dev/null
+            )"; then
+              echo "mathlib_checkout_commit=$mathlib_checkout_commit"
+            fi
+            sha256sum \
+              tools/comparator/.lake/build/bin/comparator \
+              tools/comparator/scripts/fake-landrun.sh \
+              tools/lean4export/.lake/build/bin/lean4export \
+              tools/bin/landrun
+            tools/bin/landrun --version
+            id
+          } 2>&1 | tee project/ci-logs/comparator-environment.txt
+
+      - name: Probe the official hardened wrapper
+        id: hardening
+        shell: bash
+        timeout-minutes: 5
+        run: |
+          set -u
+          stdin_is_tty=false
+          stdout_is_tty=false
+          stderr_is_tty=false
+          if [ -t 0 ]; then stdin_is_tty=true; fi
+          if [ -t 1 ]; then stdout_is_tty=true; fi
+          if [ -t 2 ]; then stderr_is_tty=true; fi
+          log="$GITHUB_WORKSPACE/project/ci-logs/hardening-probe.log"
+          exec > >(tee "$log") 2>&1
+          available=true
+          echo "wrapper_stdin_tty=$stdin_is_tty"
+          echo "wrapper_stdout_tty=$stdout_is_tty"
+          echo "wrapper_stderr_tty=$stderr_is_tty"
+          echo 'Probing landrun with the flags used by pinned Comparator.'
+          if ! "$GITHUB_WORKSPACE/tools/bin/landrun" \
+            --best-effort --ro / --rw /dev -ldd -add-exec -- \
+            /usr/bin/true; then
+            echo 'landrun probe failed.'
+            available=false
+          fi
+
+          # `--best-effort` may return success even if the host could not
+          # install the requested restrictions.  Require a negative control:
+          # the read-only root policy must actually reject this write.
+          write_probe="$GITHUB_WORKSPACE/project/ci-logs/landrun-write-must-fail"
+          rm -f "$write_probe"
+          if "$GITHUB_WORKSPACE/tools/bin/landrun" \
+            --best-effort --ro / --rw /dev -ldd -add-exec -- \
+            /usr/bin/touch "$write_probe"; then
+            echo 'landrun negative control unexpectedly allowed a write.'
+            available=false
+          elif [ -e "$write_probe" ]; then
+            echo 'landrun negative control returned failure but created the file.'
+            available=false
+          else
+            echo 'landrun negative control refused the write as required.'
+          fi
+          rm -f "$write_probe"
+
+          echo 'Probing the required systemd-run user wrapper.'
+          # Comparator's prescribed command uses `--pty`.  As a conservative
+          # hosted-CI policy, do not infer that this transport is usable from
+          # a trivial command when the workflow step's stdio is non-TTY: that
+          # probe succeeded once while both real Comparator processes then
+          # remained attached without observable startup output.  This is a
+          # fail-closed policy after an observed hang, not a claim that
+          # systemd-run intrinsically requires pre-existing terminal fds.
+          # Ordinary push/PR jobs fall back honestly; strict jobs fail closed.
+          if [ "$stdin_is_tty" != true ] || \
+             [ "$stdout_is_tty" != true ] || \
+             [ "$stderr_is_tty" != true ]; then
+            echo 'hosted-CI policy: non-TTY stdio is not approved for a certifying systemd-run --pty attempt.'
+            available=false
+          elif ! timeout 20s systemd-run \
+            --property=RestrictAddressFamilies=~AF_UNIX \
+            --user --pty \
+            -E PATH="$PATH" \
+            --working-directory "$GITHUB_WORKSPACE/project" \
+            -- /usr/bin/true; then
+            echo 'systemd-run user-wrapper probe failed.'
+            available=false
+          fi
+          echo "hardened_wrapper_available=$available"
+          echo "available=$available" >> "$GITHUB_OUTPUT"
+
+      - name: Refuse unavailable hardening in strict release mode
+        if: >-
+          env.REQUIRE_HARDENED == 'true' &&
+          steps.hardening.outputs.available != 'true'
+        shell: bash
+        run: |
+          echo 'Strict hardened evidence was requested, but real landrun and an approved transport for the prescribed systemd-run user wrapper are not both available.' | tee -a "$GITHUB_WORKSPACE/project/ci-logs/hardening-probe.log" >&2
+          exit 92
+
+      - name: Run sandboxed Comparator with landrun and systemd-run
+        id: sandboxed_comparator
+        if: steps.hardening.outputs.available == 'true'
+        shell: bash
+        timeout-minutes: 60
+        env:
+          COMPARATOR_CONFIG: ${{ matrix.config }}
+        run: |
+          set -uo pipefail
+          log="$GITHUB_WORKSPACE/project/ci-logs/comparator-${{ matrix.label }}.log"
+          comparator_bin="$GITHUB_WORKSPACE/tools/comparator/.lake/build/bin/comparator"
+          export_bin="$GITHUB_WORKSPACE/tools/lean4export/.lake/build/bin/lean4export"
+          landrun_bin="$GITHUB_WORKSPACE/tools/bin/landrun"
+          {
+            echo 'mode=sandboxed Comparator verification'
+            echo 'sandboxed=true'
+            echo 'certifying=true'
+            echo 'nanoda=disabled'
+            echo 'kernels=lean'
+            printf 'command='
+            printf '%q ' \
+              systemd-run \
+              '--property=RestrictAddressFamilies=~AF_UNIX' \
+              --user --pty \
+              -E "PATH=$PATH" \
+              -E "COMPARATOR_BIN=$comparator_bin" \
+              -E "COMPARATOR_CONFIG=$COMPARATOR_CONFIG" \
+              -E "COMPARATOR_LANDRUN=$landrun_bin" \
+              -E "COMPARATOR_LEAN4EXPORT=$export_bin" \
+              --working-directory "$GITHUB_WORKSPACE/project" \
+              -- bash -c 'lake env "$COMPARATOR_BIN" "$COMPARATOR_CONFIG"'
+            printf '\n'
+          } | tee "$log"
+
+          set +e
+          systemd-run \
+            --property=RestrictAddressFamilies=~AF_UNIX \
+            --user --pty \
+            -E PATH="$PATH" \
+            -E COMPARATOR_BIN="$comparator_bin" \
+            -E COMPARATOR_CONFIG="$COMPARATOR_CONFIG" \
+            -E COMPARATOR_LANDRUN="$landrun_bin" \
+            -E COMPARATOR_LEAN4EXPORT="$export_bin" \
+            --working-directory "$GITHUB_WORKSPACE/project" \
+            -- bash -c 'lake env "$COMPARATOR_BIN" "$COMPARATOR_CONFIG"' \
+            2>&1 | tee -a "$log"
+          status=${PIPESTATUS[0]}
+          set -e
+          echo "exit_code=$status" | tee -a "$log"
+          exit "$status"
+
+      - name: UNSANDBOXED Comparator semantic smoke test (non-certifying fallback)
+        id: unsandboxed_comparator
+        if: >-
+          env.REQUIRE_HARDENED != 'true' &&
+          steps.hardening.outputs.available != 'true'
+        shell: bash
+        timeout-minutes: 60
+        env:
+          COMPARATOR_CONFIG: ${{ matrix.config }}
+        run: |
+          set -uo pipefail
+          log="$GITHUB_WORKSPACE/project/ci-logs/comparator-${{ matrix.label }}.log"
+          comparator_bin="$GITHUB_WORKSPACE/tools/comparator/.lake/build/bin/comparator"
+          export_bin="$GITHUB_WORKSPACE/tools/lean4export/.lake/build/bin/lean4export"
+          fake_landrun="$GITHUB_WORKSPACE/tools/comparator/scripts/fake-landrun.sh"
+          {
+            echo 'mode=unsandboxed Comparator semantic smoke test (non-certifying)'
+            echo 'sandboxed=false'
+            echo 'certifying=false'
+            echo 'reason=real landrun, the required systemd-run user wrapper, and/or an approved PTY transport was unavailable'
+            echo 'nanoda=disabled'
+            echo 'kernels=lean'
+            printf 'command=cd %q && COMPARATOR_LANDRUN=%q COMPARATOR_LEAN4EXPORT=%q lake env %q %q\n' \
+              "$GITHUB_WORKSPACE/project" "$fake_landrun" "$export_bin" \
+              "$comparator_bin" "$COMPARATOR_CONFIG"
+          } | tee "$log"
+
+          set +e
+          (
+            cd "$GITHUB_WORKSPACE/project"
+            COMPARATOR_LANDRUN="$fake_landrun" \
+            COMPARATOR_LEAN4EXPORT="$export_bin" \
+              lake env "$comparator_bin" "$COMPARATOR_CONFIG"
+          ) 2>&1 | tee -a "$log"
+          status=${PIPESTATUS[0]}
+          set -e
+          echo "exit_code=$status" | tee -a "$log"
+          exit "$status"
+
+      - name: Assemble and validate the atomic Comparator evidence
+        if: >-
+          always() &&
+          (steps.sandboxed_comparator.outcome != 'skipped' ||
+           steps.unsandboxed_comparator.outcome != 'skipped')
+        shell: bash
+        run: |
+          set -euo pipefail
+          node project/scripts/assemble_comparator_evidence.mjs \
+            --environment project/ci-logs/comparator-environment.txt \
+            --probe project/ci-logs/hardening-probe.log \
+            --run project/ci-logs/comparator-${{ matrix.label }}.log \
+            --config project/${{ matrix.config }} \
+            --config-relative ${{ matrix.config }} \
+            --project project \
+            --transcript project/ci-logs/comparator-${{ matrix.label }}.txt \
+            --result project/ci-logs/result-${{ matrix.label }}.json \
+            --require-hardened "$REQUIRE_HARDENED"
+
+      - name: Preserve the Comparator evidence bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-c-comparator-evidence-${{ matrix.label }}-${{ github.sha }}
+          path: |
+            project/ci-logs/
+            project/${{ matrix.config }}
+            project/Challenge.lean
+            project/Solution.lean
+            project/ChallengeTransfer.lean
+            project/SolutionTransfer.lean
+            project/audit_config.json
+            project/lean-toolchain
+            project/lake-manifest.json
+            project/lakefile.toml
+          if-no-files-found: error
+          retention-days: 90

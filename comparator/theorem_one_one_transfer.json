@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ChallengeTransfer",
+  "solution_module": "SolutionTransfer",
+  "theorem_names": [
+    "paper_c_theorem_one_one_infinite_finite_law_identity"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}
