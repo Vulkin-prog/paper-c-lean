@@ -1754,16 +1754,26 @@ exact lines; the verifier does not weaken them by stripping arbitrary terminal
 control sequences.  The inexpensive preflight now verifies this exact-line
 property before any tool download or build.
 
+Raw PTY marker checks operate directly on the transcript file and accept only
+an exact record with one optional terminal CR.  They deliberately use neither a
+permissive terminal-control filter nor an early-exit `grep -q` pipeline: with
+`pipefail`, the latter can turn a valid early match in a long transcript into a
+producer `SIGPIPE` failure.
+
 The Comparator phase may be quiet for a while: its raw pseudo-terminal stream
 is written to evidence files instead of being replayed to the invoking
 terminal.  This prevents an untrusted Solution from injecting terminal control
 sequences.  Failures preserve the diagnostic directory and never create a
 `SUCCESS` marker.  Only after both result JSON files pass
-`scripts/assemble_comparator_evidence.mjs` does the runner create:
+`scripts/assemble_comparator_evidence.mjs` validation does the runner create:
 
 - an evidence directory ending in the certified commit and UTC timestamp;
 - a sibling `.tar.zst` upload bundle;
 - a sibling `.tar.zst.sha256` checksum file.
+
+Preserved `*.partial` directories and temporary work trees are forensic
+diagnostics only: do not rename, promote, or reuse them.  Evidence production
+after any failure requires a complete new run from a clean committed `HEAD`.
 
 The final summary is a sandboxed, non-root Comparator result accepted by the
 Lean default kernel.  It is deliberately not described as a dual-kernel

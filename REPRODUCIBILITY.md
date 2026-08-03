@@ -694,6 +694,13 @@ pas en supprimant arbitrairement des contrôles de terminal. Le préflight peu
 coûteux vérifie désormais cette propriété de ligne exacte avant tout
 téléchargement ou build.
 
+Les contrôles des marqueurs PTY bruts lisent directement le fichier de
+transcript et n'acceptent qu'un enregistrement exact avec au plus un CR final.
+Ils n'utilisent ni filtre permissif des contrôles de terminal, ni pipeline avec
+`grep -q` à arrêt précoce : sous `pipefail`, ce dernier peut transformer une
+correspondance valide au début d'un long transcript en échec `SIGPIPE` du
+producteur.
+
 La phase Comparator peut rester silencieuse : son flux PTY brut est conservé
 dans les preuves, sans être rejoué dans le terminal appelant, afin qu’une
 Solution non fiable ne puisse y injecter des séquences de contrôle. Un échec
@@ -701,6 +708,11 @@ préserve les diagnostics sans créer de marqueur `SUCCESS`. Après validation
 des deux résultats par `scripts/assemble_comparator_evidence.mjs`, le script
 produit un répertoire de preuves, une archive sœur `.tar.zst` et son fichier
 `.tar.zst.sha256` prêt à transmettre.
+
+Les répertoires `*.partial` et arbres de travail temporaires conservés servent
+uniquement au diagnostic : ils ne doivent être ni renommés, ni promus, ni
+réutilisés. Après tout échec, la production de preuves exige un nouveau run
+complet depuis un `HEAD` propre et commité.
 
 Le résultat attendu certifie une exécution Comparator sandboxée et non root,
 acceptée par le noyau Lean par défaut. Il ne s’agit pas d’un résultat à deux

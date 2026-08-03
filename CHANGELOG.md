@@ -111,6 +111,12 @@
   records `SYSTEMD_ADJUST_TERMINAL_TITLE=0`, and retains exact-line marker
   validation without permissive ANSI stripping. The preflight checks that
   property before any download or build.
+- Removed a `pipefail` false negative exposed by the first full local
+  Comparator transcript. The proof process exited successfully and printed the
+  exact security marker, but `grep -q` closed a long `sed` pipeline early and
+  made the producer report `SIGPIPE`. Raw PTY marker checks now match exact
+  records with one optional terminal CR, without a pipeline or early-exit
+  consumer.
 - Hardened the CI availability test after a hosted-runner PTY attachment
   stalled both Comparator targets before their first observable startup
   marker. As a conservative hosted-CI policy, captured non-TTY stdio is now

@@ -63,6 +63,17 @@ require_command() {
   command -v "$name" >/dev/null 2>&1 || die "required command not found: $name"
 }
 
+transcript_has_exact_line() {
+  local transcript=$1
+  local marker=$2
+
+  # Match an exact raw record, allowing only one optional terminal CR.
+  # Do not put an early-exit grep -q after a producer under pipefail: on a
+  # long transcript, the producer can receive SIGPIPE after a valid match.
+  /usr/bin/grep -aFx -e "$marker" -e "$marker"$'\r' -- "$transcript" \
+    >/dev/null
+}
+
 quote_command() {
   local quoted= argument
   for argument in "$@"; do
@@ -574,8 +585,7 @@ if [[ $SYSTEMD_PREFLIGHT_STATUS -ne 0 ]]; then
   SYSTEMD_PREFLIGHT_LOG=
   die 'the systemd --user PTY wrapper probe failed'
 fi
-if ! sed 's/\r$//' "$SYSTEMD_PREFLIGHT_LOG" | \
-    grep -Fqx 'transient_security_context=passed'; then
+if ! transcript_has_exact_line "$SYSTEMD_PREFLIGHT_LOG" 'transient_security_context=passed'; then
   note 'systemd --user PTY marker diagnostic follows:' >&2
   sed -n '1,80l' "$SYSTEMD_PREFLIGHT_LOG" >&2
   rm -f -- "$SYSTEMD_PREFLIGHT_LOG"
@@ -1175,9 +1185,9 @@ NODE
   cleanup_failed_unit_if_needed "$probe_unit"
   CURRENT_UNIT=
   [[ $wrapper_status -eq 0 ]] || die "systemd-run wrapper probe failed for $label"
-  sed 's/\r$//' "$probe_raw" | grep -Fqx 'systemd_wrapper_probe=passed' || \
+  transcript_has_exact_line "$probe_raw" 'systemd_wrapper_probe=passed' || \
     die "systemd-run wrapper probe marker is missing for $label"
-  sed 's/\r$//' "$probe_raw" | grep -Fqx 'transient_security_context=passed' || \
+  transcript_has_exact_line "$probe_raw" 'transient_security_context=passed' || \
     die "systemd-run security-context marker is missing for $label"
   echo 'hardened_wrapper_available=true' >>"$probe_log"
 
@@ -1234,7 +1244,7 @@ NODE
   cleanup_failed_unit_if_needed "$unit"
   CURRENT_UNIT=
   [[ $run_status -eq 0 ]] || die "Comparator target $label failed with status $run_status"
-  sed 's/\r$//' "$pty_raw" | grep -Fqx 'transient_security_context=passed' || \
+  transcript_has_exact_line "$pty_raw" 'transient_security_context=passed' || \
     die "Comparator security-context marker is missing for $label"
 
   assert_system_binary_state

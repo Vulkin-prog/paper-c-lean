@@ -236,7 +236,10 @@ if (hardenedRunner !== null) {
     fail(`${hardenedRunnerFile} suppresses initial systemd probe diagnostics.`);
   }
   const exactTransientMarkerChecks = hardenedRunner.match(
-    /grep -Fqx 'transient_security_context=passed'/g,
+    /transcript_has_exact_line "\$[^"\n]+" 'transient_security_context=passed'/g,
+  ) ?? [];
+  const exactWrapperMarkerChecks = hardenedRunner.match(
+    /transcript_has_exact_line "\$[^"\n]+" 'systemd_wrapper_probe=passed'/g,
   ) ?? [];
   const terminalTitleSetting = hardenedRunner.indexOf(
     'export SYSTEMD_ADJUST_TERMINAL_TITLE=0',
@@ -257,10 +260,16 @@ if (hardenedRunner !== null) {
       terminalTitleSetting < managerEnvironmentCheck ||
       terminalTitleSetting > systemdPreflight ||
       exactTransientMarkerChecks.length !== 3 ||
+      exactWrapperMarkerChecks.length !== 1 ||
+      !hardenedRunner.includes('transcript_has_exact_line() {') ||
+      !hardenedRunner.includes(
+        '/usr/bin/grep -aFx -e "$marker" -e "$marker"$\'\\r\' -- "$transcript"',
+      ) ||
+      hardenedRunner.includes('grep -Fqx') ||
       !hardenedRunner.includes("echo 'systemd_adjust_terminal_title=0'")) {
     fail(
-      `${hardenedRunnerFile} does not disable systemd PTY title decoration ` +
-      'before performing exact security-marker checks.',
+      `${hardenedRunnerFile} does not preserve systemd PTY title suppression ` +
+      'and pipefail-safe exact security-marker checks.',
     );
   }
   const leanToolchainEnsure = hardenedRunner.indexOf(
