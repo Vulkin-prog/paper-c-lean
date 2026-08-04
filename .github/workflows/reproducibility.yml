@@ -41,6 +41,9 @@ jobs:
       - name: Verify checked-in Lean source digest
         run: node scripts/generate_audit.mjs --check-source-digest
 
+      - name: Verify literature-certificate bytes and mapping
+        run: node scripts/generate_audit.mjs --check-literature-certificates
+
       - name: Install ripgrep
         run: |
           sudo apt-get update
@@ -172,6 +175,16 @@ jobs:
           clean: true
           fetch-depth: 1
           persist-credentials: false
+
+      - name: Record the checked-out Paper C source identity
+        id: source_identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_sha="$(git -C project rev-parse HEAD)"
+          echo "source_sha=$source_sha" >> "$GITHUB_OUTPUT"
+          echo "paper_c_commit=$source_sha"
+          echo "workflow_event_sha=${GITHUB_SHA}"
 
       - name: Check out pinned Comparator
         uses: actions/checkout@v4
@@ -593,7 +606,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: paper-c-comparator-evidence-${{ matrix.label }}-${{ github.sha }}
+          name: paper-c-comparator-evidence-${{ matrix.label }}-${{ steps.source_identity.outputs.source_sha }}
           path: |
             project/ci-logs/
             project/${{ matrix.config }}

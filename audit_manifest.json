@@ -1,5 +1,5 @@
 {
-  "schema_version": 6,
+  "schema_version": 7,
   "project": "paper_c_lean",
   "project_metadata": {
     "name": "paper_c_lean",
@@ -138,8 +138,8 @@
     "comparator/theorem_one_one_transfer.json"
   ],
   "comparator_digest_sha256": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
-  "comparator_status": "unsandboxed_semantic_smoke_passed",
-  "comparator_status_note": "Both Paper C Comparator configurations exited 0 and were accepted by Lean's default kernel in clean checkouts. These runs used fake-landrun, root, and a container-specific LD_PRELOAD compatibility shim, so they are unsandboxed semantic smoke tests only. They do not satisfy the hardened, non-privileged certificate conditions; publication remains blocked pending the official landrun plus systemd-run execution.",
+  "comparator_status": "sandboxed_lean_kernel_passed",
+  "comparator_status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. The unchanged Comparator fileset in rc2 has the same recorded digest. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
   "comparator_tools": {
     "comparator": {
       "repository": "https://github.com/leanprover/comparator",
@@ -166,6 +166,24 @@
     "transcript": "comparator/transcripts/toolchain_compatibility_unsandboxed.txt",
     "transcript_sha256": "2ee3dcde7fee2dc4a31b1cc4395ea9f5d31f2b2526741f6f18f6463991c25cd5"
   },
+  "comparator_published_evidence": {
+    "release_tag": "v0.48.0-rc1",
+    "release_url": "https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0-rc1",
+    "archive": "paper-c-hardened-evidence-75b36254145c-20260803T060848Z.tar.zst",
+    "archive_size_bytes": 94456,
+    "archive_sha256": "bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130",
+    "summary_sha256": "4106cbbcc012c1188cf8c9716e2ccd72c0e134b0338366afb30eb3d00f4ab726",
+    "paper_c_commit": "75b36254145c0983d551de11599ea5c8f68e1e51",
+    "comparator_fileset_digest_sha256": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
+    "sandboxed": true,
+    "non_root": true,
+    "kernels": [
+      "lean"
+    ],
+    "enable_nanoda": false,
+    "metadata_verification": "Agent-side recheck of the uploaded rc1 archive covered its outer SHA-256 and size, summary SHA-256, every internal SHA256SUMS entry, and the two archived transcript hashes. The repository carries only privacy-minimized result records copied from that archive, not the host-specific raw transcripts. The generator validates those records and their configuration and fileset bindings but does not download or revalidate the GitHub release asset.",
+    "qualification": "The archive certifies the byte-identical Comparator boundary at its recorded Paper C commit. It is not a human source audit or a general host-security certification."
+  },
   "comparator_configurations": [
     {
       "challenge_module": "Challenge",
@@ -181,10 +199,12 @@
       "enable_nanoda": false,
       "path": "comparator/theorem_one_one.json",
       "sha256": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
-      "status": "unsandboxed_semantic_smoke_passed",
-      "sandboxed": false,
-      "transcript": "comparator/transcripts/theorem_one_one_unsandboxed.txt",
-      "transcript_sha256": "b61738cb6fd4a08068da493821a6c9b608c2fb5ed28916778bf7950024c2b4e8",
+      "status": "sandboxed_lean_kernel_passed",
+      "sandboxed": true,
+      "evidence_record": "comparator/evidence/result-theorem-one-one.json",
+      "evidence_record_sha256": "5fef2ceee487a40d59419d0f73f0eef6589b525a7a7cc4354628e2ecac4d2cd2",
+      "transcript_in_published_archive": "evidence/theorem-one-one/comparator-theorem-one-one.txt",
+      "transcript_sha256": "5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266",
       "configuration_sha256_at_run": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
       "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
       "challenge_file": "Challenge.lean",
@@ -204,14 +224,83 @@
       "enable_nanoda": false,
       "path": "comparator/theorem_one_one_transfer.json",
       "sha256": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
-      "status": "unsandboxed_semantic_smoke_passed",
-      "sandboxed": false,
-      "transcript": "comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt",
-      "transcript_sha256": "1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f",
+      "status": "sandboxed_lean_kernel_passed",
+      "sandboxed": true,
+      "evidence_record": "comparator/evidence/result-infinite-finite-transfer.json",
+      "evidence_record_sha256": "ec8431eab1e2ceca7ca319e2efa9033889e1a92358b972d630825a558438c4cf",
+      "transcript_in_published_archive": "evidence/infinite-finite-transfer/comparator-infinite-finite-transfer.txt",
+      "transcript_sha256": "f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421",
       "configuration_sha256_at_run": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
       "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
       "challenge_file": "ChallengeTransfer.lean",
       "solution_file": "SolutionTransfer.lean"
+    }
+  ],
+  "literature_certificate_fileset": [
+    "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md",
+    "literature_certificates/ES86-T1b-Q-split-n2.md",
+    "literature_certificates/HK13-QO-conductor-fibres.md",
+    "literature_certificates/NR83-T1-divisor-log-bound.md"
+  ],
+  "literature_certificate_digest_sha256": "6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996",
+  "literature_certificate_scope": "The four external bridges consumed by the finite-cylinder form of Theorem 1.1.",
+  "literature_certificate_status_note": "These certificates document source-to-proposition implications. They are not Lean proofs, Comparator results, or independent human certification. The historical source-verification wording embedded in the frozen 382-file core is retained only for byte-level provenance; this rc2 layer is the current qualification.",
+  "literature_certificates": [
+    {
+      "bridge_id": "AGG89-T1-finite-dependency-b3-zero",
+      "file": "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md",
+      "source_locator": "Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10.",
+      "primary_source_access": "full_text",
+      "implication_status": "agent_checked_supports",
+      "limitations": "The source theorem is on printed page 11, not page 10; the Challenge bound is a conservative consequence under its half-l1 normalization. No independent human verification.",
+      "lean_name": "PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement",
+      "sha256": "684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115",
+      "byte_length": 5007,
+      "review_status": "agent-reviewed",
+      "human_peer_reviewed": false,
+      "supersedes_frozen_source_verification_wording_for_rc2": true
+    },
+    {
+      "bridge_id": "ES86-T1b-Q-split-n2",
+      "file": "literature_certificates/ES86-T1b-Q-split-n2.md",
+      "source_locator": "Theorem 1(b), printed p. 238.",
+      "primary_source_access": "full_text",
+      "implication_status": "agent_checked_supports",
+      "limitations": "The K=L=Q specialization and bad-place set are documented, but not formalized from a Lean version of the source theorem. No independent human verification.",
+      "lean_name": "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement",
+      "sha256": "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793",
+      "byte_length": 3370,
+      "review_status": "agent-reviewed",
+      "human_peer_reviewed": false,
+      "supersedes_frozen_source_verification_wording_for_rc2": true
+    },
+    {
+      "bridge_id": "HK13-QO-conductor-fibres",
+      "file": "literature_certificates/HK13-QO-conductor-fibres.md",
+      "source_locator": "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127.",
+      "primary_source_access": "partial",
+      "implication_status": "agent_checked_with_open_gap",
+      "limitations": "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
+      "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
+      "sha256": "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96",
+      "byte_length": 3971,
+      "review_status": "agent-reviewed",
+      "human_peer_reviewed": false,
+      "supersedes_frozen_source_verification_wording_for_rc2": true
+    },
+    {
+      "bridge_id": "NR83-T1-divisor-log-bound",
+      "file": "literature_certificates/NR83-T1-divisor-log-bound.md",
+      "source_locator": "Theorem 1, printed p. 485.",
+      "primary_source_access": "full_text",
+      "implication_status": "agent_checked_supports",
+      "limitations": "The certificate uses the exact maximizer and an elementary strict bound below 2, rather than treating the printed decimal 1.5379 as exact. No independent human verification.",
+      "lean_name": "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement",
+      "sha256": "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73",
+      "byte_length": 3366,
+      "review_status": "agent-reviewed",
+      "human_peer_reviewed": false,
+      "supersedes_frozen_source_verification_wording_for_rc2": true
     }
   ],
   "formalization_template": {
@@ -244,7 +333,7 @@
       "Claude Opus 4.8 agent instances",
       "OpenAI GPT 5.6 Sol agent instances"
     ],
-    "notes": "The project has undergone repeated adversarial counter-review by distinct agent instances and models from multiple providers, together with exhaustive mechanical declaration and axiom auditing. These procedures are neither independent scientific validation nor human certification, and the project has not yet received independent external human mathematical peer review. The completeness of the mapped paper-item list remains editorial metadata requiring human rereading; it is not inferred or certified by the generator. Comparator outcomes must be reported only from the recorded per-configuration status and transcript, and a semantic smoke test must not be presented as a sandboxed certificate."
+    "notes": "The project has undergone repeated adversarial counter-review by distinct agent instances and models from multiple providers, together with exhaustive mechanical declaration and axiom auditing. These procedures are neither independent scientific validation nor human certification, and the project has not yet received independent external human mathematical peer review. The completeness of the mapped paper-item list remains editorial metadata requiring human rereading; it is not inferred or certified by the generator. Comparator outcomes must be reported only from the recorded per-configuration status and evidence, and a semantic smoke test must not be presented as a sandboxed certificate."
   },
   "proof_sorry_count": 0,
   "comparator_interface_sorry_count": 2,
@@ -291,13 +380,13 @@
         "covered": true,
         "configuration": "comparator/theorem_one_one.json",
         "theorem_name": "paper_c_theorem_one_one_finite_cylinder",
-        "status": "unsandboxed_semantic_smoke_passed",
+        "status": "sandboxed_lean_kernel_passed",
         "configuration_sha256": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
         "challenge_module": "Challenge",
         "solution_module": "Solution",
         "enable_nanoda": false
       },
-      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2). The direct Solution layout passed a clean-checkout unsandboxed Comparator semantic smoke test with Lean default-kernel acceptance and exit 0; this is not the hardened release certificate. The separate transfer target covers the infinite source law."
+      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under four fully stated ordinary premises. The byte-identical Challenge/Solution boundary passed the hardened non-root Comparator procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51 with Lean-kernel acceptance and exit 0. Nanoda was disabled. The separate transfer target covers the infinite source law."
     },
     {
       "id": "Thm-1.1-infinite-finite-law-transfer",
@@ -319,13 +408,13 @@
         "covered": true,
         "configuration": "comparator/theorem_one_one_transfer.json",
         "theorem_name": "paper_c_theorem_one_one_infinite_finite_law_identity",
-        "status": "unsandboxed_semantic_smoke_passed",
+        "status": "sandboxed_lean_kernel_passed",
         "configuration_sha256": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
         "challenge_module": "ChallengeTransfer",
         "solution_module": "SolutionTransfer",
         "enable_nanoda": false
       },
-      "note": "Exact identity of the infinite-product dyadic start-count law and its finite-cylinder law. The direct SolutionTransfer layout passed its own clean-checkout unsandboxed Comparator semantic smoke test with Lean default-kernel acceptance and exit 0; this is not the hardened release certificate."
+      "note": "Exact unconditional identity of the infinite-product dyadic start-count law and its finite-cylinder law. The byte-identical ChallengeTransfer/SolutionTransfer boundary passed the hardened non-root Comparator procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51 with Lean-kernel acceptance and exit 0. Nanoda was disabled."
     },
     {
       "id": "Thm-1.2-i-deterministic-masks",
@@ -3035,19 +3124,39 @@
         "verbatim": "≤ 2(b₁ + b₂ + b₃).",
         "verbatim_is_excerpt": true,
         "source_url": "https://doi.org/10.1214/aop/1176991491",
-        "verification": "manual_primary_source_check_required",
-        "sha256": "bbd19cf290a7d3e36b0e0244b62d47d2633ab04832ec0cba025cb80f98291698"
+        "verification": "agent_checked_supports",
+        "sha256": "bbd19cf290a7d3e36b0e0244b62d47d2633ab04832ec0cba025cb80f98291698",
+        "verification_note": "Current rc2 assessment: The source theorem is on printed page 11, not page 10; the Challenge bound is a conservative consequence under its half-l1 normalization. No independent human verification.",
+        "historical_frozen_verification": "manual_primary_source_check_required"
       },
       "manuscript_locator": {
         "result": "Theorem 13.7",
         "equation": "Arratia–Goldstein–Gordon bound with b₃ = 0",
         "pages": "41–42"
       },
-      "formalization_relation": "finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization",
+      "formalization_relation": "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization",
       "declaration": {
         "source": "PaperC/Probability/ArratiaGoldsteinGordonInput.lean",
         "line": 297,
         "statement_sha256": "7b12fad5d9f6cd76496b4442cd7caf18ab5d84fc94410355c59f2c8402d46ed9"
+      },
+      "historical_frozen_formalization_relation": "finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization",
+      "current_source_locator": "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10.",
+      "registered_frozen_source_locator": "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10",
+      "source_to_lean_status": "agent_checked_supports",
+      "literature_certificate": {
+        "bridge_id": "AGG89-T1-finite-dependency-b3-zero",
+        "file": "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md",
+        "source_locator": "Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10.",
+        "primary_source_access": "full_text",
+        "implication_status": "agent_checked_supports",
+        "limitations": "The source theorem is on printed page 11, not page 10; the Challenge bound is a conservative consequence under its half-l1 normalization. No independent human verification.",
+        "lean_name": "PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement",
+        "sha256": "684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115",
+        "byte_length": 5007,
+        "review_status": "agent-reviewed",
+        "human_peer_reviewed": false,
+        "supersedes_frozen_source_verification_wording_for_rc2": true
       }
     },
     {
@@ -3110,19 +3219,39 @@
       "source_statement": {
         "verbatim": "Let d ≥ 3, and assume that L contains at least three zeros of f. Then #V(R_S,f,2) ≤ 7^{M(4m+9s)} · 4^{κ₂(L)}.",
         "source_url": "https://doi.org/10.1017/S0305004100066068",
-        "verification": "manual_primary_source_check_required",
-        "sha256": "d3b1ed5ebc6d0cb9148464da3747504e81ecb4dcb5c145cba685b76d56d3c99d"
+        "verification": "agent_checked_supports",
+        "sha256": "d3b1ed5ebc6d0cb9148464da3747504e81ecb4dcb5c145cba685b76d56d3c99d",
+        "verification_note": "Current rc2 assessment: The K=L=Q specialization and bad-place set are documented, but not formalized from a Lean version of the source theorem. No independent human verification.",
+        "historical_frozen_verification": "manual_primary_source_check_required"
       },
       "manuscript_locator": {
         "result": "Lemma 9.1",
         "equation": "(9.2)",
         "pages": "27–28"
       },
-      "formalization_relation": "specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two",
+      "formalization_relation": "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two",
       "declaration": {
         "source": "PaperC/Diophantine/EvertseSilvermanInput.lean",
         "line": 142,
         "statement_sha256": "28d411607ee66e56edbcf54900c5ade839d3c581ba7a5e6a4308a78d6fd5bff1"
+      },
+      "historical_frozen_formalization_relation": "specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two",
+      "current_source_locator": "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), printed p. 238.",
+      "registered_frozen_source_locator": "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238",
+      "source_to_lean_status": "agent_checked_supports",
+      "literature_certificate": {
+        "bridge_id": "ES86-T1b-Q-split-n2",
+        "file": "literature_certificates/ES86-T1b-Q-split-n2.md",
+        "source_locator": "Theorem 1(b), printed p. 238.",
+        "primary_source_access": "full_text",
+        "implication_status": "agent_checked_supports",
+        "limitations": "The K=L=Q specialization and bad-place set are documented, but not formalized from a Lean version of the source theorem. No independent human verification.",
+        "lean_name": "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement",
+        "sha256": "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793",
+        "byte_length": 3370,
+        "review_status": "agent-reviewed",
+        "human_peer_reviewed": false,
+        "supersedes_frozen_source_verification_wording_for_rc2": true
       }
     },
     {
@@ -3153,20 +3282,40 @@
           "descent": "J(s) = J(t) and c(s) = c(t) imply (s) = (t) in ℤ[√D]"
         },
         "source_url": "https://doi.org/10.1201/b14968",
-        "verification": "manually checked against the cited theorem statements and proofs on 2026-07-31",
-        "verification_note": "Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction.",
-        "sha256": "7e76325fcfebfc30c06d97024307828308a3f7105b99e6dbe8daec328ba43910"
+        "verification": "source_to_lean_not_established",
+        "verification_note": "Current rc2 assessment: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
+        "sha256": "7e76325fcfebfc30c06d97024307828308a3f7105b99e6dbe8daec328ba43910",
+        "historical_frozen_verification": "manually checked against the cited theorem statements and proofs on 2026-07-31",
+        "historical_frozen_verification_note": "Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction."
       },
       "manuscript_locator": {
         "result": "Lemma 9.2",
         "equation": "(α)(conjugate α) = (M)",
         "pages": "28–29"
       },
-      "formalization_relation": "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences",
+      "formalization_relation": "The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
       "declaration": {
         "source": "PaperC/Diophantine/GeneralizedPell.lean",
         "line": 123,
         "statement_sha256": "ebf752f15ffbace8e7d9cce1e7cebd30e11d0f9b12bb5beda970f467f98c253d"
+      },
+      "historical_frozen_formalization_relation": "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences",
+      "current_source_locator": "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127.",
+      "registered_frozen_source_locator": "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127",
+      "source_to_lean_status": "source_to_lean_not_established",
+      "literature_certificate": {
+        "bridge_id": "HK13-QO-conductor-fibres",
+        "file": "literature_certificates/HK13-QO-conductor-fibres.md",
+        "source_locator": "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127.",
+        "primary_source_access": "partial",
+        "implication_status": "agent_checked_with_open_gap",
+        "limitations": "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
+        "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
+        "sha256": "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96",
+        "byte_length": 3971,
+        "review_status": "agent-reviewed",
+        "human_peer_reviewed": false,
+        "supersedes_frozen_source_verification_wording_for_rc2": true
       }
     },
     {
@@ -3270,20 +3419,40 @@
           "lean_statement": "log(d(n)) log(log n) ≤ 2 log(2) log(n), for n ≥ 64"
         },
         "source_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D424A2915C0A748C93CF4962D0120B94/S0008439500065188a.pdf/majorations_explicites_pour_le_nombre_de_diviseurs_de_n.pdf",
-        "verification": "manual_primary_source_check_required",
-        "verification_note": "The printed 1.5379 is rounded (the maximizing value is approximately 1.53793986), so Lean deliberately uses the safe exact majorant 2 rather than interpreting the four-decimal display as an exact rational bound. The proposition is restricted to n ≥ 64 so log(log n) is positive. PellDivisorEnvelope proves every later polynomial-height and unit-orbit consequence.",
-        "sha256": "de7f96c10259ec2e27e86444ca171c62e7b8d48457da99e04ffde385926bd403"
+        "verification": "agent_checked_supports",
+        "verification_note": "Current rc2 assessment: The certificate uses the exact maximizer and an elementary strict bound below 2, rather than treating the printed decimal 1.5379 as exact. No independent human verification.",
+        "sha256": "de7f96c10259ec2e27e86444ca171c62e7b8d48457da99e04ffde385926bd403",
+        "historical_frozen_verification": "manual_primary_source_check_required",
+        "historical_frozen_verification_note": "The printed 1.5379 is rounded (the maximizing value is approximately 1.53793986), so Lean deliberately uses the safe exact majorant 2 rather than interpreting the four-decimal display as an exact rational bound. The proposition is restricted to n ≥ 64 so log(log n) is positive. PellDivisorEnvelope proves every later polynomial-height and unit-orbit consequence."
       },
       "manuscript_locator": {
         "result": "Lemma 9.2",
         "equation": "(9.3)",
         "pages": "28–29"
       },
-      "formalization_relation": "source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption",
+      "formalization_relation": "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption",
       "declaration": {
         "source": "PaperC/Diophantine/PellDivisorEnvelope.lean",
         "line": 82,
         "statement_sha256": "5e6d8e7b73844f6757d1d0234f966edf6ded5e1172d9271683c12379bfa747e5"
+      },
+      "historical_frozen_formalization_relation": "source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption",
+      "current_source_locator": "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, Theorem 1, printed p. 485.",
+      "registered_frozen_source_locator": "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485",
+      "source_to_lean_status": "agent_checked_supports",
+      "literature_certificate": {
+        "bridge_id": "NR83-T1-divisor-log-bound",
+        "file": "literature_certificates/NR83-T1-divisor-log-bound.md",
+        "source_locator": "Theorem 1, printed p. 485.",
+        "primary_source_access": "full_text",
+        "implication_status": "agent_checked_supports",
+        "limitations": "The certificate uses the exact maximizer and an elementary strict bound below 2, rather than treating the printed decimal 1.5379 as exact. No independent human verification.",
+        "lean_name": "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement",
+        "sha256": "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73",
+        "byte_length": 3366,
+        "review_status": "agent-reviewed",
+        "human_peer_reviewed": false,
+        "supersedes_frozen_source_verification_wording_for_rc2": true
       }
     },
     {

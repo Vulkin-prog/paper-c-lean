@@ -23,24 +23,28 @@ premise and 158 conditional declarations. They are reproduced in
 
 ## External semantic audit boundary (v0.48.0)
 
-The 382-file v0.47.0 core is byte-identical in v0.48.0.  This release adds a
-human-readable Mathlib-only boundary and solution wrappers; it does not add a
-mathematical lemma to the Paper C core or change a canonical signature.
+The 382-file v0.47.0 core is byte-identical in v0.48.0. This release adds a
+human-readable project-independent boundary and solution wrappers; it does
+not add a mathematical lemma to the Paper C core or change a canonical
+signature. `Challenge.lean` imports only Mathlib modules, while
+`ChallengeTransfer.lean` imports exactly `Challenge` and no project module.
 
 | Target | Statement and proof route | Present status |
 |---|---|---|
-| `Challenge.lean` / `Solution.lean` | `paper_c_theorem_one_one_finite_cylinder`, the quantitative finite-cylinder form of Theorem 1.1 (printed/PDF p. 3), closed by `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical` | `Solution.lean` directly reproduces the complete declarative interface in the fresh `PaperCAudit` namespace. The Challenge has its single intentional `by sorry`; Solution has none. The main configuration passed an **unsandboxed Comparator semantic smoke test** in a clean checkout with Lean default-kernel acceptance and exit 0. The run used `root`, fake-landrun, and an `LD_PRELOAD` shim, so it is not the hardened release run. |
-| `ChallengeTransfer.lean` / `SolutionTransfer.lean` | `paper_c_theorem_one_one_infinite_finite_law_identity`, the exact equality between the infinite-product law and the finite-cylinder law | `SolutionTransfer.lean` directly reproduces the transfer interface. The independent transfer configuration also passed an **unsandboxed Comparator semantic smoke test** in its own clean checkout with Lean default-kernel acceptance and exit 0, under the same root/fake-landrun/`LD_PRELOAD` limitations. |
+| `Challenge.lean` / `Solution.lean` | `paper_c_theorem_one_one_finite_cylinder`, the quantitative finite-cylinder form of Theorem 1.1 (printed/PDF p. 3), closed by `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical` | `Solution.lean` directly reproduces the complete declarative interface in the fresh `PaperCAudit` namespace. The Challenge file has one intentional `by sorry`; Solution has none and does not import Challenge. The byte-identical pair passed the hardened non-root Comparator procedure at Paper C commit `75b36254145c...`, with Lean-kernel acceptance and exit 0. |
+| `ChallengeTransfer.lean` / `SolutionTransfer.lean` | `paper_c_theorem_one_one_infinite_finite_law_identity`, the exact equality between the infinite-product law and the finite-cylinder law | `SolutionTransfer.lean` directly reproduces the transfer interface without importing a Challenge module. The independent transfer pair passed the same hardened non-root procedure in its own clean checkout. The identity itself is unconditional. |
 | `formalization.yaml` v0.3 | Generated with `audit_manifest.json` from schema-2 `audit_config.json`; maps manuscript items, pages, declarations, files, consumed bridges, conditionality, and Comparator coverage | Generated metadata is a deterministic audit artifact. Its review status is `agent-reviewed`; completeness of the editorial item list still requires human review. |
+| `literature_certificates/*.md` | Four source-to-proposition counter-audit reports, in their own SHA-256-bound fileset | AGG, Evertse--Silverman, and Nicolas--Robin are `agent_checked_supports`; Halter--Koch is `agent_checked_with_open_gap`. These are documentary agent statuses, not Lean discharges or human peer review. |
 
-The finite-cylinder statement takes exactly the four ordinary literature
+The manuscript states Theorem 1.1 unconditionally. The finite-cylinder
+Comparator statement instead takes exactly the four ordinary literature
 premises consumed by the canonical endpoint:
 
 | Premise | Registered bridge | Formalization relation |
 |---|---|---|
 | Arratia--Goldstein--Gordon | `AGG89-T1-finite-dependency-b3-zero` | Finite dependency-neighborhood theorem with `b₃ = 0`, used for the Chen--Stein TV bound |
 | Evertse--Silverman | `ES86-T1b-Q-split-n2` | Split quadratic, exponent-two specialization supplying the abscissa count of Lemma 9.1 |
-| Halter--Koch | `HK13-QO-conductor-fibres` | Conductor and unit-coset comparison used to reconstruct the generalized-Pell bound in Lemma 9.2 |
+| Halter--Koch | `HK13-QO-conductor-fibres` | Intended conductor and unit-coset comparison for Lemma 9.2; the rc2 audit has **not established** the implication from the cited pages to the full Lean record |
 | Nicolas--Robin | `NR83-T1-divisor-log-bound` | Direct logarithmic divisor inequality used in the same Pell reconstruction |
 
 They are explicit propositions and theorem arguments, not Lean axioms.  The
@@ -53,27 +57,31 @@ strengthening of the paper's `C > 0`.  The global longest-run result is not in
 this Comparator surface.  `Solution.lean` makes explicit the two
 non-definitional record translations needed to connect the readable interface
 to the frozen core: the Arratia--Goldstein--Gordon finite-probability record
-and the Halter--Koch quadratic-order conductor record.
+and the Halter--Koch quadratic-order conductor record. This last translation
+starts from the explicit Challenge premise; it does not establish that the
+cited Halter--Koch results imply that premise.
 
 Both JSON configurations explicitly permit only `propext`, `Quot.sound`, and
-`Classical.choice`, and both have `enable_nanoda: false`. Nanoda is not
-installed or claimed. The two challenge placeholders are counted separately
-from the proof-side `sorry_count = 0`.  The main smoke-test transcript is
-`comparator/transcripts/theorem_one_one_unsandboxed.txt`, SHA-256
-`b61738cb6fd4a08068da493821a6c9b608c2fb5ed28916778bf7950024c2b4e8`;
-the transfer transcript is
-`comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt`, SHA-256
-`1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f`.
-Neither run establishes sandbox isolation, non-privileged execution, or a
-second-kernel result. Publication remains blocked until both configurations
-pass the official hardened real-landrun plus `systemd-run` procedure under a
-non-privileged user.
+`Classical.choice`, and both have `enable_nanoda: false`. Nanoda was not run
+and no dual-kernel result is claimed. The two source-file Challenge
+placeholders are counted separately from the proof-side `sorry_count = 0`.
+The hardened main and transfer transcripts have SHA-256 values
+`5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266`
+and
+`f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421`.
+The raw transcripts remain in the public archive; the repository carries
+only privacy-minimized JSON result records under `comparator/evidence/`.
+The published archive SHA-256 is
+`bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130`.
+This evidence certifies the Comparator implication at the recorded input
+commit; it does not establish the four source-to-proposition implications or
+paper-to-Challenge fidelity.
 
 ## Sections 1–3
 
 | Manuscript | Content | Status |
 |---|---|---|
-| Th. 1.1 | Critical Poisson law and TV rate | **Conditionally proved on both the finite cylinder and the infinite source law, modulo the literature only.** In the exact critical window, Lean assembles the uniform rate \(d_{\rm TV}(\mathcal L(Z_{N,L}),\operatorname{Pois}(N2^{-L}))\ll_C(\log\log N)^{-2}\). The random variable `infiniteDyadicStartCount` is defined on the infinite Rademacher product space, its law is proved exactly equal to `fullDyadicStartLaw`, and `theorem_one_one_infinite_model` transports the same endpoint without any new premise. The only bridges are AGG, Evertse–Silverman, Halter–Koch's quadratic-order comparison, and the Nicolas–Robin divisor bound, all `external`. The v0.48.0 finite-cylinder and transfer boundaries expose these two steps separately; both passed clean-checkout unsandboxed semantic smoke tests with Lean default-kernel acceptance and exit 0, but neither run met the sandbox, non-privileged, or second-kernel conditions of a release certificate |
+| Th. 1.1 | Critical Poisson law and TV rate | **Conditionally proved on both the finite cylinder and the infinite source law, modulo the literature only.** In the exact critical window, Lean assembles the uniform rate \(d_{\rm TV}(\mathcal L(Z_{N,L}),\operatorname{Pois}(N2^{-L}))\ll_C(\log\log N)^{-2}\). The random variable `infiniteDyadicStartCount` is defined on the infinite Rademacher product space, its law is proved exactly equal to `fullDyadicStartLaw`, and `theorem_one_one_infinite_model` transports the same endpoint without any new premise. The only bridges are AGG, Evertse–Silverman, Halter–Koch's quadratic-order comparison, and the Nicolas–Robin divisor bound, all `external/open`. The finite-cylinder and transfer boundaries expose these two steps separately and both passed the hardened non-root Comparator procedure at commit `75b36254145c...` with Lean-kernel acceptance. Nanoda was disabled. The source reports support the AGG, Evertse–Silverman, and Nicolas–Robin mappings at agent-review level; Halter–Koch remains not established, and no independent human review is claimed. |
 | Th. 1.2(i) | Deterministic masks | **Conditionally proved, modulo the literature only.** Proposition 14.1 is proved in the exact window \(\lvert L-\log_2N\rvert\le C_\star\log\log N\). Proposition 14.2 is assembled uniformly for all masks in the critical window: \(d_{\rm TV}(\mathcal L(Z_{N,L}(A_N)),\mathrm{Pois}(|A_N|2^{-L}))=o_C(1)\). Its canonical endpoint assumes exactly AGG, Evertse–Silverman, Halter–Koch, and Nicolas–Robin; no `internal/open` bridge reaches its signature |
 | Th. 1.2(ii–iii) | Spatial and marked PPPs | **Proved as a complete characterization by Laplace functionals, modulo the literature only.** Expectations under the infinite law converge to the functionals of \(\operatorname{PPP}(\lambda\,dt)\) and \(\operatorname{PPP}(\lambda\,dt\otimes\nu)\), where \(\nu(\{e\})=2^{-(e+1)}\), for every nonnegative continuous test function with compact support in the marks. Uniform tightness is proved through \(\limsup_N\mathbb P(\text{mark}>E)\le\lambda2^{-(E+1)}\). Because mathlib does not yet provide a suitable API for point measures and the vague topology, a `Tendsto` formulation for the process laws is not duplicated artificially |
 | Th. 1.4 | Moments and the homogeneous sum | **Conditionally proved, modulo the literature only.** `theorem_one_four_canonical` connects the finite kernel of §12 directly to the quantitative master mass bound and establishes, in the critical window, the first-moment rate, the little-oh estimate for the second factorial moment, \(R_2(N,L)=o_C(N^2)\), and the little-oh estimate for the variance. Its only assumptions are Evertse–Silverman, Halter–Koch, and Nicolas–Robin (`external`). The three legacy endpoints removed in v041 have not been reintroduced |
@@ -111,7 +119,7 @@ non-privileged user.
 | Manuscript | Content | Status |
 |---|---|---|
 | Lem. 9.1 | Evertse–Silverman | **External bridge.** The specialized count of abscissas \(X\) for which \(Z^2=e\prod_r(X+h_r)\) has a solution \(Z\ne0\), with its exact set of bad places and the upper bound \(7^{4+9|S|}\), is encoded as an explicit hypothesis. Lean **proves** that there are at most two ordinates per abscissa, obtains the upper bound \(2\cdot7^{4+9|S|}\) from (9.2), counts at most \(d\) zero solutions, and then transports the bound to \(\prod_r(X+h_r)=eY^2\) through the injection \((X,Y)\mapsto(X,eY)\). The cited result itself is not declared as a Lean theorem |
-| Lem. 9.2 / 17.19 | Uniform Pell | **Internal bridge discharged; Lean proof conditional on two narrow external inputs, for every \(K_0\in\mathbb R_{>0}\).** Lean formalizes \(x+y\sqrt D\), its principal ideal dividing \((M)\), unit orbits, height control, and squarefree reduction; `QuadraticIdealDivisors` proves internally the \(\tau(|M|)^2\) ideal-divisor bound. The Halter–Koch boundary is now pinpointed to Th. 1.1.6(1)(b), pp. 4–5; Def. 5.1.6 and Th. 5.1.7(1),(3), pp. 118–119; Th. 5.2.3(1),(2), p. 125; and Th. 5.2.5(1), pp. 126–127. These give conductor 1 or 2 and at most three unit cosets. `HalterKochConductorDescent` explicitly derives the historical `Fin 4` interface by padding `Fin 3 → Fin 4`; the order embedding and unit-quotient instantiation remain the single registered external bridge. Starting from Nicolas–Robin, Lean proves the remaining divisor-envelope and polynomial substitutions; `PCv07c-L9.2-generalized-Pell` remains discharged |
+| Lem. 9.2 / 17.19 | Uniform Pell | **Internal bridge discharged; Lean proof conditional on two narrow external inputs, for every \(K_0\in\mathbb R_{>0}\).** Lean formalizes \(x+y\sqrt D\), its principal ideal dividing \((M)\), unit orbits, height control, and squarefree reduction; `QuadraticIdealDivisors` proves internally the \(\tau(|M|)^2\) ideal-divisor bound. The Halter–Koch boundary cites Th. 1.1.6(1)(b), pp. 4–5; Def. 5.1.6 and Th. 5.1.7(1),(3), pp. 118–119; Th. 5.2.3(1),(2), p. 125; and Th. 5.2.5(1), pp. 126–127. These results are intended to supply the conductor and unit-coset facts, but the rc2 counter-audit has **not established** the complete source-to-record construction. `HalterKochConductorDescent` derives the historical `Fin 4` interface only after the essential conductor-descent data are assumed; the order embedding and unit-quotient instantiation remain the registered external premise. Starting from Nicolas–Robin, Lean proves the remaining divisor-envelope and polynomial substitutions; `PCv07c-L9.2-generalized-Pell` remains discharged |
 | Lem. 9.3–9.8 | Component counts | Lemma 9.3 **proved**: canonical squarefree normalization, uniqueness, and bounds. Lemma 9.4: degree-one count **proved** and injective reductions to Pell and Evertse–Silverman **conditionally proved**; their uniform sums are now assembled in 17.26 and 17.28. Lemma 9.5: canonical parametrization, converse, uniqueness, bounds, and the divisor sum needed in degree two **proved**. Lemmas 9.6–9.7: structural extraction of a small component and disintegrations by forms **proved**; the global connection specific to 17.28 is closed. The former generic host count from 9.9 is no longer exposed as an interface. Lemma 9.8: distinct-class reductions to Pell, equal-class factorization, and smooth summations required by the bounded-ratio sectors **conditionally proved under Pell** |
 | Prop. 9.9 | Elimination of \(D^\#\ge3\) | **Finite kernel retained; former conditional endpoint removed.** Lean defines the exact population \(\{\text{deep core},\sigma=0,D^\#\ge3\}\), proves the inequality \(D^\#+c^\#\le B+\lfloor D^\#/2\rfloor\), the finite weight and mass envelopes, removes zero-mass pairs, and covers the active hosts by two oriented branches carrying a canonical component whose support size lies between 2 and 10. Version v041 removes the abstract host-count interface and the public theorem that depended on it; the canonical master mass bound proceeds through the direct bounded-ratio counts |
 | Lem. 9.10 | Exact rank formula | **Proved in its non-aligned source scope.** Lean constructs the corrected defective vertices, the genuine residual components, and the canonical matrix with \(\pi(L+1)+2\) rows. When the canonical selector is `none`, the \(D^\#+c^\#\) coordinates parametrize the entire large-prime solution space. Under \(L+1\le M\), \(x+L\le M\), and \(y+L\le M\), the full boundaries yield a linear equivalence between the relation space and the concrete kernel. Because the canonical rational code vanishes, Lean obtains the residual-quotient--kernel equivalence and \(\tau+\widetilde k=D^\#+c^\#\), without a bridge. The historical interface `CanonicalArithmeticKernelStatement` is retained with `status: discharged` |

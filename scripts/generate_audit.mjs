@@ -8,6 +8,7 @@ const supportedArguments = new Set([
   '--check',
   '--check-pdfs',
   '--check-source-digest',
+  '--check-literature-certificates',
 ]);
 for (const argument of argumentsSet) {
   if (!supportedArguments.has(argument)) {
@@ -16,13 +17,17 @@ for (const argument of argumentsSet) {
 }
 if (argumentsSet.size > 1) {
   throw new Error(
-    '`--check`, `--check-pdfs`, and `--check-source-digest` are mutually exclusive',
+    '`--check`, `--check-pdfs`, `--check-source-digest`, and ' +
+    '`--check-literature-certificates` are mutually exclusive',
   );
 }
 
 const checkOnly = argumentsSet.has('--check');
 const checkPdfsOnly = argumentsSet.has('--check-pdfs');
 const checkSourceDigestOnly = argumentsSet.has('--check-source-digest');
+const checkLiteratureCertificatesOnly = argumentsSet.has(
+  '--check-literature-certificates',
+);
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
 const sourceRoot = path.join(projectRoot, 'PaperC');
@@ -293,6 +298,70 @@ if (
     'configured Mathlib version/commit does not match lake-manifest.json',
   );
 }
+const literatureCertificateMetadata = requirePlainObject(
+  auditConfig.verification.literature_certificates,
+  'verification.literature_certificates',
+);
+requireNonemptyString(
+  literatureCertificateMetadata.scope,
+  'verification.literature_certificates.scope',
+);
+requireNonemptyString(
+  literatureCertificateMetadata.review_status,
+  'verification.literature_certificates.review_status',
+);
+if (literatureCertificateMetadata.review_status !== 'agent-reviewed') {
+  throw new Error(
+    'verification.literature_certificates.review_status must be agent-reviewed',
+  );
+}
+if (literatureCertificateMetadata.human_peer_reviewed !== false) {
+  throw new Error(
+    'verification.literature_certificates.human_peer_reviewed must be false',
+  );
+}
+requireNonemptyString(
+  literatureCertificateMetadata.status_note,
+  'verification.literature_certificates.status_note',
+);
+if (
+  !Array.isArray(literatureCertificateMetadata.entries) ||
+  literatureCertificateMetadata.entries.length === 0
+) {
+  throw new Error(
+    'audit_config.json has an invalid ' +
+    'verification.literature_certificates.entries',
+  );
+}
+const allowedLiteratureImplicationStatuses = new Set([
+  'agent_checked_supports',
+  'agent_checked_with_open_gap',
+  'not_established',
+]);
+const allowedPrimarySourceAccessStatuses = new Set([
+  'full_text',
+  'partial',
+  'not_accessed',
+]);
+for (const [index, entry] of
+  literatureCertificateMetadata.entries.entries()) {
+  const label = `verification.literature_certificates.entries[${index}]`;
+  requirePlainObject(entry, label);
+  requireNonemptyString(entry.bridge_id, `${label}.bridge_id`);
+  requireNonemptyString(entry.file, `${label}.file`);
+  requireNonemptyString(entry.source_locator, `${label}.source_locator`);
+  if (!allowedPrimarySourceAccessStatuses.has(entry.primary_source_access)) {
+    throw new Error(
+      `audit_config.json has an invalid ${label}.primary_source_access`,
+    );
+  }
+  if (!allowedLiteratureImplicationStatuses.has(entry.implication_status)) {
+    throw new Error(
+      `audit_config.json has an invalid ${label}.implication_status`,
+    );
+  }
+  requireNonemptyString(entry.limitations, `${label}.limitations`);
+}
 const comparatorMetadata = requirePlainObject(
   auditConfig.verification.comparator,
   'verification.comparator',
@@ -388,6 +457,52 @@ if (
 ) {
   throw new Error(
     'audit_config.json has an invalid verification.comparator.configurations',
+  );
+}
+const publishedComparatorEvidence = requirePlainObject(
+  comparatorMetadata.published_evidence,
+  'verification.comparator.published_evidence',
+);
+for (const field of [
+  'release_tag',
+  'release_url',
+  'archive',
+  'metadata_verification',
+  'qualification',
+]) {
+  requireNonemptyString(
+    publishedComparatorEvidence[field],
+    `verification.comparator.published_evidence.${field}`,
+  );
+}
+for (const field of [
+  'archive_sha256',
+  'summary_sha256',
+  'comparator_fileset_digest_sha256',
+]) {
+  if (!/^[0-9a-f]{64}$/.test(publishedComparatorEvidence[field] ?? '')) {
+    throw new Error(
+      'audit_config.json has an invalid ' +
+      `verification.comparator.published_evidence.${field}`,
+    );
+  }
+}
+requireCommit(
+  publishedComparatorEvidence.paper_c_commit,
+  'verification.comparator.published_evidence.paper_c_commit',
+);
+if (
+  !Number.isSafeInteger(publishedComparatorEvidence.archive_size_bytes) ||
+  publishedComparatorEvidence.archive_size_bytes < 1 ||
+  publishedComparatorEvidence.sandboxed !== true ||
+  publishedComparatorEvidence.non_root !== true ||
+  publishedComparatorEvidence.enable_nanoda !== false ||
+  JSON.stringify(publishedComparatorEvidence.kernels) !==
+    JSON.stringify(['lean'])
+) {
+  throw new Error(
+    'audit_config.json has an invalid ' +
+    'verification.comparator.published_evidence qualification',
   );
 }
 if (!Array.isArray(auditConfig.challenge_placeholders)) {
@@ -1597,9 +1712,6 @@ const conditionalTheoremCountsByHypothesisStatus = Object.fromEntries(
   }),
 );
 
-const publicBridgeEntries = bridges.map(({local_name: _localName, ...bridge}) =>
-  bridge
-);
 const bridgeById = new Map(bridges.map(bridge => [bridge.id, bridge]));
 
 const normalizeProjectRelativePath = (relativePath, label) => {
@@ -1619,6 +1731,244 @@ const normalizeProjectRelativePath = (relativePath, label) => {
   }
   return absolutePath;
 };
+
+const requiredLiteratureCertificateBridgeIds = [
+  'AGG89-T1-finite-dependency-b3-zero',
+  'ES86-T1b-Q-split-n2',
+  'HK13-QO-conductor-fibres',
+  'NR83-T1-divisor-log-bound',
+].sort(binaryCompare);
+const literatureCertificateDirectory = path.join(
+  projectRoot,
+  'literature_certificates',
+);
+const literatureCertificateDirectoryStat = fs.lstatSync(
+  literatureCertificateDirectory,
+);
+if (
+  !literatureCertificateDirectoryStat.isDirectory() ||
+  literatureCertificateDirectoryStat.isSymbolicLink()
+) {
+  throw new Error('literature_certificates must be a real directory');
+}
+const discoveredLiteratureCertificateFiles = fs
+  .readdirSync(literatureCertificateDirectory, {withFileTypes: true})
+  .map(entry => {
+    if (!entry.isFile() || entry.isSymbolicLink()) {
+      throw new Error(
+        `literature_certificates contains a non-file entry: ${entry.name}`,
+      );
+    }
+    return `literature_certificates/${entry.name}`;
+  })
+  .sort(binaryCompare);
+const configuredLiteratureCertificateFiles =
+  literatureCertificateMetadata.entries
+    .map(entry => entry.file)
+    .sort(binaryCompare);
+if (
+  JSON.stringify(discoveredLiteratureCertificateFiles) !==
+  JSON.stringify(configuredLiteratureCertificateFiles)
+) {
+  throw new Error(
+    'literature_certificates directory must contain exactly the configured files',
+  );
+}
+const literatureCertificateBridgeIds = new Set();
+const literatureCertificatePaths = new Set();
+const parsedLiteratureCertificates = [];
+for (const [index, entry] of
+  literatureCertificateMetadata.entries.entries()) {
+  const label = `verification.literature_certificates.entries[${index}]`;
+  if (literatureCertificateBridgeIds.has(entry.bridge_id)) {
+    throw new Error(`duplicate literature certificate bridge: ${entry.bridge_id}`);
+  }
+  literatureCertificateBridgeIds.add(entry.bridge_id);
+  if (literatureCertificatePaths.has(entry.file)) {
+    throw new Error(`duplicate literature certificate file: ${entry.file}`);
+  }
+  literatureCertificatePaths.add(entry.file);
+  if (
+    !entry.file.startsWith('literature_certificates/') ||
+    !entry.file.endsWith('.md')
+  ) {
+    throw new Error(
+      `audit_config.json has an invalid ${label}.file: ${entry.file}`,
+    );
+  }
+  if (
+    sourceFiles.includes(entry.file) ||
+    comparatorMetadata.fileset.includes(entry.file) ||
+    entry.file === auditConfig.target_pdf.filename ||
+    entry.file === auditConfig.source_pdf_fr.filename
+  ) {
+    throw new Error(
+      `literature certificate overlaps another audited fileset: ${entry.file}`,
+    );
+  }
+  const bridge = bridgeById.get(entry.bridge_id);
+  if (bridge === undefined) {
+    throw new Error(
+      `literature certificate refers to an unknown bridge: ${entry.bridge_id}`,
+    );
+  }
+  if (bridge.kind !== 'external' || bridge.status !== 'open') {
+    throw new Error(
+      `literature certificate must refer to an open external bridge: ` +
+      entry.bridge_id,
+    );
+  }
+  const absolutePath = normalizeProjectRelativePath(
+    entry.file,
+    `${label}.file`,
+  );
+  const bytes = fs.readFileSync(absolutePath);
+  let markdown;
+  try {
+    markdown = new TextDecoder('utf-8', {fatal: true}).decode(bytes);
+  } catch (error) {
+    throw new Error(
+      `literature certificate is not valid UTF-8: ${entry.file}: ` +
+      error.message,
+    );
+  }
+  for (const requiredText of [
+    `Bridge ID: \`${entry.bridge_id}\``,
+    `Lean proposition: \`${bridge.lean_name}\``,
+    `Current rc2 implication status: \`${entry.implication_status}\``,
+    `Current source locator: \`${entry.source_locator}\``,
+    `Primary-source access: \`${entry.primary_source_access}\``,
+    'independent human review required',
+  ]) {
+    if (!markdown.includes(requiredText)) {
+      throw new Error(
+        `literature certificate ${entry.file} lacks required text: ` +
+        requiredText,
+      );
+    }
+  }
+  parsedLiteratureCertificates.push({
+    ...entry,
+    lean_name: bridge.lean_name,
+    sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+    byte_length: bytes.length,
+    review_status: literatureCertificateMetadata.review_status,
+    human_peer_reviewed: literatureCertificateMetadata.human_peer_reviewed,
+    supersedes_frozen_source_verification_wording_for_rc2: true,
+    bytes,
+  });
+}
+if (
+  JSON.stringify([...literatureCertificateBridgeIds].sort(binaryCompare)) !==
+  JSON.stringify(requiredLiteratureCertificateBridgeIds)
+) {
+  throw new Error(
+    'literature certificates must cover exactly the four Theorem 1.1 bridges',
+  );
+}
+const literatureCertificateFiles = parsedLiteratureCertificates
+  .map(certificate => certificate.file)
+  .sort(binaryCompare);
+const literatureCertificateDigest = crypto.createHash('sha256');
+for (const relativePath of literatureCertificateFiles) {
+  const certificate = parsedLiteratureCertificates.find(
+    entry => entry.file === relativePath,
+  );
+  literatureCertificateDigest.update(relativePath);
+  literatureCertificateDigest.update('\0');
+  literatureCertificateDigest.update(certificate.bytes);
+  literatureCertificateDigest.update('\0');
+}
+const literatureCertificateDigestSha256 =
+  literatureCertificateDigest.digest('hex');
+for (const certificate of parsedLiteratureCertificates) {
+  delete certificate.bytes;
+}
+const literatureCertificateByBridgeId = new Map(
+  parsedLiteratureCertificates.map(certificate => [
+    certificate.bridge_id,
+    certificate,
+  ]),
+);
+const effectiveSourceToLeanStatus = certificate =>
+  certificate.implication_status === 'agent_checked_supports'
+    ? 'agent_checked_supports'
+    : 'source_to_lean_not_established';
+const effectiveFormalizationRelation = (bridge, certificate) =>
+  certificate.implication_status === 'agent_checked_supports'
+    ? 'Agent counter-audit supports the registered source-to-proposition ' +
+      'implication, without a Lean formalization or independent human review. ' +
+      'Registered relation: ' +
+      bridge.formalization_relation
+    : 'The source-to-proposition implication is not established in rc2. ' +
+      `Open construction: ${certificate.limitations}`;
+const currentSourceLocator = bridge =>
+  literatureCertificateByBridgeId.get(bridge.id)?.source_locator ??
+  bridge.citation.locator;
+const registeredCitationLabel = bridge =>
+  `${bridge.citation.authors.join(', ')}, ${bridge.citation.title}, ` +
+  bridge.citation.locator;
+const citationLabel = bridge =>
+  `${bridge.citation.authors.join(', ')}, ${bridge.citation.title}, ` +
+  currentSourceLocator(bridge);
+const publicBridgeEntries = bridges.map(
+  ({local_name: _localName, ...bridge}) => {
+    const certificate = literatureCertificateByBridgeId.get(bridge.id);
+    if (certificate === undefined) {
+      return bridge;
+    }
+    return {
+      ...bridge,
+      formalization_relation: effectiveFormalizationRelation(
+        bridge,
+        certificate,
+      ),
+      historical_frozen_formalization_relation: bridge.formalization_relation,
+      source_statement: {
+        ...bridge.source_statement,
+        verification: effectiveSourceToLeanStatus(certificate),
+        verification_note:
+          `Current rc2 assessment: ${certificate.limitations}`,
+        historical_frozen_verification:
+          bridge.source_statement.verification,
+        ...(bridge.source_statement.verification_note === undefined
+          ? {}
+          : {
+              historical_frozen_verification_note:
+                bridge.source_statement.verification_note,
+            }),
+      },
+      current_source_locator: citationLabel(bridge),
+      registered_frozen_source_locator: registeredCitationLabel(bridge),
+      source_to_lean_status: effectiveSourceToLeanStatus(certificate),
+      literature_certificate: certificate,
+    };
+  },
+);
+
+if (checkLiteratureCertificatesOnly) {
+  const existingManifest = JSON.parse(
+    fs.readFileSync(manifestPath, 'utf8'),
+  );
+  if (
+    JSON.stringify(existingManifest.literature_certificate_fileset) !==
+      JSON.stringify(literatureCertificateFiles) ||
+    existingManifest.literature_certificate_digest_sha256 !==
+      literatureCertificateDigestSha256 ||
+    JSON.stringify(existingManifest.literature_certificates) !==
+      JSON.stringify(parsedLiteratureCertificates)
+  ) {
+    throw new Error(
+      'literature certificate bytes or mapping differ from audit_manifest.json; ' +
+      'run `node scripts/generate_audit.mjs`',
+    );
+  }
+  process.stdout.write(
+    `verified ${parsedLiteratureCertificates.length} literature certificates ` +
+    `${literatureCertificateDigestSha256}\n`,
+  );
+  process.exit(0);
+}
 
 const leanModulePath = (moduleName, label) => {
   requireNonemptyString(moduleName, label);
@@ -1728,39 +2078,6 @@ const hasLeanTheoremDeclaration = (relativePath, theoremName) => {
   return interfaceTheoremNames(relativePath).has(theoremName);
 };
 
-const transcriptLines = (transcriptText, configPath) => {
-  if (transcriptText.includes('\u0000')) {
-    throw new Error(
-      `Comparator transcript contains a NUL byte: ${configPath}`,
-    );
-  }
-  return transcriptText.split(/\r?\n/);
-};
-
-const requireUniqueTranscriptField = (lines, field, configPath) => {
-  const prefix = `${field}=`;
-  const values = lines
-    .filter(line => line.startsWith(prefix))
-    .map(line => line.slice(prefix.length));
-  if (values.length !== 1 || values[0].length === 0) {
-    throw new Error(
-      `passed Comparator transcript must contain exactly one nonempty ` +
-      `${field} field: ${configPath}`,
-    );
-  }
-  return values[0];
-};
-
-const requireExactTranscriptLine = (lines, expectedLine, label, configPath) => {
-  const count = lines.filter(line => line === expectedLine).length;
-  if (count !== 1) {
-    throw new Error(
-      `passed Comparator transcript must contain exactly one ${label}: ` +
-      `${configPath}`,
-    );
-  }
-};
-
 let passedComparatorSourceCommit = null;
 
 const compatibilityTranscriptPath = normalizeProjectRelativePath(
@@ -1795,6 +2112,68 @@ for (const relativePath of comparatorFiles) {
   comparatorDigest.update('\0');
 }
 const comparatorDigestSha256 = comparatorDigest.digest('hex');
+
+const configuredComparatorEvidenceFiles = comparatorMetadata.configurations
+  .map((run, index) => {
+    const relativePath = run.evidence_record ?? null;
+    if (relativePath === null) {
+      return null;
+    }
+    requireNonemptyString(
+      relativePath,
+      `verification.comparator.configurations[${index}].evidence_record`,
+    );
+    if (
+      path.posix.dirname(relativePath) !== 'comparator/evidence' ||
+      path.posix.extname(relativePath) !== '.json'
+    ) {
+      throw new Error(
+        'Comparator evidence records must be JSON files directly under ' +
+        'comparator/evidence/',
+      );
+    }
+    return relativePath;
+  })
+  .filter(relativePath => relativePath !== null)
+  .sort(binaryCompare);
+if (
+  new Set(configuredComparatorEvidenceFiles).size !==
+  configuredComparatorEvidenceFiles.length
+) {
+  throw new Error('duplicate Comparator evidence-record path');
+}
+const comparatorEvidenceDirectory = path.join(
+  projectRoot,
+  'comparator/evidence',
+);
+const comparatorEvidenceDirectoryStat = fs.lstatSync(
+  comparatorEvidenceDirectory,
+);
+if (
+  comparatorEvidenceDirectoryStat.isSymbolicLink() ||
+  !comparatorEvidenceDirectoryStat.isDirectory()
+) {
+  throw new Error('comparator/evidence must be an ordinary directory');
+}
+const actualComparatorEvidenceFiles = fs
+  .readdirSync(comparatorEvidenceDirectory, {withFileTypes: true})
+  .map(entry => {
+    if (entry.isSymbolicLink() || !entry.isFile()) {
+      throw new Error(
+        `comparator/evidence contains a non-ordinary file: ${entry.name}`,
+      );
+    }
+    return `comparator/evidence/${entry.name}`;
+  })
+  .sort(binaryCompare);
+if (
+  JSON.stringify(actualComparatorEvidenceFiles) !==
+  JSON.stringify(configuredComparatorEvidenceFiles)
+) {
+  throw new Error(
+    'comparator/evidence must contain exactly the configured evidence records',
+  );
+}
 
 const foundationalAxioms = auditConfig.editorial.axioms;
 const successfulComparatorStatuses = new Set([
@@ -1842,50 +2221,133 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
     );
   }
   const runPassed = successfulComparatorStatuses.has(run.status);
-  let transcriptSha256 = null;
-  let transcriptBytes = null;
-  if (run.transcript !== null) {
-    const transcriptPath = normalizeProjectRelativePath(
-      run.transcript,
-      `verification.comparator.configurations[${index}].transcript`,
+  const evidenceRecordRelativePath = run.evidence_record ?? null;
+  const configuredEvidenceRecordSha256 = run.evidence_record_sha256 ?? null;
+  const transcriptInPublishedArchive =
+    run.transcript_in_published_archive ?? null;
+  const transcriptSha256 = run.transcript_sha256 ?? null;
+  let evidenceRecord = null;
+  let evidenceRecordSha256 = null;
+
+  if (evidenceRecordRelativePath !== null) {
+    const evidenceRecordAbsolutePath = normalizeProjectRelativePath(
+      evidenceRecordRelativePath,
+      `verification.comparator.configurations[${index}].evidence_record`,
     );
-    if (run.transcript_sha256 !== undefined && run.transcript_sha256 !== null) {
-      if (!/^[0-9a-f]{64}$/.test(run.transcript_sha256)) {
-        throw new Error(
-          `invalid Comparator transcript SHA-256 for ${configPath}`,
-        );
-      }
-      transcriptSha256 = run.transcript_sha256;
-      transcriptBytes = fs.readFileSync(transcriptPath);
-      const computedTranscriptSha256 = crypto
-        .createHash('sha256')
-        .update(transcriptBytes)
-        .digest('hex');
-      if (computedTranscriptSha256 !== transcriptSha256) {
-        throw new Error(
-          `Comparator transcript SHA-256 mismatch for ${configPath}: ` +
-          `expected ${transcriptSha256}, got ${computedTranscriptSha256}`,
-        );
-      }
+    if (
+      path.posix.dirname(evidenceRecordRelativePath) !==
+        'comparator/evidence' ||
+      path.posix.extname(evidenceRecordRelativePath) !== '.json'
+    ) {
+      throw new Error(
+        `Comparator evidence record must be JSON under comparator/evidence/: ` +
+        configPath,
+      );
     }
-  } else if (
-    run.transcript_sha256 !== undefined &&
-    run.transcript_sha256 !== null
+    if (!/^[0-9a-f]{64}$/.test(configuredEvidenceRecordSha256 ?? '')) {
+      throw new Error(
+        `invalid Comparator evidence-record SHA-256 for ${configPath}`,
+      );
+    }
+    const evidenceRecordBytes = fs.readFileSync(evidenceRecordAbsolutePath);
+    evidenceRecordSha256 = crypto
+      .createHash('sha256')
+      .update(evidenceRecordBytes)
+      .digest('hex');
+    if (evidenceRecordSha256 !== configuredEvidenceRecordSha256) {
+      throw new Error(
+        `Comparator evidence-record SHA-256 mismatch for ${configPath}: ` +
+        `expected ${configuredEvidenceRecordSha256}, got ${evidenceRecordSha256}`,
+      );
+    }
+    try {
+      evidenceRecord = JSON.parse(
+        new TextDecoder('utf-8', {fatal: true}).decode(evidenceRecordBytes),
+      );
+    } catch (error) {
+      throw new Error(
+        `Comparator evidence record is not valid UTF-8 JSON for ${configPath}: ` +
+        error.message,
+      );
+    }
+    if (!isPlainObject(evidenceRecord)) {
+      throw new Error(`invalid Comparator evidence record for ${configPath}`);
+    }
+    const expectedEvidenceRecordKeys = [
+      'certifying',
+      'comparator_fileset_digest_sha256',
+      'config',
+      'configuration_sha256',
+      'enable_nanoda',
+      'exit_code',
+      'kernels',
+      'non_root',
+      'paper_c_commit',
+      'sandboxed',
+      'status',
+      'transcript',
+      'transcript_sha256',
+    ].sort(binaryCompare);
+    if (
+      JSON.stringify(Object.keys(evidenceRecord).sort(binaryCompare)) !==
+      JSON.stringify(expectedEvidenceRecordKeys)
+    ) {
+      throw new Error(
+        `Comparator evidence record has an unexpected schema: ${configPath}`,
+      );
+    }
+  } else if (configuredEvidenceRecordSha256 !== null) {
+    throw new Error(
+      `Comparator run without an evidence record records its SHA-256: ` +
+      configPath,
+    );
+  }
+
+  if (transcriptInPublishedArchive !== null) {
+    requireNonemptyString(
+      transcriptInPublishedArchive,
+      `verification.comparator.configurations[${index}]` +
+        '.transcript_in_published_archive',
+    );
+    if (
+      path.isAbsolute(transcriptInPublishedArchive) ||
+      transcriptInPublishedArchive.includes('\\') ||
+      path.posix.normalize(transcriptInPublishedArchive) !==
+        transcriptInPublishedArchive ||
+      !transcriptInPublishedArchive.startsWith('evidence/') ||
+      path.posix.extname(transcriptInPublishedArchive) !== '.txt'
+    ) {
+      throw new Error(
+        `invalid Comparator archive transcript path for ${configPath}`,
+      );
+    }
+  }
+  if (transcriptSha256 !== null && !/^[0-9a-f]{64}$/.test(transcriptSha256)) {
+    throw new Error(`invalid Comparator transcript SHA-256 for ${configPath}`);
+  }
+  if (runPassed) {
+    if (
+      evidenceRecord === null ||
+      transcriptInPublishedArchive === null ||
+      transcriptSha256 === null
+    ) {
+      throw new Error(
+        `passed Comparator run lacks a complete evidence record: ${configPath}`,
+      );
+    }
+  }
+  if (
+    run.status === 'not_run' &&
+    [
+      evidenceRecordRelativePath,
+      configuredEvidenceRecordSha256,
+      transcriptInPublishedArchive,
+      transcriptSha256,
+    ].some(value => value !== null)
   ) {
     throw new Error(
-      `Comparator run without a transcript records a SHA-256: ${configPath}`,
+      `unrun Comparator configuration records evidence: ${configPath}`,
     );
-  }
-  if (runPassed && run.transcript === null) {
-    throw new Error(`passed Comparator run lacks a transcript: ${configPath}`);
-  }
-  if (runPassed && transcriptSha256 === null) {
-    throw new Error(
-      `passed Comparator run lacks a transcript SHA-256: ${configPath}`,
-    );
-  }
-  if (run.status === 'not_run' && run.transcript !== null) {
-    throw new Error(`unrun Comparator configuration has a transcript: ${configPath}`);
   }
 
   const configAbsolutePath = normalizeProjectRelativePath(
@@ -1984,64 +2446,35 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
         `was ${comparatorFilesetDigestSha256AtRun}, now ${comparatorDigestSha256}`,
       );
     }
-    let transcriptText;
-    try {
-      transcriptText = new TextDecoder('utf-8', {fatal: true})
-        .decode(transcriptBytes);
-    } catch (error) {
+    if (
+      evidenceRecord.status !== run.status ||
+      evidenceRecord.certifying !==
+        (run.status === 'sandboxed_lean_kernel_passed') ||
+      evidenceRecord.sandboxed !== run.sandboxed ||
+      evidenceRecord.non_root !== true ||
+      JSON.stringify(evidenceRecord.kernels) !== JSON.stringify(['lean']) ||
+      evidenceRecord.enable_nanoda !== comparatorConfig.enable_nanoda ||
+      evidenceRecord.exit_code !== 0 ||
+      evidenceRecord.config !== configPath ||
+      evidenceRecord.configuration_sha256 !== configSha256 ||
+      evidenceRecord.configuration_sha256 !== configurationSha256AtRun ||
+      evidenceRecord.comparator_fileset_digest_sha256 !==
+        comparatorDigestSha256 ||
+      evidenceRecord.comparator_fileset_digest_sha256 !==
+        comparatorFilesetDigestSha256AtRun ||
+      evidenceRecord.transcript !==
+        path.posix.basename(transcriptInPublishedArchive) ||
+      evidenceRecord.transcript_sha256 !== transcriptSha256
+    ) {
       throw new Error(
-        `passed Comparator transcript is not valid UTF-8 for ${configPath}: ` +
-        error.message,
-      );
-    }
-    const lines = transcriptLines(transcriptText, configPath);
-    const transcriptField = field =>
-      requireUniqueTranscriptField(lines, field, configPath);
-
-    const mode = transcriptField('mode');
-    const expectedMode = run.sandboxed
-      ? 'sandboxed Comparator verification'
-      : 'unsandboxed Comparator semantic smoke test (non-certifying)';
-    if (mode !== expectedMode) {
-      throw new Error(
-        `Comparator transcript mode/sandbox mismatch for ${configPath}: ` +
-        `expected ${JSON.stringify(expectedMode)}, got ${JSON.stringify(mode)}`,
-      );
-    }
-    const transcriptSandboxed = transcriptField('sandboxed');
-    if (transcriptSandboxed !== String(run.sandboxed)) {
-      throw new Error(
-        `Comparator transcript sandboxed flag mismatch for ${configPath}: ` +
-        `metadata records ${run.sandboxed}, transcript records ` +
-        transcriptSandboxed,
-      );
-    }
-    const expectedNanoda = comparatorConfig.enable_nanoda
-      ? 'enabled'
-      : 'disabled';
-    const transcriptNanoda = transcriptField('nanoda');
-    if (transcriptNanoda !== expectedNanoda) {
-      throw new Error(
-        `Comparator transcript nanoda mode mismatch for ${configPath}: ` +
-        `expected ${expectedNanoda}, got ${transcriptNanoda}`,
-      );
-    }
-    if (transcriptField('config') !== configPath) {
-      throw new Error(
-        `Comparator transcript configuration path mismatch: ${configPath}`,
-      );
-    }
-    if (transcriptField('tracked_worktree_dirty_count') !== '0') {
-      throw new Error(
-        `passed Comparator transcript does not record a clean source ` +
-        `worktree: ${configPath}`,
+        `passed Comparator evidence record is inconsistent for ${configPath}`,
       );
     }
 
-    const sourceCommit = transcriptField('paper_c_commit');
+    const sourceCommit = evidenceRecord.paper_c_commit;
     if (!/^[0-9a-f]{40}$/.test(sourceCommit)) {
       throw new Error(
-        `passed Comparator transcript has an invalid source commit: ` +
+        `passed Comparator evidence record has an invalid source commit: ` +
         `${configPath}`,
       );
     }
@@ -2050,68 +2483,12 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
       passedComparatorSourceCommit !== sourceCommit
     ) {
       throw new Error(
-        `passed Comparator transcripts refer to different Paper C commits: ` +
+        `passed Comparator evidence records refer to different Paper C ` +
+        `commits: ` +
         `${passedComparatorSourceCommit} and ${sourceCommit}`,
       );
     }
     passedComparatorSourceCommit = sourceCommit;
-
-    const expectedTranscriptCommits = new Map([
-      ['lean_commit', configuredToolchain.lean.commit],
-      ['mathlib_commit', configuredToolchain.mathlib.commit],
-      ['comparator_commit', comparatorMetadata.tools.comparator.commit],
-      ['lean4export_commit', comparatorMetadata.tools.lean4export.commit],
-      ['landrun_commit', comparatorMetadata.tools.landrun.commit],
-    ]);
-    if (comparatorConfig.enable_nanoda) {
-      expectedTranscriptCommits.set(
-        'nanoda_commit',
-        comparatorMetadata.tools.nanoda.commit,
-      );
-    }
-    for (const [field, expectedCommit] of expectedTranscriptCommits) {
-      const transcriptCommit = transcriptField(field);
-      if (transcriptCommit !== expectedCommit) {
-        throw new Error(
-          `Comparator transcript ${field} mismatch for ${configPath}: ` +
-          `expected ${expectedCommit}, got ${transcriptCommit}`,
-        );
-      }
-    }
-
-    if (transcriptField('exit_code') !== '0') {
-      throw new Error(
-        `passed Comparator transcript does not record exit_code=0: ` +
-        configPath,
-      );
-    }
-    requireExactTranscriptLine(
-      lines,
-      'Lean default kernel accepts the solution',
-      'Lean default-kernel acceptance marker',
-      configPath,
-    );
-    requireExactTranscriptLine(
-      lines,
-      'Your solution is okay!',
-      'Comparator success marker',
-      configPath,
-    );
-    requireExactTranscriptLine(
-      lines,
-      `${configSha256}  ${configPath}`,
-      'configuration SHA-256 binding',
-      configPath,
-    );
-    if (
-      transcriptField('comparator_fileset_digest_sha256') !==
-      comparatorDigestSha256
-    ) {
-      throw new Error(
-        `passed Comparator transcript does not bind the current fileset hash: ` +
-        configPath,
-      );
-    }
   }
   parsedComparatorConfigurations.push({
     ...comparatorConfig,
@@ -2119,7 +2496,9 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
     sha256: configSha256,
     status: run.status,
     sandboxed: run.sandboxed,
-    transcript: run.transcript,
+    evidence_record: evidenceRecordRelativePath,
+    evidence_record_sha256: evidenceRecordSha256,
+    transcript_in_published_archive: transcriptInPublishedArchive,
     transcript_sha256: transcriptSha256,
     configuration_sha256_at_run: configurationSha256AtRun,
     comparator_fileset_digest_sha256_at_run:
@@ -2145,6 +2524,30 @@ if (
 ) {
   throw new Error(
     'global Comparator success status does not match every project configuration',
+  );
+}
+if (
+  comparatorMetadata.status !== 'sandboxed_lean_kernel_passed' ||
+  parsedComparatorConfigurations.some(
+    config => config.sandboxed !== true || config.enable_nanoda !== false,
+  ) ||
+  publishedComparatorEvidence.paper_c_commit !== passedComparatorSourceCommit ||
+  publishedComparatorEvidence.comparator_fileset_digest_sha256 !==
+    comparatorDigestSha256
+) {
+  throw new Error(
+    'published hardened evidence does not match the validated Comparator runs',
+  );
+}
+if (
+  path.basename(publishedComparatorEvidence.archive) !==
+    publishedComparatorEvidence.archive ||
+  !publishedComparatorEvidence.release_url.endsWith(
+    `/tag/${publishedComparatorEvidence.release_tag}`,
+  )
+) {
+  throw new Error(
+    'published hardened evidence has an invalid archive or release URL',
   );
 }
 
@@ -2428,9 +2831,14 @@ for (const config of parsedComparatorConfigurations) {
   }
 }
 
-const citationLabel = bridge =>
-  `${bridge.citation.authors.join(', ')}, ${bridge.citation.title}, ` +
-  bridge.citation.locator;
+const formalizationCertificateSummary = certificate => ({
+  file: certificate.file,
+  sha256: certificate.sha256,
+  source_locator: certificate.source_locator,
+  review_status: certificate.review_status,
+  implication_status: certificate.implication_status,
+  human_peer_reviewed: certificate.human_peer_reviewed,
+});
 
 const formalizationMainResults = formalizationMainResultItems.map(item => {
   const comparatorConfig = item.comparator.covered
@@ -2460,13 +2868,35 @@ const formalizationMainResults = formalizationMainResultItems.map(item => {
     literature_dependencies: item.bridge_ids
       .map(bridgeId => bridgeById.get(bridgeId))
       .filter(bridge => bridge.kind === 'external' && bridge.status === 'open')
-      .map(bridge => ({
-        statement: bridge.formalization_relation,
-        source: literatureSourceIdByBridgeId.get(bridge.id),
-        source_locator: citationLabel(bridge),
-        bridge_id: bridge.id,
-        lean_name: bridge.lean_name,
-      })),
+      .map(bridge => {
+        const certificate = literatureCertificateByBridgeId.get(bridge.id);
+        return {
+          statement: certificate === undefined
+            ? bridge.formalization_relation
+            : effectiveFormalizationRelation(bridge, certificate),
+          ...(certificate === undefined
+            ? {}
+            : {
+                source_to_lean_status:
+                  effectiveSourceToLeanStatus(certificate),
+              }),
+          source: literatureSourceIdByBridgeId.get(bridge.id),
+          source_locator: citationLabel(bridge),
+          ...(citationLabel(bridge) === registeredCitationLabel(bridge)
+            ? {}
+            : {
+                registered_frozen_source_locator:
+                  registeredCitationLabel(bridge),
+              }),
+          bridge_id: bridge.id,
+          lean_name: bridge.lean_name,
+          ...(certificate === undefined
+            ? {}
+            : {
+                certificate: formalizationCertificateSummary(certificate),
+              }),
+        };
+      }),
   };
 });
 
@@ -2499,13 +2929,25 @@ const formalization = {
       configuration: config.path,
       status: config.status,
       sandboxed: config.sandboxed,
-      transcript: config.transcript,
+      evidence_record: config.evidence_record,
+      evidence_record_sha256: config.evidence_record_sha256,
+      transcript_in_published_archive:
+        config.transcript_in_published_archive,
       transcript_sha256: config.transcript_sha256,
       configuration_sha256_at_run: config.configuration_sha256_at_run,
       comparator_fileset_digest_sha256_at_run:
         config.comparator_fileset_digest_sha256_at_run,
       enable_nanoda: config.enable_nanoda,
     })),
+    literature_certificates: {
+      scope: literatureCertificateMetadata.scope,
+      review_status: literatureCertificateMetadata.review_status,
+      human_peer_reviewed: literatureCertificateMetadata.human_peer_reviewed,
+      status_note: literatureCertificateMetadata.status_note,
+      fileset: literatureCertificateFiles,
+      digest_sha256: literatureCertificateDigestSha256,
+      entries: parsedLiteratureCertificates,
+    },
   },
   automation: auditConfig.editorial.automation,
   fidelity: auditConfig.editorial.fidelity,
@@ -2542,6 +2984,7 @@ const formalization = {
       compatibility_probe: comparatorMetadata.compatibility_probe,
       fileset: comparatorFiles,
       digest_sha256: comparatorDigestSha256,
+      published_evidence: publishedComparatorEvidence,
       configurations: parsedComparatorConfigurations.map(config => ({
         path: config.path,
         sha256: config.sha256,
@@ -2552,12 +2995,24 @@ const formalization = {
         enable_nanoda: config.enable_nanoda,
         status: config.status,
         sandboxed: config.sandboxed,
-        transcript: config.transcript,
+        evidence_record: config.evidence_record,
+        evidence_record_sha256: config.evidence_record_sha256,
+        transcript_in_published_archive:
+          config.transcript_in_published_archive,
         transcript_sha256: config.transcript_sha256,
         configuration_sha256_at_run: config.configuration_sha256_at_run,
         comparator_fileset_digest_sha256_at_run:
           config.comparator_fileset_digest_sha256_at_run,
       })),
+    },
+    literature_certificates: {
+      scope: literatureCertificateMetadata.scope,
+      review_status: literatureCertificateMetadata.review_status,
+      human_peer_reviewed: literatureCertificateMetadata.human_peer_reviewed,
+      status_note: literatureCertificateMetadata.status_note,
+      fileset: literatureCertificateFiles,
+      digest_sha256: literatureCertificateDigestSha256,
+      entries: parsedLiteratureCertificates,
     },
   },
   acknowledgements:
@@ -2658,6 +3113,13 @@ const bridgeRegistryContent = [
   'porte sur le projet dans son ensemble : un ancien théorème peut donc encore',
   'prendre explicitement un pont `discharged` comme prémisse.',
   '',
+  'La couche de certificats bibliographiques rc2 est distincte de ces statuts',
+  'Lean. Elle documente une contre-expertise source→proposition faite par des',
+  'agents, sans constituer une preuve du noyau ni une revue humaine indépendante.',
+  'Pour les quatre ponts de Theorem 1.1, cette couche est la qualification',
+  'documentaire courante et rend explicites les réserves conservées dans le cœur',
+  'gelé.',
+  '',
   `Ponts enregistrés : ${bridges.length}. Théorèmes publics inconditionnels : ` +
     `${unconditionalTheoremCount}. Théorèmes publics conditionnels : ` +
     `${conditionalTheoremCount}.`,
@@ -2672,21 +3134,28 @@ const bridgeRegistryContent = [
     `${conditionalTheoremCountsByHypothesisStatus.open} open, ` +
     `${conditionalTheoremCountsByHypothesisStatus.discharged} discharged.`,
   '',
-  '| Identifiant | Nature | Statut | Proposition Lean | Déchargé par | Source primaire | Localisation |',
-  '|---|---|---|---|---|---|---|',
+  '| Identifiant | Nature | Statut | Proposition Lean | Déchargé par | Certificat source rc2 | Source primaire | Localisation |',
+  '|---|---|---|---|---|---|---|---|',
   ...bridges.map(bridge =>
     `| \`${bridge.id}\` | \`${bridge.kind}\` | \`${bridge.status}\` | ` +
     `\`${bridge.lean_name}\` | ` +
     `${bridge.discharged_by === undefined
       ? '—'
       : bridge.discharged_by.map(name => `\`${name}\``).join('<br>')} | ` +
+    `${literatureCertificateByBridgeId.has(bridge.id)
+      ? (() => {
+          const certificate = literatureCertificateByBridgeId.get(bridge.id);
+          return `[\`${effectiveSourceToLeanStatus(certificate)}\`](${certificate.file})`;
+        })()
+      : '—'} | ` +
     `${bridge.citation.authors.join(', ')}, *${bridge.citation.title}*, ` +
-    `${bridge.citation.locator} | ${bridge.manuscript_locator.result} |`,
+    `${currentSourceLocator(bridge)} | ${bridge.manuscript_locator.result} |`,
   ),
   '',
   '### Transcriptions sources à contrôler',
   '',
   ...bridges.flatMap(bridge => {
+    const certificate = literatureCertificateByBridgeId.get(bridge.id);
     const displayedFormulas =
       bridge.source_statement.displayed_formulas &&
       typeof bridge.source_statement.displayed_formulas === 'object'
@@ -2700,7 +3169,14 @@ const bridgeRegistryContent = [
       `#### \`${bridge.id}\``,
       '',
       `- Source : ${bridge.citation.authors.join(', ')}, ` +
-        `*${bridge.citation.title}*, ${bridge.citation.locator}.`,
+        `*${bridge.citation.title}*, ${asSentence(currentSourceLocator(bridge))}`,
+      ...(certificate !== undefined &&
+          currentSourceLocator(bridge) !== bridge.citation.locator
+        ? [
+            `- Localisation enregistrée dans le cœur gelé : ` +
+              `${bridge.citation.locator} (supplantée pour rc2).`,
+          ]
+        : []),
       `- Nature : \`${bridge.kind}\`.`,
       `- Statut : \`${bridge.status}\`.`,
       ...(bridge.discharged_by === undefined
@@ -2713,15 +3189,43 @@ const bridgeRegistryContent = [
               '.',
           ]),
       `- Proposition Lean : \`${bridge.lean_name}\`.`,
-      `- Relation de formalisation : ${asSentence(bridge.formalization_relation)}`,
-      `- Contrôle : \`${bridge.source_statement.verification}\`.`,
+      `- Relation de formalisation courante : ${asSentence(
+        certificate === undefined
+          ? bridge.formalization_relation
+          : effectiveFormalizationRelation(bridge, certificate),
+      )}`,
+      `- Contrôle source courant : \`${certificate === undefined
+        ? bridge.source_statement.verification
+        : effectiveSourceToLeanStatus(certificate)}\`.`,
+      ...(certificate === undefined
+        ? []
+        : [
+            `- Wording de contrôle dans le cœur gelé : ` +
+              `\`${bridge.source_statement.verification}\` (supplanté pour rc2).`,
+          ]),
+      ...(certificate !== undefined
+        ? (() => {
+            return [
+              `- Qualification rc2 : \`${certificate.implication_status}\`; ` +
+                `lecture primaire \`${certificate.primary_source_access}\`; ` +
+                'pas de revue humaine indépendante.',
+              `- Certificat rc2 : [\`${certificate.file}\`](${certificate.file}), ` +
+                `SHA-256 \`${certificate.sha256}\`, ` +
+                `${certificate.byte_length} octets.`,
+              `- Limites rc2 : ${asSentence(certificate.limitations)}`,
+            ];
+          })()
+        : []),
       ...(bridge.source_statement.verbatim_is_excerpt === true
         ? ['- Citation littérale : extrait (les formules structurées ci-dessous complètent la transcription).']
         : []),
       ...(bridge.source_statement.verification_note
-        ? [`- Note de vérification : ${asSentence(
-            bridge.source_statement.verification_note,
-          )}`]
+        ? [certificate === undefined
+            ? `- Note de vérification : ${asSentence(
+                bridge.source_statement.verification_note,
+              )}`
+            : `- Note de vérification du cœur gelé (supplantée pour rc2) : ` +
+              asSentence(bridge.source_statement.verification_note)]
         : []),
       ...(displayedFormulas.length === 0
         ? []
@@ -2791,7 +3295,7 @@ const auditMarkdownContent =
   updateGeneratedBridgeRegistry(currentAuditMarkdown);
 
 const manifest = {
-  schema_version: 6,
+  schema_version: 7,
   project: 'paper_c_lean',
   project_metadata: auditConfig.project,
   project_version: versionMatch[1],
@@ -2812,7 +3316,15 @@ const manifest = {
   comparator_status_note: comparatorMetadata.status_note,
   comparator_tools: comparatorMetadata.tools,
   comparator_compatibility_probe: comparatorMetadata.compatibility_probe,
+  comparator_published_evidence: publishedComparatorEvidence,
   comparator_configurations: parsedComparatorConfigurations,
+  literature_certificate_fileset: literatureCertificateFiles,
+  literature_certificate_digest_sha256:
+    literatureCertificateDigestSha256,
+  literature_certificate_scope: literatureCertificateMetadata.scope,
+  literature_certificate_status_note:
+    literatureCertificateMetadata.status_note,
+  literature_certificates: parsedLiteratureCertificates,
   formalization_template: formalizationTemplate,
   automation: auditConfig.editorial.automation,
   fidelity: auditConfig.editorial.fidelity,
@@ -2913,6 +3425,8 @@ process.stdout.write(
   `${hypothesisStatusCounts.discharged} discharged; ` +
   `${conditionalTheoremCount} conditional public theorems; ` +
   `${validatedPaperItems.length} mapped paper items; ` +
+  `${parsedLiteratureCertificates.length} literature certificates ` +
+  `(${literatureCertificateDigestSha256}); ` +
   `${parsedComparatorConfigurations.filter(config => successfulComparatorStatuses.has(config.status)).length} ` +
   'passed, ' +
   `${parsedComparatorConfigurations.filter(config => config.status === 'not_run').length} ` +

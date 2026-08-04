@@ -909,6 +909,8 @@ prepare_project() {
   run_logged_in "$project" "$NODE_BIN" scripts/check_comparator_sources.mjs
   run_logged_in "$project" "$NODE_BIN" scripts/generate_audit.mjs --check-pdfs
   run_logged_in "$project" "$NODE_BIN" scripts/generate_audit.mjs --check-source-digest
+  run_logged_in "$project" "$NODE_BIN" \
+    scripts/generate_audit.mjs --check-literature-certificates
   run_logged_in "$project" "$NODE_BIN" scripts/generate_audit.mjs --check
   run_logged_in "$project" \
     env -i PATH="$TRUSTED_PATH" HOME="$HOME" \
@@ -1341,7 +1343,9 @@ const results = labels.map(label => {
   return result;
 });
 if (results[0].config === results[1].config ||
-    results[0].comparator_fileset_digest_sha256 !== results[1].comparator_fileset_digest_sha256) {
+    results[0].comparator_fileset_digest_sha256 !== results[1].comparator_fileset_digest_sha256 ||
+    JSON.stringify(results[0].tool_commits) !== JSON.stringify(results[1].tool_commits) ||
+    JSON.stringify(results[0].manuscript_sha256) !== JSON.stringify(results[1].manuscript_sha256)) {
   throw new Error('the two Comparator results are not independent, compatible targets');
 }
 const summary = {
@@ -1353,6 +1357,8 @@ const summary = {
   enable_nanoda: false,
   pty_transport: 'util-linux-script around systemd-run --user --pty',
   comparator_fileset_digest_sha256: results[0].comparator_fileset_digest_sha256,
+  tool_commits: results[0].tool_commits,
+  manuscript_sha256: results[0].manuscript_sha256,
   results,
   qualification: 'Lean-kernel Comparator evidence; not a dual-kernel result or a general host-security certification.',
 };

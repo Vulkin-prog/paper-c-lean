@@ -32,13 +32,14 @@ themselves been formalized**. It deliberately distinguishes:
 3. external results that cannot honestly be replaced by axioms when the goal
    is certification.
 
-The frozen 382-file Paper C core and the solution-side Comparator wrappers
-contain neither `sorry` nor any added mathematical axiom.  The two trusted
-challenge files are different by design: `Challenge.lean` and
-`ChallengeTransfer.lean` each contain exactly one final `by sorry`, marking
-the statement to be supplied by the independently built solution.  Those two
-intentional interface placeholders are not proof debt and are counted
-separately in the generated metadata.  The command
+The frozen 382-file Paper C core and the two Solution files contain no
+`sorry` and introduce no mathematical axiom beyond `propext`, `Quot.sound`,
+and `Classical.choice`. `Challenge.lean` and `ChallengeTransfer.lean` each
+contain exactly one source-level `by sorry`, on their named final Comparator
+theorem. This count is per source file: `ChallengeTransfer` imports
+`Challenge`, so its transitive environment also contains the first Challenge
+placeholder. The generated proof-side `sorry_count` excludes these two
+intentional Comparator placeholders and is zero. The command
 
 ```bash
 rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' PaperC.lean PaperC
@@ -50,8 +51,11 @@ source.
 
 ## External semantic audit boundary (v0.48.0)
 
-Version `0.48.0` adds two small Mathlib-only trust boundaries without changing
-the mathematical core:
+Version `0.48.0` adds a project-independent semantic boundary without changing
+the mathematical core. `Challenge.lean` imports only Mathlib modules.
+`ChallengeTransfer.lean` imports exactly `Challenge`, and therefore depends
+transitively only on the first Challenge and Mathlib, never on `PaperC`. The
+matching Solution files do not import either Challenge module.
 
 | Comparator target | Trusted statement | Solution-side interface and proof | Scope |
 |---|---|---|---|
@@ -78,7 +82,15 @@ specific to the infinite-model interface without importing
 two pairs are intentionally loaded in separate environments because their
 global names coincide.
 
-The theorem takes exactly four ordinary, fully stated literature hypotheses:
+Theorem 1.1 is stated unconditionally in the manuscript. The Comparator
+theorem is instead an implication from the four fully stated propositions
+below. Comparator checks that `Solution` proves that implication; it does not
+check that the cited primary sources imply the four propositions, and it does
+not by itself check fidelity to the manuscript. The separate infinite-to-
+finite law identity is unconditional and exact.
+
+The finite-cylinder theorem takes exactly four ordinary, fully stated
+literature-facing hypotheses:
 
 | Literature input | Audit bridge | Role in the paper |
 |---|---|---|
@@ -111,26 +123,68 @@ The global longest-run theorem is intentionally outside this Comparator
 surface.  It consumes the other three open literature bridges and will need a
 separate audit target.
 
-**Recorded status: both Paper C targets passed an unsandboxed Comparator
-semantic smoke test.**  Each configuration ran in its own clean checkout,
-Comparator built the Challenge and Solution itself, the Lean default kernel
-accepted the solution, and the process exited with status 0.  These runs were
-performed as `root`, with Comparator's fake-landrun shim and an `LD_PRELOAD`
-compatibility shim; they establish semantic/toolchain compatibility only.
-They do not establish sandbox isolation, non-privileged execution, or a
-second-kernel result.  `nanoda` is not installed for this release candidate
-and both configurations set `enable_nanoda` to `false`.
+**Recorded hardened status.** Both Paper C Comparator targets passed the
+hardened local procedure at Paper C commit
+`75b36254145c0983d551de11599ea5c8f68e1e51`. The runs used real landrun under
+`systemd-run --user --pty`, a non-root account, zero inherited, effective,
+permitted, and ambient capabilities, and `NoNewPrivileges`. Comparator built
+each Challenge/Solution pair in a separate clean checkout; the Lean default
+kernel accepted both solutions with exit status 0.
 
-The main transcript is
-`comparator/transcripts/theorem_one_one_unsandboxed.txt`, SHA-256
-`b61738cb6fd4a08068da493821a6c9b608c2fb5ed28916778bf7950024c2b4e8`.
-The independent infinite-to-finite transfer transcript is
-`comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt`, SHA-256
-`1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f`.
-Publication of v0.48.0 remains blocked until both configurations pass the
-official hardened local procedure below with real landrun inside
-`systemd-run`, under a non-privileged user, and the complete hardened
-transcripts are attached to the release.
+The authoritative bundle is
+`paper-c-hardened-evidence-75b36254145c-20260803T060848Z.tar.zst`, published in
+the [v0.48.0-rc1 release](https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0-rc1),
+with SHA-256
+`bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130`.
+Its Comparator-fileset digest is
+`646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
+The raw main and transfer transcripts remain in that public archive, with
+SHA-256 values
+`5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266`
+and
+`f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421`.
+The uploaded archive was rechecked for its outer size and SHA-256, summary
+SHA-256, every internal `SHA256SUMS` entry, and both archived transcript
+hashes. To avoid duplicating host names, local paths, and other machine
+metadata from the raw logs, this repository contains only the two
+privacy-minimized `result-*.json` records under `comparator/evidence/`. The
+generator validates those records, their own SHA-256 values, and their
+configuration and fileset bindings; it deliberately does not fetch or
+revalidate the GitHub release asset.
+
+This is a Lean-kernel-only result. Both configurations have
+`enable_nanoda: false`; Nanoda was not run, and no dual-kernel result is
+claimed. The evidence certifies the unchanged Comparator inputs at commit
+`75b36254145c...`, not this later documentary rc2 commit. It does not discharge
+the four ordinary literature-facing premises or certify the paper-to-
+Challenge comparison. The earlier fake-landrun transcripts remain historical
+unsandboxed compatibility tests only; they are not the release certificate.
+The audited Paper C commit is distinct from the pinned Comparator source
+commit `51491237b1d2f96cca203af9c34bced6fe38e0d8` and from GitHub event SHAs
+formerly used in hosted-artifact names.
+
+For newly assembled evidence, each `result-*.json` records the Challenge and
+Solution SHA-256 values, the exact theorem list and permitted-axiom list, the
+two manuscript SHA-256 values, and the five pinned tool commits. The aggregate
+summary repeats the shared tool and manuscript identities. These additional
+fields apply to evidence assembled with the rc2 scripts; they do not rewrite
+the immutable rc1 archive.
+
+### Source-audit qualifications (rc2)
+
+The four machine-indexed reports under `literature_certificates/` document the
+current agent counter-audit of the source-to-proposition implications. They
+are neither Lean proofs nor independent human review. For
+Arratia--Goldstein--Gordon, the notation is on p. 10 and the theorem and
+total-variation bound are on p. 11; the Challenge inequality is a conservative
+consequence under the half-`ℓ¹` convention. The Evertse--Silverman report
+spells out the `K=L=Q`, split-polynomial specialization. For
+Nicolas--Robin, the printed function is normalized by `log 2`: bounding the
+normalized maximum by `2` gives the Lean coefficient `2 log 2`. The
+Halter--Koch source-to-record construction remains **not established** and is
+listed step by step in its report. All four Lean bridges remain `open`, and
+none of these documentary statuses is a kernel discharge or a human
+certification.
 
 One narrower compatibility probe has actually run: Comparator's own upstream
 self-test suite completed under the pinned sources with the official
@@ -157,6 +211,9 @@ Comparator fileset.  The core SHA-256 is
 `f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999`;
 the v0.48.0 Comparator-fileset SHA-256 is
 `646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
+The additive rc2 literature-certificate fileset has its own SHA-256,
+`6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996`;
+it is not part of either frozen Lean fileset.
 The two manuscript PDF byte streams and their SHA-256 fingerprints are
 unchanged.
 
@@ -234,13 +291,15 @@ envelope (Nicolas–Robin). The factor \(\tau(|M|)^2\) is not assumed:
 and quadratic decomposition theory. The former bridge
 `PCv07c-L9.2-generalized-Pell` now has `status: discharged`.
 
-The remaining Halter--Koch boundary is now cited exactly: Theorem
+The remaining Halter--Koch boundary cites Theorem
 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3),
 pp. 118–119; Theorem 5.2.3(1),(2), p. 125; and Theorem 5.2.5(1),
-pp. 126–127. These results give conductor one or two and at most three unit
-cosets. `HalterKochConductorDescent` proves that this source-shaped statement
-implies the registered API, explicitly padding `Fin 3` into the historical
-`Fin 4`; the fourth colour is not attributed to the source.
+pp. 126–127. The project-level premise is intended to package the relevant
+conductor and unit-coset comparison. `HalterKochConductorDescent` proves only
+the subsequent packaging and explicit padding from `Fin 3` into the
+historical `Fin 4` once the essential conductor-descent data is already
+supplied. The source-to-record construction has not been independently
+established; see `literature_certificates/HK13-QO-conductor-fibres.md`.
 
 Version 0.39 narrows the bibliographic boundary further:
 `PaperC.Diophantine.PellDivisorEnvelope` starts from Nicolas--Robin's direct
@@ -1509,6 +1568,7 @@ job may compile both sides explicitly:
 lake exe cache get
 node scripts/generate_audit.mjs --check-pdfs
 node scripts/generate_audit.mjs --check-source-digest
+node scripts/generate_audit.mjs --check-literature-certificates
 rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' PaperC.lean PaperC
 node scripts/check_comparator_sources.mjs
 node scripts/test_audit_root_guards.mjs
@@ -1540,8 +1600,10 @@ The PDF check hashes the actual bytes of both repository PDFs and fails if
 either file is absent or differs from `audit_config.json`. The source-digest
 check covers the exact native-filesystem set recorded as
 `core_source_fileset: ["PaperC.lean", "PaperC/**/*.lean"]`, independently of
-the Comparator fileset. The hygiene scan, `check_comparator_sources.mjs`, and
-two isolated root guards then establish the core token policy, the
+the Comparator fileset. The literature-certificate check independently binds
+the four source-audit reports, their bridge mapping, and their aggregate
+digest. The hygiene scan, `check_comparator_sources.mjs`, and isolated root
+guards then establish the core token policy, the
 Challenge/Solution structural boundary, and that changing `PaperC.lean`
 invalidates the digest
 and that adding a public theorem there adds both an inventory record and its
@@ -1665,8 +1727,10 @@ completed in separate clean checkouts with Lean default-kernel acceptance and
 exit status 0.  They were run as `root` with fake-landrun and an `LD_PRELOAD`
 compatibility shim, so they show only toolchain and semantic compatibility;
 they do not establish sandbox isolation or non-privileged execution.  The
-recorded transcripts and SHA-256 values are listed in the status section
-above.
+recorded transcripts are
+`comparator/transcripts/theorem_one_one_unsandboxed.txt` and
+`comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt`; their
+historical SHA-256 values are recorded in the rc1 changelog entry.
 
 ### Hardened local Comparator procedure
 
@@ -1880,10 +1944,12 @@ LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
 </details>
 
 The automated runner always executes the main finite-cylinder and independent
-infinite-to-finite transfer configurations.  Do not infer transfer coverage
-from the main result alone.  No hardened reference run has succeeded yet: the
-existence of this runner is a reproducible release procedure, not a report
-that its host, sandbox, and non-privileged conditions have already been met.
+infinite-to-finite transfer configurations. Do not infer transfer coverage
+from the main result alone. A hardened reference run succeeded for both
+byte-identical Comparator configurations at Paper C commit `75b36254145c...`.
+The runner remains the reproduction procedure; rerunning it at a later commit
+is required before claiming that later commit itself as the audited repository
+commit.
 
 The axiom audit does not detect ordinary hypotheses. Their inventory is the
 bridge registry in `audit_manifest.json` and `AXIOM_AUDIT.md`: each entry has

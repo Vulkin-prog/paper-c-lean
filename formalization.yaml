@@ -100,32 +100,68 @@ status:
         - "Quot.sound"
         - "Classical.choice"
       comparator_config: "comparator/theorem_one_one.json"
-      comparator_status: "unsandboxed_semantic_smoke_passed"
+      comparator_status: "sandboxed_lean_kernel_passed"
       literature_dependencies:
         -
-          statement: "finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1214/aop/1176991491"
-          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
+          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+          registered_frozen_source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
           bridge_id: "AGG89-T1-finite-dependency-b3-zero"
           lean_name: "PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement"
+          certificate:
+            file: "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md"
+            sha256: "684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115"
+            source_locator: "Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1017/S0305004100066068"
-          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
+          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), printed p. 238."
+          registered_frozen_source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
           bridge_id: "ES86-T1b-Q-split-n2"
           lean_name: "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement"
+          certificate:
+            file: "literature_certificates/ES86-T1b-Q-split-n2.md"
+            sha256: "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793"
+            source_locator: "Theorem 1(b), printed p. 238."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences"
+          statement: "The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished."
+          source_to_lean_status: "source_to_lean_not_established"
           source: "https://doi.org/10.1201/b14968"
-          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
+          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+          registered_frozen_source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
           bridge_id: "HK13-QO-conductor-fibres"
           lean_name: "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement"
+          certificate:
+            file: "literature_certificates/HK13-QO-conductor-fibres.md"
+            sha256: "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96"
+            source_locator: "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_with_open_gap"
+            human_peer_reviewed: false
         -
-          statement: "source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.4153/CMB-1983-078-5"
-          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
+          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, Theorem 1, printed p. 485."
+          registered_frozen_source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
           bridge_id: "NR83-T1-divisor-log-bound"
           lean_name: "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement"
+          certificate:
+            file: "literature_certificates/NR83-T1-divisor-log-bound.md"
+            sha256: "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73"
+            source_locator: "Theorem 1, printed p. 485."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
     -
       paper_item_id: "Thm-1.1-infinite-finite-law-transfer"
       declaration: "paper_c_theorem_one_one_infinite_finite_law_identity"
@@ -136,7 +172,7 @@ status:
         - "Quot.sound"
         - "Classical.choice"
       comparator_config: "comparator/theorem_one_one_transfer.json"
-      comparator_status: "unsandboxed_semantic_smoke_passed"
+      comparator_status: "sandboxed_lean_kernel_passed"
       literature_dependencies: []
     -
       paper_item_id: "Thm-1.2-i-deterministic-masks"
@@ -151,29 +187,65 @@ status:
       comparator_status: "not_configured"
       literature_dependencies:
         -
-          statement: "finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1214/aop/1176991491"
-          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
+          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+          registered_frozen_source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
           bridge_id: "AGG89-T1-finite-dependency-b3-zero"
           lean_name: "PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement"
+          certificate:
+            file: "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md"
+            sha256: "684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115"
+            source_locator: "Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1017/S0305004100066068"
-          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
+          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), printed p. 238."
+          registered_frozen_source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
           bridge_id: "ES86-T1b-Q-split-n2"
           lean_name: "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement"
+          certificate:
+            file: "literature_certificates/ES86-T1b-Q-split-n2.md"
+            sha256: "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793"
+            source_locator: "Theorem 1(b), printed p. 238."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences"
+          statement: "The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished."
+          source_to_lean_status: "source_to_lean_not_established"
           source: "https://doi.org/10.1201/b14968"
-          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
+          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+          registered_frozen_source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
           bridge_id: "HK13-QO-conductor-fibres"
           lean_name: "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement"
+          certificate:
+            file: "literature_certificates/HK13-QO-conductor-fibres.md"
+            sha256: "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96"
+            source_locator: "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_with_open_gap"
+            human_peer_reviewed: false
         -
-          statement: "source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.4153/CMB-1983-078-5"
-          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
+          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, Theorem 1, printed p. 485."
+          registered_frozen_source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
           bridge_id: "NR83-T1-divisor-log-bound"
           lean_name: "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement"
+          certificate:
+            file: "literature_certificates/NR83-T1-divisor-log-bound.md"
+            sha256: "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73"
+            source_locator: "Theorem 1, printed p. 485."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
     -
       paper_item_id: "Thm-1.2-ii-spatial-ppp"
       declaration: "PaperC.SectionFourteenClosure.theorem_one_two_ii_laplace"
@@ -187,29 +259,65 @@ status:
       comparator_status: "not_configured"
       literature_dependencies:
         -
-          statement: "finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1214/aop/1176991491"
-          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
+          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+          registered_frozen_source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
           bridge_id: "AGG89-T1-finite-dependency-b3-zero"
           lean_name: "PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement"
+          certificate:
+            file: "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md"
+            sha256: "684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115"
+            source_locator: "Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1017/S0305004100066068"
-          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
+          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), printed p. 238."
+          registered_frozen_source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
           bridge_id: "ES86-T1b-Q-split-n2"
           lean_name: "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement"
+          certificate:
+            file: "literature_certificates/ES86-T1b-Q-split-n2.md"
+            sha256: "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793"
+            source_locator: "Theorem 1(b), printed p. 238."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences"
+          statement: "The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished."
+          source_to_lean_status: "source_to_lean_not_established"
           source: "https://doi.org/10.1201/b14968"
-          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
+          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+          registered_frozen_source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
           bridge_id: "HK13-QO-conductor-fibres"
           lean_name: "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement"
+          certificate:
+            file: "literature_certificates/HK13-QO-conductor-fibres.md"
+            sha256: "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96"
+            source_locator: "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_with_open_gap"
+            human_peer_reviewed: false
         -
-          statement: "source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.4153/CMB-1983-078-5"
-          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
+          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, Theorem 1, printed p. 485."
+          registered_frozen_source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
           bridge_id: "NR83-T1-divisor-log-bound"
           lean_name: "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement"
+          certificate:
+            file: "literature_certificates/NR83-T1-divisor-log-bound.md"
+            sha256: "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73"
+            source_locator: "Theorem 1, printed p. 485."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
     -
       paper_item_id: "Thm-1.2-iii-marked-ppp"
       declaration: "PaperC.SectionFourteenClosure.theorem_one_two_iii_laplace_and_tightness"
@@ -223,29 +331,65 @@ status:
       comparator_status: "not_configured"
       literature_dependencies:
         -
-          statement: "finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1214/aop/1176991491"
-          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
+          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+          registered_frozen_source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
           bridge_id: "AGG89-T1-finite-dependency-b3-zero"
           lean_name: "PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement"
+          certificate:
+            file: "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md"
+            sha256: "684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115"
+            source_locator: "Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1017/S0305004100066068"
-          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
+          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), printed p. 238."
+          registered_frozen_source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
           bridge_id: "ES86-T1b-Q-split-n2"
           lean_name: "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement"
+          certificate:
+            file: "literature_certificates/ES86-T1b-Q-split-n2.md"
+            sha256: "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793"
+            source_locator: "Theorem 1(b), printed p. 238."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences"
+          statement: "The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished."
+          source_to_lean_status: "source_to_lean_not_established"
           source: "https://doi.org/10.1201/b14968"
-          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
+          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+          registered_frozen_source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
           bridge_id: "HK13-QO-conductor-fibres"
           lean_name: "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement"
+          certificate:
+            file: "literature_certificates/HK13-QO-conductor-fibres.md"
+            sha256: "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96"
+            source_locator: "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_with_open_gap"
+            human_peer_reviewed: false
         -
-          statement: "source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.4153/CMB-1983-078-5"
-          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
+          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, Theorem 1, printed p. 485."
+          registered_frozen_source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
           bridge_id: "NR83-T1-divisor-log-bound"
           lean_name: "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement"
+          certificate:
+            file: "literature_certificates/NR83-T1-divisor-log-bound.md"
+            sha256: "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73"
+            source_locator: "Theorem 1, printed p. 485."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
     -
       paper_item_id: "Thm-1.4-moments"
       declaration: "PaperC.SectionTwelveMoments.theorem_one_four_canonical"
@@ -259,23 +403,50 @@ status:
       comparator_status: "not_configured"
       literature_dependencies:
         -
-          statement: "specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1017/S0305004100066068"
-          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
+          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), printed p. 238."
+          registered_frozen_source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
           bridge_id: "ES86-T1b-Q-split-n2"
           lean_name: "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement"
+          certificate:
+            file: "literature_certificates/ES86-T1b-Q-split-n2.md"
+            sha256: "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793"
+            source_locator: "Theorem 1(b), printed p. 238."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences"
+          statement: "The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished."
+          source_to_lean_status: "source_to_lean_not_established"
           source: "https://doi.org/10.1201/b14968"
-          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
+          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+          registered_frozen_source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
           bridge_id: "HK13-QO-conductor-fibres"
           lean_name: "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement"
+          certificate:
+            file: "literature_certificates/HK13-QO-conductor-fibres.md"
+            sha256: "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96"
+            source_locator: "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_with_open_gap"
+            human_peer_reviewed: false
         -
-          statement: "source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.4153/CMB-1983-078-5"
-          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
+          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, Theorem 1, printed p. 485."
+          registered_frozen_source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
           bridge_id: "NR83-T1-divisor-log-bound"
           lean_name: "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement"
+          certificate:
+            file: "literature_certificates/NR83-T1-divisor-log-bound.md"
+            sha256: "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73"
+            source_locator: "Theorem 1, printed p. 485."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
     -
       paper_item_id: "Thm-16.2"
       declaration: "PaperC.TheoremSixteenTwo.theorem_sixteen_two_infinite_model"
@@ -295,11 +466,20 @@ status:
           bridge_id: "ADGR07-PNT"
           lean_name: "PaperC.PrimeNumberTheoremInput.PrimeNumberTheoremStatement"
         -
-          statement: "finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1214/aop/1176991491"
-          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
+          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+          registered_frozen_source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
           bridge_id: "AGG89-T1-finite-dependency-b3-zero"
           lean_name: "PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement"
+          certificate:
+            file: "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md"
+            sha256: "684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115"
+            source_locator: "Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
           statement: "equivalent finset reformulation of the distinct offsets and their product; P⁺(b)≤k is expressed as every prime factor of b being at most k; the real absolute bound C₂ is replaced by its natural ceiling; published effectivity is not encoded"
           source: "https://doi.org/10.4064/aa-65-3-213-220"
@@ -307,17 +487,35 @@ status:
           bridge_id: "BS93-Theorem-1"
           lean_name: "PaperC.BalasubramanianShoreyInput.BalasubramanianShoreyStatement"
         -
-          statement: "specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1017/S0305004100066068"
-          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
+          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), printed p. 238."
+          registered_frozen_source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
           bridge_id: "ES86-T1b-Q-split-n2"
           lean_name: "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement"
+          certificate:
+            file: "literature_certificates/ES86-T1b-Q-split-n2.md"
+            sha256: "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793"
+            source_locator: "Theorem 1(b), printed p. 238."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences"
+          statement: "The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished."
+          source_to_lean_status: "source_to_lean_not_established"
           source: "https://doi.org/10.1201/b14968"
-          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
+          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+          registered_frozen_source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
           bridge_id: "HK13-QO-conductor-fibres"
           lean_name: "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement"
+          certificate:
+            file: "literature_certificates/HK13-QO-conductor-fibres.md"
+            sha256: "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96"
+            source_locator: "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_with_open_gap"
+            human_peer_reviewed: false
         -
           statement: "exact natural-number transcription; primeFactors.card is ω, PrimesUpTo.count is π, and Nat division by 4 is the printed floor"
           source: "https://doi.org/10.4064/aa113-4-3"
@@ -325,11 +523,20 @@ status:
           bridge_id: "LS04-Corollary-1"
           lean_name: "PaperC.LaishramShoreyInput.LaishramShoreyStatement"
         -
-          statement: "source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.4153/CMB-1983-078-5"
-          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
+          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, Theorem 1, printed p. 485."
+          registered_frozen_source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
           bridge_id: "NR83-T1-divisor-log-bound"
           lean_name: "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement"
+          certificate:
+            file: "literature_certificates/NR83-T1-divisor-log-bound.md"
+            sha256: "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73"
+            source_locator: "Theorem 1, printed p. 485."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
     -
       paper_item_id: "Cor-16.4"
       declaration: "PaperC.CorollaryPrefixLawCanonical.corollary_prefix_law_canonical"
@@ -349,11 +556,20 @@ status:
           bridge_id: "ADGR07-PNT"
           lean_name: "PaperC.PrimeNumberTheoremInput.PrimeNumberTheoremStatement"
         -
-          statement: "finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1214/aop/1176991491"
-          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
+          source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+          registered_frozen_source_locator: "Richard Arratia, Larry Goldstein, Louis Gordon, Two moments suffice for Poisson approximations: the Chen–Stein method, Theorem 1, p. 10"
           bridge_id: "AGG89-T1-finite-dependency-b3-zero"
           lean_name: "PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement"
+          certificate:
+            file: "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md"
+            sha256: "684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115"
+            source_locator: "Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
           statement: "equivalent finset reformulation of the distinct offsets and their product; P⁺(b)≤k is expressed as every prime factor of b being at most k; the real absolute bound C₂ is replaced by its natural ceiling; published effectivity is not encoded"
           source: "https://doi.org/10.4064/aa-65-3-213-220"
@@ -361,17 +577,35 @@ status:
           bridge_id: "BS93-Theorem-1"
           lean_name: "PaperC.BalasubramanianShoreyInput.BalasubramanianShoreyStatement"
         -
-          statement: "specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.1017/S0305004100066068"
-          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
+          source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), printed p. 238."
+          registered_frozen_source_locator: "J.-H. Evertse, J. H. Silverman, Uniform bounds for the number of solutions to Y^n = f(X), Theorem 1(b), p. 238"
           bridge_id: "ES86-T1b-Q-split-n2"
           lean_name: "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement"
+          certificate:
+            file: "literature_certificates/ES86-T1b-Q-split-n2.md"
+            sha256: "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793"
+            source_locator: "Theorem 1(b), printed p. 238."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
         -
-          statement: "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences"
+          statement: "The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished."
+          source_to_lean_status: "source_to_lean_not_established"
           source: "https://doi.org/10.1201/b14968"
-          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
+          source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+          registered_frozen_source_locator: "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127"
           bridge_id: "HK13-QO-conductor-fibres"
           lean_name: "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement"
+          certificate:
+            file: "literature_certificates/HK13-QO-conductor-fibres.md"
+            sha256: "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96"
+            source_locator: "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_with_open_gap"
+            human_peer_reviewed: false
         -
           statement: "exact natural-number transcription; primeFactors.card is ω, PrimesUpTo.count is π, and Nat division by 4 is the printed floor"
           source: "https://doi.org/10.4064/aa113-4-3"
@@ -379,11 +613,20 @@ status:
           bridge_id: "LS04-Corollary-1"
           lean_name: "PaperC.LaishramShoreyInput.LaishramShoreyStatement"
         -
-          statement: "source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          statement: "Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption"
+          source_to_lean_status: "agent_checked_supports"
           source: "https://doi.org/10.4153/CMB-1983-078-5"
-          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
+          source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, Theorem 1, printed p. 485."
+          registered_frozen_source_locator: "J.-L. Nicolas, G. Robin, Majorations explicites pour le nombre de diviseurs de N, definition of f and Théorème 1, p. 485"
           bridge_id: "NR83-T1-divisor-log-bound"
           lean_name: "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement"
+          certificate:
+            file: "literature_certificates/NR83-T1-divisor-log-bound.md"
+            sha256: "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73"
+            source_locator: "Theorem 1, printed p. 485."
+            review_status: "agent-reviewed"
+            implication_status: "agent_checked_supports"
+            human_peer_reviewed: false
   comparator_interface_placeholders:
     -
       file: "Challenge.lean"
@@ -402,22 +645,90 @@ status:
   comparator_runs:
     -
       configuration: "comparator/theorem_one_one.json"
-      status: "unsandboxed_semantic_smoke_passed"
-      sandboxed: false
-      transcript: "comparator/transcripts/theorem_one_one_unsandboxed.txt"
-      transcript_sha256: "b61738cb6fd4a08068da493821a6c9b608c2fb5ed28916778bf7950024c2b4e8"
+      status: "sandboxed_lean_kernel_passed"
+      sandboxed: true
+      evidence_record: "comparator/evidence/result-theorem-one-one.json"
+      evidence_record_sha256: "5fef2ceee487a40d59419d0f73f0eef6589b525a7a7cc4354628e2ecac4d2cd2"
+      transcript_in_published_archive: "evidence/theorem-one-one/comparator-theorem-one-one.txt"
+      transcript_sha256: "5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266"
       configuration_sha256_at_run: "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3"
       comparator_fileset_digest_sha256_at_run: "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
       enable_nanoda: false
     -
       configuration: "comparator/theorem_one_one_transfer.json"
-      status: "unsandboxed_semantic_smoke_passed"
-      sandboxed: false
-      transcript: "comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt"
-      transcript_sha256: "1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f"
+      status: "sandboxed_lean_kernel_passed"
+      sandboxed: true
+      evidence_record: "comparator/evidence/result-infinite-finite-transfer.json"
+      evidence_record_sha256: "ec8431eab1e2ceca7ca319e2efa9033889e1a92358b972d630825a558438c4cf"
+      transcript_in_published_archive: "evidence/infinite-finite-transfer/comparator-infinite-finite-transfer.txt"
+      transcript_sha256: "f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421"
       configuration_sha256_at_run: "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743"
       comparator_fileset_digest_sha256_at_run: "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
       enable_nanoda: false
+  literature_certificates:
+    scope: "The four external bridges consumed by the finite-cylinder form of Theorem 1.1."
+    review_status: "agent-reviewed"
+    human_peer_reviewed: false
+    status_note: "These certificates document source-to-proposition implications. They are not Lean proofs, Comparator results, or independent human certification. The historical source-verification wording embedded in the frozen 382-file core is retained only for byte-level provenance; this rc2 layer is the current qualification."
+    fileset:
+      - "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md"
+      - "literature_certificates/ES86-T1b-Q-split-n2.md"
+      - "literature_certificates/HK13-QO-conductor-fibres.md"
+      - "literature_certificates/NR83-T1-divisor-log-bound.md"
+    digest_sha256: "6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996"
+    entries:
+      -
+        bridge_id: "AGG89-T1-finite-dependency-b3-zero"
+        file: "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md"
+        source_locator: "Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+        primary_source_access: "full_text"
+        implication_status: "agent_checked_supports"
+        limitations: "The source theorem is on printed page 11, not page 10; the Challenge bound is a conservative consequence under its half-l1 normalization. No independent human verification."
+        lean_name: "PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement"
+        sha256: "684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115"
+        byte_length: 5007
+        review_status: "agent-reviewed"
+        human_peer_reviewed: false
+        supersedes_frozen_source_verification_wording_for_rc2: true
+      -
+        bridge_id: "ES86-T1b-Q-split-n2"
+        file: "literature_certificates/ES86-T1b-Q-split-n2.md"
+        source_locator: "Theorem 1(b), printed p. 238."
+        primary_source_access: "full_text"
+        implication_status: "agent_checked_supports"
+        limitations: "The K=L=Q specialization and bad-place set are documented, but not formalized from a Lean version of the source theorem. No independent human verification."
+        lean_name: "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement"
+        sha256: "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793"
+        byte_length: 3370
+        review_status: "agent-reviewed"
+        human_peer_reviewed: false
+        supersedes_frozen_source_verification_wording_for_rc2: true
+      -
+        bridge_id: "HK13-QO-conductor-fibres"
+        file: "literature_certificates/HK13-QO-conductor-fibres.md"
+        source_locator: "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+        primary_source_access: "partial"
+        implication_status: "agent_checked_with_open_gap"
+        limitations: "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished."
+        lean_name: "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement"
+        sha256: "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96"
+        byte_length: 3971
+        review_status: "agent-reviewed"
+        human_peer_reviewed: false
+        supersedes_frozen_source_verification_wording_for_rc2: true
+      -
+        bridge_id: "NR83-T1-divisor-log-bound"
+        file: "literature_certificates/NR83-T1-divisor-log-bound.md"
+        source_locator: "Theorem 1, printed p. 485."
+        primary_source_access: "full_text"
+        implication_status: "agent_checked_supports"
+        limitations: "The certificate uses the exact maximizer and an elementary strict bound below 2, rather than treating the printed decimal 1.5379 as exact. No independent human verification."
+        lean_name: "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement"
+        sha256: "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73"
+        byte_length: 3366
+        review_status: "agent-reviewed"
+        human_peer_reviewed: false
+        supersedes_frozen_source_verification_wording_for_rc2: true
 automation:
   methods:
     -
@@ -437,7 +748,7 @@ review:
     - "Claude Fable 5 agent instances"
     - "Claude Opus 4.8 agent instances"
     - "OpenAI GPT 5.6 Sol agent instances"
-  notes: "The project has undergone repeated adversarial counter-review by distinct agent instances and models from multiple providers, together with exhaustive mechanical declaration and axiom auditing. These procedures are neither independent scientific validation nor human certification, and the project has not yet received independent external human mathematical peer review. The completeness of the mapped paper-item list remains editorial metadata requiring human rereading; it is not inferred or certified by the generator. Comparator outcomes must be reported only from the recorded per-configuration status and transcript, and a semantic smoke test must not be presented as a sandboxed certificate."
+  notes: "The project has undergone repeated adversarial counter-review by distinct agent instances and models from multiple providers, together with exhaustive mechanical declaration and axiom auditing. These procedures are neither independent scientific validation nor human certification, and the project has not yet received independent external human mathematical peer review. The completeness of the mapped paper-item list remains editorial metadata requiring human rereading; it is not inferred or certified by the generator. Comparator outcomes must be reported only from the recorded per-configuration status and evidence, and a semantic smoke test must not be presented as a sandboxed certificate."
 alignment:
   namespace: "PaperC"
   statements:
@@ -455,8 +766,8 @@ alignment:
         - "NR83-T1-divisor-log-bound"
       comparator_covered: true
       comparator_config: "comparator/theorem_one_one.json"
-      comparator_status: "unsandboxed_semantic_smoke_passed"
-      note: "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2). The direct Solution layout passed a clean-checkout unsandboxed Comparator semantic smoke test with Lean default-kernel acceptance and exit 0; this is not the hardened release certificate. The separate transfer target covers the infinite source law."
+      comparator_status: "sandboxed_lean_kernel_passed"
+      note: "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under four fully stated ordinary premises. The byte-identical Challenge/Solution boundary passed the hardened non-root Comparator procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51 with Lean-kernel acceptance and exit 0. Nanoda was disabled. The separate transfer target covers the infinite source law."
     -
       id: "Thm-1.1-infinite-finite-law-transfer"
       source: "Theorem 1.1 model transfer, p. 3 (paper-c-en-v08)"
@@ -467,8 +778,8 @@ alignment:
       bridge_ids: []
       comparator_covered: true
       comparator_config: "comparator/theorem_one_one_transfer.json"
-      comparator_status: "unsandboxed_semantic_smoke_passed"
-      note: "Exact identity of the infinite-product dyadic start-count law and its finite-cylinder law. The direct SolutionTransfer layout passed its own clean-checkout unsandboxed Comparator semantic smoke test with Lean default-kernel acceptance and exit 0; this is not the hardened release certificate."
+      comparator_status: "sandboxed_lean_kernel_passed"
+      note: "Exact unconditional identity of the infinite-product dyadic start-count law and its finite-cylinder law. The byte-identical ChallengeTransfer/SolutionTransfer boundary passed the hardened non-root Comparator procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51 with Lean-kernel acceptance and exit 0. Nanoda was disabled."
     -
       id: "Thm-1.2-i-deterministic-masks"
       source: "Theorem 1.2(i), p. 3 (paper-c-en-v08)"
@@ -1907,8 +2218,8 @@ verification:
       version: "v4.32.2"
       commit: "905b95818eb32af7874a58b427f50c1711a5e96c"
   comparator:
-    status: "unsandboxed_semantic_smoke_passed"
-    status_note: "Both Paper C Comparator configurations exited 0 and were accepted by Lean's default kernel in clean checkouts. These runs used fake-landrun, root, and a container-specific LD_PRELOAD compatibility shim, so they are unsandboxed semantic smoke tests only. They do not satisfy the hardened, non-privileged certificate conditions; publication remains blocked pending the official landrun plus systemd-run execution."
+    status: "sandboxed_lean_kernel_passed"
+    status_note: "Both Paper C Comparator configurations passed the hardened non-root procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. The unchanged Comparator fileset in rc2 has the same recorded digest. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity."
     tools:
       comparator:
         repository: "https://github.com/leanprover/comparator"
@@ -1937,6 +2248,22 @@ verification:
       - "comparator/theorem_one_one.json"
       - "comparator/theorem_one_one_transfer.json"
     digest_sha256: "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
+    published_evidence:
+      release_tag: "v0.48.0-rc1"
+      release_url: "https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0-rc1"
+      archive: "paper-c-hardened-evidence-75b36254145c-20260803T060848Z.tar.zst"
+      archive_size_bytes: 94456
+      archive_sha256: "bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130"
+      summary_sha256: "4106cbbcc012c1188cf8c9716e2ccd72c0e134b0338366afb30eb3d00f4ab726"
+      paper_c_commit: "75b36254145c0983d551de11599ea5c8f68e1e51"
+      comparator_fileset_digest_sha256: "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
+      sandboxed: true
+      non_root: true
+      kernels:
+        - "lean"
+      enable_nanoda: false
+      metadata_verification: "Agent-side recheck of the uploaded rc1 archive covered its outer SHA-256 and size, summary SHA-256, every internal SHA256SUMS entry, and the two archived transcript hashes. The repository carries only privacy-minimized result records copied from that archive, not the host-specific raw transcripts. The generator validates those records and their configuration and fileset bindings but does not download or revalidate the GitHub release asset."
+      qualification: "The archive certifies the byte-identical Comparator boundary at its recorded Paper C commit. It is not a human source audit or a general host-security certification."
     configurations:
       -
         path: "comparator/theorem_one_one.json"
@@ -1950,10 +2277,12 @@ verification:
           - "Quot.sound"
           - "Classical.choice"
         enable_nanoda: false
-        status: "unsandboxed_semantic_smoke_passed"
-        sandboxed: false
-        transcript: "comparator/transcripts/theorem_one_one_unsandboxed.txt"
-        transcript_sha256: "b61738cb6fd4a08068da493821a6c9b608c2fb5ed28916778bf7950024c2b4e8"
+        status: "sandboxed_lean_kernel_passed"
+        sandboxed: true
+        evidence_record: "comparator/evidence/result-theorem-one-one.json"
+        evidence_record_sha256: "5fef2ceee487a40d59419d0f73f0eef6589b525a7a7cc4354628e2ecac4d2cd2"
+        transcript_in_published_archive: "evidence/theorem-one-one/comparator-theorem-one-one.txt"
+        transcript_sha256: "5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266"
         configuration_sha256_at_run: "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3"
         comparator_fileset_digest_sha256_at_run: "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
       -
@@ -1968,10 +2297,76 @@ verification:
           - "Quot.sound"
           - "Classical.choice"
         enable_nanoda: false
-        status: "unsandboxed_semantic_smoke_passed"
-        sandboxed: false
-        transcript: "comparator/transcripts/theorem_one_one_transfer_unsandboxed.txt"
-        transcript_sha256: "1df075a336bf774acffa7ee325cc8faf4f59342267d669f696e2c7c9fc87cb7f"
+        status: "sandboxed_lean_kernel_passed"
+        sandboxed: true
+        evidence_record: "comparator/evidence/result-infinite-finite-transfer.json"
+        evidence_record_sha256: "ec8431eab1e2ceca7ca319e2efa9033889e1a92358b972d630825a558438c4cf"
+        transcript_in_published_archive: "evidence/infinite-finite-transfer/comparator-infinite-finite-transfer.txt"
+        transcript_sha256: "f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421"
         configuration_sha256_at_run: "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743"
         comparator_fileset_digest_sha256_at_run: "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
+  literature_certificates:
+    scope: "The four external bridges consumed by the finite-cylinder form of Theorem 1.1."
+    review_status: "agent-reviewed"
+    human_peer_reviewed: false
+    status_note: "These certificates document source-to-proposition implications. They are not Lean proofs, Comparator results, or independent human certification. The historical source-verification wording embedded in the frozen 382-file core is retained only for byte-level provenance; this rc2 layer is the current qualification."
+    fileset:
+      - "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md"
+      - "literature_certificates/ES86-T1b-Q-split-n2.md"
+      - "literature_certificates/HK13-QO-conductor-fibres.md"
+      - "literature_certificates/NR83-T1-divisor-log-bound.md"
+    digest_sha256: "6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996"
+    entries:
+      -
+        bridge_id: "AGG89-T1-finite-dependency-b3-zero"
+        file: "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md"
+        source_locator: "Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10."
+        primary_source_access: "full_text"
+        implication_status: "agent_checked_supports"
+        limitations: "The source theorem is on printed page 11, not page 10; the Challenge bound is a conservative consequence under its half-l1 normalization. No independent human verification."
+        lean_name: "PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement"
+        sha256: "684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115"
+        byte_length: 5007
+        review_status: "agent-reviewed"
+        human_peer_reviewed: false
+        supersedes_frozen_source_verification_wording_for_rc2: true
+      -
+        bridge_id: "ES86-T1b-Q-split-n2"
+        file: "literature_certificates/ES86-T1b-Q-split-n2.md"
+        source_locator: "Theorem 1(b), printed p. 238."
+        primary_source_access: "full_text"
+        implication_status: "agent_checked_supports"
+        limitations: "The K=L=Q specialization and bad-place set are documented, but not formalized from a Lean version of the source theorem. No independent human verification."
+        lean_name: "PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement"
+        sha256: "578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793"
+        byte_length: 3370
+        review_status: "agent-reviewed"
+        human_peer_reviewed: false
+        supersedes_frozen_source_verification_wording_for_rc2: true
+      -
+        bridge_id: "HK13-QO-conductor-fibres"
+        file: "literature_certificates/HK13-QO-conductor-fibres.md"
+        source_locator: "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127."
+        primary_source_access: "partial"
+        implication_status: "agent_checked_with_open_gap"
+        limitations: "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished."
+        lean_name: "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement"
+        sha256: "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96"
+        byte_length: 3971
+        review_status: "agent-reviewed"
+        human_peer_reviewed: false
+        supersedes_frozen_source_verification_wording_for_rc2: true
+      -
+        bridge_id: "NR83-T1-divisor-log-bound"
+        file: "literature_certificates/NR83-T1-divisor-log-bound.md"
+        source_locator: "Theorem 1, printed p. 485."
+        primary_source_access: "full_text"
+        implication_status: "agent_checked_supports"
+        limitations: "The certificate uses the exact maximizer and an elementary strict bound below 2, rather than treating the printed decimal 1.5379 as exact. No independent human verification."
+        lean_name: "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement"
+        sha256: "51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73"
+        byte_length: 3366
+        review_status: "agent-reviewed"
+        human_peer_reviewed: false
+        supersedes_frozen_source_verification_wording_for_rc2: true
 acknowledgements: "Built on Lean 4 and Mathlib. External literature dependencies are identified by stable bridge ids in audit_manifest.json."

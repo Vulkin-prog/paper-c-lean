@@ -49,25 +49,32 @@ son interface peut rester exposée pour compatibilité historique. Ce statut
 porte sur le projet dans son ensemble : un ancien théorème peut donc encore
 prendre explicitement un pont `discharged` comme prémisse.
 
+La couche de certificats bibliographiques rc2 est distincte de ces statuts
+Lean. Elle documente une contre-expertise source→proposition faite par des
+agents, sans constituer une preuve du noyau ni une revue humaine indépendante.
+Pour les quatre ponts de Theorem 1.1, cette couche est la qualification
+documentaire courante et rend explicites les réserves conservées dans le cœur
+gelé.
+
 Ponts enregistrés : 13. Théorèmes publics inconditionnels : 3912. Théorèmes publics conditionnels : 158.
 Répartition des ponts par provenance : 8 external, 5 internal. Théorèmes conditionnels par nature de pont (un théorème mixte compterait dans chaque catégorie) : 120 external, 59 internal.
 Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionnels par statut de pont (un théorème mixte compterait dans chaque catégorie) : 120 open, 60 discharged.
 
-| Identifiant | Nature | Statut | Proposition Lean | Déchargé par | Source primaire | Localisation |
-|---|---|---|---|---|---|---|
-| `ADGR07-PNT` | `external` | `open` | `PaperC.PrimeNumberTheoremInput.PrimeNumberTheoremStatement` | — | Jeremy Avigad, Kevin Donnelly, David Gray, Paul Raff, *A formally verified proof of the prime number theorem*, Abstract, p. 1 | Lemma 15.1 |
-| `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement` | — | Richard Arratia, Larry Goldstein, Louis Gordon, *Two moments suffice for Poisson approximations: the Chen–Stein method*, Theorem 1, p. 10 | Theorem 13.7 |
-| `BS93-Theorem-1` | `external` | `open` | `PaperC.BalasubramanianShoreyInput.BalasubramanianShoreyStatement` | — | R. Balasubramanian, T. N. Shorey, *Squares in products from a block of consecutive integers*, Theorem 1; equations (1), (4), and (5), pp. 213–214 | Lemma 15.4 |
-| `ES86-T1b-Q-split-n2` | `external` | `open` | `PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement` | — | J.-H. Evertse, J. H. Silverman, *Uniform bounds for the number of solutions to Y^n = f(X)*, Theorem 1(b), p. 238 | Lemma 9.1 |
-| `HK13-QO-conductor-fibres` | `external` | `open` | `PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement` | — | Franz Halter-Koch, *Quadratic Irrationals: An Introduction to Classical Number Theory*, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127 | Lemma 9.2 |
-| `LS04-Corollary-1` | `external` | `open` | `PaperC.LaishramShoreyInput.LaishramShoreyStatement` | — | Shanta Laishram, T. N. Shorey, *Number of prime divisors in a product of consecutive integers*, Corollary 1, equation (10), p. 330; definition of δ(k), p. 328 | Lemma 15.2 |
-| `NR83-T1-divisor-bound` | `external` | `discharged` | `PaperC.PellInput.NicolasRobinPellEnvelopeStatement` | `PaperC.PellInput.nicolasRobinPellEnvelope_of_divisorLogBound` | J.-L. Nicolas, G. Robin, *Majorations explicites pour le nombre de diviseurs de N*, definition of f and Théorème 1, p. 485 | Lemma 9.2 |
-| `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC.PellInput.NicolasRobinDivisorLogBoundStatement` | — | J.-L. Nicolas, G. Robin, *Majorations explicites pour le nombre de diviseurs de N*, definition of f and Théorème 1, p. 485 | Lemma 9.2 |
-| `PCv07c-L17.26-bounded-ratio-many-defects` | `internal` | `discharged` | `PaperC.PropositionSixteenOne.ManyDefectsSectorStabilityStatement` | `PaperC.BoundedRatioManyDefectsAssembly.manyDefectsSectorStability`<br>`PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`<br>`PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical` | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemmes 17.18–17.26, pp. 60–62 | Lemma 17.26 |
-| `PCv07c-L17.28-bounded-ratio-nonterminal-sector` | `internal` | `discharged` | `PaperC.PropositionSixteenOne.NonterminalSectorStabilityStatement` | `PaperC.BoundedRatioNonterminalAssembly.exists_nonterminalSectorStability`<br>`PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`<br>`PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical` | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 17.28, p. 63 | Lemma 17.28 |
-| `PCv07c-L17.30-bounded-ratio-terminal-sector` | `internal` | `discharged` | `PaperC.PropositionSixteenOne.TerminalSectorStabilityStatement` | `PaperC.BoundedRatioTerminalSummation.intrinsicTerminalSectorStability`<br>`PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`<br>`PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical` | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 17.30, pp. 63–64 | Lemma 17.30 |
-| `PCv07c-L9.10-arithmetic-kernel-equivalence` | `internal` | `discharged` | `PaperC.CanonicalSmallRows.CanonicalArithmeticKernelStatement` | `PaperC.CanonicalSmallRows.canonicalArithmeticKernelStatement`<br>`PaperC.CanonicalSmallRows.residualTau_eq_corrected_add_components_sub_arithmeticRank_of_choice_none` | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 9.10, démonstration, p. 32 | Lemma 9.10 |
-| `PCv07c-L9.2-generalized-Pell` | `internal` | `discharged` | `PaperC.PellInput.GeneralizedPellPolynomialBoxStatement` | `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin`<br>`PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound` | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 9.2, démonstration, pp. 28–29 | Lemma 9.2 |
+| Identifiant | Nature | Statut | Proposition Lean | Déchargé par | Certificat source rc2 | Source primaire | Localisation |
+|---|---|---|---|---|---|---|---|
+| `ADGR07-PNT` | `external` | `open` | `PaperC.PrimeNumberTheoremInput.PrimeNumberTheoremStatement` | — | — | Jeremy Avigad, Kevin Donnelly, David Gray, Paul Raff, *A formally verified proof of the prime number theorem*, Abstract, p. 1 | Lemma 15.1 |
+| `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement` | — | [`agent_checked_supports`](literature_certificates/AGG89-T1-finite-dependency-b3-zero.md) | Richard Arratia, Larry Goldstein, Louis Gordon, *Two moments suffice for Poisson approximations: the Chen–Stein method*, Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10. | Theorem 13.7 |
+| `BS93-Theorem-1` | `external` | `open` | `PaperC.BalasubramanianShoreyInput.BalasubramanianShoreyStatement` | — | — | R. Balasubramanian, T. N. Shorey, *Squares in products from a block of consecutive integers*, Theorem 1; equations (1), (4), and (5), pp. 213–214 | Lemma 15.4 |
+| `ES86-T1b-Q-split-n2` | `external` | `open` | `PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement` | — | [`agent_checked_supports`](literature_certificates/ES86-T1b-Q-split-n2.md) | J.-H. Evertse, J. H. Silverman, *Uniform bounds for the number of solutions to Y^n = f(X)*, Theorem 1(b), printed p. 238. | Lemma 9.1 |
+| `HK13-QO-conductor-fibres` | `external` | `open` | `PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement` | — | [`source_to_lean_not_established`](literature_certificates/HK13-QO-conductor-fibres.md) | Franz Halter-Koch, *Quadratic Irrationals: An Introduction to Classical Number Theory*, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127. | Lemma 9.2 |
+| `LS04-Corollary-1` | `external` | `open` | `PaperC.LaishramShoreyInput.LaishramShoreyStatement` | — | — | Shanta Laishram, T. N. Shorey, *Number of prime divisors in a product of consecutive integers*, Corollary 1, equation (10), p. 330; definition of δ(k), p. 328 | Lemma 15.2 |
+| `NR83-T1-divisor-bound` | `external` | `discharged` | `PaperC.PellInput.NicolasRobinPellEnvelopeStatement` | `PaperC.PellInput.nicolasRobinPellEnvelope_of_divisorLogBound` | — | J.-L. Nicolas, G. Robin, *Majorations explicites pour le nombre de diviseurs de N*, definition of f and Théorème 1, p. 485 | Lemma 9.2 |
+| `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC.PellInput.NicolasRobinDivisorLogBoundStatement` | — | [`agent_checked_supports`](literature_certificates/NR83-T1-divisor-log-bound.md) | J.-L. Nicolas, G. Robin, *Majorations explicites pour le nombre de diviseurs de N*, Theorem 1, printed p. 485. | Lemma 9.2 |
+| `PCv07c-L17.26-bounded-ratio-many-defects` | `internal` | `discharged` | `PaperC.PropositionSixteenOne.ManyDefectsSectorStabilityStatement` | `PaperC.BoundedRatioManyDefectsAssembly.manyDefectsSectorStability`<br>`PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`<br>`PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical` | — | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemmes 17.18–17.26, pp. 60–62 | Lemma 17.26 |
+| `PCv07c-L17.28-bounded-ratio-nonterminal-sector` | `internal` | `discharged` | `PaperC.PropositionSixteenOne.NonterminalSectorStabilityStatement` | `PaperC.BoundedRatioNonterminalAssembly.exists_nonterminalSectorStability`<br>`PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`<br>`PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical` | — | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 17.28, p. 63 | Lemma 17.28 |
+| `PCv07c-L17.30-bounded-ratio-terminal-sector` | `internal` | `discharged` | `PaperC.PropositionSixteenOne.TerminalSectorStabilityStatement` | `PaperC.BoundedRatioTerminalSummation.intrinsicTerminalSectorStability`<br>`PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`<br>`PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical` | — | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 17.30, pp. 63–64 | Lemma 17.30 |
+| `PCv07c-L9.10-arithmetic-kernel-equivalence` | `internal` | `discharged` | `PaperC.CanonicalSmallRows.CanonicalArithmeticKernelStatement` | `PaperC.CanonicalSmallRows.canonicalArithmeticKernelStatement`<br>`PaperC.CanonicalSmallRows.residualTau_eq_corrected_add_components_sub_arithmeticRank_of_choice_none` | — | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 9.10, démonstration, p. 32 | Lemma 9.10 |
+| `PCv07c-L9.2-generalized-Pell` | `internal` | `discharged` | `PaperC.PellInput.GeneralizedPellPolynomialBoxStatement` | `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin`<br>`PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound` | — | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 9.2, démonstration, pp. 28–29 | Lemma 9.2 |
 
 ### Transcriptions sources à contrôler
 
@@ -77,19 +84,24 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Nature : `external`.
 - Statut : `open`.
 - Proposition Lean : `PaperC.PrimeNumberTheoremInput.PrimeNumberTheoremStatement`.
-- Relation de formalisation : exact sequential real-valued form of the cited prime number theorem: (π(L) * log L) / L tends to 1. The uniform low-zone estimate and its exponential-decay consequence are proved in Lean from this statement.
-- Contrôle : `manual_primary_source_check_required`.
+- Relation de formalisation courante : exact sequential real-valued form of the cited prime number theorem: (π(L) * log L) / L tends to 1. The uniform low-zone estimate and its exponential-decay consequence are proved in Lean from this statement.
+- Contrôle source courant : `manual_primary_source_check_required`.
 
 > the density of primes in the positive integers is asymptotic to 1/ln x.
 
 #### `AGG89-T1-finite-dependency-b3-zero`
 
-- Source : Richard Arratia, Larry Goldstein, Louis Gordon, *Two moments suffice for Poisson approximations: the Chen–Stein method*, Theorem 1, p. 10.
+- Source : Richard Arratia, Larry Goldstein, Louis Gordon, *Two moments suffice for Poisson approximations: the Chen–Stein method*, Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10.
+- Localisation enregistrée dans le cœur gelé : Theorem 1, p. 10 (supplantée pour rc2).
 - Nature : `external`.
 - Statut : `open`.
 - Proposition Lean : `PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement`.
-- Relation de formalisation : finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization.
-- Contrôle : `manual_primary_source_check_required`.
+- Relation de formalisation courante : Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: finite-family specialization of Theorem 1 to closed graph neighborhoods and exact independence outside each neighborhood, hence b₃ = 0; total variation is defined with the standard half-L¹ normalization.
+- Contrôle source courant : `agent_checked_supports`.
+- Wording de contrôle dans le cœur gelé : `manual_primary_source_check_required` (supplanté pour rc2).
+- Qualification rc2 : `agent_checked_supports`; lecture primaire `full_text`; pas de revue humaine indépendante.
+- Certificat rc2 : [`literature_certificates/AGG89-T1-finite-dependency-b3-zero.md`](literature_certificates/AGG89-T1-finite-dependency-b3-zero.md), SHA-256 `684886dc2d9b79d175f32d46434352d2ea7084a955340ab376ca2bf92eb70115`, 5007 octets.
+- Limites rc2 : The source theorem is on printed page 11, not page 10; the Challenge bound is a conservative consequence under its half-l1 normalization. No independent human verification.
 - Citation littérale : extrait (les formules structurées ci-dessous complètent la transcription).
 
 > ≤ 2(b₁ + b₂ + b₃).
@@ -100,8 +112,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Nature : `external`.
 - Statut : `open`.
 - Proposition Lean : `PaperC.BalasubramanianShoreyInput.BalasubramanianShoreyStatement`.
-- Relation de formalisation : equivalent finset reformulation of the distinct offsets and their product; P⁺(b)≤k is expressed as every prime factor of b being at most k; the real absolute bound C₂ is replaced by its natural ceiling; published effectivity is not encoded.
-- Contrôle : `verified_equivalent_reformulation_against_primary_source_pdf`.
+- Relation de formalisation courante : equivalent finset reformulation of the distinct offsets and their product; P⁺(b)≤k is expressed as every prime factor of b being at most k; the real absolute bound C₂ is replaced by its natural ceiling; published effectivity is not encoded.
+- Contrôle source courant : `verified_equivalent_reformulation_against_primary_source_pdf`.
 - Citation littérale : extrait (les formules structurées ci-dessous complètent la transcription).
 - Note de vérification : Equation (1) is (m+d₁)⋯(m+dₜ)=by² with distinct 1≤dᵢ≤k, b,y positive and P⁺(b)≤k; (4) is m>k²; (5) is t≥μₖ(θ₀). The source setup has k≥t≥2. The natural C₂ is the ceiling of the published absolute real constant. The published effectivity of θ₀ and C₂ is not encoded as computable data.
 - Formules affichées transcrites :
@@ -115,25 +127,35 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 
 #### `ES86-T1b-Q-split-n2`
 
-- Source : J.-H. Evertse, J. H. Silverman, *Uniform bounds for the number of solutions to Y^n = f(X)*, Theorem 1(b), p. 238.
+- Source : J.-H. Evertse, J. H. Silverman, *Uniform bounds for the number of solutions to Y^n = f(X)*, Theorem 1(b), printed p. 238.
+- Localisation enregistrée dans le cœur gelé : Theorem 1(b), p. 238 (supplantée pour rc2).
 - Nature : `external`.
 - Statut : `open`.
 - Proposition Lean : `PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement`.
-- Relation de formalisation : specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two.
-- Contrôle : `manual_primary_source_check_required`.
+- Relation de formalisation courante : Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: specialization to K = L = ℚ, a split polynomial, n = 2, and the abscissa count before the elementary factor two.
+- Contrôle source courant : `agent_checked_supports`.
+- Wording de contrôle dans le cœur gelé : `manual_primary_source_check_required` (supplanté pour rc2).
+- Qualification rc2 : `agent_checked_supports`; lecture primaire `full_text`; pas de revue humaine indépendante.
+- Certificat rc2 : [`literature_certificates/ES86-T1b-Q-split-n2.md`](literature_certificates/ES86-T1b-Q-split-n2.md), SHA-256 `578b50f50915995429222f7d19dba8c7c7b7df5b44acd5143f47e19477898793`, 3370 octets.
+- Limites rc2 : The K=L=Q specialization and bad-place set are documented, but not formalized from a Lean version of the source theorem. No independent human verification.
 
 > Let d ≥ 3, and assume that L contains at least three zeros of f. Then #V(R_S,f,2) ≤ 7^{M(4m+9s)} · 4^{κ₂(L)}.
 
 #### `HK13-QO-conductor-fibres`
 
-- Source : Franz Halter-Koch, *Quadratic Irrationals: An Introduction to Classical Number Theory*, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127.
+- Source : Franz Halter-Koch, *Quadratic Irrationals: An Introduction to Classical Number Theory*, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127.
+- Localisation enregistrée dans le cœur gelé : Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127 (supplantée pour rc2).
 - Nature : `external`.
 - Statut : `open`.
 - Proposition Lean : `PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement`.
-- Relation de formalisation : external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences.
-- Contrôle : `manually checked against the cited theorem statements and proofs on 2026-07-31`.
+- Relation de formalisation courante : The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.
+- Contrôle source courant : `source_to_lean_not_established`.
+- Wording de contrôle dans le cœur gelé : `manually checked against the cited theorem statements and proofs on 2026-07-31` (supplanté pour rc2).
+- Qualification rc2 : `agent_checked_with_open_gap`; lecture primaire `partial`; pas de revue humaine indépendante.
+- Certificat rc2 : [`literature_certificates/HK13-QO-conductor-fibres.md`](literature_certificates/HK13-QO-conductor-fibres.md), SHA-256 `cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96`, 3971 octets.
+- Limites rc2 : The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.
 - Citation littérale : extrait (les formules structurées ci-dessous complètent la transcription).
-- Note de vérification : Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction.
+- Note de vérification du cœur gelé (supplantée pour rc2) : Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction.
 - Formules affichées transcrites :
   - `descent` : `J(s) = J(t) and c(s) = c(t) imply (s) = (t) in ℤ[√D]`
   - `lean_colour_padding` : `Fin 3 → Fin 4`
@@ -150,8 +172,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Nature : `external`.
 - Statut : `open`.
 - Proposition Lean : `PaperC.LaishramShoreyInput.LaishramShoreyStatement`.
-- Relation de formalisation : exact natural-number transcription; primeFactors.card is ω, PrimesUpTo.count is π, and Nat division by 4 is the printed floor.
-- Contrôle : `verified_transcription_against_primary_source_pdf`.
+- Relation de formalisation courante : exact natural-number transcription; primeFactors.card is ω, PrimesUpTo.count is π, and Nat division by 4 is the printed floor.
+- Contrôle source courant : `verified_transcription_against_primary_source_pdf`.
 - Note de vérification : The surrounding source fixes k ≥ 2 and defines Δ(n,k)=n(n+1)⋯(n+k−1). The four cases of δ(k) are transcribed in exceptionCorrection.
 
 > Let n > k. Then ω(Δ) ≥ min(π(k) + ⌊3/4 π(k)⌋ − 1 + δ(k), π(2k) − 1).
@@ -163,8 +185,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Statut : `discharged`.
 - Déchargé par : `PaperC.PellInput.nicolasRobinPellEnvelope_of_divisorLogBound`.
 - Proposition Lean : `PaperC.PellInput.NicolasRobinPellEnvelopeStatement`.
-- Relation de formalisation : discharged legacy envelope retained for compatibility: PellDivisorEnvelope derives it from NR83-T1-divisor-log-bound, proving in Lean the polynomial substitution, small-argument split, squaring of the divisor count, and absorption of the explicit logarithmic unit-orbit factor.
-- Contrôle : `manual_primary_source_check_required`.
+- Relation de formalisation courante : discharged legacy envelope retained for compatibility: PellDivisorEnvelope derives it from NR83-T1-divisor-log-bound, proving in Lean the polynomial substitution, small-argument split, squaring of the divisor count, and absorption of the explicit logarithmic unit-orbit factor.
+- Contrôle source courant : `manual_primary_source_check_required`.
 - Citation littérale : extrait (les formules structurées ci-dessous complètent la transcription).
 - Note de vérification : Theorem 1 gives the global maximum of f. This legacy specialized envelope is now derived in Lean from the separately registered source-shaped logarithmic inequality; the polynomial-height substitution, squaring, and logarithmic unit-factor absorption are kernel-checked.
 - Formules affichées transcrites :
@@ -176,14 +198,19 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 
 #### `NR83-T1-divisor-log-bound`
 
-- Source : J.-L. Nicolas, G. Robin, *Majorations explicites pour le nombre de diviseurs de N*, definition of f and Théorème 1, p. 485.
+- Source : J.-L. Nicolas, G. Robin, *Majorations explicites pour le nombre de diviseurs de N*, Theorem 1, printed p. 485.
+- Localisation enregistrée dans le cœur gelé : definition of f and Théorème 1, p. 485 (supplantée pour rc2).
 - Nature : `external`.
 - Statut : `open`.
 - Proposition Lean : `PaperC.PellInput.NicolasRobinDivisorLogBoundStatement`.
-- Relation de formalisation : source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption.
-- Contrôle : `manual_primary_source_check_required`.
+- Relation de formalisation courante : Agent counter-audit supports the registered source-to-proposition implication, without a Lean formalization or independent human review. Registered relation: source-shaped Nicolas–Robin input only: the direct logarithmic divisor inequality above n=64. Lean derives the former specialized Pell envelope, including polynomial substitution, all finite small-m cases, the squared divisor factor, and logarithmic height absorption.
+- Contrôle source courant : `agent_checked_supports`.
+- Wording de contrôle dans le cœur gelé : `manual_primary_source_check_required` (supplanté pour rc2).
+- Qualification rc2 : `agent_checked_supports`; lecture primaire `full_text`; pas de revue humaine indépendante.
+- Certificat rc2 : [`literature_certificates/NR83-T1-divisor-log-bound.md`](literature_certificates/NR83-T1-divisor-log-bound.md), SHA-256 `51ac933cbc7e41fce60cfe7a939c6c606bbb1fd0d3642bb6ed7fbfe02c163e73`, 3366 octets.
+- Limites rc2 : The certificate uses the exact maximizer and an elementary strict bound below 2, rather than treating the printed decimal 1.5379 as exact. No independent human verification.
 - Citation littérale : extrait (les formules structurées ci-dessous complètent la transcription).
-- Note de vérification : The printed 1.5379 is rounded (the maximizing value is approximately 1.53793986), so Lean deliberately uses the safe exact majorant 2 rather than interpreting the four-decimal display as an exact rational bound. The proposition is restricted to n ≥ 64 so log(log n) is positive. PellDivisorEnvelope proves every later polynomial-height and unit-orbit consequence.
+- Note de vérification du cœur gelé (supplantée pour rc2) : The printed 1.5379 is rounded (the maximizing value is approximately 1.53793986), so Lean deliberately uses the safe exact majorant 2 rather than interpreting the four-decimal display as an exact rational bound. The proposition is restricted to n ≥ 64 so log(log n) is positive. PellDivisorEnvelope proves every later polynomial-height and unit-orbit consequence.
 - Formules affichées transcrites :
   - `divisor_function` : `d(n) = ∑_{d|n} 1`
   - `lean_statement` : `log(d(n)) log(log n) ≤ 2 log(2) log(n), for n ≥ 64`
@@ -198,8 +225,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Statut : `discharged`.
 - Déchargé par : `PaperC.BoundedRatioManyDefectsAssembly.manyDefectsSectorStability`, `PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`, `PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical`.
 - Proposition Lean : `PaperC.PropositionSixteenOne.ManyDefectsSectorStabilityStatement`.
-- Relation de formalisation : discharged historical interface retained for compatibility: Lean covers every literal active host by a two-defect window base and a finite component shape, disintegrates each fixed fibre by a smooth squarefree coefficient, closes degree one with an N^(1/2+o(1)) envelope, closes degree two from generalized Pell or an exact signed-divisor factorization, and closes degree at least three from Evertse–Silverman together with an unconditional factorial bound for the number of prime factors. The signed-divisor and Evertse–Silverman sums are uniformly N^o(1), the degree-by-degree fixed-fibre assembly is complete, and the resulting N^(3/2+o(1)) estimate is transported to little-oh of N^2. Evertse–Silverman and generalized Pell remain explicit lower-level antecedents; there is no remaining Lemma 17.26-specific formalization debt.
-- Contrôle : `manual_primary_source_check_required`.
+- Relation de formalisation courante : discharged historical interface retained for compatibility: Lean covers every literal active host by a two-defect window base and a finite component shape, disintegrates each fixed fibre by a smooth squarefree coefficient, closes degree one with an N^(1/2+o(1)) envelope, closes degree two from generalized Pell or an exact signed-divisor factorization, and closes degree at least three from Evertse–Silverman together with an unconditional factorial bound for the number of prime factors. The signed-divisor and Evertse–Silverman sums are uniformly N^o(1), the degree-by-degree fixed-fibre assembly is complete, and the resulting N^(3/2+o(1)) estimate is transported to little-oh of N^2. Evertse–Silverman and generalized Pell remain explicit lower-level antecedents; there is no remaining Lemma 17.26-specific formalization debt.
+- Contrôle source courant : `manual_primary_source_check_required`.
 
 > Lemme 17.26 (Élimination des défauts multiples sur U). La masse linéaire des couples du coeur profond non aligné tels que D# ≥ 3 est N^{3/2+o_{C,κ₀}(1)}.
 
@@ -210,8 +237,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Statut : `discharged`.
 - Déchargé par : `PaperC.BoundedRatioNonterminalAssembly.exists_nonterminalSectorStability`, `PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`, `PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical`.
 - Proposition Lean : `PaperC.PropositionSixteenOne.NonterminalSectorStabilityStatement`.
-- Relation de formalisation : discharged historical interface retained for compatibility: Lean follows the manuscript split 3c# <= 2B versus 2B < 3c# exactly. In the first branch, the size-at-most-ten host population is reduced to fixed shapes and mobile fibres; the two-singleton shapes have an elementary N^(1+o(1)) envelope, degree two is closed from generalized Pell, and degree at least three is closed from Evertse–Silverman, giving N^(5/3+o(1)) mass. In the second branch, Lean extracts a size-two component, the exact factor 2^(R_K(B)+1), and an elementary Euler-product bound N exp(Cterm sqrt(B)/log B); it then chooses K with 2 Cterm < K log 2. The finite mass decomposition, floor handling, both host counts and both little-oh transports are complete. Evertse–Silverman and generalized Pell remain explicit lower-level antecedents; there is no remaining Lemma 17.28-specific formalization debt.
-- Contrôle : `manual_primary_source_check_required`.
+- Relation de formalisation courante : discharged historical interface retained for compatibility: Lean follows the manuscript split 3c# <= 2B versus 2B < 3c# exactly. In the first branch, the size-at-most-ten host population is reduced to fixed shapes and mobile fibres; the two-singleton shapes have an elementary N^(1+o(1)) envelope, degree two is closed from generalized Pell, and degree at least three is closed from Evertse–Silverman, giving N^(5/3+o(1)) mass. In the second branch, Lean extracts a size-two component, the exact factor 2^(R_K(B)+1), and an elementary Euler-product bound N exp(Cterm sqrt(B)/log B); it then chooses K with 2 Cterm < K log 2. The finite mass decomposition, floor handling, both host counts and both little-oh transports are complete. Evertse–Silverman and generalized Pell remain explicit lower-level antecedents; there is no remaining Lemma 17.28-specific formalization debt.
+- Contrôle source courant : `manual_primary_source_check_required`.
 
 > La masse du coeur profond non aligné à D# ≤ 2 — les couples à D# ≥ 3 étant éliminés par le lemme 17.26 — est o_{C,κ₀}(N²) en dehors de l’ensemble T_K.
 
@@ -222,8 +249,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Statut : `discharged`.
 - Déchargé par : `PaperC.BoundedRatioTerminalSummation.intrinsicTerminalSectorStability`, `PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`, `PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical`.
 - Proposition Lean : `PaperC.PropositionSixteenOne.TerminalSectorStabilityStatement`.
-- Relation de formalisation : discharged historical generic terminal-sector interface retained for compatibility with arbitrary terminal classifiers; for the canonical intrinsic classifier, Lean proves the complete first-start and partner summation under generalized Pell, the uniform N^(3/4+o(1)) cardinal bound, the N^(7/4+o(1)) = o(N^2) mass bound, and the exact transport through the proved source-scoped Lemma 9.10 arithmetic equivalence. Consequently the principal canonical Proposition 16.1 and Theorem 16.2 replace this coarse premise by generalized Pell alone. Evertse–Silverman is not used in Lemma 17.30, and there is no remaining Lemma 17.30-specific formalization debt.
-- Contrôle : `manual_primary_source_check_required`.
+- Relation de formalisation courante : discharged historical generic terminal-sector interface retained for compatibility with arbitrary terminal classifiers; for the canonical intrinsic classifier, Lean proves the complete first-start and partner summation under generalized Pell, the uniform N^(3/4+o(1)) cardinal bound, the N^(7/4+o(1)) = o(N^2) mass bound, and the exact transport through the proved source-scoped Lemma 9.10 arithmetic equivalence. Consequently the principal canonical Proposition 16.1 and Theorem 16.2 replace this coarse premise by generalized Pell alone. Evertse–Silverman is not used in Lemma 17.30, and there is no remaining Lemma 17.30-specific formalization debt.
+- Contrôle source courant : `manual_primary_source_check_required`.
 
 > Lemme 17.30 (Fermeture terminale sur U). Avec T = (C_det(κ₀)NB)^{1/2}, la population terminale satisfait #T_K ≤ N^{3/4+o_{C,κ₀}(1)} et ∑_{(x,y)∈T_K}(2^{τ(x,y)}−1) ≤ N^{7/4+o_{C,κ₀}(1)}.
 
@@ -234,8 +261,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Statut : `discharged`.
 - Déchargé par : `PaperC.CanonicalSmallRows.canonicalArithmeticKernelStatement`, `PaperC.CanonicalSmallRows.residualTau_eq_corrected_add_components_sub_arithmeticRank_of_choice_none`.
 - Proposition Lean : `PaperC.CanonicalSmallRows.CanonicalArithmeticKernelStatement`.
-- Relation de formalisation : source-exact nonaligned statement for Lemma 9.10: when no canonical rational channel exists and the finite cylinder covers both complete boundaries, the residual quotient is the kernel of the fixed prime-and-block matrix.
-- Contrôle : `manual_primary_source_check_required`.
+- Relation de formalisation courante : source-exact nonaligned statement for Lemma 9.10: when no canonical rational channel exists and the finite cylinder covers both complete boundaries, the residual quotient is the kernel of the fixed prime-and-block matrix.
+- Contrôle source courant : `manual_primary_source_check_required`.
 
 > Le lemme 6.1 identifie l’espace des solutions des grands premiers à F_2^{D#+c#} dans la branche non alignée. Les seules équations qui restent sont les lignes de M̃.
 
@@ -246,8 +273,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Statut : `discharged`.
 - Déchargé par : `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin`, `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound`.
 - Proposition Lean : `PaperC.PellInput.GeneralizedPellPolynomialBoxStatement`.
-- Relation de formalisation : legacy manuscript-facing interface, discharged in Lean at the source-shaped boundary by generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound; its only open upstream assumptions are the conductor-two comparison HK13-QO-conductor-fibres and the direct Nicolas--Robin logarithmic inequality NR83-T1-divisor-log-bound. The maximal-order ideal-divisor count, unit orbits, height control, finite counting, squarefree-kernel reduction, polynomial substitution and logarithmic-factor absorption are proved internally.
-- Contrôle : `manual_primary_source_check_required`.
+- Relation de formalisation courante : legacy manuscript-facing interface, discharged in Lean at the source-shaped boundary by generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound; its only open upstream assumptions are the conductor-two comparison HK13-QO-conductor-fibres and the direct Nicolas--Robin logarithmic inequality NR83-T1-divisor-log-bound. The maximal-order ideal-divisor count, unit orbits, height control, finite counting, squarefree-kernel reduction, polynomial substitution and logarithmic-factor absorption are proved internally.
+- Contrôle source courant : `manual_primary_source_check_required`.
 
 > Ainsi le nombre de solutions est au plus O_{K₀}(τ(|M|)² log N). Comme |M| ≤ N^{O_{K₀}(1)}, la borne divisorielle standard donne (9.3).
 
