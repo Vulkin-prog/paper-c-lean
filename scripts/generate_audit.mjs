@@ -463,10 +463,48 @@ const publishedComparatorEvidence = requirePlainObject(
   comparatorMetadata.published_evidence,
   'verification.comparator.published_evidence',
 );
+const expectedPublishedComparatorEvidenceKeys = [
+  'archive',
+  'archive_sha256',
+  'archive_size_bytes',
+  'comparator_fileset_digest_sha256',
+  'enable_nanoda',
+  'kernels',
+  'metadata_verification',
+  'non_root',
+  'paper_c_commit',
+  'privacy_profile',
+  'qualification',
+  'raw_archive',
+  'raw_archive_retention',
+  'raw_archive_sha256',
+  'raw_archive_size_bytes',
+  'raw_sha256sums_in_public_archive',
+  'raw_sha256sums_sha256',
+  'redaction_manifest',
+  'redaction_manifest_sha256',
+  'release_tag',
+  'release_url',
+  'sandboxed',
+  'summary_sha256',
+].sort(binaryCompare);
+if (
+  JSON.stringify(Object.keys(publishedComparatorEvidence).sort(binaryCompare)) !==
+  JSON.stringify(expectedPublishedComparatorEvidenceKeys)
+) {
+  throw new Error(
+    'audit_config.json has unexpected Comparator published-evidence fields',
+  );
+}
 for (const field of [
   'release_tag',
   'release_url',
   'archive',
+  'privacy_profile',
+  'redaction_manifest',
+  'raw_archive',
+  'raw_archive_retention',
+  'raw_sha256sums_in_public_archive',
   'metadata_verification',
   'qualification',
 ]) {
@@ -479,6 +517,9 @@ for (const field of [
   'archive_sha256',
   'summary_sha256',
   'comparator_fileset_digest_sha256',
+  'redaction_manifest_sha256',
+  'raw_archive_sha256',
+  'raw_sha256sums_sha256',
 ]) {
   if (!/^[0-9a-f]{64}$/.test(publishedComparatorEvidence[field] ?? '')) {
     throw new Error(
@@ -492,8 +533,34 @@ requireCommit(
   'verification.comparator.published_evidence.paper_c_commit',
 );
 if (
+  path.basename(publishedComparatorEvidence.archive) !==
+    publishedComparatorEvidence.archive ||
+  !publishedComparatorEvidence.archive.endsWith('.tar.zst') ||
+  path.basename(publishedComparatorEvidence.raw_archive) !==
+    publishedComparatorEvidence.raw_archive ||
+  !publishedComparatorEvidence.raw_archive.endsWith('.tar.zst') ||
+  publishedComparatorEvidence.redaction_manifest !==
+    'REDACTION_MANIFEST.json' ||
+  publishedComparatorEvidence.raw_sha256sums_in_public_archive !==
+    'provenance/RAW_SHA256SUMS' ||
+  publishedComparatorEvidence.archive ===
+    publishedComparatorEvidence.raw_archive ||
+  publishedComparatorEvidence.archive_sha256 ===
+    publishedComparatorEvidence.raw_archive_sha256
+) {
+  throw new Error(
+    'audit_config.json has invalid public/private Comparator evidence paths',
+  );
+}
+if (
   !Number.isSafeInteger(publishedComparatorEvidence.archive_size_bytes) ||
   publishedComparatorEvidence.archive_size_bytes < 1 ||
+  !Number.isSafeInteger(publishedComparatorEvidence.raw_archive_size_bytes) ||
+  publishedComparatorEvidence.raw_archive_size_bytes < 1 ||
+  publishedComparatorEvidence.privacy_profile !==
+    'derived_privacy_minimized_bundle_v1' ||
+  publishedComparatorEvidence.raw_archive_retention !==
+    'local_only_not_published' ||
   publishedComparatorEvidence.sandboxed !== true ||
   publishedComparatorEvidence.non_root !== true ||
   publishedComparatorEvidence.enable_nanoda !== false ||
@@ -2221,10 +2288,15 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
     );
   }
   const runPassed = successfulComparatorStatuses.has(run.status);
+  if (Object.hasOwn(run, 'transcript_in_published_archive')) {
+    throw new Error(
+      `legacy public-transcript field is forbidden for ${configPath}`,
+    );
+  }
   const evidenceRecordRelativePath = run.evidence_record ?? null;
   const configuredEvidenceRecordSha256 = run.evidence_record_sha256 ?? null;
-  const transcriptInPublishedArchive =
-    run.transcript_in_published_archive ?? null;
+  const transcriptInPrivateRawArchive =
+    run.transcript_in_private_raw_archive ?? null;
   const transcriptSha256 = run.transcript_sha256 ?? null;
   let evidenceRecord = null;
   let evidenceRecordSha256 = null;
@@ -2303,22 +2375,22 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
     );
   }
 
-  if (transcriptInPublishedArchive !== null) {
+  if (transcriptInPrivateRawArchive !== null) {
     requireNonemptyString(
-      transcriptInPublishedArchive,
+      transcriptInPrivateRawArchive,
       `verification.comparator.configurations[${index}]` +
-        '.transcript_in_published_archive',
+        '.transcript_in_private_raw_archive',
     );
     if (
-      path.isAbsolute(transcriptInPublishedArchive) ||
-      transcriptInPublishedArchive.includes('\\') ||
-      path.posix.normalize(transcriptInPublishedArchive) !==
-        transcriptInPublishedArchive ||
-      !transcriptInPublishedArchive.startsWith('evidence/') ||
-      path.posix.extname(transcriptInPublishedArchive) !== '.txt'
+      path.isAbsolute(transcriptInPrivateRawArchive) ||
+      transcriptInPrivateRawArchive.includes('\\') ||
+      path.posix.normalize(transcriptInPrivateRawArchive) !==
+        transcriptInPrivateRawArchive ||
+      !transcriptInPrivateRawArchive.startsWith('evidence/') ||
+      path.posix.extname(transcriptInPrivateRawArchive) !== '.txt'
     ) {
       throw new Error(
-        `invalid Comparator archive transcript path for ${configPath}`,
+        `invalid private Comparator archive transcript path for ${configPath}`,
       );
     }
   }
@@ -2328,7 +2400,7 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
   if (runPassed) {
     if (
       evidenceRecord === null ||
-      transcriptInPublishedArchive === null ||
+      transcriptInPrivateRawArchive === null ||
       transcriptSha256 === null
     ) {
       throw new Error(
@@ -2341,7 +2413,7 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
     [
       evidenceRecordRelativePath,
       configuredEvidenceRecordSha256,
-      transcriptInPublishedArchive,
+      transcriptInPrivateRawArchive,
       transcriptSha256,
     ].some(value => value !== null)
   ) {
@@ -2463,7 +2535,7 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
       evidenceRecord.comparator_fileset_digest_sha256 !==
         comparatorFilesetDigestSha256AtRun ||
       evidenceRecord.transcript !==
-        path.posix.basename(transcriptInPublishedArchive) ||
+        path.posix.basename(transcriptInPrivateRawArchive) ||
       evidenceRecord.transcript_sha256 !== transcriptSha256
     ) {
       throw new Error(
@@ -2498,7 +2570,7 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
     sandboxed: run.sandboxed,
     evidence_record: evidenceRecordRelativePath,
     evidence_record_sha256: evidenceRecordSha256,
-    transcript_in_published_archive: transcriptInPublishedArchive,
+    transcript_in_private_raw_archive: transcriptInPrivateRawArchive,
     transcript_sha256: transcriptSha256,
     configuration_sha256_at_run: configurationSha256AtRun,
     comparator_fileset_digest_sha256_at_run:
@@ -2931,8 +3003,8 @@ const formalization = {
       sandboxed: config.sandboxed,
       evidence_record: config.evidence_record,
       evidence_record_sha256: config.evidence_record_sha256,
-      transcript_in_published_archive:
-        config.transcript_in_published_archive,
+      transcript_in_private_raw_archive:
+        config.transcript_in_private_raw_archive,
       transcript_sha256: config.transcript_sha256,
       configuration_sha256_at_run: config.configuration_sha256_at_run,
       comparator_fileset_digest_sha256_at_run:
@@ -2997,8 +3069,8 @@ const formalization = {
         sandboxed: config.sandboxed,
         evidence_record: config.evidence_record,
         evidence_record_sha256: config.evidence_record_sha256,
-        transcript_in_published_archive:
-          config.transcript_in_published_archive,
+        transcript_in_private_raw_archive:
+          config.transcript_in_private_raw_archive,
         transcript_sha256: config.transcript_sha256,
         configuration_sha256_at_run: config.configuration_sha256_at_run,
         comparator_fileset_digest_sha256_at_run:

@@ -69,16 +69,20 @@ The hardened main and transfer transcripts have SHA-256 values
 `fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e`
 and
 `13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076`.
-The raw transcripts remain in the public archive; the repository carries
-only privacy-minimized JSON result records under `comparator/evidence/`.
-The published `paper-c-hardened-27c91f8.tar.zst` archive is 98,049 bytes;
-its SHA-256 is
-`a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89`
-and its summary SHA-256 is
+The raw transcripts remain local and unpublished because they contain
+host-identifying metadata; their SHA-256 values above remain bound by the
+public redaction manifest and result records. The published privacy-minimized
+`paper-c-hardened-public-27c91f8.tar.zst` archive is 49,765 bytes; its SHA-256
+is
+`7279ed99e6b1a98b6458fe1f8d95dd1f68af445646ee6a23d0044c7bee94ce50`
+and its byte-identical summary SHA-256 is
 `b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb`.
-This evidence certifies the Comparator implication at the recorded input
-commit; it does not establish the four source-to-proposition implications or
-paper-to-Challenge fidelity.
+The redaction manifest SHA-256 is
+`01c3619d80786999a323c8b2073c4e674bf97af46f179b7e1434af53f3b6f29b`.
+This public evidence records and binds the Comparator result at the recorded
+input commit, but does not permit line-by-line public inspection of the full
+host trace. It does not establish the four source-to-proposition implications
+or paper-to-Challenge fidelity.
 
 ## Sections 1–3
 

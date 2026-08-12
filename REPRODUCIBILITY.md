@@ -128,27 +128,34 @@ capacités héritées, effectives, permises et ambiantes nulles, ainsi que
 dans un checkout propre distinct ; le noyau Lean par défaut a accepté les deux
 solutions avec un code de retour nul.
 
-L’archive de référence est
-`paper-c-hardened-27c91f8.tar.zst`, publiée dans la release `v0.48.0`. Elle
-pèse 98 049 octets, son SHA-256 est
-`a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89`
-et le SHA-256 de son résumé est
-`b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb`.
-Le digest du fileset Comparator est
-`646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5` ;
-les transcripts bruts principal et transfert restent dans cette archive
-publique et ont pour SHA-256
+L’archive publique est
+`paper-c-hardened-public-27c91f8.tar.zst`, publiée dans la release `v0.48.0`.
+Elle pèse 49 765 octets et son SHA-256 est
+`7279ed99e6b1a98b6458fe1f8d95dd1f68af445646ee6a23d0044c7bee94ce50`.
+Elle conserve byte-identiques le résumé (SHA-256
+`b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb`),
+les deux enregistrements de résultat, les 12 fichiers du snapshot source et
+l’inventaire brut des empreintes. Le digest du fileset Comparator est
+`646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
+`REDACTION_MANIFEST.json` (SHA-256
+`01c3619d80786999a323c8b2073c4e674bf97af46f179b7e1434af53f3b6f29b`)
+lie par SHA-256 les 17 membres conservés et les 13 membres omis.
+
+L’archive source privée `paper-c-hardened-27c91f8.tar.zst` pèse 98 049
+octets et son SHA-256 est
+`a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89`.
+Elle reste locale et n’est pas publiée : les journaux et transcripts omis
+contiennent utilisateur, hôte, groupes locaux, HOME/PATH et chemins
+temporaires. Les SHA-256 des transcripts bruts principal et transfert restent
+liés cryptographiquement :
 `fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e`
 et
 `13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076`.
-L’archive téléversée a été contre-vérifiée pour sa taille et son SHA-256
-externes, le SHA-256 du résumé, chaque entrée de `SHA256SUMS` et l’égalité
-des deux empreintes de transcript archivées. Pour ne pas dupliquer les noms
-d’hôte, chemins locaux et autres métadonnées de machine des journaux bruts,
-le dépôt ne contient que deux enregistrements `result-*.json` minimaux sous
-`comparator/evidence/`. Le générateur valide ces enregistrements, leurs propres
-SHA-256 et leurs liaisons aux configurations et au fileset ; il ne télécharge
-ni ne revalide l’asset de release GitHub.
+Le paquet public conserve ainsi les liaisons du résultat certifié, mais ne
+permet pas une inspection indépendante ligne par ligne de la trace hôte
+complète. Le générateur valide les enregistrements minimisés du dépôt et leurs
+liaisons aux configurations et au fileset ; il ne télécharge ni ne revalide
+l’asset de release GitHub.
 
 Ce résultat est limité au noyau Lean : `enable_nanoda` vaut `false` dans les
 deux configurations, Nanoda n’a pas été exécuté et aucun résultat à deux

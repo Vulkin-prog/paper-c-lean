@@ -132,26 +132,33 @@ permitted, and ambient capabilities, and `NoNewPrivileges`. Comparator built
 each Challenge/Solution pair in a separate clean checkout; the Lean default
 kernel accepted both solutions with exit status 0.
 
-The authoritative bundle is
-`paper-c-hardened-27c91f8.tar.zst`, published in the
+The public release bundle is
+`paper-c-hardened-public-27c91f8.tar.zst`, published in the
 [v0.48.0 release](https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0).
-It is 98,049 bytes, with SHA-256
-`a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89`
-and summary SHA-256
-`b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb`.
-Its Comparator-fileset digest is
+It is 49,765 bytes, with SHA-256
+`7279ed99e6b1a98b6458fe1f8d95dd1f68af445646ee6a23d0044c7bee94ce50`.
+It retains the exact summary (SHA-256
+`b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb`),
+both result records, all 12 source-snapshot files, and the raw checksum
+inventory. Its Comparator-fileset digest is
 `646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
-The raw main and transfer transcripts remain in that public archive, with
-SHA-256 values
+`REDACTION_MANIFEST.json` (SHA-256
+`01c3619d80786999a323c8b2073c4e674bf97af46f179b7e1434af53f3b6f29b`)
+binds all 17 retained and 13 omitted source members by SHA-256.
+
+The private source archive `paper-c-hardened-27c91f8.tar.zst` is 98,049
+bytes, with SHA-256
+`a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89`.
+It remains local and is not published because the omitted host logs and raw
+transcripts contain a username, hostname, local groups, HOME/PATH, and
+temporary paths. The raw main and transfer transcript SHA-256 values remain
+cryptographically recorded as
 `fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e`
 and
 `13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076`.
-The uploaded archive was rechecked for its outer size and SHA-256, summary
-SHA-256, every internal `SHA256SUMS` entry, and both archived transcript
-hashes. To avoid duplicating host names, local paths, and other machine
-metadata from the raw logs, this repository contains only the two
-privacy-minimized `result-*.json` records under `comparator/evidence/`. The
-generator validates those records, their own SHA-256 values, and their
+The public bundle therefore preserves the certified result bindings but does
+not permit independent line-by-line inspection of the full host trace. The
+generator validates the privacy-minimized repository records and their
 configuration and fileset bindings; it deliberately does not fetch or
 revalidate the GitHub release asset.
 
