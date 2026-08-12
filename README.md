@@ -126,24 +126,26 @@ separate audit target.
 
 **Recorded hardened status.** Both Paper C Comparator targets passed the
 hardened local procedure at Paper C commit
-`75b36254145c0983d551de11599ea5c8f68e1e51`. The runs used real landrun under
+`27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07`. The runs used real landrun under
 `systemd-run --user --pty`, a non-root account, zero inherited, effective,
 permitted, and ambient capabilities, and `NoNewPrivileges`. Comparator built
 each Challenge/Solution pair in a separate clean checkout; the Lean default
 kernel accepted both solutions with exit status 0.
 
 The authoritative bundle is
-`paper-c-hardened-evidence-75b36254145c-20260803T060848Z.tar.zst`, published in
-the [v0.48.0-rc1 release](https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0-rc1),
-with SHA-256
-`bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130`.
+`paper-c-hardened-27c91f8.tar.zst`, published in the
+[v0.48.0 release](https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0).
+It is 98,049 bytes, with SHA-256
+`a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89`
+and summary SHA-256
+`b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb`.
 Its Comparator-fileset digest is
 `646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
 The raw main and transfer transcripts remain in that public archive, with
 SHA-256 values
-`5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266`
+`fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e`
 and
-`f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421`.
+`13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076`.
 The uploaded archive was rechecked for its outer size and SHA-256, summary
 SHA-256, every internal `SHA256SUMS` entry, and both archived transcript
 hashes. To avoid duplicating host names, local paths, and other machine
@@ -156,22 +158,22 @@ revalidate the GitHub release asset.
 This is a Lean-kernel-only result. Both configurations have
 `enable_nanoda: false`; Nanoda was not run, and no dual-kernel result is
 claimed. The evidence certifies the unchanged Comparator inputs at commit
-`75b36254145c...`, not the later final-release commit. It does not discharge
-the four ordinary literature-facing premises or certify the paper-to-
-Challenge comparison. The earlier fake-landrun transcripts remain historical
-unsandboxed compatibility tests only; they are not the release certificate.
+`27c91f8bdd5c...`. The final v0.48.0 metadata layer leaves the six-file
+Comparator fileset and both manuscript PDFs byte-identical to that certified
+commit. It does not discharge the four ordinary literature-facing premises or
+certify the paper-to-Challenge comparison. The earlier fake-landrun
+transcripts remain historical unsandboxed compatibility tests only; they are
+not the release certificate.
 The audited Paper C commit is distinct from the pinned Comparator source
 commit `51491237b1d2f96cca203af9c34bced6fe38e0d8` and from GitHub event SHAs
 formerly used in hosted-artifact names.
 
-For newly assembled evidence, each `result-*.json` records the Challenge and
+For the final evidence, each `result-*.json` records the Challenge and
 Solution SHA-256 values, the exact theorem list and permitted-axiom list, the
 two manuscript SHA-256 values, and the five pinned tool commits. The aggregate
-summary repeats the shared tool and manuscript identities. These additional
-fields apply to evidence assembled with the rc2 scripts; they do not rewrite
-the immutable rc1 archive.
+summary repeats the shared tool and manuscript identities.
 
-### Source-audit qualifications (rc2)
+### Source-audit qualifications
 
 The four machine-indexed reports under `literature_certificates/` document the
 current agent counter-audit of the source-to-proposition implications. They
@@ -1948,10 +1950,10 @@ LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
 The automated runner always executes the main finite-cylinder and independent
 infinite-to-finite transfer configurations. Do not infer transfer coverage
 from the main result alone. A hardened reference run succeeded for both
-byte-identical Comparator configurations at Paper C commit `75b36254145c...`.
-The runner remains the reproduction procedure; rerunning it at a later commit
-is required before claiming that later commit itself as the audited repository
-commit.
+byte-identical Comparator configurations at Paper C commit `27c91f8bdd5c...`.
+The final v0.48.0 metadata layer does not change those configurations. The
+runner remains the reproduction procedure; rerunning it is required before a
+later change to the Comparator fileset can be claimed as certified.
 
 The axiom audit does not detect ordinary hypotheses. Their inventory is the
 bridge registry in `audit_manifest.json` and `AXIOM_AUDIT.md`: each entry has

@@ -386,7 +386,7 @@
         "solution_module": "Solution",
         "enable_nanoda": false
       },
-      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under four fully stated ordinary premises. The byte-identical Challenge/Solution boundary passed the hardened non-root Comparator procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51 with Lean-kernel acceptance and exit 0. Nanoda was disabled. The separate transfer target covers the infinite source law."
+      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under four fully stated ordinary premises. The byte-identical Challenge/Solution boundary passed the hardened non-root Comparator procedure at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07 with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the certified Comparator fileset byte-identical. Nanoda was disabled. The separate transfer target covers the infinite source law."
     },
     {
       "id": "Thm-1.1-infinite-finite-law-transfer",
@@ -414,7 +414,7 @@
         "solution_module": "SolutionTransfer",
         "enable_nanoda": false
       },
-      "note": "Exact unconditional identity of the infinite-product dyadic start-count law and its finite-cylinder law. The byte-identical ChallengeTransfer/SolutionTransfer boundary passed the hardened non-root Comparator procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51 with Lean-kernel acceptance and exit 0. Nanoda was disabled."
+      "note": "Exact unconditional identity of the infinite-product dyadic start-count law and its finite-cylinder law. The byte-identical ChallengeTransfer/SolutionTransfer boundary passed the hardened non-root Comparator procedure at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07 with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the certified Comparator fileset byte-identical. Nanoda was disabled."
     },
     {
       "id": "Thm-1.2-i-deterministic-masks",
