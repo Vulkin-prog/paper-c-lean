@@ -32,7 +32,7 @@
       "author_contacted": "n/a",
       "filename": "paper_C_complete_v09_en.pdf",
       "sha256": "d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd",
-      "note": "Paper C v09 English release candidate, August 8, 2026; intended as the next Cambridge Open Engage version under the existing DOI."
+      "note": "Paper C v09 English frozen release, August 12, 2026; intended as the next Cambridge Open Engage version under the existing DOI."
     },
     {
       "key": "adgr07-prime-number-theorem",
@@ -1232,7 +1232,7 @@
       "id": "Lem-9.6",
       "paper_locator": {
         "result": "Lemma 9.6 (hosts of a bounded component)",
-        "pages": "30",
+        "pages": "31",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1284,7 +1284,7 @@
       "id": "Lem-9.8",
       "paper_locator": {
         "result": "Lemma 9.8 (two defects in a block)",
-        "pages": "31",
+        "pages": "32",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1311,7 +1311,7 @@
       "id": "Prop-9.9",
       "paper_locator": {
         "result": "Proposition 9.9 (eliminating D# >= 3)",
-        "pages": "31",
+        "pages": "32",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1353,7 +1353,7 @@
       "id": "Prop-9.11",
       "paper_locator": {
         "result": "Proposition 9.11 (terminal reduction)",
-        "pages": "32",
+        "pages": "33",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1421,7 +1421,7 @@
       "id": "Lem-11.1",
       "paper_locator": {
         "result": "Lemma 11.1 (exhaustive partition of separated pairs)",
-        "pages": "35-36",
+        "pages": "36–37",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1436,13 +1436,13 @@
       "comparator": {
         "covered": false
       },
-      "note": "The numbered statement itself begins on p. 35 and its seven-sector list continues on p. 36. The canonical declaration proves existence and uniqueness of the sector."
+      "note": "The numbered statement itself begins on p. 36 and its seven-sector list continues on p. 37. The canonical declaration proves existence and uniqueness of the sector."
     },
     {
       "id": "Prop-11.2",
       "paper_locator": {
         "result": "Proposition 11.2 (absolute homogeneous two-block sum)",
-        "pages": "36",
+        "pages": "37",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1467,7 +1467,7 @@
       "id": "Cor-11.3",
       "paper_locator": {
         "result": "Corollary 11.3 (quantitative form of the homogeneous sum)",
-        "pages": "36",
+        "pages": "37",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1559,7 +1559,7 @@
       "id": "Lem-13.3",
       "paper_locator": {
         "result": "Lemma 13.3 (number of Y-defective starts)",
-        "pages": "38",
+        "pages": "39",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1580,7 +1580,7 @@
       "id": "Lem-13.4",
       "paper_locator": {
         "result": "Lemma 13.4 (probabilistic mass of the bad starts)",
-        "pages": "38",
+        "pages": "39",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1601,7 +1601,7 @@
       "id": "Lem-13.5",
       "paper_locator": {
         "result": "Lemma 13.5 (exact dependency graph)",
-        "pages": "39",
+        "pages": "40",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1622,7 +1622,7 @@
       "id": "Lem-13.6",
       "paper_locator": {
         "result": "Lemma 13.6 (edge count)",
-        "pages": "39",
+        "pages": "40",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1666,7 +1666,7 @@
       "id": "Lem-13.8",
       "paper_locator": {
         "result": "Lemma 13.8 (Chen-Stein terms)",
-        "pages": "40",
+        "pages": "41",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1691,7 +1691,7 @@
       "id": "Cor-13.9",
       "paper_locator": {
         "result": "Corollary 13.9 (finite bound)",
-        "pages": "41",
+        "pages": "42",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1712,7 +1712,7 @@
       "id": "Cor-13.10",
       "paper_locator": {
         "result": "Corollary 13.10 (explicit rate)",
-        "pages": "41-42",
+        "pages": "42",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1732,13 +1732,13 @@
       "comparator": {
         "covered": false
       },
-      "note": "The headline rate is stated on p. 41 and the 'more precisely' part of the same corollary continues on p. 42. The canonical Lean endpoint has exactly the four literature premises listed here."
+      "note": "The headline rate and the 'more precisely' part of the same corollary are stated on p. 42. The canonical Lean endpoint has exactly the four literature premises listed here."
     },
     {
       "id": "Prop-14.1",
       "paper_locator": {
         "result": "Proposition 14.1 (uniformly masked first moment)",
-        "pages": "42",
+        "pages": "43",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1811,7 +1811,7 @@
       "id": "Sec-14.2",
       "paper_locator": {
         "result": "Section 14.2 (spatial process via auxiliary thinning)",
-        "pages": "43-44",
+        "pages": "44",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1837,7 +1837,7 @@
       "id": "Lem-14.5",
       "paper_locator": {
         "result": "Lemma 14.5 (almost sure finiteness of stretches)",
-        "pages": "44",
+        "pages": "45",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1858,7 +1858,7 @@
       "id": "Lem-14.6",
       "paper_locator": {
         "result": "Lemma 14.6 (mixed-length affine identity)",
-        "pages": "44-45",
+        "pages": "45",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1877,7 +1877,7 @@
       "comparator": {
         "covered": false
       },
-      "note": "The statement begins at the foot of p. 44 and continues on p. 45. The two mapped declarations cover the normalized affine probability identity and the common-length rank domination."
+      "note": "The statement is on p. 45. The two mapped declarations cover the normalized affine probability identity and the common-length rank domination."
     },
     {
       "id": "Lem-14.7",
@@ -1904,7 +1904,7 @@
       "id": "Sec-14.4",
       "paper_locator": {
         "result": "Section 14.4 (truncated marked process)",
-        "pages": "45-47",
+        "pages": "46–48",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1951,7 +1951,7 @@
       "id": "Cor-14.9",
       "paper_locator": {
         "result": "Corollary 14.9 (exact-length counts and the maximum)",
-        "pages": "47-48",
+        "pages": "48",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1975,13 +1975,13 @@
       "comparator": {
         "covered": false
       },
-      "note": "The statement begins on p. 47 and continues on p. 48. The two declarations separately prove convergence of every fixed exact-length count vector and the internal dyadic-block maximum law. Their Lean namespaces retain the earlier label 'FourteenEight'; no global longest-run theorem is claimed here."
+      "note": "The statement is on p. 48. The two declarations separately prove convergence of every fixed exact-length count vector and the internal dyadic-block maximum law. Their Lean namespaces retain the earlier label 'FourteenEight'; no global longest-run theorem is claimed here."
     },
     {
       "id": "Lem-15.1",
       "paper_locator": {
         "result": "Lemma 15.1 (Low zone)",
-        "pages": "48",
+        "pages": "49",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2028,7 +2028,7 @@
       "id": "Lem-15.3",
       "paper_locator": {
         "result": "Lemma 15.3 (Rarity of two-defect windows)",
-        "pages": "49",
+        "pages": "50",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2075,7 +2075,7 @@
       "id": "Prop-15.5",
       "paper_locator": {
         "result": "Proposition 15.5 (Truncation of the deep blocks)",
-        "pages": "50",
+        "pages": "51",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2126,7 +2126,7 @@
       "id": "Thm-16.2",
       "paper_locator": {
         "result": "Theorem 16.2 (Interior global Poisson law at the critical scale)",
-        "pages": "52",
+        "pages": "53",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2190,7 +2190,7 @@
       "id": "Lem-17.1",
       "paper_locator": {
         "result": "Lemma 17.1 (Hosts at bounded ratio)",
-        "pages": "56",
+        "pages": "57",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2211,7 +2211,7 @@
       "id": "Lem-17.2",
       "paper_locator": {
         "result": "Lemma 17.2 (Interpolation at bounded ratio)",
-        "pages": "56",
+        "pages": "57",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2232,7 +2232,7 @@
       "id": "Lem-17.3",
       "paper_locator": {
         "result": "Lemma 17.3 (Rational code at bounded ratio)",
-        "pages": "56",
+        "pages": "57",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2299,7 +2299,7 @@
       "id": "Lem-17.6",
       "paper_locator": {
         "result": "Lemma 17.6 (Sum of channel geometries)",
-        "pages": "57",
+        "pages": "58",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2320,7 +2320,7 @@
       "id": "Lem-17.7",
       "paper_locator": {
         "result": "Lemma 17.7 (Large-prime graph on U)",
-        "pages": "57",
+        "pages": "58",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2383,7 +2383,7 @@
       "id": "Lem-17.10",
       "paper_locator": {
         "result": "Lemma 17.10 (Quotient core on U)",
-        "pages": "58",
+        "pages": "59",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2404,7 +2404,7 @@
       "id": "Lem-17.11",
       "paper_locator": {
         "result": "Lemma 17.11 (Residual certificates on U)",
-        "pages": "58",
+        "pages": "59",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2425,7 +2425,7 @@
       "id": "Lem-17.12",
       "paper_locator": {
         "result": "Lemma 17.12 (CRT summation on U)",
-        "pages": "58",
+        "pages": "59",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2488,7 +2488,7 @@
       "id": "Lem-17.15",
       "paper_locator": {
         "result": "Lemma 17.15 (Small channels on U)",
-        "pages": "59",
+        "pages": "60",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2509,7 +2509,7 @@
       "id": "Lem-17.16",
       "paper_locator": {
         "result": "Lemma 17.16 (Shallow cores on U)",
-        "pages": "59",
+        "pages": "60",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2530,7 +2530,7 @@
       "id": "Lem-17.17",
       "paper_locator": {
         "result": "Lemma 17.17 (Aligned exclusion on U)",
-        "pages": "59",
+        "pages": "60",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2603,7 +2603,7 @@
       "id": "Lem-17.20",
       "paper_locator": {
         "result": "Lemma 17.20 (Normalization of a component on U)",
-        "pages": "60",
+        "pages": "61",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2624,7 +2624,7 @@
       "id": "Lem-17.21",
       "paper_locator": {
         "result": "Lemma 17.21 (One-sided count on U)",
-        "pages": "60",
+        "pages": "61",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2697,7 +2697,7 @@
       "id": "Lem-17.24",
       "paper_locator": {
         "result": "Lemma 17.24 (Deep-core hosts on U)",
-        "pages": "61",
+        "pages": "62",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2718,7 +2718,7 @@
       "id": "Lem-17.25",
       "paper_locator": {
         "result": "Lemma 17.25 (Two defects in a block of U)",
-        "pages": "61",
+        "pages": "62",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2790,7 +2790,7 @@
       "id": "Lem-17.28",
       "paper_locator": {
         "result": "Lemma 17.28 (Uniform terminal reduction)",
-        "pages": "62",
+        "pages": "63",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2814,7 +2814,7 @@
       "id": "Lem-17.29",
       "paper_locator": {
         "result": "Lemma 17.29 (Terminal determinants on U)",
-        "pages": "62",
+        "pages": "63",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2862,7 +2862,7 @@
       "id": "Lem-17.31",
       "paper_locator": {
         "result": "Lemma 17.31 (Partition at bounded ratio)",
-        "pages": "63",
+        "pages": "64",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2887,7 +2887,7 @@
       "id": "Lem-17.32",
       "paper_locator": {
         "result": "Lemma 17.32 (Uniform assembly)",
-        "pages": "63",
+        "pages": "64",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2933,7 +2933,7 @@
       "id": "Lem-17.34",
       "paper_locator": {
         "result": "Lemma 17.34 (Y-defective starts on U)",
-        "pages": "64",
+        "pages": "65",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2958,7 +2958,7 @@
       "id": "Lem-17.35",
       "paper_locator": {
         "result": "Lemma 17.35 (Marginals and conditional graph on U)",
-        "pages": "64",
+        "pages": "65",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [

@@ -20,7 +20,7 @@ sources:
     author_contacted: "n/a"
     filename: "paper_C_complete_v09_en.pdf"
     sha256: "d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd"
-    note: "Paper C v09 English release candidate, August 8, 2026; intended as the next Cambridge Open Engage version under the existing DOI."
+    note: "Paper C v09 English frozen release, August 12, 2026; intended as the next Cambridge Open Engage version under the existing DOI."
   -
     title: "A formally verified proof of the prime number theorem"
     authors:
@@ -1198,7 +1198,7 @@ alignment:
       note: "The exact canonical parametrization and the critical-window size-two host envelope implementing the divisor summation are both proved without a bridge."
     -
       id: "Lem-9.6"
-      source: "Lemma 9.6 (hosts of a bounded component), p. 30 (paper-c-en-v09)"
+      source: "Lemma 9.6 (hosts of a bounded component), p. 31 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioNonterminalHostCounts.exists_card_boundedComponentHosts_le_explicit_sourceEnvelope"
       module: "PaperC/Asymptotics/BoundedRatioNonterminalHostCounts.lean"
       status: "proved on the canonical bounded-ratio route"
@@ -1226,7 +1226,7 @@ alignment:
       note: "The structural dense-core inclusion and the bounded-component host envelope formalize the corollary. The grouped status-table label 'Lem. 9.3-9.8' is editorial shorthand; the frozen English PDF labels 9.7 as a corollary."
     -
       id: "Lem-9.8"
-      source: "Lemma 9.8 (two defects in a block), p. 31 (paper-c-en-v09)"
+      source: "Lemma 9.8 (two defects in a block), p. 32 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioDistinctKernelTwoDefects.distinctKernelDefectBases_uniformSubpolynomial; PaperC.BoundedRatioTwoDefectStarts.card_equalKernelSmoothStarts_le"
       module: "PaperC/Asymptotics/BoundedRatioDistinctKernelTwoDefects.lean; PaperC/Asymptotics/BoundedRatioTwoDefectStarts.lean"
       status: "proved from the discharged generalized-Pell interface"
@@ -1239,7 +1239,7 @@ alignment:
       note: "Partial fidelity: the distinct-squareclass Pell branch and the equal-squareclass factorization/smooth sum are represented by separate declarations. The registered internal Pell bridge is discharged by the canonical Halter-Koch/Nicolas-Robin construction."
     -
       id: "Prop-9.9"
-      source: "Proposition 9.9 (eliminating D# >= 3), p. 31 (paper-c-en-v09)"
+      source: "Proposition 9.9 (eliminating D# >= 3), p. 32 (paper-c-en-v09)"
       lean: "PaperC.PropositionNineNine.sigmaZeroDeepCoreAtLeastThreeDefects_linearResidualMass_le"
       module: "PaperC/Asymptotics/PropositionNineNine.lean"
       status: "finite kernel proved; former conditional endpoint removed"
@@ -1263,7 +1263,7 @@ alignment:
       note: "This is the source-scoped, choice-none identity tau = D# + c# - rank, proved from the concrete kernel equivalence without a bridge."
     -
       id: "Prop-9.11"
-      source: "Proposition 9.11 (terminal reduction), p. 32 (paper-c-en-v09)"
+      source: "Proposition 9.11 (terminal reduction), p. 33 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioNonterminalAssembly.intrinsicNonterminalSector_uniformLittleO_of_arithmeticEnvelopes"
       module: "PaperC/Asymptotics/BoundedRatioNonterminalAssembly.lean"
       status: "canonical conclusion proved"
@@ -1302,7 +1302,7 @@ alignment:
       note: "Partial fidelity: the intrinsic canonical terminal population and its N^(7/4+o(1)) closure are proved; the former generic smallRowRank/rankBudget wrapper was removed."
     -
       id: "Lem-11.1"
-      source: "Lemma 11.1 (exhaustive partition of separated pairs), p. 35-36 (paper-c-en-v09)"
+      source: "Lemma 11.1 (exhaustive partition of separated pairs), p. 36–37 (paper-c-en-v09)"
       lean: "PaperC.CanonicalSectionElevenPartition.canonical_lemma_eleven_one_existsUnique_sector"
       module: "PaperC/Combinatorics/CanonicalSectionElevenPartition.lean"
       status: "proved"
@@ -1311,10 +1311,10 @@ alignment:
       comparator_covered: false
       comparator_config: ""
       comparator_status: "not_configured"
-      note: "The numbered statement itself begins on p. 35 and its seven-sector list continues on p. 36. The canonical declaration proves existence and uniqueness of the sector."
+      note: "The numbered statement itself begins on p. 36 and its seven-sector list continues on p. 37. The canonical declaration proves existence and uniqueness of the sector."
     -
       id: "Prop-11.2"
-      source: "Proposition 11.2 (absolute homogeneous two-block sum), p. 36 (paper-c-en-v09)"
+      source: "Proposition 11.2 (absolute homogeneous two-block sum), p. 37 (paper-c-en-v09)"
       lean: "PaperC.DyadicKappaQuantitative.homogeneousMass_uniformBigO"
       module: "PaperC/Asymptotics/DyadicKappaQuantitative.lean"
       status: "proved by a stronger quantitative canonical endpoint"
@@ -1329,7 +1329,7 @@ alignment:
       note: "Partial fidelity: the representative public declaration is the stronger uniform exponential envelope, which implies the manuscript's o_C(N^2) proposition. The removed legacy qualitative wrappers are not mapped."
     -
       id: "Cor-11.3"
-      source: "Corollary 11.3 (quantitative form of the homogeneous sum), p. 36 (paper-c-en-v09)"
+      source: "Corollary 11.3 (quantitative form of the homogeneous sum), p. 37 (paper-c-en-v09)"
       lean: "PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical"
       module: "PaperC/Asymptotics/DyadicKappaQuantitative.lean"
       status: "proved modulo three external literature premises"
@@ -1383,7 +1383,7 @@ alignment:
       note: "Conditioning is represented extensionally by the uniform law on the remaining finite coordinates, yielding the exact probability 2^-L without a measure-theoretic conditional-probability API."
     -
       id: "Lem-13.3"
-      source: "Lemma 13.3 (number of Y-defective starts), p. 38 (paper-c-en-v09)"
+      source: "Lemma 13.3 (number of Y-defective starts), p. 39 (paper-c-en-v09)"
       lean: "PaperC.TerminalBadStartsCritical.terminalBadStarts_terminalCutoff_uniformHalfPower"
       module: "PaperC/Asymptotics/TerminalBadStartsCritical.lean"
       status: "proved in the critical window"
@@ -1395,7 +1395,7 @@ alignment:
       note: "The selected theorem is the strong N^(1/2+o_C(1)) cardinal form, from which the manuscript's o_C(N) assertion follows."
     -
       id: "Lem-13.4"
-      source: "Lemma 13.4 (probabilistic mass of the bad starts), p. 38 (paper-c-en-v09)"
+      source: "Lemma 13.4 (probabilistic mass of the bad starts), p. 39 (paper-c-en-v09)"
       lean: "PaperC.BadStartMassCritical.terminalBadStartProbabilityMass_uniformLittleOOne"
       module: "PaperC/Asymptotics/BadStartMassCritical.lean"
       status: "proved"
@@ -1407,7 +1407,7 @@ alignment:
       note: "The exact finite bad-start mass is connected to the weighted defect estimate and proved uniformly o_C(1)."
     -
       id: "Lem-13.5"
-      source: "Lemma 13.5 (exact dependency graph), p. 39 (paper-c-en-v09)"
+      source: "Lemma 13.5 (exact dependency graph), p. 40 (paper-c-en-v09)"
       lean: "PaperC.ConditionalAGGInstantiation.hasExactDependencyGraph_conditionedGoodIndicator"
       module: "PaperC/Probability/ConditionalAGGInstantiation.lean"
       status: "proved exactly in the finite cylinder"
@@ -1419,7 +1419,7 @@ alignment:
       note: "The public declaration packages the factorization for arbitrary Boolean assignments to every family of non-neighbors as the exact dependency-graph interface consumed by AGG."
     -
       id: "Lem-13.6"
-      source: "Lemma 13.6 (edge count), p. 39 (paper-c-en-v09)"
+      source: "Lemma 13.6 (edge count), p. 40 (paper-c-en-v09)"
       lean: "PaperC.DependencyEdgesCritical.orderedDependencyEdges_terminalCutoff_uniformLittleOQuadratic"
       module: "PaperC/Asymptotics/DependencyEdgesCritical.lean"
       status: "sufficient critical-window edge bound proved"
@@ -1444,7 +1444,7 @@ alignment:
       note: "The finite-family b3=0 specialization and half-l1 total-variation normalization are explicit. The AGG theorem itself remains a registered ordinary premise."
     -
       id: "Lem-13.8"
-      source: "Lemma 13.8 (Chen-Stein terms), p. 40 (paper-c-en-v09)"
+      source: "Lemma 13.8 (Chen-Stein terms), p. 41 (paper-c-en-v09)"
       lean: "PaperC.SteinChenTerms.steinBOne_eq_card_div; PaperC.SteinChenTerms.steinBTwoAverage_le"
       module: "PaperC/Probability/SteinChenTerms.lean; PaperC/Probability/SteinChenTerms.lean"
       status: "finite kernels proved"
@@ -1456,7 +1456,7 @@ alignment:
       note: "Partial fidelity: the exact b1 identity and b2 finite upper bound are mapped here. Their little-oh closure from a supplied homogeneous estimate is proved elsewhere; the removed legacy route that rebuilt that estimate from abstract sector interfaces is not restored."
     -
       id: "Cor-13.9"
-      source: "Corollary 13.9 (finite bound), p. 41 (paper-c-en-v09)"
+      source: "Corollary 13.9 (finite bound), p. 42 (paper-c-en-v09)"
       lean: "PaperC.SectionThirteenFiniteBound.finite_corollary_thirteen_nine"
       module: "PaperC/Probability/SectionThirteenFiniteBound.lean"
       status: "finite algebraic bound proved"
@@ -1468,7 +1468,7 @@ alignment:
       note: "Partial fidelity: the exact finite majorant and coupling algebra are retained. The former qualitative public route from three abstract arithmetic interfaces was removed; the canonical conclusion is obtained through the stronger rate endpoint of Corollary 13.10."
     -
       id: "Cor-13.10"
-      source: "Corollary 13.10 (explicit rate), p. 41-42 (paper-c-en-v09)"
+      source: "Corollary 13.10 (explicit rate), p. 42 (paper-c-en-v09)"
       lean: "PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_canonical"
       module: "PaperC/Asymptotics/CorollaryThirteenTen.lean"
       status: "proved modulo four external literature premises"
@@ -1481,10 +1481,10 @@ alignment:
       comparator_covered: false
       comparator_config: ""
       comparator_status: "not_configured"
-      note: "The headline rate is stated on p. 41 and the 'more precisely' part of the same corollary continues on p. 42. The canonical Lean endpoint has exactly the four literature premises listed here."
+      note: "The headline rate and the 'more precisely' part of the same corollary are stated on p. 42. The canonical Lean endpoint has exactly the four literature premises listed here."
     -
       id: "Prop-14.1"
-      source: "Proposition 14.1 (uniformly masked first moment), p. 42 (paper-c-en-v09)"
+      source: "Proposition 14.1 (uniformly masked first moment), p. 43 (paper-c-en-v09)"
       lean: "PaperC.MaskedFirstMomentCritical.maskedFirstMomentError_uniformLittleOOne_loglogWindow"
       module: "PaperC/Asymptotics/MaskedFirstMomentCritical.lean"
       status: "proved uniformly over masks"
@@ -1528,7 +1528,7 @@ alignment:
       note: "The public theorem turns the manuscript remark into an explicit uniform Big-O endpoint with rate 1/(log log N)^2."
     -
       id: "Sec-14.2"
-      source: "Section 14.2 (spatial process via auxiliary thinning), p. 43-44 (paper-c-en-v09)"
+      source: "Section 14.2 (spatial process via auxiliary thinning), p. 44 (paper-c-en-v09)"
       lean: "PaperC.SectionFourteenClosure.theorem_one_two_ii_laplace"
       module: "PaperC/Asymptotics/SectionFourteenClosure.lean"
       status: "proved as a Laplace-functional characterization"
@@ -1544,7 +1544,7 @@ alignment:
       note: "Partial fidelity: Lean proves the complete spatial PPP Laplace functional under the four literature premises. It does not duplicate the paper's vague-convergence wording as a Tendsto statement for point-measure laws because the required point-process topology API is absent from mathlib."
     -
       id: "Lem-14.5"
-      source: "Lemma 14.5 (almost sure finiteness of stretches), p. 44 (paper-c-en-v09)"
+      source: "Lemma 14.5 (almost sure finiteness of stretches), p. 45 (paper-c-en-v09)"
       lean: "PaperC.InfiniteRademacher.lemma_fourteen_four"
       module: "PaperC/Model/InfiniteRademacher.lean"
       status: "proved in the infinite source model"
@@ -1556,7 +1556,7 @@ alignment:
       note: "The theorem is source-exact: almost surely every x >= 2 has a later value different from f(x). The Lean identifier retains the earlier manuscript number 'fourteen_four'; the frozen English PDF numbers the result 14.5."
     -
       id: "Lem-14.6"
-      source: "Lemma 14.6 (mixed-length affine identity), p. 44-45 (paper-c-en-v09)"
+      source: "Lemma 14.6 (mixed-length affine identity), p. 45 (paper-c-en-v09)"
       lean: "PaperC.MixedLengthAffine.mixedExcessProbability_eq_eta_mul_two_pow_rho_div; PaperC.MixedLengthAffine.mixedExcess_relationRho_le_common"
       module: "PaperC/Probability/MixedLengthAffine.lean; PaperC/Probability/MixedLengthAffine.lean"
       status: "proved exactly in the finite cylinder"
@@ -1565,7 +1565,7 @@ alignment:
       comparator_covered: false
       comparator_config: ""
       comparator_status: "not_configured"
-      note: "The statement begins at the foot of p. 44 and continues on p. 45. The two mapped declarations cover the normalized affine probability identity and the common-length rank domination."
+      note: "The statement is on p. 45. The two mapped declarations cover the normalized affine probability identity and the common-length rank domination."
     -
       id: "Lem-14.7"
       source: "Lemma 14.7 (private pivots and cycle space), p. 45 (paper-c-en-v09)"
@@ -1580,7 +1580,7 @@ alignment:
       note: "The rank lower bound is proved for the finite oriented presentation used by the project, including loops and parallel edges and explicit connectivity-to-root hypotheses."
     -
       id: "Sec-14.4"
-      source: "Section 14.4 (truncated marked process), p. 45-47 (paper-c-en-v09)"
+      source: "Section 14.4 (truncated marked process), p. 46–48 (paper-c-en-v09)"
       lean: "PaperC.SectionFourteenClosure.theorem_one_two_iii_laplace_and_tightness"
       module: "PaperC/Asymptotics/SectionFourteenClosure.lean"
       status: "proved as Laplace functionals plus uniform mark tightness"
@@ -1608,7 +1608,7 @@ alignment:
       note: "The infinite-law little-oh statement is transported term by term from the finite-cylinder mass identity. The Lean identifier retains the earlier number 'fourteen_seven'; the frozen English PDF numbers the result 14.8."
     -
       id: "Cor-14.9"
-      source: "Corollary 14.9 (exact-length counts and the maximum), p. 47-48 (paper-c-en-v09)"
+      source: "Corollary 14.9 (exact-length counts and the maximum), p. 48 (paper-c-en-v09)"
       lean: "PaperC.CorollaryFourteenEightCounts.corollary_fourteen_eight_counts; PaperC.CorollaryFourteenEightMaximum.corollary_fourteen_eight_maximum"
       module: "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean; PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean"
       status: "proved modulo four external literature premises"
@@ -1621,10 +1621,10 @@ alignment:
       comparator_covered: false
       comparator_config: ""
       comparator_status: "not_configured"
-      note: "The statement begins on p. 47 and continues on p. 48. The two declarations separately prove convergence of every fixed exact-length count vector and the internal dyadic-block maximum law. Their Lean namespaces retain the earlier label 'FourteenEight'; no global longest-run theorem is claimed here."
+      note: "The statement is on p. 48. The two declarations separately prove convergence of every fixed exact-length count vector and the internal dyadic-block maximum law. Their Lean namespaces retain the earlier label 'FourteenEight'; no global longest-run theorem is claimed here."
     -
       id: "Lem-15.1"
-      source: "Lemma 15.1 (Low zone), p. 48 (paper-c-en-v09)"
+      source: "Lemma 15.1 (Low zone), p. 49 (paper-c-en-v09)"
       lean: "PaperC.LowZoneCritical.lowZoneProbabilityMass_uniformLittleOOne_power"
       module: "PaperC/Asymptotics/LowZoneCritical.lean"
       status: "proved modulo the registered prime-number-theorem premise"
@@ -1651,7 +1651,7 @@ alignment:
       note: "Direct endpoint for decay of the summed probability mass in the polynomial band."
     -
       id: "Lem-15.3"
-      source: "Lemma 15.3 (Rarity of two-defect windows), p. 49 (paper-c-en-v09)"
+      source: "Lemma 15.3 (Rarity of two-defect windows), p. 50 (paper-c-en-v09)"
       lean: "PaperC.LemmaFifteenThree.lemma_fifteen_three_uniform_height_range"
       module: "PaperC/Asymptotics/LemmaFifteenThree.lean"
       status: "proved modulo PNT and the discharged internal Pell bridge"
@@ -1678,7 +1678,7 @@ alignment:
       note: "Direct eventual pointwise defect-count bound used in the manuscript."
     -
       id: "Prop-15.5"
-      source: "Proposition 15.5 (Truncation of the deep blocks), p. 50 (paper-c-en-v09)"
+      source: "Proposition 15.5 (Truncation of the deep blocks), p. 51 (paper-c-en-v09)"
       lean: "PaperC.PropositionFifteenFivePartition.proposition_fifteen_five"
       module: "PaperC/Asymptotics/PropositionFifteenFivePartition.lean"
       status: "proved modulo three literature premises and the discharged internal Pell bridge"
@@ -1709,7 +1709,7 @@ alignment:
       note: "Canonical endpoint; historical internal sector bridges are not consumed by this declaration."
     -
       id: "Thm-16.2"
-      source: "Theorem 16.2 (Interior global Poisson law at the critical scale), p. 52 (paper-c-en-v09)"
+      source: "Theorem 16.2 (Interior global Poisson law at the critical scale), p. 53 (paper-c-en-v09)"
       lean: "PaperC.TheoremSixteenTwoRecentered.theorem_sixteen_two_recentered_canonical; PaperC.TheoremSixteenTwo.theorem_sixteen_two_infinite_model"
       module: "PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean; PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean"
       status: "proved on the finite cylinder and infinite source law modulo seven literature premises"
@@ -1747,7 +1747,7 @@ alignment:
       note: "Direct canonical endpoint for the finite-prefix longest-run law; deliberately outside the present Comparator scope."
     -
       id: "Lem-17.1"
-      source: "Lemma 17.1 (Hosts at bounded ratio), p. 56 (paper-c-en-v09)"
+      source: "Lemma 17.1 (Hosts at bounded ratio), p. 57 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioRelationalHostsCritical.card_boundedRelationalHosts_uniformThreeHalves"
       module: "PaperC/Asymptotics/BoundedRatioRelationalHostsCritical.lean"
       status: "proved"
@@ -1759,7 +1759,7 @@ alignment:
       note: "Direct bounded-ratio host-count endpoint."
     -
       id: "Lem-17.2"
-      source: "Lemma 17.2 (Interpolation at bounded ratio), p. 56 (paper-c-en-v09)"
+      source: "Lemma 17.2 (Interpolation at bounded ratio), p. 57 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioGeometry.boundedRatio_interpolation"
       module: "PaperC/Combinatorics/BoundedRatioGeometry.lean"
       status: "proved"
@@ -1771,7 +1771,7 @@ alignment:
       note: "Direct Cauchy-Schwarz interpolation statement."
     -
       id: "Lem-17.3"
-      source: "Lemma 17.3 (Rational code at bounded ratio), p. 56 (paper-c-en-v09)"
+      source: "Lemma 17.3 (Rational code at bounded ratio), p. 57 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioGeometry.boundedRatio_rationalCode_finrank"
       module: "PaperC/Combinatorics/BoundedRatioGeometry.lean"
       status: "proved"
@@ -1807,7 +1807,7 @@ alignment:
       note: "The two public endpoints cover the supremum and summed rational-mass conclusions."
     -
       id: "Lem-17.6"
-      source: "Lemma 17.6 (Sum of channel geometries), p. 57 (paper-c-en-v09)"
+      source: "Lemma 17.6 (Sum of channel geometries), p. 58 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioGeometry.boundedRatio_weightedChannelGeometry_le"
       module: "PaperC/Combinatorics/BoundedRatioGeometry.lean"
       status: "proved"
@@ -1819,7 +1819,7 @@ alignment:
       note: "Direct weighted channel-geometry summation bound."
     -
       id: "Lem-17.7"
-      source: "Lemma 17.7 (Large-prime graph on U), p. 57 (paper-c-en-v09)"
+      source: "Lemma 17.7 (Large-prime graph on U), p. 58 (paper-c-en-v09)"
       lean: "PaperC.LargePrimeGraphResolution.finrank_largePrimeSolution_eq_defective_add_components"
       module: "PaperC/Combinatorics/LargePrimeGraphResolution.lean"
       status: "proved through a reusable exact graph-rank core; mapping fidelity is partial"
@@ -1855,7 +1855,7 @@ alignment:
       note: "Partial-fidelity mapping: the public declaration states the generic graph dichotomy specialized downstream to U."
     -
       id: "Lem-17.10"
-      source: "Lemma 17.10 (Quotient core on U), p. 58 (paper-c-en-v09)"
+      source: "Lemma 17.10 (Quotient core on U), p. 59 (paper-c-en-v09)"
       lean: "PaperC.CanonicalExactRank.pairTau_add_kTilde_eq_corrected_add_components"
       module: "PaperC/LinearAlgebra/CanonicalExactRank.lean"
       status: "proved through the canonical exact-rank identity; mapping fidelity is partial"
@@ -1867,7 +1867,7 @@ alignment:
       note: "Partial-fidelity mapping: the declaration is the reusable rank identity underlying the quotient-core formula, not a literal restatement with the manuscript's U notation."
     -
       id: "Lem-17.11"
-      source: "Lemma 17.11 (Residual certificates on U), p. 58 (paper-c-en-v09)"
+      source: "Lemma 17.11 (Residual certificates on U), p. 59 (paper-c-en-v09)"
       lean: "PaperC.ResidualCertificates.card_canonicalCertificatePrimes"
       module: "PaperC/Combinatorics/ResidualCertificates.lean"
       status: "proved through the generic residual-certificate construction; mapping fidelity is partial"
@@ -1879,7 +1879,7 @@ alignment:
       note: "Partial-fidelity mapping: the exact certificate-cardinality theorem is instantiated transitively in the bounded-ratio proof."
     -
       id: "Lem-17.12"
-      source: "Lemma 17.12 (CRT summation on U), p. 58 (paper-c-en-v09)"
+      source: "Lemma 17.12 (CRT summation on U), p. 59 (paper-c-en-v09)"
       lean: "PaperC.CRT.sum_labeledCell_admissibleCertificatePairSolutionMass_le_exact"
       module: "PaperC/Combinatorics/CertificateLemmaSevenOne.lean"
       status: "proved through the exact generic CRT summation theorem; mapping fidelity is partial"
@@ -1915,7 +1915,7 @@ alignment:
       note: "Direct seven-fourths bound for the small-product sector."
     -
       id: "Lem-17.15"
-      source: "Lemma 17.15 (Small channels on U), p. 59 (paper-c-en-v09)"
+      source: "Lemma 17.15 (Small channels on U), p. 60 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioSmallHeightSector.boundedSmallHeightLinearEnvelope_uniformSevenFourths"
       module: "PaperC/Asymptotics/BoundedRatioSmallHeightSector.lean"
       status: "proved"
@@ -1927,7 +1927,7 @@ alignment:
       note: "Direct seven-fourths envelope for the small-channel-height sector."
     -
       id: "Lem-17.16"
-      source: "Lemma 17.16 (Shallow cores on U), p. 59 (paper-c-en-v09)"
+      source: "Lemma 17.16 (Shallow cores on U), p. 60 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioShallowCoreSector.boundedRatioShallowCoreLinearEnvelope_uniformThirtyOneSixteenths"
       module: "PaperC/Asymptotics/BoundedRatioShallowCoreSector.lean"
       status: "proved"
@@ -1939,7 +1939,7 @@ alignment:
       note: "Direct 31/16 envelope for the shallow-core sector."
     -
       id: "Lem-17.17"
-      source: "Lemma 17.17 (Aligned exclusion on U), p. 59 (paper-c-en-v09)"
+      source: "Lemma 17.17 (Aligned exclusion on U), p. 60 (paper-c-en-v09)"
       lean: "PaperC.PropositionSixteenOne.alignedDeepCoreSector_uniformLittleOInBoundedRatioWindow"
       module: "PaperC/Asymptotics/PropositionSixteenOneCore.lean"
       status: "proved for the alpha = 3/16 instance used by Proposition 16.1; fidelity to the arbitrary-alpha paper statement is partial"
@@ -1979,7 +1979,7 @@ alignment:
       note: "Partial-fidelity mapping: no single public declaration packages the manuscript range transport. The first declaration discharges the polynomial-box interface from Halter-Koch and Nicolas-Robin; the second gives the source-exact real-exponent consequence from the registered internal Pell bridge."
     -
       id: "Lem-17.20"
-      source: "Lemma 17.20 (Normalization of a component on U), p. 60 (paper-c-en-v09)"
+      source: "Lemma 17.20 (Normalization of a component on U), p. 61 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioComponentNormalization.exists_normalized_component_equation_with_height"
       module: "PaperC/Asymptotics/BoundedRatioComponentNormalization.lean"
       status: "proved"
@@ -1991,7 +1991,7 @@ alignment:
       note: "Direct existence theorem for the normalized component equation and its height control."
     -
       id: "Lem-17.21"
-      source: "Lemma 17.21 (One-sided count on U), p. 60 (paper-c-en-v09)"
+      source: "Lemma 17.21 (One-sided count on U), p. 61 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioNonterminalHostCounts.exists_card_leftBaseShapeFiber_le_mobileArithmeticBound; PaperC.BoundedRatioNonterminalHostCounts.exists_card_rightBaseShapeFiber_le_mobileArithmeticBound"
       module: "PaperC/Asymptotics/BoundedRatioNonterminalHostCounts.lean; PaperC/Asymptotics/BoundedRatioNonterminalHostCounts.lean"
       status: "proved modulo Evertse-Silverman and the discharged internal Pell bridge"
@@ -2031,7 +2031,7 @@ alignment:
       note: "Direct explicit source-envelope form of the bounded-component host estimate."
     -
       id: "Lem-17.24"
-      source: "Lemma 17.24 (Deep-core hosts on U), p. 61 (paper-c-en-v09)"
+      source: "Lemma 17.24 (Deep-core hosts on U), p. 62 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioComponentHosts.card_denseCanonicalCorePairs_le_of_shapeFibers"
       module: "PaperC/Asymptotics/BoundedRatioComponentHosts.lean"
       status: "proved as a structural reduction to shape-fiber envelopes; one-to-one statement fidelity is partial"
@@ -2043,7 +2043,7 @@ alignment:
       note: "Partial-fidelity mapping: this representative theorem is the unconditional dense-core reduction; the manuscript's final asymptotic follows after inserting the separately mapped fiber envelopes."
     -
       id: "Lem-17.25"
-      source: "Lemma 17.25 (Two defects in a block of U), p. 61 (paper-c-en-v09)"
+      source: "Lemma 17.25 (Two defects in a block of U), p. 62 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioTwoDefectStarts.equalKernelDefectBases_eq_empty; PaperC.BoundedRatioDistinctKernelTwoDefects.distinctKernelDefectBases_uniformSubpolynomial"
       module: "PaperC/Asymptotics/BoundedRatioTwoDefectStarts.lean; PaperC/Asymptotics/BoundedRatioDistinctKernelTwoDefects.lean"
       status: "proved after equal-kernel exclusion, modulo the discharged internal Pell bridge for distinct kernels"
@@ -2082,7 +2082,7 @@ alignment:
       note: "Direct bounded-ratio exact-rank identity for the canonical terminal population."
     -
       id: "Lem-17.28"
-      source: "Lemma 17.28 (Uniform terminal reduction), p. 62 (paper-c-en-v09)"
+      source: "Lemma 17.28 (Uniform terminal reduction), p. 63 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioNonterminalAssembly.intrinsicNonterminalSector_uniformLittleO_of_arithmeticEnvelopes"
       module: "PaperC/Asymptotics/BoundedRatioNonterminalAssembly.lean"
       status: "proved modulo Evertse-Silverman and the discharged internal Pell bridge"
@@ -2096,7 +2096,7 @@ alignment:
       note: "Representative public endpoint for the uniform nonterminal reduction after the internally chosen cutoff."
     -
       id: "Lem-17.29"
-      source: "Lemma 17.29 (Terminal determinants on U), p. 62 (paper-c-en-v09)"
+      source: "Lemma 17.29 (Terminal determinants on U), p. 63 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioTerminalClosure.kernel_product_le_of_dvd_crossDeterminant; PaperC.BoundedRatioTerminalClosure.card_filter_kernel_above_threshold_le_one"
       module: "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean; PaperC/Asymptotics/BoundedRatioTerminalClosure.lean"
       status: "proved"
@@ -2121,7 +2121,7 @@ alignment:
       note: "Direct intrinsic terminal-sector seven-fourths endpoint."
     -
       id: "Lem-17.31"
-      source: "Lemma 17.31 (Partition at bounded ratio), p. 63 (paper-c-en-v09)"
+      source: "Lemma 17.31 (Partition at bounded ratio), p. 64 (paper-c-en-v09)"
       lean: "PaperC.PropositionSixteenOne.boundedRatioSectorPairs_disjoint; PaperC.PropositionSixteenOne.boundedRatio_existsUnique_sector"
       module: "PaperC/Asymptotics/PropositionSixteenOneCore.lean; PaperC/Asymptotics/PropositionSixteenOneCore.lean"
       status: "proved"
@@ -2133,7 +2133,7 @@ alignment:
       note: "The paired declarations certify disjointness and exhaustive unique membership in the seven-sector partition."
     -
       id: "Lem-17.32"
-      source: "Lemma 17.32 (Uniform assembly), p. 63 (paper-c-en-v09)"
+      source: "Lemma 17.32 (Uniform assembly), p. 64 (paper-c-en-v09)"
       lean: "PaperC.PropositionSixteenOne.proposition_sixteen_one_of_sector_estimates"
       module: "PaperC/Asymptotics/PropositionSixteenOneCore.lean"
       status: "proved as the generic assembly from sector estimates; one-to-one statement fidelity is partial"
@@ -2157,7 +2157,7 @@ alignment:
       note: "The declarations cover the pointwise interval consequence and the weighted terminal-defect mass bound."
     -
       id: "Lem-17.34"
-      source: "Lemma 17.34 (Y-defective starts on U), p. 64 (paper-c-en-v09)"
+      source: "Lemma 17.34 (Y-defective starts on U), p. 65 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioBadStarts.boundedTerminalBadStarts_terminalCutoff_uniformLittleO; PaperC.BoundedRatioWeightedDefect.boundedBadStartProbabilityMass_uniformLittleOOne"
       module: "PaperC/Asymptotics/BoundedRatioBadStarts.lean; PaperC/Asymptotics/BoundedRatioWeightedDefect.lean"
       status: "proved"
@@ -2169,7 +2169,7 @@ alignment:
       note: "The two endpoints cover the bad-start cardinality and probability-mass conclusions."
     -
       id: "Lem-17.35"
-      source: "Lemma 17.35 (Marginals and conditional graph on U), p. 64 (paper-c-en-v09)"
+      source: "Lemma 17.35 (Marginals and conditional graph on U), p. 65 (paper-c-en-v09)"
       lean: "PaperC.BoundedRatioSteinChen.marginal_boundedConditionedGoodIndicator_eq_baseline; PaperC.BoundedRatioSteinChen.hasExactDependencyGraph_boundedConditionedGoodIndicator"
       module: "PaperC/Asymptotics/BoundedRatioSteinChen.lean; PaperC/Asymptotics/BoundedRatioSteinChen.lean"
       status: "proved"

@@ -18,7 +18,7 @@
   `fab03cbbed1a5857de17af32de30421a734c77c6`
 - PDF cible anglais (71 pages dans le fichier portant cette empreinte), SHA-256 :
   `d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`
-- PDF source français synchronisé (72 pages), SHA-256 :
+- PDF source français synchronisé (73 pages), SHA-256 :
   `2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`
 - racine unique de l’archive : `paper_c_lean/`
 - archive de livraison : `paper_c_lean_v048.zip`
@@ -30,13 +30,13 @@ lean4export doit être compilé séparément avec la toolchain Lean de Paper C,
 et non remplacé silencieusement par le binaire construit sous la toolchain
 plus récente propre à Comparator.
 
-La contre-vérification rc2 a recalculé les octets présents dans le dépôt :
+La contre-vérification finale a recalculé les octets présents dans le dépôt :
 `paper_C_complete_v09_en.pdf` est le blob Git
-`c2a733f5b8b38195760c72bfdb4d7706ed572f8b`, mesure 840720 octets et a pour
+`420e096924c8a9b6fe72b917be0ffa2c38f320dc`, mesure 841053 octets et a pour
 SHA-256
 `d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd` ;
 `paper_C_complete_v09.pdf` est le blob Git
-`f8eadbbecbf618ce0dc3b33fc2aecd4da28d2197`, mesure 848313 octets et a pour
+`5d1e8ec24578bead7d91fa7f0447fcd8cbaddafc`, mesure 848865 octets et a pour
 SHA-256
 `2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
 
@@ -151,8 +151,8 @@ ni ne revalide l’asset de release GitHub.
 Ce résultat est limité au noyau Lean : `enable_nanoda` vaut `false` dans les
 deux configurations, Nanoda n’a pas été exécuté et aucun résultat à deux
 noyaux n’est revendiqué. Le certificat porte sur les octets inchangés du
-fileset Comparator au commit `75b36254145c...`, et non sur ce commit
-documentaire rc2. Il ne décharge pas les quatre prémisses ordinaires de
+fileset Comparator au commit `75b36254145c...`, et non sur le commit final de
+release. Il ne décharge pas les quatre prémisses ordinaires de
 littérature et ne certifie pas à lui seul la fidélité papier--Challenge.
 
 Les quatre rapports sous `literature_certificates/` forment un fileset séparé

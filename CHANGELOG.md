@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.48.0
+
+- Froze the Paper C v09 manuscript pair for the final release: the English PDF
+  has 71 pages, 841053 bytes, and SHA-256
+  `d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`;
+  the synchronized French PDF has 73 pages, 848865 bytes, and SHA-256
+  `2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
+- Corrected the documentary Git blob identities to
+  `420e096924c8a9b6fe72b917be0ffa2c38f320dc` (English) and
+  `5d1e8ec24578bead7d91fa7f0447fcd8cbaddafc` (French). These corrections do
+  not alter either PDF byte stream.
+- Synchronized the release wording and generated audit metadata with the
+  final `v0.48.0` line. The historical branch name containing `v049` was a
+  temporary integration name and does not define the released version.
+- The 382-file Lean core, the Comparator interfaces, the 13-entry bridge
+  registry, and all canonical mathematical declarations remain unchanged.
+  Seven bridges remain explicitly `external/open`, including Halter--Koch.
+
 ## 0.48.0-rc2
 
 - Recorded the published hardened, non-root Comparator evidence for both
