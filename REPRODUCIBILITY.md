@@ -121,39 +121,49 @@ importés simultanément avec leur Challenge homonyme dans `AuditCheck.lean`.
 
 **Statut durci enregistré.** Les deux cibles Paper C ont réussi la procédure
 locale durcie au commit Paper C
-`75b36254145c0983d551de11599ea5c8f68e1e51`. Les exécutions ont utilisé
+`27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07`. Les exécutions ont utilisé
 landrun réel sous `systemd-run --user --pty`, un utilisateur non root, des
 capacités héritées, effectives, permises et ambiantes nulles, ainsi que
 `NoNewPrivileges`. Comparator a construit chaque paire Challenge/Solution
 dans un checkout propre distinct ; le noyau Lean par défaut a accepté les deux
 solutions avec un code de retour nul.
 
-L’archive de référence est
-`paper-c-hardened-evidence-75b36254145c-20260803T060848Z.tar.zst`, publiée dans
-la release `v0.48.0-rc1`, SHA-256
-`bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130`.
-Le digest du fileset Comparator est
-`646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5` ;
-les transcripts bruts principal et transfert restent dans cette archive
-publique et ont pour SHA-256
-`5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266`
+L’archive publique est
+`paper-c-hardened-public-27c91f8.tar.zst`, publiée dans la release `v0.48.0`.
+Elle pèse 49 765 octets et son SHA-256 est
+`7279ed99e6b1a98b6458fe1f8d95dd1f68af445646ee6a23d0044c7bee94ce50`.
+Elle conserve byte-identiques le résumé (SHA-256
+`b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb`),
+les deux enregistrements de résultat, les 12 fichiers du snapshot source et
+l’inventaire brut des empreintes. Le digest du fileset Comparator est
+`646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
+`REDACTION_MANIFEST.json` (SHA-256
+`01c3619d80786999a323c8b2073c4e674bf97af46f179b7e1434af53f3b6f29b`)
+lie par SHA-256 les 17 membres conservés et les 13 membres omis.
+
+L’archive source privée `paper-c-hardened-27c91f8.tar.zst` pèse 98 049
+octets et son SHA-256 est
+`a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89`.
+Elle reste locale et n’est pas publiée : les journaux et transcripts omis
+contiennent utilisateur, hôte, groupes locaux, HOME/PATH et chemins
+temporaires. Les SHA-256 des transcripts bruts principal et transfert restent
+liés cryptographiquement :
+`fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e`
 et
-`f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421`.
-L’archive téléversée a été contre-vérifiée pour sa taille et son SHA-256
-externes, le SHA-256 du résumé, chaque entrée de `SHA256SUMS` et l’égalité
-des deux empreintes de transcript archivées. Pour ne pas dupliquer les noms
-d’hôte, chemins locaux et autres métadonnées de machine des journaux bruts,
-le dépôt ne contient que deux enregistrements `result-*.json` minimaux sous
-`comparator/evidence/`. Le générateur valide ces enregistrements, leurs propres
-SHA-256 et leurs liaisons aux configurations et au fileset ; il ne télécharge
-ni ne revalide l’asset de release GitHub.
+`13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076`.
+Le paquet public conserve ainsi les liaisons du résultat certifié, mais ne
+permet pas une inspection indépendante ligne par ligne de la trace hôte
+complète. Le générateur valide les enregistrements minimisés du dépôt et leurs
+liaisons aux configurations et au fileset ; il ne télécharge ni ne revalide
+l’asset de release GitHub.
 
 Ce résultat est limité au noyau Lean : `enable_nanoda` vaut `false` dans les
 deux configurations, Nanoda n’a pas été exécuté et aucun résultat à deux
-noyaux n’est revendiqué. Le certificat porte sur les octets inchangés du
-fileset Comparator au commit `75b36254145c...`, et non sur le commit final de
-release. Il ne décharge pas les quatre prémisses ordinaires de
-littérature et ne certifie pas à lui seul la fidélité papier--Challenge.
+noyaux n’est revendiqué. Le certificat porte sur les octets du fileset
+Comparator au commit `27c91f8bdd5c...`. La couche finale de métadonnées
+v0.48.0 laisse ce fileset de six fichiers et les deux PDF byte-identiques. Il
+ne décharge pas les quatre prémisses ordinaires de littérature et ne certifie
+pas à lui seul la fidélité papier--Challenge.
 
 Les quatre rapports sous `literature_certificates/` forment un fileset séparé
 et haché. Ils consignent une contre-expertise par agents, pas une preuve Lean
@@ -904,8 +914,8 @@ un `result-*.json` machine-lisible avant l'archivage GitHub Actions. Avec les
 scripts rc2, ce résultat contient aussi les SHA-256 de Challenge et Solution,
 la liste exacte des théorèmes et axiomes permis, les deux SHA-256 des
 manuscrits et les cinq commits d'outils. Le résumé agrégé répète les identités
-d'outils et de manuscrits communes aux deux cibles. Ces champs enrichissent
-les prochains paquets ; ils ne réécrivent pas l'archive rc1 immuable.
+d'outils et de manuscrits communes aux deux cibles. Ces champs sont présents
+dans le paquet final v0.48.0.
 
 Le succès de la sonde négative et de l'enveloppe documente les restrictions
 effectivement testées. Il ne constitue pas, à lui seul, une certification
@@ -913,7 +923,8 @@ générale de tous les mécanismes d’isolation de l’hôte ; aucune isolation
 sandbox n’est revendiquée avant une exécution réelle réussie et publiée dans
 ces conditions.
 
-Les deux runs durcis de référence ont réussi au commit `75b36254145c...`.
+Les deux runs durcis de référence ont réussi au commit `27c91f8bdd5c...` ; la
+couche finale de métadonnées v0.48.0 ne modifie pas leur fileset Comparator.
 Les runs CI non sandboxés restent de simples smoke tests. Le suffixe d’un
 ancien artefact CI peut être le SHA d’événement GitHub et ne doit pas être
 confondu avec `paper_c_commit` ni avec le commit de l’outil Comparator. Nanoda

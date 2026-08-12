@@ -139,7 +139,7 @@
   ],
   "comparator_digest_sha256": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
   "comparator_status": "sandboxed_lean_kernel_passed",
-  "comparator_status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure for the v0.48.0 release at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. The final metadata layer leaves the certified Comparator fileset byte-identical. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
+  "comparator_status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure for the v0.48.0 release at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. The final metadata layer leaves the certified Comparator fileset byte-identical. The public release asset is a derived privacy-minimized bundle. It preserves the exact summary, result records, source snapshot, raw transcript digests, and a redaction manifest; host-identifying raw logs and transcripts remain local and unpublished. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
   "comparator_tools": {
     "comparator": {
       "repository": "https://github.com/leanprover/comparator",
@@ -169,9 +169,18 @@
   "comparator_published_evidence": {
     "release_tag": "v0.48.0",
     "release_url": "https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0",
-    "archive": "paper-c-hardened-27c91f8.tar.zst",
-    "archive_size_bytes": 98049,
-    "archive_sha256": "a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89",
+    "archive": "paper-c-hardened-public-27c91f8.tar.zst",
+    "archive_size_bytes": 49765,
+    "archive_sha256": "7279ed99e6b1a98b6458fe1f8d95dd1f68af445646ee6a23d0044c7bee94ce50",
+    "privacy_profile": "derived_privacy_minimized_bundle_v1",
+    "redaction_manifest": "REDACTION_MANIFEST.json",
+    "redaction_manifest_sha256": "01c3619d80786999a323c8b2073c4e674bf97af46f179b7e1434af53f3b6f29b",
+    "raw_archive": "paper-c-hardened-27c91f8.tar.zst",
+    "raw_archive_size_bytes": 98049,
+    "raw_archive_sha256": "a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89",
+    "raw_archive_retention": "local_only_not_published",
+    "raw_sha256sums_in_public_archive": "provenance/RAW_SHA256SUMS",
+    "raw_sha256sums_sha256": "3a7e48c5f256597666538e4bf09ee9f80226160939b03b7324f29fe1e60f4a9e",
     "summary_sha256": "b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb",
     "paper_c_commit": "27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07",
     "comparator_fileset_digest_sha256": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
@@ -181,8 +190,8 @@
       "lean"
     ],
     "enable_nanoda": false,
-    "metadata_verification": "Agent-side recheck of the final v0.48.0 archive covered its outer SHA-256 and size, summary SHA-256, every internal SHA256SUMS entry, and the two archived transcript hashes. The repository carries only privacy-minimized result records copied from that archive, not the host-specific raw transcripts. The generator validates those records and their configuration and fileset bindings but does not download or revalidate the GitHub release asset.",
-    "qualification": "The archive certifies the byte-identical Comparator boundary at its recorded Paper C commit. It is not a human source audit or a general host-security certification."
+    "metadata_verification": "Agent-side verification covered the local raw archive outer SHA-256 and size, every entry in its SHA256SUMS, both raw transcript hashes, and the deterministic derivation of the public privacy-minimized bundle. The public bundle retains exact summary, result, and source-snapshot bytes plus a machine-readable redaction manifest binding every retained and omitted raw path by SHA-256. Raw host logs and transcripts are intentionally not public.",
+    "qualification": "The public bundle preserves the validated Comparator result and its bindings to the Paper C commit, configurations, six-file Comparator digest, tool commits, manuscript hashes, and raw transcript hashes. Because the host-identifying raw transcripts are retained locally only, third parties cannot independently inspect the full host-execution trace from the public bundle. This is not a source audit, a dual-kernel result, or a general host-security certification."
   },
   "comparator_configurations": [
     {
@@ -203,7 +212,7 @@
       "sandboxed": true,
       "evidence_record": "comparator/evidence/result-theorem-one-one.json",
       "evidence_record_sha256": "ce8ab0f60336425f04ac6408a8e2b4b066424b8820ec0b8bdd8a8c078eaa2ef8",
-      "transcript_in_published_archive": "evidence/theorem-one-one/comparator-theorem-one-one.txt",
+      "transcript_in_private_raw_archive": "evidence/theorem-one-one/comparator-theorem-one-one.txt",
       "transcript_sha256": "fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e",
       "configuration_sha256_at_run": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
       "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
@@ -228,7 +237,7 @@
       "sandboxed": true,
       "evidence_record": "comparator/evidence/result-infinite-finite-transfer.json",
       "evidence_record_sha256": "b0bdb016bf928d421639635a1d79299fa7a35c12478601ed4f6add39a26a9189",
-      "transcript_in_published_archive": "evidence/infinite-finite-transfer/comparator-infinite-finite-transfer.txt",
+      "transcript_in_private_raw_archive": "evidence/infinite-finite-transfer/comparator-infinite-finite-transfer.txt",
       "transcript_sha256": "13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076",
       "configuration_sha256_at_run": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
       "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
@@ -386,7 +395,7 @@
         "solution_module": "Solution",
         "enable_nanoda": false
       },
-      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under four fully stated ordinary premises. The byte-identical Challenge/Solution boundary passed the hardened non-root Comparator procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51 with Lean-kernel acceptance and exit 0. Nanoda was disabled. The separate transfer target covers the infinite source law."
+      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under four fully stated ordinary premises. The byte-identical Challenge/Solution boundary passed the hardened non-root Comparator procedure at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07 with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the certified Comparator fileset byte-identical. Nanoda was disabled. The separate transfer target covers the infinite source law."
     },
     {
       "id": "Thm-1.1-infinite-finite-law-transfer",
@@ -414,7 +423,7 @@
         "solution_module": "SolutionTransfer",
         "enable_nanoda": false
       },
-      "note": "Exact unconditional identity of the infinite-product dyadic start-count law and its finite-cylinder law. The byte-identical ChallengeTransfer/SolutionTransfer boundary passed the hardened non-root Comparator procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51 with Lean-kernel acceptance and exit 0. Nanoda was disabled."
+      "note": "Exact unconditional identity of the infinite-product dyadic start-count law and its finite-cylinder law. The byte-identical ChallengeTransfer/SolutionTransfer boundary passed the hardened non-root Comparator procedure at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07 with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the certified Comparator fileset byte-identical. Nanoda was disabled."
     },
     {
       "id": "Thm-1.2-i-deterministic-masks",

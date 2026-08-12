@@ -31,7 +31,7 @@ signature. `Challenge.lean` imports only Mathlib modules, while
 
 | Target | Statement and proof route | Present status |
 |---|---|---|
-| `Challenge.lean` / `Solution.lean` | `paper_c_theorem_one_one_finite_cylinder`, the quantitative finite-cylinder form of Theorem 1.1 (printed/PDF p. 3), closed by `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical` | `Solution.lean` directly reproduces the complete declarative interface in the fresh `PaperCAudit` namespace. The Challenge file has one intentional `by sorry`; Solution has none and does not import Challenge. The byte-identical pair passed the hardened non-root Comparator procedure at Paper C commit `75b36254145c...`, with Lean-kernel acceptance and exit 0. |
+| `Challenge.lean` / `Solution.lean` | `paper_c_theorem_one_one_finite_cylinder`, the quantitative finite-cylinder form of Theorem 1.1 (printed/PDF p. 3), closed by `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical` | `Solution.lean` directly reproduces the complete declarative interface in the fresh `PaperCAudit` namespace. The Challenge file has one intentional `by sorry`; Solution has none and does not import Challenge. The byte-identical pair passed the hardened non-root Comparator procedure at Paper C commit `27c91f8bdd5c...`, with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the Comparator fileset unchanged. |
 | `ChallengeTransfer.lean` / `SolutionTransfer.lean` | `paper_c_theorem_one_one_infinite_finite_law_identity`, the exact equality between the infinite-product law and the finite-cylinder law | `SolutionTransfer.lean` directly reproduces the transfer interface without importing a Challenge module. The independent transfer pair passed the same hardened non-root procedure in its own clean checkout. The identity itself is unconditional. |
 | `formalization.yaml` v0.3 | Generated with `audit_manifest.json` from schema-2 `audit_config.json`; maps manuscript items, pages, declarations, files, consumed bridges, conditionality, and Comparator coverage | Generated metadata is a deterministic audit artifact. Its review status is `agent-reviewed`; completeness of the editorial item list still requires human review. |
 | `literature_certificates/*.md` | Four source-to-proposition counter-audit reports, in their own SHA-256-bound fileset | AGG, Evertse--Silverman, and Nicolas--Robin are `agent_checked_supports`; Halter--Koch is `agent_checked_with_open_gap`. These are documentary agent statuses, not Lean discharges or human peer review. |
@@ -66,22 +66,29 @@ Both JSON configurations explicitly permit only `propext`, `Quot.sound`, and
 and no dual-kernel result is claimed. The two source-file Challenge
 placeholders are counted separately from the proof-side `sorry_count = 0`.
 The hardened main and transfer transcripts have SHA-256 values
-`5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266`
+`fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e`
 and
-`f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421`.
-The raw transcripts remain in the public archive; the repository carries
-only privacy-minimized JSON result records under `comparator/evidence/`.
-The published archive SHA-256 is
-`bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130`.
-This evidence certifies the Comparator implication at the recorded input
-commit; it does not establish the four source-to-proposition implications or
-paper-to-Challenge fidelity.
+`13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076`.
+The raw transcripts remain local and unpublished because they contain
+host-identifying metadata; their SHA-256 values above remain bound by the
+public redaction manifest and result records. The published privacy-minimized
+`paper-c-hardened-public-27c91f8.tar.zst` archive is 49,765 bytes; its SHA-256
+is
+`7279ed99e6b1a98b6458fe1f8d95dd1f68af445646ee6a23d0044c7bee94ce50`
+and its byte-identical summary SHA-256 is
+`b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb`.
+The redaction manifest SHA-256 is
+`01c3619d80786999a323c8b2073c4e674bf97af46f179b7e1434af53f3b6f29b`.
+This public evidence records and binds the Comparator result at the recorded
+input commit, but does not permit line-by-line public inspection of the full
+host trace. It does not establish the four source-to-proposition implications
+or paper-to-Challenge fidelity.
 
 ## Sections 1–3
 
 | Manuscript | Content | Status |
 |---|---|---|
-| Th. 1.1 | Critical Poisson law and TV rate | **Conditionally proved on both the finite cylinder and the infinite source law, modulo the literature only.** In the exact critical window, Lean assembles the uniform rate \(d_{\rm TV}(\mathcal L(Z_{N,L}),\operatorname{Pois}(N2^{-L}))\ll_C(\log\log N)^{-2}\). The random variable `infiniteDyadicStartCount` is defined on the infinite Rademacher product space, its law is proved exactly equal to `fullDyadicStartLaw`, and `theorem_one_one_infinite_model` transports the same endpoint without any new premise. The only bridges are AGG, Evertse–Silverman, Halter–Koch's quadratic-order comparison, and the Nicolas–Robin divisor bound, all `external/open`. The finite-cylinder and transfer boundaries expose these two steps separately and both passed the hardened non-root Comparator procedure at commit `75b36254145c...` with Lean-kernel acceptance. Nanoda was disabled. The source reports support the AGG, Evertse–Silverman, and Nicolas–Robin mappings at agent-review level; Halter–Koch remains not established, and no independent human review is claimed. |
+| Th. 1.1 | Critical Poisson law and TV rate | **Conditionally proved on both the finite cylinder and the infinite source law, modulo the literature only.** In the exact critical window, Lean assembles the uniform rate \(d_{\rm TV}(\mathcal L(Z_{N,L}),\operatorname{Pois}(N2^{-L}))\ll_C(\log\log N)^{-2}\). The random variable `infiniteDyadicStartCount` is defined on the infinite Rademacher product space, its law is proved exactly equal to `fullDyadicStartLaw`, and `theorem_one_one_infinite_model` transports the same endpoint without any new premise. The only bridges are AGG, Evertse–Silverman, Halter–Koch's quadratic-order comparison, and the Nicolas–Robin divisor bound, all `external/open`. The finite-cylinder and transfer boundaries expose these two steps separately and both passed the hardened non-root Comparator procedure at commit `27c91f8bdd5c...` with Lean-kernel acceptance; the final metadata layer leaves their fileset unchanged. Nanoda was disabled. The source reports support the AGG, Evertse–Silverman, and Nicolas–Robin mappings at agent-review level; Halter–Koch remains not established, and no independent human review is claimed. |
 | Th. 1.2(i) | Deterministic masks | **Conditionally proved, modulo the literature only.** Proposition 14.1 is proved in the exact window \(\lvert L-\log_2N\rvert\le C_\star\log\log N\). Proposition 14.2 is assembled uniformly for all masks in the critical window: \(d_{\rm TV}(\mathcal L(Z_{N,L}(A_N)),\mathrm{Pois}(|A_N|2^{-L}))=o_C(1)\). Its canonical endpoint assumes exactly AGG, Evertse–Silverman, Halter–Koch, and Nicolas–Robin; no `internal/open` bridge reaches its signature |
 | Th. 1.2(ii–iii) | Spatial and marked PPPs | **Proved as a complete characterization by Laplace functionals, modulo the literature only.** Expectations under the infinite law converge to the functionals of \(\operatorname{PPP}(\lambda\,dt)\) and \(\operatorname{PPP}(\lambda\,dt\otimes\nu)\), where \(\nu(\{e\})=2^{-(e+1)}\), for every nonnegative continuous test function with compact support in the marks. Uniform tightness is proved through \(\limsup_N\mathbb P(\text{mark}>E)\le\lambda2^{-(E+1)}\). Because mathlib does not yet provide a suitable API for point measures and the vague topology, a `Tendsto` formulation for the process laws is not duplicated artificially |
 | Th. 1.4 | Moments and the homogeneous sum | **Conditionally proved, modulo the literature only.** `theorem_one_four_canonical` connects the finite kernel of §12 directly to the quantitative master mass bound and establishes, in the critical window, the first-moment rate, the little-oh estimate for the second factorial moment, \(R_2(N,L)=o_C(N^2)\), and the little-oh estimate for the variance. Its only assumptions are Evertse–Silverman, Halter–Koch, and Nicolas–Robin (`external`). The three legacy endpoints removed in v041 have not been reintroduced |
