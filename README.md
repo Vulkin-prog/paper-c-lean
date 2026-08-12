@@ -4,20 +4,21 @@ This repository accompanies the manuscript:
 
 > *A critical Poisson law in a dyadic block — Starting points of long constant
 > stretches of an extended Rademacher random completely multiplicative
-> function*, Brice Pouly, English edition, August 1, 2026.
+> function*, Brice Pouly, English v09 frozen release, August 12, 2026.
 
-Paper DOI: [`10.5281/zenodo.21736677`](https://doi.org/10.5281/zenodo.21736677).
+Paper DOI: [`10.33774/coe-2026-z3l74`](https://doi.org/10.33774/coe-2026-z3l74).
+Cambridge Open Engage records the published v08 as Version 1; v09 is intended
+to be deposited as the next version under this DOI after release qualification.
 
 Formalization concept DOI: [`10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
 Zenodo will assign a new version DOI to v0.48.0 when that release is
 published; the immutable v0.47.0 version DOI is not reused.
 
-Target manuscript: `paper_C_complete_v08_en.pdf` (71 physical pages in the
-file carrying the definitive fingerprint), SHA-256
-`2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927`.
+Target manuscript: `paper_C_complete_v09_en.pdf` (71 physical pages), SHA-256
+`d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`.
 
-Synchronized French source: `paper_C_complete_v08.pdf` (72 pages), SHA-256
-`c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5`.
+Synchronized French manuscript: `paper_C_complete_v09.pdf` (73 pages), SHA-256
+`2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
 
 ## Status
 
@@ -46,7 +47,7 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 ```
 
 must therefore return no matches. This certifies only the modules present, not
-the complete 71-page target manuscript or its synchronized 72-page French
+the complete 71-page target manuscript or its synchronized 73-page French
 source.
 
 ## External semantic audit boundary (v0.48.0)
@@ -155,7 +156,7 @@ revalidate the GitHub release asset.
 This is a Lean-kernel-only result. Both configurations have
 `enable_nanoda: false`; Nanoda was not run, and no dual-kernel result is
 claimed. The evidence certifies the unchanged Comparator inputs at commit
-`75b36254145c...`, not this later documentary rc2 commit. It does not discharge
+`75b36254145c...`, not the later final-release commit. It does not discharge
 the four ordinary literature-facing premises or certify the paper-to-
 Challenge comparison. The earlier fake-landrun transcripts remain historical
 unsandboxed compatibility tests only; they are not the release certificate.
@@ -214,8 +215,9 @@ the v0.48.0 Comparator-fileset SHA-256 is
 The additive rc2 literature-certificate fileset has its own SHA-256,
 `6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996`;
 it is not part of either frozen Lean fileset.
-The two manuscript PDF byte streams and their SHA-256 fingerprints are
-unchanged.
+The v0.48.0 release uses the v09 manuscript byte streams and SHA-256
+fingerprints recorded above; these replace the v08 PDF files carried by
+v0.47.0 without changing the frozen Lean core or Comparator filesets.
 
 Project version `0.47.0` closed the root-module gap in the indivisible
 manuscript--sources--audit triplet. `PaperC.lean`, the library target built by

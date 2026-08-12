@@ -17,9 +17,9 @@
 - modèle officiel `formalization.yaml` v0.3 : commit
   `fab03cbbed1a5857de17af32de30421a734c77c6`
 - PDF cible anglais (71 pages dans le fichier portant cette empreinte), SHA-256 :
-  `2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927`
-- PDF source français synchronisé (72 pages), SHA-256 :
-  `c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5`
+  `d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`
+- PDF source français synchronisé (73 pages), SHA-256 :
+  `2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`
 - racine unique de l’archive : `paper_c_lean/`
 - archive de livraison : `paper_c_lean_v048.zip`
 
@@ -30,15 +30,15 @@ lean4export doit être compilé séparément avec la toolchain Lean de Paper C,
 et non remplacé silencieusement par le binaire construit sous la toolchain
 plus récente propre à Comparator.
 
-La contre-vérification rc2 a recalculé les octets présents dans le dépôt :
-`paper_C_complete_v08_en.pdf` est le blob Git
-`c2a733f5b8b38195760c72bfdb4d7706ed572f8b`, mesure 848890 octets et a pour
+La contre-vérification finale a recalculé les octets présents dans le dépôt :
+`paper_C_complete_v09_en.pdf` est le blob Git
+`420e096924c8a9b6fe72b917be0ffa2c38f320dc`, mesure 841053 octets et a pour
 SHA-256
-`2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927` ;
-`paper_C_complete_v08.pdf` est le blob Git
-`f8eadbbecbf618ce0dc3b33fc2aecd4da28d2197`, mesure 856320 octets et a pour
+`d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd` ;
+`paper_C_complete_v09.pdf` est le blob Git
+`5d1e8ec24578bead7d91fa7f0447fcd8cbaddafc`, mesure 848865 octets et a pour
 SHA-256
-`c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5`.
+`2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
 
 ## Périmètre du jalon 0.48
 
@@ -151,8 +151,8 @@ ni ne revalide l’asset de release GitHub.
 Ce résultat est limité au noyau Lean : `enable_nanoda` vaut `false` dans les
 deux configurations, Nanoda n’a pas été exécuté et aucun résultat à deux
 noyaux n’est revendiqué. Le certificat porte sur les octets inchangés du
-fileset Comparator au commit `75b36254145c...`, et non sur ce commit
-documentaire rc2. Il ne décharge pas les quatre prémisses ordinaires de
+fileset Comparator au commit `75b36254145c...`, et non sur le commit final de
+release. Il ne décharge pas les quatre prémisses ordinaires de
 littérature et ne certifie pas à lui seul la fidélité papier--Challenge.
 
 Les quatre rapports sous `literature_certificates/` forment un fileset séparé
@@ -218,7 +218,7 @@ Les sept familles d’imports adaptées sont :
 Les deux empreintes du manuscrit se contrôlent par :
 
 ```bash
-sha256sum paper_C_complete_v08_en.pdf paper_C_complete_v08.pdf
+sha256sum paper_C_complete_v09_en.pdf paper_C_complete_v09.pdf
 ```
 
 La v042 conserve la fermeture du §14 obtenue en v040 sous forme de
