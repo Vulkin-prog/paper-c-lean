@@ -4,20 +4,21 @@ This repository accompanies the manuscript:
 
 > *A critical Poisson law in a dyadic block — Starting points of long constant
 > stretches of an extended Rademacher random completely multiplicative
-> function*, Brice Pouly, English edition, August 1, 2026.
+> function*, Brice Pouly, English v09 release candidate, August 8, 2026.
 
-Paper DOI: [`10.5281/zenodo.21736677`](https://doi.org/10.5281/zenodo.21736677).
+Paper DOI: [`10.33774/coe-2026-z3l74`](https://doi.org/10.33774/coe-2026-z3l74).
+Cambridge Open Engage records the published v08 as Version 1; v09 is intended
+to be deposited as the next version under this DOI after release qualification.
 
 Formalization concept DOI: [`10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
 Zenodo will assign a new version DOI to v0.48.0 when that release is
 published; the immutable v0.47.0 version DOI is not reused.
 
-Target manuscript: `paper_C_complete_v08_en.pdf` (71 physical pages in the
-file carrying the definitive fingerprint), SHA-256
-`2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927`.
+Target manuscript: `paper_C_complete_v09_en.pdf` (71 physical pages), SHA-256
+`d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`.
 
-Synchronized French source: `paper_C_complete_v08.pdf` (72 pages), SHA-256
-`c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5`.
+Synchronized French manuscript: `paper_C_complete_v09.pdf` (73 pages), SHA-256
+`2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
 
 ## Status
 

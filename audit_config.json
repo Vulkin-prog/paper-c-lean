@@ -19,27 +19,27 @@
     "digest_sha256": "f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999"
   },
   "target_pdf": {
-    "filename": "paper_C_complete_v08_en.pdf",
-    "sha256": "2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927"
+    "filename": "paper_C_complete_v09_en.pdf",
+    "sha256": "d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd"
   },
   "source_pdf_fr": {
-    "filename": "paper_C_complete_v08.pdf",
-    "sha256": "c53b66ad467b2637d764124c20b9d788f1489b91cd90f3d907bf1eb814a17bc5"
+    "filename": "paper_C_complete_v09.pdf",
+    "sha256": "2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b"
   },
   "sources": [
     {
-      "key": "paper-c-en-v08",
+      "key": "paper-c-en-v09",
       "title": "A critical Poisson law in a dyadic block — Starting points of long constant stretches of an extended Rademacher random completely multiplicative function",
       "authors": [
         "Brice Pouly"
       ],
-      "id": "https://doi.org/10.5281/zenodo.21736677",
+      "id": "https://doi.org/10.33774/coe-2026-z3l74",
       "type": "preprint",
       "license": "CC-BY-4.0",
       "author_contacted": "n/a",
-      "filename": "paper_C_complete_v08_en.pdf",
-      "sha256": "2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927",
-      "note": "Frozen English target edition, August 1, 2026."
+      "filename": "paper_C_complete_v09_en.pdf",
+      "sha256": "d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd",
+      "note": "Paper C v09 English release candidate, August 8, 2026; intended as the next Cambridge Open Engage version under the existing DOI."
     },
     {
       "key": "adgr07-prime-number-theorem",
@@ -328,7 +328,7 @@
       "paper_locator": {
         "result": "Theorem 1.1",
         "pages": "3",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -357,7 +357,7 @@
       "paper_locator": {
         "result": "Theorem 1.1 model transfer",
         "pages": "3",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -381,7 +381,7 @@
       "paper_locator": {
         "result": "Theorem 1.2(i)",
         "pages": "3",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -408,7 +408,7 @@
       "paper_locator": {
         "result": "Theorem 1.2(ii)",
         "pages": "3",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -439,7 +439,7 @@
       "paper_locator": {
         "result": "Theorem 1.2(iii)",
         "pages": "4",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -470,7 +470,7 @@
       "paper_locator": {
         "result": "Theorem 1.4",
         "pages": "4",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -496,7 +496,7 @@
       "paper_locator": {
         "result": "Lemma 2.1",
         "pages": "8",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -521,7 +521,7 @@
       "paper_locator": {
         "result": "Lemma 2.2",
         "pages": "8–9",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -546,7 +546,7 @@
       "paper_locator": {
         "result": "Lemma 3.1",
         "pages": "9",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -567,7 +567,7 @@
       "paper_locator": {
         "result": "Proposition 3.2",
         "pages": "11",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -588,7 +588,7 @@
       "paper_locator": {
         "result": "Corollary 3.3",
         "pages": "12",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -609,7 +609,7 @@
       "paper_locator": {
         "result": "Lemma 3.4(i)",
         "pages": "13",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -630,7 +630,7 @@
       "paper_locator": {
         "result": "Lemma 3.4(ii)",
         "pages": "13",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -651,7 +651,7 @@
       "paper_locator": {
         "result": "Lemma 4.2",
         "pages": "13",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -672,7 +672,7 @@
       "paper_locator": {
         "result": "Lemma 4.3",
         "pages": "14",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -693,7 +693,7 @@
       "paper_locator": {
         "result": "Lemma 5.1",
         "pages": "15",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -714,7 +714,7 @@
       "paper_locator": {
         "result": "Lemma 5.2",
         "pages": "15",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -735,7 +735,7 @@
       "paper_locator": {
         "result": "Proposition 5.4",
         "pages": "16",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -760,7 +760,7 @@
       "paper_locator": {
         "result": "Lemma 5.5",
         "pages": "17",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -781,7 +781,7 @@
       "paper_locator": {
         "result": "Lemma 6.1",
         "pages": "18",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -806,7 +806,7 @@
       "paper_locator": {
         "result": "Lemma 6.2",
         "pages": "18",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -831,7 +831,7 @@
       "paper_locator": {
         "result": "Lemma 6.3",
         "pages": "19",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -856,7 +856,7 @@
       "paper_locator": {
         "result": "Lemma 6.4",
         "pages": "19–20",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -885,7 +885,7 @@
       "paper_locator": {
         "result": "Lemma 6.5",
         "pages": "20",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -910,7 +910,7 @@
       "paper_locator": {
         "result": "Lemma 7.1",
         "pages": "21",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -935,7 +935,7 @@
       "paper_locator": {
         "result": "Lemma 7.2",
         "pages": "22",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -964,7 +964,7 @@
       "paper_locator": {
         "result": "Proposition 7.3",
         "pages": "22",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -989,7 +989,7 @@
       "paper_locator": {
         "result": "Proposition 7.4",
         "pages": "24",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1014,7 +1014,7 @@
       "paper_locator": {
         "result": "Proposition 7.5",
         "pages": "25",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1043,7 +1043,7 @@
       "paper_locator": {
         "result": "Theorem 8.1",
         "pages": "25",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1064,7 +1064,7 @@
       "paper_locator": {
         "result": "Lemma 9.1 (Evertse-Silverman input)",
         "pages": "27",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1087,7 +1087,7 @@
       "paper_locator": {
         "result": "Lemma 9.2 (uniform Pell count in a polynomial range)",
         "pages": "28",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1111,7 +1111,7 @@
       "paper_locator": {
         "result": "Lemma 9.3 (normalization of a component)",
         "pages": "29",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1136,7 +1136,7 @@
       "paper_locator": {
         "result": "Lemma 9.4 (one-sided count of a component)",
         "pages": "29",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1168,7 +1168,7 @@
       "paper_locator": {
         "result": "Lemma 9.5 (two singleton components)",
         "pages": "30",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1193,7 +1193,7 @@
       "paper_locator": {
         "result": "Lemma 9.6 (hosts of a bounded component)",
         "pages": "30",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1217,7 +1217,7 @@
       "paper_locator": {
         "result": "Corollary 9.7 (number of deep-core hosts)",
         "pages": "31",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1245,7 +1245,7 @@
       "paper_locator": {
         "result": "Lemma 9.8 (two defects in a block)",
         "pages": "31",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1272,7 +1272,7 @@
       "paper_locator": {
         "result": "Proposition 9.9 (eliminating D# >= 3)",
         "pages": "31",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1293,7 +1293,7 @@
       "paper_locator": {
         "result": "Lemma 9.10 (exact rank formula)",
         "pages": "32",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1314,7 +1314,7 @@
       "paper_locator": {
         "result": "Proposition 9.11 (terminal reduction)",
         "pages": "32",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1338,7 +1338,7 @@
       "paper_locator": {
         "result": "Lemma 9.12 (kernels and determinants of the terminal matching)",
         "pages": "33",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1359,7 +1359,7 @@
       "paper_locator": {
         "result": "Theorem 10.1 (closure of the terminal population)",
         "pages": "34",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1382,7 +1382,7 @@
       "paper_locator": {
         "result": "Lemma 11.1 (exhaustive partition of separated pairs)",
         "pages": "35-36",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1403,7 +1403,7 @@
       "paper_locator": {
         "result": "Proposition 11.2 (absolute homogeneous two-block sum)",
         "pages": "36",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1428,7 +1428,7 @@
       "paper_locator": {
         "result": "Corollary 11.3 (quantitative form of the homogeneous sum)",
         "pages": "36",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1453,7 +1453,7 @@
       "paper_locator": {
         "result": "Section 12 (deducing the moments; proof of Theorem 1.4)",
         "pages": "37",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1478,7 +1478,7 @@
       "paper_locator": {
         "result": "Lemma 13.1 (rank via private pivots)",
         "pages": "38",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1499,7 +1499,7 @@
       "paper_locator": {
         "result": "Corollary 13.2 (exact conditional marginal)",
         "pages": "38",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1520,7 +1520,7 @@
       "paper_locator": {
         "result": "Lemma 13.3 (number of Y-defective starts)",
         "pages": "38",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1541,7 +1541,7 @@
       "paper_locator": {
         "result": "Lemma 13.4 (probabilistic mass of the bad starts)",
         "pages": "38",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1562,7 +1562,7 @@
       "paper_locator": {
         "result": "Lemma 13.5 (exact dependency graph)",
         "pages": "39",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1583,7 +1583,7 @@
       "paper_locator": {
         "result": "Lemma 13.6 (edge count)",
         "pages": "39",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1604,7 +1604,7 @@
       "paper_locator": {
         "result": "Theorem 13.7 (Arratia-Goldstein-Gordon)",
         "pages": "40",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1627,7 +1627,7 @@
       "paper_locator": {
         "result": "Lemma 13.8 (Chen-Stein terms)",
         "pages": "40",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1652,7 +1652,7 @@
       "paper_locator": {
         "result": "Corollary 13.9 (finite bound)",
         "pages": "41",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1673,7 +1673,7 @@
       "paper_locator": {
         "result": "Corollary 13.10 (explicit rate)",
         "pages": "41-42",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1699,7 +1699,7 @@
       "paper_locator": {
         "result": "Proposition 14.1 (uniformly masked first moment)",
         "pages": "42",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1720,7 +1720,7 @@
       "paper_locator": {
         "result": "Proposition 14.2 (Poisson under a mask)",
         "pages": "43",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1746,7 +1746,7 @@
       "paper_locator": {
         "result": "Remark 14.3 (uniform rate under masks)",
         "pages": "43",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1772,7 +1772,7 @@
       "paper_locator": {
         "result": "Section 14.2 (spatial process via auxiliary thinning)",
         "pages": "43-44",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1798,7 +1798,7 @@
       "paper_locator": {
         "result": "Lemma 14.5 (almost sure finiteness of stretches)",
         "pages": "44",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1819,7 +1819,7 @@
       "paper_locator": {
         "result": "Lemma 14.6 (mixed-length affine identity)",
         "pages": "44-45",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1844,7 +1844,7 @@
       "paper_locator": {
         "result": "Lemma 14.7 (private pivots and cycle space)",
         "pages": "45",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1865,7 +1865,7 @@
       "paper_locator": {
         "result": "Section 14.4 (truncated marked process)",
         "pages": "45-47",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1891,7 +1891,7 @@
       "paper_locator": {
         "result": "Lemma 14.8 (mass of the removed starts, exact lengths)",
         "pages": "46",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1912,7 +1912,7 @@
       "paper_locator": {
         "result": "Corollary 14.9 (exact-length counts and the maximum)",
         "pages": "47-48",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1942,7 +1942,7 @@
       "paper_locator": {
         "result": "Lemma 15.1 (Low zone)",
         "pages": "48",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1965,7 +1965,7 @@
       "paper_locator": {
         "result": "Lemma 15.2 (Polynomial band)",
         "pages": "49",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -1989,7 +1989,7 @@
       "paper_locator": {
         "result": "Lemma 15.3 (Rarity of two-defect windows)",
         "pages": "49",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2013,7 +2013,7 @@
       "paper_locator": {
         "result": "Lemma 15.4 (Pointwise maximum)",
         "pages": "50",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2036,7 +2036,7 @@
       "paper_locator": {
         "result": "Proposition 15.5 (Truncation of the deep blocks)",
         "pages": "50",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2062,7 +2062,7 @@
       "paper_locator": {
         "result": "Proposition 16.1 (Absolute homogeneous sum at bounded ratio)",
         "pages": "51",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2087,7 +2087,7 @@
       "paper_locator": {
         "result": "Theorem 16.2 (Interior global Poisson law at the critical scale)",
         "pages": "52",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2121,7 +2121,7 @@
       "paper_locator": {
         "result": "Corollary 16.4 (Longest-run law in the finite prefix)",
         "pages": "53",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2151,7 +2151,7 @@
       "paper_locator": {
         "result": "Lemma 17.1 (Hosts at bounded ratio)",
         "pages": "56",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2172,7 +2172,7 @@
       "paper_locator": {
         "result": "Lemma 17.2 (Interpolation at bounded ratio)",
         "pages": "56",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2193,7 +2193,7 @@
       "paper_locator": {
         "result": "Lemma 17.3 (Rational code at bounded ratio)",
         "pages": "56",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2214,7 +2214,7 @@
       "paper_locator": {
         "result": "Lemma 17.4 (Channel uniqueness at bounded ratio)",
         "pages": "57",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2235,7 +2235,7 @@
       "paper_locator": {
         "result": "Lemma 17.5 (Rational masses at bounded ratio)",
         "pages": "57",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2260,7 +2260,7 @@
       "paper_locator": {
         "result": "Lemma 17.6 (Sum of channel geometries)",
         "pages": "57",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2281,7 +2281,7 @@
       "paper_locator": {
         "result": "Lemma 17.7 (Large-prime graph on U)",
         "pages": "57",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2302,7 +2302,7 @@
       "paper_locator": {
         "result": "Lemma 17.8 (Square class of components on U)",
         "pages": "58",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2323,7 +2323,7 @@
       "paper_locator": {
         "result": "Lemma 17.9 (Exact isolation on U)",
         "pages": "58",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2344,7 +2344,7 @@
       "paper_locator": {
         "result": "Lemma 17.10 (Quotient core on U)",
         "pages": "58",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2365,7 +2365,7 @@
       "paper_locator": {
         "result": "Lemma 17.11 (Residual certificates on U)",
         "pages": "58",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2386,7 +2386,7 @@
       "paper_locator": {
         "result": "Lemma 17.12 (CRT summation on U)",
         "pages": "58",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2407,7 +2407,7 @@
       "paper_locator": {
         "result": "Lemma 17.13 (Cells of a channel on U)",
         "pages": "59",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2428,7 +2428,7 @@
       "paper_locator": {
         "result": "Lemma 17.14 (Sector P# <= N on U)",
         "pages": "59",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2449,7 +2449,7 @@
       "paper_locator": {
         "result": "Lemma 17.15 (Small channels on U)",
         "pages": "59",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2470,7 +2470,7 @@
       "paper_locator": {
         "result": "Lemma 17.16 (Shallow cores on U)",
         "pages": "59",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2491,7 +2491,7 @@
       "paper_locator": {
         "result": "Lemma 17.17 (Aligned exclusion on U)",
         "pages": "59",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2512,7 +2512,7 @@
       "paper_locator": {
         "result": "Lemma 17.18 (Evertse-Silverman input on U)",
         "pages": "60",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2535,7 +2535,7 @@
       "paper_locator": {
         "result": "Lemma 17.19 (Pell in the ranges issued from U)",
         "pages": "60",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2564,7 +2564,7 @@
       "paper_locator": {
         "result": "Lemma 17.20 (Normalization of a component on U)",
         "pages": "60",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2585,7 +2585,7 @@
       "paper_locator": {
         "result": "Lemma 17.21 (One-sided count on U)",
         "pages": "60",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2613,7 +2613,7 @@
       "paper_locator": {
         "result": "Lemma 17.22 (Two singletons on U)",
         "pages": "61",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2634,7 +2634,7 @@
       "paper_locator": {
         "result": "Lemma 17.23 (Hosts of a bounded component on U)",
         "pages": "61",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2658,7 +2658,7 @@
       "paper_locator": {
         "result": "Lemma 17.24 (Deep-core hosts on U)",
         "pages": "61",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2679,7 +2679,7 @@
       "paper_locator": {
         "result": "Lemma 17.25 (Two defects in a block of U)",
         "pages": "61",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2706,7 +2706,7 @@
       "paper_locator": {
         "result": "Lemma 17.26 (Eliminating multiple defects on U)",
         "pages": "62",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2730,7 +2730,7 @@
       "paper_locator": {
         "result": "Lemma 17.27 (Exact rank on U)",
         "pages": "62",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2751,7 +2751,7 @@
       "paper_locator": {
         "result": "Lemma 17.28 (Uniform terminal reduction)",
         "pages": "62",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2775,7 +2775,7 @@
       "paper_locator": {
         "result": "Lemma 17.29 (Terminal determinants on U)",
         "pages": "62",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2800,7 +2800,7 @@
       "paper_locator": {
         "result": "Lemma 17.30 (Terminal closure on U)",
         "pages": "63",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2823,7 +2823,7 @@
       "paper_locator": {
         "result": "Lemma 17.31 (Partition at bounded ratio)",
         "pages": "63",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2848,7 +2848,7 @@
       "paper_locator": {
         "result": "Lemma 17.32 (Uniform assembly)",
         "pages": "63",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2869,7 +2869,7 @@
       "paper_locator": {
         "result": "Lemma 17.33 (Pointwise defects and sub-blocks)",
         "pages": "64",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2894,7 +2894,7 @@
       "paper_locator": {
         "result": "Lemma 17.34 (Y-defective starts on U)",
         "pages": "64",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2919,7 +2919,7 @@
       "paper_locator": {
         "result": "Lemma 17.35 (Marginals and conditional graph on U)",
         "pages": "64",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2944,7 +2944,7 @@
       "paper_locator": {
         "result": "Lemma 17.36 (Graph edges on U)",
         "pages": "65",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
@@ -2965,7 +2965,7 @@
       "paper_locator": {
         "result": "Lemma 17.37 (Chen-Stein terms on U)",
         "pages": "65",
-        "edition": "paper-c-en-v08"
+        "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
         {
