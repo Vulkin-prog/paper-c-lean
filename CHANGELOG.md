@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.48.1
+
+- Rebuilt the bilingual manuscript pair to replace release-cycle wording in
+  the reproduction and availability sections with the stable public records
+  for the paper and the Lean formalization. No private repository is named,
+  and no Cambridge or Zenodo version number is embedded in those sections.
+- The English PDF remains 71 pages, now measures 841628 bytes, has Git blob
+  `632584bbcd21e55def761aa0eed35d43fcf1ccbc`, and SHA-256
+  `fd015e349111090ca861901f482b264bdb4a93e223e6ea24bd4a482dfb4ce236`.
+  The synchronized French PDF remains 73 pages, now measures 849089 bytes,
+  has Git blob `c82dcaeb6796957ec7d8f49b73a54e4c9ef839d5`, and SHA-256
+  `068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8`.
+- Pages 1--67 of the English PDF and 1--69 of the French PDF are graphically
+  identical to v0.48.0. The Lean core, Comparator fileset, literature
+  certificates, declarations, bridge registry, and toolchain are unchanged.
+- The hardened v0.48.0 Comparator evidence remains the evidence for the
+  byte-identical six-file Comparator input and its historical manuscript
+  hashes. It does not bind the corrected v0.48.1 PDF byte streams, and no new
+  hardened Comparator run is claimed for this documentary patch.
+
 ## 0.48.0
 
 - Froze the Paper C v09 manuscript pair for the final release: the English PDF

@@ -2,7 +2,7 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.48.0`
+- paper_c_lean : `0.48.1`
 - Lean : `v4.32.2`, commit
   `f3b06c705e6c85f5314019d5d3baab0fec5b580c`
 - mathlib : `v4.32.2`, commit
@@ -17,11 +17,11 @@
 - modèle officiel `formalization.yaml` v0.3 : commit
   `fab03cbbed1a5857de17af32de30421a734c77c6`
 - PDF cible anglais (71 pages dans le fichier portant cette empreinte), SHA-256 :
-  `d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`
+  `fd015e349111090ca861901f482b264bdb4a93e223e6ea24bd4a482dfb4ce236`
 - PDF source français synchronisé (73 pages), SHA-256 :
-  `2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`
+  `068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8`
 - racine unique de l’archive : `paper_c_lean/`
-- archive de livraison : `paper_c_lean_v048.zip`
+- archive de livraison : `paper_c_lean_v0481.zip`
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles. Il n’existe pas de tag officiel Comparator/lean4export
@@ -32,21 +32,37 @@ plus récente propre à Comparator.
 
 La contre-vérification finale a recalculé les octets présents dans le dépôt :
 `paper_C_complete_v09_en.pdf` est le blob Git
-`420e096924c8a9b6fe72b917be0ffa2c38f320dc`, mesure 841053 octets et a pour
+`632584bbcd21e55def761aa0eed35d43fcf1ccbc`, mesure 841628 octets et a pour
 SHA-256
-`d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd` ;
+`fd015e349111090ca861901f482b264bdb4a93e223e6ea24bd4a482dfb4ce236` ;
 `paper_C_complete_v09.pdf` est le blob Git
-`5d1e8ec24578bead7d91fa7f0447fcd8cbaddafc`, mesure 848865 octets et a pour
+`c82dcaeb6796957ec7d8f49b73a54e4c9ef839d5`, mesure 849089 octets et a pour
 SHA-256
-`2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
+`068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8`.
 
-## Périmètre du jalon 0.48
+## Périmètre du correctif 0.48.1
+
+La v0.48.1 remplace uniquement les deux PDF et les métadonnées publiques qui
+les décrivent. Les paragraphes bilingues de reproduction et de disponibilité
+renvoient désormais aux seuls enregistrements publics stables du papier et de
+la formalisation, sans numéro de cycle éditorial ni dépôt privé. Les pages
+anglaises 1--67 et françaises 1--69 sont graphiquement identiques à celles de
+v0.48.0. Les 382 sources du cœur Lean, les six fichiers Comparator, les
+certificats bibliographiques, leurs digests, les déclarations et le registre
+des 13 ponts restent byte-identiques.
+
+La preuve Comparator durcie publiée avec v0.48.0 porte sur le fileset
+Comparator inchangé et lie les empreintes historiques des PDF v0.48.0. Elle
+ne lie pas les nouveaux octets PDF de v0.48.1 ; aucun nouveau run durci n’est
+revendiqué pour ce correctif documentaire.
+
+## Périmètre du jalon 0.48.0 (historique)
 
 La v0.48.0 est additive sur le plan mathématique. Les 382 sources du cœur
 (`PaperC.lean` et les 381 fichiers sous `PaperC/`) restent byte-identiques à
 la v0.47.0, leurs déclarations et signatures canoniques sont inchangées, les
-deux PDF gardent les empreintes ci-dessus, et le registre reste à 13 ponts,
-dont sept `external/open` et six `discharged`.
+deux PDF gardent les empreintes consignées dans le tag v0.48.0, et le registre
+reste à 13 ponts, dont sept `external/open` et six `discharged`.
 
 La nouvelle frontière humaine comprend :
 
@@ -163,7 +179,9 @@ noyaux n’est revendiqué. Le certificat porte sur les octets du fileset
 Comparator au commit `27c91f8bdd5c...`. La couche finale de métadonnées
 v0.48.0 laisse ce fileset de six fichiers et les deux PDF byte-identiques. Il
 ne décharge pas les quatre prémisses ordinaires de littérature et ne certifie
-pas à lui seul la fidélité papier--Challenge.
+pas à lui seul la fidélité papier--Challenge. Le correctif v0.48.1 conserve ce
+fileset Comparator à l’octet mais remplace les PDF ; la preuve v0.48.0 ne lie
+donc pas les nouvelles empreintes des manuscrits.
 
 Les quatre rapports sous `literature_certificates/` forment un fileset séparé
 et haché. Ils consignent une contre-expertise par agents, pas une preuve Lean
@@ -938,10 +956,10 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v048.zip
-unzip -Z1 paper_c_lean_v048.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v0481.zip
+unzip -Z1 paper_c_lean_v0481.zip | rg -v '^paper_c_lean/'
 zip_check_dir="$(mktemp -d)"
-unzip -q paper_c_lean_v048.zip -d "$zip_check_dir"
+unzip -q paper_c_lean_v0481.zip -d "$zip_check_dir"
 (cd "$zip_check_dir/paper_c_lean" && \
   node scripts/check_comparator_sources.mjs && \
   node scripts/generate_audit.mjs --check)

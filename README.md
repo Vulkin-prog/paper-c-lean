@@ -4,21 +4,22 @@ This repository accompanies the manuscript:
 
 > *A critical Poisson law in a dyadic block — Starting points of long constant
 > stretches of an extended Rademacher random completely multiplicative
-> function*, Brice Pouly, English v09 frozen release, August 12, 2026.
+> function*, Brice Pouly.
 
-Paper DOI: [`10.33774/coe-2026-z3l74`](https://doi.org/10.33774/coe-2026-z3l74).
-Cambridge Open Engage records the published v08 as Version 1; v09 is intended
-to be deposited as the next version under this DOI after release qualification.
+Public paper records: [Cambridge Open Engage DOI
+`10.33774/coe-2026-z3l74`](https://doi.org/10.33774/coe-2026-z3l74) and
+[Zenodo paper concept DOI
+`10.5281/zenodo.21736676`](https://doi.org/10.5281/zenodo.21736676).
 
-Formalization concept DOI: [`10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
-Zenodo will assign a new version DOI to v0.48.0 when that release is
-published; the immutable v0.47.0 version DOI is not reused.
+Public formalization: [`github.com/Vulkin-prog/paper-c-lean`](https://github.com/Vulkin-prog/paper-c-lean)
+and [Zenodo formalization concept DOI
+`10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
 
 Target manuscript: `paper_C_complete_v09_en.pdf` (71 physical pages), SHA-256
-`d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`.
+`fd015e349111090ca861901f482b264bdb4a93e223e6ea24bd4a482dfb4ce236`.
 
 Synchronized French manuscript: `paper_C_complete_v09.pdf` (73 pages), SHA-256
-`2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
+`068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8`.
 
 ## Status
 
@@ -167,8 +168,12 @@ This is a Lean-kernel-only result. Both configurations have
 claimed. The evidence certifies the unchanged Comparator inputs at commit
 `27c91f8bdd5c...`. The final v0.48.0 metadata layer leaves the six-file
 Comparator fileset and both manuscript PDFs byte-identical to that certified
-commit. It does not discharge the four ordinary literature-facing premises or
-certify the paper-to-Challenge comparison. The earlier fake-landrun
+commit. Version v0.48.1 leaves that Comparator fileset byte-identical but
+replaces the manuscript PDFs solely to correct their public provenance
+wording. The published v0.48.0 evidence therefore remains evidence for the
+unchanged Comparator inputs and its historical manuscript hashes; it does not
+bind the v0.48.1 PDF byte streams. It does not discharge the four ordinary
+literature-facing premises or certify the paper-to-Challenge comparison. The earlier fake-landrun
 transcripts remain historical unsandboxed compatibility tests only; they are
 not the release certificate.
 The audited Paper C commit is distinct from the pinned Comparator source
@@ -224,14 +229,14 @@ the v0.48.0 Comparator-fileset SHA-256 is
 The additive rc2 literature-certificate fileset has its own SHA-256,
 `6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996`;
 it is not part of either frozen Lean fileset.
-The v0.48.0 release uses the v09 manuscript byte streams and SHA-256
-fingerprints recorded above; these replace the v08 PDF files carried by
-v0.47.0 without changing the frozen Lean core or Comparator filesets.
+Version v0.48.1 replaces only the two manuscript PDFs and their public
+provenance metadata. The frozen Lean core, Comparator fileset, and literature
+certificate fileset remain byte-identical to v0.48.0.
 
 Project version `0.47.0` closed the root-module gap in the indivisible
 manuscript--sources--audit triplet. `PaperC.lean`, the library target built by
 Lake, now participates in source discovery, the digest, declaration and bridge
-inventory, and the generated kernel audit. Both certified PDFs are included
+inventory, and the generated kernel audit. Both hashed PDFs are included
 in the repository and are hashed from their actual bytes before any build.
 The mathematical Lean content is unchanged from v045, which added the exact
 exponential wrapper for Corollary 11.3, source-law wrappers for Theorems 1.1
@@ -507,14 +512,14 @@ Starting with version 0.19, every published archive has a single
 `paper_c_lean/` root. Project files sit immediately beneath that root. This
 contract is stable for subsequent versions: neither a flat archive nor a
 double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
-`paper_c_lean_v048.zip`. It includes both certified PDFs at the project root,
+`paper_c_lean_v0481.zip`. It includes both hashed PDFs at the project root,
 so every fingerprint check is executable offline from a fresh extraction.
 Validate the generated metadata in the extracted archive with the generator's
 read-only check, not with `git diff`:
 
 ```bash
 zip_check_dir="$(mktemp -d)"
-unzip -q paper_c_lean_v048.zip -d "$zip_check_dir"
+unzip -q paper_c_lean_v0481.zip -d "$zip_check_dir"
 (cd "$zip_check_dir/paper_c_lean" && \
   node scripts/check_comparator_sources.mjs && \
   node scripts/generate_audit.mjs --check)
@@ -1539,7 +1544,8 @@ outside the covered zone.
 ## Building
 
 The project pins Lean `v4.32.2` and mathlib `v4.32.2`. The `lean-toolchain`
-file, `lakefile.toml`, and the Lake manifest lock this toolchain for v0.48.0.
+file, `lakefile.toml`, and the Lake manifest lock this toolchain for v0.48.1;
+the pins are unchanged from v0.48.0.
 The repository contains 381 modules under `PaperC/` plus the root module
 `PaperC.lean`: 382 audited Lean source files and 146,391 lines. The generated
 manifest records 4,065 theorems and five lemmas, hence 4,070 public

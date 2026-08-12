@@ -8,6 +8,13 @@ Legend:
 - **External bridge**: cited theorem for which a Lean proof is missing.
 - **Internal bridge**: interface arising from an argument proved in the manuscript itself.
 
+Version 0.48.1 changes only the bilingual manuscript PDFs and their public
+release metadata. The Lean sources, Comparator interfaces, declaration and
+audit-target counts, bridge registry, and toolchain remain byte-identical to
+v0.48.0. The published v0.48.0 hardened evidence therefore remains evidence
+for the unchanged Comparator fileset, but it does not bind the corrected
+v0.48.1 PDF byte streams.
+
 In the audit registry, `kind: external | internal` records the provenance of
 the statement. The separate field `status: open | discharged` records whether
 the interface is still required: only `open` constitutes current formalization

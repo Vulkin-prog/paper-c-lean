@@ -20,11 +20,11 @@
   },
   "target_pdf": {
     "filename": "paper_C_complete_v09_en.pdf",
-    "sha256": "d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd"
+    "sha256": "fd015e349111090ca861901f482b264bdb4a93e223e6ea24bd4a482dfb4ce236"
   },
   "source_pdf_fr": {
     "filename": "paper_C_complete_v09.pdf",
-    "sha256": "2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b"
+    "sha256": "068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8"
   },
   "sources": [
     {
@@ -38,8 +38,8 @@
       "license": "CC-BY-4.0",
       "author_contacted": "n/a",
       "filename": "paper_C_complete_v09_en.pdf",
-      "sha256": "d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd",
-      "note": "Paper C v09 English frozen release, August 12, 2026; intended as the next Cambridge Open Engage version under the existing DOI."
+      "sha256": "fd015e349111090ca861901f482b264bdb4a93e223e6ea24bd4a482dfb4ce236",
+      "note": "Frozen English manuscript, August 12, 2026; public manuscript history is maintained under the stable Cambridge Open Engage and Zenodo paper records."
     },
     {
       "key": "adgr07-prime-number-theorem",
@@ -153,7 +153,7 @@
           "tool_setup": "AI-assisted exploration, drafting, Lean development, reconnaissance programs, iterative local Lake builds, generated declaration and bridge audits, and separate adversarial counter-audits by distinct agent instances and models from multiple providers."
         }
       ],
-      "notes": "Brice Pouly directed the research and selected the mathematical and release requirements. As declared on page 68 of the frozen English paper, Claude Fable 5, Claude Opus 4.8, and GPT 5.6 Sol provided substantial assistance with lemma exploration, drafting, Lean development, reconnaissance programs, and multi-provider counter-audits. GPT 5.6 Sol agents also assisted with the v0.48.0 Comparator and metadata work."
+      "notes": "Brice Pouly directed the research and selected the mathematical and release requirements. As declared on page 69 of the frozen English paper, Claude Fable 5, Claude Opus 4.8, and GPT 5.6 Sol provided substantial assistance with lemma exploration, drafting, Lean development, reconnaissance programs, and multi-provider counter-audits. GPT 5.6 Sol agents also assisted with the v0.48.0 Comparator work and the v0.48.1 public-release metadata correction."
     },
     "fidelity": {
       "divergences": "The principal human-readable Comparator statement uses a finite uniform cylinder because the dyadic observable depends on finitely many prime coordinates; a separate Comparator target states the exact identity with the infinite-product law. The finite-cylinder interface uses a truncated completely multiplicative function, with an explicit convention outside the prime cutoff, although the audited observable never queries that region. Total variation is displayed as the discrete half-l1 sum rather than the paper's equivalent supremum over events. UniformBigOOn makes the uniform quantifiers and the dependence on C explicit. The Lean endpoint harmlessly permits C = 0 whereas the paper states C > 0. Theorem 8.1 is closed only at alpha = 3/16, the instance consumed downstream, rather than for every alpha > 0 as stated in the paper. The role of Lemma 13.6 is discharged by a sufficient harmonic bound rather than by a declaration duplicating its displayed formulation. The spatial and marked point-process results are represented by Laplace-functional convergence together with tightness, not by direct Tendsto statements for laws in the paper's vague topology. Conditioning is formalized extensionally through equality of the relevant finite-coordinate laws rather than through a literal conditional-probability presentation. The global longest-run theorem is outside the v0.48.0 Comparator surface. The literature bridges are ordinary theorem premises, not Lean axioms."
@@ -227,7 +227,7 @@
     },
     "comparator": {
       "status": "sandboxed_lean_kernel_passed",
-      "status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure for the v0.48.0 release at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. The final metadata layer leaves the certified Comparator fileset byte-identical. The public release asset is a derived privacy-minimized bundle. It preserves the exact summary, result records, source snapshot, raw transcript digests, and a redaction manifest; host-identifying raw logs and transcripts remain local and unpublished. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
+      "status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure for the v0.48.0 release at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. Version v0.48.1 leaves the certified six-file Comparator fileset byte-identical but replaces the manuscript PDFs solely to correct their public provenance wording. The v0.48.0 evidence therefore certifies the unchanged Comparator inputs and binds the historical v0.48.0 manuscript hashes, not the v0.48.1 PDF byte streams; no new hardened run is claimed. The public release asset is a derived privacy-minimized bundle. It preserves the exact summary, result records, source snapshot, raw transcript digests, and a redaction manifest; host-identifying raw logs and transcripts remain local and unpublished. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
       "tools": {
         "comparator": {
           "repository": "https://github.com/leanprover/comparator",
@@ -287,7 +287,7 @@
         ],
         "enable_nanoda": false,
         "metadata_verification": "Agent-side verification covered the local raw archive outer SHA-256 and size, every entry in its SHA256SUMS, both raw transcript hashes, and the deterministic derivation of the public privacy-minimized bundle. The public bundle retains exact summary, result, and source-snapshot bytes plus a machine-readable redaction manifest binding every retained and omitted raw path by SHA-256. Raw host logs and transcripts are intentionally not public.",
-        "qualification": "The public bundle preserves the validated Comparator result and its bindings to the Paper C commit, configurations, six-file Comparator digest, tool commits, manuscript hashes, and raw transcript hashes. Because the host-identifying raw transcripts are retained locally only, third parties cannot independently inspect the full host-execution trace from the public bundle. This is not a source audit, a dual-kernel result, or a general host-security certification."
+        "qualification": "The public v0.48.0 bundle preserves the validated Comparator result and its bindings to the Paper C commit, configurations, six-file Comparator digest, tool commits, historical v0.48.0 manuscript hashes, and raw transcript hashes. The six-file Comparator input remains byte-identical in v0.48.1, but the corrected v0.48.1 PDF byte streams are not bound by this earlier bundle. Because the host-identifying raw transcripts are retained locally only, third parties cannot independently inspect the full host-execution trace from the public bundle. This is not a source audit, a dual-kernel result, or a general host-security certification."
       },
       "configurations": [
         {
