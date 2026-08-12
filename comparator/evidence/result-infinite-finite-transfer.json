@@ -11,7 +11,7 @@
   "config": "comparator/theorem_one_one_transfer.json",
   "configuration_sha256": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
   "comparator_fileset_digest_sha256": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
-  "paper_c_commit": "75b36254145c0983d551de11599ea5c8f68e1e51",
+  "paper_c_commit": "27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07",
   "transcript": "comparator-infinite-finite-transfer.txt",
-  "transcript_sha256": "f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421"
+  "transcript_sha256": "13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076"
 }

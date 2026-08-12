@@ -227,7 +227,7 @@
     },
     "comparator": {
       "status": "sandboxed_lean_kernel_passed",
-      "status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. The unchanged Comparator fileset in rc2 has the same recorded digest. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
+      "status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure for the v0.48.0 release at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. The final metadata layer leaves the certified Comparator fileset byte-identical. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
       "tools": {
         "comparator": {
           "repository": "https://github.com/leanprover/comparator",
@@ -263,13 +263,13 @@
         "comparator/theorem_one_one_transfer.json"
       ],
       "published_evidence": {
-        "release_tag": "v0.48.0-rc1",
-        "release_url": "https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0-rc1",
-        "archive": "paper-c-hardened-evidence-75b36254145c-20260803T060848Z.tar.zst",
-        "archive_size_bytes": 94456,
-        "archive_sha256": "bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130",
-        "summary_sha256": "4106cbbcc012c1188cf8c9716e2ccd72c0e134b0338366afb30eb3d00f4ab726",
-        "paper_c_commit": "75b36254145c0983d551de11599ea5c8f68e1e51",
+        "release_tag": "v0.48.0",
+        "release_url": "https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0",
+        "archive": "paper-c-hardened-27c91f8.tar.zst",
+        "archive_size_bytes": 98049,
+        "archive_sha256": "a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89",
+        "summary_sha256": "b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb",
+        "paper_c_commit": "27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07",
         "comparator_fileset_digest_sha256": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
         "sandboxed": true,
         "non_root": true,
@@ -277,7 +277,7 @@
           "lean"
         ],
         "enable_nanoda": false,
-        "metadata_verification": "Agent-side recheck of the uploaded rc1 archive covered its outer SHA-256 and size, summary SHA-256, every internal SHA256SUMS entry, and the two archived transcript hashes. The repository carries only privacy-minimized result records copied from that archive, not the host-specific raw transcripts. The generator validates those records and their configuration and fileset bindings but does not download or revalidate the GitHub release asset.",
+        "metadata_verification": "Agent-side recheck of the final v0.48.0 archive covered its outer SHA-256 and size, summary SHA-256, every internal SHA256SUMS entry, and the two archived transcript hashes. The repository carries only privacy-minimized result records copied from that archive, not the host-specific raw transcripts. The generator validates those records and their configuration and fileset bindings but does not download or revalidate the GitHub release asset.",
         "qualification": "The archive certifies the byte-identical Comparator boundary at its recorded Paper C commit. It is not a human source audit or a general host-security certification."
       },
       "configurations": [
@@ -286,9 +286,9 @@
           "status": "sandboxed_lean_kernel_passed",
           "sandboxed": true,
           "evidence_record": "comparator/evidence/result-theorem-one-one.json",
-          "evidence_record_sha256": "5fef2ceee487a40d59419d0f73f0eef6589b525a7a7cc4354628e2ecac4d2cd2",
+          "evidence_record_sha256": "ce8ab0f60336425f04ac6408a8e2b4b066424b8820ec0b8bdd8a8c078eaa2ef8",
           "transcript_in_published_archive": "evidence/theorem-one-one/comparator-theorem-one-one.txt",
-          "transcript_sha256": "5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266",
+          "transcript_sha256": "fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e",
           "configuration_sha256_at_run": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
           "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
         },
@@ -297,9 +297,9 @@
           "status": "sandboxed_lean_kernel_passed",
           "sandboxed": true,
           "evidence_record": "comparator/evidence/result-infinite-finite-transfer.json",
-          "evidence_record_sha256": "ec8431eab1e2ceca7ca319e2efa9033889e1a92358b972d630825a558438c4cf",
+          "evidence_record_sha256": "b0bdb016bf928d421639635a1d79299fa7a35c12478601ed4f6add39a26a9189",
           "transcript_in_published_archive": "evidence/infinite-finite-transfer/comparator-infinite-finite-transfer.txt",
-          "transcript_sha256": "f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421",
+          "transcript_sha256": "13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076",
           "configuration_sha256_at_run": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
           "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
         }

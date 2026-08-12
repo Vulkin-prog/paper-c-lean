@@ -11,7 +11,7 @@
   "config": "comparator/theorem_one_one.json",
   "configuration_sha256": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
   "comparator_fileset_digest_sha256": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
-  "paper_c_commit": "75b36254145c0983d551de11599ea5c8f68e1e51",
+  "paper_c_commit": "27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07",
   "transcript": "comparator-theorem-one-one.txt",
-  "transcript_sha256": "5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266"
+  "transcript_sha256": "fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e"
 }
