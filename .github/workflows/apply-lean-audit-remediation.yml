@@ -45,6 +45,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes --no-install-recommends qpdf poppler-utils ripgrep
 
+      - name: Regenerate derived audit artifacts
+        run: node scripts/generate_audit.mjs
+
       - name: Validate new scripts, workflows and PDF artifacts
         run: |
           bash -n scripts/qa_pdfs.sh
@@ -56,6 +59,7 @@ jobs:
           node scripts/generate_audit.mjs --check-literature-certificates
           node scripts/check_comparator_sources.mjs
           node scripts/test_audit_root_guards.mjs
+          git diff --check
 
       - name: Remove one-shot bootstrap material
         run: |
