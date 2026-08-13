@@ -13,15 +13,15 @@
   "project_version": "0.48.1",
   "target_pdf": {
     "filename": "paper_C_complete_v09_en.pdf",
-    "sha256": "c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1",
+    "sha256": "ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189",
     "page_count": 77,
-    "byte_length": 935831
+    "byte_length": 936767
   },
   "source_pdf_fr": {
     "filename": "paper_C_complete_v09.pdf",
-    "sha256": "11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44",
+    "sha256": "262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45",
     "page_count": 79,
-    "byte_length": 946847
+    "byte_length": 947656
   },
   "sources": [
     {
@@ -35,9 +35,9 @@
       "license": "CC-BY-4.0",
       "author_contacted": "n/a",
       "filename": "paper_C_complete_v09_en.pdf",
-      "sha256": "c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1",
+      "sha256": "ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189",
       "page_count": 77,
-      "byte_length": 935831,
+      "byte_length": 936767,
       "note": "Final English manuscript candidate, August 13, 2026; public manuscript history is maintained under the stable Cambridge Open Engage and Zenodo paper records."
     },
     {

@@ -23,10 +23,10 @@ The published v0.48.0 hardened evidence remains historical evidence for its
 exact old bytes and does not qualify the 0.48.1 snapshot.
 
 The exact final manuscript candidates carried by this tree are the 77-page,
-935831-byte English PDF with SHA-256
-`c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1`
-and the synchronized 79-page, 946847-byte French PDF with SHA-256
-`11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44`.
+936767-byte English PDF with SHA-256
+`ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189`
+and the synchronized 79-page, 947656-byte French PDF with SHA-256
+`262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45`.
 
 
 **Halter--Koch adjudication.** Lean now constructs the quadratic field, the

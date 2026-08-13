@@ -16,10 +16,10 @@
   `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4`
 - modèle officiel `formalization.yaml` v0.3 : commit
   `fab03cbbed1a5857de17af32de30421a734c77c6`
-- PDF cible anglais (77 pages ; 935831 octets), SHA-256 :
-  `c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1`
-- PDF source français synchronisé (79 pages ; 946847 octets), SHA-256 :
-  `11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44`
+- PDF cible anglais (77 pages ; 936767 octets), SHA-256 :
+  `ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189`
+- PDF source français synchronisé (79 pages ; 947656 octets), SHA-256 :
+  `262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45`
 - racine unique de l’archive : `paper_c_lean/`
 - archive de livraison prévue : `paper_c_lean_v0481.zip`
 
@@ -42,13 +42,13 @@ plus récente propre à Comparator.
 
 Le candidat courant a recalculé les octets présents dans le dépôt :
 `paper_C_complete_v09_en.pdf` est le blob Git
-`de8a94d19ce76a794e1bcd061f1ca3225d2c506f`, mesure 935831 octets et a pour
+`244d34ed8a5d8b1dfac4619a2d8cee507c94c09f`, mesure 936767 octets et a pour
 SHA-256
-`c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1` ;
+`ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189` ;
 `paper_C_complete_v09.pdf` est le blob Git
-`5cfdc88be6fe16344facfcc10d144b7821a41985`, mesure 946847 octets et a pour
+`87f67c04ac86ab3bc357438a44fc25ae83ac5612`, mesure 947656 octets et a pour
 SHA-256
-`11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44`.
+`262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45`.
 
 ## Périmètre du correctif 0.48.1
 

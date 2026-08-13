@@ -32,12 +32,12 @@
   remediation: autonomous bounded-ratio proofs, exact bridge tables,
   terminal constants, Halter--Koch adjudication, validation levels and
   version-neutral public provenance wording.
-- The English PDF has 77 pages, measures 935831 bytes, has Git blob
-  `de8a94d19ce76a794e1bcd061f1ca3225d2c506f`, and SHA-256
-  `c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1`.
-  The synchronized French PDF has 79 pages, measures 946847 bytes, has Git
-  blob `5cfdc88be6fe16344facfcc10d144b7821a41985`, and SHA-256
-  `11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44`.
+- The English PDF has 77 pages, measures 936767 bytes, has Git blob
+  `244d34ed8a5d8b1dfac4619a2d8cee507c94c09f`, and SHA-256
+  `ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189`.
+  The synchronized French PDF has 79 pages, measures 947656 bytes, has Git
+  blob `87f67c04ac86ab3bc357438a44fc25ae83ac5612`, and SHA-256
+  `262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45`.
 - The Lean core, Comparator fileset and bridge registry now differ from
   v0.48.0 because of the conductor closure.  The three active literature
   certificates remain source-facing; the Halter--Koch report is retained as a

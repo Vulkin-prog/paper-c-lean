@@ -21,8 +21,8 @@ TeX. Therefore:
 
 | Artifact | Language | Pages | Bytes | SHA-256 |
 |---|---:|---:|---:|---|
-| `paper_C_complete_v09.pdf` | French | 79 | 946,847 | `11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44` |
-| `paper_C_complete_v09_en.pdf` | English | 77 | 935,831 | `c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1` |
+| `paper_C_complete_v09.pdf` | French | 79 | 947,656 | `262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45` |
+| `paper_C_complete_v09_en.pdf` | English | 77 | 936,767 | `ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189` |
 
 These identities are consumed by the audit and release-binding machinery.
 Changing either PDF creates a new source candidate and invalidates evidence
@@ -47,8 +47,8 @@ For the PDF bytes frozen above, the TeX source hashes are:
 
 | Source | SHA-256 |
 |---|---|
-| French v09 TeX | `ee3f9d4983fb3744150ed4b8c044d48285eef479a2e41b3a704e5d5080f0a203` |
-| English v09 TeX | `524a5d1120a1d920b03a051c6aaf9f30b006ea0574fe0dc606e515ec26116201` |
+| French v09 TeX | `c95ce32297ad3d4a8c03d6b52363b84c82aac314cabeac71f92eb74bb7d933e4` |
+| English v09 TeX | `048018c3f1f51f74c370a7b95208db1b475207a5c9f63be135177d65d8828a4c` |
 
 The manuscript release must freeze an exact companion-repository commit and
 its manifest. A branch name or pull-request number alone is not a permanent

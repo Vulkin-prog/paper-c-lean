@@ -15,13 +15,13 @@ Public formalization: [`github.com/Vulkin-prog/paper-c-lean`](https://github.com
 and [Zenodo formalization concept DOI
 `10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
 
-Target manuscript: `paper_C_complete_v09_en.pdf` (77 physical pages; 935831
+Target manuscript: `paper_C_complete_v09_en.pdf` (77 physical pages; 936767
 bytes), SHA-256
-`c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1`.
+`ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189`.
 
-Synchronized French manuscript: `paper_C_complete_v09.pdf` (79 pages; 946847
+Synchronized French manuscript: `paper_C_complete_v09.pdf` (79 pages; 947656
 bytes), SHA-256
-`11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44`.
+`262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45`.
 
 > **Release-candidate status (2026-08-13).** PR #5 and branch
 > `agent/v0481-publication-metadata` are not a qualified `v0.48.1` release.
