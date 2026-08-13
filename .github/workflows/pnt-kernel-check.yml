@@ -1,33 +1,15 @@
 name: pnt-integration-check
-
 on:
   workflow_dispatch:
   push:
-    branches:
-      - agent/v049-paper-c-v09-sync
-    paths:
-      - PaperC/Arithmetic/PrimeCountingBridgePNT.lean
-      - PaperC/Arithmetic/PrimeNumberTheoremDischarge.lean
-      - lakefile.toml
-      - .github/workflows/pnt-kernel-check.yml
-
+    branches: [agent/v049-paper-c-v09-sync]
+    paths: [.github/workflows/pnt-kernel-check.yml]
 permissions:
   contents: read
-
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Free disk space
-        uses: jlumbroso/free-disk-space@main
-        with:
-          tool-cache: false
-          android: true
-          dotnet: false
-          haskell: false
-          large-packages: false
-          docker-images: false
-          swap-storage: false
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
         with:
@@ -36,10 +18,7 @@ jobs:
           test: false
           lint: false
           use-github-cache: false
-          use-mathlib-cache: true
-      - name: Resolve pinned dependency
-        run: lake update PrimeNumberTheoremAnd
-      - name: Compile bridge
-        run: lake env lean PaperC/Arithmetic/PrimeCountingBridgePNT.lean
-      - name: Compile discharge
-        run: lake env lean PaperC/Arithmetic/PrimeNumberTheoremDischarge.lean
+          use-mathlib-cache: false
+      - run: lake update PrimeNumberTheoremAnd
+      - run: lake env lean PaperC/Arithmetic/PrimeCountingBridgePNT.lean
+      - run: lake env lean PaperC/Arithmetic/PrimeNumberTheoremDischarge.lean
