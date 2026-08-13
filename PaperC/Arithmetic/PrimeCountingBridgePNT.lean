@@ -1,6 +1,10 @@
 import PaperC.Arithmetic.PrimeNumberTheoremInput
+import PrimeNumberTheoremAnd.Consequences
 
 namespace PaperC.PrimeNumberTheoremInput
+
+open Filter
+open scoped Topology
 
 noncomputable section
 
@@ -29,6 +33,14 @@ theorem count_eq_primeCounting (L : ℕ) :
       Fintype.card_congr (primeUpToEquivPrimesLE L)
     _ = (Nat.primesLE L).card := Fintype.card_coe _
     _ = Nat.primeCounting L := Nat.primesLE_card_eq_primeCounting L
+
+theorem primeCounting_isEquivalent_nat :
+    (fun L : ℕ ↦ (Nat.primeCounting L : ℝ)) ~[atTop]
+      (fun L : ℕ ↦ (L : ℝ) / Real.log (L : ℝ)) := by
+  simpa only [Function.comp_apply, floor_natCast] using
+    pi_alt'.comp_tendsto
+      (tendsto_natCast_atTop_atTop :
+        Tendsto ((↑) : ℕ → ℝ) atTop atTop)
 
 end
 end PaperC.PrimeNumberTheoremInput
