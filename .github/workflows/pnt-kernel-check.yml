@@ -20,5 +20,5 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
       - run: lake update PrimeNumberTheoremAnd
-      - run: lake env lean PaperC/Arithmetic/PrimeCountingBridgePNT.lean
-      - run: lake env lean PaperC/Arithmetic/PrimeNumberTheoremDischarge.lean
+      - run: lake build PaperC.Arithmetic.PrimeCountingBridgePNT
+      - run: lake build PaperC.Arithmetic.PrimeNumberTheoremDischarge
