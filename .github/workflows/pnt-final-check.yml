@@ -1,0 +1,33 @@
+name: pnt-final-check
+on:
+  workflow_dispatch:
+  push:
+    branches: [agent/v049-paper-c-v09-sync]
+    paths:
+      - PaperC/Arithmetic/PNT*Closed*.lean
+      - PaperC/Arithmetic/PNTStep.lean
+      - PaperC/Arithmetic/PNTConv2.lean
+      - PaperC/Arithmetic/PNTFinalStep.lean
+      - PaperC/Arithmetic/PNTSequence*.lean
+      - PaperC/Arithmetic/PrimeCountIdentityPNT.lean
+      - PaperC/Arithmetic/PrimeNumberTheoremDischargeFinal.lean
+      - CheckPNTDischarge.lean
+      - .github/workflows/pnt-final-check.yml
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - run: lake update PrimeNumberTheoremAnd
+      - run: lake build PaperC.Arithmetic.PrimeNumberTheoremDischargeFinal
+      - run: lake env lean CheckPNTDischarge.lean
