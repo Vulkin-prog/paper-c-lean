@@ -3,7 +3,7 @@ import PrimeNumberTheoremAnd.Consequences
 
 namespace PaperC.PrimeNumberTheoremInput
 
-open Filter
+open Filter Asymptotics
 open scoped Topology
 
 noncomputable section
