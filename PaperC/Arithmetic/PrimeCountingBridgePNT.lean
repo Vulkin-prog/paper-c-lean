@@ -37,7 +37,7 @@ theorem count_eq_primeCounting (L : ℕ) :
 theorem primeCounting_isEquivalent_nat :
     (fun L : ℕ ↦ (Nat.primeCounting L : ℝ)) ~[atTop]
       (fun L : ℕ ↦ (L : ℝ) / Real.log (L : ℝ)) := by
-  simpa only [Function.comp_apply, floor_natCast] using
+  simpa only [Function.comp_apply, Nat.floor_natCast] using
     pi_alt'.comp_tendsto
       (tendsto_natCast_atTop_atTop :
         Tendsto ((↑) : ℕ → ℝ) atTop atTop)
