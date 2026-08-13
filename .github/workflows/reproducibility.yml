@@ -44,10 +44,13 @@ jobs:
       - name: Verify literature-certificate bytes and mapping
         run: node scripts/generate_audit.mjs --check-literature-certificates
 
-      - name: Install ripgrep
+      - name: Install audit utilities
         run: |
           sudo apt-get update
-          sudo apt-get install --yes ripgrep
+          sudo apt-get install --yes ripgrep qpdf poppler-utils
+
+      - name: Run structural PDF QA
+        run: scripts/qa_pdfs.sh ci-logs/pdf-qa
 
       - name: Check Lean source hygiene
         shell: bash
@@ -79,7 +82,19 @@ jobs:
       - name: Test root-module audit guards
         run: node scripts/test_audit_root_guards.mjs
 
-      - name: Set up the pinned Lean toolchain
+      - name: Set up the pinned Lean toolchain (attempt 1)
+        id: audit_lean_setup_1
+        continue-on-error: true
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Set up the pinned Lean toolchain (retry)
+        if: steps.audit_lean_setup_1.outcome == 'failure'
         uses: leanprover/lean-action@v1
         with:
           auto-config: false
@@ -270,7 +285,9 @@ jobs:
           echo 'preexisting_project_olean_count=0'
           echo 'olean_count=0' >> "$GITHUB_OUTPUT"
 
-      - name: Set up the Paper C Lean 4.32.2 toolchain and Mathlib cache
+      - name: Set up the Paper C Lean 4.32.2 toolchain and Mathlib cache (attempt 1)
+        id: comparator_lean_setup_1
+        continue-on-error: true
         uses: leanprover/lean-action@v1
         with:
           lake-package-directory: project
@@ -281,6 +298,18 @@ jobs:
           use-mathlib-cache: true
           # Never restore or save the project's .lake directory here: a cache
           # created by the ordinary build could contain Solution.olean.
+          use-github-cache: false
+
+      - name: Set up the Paper C Lean 4.32.2 toolchain and Mathlib cache (retry)
+        if: steps.comparator_lean_setup_1.outcome == 'failure'
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: project
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
           use-github-cache: false
 
       - name: Set up Go 1.24 for pinned landrun
