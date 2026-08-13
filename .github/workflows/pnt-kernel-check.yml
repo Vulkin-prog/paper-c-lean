@@ -1,4 +1,4 @@
-name: pnt-integration-check
+name: pnt-integration-check-2
 on:
   workflow_dispatch:
   push:
