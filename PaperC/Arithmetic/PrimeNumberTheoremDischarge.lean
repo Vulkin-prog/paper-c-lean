@@ -1,2 +1,1 @@
-import PaperC.Arithmetic.PrimeNumberTheoremInput
-import PrimeNumberTheoremAnd.Consequences
+import PaperC.Arithmetic.PNTClosed
