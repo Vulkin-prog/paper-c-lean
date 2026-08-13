@@ -1,9 +1,15 @@
-name: pnt-integration-check-2
+name: pnt-integration-check-3
 on:
   workflow_dispatch:
   push:
     branches: [agent/v049-paper-c-v09-sync]
-    paths: [.github/workflows/pnt-kernel-check.yml]
+    paths:
+      - PaperC/Arithmetic/PNT*.lean
+      - PaperC/Arithmetic/PrimeCountingBridgePNT.lean
+      - PaperC/Arithmetic/PrimeNumberTheoremDischarge.lean
+      - CheckPNTDischarge.lean
+      - lakefile.toml
+      - .github/workflows/pnt-kernel-check.yml
 permissions:
   contents: read
 jobs:
@@ -20,5 +26,11 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
       - run: lake update PrimeNumberTheoremAnd
-      - run: lake build PaperC.Arithmetic.PrimeCountingBridgePNT
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pnt-generated-manifest
+          path: lake-manifest.json
+          if-no-files-found: error
+          retention-days: 7
       - run: lake build PaperC.Arithmetic.PrimeNumberTheoremDischarge
+      - run: lake env lean CheckPNTDischarge.lean
