@@ -1,0 +1,33 @@
+name: source-export-v2
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/v049-paper-c-v09-sync
+    paths:
+      - .github/workflows/source-export-v2.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Package exact checkout
+        run: |
+          set -euo pipefail
+          mkdir -p export
+          git rev-parse HEAD > export/SOURCE_COMMIT.txt
+          git archive --format=tar.gz --output=export/paper-c-lean-source.tar.gz HEAD
+          sha256sum export/paper-c-lean-source.tar.gz > export/paper-c-lean-source.tar.gz.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-c-lean-source-v2
+          path: export/
+          if-no-files-found: error
+          retention-days: 7
