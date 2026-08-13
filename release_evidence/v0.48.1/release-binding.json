@@ -1,0 +1,21 @@
+{
+  "schema": 2,
+  "release": "v0.48.1",
+  "protocol": "source-parent-packaging-v1",
+  "paper_c_commit": "bb5f1982a9561e216a301aa1495aaa52ec088407",
+  "comparator_fileset_digest_sha256": "add629c9a32effa3032b2ef11d75336d700fc964eab5054fe62f604e68c82d4f",
+  "english_pdf_sha256": "c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1",
+  "french_pdf_sha256": "11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44",
+  "hardened_archive_sha256": "8385fb0d1bb89c4345f7be63abbc83ce6111d37e2a0e74b572f044d3fe5e5fa1",
+  "evidence": {
+    "result-theorem-one-one.json": "d9f9bbc36712d09b88c1b20e6dd16b30c91a5a13629e24a5974bbd71d53150d9",
+    "result-infinite-finite-transfer.json": "d3bb7d542b68841b77e54eff86057a5be7ed8f0181e15b0af3f22c608b338e05"
+  },
+  "certifying": true,
+  "sandboxed": true,
+  "non_root": true,
+  "enable_nanoda": false,
+  "kernels": [
+    "lean"
+  ]
+}
