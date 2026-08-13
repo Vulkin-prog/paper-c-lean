@@ -1,0 +1,46 @@
+{
+  "status": "sandboxed_lean_kernel_passed",
+  "certifying": true,
+  "sandboxed": true,
+  "non_root": true,
+  "kernels": [
+    "lean"
+  ],
+  "enable_nanoda": false,
+  "exit_code": 0,
+  "config": "comparator/theorem_one_one.json",
+  "configuration_sha256": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
+  "comparator_fileset_digest_sha256": "add629c9a32effa3032b2ef11d75336d700fc964eab5054fe62f604e68c82d4f",
+  "paper_c_commit": "939d24917fb206a0130c970be75e641c25a4b6bd",
+  "theorem_names": [
+    "paper_c_theorem_one_one_finite_cylinder"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "challenge": {
+    "module": "Challenge",
+    "file": "Challenge.lean",
+    "sha256": "1ba82c74d4624aa64c23511a203bb5ca1029ad236a6ea77057ce1c72a0ae9456"
+  },
+  "solution": {
+    "module": "Solution",
+    "file": "Solution.lean",
+    "sha256": "cf291c777033c0f75b080c6e74ab9a5e795e2c60a61fa7fd85c4773b842d4fd5"
+  },
+  "tool_commits": {
+    "lean": "f3b06c705e6c85f5314019d5d3baab0fec5b580c",
+    "mathlib": "905b95818eb32af7874a58b427f50c1711a5e96c",
+    "comparator": "51491237b1d2f96cca203af9c34bced6fe38e0d8",
+    "lean4export": "af5aa64bb914c3c2c781f378088dbd38acf4f804",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
+  },
+  "manuscript_sha256": {
+    "target_pdf": "ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189",
+    "source_pdf_fr": "262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45"
+  },
+  "transcript": "comparator-theorem-one-one.txt",
+  "transcript_sha256": "aee0ce82be52471008cd14d2ebc8e0ebc765e35d0871b86a14a0879150701201"
+}
