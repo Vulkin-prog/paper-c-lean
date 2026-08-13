@@ -1,0 +1,5 @@
+import PaperC.Arithmetic.PNTRatioIdentityClosed
+
+namespace PaperC.PrimeNumberTheoremInput
+
+end PaperC.PrimeNumberTheoremInput
