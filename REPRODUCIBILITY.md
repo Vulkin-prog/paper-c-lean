@@ -2,7 +2,7 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.48.1`
+- paper_c_lean : `0.48.1` candidate (no tag/release yet)
 - Lean : `v4.32.2`, commit
   `f3b06c705e6c85f5314019d5d3baab0fec5b580c`
 - mathlib : `v4.32.2`, commit
@@ -21,7 +21,14 @@
 - PDF source français synchronisé (73 pages), SHA-256 :
   `068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8`
 - racine unique de l’archive : `paper_c_lean/`
-- archive de livraison : `paper_c_lean_v0481.zip`
+- archive de livraison prévue : `paper_c_lean_v0481.zip`
+
+
+> **Qualification.** Les lignes ci-dessus décrivent le candidat courant. Elles
+> ne valent pas publication tant que l'ensemble des portes de
+> [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md) n'est pas satisfait sur
+> un commit exact, notamment la CI verte, le QA PDF et une nouvelle preuve
+> Comparator durcie sans fallback liant les deux PDF finaux.
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles. Il n’existe pas de tag officiel Comparator/lean4export
@@ -30,7 +37,7 @@ lean4export doit être compilé séparément avec la toolchain Lean de Paper C,
 et non remplacé silencieusement par le binaire construit sous la toolchain
 plus récente propre à Comparator.
 
-La contre-vérification finale a recalculé les octets présents dans le dépôt :
+Le candidat documentaire courant a recalculé les octets présents dans le dépôt :
 `paper_C_complete_v09_en.pdf` est le blob Git
 `632584bbcd21e55def761aa0eed35d43fcf1ccbc`, mesure 841628 octets et a pour
 SHA-256
@@ -42,7 +49,7 @@ SHA-256
 
 ## Périmètre du correctif 0.48.1
 
-La v0.48.1 remplace uniquement les deux PDF et les métadonnées publiques qui
+Le candidat v0.48.1 remplace les deux PDF et les métadonnées publiques qui
 les décrivent. Les paragraphes bilingues de reproduction et de disponibilité
 renvoient désormais aux seuls enregistrements publics stables du papier et de
 la formalisation, sans numéro de cycle éditorial ni dépôt privé. Les pages

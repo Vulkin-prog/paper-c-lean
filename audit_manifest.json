@@ -251,7 +251,7 @@
     "literature_certificates/HK13-QO-conductor-fibres.md",
     "literature_certificates/NR83-T1-divisor-log-bound.md"
   ],
-  "literature_certificate_digest_sha256": "6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996",
+  "literature_certificate_digest_sha256": "dd6012e44b6fe0b04a2dddc92006b6e86ce8e5dbbd16322094bb9e0b7feb8bfb",
   "literature_certificate_scope": "The four external bridges consumed by the finite-cylinder form of Theorem 1.1.",
   "literature_certificate_status_note": "These certificates document source-to-proposition implications. They are not Lean proofs, Comparator results, or independent human certification. The historical source-verification wording embedded in the frozen 382-file core is retained only for byte-level provenance; this rc2 layer is the current qualification.",
   "literature_certificates": [
@@ -291,8 +291,8 @@
       "implication_status": "agent_checked_with_open_gap",
       "limitations": "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
       "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
-      "sha256": "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96",
-      "byte_length": 3971,
+      "sha256": "732c53aa4715d892ddbd1b3714000046b92696190144e1c090970764b7e17dc9",
+      "byte_length": 4112,
       "review_status": "agent-reviewed",
       "human_peer_reviewed": false,
       "supersedes_frozen_source_verification_wording_for_rc2": true
@@ -3320,8 +3320,8 @@
         "implication_status": "agent_checked_with_open_gap",
         "limitations": "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
         "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
-        "sha256": "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96",
-        "byte_length": 3971,
+        "sha256": "732c53aa4715d892ddbd1b3714000046b92696190144e1c090970764b7e17dc9",
+        "byte_length": 4112,
         "review_status": "agent-reviewed",
         "human_peer_reviewed": false,
         "supersedes_frozen_source_verification_wording_for_rc2": true

@@ -21,6 +21,16 @@ Target manuscript: `paper_C_complete_v09_en.pdf` (71 physical pages), SHA-256
 Synchronized French manuscript: `paper_C_complete_v09.pdf` (73 pages), SHA-256
 `068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8`.
 
+> **Release-candidate status (2026-08-13).** PR #5 and branch
+> `agent/v0481-publication-metadata` are not a qualified `v0.48.1` release.
+> The current Lean endpoint remains conditional on the explicit Halter--Koch
+> interface, while the printed maximal-order Pell proof is a separate
+> conventional mathematical route. See
+> [`docs/HK_INTERFACE_ADJUDICATION.md`](docs/HK_INTERFACE_ADJUDICATION.md) and
+> [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md). The two supplied
+> audits are published as **agent counter-reviews**, not human peer review, in
+> [`counter_reviews/`](counter_reviews/).
+
 ## Status
 
 This repository is a **formal proof of the canonical endpoints, conditional
@@ -168,9 +178,10 @@ This is a Lean-kernel-only result. Both configurations have
 claimed. The evidence certifies the unchanged Comparator inputs at commit
 `27c91f8bdd5c...`. The final v0.48.0 metadata layer leaves the six-file
 Comparator fileset and both manuscript PDFs byte-identical to that certified
-commit. Version v0.48.1 leaves that Comparator fileset byte-identical but
-replaces the manuscript PDFs solely to correct their public provenance
-wording. The published v0.48.0 evidence therefore remains evidence for the
+commit. The current v0.48.1 candidate leaves that Comparator fileset byte-identical but
+replaces the manuscript PDFs and associated documentation. It is not a
+qualified release until fresh hardened evidence binds the final PDF bytes and
+the exact release commit. The published v0.48.0 evidence therefore remains evidence for the
 unchanged Comparator inputs and its historical manuscript hashes; it does not
 bind the v0.48.1 PDF byte streams. It does not discharge the four ordinary
 literature-facing premises or certify the paper-to-Challenge comparison. The earlier fake-landrun

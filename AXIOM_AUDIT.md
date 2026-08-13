@@ -152,7 +152,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Contrôle source courant : `source_to_lean_not_established`.
 - Wording de contrôle dans le cœur gelé : `manually checked against the cited theorem statements and proofs on 2026-07-31` (supplanté pour rc2).
 - Qualification rc2 : `agent_checked_with_open_gap`; lecture primaire `partial`; pas de revue humaine indépendante.
-- Certificat rc2 : [`literature_certificates/HK13-QO-conductor-fibres.md`](literature_certificates/HK13-QO-conductor-fibres.md), SHA-256 `cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96`, 3971 octets.
+- Certificat rc2 : [`literature_certificates/HK13-QO-conductor-fibres.md`](literature_certificates/HK13-QO-conductor-fibres.md), SHA-256 `732c53aa4715d892ddbd1b3714000046b92696190144e1c090970764b7e17dc9`, 4112 octets.
 - Limites rc2 : The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.
 - Citation littérale : extrait (les formules structurées ci-dessous complètent la transcription).
 - Note de vérification du cœur gelé (supplantée pour rc2) : Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction.

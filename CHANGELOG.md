@@ -1,6 +1,17 @@
 # Changelog
 
-## 0.48.1
+## 0.48.1 (candidate; not released)
+
+
+- Published the two 2026-08-13 agent counter-reviews with provenance and
+  original SHA-256 values; no independent human review is claimed.
+- Added an explicit Halter--Koch adjudication separating the conventional
+  maximal-order proof in the manuscript from the still-conditional Lean
+  interface.
+- Added reproducible PDF QA, retry-safe Lean setup in ordinary CI, and a strict
+  release-binding workflow. These additions do not qualify the release by
+  themselves; fresh final PDFs and hardened no-fallback Comparator evidence
+  are still required.
 
 - Rebuilt the bilingual manuscript pair to replace release-cycle wording in
   the reproduction and availability sections with the stable public records
