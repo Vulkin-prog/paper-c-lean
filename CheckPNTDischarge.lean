@@ -1,0 +1,3 @@
+import PaperC.Arithmetic.PrimeNumberTheoremDischarge
+
+#print axioms PaperC.PrimeNumberTheoremInput.primeNumberTheoremStatement
