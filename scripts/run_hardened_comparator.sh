@@ -131,6 +131,9 @@ on_exit() {
       tmp_parent=$(realpath "${TMPDIR:-/tmp}")
       case "$WORK_ROOT" in
         "$tmp_parent"/paper-c-hardened.*)
+          # Go module downloads are intentionally read-only. Restore owner
+          # write permission before removing this runner-owned temporary tree.
+          chmod -R u+rwX -- "$WORK_ROOT" 2>/dev/null || true
           rm -rf -- "$WORK_ROOT"
           ;;
         *)

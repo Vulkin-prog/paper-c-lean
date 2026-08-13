@@ -13,7 +13,8 @@
   timeless protocol: `source_snapshot_comparator_state` fixes definitions and
   digests only, `release_evidence_state` and `release_evidence_location`
   designate the post-freeze evidence layer, and
-  `packaging_commit_required: true` requires a validated unique-child commit.
+  `packaging_commit_required: true` requires a validated single-parent commit
+  whose parent is the exact source commit.
   A source snapshot therefore asserts neither that later evidence is absent
   nor that it has passed. The authoritative release verdict is carried only
   by evidence bound to that exact source commit. The published hardened

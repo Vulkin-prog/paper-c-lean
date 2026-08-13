@@ -2126,7 +2126,7 @@ verification:
     release_evidence_state: "external_to_source_snapshot"
     release_evidence_location: "release_evidence/v0.48.1/"
     packaging_commit_required: true
-    state_note: "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. Release qualification is resolved only from release_evidence/v0.48.1/ in a validated unique-child packaging commit bound to this exact source commit. This protocol statement neither asserts the presence nor the absence of such a packaging commit. The published v0.48.0 evidence remains historical evidence for its recorded commit and fileset digest and does not qualify this source snapshot."
+    state_note: "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. Release qualification is resolved only from release_evidence/v0.48.1/ in a validated single-parent packaging commit whose parent is this exact source commit. This protocol statement neither asserts the presence nor the absence of such a packaging commit. The published v0.48.0 evidence remains historical evidence for its recorded commit and fileset digest and does not qualify this source snapshot."
     tools:
       comparator:
         repository: "https://github.com/leanprover/comparator"

@@ -16,8 +16,8 @@ argument from the canonical endpoints. Its generated metadata is deliberately
 timeless: `source_snapshot_comparator_state: definitions_and_digests_only`
 fixes the source interfaces and byte digests but records no post-freeze
 execution outcome. Release qualification is authoritative only through
-`release_evidence/v0.48.1/` in a validated unique-child packaging commit bound
-to that exact source commit (`packaging_commit_required: true`). Thus the
+`release_evidence/v0.48.1/` in a validated single-parent packaging commit whose
+parent is that exact source commit (`packaging_commit_required: true`). Thus the
 source snapshot remains truthful both before and after such evidence exists.
 The published v0.48.0 hardened evidence remains historical evidence for its
 exact old bytes and does not qualify the 0.48.1 snapshot.

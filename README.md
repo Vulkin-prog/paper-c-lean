@@ -32,7 +32,8 @@ bytes), SHA-256
 > this source snapshot. The snapshot records
 > `source_snapshot_comparator_state: definitions_and_digests_only`; any
 > certifying outcome is authoritative only under
-> `release_evidence/v0.48.1/` in a validated unique-child packaging commit.
+> `release_evidence/v0.48.1/` in a validated single-parent packaging commit
+> whose parent is this exact source commit.
 > Its metadata therefore remains true whether or not that later layer exists.
 > See
 > [`docs/HK_INTERFACE_ADJUDICATION.md`](docs/HK_INTERFACE_ADJUDICATION.md) and

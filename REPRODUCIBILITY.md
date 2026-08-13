@@ -28,7 +28,8 @@
 > métadonnées fixent les définitions et empreintes Comparator sans intégrer de
 > verdict produit après le gel. Le résultat de qualification de release est
 > donné exclusivement par `release_evidence/v0.48.1/` dans un commit
-> d’empaquetage fils unique, validé et lié à ce commit source exact. Le snapshot
+> d’empaquetage validé, à parent unique, dont le parent est ce commit source
+> exact. Le snapshot
 > ne prétend donc ni qu’une preuve ultérieure est absente, ni qu’elle a réussi.
 > La publication reste soumise aux autres portes de
 > [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md).
