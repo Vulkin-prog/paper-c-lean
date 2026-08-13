@@ -3,8 +3,8 @@ name: Strict release qualification
 on:
   workflow_dispatch:
     inputs:
-      release_commit:
-        description: Exact 40-hex commit SHA to qualify
+      packaging_commit:
+        description: Exact 40-hex packaging commit R to qualify (its unique parent is source commit Q)
         required: true
         type: string
       hardened_archive_sha256:
@@ -20,18 +20,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 150
     steps:
-      - name: Check out the exact candidate commit
+      - name: Check out the exact packaging commit R
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.release_commit }}
+          ref: ${{ inputs.packaging_commit }}
           fetch-depth: 0
 
-      - name: Require an exact commit checkout
+      - name: Require an exact packaging commit checkout
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD)" = "${{ inputs.release_commit }}"
-          [[ "${{ inputs.release_commit }}" =~ ^[0-9a-f]{40}$ ]]
+          test "$(git rev-parse HEAD)" = "${{ inputs.packaging_commit }}"
+          [[ "${{ inputs.packaging_commit }}" =~ ^[0-9a-f]{40}$ ]]
           [[ "${{ inputs.hardened_archive_sha256 }}" =~ ^[0-9a-f]{64}$ ]]
 
       - name: Install audit utilities
@@ -41,6 +41,7 @@ jobs:
 
       - name: Verify PDFs and release binding
         run: |
+          node scripts/test_release_binding_protocol.mjs
           scripts/qa_pdfs.sh ci-logs/release-pdf-qa
           node scripts/generate_audit.mjs --check-pdfs
           node scripts/generate_audit.mjs --check-source-digest
@@ -93,7 +94,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: paper-c-v0481-release-qualification-${{ inputs.release_commit }}
+          name: paper-c-v0481-release-qualification-${{ inputs.packaging_commit }}
           path: |
             ci-logs/
             release_evidence/v0.48.1/

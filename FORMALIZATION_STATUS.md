@@ -8,11 +8,12 @@ Legend:
 - **External bridge**: cited theorem for which a Lean proof is missing.
 - **Internal bridge**: interface arising from an argument proved in the manuscript itself.
 
-The current 0.48.1 candidate changes the bilingual manuscript PDFs and their public
-release metadata. The Lean sources, Comparator interfaces, declaration and
+The current 0.48.1 candidate changes the bilingual manuscript PDFs after
+mathematical and release-audit remediation, together with their public release
+metadata. The Lean sources, Comparator interfaces, declaration and
 audit-target counts, bridge registry, and toolchain remain byte-identical to
 v0.48.0. The published v0.48.0 hardened evidence therefore remains evidence
-for the unchanged Comparator fileset, but it does not bind the corrected
+for the unchanged Comparator fileset, but it does not bind the remediated
 v0.48.1 PDF byte streams.
 
 

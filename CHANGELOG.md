@@ -9,27 +9,26 @@
   maximal-order proof in the manuscript from the still-conditional Lean
   interface.
 - Added reproducible PDF QA, retry-safe Lean setup in ordinary CI, and a strict
-  release-binding workflow. These additions do not qualify the release by
-  themselves; fresh final PDFs and hardened no-fallback Comparator evidence
-  are still required.
+  two-commit release-binding workflow. These additions do not qualify the
+  release by themselves; hardened no-fallback Comparator evidence is still
+  required.
 
-- Rebuilt the bilingual manuscript pair to replace release-cycle wording in
-  the reproduction and availability sections with the stable public records
-  for the paper and the Lean formalization. No private repository is named,
-  and no Cambridge or Zenodo version number is embedded in those sections.
-- The English PDF remains 71 pages, now measures 841628 bytes, has Git blob
-  `632584bbcd21e55def761aa0eed35d43fcf1ccbc`, and SHA-256
-  `fd015e349111090ca861901f482b264bdb4a93e223e6ea24bd4a482dfb4ce236`.
-  The synchronized French PDF remains 73 pages, now measures 849089 bytes,
-  has Git blob `c82dcaeb6796957ec7d8f49b73a54e4c9ef839d5`, and SHA-256
-  `068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8`.
-- Pages 1--67 of the English PDF and 1--69 of the French PDF are graphically
-  identical to v0.48.0. The Lean core, Comparator fileset, literature
-  certificates, declarations, bridge registry, and toolchain are unchanged.
+- Rebuilt the bilingual manuscripts after mathematical and release-audit
+  remediation: autonomous bounded-ratio proofs, exact seven-bridge tables,
+  terminal constants, Halter--Koch adjudication, validation levels and
+  version-neutral public provenance wording.
+- The English PDF has 76 pages, measures 931426 bytes, has Git blob
+  `0e78d23b2888761cdcda75b2e623b340e41e86b8`, and SHA-256
+  `40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b`.
+  The synchronized French PDF has 79 pages, measures 942204 bytes, has Git
+  blob `042909b19874e8a12312ff940816dec96d7d7051`, and SHA-256
+  `f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0`.
+- The Lean core, Comparator fileset, literature certificates, declarations,
+  bridge registry and toolchain are unchanged.
 - The hardened v0.48.0 Comparator evidence remains the evidence for the
   byte-identical six-file Comparator input and its historical manuscript
-  hashes. It does not bind the corrected v0.48.1 PDF byte streams, and no new
-  hardened Comparator run is claimed for this documentary patch.
+  hashes. It does not bind the remediated v0.48.1 PDF byte streams, and no new
+  hardened Comparator run is claimed for this candidate.
 
 ## 0.48.0
 

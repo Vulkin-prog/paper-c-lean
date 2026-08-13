@@ -16,10 +16,10 @@
   `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4`
 - modèle officiel `formalization.yaml` v0.3 : commit
   `fab03cbbed1a5857de17af32de30421a734c77c6`
-- PDF cible anglais (71 pages dans le fichier portant cette empreinte), SHA-256 :
-  `fd015e349111090ca861901f482b264bdb4a93e223e6ea24bd4a482dfb4ce236`
-- PDF source français synchronisé (73 pages), SHA-256 :
-  `068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8`
+- PDF cible anglais (76 pages dans le fichier portant cette empreinte), SHA-256 :
+  `40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b`
+- PDF source français synchronisé (79 pages), SHA-256 :
+  `f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0`
 - racine unique de l’archive : `paper_c_lean/`
 - archive de livraison prévue : `paper_c_lean_v0481.zip`
 
@@ -37,31 +37,33 @@ lean4export doit être compilé séparément avec la toolchain Lean de Paper C,
 et non remplacé silencieusement par le binaire construit sous la toolchain
 plus récente propre à Comparator.
 
-Le candidat documentaire courant a recalculé les octets présents dans le dépôt :
+Le candidat courant a recalculé les octets présents dans le dépôt :
 `paper_C_complete_v09_en.pdf` est le blob Git
-`632584bbcd21e55def761aa0eed35d43fcf1ccbc`, mesure 841628 octets et a pour
+`0e78d23b2888761cdcda75b2e623b340e41e86b8`, mesure 931426 octets et a pour
 SHA-256
-`fd015e349111090ca861901f482b264bdb4a93e223e6ea24bd4a482dfb4ce236` ;
+`40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b` ;
 `paper_C_complete_v09.pdf` est le blob Git
-`c82dcaeb6796957ec7d8f49b73a54e4c9ef839d5`, mesure 849089 octets et a pour
+`042909b19874e8a12312ff940816dec96d7d7051`, mesure 942204 octets et a pour
 SHA-256
-`068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8`.
+`f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0`.
 
 ## Périmètre du correctif 0.48.1
 
-Le candidat v0.48.1 remplace les deux PDF et les métadonnées publiques qui
-les décrivent. Les paragraphes bilingues de reproduction et de disponibilité
-renvoient désormais aux seuls enregistrements publics stables du papier et de
-la formalisation, sans numéro de cycle éditorial ni dépôt privé. Les pages
-anglaises 1--67 et françaises 1--69 sont graphiquement identiques à celles de
-v0.48.0. Les 382 sources du cœur Lean, les six fichiers Comparator, les
-certificats bibliographiques, leurs digests, les déclarations et le registre
-des 13 ponts restent byte-identiques.
+Le candidat v0.48.1 remplace les deux PDF après remédiation des contre-audits
+mathématique et de release. Les manuscrits explicitent notamment les quatre
+sites du transport à rapport borné, les sept interfaces de littérature, les
+constantes terminales et la séparation entre preuve imprimée, déduction Lean
+conditionnelle et passages non mécanisés. Les paragraphes bilingues de
+reproduction et de disponibilité renvoient aux seuls enregistrements publics
+stables, sans numéro de cycle éditorial ni dépôt privé. Les 382 sources du
+cœur Lean, les six fichiers Comparator, les certificats bibliographiques,
+leurs digests, les déclarations et le registre des 13 ponts restent
+byte-identiques.
 
 La preuve Comparator durcie publiée avec v0.48.0 porte sur le fileset
 Comparator inchangé et lie les empreintes historiques des PDF v0.48.0. Elle
 ne lie pas les nouveaux octets PDF de v0.48.1 ; aucun nouveau run durci n’est
-revendiqué pour ce correctif documentaire.
+revendiqué pour ce candidat remédié.
 
 ## Périmètre du jalon 0.48.0 (historique)
 

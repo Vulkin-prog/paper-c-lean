@@ -15,11 +15,11 @@ Public formalization: [`github.com/Vulkin-prog/paper-c-lean`](https://github.com
 and [Zenodo formalization concept DOI
 `10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
 
-Target manuscript: `paper_C_complete_v09_en.pdf` (71 physical pages), SHA-256
-`fd015e349111090ca861901f482b264bdb4a93e223e6ea24bd4a482dfb4ce236`.
+Target manuscript: `paper_C_complete_v09_en.pdf` (76 physical pages), SHA-256
+`40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b`.
 
-Synchronized French manuscript: `paper_C_complete_v09.pdf` (73 pages), SHA-256
-`068a859e317b9942c77fb7e1bb6adef7771bb541e3d44e6cf70446f3e5c14ed8`.
+Synchronized French manuscript: `paper_C_complete_v09.pdf` (79 pages), SHA-256
+`f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0`.
 
 > **Release-candidate status (2026-08-13).** PR #5 and branch
 > `agent/v0481-publication-metadata` are not a qualified `v0.48.1` release.
@@ -58,7 +58,7 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 ```
 
 must therefore return no matches. This certifies only the modules present, not
-the complete 71-page target manuscript or its synchronized 73-page French
+the complete 76-page target manuscript or its synchronized 79-page French
 source.
 
 ## External semantic audit boundary (v0.48.0)
@@ -240,9 +240,10 @@ the v0.48.0 Comparator-fileset SHA-256 is
 The additive rc2 literature-certificate fileset has its own SHA-256,
 `6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996`;
 it is not part of either frozen Lean fileset.
-Version v0.48.1 replaces only the two manuscript PDFs and their public
-provenance metadata. The frozen Lean core, Comparator fileset, and literature
-certificate fileset remain byte-identical to v0.48.0.
+Version v0.48.1 replaces the two manuscript PDFs after mathematical and
+documentary audit remediation, and updates their public provenance metadata.
+The frozen Lean core, Comparator fileset, and literature-certificate fileset
+remain byte-identical to v0.48.0.
 
 Project version `0.47.0` closed the root-module gap in the indivisible
 manuscript--sources--audit triplet. `PaperC.lean`, the library target built by
