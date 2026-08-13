@@ -61,6 +61,14 @@ jobs:
           node scripts/test_audit_root_guards.mjs
           git diff --check
 
+      - name: Stage workflow files for connector installation
+        run: |
+          mkdir -p workflow_staging
+          cp .github/workflows/reproducibility.yml workflow_staging/reproducibility.yml
+          cp .github/workflows/release-qualification.yml workflow_staging/release-qualification.yml
+          git checkout HEAD -- .github/workflows/reproducibility.yml
+          rm -f .github/workflows/release-qualification.yml
+
       - name: Remove one-shot bootstrap material
         run: |
           rm -f .github/bootstrap/lean-audit-remediation.part{00..06}
@@ -68,7 +76,6 @@ jobs:
           rm -f .github/bootstrap/mathematical_report.md
           rm -f .github/bootstrap/repository_report.md
           rm -rf .github/bootstrap/__pycache__
-          rm -f .github/workflows/apply-lean-audit-remediation.yml
           rmdir .github/bootstrap 2>/dev/null || true
           rm -rf ci-logs/pdf-qa-remediation
 
