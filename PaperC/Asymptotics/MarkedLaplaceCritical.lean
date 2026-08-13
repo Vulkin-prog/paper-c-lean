@@ -393,9 +393,9 @@ theorem sectionFourteenFour_laplaceFunctional_of_split
 Section 14.4 under the canonical `κ` arithmetic route.
 
 The source marked Laplace expectation converges for every fixed mark cutoff.
-The signature contains AGG and only the three literature inputs
-Evertse--Silverman, the HK13 conductor comparison, and the Nicolas--Robin
-divisor inequality.
+The signature contains AGG and only the two remaining literature inputs,
+Evertse--Silverman and the Nicolas--Robin divisor inequality.  The conductor
+comparison is discharged internally.
 -/
 theorem sectionFourteenFour_laplaceFunctional
     (hAGG :
@@ -403,8 +403,6 @@ theorem sectionFourteenFour_laplaceFunctional
     {C rate : ℝ} (hC : 0 ≤ C) {E : ℕ}
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement)
     {N L : ℕ → ℕ} {g : ℝ → ℕ → ℝ}
@@ -434,8 +432,7 @@ theorem sectionFourteenFour_laplaceFunctional
       hAGG hC hN hwindow hscale hg hg0
   exact
     markedBTwoSplitReal_uniformLittleOOne hC E hES
-      (PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
-        hConductor hDivisor)
+      (PellInput.generalizedPellPolynomialBox_of_divisorLogBound hDivisor)
 
 end
 

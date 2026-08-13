@@ -790,15 +790,13 @@ theorem spatialLaplaceError_uniformLittleOOne_of_homogeneousMass
 
 /--
 Canonical `κ`-route discharge of the spatial error.  Its only external
-arithmetic assumptions are Evertse--Silverman, the conductor comparison,
-and the Nicolas--Robin divisor inequality.
+arithmetic assumptions are Evertse--Silverman and the Nicolas--Robin divisor
+inequality; the conductor comparison is discharged internally.
 -/
 theorem spatialLaplaceError_uniformLittleOOne
     {C : ℝ} (hC : 0 ≤ C)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformLittleOOn
@@ -811,7 +809,7 @@ theorem spatialLaplaceError_uniformLittleOOne
   exact
     NonterminalSectorSaving.uniformBigOOn_trans_uniformLittleOOn
       (DyadicKappaQuantitative.homogeneousMass_uniformBigO
-        hC hES hConductor hDivisor)
+        hC hES hDivisor)
       (NonterminalSectorSaving.quadraticDivLogLogSquaredScale_uniformLittleO_quadratic
         (CriticalRunWindow.InRunLengthWindow C))
 
@@ -913,16 +911,15 @@ Section 14.2 under the canonical `κ` arithmetic route.  The source
 expectation converges to the Laplace functional of the homogeneous Poisson
 point process on `[1,2)`.
 
-The signature contains AGG and only the three literature inputs
-Evertse--Silverman, HK13 conductor fibres, and Nicolas--Robin.
+The signature contains AGG and only the two remaining literature inputs,
+Evertse--Silverman and Nicolas--Robin.  The conductor comparison is
+discharged internally.
 -/
 theorem sectionFourteenTwo_spatialLaplaceFunctional
     (hAGG : ArratiaGoldsteinGordonStatement)
     {C rate : ℝ} (hC : 0 ≤ C)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement)
     {N L : ℕ → ℕ} {g : ℝ → ℝ}
@@ -949,7 +946,7 @@ theorem sectionFourteenTwo_spatialLaplaceFunctional
   · exact
       NonterminalSectorSaving.uniformBigOOn_trans_uniformLittleOOn
         (DyadicKappaQuantitative.homogeneousMass_uniformBigO
-          hC hES hConductor hDivisor)
+          hC hES hDivisor)
         (NonterminalSectorSaving.quadraticDivLogLogSquaredScale_uniformLittleO_quadratic
           (CriticalRunWindow.InRunLengthWindow C))
   · exact hN

@@ -2,33 +2,40 @@
 
 ## 0.48.1 (candidate; not released)
 
-
+- Discharged `HK13-QO-conductor-fibres` entirely in Lean.  The new
+  quadratic-order construction builds `K = ℚ(√D)`, the order embedding and
+  ideal data, proves `2 O_K ⊆ ℤ[√D]`, and uses the four residues of
+  `O_K / 2 O_K` to descend equality of extended ideals.
+- Removed the Halter--Koch premise from all canonical endpoints and from the
+  principal Comparator target.  Six external bridges remain open globally;
+  Theorem 1.1 now takes exactly AGG, Evertse--Silverman and Nicolas--Robin.
+- Marked the current Comparator state `not_run`.  The published hardened
+  v0.48.0 evidence is retained as historical evidence for its exact old
+  bytes, but a fresh no-fallback run is required for this candidate.
 - Published the two 2026-08-13 agent counter-reviews with provenance and
   original SHA-256 values; no independent human review is claimed.
-- Added an explicit Halter--Koch adjudication separating the conventional
-  maximal-order proof in the manuscript from the still-conditional Lean
-  interface.
+- Updated the Halter--Koch adjudication to separate the conventional
+  maximal-order proof in the manuscript, the historical source-shaped record,
+  and the new internal modulo-two discharge.
 - Added reproducible PDF QA, retry-safe Lean setup in ordinary CI, and a strict
   two-commit release-binding workflow. These additions do not qualify the
   release by themselves; hardened no-fallback Comparator evidence is still
   required.
 
 - Rebuilt the bilingual manuscripts after mathematical and release-audit
-  remediation: autonomous bounded-ratio proofs, exact seven-bridge tables,
+  remediation: autonomous bounded-ratio proofs, exact bridge tables,
   terminal constants, Halter--Koch adjudication, validation levels and
   version-neutral public provenance wording.
-- The English PDF has 76 pages, measures 931426 bytes, has Git blob
-  `0e78d23b2888761cdcda75b2e623b340e41e86b8`, and SHA-256
-  `40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b`.
-  The synchronized French PDF has 79 pages, measures 942204 bytes, has Git
-  blob `042909b19874e8a12312ff940816dec96d7d7051`, and SHA-256
-  `f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0`.
-- The Lean core, Comparator fileset, literature certificates, declarations,
-  bridge registry and toolchain are unchanged.
-- The hardened v0.48.0 Comparator evidence remains the evidence for the
-  byte-identical six-file Comparator input and its historical manuscript
-  hashes. It does not bind the remediated v0.48.1 PDF byte streams, and no new
-  hardened Comparator run is claimed for this candidate.
+- The English PDF has 77 pages, measures 935831 bytes, has Git blob
+  `de8a94d19ce76a794e1bcd061f1ca3225d2c506f`, and SHA-256
+  `c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1`.
+  The synchronized French PDF has 79 pages, measures 946847 bytes, has Git
+  blob `5cfdc88be6fe16344facfcc10d144b7821a41985`, and SHA-256
+  `11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44`.
+- The Lean core, Comparator fileset and bridge registry now differ from
+  v0.48.0 because of the conductor closure.  The three active literature
+  certificates remain source-facing; the Halter--Koch report is retained as a
+  hashed historical closure note.
 
 ## 0.48.0
 

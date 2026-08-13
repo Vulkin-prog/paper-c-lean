@@ -63,11 +63,13 @@ try {
     config.target_pdf.filename,
     config.source_pdf_fr.filename,
     config.verification.comparator.compatibility_probe.transcript,
-    ...config.verification.comparator.configurations
+    ...config.verification.comparator.historical_configurations
       .map(run => run.evidence_record)
       .filter(evidenceRecord => typeof evidenceRecord === 'string'),
     ...config.verification.comparator.fileset,
     ...config.verification.literature_certificates.entries
+      .map(entry => entry.file),
+    ...config.verification.literature_certificates.historical_closure_notes
       .map(entry => entry.file),
   ]);
   for (const relativePath of fixtureFiles) {
@@ -102,8 +104,13 @@ try {
   if (
     baselineManifest.literature_certificates.length !==
       config.verification.literature_certificates.entries.length ||
+    baselineManifest.historical_literature_closure_notes.length !==
+      config.verification.literature_certificates.historical_closure_notes.length ||
     !/^[0-9a-f]{64}$/.test(
       baselineManifest.literature_certificate_digest_sha256,
+    ) ||
+    !/^[0-9a-f]{64}$/.test(
+      baselineManifest.literature_documentation_digest_sha256,
     )
   ) {
     throw new Error('generated audit does not record literature certificates');
@@ -115,7 +122,7 @@ try {
 
   const evidenceRecordPath = path.join(
     temporaryRoot,
-    config.verification.comparator.configurations[0].evidence_record,
+    config.verification.comparator.historical_configurations[0].evidence_record,
   );
   const originalEvidenceRecord = fs.readFileSync(evidenceRecordPath, 'utf8');
   fs.appendFileSync(evidenceRecordPath, '\n');
@@ -123,7 +130,7 @@ try {
   if (
     evidenceRecordGuardResult.status === 0 ||
     !`${evidenceRecordGuardResult.stdout}${evidenceRecordGuardResult.stderr}`
-      .includes('Comparator evidence-record SHA-256 mismatch')
+      .includes('historical Comparator evidence-record SHA-256 mismatch')
   ) {
     throw new Error(
       'modifying a Comparator evidence record did not invalidate its SHA-256',
@@ -142,7 +149,8 @@ try {
     !`${unexpectedEvidenceRecordResult.stdout}`
       .concat(`${unexpectedEvidenceRecordResult.stderr}`)
       .includes(
-        'comparator/evidence must contain exactly the configured evidence records',
+        'comparator/evidence must contain exactly the configured current and ' +
+        'historical evidence records',
       )
   ) {
     throw new Error('an undeclared Comparator evidence record was not rejected');
@@ -184,7 +192,8 @@ try {
   if (
     unexpectedLiteratureResult.status === 0 ||
     !`${unexpectedLiteratureResult.stdout}${unexpectedLiteratureResult.stderr}`.includes(
-      'directory must contain exactly the configured files',
+      'directory must contain exactly the configured active certificates ' +
+      'and historical closure notes',
     )
   ) {
     throw new Error(
@@ -192,6 +201,55 @@ try {
     );
   }
   fs.rmSync(unexpectedLiteraturePath);
+
+  const closureNotePath = path.join(
+    temporaryRoot,
+    config.verification.literature_certificates.historical_closure_notes[0].file,
+  );
+  const originalClosureNote = fs.readFileSync(closureNotePath, 'utf8');
+  fs.appendFileSync(
+    closureNotePath,
+    '\n<!-- Historical closure-note digest guard mutation. -->\n',
+  );
+  const closureNoteGuardResult = runGenerator([
+    '--check-literature-certificates',
+  ]);
+  if (
+    closureNoteGuardResult.status === 0 ||
+    !`${closureNoteGuardResult.stdout}${closureNoteGuardResult.stderr}`.includes(
+      'literature certificate bytes or mapping differ',
+    )
+  ) {
+    throw new Error(
+      'modifying the historical closure note did not invalidate its manifest digest',
+    );
+  }
+  fs.writeFileSync(closureNotePath, originalClosureNote);
+
+  const comparatorConfigPath = path.join(temporaryRoot, 'audit_config.json');
+  const originalComparatorConfig = fs.readFileSync(comparatorConfigPath, 'utf8');
+  const staleComparatorConfig = JSON.parse(originalComparatorConfig);
+  staleComparatorConfig.verification.comparator.status =
+    'sandboxed_lean_kernel_passed';
+  staleComparatorConfig.verification.comparator.configurations =
+    staleComparatorConfig.verification.comparator.historical_configurations
+      .map(run => ({...run}));
+  fs.writeFileSync(
+    comparatorConfigPath,
+    `${JSON.stringify(staleComparatorConfig, null, 2)}\n`,
+  );
+  const staleComparatorResult = runGenerator();
+  if (
+    staleComparatorResult.status === 0 ||
+    !`${staleComparatorResult.stdout}${staleComparatorResult.stderr}`.includes(
+      'passed Comparator run is stale',
+    )
+  ) {
+    throw new Error(
+      'historical Comparator evidence was accepted as a current passed run',
+    );
+  }
+  fs.writeFileSync(comparatorConfigPath, originalComparatorConfig);
 
   const primarySourceAccess =
     config.verification.literature_certificates.entries[0]
@@ -291,8 +349,9 @@ try {
   process.stdout.write(
     'root and literature audit guards passed: PaperC.lean changes invalidate ' +
     'the digest; root public theorems enter the inventory and AuditCheck.lean; ' +
-    'Comparator evidence mutations and undeclared evidence, undeclared ' +
-    'certificates, and access-marker drift are rejected\n',
+    'historical Comparator evidence mutations, stale historical evidence ' +
+    'reused as a current run, undeclared evidence, undeclared certificates, ' +
+    'historical closure-note mutations, and access-marker drift are rejected\n',
   );
 } finally {
   fs.rmSync(temporaryRoot, {recursive: true, force: true});

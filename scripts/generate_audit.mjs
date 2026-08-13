@@ -119,7 +119,7 @@ if (
 }
 
 const auditConfig = JSON.parse(fs.readFileSync(auditConfigPath, 'utf8'));
-if (auditConfig.schema_version !== 2) {
+if (auditConfig.schema_version !== 4) {
   throw new Error('unsupported audit_config.json schema_version');
 }
 requirePlainObject(auditConfig.project, 'project');
@@ -179,9 +179,16 @@ for (const [index, source] of auditConfig.sources.entries()) {
   requireNonemptyString(source.type, `sources[${index}].type`);
   const hasFilename = source.filename !== undefined;
   const hasSha256 = source.sha256 !== undefined;
-  if (hasFilename !== hasSha256) {
+  const hasPageCount = source.page_count !== undefined;
+  const hasByteLength = source.byte_length !== undefined;
+  if (
+    ![hasFilename, hasSha256, hasPageCount, hasByteLength].every(
+      present => present === hasFilename,
+    )
+  ) {
     throw new Error(
-      `audit_config.json sources[${index}] must provide filename and sha256 together`,
+      `audit_config.json sources[${index}] must provide filename, sha256, ` +
+      'page_count and byte_length together',
     );
   }
   if (hasFilename) {
@@ -197,6 +204,16 @@ for (const [index, source] of auditConfig.sources.entries()) {
     if (!/^[0-9a-f]{64}$/.test(source.sha256)) {
       throw new Error(
         `audit_config.json has an invalid sources[${index}].sha256`,
+      );
+    }
+    if (!Number.isSafeInteger(source.page_count) || source.page_count < 1) {
+      throw new Error(
+        `audit_config.json has an invalid sources[${index}].page_count`,
+      );
+    }
+    if (!Number.isSafeInteger(source.byte_length) || source.byte_length < 1) {
+      throw new Error(
+        `audit_config.json has an invalid sources[${index}].byte_length`,
       );
     }
     localSources.push(source);
@@ -362,6 +379,25 @@ for (const [index, entry] of
   }
   requireNonemptyString(entry.limitations, `${label}.limitations`);
 }
+if (!Array.isArray(literatureCertificateMetadata.historical_closure_notes)) {
+  throw new Error(
+    'audit_config.json has an invalid ' +
+    'verification.literature_certificates.historical_closure_notes',
+  );
+}
+for (const [index, entry] of
+  literatureCertificateMetadata.historical_closure_notes.entries()) {
+  const label =
+    `verification.literature_certificates.historical_closure_notes[${index}]`;
+  requirePlainObject(entry, label);
+  requireNonemptyString(entry.bridge_id, `${label}.bridge_id`);
+  requireNonemptyString(entry.file, `${label}.file`);
+  if (entry.status !== 'lean_discharged') {
+    throw new Error(`audit_config.json has an invalid ${label}.status`);
+  }
+  requireNonemptyString(entry.discharged_by, `${label}.discharged_by`);
+  requireNonemptyString(entry.note, `${label}.note`);
+}
 const comparatorMetadata = requirePlainObject(
   auditConfig.verification.comparator,
   'verification.comparator',
@@ -459,9 +495,15 @@ if (
     'audit_config.json has an invalid verification.comparator.configurations',
   );
 }
-const publishedComparatorEvidence = requirePlainObject(
-  comparatorMetadata.published_evidence,
-  'verification.comparator.published_evidence',
+if (!Array.isArray(comparatorMetadata.historical_configurations)) {
+  throw new Error(
+    'audit_config.json has an invalid ' +
+    'verification.comparator.historical_configurations',
+  );
+}
+const historicalPublishedComparatorEvidence = requirePlainObject(
+  comparatorMetadata.historical_published_evidence,
+  'verification.comparator.historical_published_evidence',
 );
 const expectedPublishedComparatorEvidenceKeys = [
   'archive',
@@ -489,7 +531,9 @@ const expectedPublishedComparatorEvidenceKeys = [
   'summary_sha256',
 ].sort(binaryCompare);
 if (
-  JSON.stringify(Object.keys(publishedComparatorEvidence).sort(binaryCompare)) !==
+  JSON.stringify(
+    Object.keys(historicalPublishedComparatorEvidence).sort(binaryCompare),
+  ) !==
   JSON.stringify(expectedPublishedComparatorEvidenceKeys)
 ) {
   throw new Error(
@@ -509,8 +553,8 @@ for (const field of [
   'qualification',
 ]) {
   requireNonemptyString(
-    publishedComparatorEvidence[field],
-    `verification.comparator.published_evidence.${field}`,
+    historicalPublishedComparatorEvidence[field],
+    `verification.comparator.historical_published_evidence.${field}`,
   );
 }
 for (const field of [
@@ -521,55 +565,61 @@ for (const field of [
   'raw_archive_sha256',
   'raw_sha256sums_sha256',
 ]) {
-  if (!/^[0-9a-f]{64}$/.test(publishedComparatorEvidence[field] ?? '')) {
+  if (!/^[0-9a-f]{64}$/.test(
+    historicalPublishedComparatorEvidence[field] ?? '',
+  )) {
     throw new Error(
       'audit_config.json has an invalid ' +
-      `verification.comparator.published_evidence.${field}`,
+      `verification.comparator.historical_published_evidence.${field}`,
     );
   }
 }
 requireCommit(
-  publishedComparatorEvidence.paper_c_commit,
-  'verification.comparator.published_evidence.paper_c_commit',
+  historicalPublishedComparatorEvidence.paper_c_commit,
+  'verification.comparator.historical_published_evidence.paper_c_commit',
 );
 if (
-  path.basename(publishedComparatorEvidence.archive) !==
-    publishedComparatorEvidence.archive ||
-  !publishedComparatorEvidence.archive.endsWith('.tar.zst') ||
-  path.basename(publishedComparatorEvidence.raw_archive) !==
-    publishedComparatorEvidence.raw_archive ||
-  !publishedComparatorEvidence.raw_archive.endsWith('.tar.zst') ||
-  publishedComparatorEvidence.redaction_manifest !==
+  path.basename(historicalPublishedComparatorEvidence.archive) !==
+    historicalPublishedComparatorEvidence.archive ||
+  !historicalPublishedComparatorEvidence.archive.endsWith('.tar.zst') ||
+  path.basename(historicalPublishedComparatorEvidence.raw_archive) !==
+    historicalPublishedComparatorEvidence.raw_archive ||
+  !historicalPublishedComparatorEvidence.raw_archive.endsWith('.tar.zst') ||
+  historicalPublishedComparatorEvidence.redaction_manifest !==
     'REDACTION_MANIFEST.json' ||
-  publishedComparatorEvidence.raw_sha256sums_in_public_archive !==
+  historicalPublishedComparatorEvidence.raw_sha256sums_in_public_archive !==
     'provenance/RAW_SHA256SUMS' ||
-  publishedComparatorEvidence.archive ===
-    publishedComparatorEvidence.raw_archive ||
-  publishedComparatorEvidence.archive_sha256 ===
-    publishedComparatorEvidence.raw_archive_sha256
+  historicalPublishedComparatorEvidence.archive ===
+    historicalPublishedComparatorEvidence.raw_archive ||
+  historicalPublishedComparatorEvidence.archive_sha256 ===
+    historicalPublishedComparatorEvidence.raw_archive_sha256
 ) {
   throw new Error(
     'audit_config.json has invalid public/private Comparator evidence paths',
   );
 }
 if (
-  !Number.isSafeInteger(publishedComparatorEvidence.archive_size_bytes) ||
-  publishedComparatorEvidence.archive_size_bytes < 1 ||
-  !Number.isSafeInteger(publishedComparatorEvidence.raw_archive_size_bytes) ||
-  publishedComparatorEvidence.raw_archive_size_bytes < 1 ||
-  publishedComparatorEvidence.privacy_profile !==
+  !Number.isSafeInteger(
+    historicalPublishedComparatorEvidence.archive_size_bytes,
+  ) ||
+  historicalPublishedComparatorEvidence.archive_size_bytes < 1 ||
+  !Number.isSafeInteger(
+    historicalPublishedComparatorEvidence.raw_archive_size_bytes,
+  ) ||
+  historicalPublishedComparatorEvidence.raw_archive_size_bytes < 1 ||
+  historicalPublishedComparatorEvidence.privacy_profile !==
     'derived_privacy_minimized_bundle_v1' ||
-  publishedComparatorEvidence.raw_archive_retention !==
+  historicalPublishedComparatorEvidence.raw_archive_retention !==
     'local_only_not_published' ||
-  publishedComparatorEvidence.sandboxed !== true ||
-  publishedComparatorEvidence.non_root !== true ||
-  publishedComparatorEvidence.enable_nanoda !== false ||
-  JSON.stringify(publishedComparatorEvidence.kernels) !==
+  historicalPublishedComparatorEvidence.sandboxed !== true ||
+  historicalPublishedComparatorEvidence.non_root !== true ||
+  historicalPublishedComparatorEvidence.enable_nanoda !== false ||
+  JSON.stringify(historicalPublishedComparatorEvidence.kernels) !==
     JSON.stringify(['lean'])
 ) {
   throw new Error(
     'audit_config.json has an invalid ' +
-    'verification.comparator.published_evidence qualification',
+    'verification.comparator.historical_published_evidence qualification',
   );
 }
 if (!Array.isArray(auditConfig.challenge_placeholders)) {
@@ -583,12 +633,17 @@ const validatePdfEntry = (field, entry) => {
     entry === null ||
     typeof entry !== 'object' ||
     Array.isArray(entry) ||
-    Object.keys(entry).sort().join(',') !== 'filename,sha256' ||
+    Object.keys(entry).sort().join(',') !==
+      'byte_length,filename,page_count,sha256' ||
     typeof entry.filename !== 'string' ||
     entry.filename.length === 0 ||
     path.basename(entry.filename) !== entry.filename ||
     !entry.filename.endsWith('.pdf') ||
-    !/^[0-9a-f]{64}$/.test(entry.sha256)
+    !/^[0-9a-f]{64}$/.test(entry.sha256) ||
+    !Number.isSafeInteger(entry.page_count) ||
+    entry.page_count < 1 ||
+    !Number.isSafeInteger(entry.byte_length) ||
+    entry.byte_length < 1
   ) {
     throw new Error(`audit_config.json has an invalid ${field} entry`);
   }
@@ -604,10 +659,12 @@ if (
 if (
   localSources.length !== 1 ||
   localSources[0].filename !== auditConfig.target_pdf.filename ||
-  localSources[0].sha256 !== auditConfig.target_pdf.sha256
+  localSources[0].sha256 !== auditConfig.target_pdf.sha256 ||
+  localSources[0].page_count !== auditConfig.target_pdf.page_count ||
+  localSources[0].byte_length !== auditConfig.target_pdf.byte_length
 ) {
   throw new Error(
-    'sources must contain exactly one local entry matching target_pdf filename and SHA-256',
+    'sources must contain exactly one local entry matching all target_pdf metadata',
   );
 }
 
@@ -631,9 +688,16 @@ for (const field of ['target_pdf', 'source_pdf_fr']) {
       `expected ${entry.sha256}, got ${actualSha256}`,
     );
   }
+  if (pdfBytes.length !== entry.byte_length) {
+    throw new Error(
+      `${field} PDF byte-length mismatch for ${entry.filename}: ` +
+      `expected ${entry.byte_length}, got ${pdfBytes.length}`,
+    );
+  }
   verifiedPdfEntries[field] = {
     filename: entry.filename,
     sha256: actualSha256,
+    page_count: entry.page_count,
     byte_length: pdfBytes.length,
   };
 }
@@ -642,16 +706,18 @@ if (checkPdfsOnly) {
   fs.writeSync(
     process.stdout.fd,
     `verified target_pdf ${verifiedPdfEntries.target_pdf.sha256} ` +
-    `(${verifiedPdfEntries.target_pdf.byte_length} bytes); ` +
+    `(${verifiedPdfEntries.target_pdf.byte_length} bytes; configured ` +
+    `${verifiedPdfEntries.target_pdf.page_count} pages); ` +
     `source_pdf_fr ${verifiedPdfEntries.source_pdf_fr.sha256} ` +
-    `(${verifiedPdfEntries.source_pdf_fr.byte_length} bytes)\n`,
+    `(${verifiedPdfEntries.source_pdf_fr.byte_length} bytes; configured ` +
+    `${verifiedPdfEntries.source_pdf_fr.page_count} pages)\n`,
   );
   process.exit(0);
 }
 
 const readme = fs.readFileSync(readmePath, 'utf8');
 for (const field of ['target_pdf', 'source_pdf_fr']) {
-  for (const key of ['filename', 'sha256']) {
+  for (const key of ['filename', 'sha256', 'page_count', 'byte_length']) {
     if (readme.includes(auditConfig[field][key])) {
       continue;
     }
@@ -1802,7 +1868,6 @@ const normalizeProjectRelativePath = (relativePath, label) => {
 const requiredLiteratureCertificateBridgeIds = [
   'AGG89-T1-finite-dependency-b3-zero',
   'ES86-T1b-Q-split-n2',
-  'HK13-QO-conductor-fibres',
   'NR83-T1-divisor-log-bound',
 ].sort(binaryCompare);
 const literatureCertificateDirectory = path.join(
@@ -1829,16 +1894,17 @@ const discoveredLiteratureCertificateFiles = fs
     return `literature_certificates/${entry.name}`;
   })
   .sort(binaryCompare);
-const configuredLiteratureCertificateFiles =
-  literatureCertificateMetadata.entries
-    .map(entry => entry.file)
-    .sort(binaryCompare);
+const configuredLiteratureCertificateFiles = [
+  ...literatureCertificateMetadata.entries,
+  ...literatureCertificateMetadata.historical_closure_notes,
+].map(entry => entry.file).sort(binaryCompare);
 if (
   JSON.stringify(discoveredLiteratureCertificateFiles) !==
   JSON.stringify(configuredLiteratureCertificateFiles)
 ) {
   throw new Error(
-    'literature_certificates directory must contain exactly the configured files',
+    'literature_certificates directory must contain exactly the configured ' +
+    'active certificates and historical closure notes',
   );
 }
 const literatureCertificateBridgeIds = new Set();
@@ -1930,7 +1996,92 @@ if (
   JSON.stringify(requiredLiteratureCertificateBridgeIds)
 ) {
   throw new Error(
-    'literature certificates must cover exactly the four Theorem 1.1 bridges',
+    'active literature certificates must cover exactly the three open ' +
+    'Theorem 1.1 bridges',
+  );
+}
+const historicalLiteratureClosureNotes = [];
+const historicalLiteratureClosureBridgeIds = new Set();
+const historicalLiteratureClosurePaths = new Set();
+for (const [index, entry] of
+  literatureCertificateMetadata.historical_closure_notes.entries()) {
+  const label =
+    `verification.literature_certificates.historical_closure_notes[${index}]`;
+  if (historicalLiteratureClosureBridgeIds.has(entry.bridge_id)) {
+    throw new Error(`duplicate historical closure-note bridge: ${entry.bridge_id}`);
+  }
+  historicalLiteratureClosureBridgeIds.add(entry.bridge_id);
+  if (
+    historicalLiteratureClosurePaths.has(entry.file) ||
+    literatureCertificatePaths.has(entry.file)
+  ) {
+    throw new Error(`duplicate literature documentation path: ${entry.file}`);
+  }
+  historicalLiteratureClosurePaths.add(entry.file);
+  if (
+    !entry.file.startsWith('literature_certificates/') ||
+    !entry.file.endsWith('.md')
+  ) {
+    throw new Error(
+      `audit_config.json has an invalid ${label}.file: ${entry.file}`,
+    );
+  }
+  const bridge = bridgeById.get(entry.bridge_id);
+  if (
+    bridge === undefined ||
+    bridge.kind !== 'external' ||
+    bridge.status !== 'discharged'
+  ) {
+    throw new Error(
+      `historical closure note must refer to a discharged external bridge: ` +
+      entry.bridge_id,
+    );
+  }
+  if (!(bridge.discharged_by ?? []).includes(entry.discharged_by)) {
+    throw new Error(
+      `historical closure note names an unregistered discharge theorem: ` +
+      entry.discharged_by,
+    );
+  }
+  const absolutePath = normalizeProjectRelativePath(entry.file, `${label}.file`);
+  const bytes = fs.readFileSync(absolutePath);
+  let markdown;
+  try {
+    markdown = new TextDecoder('utf-8', {fatal: true}).decode(bytes);
+  } catch (error) {
+    throw new Error(
+      `historical closure note is not valid UTF-8: ${entry.file}: ` +
+      error.message,
+    );
+  }
+  for (const requiredText of [
+    `Bridge ID: \`${entry.bridge_id}\``,
+    `Lean proposition: \`${bridge.lean_name}\``,
+    'Current bridge status: `discharged`',
+    `Discharged by: \`${entry.discharged_by}\``,
+    'Historical role: `closure note`',
+  ]) {
+    if (!markdown.includes(requiredText)) {
+      throw new Error(
+        `historical closure note ${entry.file} lacks required text: ` +
+        requiredText,
+      );
+    }
+  }
+  historicalLiteratureClosureNotes.push({
+    ...entry,
+    lean_name: bridge.lean_name,
+    sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+    byte_length: bytes.length,
+    bytes,
+  });
+}
+if (
+  JSON.stringify([...historicalLiteratureClosureBridgeIds].sort(binaryCompare)) !==
+  JSON.stringify(['HK13-QO-conductor-fibres'])
+) {
+  throw new Error(
+    'historical closure notes must record exactly the discharged HK13 bridge',
   );
 }
 const literatureCertificateFiles = parsedLiteratureCertificates
@@ -1948,14 +2099,37 @@ for (const relativePath of literatureCertificateFiles) {
 }
 const literatureCertificateDigestSha256 =
   literatureCertificateDigest.digest('hex');
+const literatureDocumentationFiles = configuredLiteratureCertificateFiles;
+const literatureDocumentationDigest = crypto.createHash('sha256');
+for (const relativePath of literatureDocumentationFiles) {
+  const certificate = parsedLiteratureCertificates.find(
+    entry => entry.file === relativePath,
+  );
+  const closureNote = historicalLiteratureClosureNotes.find(
+    entry => entry.file === relativePath,
+  );
+  const document = certificate ?? closureNote;
+  literatureDocumentationDigest.update(relativePath);
+  literatureDocumentationDigest.update('\0');
+  literatureDocumentationDigest.update(document.bytes);
+  literatureDocumentationDigest.update('\0');
+}
+const literatureDocumentationDigestSha256 =
+  literatureDocumentationDigest.digest('hex');
 for (const certificate of parsedLiteratureCertificates) {
   delete certificate.bytes;
+}
+for (const note of historicalLiteratureClosureNotes) {
+  delete note.bytes;
 }
 const literatureCertificateByBridgeId = new Map(
   parsedLiteratureCertificates.map(certificate => [
     certificate.bridge_id,
     certificate,
   ]),
+);
+const historicalLiteratureClosureNoteByBridgeId = new Map(
+  historicalLiteratureClosureNotes.map(note => [note.bridge_id, note]),
 );
 const effectiveSourceToLeanStatus = certificate =>
   certificate.implication_status === 'agent_checked_supports'
@@ -1981,8 +2155,12 @@ const citationLabel = bridge =>
 const publicBridgeEntries = bridges.map(
   ({local_name: _localName, ...bridge}) => {
     const certificate = literatureCertificateByBridgeId.get(bridge.id);
+    const historicalClosureNote =
+      historicalLiteratureClosureNoteByBridgeId.get(bridge.id);
     if (certificate === undefined) {
-      return bridge;
+      return historicalClosureNote === undefined
+        ? bridge
+        : {...bridge, historical_closure_note: historicalClosureNote};
     }
     return {
       ...bridge,
@@ -2023,7 +2201,13 @@ if (checkLiteratureCertificatesOnly) {
     existingManifest.literature_certificate_digest_sha256 !==
       literatureCertificateDigestSha256 ||
     JSON.stringify(existingManifest.literature_certificates) !==
-      JSON.stringify(parsedLiteratureCertificates)
+      JSON.stringify(parsedLiteratureCertificates) ||
+    JSON.stringify(existingManifest.historical_literature_closure_notes) !==
+      JSON.stringify(historicalLiteratureClosureNotes) ||
+    JSON.stringify(existingManifest.literature_documentation_fileset) !==
+      JSON.stringify(literatureDocumentationFiles) ||
+    existingManifest.literature_documentation_digest_sha256 !==
+      literatureDocumentationDigestSha256
   ) {
     throw new Error(
       'literature certificate bytes or mapping differ from audit_manifest.json; ' +
@@ -2031,8 +2215,9 @@ if (checkLiteratureCertificatesOnly) {
     );
   }
   process.stdout.write(
-    `verified ${parsedLiteratureCertificates.length} literature certificates ` +
-    `${literatureCertificateDigestSha256}\n`,
+    `verified ${parsedLiteratureCertificates.length} active literature ` +
+    `certificates and ${historicalLiteratureClosureNotes.length} historical ` +
+    `closure note (${literatureDocumentationDigestSha256})\n`,
   );
   process.exit(0);
 }
@@ -2180,7 +2365,10 @@ for (const relativePath of comparatorFiles) {
 }
 const comparatorDigestSha256 = comparatorDigest.digest('hex');
 
-const configuredComparatorEvidenceFiles = comparatorMetadata.configurations
+const configuredComparatorEvidenceFiles = [
+  ...comparatorMetadata.configurations,
+  ...comparatorMetadata.historical_configurations,
+]
   .map((run, index) => {
     const relativePath = run.evidence_record ?? null;
     if (relativePath === null) {
@@ -2201,14 +2389,10 @@ const configuredComparatorEvidenceFiles = comparatorMetadata.configurations
     }
     return relativePath;
   })
-  .filter(relativePath => relativePath !== null)
-  .sort(binaryCompare);
-if (
-  new Set(configuredComparatorEvidenceFiles).size !==
-  configuredComparatorEvidenceFiles.length
-) {
-  throw new Error('duplicate Comparator evidence-record path');
-}
+  .filter(relativePath => relativePath !== null);
+const uniqueConfiguredComparatorEvidenceFiles = [
+  ...new Set(configuredComparatorEvidenceFiles),
+].sort(binaryCompare);
 const comparatorEvidenceDirectory = path.join(
   projectRoot,
   'comparator/evidence',
@@ -2235,10 +2419,11 @@ const actualComparatorEvidenceFiles = fs
   .sort(binaryCompare);
 if (
   JSON.stringify(actualComparatorEvidenceFiles) !==
-  JSON.stringify(configuredComparatorEvidenceFiles)
+  JSON.stringify(uniqueConfiguredComparatorEvidenceFiles)
 ) {
   throw new Error(
-    'comparator/evidence must contain exactly the configured evidence records',
+    'comparator/evidence must contain exactly the configured current and ' +
+    'historical evidence records',
   );
 }
 
@@ -2595,27 +2780,159 @@ if (
   )
 ) {
   throw new Error(
-    'global Comparator success status does not match every project configuration',
+    'global Comparator success status does not match every current project ' +
+    'configuration',
   );
 }
+
+const currentComparatorConfigurationByPath = new Map(
+  parsedComparatorConfigurations.map(config => [config.path, config]),
+);
+const historicalComparatorConfigurationPaths = new Set();
+const parsedHistoricalComparatorConfigurations = [];
+let historicalComparatorSourceCommit = null;
+let historicalComparatorFilesetDigest = null;
+for (const [index, run] of
+  comparatorMetadata.historical_configurations.entries()) {
+  const label = `verification.comparator.historical_configurations[${index}]`;
+  requirePlainObject(run, label);
+  const configPath = requireNonemptyString(run.path, `${label}.path`);
+  if (historicalComparatorConfigurationPaths.has(configPath)) {
+    throw new Error(`duplicate historical Comparator configuration: ${configPath}`);
+  }
+  historicalComparatorConfigurationPaths.add(configPath);
+  const currentConfig = currentComparatorConfigurationByPath.get(configPath);
+  if (currentConfig === undefined) {
+    throw new Error(
+      `historical Comparator configuration has no current counterpart: ` +
+      configPath,
+    );
+  }
+  if (run.status !== 'sandboxed_lean_kernel_passed' || run.sandboxed !== true) {
+    throw new Error(
+      `historical Comparator configuration is not a recorded hardened pass: ` +
+      configPath,
+    );
+  }
+  const evidenceRecordRelativePath = requireNonemptyString(
+    run.evidence_record,
+    `${label}.evidence_record`,
+  );
+  const evidenceRecordAbsolutePath = normalizeProjectRelativePath(
+    evidenceRecordRelativePath,
+    `${label}.evidence_record`,
+  );
+  const evidenceRecordBytes = fs.readFileSync(evidenceRecordAbsolutePath);
+  const evidenceRecordSha256 = crypto
+    .createHash('sha256')
+    .update(evidenceRecordBytes)
+    .digest('hex');
+  if (
+    !/^[0-9a-f]{64}$/.test(run.evidence_record_sha256 ?? '') ||
+    evidenceRecordSha256 !== run.evidence_record_sha256
+  ) {
+    throw new Error(
+      `historical Comparator evidence-record SHA-256 mismatch for ${configPath}`,
+    );
+  }
+  let evidenceRecord;
+  try {
+    evidenceRecord = JSON.parse(
+      new TextDecoder('utf-8', {fatal: true}).decode(evidenceRecordBytes),
+    );
+  } catch (error) {
+    throw new Error(
+      `historical Comparator evidence record is invalid for ${configPath}: ` +
+      error.message,
+    );
+  }
+  const transcriptInPrivateRawArchive = requireNonemptyString(
+    run.transcript_in_private_raw_archive,
+    `${label}.transcript_in_private_raw_archive`,
+  );
+  if (
+    !transcriptInPrivateRawArchive.startsWith('evidence/') ||
+    path.posix.extname(transcriptInPrivateRawArchive) !== '.txt' ||
+    !/^[0-9a-f]{64}$/.test(run.transcript_sha256 ?? '') ||
+    !/^[0-9a-f]{64}$/.test(run.configuration_sha256_at_run ?? '') ||
+    !/^[0-9a-f]{64}$/.test(
+      run.comparator_fileset_digest_sha256_at_run ?? '',
+    )
+  ) {
+    throw new Error(`invalid historical Comparator metadata for ${configPath}`);
+  }
+  if (
+    run.configuration_sha256_at_run !== currentConfig.sha256 ||
+    evidenceRecord.status !== run.status ||
+    evidenceRecord.certifying !== true ||
+    evidenceRecord.sandboxed !== true ||
+    evidenceRecord.non_root !== true ||
+    JSON.stringify(evidenceRecord.kernels) !== JSON.stringify(['lean']) ||
+    evidenceRecord.enable_nanoda !== false ||
+    evidenceRecord.exit_code !== 0 ||
+    evidenceRecord.config !== configPath ||
+    evidenceRecord.configuration_sha256 !== run.configuration_sha256_at_run ||
+    evidenceRecord.comparator_fileset_digest_sha256 !==
+      run.comparator_fileset_digest_sha256_at_run ||
+    evidenceRecord.transcript !==
+      path.posix.basename(transcriptInPrivateRawArchive) ||
+    evidenceRecord.transcript_sha256 !== run.transcript_sha256
+  ) {
+    throw new Error(
+      `historical Comparator evidence record is inconsistent for ${configPath}`,
+    );
+  }
+  if (!/^[0-9a-f]{40}$/.test(evidenceRecord.paper_c_commit ?? '')) {
+    throw new Error(
+      `historical Comparator evidence has an invalid Paper C commit: ` +
+      configPath,
+    );
+  }
+  if (
+    historicalComparatorSourceCommit !== null &&
+    historicalComparatorSourceCommit !== evidenceRecord.paper_c_commit
+  ) {
+    throw new Error('historical Comparator records disagree on the source commit');
+  }
+  historicalComparatorSourceCommit = evidenceRecord.paper_c_commit;
+  if (
+    historicalComparatorFilesetDigest !== null &&
+    historicalComparatorFilesetDigest !==
+      run.comparator_fileset_digest_sha256_at_run
+  ) {
+    throw new Error('historical Comparator records disagree on the fileset digest');
+  }
+  historicalComparatorFilesetDigest =
+    run.comparator_fileset_digest_sha256_at_run;
+  parsedHistoricalComparatorConfigurations.push({
+    ...run,
+    evidence_record_sha256: evidenceRecordSha256,
+  });
+}
 if (
-  comparatorMetadata.status !== 'sandboxed_lean_kernel_passed' ||
-  parsedComparatorConfigurations.some(
-    config => config.sandboxed !== true || config.enable_nanoda !== false,
-  ) ||
-  publishedComparatorEvidence.paper_c_commit !== passedComparatorSourceCommit ||
-  publishedComparatorEvidence.comparator_fileset_digest_sha256 !==
-    comparatorDigestSha256
+  JSON.stringify([...historicalComparatorConfigurationPaths].sort(binaryCompare)) !==
+  JSON.stringify([...currentComparatorConfigurationByPath.keys()].sort(binaryCompare))
 ) {
   throw new Error(
-    'published hardened evidence does not match the validated Comparator runs',
+    'historical and current Comparator configuration paths must match exactly',
   );
 }
 if (
-  path.basename(publishedComparatorEvidence.archive) !==
-    publishedComparatorEvidence.archive ||
-  !publishedComparatorEvidence.release_url.endsWith(
-    `/tag/${publishedComparatorEvidence.release_tag}`,
+  historicalPublishedComparatorEvidence.paper_c_commit !==
+    historicalComparatorSourceCommit ||
+  historicalPublishedComparatorEvidence.comparator_fileset_digest_sha256 !==
+    historicalComparatorFilesetDigest
+) {
+  throw new Error(
+    'historical published evidence does not match the historical Comparator ' +
+    'records',
+  );
+}
+if (
+  path.basename(historicalPublishedComparatorEvidence.archive) !==
+    historicalPublishedComparatorEvidence.archive ||
+  !historicalPublishedComparatorEvidence.release_url.endsWith(
+    `/tag/${historicalPublishedComparatorEvidence.release_tag}`,
   )
 ) {
   throw new Error(
@@ -2865,7 +3182,6 @@ const formalizationMainResultItems =
 const theoremOneOneBridgeIds = [
   'AGG89-T1-finite-dependency-b3-zero',
   'ES86-T1b-Q-split-n2',
-  'HK13-QO-conductor-fibres',
   'NR83-T1-divisor-log-bound',
 ].sort(binaryCompare);
 const finiteTheoremOneOneItem = validatedPaperItems.find(
@@ -2877,7 +3193,7 @@ if (
     JSON.stringify(theoremOneOneBridgeIds)
 ) {
   throw new Error(
-    'Thm-1.1-finite-cylinder must consume exactly the four configured ' +
+    'Thm-1.1-finite-cylinder must consume exactly the three configured open ' +
     'literature bridges',
   );
 }
@@ -2974,6 +3290,9 @@ const formalizationMainResults = formalizationMainResultItems.map(item => {
 
 const formalization = {
   version: formalizationTemplate.version,
+  schema_extensions: {
+    paper_c_audit: 3,
+  },
   project: {
     name: auditConfig.project.name,
     authors: auditConfig.project.authors,
@@ -3019,7 +3338,11 @@ const formalization = {
       fileset: literatureCertificateFiles,
       digest_sha256: literatureCertificateDigestSha256,
       entries: parsedLiteratureCertificates,
+      historical_closure_notes: historicalLiteratureClosureNotes,
+      documentation_fileset: literatureDocumentationFiles,
+      documentation_digest_sha256: literatureDocumentationDigestSha256,
     },
+    historical_comparator_runs: parsedHistoricalComparatorConfigurations,
   },
   automation: auditConfig.editorial.automation,
   fidelity: auditConfig.editorial.fidelity,
@@ -3056,7 +3379,9 @@ const formalization = {
       compatibility_probe: comparatorMetadata.compatibility_probe,
       fileset: comparatorFiles,
       digest_sha256: comparatorDigestSha256,
-      published_evidence: publishedComparatorEvidence,
+      historical_published_evidence:
+        historicalPublishedComparatorEvidence,
+      historical_configurations: parsedHistoricalComparatorConfigurations,
       configurations: parsedComparatorConfigurations.map(config => ({
         path: config.path,
         sha256: config.sha256,
@@ -3085,6 +3410,9 @@ const formalization = {
       fileset: literatureCertificateFiles,
       digest_sha256: literatureCertificateDigestSha256,
       entries: parsedLiteratureCertificates,
+      historical_closure_notes: historicalLiteratureClosureNotes,
+      documentation_fileset: literatureDocumentationFiles,
+      documentation_digest_sha256: literatureDocumentationDigestSha256,
     },
   },
   acknowledgements:
@@ -3155,7 +3483,7 @@ function renderYaml(value, indentation = 0) {
 }
 
 const formalizationContent = [
-  '# Generated deterministically from audit_config.json schema 2.',
+  `# Generated deterministically from audit_config.json schema ${auditConfig.schema_version}.`,
   '# Schema v0.3: https://github.com/mathlib-initiative/formalization.yaml',
   `# Template commit: ${formalizationTemplate.commit}`,
   ...renderYaml(formalization),
@@ -3188,9 +3516,10 @@ const bridgeRegistryContent = [
   'La couche de certificats bibliographiques rc2 est distincte de ces statuts',
   'Lean. Elle documente une contre-expertise source→proposition faite par des',
   'agents, sans constituer une preuve du noyau ni une revue humaine indépendante.',
-  'Pour les quatre ponts de Theorem 1.1, cette couche est la qualification',
+  'Pour les trois ponts ouverts de Theorem 1.1, cette couche est la qualification',
   'documentaire courante et rend explicites les réserves conservées dans le cœur',
-  'gelé.',
+  'audité. Le fichier HK13 distinct est une note historique de clôture, et non',
+  'un certificat actif ni une prémisse de cet endpoint.',
   '',
   `Ponts enregistrés : ${bridges.length}. Théorèmes publics inconditionnels : ` +
     `${unconditionalTheoremCount}. Théorèmes publics conditionnels : ` +
@@ -3206,7 +3535,7 @@ const bridgeRegistryContent = [
     `${conditionalTheoremCountsByHypothesisStatus.open} open, ` +
     `${conditionalTheoremCountsByHypothesisStatus.discharged} discharged.`,
   '',
-  '| Identifiant | Nature | Statut | Proposition Lean | Déchargé par | Certificat source rc2 | Source primaire | Localisation |',
+  '| Identifiant | Nature | Statut | Proposition Lean | Déchargé par | Documentation rc2 | Source primaire | Localisation |',
   '|---|---|---|---|---|---|---|---|',
   ...bridges.map(bridge =>
     `| \`${bridge.id}\` | \`${bridge.kind}\` | \`${bridge.status}\` | ` +
@@ -3219,7 +3548,12 @@ const bridgeRegistryContent = [
           const certificate = literatureCertificateByBridgeId.get(bridge.id);
           return `[\`${effectiveSourceToLeanStatus(certificate)}\`](${certificate.file})`;
         })()
-      : '—'} | ` +
+      : historicalLiteratureClosureNoteByBridgeId.has(bridge.id)
+        ? (() => {
+            const note = historicalLiteratureClosureNoteByBridgeId.get(bridge.id);
+            return `[\`historical_closure_note\`](${note.file})`;
+          })()
+        : '—'} | ` +
     `${bridge.citation.authors.join(', ')}, *${bridge.citation.title}*, ` +
     `${currentSourceLocator(bridge)} | ${bridge.manuscript_locator.result} |`,
   ),
@@ -3285,6 +3619,16 @@ const bridgeRegistryContent = [
                 `SHA-256 \`${certificate.sha256}\`, ` +
                 `${certificate.byte_length} octets.`,
               `- Limites rc2 : ${asSentence(certificate.limitations)}`,
+            ];
+          })()
+        : []),
+      ...(historicalLiteratureClosureNoteByBridgeId.has(bridge.id)
+        ? (() => {
+            const note = historicalLiteratureClosureNoteByBridgeId.get(bridge.id);
+            return [
+              `- Note historique de clôture : [\`${note.file}\`](${note.file}), ` +
+                `SHA-256 \`${note.sha256}\`, ${note.byte_length} octets.`,
+              `- Rôle courant : ${asSentence(note.note)}`,
             ];
           })()
         : []),
@@ -3367,7 +3711,7 @@ const auditMarkdownContent =
   updateGeneratedBridgeRegistry(currentAuditMarkdown);
 
 const manifest = {
-  schema_version: 7,
+  schema_version: 9,
   project: 'paper_c_lean',
   project_metadata: auditConfig.project,
   project_version: versionMatch[1],
@@ -3388,8 +3732,11 @@ const manifest = {
   comparator_status_note: comparatorMetadata.status_note,
   comparator_tools: comparatorMetadata.tools,
   comparator_compatibility_probe: comparatorMetadata.compatibility_probe,
-  comparator_published_evidence: publishedComparatorEvidence,
+  comparator_historical_published_evidence:
+    historicalPublishedComparatorEvidence,
   comparator_configurations: parsedComparatorConfigurations,
+  comparator_historical_configurations:
+    parsedHistoricalComparatorConfigurations,
   literature_certificate_fileset: literatureCertificateFiles,
   literature_certificate_digest_sha256:
     literatureCertificateDigestSha256,
@@ -3397,6 +3744,10 @@ const manifest = {
   literature_certificate_status_note:
     literatureCertificateMetadata.status_note,
   literature_certificates: parsedLiteratureCertificates,
+  historical_literature_closure_notes: historicalLiteratureClosureNotes,
+  literature_documentation_fileset: literatureDocumentationFiles,
+  literature_documentation_digest_sha256:
+    literatureDocumentationDigestSha256,
   formalization_template: formalizationTemplate,
   automation: auditConfig.editorial.automation,
   fidelity: auditConfig.editorial.fidelity,

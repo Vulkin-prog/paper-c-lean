@@ -1312,7 +1312,10 @@ SNAPSHOT_FILES=(
   lake-manifest.json
   lakefile.toml
   scripts/assemble_comparator_evidence.mjs
+  scripts/derive_public_comparator_archive.py
   scripts/run_hardened_comparator.sh
+  scripts/test_public_comparator_archive.py
+  scripts/verify_public_comparator_archive.py
 )
 for relative_path in "${SNAPSHOT_FILES[@]}"; do
   install -D -m 600 "$SNAPSHOT_SOURCE/$relative_path" \
@@ -1389,6 +1392,8 @@ RUN_SUCCEEDED=true
 
 note "SUCCESS: both hardened Comparator targets passed"
 note "evidence: $OUTPUT_DIR"
-note "upload bundle: $EVIDENCE_ARCHIVE"
-note "bundle checksum: $EVIDENCE_ARCHIVE.sha256"
+note "PRIVATE raw bundle — DO NOT UPLOAD: $EVIDENCE_ARCHIVE"
+note "private raw checksum: $EVIDENCE_ARCHIVE.sha256"
+note 'derive and independently verify the publishable omission-only archive:'
+note '  scripts/derive_public_comparator_archive.py (see scripts/PUBLIC_COMPARATOR_ARCHIVE.md)'
 note 'This is a Lean-kernel result only; nanoda remains disabled.'

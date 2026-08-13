@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 4,
   "project": {
     "name": "paper_c_lean",
     "title": "Lean formalization of Paper C",
@@ -10,21 +10,25 @@
     "concept_doi": "https://doi.org/10.5281/zenodo.21735481"
   },
   "core_source": {
-    "base_version": "0.47.0",
+    "base_version": "0.48.1",
     "fileset": [
       "PaperC.lean",
       "PaperC/**/*.lean"
     ],
     "file_count": 382,
-    "digest_sha256": "f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999"
+    "digest_sha256": "cb23714a797f2c11e856a1f9bf1ce8569c4a5a2cb67b3fcc0b45d9ded3b18a26"
   },
   "target_pdf": {
     "filename": "paper_C_complete_v09_en.pdf",
-    "sha256": "40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b"
+    "sha256": "c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1",
+    "page_count": 77,
+    "byte_length": 935831
   },
   "source_pdf_fr": {
     "filename": "paper_C_complete_v09.pdf",
-    "sha256": "f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0"
+    "sha256": "11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44",
+    "page_count": 79,
+    "byte_length": 946847
   },
   "sources": [
     {
@@ -38,8 +42,10 @@
       "license": "CC-BY-4.0",
       "author_contacted": "n/a",
       "filename": "paper_C_complete_v09_en.pdf",
-      "sha256": "40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b",
-      "note": "Frozen English manuscript, August 13, 2026; public manuscript history is maintained under the stable Cambridge Open Engage and Zenodo paper records."
+      "sha256": "c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1",
+      "page_count": 77,
+      "byte_length": 935831,
+      "note": "Final English manuscript candidate, August 13, 2026; public manuscript history is maintained under the stable Cambridge Open Engage and Zenodo paper records."
     },
     {
       "key": "adgr07-prime-number-theorem",
@@ -123,7 +129,7 @@
     }
   ],
   "editorial": {
-    "scope": "Formalization of the canonical endpoints of Paper C, including the critical Poisson law in a dyadic block, its exact finite-cylinder/infinite-product transfer, the homogeneous-mass estimates, and the supporting arithmetic and probabilistic development. The canonical endpoints remain conditional on seven explicitly registered external literature propositions; Theorem 1.1 consumes exactly four of them.",
+    "scope": "Formalization of the canonical endpoints of Paper C, including the critical Poisson law in a dyadic block, its exact finite-cylinder/infinite-product transfer, the homogeneous-mass estimates, and the supporting arithmetic and probabilistic development. The canonical endpoints remain conditional on six explicitly registered open external literature propositions; Theorem 1.1 consumes exactly three of them. The historical Halter--Koch bridge remains registered as external but is discharged by a public Lean construction and is not an endpoint premise.",
     "main_result_item_ids": [
       "Thm-1.1-finite-cylinder",
       "Thm-1.1-infinite-finite-law-transfer",
@@ -186,10 +192,10 @@
       }
     },
     "literature_certificates": {
-      "scope": "The four external bridges consumed by the finite-cylinder form of Theorem 1.1.",
+      "scope": "The three open external bridges consumed by the finite-cylinder form of Theorem 1.1.",
       "review_status": "agent-reviewed",
       "human_peer_reviewed": false,
-      "status_note": "These certificates document source-to-proposition implications. They are not Lean proofs, Comparator results, or independent human certification. The historical source-verification wording embedded in the frozen 382-file core is retained only for byte-level provenance; this rc2 layer is the current qualification.",
+      "status_note": "The three active certificates document source-to-proposition implications for the open premises of Theorem 1.1. They are not Lean proofs, Comparator results, or independent human certification. The separate HK13 file is retained as a hashed historical closure note: that bridge is now discharged by Lean and is not counted as an active literature certificate.",
       "entries": [
         {
           "bridge_id": "AGG89-T1-finite-dependency-b3-zero",
@@ -208,14 +214,6 @@
           "limitations": "The K=L=Q specialization and bad-place set are documented, but not formalized from a Lean version of the source theorem. No independent human verification."
         },
         {
-          "bridge_id": "HK13-QO-conductor-fibres",
-          "file": "literature_certificates/HK13-QO-conductor-fibres.md",
-          "source_locator": "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127.",
-          "primary_source_access": "partial",
-          "implication_status": "agent_checked_with_open_gap",
-          "limitations": "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished."
-        },
-        {
           "bridge_id": "NR83-T1-divisor-log-bound",
           "file": "literature_certificates/NR83-T1-divisor-log-bound.md",
           "source_locator": "Theorem 1, printed p. 485.",
@@ -223,11 +221,20 @@
           "implication_status": "agent_checked_supports",
           "limitations": "The certificate uses the exact maximizer and an elementary strict bound below 2, rather than treating the printed decimal 1.5379 as exact. No independent human verification."
         }
+      ],
+      "historical_closure_notes": [
+        {
+          "bridge_id": "HK13-QO-conductor-fibres",
+          "file": "literature_certificates/HK13-QO-conductor-fibres.md",
+          "status": "lean_discharged",
+          "discharged_by": "PaperC.PellInput.quadraticOrderConductorFiberBound",
+          "note": "Historical source-to-record gap report retained for provenance and superseded by the direct modulo-two Lean construction. It is not an active source certificate or an endpoint premise."
+        }
       ]
     },
     "comparator": {
-      "status": "sandboxed_lean_kernel_passed",
-      "status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure for the v0.48.0 release at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. Version v0.48.1 leaves the frozen Lean core and the certified six-file Comparator fileset byte-identical, but replaces the manuscript PDFs with new byte streams incorporating the mathematical and documentary remediation of the two August 13, 2026 audits. The v0.48.0 evidence therefore certifies the unchanged Comparator inputs and binds the historical v0.48.0 manuscript hashes, not these remediated v0.48.1 PDF byte streams; no new hardened run is claimed. The public release asset is a derived privacy-minimized bundle. It preserves the exact summary, result records, source snapshot, raw transcript digests, and a redaction manifest; host-identifying raw logs and transcripts remain local and unpublished. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
+      "status": "not_run",
+      "status_note": "The current v0.48.1 candidate changes the Lean core and the six-file Comparator surface by removing the discharged HK13 premise from Theorem 1.1. No hardened Comparator run has yet been performed on these current bytes, so both current configurations are deliberately marked not_run. The published v0.48.0 evidence is retained below strictly as historical evidence for its recorded commit and fileset digest; it does not qualify the current candidate.",
       "tools": {
         "comparator": {
           "repository": "https://github.com/leanprover/comparator",
@@ -262,7 +269,7 @@
         "comparator/theorem_one_one.json",
         "comparator/theorem_one_one_transfer.json"
       ],
-      "published_evidence": {
+      "historical_published_evidence": {
         "release_tag": "v0.48.0",
         "release_url": "https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0",
         "archive": "paper-c-hardened-public-27c91f8.tar.zst",
@@ -287,9 +294,21 @@
         ],
         "enable_nanoda": false,
         "metadata_verification": "Agent-side verification covered the local raw archive outer SHA-256 and size, every entry in its SHA256SUMS, both raw transcript hashes, and the deterministic derivation of the public privacy-minimized bundle. The public bundle retains exact summary, result, and source-snapshot bytes plus a machine-readable redaction manifest binding every retained and omitted raw path by SHA-256. Raw host logs and transcripts are intentionally not public.",
-        "qualification": "The public v0.48.0 bundle preserves the validated Comparator result and its bindings to the Paper C commit, configurations, six-file Comparator digest, tool commits, historical v0.48.0 manuscript hashes, and raw transcript hashes. The frozen Lean core and the six-file Comparator input remain byte-identical in v0.48.1, but the v0.48.1 PDF byte streams incorporating the mathematical and documentary remediation of the two August 13, 2026 audits are not bound by this earlier bundle. Because the host-identifying raw transcripts are retained locally only, third parties cannot independently inspect the full host-execution trace from the public bundle. This is not a source audit, a dual-kernel result, or a general host-security certification."
+        "qualification": "The public v0.48.0 bundle preserves the validated historical Comparator result and its bindings to the recorded Paper C commit, configurations, six-file Comparator digest, tool commits, historical v0.48.0 manuscript hashes, and raw transcript hashes. The current v0.48.1 candidate changes both the Lean core and the six-file Comparator input, so this earlier bundle does not bind or qualify the current bytes. Because the host-identifying raw transcripts are retained locally only, third parties cannot independently inspect the full host-execution trace from the public bundle. This is not a source audit, a dual-kernel result, or a general host-security certification."
       },
       "configurations": [
+        {
+          "path": "comparator/theorem_one_one.json",
+          "status": "not_run",
+          "sandboxed": false
+        },
+        {
+          "path": "comparator/theorem_one_one_transfer.json",
+          "status": "not_run",
+          "sandboxed": false
+        }
+      ],
+      "historical_configurations": [
         {
           "path": "comparator/theorem_one_one.json",
           "status": "sandboxed_lean_kernel_passed",
@@ -348,18 +367,17 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four ordinary literature premises",
+      "formalization_status": "proved modulo three ordinary literature premises",
       "comparator": {
         "covered": true,
         "configuration": "comparator/theorem_one_one.json",
         "theorem_name": "paper_c_theorem_one_one_finite_cylinder",
-        "status": "sandboxed_lean_kernel_passed"
+        "status": "not_run"
       },
-      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under four fully stated ordinary premises. The byte-identical Challenge/Solution boundary passed the hardened non-root Comparator procedure at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07 with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the certified Comparator fileset byte-identical. Nanoda was disabled. The separate transfer target covers the infinite source law."
+      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under three fully stated ordinary premises; the former HK13 premise is discharged internally. The current Challenge/Solution bytes have not yet received a hardened Comparator run. The published v0.48.0 run certifies only its historical four-premise interface and recorded fileset digest. The separate transfer target covers the infinite source law."
     },
     {
       "id": "Thm-1.1-infinite-finite-law-transfer",
@@ -381,7 +399,7 @@
         "covered": true,
         "configuration": "comparator/theorem_one_one_transfer.json",
         "theorem_name": "paper_c_theorem_one_one_infinite_finite_law_identity",
-        "status": "sandboxed_lean_kernel_passed"
+        "status": "not_run"
       },
       "note": "Exact unconditional identity of the infinite-product dyadic start-count law and its finite-cylinder law. The byte-identical ChallengeTransfer/SolutionTransfer boundary passed the hardened non-root Comparator procedure at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07 with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the certified Comparator fileset byte-identical. Nanoda was disabled."
     },
@@ -402,11 +420,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four ordinary literature premises",
+      "formalization_status": "proved modulo three ordinary literature premises",
       "comparator": {
         "covered": false
       },
@@ -433,11 +450,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved by spatial Laplace-functional characterization modulo four ordinary literature premises",
+      "formalization_status": "proved by spatial Laplace-functional characterization modulo three ordinary literature premises",
       "comparator": {
         "covered": false
       },
@@ -464,11 +480,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved by marked Laplace-functional characterization modulo four ordinary literature premises",
+      "formalization_status": "proved by marked Laplace-functional characterization modulo three ordinary literature premises",
       "comparator": {
         "covered": false
       },
@@ -490,7 +505,6 @@
       "main_result_declaration": "PaperC.SectionTwelveMoments.theorem_one_four_canonical",
       "bridge_ids": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1100,20 +1114,19 @@
       },
       "lean_declarations": [
         {
-          "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
+          "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound",
           "file": "PaperC/Diophantine/PellDivisorEnvelope.lean"
         }
       ],
       "bridge_ids": [
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo two narrow external literature premises",
+      "formalization_status": "proved modulo the Nicolas--Robin literature premise",
       "comparator": {
         "covered": false
       },
-      "note": "The numbered statement is on p. 28; its proof continues on p. 29. The selected public theorem discharges the historical PCv07c-L9.2 bridge directly from the Halter-Koch conductor/unit comparison and the source-shaped Nicolas-Robin logarithmic divisor bound."
+      "note": "The numbered statement is on p. 28; its proof continues on p. 29. The selected public theorem uses the internal quadratic-order conductor descent together with the source-shaped Nicolas--Robin logarithmic divisor bound; no Halter--Koch premise remains."
     },
     {
       "id": "Lem-9.3",
@@ -1170,7 +1183,7 @@
       "comparator": {
         "covered": false
       },
-      "note": "Partial fidelity: there is no single public declaration reproducing the manuscript's three-case count. The degree-one, degree-two, and degree-at-least-three branches are mapped separately; the internal generalized-Pell bridge is discharged in canonical top-level APIs by Halter-Koch and Nicolas-Robin."
+      "note": "Partial fidelity: there is no single public declaration reproducing the manuscript's three-case count. The degree-one, degree-two, and degree-at-least-three branches are mapped separately; the internal generalized-Pell bridge is discharged in canonical top-level APIs by the internal conductor construction and Nicolas--Robin."
     },
     {
       "id": "Lem-9.5",
@@ -1274,7 +1287,7 @@
       "comparator": {
         "covered": false
       },
-      "note": "Partial fidelity: the distinct-squareclass Pell branch and the equal-squareclass factorization/smooth sum are represented by separate declarations. The registered internal Pell bridge is discharged by the canonical Halter-Koch/Nicolas-Robin construction."
+      "note": "Partial fidelity: the distinct-squareclass Pell branch and the equal-squareclass factorization/smooth sum are represented by separate declarations. The registered internal Pell bridge is discharged by the canonical internal-conductor/Nicolas--Robin construction."
     },
     {
       "id": "Prop-9.9",
@@ -1443,7 +1456,6 @@
       ],
       "bridge_ids": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1468,7 +1480,6 @@
       ],
       "bridge_ids": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1493,7 +1504,6 @@
       ],
       "bridge_ids": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1714,15 +1724,14 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four external literature premises",
+      "formalization_status": "proved modulo three external literature premises",
       "comparator": {
         "covered": false
       },
-      "note": "The headline rate and the 'more precisely' part of the same corollary are stated on p. 42. The canonical Lean endpoint has exactly the four literature premises listed here."
+      "note": "The headline rate and the 'more precisely' part of the same corollary are stated on p. 42. The canonical Lean endpoint has exactly the three open literature premises listed here; HK13 is discharged internally."
     },
     {
       "id": "Prop-14.1",
@@ -1761,11 +1770,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four external literature premises",
+      "formalization_status": "proved modulo three external literature premises",
       "comparator": {
         "covered": false
       },
@@ -1787,11 +1795,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four external literature premises",
+      "formalization_status": "proved modulo three external literature premises",
       "comparator": {
         "covered": false
       },
@@ -1813,7 +1820,6 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1821,7 +1827,7 @@
       "comparator": {
         "covered": false
       },
-      "note": "Partial fidelity: Lean proves the complete spatial PPP Laplace functional under the four literature premises. It does not duplicate the paper's vague-convergence wording as a Tendsto statement for point-measure laws because the required point-process topology API is absent from mathlib."
+      "note": "Partial fidelity: Lean proves the complete spatial PPP Laplace functional under the three open literature premises. It does not duplicate the paper's vague-convergence wording as a Tendsto statement for point-measure laws because the required point-process topology API is absent from mathlib."
     },
     {
       "id": "Lem-14.5",
@@ -1906,7 +1912,6 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1957,11 +1962,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four external literature premises",
+      "formalization_status": "proved modulo three external literature premises",
       "comparator": {
         "covered": false
       },
@@ -2102,11 +2106,10 @@
       ],
       "bridge_ids": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo the three registered canonical literature premises",
+      "formalization_status": "proved modulo the two registered canonical literature premises",
       "comparator": {
         "covered": false
       },
@@ -2135,12 +2138,11 @@
         "AGG89-T1-finite-dependency-b3-zero",
         "BS93-Theorem-1",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "LS04-Corollary-1",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved on the finite cylinder and infinite source law modulo seven literature premises",
+      "formalization_status": "proved on the finite cylinder and infinite source law modulo six literature premises",
       "comparator": {
         "covered": false
       },
@@ -2165,12 +2167,11 @@
         "AGG89-T1-finite-dependency-b3-zero",
         "BS93-Theorem-1",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "LS04-Corollary-1",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo the same seven literature premises as Theorem 16.2",
+      "formalization_status": "proved modulo the same six literature premises as Theorem 16.2",
       "comparator": {
         "covered": false
       },
@@ -2569,7 +2570,7 @@
       },
       "lean_declarations": [
         {
-          "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
+          "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound",
           "file": "PaperC/Diophantine/PellDivisorEnvelope.lean"
         },
         {
@@ -2578,7 +2579,6 @@
         }
       ],
       "bridge_ids": [
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound",
         "PCv07c-L9.2-generalized-Pell"
       ],
@@ -2587,7 +2587,7 @@
       "comparator": {
         "covered": false
       },
-      "note": "Partial-fidelity mapping: no single public declaration packages the manuscript range transport. The first declaration discharges the polynomial-box interface from Halter-Koch and Nicolas-Robin; the second gives the source-exact real-exponent consequence from the registered internal Pell bridge."
+      "note": "Partial-fidelity mapping: no single public declaration packages the manuscript range transport. The first declaration discharges the polynomial-box interface from the internal conductor construction and Nicolas--Robin; the second gives the source-exact real-exponent consequence from the registered internal Pell bridge."
     },
     {
       "id": "Lem-17.20",

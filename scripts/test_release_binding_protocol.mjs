@@ -9,12 +9,41 @@ import { fileURLToPath } from 'node:url';
 const sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'paper-c-release-binding-test-'));
 const repository = path.join(temporaryRoot, 'repository');
-const archive = path.join(temporaryRoot, 'hardened-public.tar.zst');
+let archive;
 const evidenceRelative = 'release_evidence/v0.48.1';
 const resultSpecs = new Map([
   ['result-theorem-one-one.json', 'comparator/theorem_one_one.json'],
   ['result-infinite-finite-transfer.json', 'comparator/theorem_one_one_transfer.json'],
 ]);
+const verifierStub = `#!/usr/bin/env python3
+import argparse
+from pathlib import Path
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--source', required=True)
+parser.add_argument('--archive', required=True)
+parser.add_argument('--repository', required=True)
+parser.add_argument('--packaging-evidence-dir', required=True)
+parser.add_argument('--result-hashes-output', required=True)
+args = parser.parse_args()
+for value in (args.source, args.archive, args.repository, args.packaging_evidence_dir):
+    if not Path(value).exists():
+        raise SystemExit(f'missing required test input: {value}')
+import hashlib, json
+evidence = Path(args.packaging_evidence_dir)
+hashes = {}
+for name in ('result-theorem-one-one.json', 'result-infinite-finite-transfer.json'):
+    hashes[name] = hashlib.sha256((evidence / name).read_bytes()).hexdigest()
+archive_bytes = Path(args.archive).read_bytes()
+commit = Path(args.archive).name.removeprefix('paper-c-hardened-public-').removesuffix('.tar.zst')
+Path(args.result_hashes_output).write_text(json.dumps({
+    'schema': 1,
+    'paper_c_commit': commit,
+    'archive_sha256': hashlib.sha256(archive_bytes).hexdigest(),
+    'result_sha256': hashes,
+}, indent=2) + '\\n')
+print('synthetic committed verifier invoked with complete binding arguments')
+`;
 const fileset = [
   'Challenge.lean',
   'Solution.lean',
@@ -96,8 +125,42 @@ function createBinding() {
     'scripts/create_release_binding.mjs',
     '--evidence-dir', evidenceRelative,
     '--archive', archive,
+    '--raw-source', path.join(temporaryRoot, 'raw-source'),
     '--output', `${evidenceRelative}/release-binding.json`,
   ]);
+}
+
+function writeArchiveFor(sourceCommit) {
+  archive = path.join(
+    temporaryRoot,
+    `paper-c-hardened-public-${sourceCommit}.tar.zst`,
+  );
+  fs.writeFileSync(archive, 'synthetic privacy-minimized hardened archive\n');
+  const digest = sha256(fs.readFileSync(archive));
+  fs.writeFileSync(`${archive}.sha256`, `${digest}  ${path.basename(archive)}\n`);
+  const verifierBytes = Buffer.from(verifierStub);
+  const receipt = {
+    schema: 1,
+    status: 'public_comparator_archive_verification_report',
+    paper_c_commit: sourceCommit,
+    archive_filename: path.basename(archive),
+    archive_sha256: digest,
+    result_sha256: Object.fromEntries(
+      [...resultSpecs.keys()].map(name => [
+        name,
+        sha256(fs.readFileSync(path.join(repository, evidenceRelative, name))),
+      ]),
+    ),
+    verifier: 'scripts/verify_public_comparator_archive.py',
+    verifier_sha256: sha256(verifierBytes),
+    qualification: (
+      'Informational report from the local mandatory verifier; not a signature or ' +
+      'self-sufficient proof. Release binding creation reruns the verifier against the ' +
+      'private raw source.'
+    ),
+  };
+  fs.writeFileSync(`${archive}.verified.json`, `${JSON.stringify(receipt, null, 2)}\n`);
+  return digest;
 }
 
 function verifyBinding(expectedArchiveSha256, expectFailure = false) {
@@ -112,9 +175,17 @@ function verifyBinding(expectedArchiveSha256, expectFailure = false) {
 try {
   fs.mkdirSync(repository, { recursive: true });
   fs.mkdirSync(path.join(repository, 'scripts'), { recursive: true });
-  for (const script of ['create_release_binding.mjs', 'verify_release_binding.mjs']) {
+  for (const script of [
+    'create_release_binding.mjs',
+    'verify_release_binding.mjs',
+  ]) {
     fs.copyFileSync(path.join(sourceRoot, 'scripts', script), path.join(repository, 'scripts', script));
   }
+  fs.writeFileSync(
+    path.join(repository, 'scripts', 'verify_public_comparator_archive.py'),
+    verifierStub,
+  );
+  fs.writeFileSync(path.join(temporaryRoot, 'raw-source'), 'synthetic private raw source\n');
 
   write('paper_C_complete_v09_en.pdf', Buffer.from('synthetic English PDF bytes\n'));
   write('paper_C_complete_v09.pdf', Buffer.from('synthetic French PDF bytes\n'));
@@ -125,18 +196,32 @@ try {
     verification: { comparator: { fileset } },
   };
   write('audit_config.json', `${JSON.stringify(auditConfig, null, 2)}\n`);
-  fs.writeFileSync(archive, 'synthetic privacy-minimized hardened archive\n');
-  const archiveSha256 = sha256(fs.readFileSync(archive));
-
   run('git', ['init', '-q']);
   run('git', ['config', 'user.name', 'Release Binding Self-Test']);
   run('git', ['config', 'user.email', 'release-binding-self-test@example.invalid']);
   run('git', ['add', '.']);
   run('git', ['commit', '-q', '-m', 'source Q']);
   const sourceCommit = run('git', ['rev-parse', 'HEAD']).stdout.trim();
-
   writeResults(sourceCommit);
+  const archiveSha256 = writeArchiveFor(sourceCommit);
+  const preexistingTemporarySentinel = path.join(
+    temporaryRoot,
+    '.paper-c-verified-result-hashes-existing-sentinel',
+  );
+  fs.writeFileSync(preexistingTemporarySentinel, 'must remain untouched\n');
   createBinding();
+  if (fs.readFileSync(preexistingTemporarySentinel, 'utf8') !== 'must remain untouched\n') {
+    throw new Error('binding creator altered a pre-existing temporary-path sentinel');
+  }
+  const leakedTemporaryDirectories = fs.readdirSync(temporaryRoot).filter(
+    name => name.startsWith('.paper-c-verified-result-hashes-') &&
+      name !== path.basename(preexistingTemporarySentinel),
+  );
+  if (leakedTemporaryDirectories.length !== 0) {
+    throw new Error(
+      `binding creator leaked owned temporary directories: ${leakedTemporaryDirectories.join(', ')}`,
+    );
+  }
   const binding = JSON.parse(
     fs.readFileSync(path.join(repository, evidenceRelative, 'release-binding.json'), 'utf8'),
   );
@@ -154,10 +239,14 @@ try {
     'scripts/create_release_binding.mjs',
     '--evidence-dir', evidenceRelative,
     '--archive', archive,
+    '--raw-source', path.join(temporaryRoot, 'raw-source'),
     '--output', `${evidenceRelative}/release-binding.json`,
   ], { expectFailure: true });
   if (!rejectedCreate.stderr.includes('dirty outside')) {
-    throw new Error('creator did not explain its fail-closed dirty-worktree rejection');
+    throw new Error(
+      'creator did not explain its fail-closed dirty-worktree rejection:\n' +
+      rejectedCreate.stderr,
+    );
   }
   fs.rmSync(path.join(repository, 'UNRELATED.txt'));
   createBinding();

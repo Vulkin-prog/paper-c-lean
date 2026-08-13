@@ -1,5 +1,5 @@
 {
-  "schema_version": 7,
+  "schema_version": 9,
   "project": "paper_c_lean",
   "project_metadata": {
     "name": "paper_c_lean",
@@ -13,11 +13,15 @@
   "project_version": "0.48.1",
   "target_pdf": {
     "filename": "paper_C_complete_v09_en.pdf",
-    "sha256": "40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b"
+    "sha256": "c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1",
+    "page_count": 77,
+    "byte_length": 935831
   },
   "source_pdf_fr": {
     "filename": "paper_C_complete_v09.pdf",
-    "sha256": "f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0"
+    "sha256": "11d67677fbf9ba52a462b6df2d03a9affed71c670a27a2d525519af66358af44",
+    "page_count": 79,
+    "byte_length": 946847
   },
   "sources": [
     {
@@ -31,8 +35,10 @@
       "license": "CC-BY-4.0",
       "author_contacted": "n/a",
       "filename": "paper_C_complete_v09_en.pdf",
-      "sha256": "40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b",
-      "note": "Frozen English manuscript, August 13, 2026; public manuscript history is maintained under the stable Cambridge Open Engage and Zenodo paper records."
+      "sha256": "c99ac22eaa0bb59032fc2d683c03d19826f9e9bf27920433df4fae9b49e14cb1",
+      "page_count": 77,
+      "byte_length": 935831,
+      "note": "Final English manuscript candidate, August 13, 2026; public manuscript history is maintained under the stable Cambridge Open Engage and Zenodo paper records."
     },
     {
       "key": "adgr07-prime-number-theorem",
@@ -117,7 +123,7 @@
   ],
   "audit_file": "AuditCheck.lean",
   "import": "PaperC",
-  "core_source_base_version": "0.47.0",
+  "core_source_base_version": "0.48.1",
   "core_source_fileset": [
     "PaperC.lean",
     "PaperC/**/*.lean"
@@ -127,8 +133,8 @@
     "PaperC.lean",
     "PaperC/**/*.lean"
   ],
-  "core_source_digest_sha256": "f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999",
-  "source_digest_sha256": "f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999",
+  "core_source_digest_sha256": "cb23714a797f2c11e856a1f9bf1ce8569c4a5a2cb67b3fcc0b45d9ded3b18a26",
+  "source_digest_sha256": "cb23714a797f2c11e856a1f9bf1ce8569c4a5a2cb67b3fcc0b45d9ded3b18a26",
   "comparator_fileset": [
     "Challenge.lean",
     "ChallengeTransfer.lean",
@@ -137,9 +143,9 @@
     "comparator/theorem_one_one.json",
     "comparator/theorem_one_one_transfer.json"
   ],
-  "comparator_digest_sha256": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
-  "comparator_status": "sandboxed_lean_kernel_passed",
-  "comparator_status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure for the v0.48.0 release at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. Version v0.48.1 leaves the frozen Lean core and the certified six-file Comparator fileset byte-identical, but replaces the manuscript PDFs with new byte streams incorporating the mathematical and documentary remediation of the two August 13, 2026 audits. The v0.48.0 evidence therefore certifies the unchanged Comparator inputs and binds the historical v0.48.0 manuscript hashes, not these remediated v0.48.1 PDF byte streams; no new hardened run is claimed. The public release asset is a derived privacy-minimized bundle. It preserves the exact summary, result records, source snapshot, raw transcript digests, and a redaction manifest; host-identifying raw logs and transcripts remain local and unpublished. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
+  "comparator_digest_sha256": "add629c9a32effa3032b2ef11d75336d700fc964eab5054fe62f604e68c82d4f",
+  "comparator_status": "not_run",
+  "comparator_status_note": "The current v0.48.1 candidate changes the Lean core and the six-file Comparator surface by removing the discharged HK13 premise from Theorem 1.1. No hardened Comparator run has yet been performed on these current bytes, so both current configurations are deliberately marked not_run. The published v0.48.0 evidence is retained below strictly as historical evidence for its recorded commit and fileset digest; it does not qualify the current candidate.",
   "comparator_tools": {
     "comparator": {
       "repository": "https://github.com/leanprover/comparator",
@@ -166,7 +172,7 @@
     "transcript": "comparator/transcripts/toolchain_compatibility_unsandboxed.txt",
     "transcript_sha256": "2ee3dcde7fee2dc4a31b1cc4395ea9f5d31f2b2526741f6f18f6463991c25cd5"
   },
-  "comparator_published_evidence": {
+  "comparator_historical_published_evidence": {
     "release_tag": "v0.48.0",
     "release_url": "https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0",
     "archive": "paper-c-hardened-public-27c91f8.tar.zst",
@@ -191,7 +197,7 @@
     ],
     "enable_nanoda": false,
     "metadata_verification": "Agent-side verification covered the local raw archive outer SHA-256 and size, every entry in its SHA256SUMS, both raw transcript hashes, and the deterministic derivation of the public privacy-minimized bundle. The public bundle retains exact summary, result, and source-snapshot bytes plus a machine-readable redaction manifest binding every retained and omitted raw path by SHA-256. Raw host logs and transcripts are intentionally not public.",
-    "qualification": "The public v0.48.0 bundle preserves the validated Comparator result and its bindings to the Paper C commit, configurations, six-file Comparator digest, tool commits, historical v0.48.0 manuscript hashes, and raw transcript hashes. The frozen Lean core and the six-file Comparator input remain byte-identical in v0.48.1, but the v0.48.1 PDF byte streams incorporating the mathematical and documentary remediation of the two August 13, 2026 audits are not bound by this earlier bundle. Because the host-identifying raw transcripts are retained locally only, third parties cannot independently inspect the full host-execution trace from the public bundle. This is not a source audit, a dual-kernel result, or a general host-security certification."
+    "qualification": "The public v0.48.0 bundle preserves the validated historical Comparator result and its bindings to the recorded Paper C commit, configurations, six-file Comparator digest, tool commits, historical v0.48.0 manuscript hashes, and raw transcript hashes. The current v0.48.1 candidate changes both the Lean core and the six-file Comparator input, so this earlier bundle does not bind or qualify the current bytes. Because the host-identifying raw transcripts are retained locally only, third parties cannot independently inspect the full host-execution trace from the public bundle. This is not a source audit, a dual-kernel result, or a general host-security certification."
   },
   "comparator_configurations": [
     {
@@ -208,14 +214,14 @@
       "enable_nanoda": false,
       "path": "comparator/theorem_one_one.json",
       "sha256": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
-      "status": "sandboxed_lean_kernel_passed",
-      "sandboxed": true,
-      "evidence_record": "comparator/evidence/result-theorem-one-one.json",
-      "evidence_record_sha256": "ce8ab0f60336425f04ac6408a8e2b4b066424b8820ec0b8bdd8a8c078eaa2ef8",
-      "transcript_in_private_raw_archive": "evidence/theorem-one-one/comparator-theorem-one-one.txt",
-      "transcript_sha256": "fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e",
-      "configuration_sha256_at_run": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
-      "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
+      "status": "not_run",
+      "sandboxed": false,
+      "evidence_record": null,
+      "evidence_record_sha256": null,
+      "transcript_in_private_raw_archive": null,
+      "transcript_sha256": null,
+      "configuration_sha256_at_run": null,
+      "comparator_fileset_digest_sha256_at_run": null,
       "challenge_file": "Challenge.lean",
       "solution_file": "Solution.lean"
     },
@@ -233,6 +239,32 @@
       "enable_nanoda": false,
       "path": "comparator/theorem_one_one_transfer.json",
       "sha256": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
+      "status": "not_run",
+      "sandboxed": false,
+      "evidence_record": null,
+      "evidence_record_sha256": null,
+      "transcript_in_private_raw_archive": null,
+      "transcript_sha256": null,
+      "configuration_sha256_at_run": null,
+      "comparator_fileset_digest_sha256_at_run": null,
+      "challenge_file": "ChallengeTransfer.lean",
+      "solution_file": "SolutionTransfer.lean"
+    }
+  ],
+  "comparator_historical_configurations": [
+    {
+      "path": "comparator/theorem_one_one.json",
+      "status": "sandboxed_lean_kernel_passed",
+      "sandboxed": true,
+      "evidence_record": "comparator/evidence/result-theorem-one-one.json",
+      "evidence_record_sha256": "ce8ab0f60336425f04ac6408a8e2b4b066424b8820ec0b8bdd8a8c078eaa2ef8",
+      "transcript_in_private_raw_archive": "evidence/theorem-one-one/comparator-theorem-one-one.txt",
+      "transcript_sha256": "fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e",
+      "configuration_sha256_at_run": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
+      "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
+    },
+    {
+      "path": "comparator/theorem_one_one_transfer.json",
       "status": "sandboxed_lean_kernel_passed",
       "sandboxed": true,
       "evidence_record": "comparator/evidence/result-infinite-finite-transfer.json",
@@ -240,20 +272,17 @@
       "transcript_in_private_raw_archive": "evidence/infinite-finite-transfer/comparator-infinite-finite-transfer.txt",
       "transcript_sha256": "13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076",
       "configuration_sha256_at_run": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
-      "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
-      "challenge_file": "ChallengeTransfer.lean",
-      "solution_file": "SolutionTransfer.lean"
+      "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5"
     }
   ],
   "literature_certificate_fileset": [
     "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md",
     "literature_certificates/ES86-T1b-Q-split-n2.md",
-    "literature_certificates/HK13-QO-conductor-fibres.md",
     "literature_certificates/NR83-T1-divisor-log-bound.md"
   ],
-  "literature_certificate_digest_sha256": "dd6012e44b6fe0b04a2dddc92006b6e86ce8e5dbbd16322094bb9e0b7feb8bfb",
-  "literature_certificate_scope": "The four external bridges consumed by the finite-cylinder form of Theorem 1.1.",
-  "literature_certificate_status_note": "These certificates document source-to-proposition implications. They are not Lean proofs, Comparator results, or independent human certification. The historical source-verification wording embedded in the frozen 382-file core is retained only for byte-level provenance; this rc2 layer is the current qualification.",
+  "literature_certificate_digest_sha256": "45600198dd4f68e71d3194ddbc029891cb8b21b760a0c12097677fcfd92a6961",
+  "literature_certificate_scope": "The three open external bridges consumed by the finite-cylinder form of Theorem 1.1.",
+  "literature_certificate_status_note": "The three active certificates document source-to-proposition implications for the open premises of Theorem 1.1. They are not Lean proofs, Comparator results, or independent human certification. The separate HK13 file is retained as a hashed historical closure note: that bridge is now discharged by Lean and is not counted as an active literature certificate.",
   "literature_certificates": [
     {
       "bridge_id": "AGG89-T1-finite-dependency-b3-zero",
@@ -284,20 +313,6 @@
       "supersedes_frozen_source_verification_wording_for_rc2": true
     },
     {
-      "bridge_id": "HK13-QO-conductor-fibres",
-      "file": "literature_certificates/HK13-QO-conductor-fibres.md",
-      "source_locator": "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127.",
-      "primary_source_access": "partial",
-      "implication_status": "agent_checked_with_open_gap",
-      "limitations": "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
-      "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
-      "sha256": "732c53aa4715d892ddbd1b3714000046b92696190144e1c090970764b7e17dc9",
-      "byte_length": 4112,
-      "review_status": "agent-reviewed",
-      "human_peer_reviewed": false,
-      "supersedes_frozen_source_verification_wording_for_rc2": true
-    },
-    {
       "bridge_id": "NR83-T1-divisor-log-bound",
       "file": "literature_certificates/NR83-T1-divisor-log-bound.md",
       "source_locator": "Theorem 1, printed p. 485.",
@@ -312,6 +327,25 @@
       "supersedes_frozen_source_verification_wording_for_rc2": true
     }
   ],
+  "historical_literature_closure_notes": [
+    {
+      "bridge_id": "HK13-QO-conductor-fibres",
+      "file": "literature_certificates/HK13-QO-conductor-fibres.md",
+      "status": "lean_discharged",
+      "discharged_by": "PaperC.PellInput.quadraticOrderConductorFiberBound",
+      "note": "Historical source-to-record gap report retained for provenance and superseded by the direct modulo-two Lean construction. It is not an active source certificate or an endpoint premise.",
+      "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
+      "sha256": "68f0b85c7b42bd6c94cbf6ade22478bc07b2fef0686bc94adb28dbc3111c0971",
+      "byte_length": 2792
+    }
+  ],
+  "literature_documentation_fileset": [
+    "literature_certificates/AGG89-T1-finite-dependency-b3-zero.md",
+    "literature_certificates/ES86-T1b-Q-split-n2.md",
+    "literature_certificates/HK13-QO-conductor-fibres.md",
+    "literature_certificates/NR83-T1-divisor-log-bound.md"
+  ],
+  "literature_documentation_digest_sha256": "73f2e303c63c89b3f2ee69a8992ee1cef823240d23be9d10e241ff03ba1759d2",
   "formalization_template": {
     "version": "v0.3",
     "repository": "https://github.com/mathlib-initiative/formalization.yaml",
@@ -380,22 +414,21 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four ordinary literature premises",
+      "formalization_status": "proved modulo three ordinary literature premises",
       "comparator": {
         "covered": true,
         "configuration": "comparator/theorem_one_one.json",
         "theorem_name": "paper_c_theorem_one_one_finite_cylinder",
-        "status": "sandboxed_lean_kernel_passed",
+        "status": "not_run",
         "configuration_sha256": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
         "challenge_module": "Challenge",
         "solution_module": "Solution",
         "enable_nanoda": false
       },
-      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under four fully stated ordinary premises. The byte-identical Challenge/Solution boundary passed the hardened non-root Comparator procedure at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07 with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the certified Comparator fileset byte-identical. Nanoda was disabled. The separate transfer target covers the infinite source law."
+      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under three fully stated ordinary premises; the former HK13 premise is discharged internally. The current Challenge/Solution bytes have not yet received a hardened Comparator run. The published v0.48.0 run certifies only its historical four-premise interface and recorded fileset digest. The separate transfer target covers the infinite source law."
     },
     {
       "id": "Thm-1.1-infinite-finite-law-transfer",
@@ -417,7 +450,7 @@
         "covered": true,
         "configuration": "comparator/theorem_one_one_transfer.json",
         "theorem_name": "paper_c_theorem_one_one_infinite_finite_law_identity",
-        "status": "sandboxed_lean_kernel_passed",
+        "status": "not_run",
         "configuration_sha256": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
         "challenge_module": "ChallengeTransfer",
         "solution_module": "SolutionTransfer",
@@ -442,11 +475,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four ordinary literature premises",
+      "formalization_status": "proved modulo three ordinary literature premises",
       "comparator": {
         "covered": false
       },
@@ -473,11 +505,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved by spatial Laplace-functional characterization modulo four ordinary literature premises",
+      "formalization_status": "proved by spatial Laplace-functional characterization modulo three ordinary literature premises",
       "comparator": {
         "covered": false
       },
@@ -504,11 +535,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved by marked Laplace-functional characterization modulo four ordinary literature premises",
+      "formalization_status": "proved by marked Laplace-functional characterization modulo three ordinary literature premises",
       "comparator": {
         "covered": false
       },
@@ -530,7 +560,6 @@
       "main_result_declaration": "PaperC.SectionTwelveMoments.theorem_one_four_canonical",
       "bridge_ids": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1140,20 +1169,19 @@
       },
       "lean_declarations": [
         {
-          "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
+          "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound",
           "file": "PaperC/Diophantine/PellDivisorEnvelope.lean"
         }
       ],
       "bridge_ids": [
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo two narrow external literature premises",
+      "formalization_status": "proved modulo the Nicolas--Robin literature premise",
       "comparator": {
         "covered": false
       },
-      "note": "The numbered statement is on p. 28; its proof continues on p. 29. The selected public theorem discharges the historical PCv07c-L9.2 bridge directly from the Halter-Koch conductor/unit comparison and the source-shaped Nicolas-Robin logarithmic divisor bound."
+      "note": "The numbered statement is on p. 28; its proof continues on p. 29. The selected public theorem uses the internal quadratic-order conductor descent together with the source-shaped Nicolas--Robin logarithmic divisor bound; no Halter--Koch premise remains."
     },
     {
       "id": "Lem-9.3",
@@ -1210,7 +1238,7 @@
       "comparator": {
         "covered": false
       },
-      "note": "Partial fidelity: there is no single public declaration reproducing the manuscript's three-case count. The degree-one, degree-two, and degree-at-least-three branches are mapped separately; the internal generalized-Pell bridge is discharged in canonical top-level APIs by Halter-Koch and Nicolas-Robin."
+      "note": "Partial fidelity: there is no single public declaration reproducing the manuscript's three-case count. The degree-one, degree-two, and degree-at-least-three branches are mapped separately; the internal generalized-Pell bridge is discharged in canonical top-level APIs by the internal conductor construction and Nicolas--Robin."
     },
     {
       "id": "Lem-9.5",
@@ -1314,7 +1342,7 @@
       "comparator": {
         "covered": false
       },
-      "note": "Partial fidelity: the distinct-squareclass Pell branch and the equal-squareclass factorization/smooth sum are represented by separate declarations. The registered internal Pell bridge is discharged by the canonical Halter-Koch/Nicolas-Robin construction."
+      "note": "Partial fidelity: the distinct-squareclass Pell branch and the equal-squareclass factorization/smooth sum are represented by separate declarations. The registered internal Pell bridge is discharged by the canonical internal-conductor/Nicolas--Robin construction."
     },
     {
       "id": "Prop-9.9",
@@ -1483,7 +1511,6 @@
       ],
       "bridge_ids": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1508,7 +1535,6 @@
       ],
       "bridge_ids": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1533,7 +1559,6 @@
       ],
       "bridge_ids": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1754,15 +1779,14 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four external literature premises",
+      "formalization_status": "proved modulo three external literature premises",
       "comparator": {
         "covered": false
       },
-      "note": "The headline rate and the 'more precisely' part of the same corollary are stated on p. 42. The canonical Lean endpoint has exactly the four literature premises listed here."
+      "note": "The headline rate and the 'more precisely' part of the same corollary are stated on p. 42. The canonical Lean endpoint has exactly the three open literature premises listed here; HK13 is discharged internally."
     },
     {
       "id": "Prop-14.1",
@@ -1801,11 +1825,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four external literature premises",
+      "formalization_status": "proved modulo three external literature premises",
       "comparator": {
         "covered": false
       },
@@ -1827,11 +1850,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four external literature premises",
+      "formalization_status": "proved modulo three external literature premises",
       "comparator": {
         "covered": false
       },
@@ -1853,7 +1875,6 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1861,7 +1882,7 @@
       "comparator": {
         "covered": false
       },
-      "note": "Partial fidelity: Lean proves the complete spatial PPP Laplace functional under the four literature premises. It does not duplicate the paper's vague-convergence wording as a Tendsto statement for point-measure laws because the required point-process topology API is absent from mathlib."
+      "note": "Partial fidelity: Lean proves the complete spatial PPP Laplace functional under the three open literature premises. It does not duplicate the paper's vague-convergence wording as a Tendsto statement for point-measure laws because the required point-process topology API is absent from mathlib."
     },
     {
       "id": "Lem-14.5",
@@ -1946,7 +1967,6 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
@@ -1997,11 +2017,10 @@
       "bridge_ids": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo four external literature premises",
+      "formalization_status": "proved modulo three external literature premises",
       "comparator": {
         "covered": false
       },
@@ -2142,11 +2161,10 @@
       ],
       "bridge_ids": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo the three registered canonical literature premises",
+      "formalization_status": "proved modulo the two registered canonical literature premises",
       "comparator": {
         "covered": false
       },
@@ -2175,12 +2193,11 @@
         "AGG89-T1-finite-dependency-b3-zero",
         "BS93-Theorem-1",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "LS04-Corollary-1",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved on the finite cylinder and infinite source law modulo seven literature premises",
+      "formalization_status": "proved on the finite cylinder and infinite source law modulo six literature premises",
       "comparator": {
         "covered": false
       },
@@ -2205,12 +2222,11 @@
         "AGG89-T1-finite-dependency-b3-zero",
         "BS93-Theorem-1",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "LS04-Corollary-1",
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo the same seven literature premises as Theorem 16.2",
+      "formalization_status": "proved modulo the same six literature premises as Theorem 16.2",
       "comparator": {
         "covered": false
       },
@@ -2609,7 +2625,7 @@
       },
       "lean_declarations": [
         {
-          "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
+          "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound",
           "file": "PaperC/Diophantine/PellDivisorEnvelope.lean"
         },
         {
@@ -2618,7 +2634,6 @@
         }
       ],
       "bridge_ids": [
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound",
         "PCv07c-L9.2-generalized-Pell"
       ],
@@ -2627,7 +2642,7 @@
       "comparator": {
         "covered": false
       },
-      "note": "Partial-fidelity mapping: no single public declaration packages the manuscript range transport. The first declaration discharges the polynomial-box interface from Halter-Koch and Nicolas-Robin; the second gives the source-exact real-exponent consequence from the registered internal Pell bridge."
+      "note": "Partial-fidelity mapping: no single public declaration packages the manuscript range transport. The first declaration discharges the polynomial-box interface from the internal conductor construction and Nicolas--Robin; the second gives the source-exact real-exponent consequence from the registered internal Pell bridge."
     },
     {
       "id": "Lem-17.20",
@@ -3070,10 +3085,10 @@
       "generated/internal declarations"
     ]
   },
-  "theorem_count": 4070,
+  "theorem_count": 4072,
   "theorem_kind_counts": {
     "lemma": 5,
-    "theorem": 4065
+    "theorem": 4067
   },
   "conditionality_scope": {
     "meaning": "registered external and internal bridge hypotheses",
@@ -3095,8 +3110,8 @@
     "internal": 5
   },
   "hypothesis_status_counts": {
-    "open": 7,
-    "discharged": 6
+    "open": 6,
+    "discharged": 7
   },
   "hypotheses": [
     {
@@ -3287,7 +3302,10 @@
     {
       "id": "HK13-QO-conductor-fibres",
       "kind": "external",
-      "status": "open",
+      "status": "discharged",
+      "discharged_by": [
+        "PaperC.PellInput.quadraticOrderConductorFiberBound"
+      ],
       "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
       "citation": {
         "authors": [
@@ -3312,40 +3330,30 @@
           "descent": "J(s) = J(t) and c(s) = c(t) imply (s) = (t) in ℤ[√D]"
         },
         "source_url": "https://doi.org/10.1201/b14968",
-        "verification": "source_to_lean_not_established",
-        "verification_note": "Current rc2 assessment: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
-        "sha256": "7e76325fcfebfc30c06d97024307828308a3f7105b99e6dbe8daec328ba43910",
-        "historical_frozen_verification": "manually checked against the cited theorem statements and proofs on 2026-07-31",
-        "historical_frozen_verification_note": "Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction."
+        "verification": "manually checked against the cited theorem statements and proofs on 2026-07-31",
+        "verification_note": "Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction.",
+        "sha256": "7e76325fcfebfc30c06d97024307828308a3f7105b99e6dbe8daec328ba43910"
       },
       "manuscript_locator": {
         "result": "Lemma 9.2",
         "equation": "(α)(conjugate α) = (M)",
         "pages": "28–29"
       },
-      "formalization_relation": "The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
+      "formalization_relation": "discharged historical compatibility interface: Lean constructs K = ℚ(√D), the order embedding ℤ[√D] → O_K, the extended principal ideals, and the descent directly. Trace and norm prove 2 O_K ⊆ ℤ[√D]; the four-element quotient O_K / 2 O_K supplies the historical Fin 4 colour, and equality of colours lifts the relative unit back to ℤ[√D]. No Halter–Koch theorem is used by the discharge proof. Lean separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences",
       "declaration": {
         "source": "PaperC/Diophantine/GeneralizedPell.lean",
-        "line": 123,
+        "line": 128,
         "statement_sha256": "ebf752f15ffbace8e7d9cce1e7cebd30e11d0f9b12bb5beda970f467f98c253d"
       },
-      "historical_frozen_formalization_relation": "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences",
-      "current_source_locator": "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127.",
-      "registered_frozen_source_locator": "Franz Halter-Koch, Quadratic Irrationals: An Introduction to Classical Number Theory, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127",
-      "source_to_lean_status": "source_to_lean_not_established",
-      "literature_certificate": {
+      "historical_closure_note": {
         "bridge_id": "HK13-QO-conductor-fibres",
         "file": "literature_certificates/HK13-QO-conductor-fibres.md",
-        "source_locator": "Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127.",
-        "primary_source_access": "partial",
-        "implication_status": "agent_checked_with_open_gap",
-        "limitations": "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
+        "status": "lean_discharged",
+        "discharged_by": "PaperC.PellInput.quadraticOrderConductorFiberBound",
+        "note": "Historical source-to-record gap report retained for provenance and superseded by the direct modulo-two Lean construction. It is not an active source certificate or an endpoint premise.",
         "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
-        "sha256": "732c53aa4715d892ddbd1b3714000046b92696190144e1c090970764b7e17dc9",
-        "byte_length": 4112,
-        "review_status": "agent-reviewed",
-        "human_peer_reviewed": false,
-        "supersedes_frozen_source_verification_wording_for_rc2": true
+        "sha256": "68f0b85c7b42bd6c94cbf6ade22478bc07b2fef0686bc94adb28dbc3111c0971",
+        "byte_length": 2792
       }
     },
     {
@@ -3421,7 +3429,7 @@
       "formalization_relation": "discharged legacy envelope retained for compatibility: PellDivisorEnvelope derives it from NR83-T1-divisor-log-bound, proving in Lean the polynomial substitution, small-argument split, squaring of the divisor count, and absorption of the explicit logarithmic unit-orbit factor",
       "declaration": {
         "source": "PaperC/Diophantine/GeneralizedPell.lean",
-        "line": 542,
+        "line": 547,
         "statement_sha256": "37fe907c4219e8d34f747e8e061da5e4ab5214492de896f61865a49871bcb678"
       }
     },
@@ -3639,7 +3647,8 @@
       "lean_name": "PaperC.PellInput.GeneralizedPellPolynomialBoxStatement",
       "discharged_by": [
         "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin",
-        "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound"
+        "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
+        "PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound"
       ],
       "citation": {
         "authors": [
@@ -3661,23 +3670,23 @@
         "equation": "(9.3)",
         "pages": "28–29"
       },
-      "formalization_relation": "legacy manuscript-facing interface, discharged in Lean at the source-shaped boundary by generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound; its only open upstream assumptions are the conductor-two comparison HK13-QO-conductor-fibres and the direct Nicolas--Robin logarithmic inequality NR83-T1-divisor-log-bound. The maximal-order ideal-divisor count, unit orbits, height control, finite counting, squarefree-kernel reduction, polynomial substitution and logarithmic-factor absorption are proved internally",
+      "formalization_relation": "legacy manuscript-facing interface, discharged in Lean by generalizedPellPolynomialBox_of_divisorLogBound. The quadratic-order conductor fibre bound is proved internally by PaperC.PellInput.quadraticOrderConductorFiberBound; its only open upstream assumption is the direct Nicolas--Robin logarithmic inequality NR83-T1-divisor-log-bound. The maximal-order ideal-divisor count, conductor descent, unit orbits, height control, finite counting, squarefree-kernel reduction, polynomial substitution and logarithmic-factor absorption are proved internally",
       "declaration": {
         "source": "PaperC/Diophantine/PellInput.lean",
-        "line": 121,
+        "line": 122,
         "statement_sha256": "24d1a449eb756f1a21c2e844143b6767a4f14a120e69655ca86ffb74a8f18e94"
       }
     }
   ],
-  "unconditional_theorem_count": 3912,
-  "conditional_theorem_count": 158,
+  "unconditional_theorem_count": 3913,
+  "conditional_theorem_count": 159,
   "conditional_theorem_counts_by_hypothesis_kind": {
-    "external": 120,
+    "external": 121,
     "internal": 59
   },
   "conditional_theorem_counts_by_hypothesis_status": {
-    "open": 120,
-    "discharged": 60
+    "open": 119,
+    "discharged": 62
   },
   "theorem_records": [
     {
@@ -15606,7 +15615,6 @@
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -15707,7 +15715,6 @@
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -16002,7 +16009,6 @@
         "AGG89-T1-finite-dependency-b3-zero",
         "BS93-Theorem-1",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "LS04-Corollary-1",
         "NR83-T1-divisor-log-bound"
       ]
@@ -16090,7 +16096,6 @@
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -16212,12 +16217,11 @@
       "name": "PaperC.CorollaryThirteenTen.theorem_one_one_infinite_model",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 919,
+      "line": 915,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -16225,12 +16229,11 @@
       "name": "PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
-      "line": 896,
+      "line": 894,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -17785,11 +17788,10 @@
       "name": "PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/DyadicKappaQuantitative.lean",
-      "line": 823,
+      "line": 820,
       "conditionality": "conditionnel",
       "hypotheses": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -17820,7 +17822,6 @@
       "conditionality": "conditionnel",
       "hypotheses": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -22642,7 +22643,6 @@
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -22990,7 +22990,6 @@
       "conditionality": "conditionnel",
       "hypotheses": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -23041,12 +23040,11 @@
       "name": "PaperC.MarkedSteinChenCritical.retainedMarkedTotalVariation_uniformLittleOOne_canonical",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/MarkedSteinChenCritical.lean",
-      "line": 738,
+      "line": 735,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -23054,7 +23052,7 @@
       "name": "PaperC.MarkedSteinChenCritical.retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoEnvelope",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/MarkedSteinChenCritical.lean",
-      "line": 581,
+      "line": 578,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero"
@@ -23064,7 +23062,7 @@
       "name": "PaperC.MarkedSteinChenCritical.retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoSplitEnvelope",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/MarkedSteinChenCritical.lean",
-      "line": 659,
+      "line": 656,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero"
@@ -23478,12 +23476,11 @@
       "name": "PaperC.MaskedPoissonCanonical.maskedPoissonTotalVariation_uniformLittleOOne",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/MaskedPoissonCanonical.lean",
-      "line": 36,
+      "line": 37,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -23491,12 +23488,11 @@
       "name": "PaperC.MaskedPoissonCanonical.theorem_one_two_i",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/MaskedPoissonCanonical.lean",
-      "line": 72,
+      "line": 71,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -23768,12 +23764,11 @@
       "name": "PaperC.MaskedPoissonRate.maskedPoissonTotalVariation_uniformBigO_canonical",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/MaskedPoissonRate.lean",
-      "line": 123,
+      "line": 121,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -23785,7 +23780,6 @@
       "conditionality": "conditionnel",
       "hypotheses": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -24291,7 +24285,7 @@
       "name": "PaperC.PellInput.act_injective",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 194,
+      "line": 199,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24299,7 +24293,7 @@
       "name": "PaperC.PellInput.act_inv",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 174,
+      "line": 179,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24307,7 +24301,7 @@
       "name": "PaperC.PellInput.act_preserves_equation",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 158,
+      "line": 163,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24315,7 +24309,7 @@
       "name": "PaperC.PellInput.card_pellUnits_y_natAbs_le",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 423,
+      "line": 428,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24323,7 +24317,7 @@
       "name": "PaperC.PellInput.card_samePrincipalIdeal_solutionFiber",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 560,
+      "line": 565,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24355,7 +24349,7 @@
       "name": "PaperC.PellInput.exists_squarefree_reduction",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 774,
+      "line": 779,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24371,9 +24365,19 @@
       "name": "PaperC.PellInput.generalizedPellEquation_iff_norm",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 44,
+      "line": 46,
       "conditionality": "inconditionnel",
       "hypotheses": []
+    },
+    {
+      "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound",
+      "kind": "theorem",
+      "source": "PaperC/Diophantine/PellDivisorEnvelope.lean",
+      "line": 597,
+      "conditionality": "conditionnel",
+      "hypotheses": [
+        "NR83-T1-divisor-log-bound"
+      ]
     },
     {
       "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
@@ -24390,7 +24394,7 @@
       "name": "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 838,
+      "line": 843,
       "conditionality": "conditionnel",
       "hypotheses": [
         "HK13-QO-conductor-fibres",
@@ -24411,7 +24415,7 @@
       "name": "PaperC.PellInput.hasAtMostSolutionsReal_of_squarefree_reduction",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 797,
+      "line": 802,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24427,7 +24431,7 @@
       "name": "PaperC.PellInput.natAbs_exponent_le_log_add_one",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 394,
+      "line": 399,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24453,7 +24457,7 @@
       "name": "PaperC.PellInput.norm_toZsqrtd",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 38,
+      "line": 40,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24461,7 +24465,7 @@
       "name": "PaperC.PellInput.pellPolynomialBox_of_generalizedPell",
       "kind": "theorem",
       "source": "PaperC/Diophantine/PellInput.lean",
-      "line": 255,
+      "line": 256,
       "conditionality": "conditionnel",
       "hypotheses": [
         "PCv07c-L9.2-generalized-Pell"
@@ -24499,7 +24503,7 @@
       "name": "PaperC.PellInput.pellUnit_y_natAbs_le",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 263,
+      "line": 268,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24507,7 +24511,15 @@
       "name": "PaperC.PellInput.principalIdeal_dvd_intCast",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 206,
+      "line": 211,
+      "conditionality": "inconditionnel",
+      "hypotheses": []
+    },
+    {
+      "name": "PaperC.PellInput.quadraticOrderConductorFiberBound",
+      "kind": "theorem",
+      "source": "PaperC/Diophantine/HalterKochConductorDescent.lean",
+      "line": 646,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24515,7 +24527,7 @@
       "name": "PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent",
       "kind": "theorem",
       "source": "PaperC/Diophantine/HalterKochConductorDescent.lean",
-      "line": 183,
+      "line": 189,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24523,7 +24535,7 @@
       "name": "PaperC.PellInput.same_principalIdeal_gives_pell_unit",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 225,
+      "line": 230,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24531,7 +24543,7 @@
       "name": "PaperC.PellInput.scaleImag_height",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 759,
+      "line": 764,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24539,7 +24551,7 @@
       "name": "PaperC.PellInput.scaleImag_injective",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 749,
+      "line": 754,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24547,7 +24559,7 @@
       "name": "PaperC.PellInput.scaleImag_preserves_equation",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 736,
+      "line": 741,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24555,7 +24567,7 @@
       "name": "PaperC.PellInput.squarefreeGeneralizedPellBox_atMost_of_conductorComparison",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 634,
+      "line": 639,
       "conditionality": "conditionnel",
       "hypotheses": [
         "HK13-QO-conductor-fibres"
@@ -24565,7 +24577,7 @@
       "name": "PaperC.PellInput.toZsqrtd_act",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 142,
+      "line": 147,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24573,7 +24585,7 @@
       "name": "PaperC.PellInput.toZsqrtd_im",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 33,
+      "line": 35,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24581,7 +24593,7 @@
       "name": "PaperC.PellInput.toZsqrtd_re",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 28,
+      "line": 30,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24589,7 +24601,7 @@
       "name": "PaperC.PellInput.two_pow_le_y_natAbs_pow_succ",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 357,
+      "line": 362,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24597,7 +24609,7 @@
       "name": "PaperC.PellInput.two_pow_le_y_pow_succ",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 315,
+      "line": 320,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24605,7 +24617,7 @@
       "name": "PaperC.PellInput.two_pow_pred_natAbs_le_y_natAbs_zpow",
       "kind": "theorem",
       "source": "PaperC/Diophantine/GeneralizedPell.lean",
-      "line": 373,
+      "line": 378,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27510,7 +27522,6 @@
       "conditionality": "conditionnel",
       "hypotheses": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -30083,7 +30094,6 @@
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -30091,12 +30101,11 @@
       "name": "PaperC.SectionFourteenClosure.theorem_one_two_iii_laplace_and_tightness",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/SectionFourteenClosure.lean",
-      "line": 159,
+      "line": 157,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -30878,7 +30887,6 @@
       "conditionality": "conditionnel",
       "hypotheses": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -32500,12 +32508,11 @@
       "name": "PaperC.SpatialLaplaceCritical.sectionFourteenTwo_spatialLaplaceFunctional",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/SpatialLaplaceCritical.lean",
-      "line": 919,
+      "line": 918,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -32513,7 +32520,7 @@
       "name": "PaperC.SpatialLaplaceCritical.sectionFourteenTwo_spatialLaplaceFunctional_of_homogeneousMass",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/SpatialLaplaceCritical.lean",
-      "line": 852,
+      "line": 850,
       "conditionality": "conditionnel",
       "hypotheses": [
         "AGG89-T1-finite-dependency-b3-zero"
@@ -32527,7 +32534,6 @@
       "conditionality": "conditionnel",
       "hypotheses": [
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "NR83-T1-divisor-log-bound"
       ]
     },
@@ -34285,14 +34291,13 @@
       "name": "PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 1681,
+      "line": 1682,
       "conditionality": "conditionnel",
       "hypotheses": [
         "ADGR07-PNT",
         "AGG89-T1-finite-dependency-b3-zero",
         "BS93-Theorem-1",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "LS04-Corollary-1",
         "NR83-T1-divisor-log-bound"
       ]
@@ -34308,7 +34313,6 @@
         "AGG89-T1-finite-dependency-b3-zero",
         "BS93-Theorem-1",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "LS04-Corollary-1",
         "NR83-T1-divisor-log-bound"
       ]
@@ -34388,7 +34392,6 @@
         "AGG89-T1-finite-dependency-b3-zero",
         "BS93-Theorem-1",
         "ES86-T1b-Q-split-n2",
-        "HK13-QO-conductor-fibres",
         "LS04-Corollary-1",
         "NR83-T1-divisor-log-bound"
       ]
@@ -36675,7 +36678,7 @@
     }
   ],
   "additional_target_count": 2,
-  "audit_target_count": 4072,
+  "audit_target_count": 4074,
   "audit_targets": [
     "PaperC.Affine.CanonicalRationalCode.candidate_coprime",
     "PaperC.Affine.CanonicalRationalCode.candidate_fst_pos",
@@ -39229,6 +39232,7 @@
     "PaperC.PellInput.exists_squarefree_reduction",
     "PaperC.PellInput.exp_one_le_log_nat_of_sixtyFour_le",
     "PaperC.PellInput.generalizedPellEquation_iff_norm",
+    "PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound",
     "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
     "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin",
     "PaperC.PellInput.generalizedPellRealPolynomialBox_of_generalizedPell",
@@ -39244,6 +39248,7 @@
     "PaperC.PellInput.pellUnitOrbitEnvelope_le_log",
     "PaperC.PellInput.pellUnit_y_natAbs_le",
     "PaperC.PellInput.principalIdeal_dvd_intCast",
+    "PaperC.PellInput.quadraticOrderConductorFiberBound",
     "PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent",
     "PaperC.PellInput.same_principalIdeal_gives_pell_unit",
     "PaperC.PellInput.scaleImag_height",
@@ -43302,6 +43307,7 @@
     "PaperC.PellInput.exists_squarefree_reduction",
     "PaperC.PellInput.exp_one_le_log_nat_of_sixtyFour_le",
     "PaperC.PellInput.generalizedPellEquation_iff_norm",
+    "PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound",
     "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
     "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin",
     "PaperC.PellInput.generalizedPellRealPolynomialBox_of_generalizedPell",
@@ -43317,6 +43323,7 @@
     "PaperC.PellInput.pellUnitOrbitEnvelope_le_log",
     "PaperC.PellInput.pellUnit_y_natAbs_le",
     "PaperC.PellInput.principalIdeal_dvd_intCast",
+    "PaperC.PellInput.quadraticOrderConductorFiberBound",
     "PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent",
     "PaperC.PellInput.same_principalIdeal_gives_pell_unit",
     "PaperC.PellInput.scaleImag_height",

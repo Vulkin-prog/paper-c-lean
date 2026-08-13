@@ -582,15 +582,13 @@ theorem R2κ_dyadic_uniformBigO
 
 /--
 The canonical mother-mass theorem with the source-shaped Nicolas--Robin
-divisor inequality.  All polynomial-height and unit-orbit postprocessing is
-constructed internally.
+divisor inequality.  The quadratic-order descent, polynomial-height and
+unit-orbit postprocessing are constructed internally.
 -/
 theorem homogeneousMass_uniformBigO
     {C : ℝ} (hC : 0 ≤ C)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformBigOOn
@@ -599,8 +597,7 @@ theorem homogeneousMass_uniformBigO
       SectionThirteenRate.quadraticDivLogLogSquaredScale := by
   have hPell :
       PellInput.GeneralizedPellPolynomialBoxStatement :=
-    PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
-      hConductor hDivisor
+    PellInput.generalizedPellPolynomialBox_of_divisorLogBound hDivisor
   obtain ⟨Q₂, hQ₂Rate, hQ₂Nonneg, hQ₂Dom⟩ :=
     exists_twoSingletonShapeFiberEnvelope hC 2 3
   obtain ⟨Cterm, hCterm, hhostsTwo⟩ :=
@@ -824,8 +821,6 @@ theorem corollary_eleven_three_canonical
     {C : ℝ} (hC : 0 ≤ C)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     ∃ c_R : ℝ, 0 < c_R ∧
@@ -835,8 +830,7 @@ theorem corollary_eleven_three_canonical
         (PropositionElevenThree.quantitativeHomogeneousScale c_R) := by
   have hPell :
       PellInput.GeneralizedPellPolynomialBoxStatement :=
-    PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
-      hConductor hDivisor
+    PellInput.generalizedPellPolynomialBox_of_divisorLogBound hDivisor
   obtain ⟨Q₂, hQ₂Rate, hQ₂Nonneg, hQ₂Dom⟩ :=
     exists_twoSingletonShapeFiberEnvelope hC 2 3
   obtain ⟨Cterm, hCterm, hhostsTwo⟩ :=

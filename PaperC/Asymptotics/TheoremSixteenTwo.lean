@@ -1675,8 +1675,9 @@ theorem theorem_sixteen_two
 
 /--
 Canonical Theorem 16.2 with no manuscript-internal generalized-Pell
-antecedent.  The latter is reconstructed from the conductor comparison and
-the source-shaped Nicolas--Robin logarithmic divisor inequality.
+antecedent.  The latter is reconstructed from the internal quadratic-order
+conductor descent and the source-shaped Nicolas--Robin logarithmic divisor
+inequality.
 -/
 theorem theorem_sixteen_two_canonical
     {C : ℝ} (hC : 0 < C)
@@ -1684,8 +1685,6 @@ theorem theorem_sixteen_two_canonical
       PrimeNumberTheoremInput.PrimeNumberTheoremStatement)
     (hLS :
       LaishramShoreyInput.LaishramShoreyStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement)
     (hBS :
@@ -1697,8 +1696,7 @@ theorem theorem_sixteen_two_canonical
     TheoremSixteenTwoStatement C := by
   have hPell :
       PellInput.GeneralizedPellPolynomialBoxStatement :=
-    PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
-      hConductor hDivisor
+    PellInput.generalizedPellPolynomialBox_of_divisorLogBound hDivisor
   have htrunc : PropositionFifteenFiveStatement C :=
     PropositionFifteenFivePartition.proposition_fifteen_five
       hC.le hpnt hLS hPell hBS
@@ -1709,7 +1707,7 @@ theorem theorem_sixteen_two_canonical
     intro C' hC' κ₀ hκ₀
     exact
       PropositionSixteenOne.proposition_sixteen_one_canonical
-        hC'.le hκ₀ hES hConductor hDivisor
+        hC'.le hκ₀ hES hDivisor
   have hbounded :
       BoundedRangePoissonConclusion C :=
     boundedRangePoissonConclusion hC.le hAGG

@@ -8,39 +8,61 @@ The mathematical and formal statuses are separated.
    v09 manuscript works in the maximal order of the quadratic field: it counts
    ideal divisors of `(M)` and then generators of a principal ideal modulo the
    unit group. That printed route does not require the stronger
-   `QuadraticOrderConductorData` record used by the current Lean encoding.
-2. **Current Lean route.** The canonical Lean endpoints that consume
-   `HK13-QO-conductor-fibres` remain conditional on the explicitly stated
-   proposition `QuadraticOrderConductorFiberBoundStatement`. The source audit
-   has not derived that entire record from the cited Halter--Koch pages.
-3. **Permitted public claim.** It is accurate to say that the internal finite
-   deductions are Lean-checked conditional on seven registered literature
-   interfaces. It is not accurate to call the affected theorems fully and
-   unconditionally Lean-certified.
+   `QuadraticOrderConductorData` compatibility record retained by the Lean
+   encoding.
+2. **Current Lean route.** Lean now proves
+   `QuadraticOrderConductorFiberBoundStatement` internally. It constructs
+   `K = ℚ(√D)`, the embedding `ℤ[√D] → O_K`, and the extended principal
+   ideals. Trace and norm show that `2 O_K ⊆ ℤ[√D]`. The quotient
+   `O_K / 2 O_K` has four elements and supplies the `Fin 4` colour of a relative
+   unit. Equal colours make the quotient of two relative units congruent to
+   one modulo `2`; lifting that unit and its inverse descends equality to
+   principal ideals in `ℤ[√D]`. The construction is total off
+   the norm equation and covers negative `M`.
+3. **Registry status.** `HK13-QO-conductor-fibres` retains `kind: external` to
+   record the historical provenance of the compatibility boundary, but now has
+   `status: discharged`, with the internal Lean theorem as its discharge. The
+   source-shaped three-coset record and its `Fin 3 → Fin 4` adapter remain for
+   compatibility; the discharge proof does not assume or construct that
+   record.
+4. **Public boundary.** Halter--Koch is no longer an argument of the canonical
+   endpoints. The finite-cylinder form of Theorem 1.1 and its main Comparator
+   target have exactly three open literature premises: Arratia--Goldstein--
+   Gordon, Evertse--Silverman, and Nicolas--Robin. Across the repository, six
+   external bridges remain open.
 
-This adjudication does **not** silently turn the manuscript's mathematical
-theorems into statements conditional on Halter--Koch. It identifies a mismatch
-between the conventional printed proof route and the stronger current formal
-interface.
+The historical source counter-audit may still document that the cited pages
+were not turned into the former source-shaped record. That is no longer a
+formal gap in the canonical Lean route: the kernel proof closes the registered
+compatibility proposition by an independent elementary construction. It would
+still be inaccurate to claim that the Halter--Koch text itself has been
+formalized or independently human-reviewed.
 
-## Formal closure criteria
+## What the closure proves
 
-The formal gap is closed by either of the following routes.
+The critical ingredients are all kernel-checked:
 
-- Formalize the maximal-order proof actually printed in the manuscript, with
-  the ideal-divisor count and the unit-orbit count needed by the Pell lemma.
-- Or construct, in Lean and from the cited source statements, the complete
-  conductor/ideal/colour record currently assumed, including the field tied to
-  the particular `D`, the two maximal-order cases, negative `M`, coherent unit
-  cosets and off-equation defaults.
+- the quadratic field and its ring of integers are connected to the given
+  squarefree nonsquare `D`;
+- every solution is assigned an ideal divisor of `(M)`, and harmless defaults
+  make the assignment total on all integer pairs;
+- the quotient `O_K / 2 O_K` has cardinality four;
+- a maximal-order unit congruent to one modulo `2`, together with its inverse,
+  lifts to a unit of `ℤ[√D]`;
+- equal extended ideals and equal colours therefore imply equality of the
+  original principal ideals.
 
-Until one route is completed and reviewed, the bridge remains `external/open`
-and `agent_checked_with_open_gap`.
+This proves the historical `Fin 4` compatibility interface directly. It does
+not assert that the particular abstract `UnitQuotient` field in
+`HalterKochConductorDescentData` has been instantiated from the cited book.
 
 ## Release consequence
 
-A release may publish the repository as a transparent conditional
-formalization, but release notes, repository metadata and papers must preserve
-the distinction above. Hardened Comparator evidence certifies the implication
-from the explicit premises; it does not discharge the premise or certify the
-source-to-record mapping.
+The closure changes the Lean core, the bridge inventory, canonical theorem
+signatures, and the main Comparator theorem from four premises to three. The
+published v0.48.0 hardened evidence therefore does not qualify the new state,
+even though its historical run remains valid for the exact old bytes. A
+qualified release requires regenerated audit artifacts and a fresh hardened,
+non-root, no-fallback Comparator run bound to the final source commit and PDF
+hashes. The transfer Comparator remains a separate unconditional exact-law
+check and must be rerun as part of the same qualification.

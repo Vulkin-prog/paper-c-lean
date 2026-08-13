@@ -315,20 +315,19 @@ def CorollaryPrefixLawStatement (C : ℝ) : Prop :=
           Real.exp (-criticalScale M L))
       (fun _ _ ↦ 1)
 
-/-- Canonical `cor:prefix-law`, conditional on exactly the same seven
+/-- Canonical `cor:prefix-law`, conditional on exactly the same six
 registered external propositions as Theorem 16.2. -/
 theorem corollary_prefix_law_canonical
     {C : ℝ} (hC : 0 < C)
     (hpnt : PrimeNumberTheoremInput.PrimeNumberTheoremStatement)
     (hLS : LaishramShoreyInput.LaishramShoreyStatement)
-    (hConductor : QuadraticOrderConductorFiberBoundStatement)
     (hDivisor : NicolasRobinDivisorLogBoundStatement)
     (hBS : BalasubramanianShoreyInput.BalasubramanianShoreyStatement)
     (hAGG : ArratiaGoldsteinGordonStatement)
     (hES : EvertseSilvermanInput.EvertseSilvermanAbscissaStatement) :
     CorollaryPrefixLawStatement C := by
   have h16 := theorem_sixteen_two_recentered_canonical
-    hC hpnt hLS hConductor hDivisor hBS hAGG hES
+    hC hpnt hLS hDivisor hBS hAGG hES
   exact
     ⟨infinitePrefixStartLaw_poisson_uniformLittleOOne hC.le h16,
       infinitePrefixLongestStretchBelowProbability_uniformLittleOOne

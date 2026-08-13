@@ -19,6 +19,11 @@ function arg(name) {
   return process.argv[i + 1];
 }
 
+function optionalArg(name) {
+  const i = process.argv.indexOf(name);
+  return i < 0 ? null : process.argv[i + 1];
+}
+
 function sha256(file) {
   return crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 }
@@ -27,6 +32,15 @@ function assertRegularFile(file, label) {
   const stat = fs.lstatSync(file);
   if (!stat.isFile() || stat.isSymbolicLink()) {
     throw new Error(`${label} must be a regular, non-symbolic file`);
+  }
+}
+
+function assertOutsideRepository(candidate, root, label) {
+  const resolvedCandidate = fs.realpathSync(candidate);
+  const resolvedRoot = fs.realpathSync(root);
+  const relative = path.relative(resolvedRoot, resolvedCandidate);
+  if (relative === '' || (!relative.startsWith(`..${path.sep}`) && relative !== '..')) {
+    throw new Error(`${label} must be outside the source repository`);
   }
 }
 
@@ -86,6 +100,11 @@ function dirtyPaths(root) {
 
 const evidenceDir = path.resolve(arg('--evidence-dir'));
 const archive = path.resolve(arg('--archive'));
+const rawSourceArgument = optionalArg('--raw-source');
+if (rawSourceArgument === null) {
+  throw new Error('missing --raw-source for mandatory independent archive verification');
+}
+const rawSource = path.resolve(rawSourceArgument);
 const output = path.resolve(arg('--output'));
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const canonicalEvidenceDir = path.join(root, ...EVIDENCE_RELATIVE.split('/'));
@@ -93,12 +112,75 @@ const canonicalOutput = path.join(canonicalEvidenceDir, BINDING_NAME);
 if (evidenceDir !== canonicalEvidenceDir || output !== canonicalOutput) {
   throw new Error(`binding and result records must be created in ${EVIDENCE_RELATIVE}`);
 }
+assertOutsideRepository(archive, root, 'hardened public archive');
+assertOutsideRepository(rawSource, root, 'private raw evidence source');
 assertRegularFile(archive, 'hardened public archive');
+const expectedArchiveNamePattern = /^paper-c-hardened-public-([0-9a-f]{40})\.tar\.zst$/;
+const archiveNameMatch = expectedArchiveNamePattern.exec(path.basename(archive));
+if (archiveNameMatch === null) {
+  throw new Error(
+    'hardened public archive must be named ' +
+    'paper-c-hardened-public-<full-source-Q>.tar.zst',
+  );
+}
 
 const head = execFileSync('git', ['-C', root, 'rev-parse', '--verify', 'HEAD^{commit}'], {
   encoding: 'utf8',
 }).trim();
 if (!/^[0-9a-f]{40}$/.test(head)) throw new Error('HEAD is not an exact commit');
+if (archiveNameMatch[1] !== head) {
+  throw new Error('hardened public archive filename does not bind source commit Q');
+}
+const archiveSidecar = `${archive}.sha256`;
+assertRegularFile(archiveSidecar, 'hardened public archive checksum sidecar');
+const archiveSha256 = sha256(archive);
+const expectedArchiveSidecar = `${archiveSha256}  ${path.basename(archive)}\n`;
+if (fs.readFileSync(archiveSidecar, 'utf8') !== expectedArchiveSidecar) {
+  throw new Error('hardened public archive checksum sidecar mismatch');
+}
+const publicVerifierRelative = 'scripts/verify_public_comparator_archive.py';
+const publicVerifier = path.join(root, publicVerifierRelative);
+assertRegularFile(publicVerifier, 'public archive independent verifier');
+const committedVerifier = execFileSync(
+  'git',
+  ['-C', root, 'show', `${head}:${publicVerifierRelative}`],
+);
+if (!fs.readFileSync(publicVerifier).equals(committedVerifier)) {
+  throw new Error('public archive verifier differs from source commit Q');
+}
+const resultHashesTemporaryDirectory = fs.mkdtempSync(
+  path.join(path.dirname(archive), '.paper-c-verified-result-hashes-'),
+);
+const resultHashesOutput = path.join(
+  resultHashesTemporaryDirectory,
+  'result-hashes.json',
+);
+let verifiedResultHashes;
+try {
+  execFileSync(
+    '/usr/bin/python3',
+    [
+      publicVerifier,
+      '--source', rawSource,
+      '--archive', archive,
+      '--repository', root,
+      '--packaging-evidence-dir', canonicalEvidenceDir,
+      '--result-hashes-output', resultHashesOutput,
+    ],
+    { stdio: 'inherit' },
+  );
+  verifiedResultHashes = JSON.parse(fs.readFileSync(resultHashesOutput, 'utf8'));
+} finally {
+  fs.rmSync(resultHashesTemporaryDirectory, { recursive: true, force: true });
+}
+if (verifiedResultHashes.schema !== 1 ||
+    verifiedResultHashes.paper_c_commit !== head ||
+    verifiedResultHashes.archive_sha256 !== archiveSha256 ||
+    typeof verifiedResultHashes.result_sha256 !== 'object' ||
+    verifiedResultHashes.result_sha256 === null ||
+    Array.isArray(verifiedResultHashes.result_sha256)) {
+  throw new Error('invalid result-hash output from independent public verifier');
+}
 const committedEvidence = execFileSync(
   'git',
   ['-C', root, 'ls-tree', '-r', '--name-only', '-z', head, '--', EVIDENCE_RELATIVE],
@@ -160,6 +242,13 @@ for (const [name, expectedConfig] of RESULT_SPECS) {
       result.manuscript_sha256?.source_pdf_fr !== frenchPdfSha256) {
     throw new Error(`${name}: manuscript hashes do not match source commit Q`);
   }
+  if (verifiedResultHashes.result_sha256[name] !== sha256(resultPath)) {
+    throw new Error(`${name}: bytes differ from independently verified public archive`);
+  }
+}
+if (JSON.stringify(Object.keys(verifiedResultHashes.result_sha256).sort()) !==
+    JSON.stringify([...RESULT_SPECS.keys()].sort())) {
+  throw new Error('verification receipt has an unexpected result path set');
 }
 
 const binding = {
@@ -170,7 +259,7 @@ const binding = {
   comparator_fileset_digest_sha256: comparatorDigest,
   english_pdf_sha256: englishPdfSha256,
   french_pdf_sha256: frenchPdfSha256,
-  hardened_archive_sha256: sha256(archive),
+  hardened_archive_sha256: archiveSha256,
   evidence: Object.fromEntries(
     [...RESULT_SPECS.keys()].map(name => [name, sha256(path.join(canonicalEvidenceDir, name))]),
   ),

@@ -73,10 +73,10 @@ def generalizedPellBox
     solution.2.natAbs ≤ H
 
 /--
-Internal bridge for the ideal-divisor and unit-orbit count in the proof of
-Lemma 9.2.  Its source is the target manuscript itself, so it records a
-remaining formalization obligation rather than a citation to an independently
-published theorem.
+Historical internal bridge for the ideal-divisor and unit-orbit count in the
+proof of Lemma 9.2.  Its source is the target manuscript itself.  The bridge is
+retained for traceability but is now discharged by the concrete conductor,
+ideal-divisor and unit-orbit development.
 
 For every fixed positive integer polynomial exponent, generalized Pell
 equations with nonsquare positive coefficient and polynomially bounded
@@ -84,9 +84,9 @@ coefficient, right-hand side and height have
 `exp (O(log N / log log N))` solutions.
 
 The source quotation below records the exact point of the target manuscript
-encapsulated by this bridge.  Checking that the quoted classical argument
-really establishes this uniform proposition remains a mathematical review
-obligation, not a kernel check.
+encapsulated by this bridge.  The conductor descent used in this argument is
+now proved internally; the remaining source review obligation is the
+registered Nicolas--Robin divisor inequality, not a kernel check.
 -/
 /- AUDIT_BRIDGE
 {
@@ -96,7 +96,8 @@ obligation, not a kernel check.
   "lean_name": "PaperC.PellInput.GeneralizedPellPolynomialBoxStatement",
   "discharged_by": [
     "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin",
-    "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound"
+    "PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound",
+    "PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound"
   ],
   "citation": {
     "authors": ["Brice Pouly"],
@@ -115,7 +116,7 @@ obligation, not a kernel check.
     "equation": "(9.3)",
     "pages": "28–29"
   },
-  "formalization_relation": "legacy manuscript-facing interface, discharged in Lean at the source-shaped boundary by generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound; its only open upstream assumptions are the conductor-two comparison HK13-QO-conductor-fibres and the direct Nicolas--Robin logarithmic inequality NR83-T1-divisor-log-bound. The maximal-order ideal-divisor count, unit orbits, height control, finite counting, squarefree-kernel reduction, polynomial substitution and logarithmic-factor absorption are proved internally"
+  "formalization_relation": "legacy manuscript-facing interface, discharged in Lean by generalizedPellPolynomialBox_of_divisorLogBound. The quadratic-order conductor fibre bound is proved internally by PaperC.PellInput.quadraticOrderConductorFiberBound; its only open upstream assumption is the direct Nicolas--Robin logarithmic inequality NR83-T1-divisor-log-bound. The maximal-order ideal-divisor count, conductor descent, unit orbits, height control, finite counting, squarefree-kernel reduction, polynomial substitution and logarithmic-factor absorption are proved internally"
 }
 AUDIT_BRIDGE -/
 def GeneralizedPellPolynomialBoxStatement : Prop :=

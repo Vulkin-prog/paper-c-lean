@@ -240,8 +240,6 @@ theorem corollary_fourteen_eight_maximum
     (hAGG : ArratiaGoldsteinGordonStatement)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement)
     (Lseq : ℕ → ℕ)
@@ -264,7 +262,7 @@ theorem corollary_fourteen_eight_maximum
     positivity
   have htv :=
     MaskedPoissonCanonical.maskedPoissonTotalVariation_uniformLittleOOne
-      hCshift hAGG hES hConductor hDivisor
+      hCshift hAGG hES hDivisor
   have htvSeq :
       Tendsto
         (fun N : ℕ =>

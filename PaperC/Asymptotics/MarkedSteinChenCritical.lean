@@ -552,15 +552,13 @@ theorem markedBTwoSplitEnvelopeReal_uniformLittleOOne
     markedBTwoSplitNumeratorReal] using hbound
 
 /--
-Source-shaped wrapper using precisely the quadratic-order conductor
-comparison and Nicolas--Robin divisor estimate left as literature inputs.
+Source-shaped wrapper using the internally discharged quadratic-order
+conductor comparison and the Nicolas--Robin divisor estimate.
 -/
 theorem markedBTwoSplitEnvelopeReal_uniformLittleOOne_canonical
     {C : ℝ} (hC : 0 ≤ C) (E : ℕ)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformLittleOOn
@@ -569,8 +567,7 @@ theorem markedBTwoSplitEnvelopeReal_uniformLittleOOne_canonical
       (fun _ _ ↦ 1) :=
   markedBTwoSplitEnvelopeReal_uniformLittleOOne
     hC E hES
-      (PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
-        hConductor hDivisor)
+      (PellInput.generalizedPellPolynomialBox_of_divisorLogBound hDivisor)
 
 /--
 Final finite-to-asymptotic reduction for the retained marked count.
@@ -732,8 +729,8 @@ theorem retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoSplitEnvelope
 
 /--
 Canonical retained marked Stein--Chen convergence, conditional only on
-the four source-level literature inputs AGG, Evertse--Silverman,
-Halter--Koch, and Nicolas--Robin.
+the three source-level literature inputs AGG, Evertse--Silverman, and
+Nicolas--Robin.  The conductor comparison is discharged internally.
 -/
 theorem retainedMarkedTotalVariation_uniformLittleOOne_canonical
     (hAGG :
@@ -741,8 +738,6 @@ theorem retainedMarkedTotalVariation_uniformLittleOOne_canonical
     {C : ℝ} (hC : 0 ≤ C) (E : ℕ)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformLittleOOn
@@ -752,7 +747,7 @@ theorem retainedMarkedTotalVariation_uniformLittleOOne_canonical
   retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoSplitEnvelope
     hAGG hC E
       (markedBTwoSplitEnvelopeReal_uniformLittleOOne_canonical
-        hC E hES hConductor hDivisor)
+        hC E hES hDivisor)
 
 end
 
