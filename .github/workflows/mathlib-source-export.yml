@@ -1,0 +1,39 @@
+name: mathlib-source-export
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/v049-paper-c-v09-sync
+    paths:
+      - .github/workflows/mathlib-source-export.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Package pinned Mathlib source
+        run: |
+          set -euo pipefail
+          test -d .lake/packages/mathlib/Mathlib
+          mkdir -p export
+          tar -czf export/mathlib-pinned-source.tar.gz -C .lake/packages/mathlib Mathlib
+          printf '%s\n' 905b95818eb32af7874a58b427f50c1711a5e96c > export/MATHLIB_COMMIT.txt
+          sha256sum export/mathlib-pinned-source.tar.gz > export/mathlib-pinned-source.tar.gz.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mathlib-pinned-source
+          path: export/
+          if-no-files-found: error
+          retention-days: 7
