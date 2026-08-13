@@ -18,10 +18,12 @@ French, 79 pages and 946847 bytes, SHA-256
 
 ## Required gates
 
-A qualified release uses two exact, consecutive commits.  The final source
-commit **Q** contains the PDFs and all code.  A fresh hardened run is bound to
-Q.  Its privacy-minimized result records and binding are then added by a
-single-parent packaging commit **R** whose complete `Q..R` diff is restricted
+A qualified release uses two exact, consecutive commits.  Because any change
+to the source snapshot invalidates the old pair, the final corrected pair is
+named **Q' / R'** below.  Source commit **Q'** contains the PDFs and all code,
+and contains no current `release_evidence/v0.48.1/` files.  A fresh hardened
+run is bound to Q'.  Its privacy-minimized result records and binding are then
+added by a single-parent packaging commit **R'** whose complete `Q'..R'` diff is restricted
 to `release_evidence/v0.48.1/**`.
 
 - [ ] The English and French v09 PDFs are the final rebuilt artifacts, and the
@@ -30,7 +32,7 @@ to `release_evidence/v0.48.1/**`.
   `mutool info` plus `mutool clean -gggg` fallback: every font is embedded and subset,
   no Type 3 font is present, all four Poppler URL/metadata/custom/destination
   inventories are produced, and no private/local path leaks.
-- [ ] The standard reproducibility workflow is green for source commit Q: PDF
+- [ ] The standard reproducibility workflow is green for source commit Q': PDF
   bytes, the new source digest, bridge and literature-certificate mapping, root
   guards, project build, four isolated Challenge/Solution builds and exhaustive
   kernel audit.
@@ -54,27 +56,40 @@ to `release_evidence/v0.48.1/**`.
   been formalized or human-reviewed are not conflated.
 - [ ] A fresh **hardened, non-root, no-fallback** Comparator run is produced
   locally with `scripts/run_hardened_comparator.sh`, for both targets, while
-  `HEAD` is source commit Q.
+  `HEAD` is source commit Q'.
 - [ ] The privacy-minimized result records and `release-binding.json` bind the
-  source commit Q, its Comparator fileset, both final PDF hashes and the
+  source commit Q', its Comparator fileset, both final PDF hashes and the
   hardened archive SHA-256.
-- [ ] Packaging commit R has Q as its unique parent and adds exactly the two
+- [ ] Packaging commit R' has Q' as its unique parent and adds exactly the two
   result records and `release-binding.json` under
   `release_evidence/v0.48.1/`; it changes no source, PDF or metadata file.
-- [ ] `.github/workflows/release-qualification.yml` passes against R.  It
-  derives Q from R, verifies the restricted `Q..R` diff, recomputes the PDF and
-  Comparator identities from both Git trees, and requires every binding and
-  result record to carry Q.
+- [ ] `.github/workflows/release-qualification.yml` passes against R'.  It
+  derives Q' from R', requires Q' to contain no current release evidence,
+  verifies the restricted `Q'..R'` diff, recomputes the PDF and Comparator
+  identities from both Git trees, and requires every binding and result record
+  to carry Q'.  It also requires the unchanged R' object to be an ancestor of
+  the default branch.
+- [ ] Integration preserves the exact Q'/R' commit objects.  Only a controlled
+  fast-forward to R', or a merge commit which retains R' unchanged as an
+  ancestor, is permitted. **Squash merge and rebase merge are forbidden**:
+  either rewrites the cryptographic identity and invalidates the binding.
 - [ ] The tag `v0.48.1`, GitHub release, `paper_c_lean_v0481.zip`, checksums,
   QA report, hardened public evidence archive, its detached checksum, and its
   informational `.verified.json` report are published together.
+- [ ] `.github/workflows/post-publication-verification.yml` downloads the
+  actual archive, checksum and informational report from the GitHub release,
+  recalculates their identities, checks them against R', executes the archive's
+  `VERIFY.sh` checksum verifier, checks the identity of the archived independent
+  Python verifier, and preserves its JSON report.  This public-only check does
+  not replace the mandatory pre-publication verification against private raw
+  evidence.
 - [ ] A Zenodo **version DOI** is minted for those exact bytes; the concept DOI
   remains the series-level identifier.
 
 ## Hardened evidence binding
 
-After the final PDFs and code are committed, record source commit Q and run the
-hardened procedure while `HEAD=Q`.  Copy only its two privacy-minimized result
+After the final PDFs and code are committed, record source commit Q' and run the
+hardened procedure while `HEAD=Q'`.  Copy only its two privacy-minimized result
 records into the packaging directory before creating the binding. The raw
 runner output is never a publication asset. Derivation and independent
 verification of the omission-only public archive are mandatory gates; see
@@ -115,11 +130,24 @@ PACKAGING_R=$(git rev-parse HEAD)
 test "$(git rev-parse HEAD^)" = "$SOURCE_Q"
 ```
 
-Before committing R, the staged-path listing must contain only the three files
+Before committing R', the staged-path listing must contain only the three files
 under `release_evidence/v0.48.1/`.  Run the manual release-qualification
 workflow with `packaging_commit=PACKAGING_R` and the hardened archive SHA-256.
-Tag R, not Q, only after this workflow succeeds.  The raw host transcript must
+Integrate only by identity-preserving fast-forward or merge commit, never by
+squash or rebase. Tag R', not Q', only after this workflow succeeds. Then
+publish all three public evidence assets and run the post-publication workflow;
+its report must pass before the release is called complete. The raw host transcript must
 remain private when it contains usernames, hostnames, groups or local paths.
+
+The workflow actions are pinned to full Git commits. Their release tags and
+GitHub commit signatures were verified on 2026-08-13 and are recorded inline:
+`actions/checkout` v4.2.2 at `11bd71901bbe5b1630ceea73d27597364c9af683`,
+`actions/upload-artifact` v4.6.2 at
+`ea165f8d65b6e75b540449e92b4886f43607fa02`, `leanprover/lean-action` v1 at
+`38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9`, and `actions/setup-go` v5.5.0 at
+`d35c59abb061a4a6fb18e82ac0862c26744d6ab5`. Both qualification workflows
+record the runner, language runtime and installed system-package versions in
+their retained reports.
 
 ## Repository short description
 

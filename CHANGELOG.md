@@ -9,9 +9,15 @@
 - Removed the Halter--Koch premise from all canonical endpoints and from the
   principal Comparator target.  Six external bridges remain open globally;
   Theorem 1.1 now takes exactly AGG, Evertse--Silverman and Nicolas--Robin.
-- Marked the current Comparator state `not_run`.  The published hardened
-  v0.48.0 evidence is retained as historical evidence for its exact old
-  bytes, but a fresh no-fallback run is required for this candidate.
+- Replaced the mutable source-tree Comparator verdict with an explicit
+  timeless protocol: `source_snapshot_comparator_state` fixes definitions and
+  digests only, `release_evidence_state` and `release_evidence_location`
+  designate the post-freeze evidence layer, and
+  `packaging_commit_required: true` requires a validated unique-child commit.
+  A source snapshot therefore asserts neither that later evidence is absent
+  nor that it has passed. The authoritative release verdict is carried only
+  by evidence bound to that exact source commit. The published hardened
+  v0.48.0 evidence remains historical evidence for its exact old bytes.
 - Published the two 2026-08-13 agent counter-reviews with provenance and
   original SHA-256 values; no independent human review is claimed.
 - Updated the Halter--Koch adjudication to separate the conventional

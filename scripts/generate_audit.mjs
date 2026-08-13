@@ -119,7 +119,7 @@ if (
 }
 
 const auditConfig = JSON.parse(fs.readFileSync(auditConfigPath, 'utf8'));
-if (auditConfig.schema_version !== 4) {
+if (auditConfig.schema_version !== 5) {
   throw new Error('unsupported audit_config.json schema_version');
 }
 requirePlainObject(auditConfig.project, 'project');
@@ -402,18 +402,67 @@ const comparatorMetadata = requirePlainObject(
   auditConfig.verification.comparator,
   'verification.comparator',
 );
-requireNonemptyString(
-  comparatorMetadata.status,
-  'verification.comparator.status',
-);
-if (![
-  'not_run',
-  'failed',
-  'unsandboxed_semantic_smoke_passed',
-  'sandboxed_lean_kernel_passed',
-].includes(comparatorMetadata.status)) {
+if (
+  comparatorMetadata.source_snapshot_comparator_state !==
+    'definitions_and_digests_only'
+) {
   throw new Error(
-    'audit_config.json has an invalid verification.comparator.status',
+    'audit_config.json has an invalid ' +
+    'verification.comparator.source_snapshot_comparator_state',
+  );
+}
+if (comparatorMetadata.release_evidence_state !== 'external_to_source_snapshot') {
+  throw new Error(
+    'audit_config.json has an invalid ' +
+    'verification.comparator.release_evidence_state',
+  );
+}
+if (
+  comparatorMetadata.release_evidence_location !==
+    `release_evidence/v${coreSourceMetadata.base_version}/`
+) {
+  throw new Error(
+    'audit_config.json has an invalid ' +
+    'verification.comparator.release_evidence_location',
+  );
+}
+if (comparatorMetadata.packaging_commit_required !== true) {
+  throw new Error(
+    'audit_config.json must require a Comparator evidence packaging commit',
+  );
+}
+requireNonemptyString(
+  comparatorMetadata.state_note,
+  'verification.comparator.state_note',
+);
+if (
+  Object.hasOwn(comparatorMetadata, 'status') ||
+  Object.hasOwn(comparatorMetadata, 'status_note')
+) {
+  throw new Error(
+    'legacy current Comparator status fields are forbidden; source snapshots ' +
+    'must use the timeless release-evidence protocol fields',
+  );
+}
+const expectedComparatorMetadataKeys = [
+  'compatibility_probe',
+  'configurations',
+  'fileset',
+  'historical_configurations',
+  'historical_published_evidence',
+  'packaging_commit_required',
+  'release_evidence_location',
+  'release_evidence_state',
+  'source_snapshot_comparator_state',
+  'state_note',
+  'tools',
+].sort(binaryCompare);
+if (
+  JSON.stringify(Object.keys(comparatorMetadata).sort(binaryCompare)) !==
+  JSON.stringify(expectedComparatorMetadataKeys)
+) {
+  throw new Error(
+    'audit_config.json has unexpected verification.comparator fields',
   );
 }
 requirePlainObject(comparatorMetadata.tools, 'verification.comparator.tools');
@@ -2330,8 +2379,6 @@ const hasLeanTheoremDeclaration = (relativePath, theoremName) => {
   return interfaceTheoremNames(relativePath).has(theoremName);
 };
 
-let passedComparatorSourceCommit = null;
-
 const compatibilityTranscriptPath = normalizeProjectRelativePath(
   comparatorMetadata.compatibility_probe.transcript,
   'verification.comparator.compatibility_probe.transcript',
@@ -2422,16 +2469,12 @@ if (
   JSON.stringify(uniqueConfiguredComparatorEvidenceFiles)
 ) {
   throw new Error(
-    'comparator/evidence must contain exactly the configured current and ' +
-    'historical evidence records',
+    'comparator/evidence must contain exactly the configured historical ' +
+    'evidence records; release evidence is external to the source snapshot',
   );
 }
 
 const foundationalAxioms = auditConfig.editorial.axioms;
-const successfulComparatorStatuses = new Set([
-  'unsandboxed_semantic_smoke_passed',
-  'sandboxed_lean_kernel_passed',
-]);
 const comparatorConfigurationPaths = new Set();
 const parsedComparatorConfigurations = [];
 for (const [index, run] of comparatorMetadata.configurations.entries()) {
@@ -2449,161 +2492,13 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
       `Comparator configuration is outside comparator fileset: ${configPath}`,
     );
   }
-  if (![
-    'not_run',
-    'failed',
-    ...successfulComparatorStatuses,
-  ].includes(run.status)) {
-    throw new Error(`invalid Comparator status for ${configPath}: ${run.status}`);
-  }
-  if (typeof run.sandboxed !== 'boolean') {
-    throw new Error(`invalid Comparator sandboxed flag for ${configPath}`);
-  }
   if (
-    run.status === 'unsandboxed_semantic_smoke_passed' &&
-    run.sandboxed
+    JSON.stringify(Object.keys(run).sort(binaryCompare)) !==
+    JSON.stringify(['path'])
   ) {
     throw new Error(
-      `unsandboxed Comparator status has sandboxed=true: ${configPath}`,
-    );
-  }
-  if (run.status === 'sandboxed_lean_kernel_passed' && !run.sandboxed) {
-    throw new Error(
-      `sandboxed Comparator status has sandboxed=false: ${configPath}`,
-    );
-  }
-  const runPassed = successfulComparatorStatuses.has(run.status);
-  if (Object.hasOwn(run, 'transcript_in_published_archive')) {
-    throw new Error(
-      `legacy public-transcript field is forbidden for ${configPath}`,
-    );
-  }
-  const evidenceRecordRelativePath = run.evidence_record ?? null;
-  const configuredEvidenceRecordSha256 = run.evidence_record_sha256 ?? null;
-  const transcriptInPrivateRawArchive =
-    run.transcript_in_private_raw_archive ?? null;
-  const transcriptSha256 = run.transcript_sha256 ?? null;
-  let evidenceRecord = null;
-  let evidenceRecordSha256 = null;
-
-  if (evidenceRecordRelativePath !== null) {
-    const evidenceRecordAbsolutePath = normalizeProjectRelativePath(
-      evidenceRecordRelativePath,
-      `verification.comparator.configurations[${index}].evidence_record`,
-    );
-    if (
-      path.posix.dirname(evidenceRecordRelativePath) !==
-        'comparator/evidence' ||
-      path.posix.extname(evidenceRecordRelativePath) !== '.json'
-    ) {
-      throw new Error(
-        `Comparator evidence record must be JSON under comparator/evidence/: ` +
-        configPath,
-      );
-    }
-    if (!/^[0-9a-f]{64}$/.test(configuredEvidenceRecordSha256 ?? '')) {
-      throw new Error(
-        `invalid Comparator evidence-record SHA-256 for ${configPath}`,
-      );
-    }
-    const evidenceRecordBytes = fs.readFileSync(evidenceRecordAbsolutePath);
-    evidenceRecordSha256 = crypto
-      .createHash('sha256')
-      .update(evidenceRecordBytes)
-      .digest('hex');
-    if (evidenceRecordSha256 !== configuredEvidenceRecordSha256) {
-      throw new Error(
-        `Comparator evidence-record SHA-256 mismatch for ${configPath}: ` +
-        `expected ${configuredEvidenceRecordSha256}, got ${evidenceRecordSha256}`,
-      );
-    }
-    try {
-      evidenceRecord = JSON.parse(
-        new TextDecoder('utf-8', {fatal: true}).decode(evidenceRecordBytes),
-      );
-    } catch (error) {
-      throw new Error(
-        `Comparator evidence record is not valid UTF-8 JSON for ${configPath}: ` +
-        error.message,
-      );
-    }
-    if (!isPlainObject(evidenceRecord)) {
-      throw new Error(`invalid Comparator evidence record for ${configPath}`);
-    }
-    const expectedEvidenceRecordKeys = [
-      'certifying',
-      'comparator_fileset_digest_sha256',
-      'config',
-      'configuration_sha256',
-      'enable_nanoda',
-      'exit_code',
-      'kernels',
-      'non_root',
-      'paper_c_commit',
-      'sandboxed',
-      'status',
-      'transcript',
-      'transcript_sha256',
-    ].sort(binaryCompare);
-    if (
-      JSON.stringify(Object.keys(evidenceRecord).sort(binaryCompare)) !==
-      JSON.stringify(expectedEvidenceRecordKeys)
-    ) {
-      throw new Error(
-        `Comparator evidence record has an unexpected schema: ${configPath}`,
-      );
-    }
-  } else if (configuredEvidenceRecordSha256 !== null) {
-    throw new Error(
-      `Comparator run without an evidence record records its SHA-256: ` +
+      `source-snapshot Comparator configuration must contain only path: ` +
       configPath,
-    );
-  }
-
-  if (transcriptInPrivateRawArchive !== null) {
-    requireNonemptyString(
-      transcriptInPrivateRawArchive,
-      `verification.comparator.configurations[${index}]` +
-        '.transcript_in_private_raw_archive',
-    );
-    if (
-      path.isAbsolute(transcriptInPrivateRawArchive) ||
-      transcriptInPrivateRawArchive.includes('\\') ||
-      path.posix.normalize(transcriptInPrivateRawArchive) !==
-        transcriptInPrivateRawArchive ||
-      !transcriptInPrivateRawArchive.startsWith('evidence/') ||
-      path.posix.extname(transcriptInPrivateRawArchive) !== '.txt'
-    ) {
-      throw new Error(
-        `invalid private Comparator archive transcript path for ${configPath}`,
-      );
-    }
-  }
-  if (transcriptSha256 !== null && !/^[0-9a-f]{64}$/.test(transcriptSha256)) {
-    throw new Error(`invalid Comparator transcript SHA-256 for ${configPath}`);
-  }
-  if (runPassed) {
-    if (
-      evidenceRecord === null ||
-      transcriptInPrivateRawArchive === null ||
-      transcriptSha256 === null
-    ) {
-      throw new Error(
-        `passed Comparator run lacks a complete evidence record: ${configPath}`,
-      );
-    }
-  }
-  if (
-    run.status === 'not_run' &&
-    [
-      evidenceRecordRelativePath,
-      configuredEvidenceRecordSha256,
-      transcriptInPrivateRawArchive,
-      transcriptSha256,
-    ].some(value => value !== null)
-  ) {
-    throw new Error(
-      `unrun Comparator configuration records evidence: ${configPath}`,
     );
   }
 
@@ -2676,113 +2571,15 @@ for (const [index, run] of comparatorMetadata.configurations.entries()) {
     .createHash('sha256')
     .update(fs.readFileSync(configAbsolutePath))
     .digest('hex');
-  const configurationSha256AtRun =
-    run.configuration_sha256_at_run ?? null;
-  const comparatorFilesetDigestSha256AtRun =
-    run.comparator_fileset_digest_sha256_at_run ?? null;
-  if (runPassed) {
-    if (!/^[0-9a-f]{64}$/.test(configurationSha256AtRun ?? '')) {
-      throw new Error(
-        `passed Comparator run has an invalid configuration SHA-256: ${configPath}`,
-      );
-    }
-    if (!/^[0-9a-f]{64}$/.test(comparatorFilesetDigestSha256AtRun ?? '')) {
-      throw new Error(
-        `passed Comparator run has an invalid fileset SHA-256: ${configPath}`,
-      );
-    }
-    if (configurationSha256AtRun !== configSha256) {
-      throw new Error(
-        `passed Comparator run is stale for ${configPath}: configuration ` +
-        `was ${configurationSha256AtRun}, now ${configSha256}`,
-      );
-    }
-    if (comparatorFilesetDigestSha256AtRun !== comparatorDigestSha256) {
-      throw new Error(
-        `passed Comparator run is stale for ${configPath}: comparator fileset ` +
-        `was ${comparatorFilesetDigestSha256AtRun}, now ${comparatorDigestSha256}`,
-      );
-    }
-    if (
-      evidenceRecord.status !== run.status ||
-      evidenceRecord.certifying !==
-        (run.status === 'sandboxed_lean_kernel_passed') ||
-      evidenceRecord.sandboxed !== run.sandboxed ||
-      evidenceRecord.non_root !== true ||
-      JSON.stringify(evidenceRecord.kernels) !== JSON.stringify(['lean']) ||
-      evidenceRecord.enable_nanoda !== comparatorConfig.enable_nanoda ||
-      evidenceRecord.exit_code !== 0 ||
-      evidenceRecord.config !== configPath ||
-      evidenceRecord.configuration_sha256 !== configSha256 ||
-      evidenceRecord.configuration_sha256 !== configurationSha256AtRun ||
-      evidenceRecord.comparator_fileset_digest_sha256 !==
-        comparatorDigestSha256 ||
-      evidenceRecord.comparator_fileset_digest_sha256 !==
-        comparatorFilesetDigestSha256AtRun ||
-      evidenceRecord.transcript !==
-        path.posix.basename(transcriptInPrivateRawArchive) ||
-      evidenceRecord.transcript_sha256 !== transcriptSha256
-    ) {
-      throw new Error(
-        `passed Comparator evidence record is inconsistent for ${configPath}`,
-      );
-    }
-
-    const sourceCommit = evidenceRecord.paper_c_commit;
-    if (!/^[0-9a-f]{40}$/.test(sourceCommit)) {
-      throw new Error(
-        `passed Comparator evidence record has an invalid source commit: ` +
-        `${configPath}`,
-      );
-    }
-    if (
-      passedComparatorSourceCommit !== null &&
-      passedComparatorSourceCommit !== sourceCommit
-    ) {
-      throw new Error(
-        `passed Comparator evidence records refer to different Paper C ` +
-        `commits: ` +
-        `${passedComparatorSourceCommit} and ${sourceCommit}`,
-      );
-    }
-    passedComparatorSourceCommit = sourceCommit;
-  }
   parsedComparatorConfigurations.push({
     ...comparatorConfig,
     path: configPath,
     sha256: configSha256,
-    status: run.status,
-    sandboxed: run.sandboxed,
-    evidence_record: evidenceRecordRelativePath,
-    evidence_record_sha256: evidenceRecordSha256,
-    transcript_in_private_raw_archive: transcriptInPrivateRawArchive,
-    transcript_sha256: transcriptSha256,
-    configuration_sha256_at_run: configurationSha256AtRun,
-    comparator_fileset_digest_sha256_at_run:
-      comparatorFilesetDigestSha256AtRun,
+    source_snapshot_comparator_state:
+      comparatorMetadata.source_snapshot_comparator_state,
     challenge_file: challengePath,
     solution_file: solutionPath,
   });
-}
-
-if (
-  comparatorMetadata.status === 'not_run' &&
-  parsedComparatorConfigurations.some(config => config.status !== 'not_run')
-) {
-  throw new Error(
-    'global Comparator status is not_run but a project configuration has run',
-  );
-}
-if (
-  successfulComparatorStatuses.has(comparatorMetadata.status) &&
-  parsedComparatorConfigurations.some(
-    config => config.status !== comparatorMetadata.status,
-  )
-) {
-  throw new Error(
-    'global Comparator success status does not match every current project ' +
-    'configuration',
-  );
 }
 
 const currentComparatorConfigurationByPath = new Map(
@@ -3119,6 +2916,22 @@ for (const [index, item] of auditConfig.paper_items.entries()) {
   if (typeof item.comparator.covered !== 'boolean') {
     throw new Error(`paper item ${itemId} has an invalid Comparator coverage flag`);
   }
+  const expectedPaperItemComparatorKeys = item.comparator.covered
+    ? [
+        'configuration',
+        'covered',
+        'source_snapshot_comparator_state',
+        'theorem_name',
+      ]
+    : ['covered'];
+  if (
+    JSON.stringify(Object.keys(item.comparator).sort(binaryCompare)) !==
+    JSON.stringify(expectedPaperItemComparatorKeys)
+  ) {
+    throw new Error(
+      `paper item ${itemId} has unexpected Comparator metadata fields`,
+    );
+  }
   let comparatorRecord = {covered: false};
   if (item.comparator.covered) {
     const configPath = requireNonemptyString(
@@ -3141,9 +2954,13 @@ for (const [index, item] of auditConfig.paper_items.entries()) {
         `${configPath} theorem_names`,
       );
     }
-    if (item.comparator.status !== comparatorConfig.status) {
+    if (
+      item.comparator.source_snapshot_comparator_state !==
+      comparatorConfig.source_snapshot_comparator_state
+    ) {
       throw new Error(
-        `paper item ${itemId} Comparator status differs from ${configPath}`,
+        `paper item ${itemId} Comparator source-snapshot state differs from ` +
+        configPath,
       );
     }
     comparatorRecord = {
@@ -3250,8 +3067,8 @@ const formalizationMainResults = formalizationMainResultItems.map(item => {
     comparator_config: item.comparator.covered
       ? item.comparator.configuration
       : '',
-    comparator_status: item.comparator.covered
-      ? item.comparator.status
+    source_snapshot_comparator_state: item.comparator.covered
+      ? item.comparator.source_snapshot_comparator_state
       : 'not_configured',
     literature_dependencies: item.bridge_ids
       .map(bridgeId => bridgeById.get(bridgeId))
@@ -3291,7 +3108,7 @@ const formalizationMainResults = formalizationMainResultItems.map(item => {
 const formalization = {
   version: formalizationTemplate.version,
   schema_extensions: {
-    paper_c_audit: 3,
+    paper_c_audit: 4,
   },
   project: {
     name: auditConfig.project.name,
@@ -3316,20 +3133,16 @@ const formalization = {
         excluded_from_proof_sorry_count: true,
       }),
     ),
-    comparator_runs: parsedComparatorConfigurations.map(config => ({
+    source_snapshot_comparator_configurations:
+      parsedComparatorConfigurations.map(config => ({
       configuration: config.path,
-      status: config.status,
-      sandboxed: config.sandboxed,
-      evidence_record: config.evidence_record,
-      evidence_record_sha256: config.evidence_record_sha256,
-      transcript_in_private_raw_archive:
-        config.transcript_in_private_raw_archive,
-      transcript_sha256: config.transcript_sha256,
-      configuration_sha256_at_run: config.configuration_sha256_at_run,
-      comparator_fileset_digest_sha256_at_run:
-        config.comparator_fileset_digest_sha256_at_run,
+      source_snapshot_comparator_state:
+        config.source_snapshot_comparator_state,
       enable_nanoda: config.enable_nanoda,
     })),
+    release_evidence_state: comparatorMetadata.release_evidence_state,
+    release_evidence_location: comparatorMetadata.release_evidence_location,
+    packaging_commit_required: comparatorMetadata.packaging_commit_required,
     literature_certificates: {
       scope: literatureCertificateMetadata.scope,
       review_status: literatureCertificateMetadata.review_status,
@@ -3363,8 +3176,8 @@ const formalization = {
       comparator_config: item.comparator.covered
         ? item.comparator.configuration
         : '',
-      comparator_status: item.comparator.covered
-        ? item.comparator.status
+      source_snapshot_comparator_state: item.comparator.covered
+        ? item.comparator.source_snapshot_comparator_state
         : 'not_configured',
       note: item.note,
     })),
@@ -3373,8 +3186,12 @@ const formalization = {
     formalization_template: formalizationTemplate,
     toolchain: configuredToolchain,
     comparator: {
-      status: comparatorMetadata.status,
-      status_note: comparatorMetadata.status_note,
+      source_snapshot_comparator_state:
+        comparatorMetadata.source_snapshot_comparator_state,
+      release_evidence_state: comparatorMetadata.release_evidence_state,
+      release_evidence_location: comparatorMetadata.release_evidence_location,
+      packaging_commit_required: comparatorMetadata.packaging_commit_required,
+      state_note: comparatorMetadata.state_note,
       tools: comparatorMetadata.tools,
       compatibility_probe: comparatorMetadata.compatibility_probe,
       fileset: comparatorFiles,
@@ -3390,16 +3207,8 @@ const formalization = {
         theorem_names: config.theorem_names,
         permitted_axioms: config.permitted_axioms,
         enable_nanoda: config.enable_nanoda,
-        status: config.status,
-        sandboxed: config.sandboxed,
-        evidence_record: config.evidence_record,
-        evidence_record_sha256: config.evidence_record_sha256,
-        transcript_in_private_raw_archive:
-          config.transcript_in_private_raw_archive,
-        transcript_sha256: config.transcript_sha256,
-        configuration_sha256_at_run: config.configuration_sha256_at_run,
-        comparator_fileset_digest_sha256_at_run:
-          config.comparator_fileset_digest_sha256_at_run,
+        source_snapshot_comparator_state:
+          config.source_snapshot_comparator_state,
       })),
     },
     literature_certificates: {
@@ -3711,7 +3520,7 @@ const auditMarkdownContent =
   updateGeneratedBridgeRegistry(currentAuditMarkdown);
 
 const manifest = {
-  schema_version: 9,
+  schema_version: 10,
   project: 'paper_c_lean',
   project_metadata: auditConfig.project,
   project_version: versionMatch[1],
@@ -3728,8 +3537,12 @@ const manifest = {
   source_digest_sha256: digest,
   comparator_fileset: comparatorFiles,
   comparator_digest_sha256: comparatorDigestSha256,
-  comparator_status: comparatorMetadata.status,
-  comparator_status_note: comparatorMetadata.status_note,
+  source_snapshot_comparator_state:
+    comparatorMetadata.source_snapshot_comparator_state,
+  release_evidence_state: comparatorMetadata.release_evidence_state,
+  release_evidence_location: comparatorMetadata.release_evidence_location,
+  packaging_commit_required: comparatorMetadata.packaging_commit_required,
+  comparator_state_note: comparatorMetadata.state_note,
   comparator_tools: comparatorMetadata.tools,
   comparator_compatibility_probe: comparatorMetadata.compatibility_probe,
   comparator_historical_published_evidence:
@@ -3850,11 +3663,7 @@ process.stdout.write(
   `${validatedPaperItems.length} mapped paper items; ` +
   `${parsedLiteratureCertificates.length} literature certificates ` +
   `(${literatureCertificateDigestSha256}); ` +
-  `${parsedComparatorConfigurations.filter(config => successfulComparatorStatuses.has(config.status)).length} ` +
-  'passed, ' +
-  `${parsedComparatorConfigurations.filter(config => config.status === 'not_run').length} ` +
-  'pending, and ' +
-  `${parsedComparatorConfigurations.filter(config => config.status === 'failed').length} ` +
-  'failed Comparator configurations; ' +
+  `${parsedComparatorConfigurations.length} source-snapshot Comparator ` +
+  'configurations (release evidence external to source snapshot); ' +
   `formalization ${formalizationTemplate.version}\n`,
 );

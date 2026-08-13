@@ -9,9 +9,24 @@ const RELEASE = 'v0.48.1';
 const EVIDENCE_RELATIVE = 'release_evidence/v0.48.1';
 const BINDING_NAME = 'release-binding.json';
 const RESULT_SPECS = new Map([
-  ['result-theorem-one-one.json', 'comparator/theorem_one_one.json'],
-  ['result-infinite-finite-transfer.json', 'comparator/theorem_one_one_transfer.json'],
+  ['result-theorem-one-one.json', {
+    config: 'comparator/theorem_one_one.json', challenge: 'Challenge.lean',
+    solution: 'Solution.lean', transcript: 'comparator-theorem-one-one.txt',
+  }],
+  ['result-infinite-finite-transfer.json', {
+    config: 'comparator/theorem_one_one_transfer.json', challenge: 'ChallengeTransfer.lean',
+    solution: 'SolutionTransfer.lean', transcript: 'comparator-infinite-finite-transfer.txt',
+  }],
 ]);
+const RESULT_KEYS = new Set([
+  'status', 'certifying', 'sandboxed', 'non_root', 'kernels', 'enable_nanoda',
+  'exit_code', 'config', 'configuration_sha256', 'comparator_fileset_digest_sha256',
+  'paper_c_commit', 'theorem_names', 'permitted_axioms', 'challenge', 'solution',
+  'tool_commits', 'manuscript_sha256', 'transcript', 'transcript_sha256',
+]);
+const ENDPOINT_KEYS = new Set(['module', 'file', 'sha256']);
+const TOOL_KEYS = new Set(['lean', 'mathlib', 'comparator', 'lean4export', 'landrun']);
+const MANUSCRIPT_KEYS = new Set(['target_pdf', 'source_pdf_fr']);
 
 function arg(name) {
   const i = process.argv.indexOf(name);
@@ -26,6 +41,15 @@ function optionalArg(name) {
 
 function sha256(file) {
   return crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+}
+
+function parseCanonicalJson(bytes, label) {
+  const value = JSON.parse(bytes.toString('utf8'));
+  const canonical = Buffer.from(`${JSON.stringify(value, null, 2)}\n`);
+  if (!bytes.equals(canonical)) {
+    throw new Error(`${label}: JSON is not canonical pretty-printed UTF-8`);
+  }
+  return value;
 }
 
 function assertRegularFile(file, label) {
@@ -73,6 +97,24 @@ function filesetDigest(fileset, root) {
     hash.update('\0');
   }
   return hash.digest('hex');
+}
+
+function sameSet(actual, expected) {
+  return actual.size === expected.size && [...actual].every(value => expected.has(value));
+}
+
+function expectedTools(config) {
+  try {
+    return {
+      lean: config.verification.toolchain.lean.commit,
+      mathlib: config.verification.toolchain.mathlib.commit,
+      comparator: config.verification.comparator.tools.comparator.commit,
+      lean4export: config.verification.comparator.tools.lean4export.commit,
+      landrun: config.verification.comparator.tools.landrun.commit,
+    };
+  } catch {
+    throw new Error('audit_config.json has incomplete tool pins');
+  }
 }
 
 function dirtyPaths(root) {
@@ -218,11 +260,15 @@ if (auditConfig.target_pdf?.sha256 !== englishPdfSha256 ||
 }
 const comparatorFileset = validateFileset(auditConfig, root);
 const comparatorDigest = filesetDigest(comparatorFileset, root);
+const tools = expectedTools(auditConfig);
 
-for (const [name, expectedConfig] of RESULT_SPECS) {
+for (const [name, spec] of RESULT_SPECS) {
   const resultPath = path.join(canonicalEvidenceDir, name);
   assertRegularFile(resultPath, name);
-  const result = JSON.parse(fs.readFileSync(resultPath, 'utf8'));
+  const result = parseCanonicalJson(fs.readFileSync(resultPath), name);
+  if (!sameSet(new Set(Object.keys(result)), RESULT_KEYS)) {
+    throw new Error(`${name}: unexpected exact-key schema`);
+  }
   if (result.status !== 'sandboxed_lean_kernel_passed' ||
       result.certifying !== true || result.sandboxed !== true ||
       result.non_root !== true || result.exit_code !== 0 ||
@@ -230,9 +276,10 @@ for (const [name, expectedConfig] of RESULT_SPECS) {
       JSON.stringify(result.kernels) !== JSON.stringify(['lean'])) {
     throw new Error(`${name}: evidence is not certifying hardened evidence`);
   }
-  if (result.config !== expectedConfig) throw new Error(`${name}: unexpected Comparator config`);
+  if (result.config !== spec.config) throw new Error(`${name}: unexpected Comparator config`);
   if (result.paper_c_commit !== head) throw new Error(`${name}: paper_c_commit is not source commit Q`);
-  if (result.configuration_sha256 !== sha256(path.join(root, expectedConfig))) {
+  const config = JSON.parse(fs.readFileSync(path.join(root, spec.config), 'utf8'));
+  if (result.configuration_sha256 !== sha256(path.join(root, spec.config))) {
     throw new Error(`${name}: Comparator configuration SHA-256 mismatch`);
   }
   if (result.comparator_fileset_digest_sha256 !== comparatorDigest) {
@@ -241,6 +288,39 @@ for (const [name, expectedConfig] of RESULT_SPECS) {
   if (result.manuscript_sha256?.target_pdf !== englishPdfSha256 ||
       result.manuscript_sha256?.source_pdf_fr !== frenchPdfSha256) {
     throw new Error(`${name}: manuscript hashes do not match source commit Q`);
+  }
+  if (JSON.stringify(result.theorem_names) !== JSON.stringify(config.theorem_names) ||
+      JSON.stringify(result.permitted_axioms) !== JSON.stringify(config.permitted_axioms) ||
+      config.enable_nanoda !== false) {
+    throw new Error(`${name}: theorem names, permitted axioms, or Nanoda policy mismatch`);
+  }
+  for (const endpoint of ['challenge', 'solution']) {
+    const relative = spec[endpoint];
+    const expected = {
+      module: config[`${endpoint}_module`], file: relative,
+      sha256: sha256(path.join(root, relative)),
+    };
+    if (typeof result[endpoint] !== 'object' || result[endpoint] === null ||
+        Array.isArray(result[endpoint]) ||
+        !sameSet(new Set(Object.keys(result[endpoint])), ENDPOINT_KEYS) ||
+        JSON.stringify(result[endpoint]) !== JSON.stringify(expected)) {
+      throw new Error(`${name}: ${endpoint} endpoint binding mismatch`);
+    }
+  }
+  if (typeof result.tool_commits !== 'object' || result.tool_commits === null ||
+      Array.isArray(result.tool_commits) ||
+      !sameSet(new Set(Object.keys(result.tool_commits)), TOOL_KEYS) ||
+      JSON.stringify(result.tool_commits) !== JSON.stringify(tools)) {
+    throw new Error(`${name}: tool commit pins do not match audit_config.json`);
+  }
+  if (result.transcript !== spec.transcript ||
+      !/^[0-9a-f]{64}$/.test(result.transcript_sha256)) {
+    throw new Error(`${name}: private transcript binding is malformed`);
+  }
+  if (typeof result.manuscript_sha256 !== 'object' ||
+      result.manuscript_sha256 === null || Array.isArray(result.manuscript_sha256) ||
+      !sameSet(new Set(Object.keys(result.manuscript_sha256)), MANUSCRIPT_KEYS)) {
+    throw new Error(`${name}: manuscript hash object has an unexpected exact-key schema`);
   }
   if (verifiedResultHashes.result_sha256[name] !== sha256(resultPath)) {
     throw new Error(`${name}: bytes differ from independently verified public archive`);

@@ -9,14 +9,18 @@ Legend:
   says whether it remains an open premise or has been discharged internally.
 - **Internal bridge**: interface arising from an argument proved in the manuscript itself.
 
-The current 0.48.1 candidate changes the Lean core, the main Comparator
+The 0.48.1 source snapshot changes the Lean core, the main Comparator
 interface, and the bilingual manuscript PDFs. In particular it discharges the
 historical Halter--Koch compatibility interface internally and removes that
-argument from the canonical endpoints. The published v0.48.0 hardened evidence
-remains a historical certificate for its exact old bytes only; it does not
-bind or qualify this candidate. Exact declaration counts, audit-target counts,
-source digests, and Comparator digests must be taken from the regenerated
-artifacts after the new source commit is frozen.
+argument from the canonical endpoints. Its generated metadata is deliberately
+timeless: `source_snapshot_comparator_state: definitions_and_digests_only`
+fixes the source interfaces and byte digests but records no post-freeze
+execution outcome. Release qualification is authoritative only through
+`release_evidence/v0.48.1/` in a validated unique-child packaging commit bound
+to that exact source commit (`packaging_commit_required: true`). Thus the
+source snapshot remains truthful both before and after such evidence exists.
+The published v0.48.0 hardened evidence remains historical evidence for its
+exact old bytes and does not qualify the 0.48.1 snapshot.
 
 The exact final manuscript candidates carried by this tree are the 77-page,
 935831-byte English PDF with SHA-256
@@ -56,9 +60,9 @@ ordinary premises to three after the internal conductor discharge.
 
 | Target | Statement and proof route | Present status |
 |---|---|---|
-| `Challenge.lean` / `Solution.lean` | `paper_c_theorem_one_one_finite_cylinder`, the quantitative finite-cylinder form of Theorem 1.1 (printed/PDF p. 3), closed by `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical` | `Solution.lean` directly reproduces the complete declarative interface in the fresh `PaperCAudit` namespace. The Challenge file has one intentional `by sorry`; Solution has none and does not import Challenge. Its three ordinary premises are AGG, Evertse--Silverman, and Nicolas--Robin. The published successful hardened run at commit `27c91f8bdd5c...` concerned the old four-premise v0.48.0 pair and is stale for this changed target; a fresh hardened run is required. |
-| `ChallengeTransfer.lean` / `SolutionTransfer.lean` | `paper_c_theorem_one_one_infinite_finite_law_identity`, the exact equality between the infinite-product law and the finite-cylinder law | `SolutionTransfer.lean` directly reproduces the transfer interface without importing a Challenge module. The identity itself is unconditional. The v0.48.0 transfer run is historical; it must be rerun together with the changed main target for release qualification. |
-| `formalization.yaml` v0.3 | Generated with `audit_manifest.json` from schema-4 `audit_config.json`; maps manuscript items, pages, declarations, files, consumed bridges, conditionality, and Comparator coverage | Generated metadata is a deterministic audit artifact. Its review status is `agent-reviewed`; completeness of the editorial item list still requires human review. |
+| `Challenge.lean` / `Solution.lean` | `paper_c_theorem_one_one_finite_cylinder`, the quantitative finite-cylinder form of Theorem 1.1 (printed/PDF p. 3), closed by `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical` | `Solution.lean` directly reproduces the complete declarative interface in the fresh `PaperCAudit` namespace. The Challenge file has one intentional `by sorry`; Solution has none and does not import Challenge. Its three ordinary premises are AGG, Evertse--Silverman, and Nicolas--Robin. The source snapshot records only the interface and its digests. A release verdict, if present, comes exclusively from the bound packaging evidence. |
+| `ChallengeTransfer.lean` / `SolutionTransfer.lean` | `paper_c_theorem_one_one_infinite_finite_law_identity`, the exact equality between the infinite-product law and the finite-cylinder law | `SolutionTransfer.lean` directly reproduces the transfer interface without importing a Challenge module. The identity itself is unconditional. Its source snapshot likewise records definitions and digests only; release evidence is external to that snapshot. |
+| `formalization.yaml` v0.3 | Generated with `audit_manifest.json` from schema-5 `audit_config.json`; maps manuscript items, pages, declarations, files, consumed bridges, conditionality, Comparator coverage, and the source-snapshot/packaging-evidence boundary | Generated metadata is a deterministic audit artifact. Its review status is `agent-reviewed`; completeness of the editorial item list still requires human review. |
 | `literature_certificates/*.md` | Three active source certificates plus one historical Halter--Koch closure note, all four in the SHA-256-bound documentary fileset | AGG, Evertse--Silverman, and Nicolas--Robin are the active certificates for Theorem 1.1. The Halter--Koch note records the former source-shaped gap and its internal closure. Documentary agent status is neither a Lean proof of the cited source nor human peer review. |
 
 The manuscript states Theorem 1.1 unconditionally. The finite-cylinder
@@ -113,7 +117,7 @@ paper-to-Challenge fidelity.
 
 | Manuscript | Content | Status |
 |---|---|---|
-| Th. 1.1 | Critical Poisson law and TV rate | **Conditionally proved on both the finite cylinder and the infinite source law, modulo the literature only.** In the exact critical window, Lean assembles the uniform rate \(d_{\rm TV}(\mathcal L(Z_{N,L}),\operatorname{Pois}(N2^{-L}))\ll_C(\log\log N)^{-2}\). The random variable `infiniteDyadicStartCount` is defined on the infinite Rademacher product space, its law is proved exactly equal to `fullDyadicStartLaw`, and `theorem_one_one_infinite_model` transports the same endpoint without any new premise. Its exactly three open bridges are AGG, Evertse–Silverman, and Nicolas–Robin. The Halter–Koch bridge is `external/discharged` by the internal modulo-two theorem. The finite-cylinder and transfer boundaries expose the two steps separately. Their successful hardened v0.48.0 run is historical and does not cover the changed three-premise target; no current hardened run is claimed. The source reports support the three open mappings at agent-review level, and no independent human review is claimed. |
+| Th. 1.1 | Critical Poisson law and TV rate | **Conditionally proved on both the finite cylinder and the infinite source law, modulo the literature only.** In the exact critical window, Lean assembles the uniform rate \(d_{\rm TV}(\mathcal L(Z_{N,L}),\operatorname{Pois}(N2^{-L}))\ll_C(\log\log N)^{-2}\). The random variable `infiniteDyadicStartCount` is defined on the infinite Rademacher product space, its law is proved exactly equal to `fullDyadicStartLaw`, and `theorem_one_one_infinite_model` transports the same endpoint without any new premise. Its exactly three open bridges are AGG, Evertse–Silverman, and Nicolas–Robin. The Halter–Koch bridge is `external/discharged` by the internal modulo-two theorem. The finite-cylinder and transfer boundaries expose the two steps separately. The source metadata makes no temporal claim about a current run; any certifying outcome is read from the bound `release_evidence/v0.48.1/` packaging layer. The source reports support the three open mappings at agent-review level, and no independent human review is claimed. |
 | Th. 1.2(i) | Deterministic masks | **Conditionally proved, modulo the literature only.** Proposition 14.1 is proved in the exact window \(\lvert L-\log_2N\rvert\le C_\star\log\log N\). Proposition 14.2 is assembled uniformly for all masks in the critical window: \(d_{\rm TV}(\mathcal L(Z_{N,L}(A_N)),\mathrm{Pois}(|A_N|2^{-L}))=o_C(1)\). Its canonical endpoint assumes exactly AGG, Evertse–Silverman, and Nicolas–Robin; no `internal/open` bridge reaches its signature |
 | Th. 1.2(ii–iii) | Spatial and marked PPPs | **Proved as a complete characterization by Laplace functionals, modulo the literature only.** Expectations under the infinite law converge to the functionals of \(\operatorname{PPP}(\lambda\,dt)\) and \(\operatorname{PPP}(\lambda\,dt\otimes\nu)\), where \(\nu(\{e\})=2^{-(e+1)}\), for every nonnegative continuous test function with compact support in the marks. Uniform tightness is proved through \(\limsup_N\mathbb P(\text{mark}>E)\le\lambda2^{-(E+1)}\). Because mathlib does not yet provide a suitable API for point measures and the vague topology, a `Tendsto` formulation for the process laws is not duplicated artificially |
 | Th. 1.4 | Moments and the homogeneous sum | **Conditionally proved, modulo the literature only.** `theorem_one_four_canonical` connects the finite kernel of §12 directly to the quantitative master mass bound and establishes, in the critical window, the first-moment rate, the little-oh estimate for the second factorial moment, \(R_2(N,L)=o_C(N^2)\), and the little-oh estimate for the variance. Its only open assumptions are Evertse–Silverman and Nicolas–Robin (`external/open`). The three legacy endpoints removed in v041 have not been reintroduced |

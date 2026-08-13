@@ -26,8 +26,10 @@ full source-to-record construction had not been supplied in Lean.
 
 ## Current direct Lean construction
 
-The public theorem now constructs the historical record directly, without
-using a theorem from Halter--Koch. In outline, the implementation:
+The public theorem now proves the exact registered compatibility proposition
+directly, without using a theorem from Halter--Koch. It does not instantiate
+the stronger historical `HalterKochConductorDescentData` record. In outline,
+the implementation:
 
 1. takes the quadratic algebra `K = Q(sqrt(D))` and embeds `Z[sqrt(D)]` into
    its ring of integers;
@@ -41,11 +43,11 @@ using a theorem from Halter--Koch. In outline, the implementation:
    congruent to one modulo `2`, lifts that unit back to `Z[sqrt(D)]`, and
    concludes equality of the two principal ideals in the smaller order.
 
-This proves the exact compatibility statement consumed by the Pell counting
-development. It does not claim a separate formalization of every printed
-Halter--Koch theorem, nor the stronger source-shaped bound by three unit
-cosets; the four residue classes modulo two suffice for the existing `Fin 4`
-interface.
+This constructs `QuadraticOrderConductorData` and proves the exact
+compatibility statement consumed by the Pell counting development. It does
+not claim a formalization of any printed Halter--Koch theorem, nor the stronger
+source-shaped bound by three unit cosets; the four residue classes modulo two
+suffice for the existing `Fin 4` interface.
 
 ## Audit consequence
 
@@ -54,3 +56,8 @@ provenance, but its status is `discharged`. This note remains in the hashed
 literature-documentation fileset so the former gap is not erased. It is not
 one of the three active source certificates for Theorem 1.1 and it contributes
 no open premise to the canonical endpoints.
+
+See [`docs/HK_INTERFACE_ADJUDICATION.md`](../docs/HK_INTERFACE_ADJUDICATION.md)
+for the formal/scientific distinction and
+[`counter_reviews/DISPOSITION.md`](../counter_reviews/DISPOSITION.md) for the
+disposition of the historical objection.

@@ -29,7 +29,12 @@ bytes), SHA-256
 > Lean construction using reduction modulo (2); it is no longer a premise of
 > the canonical endpoints. This changes both the Lean core and the main
 > Comparator surface, so the published v0.48.0 hardened evidence does not bind
-> this candidate. See
+> this source snapshot. The snapshot records
+> `source_snapshot_comparator_state: definitions_and_digests_only`; any
+> certifying outcome is authoritative only under
+> `release_evidence/v0.48.1/` in a validated unique-child packaging commit.
+> Its metadata therefore remains true whether or not that later layer exists.
+> See
 > [`docs/HK_INTERFACE_ADJUDICATION.md`](docs/HK_INTERFACE_ADJUDICATION.md) and
 > [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md). The two supplied
 > audits are published as **agent counter-reviews**, not human peer review, in
@@ -190,11 +195,13 @@ claimed. The evidence certifies the historical Comparator inputs at commit
 Comparator fileset and both manuscript PDFs byte-identical to that certified
 commit. The current v0.48.1 candidate changes the Lean core and removes the
 Halter--Koch argument from the main Challenge/Solution theorem, in addition to
-replacing the manuscript PDFs and associated documentation. It is not a
-qualified release until fresh hardened evidence binds that new three-premise
-Comparator surface, the final PDF bytes, and the exact release commit. The
-published v0.48.0 evidence remains valid only for its historical inputs and
-manuscript hashes; it neither binds nor qualifies the v0.48.1 candidate. The
+replacing the manuscript PDFs and associated documentation. The source
+snapshot itself carries no post-freeze execution verdict. A qualified release
+is established only by evidence in the validated packaging commit that binds
+the new three-premise Comparator surface, the final PDF bytes, and the exact
+source commit. The published v0.48.0 evidence remains valid only for its
+historical inputs and manuscript hashes; it neither binds nor qualifies the
+v0.48.1 snapshot. The
 earlier fake-landrun transcripts remain historical unsandboxed compatibility
 tests only; they are not the release certificate.
 The audited Paper C commit is distinct from the pinned Comparator source
@@ -238,14 +245,17 @@ unlike the two project smoke-test transcripts above, it did not load either
 Paper C configuration.
 
 `formalization.yaml` uses the official v0.3 format.  It and
-`audit_manifest.json` are generated deterministically from the schema-4
+`audit_manifest.json` are generated deterministically from the schema-5
 `audit_config.json`, which is the sole editorial source for manuscript-item
 mapping, bridge consumption, conditionality, and Comparator coverage.  The
-generated status records the proof-side `sorry_count` separately from the two
-intentional challenge placeholders and records the present review level as
-agent-reviewed, not independent peer review.  The item list itself remains an
-editorial inventory requiring human review; it cannot be inferred completely
-from Lean or from the PDFs.
+generated metadata records the proof-side `sorry_count` separately from the
+two intentional challenge placeholders and records the present review level
+as agent-reviewed, not independent peer review. It distinguishes the timeless
+source-snapshot state from the release-evidence location and required
+packaging commit; it never turns presence or absence of later evidence into a
+source-tree run status. The item list itself remains an editorial inventory
+requiring human review; it cannot be inferred completely from Lean or the
+PDFs.
 
 The v0.48.0 historical core fileset was exactly `PaperC.lean` plus the 381
 files under `PaperC/`. Its v0.47.0 SHA-256 was
@@ -1668,10 +1678,11 @@ or lemma and for the two historical public proof-carrying constructions.
 manifest target, and rejects anything outside the foundational allowlist. The
 final `--check` hashes both PDFs again and verifies that `AuditCheck.lean`,
 `audit_manifest.json`, `formalization.yaml`, and the generated registry in
-`AXIOM_AUDIT.md` are exactly current.  Schema-4 `audit_config.json` is the sole
+`AXIOM_AUDIT.md` are exactly current.  Schema-5 `audit_config.json` is the sole
 input for the editorial item map; generation checks names, declaring files,
-bridge identifiers, conditionality, and the theorem names listed by each
-Comparator configuration. The public workflow implementing this sequence is
+bridge identifiers, conditionality, the theorem names listed by each
+Comparator configuration, and the immutable source-snapshot/packaging-evidence
+boundary. The public workflow implementing this sequence is
 `.github/workflows/reproducibility.yml`; it archives `AuditCheck.log` as a CI
 artifact. The generator's source enumeration is independent of `rg`; the
 workflow nevertheless installs `ripgrep` explicitly before the separate
@@ -2000,9 +2011,10 @@ The automated runner always executes the main finite-cylinder and independent
 infinite-to-finite transfer configurations. Do not infer transfer coverage
 from the main result alone. A hardened reference run succeeded for the
 v0.48.0 configurations at Paper C commit `27c91f8bdd5c...`. The v0.48.1
-candidate changes the main configuration to three premises, so that historical
-run is not evidence for the candidate. The runner remains the reproduction
-procedure; a fresh hardened run bound to the new source commit is mandatory.
+snapshot changes the main configuration to three premises, so that historical
+run is not evidence for it. The runner remains the reproduction procedure;
+the result for v0.48.1 is read only from a validated packaging layer bound to
+the exact source snapshot, never from a temporal claim in source metadata.
 
 The axiom audit does not detect ordinary hypotheses. Their inventory is the
 bridge registry in `audit_manifest.json` and `AXIOM_AUDIT.md`: each entry has

@@ -24,11 +24,14 @@
 - archive de livraison prévue : `paper_c_lean_v0481.zip`
 
 
-> **Qualification.** Les lignes ci-dessus décrivent le candidat courant. Elles
-> ne valent pas publication tant que l'ensemble des portes de
-> [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md) n'est pas satisfait sur
-> un commit exact, notamment la CI verte, le QA PDF et une nouvelle preuve
-> Comparator durcie sans fallback liant les deux PDF finaux.
+> **Qualification.** Les lignes ci-dessus décrivent le snapshot source. Ses
+> métadonnées fixent les définitions et empreintes Comparator sans intégrer de
+> verdict produit après le gel. Le résultat de qualification de release est
+> donné exclusivement par `release_evidence/v0.48.1/` dans un commit
+> d’empaquetage fils unique, validé et lié à ce commit source exact. Le snapshot
+> ne prétend donc ni qu’une preuve ultérieure est absente, ni qu’elle a réussi.
+> La publication reste soumise aux autres portes de
+> [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md).
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles. Il n’existe pas de tag officiel Comparator/lean4export
@@ -71,11 +74,15 @@ mais seuls les trois premiers comptent comme certificats actifs du théorème.
 
 La preuve Comparator durcie publiée avec v0.48.0 porte exclusivement sur les
 anciens octets du cœur et de la cible à quatre prémisses. Elle est historique
-et périmée pour ce candidat : une nouvelle validation ordinaire, puis une
-nouvelle preuve durcie sur le commit candidat gelé, sont requises. Aucun run
-durci courant n’est revendiqué ici. Les nombres exacts de déclarations et de
-cibles, ainsi que les digests du cœur, du fileset Comparator et du fileset
-documentaire, devront être lus dans les artefacts régénérés de ce commit.
+et périmée pour ce snapshot. Le schéma 5 sépare désormais explicitement
+`source_snapshot_comparator_state: definitions_and_digests_only` de
+`release_evidence_state: external_to_source_snapshot`, fixe
+`release_evidence_location: release_evidence/v0.48.1/` et exige
+`packaging_commit_required: true`. Un verdict courant éventuel doit donc être
+lu dans la preuve d’empaquetage liée, jamais inféré du snapshot source. Les
+nombres exacts de déclarations et de cibles, ainsi que les digests du cœur, du
+fileset Comparator et du fileset documentaire, sont lus dans les artefacts
+générés de ce commit.
 
 ## Périmètre du jalon 0.48.0 (historique)
 
@@ -203,8 +210,10 @@ ne décharge pas les quatre prémisses ordinaires de littérature et ne certifie
 pas à lui seul la fidélité papier--Challenge. Le candidat v0.48.1 ne conserve
 ni le cœur Lean ni la cible Comparator principale à l’octet : la preuve
 v0.48.0 est donc périmée pour le nouveau théorème à trois prémisses, en plus de
-ne pas lier les nouvelles empreintes des manuscrits. Une nouvelle preuve
-durcie est requise et aucun succès courant n’est revendiqué.
+ne pas lier les nouvelles empreintes des manuscrits. Ce passage décrit
+uniquement l’historique v0.48.0. Pour v0.48.1, le snapshot source ne porte
+volontairement aucun verdict temporel ; la couche d’empaquetage liée porte le
+résultat de qualification.
 
 Dans le jalon v0.48.0, les quatre rapports sous
 `literature_certificates/` formaient un fileset séparé et haché. Ils
@@ -979,10 +988,10 @@ ces conditions.
 
 Les deux runs durcis de référence ont réussi au commit `27c91f8bdd5c...` et
 qualifient seulement le fileset historique v0.48.0. Le cœur et la cible
-principale ayant changé, ils sont périmés pour v0.48.1. Une nouvelle exécution
-durcie sans fallback est requise sur le commit candidat gelé ; aucun succès
-courant n’est revendiqué. Les runs CI non sandboxés restent de simples smoke
-tests. Le suffixe d’un
+principale ayant changé, ils sont périmés pour v0.48.1. L’état généré du
+snapshot v0.48.1 ne dit pas si l’exécution postérieure a eu lieu : il fixe les
+octets auxquels une éventuelle preuve sous `release_evidence/v0.48.1/` doit se
+lier. Les runs CI non sandboxés restent de simples smoke tests. Le suffixe d’un
 ancien artefact CI peut être le SHA d’événement GitHub et ne doit pas être
 confondu avec `paper_c_commit` ni avec le commit de l’outil Comparator. Nanoda
 n’a pas été exécuté : les deux JSON ont `enable_nanoda: false`, et aucun

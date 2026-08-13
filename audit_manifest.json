@@ -1,5 +1,5 @@
 {
-  "schema_version": 9,
+  "schema_version": 10,
   "project": "paper_c_lean",
   "project_metadata": {
     "name": "paper_c_lean",
@@ -144,8 +144,11 @@
     "comparator/theorem_one_one_transfer.json"
   ],
   "comparator_digest_sha256": "add629c9a32effa3032b2ef11d75336d700fc964eab5054fe62f604e68c82d4f",
-  "comparator_status": "not_run",
-  "comparator_status_note": "The current v0.48.1 candidate changes the Lean core and the six-file Comparator surface by removing the discharged HK13 premise from Theorem 1.1. No hardened Comparator run has yet been performed on these current bytes, so both current configurations are deliberately marked not_run. The published v0.48.0 evidence is retained below strictly as historical evidence for its recorded commit and fileset digest; it does not qualify the current candidate.",
+  "source_snapshot_comparator_state": "definitions_and_digests_only",
+  "release_evidence_state": "external_to_source_snapshot",
+  "release_evidence_location": "release_evidence/v0.48.1/",
+  "packaging_commit_required": true,
+  "comparator_state_note": "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. Release qualification is resolved only from release_evidence/v0.48.1/ in a validated unique-child packaging commit bound to this exact source commit. This protocol statement neither asserts the presence nor the absence of such a packaging commit. The published v0.48.0 evidence remains historical evidence for its recorded commit and fileset digest and does not qualify this source snapshot.",
   "comparator_tools": {
     "comparator": {
       "repository": "https://github.com/leanprover/comparator",
@@ -214,14 +217,7 @@
       "enable_nanoda": false,
       "path": "comparator/theorem_one_one.json",
       "sha256": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
-      "status": "not_run",
-      "sandboxed": false,
-      "evidence_record": null,
-      "evidence_record_sha256": null,
-      "transcript_in_private_raw_archive": null,
-      "transcript_sha256": null,
-      "configuration_sha256_at_run": null,
-      "comparator_fileset_digest_sha256_at_run": null,
+      "source_snapshot_comparator_state": "definitions_and_digests_only",
       "challenge_file": "Challenge.lean",
       "solution_file": "Solution.lean"
     },
@@ -239,14 +235,7 @@
       "enable_nanoda": false,
       "path": "comparator/theorem_one_one_transfer.json",
       "sha256": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
-      "status": "not_run",
-      "sandboxed": false,
-      "evidence_record": null,
-      "evidence_record_sha256": null,
-      "transcript_in_private_raw_archive": null,
-      "transcript_sha256": null,
-      "configuration_sha256_at_run": null,
-      "comparator_fileset_digest_sha256_at_run": null,
+      "source_snapshot_comparator_state": "definitions_and_digests_only",
       "challenge_file": "ChallengeTransfer.lean",
       "solution_file": "SolutionTransfer.lean"
     }
@@ -335,8 +324,8 @@
       "discharged_by": "PaperC.PellInput.quadraticOrderConductorFiberBound",
       "note": "Historical source-to-record gap report retained for provenance and superseded by the direct modulo-two Lean construction. It is not an active source certificate or an endpoint premise.",
       "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
-      "sha256": "68f0b85c7b42bd6c94cbf6ade22478bc07b2fef0686bc94adb28dbc3111c0971",
-      "byte_length": 2792
+      "sha256": "343743b60ffba701f1184ea8debf583443394ecb3789eaf1673e602a9ebf4c5f",
+      "byte_length": 3178
     }
   ],
   "literature_documentation_fileset": [
@@ -345,7 +334,7 @@
     "literature_certificates/HK13-QO-conductor-fibres.md",
     "literature_certificates/NR83-T1-divisor-log-bound.md"
   ],
-  "literature_documentation_digest_sha256": "73f2e303c63c89b3f2ee69a8992ee1cef823240d23be9d10e241ff03ba1759d2",
+  "literature_documentation_digest_sha256": "000b87d572dcc6bb752750482de0f3ab6a33f87984d1013eccd1ee34add8408b",
   "formalization_template": {
     "version": "v0.3",
     "repository": "https://github.com/mathlib-initiative/formalization.yaml",
@@ -376,7 +365,7 @@
       "Claude Opus 4.8 agent instances",
       "OpenAI GPT 5.6 Sol agent instances"
     ],
-    "notes": "The project has undergone repeated adversarial counter-review by distinct agent instances and models from multiple providers, together with exhaustive mechanical declaration and axiom auditing. These procedures are neither independent scientific validation nor human certification, and the project has not yet received independent external human mathematical peer review. The completeness of the mapped paper-item list remains editorial metadata requiring human rereading; it is not inferred or certified by the generator. Comparator outcomes must be reported only from the recorded per-configuration status and evidence, and a semantic smoke test must not be presented as a sandboxed certificate."
+    "notes": "The project has undergone repeated adversarial counter-review by distinct agent instances and models from multiple providers, together with exhaustive mechanical declaration and axiom auditing. These procedures are neither independent scientific validation nor human certification, and the project has not yet received independent external human mathematical peer review. The completeness of the mapped paper-item list remains editorial metadata requiring human rereading; it is not inferred or certified by the generator. Comparator release outcomes must be reported only from evidence in a validated packaging commit bound to the exact source snapshot, and a semantic smoke test must not be presented as a sandboxed certificate."
   },
   "proof_sorry_count": 0,
   "comparator_interface_sorry_count": 2,
@@ -422,13 +411,13 @@
         "covered": true,
         "configuration": "comparator/theorem_one_one.json",
         "theorem_name": "paper_c_theorem_one_one_finite_cylinder",
-        "status": "not_run",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
         "configuration_sha256": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
         "challenge_module": "Challenge",
         "solution_module": "Solution",
         "enable_nanoda": false
       },
-      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under three fully stated ordinary premises; the former HK13 premise is discharged internally. The current Challenge/Solution bytes have not yet received a hardened Comparator run. The published v0.48.0 run certifies only its historical four-premise interface and recorded fileset digest. The separate transfer target covers the infinite source law."
+      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under three fully stated ordinary premises; the former HK13 premise is discharged internally. This source snapshot binds the current Challenge/Solution bytes and digests without embedding a post-freeze execution outcome. Any release qualification is authoritative only through release_evidence/v0.48.1/ in a validated packaging commit bound to this exact source snapshot. The published v0.48.0 run certifies only its historical four-premise interface and recorded fileset digest. The separate transfer target covers the infinite source law."
     },
     {
       "id": "Thm-1.1-infinite-finite-law-transfer",
@@ -450,7 +439,7 @@
         "covered": true,
         "configuration": "comparator/theorem_one_one_transfer.json",
         "theorem_name": "paper_c_theorem_one_one_infinite_finite_law_identity",
-        "status": "not_run",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
         "configuration_sha256": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
         "challenge_module": "ChallengeTransfer",
         "solution_module": "SolutionTransfer",
@@ -3352,8 +3341,8 @@
         "discharged_by": "PaperC.PellInput.quadraticOrderConductorFiberBound",
         "note": "Historical source-to-record gap report retained for provenance and superseded by the direct modulo-two Lean construction. It is not an active source certificate or an endpoint premise.",
         "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
-        "sha256": "68f0b85c7b42bd6c94cbf6ade22478bc07b2fef0686bc94adb28dbc3111c0971",
-        "byte_length": 2792
+        "sha256": "343743b60ffba701f1184ea8debf583443394ecb3789eaf1673e602a9ebf4c5f",
+        "byte_length": 3178
       }
     },
     {

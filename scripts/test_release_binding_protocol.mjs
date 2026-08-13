@@ -12,9 +12,25 @@ const repository = path.join(temporaryRoot, 'repository');
 let archive;
 const evidenceRelative = 'release_evidence/v0.48.1';
 const resultSpecs = new Map([
-  ['result-theorem-one-one.json', 'comparator/theorem_one_one.json'],
-  ['result-infinite-finite-transfer.json', 'comparator/theorem_one_one_transfer.json'],
+  ['result-theorem-one-one.json', {
+    config: 'comparator/theorem_one_one.json', challenge: 'Challenge.lean',
+    solution: 'Solution.lean', transcript: 'comparator-theorem-one-one.txt',
+    theorem: 'paper_c_theorem_one_one_finite_cylinder',
+  }],
+  ['result-infinite-finite-transfer.json', {
+    config: 'comparator/theorem_one_one_transfer.json', challenge: 'ChallengeTransfer.lean',
+    solution: 'SolutionTransfer.lean', transcript: 'comparator-infinite-finite-transfer.txt',
+    theorem: 'paper_c_theorem_one_one_infinite_finite_law_identity',
+  }],
 ]);
+const permittedAxioms = ['propext', 'Quot.sound', 'Classical.choice'];
+const toolCommits = {
+  lean: '1111111111111111111111111111111111111111',
+  mathlib: '2222222222222222222222222222222222222222',
+  comparator: '3333333333333333333333333333333333333333',
+  lean4export: '4444444444444444444444444444444444444444',
+  landrun: '5555555555555555555555555555555555555555',
+};
 const verifierStub = `#!/usr/bin/env python3
 import argparse
 from pathlib import Path
@@ -98,7 +114,7 @@ function writeResults(sourceCommit) {
   const englishSha256 = fileSha256('paper_C_complete_v09_en.pdf');
   const frenchSha256 = fileSha256('paper_C_complete_v09.pdf');
   const digest = filesetSha256();
-  for (const [name, config] of resultSpecs) {
+  for (const [name, spec] of resultSpecs) {
     const result = {
       status: 'sandboxed_lean_kernel_passed',
       certifying: true,
@@ -107,27 +123,42 @@ function writeResults(sourceCommit) {
       kernels: ['lean'],
       enable_nanoda: false,
       exit_code: 0,
-      config,
-      configuration_sha256: fileSha256(config),
+      config: spec.config,
+      configuration_sha256: fileSha256(spec.config),
       comparator_fileset_digest_sha256: digest,
       paper_c_commit: sourceCommit,
+      theorem_names: [spec.theorem],
+      permitted_axioms: permittedAxioms,
+      challenge: {
+        module: path.parse(spec.challenge).name,
+        file: spec.challenge,
+        sha256: fileSha256(spec.challenge),
+      },
+      solution: {
+        module: path.parse(spec.solution).name,
+        file: spec.solution,
+        sha256: fileSha256(spec.solution),
+      },
+      tool_commits: toolCommits,
       manuscript_sha256: {
         target_pdf: englishSha256,
         source_pdf_fr: frenchSha256,
       },
+      transcript: spec.transcript,
+      transcript_sha256: sha256(`synthetic private transcript for ${name}\n`),
     };
     write(`${evidenceRelative}/${name}`, `${JSON.stringify(result, null, 2)}\n`);
   }
 }
 
-function createBinding() {
+function createBinding(expectFailure = false) {
   return run(process.execPath, [
     'scripts/create_release_binding.mjs',
     '--evidence-dir', evidenceRelative,
     '--archive', archive,
     '--raw-source', path.join(temporaryRoot, 'raw-source'),
     '--output', `${evidenceRelative}/release-binding.json`,
-  ]);
+  ], { expectFailure });
 }
 
 function writeArchiveFor(sourceCommit) {
@@ -189,11 +220,33 @@ try {
 
   write('paper_C_complete_v09_en.pdf', Buffer.from('synthetic English PDF bytes\n'));
   write('paper_C_complete_v09.pdf', Buffer.from('synthetic French PDF bytes\n'));
-  for (const relative of fileset) write(relative, `synthetic source for ${relative}\n`);
+  for (const relative of fileset) {
+    const spec = [...resultSpecs.values()].find(value => value.config === relative);
+    write(relative, spec ? `${JSON.stringify({
+      challenge_module: path.parse(spec.challenge).name,
+      solution_module: path.parse(spec.solution).name,
+      theorem_names: [spec.theorem],
+      permitted_axioms: permittedAxioms,
+      enable_nanoda: false,
+    }, null, 2)}\n` : `synthetic source for ${relative}\n`);
+  }
   const auditConfig = {
     target_pdf: { sha256: fileSha256('paper_C_complete_v09_en.pdf') },
     source_pdf_fr: { sha256: fileSha256('paper_C_complete_v09.pdf') },
-    verification: { comparator: { fileset } },
+    verification: {
+      toolchain: {
+        lean: { commit: toolCommits.lean },
+        mathlib: { commit: toolCommits.mathlib },
+      },
+      comparator: {
+        fileset,
+        tools: {
+          comparator: { commit: toolCommits.comparator },
+          lean4export: { commit: toolCommits.lean4export },
+          landrun: { commit: toolCommits.landrun },
+        },
+      },
+    },
   };
   write('audit_config.json', `${JSON.stringify(auditConfig, null, 2)}\n`);
   run('git', ['init', '-q']);
@@ -202,6 +255,19 @@ try {
   run('git', ['add', '.']);
   run('git', ['commit', '-q', '-m', 'source Q']);
   const sourceCommit = run('git', ['rev-parse', 'HEAD']).stdout.trim();
+  run('git', ['checkout', '-q', '-b', 'source-evidence-negative', sourceCommit]);
+  write(`${evidenceRelative}/stale.json`, '{}\n');
+  run('git', ['add', evidenceRelative]);
+  run('git', ['commit', '-q', '-m', 'invalid source Q with stale evidence']);
+  const staleSource = run('git', ['rev-parse', 'HEAD']).stdout.trim();
+  writeResults(staleSource);
+  writeArchiveFor(staleSource);
+  const staleRejected = createBinding(true);
+  if (!staleRejected.stderr.includes('already contains files') &&
+      !staleRejected.stderr.includes('unexpected release-evidence file')) {
+    throw new Error('creator accepted source Q preloaded with current release evidence');
+  }
+  run('git', ['checkout', '-q', '-B', 'main', sourceCommit]);
   writeResults(sourceCommit);
   const archiveSha256 = writeArchiveFor(sourceCommit);
   const preexistingTemporarySentinel = path.join(
@@ -305,6 +371,70 @@ try {
   const rejectedParent = verifyBinding(archiveSha256, true);
   if (!rejectedParent.stderr.includes('exactly one parent')) {
     throw new Error('verifier did not explain its merge-parent rejection');
+  }
+
+  for (const [field, replacement, expectedMessage] of [
+    ['theorem_names', ['wrong_theorem'], 'theorem names'],
+    ['permitted_axioms', ['propext'], 'permitted axioms'],
+    ['challenge', { module: 'Challenge', file: 'Challenge.lean', sha256: '0'.repeat(64) }, 'endpoint binding'],
+    ['tool_commits', { ...toolCommits, lean: '0'.repeat(40) }, 'tool commit pins'],
+    ['transcript_sha256', 'not-a-digest', 'transcript binding'],
+  ]) {
+    run('git', ['checkout', '-q', '-B', `result-negative-${field}`, sourceCommit]);
+    writeResults(sourceCommit);
+    const resultPath = `${evidenceRelative}/result-theorem-one-one.json`;
+    const value = JSON.parse(fs.readFileSync(path.join(repository, resultPath), 'utf8'));
+    value[field] = replacement;
+    write(resultPath, `${JSON.stringify(value, null, 2)}\n`);
+    const rejectedCreate = createBinding(true);
+    if (!`${rejectedCreate.stdout}${rejectedCreate.stderr}`.includes(expectedMessage)) {
+      throw new Error(`creator did not explain ${field} rejection`);
+    }
+  }
+
+  run('git', ['checkout', '-q', '-B', 'result-negative-extra-key', sourceCommit]);
+  writeResults(sourceCommit);
+  {
+    const resultPath = `${evidenceRelative}/result-theorem-one-one.json`;
+    const value = JSON.parse(fs.readFileSync(path.join(repository, resultPath), 'utf8'));
+    value.qualified = false;
+    write(resultPath, `${JSON.stringify(value, null, 2)}\n`);
+    const rejectedExtra = createBinding(true);
+    if (!`${rejectedExtra.stdout}${rejectedExtra.stderr}`.includes('exact-key schema')) {
+      throw new Error('creator accepted an extra result-record key');
+    }
+  }
+
+  run('git', ['checkout', '-q', '-B', 'result-negative-duplicate-key', sourceCommit]);
+  writeResults(sourceCommit);
+  {
+    const resultPath = `${evidenceRelative}/result-theorem-one-one.json`;
+    const target = path.join(repository, resultPath);
+    const bytes = fs.readFileSync(target, 'utf8').replace(
+      '  "certifying": true,',
+      '  "certifying": false,\n  "certifying": true,',
+    );
+    fs.writeFileSync(target, bytes);
+    const rejectedDuplicate = createBinding(true);
+    if (!`${rejectedDuplicate.stdout}${rejectedDuplicate.stderr}`.includes('not canonical')) {
+      throw new Error('creator accepted a duplicate JSON key');
+    }
+  }
+
+  run('git', ['checkout', '-q', '-B', 'binding-negative-extra-key', sourceCommit]);
+  writeResults(sourceCommit);
+  createBinding();
+  {
+    const bindingPath = `${evidenceRelative}/release-binding.json`;
+    const value = JSON.parse(fs.readFileSync(path.join(repository, bindingPath), 'utf8'));
+    value.qualified = false;
+    write(bindingPath, `${JSON.stringify(value, null, 2)}\n`);
+    run('git', ['add', evidenceRelative]);
+    run('git', ['commit', '-q', '-m', 'packaging R with extra binding key']);
+    const rejectedBindingExtra = verifyBinding(archiveSha256, true);
+    if (!rejectedBindingExtra.stderr.includes('exact-key schema')) {
+      throw new Error('verifier accepted an extra release-binding key');
+    }
   }
 
   console.log('release-binding two-commit protocol self-test passed');

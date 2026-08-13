@@ -1,4 +1,7 @@
-# Halter--Koch interface adjudication
+# Historical Halter--Koch interface adjudication
+
+This note adjudicates a historical attribution.  It does not claim that the
+printed Halter--Koch argument has been formalized.
 
 ## Decision
 
@@ -19,12 +22,13 @@ The mathematical and formal statuses are separated.
    one modulo `2`; lifting that unit and its inverse descends equality to
    principal ideals in `ℤ[√D]`. The construction is total off
    the norm equation and covers negative `M`.
-3. **Registry status.** `HK13-QO-conductor-fibres` retains `kind: external` to
-   record the historical provenance of the compatibility boundary, but now has
-   `status: discharged`, with the internal Lean theorem as its discharge. The
-   source-shaped three-coset record and its `Fin 3 → Fin 4` adapter remain for
-   compatibility; the discharge proof does not assume or construct that
-   record.
+3. **Registry status.** `HK13-QO-conductor-fibres` retains `kind: external`
+   solely to record the historical provenance of the compatibility boundary,
+   but now has `status: discharged`, with the internal Lean theorem as its
+   discharge. The source-shaped three-coset record and its `Fin 3 → Fin 4`
+   adapter remain for compatibility and for documenting the route that was
+   originally contemplated. The discharge proof neither assumes nor
+   instantiates that record.
 4. **Public boundary.** Halter--Koch is no longer an argument of the canonical
    endpoints. The finite-cylinder form of Theorem 1.1 and its main Comparator
    target have exactly three open literature premises: Arratia--Goldstein--
@@ -32,11 +36,17 @@ The mathematical and formal statuses are separated.
    external bridges remain open.
 
 The historical source counter-audit may still document that the cited pages
-were not turned into the former source-shaped record. That is no longer a
-formal gap in the canonical Lean route: the kernel proof closes the registered
-compatibility proposition by an independent elementary construction. It would
-still be inaccurate to claim that the Halter--Koch text itself has been
-formalized or independently human-reviewed.
+were not turned into the former source-shaped record. That statement remains
+true. It is no longer a formal gap in the canonical Lean route: the kernel
+proof closes the registered compatibility proposition by an independent
+elementary construction. It would therefore be inaccurate to describe this as
+a formalization, verification, or machine-checked transcription of the
+Halter--Koch pages.
+
+The accurate short description is:
+
+> The historically attributed conductor-fibre interface is discharged by a
+> direct modulo-two Lean construction independent of the cited source.
 
 ## What the closure proves
 
@@ -52,9 +62,22 @@ The critical ingredients are all kernel-checked:
 - equal extended ideals and equal colours therefore imply equality of the
   original principal ideals.
 
-This proves the historical `Fin 4` compatibility interface directly. It does
-not assert that the particular abstract `UnitQuotient` field in
-`HalterKochConductorDescentData` has been instantiated from the cited book.
+This proves the registered `Fin 4` compatibility proposition directly. It
+does not assert that the particular abstract `UnitQuotient` field in
+`HalterKochConductorDescentData` has been instantiated, either from the cited
+book or by the direct proof. The direct construction instead produces the
+downstream `QuadraticOrderConductorData` required by the proposition.
+
+## Review consequence
+
+The historical objection "the cited pages have not been converted into the
+source-shaped record" is preserved rather than erased, but is no longer an
+open dependency of a canonical endpoint. A human reviewer may still review
+the direct modulo-two construction on its own mathematical merits. Such a
+review would concern the internal proof, not fidelity to Halter--Koch.
+
+The disposition of this and the other historical review findings is recorded
+in [`counter_reviews/DISPOSITION.md`](../counter_reviews/DISPOSITION.md).
 
 ## Release consequence
 

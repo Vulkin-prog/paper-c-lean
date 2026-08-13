@@ -1,5 +1,5 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "project": {
     "name": "paper_c_lean",
     "title": "Lean formalization of Paper C",
@@ -171,7 +171,7 @@
         "Claude Opus 4.8 agent instances",
         "OpenAI GPT 5.6 Sol agent instances"
       ],
-      "notes": "The project has undergone repeated adversarial counter-review by distinct agent instances and models from multiple providers, together with exhaustive mechanical declaration and axiom auditing. These procedures are neither independent scientific validation nor human certification, and the project has not yet received independent external human mathematical peer review. The completeness of the mapped paper-item list remains editorial metadata requiring human rereading; it is not inferred or certified by the generator. Comparator outcomes must be reported only from the recorded per-configuration status and evidence, and a semantic smoke test must not be presented as a sandboxed certificate."
+      "notes": "The project has undergone repeated adversarial counter-review by distinct agent instances and models from multiple providers, together with exhaustive mechanical declaration and axiom auditing. These procedures are neither independent scientific validation nor human certification, and the project has not yet received independent external human mathematical peer review. The completeness of the mapped paper-item list remains editorial metadata requiring human rereading; it is not inferred or certified by the generator. Comparator release outcomes must be reported only from evidence in a validated packaging commit bound to the exact source snapshot, and a semantic smoke test must not be presented as a sandboxed certificate."
     }
   },
   "verification": {
@@ -233,8 +233,11 @@
       ]
     },
     "comparator": {
-      "status": "not_run",
-      "status_note": "The current v0.48.1 candidate changes the Lean core and the six-file Comparator surface by removing the discharged HK13 premise from Theorem 1.1. No hardened Comparator run has yet been performed on these current bytes, so both current configurations are deliberately marked not_run. The published v0.48.0 evidence is retained below strictly as historical evidence for its recorded commit and fileset digest; it does not qualify the current candidate.",
+      "source_snapshot_comparator_state": "definitions_and_digests_only",
+      "release_evidence_state": "external_to_source_snapshot",
+      "release_evidence_location": "release_evidence/v0.48.1/",
+      "packaging_commit_required": true,
+      "state_note": "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. Release qualification is resolved only from release_evidence/v0.48.1/ in a validated unique-child packaging commit bound to this exact source commit. This protocol statement neither asserts the presence nor the absence of such a packaging commit. The published v0.48.0 evidence remains historical evidence for its recorded commit and fileset digest and does not qualify this source snapshot.",
       "tools": {
         "comparator": {
           "repository": "https://github.com/leanprover/comparator",
@@ -298,14 +301,10 @@
       },
       "configurations": [
         {
-          "path": "comparator/theorem_one_one.json",
-          "status": "not_run",
-          "sandboxed": false
+          "path": "comparator/theorem_one_one.json"
         },
         {
-          "path": "comparator/theorem_one_one_transfer.json",
-          "status": "not_run",
-          "sandboxed": false
+          "path": "comparator/theorem_one_one_transfer.json"
         }
       ],
       "historical_configurations": [
@@ -375,9 +374,9 @@
         "covered": true,
         "configuration": "comparator/theorem_one_one.json",
         "theorem_name": "paper_c_theorem_one_one_finite_cylinder",
-        "status": "not_run"
+        "source_snapshot_comparator_state": "definitions_and_digests_only"
       },
-      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under three fully stated ordinary premises; the former HK13 premise is discharged internally. The current Challenge/Solution bytes have not yet received a hardened Comparator run. The published v0.48.0 run certifies only its historical four-premise interface and recorded fileset digest. The separate transfer target covers the infinite source law."
+      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under three fully stated ordinary premises; the former HK13 premise is discharged internally. This source snapshot binds the current Challenge/Solution bytes and digests without embedding a post-freeze execution outcome. Any release qualification is authoritative only through release_evidence/v0.48.1/ in a validated packaging commit bound to this exact source snapshot. The published v0.48.0 run certifies only its historical four-premise interface and recorded fileset digest. The separate transfer target covers the infinite source law."
     },
     {
       "id": "Thm-1.1-infinite-finite-law-transfer",
@@ -399,7 +398,7 @@
         "covered": true,
         "configuration": "comparator/theorem_one_one_transfer.json",
         "theorem_name": "paper_c_theorem_one_one_infinite_finite_law_identity",
-        "status": "not_run"
+        "source_snapshot_comparator_state": "definitions_and_digests_only"
       },
       "note": "Exact unconditional identity of the infinite-product dyadic start-count law and its finite-cylinder law. The byte-identical ChallengeTransfer/SolutionTransfer boundary passed the hardened non-root Comparator procedure at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07 with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the certified Comparator fileset byte-identical. Nanoda was disabled."
     },

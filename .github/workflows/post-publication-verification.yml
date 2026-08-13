@@ -1,0 +1,122 @@
+name: Verify published release assets
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Exact published release tag (v0.48.1)
+        required: true
+        type: string
+      packaging_commit:
+        description: Exact 40-hex packaging commit R' carrying the release binding
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  verify-published-assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out the exact packaging commit R'
+        # actions/checkout v4.2.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ inputs.packaging_commit }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate immutable inputs and tag identity
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          PACKAGING_COMMIT: ${{ inputs.packaging_commit }}
+        run: |
+          set -euo pipefail
+          [[ "$PACKAGING_COMMIT" =~ ^[0-9a-f]{40}$ ]]
+          test "$RELEASE_TAG" = 'v0.48.1'
+          test "$(git rev-parse HEAD)" = "$PACKAGING_COMMIT"
+          git fetch --no-tags origin "refs/tags/$RELEASE_TAG:refs/tags/$RELEASE_TAG"
+          test "$(git rev-parse "refs/tags/$RELEASE_TAG^{commit}")" = "$PACKAGING_COMMIT"
+
+      - name: Install the pinned public verification utility
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends zstd
+          mkdir -p post-publication
+          {
+            date -u '+checked_at_utc=%Y-%m-%dT%H:%M:%SZ'
+            uname -srvmo
+            /usr/bin/python3 --version
+            git --version
+            sha256sum --version | head -n 1
+            zstd --version
+            curl --version | head -n 1
+            dpkg-query -W -f='${Package}=${Version}\n' ca-certificates curl git python3-minimal zstd || true
+          } | tee post-publication/tool-versions.txt
+
+      - name: Download the three exact assets from the GitHub release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          set -euo pipefail
+          python3 scripts/download_github_release_assets.py \
+            --repository "$GITHUB_REPOSITORY" \
+            --tag "$RELEASE_TAG" \
+            --token-environment GH_TOKEN \
+            --binding release_evidence/v0.48.1/release-binding.json \
+            --output-dir post-publication/downloads \
+            --inventory post-publication/download-inventory.json
+
+      - name: Verify downloaded bytes against packaging R' and the archive verifier
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          PACKAGING_COMMIT: ${{ inputs.packaging_commit }}
+        run: |
+          set -euo pipefail
+          source_commit="$(git rev-parse "$PACKAGING_COMMIT^")"
+          archive="paper-c-hardened-public-$source_commit.tar.zst"
+          archive_sha="$(sha256sum "post-publication/downloads/$archive" | awk '{print $1}')"
+          node scripts/verify_release_binding.mjs \
+            --binding release_evidence/v0.48.1/release-binding.json \
+            --evidence-dir release_evidence/v0.48.1 \
+            --expected-archive-sha256 "$archive_sha"
+          python3 scripts/verify_published_release_assets.py \
+            --repository "$PWD" \
+            --packaging-commit "$PACKAGING_COMMIT" \
+            --release-tag "$RELEASE_TAG" \
+            --archive "post-publication/downloads/$archive" \
+            --checksum "post-publication/downloads/$archive.sha256" \
+            --receipt "post-publication/downloads/$archive.verified.json" \
+            --report post-publication/post-publication-verification.json
+
+      - name: Publish unambiguous qualification summary
+        if: success()
+        shell: bash
+        run: |
+          {
+            echo '## Paper C v0.48.1 post-publication verification'
+            echo
+            echo '- `kernel_audit_passed`: separate pre-publication status; this post-publication job does not attest it.'
+            echo '- `unsandboxed_semantic_smoke_passed`: separate non-certifying CI status; this post-publication job does not attest it.'
+            echo '- `hardened_certifying_passed`: declared by evidence bound at R'\''; this job verifies its published bytes, while private-raw qualification remains separate.'
+            echo '- `published_release_assets_verified`: this workflow downloaded and reverified the actual GitHub release assets.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve the post-publication report
+        if: always()
+        # actions/upload-artifact v4.6.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-c-v0481-post-publication-${{ inputs.packaging_commit }}
+          path: post-publication/
+          if-no-files-found: error
+          retention-days: 90

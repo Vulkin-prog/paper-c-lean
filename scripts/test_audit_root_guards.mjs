@@ -92,6 +92,14 @@ try {
       'utf8',
     ),
   );
+  const baselineTimelessArtifacts = new Map(
+    ['AuditCheck.lean', 'audit_manifest.json', 'formalization.yaml',
+      'AXIOM_AUDIT.md']
+      .map(relativePath => [
+        relativePath,
+        fs.readFileSync(path.join(temporaryRoot, relativePath)),
+      ]),
+  );
   if (
     JSON.stringify(baselineManifest.source_fileset) !==
     JSON.stringify(['PaperC.lean', 'PaperC/**/*.lean'])
@@ -100,6 +108,27 @@ try {
   }
   if (baselineManifest.import !== 'PaperC') {
     throw new Error('generated audit does not import the root PaperC module');
+  }
+  if (
+    baselineManifest.source_snapshot_comparator_state !==
+      'definitions_and_digests_only' ||
+    baselineManifest.release_evidence_state !==
+      'external_to_source_snapshot' ||
+    baselineManifest.release_evidence_location !==
+      `release_evidence/v${config.core_source.base_version}/` ||
+    baselineManifest.packaging_commit_required !== true ||
+    Object.hasOwn(baselineManifest, 'comparator_status') ||
+    Object.hasOwn(baselineManifest, 'comparator_status_note') ||
+    baselineManifest.comparator_configurations.some(configuration =>
+      configuration.source_snapshot_comparator_state !==
+        baselineManifest.source_snapshot_comparator_state ||
+      Object.hasOwn(configuration, 'status') ||
+      Object.hasOwn(configuration, 'evidence_record')
+    )
+  ) {
+    throw new Error(
+      'generated audit does not preserve the timeless Comparator evidence model',
+    );
   }
   if (
     baselineManifest.literature_certificates.length !==
@@ -149,8 +178,8 @@ try {
     !`${unexpectedEvidenceRecordResult.stdout}`
       .concat(`${unexpectedEvidenceRecordResult.stderr}`)
       .includes(
-        'comparator/evidence must contain exactly the configured current and ' +
-        'historical evidence records',
+        'comparator/evidence must contain exactly the configured historical ' +
+        'evidence records; release evidence is external to the source snapshot',
       )
   ) {
     throw new Error('an undeclared Comparator evidence record was not rejected');
@@ -228,28 +257,113 @@ try {
 
   const comparatorConfigPath = path.join(temporaryRoot, 'audit_config.json');
   const originalComparatorConfig = fs.readFileSync(comparatorConfigPath, 'utf8');
-  const staleComparatorConfig = JSON.parse(originalComparatorConfig);
-  staleComparatorConfig.verification.comparator.status =
+  const legacyComparatorConfig = JSON.parse(originalComparatorConfig);
+  legacyComparatorConfig.verification.comparator.status =
     'sandboxed_lean_kernel_passed';
-  staleComparatorConfig.verification.comparator.configurations =
-    staleComparatorConfig.verification.comparator.historical_configurations
-      .map(run => ({...run}));
   fs.writeFileSync(
     comparatorConfigPath,
-    `${JSON.stringify(staleComparatorConfig, null, 2)}\n`,
+    `${JSON.stringify(legacyComparatorConfig, null, 2)}\n`,
   );
-  const staleComparatorResult = runGenerator();
+  const legacyComparatorResult = runGenerator();
   if (
-    staleComparatorResult.status === 0 ||
-    !`${staleComparatorResult.stdout}${staleComparatorResult.stderr}`.includes(
-      'passed Comparator run is stale',
+    legacyComparatorResult.status === 0 ||
+    !`${legacyComparatorResult.stdout}${legacyComparatorResult.stderr}`.includes(
+      'legacy current Comparator status fields are forbidden',
     )
   ) {
     throw new Error(
-      'historical Comparator evidence was accepted as a current passed run',
+      'legacy mutable Comparator status was accepted in source metadata',
     );
   }
   fs.writeFileSync(comparatorConfigPath, originalComparatorConfig);
+
+  const legacyPaperItemConfig = JSON.parse(originalComparatorConfig);
+  legacyPaperItemConfig.paper_items.find(item => item.comparator.covered)
+    .comparator.status = 'not_run';
+  fs.writeFileSync(
+    comparatorConfigPath,
+    `${JSON.stringify(legacyPaperItemConfig, null, 2)}\n`,
+  );
+  const legacyPaperItemResult = runGenerator();
+  if (
+    legacyPaperItemResult.status === 0 ||
+    !`${legacyPaperItemResult.stdout}${legacyPaperItemResult.stderr}`.includes(
+      'unexpected Comparator metadata fields',
+    )
+  ) {
+    throw new Error(
+      'legacy mutable Comparator status was accepted on a paper item',
+    );
+  }
+  fs.writeFileSync(comparatorConfigPath, originalComparatorConfig);
+
+  for (const [field, invalidValue, expectedMessage] of [
+    [
+      'source_snapshot_comparator_state',
+      'not_run',
+      'source_snapshot_comparator_state',
+    ],
+    [
+      'release_evidence_state',
+      'not_present',
+      'release_evidence_state',
+    ],
+    [
+      'release_evidence_location',
+      'release_evidence/current/',
+      'release_evidence_location',
+    ],
+    [
+      'packaging_commit_required',
+      false,
+      'must require a Comparator evidence packaging commit',
+    ],
+  ]) {
+    const invalidProtocolConfig = JSON.parse(originalComparatorConfig);
+    invalidProtocolConfig.verification.comparator[field] = invalidValue;
+    fs.writeFileSync(
+      comparatorConfigPath,
+      `${JSON.stringify(invalidProtocolConfig, null, 2)}\n`,
+    );
+    const invalidProtocolResult = runGenerator();
+    if (
+      invalidProtocolResult.status === 0 ||
+      !`${invalidProtocolResult.stdout}${invalidProtocolResult.stderr}`.includes(
+        expectedMessage,
+      )
+    ) {
+      throw new Error(`invalid Comparator protocol field was accepted: ${field}`);
+    }
+  }
+  fs.writeFileSync(comparatorConfigPath, originalComparatorConfig);
+
+  fs.mkdirSync(
+    path.join(temporaryRoot, config.verification.comparator.release_evidence_location),
+    {recursive: true},
+  );
+  fs.writeFileSync(
+    path.join(
+      temporaryRoot,
+      config.verification.comparator.release_evidence_location,
+      'release-binding.json',
+    ),
+    '{}\n',
+  );
+  requireSuccess(
+    runGenerator(),
+    'source audit with descendant-style release evidence present',
+  );
+  for (const [relativePath, baselineBytes] of baselineTimelessArtifacts) {
+    if (
+      !fs.readFileSync(path.join(temporaryRoot, relativePath)).equals(
+        baselineBytes,
+      )
+    ) {
+      throw new Error(
+        `later release evidence changed source-snapshot artifact ${relativePath}`,
+      );
+    }
+  }
 
   const primarySourceAccess =
     config.verification.literature_certificates.entries[0]
@@ -349,9 +463,11 @@ try {
   process.stdout.write(
     'root and literature audit guards passed: PaperC.lean changes invalidate ' +
     'the digest; root public theorems enter the inventory and AuditCheck.lean; ' +
-    'historical Comparator evidence mutations, stale historical evidence ' +
-    'reused as a current run, undeclared evidence, undeclared certificates, ' +
-    'historical closure-note mutations, and access-marker drift are rejected\n',
+    'historical Comparator evidence mutations, legacy mutable current-run ' +
+    'statuses, invalid timeless-protocol fields, undeclared evidence, ' +
+    'undeclared certificates, historical closure-note mutations, and ' +
+    'access-marker drift are rejected; later release evidence does not alter ' +
+    'source-snapshot generation\n',
   );
 } finally {
   fs.rmSync(temporaryRoot, {recursive: true, force: true});
