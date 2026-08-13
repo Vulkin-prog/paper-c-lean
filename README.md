@@ -4,21 +4,32 @@ This repository accompanies the manuscript:
 
 > *A critical Poisson law in a dyadic block — Starting points of long constant
 > stretches of an extended Rademacher random completely multiplicative
-> function*, Brice Pouly, English v09 frozen release, August 12, 2026.
+> function*, Brice Pouly.
 
-Paper DOI: [`10.33774/coe-2026-z3l74`](https://doi.org/10.33774/coe-2026-z3l74).
-Cambridge Open Engage records the published v08 as Version 1; v09 is intended
-to be deposited as the next version under this DOI after release qualification.
+Public paper records: [Cambridge Open Engage DOI
+`10.33774/coe-2026-z3l74`](https://doi.org/10.33774/coe-2026-z3l74) and
+[Zenodo paper concept DOI
+`10.5281/zenodo.21736676`](https://doi.org/10.5281/zenodo.21736676).
 
-Formalization concept DOI: [`10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
-Zenodo will assign a new version DOI to v0.48.0 when that release is
-published; the immutable v0.47.0 version DOI is not reused.
+Public formalization: [`github.com/Vulkin-prog/paper-c-lean`](https://github.com/Vulkin-prog/paper-c-lean)
+and [Zenodo formalization concept DOI
+`10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
 
-Target manuscript: `paper_C_complete_v09_en.pdf` (71 physical pages), SHA-256
-`d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`.
+Target manuscript: `paper_C_complete_v09_en.pdf` (76 physical pages), SHA-256
+`40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b`.
 
-Synchronized French manuscript: `paper_C_complete_v09.pdf` (73 pages), SHA-256
-`2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
+Synchronized French manuscript: `paper_C_complete_v09.pdf` (79 pages), SHA-256
+`f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0`.
+
+> **Release-candidate status (2026-08-13).** PR #5 and branch
+> `agent/v0481-publication-metadata` are not a qualified `v0.48.1` release.
+> The current Lean endpoint remains conditional on the explicit Halter--Koch
+> interface, while the printed maximal-order Pell proof is a separate
+> conventional mathematical route. See
+> [`docs/HK_INTERFACE_ADJUDICATION.md`](docs/HK_INTERFACE_ADJUDICATION.md) and
+> [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md). The two supplied
+> audits are published as **agent counter-reviews**, not human peer review, in
+> [`counter_reviews/`](counter_reviews/).
 
 ## Status
 
@@ -47,7 +58,7 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 ```
 
 must therefore return no matches. This certifies only the modules present, not
-the complete 71-page target manuscript or its synchronized 73-page French
+the complete 76-page target manuscript or its synchronized 79-page French
 source.
 
 ## External semantic audit boundary (v0.48.0)
@@ -126,52 +137,66 @@ separate audit target.
 
 **Recorded hardened status.** Both Paper C Comparator targets passed the
 hardened local procedure at Paper C commit
-`75b36254145c0983d551de11599ea5c8f68e1e51`. The runs used real landrun under
+`27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07`. The runs used real landrun under
 `systemd-run --user --pty`, a non-root account, zero inherited, effective,
 permitted, and ambient capabilities, and `NoNewPrivileges`. Comparator built
 each Challenge/Solution pair in a separate clean checkout; the Lean default
 kernel accepted both solutions with exit status 0.
 
-The authoritative bundle is
-`paper-c-hardened-evidence-75b36254145c-20260803T060848Z.tar.zst`, published in
-the [v0.48.0-rc1 release](https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0-rc1),
-with SHA-256
-`bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130`.
-Its Comparator-fileset digest is
+The public release bundle is
+`paper-c-hardened-public-27c91f8.tar.zst`, published in the
+[v0.48.0 release](https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0).
+It is 49,765 bytes, with SHA-256
+`7279ed99e6b1a98b6458fe1f8d95dd1f68af445646ee6a23d0044c7bee94ce50`.
+It retains the exact summary (SHA-256
+`b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb`),
+both result records, all 12 source-snapshot files, and the raw checksum
+inventory. Its Comparator-fileset digest is
 `646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
-The raw main and transfer transcripts remain in that public archive, with
-SHA-256 values
-`5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266`
+`REDACTION_MANIFEST.json` (SHA-256
+`01c3619d80786999a323c8b2073c4e674bf97af46f179b7e1434af53f3b6f29b`)
+binds all 17 retained and 13 omitted source members by SHA-256.
+
+The private source archive `paper-c-hardened-27c91f8.tar.zst` is 98,049
+bytes, with SHA-256
+`a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89`.
+It remains local and is not published because the omitted host logs and raw
+transcripts contain a username, hostname, local groups, HOME/PATH, and
+temporary paths. The raw main and transfer transcript SHA-256 values remain
+cryptographically recorded as
+`fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e`
 and
-`f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421`.
-The uploaded archive was rechecked for its outer size and SHA-256, summary
-SHA-256, every internal `SHA256SUMS` entry, and both archived transcript
-hashes. To avoid duplicating host names, local paths, and other machine
-metadata from the raw logs, this repository contains only the two
-privacy-minimized `result-*.json` records under `comparator/evidence/`. The
-generator validates those records, their own SHA-256 values, and their
+`13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076`.
+The public bundle therefore preserves the certified result bindings but does
+not permit independent line-by-line inspection of the full host trace. The
+generator validates the privacy-minimized repository records and their
 configuration and fileset bindings; it deliberately does not fetch or
 revalidate the GitHub release asset.
 
 This is a Lean-kernel-only result. Both configurations have
 `enable_nanoda: false`; Nanoda was not run, and no dual-kernel result is
 claimed. The evidence certifies the unchanged Comparator inputs at commit
-`75b36254145c...`, not the later final-release commit. It does not discharge
-the four ordinary literature-facing premises or certify the paper-to-
-Challenge comparison. The earlier fake-landrun transcripts remain historical
-unsandboxed compatibility tests only; they are not the release certificate.
+`27c91f8bdd5c...`. The final v0.48.0 metadata layer leaves the six-file
+Comparator fileset and both manuscript PDFs byte-identical to that certified
+commit. The current v0.48.1 candidate leaves that Comparator fileset byte-identical but
+replaces the manuscript PDFs and associated documentation. It is not a
+qualified release until fresh hardened evidence binds the final PDF bytes and
+the exact release commit. The published v0.48.0 evidence therefore remains evidence for the
+unchanged Comparator inputs and its historical manuscript hashes; it does not
+bind the v0.48.1 PDF byte streams. It does not discharge the four ordinary
+literature-facing premises or certify the paper-to-Challenge comparison. The earlier fake-landrun
+transcripts remain historical unsandboxed compatibility tests only; they are
+not the release certificate.
 The audited Paper C commit is distinct from the pinned Comparator source
 commit `51491237b1d2f96cca203af9c34bced6fe38e0d8` and from GitHub event SHAs
 formerly used in hosted-artifact names.
 
-For newly assembled evidence, each `result-*.json` records the Challenge and
+For the final evidence, each `result-*.json` records the Challenge and
 Solution SHA-256 values, the exact theorem list and permitted-axiom list, the
 two manuscript SHA-256 values, and the five pinned tool commits. The aggregate
-summary repeats the shared tool and manuscript identities. These additional
-fields apply to evidence assembled with the rc2 scripts; they do not rewrite
-the immutable rc1 archive.
+summary repeats the shared tool and manuscript identities.
 
-### Source-audit qualifications (rc2)
+### Source-audit qualifications
 
 The four machine-indexed reports under `literature_certificates/` document the
 current agent counter-audit of the source-to-proposition implications. They
@@ -215,14 +240,15 @@ the v0.48.0 Comparator-fileset SHA-256 is
 The additive rc2 literature-certificate fileset has its own SHA-256,
 `6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996`;
 it is not part of either frozen Lean fileset.
-The v0.48.0 release uses the v09 manuscript byte streams and SHA-256
-fingerprints recorded above; these replace the v08 PDF files carried by
-v0.47.0 without changing the frozen Lean core or Comparator filesets.
+Version v0.48.1 replaces the two manuscript PDFs after mathematical and
+documentary audit remediation, and updates their public provenance metadata.
+The frozen Lean core, Comparator fileset, and literature-certificate fileset
+remain byte-identical to v0.48.0.
 
 Project version `0.47.0` closed the root-module gap in the indivisible
 manuscript--sources--audit triplet. `PaperC.lean`, the library target built by
 Lake, now participates in source discovery, the digest, declaration and bridge
-inventory, and the generated kernel audit. Both certified PDFs are included
+inventory, and the generated kernel audit. Both hashed PDFs are included
 in the repository and are hashed from their actual bytes before any build.
 The mathematical Lean content is unchanged from v045, which added the exact
 exponential wrapper for Corollary 11.3, source-law wrappers for Theorems 1.1
@@ -498,14 +524,14 @@ Starting with version 0.19, every published archive has a single
 `paper_c_lean/` root. Project files sit immediately beneath that root. This
 contract is stable for subsequent versions: neither a flat archive nor a
 double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
-`paper_c_lean_v048.zip`. It includes both certified PDFs at the project root,
+`paper_c_lean_v0481.zip`. It includes both hashed PDFs at the project root,
 so every fingerprint check is executable offline from a fresh extraction.
 Validate the generated metadata in the extracted archive with the generator's
 read-only check, not with `git diff`:
 
 ```bash
 zip_check_dir="$(mktemp -d)"
-unzip -q paper_c_lean_v048.zip -d "$zip_check_dir"
+unzip -q paper_c_lean_v0481.zip -d "$zip_check_dir"
 (cd "$zip_check_dir/paper_c_lean" && \
   node scripts/check_comparator_sources.mjs && \
   node scripts/generate_audit.mjs --check)
@@ -1530,7 +1556,8 @@ outside the covered zone.
 ## Building
 
 The project pins Lean `v4.32.2` and mathlib `v4.32.2`. The `lean-toolchain`
-file, `lakefile.toml`, and the Lake manifest lock this toolchain for v0.48.0.
+file, `lakefile.toml`, and the Lake manifest lock this toolchain for v0.48.1;
+the pins are unchanged from v0.48.0.
 The repository contains 381 modules under `PaperC/` plus the root module
 `PaperC.lean`: 382 audited Lean source files and 146,391 lines. The generated
 manifest records 4,065 theorems and five lemmas, hence 4,070 public
@@ -1948,10 +1975,10 @@ LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
 The automated runner always executes the main finite-cylinder and independent
 infinite-to-finite transfer configurations. Do not infer transfer coverage
 from the main result alone. A hardened reference run succeeded for both
-byte-identical Comparator configurations at Paper C commit `75b36254145c...`.
-The runner remains the reproduction procedure; rerunning it at a later commit
-is required before claiming that later commit itself as the audited repository
-commit.
+byte-identical Comparator configurations at Paper C commit `27c91f8bdd5c...`.
+The final v0.48.0 metadata layer does not change those configurations. The
+runner remains the reproduction procedure; rerunning it is required before a
+later change to the Comparator fileset can be claimed as certified.
 
 The axiom audit does not detect ordinary hypotheses. Their inventory is the
 bridge registry in `audit_manifest.json` and `AXIOM_AUDIT.md`: each entry has

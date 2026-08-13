@@ -10,14 +10,14 @@
     "license": "Apache-2.0",
     "concept_doi": "https://doi.org/10.5281/zenodo.21735481"
   },
-  "project_version": "0.48.0",
+  "project_version": "0.48.1",
   "target_pdf": {
     "filename": "paper_C_complete_v09_en.pdf",
-    "sha256": "d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd"
+    "sha256": "40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b"
   },
   "source_pdf_fr": {
     "filename": "paper_C_complete_v09.pdf",
-    "sha256": "2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b"
+    "sha256": "f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0"
   },
   "sources": [
     {
@@ -31,8 +31,8 @@
       "license": "CC-BY-4.0",
       "author_contacted": "n/a",
       "filename": "paper_C_complete_v09_en.pdf",
-      "sha256": "d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd",
-      "note": "Paper C v09 English frozen release, August 12, 2026; intended as the next Cambridge Open Engage version under the existing DOI."
+      "sha256": "40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b",
+      "note": "Frozen English manuscript, August 13, 2026; public manuscript history is maintained under the stable Cambridge Open Engage and Zenodo paper records."
     },
     {
       "key": "adgr07-prime-number-theorem",
@@ -139,7 +139,7 @@
   ],
   "comparator_digest_sha256": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
   "comparator_status": "sandboxed_lean_kernel_passed",
-  "comparator_status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure for the v0.48.0 release at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. The final metadata layer leaves the certified Comparator fileset byte-identical. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
+  "comparator_status_note": "Both Paper C Comparator configurations passed the hardened non-root procedure for the v0.48.0 release at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07. Real landrun ran under systemd-run --user --pty with NoNewPrivileges and zero inherited, permitted, effective, and ambient capability sets. Version v0.48.1 leaves the frozen Lean core and the certified six-file Comparator fileset byte-identical, but replaces the manuscript PDFs with new byte streams incorporating the mathematical and documentary remediation of the two August 13, 2026 audits. The v0.48.0 evidence therefore certifies the unchanged Comparator inputs and binds the historical v0.48.0 manuscript hashes, not these remediated v0.48.1 PDF byte streams; no new hardened run is claimed. The public release asset is a derived privacy-minimized bundle. It preserves the exact summary, result records, source snapshot, raw transcript digests, and a redaction manifest; host-identifying raw logs and transcripts remain local and unpublished. This is a Lean-kernel-only result: enable_nanoda was false, Nanoda was not run, and no dual-kernel claim is made. Comparator does not discharge the ordinary literature-facing premises or certify paper-to-Challenge fidelity.",
   "comparator_tools": {
     "comparator": {
       "repository": "https://github.com/leanprover/comparator",
@@ -169,9 +169,18 @@
   "comparator_published_evidence": {
     "release_tag": "v0.48.0",
     "release_url": "https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0",
-    "archive": "paper-c-hardened-27c91f8.tar.zst",
-    "archive_size_bytes": 98049,
-    "archive_sha256": "a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89",
+    "archive": "paper-c-hardened-public-27c91f8.tar.zst",
+    "archive_size_bytes": 49765,
+    "archive_sha256": "7279ed99e6b1a98b6458fe1f8d95dd1f68af445646ee6a23d0044c7bee94ce50",
+    "privacy_profile": "derived_privacy_minimized_bundle_v1",
+    "redaction_manifest": "REDACTION_MANIFEST.json",
+    "redaction_manifest_sha256": "01c3619d80786999a323c8b2073c4e674bf97af46f179b7e1434af53f3b6f29b",
+    "raw_archive": "paper-c-hardened-27c91f8.tar.zst",
+    "raw_archive_size_bytes": 98049,
+    "raw_archive_sha256": "a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89",
+    "raw_archive_retention": "local_only_not_published",
+    "raw_sha256sums_in_public_archive": "provenance/RAW_SHA256SUMS",
+    "raw_sha256sums_sha256": "3a7e48c5f256597666538e4bf09ee9f80226160939b03b7324f29fe1e60f4a9e",
     "summary_sha256": "b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb",
     "paper_c_commit": "27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07",
     "comparator_fileset_digest_sha256": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
@@ -181,8 +190,8 @@
       "lean"
     ],
     "enable_nanoda": false,
-    "metadata_verification": "Agent-side recheck of the final v0.48.0 archive covered its outer SHA-256 and size, summary SHA-256, every internal SHA256SUMS entry, and the two archived transcript hashes. The repository carries only privacy-minimized result records copied from that archive, not the host-specific raw transcripts. The generator validates those records and their configuration and fileset bindings but does not download or revalidate the GitHub release asset.",
-    "qualification": "The archive certifies the byte-identical Comparator boundary at its recorded Paper C commit. It is not a human source audit or a general host-security certification."
+    "metadata_verification": "Agent-side verification covered the local raw archive outer SHA-256 and size, every entry in its SHA256SUMS, both raw transcript hashes, and the deterministic derivation of the public privacy-minimized bundle. The public bundle retains exact summary, result, and source-snapshot bytes plus a machine-readable redaction manifest binding every retained and omitted raw path by SHA-256. Raw host logs and transcripts are intentionally not public.",
+    "qualification": "The public v0.48.0 bundle preserves the validated Comparator result and its bindings to the Paper C commit, configurations, six-file Comparator digest, tool commits, historical v0.48.0 manuscript hashes, and raw transcript hashes. The frozen Lean core and the six-file Comparator input remain byte-identical in v0.48.1, but the v0.48.1 PDF byte streams incorporating the mathematical and documentary remediation of the two August 13, 2026 audits are not bound by this earlier bundle. Because the host-identifying raw transcripts are retained locally only, third parties cannot independently inspect the full host-execution trace from the public bundle. This is not a source audit, a dual-kernel result, or a general host-security certification."
   },
   "comparator_configurations": [
     {
@@ -203,7 +212,7 @@
       "sandboxed": true,
       "evidence_record": "comparator/evidence/result-theorem-one-one.json",
       "evidence_record_sha256": "ce8ab0f60336425f04ac6408a8e2b4b066424b8820ec0b8bdd8a8c078eaa2ef8",
-      "transcript_in_published_archive": "evidence/theorem-one-one/comparator-theorem-one-one.txt",
+      "transcript_in_private_raw_archive": "evidence/theorem-one-one/comparator-theorem-one-one.txt",
       "transcript_sha256": "fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e",
       "configuration_sha256_at_run": "c440d5dce720d0cda002afc79e269003aa6eed2cab9ad12e4dbc5bbca49e28d3",
       "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
@@ -228,7 +237,7 @@
       "sandboxed": true,
       "evidence_record": "comparator/evidence/result-infinite-finite-transfer.json",
       "evidence_record_sha256": "b0bdb016bf928d421639635a1d79299fa7a35c12478601ed4f6add39a26a9189",
-      "transcript_in_published_archive": "evidence/infinite-finite-transfer/comparator-infinite-finite-transfer.txt",
+      "transcript_in_private_raw_archive": "evidence/infinite-finite-transfer/comparator-infinite-finite-transfer.txt",
       "transcript_sha256": "13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076",
       "configuration_sha256_at_run": "078a0457cd20aa6f5af27978055a6400f36782d2b37d3eaba5b558c73e9ac743",
       "comparator_fileset_digest_sha256_at_run": "646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5",
@@ -242,7 +251,7 @@
     "literature_certificates/HK13-QO-conductor-fibres.md",
     "literature_certificates/NR83-T1-divisor-log-bound.md"
   ],
-  "literature_certificate_digest_sha256": "6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996",
+  "literature_certificate_digest_sha256": "dd6012e44b6fe0b04a2dddc92006b6e86ce8e5dbbd16322094bb9e0b7feb8bfb",
   "literature_certificate_scope": "The four external bridges consumed by the finite-cylinder form of Theorem 1.1.",
   "literature_certificate_status_note": "These certificates document source-to-proposition implications. They are not Lean proofs, Comparator results, or independent human certification. The historical source-verification wording embedded in the frozen 382-file core is retained only for byte-level provenance; this rc2 layer is the current qualification.",
   "literature_certificates": [
@@ -282,8 +291,8 @@
       "implication_status": "agent_checked_with_open_gap",
       "limitations": "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
       "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
-      "sha256": "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96",
-      "byte_length": 3971,
+      "sha256": "732c53aa4715d892ddbd1b3714000046b92696190144e1c090970764b7e17dc9",
+      "byte_length": 4112,
       "review_status": "agent-reviewed",
       "human_peer_reviewed": false,
       "supersedes_frozen_source_verification_wording_for_rc2": true
@@ -321,7 +330,7 @@
         "tool_setup": "AI-assisted exploration, drafting, Lean development, reconnaissance programs, iterative local Lake builds, generated declaration and bridge audits, and separate adversarial counter-audits by distinct agent instances and models from multiple providers."
       }
     ],
-    "notes": "Brice Pouly directed the research and selected the mathematical and release requirements. As declared on page 68 of the frozen English paper, Claude Fable 5, Claude Opus 4.8, and GPT 5.6 Sol provided substantial assistance with lemma exploration, drafting, Lean development, reconnaissance programs, and multi-provider counter-audits. GPT 5.6 Sol agents also assisted with the v0.48.0 Comparator and metadata work."
+    "notes": "Brice Pouly directed the research and selected the mathematical and release requirements. As declared on page 74 of the frozen English paper, Claude Fable 5, Claude Opus 4.8, and GPT 5.6 Sol provided substantial assistance with lemma exploration, drafting, Lean development, reconnaissance programs, and multi-provider counter-audits. GPT 5.6 Sol agents also assisted with the v0.48.0 Comparator work and the v0.48.1 manuscript audit remediation and public-release metadata work."
   },
   "fidelity": {
     "divergences": "The principal human-readable Comparator statement uses a finite uniform cylinder because the dyadic observable depends on finitely many prime coordinates; a separate Comparator target states the exact identity with the infinite-product law. The finite-cylinder interface uses a truncated completely multiplicative function, with an explicit convention outside the prime cutoff, although the audited observable never queries that region. Total variation is displayed as the discrete half-l1 sum rather than the paper's equivalent supremum over events. UniformBigOOn makes the uniform quantifiers and the dependence on C explicit. The Lean endpoint harmlessly permits C = 0 whereas the paper states C > 0. Theorem 8.1 is closed only at alpha = 3/16, the instance consumed downstream, rather than for every alpha > 0 as stated in the paper. The role of Lemma 13.6 is discharged by a sufficient harmonic bound rather than by a declaration duplicating its displayed formulation. The spatial and marked point-process results are represented by Laplace-functional convergence together with tightness, not by direct Tendsto statements for laws in the paper's vague topology. Conditioning is formalized extensionally through equality of the relevant finite-coordinate laws rather than through a literal conditional-probability presentation. The global longest-run theorem is outside the v0.48.0 Comparator surface. The literature bridges are ordinary theorem premises, not Lean axioms."
@@ -353,7 +362,7 @@
       "purpose": "Intentional Comparator challenge placeholder for the exact infinite-product/finite-cylinder law identity; excluded from proof sorry_count."
     }
   ],
-  "paper_item_count": 112,
+  "paper_item_count": 113,
   "paper_items": [
     {
       "id": "Thm-1.1-finite-cylinder",
@@ -386,7 +395,7 @@
         "solution_module": "Solution",
         "enable_nanoda": false
       },
-      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under four fully stated ordinary premises. The byte-identical Challenge/Solution boundary passed the hardened non-root Comparator procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51 with Lean-kernel acceptance and exit 0. Nanoda was disabled. The separate transfer target covers the infinite source law."
+      "note": "The canonical endpoint proves the critical-window total-variation rate O_C((log log N)^-2) under four fully stated ordinary premises. The byte-identical Challenge/Solution boundary passed the hardened non-root Comparator procedure at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07 with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the certified Comparator fileset byte-identical. Nanoda was disabled. The separate transfer target covers the infinite source law."
     },
     {
       "id": "Thm-1.1-infinite-finite-law-transfer",
@@ -414,7 +423,7 @@
         "solution_module": "SolutionTransfer",
         "enable_nanoda": false
       },
-      "note": "Exact unconditional identity of the infinite-product dyadic start-count law and its finite-cylinder law. The byte-identical ChallengeTransfer/SolutionTransfer boundary passed the hardened non-root Comparator procedure at Paper C commit 75b36254145c0983d551de11599ea5c8f68e1e51 with Lean-kernel acceptance and exit 0. Nanoda was disabled."
+      "note": "Exact unconditional identity of the infinite-product dyadic start-count law and its finite-cylinder law. The byte-identical ChallengeTransfer/SolutionTransfer boundary passed the hardened non-root Comparator procedure at Paper C commit 27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07 with Lean-kernel acceptance and exit 0. The final v0.48.0 metadata layer leaves the certified Comparator fileset byte-identical. Nanoda was disabled."
     },
     {
       "id": "Thm-1.2-i-deterministic-masks",
@@ -447,7 +456,7 @@
       "id": "Thm-1.2-ii-spatial-ppp",
       "paper_locator": {
         "result": "Theorem 1.2(ii)",
-        "pages": "3",
+        "pages": "4",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -560,7 +569,7 @@
       "id": "Lem-2.2-tree-square-translation",
       "paper_locator": {
         "result": "Lemma 2.2",
-        "pages": "8–9",
+        "pages": "9",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -585,7 +594,7 @@
       "id": "Lem-3.1-quantitative-runge",
       "paper_locator": {
         "result": "Lemma 3.1",
-        "pages": "9",
+        "pages": "9–10",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -627,7 +636,7 @@
       "id": "Cor-3.3-first-moment",
       "paper_locator": {
         "result": "Corollary 3.3",
-        "pages": "12",
+        "pages": "13",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -895,7 +904,7 @@
       "id": "Lem-6.4-quotient-core",
       "paper_locator": {
         "result": "Lemma 6.4",
-        "pages": "19–20",
+        "pages": "20",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1003,7 +1012,7 @@
       "id": "Prop-7.3-small-product-sector",
       "paper_locator": {
         "result": "Proposition 7.3",
-        "pages": "22",
+        "pages": "23",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1150,7 +1159,7 @@
       "id": "Lem-9.3",
       "paper_locator": {
         "result": "Lemma 9.3 (normalization of a component)",
-        "pages": "29",
+        "pages": "30",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1175,7 +1184,7 @@
       "id": "Lem-9.4",
       "paper_locator": {
         "result": "Lemma 9.4 (one-sided count of a component)",
-        "pages": "29",
+        "pages": "30",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1207,7 +1216,7 @@
       "id": "Lem-9.5",
       "paper_locator": {
         "result": "Lemma 9.5 (two singleton components)",
-        "pages": "30",
+        "pages": "30–31",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1256,7 +1265,7 @@
       "id": "Cor-9.7",
       "paper_locator": {
         "result": "Corollary 9.7 (number of deep-core hosts)",
-        "pages": "31",
+        "pages": "32",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1332,7 +1341,7 @@
       "id": "Lem-9.10",
       "paper_locator": {
         "result": "Lemma 9.10 (exact rank formula)",
-        "pages": "32",
+        "pages": "33",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1350,9 +1359,30 @@
       "note": "This is the source-scoped, choice-none identity tau = D# + c# - rank, proved from the concrete kernel equivalence without a bridge."
     },
     {
+      "id": "Lem-9.11-terminal-host-constants",
+      "paper_locator": {
+        "result": "Lemma 9.11 (fixing the constants in the terminal host count)",
+        "pages": "33",
+        "edition": "paper-c-en-v09"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.BoundedRatioTwoSingletonCritical.exists_sizeTwoComponentHostEnvelope",
+          "file": "PaperC/Asymptotics/BoundedRatioTwoSingletonCritical.lean"
+        }
+      ],
+      "bridge_ids": [],
+      "conditionality": "inconditionnel",
+      "formalization_status": "proved in a stronger bounded-ratio form",
+      "comparator": {
+        "covered": false
+      },
+      "note": "Lean produces a nonnegative Cterm and an eventual threshold N0 bounding the complete size-two bounded-component host population by N exp(Cterm sqrt(L+1) / log(L+1)), uniformly at bounded ratio. The manuscript lemma follows by specializing kappa0 = 2 and M = 2N; its non-aligned deep-core population is a subset of the Lean population. The Lean declaration is also mapped to Lemma 9.5 because it packages the critical-window consequence of that lemma's divisor summation. No literature bridge is used."
+    },
+    {
       "id": "Prop-9.11",
       "paper_locator": {
-        "result": "Proposition 9.11 (terminal reduction)",
+        "result": "Proposition 9.12 (terminal reduction)",
         "pages": "33",
         "edition": "paper-c-en-v09"
       },
@@ -1376,8 +1406,8 @@
     {
       "id": "Lem-9.12",
       "paper_locator": {
-        "result": "Lemma 9.12 (kernels and determinants of the terminal matching)",
-        "pages": "33",
+        "result": "Lemma 9.13 (kernels and determinants of the terminal matching)",
+        "pages": "34",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1398,7 +1428,7 @@
       "id": "Thm-10.1",
       "paper_locator": {
         "result": "Theorem 10.1 (closure of the terminal population)",
-        "pages": "34",
+        "pages": "35",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1421,7 +1451,7 @@
       "id": "Lem-11.1",
       "paper_locator": {
         "result": "Lemma 11.1 (exhaustive partition of separated pairs)",
-        "pages": "36–37",
+        "pages": "37",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1467,7 +1497,7 @@
       "id": "Cor-11.3",
       "paper_locator": {
         "result": "Corollary 11.3 (quantitative form of the homogeneous sum)",
-        "pages": "37",
+        "pages": "38",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1492,7 +1522,7 @@
       "id": "Sec-12",
       "paper_locator": {
         "result": "Section 12 (deducing the moments; proof of Theorem 1.4)",
-        "pages": "37",
+        "pages": "38",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1517,7 +1547,7 @@
       "id": "Lem-13.1",
       "paper_locator": {
         "result": "Lemma 13.1 (rank via private pivots)",
-        "pages": "38",
+        "pages": "39",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1538,7 +1568,7 @@
       "id": "Cor-13.2",
       "paper_locator": {
         "result": "Corollary 13.2 (exact conditional marginal)",
-        "pages": "38",
+        "pages": "39",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1580,7 +1610,7 @@
       "id": "Lem-13.4",
       "paper_locator": {
         "result": "Lemma 13.4 (probabilistic mass of the bad starts)",
-        "pages": "39",
+        "pages": "40",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1622,7 +1652,7 @@
       "id": "Lem-13.6",
       "paper_locator": {
         "result": "Lemma 13.6 (edge count)",
-        "pages": "40",
+        "pages": "41",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1643,7 +1673,7 @@
       "id": "Thm-13.7",
       "paper_locator": {
         "result": "Theorem 13.7 (Arratia-Goldstein-Gordon)",
-        "pages": "40",
+        "pages": "41",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1666,7 +1696,7 @@
       "id": "Lem-13.8",
       "paper_locator": {
         "result": "Lemma 13.8 (Chen-Stein terms)",
-        "pages": "41",
+        "pages": "42",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1691,7 +1721,7 @@
       "id": "Cor-13.9",
       "paper_locator": {
         "result": "Corollary 13.9 (finite bound)",
-        "pages": "42",
+        "pages": "43",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1712,7 +1742,7 @@
       "id": "Cor-13.10",
       "paper_locator": {
         "result": "Corollary 13.10 (explicit rate)",
-        "pages": "42",
+        "pages": "43",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1738,7 +1768,7 @@
       "id": "Prop-14.1",
       "paper_locator": {
         "result": "Proposition 14.1 (uniformly masked first moment)",
-        "pages": "43",
+        "pages": "44",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1759,7 +1789,7 @@
       "id": "Prop-14.2",
       "paper_locator": {
         "result": "Proposition 14.2 (Poisson under a mask)",
-        "pages": "43",
+        "pages": "44",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1785,7 +1815,7 @@
       "id": "Rem-14.3",
       "paper_locator": {
         "result": "Remark 14.3 (uniform rate under masks)",
-        "pages": "43",
+        "pages": "44",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1811,7 +1841,7 @@
       "id": "Sec-14.2",
       "paper_locator": {
         "result": "Section 14.2 (spatial process via auxiliary thinning)",
-        "pages": "44",
+        "pages": "44–45",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1858,7 +1888,7 @@
       "id": "Lem-14.6",
       "paper_locator": {
         "result": "Lemma 14.6 (mixed-length affine identity)",
-        "pages": "45",
+        "pages": "46",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1883,7 +1913,7 @@
       "id": "Lem-14.7",
       "paper_locator": {
         "result": "Lemma 14.7 (private pivots and cycle space)",
-        "pages": "45",
+        "pages": "46",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1904,7 +1934,7 @@
       "id": "Sec-14.4",
       "paper_locator": {
         "result": "Section 14.4 (truncated marked process)",
-        "pages": "46–48",
+        "pages": "47–49",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1930,7 +1960,7 @@
       "id": "Lem-14.8",
       "paper_locator": {
         "result": "Lemma 14.8 (mass of the removed starts, exact lengths)",
-        "pages": "46",
+        "pages": "47",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1951,7 +1981,7 @@
       "id": "Cor-14.9",
       "paper_locator": {
         "result": "Corollary 14.9 (exact-length counts and the maximum)",
-        "pages": "48",
+        "pages": "49",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -1981,7 +2011,7 @@
       "id": "Lem-15.1",
       "paper_locator": {
         "result": "Lemma 15.1 (Low zone)",
-        "pages": "49",
+        "pages": "49–50",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2004,7 +2034,7 @@
       "id": "Lem-15.2",
       "paper_locator": {
         "result": "Lemma 15.2 (Polynomial band)",
-        "pages": "49",
+        "pages": "50",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2028,7 +2058,7 @@
       "id": "Lem-15.3",
       "paper_locator": {
         "result": "Lemma 15.3 (Rarity of two-defect windows)",
-        "pages": "50",
+        "pages": "51",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2052,7 +2082,7 @@
       "id": "Lem-15.4",
       "paper_locator": {
         "result": "Lemma 15.4 (Pointwise maximum)",
-        "pages": "50",
+        "pages": "51",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2075,7 +2105,7 @@
       "id": "Prop-15.5",
       "paper_locator": {
         "result": "Proposition 15.5 (Truncation of the deep blocks)",
-        "pages": "51",
+        "pages": "51–52",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2101,7 +2131,7 @@
       "id": "Prop-16.1",
       "paper_locator": {
         "result": "Proposition 16.1 (Absolute homogeneous sum at bounded ratio)",
-        "pages": "51",
+        "pages": "52",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2126,7 +2156,7 @@
       "id": "Thm-16.2",
       "paper_locator": {
         "result": "Theorem 16.2 (Interior global Poisson law at the critical scale)",
-        "pages": "53",
+        "pages": "54",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2160,7 +2190,7 @@
       "id": "Cor-16.4",
       "paper_locator": {
         "result": "Corollary 16.4 (Longest-run law in the finite prefix)",
-        "pages": "53",
+        "pages": "54–55",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2190,7 +2220,7 @@
       "id": "Lem-17.1",
       "paper_locator": {
         "result": "Lemma 17.1 (Hosts at bounded ratio)",
-        "pages": "57",
+        "pages": "58",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2211,7 +2241,7 @@
       "id": "Lem-17.2",
       "paper_locator": {
         "result": "Lemma 17.2 (Interpolation at bounded ratio)",
-        "pages": "57",
+        "pages": "58",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2232,7 +2262,7 @@
       "id": "Lem-17.3",
       "paper_locator": {
         "result": "Lemma 17.3 (Rational code at bounded ratio)",
-        "pages": "57",
+        "pages": "58–59",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2253,7 +2283,7 @@
       "id": "Lem-17.4",
       "paper_locator": {
         "result": "Lemma 17.4 (Channel uniqueness at bounded ratio)",
-        "pages": "57",
+        "pages": "59",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2274,7 +2304,7 @@
       "id": "Lem-17.5",
       "paper_locator": {
         "result": "Lemma 17.5 (Rational masses at bounded ratio)",
-        "pages": "57",
+        "pages": "59",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2299,7 +2329,7 @@
       "id": "Lem-17.6",
       "paper_locator": {
         "result": "Lemma 17.6 (Sum of channel geometries)",
-        "pages": "58",
+        "pages": "60",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2320,7 +2350,7 @@
       "id": "Lem-17.7",
       "paper_locator": {
         "result": "Lemma 17.7 (Large-prime graph on U)",
-        "pages": "58",
+        "pages": "60",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2341,7 +2371,7 @@
       "id": "Lem-17.8",
       "paper_locator": {
         "result": "Lemma 17.8 (Square class of components on U)",
-        "pages": "58",
+        "pages": "60",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2362,7 +2392,7 @@
       "id": "Lem-17.9",
       "paper_locator": {
         "result": "Lemma 17.9 (Exact isolation on U)",
-        "pages": "58",
+        "pages": "60",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2383,7 +2413,7 @@
       "id": "Lem-17.10",
       "paper_locator": {
         "result": "Lemma 17.10 (Quotient core on U)",
-        "pages": "59",
+        "pages": "61",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2404,7 +2434,7 @@
       "id": "Lem-17.11",
       "paper_locator": {
         "result": "Lemma 17.11 (Residual certificates on U)",
-        "pages": "59",
+        "pages": "61",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2425,7 +2455,7 @@
       "id": "Lem-17.12",
       "paper_locator": {
         "result": "Lemma 17.12 (CRT summation on U)",
-        "pages": "59",
+        "pages": "61",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2446,7 +2476,7 @@
       "id": "Lem-17.13",
       "paper_locator": {
         "result": "Lemma 17.13 (Cells of a channel on U)",
-        "pages": "59",
+        "pages": "61",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2467,7 +2497,7 @@
       "id": "Lem-17.14",
       "paper_locator": {
         "result": "Lemma 17.14 (Sector P# <= N on U)",
-        "pages": "59",
+        "pages": "61",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2488,7 +2518,7 @@
       "id": "Lem-17.15",
       "paper_locator": {
         "result": "Lemma 17.15 (Small channels on U)",
-        "pages": "60",
+        "pages": "62",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2509,7 +2539,7 @@
       "id": "Lem-17.16",
       "paper_locator": {
         "result": "Lemma 17.16 (Shallow cores on U)",
-        "pages": "60",
+        "pages": "62",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2530,7 +2560,7 @@
       "id": "Lem-17.17",
       "paper_locator": {
         "result": "Lemma 17.17 (Aligned exclusion on U)",
-        "pages": "60",
+        "pages": "62",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2551,7 +2581,7 @@
       "id": "Lem-17.18",
       "paper_locator": {
         "result": "Lemma 17.18 (Evertse-Silverman input on U)",
-        "pages": "60",
+        "pages": "62",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2574,7 +2604,7 @@
       "id": "Lem-17.19",
       "paper_locator": {
         "result": "Lemma 17.19 (Pell in the ranges issued from U)",
-        "pages": "60",
+        "pages": "63",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2603,7 +2633,7 @@
       "id": "Lem-17.20",
       "paper_locator": {
         "result": "Lemma 17.20 (Normalization of a component on U)",
-        "pages": "61",
+        "pages": "63",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2624,7 +2654,7 @@
       "id": "Lem-17.21",
       "paper_locator": {
         "result": "Lemma 17.21 (One-sided count on U)",
-        "pages": "61",
+        "pages": "63",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2652,7 +2682,7 @@
       "id": "Lem-17.22",
       "paper_locator": {
         "result": "Lemma 17.22 (Two singletons on U)",
-        "pages": "61",
+        "pages": "63",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2673,7 +2703,7 @@
       "id": "Lem-17.23",
       "paper_locator": {
         "result": "Lemma 17.23 (Hosts of a bounded component on U)",
-        "pages": "61",
+        "pages": "64",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2697,7 +2727,7 @@
       "id": "Lem-17.24",
       "paper_locator": {
         "result": "Lemma 17.24 (Deep-core hosts on U)",
-        "pages": "62",
+        "pages": "64",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2718,7 +2748,7 @@
       "id": "Lem-17.25",
       "paper_locator": {
         "result": "Lemma 17.25 (Two defects in a block of U)",
-        "pages": "62",
+        "pages": "65",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2745,7 +2775,7 @@
       "id": "Lem-17.26",
       "paper_locator": {
         "result": "Lemma 17.26 (Eliminating multiple defects on U)",
-        "pages": "62",
+        "pages": "65",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2769,7 +2799,7 @@
       "id": "Lem-17.27",
       "paper_locator": {
         "result": "Lemma 17.27 (Exact rank on U)",
-        "pages": "62",
+        "pages": "65",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2790,7 +2820,7 @@
       "id": "Lem-17.28",
       "paper_locator": {
         "result": "Lemma 17.28 (Uniform terminal reduction)",
-        "pages": "63",
+        "pages": "65",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2814,7 +2844,7 @@
       "id": "Lem-17.29",
       "paper_locator": {
         "result": "Lemma 17.29 (Terminal determinants on U)",
-        "pages": "63",
+        "pages": "65–66",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2839,7 +2869,7 @@
       "id": "Lem-17.30",
       "paper_locator": {
         "result": "Lemma 17.30 (Terminal closure on U)",
-        "pages": "63",
+        "pages": "66",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2862,7 +2892,7 @@
       "id": "Lem-17.31",
       "paper_locator": {
         "result": "Lemma 17.31 (Partition at bounded ratio)",
-        "pages": "64",
+        "pages": "67",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2887,7 +2917,7 @@
       "id": "Lem-17.32",
       "paper_locator": {
         "result": "Lemma 17.32 (Uniform assembly)",
-        "pages": "64",
+        "pages": "67",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2908,7 +2938,7 @@
       "id": "Lem-17.33",
       "paper_locator": {
         "result": "Lemma 17.33 (Pointwise defects and sub-blocks)",
-        "pages": "64",
+        "pages": "68",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2933,7 +2963,7 @@
       "id": "Lem-17.34",
       "paper_locator": {
         "result": "Lemma 17.34 (Y-defective starts on U)",
-        "pages": "65",
+        "pages": "68",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2958,7 +2988,7 @@
       "id": "Lem-17.35",
       "paper_locator": {
         "result": "Lemma 17.35 (Marginals and conditional graph on U)",
-        "pages": "65",
+        "pages": "68",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -2983,7 +3013,7 @@
       "id": "Lem-17.36",
       "paper_locator": {
         "result": "Lemma 17.36 (Graph edges on U)",
-        "pages": "65",
+        "pages": "68",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -3004,7 +3034,7 @@
       "id": "Lem-17.37",
       "paper_locator": {
         "result": "Lemma 17.37 (Chen-Stein terms on U)",
-        "pages": "65",
+        "pages": "69",
         "edition": "paper-c-en-v09"
       },
       "lean_declarations": [
@@ -3311,8 +3341,8 @@
         "implication_status": "agent_checked_with_open_gap",
         "limitations": "The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.",
         "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
-        "sha256": "cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96",
-        "byte_length": 3971,
+        "sha256": "732c53aa4715d892ddbd1b3714000046b92696190144e1c090970764b7e17dc9",
+        "byte_length": 4112,
         "review_status": "agent-reviewed",
         "human_peer_reviewed": false,
         "supersedes_frozen_source_verification_wording_for_rc2": true

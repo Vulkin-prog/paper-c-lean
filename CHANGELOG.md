@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.48.1 (candidate; not released)
+
+
+- Published the two 2026-08-13 agent counter-reviews with provenance and
+  original SHA-256 values; no independent human review is claimed.
+- Added an explicit Halter--Koch adjudication separating the conventional
+  maximal-order proof in the manuscript from the still-conditional Lean
+  interface.
+- Added reproducible PDF QA, retry-safe Lean setup in ordinary CI, and a strict
+  two-commit release-binding workflow. These additions do not qualify the
+  release by themselves; hardened no-fallback Comparator evidence is still
+  required.
+
+- Rebuilt the bilingual manuscripts after mathematical and release-audit
+  remediation: autonomous bounded-ratio proofs, exact seven-bridge tables,
+  terminal constants, Halter--Koch adjudication, validation levels and
+  version-neutral public provenance wording.
+- The English PDF has 76 pages, measures 931426 bytes, has Git blob
+  `0e78d23b2888761cdcda75b2e623b340e41e86b8`, and SHA-256
+  `40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b`.
+  The synchronized French PDF has 79 pages, measures 942204 bytes, has Git
+  blob `042909b19874e8a12312ff940816dec96d7d7051`, and SHA-256
+  `f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0`.
+- The Lean core, Comparator fileset, literature certificates, declarations,
+  bridge registry and toolchain are unchanged.
+- The hardened v0.48.0 Comparator evidence remains the evidence for the
+  byte-identical six-file Comparator input and its historical manuscript
+  hashes. It does not bind the remediated v0.48.1 PDF byte streams, and no new
+  hardened Comparator run is claimed for this candidate.
+
 ## 0.48.0
 
 - Froze the Paper C v09 manuscript pair for the final release: the English PDF

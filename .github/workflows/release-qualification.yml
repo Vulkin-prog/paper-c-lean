@@ -1,0 +1,103 @@
+name: Strict release qualification
+
+on:
+  workflow_dispatch:
+    inputs:
+      packaging_commit:
+        description: Exact 40-hex packaging commit R to qualify (its unique parent is source commit Q)
+        required: true
+        type: string
+      hardened_archive_sha256:
+        description: SHA-256 of the published privacy-minimized hardened archive
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - name: Check out the exact packaging commit R
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.packaging_commit }}
+          fetch-depth: 0
+
+      - name: Require an exact packaging commit checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ inputs.packaging_commit }}"
+          [[ "${{ inputs.packaging_commit }}" =~ ^[0-9a-f]{40}$ ]]
+          [[ "${{ inputs.hardened_archive_sha256 }}" =~ ^[0-9a-f]{64}$ ]]
+
+      - name: Install audit utilities
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ripgrep qpdf poppler-utils
+
+      - name: Verify PDFs and release binding
+        run: |
+          node scripts/test_release_binding_protocol.mjs
+          scripts/qa_pdfs.sh ci-logs/release-pdf-qa
+          node scripts/generate_audit.mjs --check-pdfs
+          node scripts/generate_audit.mjs --check-source-digest
+          node scripts/generate_audit.mjs --check-literature-certificates
+          node scripts/check_comparator_sources.mjs
+          node scripts/test_audit_root_guards.mjs
+          node scripts/verify_release_binding.mjs \
+            --binding release_evidence/v0.48.1/release-binding.json \
+            --evidence-dir release_evidence/v0.48.1 \
+            --expected-archive-sha256 "${{ inputs.hardened_archive_sha256 }}"
+
+      - name: Set up pinned Lean toolchain (attempt 1)
+        id: release_lean_setup_1
+        continue-on-error: true
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Set up pinned Lean toolchain (retry)
+        if: steps.release_lean_setup_1.outcome == 'failure'
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Build and regenerate the exhaustive audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build
+          lake build Challenge
+          lake build ChallengeTransfer
+          lake build Solution
+          lake build SolutionTransfer
+          node scripts/generate_audit.mjs
+          mkdir -p ci-logs
+          lake env lean AuditCheck.lean 2>&1 | tee ci-logs/AuditCheck.log
+          node scripts/verify_audit.mjs --input ci-logs/AuditCheck.log
+          node scripts/generate_audit.mjs --check
+          git diff --exit-code -- AuditCheck.lean audit_manifest.json formalization.yaml AXIOM_AUDIT.md
+
+      - name: Preserve qualification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-c-v0481-release-qualification-${{ inputs.packaging_commit }}
+          path: |
+            ci-logs/
+            release_evidence/v0.48.1/
+            RELEASE_QUALIFICATION.md
+          if-no-files-found: error
+          retention-days: 90

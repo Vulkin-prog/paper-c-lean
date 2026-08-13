@@ -73,4 +73,6 @@ implication to `QuadraticOrderConductorFiberBoundStatement` has not been
 independently established.  The correct rc2 status is
 `agent_checked_with_open_gap`.  Until a detailed derivation or a Lean
 construction is supplied and reviewed, public claims must continue to say
-that Theorem 1.1 is conditional on this ordinary literature-facing premise.
+that the current Lean certification of Theorem 1.1 is conditional on this
+ordinary literature-facing premise. The printed maximal-order proof is a
+separate mathematical route; see `docs/HK_INTERFACE_ADJUDICATION.md`.

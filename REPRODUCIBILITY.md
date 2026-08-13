@@ -2,7 +2,7 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.48.0`
+- paper_c_lean : `0.48.1` candidate (no tag/release yet)
 - Lean : `v4.32.2`, commit
   `f3b06c705e6c85f5314019d5d3baab0fec5b580c`
 - mathlib : `v4.32.2`, commit
@@ -16,12 +16,19 @@
   `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4`
 - modèle officiel `formalization.yaml` v0.3 : commit
   `fab03cbbed1a5857de17af32de30421a734c77c6`
-- PDF cible anglais (71 pages dans le fichier portant cette empreinte), SHA-256 :
-  `d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`
-- PDF source français synchronisé (73 pages), SHA-256 :
-  `2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`
+- PDF cible anglais (76 pages dans le fichier portant cette empreinte), SHA-256 :
+  `40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b`
+- PDF source français synchronisé (79 pages), SHA-256 :
+  `f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0`
 - racine unique de l’archive : `paper_c_lean/`
-- archive de livraison : `paper_c_lean_v048.zip`
+- archive de livraison prévue : `paper_c_lean_v0481.zip`
+
+
+> **Qualification.** Les lignes ci-dessus décrivent le candidat courant. Elles
+> ne valent pas publication tant que l'ensemble des portes de
+> [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md) n'est pas satisfait sur
+> un commit exact, notamment la CI verte, le QA PDF et une nouvelle preuve
+> Comparator durcie sans fallback liant les deux PDF finaux.
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles. Il n’existe pas de tag officiel Comparator/lean4export
@@ -30,23 +37,41 @@ lean4export doit être compilé séparément avec la toolchain Lean de Paper C,
 et non remplacé silencieusement par le binaire construit sous la toolchain
 plus récente propre à Comparator.
 
-La contre-vérification finale a recalculé les octets présents dans le dépôt :
+Le candidat courant a recalculé les octets présents dans le dépôt :
 `paper_C_complete_v09_en.pdf` est le blob Git
-`420e096924c8a9b6fe72b917be0ffa2c38f320dc`, mesure 841053 octets et a pour
+`0e78d23b2888761cdcda75b2e623b340e41e86b8`, mesure 931426 octets et a pour
 SHA-256
-`d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd` ;
+`40d49ac41ed308eb3d3229bc2ed064ca7e20c35a5702cf97100562f70820386b` ;
 `paper_C_complete_v09.pdf` est le blob Git
-`5d1e8ec24578bead7d91fa7f0447fcd8cbaddafc`, mesure 848865 octets et a pour
+`042909b19874e8a12312ff940816dec96d7d7051`, mesure 942204 octets et a pour
 SHA-256
-`2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
+`f6aa047ee750c271e9fdbf8bfaa4bddc713cff0c82d2a1cc762c064e9bf092e0`.
 
-## Périmètre du jalon 0.48
+## Périmètre du correctif 0.48.1
+
+Le candidat v0.48.1 remplace les deux PDF après remédiation des contre-audits
+mathématique et de release. Les manuscrits explicitent notamment les quatre
+sites du transport à rapport borné, les sept interfaces de littérature, les
+constantes terminales et la séparation entre preuve imprimée, déduction Lean
+conditionnelle et passages non mécanisés. Les paragraphes bilingues de
+reproduction et de disponibilité renvoient aux seuls enregistrements publics
+stables, sans numéro de cycle éditorial ni dépôt privé. Les 382 sources du
+cœur Lean, les six fichiers Comparator, les certificats bibliographiques,
+leurs digests, les déclarations et le registre des 13 ponts restent
+byte-identiques.
+
+La preuve Comparator durcie publiée avec v0.48.0 porte sur le fileset
+Comparator inchangé et lie les empreintes historiques des PDF v0.48.0. Elle
+ne lie pas les nouveaux octets PDF de v0.48.1 ; aucun nouveau run durci n’est
+revendiqué pour ce candidat remédié.
+
+## Périmètre du jalon 0.48.0 (historique)
 
 La v0.48.0 est additive sur le plan mathématique. Les 382 sources du cœur
 (`PaperC.lean` et les 381 fichiers sous `PaperC/`) restent byte-identiques à
 la v0.47.0, leurs déclarations et signatures canoniques sont inchangées, les
-deux PDF gardent les empreintes ci-dessus, et le registre reste à 13 ponts,
-dont sept `external/open` et six `discharged`.
+deux PDF gardent les empreintes consignées dans le tag v0.48.0, et le registre
+reste à 13 ponts, dont sept `external/open` et six `discharged`.
 
 La nouvelle frontière humaine comprend :
 
@@ -121,39 +146,51 @@ importés simultanément avec leur Challenge homonyme dans `AuditCheck.lean`.
 
 **Statut durci enregistré.** Les deux cibles Paper C ont réussi la procédure
 locale durcie au commit Paper C
-`75b36254145c0983d551de11599ea5c8f68e1e51`. Les exécutions ont utilisé
+`27c91f8bdd5c3f4eeda4183eb3bfd7453a14ba07`. Les exécutions ont utilisé
 landrun réel sous `systemd-run --user --pty`, un utilisateur non root, des
 capacités héritées, effectives, permises et ambiantes nulles, ainsi que
 `NoNewPrivileges`. Comparator a construit chaque paire Challenge/Solution
 dans un checkout propre distinct ; le noyau Lean par défaut a accepté les deux
 solutions avec un code de retour nul.
 
-L’archive de référence est
-`paper-c-hardened-evidence-75b36254145c-20260803T060848Z.tar.zst`, publiée dans
-la release `v0.48.0-rc1`, SHA-256
-`bd1c202413e6297fbd05bc53043c54a768fe74fc3433cbff1bdade68331f7130`.
-Le digest du fileset Comparator est
-`646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5` ;
-les transcripts bruts principal et transfert restent dans cette archive
-publique et ont pour SHA-256
-`5e5431a82b3c9fd8bb538925b59aec8c658be000bfb604baed5f47efe0c03266`
+L’archive publique est
+`paper-c-hardened-public-27c91f8.tar.zst`, publiée dans la release `v0.48.0`.
+Elle pèse 49 765 octets et son SHA-256 est
+`7279ed99e6b1a98b6458fe1f8d95dd1f68af445646ee6a23d0044c7bee94ce50`.
+Elle conserve byte-identiques le résumé (SHA-256
+`b1d956eeee5451a64dbbdab495fe2f56f22b7ee06e2d65624394b3fee5ca41fb`),
+les deux enregistrements de résultat, les 12 fichiers du snapshot source et
+l’inventaire brut des empreintes. Le digest du fileset Comparator est
+`646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
+`REDACTION_MANIFEST.json` (SHA-256
+`01c3619d80786999a323c8b2073c4e674bf97af46f179b7e1434af53f3b6f29b`)
+lie par SHA-256 les 17 membres conservés et les 13 membres omis.
+
+L’archive source privée `paper-c-hardened-27c91f8.tar.zst` pèse 98 049
+octets et son SHA-256 est
+`a4f5469e7c57236dc22f480297591d322eeda0f9d3cf9b7b0a7ff55cb4f6ae89`.
+Elle reste locale et n’est pas publiée : les journaux et transcripts omis
+contiennent utilisateur, hôte, groupes locaux, HOME/PATH et chemins
+temporaires. Les SHA-256 des transcripts bruts principal et transfert restent
+liés cryptographiquement :
+`fed5cf1fd82037c98c1b3f4c713189958ac92b5ceb58982e0e1093f31ce7599e`
 et
-`f02a1411fa9c8c8c7b5a92eeb6de94813abf01873fe31d714e471b503b4bc421`.
-L’archive téléversée a été contre-vérifiée pour sa taille et son SHA-256
-externes, le SHA-256 du résumé, chaque entrée de `SHA256SUMS` et l’égalité
-des deux empreintes de transcript archivées. Pour ne pas dupliquer les noms
-d’hôte, chemins locaux et autres métadonnées de machine des journaux bruts,
-le dépôt ne contient que deux enregistrements `result-*.json` minimaux sous
-`comparator/evidence/`. Le générateur valide ces enregistrements, leurs propres
-SHA-256 et leurs liaisons aux configurations et au fileset ; il ne télécharge
-ni ne revalide l’asset de release GitHub.
+`13703cb6794c4102b6d172e6632fddb1df75d6d47dfa32e46f63030adea33076`.
+Le paquet public conserve ainsi les liaisons du résultat certifié, mais ne
+permet pas une inspection indépendante ligne par ligne de la trace hôte
+complète. Le générateur valide les enregistrements minimisés du dépôt et leurs
+liaisons aux configurations et au fileset ; il ne télécharge ni ne revalide
+l’asset de release GitHub.
 
 Ce résultat est limité au noyau Lean : `enable_nanoda` vaut `false` dans les
 deux configurations, Nanoda n’a pas été exécuté et aucun résultat à deux
-noyaux n’est revendiqué. Le certificat porte sur les octets inchangés du
-fileset Comparator au commit `75b36254145c...`, et non sur le commit final de
-release. Il ne décharge pas les quatre prémisses ordinaires de
-littérature et ne certifie pas à lui seul la fidélité papier--Challenge.
+noyaux n’est revendiqué. Le certificat porte sur les octets du fileset
+Comparator au commit `27c91f8bdd5c...`. La couche finale de métadonnées
+v0.48.0 laisse ce fileset de six fichiers et les deux PDF byte-identiques. Il
+ne décharge pas les quatre prémisses ordinaires de littérature et ne certifie
+pas à lui seul la fidélité papier--Challenge. Le correctif v0.48.1 conserve ce
+fileset Comparator à l’octet mais remplace les PDF ; la preuve v0.48.0 ne lie
+donc pas les nouvelles empreintes des manuscrits.
 
 Les quatre rapports sous `literature_certificates/` forment un fileset séparé
 et haché. Ils consignent une contre-expertise par agents, pas une preuve Lean
@@ -904,8 +941,8 @@ un `result-*.json` machine-lisible avant l'archivage GitHub Actions. Avec les
 scripts rc2, ce résultat contient aussi les SHA-256 de Challenge et Solution,
 la liste exacte des théorèmes et axiomes permis, les deux SHA-256 des
 manuscrits et les cinq commits d'outils. Le résumé agrégé répète les identités
-d'outils et de manuscrits communes aux deux cibles. Ces champs enrichissent
-les prochains paquets ; ils ne réécrivent pas l'archive rc1 immuable.
+d'outils et de manuscrits communes aux deux cibles. Ces champs sont présents
+dans le paquet final v0.48.0.
 
 Le succès de la sonde négative et de l'enveloppe documente les restrictions
 effectivement testées. Il ne constitue pas, à lui seul, une certification
@@ -913,7 +950,8 @@ générale de tous les mécanismes d’isolation de l’hôte ; aucune isolation
 sandbox n’est revendiquée avant une exécution réelle réussie et publiée dans
 ces conditions.
 
-Les deux runs durcis de référence ont réussi au commit `75b36254145c...`.
+Les deux runs durcis de référence ont réussi au commit `27c91f8bdd5c...` ; la
+couche finale de métadonnées v0.48.0 ne modifie pas leur fileset Comparator.
 Les runs CI non sandboxés restent de simples smoke tests. Le suffixe d’un
 ancien artefact CI peut être le SHA d’événement GitHub et ne doit pas être
 confondu avec `paper_c_commit` ni avec le commit de l’outil Comparator. Nanoda
@@ -927,10 +965,10 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v048.zip
-unzip -Z1 paper_c_lean_v048.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v0481.zip
+unzip -Z1 paper_c_lean_v0481.zip | rg -v '^paper_c_lean/'
 zip_check_dir="$(mktemp -d)"
-unzip -q paper_c_lean_v048.zip -d "$zip_check_dir"
+unzip -q paper_c_lean_v0481.zip -d "$zip_check_dir"
 (cd "$zip_check_dir/paper_c_lean" && \
   node scripts/check_comparator_sources.mjs && \
   node scripts/generate_audit.mjs --check)
