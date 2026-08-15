@@ -188,7 +188,7 @@ def TheoremSixteenTwoInfiniteModelStatement (C : ℝ) : Prop :=
 
 /--
 Canonical Theorem 16.2 stated directly on `infiniteGlobalStartCount`.  Its
-seven external inputs are exactly those of the finite-cylinder canonical
+six external inputs are exactly those of the finite-cylinder canonical
 endpoint.
 -/
 theorem theorem_sixteen_two_infinite_model
@@ -197,8 +197,6 @@ theorem theorem_sixteen_two_infinite_model
       PrimeNumberTheoremInput.PrimeNumberTheoremStatement)
     (hLS :
       LaishramShoreyInput.LaishramShoreyStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement)
     (hBS :
@@ -209,7 +207,7 @@ theorem theorem_sixteen_two_infinite_model
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement) :
     TheoremSixteenTwoInfiniteModelStatement C := by
   rcases theorem_sixteen_two_canonical
-      hC hpnt hLS hConductor hDivisor hBS hAGG hES with
+      hC hpnt hLS hDivisor hBS hAGG hES with
     ⟨hTV, hmean, hempty⟩
   refine ⟨?_, hmean, ?_⟩
   · change

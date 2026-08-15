@@ -1,0 +1,149 @@
+name: Strict release qualification
+
+on:
+  workflow_dispatch:
+    inputs:
+      packaging_commit:
+        description: Exact 40-hex packaging commit R' to qualify (its unique parent is source commit Q')
+        required: true
+        type: string
+      hardened_archive_sha256:
+        description: SHA-256 of the published privacy-minimized hardened archive
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - name: Check out the exact packaging commit R'
+        # actions/checkout v4.2.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ inputs.packaging_commit }}
+          fetch-depth: 0
+
+      - name: Require an exact packaging commit checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ inputs.packaging_commit }}"
+          [[ "${{ inputs.packaging_commit }}" =~ ^[0-9a-f]{40}$ ]]
+          [[ "${{ inputs.hardened_archive_sha256 }}" =~ ^[0-9a-f]{64}$ ]]
+
+      - name: Require identity-preserving integration into the default branch
+        shell: bash
+        env:
+          PACKAGING_COMMIT: ${{ inputs.packaging_commit }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          test -n "$DEFAULT_BRANCH"
+          git fetch --no-tags origin \
+            "+refs/heads/$DEFAULT_BRANCH:refs/remotes/origin/$DEFAULT_BRANCH"
+          git merge-base --is-ancestor "$PACKAGING_COMMIT" "refs/remotes/origin/$DEFAULT_BRANCH" || {
+            echo "Packaging R' is not an unchanged ancestor of the default branch." >&2
+            echo 'Squash and rebase merges are forbidden; use merge commit or controlled fast-forward.' >&2
+            exit 1
+          }
+
+      - name: Install audit utilities
+        run: |
+          mkdir -p ci-logs
+          sudo apt-get update
+          sudo apt-get install --yes ripgrep qpdf poppler-utils
+          {
+            date -u '+checked_at_utc=%Y-%m-%dT%H:%M:%SZ'
+            uname -srvmo
+            node --version
+            git --version
+            python3 --version
+            lake --version || true
+            qpdf --version | head -n 1
+            pdftotext -v 2>&1 | head -n 1
+            rg --version | head -n 1
+            dpkg-query -W -f='${Package}=${Version}\n' git poppler-utils python3-minimal qpdf ripgrep || true
+          } | tee ci-logs/release-tool-versions.txt
+
+      - name: Verify PDFs and release binding
+        run: |
+          node scripts/test_release_binding_protocol.mjs
+          scripts/qa_pdfs.sh ci-logs/release-pdf-qa
+          node scripts/generate_audit.mjs --check-pdfs
+          node scripts/generate_audit.mjs --check-source-digest
+          node scripts/generate_audit.mjs --check-literature-certificates
+          node scripts/check_comparator_sources.mjs
+          node scripts/test_audit_root_guards.mjs
+          node scripts/verify_release_binding.mjs \
+            --binding release_evidence/v0.48.1/release-binding.json \
+            --evidence-dir release_evidence/v0.48.1 \
+            --expected-archive-sha256 "${{ inputs.hardened_archive_sha256 }}"
+
+      - name: Set up pinned Lean toolchain (attempt 1)
+        id: release_lean_setup_1
+        continue-on-error: true
+        # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Set up pinned Lean toolchain (retry)
+        if: steps.release_lean_setup_1.outcome == 'failure'
+        # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Build and regenerate the exhaustive audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build
+          lake build Challenge
+          lake build ChallengeTransfer
+          lake build Solution
+          lake build SolutionTransfer
+          node scripts/generate_audit.mjs
+          mkdir -p ci-logs
+          lake env lean AuditCheck.lean 2>&1 | tee ci-logs/AuditCheck.log
+          node scripts/verify_audit.mjs --input ci-logs/AuditCheck.log
+          node scripts/generate_audit.mjs --check
+          git diff --exit-code -- AuditCheck.lean audit_manifest.json formalization.yaml AXIOM_AUDIT.md
+
+      - name: Publish unambiguous qualification summary
+        if: success()
+        shell: bash
+        run: |
+          {
+            echo '## Paper C v0.48.1 strict qualification'
+            echo
+            echo '- `kernel_audit_passed`: exhaustive Lean kernel audit passed for exact packaging R'\''.'
+            echo '- `unsandboxed_semantic_smoke_passed`: separate non-certifying status; not asserted by this workflow.'
+            echo '- `hardened_certifying_passed`: bound result records were verified against Q'\''/R'\''; the underlying private-raw run is a separate prerequisite.'
+            echo '- Packaging R'\'' is an unchanged ancestor of the default branch; squash/rebase integration was rejected.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve qualification report
+        if: always()
+        # actions/upload-artifact v4.6.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-c-v0481-release-qualification-${{ inputs.packaging_commit }}
+          path: |
+            ci-logs/
+            release_evidence/v0.48.1/
+            RELEASE_QUALIFICATION.md
+          if-no-files-found: error
+          retention-days: 90

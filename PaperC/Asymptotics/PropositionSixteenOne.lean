@@ -79,23 +79,20 @@ theorem proposition_sixteen_one
 
 /--
 Canonical Proposition 16.1 with the generalized-Pell package reconstructed
-from the conductor comparison and the source-shaped Nicolas--Robin divisor
-inequality.
+from the internal quadratic-order descent and the source-shaped
+Nicolas--Robin divisor inequality.
 -/
 theorem proposition_sixteen_one_canonical
     {C : ℝ} (hC : 0 ≤ C)
     {κ₀ : ℕ} (hκ₀ : 2 ≤ κ₀)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     PropositionSixteenOneStatement C κ₀ := by
   have hPell :
       PellInput.GeneralizedPellPolynomialBoxStatement :=
-    PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
-      hConductor hDivisor
+    PellInput.generalizedPellPolynomialBox_of_divisorLogBound hDivisor
   obtain ⟨K, hK, hnonterminal⟩ :=
     BoundedRatioNonterminalAssembly.exists_nonterminalSectorStability
       hC κ₀ 3

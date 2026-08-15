@@ -623,7 +623,7 @@ def EvertseSilvermanAbscissaStatement : Prop :=
 
 end EvertseSilvermanInput
 
-/-! ## Halter–Koch and Nicolas–Robin literature premises -/
+/-! ## Historical conductor interface and Nicolas–Robin literature premise -/
 
 namespace PellInput
 
@@ -632,11 +632,9 @@ Reference: Paper C, Lemma 9.2, pp. 28–29. Bridge: none. Relation: exact. -/
 def toZsqrtd (D : ℕ) (s : ℤ × ℤ) : ℤ√(D : ℤ) :=
   ⟨s.1, s.2⟩
 
-/-- Data expressing descent from the maximal quadratic order.
-Reference: Franz Halter-Koch, *Quadratic Irrationals* (2013),
-Theorems 1.1.6, 5.1.7, 5.2.3 and 5.2.5, pp. 4–5, 118–119, 125–127.
-Audit bridge: `HK13-QO-conductor-fibres`. Relation: maximal-order ideal
-divisor plus at most three unit cosets; `Fin 4` is the historical padded API. -/
+/-- Historical data interface for descent from the maximal quadratic order.
+The source-shaped factorisation was motivated by Halter--Koch; the production
+proof now realizes this `Fin 4` interface internally by reduction modulo two. -/
 structure QuadraticOrderConductorData (D : ℕ) (M : ℤ) where
   K : Type
   [fieldK : Field K]
@@ -656,12 +654,9 @@ structure QuadraticOrderConductorData (D : ℕ) (M : ℤ) where
       Ideal.span ({toZsqrtd D s} : Set (ℤ√(D : ℤ))) =
         Ideal.span ({toZsqrtd D t} : Set (ℤ√(D : ℤ)))
 
-/-- Halter–Koch literature premise.
-Reference: cited theorems in *Quadratic Irrationals*, pp. 4–5, 118–119,
-125–127, DOI 10.1201/b14968.
-Audit bridge: `HK13-QO-conductor-fibres`.
-Relation: the sole order/unit comparison consumed by Paper C Lemma 9.2,
-pp. 28–29; ideal counting and height estimates are proved in Lean. -/
+/-- Historical conductor-fibre compatibility interface, now discharged by the
+internal quadratic-order construction in `PaperC`.  It is retained here only
+so the declarative audit namespace records the former boundary exactly. -/
 def QuadraticOrderConductorFiberBoundStatement : Prop :=
   ∀ (D : ℕ) (M : ℤ),
     0 < D →
@@ -762,34 +757,12 @@ private theorem auditAGG_to_paperC
     μAudit, hRate] at bound ⊢
   exact bound
 
-private theorem auditConductor_to_paperC
-    (h : PaperCAudit.PellInput.QuadraticOrderConductorFiberBoundStatement) :
-    PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement := by
-  unfold PaperCAudit.PellInput.QuadraticOrderConductorFiberBoundStatement at h
-  unfold PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement
-  intro D M hD hSquarefree hNonsquare hM
-  rcases h D M hD hSquarefree hNonsquare hM with ⟨data⟩
-  refine ⟨{
-    K := data.K
-    fieldK := data.fieldK
-    numberFieldK := data.numberFieldK
-    quadraticK := data.quadraticK
-    idealOf := data.idealOf
-    conductorColour := data.conductorColour
-    same_principalIdeal_of_same_extension := ?_
-  }⟩
-  intro s t hs ht hcolour hideal
-  simpa [PaperCAudit.PellInput.toZsqrtd, PaperC.PellInput.toZsqrtd] using
-    data.same_principalIdeal_of_same_extension s t hs ht hcolour hideal
-
 theorem paper_c_theorem_one_one_finite_cylinder
     {C : ℝ} (hC : 0 ≤ C)
     (hAGG :
       PaperCAudit.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
     (hES :
       PaperCAudit.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PaperCAudit.PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PaperCAudit.PellInput.NicolasRobinDivisorLogBoundStatement) :
     PaperCAudit.UniformBigOOn
@@ -798,7 +771,6 @@ theorem paper_c_theorem_one_one_finite_cylinder
       PaperCAudit.SectionThirteenRate.inverseLogLogSquaredRate := by
   exact
     PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical
-      hC (auditAGG_to_paperC hAGG) hES
-      (auditConductor_to_paperC hConductor) hDivisor
+      hC (auditAGG_to_paperC hAGG) hES hDivisor
 
 end

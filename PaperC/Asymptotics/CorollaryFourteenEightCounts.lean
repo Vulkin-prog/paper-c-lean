@@ -368,8 +368,6 @@ theorem corollary_fourteen_eight_counts
     (lam : ℝ≥0) (E : ℕ)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement)
     (Lseq : ℕ → ℕ)
@@ -394,7 +392,7 @@ theorem corollary_fourteen_eight_counts
     intro s
     have hLap :=
       sectionFourteenFour_laplaceFunctional
-        hAGG hC hES hConductor hDivisor
+        hAGG hC hES hDivisor
         (E := E)
         (N := fun N : ℕ ↦ N)
         (L := Lseq)

@@ -622,7 +622,7 @@ def EvertseSilvermanAbscissaStatement : Prop :=
 
 end EvertseSilvermanInput
 
-/-! ## Halter–Koch and Nicolas–Robin literature premises -/
+/-! ## Historical conductor interface and Nicolas–Robin literature premise -/
 
 namespace PellInput
 
@@ -631,11 +631,9 @@ Reference: Paper C, Lemma 9.2, pp. 28–29. Bridge: none. Relation: exact. -/
 def toZsqrtd (D : ℕ) (s : ℤ × ℤ) : ℤ√(D : ℤ) :=
   ⟨s.1, s.2⟩
 
-/-- Data expressing descent from the maximal quadratic order.
-Reference: Franz Halter-Koch, *Quadratic Irrationals* (2013),
-Theorems 1.1.6, 5.1.7, 5.2.3 and 5.2.5, pp. 4–5, 118–119, 125–127.
-Audit bridge: `HK13-QO-conductor-fibres`. Relation: maximal-order ideal
-divisor plus at most three unit cosets; `Fin 4` is the historical padded API. -/
+/-- Historical data interface for descent from the maximal quadratic order.
+The source-shaped factorisation was motivated by Halter--Koch; the production
+proof now realizes this `Fin 4` interface internally by reduction modulo two. -/
 structure QuadraticOrderConductorData (D : ℕ) (M : ℤ) where
   K : Type
   [fieldK : Field K]
@@ -655,12 +653,9 @@ structure QuadraticOrderConductorData (D : ℕ) (M : ℤ) where
       Ideal.span ({toZsqrtd D s} : Set (ℤ√(D : ℤ))) =
         Ideal.span ({toZsqrtd D t} : Set (ℤ√(D : ℤ)))
 
-/-- Halter–Koch literature premise.
-Reference: cited theorems in *Quadratic Irrationals*, pp. 4–5, 118–119,
-125–127, DOI 10.1201/b14968.
-Audit bridge: `HK13-QO-conductor-fibres`.
-Relation: the sole order/unit comparison consumed by Paper C Lemma 9.2,
-pp. 28–29; ideal counting and height estimates are proved in Lean. -/
+/-- Historical conductor-fibre compatibility interface, now discharged by the
+internal quadratic-order construction in `PaperC`.  It is retained here only
+so the declarative audit namespace records the former boundary exactly. -/
 def QuadraticOrderConductorFiberBoundStatement : Prop :=
   ∀ (D : ℕ) (M : ℤ),
     0 < D →
@@ -697,19 +692,18 @@ end PaperCAudit
 Reference: Paper C, Theorem 1.1, printed/PDF page 3; quantitative proof in
 Corollary 13.10, pp. 41–42.
 
-The four ordinary premises are precisely the four open literature bridges
+The three ordinary premises are precisely the three open literature bridges
 consumed by the canonical endpoint: `AGG89-T1-finite-dependency-b3-zero`,
-`ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, and
-`NR83-T1-divisor-log-bound`.  They are propositions above, not trusted Lean
-primitives.  No premise for the separate longest-run theorem is present.
+`ES86-T1b-Q-split-n2`, and `NR83-T1-divisor-log-bound`.  They are propositions
+above, not trusted Lean primitives.  The conductor-fibre interface is proved
+internally, and no premise for the separate longest-run theorem is present.
 
 Hypothesis-to-source relation: `hAGG` is exactly the AGG finite dependency-
 graph premise (`AGG89-T1-finite-dependency-b3-zero`); `hES` is exactly the
 split-`ℚ`, exponent-two Evertse–Silverman premise
-(`ES86-T1b-Q-split-n2`); `hConductor` is exactly the Halter–Koch conductor-
-fibre premise (`HK13-QO-conductor-fibres`); and `hDivisor` is exactly the
-Nicolas–Robin divisor-log premise (`NR83-T1-divisor-log-bound`).  These are
-the four, and only the four, literature assumptions consumed by the endpoint.
+(`ES86-T1b-Q-split-n2`); and `hDivisor` is exactly the Nicolas–Robin
+divisor-log premise (`NR83-T1-divisor-log-bound`).  These are the three, and
+only the three, literature assumptions consumed by the endpoint.
 -/
 theorem paper_c_theorem_one_one_finite_cylinder
     {C : ℝ} (hC : 0 ≤ C)
@@ -717,8 +711,6 @@ theorem paper_c_theorem_one_one_finite_cylinder
       PaperCAudit.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
     (hES :
       PaperCAudit.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PaperCAudit.PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PaperCAudit.PellInput.NicolasRobinDivisorLogBoundStatement) :
     PaperCAudit.UniformBigOOn

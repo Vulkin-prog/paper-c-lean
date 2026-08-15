@@ -8,9 +8,9 @@ set_option maxHeartbeats 3600000
 # Canonical asymptotic closure of Theorem 1.4
 
 This module connects the finite moment identities of Section 12 directly to
-the quantitative dyadic mother mass.  Its only non-formal inputs are the
-three source-shaped arithmetic references already used by the canonical
-mother-mass theorem.
+the quantitative dyadic mother mass.  Its only non-formal inputs are the two
+source-shaped arithmetic references still used by the canonical mother-mass
+theorem; the quadratic-order conductor descent is internal.
 -/
 
 namespace PaperC
@@ -27,8 +27,6 @@ theorem theorem_one_four_canonical
     {C : ℝ} (hC : 0 ≤ C)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformNegativeHalfPowerSubpolynomialOn
@@ -48,7 +46,7 @@ theorem theorem_one_four_canonical
         (fun _ _ => 1) := by
   have hmotherBigO :=
     DyadicKappaQuantitative.homogeneousMass_uniformBigO
-      hC hES hConductor hDivisor
+      hC hES hDivisor
   have hmotherLittleO :
       UniformLittleOOn
         (CriticalRunWindow.InRunLengthWindow C)

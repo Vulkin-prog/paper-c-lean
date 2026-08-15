@@ -31,15 +31,14 @@ Canonical Proposition 14.2.
 Uniformly over every deterministic mask of the dyadic block, the masked
 start count is asymptotically Poisson in total variation throughout the
 critical window.  Its only assumptions are the published AGG theorem and
-the three source-shaped external arithmetic inputs.
+the two remaining source-shaped external arithmetic inputs; the conductor
+comparison is discharged internally.
 -/
 theorem maskedPoissonTotalVariation_uniformLittleOOne
     {C : ℝ} (hC : 0 ≤ C)
     (hAGG : ArratiaGoldsteinGordonStatement)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     ∀ ε : ℝ, 0 < ε →
@@ -50,7 +49,7 @@ theorem maskedPoissonTotalVariation_uniformLittleOOne
                 N L mask ≤ ε := by
   have hhomogeneousBigO :=
     DyadicKappaQuantitative.homogeneousMass_uniformBigO
-      hC hES hConductor hDivisor
+      hC hES hDivisor
   have hhomogeneousLittleO :
       UniformLittleOOn
         (CriticalRunWindow.InRunLengthWindow C)
@@ -74,8 +73,6 @@ theorem theorem_one_two_i
     (hAGG : ArratiaGoldsteinGordonStatement)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     ∀ ε : ℝ, 0 < ε →
@@ -85,7 +82,7 @@ theorem theorem_one_two_i
             MaskedPoissonCritical.maskedPoissonTotalVariation
                 N L mask ≤ ε :=
   maskedPoissonTotalVariation_uniformLittleOOne
-    hC hAGG hES hConductor hDivisor
+    hC hAGG hES hDivisor
 
 end
 

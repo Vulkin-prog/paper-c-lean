@@ -52,21 +52,22 @@ prendre explicitement un pont `discharged` comme prémisse.
 La couche de certificats bibliographiques rc2 est distincte de ces statuts
 Lean. Elle documente une contre-expertise source→proposition faite par des
 agents, sans constituer une preuve du noyau ni une revue humaine indépendante.
-Pour les quatre ponts de Theorem 1.1, cette couche est la qualification
+Pour les trois ponts ouverts de Theorem 1.1, cette couche est la qualification
 documentaire courante et rend explicites les réserves conservées dans le cœur
-gelé.
+audité. Le fichier HK13 distinct est une note historique de clôture, et non
+un certificat actif ni une prémisse de cet endpoint.
 
-Ponts enregistrés : 13. Théorèmes publics inconditionnels : 3912. Théorèmes publics conditionnels : 158.
-Répartition des ponts par provenance : 8 external, 5 internal. Théorèmes conditionnels par nature de pont (un théorème mixte compterait dans chaque catégorie) : 120 external, 59 internal.
-Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionnels par statut de pont (un théorème mixte compterait dans chaque catégorie) : 120 open, 60 discharged.
+Ponts enregistrés : 13. Théorèmes publics inconditionnels : 3913. Théorèmes publics conditionnels : 159.
+Répartition des ponts par provenance : 8 external, 5 internal. Théorèmes conditionnels par nature de pont (un théorème mixte compterait dans chaque catégorie) : 121 external, 59 internal.
+Répartition des ponts par statut : 6 open, 7 discharged. Théorèmes conditionnels par statut de pont (un théorème mixte compterait dans chaque catégorie) : 119 open, 62 discharged.
 
-| Identifiant | Nature | Statut | Proposition Lean | Déchargé par | Certificat source rc2 | Source primaire | Localisation |
+| Identifiant | Nature | Statut | Proposition Lean | Déchargé par | Documentation rc2 | Source primaire | Localisation |
 |---|---|---|---|---|---|---|---|
 | `ADGR07-PNT` | `external` | `open` | `PaperC.PrimeNumberTheoremInput.PrimeNumberTheoremStatement` | — | — | Jeremy Avigad, Kevin Donnelly, David Gray, Paul Raff, *A formally verified proof of the prime number theorem*, Abstract, p. 1 | Lemma 15.1 |
 | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement` | — | [`agent_checked_supports`](literature_certificates/AGG89-T1-finite-dependency-b3-zero.md) | Richard Arratia, Larry Goldstein, Louis Gordon, *Two moments suffice for Poisson approximations: the Chen–Stein method*, Theorem 1 and the total-variation convention, printed p. 11; definitions of b1, b2, and b3 begin on printed p. 10. | Theorem 13.7 |
 | `BS93-Theorem-1` | `external` | `open` | `PaperC.BalasubramanianShoreyInput.BalasubramanianShoreyStatement` | — | — | R. Balasubramanian, T. N. Shorey, *Squares in products from a block of consecutive integers*, Theorem 1; equations (1), (4), and (5), pp. 213–214 | Lemma 15.4 |
 | `ES86-T1b-Q-split-n2` | `external` | `open` | `PaperC.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement` | — | [`agent_checked_supports`](literature_certificates/ES86-T1b-Q-split-n2.md) | J.-H. Evertse, J. H. Silverman, *Uniform bounds for the number of solutions to Y^n = f(X)*, Theorem 1(b), printed p. 238. | Lemma 9.1 |
-| `HK13-QO-conductor-fibres` | `external` | `open` | `PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement` | — | [`source_to_lean_not_established`](literature_certificates/HK13-QO-conductor-fibres.md) | Franz Halter-Koch, *Quadratic Irrationals: An Introduction to Classical Number Theory*, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127. | Lemma 9.2 |
+| `HK13-QO-conductor-fibres` | `external` | `discharged` | `PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement` | `PaperC.PellInput.quadraticOrderConductorFiberBound` | [`historical_closure_note`](literature_certificates/HK13-QO-conductor-fibres.md) | Franz Halter-Koch, *Quadratic Irrationals: An Introduction to Classical Number Theory*, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127 | Lemma 9.2 |
 | `LS04-Corollary-1` | `external` | `open` | `PaperC.LaishramShoreyInput.LaishramShoreyStatement` | — | — | Shanta Laishram, T. N. Shorey, *Number of prime divisors in a product of consecutive integers*, Corollary 1, equation (10), p. 330; definition of δ(k), p. 328 | Lemma 15.2 |
 | `NR83-T1-divisor-bound` | `external` | `discharged` | `PaperC.PellInput.NicolasRobinPellEnvelopeStatement` | `PaperC.PellInput.nicolasRobinPellEnvelope_of_divisorLogBound` | — | J.-L. Nicolas, G. Robin, *Majorations explicites pour le nombre de diviseurs de N*, definition of f and Théorème 1, p. 485 | Lemma 9.2 |
 | `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC.PellInput.NicolasRobinDivisorLogBoundStatement` | — | [`agent_checked_supports`](literature_certificates/NR83-T1-divisor-log-bound.md) | J.-L. Nicolas, G. Robin, *Majorations explicites pour le nombre de diviseurs de N*, Theorem 1, printed p. 485. | Lemma 9.2 |
@@ -74,7 +75,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PCv07c-L17.28-bounded-ratio-nonterminal-sector` | `internal` | `discharged` | `PaperC.PropositionSixteenOne.NonterminalSectorStabilityStatement` | `PaperC.BoundedRatioNonterminalAssembly.exists_nonterminalSectorStability`<br>`PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`<br>`PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical` | — | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 17.28, p. 63 | Lemma 17.28 |
 | `PCv07c-L17.30-bounded-ratio-terminal-sector` | `internal` | `discharged` | `PaperC.PropositionSixteenOne.TerminalSectorStabilityStatement` | `PaperC.BoundedRatioTerminalSummation.intrinsicTerminalSectorStability`<br>`PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical`<br>`PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical` | — | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 17.30, pp. 63–64 | Lemma 17.30 |
 | `PCv07c-L9.10-arithmetic-kernel-equivalence` | `internal` | `discharged` | `PaperC.CanonicalSmallRows.CanonicalArithmeticKernelStatement` | `PaperC.CanonicalSmallRows.canonicalArithmeticKernelStatement`<br>`PaperC.CanonicalSmallRows.residualTau_eq_corrected_add_components_sub_arithmeticRank_of_choice_none` | — | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 9.10, démonstration, p. 32 | Lemma 9.10 |
-| `PCv07c-L9.2-generalized-Pell` | `internal` | `discharged` | `PaperC.PellInput.GeneralizedPellPolynomialBoxStatement` | `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin`<br>`PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound` | — | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 9.2, démonstration, pp. 28–29 | Lemma 9.2 |
+| `PCv07c-L9.2-generalized-Pell` | `internal` | `discharged` | `PaperC.PellInput.GeneralizedPellPolynomialBoxStatement` | `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin`<br>`PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound`<br>`PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound` | — | Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 9.2, démonstration, pp. 28–29 | Lemma 9.2 |
 
 ### Transcriptions sources à contrôler
 
@@ -143,19 +144,17 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 
 #### `HK13-QO-conductor-fibres`
 
-- Source : Franz Halter-Koch, *Quadratic Irrationals: An Introduction to Classical Number Theory*, Theorem 1.1.6(1)(b), printed pp. 4-5; Definition 5.1.6 and Theorem 5.1.7(1),(3), printed pp. 118-119; Theorem 5.2.3(1),(2), printed p. 125; Theorem 5.2.5(1), printed pp. 126-127.
-- Localisation enregistrée dans le cœur gelé : Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127 (supplantée pour rc2).
+- Source : Franz Halter-Koch, *Quadratic Irrationals: An Introduction to Classical Number Theory*, Theorem 1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3), pp. 118–119; Theorem 5.2.3(1),(2), p. 125; Theorem 5.2.5(1), pp. 126–127.
 - Nature : `external`.
-- Statut : `open`.
+- Statut : `discharged`.
+- Déchargé par : `PaperC.PellInput.quadraticOrderConductorFiberBound`.
 - Proposition Lean : `PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement`.
-- Relation de formalisation courante : The source-to-proposition implication is not established in rc2. Open construction: The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.
-- Contrôle source courant : `source_to_lean_not_established`.
-- Wording de contrôle dans le cœur gelé : `manually checked against the cited theorem statements and proofs on 2026-07-31` (supplanté pour rc2).
-- Qualification rc2 : `agent_checked_with_open_gap`; lecture primaire `partial`; pas de revue humaine indépendante.
-- Certificat rc2 : [`literature_certificates/HK13-QO-conductor-fibres.md`](literature_certificates/HK13-QO-conductor-fibres.md), SHA-256 `cc57ba19d85b4c3269d06ec6c156c8ba9e17600179b825389e4a2cd84b278b96`, 3971 octets.
-- Limites rc2 : The source-to-record construction of the quadratic field, extended ideals, unit-coset colour, and descent to principal ideals in Z[sqrt(D)] remains unestablished.
+- Relation de formalisation courante : discharged historical compatibility interface: Lean constructs K = ℚ(√D), the order embedding ℤ[√D] → O_K, the extended principal ideals, and the descent directly. Trace and norm prove 2 O_K ⊆ ℤ[√D]; the four-element quotient O_K / 2 O_K supplies the historical Fin 4 colour, and equality of colours lifts the relative unit back to ℤ[√D]. No Halter–Koch theorem is used by the discharge proof. Lean separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences.
+- Contrôle source courant : `manually checked against the cited theorem statements and proofs on 2026-07-31`.
+- Note historique de clôture : [`literature_certificates/HK13-QO-conductor-fibres.md`](literature_certificates/HK13-QO-conductor-fibres.md), SHA-256 `343743b60ffba701f1184ea8debf583443394ecb3789eaf1673e602a9ebf4c5f`, 3178 octets.
+- Rôle courant : Historical source-to-record gap report retained for provenance and superseded by the direct modulo-two Lean construction. It is not an active source certificate or an endpoint premise.
 - Citation littérale : extrait (les formules structurées ci-dessous complètent la transcription).
-- Note de vérification du cœur gelé (supplantée pour rc2) : Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction.
+- Note de vérification : Theorem 5.1.7 identifies the order and its conductor; Theorem 5.2.3 gives unit-group index 3 in the half-integral conductor-two case and 1 otherwise; Theorem 5.2.5 describes all generators of a fixed principal ideal as unit multiples. The Lean colour type is Fin 4 only because Fin 3 is padded into it. Lean separately proves the τ(|M|)² count of maximal-order ideal divisors, unit growth, height counting, and squarefree reduction.
 - Formules affichées transcrites :
   - `descent` : `J(s) = J(t) and c(s) = c(t) imply (s) = (t) in ℤ[√D]`
   - `lean_colour_padding` : `Fin 3 → Fin 4`
@@ -271,9 +270,9 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 - Source : Brice Pouly, *Loi de Poisson critique dans un bloc dyadique — Débuts de longues plages constantes d’une fonction aléatoire complètement multiplicative de Rademacher étendue*, Lemme 9.2, démonstration, pp. 28–29.
 - Nature : `internal`.
 - Statut : `discharged`.
-- Déchargé par : `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin`, `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound`.
+- Déchargé par : `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin`, `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound`, `PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound`.
 - Proposition Lean : `PaperC.PellInput.GeneralizedPellPolynomialBoxStatement`.
-- Relation de formalisation courante : legacy manuscript-facing interface, discharged in Lean at the source-shaped boundary by generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound; its only open upstream assumptions are the conductor-two comparison HK13-QO-conductor-fibres and the direct Nicolas--Robin logarithmic inequality NR83-T1-divisor-log-bound. The maximal-order ideal-divisor count, unit orbits, height control, finite counting, squarefree-kernel reduction, polynomial substitution and logarithmic-factor absorption are proved internally.
+- Relation de formalisation courante : legacy manuscript-facing interface, discharged in Lean by generalizedPellPolynomialBox_of_divisorLogBound. The quadratic-order conductor fibre bound is proved internally by PaperC.PellInput.quadraticOrderConductorFiberBound; its only open upstream assumption is the direct Nicolas--Robin logarithmic inequality NR83-T1-divisor-log-bound. The maximal-order ideal-divisor count, conductor descent, unit orbits, height control, finite counting, squarefree-kernel reduction, polynomial substitution and logarithmic-factor absorption are proved internally.
 - Contrôle source courant : `manual_primary_source_check_required`.
 
 > Ainsi le nombre de solutions est au plus O_{K₀}(τ(|M|)² log N). Comme |M| ≤ N^{O_{K₀}(1)}, la borne divisorielle standard donne (9.3).
@@ -1754,7 +1753,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.ConditionalStartProbability.restrictSmall_extendLarge` | inconditionnel | — | — | — | `PaperC/Probability/ConditionalStartProbability.lean:129` |
 | `PaperC.ConditionalStartProbability.restrictSmall_extendSmall` | inconditionnel | — | — | — | `PaperC/Probability/ConditionalStartProbability.lean:122` |
 | `PaperC.CorollaryFourteenEightCounts.coe_independentPoissonExactLengthRate` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:57` |
-| `PaperC.CorollaryFourteenEightCounts.corollary_fourteen_eight_counts` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:364` |
+| `PaperC.CorollaryFourteenEightCounts.corollary_fourteen_eight_counts` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:364` |
 | `PaperC.CorollaryFourteenEightCounts.corollary_fourteen_eight_counts_of_averaged_conditional_law` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:319` |
 | `PaperC.CorollaryFourteenEightCounts.corollary_fourteen_eight_counts_of_retained_finite_law` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:253` |
 | `PaperC.CorollaryFourteenEightCounts.encodedIndependentPoissonExactLengthLaw_nonneg` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:93` |
@@ -1766,7 +1765,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.CorollaryFourteenEightCounts.inversePowerTransform_encodedIndependentPoissonExactLengthLaw_eq_limit` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:169` |
 | `PaperC.CorollaryFourteenEightCounts.totalRemovedInfiniteExactLengthProbability_tendsto_zero` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryFourteenEightCounts.lean:211` |
 | `PaperC.CorollaryFourteenEightMaximum.abs_infiniteMaximumAtMostProbability_sub_exp_le` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean:208` |
-| `PaperC.CorollaryFourteenEightMaximum.corollary_fourteen_eight_maximum` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean:238` |
+| `PaperC.CorollaryFourteenEightMaximum.corollary_fourteen_eight_maximum` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean:238` |
 | `PaperC.CorollaryFourteenEightMaximum.fullMaskedDyadicCount_eq_zero_iff` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean:132` |
 | `PaperC.CorollaryFourteenEightMaximum.fullMaskedDyadicStartLaw_zero_eq_finiteUniform` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean:141` |
 | `PaperC.CorollaryFourteenEightMaximum.infiniteMaximumAtMostProbability_eq_finiteLaw_zero` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean:177` |
@@ -1802,7 +1801,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.CorollaryPrefixLaw.prefixOverflowStartIndices_subset_dyadicBlock` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryPrefixLaw.lean:551` |
 | `PaperC.CorollaryPrefixLaw.prefixOverflowStartMass_eq_maskedDyadicExpectation` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryPrefixLaw.lean:568` |
 | `PaperC.CorollaryPrefixLaw.prefixStartCount_eq_zero_iff_longest_lt` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryPrefixLaw.lean:208` |
-| `PaperC.CorollaryPrefixLawCanonical.corollary_prefix_law_canonical` | conditionnel | `ADGR07-PNT`, `AGG89-T1-finite-dependency-b3-zero`, `BS93-Theorem-1`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `LS04-Corollary-1`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:320` |
+| `PaperC.CorollaryPrefixLawCanonical.corollary_prefix_law_canonical` | conditionnel | `ADGR07-PNT`, `AGG89-T1-finite-dependency-b3-zero`, `BS93-Theorem-1`, `ES86-T1b-Q-split-n2`, `LS04-Corollary-1`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:320` |
 | `PaperC.CorollaryPrefixLawCanonical.finitePrefixBoundaryProbability_eq_infinite` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:34` |
 | `PaperC.CorollaryPrefixLawCanonical.finitePrefixBoundaryProbability_uniformLittleOOne` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:45` |
 | `PaperC.CorollaryPrefixLawCanonical.infinitePrefixEmptyProbability_uniformLittleOOne` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:190` |
@@ -1812,7 +1811,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.CorollaryPrefixLawCanonical.prefixRange_eventually` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:62` |
 | `PaperC.CorollaryPrefixLawCanonical.prefixStartLaw_poisson_uniformLittleOOne` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean:99` |
 | `PaperC.CorollaryThirteenTen.averagedConditionalGoodTotalVariation_uniformBigO_explicitRate_of_steinBTwo` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/CorollaryThirteenTen.lean:698` |
-| `PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_canonical` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryThirteenTen.lean:873` |
+| `PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_canonical` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryThirteenTen.lean:873` |
 | `PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_of_averagedConditional` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryThirteenTen.lean:759` |
 | `PaperC.CorollaryThirteenTen.corollary_thirteen_ten_uniformBigO_of_homogeneousMass` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/CorollaryThirteenTen.lean:839` |
 | `PaperC.CorollaryThirteenTen.dependencyEdgeHarmonicTerm_uniformBigO` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryThirteenTen.lean:53` |
@@ -1827,8 +1826,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.CorollaryThirteenTen.steinBOne_uniformBigO_explicitRate` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryThirteenTen.lean:596` |
 | `PaperC.CorollaryThirteenTen.steinBTwoAverage_uniformBigO_explicitRate_of_numerator` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryThirteenTen.lean:638` |
 | `PaperC.CorollaryThirteenTen.steinBTwoNumerator_uniformBigO_of_separatedDefectMass` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryThirteenTen.lean:568` |
-| `PaperC.CorollaryThirteenTen.theorem_one_one_infinite_model` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryThirteenTen.lean:919` |
-| `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryThirteenTen.lean:896` |
+| `PaperC.CorollaryThirteenTen.theorem_one_one_infinite_model` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryThirteenTen.lean:915` |
+| `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/CorollaryThirteenTen.lean:894` |
 | `PaperC.CorollaryThirteenTen.touchingMass_uniformBigO` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryThirteenTen.lean:494` |
 | `PaperC.CorollaryThirteenTen.touchingOffDiagPairs_uniformBigO` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorollaryThirteenTen.lean:458` |
 | `PaperC.CorrectedDefectEnvelope.canonicalCorrectedDefectCount_le_max` | inconditionnel | — | — | — | `PaperC/Asymptotics/CorrectedDefectEnvelope.lean:35` |
@@ -2022,10 +2021,10 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.DirichletAtomConvergence.tailRatio_nonneg` | inconditionnel | — | — | — | `PaperC/Probability/DirichletAtomConvergence.lean:115` |
 | `PaperC.DirichletAtomConvergence.tendsto_atoms_of_inversePowerTransforms` | inconditionnel | — | — | — | `PaperC/Probability/DirichletAtomConvergence.lean:230` |
 | `PaperC.DyadicKappaQuantitative.R2κ_dyadic_uniformBigO` | conditionnel | `ES86-T1b-Q-split-n2`, `PCv07c-L9.2-generalized-Pell` | `external`, `internal` | `discharged`, `open` | `PaperC/Asymptotics/DyadicKappaQuantitative.lean:521` |
-| `PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/DyadicKappaQuantitative.lean:823` |
+| `PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/DyadicKappaQuantitative.lean:820` |
 | `PaperC.DyadicKappaQuantitative.everySector_dyadic_uniformBigO` | conditionnel | `ES86-T1b-Q-split-n2`, `PCv07c-L9.2-generalized-Pell` | `external`, `internal` | `discharged`, `open` | `PaperC/Asymptotics/DyadicKappaQuantitative.lean:437` |
 | `PaperC.DyadicKappaQuantitative.highDensityMass_dyadic_uniformBigO` | inconditionnel | — | — | — | `PaperC/Asymptotics/DyadicKappaQuantitative.lean:212` |
-| `PaperC.DyadicKappaQuantitative.homogeneousMass_uniformBigO` | conditionnel | `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/DyadicKappaQuantitative.lean:588` |
+| `PaperC.DyadicKappaQuantitative.homogeneousMass_uniformBigO` | conditionnel | `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/DyadicKappaQuantitative.lean:588` |
 | `PaperC.DyadicKappaQuantitative.moderateDensityMass_dyadic_uniformBigO` | inconditionnel | — | — | — | `PaperC/Asymptotics/DyadicKappaQuantitative.lean:70` |
 | `PaperC.DyadicKappaQuantitative.nonterminalSector_dyadic_uniformBigO` | inconditionnel | — | — | — | `PaperC/Asymptotics/DyadicKappaQuantitative.lean:336` |
 | `PaperC.DyadicKappaTransport.R2κ_two_mul_eq_zero_of_not_two_le` | inconditionnel | — | — | — | `PaperC/Asymptotics/DyadicKappaTransport.lean:115` |
@@ -2624,7 +2623,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.MarkedLaplaceCritical.markedBTwoSplitReal_nonneg` | inconditionnel | — | — | — | `PaperC/Asymptotics/MarkedLaplaceCritical.lean:66` |
 | `PaperC.MarkedLaplaceCritical.markedBTwoSplitReal_uniformLittleOOne` | conditionnel | `ES86-T1b-Q-split-n2`, `PCv07c-L9.2-generalized-Pell` | `external`, `internal` | `discharged`, `open` | `PaperC/Asymptotics/MarkedLaplaceCritical.lean:120` |
 | `PaperC.MarkedLaplaceCritical.removedMarkedParameterEnvelope_tendsto_zero` | inconditionnel | — | — | — | `PaperC/Asymptotics/MarkedLaplaceCritical.lean:192` |
-| `PaperC.MarkedLaplaceCritical.sectionFourteenFour_laplaceFunctional` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MarkedLaplaceCritical.lean:400` |
+| `PaperC.MarkedLaplaceCritical.sectionFourteenFour_laplaceFunctional` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MarkedLaplaceCritical.lean:400` |
 | `PaperC.MarkedLaplaceCritical.sectionFourteenFour_laplaceFunctional_of_bTwo` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/MarkedLaplaceCritical.lean:269` |
 | `PaperC.MarkedLaplaceCritical.sectionFourteenFour_laplaceFunctional_of_split` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/MarkedLaplaceCritical.lean:357` |
 | `PaperC.MarkedLaplaceCritical.tendsto_retainedMarkedThinnedParameter` | inconditionnel | — | — | — | `PaperC/Asymptotics/MarkedLaplaceCritical.lean:215` |
@@ -2665,15 +2664,15 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.MarkedSteinChenCritical.markedBTwoRelationEnvelopeReal_nonneg` | inconditionnel | — | — | — | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:69` |
 | `PaperC.MarkedSteinChenCritical.markedBTwoSplitEnvelopeReal_nonneg` | inconditionnel | — | — | — | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:78` |
 | `PaperC.MarkedSteinChenCritical.markedBTwoSplitEnvelopeReal_uniformLittleOOne` | conditionnel | `ES86-T1b-Q-split-n2`, `PCv07c-L9.2-generalized-Pell` | `external`, `internal` | `discharged`, `open` | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:506` |
-| `PaperC.MarkedSteinChenCritical.markedBTwoSplitEnvelopeReal_uniformLittleOOne_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:558` |
+| `PaperC.MarkedSteinChenCritical.markedBTwoSplitEnvelopeReal_uniformLittleOOne_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:558` |
 | `PaperC.MarkedSteinChenCritical.markedBTwoSplitNumeratorReal_le_common` | inconditionnel | — | — | — | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:344` |
 | `PaperC.MarkedSteinChenCritical.markedBTwoSplitNumeratorReal_nonneg` | inconditionnel | — | — | — | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:87` |
 | `PaperC.MarkedSteinChenCritical.markedBTwoSplitNumeratorReal_uniformLittleOQuadratic` | conditionnel | `ES86-T1b-Q-split-n2`, `PCv07c-L9.2-generalized-Pell` | `external`, `internal` | `discharged`, `open` | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:373` |
 | `PaperC.MarkedSteinChenCritical.markedLocalSplitNumeratorReal_nonneg` | inconditionnel | — | — | — | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:92` |
 | `PaperC.MarkedSteinChenCritical.markedLocalSplitNumeratorReal_uniformLittleOQuadratic` | inconditionnel | — | — | — | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:202` |
-| `PaperC.MarkedSteinChenCritical.retainedMarkedTotalVariation_uniformLittleOOne_canonical` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:738` |
-| `PaperC.MarkedSteinChenCritical.retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoEnvelope` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:581` |
-| `PaperC.MarkedSteinChenCritical.retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoSplitEnvelope` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:659` |
+| `PaperC.MarkedSteinChenCritical.retainedMarkedTotalVariation_uniformLittleOOne_canonical` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:735` |
+| `PaperC.MarkedSteinChenCritical.retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoEnvelope` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:578` |
+| `PaperC.MarkedSteinChenCritical.retainedMarkedTotalVariation_uniformLittleOOne_of_bTwoSplitEnvelope` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/MarkedSteinChenCritical.lean:656` |
 | `PaperC.MarkedSteinChenSplitBound.card_markedLocalPairs_le` | inconditionnel | — | — | — | `PaperC/Probability/MarkedSteinChenSplitBound.lean:140` |
 | `PaperC.MarkedSteinChenSplitBound.card_markedLocalPairs_le_explicit` | inconditionnel | — | — | — | `PaperC/Probability/MarkedSteinChenSplitBound.lean:162` |
 | `PaperC.MarkedSteinChenSplitBound.commonPair_mem_separatedDependencyEdges` | inconditionnel | — | — | — | `PaperC/Probability/MarkedSteinChenSplitBound.lean:178` |
@@ -2724,8 +2723,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.MaskedFirstMomentCritical.maskedFirstMomentError_uniformLittleOOne` | inconditionnel | — | — | — | `PaperC/Asymptotics/MaskedFirstMomentCritical.lean:249` |
 | `PaperC.MaskedFirstMomentCritical.maskedFirstMomentError_uniformLittleOOne_loglogWindow` | inconditionnel | — | — | — | `PaperC/Asymptotics/MaskedFirstMomentCritical.lean:208` |
 | `PaperC.MaskedFirstMomentCritical.terminalDefectWeightMass_uniformHalfPower_loglogWindow` | inconditionnel | — | — | — | `PaperC/Asymptotics/MaskedFirstMomentCritical.lean:115` |
-| `PaperC.MaskedPoissonCanonical.maskedPoissonTotalVariation_uniformLittleOOne` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MaskedPoissonCanonical.lean:36` |
-| `PaperC.MaskedPoissonCanonical.theorem_one_two_i` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MaskedPoissonCanonical.lean:72` |
+| `PaperC.MaskedPoissonCanonical.maskedPoissonTotalVariation_uniformLittleOOne` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MaskedPoissonCanonical.lean:37` |
+| `PaperC.MaskedPoissonCanonical.theorem_one_two_i` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MaskedPoissonCanonical.lean:71` |
 | `PaperC.MaskedPoissonCritical.abs_maskedCommonRate_sub_targetRate_eq` | inconditionnel | — | — | — | `PaperC/Asymptotics/MaskedPoissonCritical.lean:642` |
 | `PaperC.MaskedPoissonCritical.averagedMaskedConditionalGoodLaw_eq_fullMaskedGoodStartLaw` | inconditionnel | — | — | — | `PaperC/Asymptotics/MaskedPoissonCritical.lean:772` |
 | `PaperC.MaskedPoissonCritical.averagedMaskedConditionalGood_natTotalVariation_le_steinTerms` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/MaskedPoissonCritical.lean:526` |
@@ -2758,8 +2757,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.MaskedPoissonCritical.summable_abs_maskedConditional_sub_common` | inconditionnel | — | — | — | `PaperC/Asymptotics/MaskedPoissonCritical.lean:445` |
 | `PaperC.MaskedPoissonCritical.summable_maskedCommonGoodPoissonLaw` | inconditionnel | — | — | — | `PaperC/Asymptotics/MaskedPoissonCritical.lean:435` |
 | `PaperC.MaskedPoissonCritical.summable_maskedConditionalGoodLaw` | inconditionnel | — | — | — | `PaperC/Asymptotics/MaskedPoissonCritical.lean:422` |
-| `PaperC.MaskedPoissonRate.maskedPoissonTotalVariation_uniformBigO_canonical` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MaskedPoissonRate.lean:123` |
-| `PaperC.MaskedPoissonRate.maskedRateEnvelope_uniformBigO_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MaskedPoissonRate.lean:53` |
+| `PaperC.MaskedPoissonRate.maskedPoissonTotalVariation_uniformBigO_canonical` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MaskedPoissonRate.lean:121` |
+| `PaperC.MaskedPoissonRate.maskedRateEnvelope_uniformBigO_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/MaskedPoissonRate.lean:53` |
 | `PaperC.MaskedSteinChen.abs_maskedPoissonParameter_sub_good_le` | inconditionnel | — | — | — | `PaperC/Probability/MaskedSteinChen.lean:357` |
 | `PaperC.MaskedSteinChen.card_maskedGoodStarts_le` | inconditionnel | — | — | — | `PaperC/Probability/MaskedSteinChen.lean:52` |
 | `PaperC.MaskedSteinChen.card_maskedGood_add_card_bad` | inconditionnel | — | — | — | `PaperC/Probability/MaskedSteinChen.lean:303` |
@@ -2822,44 +2821,46 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.OneUnitResidualExceptions.channelCell_eq_uniqueChannelUnit` | inconditionnel | — | — | — | `PaperC/Combinatorics/OneUnitResidualExceptions.lean:68` |
 | `PaperC.OneUnitResidualExceptions.channelUnit_eq_uniqueChannelUnit` | inconditionnel | — | — | — | `PaperC/Combinatorics/OneUnitResidualExceptions.lean:57` |
 | `PaperC.OneUnitResidualExceptions.mem_oneUnitExceptionalComponents` | inconditionnel | — | — | — | `PaperC/Combinatorics/OneUnitResidualExceptions.lean:93` |
-| `PaperC.PellInput.act_injective` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:194` |
-| `PaperC.PellInput.act_inv` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:174` |
-| `PaperC.PellInput.act_preserves_equation` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:158` |
-| `PaperC.PellInput.card_pellUnits_y_natAbs_le` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:423` |
-| `PaperC.PellInput.card_samePrincipalIdeal_solutionFiber` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:560` |
+| `PaperC.PellInput.act_injective` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:199` |
+| `PaperC.PellInput.act_inv` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:179` |
+| `PaperC.PellInput.act_preserves_equation` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:163` |
+| `PaperC.PellInput.card_pellUnits_y_natAbs_le` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:428` |
+| `PaperC.PellInput.card_samePrincipalIdeal_solutionFiber` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:565` |
 | `PaperC.PellInput.constant_mul_log_le_exp_log_div_loglog` | inconditionnel | — | — | — | `PaperC/Diophantine/PellDivisorEnvelope.lean:346` |
 | `PaperC.PellInput.div_log_mono_on_exp_one` | inconditionnel | — | — | — | `PaperC/Diophantine/PellDivisorEnvelope.lean:99` |
 | `PaperC.PellInput.divisor_log_ratio_le_polynomial_ratio` | inconditionnel | — | — | — | `PaperC/Diophantine/PellDivisorEnvelope.lean:145` |
-| `PaperC.PellInput.exists_squarefree_reduction` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:774` |
+| `PaperC.PellInput.exists_squarefree_reduction` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:779` |
 | `PaperC.PellInput.exp_one_le_log_nat_of_sixtyFour_le` | inconditionnel | — | — | — | `PaperC/Diophantine/PellDivisorEnvelope.lean:119` |
-| `PaperC.PellInput.generalizedPellEquation_iff_norm` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:44` |
-| `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound` | conditionnel | `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Diophantine/PellDivisorEnvelope.lean:585` |
-| `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin` | conditionnel | `HK13-QO-conductor-fibres`, `NR83-T1-divisor-bound` | `external` | `discharged`, `open` | `PaperC/Diophantine/GeneralizedPell.lean:838` |
+| `PaperC.PellInput.generalizedPellEquation_iff_norm` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:46` |
+| `PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound` | conditionnel | `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Diophantine/PellDivisorEnvelope.lean:597` |
+| `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound` | conditionnel | `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `discharged`, `open` | `PaperC/Diophantine/PellDivisorEnvelope.lean:585` |
+| `PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin` | conditionnel | `HK13-QO-conductor-fibres`, `NR83-T1-divisor-bound` | `external` | `discharged` | `PaperC/Diophantine/GeneralizedPell.lean:843` |
 | `PaperC.PellInput.generalizedPellRealPolynomialBox_of_generalizedPell` | conditionnel | `PCv07c-L9.2-generalized-Pell` | `internal` | `discharged` | `PaperC/Diophantine/PellRealExponent.lean:123` |
-| `PaperC.PellInput.hasAtMostSolutionsReal_of_squarefree_reduction` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:797` |
+| `PaperC.PellInput.hasAtMostSolutionsReal_of_squarefree_reduction` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:802` |
 | `PaperC.PellInput.loglog_le_four_log_div_loglog` | inconditionnel | — | — | — | `PaperC/Diophantine/PellDivisorEnvelope.lean:306` |
-| `PaperC.PellInput.natAbs_exponent_le_log_add_one` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:394` |
+| `PaperC.PellInput.natAbs_exponent_le_log_add_one` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:399` |
 | `PaperC.PellInput.nicolasRobinConstant_nonneg` | inconditionnel | — | — | — | `PaperC/Diophantine/PellDivisorEnvelope.lean:88` |
 | `PaperC.PellInput.nicolasRobinPellEnvelope_of_divisorLogBound` | conditionnel | `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Diophantine/PellDivisorEnvelope.lean:409` |
-| `PaperC.PellInput.norm_toZsqrtd` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:38` |
-| `PaperC.PellInput.pellPolynomialBox_of_generalizedPell` | conditionnel | `PCv07c-L9.2-generalized-Pell` | `internal` | `discharged` | `PaperC/Diophantine/PellInput.lean:255` |
+| `PaperC.PellInput.norm_toZsqrtd` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:40` |
+| `PaperC.PellInput.pellPolynomialBox_of_generalizedPell` | conditionnel | `PCv07c-L9.2-generalized-Pell` | `internal` | `discharged` | `PaperC/Diophantine/PellInput.lean:256` |
 | `PaperC.PellInput.pellRealPolynomialBox_of_generalizedPell` | conditionnel | `PCv07c-L9.2-generalized-Pell` | `internal` | `discharged` | `PaperC/Diophantine/PellRealExponent.lean:160` |
 | `PaperC.PellInput.pellSourceExactRealPolynomialBox_of_generalizedPell` | conditionnel | `PCv07c-L9.2-generalized-Pell` | `internal` | `discharged` | `PaperC/Diophantine/PellRealExponent.lean:206` |
 | `PaperC.PellInput.pellUnitOrbitEnvelope_le_log` | inconditionnel | — | — | — | `PaperC/Diophantine/PellDivisorEnvelope.lean:202` |
-| `PaperC.PellInput.pellUnit_y_natAbs_le` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:263` |
-| `PaperC.PellInput.principalIdeal_dvd_intCast` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:206` |
-| `PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent` | inconditionnel | — | — | — | `PaperC/Diophantine/HalterKochConductorDescent.lean:183` |
-| `PaperC.PellInput.same_principalIdeal_gives_pell_unit` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:225` |
-| `PaperC.PellInput.scaleImag_height` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:759` |
-| `PaperC.PellInput.scaleImag_injective` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:749` |
-| `PaperC.PellInput.scaleImag_preserves_equation` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:736` |
-| `PaperC.PellInput.squarefreeGeneralizedPellBox_atMost_of_conductorComparison` | conditionnel | `HK13-QO-conductor-fibres` | `external` | `open` | `PaperC/Diophantine/GeneralizedPell.lean:634` |
-| `PaperC.PellInput.toZsqrtd_act` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:142` |
-| `PaperC.PellInput.toZsqrtd_im` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:33` |
-| `PaperC.PellInput.toZsqrtd_re` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:28` |
-| `PaperC.PellInput.two_pow_le_y_natAbs_pow_succ` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:357` |
-| `PaperC.PellInput.two_pow_le_y_pow_succ` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:315` |
-| `PaperC.PellInput.two_pow_pred_natAbs_le_y_natAbs_zpow` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:373` |
+| `PaperC.PellInput.pellUnit_y_natAbs_le` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:268` |
+| `PaperC.PellInput.principalIdeal_dvd_intCast` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:211` |
+| `PaperC.PellInput.quadraticOrderConductorFiberBound` | inconditionnel | — | — | — | `PaperC/Diophantine/HalterKochConductorDescent.lean:646` |
+| `PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent` | inconditionnel | — | — | — | `PaperC/Diophantine/HalterKochConductorDescent.lean:189` |
+| `PaperC.PellInput.same_principalIdeal_gives_pell_unit` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:230` |
+| `PaperC.PellInput.scaleImag_height` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:764` |
+| `PaperC.PellInput.scaleImag_injective` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:754` |
+| `PaperC.PellInput.scaleImag_preserves_equation` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:741` |
+| `PaperC.PellInput.squarefreeGeneralizedPellBox_atMost_of_conductorComparison` | conditionnel | `HK13-QO-conductor-fibres` | `external` | `discharged` | `PaperC/Diophantine/GeneralizedPell.lean:639` |
+| `PaperC.PellInput.toZsqrtd_act` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:147` |
+| `PaperC.PellInput.toZsqrtd_im` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:35` |
+| `PaperC.PellInput.toZsqrtd_re` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:30` |
+| `PaperC.PellInput.two_pow_le_y_natAbs_pow_succ` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:362` |
+| `PaperC.PellInput.two_pow_le_y_pow_succ` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:320` |
+| `PaperC.PellInput.two_pow_pred_natAbs_le_y_natAbs_zpow` | inconditionnel | — | — | — | `PaperC/Diophantine/GeneralizedPell.lean:378` |
 | `PaperC.PinnedGraphResolution.card_isolated_add_twice_card_nontrivial_le` | inconditionnel | — | — | — | `PaperC/Combinatorics/PinnedGraphResolution.lean:441` |
 | `PaperC.PinnedGraphResolution.card_unpinnedComponent_eq_isolated_add_nontrivial` | inconditionnel | — | — | — | `PaperC/Combinatorics/PinnedGraphResolution.lean:425` |
 | `PaperC.PinnedGraphResolution.card_unpinnedComponents` | inconditionnel | — | — | — | `PaperC/Combinatorics/PinnedGraphResolution.lean:362` |
@@ -3215,7 +3216,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.PropositionSixteenOne.pairRho_eq_pairSigma_add_pairTau` | inconditionnel | — | — | — | `PaperC/Asymptotics/PropositionSixteenOneCore.lean:131` |
 | `PaperC.PropositionSixteenOne.pair_coordinates_two_le` | inconditionnel | — | — | — | `PaperC/Asymptotics/PropositionSixteenOneCore.lean:96` |
 | `PaperC.PropositionSixteenOne.proposition_sixteen_one` | conditionnel | `ES86-T1b-Q-split-n2`, `PCv07c-L17.26-bounded-ratio-many-defects`, `PCv07c-L17.28-bounded-ratio-nonterminal-sector`, `PCv07c-L17.30-bounded-ratio-terminal-sector`, `PCv07c-L9.2-generalized-Pell` | `external`, `internal` | `discharged`, `open` | `PaperC/Asymptotics/PropositionSixteenOne.lean:37` |
-| `PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/PropositionSixteenOne.lean:85` |
+| `PaperC.PropositionSixteenOne.proposition_sixteen_one_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/PropositionSixteenOne.lean:85` |
 | `PaperC.PropositionSixteenOne.proposition_sixteen_one_of_sector_estimates` | inconditionnel | — | — | — | `PaperC/Asymptotics/PropositionSixteenOneCore.lean:577` |
 | `PaperC.PropositionSixteenOne.residualMassNat_eq_sum_sectors` | inconditionnel | — | — | — | `PaperC/Asymptotics/PropositionSixteenOneCore.lean:413` |
 | `PaperC.PropositionSixteenOne.residualMass_eq_sum_sectorResidualMass` | inconditionnel | — | — | — | `PaperC/Asymptotics/PropositionSixteenOneCore.lean:444` |
@@ -3536,8 +3537,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.SectionElevenPartition.seven_sector_populations_cover` | inconditionnel | — | — | — | `PaperC/Combinatorics/SectionElevenPartition.lean:250` |
 | `PaperC.SectionFourteenClosure.compactMarkedPPPLaplaceTarget_eq_tsum` | inconditionnel | — | — | — | `PaperC/Asymptotics/SectionFourteenClosure.lean:73` |
 | `PaperC.SectionFourteenClosure.compactMarkedTest_tsum_eq_finset` | inconditionnel | — | — | — | `PaperC/Asymptotics/SectionFourteenClosure.lean:54` |
-| `PaperC.SectionFourteenClosure.theorem_one_two_ii_laplace` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/SectionFourteenClosure.lean:131` |
-| `PaperC.SectionFourteenClosure.theorem_one_two_iii_laplace_and_tightness` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/SectionFourteenClosure.lean:159` |
+| `PaperC.SectionFourteenClosure.theorem_one_two_ii_laplace` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/SectionFourteenClosure.lean:131` |
+| `PaperC.SectionFourteenClosure.theorem_one_two_iii_laplace_and_tightness` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/SectionFourteenClosure.lean:157` |
 | `PaperC.SectionSevenPartition.mem_deepCorePairs` | inconditionnel | — | — | — | `PaperC/Combinatorics/SectionSevenPartition.lean:60` |
 | `PaperC.SectionSevenPartition.sectionSeven_populations_cover` | inconditionnel | — | — | — | `PaperC/Combinatorics/SectionSevenPartition.lean:84` |
 | `PaperC.SectionThirteenCouplings.abs_commonGoodPoissonRate_sub_targetRate_eq` | inconditionnel | — | — | — | `PaperC/Probability/SectionThirteenCouplings.lean:545` |
@@ -3634,7 +3635,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.SectionTwelveMoments.overlappingPairs_uniformLittleOQuadratic` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:1260` |
 | `PaperC.SectionTwelveMoments.relationRho_twoStartSystem_cutoff_invariant` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:745` |
 | `PaperC.SectionTwelveMoments.separatedOffDiagPairs_eq_separatedDyadicPairs` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:232` |
-| `PaperC.SectionTwelveMoments.theorem_one_four_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/TheoremOneFourCanonical.lean:26` |
+| `PaperC.SectionTwelveMoments.theorem_one_four_canonical` | conditionnel | `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/TheoremOneFourCanonical.lean:26` |
 | `PaperC.SectionTwelveMoments.touchingLower_add_mem_dyadicBlock` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:814` |
 | `PaperC.SectionTwelveMoments.touchingMass_uniformLittleOQuadratic` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:1270` |
 | `PaperC.SectionTwelveMoments.touchingOffDiagPairs_eq_touchingPairs` | inconditionnel | — | — | — | `PaperC/Probability/SectionTwelveMoments.lean:214` |
@@ -3836,9 +3837,9 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.SpatialLaplaceCritical.goodSpatialThinnedParameter_le_full` | inconditionnel | — | — | — | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:353` |
 | `PaperC.SpatialLaplaceCritical.goodSpatialThinnedParameter_nonneg` | inconditionnel | — | — | — | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:343` |
 | `PaperC.SpatialLaplaceCritical.goodStarts_subset_dyadicBlock` | inconditionnel | — | — | — | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:298` |
-| `PaperC.SpatialLaplaceCritical.sectionFourteenTwo_spatialLaplaceFunctional` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:919` |
-| `PaperC.SpatialLaplaceCritical.sectionFourteenTwo_spatialLaplaceFunctional_of_homogeneousMass` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:852` |
-| `PaperC.SpatialLaplaceCritical.spatialLaplaceError_uniformLittleOOne` | conditionnel | `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:796` |
+| `PaperC.SpatialLaplaceCritical.sectionFourteenTwo_spatialLaplaceFunctional` | conditionnel | `AGG89-T1-finite-dependency-b3-zero`, `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:918` |
+| `PaperC.SpatialLaplaceCritical.sectionFourteenTwo_spatialLaplaceFunctional_of_homogeneousMass` | conditionnel | `AGG89-T1-finite-dependency-b3-zero` | `external` | `open` | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:850` |
+| `PaperC.SpatialLaplaceCritical.spatialLaplaceError_uniformLittleOOne` | conditionnel | `ES86-T1b-Q-split-n2`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:796` |
 | `PaperC.SpatialLaplaceCritical.spatialLaplaceError_uniformLittleOOne_of_homogeneousMass` | inconditionnel | — | — | — | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:718` |
 | `PaperC.SpatialLaplaceCritical.spatialThinnedParameter_sub_good_eq_badSum` | inconditionnel | — | — | — | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:304` |
 | `PaperC.SpatialLaplaceCritical.spatialThinnedParameter_sub_good_le_badCount` | inconditionnel | — | — | — | `PaperC/Asymptotics/SpatialLaplaceCritical.lean:366` |
@@ -4056,8 +4057,8 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.TheoremSixteenTwo.summable_globalStartLaw` | inconditionnel | — | — | — | `PaperC/Asymptotics/TheoremSixteenTwo.lean:188` |
 | `PaperC.TheoremSixteenTwo.summable_retainedStartLaw` | inconditionnel | — | — | — | `PaperC/Asymptotics/TheoremSixteenTwo.lean:192` |
 | `PaperC.TheoremSixteenTwo.theorem_sixteen_two` | conditionnel | `ADGR07-PNT`, `AGG89-T1-finite-dependency-b3-zero`, `BS93-Theorem-1`, `ES86-T1b-Q-split-n2`, `LS04-Corollary-1`, `PCv07c-L17.26-bounded-ratio-many-defects`, `PCv07c-L17.28-bounded-ratio-nonterminal-sector`, `PCv07c-L17.30-bounded-ratio-terminal-sector`, `PCv07c-L9.2-generalized-Pell` | `external`, `internal` | `discharged`, `open` | `PaperC/Asymptotics/TheoremSixteenTwo.lean:1617` |
-| `PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical` | conditionnel | `ADGR07-PNT`, `AGG89-T1-finite-dependency-b3-zero`, `BS93-Theorem-1`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `LS04-Corollary-1`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/TheoremSixteenTwo.lean:1681` |
-| `PaperC.TheoremSixteenTwo.theorem_sixteen_two_infinite_model` | conditionnel | `ADGR07-PNT`, `AGG89-T1-finite-dependency-b3-zero`, `BS93-Theorem-1`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `LS04-Corollary-1`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean:194` |
+| `PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical` | conditionnel | `ADGR07-PNT`, `AGG89-T1-finite-dependency-b3-zero`, `BS93-Theorem-1`, `ES86-T1b-Q-split-n2`, `LS04-Corollary-1`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/TheoremSixteenTwo.lean:1682` |
+| `PaperC.TheoremSixteenTwo.theorem_sixteen_two_infinite_model` | conditionnel | `ADGR07-PNT`, `AGG89-T1-finite-dependency-b3-zero`, `BS93-Theorem-1`, `ES86-T1b-Q-split-n2`, `LS04-Corollary-1`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean:194` |
 | `PaperC.TheoremSixteenTwo.two_le_of_mem_retainedStartIndices` | inconditionnel | — | — | — | `PaperC/Asymptotics/TheoremSixteenTwo.lean:842` |
 | `PaperC.TheoremSixteenTwo.two_pow_le_of_two_le_div` | inconditionnel | — | — | — | `PaperC/Asymptotics/TheoremSixteenTwo.lean:1071` |
 | `PaperC.TheoremSixteenTwo.uniformEventProbability_startAt_cutoff_invariant` | inconditionnel | — | — | — | `PaperC/Asymptotics/TheoremSixteenTwo.lean:707` |
@@ -4066,7 +4067,7 @@ Répartition des ponts par statut : 7 open, 6 discharged. Théorèmes conditionn
 | `PaperC.TheoremSixteenTwoRecentered.coe_criticalScaleRate` | inconditionnel | — | — | — | `PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:35` |
 | `PaperC.TheoremSixteenTwoRecentered.globalEmptyProbability_recentered_uniformLittleOOne` | inconditionnel | — | — | — | `PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:123` |
 | `PaperC.TheoremSixteenTwoRecentered.globalStartLaw_recentered_uniformLittleOOne` | inconditionnel | — | — | — | `PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:41` |
-| `PaperC.TheoremSixteenTwoRecentered.theorem_sixteen_two_recentered_canonical` | conditionnel | `ADGR07-PNT`, `AGG89-T1-finite-dependency-b3-zero`, `BS93-Theorem-1`, `ES86-T1b-Q-split-n2`, `HK13-QO-conductor-fibres`, `LS04-Corollary-1`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:189` |
+| `PaperC.TheoremSixteenTwoRecentered.theorem_sixteen_two_recentered_canonical` | conditionnel | `ADGR07-PNT`, `AGG89-T1-finite-dependency-b3-zero`, `BS93-Theorem-1`, `ES86-T1b-Q-split-n2`, `LS04-Corollary-1`, `NR83-T1-divisor-log-bound` | `external` | `open` | `PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean:189` |
 | `PaperC.TouchingMass.maxTouchingRho_cast_le` | inconditionnel | — | — | — | `PaperC/Analysis/TouchingMass.lean:103` |
 | `PaperC.TouchingMass.touchingLower_mem_dyadicBlock` | inconditionnel | — | — | — | `PaperC/Analysis/TouchingMass.lean:50` |
 | `PaperC.TouchingMass.touchingMass_cast_le_two_mul_two_pow_maxTouchingRho` | inconditionnel | — | — | — | `PaperC/Analysis/TouchingMass.lean:92` |

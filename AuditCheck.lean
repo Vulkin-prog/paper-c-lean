@@ -8,9 +8,9 @@ It contains one `#print axioms` command for every explicit public
 `theorem` or `lemma` declaration in the complete PaperC source fileset.
 Private and local declarations are deliberately excluded.
 
-Public theorems/lemmas: 4070.
+Public theorems/lemmas: 4072.
 Additional proof-bearing public definitions: 2.
-Source digest (SHA-256): f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999.
+Source digest (SHA-256): cb23714a797f2c11e856a1f9bf1ce8569c4a5a2cb67b3fcc0b45d9ded3b18a26.
 -/
 
 #print axioms PaperC.Affine.CanonicalRationalCode.candidate_coprime
@@ -2565,6 +2565,7 @@ Source digest (SHA-256): f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1
 #print axioms PaperC.PellInput.exists_squarefree_reduction
 #print axioms PaperC.PellInput.exp_one_le_log_nat_of_sixtyFour_le
 #print axioms PaperC.PellInput.generalizedPellEquation_iff_norm
+#print axioms PaperC.PellInput.generalizedPellPolynomialBox_of_divisorLogBound
 #print axioms PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
 #print axioms PaperC.PellInput.generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin
 #print axioms PaperC.PellInput.generalizedPellRealPolynomialBox_of_generalizedPell
@@ -2580,6 +2581,7 @@ Source digest (SHA-256): f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1
 #print axioms PaperC.PellInput.pellUnitOrbitEnvelope_le_log
 #print axioms PaperC.PellInput.pellUnit_y_natAbs_le
 #print axioms PaperC.PellInput.principalIdeal_dvd_intCast
+#print axioms PaperC.PellInput.quadraticOrderConductorFiberBound
 #print axioms PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent
 #print axioms PaperC.PellInput.same_principalIdeal_gives_pell_unit
 #print axioms PaperC.PellInput.scaleImag_height

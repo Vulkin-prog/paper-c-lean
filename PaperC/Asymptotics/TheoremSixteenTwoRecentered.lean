@@ -184,7 +184,7 @@ def RecenteredTheoremSixteenTwoStatement (C : ℝ) : Prop :=
           Real.exp (-criticalScale M L))
       (fun _ _ ↦ 1)
 
-/-- Canonical recentered Theorem 16.2, conditional on exactly the seven
+/-- Canonical recentered Theorem 16.2, conditional on exactly the six
 registered external propositions. -/
 theorem theorem_sixteen_two_recentered_canonical
     {C : ℝ} (hC : 0 < C)
@@ -192,8 +192,6 @@ theorem theorem_sixteen_two_recentered_canonical
       PrimeNumberTheoremInput.PrimeNumberTheoremStatement)
     (hLS :
       LaishramShoreyInput.LaishramShoreyStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement)
     (hBS :
@@ -205,7 +203,7 @@ theorem theorem_sixteen_two_recentered_canonical
     RecenteredTheoremSixteenTwoStatement C := by
   have h16 :=
     theorem_sixteen_two_canonical
-      hC hpnt hLS hConductor hDivisor hBS hAGG hES
+      hC hpnt hLS hDivisor hBS hAGG hES
   exact
     ⟨globalStartLaw_recentered_uniformLittleOOne hC.le h16,
       globalEmptyProbability_recentered_uniformLittleOOne hC.le h16⟩

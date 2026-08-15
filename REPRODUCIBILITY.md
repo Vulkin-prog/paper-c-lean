@@ -2,7 +2,7 @@
 
 ## Versions fixées
 
-- paper_c_lean : `0.48.0`
+- paper_c_lean : `0.48.1` candidate (no tag/release yet)
 - Lean : `v4.32.2`, commit
   `f3b06c705e6c85f5314019d5d3baab0fec5b580c`
 - mathlib : `v4.32.2`, commit
@@ -16,12 +16,23 @@
   `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4`
 - modèle officiel `formalization.yaml` v0.3 : commit
   `fab03cbbed1a5857de17af32de30421a734c77c6`
-- PDF cible anglais (71 pages dans le fichier portant cette empreinte), SHA-256 :
-  `d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`
-- PDF source français synchronisé (73 pages), SHA-256 :
-  `2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`
+- PDF cible anglais (77 pages ; 936767 octets), SHA-256 :
+  `ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189`
+- PDF source français synchronisé (79 pages ; 947656 octets), SHA-256 :
+  `262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45`
 - racine unique de l’archive : `paper_c_lean/`
-- archive de livraison : `paper_c_lean_v048.zip`
+- archive de livraison prévue : `paper_c_lean_v0481.zip`
+
+
+> **Qualification.** Les lignes ci-dessus décrivent le snapshot source. Ses
+> métadonnées fixent les définitions et empreintes Comparator sans intégrer de
+> verdict produit après le gel. Le résultat de qualification de release est
+> donné exclusivement par `release_evidence/v0.48.1/` dans un commit
+> d’empaquetage validé, à parent unique, dont le parent est ce commit source
+> exact. Le snapshot
+> ne prétend donc ni qu’une preuve ultérieure est absente, ni qu’elle a réussi.
+> La publication reste soumise aux autres portes de
+> [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md).
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
 reproductibles. Il n’existe pas de tag officiel Comparator/lean4export
@@ -30,23 +41,57 @@ lean4export doit être compilé séparément avec la toolchain Lean de Paper C,
 et non remplacé silencieusement par le binaire construit sous la toolchain
 plus récente propre à Comparator.
 
-La contre-vérification finale a recalculé les octets présents dans le dépôt :
+Le candidat courant a recalculé les octets présents dans le dépôt :
 `paper_C_complete_v09_en.pdf` est le blob Git
-`420e096924c8a9b6fe72b917be0ffa2c38f320dc`, mesure 841053 octets et a pour
+`244d34ed8a5d8b1dfac4619a2d8cee507c94c09f`, mesure 936767 octets et a pour
 SHA-256
-`d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd` ;
+`ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189` ;
 `paper_C_complete_v09.pdf` est le blob Git
-`5d1e8ec24578bead7d91fa7f0447fcd8cbaddafc`, mesure 848865 octets et a pour
+`87f67c04ac86ab3bc357438a44fc25ae83ac5612`, mesure 947656 octets et a pour
 SHA-256
-`2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
+`262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45`.
 
-## Périmètre du jalon 0.48
+## Périmètre du correctif 0.48.1
+
+Le candidat v0.48.1 modifie le cœur Lean et l’interface Comparator principale,
+en plus des deux PDF. Il construit désormais en Lean la descente de conducteur
+par réduction modulo deux : `HK13-QO-conductor-fibres` reste enregistré avec
+`kind: external` pour sa provenance historique, mais passe à
+`status: discharged` grâce au théorème interne
+`PaperC.PellInput.quadraticOrderConductorFiberBound`. Le registre candidat
+compte donc treize ponts, dont six `external/open` et sept `discharged`.
+
+Le Théorème 1.1 canonique et la cible Comparator principale ne prennent plus
+que trois prémisses ordinaires ouvertes : Arratia--Goldstein--Gordon,
+Evertse--Silverman et Nicolas--Robin. Le Théorème 16.2 en prend exactement six :
+PNT, Laishram--Shorey, Balasubramanian--Shorey, AGG, Evertse--Silverman et
+Nicolas--Robin. Les autres endpoints canoniques concernés ne reçoivent plus
+Halter--Koch comme prémisse ouverte.
+
+Le répertoire `literature_certificates/` contient trois certificats actifs
+pour les trois prémisses du Théorème 1.1 et une note historique de clôture
+Halter--Koch. Les quatre fichiers appartiennent au fileset documentaire haché,
+mais seuls les trois premiers comptent comme certificats actifs du théorème.
+
+La preuve Comparator durcie publiée avec v0.48.0 porte exclusivement sur les
+anciens octets du cœur et de la cible à quatre prémisses. Elle est historique
+et périmée pour ce snapshot. Le schéma 5 sépare désormais explicitement
+`source_snapshot_comparator_state: definitions_and_digests_only` de
+`release_evidence_state: external_to_source_snapshot`, fixe
+`release_evidence_location: release_evidence/v0.48.1/` et exige
+`packaging_commit_required: true`. Un verdict courant éventuel doit donc être
+lu dans la preuve d’empaquetage liée, jamais inféré du snapshot source. Les
+nombres exacts de déclarations et de cibles, ainsi que les digests du cœur, du
+fileset Comparator et du fileset documentaire, sont lus dans les artefacts
+générés de ce commit.
+
+## Périmètre du jalon 0.48.0 (historique)
 
 La v0.48.0 est additive sur le plan mathématique. Les 382 sources du cœur
 (`PaperC.lean` et les 381 fichiers sous `PaperC/`) restent byte-identiques à
 la v0.47.0, leurs déclarations et signatures canoniques sont inchangées, les
-deux PDF gardent les empreintes ci-dessus, et le registre reste à 13 ponts,
-dont sept `external/open` et six `discharged`.
+deux PDF gardent les empreintes consignées dans le tag v0.48.0, et le registre
+reste à 13 ponts, dont sept `external/open` et six `discharged`.
 
 La nouvelle frontière humaine comprend :
 
@@ -157,21 +202,30 @@ complète. Le générateur valide les enregistrements minimisés du dépôt et l
 liaisons aux configurations et au fileset ; il ne télécharge ni ne revalide
 l’asset de release GitHub.
 
-Ce résultat est limité au noyau Lean : `enable_nanoda` vaut `false` dans les
-deux configurations, Nanoda n’a pas été exécuté et aucun résultat à deux
-noyaux n’est revendiqué. Le certificat porte sur les octets du fileset
+Ce résultat historique est limité au noyau Lean : `enable_nanoda` vaut `false`
+dans les deux configurations, Nanoda n’a pas été exécuté et aucun résultat à
+deux noyaux n’est revendiqué. Le certificat porte sur les octets du fileset
 Comparator au commit `27c91f8bdd5c...`. La couche finale de métadonnées
 v0.48.0 laisse ce fileset de six fichiers et les deux PDF byte-identiques. Il
 ne décharge pas les quatre prémisses ordinaires de littérature et ne certifie
-pas à lui seul la fidélité papier--Challenge.
+pas à lui seul la fidélité papier--Challenge. Le candidat v0.48.1 ne conserve
+ni le cœur Lean ni la cible Comparator principale à l’octet : la preuve
+v0.48.0 est donc périmée pour le nouveau théorème à trois prémisses, en plus de
+ne pas lier les nouvelles empreintes des manuscrits. Ce passage décrit
+uniquement l’historique v0.48.0. Pour v0.48.1, le snapshot source ne porte
+volontairement aucun verdict temporel ; la couche d’empaquetage liée porte le
+résultat de qualification.
 
-Les quatre rapports sous `literature_certificates/` forment un fileset séparé
-et haché. Ils consignent une contre-expertise par agents, pas une preuve Lean
-ni une revue humaine. AGG, Evertse--Silverman et Nicolas--Robin ont le statut
-documentaire `agent_checked_supports`. Halter--Koch garde le statut
-`agent_checked_with_open_gap` : la construction source→record demeure non
-établie. Ces statuts documentaires ne modifient pas le statut Lean `open` des
-quatre ponts.
+Dans le jalon v0.48.0, les quatre rapports sous
+`literature_certificates/` formaient un fileset séparé et haché. Ils
+consignaient une contre-expertise par agents, pas une preuve Lean ni une revue
+humaine. AGG, Evertse--Silverman et Nicolas--Robin avaient le statut
+documentaire `agent_checked_supports`, tandis que Halter--Koch conservait un
+gap source→record et un pont Lean ouvert. Dans le candidat actuel, les trois
+premiers restent les certificats actifs ; le quatrième fichier est conservé
+comme note historique de clôture, incluse avec eux dans le digest documentaire.
+Le pont Halter--Koch est maintenant `external/discharged` par la construction
+Lean interne modulo deux, indépendamment d’une formalisation des pages citées.
 
 Un probe antérieur de compatibilité de la suite de tests upstream a également
 été exécuté sans sandbox avec fake-landrun. Son
@@ -197,7 +251,7 @@ réels des deux PDF. Les comptes de déclarations ci-dessous proviennent du
 manifeste v047 régénéré ; les nombres de fichiers et de lignes sont reproduits
 par les commandes mécaniques indiquées plus bas.
 
-### Historique v044–v043
+### Historique v044–v042
 
 La v044 est une re-synchronisation documentaire à contenu Lean gelé. Elle
 fait de l’édition anglaise v08 la cible de soumission et enregistre l’édition
@@ -328,16 +382,17 @@ Le jalon 0.43 conserve la décharge de l’interface interne de Pell généralis
   cas, le carré du facteur divisoriel et l’absorption du compte d’unités dans
   \(\exp(c\log N/\log\log N)\).
 
-Les deux seuls faits non formalisés de ce nouveau module sont enregistrés
-comme `external/open` : `HK13-QO-conductor-fibres` pour la comparaison
+À ce jalon historique, les deux seuls faits non formalisés de ce nouveau
+module sont enregistrés comme `external/open` :
+`HK13-QO-conductor-fibres` pour la comparaison
 conducteur 2 entre l’ordre \(\mathbb Z[\sqrt D]\) et l’ordre maximal, et
 `NR83-T1-divisor-log-bound` pour l’inégalité logarithmique divisorielle.
 L’ancienne enveloppe spécialisée `NR83-T1-divisor-bound` est conservée avec
 `status: discharged`.
 `PCv07c-L9.2-generalized-Pell` est désormais `discharged`.
 
-Les théorèmes canoniques de masse mère, 1.4, 13.10, 1.1, 16.1 et 16.2 exposent
-directement ces entrées externes. Ils ne consomment aucun pont
+À ce même jalon, les théorèmes canoniques de masse mère, 1.4, 13.10, 1.1,
+16.1 et 16.2 exposent directement ces entrées externes. Ils ne consomment aucun pont
 `internal/open`. La v041 supprime les anciennes signatures directes Pell,
 leurs variantes fondées sur l’enveloppe spécialisée et les quatre API legacy
 ouvertes. Il ne reste aucun pont `internal/open` dans le registre.
@@ -403,12 +458,12 @@ pour les deux assemblages génériques directs avec `status: discharged`; les
 six adaptateurs sectoriels intermédiaires de 16.1 et 16.2 sont supprimés.
 L’interface historique
 de 9.10 porte désormais le même statut, ainsi que l’interface de 9.2. Les API
-canoniques de 16.1 et 16.2 n’en consomment aucune. La première reçoit
-seulement Evertse--Silverman, Halter--Koch et Nicolas--Robin. La seconde ne
-reçoit plus ni \(K\), ni famille terminale, ni estimation
-de la section 17, ni hypothèse arithmétique de 9.10 : ses seules prémisses
-non formalisées sont PNT, Laishram--Shorey, Balasubramanian--Shorey, AGG,
-Evertse--Silverman, Halter--Koch et Nicolas--Robin.
+canoniques de 16.1 et 16.2 n’en consomment aucune. Dans le candidat v0.48.1,
+la première reçoit seulement Evertse--Silverman et Nicolas--Robin. La seconde
+ne reçoit plus ni \(K\), ni famille terminale, ni estimation de la section 17,
+ni hypothèse arithmétique de 9.10, ni prémisse Halter--Koch : ses six seules
+prémisses non formalisées sont PNT, Laishram--Shorey,
+Balasubramanian--Shorey, AGG, Evertse--Silverman et Nicolas--Robin.
 
 Le jalon conserve aussi la fermeture complète des propositions 7.3, 7.4 et 7.5
 et traite le cœur aligné laissé par leur partition. La condition de densité
@@ -455,7 +510,8 @@ la partition ordonnée en sept secteurs, sa couverture, sa disjonction, son
 unicité et son instanciation par le proxy terminal ; le secteur 7 est
 exactement la partie canoniquement non alignée de ce proxy.
 
-Le manifeste conserve la distinction indépendante entre `kind` et `status`.
+Le manifeste de ce jalon historique conserve la distinction indépendante
+entre `kind` et `status`.
 Les interfaces 9.2 et 9.10 rejoignent 17.26, 17.28 et 17.30 avec
 `status: discharged`; seul `status: open` signale une dette actuelle.
 Il recense 13 interfaces — huit `external` et cinq `internal` — dont sept
@@ -569,7 +625,7 @@ Le scan d’hygiène indépendant ci-dessous ne doit produire aucune ligne :
 rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' PaperC.lean PaperC
 ```
 
-Pour la livraison 0.48, la validation ordinaire doit être rejouée depuis
+Pour le candidat 0.48.1, la validation ordinaire doit être rejouée depuis
 deux arbres indépendants dépourvus de `.lake/build`, dont une extraction du
 ZIP final. Dans chacun, le build doit se terminer par
 `Build completed successfully`. L’audit doit produire une sortie pour chaque
@@ -578,11 +634,15 @@ conservées de l’audit historique. Toutes les listes doivent rester incluses
 dans `[propext, Classical.choice, Quot.sound]`. Le contrôle du générateur doit
 retrouver exactement les comptes du manifeste final régénéré et enregistrer
 9.2, 9.10, 17.26, 17.28, 17.30 et l’ancienne enveloppe Nicolas--Robin avec
-`status: discharged`. Il doit retrouver 13 interfaces — huit `external`,
-cinq `internal`, sept `open` toutes `external` et six `discharged` — ainsi
-que 4 065 théorèmes et 5 lemmes publics, 4 072 cibles, 3 912 résultats
-inconditionnels et 158 conditionnels. Il ne doit retrouver aucune interface
-`internal/open`. Le scan des constructions interdites doit rester vide.
+`status: discharged`, ainsi que `HK13-QO-conductor-fibres` avec
+`kind: external` et `status: discharged`. Il doit retrouver 13 interfaces —
+huit `external`, cinq `internal`, six `open` toutes `external` et sept
+`discharged` — et exactement les comptes de déclarations, cibles et résultats
+du manifeste candidat régénéré, sans recopier ceux de v0.48.0. Il doit vérifier
+que le Théorème 1.1 et la cible Comparator principale consomment trois ponts
+ouverts, et que le Théorème 16.2 en consomme six. Il ne doit retrouver aucune
+interface `internal/open`. Le scan des constructions interdites doit rester
+vide.
 
 Pour inspecter les dépendances logiques d'un théorème particulier :
 
@@ -618,7 +678,10 @@ dérive `AuditCheck.lean`, le schéma versionné de `audit_manifest.json`,
 directement des sources Lean et de `audit_config.json` schéma 2. Ses modes
 `--check-pdfs`, `--check-source-digest` et
 `--check-literature-certificates` ferment les préconditions du build et lient
-séparément les octets et la cartographie des quatre rapports bibliographiques ;
+séparément les octets et la cartographie des trois certificats actifs et de la
+note historique de clôture Halter--Koch. Les quatre fichiers appartiennent au
+digest documentaire, mais seuls les trois certificats actifs justifient les
+trois prémisses ouvertes du Théorème 1.1 ;
 son mode `--check` les rejoue et échoue si
 l'un des quatre artefacts générés est périmé. Le script
 `scripts/verify_audit.mjs` peut exécuter l’audit lui-même ou relire le journal
@@ -628,8 +691,9 @@ dépendances fondationnelles imprimées par Lean des
 hypothèses ordinaires, invisibles à `#print axioms`; il associe donc à chaque
 théorème public un statut conditionnel/inconditionnel, la liste des ponts
 qu’il prend comme prémisses directes, leur nature `external | internal` et
-leur état `open | discharged`. Les comptes v0.48.0 publiés ci-dessus sont ceux
-du manifeste régénéré.
+leur état `open | discharged`. Les comptes historiques v0.48.0 publiés
+ci-dessus sont ceux du manifeste de ce jalon ; les comptes candidats doivent
+provenir de la nouvelle régénération.
 `ReviewAxioms.lean` est conservé comme sélection historique des
 résultats structurants, mais n'est plus la liste canonique. Chaque sortie de
 l'audit exhaustif doit être une sous-liste de
@@ -923,9 +987,12 @@ générale de tous les mécanismes d’isolation de l’hôte ; aucune isolation
 sandbox n’est revendiquée avant une exécution réelle réussie et publiée dans
 ces conditions.
 
-Les deux runs durcis de référence ont réussi au commit `27c91f8bdd5c...` ; la
-couche finale de métadonnées v0.48.0 ne modifie pas leur fileset Comparator.
-Les runs CI non sandboxés restent de simples smoke tests. Le suffixe d’un
+Les deux runs durcis de référence ont réussi au commit `27c91f8bdd5c...` et
+qualifient seulement le fileset historique v0.48.0. Le cœur et la cible
+principale ayant changé, ils sont périmés pour v0.48.1. L’état généré du
+snapshot v0.48.1 ne dit pas si l’exécution postérieure a eu lieu : il fixe les
+octets auxquels une éventuelle preuve sous `release_evidence/v0.48.1/` doit se
+lier. Les runs CI non sandboxés restent de simples smoke tests. Le suffixe d’un
 ancien artefact CI peut être le SHA d’événement GitHub et ne doit pas être
 confondu avec `paper_c_commit` ni avec le commit de l’outil Comparator. Nanoda
 n’a pas été exécuté : les deux JSON ont `enable_nanoda: false`, et aucun
@@ -938,10 +1005,10 @@ conserver l'unique racine `paper_c_lean/`. Après création, les contrôles
 suivants sont requis :
 
 ```bash
-unzip -t paper_c_lean_v048.zip
-unzip -Z1 paper_c_lean_v048.zip | rg -v '^paper_c_lean/'
+unzip -t paper_c_lean_v0481.zip
+unzip -Z1 paper_c_lean_v0481.zip | rg -v '^paper_c_lean/'
 zip_check_dir="$(mktemp -d)"
-unzip -q paper_c_lean_v048.zip -d "$zip_check_dir"
+unzip -q paper_c_lean_v0481.zip -d "$zip_check_dir"
 (cd "$zip_check_dir/paper_c_lean" && \
   node scripts/check_comparator_sources.mjs && \
   node scripts/generate_audit.mjs --check)
@@ -968,8 +1035,10 @@ volontairement dans l’inventaire historique sans constituer une dette.
 Comparator ajoute une garantie différente : identité de l’énoncé et de sa
 clôture déclarative entre Challenge et Solution, respect de la liste d’axiomes
 fondationnels autorisés, puis acceptation par le noyau Lean. Il ne démontre
-pas les quatre hypothèses de littérature passées comme arguments ordinaires.
+pas les trois hypothèses de littérature passées comme arguments ordinaires.
 Même après un run Comparator réussi, le résultat restera donc correctement
-décrit comme conditionnel à AGG, Evertse--Silverman, Halter--Koch et
-Nicolas--Robin. La cible principale seule porte sur le cylindre fini ; seule
+décrit comme conditionnel à AGG, Evertse--Silverman et Nicolas--Robin.
+Halter--Koch n’est plus une prémisse : sa compatibilité de conducteur est
+déchargée par le théorème Lean interne modulo deux. La cible principale seule
+porte sur le cylindre fini ; seule
 la cible de transfert peut établir la couverture exacte du modèle infini.

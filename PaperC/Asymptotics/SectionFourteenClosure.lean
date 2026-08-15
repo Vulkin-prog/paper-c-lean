@@ -134,8 +134,6 @@ theorem theorem_one_two_ii_laplace
     {C rate : ℝ} (hC : 0 ≤ C)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement)
     (Lseq : ℕ → ℕ)
@@ -150,7 +148,7 @@ theorem theorem_one_two_ii_laplace
   intro g hg hg0
   exact
     SpatialLaplaceCritical.sectionFourteenTwo_spatialLaplaceFunctional
-      hAGG hC hES hConductor hDivisor
+      hAGG hC hES hDivisor
       (N := fun N : ℕ ↦ N) (L := Lseq)
       tendsto_id hwindow hscale hg hg0
 
@@ -162,8 +160,6 @@ theorem theorem_one_two_iii_laplace_and_tightness
     {C rate : ℝ} (hC : 0 ≤ C)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement)
     (Lseq : ℕ → ℕ)
@@ -180,7 +176,7 @@ theorem theorem_one_two_iii_laplace_and_tightness
   · intro g
     have htruncated :=
       MarkedLaplaceCritical.sectionFourteenFour_laplaceFunctional
-        hAGG hC hES hConductor hDivisor
+        hAGG hC hES hDivisor
         (N := fun N : ℕ ↦ N) (L := Lseq)
         tendsto_id hwindow hscale g.continuousOn g.nonnegative
     apply htruncated.congr'

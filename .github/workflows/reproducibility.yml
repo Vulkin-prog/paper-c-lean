@@ -30,7 +30,8 @@ jobs:
 
     steps:
       - name: Check out the certified triplet
-        uses: actions/checkout@v4
+        # actions/checkout v4.2.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       # Review-prescribed order: PDF bytes, source digest, source hygiene,
       # build, audit generation, kernel audit, audit-log verification, then
@@ -44,10 +45,13 @@ jobs:
       - name: Verify literature-certificate bytes and mapping
         run: node scripts/generate_audit.mjs --check-literature-certificates
 
-      - name: Install ripgrep
+      - name: Install audit utilities
         run: |
           sudo apt-get update
-          sudo apt-get install --yes ripgrep
+          sudo apt-get install --yes ripgrep qpdf poppler-utils
+
+      - name: Run structural PDF QA
+        run: scripts/qa_pdfs.sh ci-logs/pdf-qa
 
       - name: Check Lean source hygiene
         shell: bash
@@ -79,8 +83,22 @@ jobs:
       - name: Test root-module audit guards
         run: node scripts/test_audit_root_guards.mjs
 
-      - name: Set up the pinned Lean toolchain
-        uses: leanprover/lean-action@v1
+      - name: Set up the pinned Lean toolchain (attempt 1)
+        id: audit_lean_setup_1
+        continue-on-error: true
+        # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Set up the pinned Lean toolchain (retry)
+        if: steps.audit_lean_setup_1.outcome == 'failure'
+        # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
           auto-config: false
           build: false
@@ -136,9 +154,21 @@ jobs:
             exit 1
           fi
 
+      - name: Publish the kernel-audit status
+        if: success()
+        shell: bash
+        run: |
+          {
+            echo '## Formal verification status'
+            echo
+            echo '- `kernel_audit_passed`: exhaustive Lean kernel audit and generated-artifact consistency passed.'
+            echo '- Comparator statuses are reported separately by each Comparator matrix job.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Preserve the kernel audit log
         if: always()
-        uses: actions/upload-artifact@v4
+        # actions/upload-artifact v4.6.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: paper-c-kernel-audit-${{ github.sha }}
           path: ci-logs/AuditCheck.log
@@ -168,7 +198,8 @@ jobs:
 
     steps:
       - name: Check out Paper C into a clean Comparator workspace
-        uses: actions/checkout@v4
+        # actions/checkout v4.2.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           path: project
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -187,7 +218,8 @@ jobs:
           echo "workflow_event_sha=${GITHUB_SHA}"
 
       - name: Check out pinned Comparator
-        uses: actions/checkout@v4
+        # actions/checkout v4.2.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           repository: leanprover/comparator
           ref: ${{ env.COMPARATOR_COMMIT }}
@@ -197,7 +229,8 @@ jobs:
           persist-credentials: false
 
       - name: Check out pinned lean4export
-        uses: actions/checkout@v4
+        # actions/checkout v4.2.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           repository: leanprover/lean4export
           ref: ${{ env.LEAN4EXPORT_COMMIT }}
@@ -207,7 +240,8 @@ jobs:
           persist-credentials: false
 
       - name: Check out pinned landrun
-        uses: actions/checkout@v4
+        # actions/checkout v4.2.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           repository: Zouuup/landrun
           ref: ${{ env.LANDRUN_COMMIT }}
@@ -270,8 +304,11 @@ jobs:
           echo 'preexisting_project_olean_count=0'
           echo 'olean_count=0' >> "$GITHUB_OUTPUT"
 
-      - name: Set up the Paper C Lean 4.32.2 toolchain and Mathlib cache
-        uses: leanprover/lean-action@v1
+      - name: Set up the Paper C Lean 4.32.2 toolchain and Mathlib cache (attempt 1)
+        id: comparator_lean_setup_1
+        continue-on-error: true
+        # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
         with:
           lake-package-directory: project
           auto-config: false
@@ -283,8 +320,22 @@ jobs:
           # created by the ordinary build could contain Solution.olean.
           use-github-cache: false
 
+      - name: Set up the Paper C Lean 4.32.2 toolchain and Mathlib cache (retry)
+        if: steps.comparator_lean_setup_1.outcome == 'failure'
+        # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          lake-package-directory: project
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: false
+
       - name: Set up Go 1.24 for pinned landrun
-        uses: actions/setup-go@v5
+        # actions/setup-go v5.5.0; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5
         with:
           go-version: '1.24.x'
           cache-dependency-path: tools/landrun/go.sum
@@ -602,9 +653,39 @@ jobs:
             --result project/ci-logs/result-${{ matrix.label }}.json \
             --require-hardened "$REQUIRE_HARDENED"
 
+      - name: Publish the precise Comparator status
+        if: success()
+        shell: bash
+        env:
+          RESULT: project/ci-logs/result-${{ matrix.label }}.json
+        run: |
+          set -euo pipefail
+          status="$(node -e 'const r=require("./"+process.env.RESULT); process.stdout.write(r.status)')"
+          case "$status" in
+            sandboxed_lean_kernel_passed)
+              label='hardened_certifying_passed'
+              qualification='sandboxed, non-root, Lean-kernel Comparator result'
+              ;;
+            unsandboxed_semantic_smoke_passed)
+              label='unsandboxed_semantic_smoke_passed'
+              qualification='non-certifying semantic smoke result'
+              ;;
+            *)
+              echo "Unexpected Comparator result status: $status" >&2
+              exit 1
+              ;;
+          esac
+          {
+            echo "## Comparator status — ${{ matrix.label }}"
+            echo
+            echo "- \`$label\`: $qualification."
+            echo '- `kernel_audit_passed` is a separate audit-job status.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Preserve the Comparator evidence bundle
         if: always()
-        uses: actions/upload-artifact@v4
+        # actions/upload-artifact v4.6.2; full commit and GitHub signature verified 2026-08-13.
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: paper-c-comparator-evidence-${{ matrix.label }}-${{ steps.source_identity.outputs.source_sha }}
           path: |

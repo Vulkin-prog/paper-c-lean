@@ -7,12 +7,14 @@ import Mathlib.NumberTheory.Pell
 /-!
 # Generalized Pell: ideals, units, and heights
 
-This module discharges the manuscript-facing generalized-Pell interface.
+This module reduces the manuscript-facing generalized-Pell interface to its
+ideal-divisor and unit-orbit ingredients.
 It formalizes the principal-ideal map, equality of ideal fibres as a Pell-unit
 quotient, exponential unit growth, logarithmic height counting, and the
-squarefree-kernel reduction.  Two independently sourced inputs remain
-explicit: the conductor-two comparison with the maximal quadratic order and
-the eventual divisor-function envelope.
+squarefree-kernel reduction.  The historical conductor-two interface is
+retained here as a compatibility boundary and is discharged internally in
+`HalterKochConductorDescent`; the eventual divisor-function envelope remains
+an independently sourced input.
 -/
 
 namespace PaperC
@@ -53,12 +55,12 @@ theorem generalizedPellEquation_iff_norm
 The manuscript sends a solution `x + y√D` to its principal ideal and
 extends it to a divisor of `(M)` in the maximal quadratic order.  The
 number of such maximal-order ideal divisors is proved below in Lean, using
-unique factorization of ideals and quadratic splitting.  The sole remaining
-order-theoretic input is the conductor-two comparison when
-`D ≡ 1 (mod 4)`.  Halter--Koch gives index three for the only nonmaximal
-unit-group case (and index one otherwise).  The implementation embeds these
-three unit cosets in `Fin 4`; the fourth value is padding, not a fourth
-source-theoretic class.
+unique factorization of ideals and quadratic splitting.  The historical
+source-shaped interface records a conductor comparison through at most three
+unit cosets.  The production route instead discharges the `Fin 4` interface
+internally: it colours relative units by the four residue classes of
+`O_K / 2 O_K` and proves that equality of colours descends to equality of
+principal ideals in `Zsqrtd`.
 -/
 
 structure QuadraticOrderConductorData (D : ℕ) (M : ℤ) where
@@ -86,7 +88,10 @@ structure QuadraticOrderConductorData (D : ℕ) (M : ℤ) where
 {
   "id": "HK13-QO-conductor-fibres",
   "kind": "external",
-  "status": "open",
+  "status": "discharged",
+  "discharged_by": [
+    "PaperC.PellInput.quadraticOrderConductorFiberBound"
+  ],
   "lean_name": "PaperC.PellInput.QuadraticOrderConductorFiberBoundStatement",
   "citation": {
     "authors": ["Franz Halter-Koch"],
@@ -117,7 +122,7 @@ structure QuadraticOrderConductorData (D : ℕ) (M : ℤ) where
     "equation": "(α)(conjugate α) = (M)",
     "pages": "28–29"
   },
-  "formalization_relation": "external order-and-unit comparison only: each squarefree norm-M solution is assigned a maximal-order ideal divisor and one of at most three unit cosets; Halter–Koch's conductor and unit theorems imply that equality of both data descends to equality of principal ideals in ℤ[√D]. Lean pads Fin 3 into the historical Fin 4 API and proves the padding derivation explicitly; it separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences"
+  "formalization_relation": "discharged historical compatibility interface: Lean constructs K = ℚ(√D), the order embedding ℤ[√D] → O_K, the extended principal ideals, and the descent directly. Trace and norm prove 2 O_K ⊆ ℤ[√D]; the four-element quotient O_K / 2 O_K supplies the historical Fin 4 colour, and equality of colours lifts the relative unit back to ℤ[√D]. No Halter–Koch theorem is used by the discharge proof. Lean separately proves the τ(|M|)² ideal-divisor bound and all unit-orbit, height, finite-cardinality, and squarefree-reduction consequences"
 }
 AUDIT_BRIDGE -/
 def QuadraticOrderConductorFiberBoundStatement : Prop :=

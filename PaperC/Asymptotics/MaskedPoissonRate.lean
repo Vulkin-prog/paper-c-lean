@@ -54,8 +54,6 @@ theorem maskedRateEnvelope_uniformBigO_canonical
     {C : ℝ} (hC : 0 ≤ C)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformBigOOn
@@ -63,7 +61,7 @@ theorem maskedRateEnvelope_uniformBigO_canonical
       maskedRateEnvelope inverseLogLogSquaredRate := by
   have hhom :=
     DyadicKappaQuantitative.homogeneousMass_uniformBigO
-      hC hES hConductor hDivisor
+      hC hES hDivisor
   have hseparated :=
     separatedDefectMass_uniformBigO_of_homogeneousMass 3 hhom
   have hnumerator :=
@@ -125,8 +123,6 @@ theorem maskedPoissonTotalVariation_uniformBigO_canonical
     (hAGG : ArratiaGoldsteinGordonStatement)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformMaskedBigOOn
@@ -134,7 +130,7 @@ theorem maskedPoissonTotalVariation_uniformBigO_canonical
       maskedPoissonTotalVariation inverseLogLogSquaredRate := by
   obtain ⟨K, hK, Nrate, hrate⟩ :=
     maskedRateEnvelope_uniformBigO_canonical
-      hC hES hConductor hDivisor
+      hC hES hDivisor
   obtain ⟨Nwindow, hwindow⟩ :=
     CriticalRunWindow.firstMomentWindow_eventually hC
   refine ⟨K, hK, max 2 (max Nrate Nwindow), ?_⟩

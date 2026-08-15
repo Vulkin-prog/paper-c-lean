@@ -4,28 +4,52 @@ This repository accompanies the manuscript:
 
 > *A critical Poisson law in a dyadic block — Starting points of long constant
 > stretches of an extended Rademacher random completely multiplicative
-> function*, Brice Pouly, English v09 frozen release, August 12, 2026.
+> function*, Brice Pouly.
 
-Paper DOI: [`10.33774/coe-2026-z3l74`](https://doi.org/10.33774/coe-2026-z3l74).
-Cambridge Open Engage records the published v08 as Version 1; v09 is intended
-to be deposited as the next version under this DOI after release qualification.
+Public paper records: [Cambridge Open Engage DOI
+`10.33774/coe-2026-z3l74`](https://doi.org/10.33774/coe-2026-z3l74) and
+[Zenodo paper concept DOI
+`10.5281/zenodo.21736676`](https://doi.org/10.5281/zenodo.21736676).
 
-Formalization concept DOI: [`10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
-Zenodo will assign a new version DOI to v0.48.0 when that release is
-published; the immutable v0.47.0 version DOI is not reused.
+Public formalization: [`github.com/Vulkin-prog/paper-c-lean`](https://github.com/Vulkin-prog/paper-c-lean)
+and [Zenodo formalization concept DOI
+`10.5281/zenodo.21735481`](https://doi.org/10.5281/zenodo.21735481).
 
-Target manuscript: `paper_C_complete_v09_en.pdf` (71 physical pages), SHA-256
-`d34c84535d739721c39d487eaabc6dc4481f0dcda0b907399c167847d9a46ffd`.
+Target manuscript: `paper_C_complete_v09_en.pdf` (77 physical pages; 936767
+bytes), SHA-256
+`ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189`.
 
-Synchronized French manuscript: `paper_C_complete_v09.pdf` (73 pages), SHA-256
-`2c087fa946842652a8587b80cea4a4a6b56b797dae151f86f48e83217364f01b`.
+Synchronized French manuscript: `paper_C_complete_v09.pdf` (79 pages; 947656
+bytes), SHA-256
+`262ec27afc494fdaf6ad879c44ac553711cc74d9281a4f7ab919a23226281d45`.
+
+> **Release-candidate status (2026-08-13).** PR #5 and branch
+> `agent/v0481-publication-metadata` are not a qualified `v0.48.1` release.
+> The Halter--Koch compatibility interface is now discharged internally by a
+> Lean construction using reduction modulo (2); it is no longer a premise of
+> the canonical endpoints. This changes both the Lean core and the main
+> Comparator surface, so the published v0.48.0 hardened evidence does not bind
+> this source snapshot. The snapshot records
+> `source_snapshot_comparator_state: definitions_and_digests_only`; any
+> certifying outcome is authoritative only under
+> `release_evidence/v0.48.1/` in a validated single-parent packaging commit
+> whose parent is this exact source commit.
+> Its metadata therefore remains true whether or not that later layer exists.
+> See
+> [`docs/HK_INTERFACE_ADJUDICATION.md`](docs/HK_INTERFACE_ADJUDICATION.md) and
+> [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md). The two supplied
+> audits are published as **agent counter-reviews**, not human peer review, in
+> [`counter_reviews/`](counter_reviews/).
 
 ## Status
 
 This repository is a **formal proof of the canonical endpoints, conditional
-on seven explicitly registered external propositions; it is not yet an
-unconditional kernel certification until those seven propositions have
-themselves been formalized**. It deliberately distinguishes:
+on six explicitly registered external propositions that remain open**. The
+Halter--Koch bridge remains registered with external provenance but now has
+`status: discharged`; it is not one of those six premises. Complete
+unconditional kernel certification would additionally require the six open
+propositions themselves to be formalized. The repository deliberately
+distinguishes:
 
 1. the objects and lemmas actually proved by Lean;
 2. the arithmetic, probabilistic, and Diophantine obligations that remain to
@@ -33,7 +57,7 @@ themselves been formalized**. It deliberately distinguishes:
 3. external results that cannot honestly be replaced by axioms when the goal
    is certification.
 
-The frozen 382-file Paper C core and the two Solution files contain no
+The Paper C Lean core and the two Solution files contain no
 `sorry` and introduce no mathematical axiom beyond `propext`, `Quot.sound`,
 and `Classical.choice`. `Challenge.lean` and `ChallengeTransfer.lean` each
 contain exactly one source-level `by sorry`, on their named final Comparator
@@ -47,13 +71,15 @@ rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:
 ```
 
 must therefore return no matches. This certifies only the modules present, not
-the complete 71-page target manuscript or its synchronized 73-page French
+the complete 77-page target manuscript or its synchronized 79-page French
 source.
 
-## External semantic audit boundary (v0.48.0)
+## External semantic audit boundary
 
-Version `0.48.0` adds a project-independent semantic boundary without changing
-the mathematical core. `Challenge.lean` imports only Mathlib modules.
+Version `0.48.0` introduced the project-independent semantic boundary. The
+v0.48.1 candidate changes its main theorem from four ordinary premises to
+three after the internal conductor discharge. `Challenge.lean` imports only
+Mathlib modules.
 `ChallengeTransfer.lean` imports exactly `Challenge`, and therefore depends
 transitively only on the first Challenge and Mathlib, never on `PaperC`. The
 matching Solution files do not import either Challenge module.
@@ -74,30 +100,30 @@ declarative interface, with the same names, types, and bodies, without
 importing the Challenge.  It additionally imports `PaperC` and closes that
 exact statement with
 `PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical`.
-The Arratia--Goldstein--Gordon finite-probability record and the Halter--Koch
-quadratic-order conductor record are not definitionally identical to their
-core counterparts, so `Solution.lean` contains two explicit, proved record
-translations.  `SolutionTransfer.lean` likewise reproduces the declarations
+The Arratia--Goldstein--Gordon finite-probability record is not definitionally
+identical to its core counterpart, so `Solution.lean` contains an explicit,
+proved record translation. The historical conductor declaration remains in
+the audit namespace for traceability but is not a theorem argument.
+`SolutionTransfer.lean` likewise reproduces the declarations
 specific to the infinite-model interface without importing
 `ChallengeTransfer.lean`, then applies the frozen exact law identity.  The
 two pairs are intentionally loaded in separate environments because their
 global names coincide.
 
-Theorem 1.1 is stated unconditionally in the manuscript. The Comparator
-theorem is instead an implication from the four fully stated propositions
+Theorem 1.1 is stated unconditionally in the manuscript. The main Comparator
+theorem is instead an implication from the three fully stated propositions
 below. Comparator checks that `Solution` proves that implication; it does not
-check that the cited primary sources imply the four propositions, and it does
+check that the cited primary sources imply the three propositions, and it does
 not by itself check fidelity to the manuscript. The separate infinite-to-
 finite law identity is unconditional and exact.
 
-The finite-cylinder theorem takes exactly four ordinary, fully stated
+The finite-cylinder theorem takes exactly three ordinary, fully stated
 literature-facing hypotheses:
 
 | Literature input | Audit bridge | Role in the paper |
 |---|---|---|
 | Arratia--Goldstein--Gordon, Theorem 1 | `AGG89-T1-finite-dependency-b3-zero` | Finite Chen--Stein bound with `b₃ = 0` |
 | Evertse--Silverman, Theorem 1(b) | `ES86-T1b-Q-split-n2` | Uniform count for the split quadratic equation used in Lemma 9.1 |
-| Halter--Koch, Theorems 1.1.6, 5.1.7, 5.2.3, 5.2.5 | `HK13-QO-conductor-fibres` | Quadratic-order conductor and unit-coset comparison used in Lemma 9.2 |
 | Nicolas--Robin, Theorem 1 | `NR83-T1-divisor-log-bound` | Direct logarithmic divisor bound used in Lemma 9.2 |
 
 These are theorem arguments, not Lean axioms.  The explicit Comparator
@@ -121,7 +147,8 @@ inside the challenge:
   states `C > 0`.
 
 The global longest-run theorem is intentionally outside this Comparator
-surface.  It consumes the other three open literature bridges and will need a
+surface. It consumes the other three open literature bridges---the prime
+number theorem, Laishram--Shorey, and Balasubramanian--Shorey---and will need a
 separate audit target.
 
 **Recorded hardened status.** Both Paper C Comparator targets passed the
@@ -164,13 +191,20 @@ revalidate the GitHub release asset.
 
 This is a Lean-kernel-only result. Both configurations have
 `enable_nanoda: false`; Nanoda was not run, and no dual-kernel result is
-claimed. The evidence certifies the unchanged Comparator inputs at commit
-`27c91f8bdd5c...`. The final v0.48.0 metadata layer leaves the six-file
+claimed. The evidence certifies the historical Comparator inputs at commit
+`27c91f8bdd5c...`. The final v0.48.0 metadata layer leaves its six-file
 Comparator fileset and both manuscript PDFs byte-identical to that certified
-commit. It does not discharge the four ordinary literature-facing premises or
-certify the paper-to-Challenge comparison. The earlier fake-landrun
-transcripts remain historical unsandboxed compatibility tests only; they are
-not the release certificate.
+commit. The current v0.48.1 candidate changes the Lean core and removes the
+Halter--Koch argument from the main Challenge/Solution theorem, in addition to
+replacing the manuscript PDFs and associated documentation. The source
+snapshot itself carries no post-freeze execution verdict. A qualified release
+is established only by evidence in the validated packaging commit that binds
+the new three-premise Comparator surface, the final PDF bytes, and the exact
+source commit. The published v0.48.0 evidence remains valid only for its
+historical inputs and manuscript hashes; it neither binds nor qualifies the
+v0.48.1 snapshot. The
+earlier fake-landrun transcripts remain historical unsandboxed compatibility
+tests only; they are not the release certificate.
 The audited Paper C commit is distinct from the pinned Comparator source
 commit `51491237b1d2f96cca203af9c34bced6fe38e0d8` and from GitHub event SHAs
 formerly used in hosted-artifact names.
@@ -182,18 +216,24 @@ summary repeats the shared tool and manuscript identities.
 
 ### Source-audit qualifications
 
-The four machine-indexed reports under `literature_certificates/` document the
-current agent counter-audit of the source-to-proposition implications. They
-are neither Lean proofs nor independent human review. For
+The documentary files under `literature_certificates/` comprise three active
+source certificates for the three open premises of Theorem 1.1 and one
+historical Halter--Koch closure note. All four participate in the documentary
+fileset digest, but only the first three count as active literature
+certificates for Theorem 1.1. They are neither Lean proofs nor independent
+human review. For
 Arratia--Goldstein--Gordon, the notation is on p. 10 and the theorem and
 total-variation bound are on p. 11; the Challenge inequality is a conservative
 consequence under the half-`ℓ¹` convention. The Evertse--Silverman report
 spells out the `K=L=Q`, split-polynomial specialization. For
 Nicolas--Robin, the printed function is normalized by `log 2`: bounding the
-normalized maximum by `2` gives the Lean coefficient `2 log 2`. The
-Halter--Koch source-to-record construction remains **not established** and is
-listed step by step in its report. All four Lean bridges remain `open`, and
-none of these documentary statuses is a kernel discharge or a human
+normalized maximum by `2` gives the Lean coefficient `2 log 2`. The historical
+Halter--Koch report records why the former source-shaped route had an open gap;
+the current kernel discharge does not rely on filling that source-to-record
+derivation. Instead Lean proves the compatibility proposition directly by the
+modulo-two construction. Accordingly `HK13-QO-conductor-fibres` is
+`external/discharged`, while the three literature premises of the main
+Comparator remain `external/open`. None of the documentary reviews is human
 certification.
 
 One narrower compatibility probe has actually run: Comparator's own upstream
@@ -206,39 +246,45 @@ unlike the two project smoke-test transcripts above, it did not load either
 Paper C configuration.
 
 `formalization.yaml` uses the official v0.3 format.  It and
-`audit_manifest.json` are generated deterministically from the schema-2
+`audit_manifest.json` are generated deterministically from the schema-5
 `audit_config.json`, which is the sole editorial source for manuscript-item
 mapping, bridge consumption, conditionality, and Comparator coverage.  The
-generated status records the proof-side `sorry_count` separately from the two
-intentional challenge placeholders and records the present review level as
-agent-reviewed, not independent peer review.  The item list itself remains an
-editorial inventory requiring human review; it cannot be inferred completely
-from Lean or from the PDFs.
+generated metadata records the proof-side `sorry_count` separately from the
+two intentional challenge placeholders and records the present review level
+as agent-reviewed, not independent peer review. It distinguishes the timeless
+source-snapshot state from the release-evidence location and required
+packaging commit; it never turns presence or absence of later evidence into a
+source-tree run status. The item list itself remains an editorial inventory
+requiring human review; it cannot be inferred completely from Lean or the
+PDFs.
 
-The historical core fileset remains exactly `PaperC.lean` plus the 381 files
-under `PaperC/`.  Its v0.47.0 digest is retained independently from the new
-Comparator fileset.  The core SHA-256 is
+The v0.48.0 historical core fileset was exactly `PaperC.lean` plus the 381
+files under `PaperC/`. Its v0.47.0 SHA-256 was
 `f6020b0bae9b8c6f22ab6ed0b6c3024a22e0a697ddb5578bb65c5e1f2a56c999`;
-the v0.48.0 Comparator-fileset SHA-256 is
+the v0.48.0 Comparator-fileset SHA-256 was
 `646e3ba055daf0509ba70237f4e87c59e18fa697b4698a4647ef5f04435757a5`.
-The additive rc2 literature-certificate fileset has its own SHA-256,
+The additive rc2 literature-certificate fileset had its own SHA-256,
 `6e4b3e86107bc68911778830c50e66139c6c6d56b037d8143a235d2a8cbd2996`;
-it is not part of either frozen Lean fileset.
-The v0.48.0 release uses the v09 manuscript byte streams and SHA-256
-fingerprints recorded above; these replace the v08 PDF files carried by
-v0.47.0 without changing the frozen Lean core or Comparator filesets.
+it was not part of either frozen Lean fileset. Version v0.48.1 replaces the two
+manuscript PDFs and changes both the Lean core and main Comparator interface to
+incorporate the internal conductor proof. Its regenerated digests and audit
+counts are authoritative only after the source set is stabilized. None of the
+v0.48.0 frozen hashes can qualify this new core.
 
 Project version `0.47.0` closed the root-module gap in the indivisible
 manuscript--sources--audit triplet. `PaperC.lean`, the library target built by
 Lake, now participates in source discovery, the digest, declaration and bridge
-inventory, and the generated kernel audit. Both certified PDFs are included
+inventory, and the generated kernel audit. Both hashed PDFs are included
 in the repository and are hashed from their actual bytes before any build.
-The mathematical Lean content is unchanged from v045, which added the exact
+Before the present conductor closure, the mathematical Lean content had been
+unchanged from v045, which added the exact
 exponential wrapper for Corollary 11.3, source-law wrappers for Theorems 1.1
 and 16.2, the recentered global Poisson endpoint, the uniform masked rate,
-and the finite-prefix law. The Halter--Koch bridge records the exact theorem
-and page chain and a compiled `Fin 3 → Fin 4` derivation; the seven-open-bridge
-boundary is unchanged. The project carries v044 forward, whose
+and the finite-prefix law. The v0.48.1 candidate now adds a direct construction
+of the quadratic field, order embedding, ideal data, and residue colouring
+modulo (2). The registered Halter--Koch bridge is therefore discharged, and
+the global open-external boundary falls from seven interfaces to six. The
+project otherwise carries v044 forward, whose
 only project-wide change before that was the Lean/mathlib migration from
 `v4.19.0` to `v4.32.2`. It retains
 the closure of the internal §14 chain, the v041 legacy cleanup, and the
@@ -246,8 +292,8 @@ standalone canonical endpoint for Theorem 1.4, connected directly to the
 quantitative mother mass. The dyadic Riemann sums, spatially and markedly
 thinned parameters, marked dependency graph, its two Chen–Stein terms, exact
 cylinder--source-law transfers, and detruncation have all been assembled.
-Under the four explicit literature inputs Arratia--Goldstein--Gordon,
-Evertse--Silverman, Halter--Koch, and Nicolas--Robin, Lean proves the limits of
+Under the three explicit literature inputs Arratia--Goldstein--Gordon,
+Evertse--Silverman, and Nicolas--Robin, Lean proves the limits of
 the Laplace functionals
 \[
  \mathbb E e^{-\int g\,d\Xi_{N,L}}
@@ -286,31 +332,32 @@ constant tests \(s\log p_e\). `PoissonVectorMass` performs the same computation
 for the product--Poisson target, and `DirichletAtomConvergence` turns
 convergence of all these transforms into convergence of each atom. Thus the
 theorem `corollary_fourteen_eight_counts` closes the count vector under the
-four canonical literature inputs alone, with no retained-law premise and no
+three canonical literature inputs alone, with no retained-law premise and no
 new bridge.
 
 Lean milestone `0.38.0` discharged the internal generalized-Pell interface of
 Lemma 9.2. The new `PaperC.Diophantine.GeneralizedPell` module formalizes the
 translation into principal ideals, the quotient of two generators in the same
 fiber as a Pell unit, exponential unit growth, logarithmic control by height,
-finite orbit counting, and reduction to the squarefree kernel. It derives
-`GeneralizedPellPolynomialBoxStatement` from two narrow classical corollaries
-that are audited explicitly: conductor comparison between
-\(\mathbb Z[\sqrt D]\) and the maximal order (Halter–Koch), and the divisor
-envelope (Nicolas–Robin). The factor \(\tau(|M|)^2\) is not assumed:
+finite orbit counting, and reduction to the squarefree kernel. The factor
+\(\tau(|M|)^2\) is not assumed:
 `QuadraticIdealDivisors` proves it in Lean by unique factorization of ideals
 and quadratic decomposition theory. The former bridge
 `PCv07c-L9.2-generalized-Pell` now has `status: discharged`.
 
-The remaining Halter--Koch boundary cites Theorem
-1.1.6(1)(b), pp. 4–5; Definition 5.1.6 and Theorem 5.1.7(1),(3),
-pp. 118–119; Theorem 5.2.3(1),(2), p. 125; and Theorem 5.2.5(1),
-pp. 126–127. The project-level premise is intended to package the relevant
-conductor and unit-coset comparison. `HalterKochConductorDescent` proves only
-the subsequent packaging and explicit padding from `Fin 3` into the
-historical `Fin 4` once the essential conductor-descent data is already
-supplied. The source-to-record construction has not been independently
-established; see `literature_certificates/HK13-QO-conductor-fibres.md`.
+The historical Halter--Koch boundary remains registered for provenance, but
+its compatibility proposition is now discharged without using the cited book.
+`HalterKochConductorDescent` constructs
+\(K=\mathbb Q(\sqrt D)\), embeds \(\mathbb Z[\sqrt D]\) into \(O_K\), and
+assigns the extended principal ideal on solutions, with a total harmless
+default off the equation. Concrete trace and norm calculations prove
+\(2O_K\subseteq\mathbb Z[\sqrt D]\). Since \(O_K/2O_K\) has four elements,
+the residue of a relative unit supplies the historical `Fin 4` colour. Equal
+residues make the quotient unit congruent to one modulo (2); lifting both it
+and its inverse produces a unit of \(\mathbb Z[\sqrt D]\), which descends the
+principal-ideal equality. The earlier source-shaped `Fin 3 → Fin 4` adapter is
+retained for compatibility but is not used by this proof. Consequently
+`HK13-QO-conductor-fibres` has `kind: external` and `status: discharged`.
 
 Version 0.39 narrows the bibliographic boundary further:
 `PaperC.Diophantine.PellDivisorEnvelope` starts from Nicolas--Robin's direct
@@ -339,17 +386,19 @@ In particular it gives
   R_2(N,L)=O_C\!\left(
     \frac{N^2}{(\log\log N)^2}\right)
 \]
-under Evertse--Silverman and the two preceding external inputs.
+under Evertse--Silverman and Nicolas--Robin.
 
 The canonical entries
 `corollary_thirteen_ten_uniformBigO_canonical` and
 `theorem_one_one_uniformBigO_canonical` have the exact bridge list AGG,
-Evertse--Silverman, Halter–Koch conductor comparison, and Nicolas–Robin, all
-of kind `external`. Thus no `internal/open` bridge propagates to canonical
-Theorem 1.1: this is the "unconditional modulo the literature" milestone.
+Evertse--Silverman, and Nicolas--Robin, all of kind `external/open`. The
+Halter--Koch compatibility bridge is `external/discharged` and no longer a
+theorem argument. Thus no `internal/open` bridge propagates to canonical
+Theorem 1.1.
 Version 041 removes the old signatures taking Pell or its specialized
 envelope directly, along with the four interfaces C11.3, P9.9, P9.11, and
-T10.1 and their public consumers. The canonical signatures remain unchanged.
+T10.1 and their public consumers. The v0.48.1 candidate further removes the
+now-discharged conductor argument from the canonical signatures.
 
 This version also retains the bridge-free closure of Lemmas 17.14–17.16 and
 the \(\alpha=3/16\) instance of 17.17, as well as the canonical terminal
@@ -359,7 +408,7 @@ population
     \lfloor K\sqrt B/\log B\rfloor\}
 \]
 It now closes the three deep sectors of Proposition 16.1 under only the
-already registered external inputs: Evertse--Silverman, Halter–Koch, and
+already registered open external inputs: Evertse--Silverman and
 Nicolas–Robin.
 
 The arithmetic equivalence of Lemma 9.10 is now proved in its exact source
@@ -486,10 +535,10 @@ Generic public Theorem 16.2 retains the three sector interfaces for an
 arbitrary terminal classifier. Its principal canonical variant no longer
 takes a threshold \(K\), a terminal family, or a Section 17 estimate. Its only
 unformalized premises are PNT, Laishram--Shorey,
-Balasubramanian--Shorey, AGG, and Evertse--Silverman (`external`), together
-with the two external inputs discharging Pell (Halter–Koch and
-Nicolas–Robin). It adds neither probabilistic assembly debt nor any open
-internal bridge. The §14 PPP convergences are now certified by their Laplace
+Balasubramanian--Shorey, AGG, Evertse--Silverman, and Nicolas--Robin, all
+`external/open`. The conductor comparison used inside Pell is constructed in
+Lean. It adds neither probabilistic assembly debt nor any open internal bridge.
+The §14 PPP convergences are now certified by their Laplace
 functionals and, for marks, by uniform tightness. Publication metrics are
 reproduced in
 [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
@@ -507,14 +556,14 @@ Starting with version 0.19, every published archive has a single
 `paper_c_lean/` root. Project files sit immediately beneath that root. This
 contract is stable for subsequent versions: neither a flat archive nor a
 double `paper_c_lean/paper_c_lean/` nesting. The archive for this release is
-`paper_c_lean_v048.zip`. It includes both certified PDFs at the project root,
+`paper_c_lean_v0481.zip`. It includes both hashed PDFs at the project root,
 so every fingerprint check is executable offline from a fresh extraction.
 Validate the generated metadata in the extracted archive with the generator's
 read-only check, not with `git diff`:
 
 ```bash
 zip_check_dir="$(mktemp -d)"
-unzip -q paper_c_lean_v048.zip -d "$zip_check_dir"
+unzip -q paper_c_lean_v0481.zip -d "$zip_check_dir"
 (cd "$zip_check_dir/paper_c_lean" && \
   node scripts/check_comparator_sources.mjs && \
   node scripts/generate_audit.mjs --check)
@@ -753,7 +802,8 @@ test is neither available nor required for this extraction check.
   \(K_0\in\mathbb R_{>0}\). `GeneralizedPell`,
   `QuadraticIdealDivisors`, and `PellDivisorEnvelope` discharge the internal
   bridge: ideals, unit orbits, heights, and the divisor envelope are rebuilt
-  in Lean from the external Halter--Koch and Nicolas--Robin inputs alone. Lean
+  in Lean from the Nicolas--Robin input and the internal modulo-two conductor
+  construction. Lean
   also proves the injection \((z,w)\mapsto(Az,w)\), the identity with
   \(X^2-ACw^2=Ae\), nonsquareness of \(AC\), all height bounds, and exact
   cardinality transfer. Lean passes to \(J=\lceil K_0\rceil\), then chooses
@@ -872,8 +922,7 @@ test is neither available nor required for this extraction check.
   this core directly to the quantitative mother mass and simultaneously
   concludes the first-moment rate, the little-oh for the second factorial
   moment, \(R_2(N,L)=o_C(N^2)\), and the little-oh for the variance. Its only
-  external hypotheses are Evertse--Silverman, Halter--Koch, and
-  Nicolas--Robin.
+  external hypotheses are Evertse--Silverman and Nicolas--Robin.
 - `PaperC.Analysis.TerminalPrimeCutoff`,
   `PrimeReciprocalSqrtSum`, `PaperC.Probability.BadStartCount`, and
   `TerminalBadStartBound`, followed by `BadStartMass`, formalize the cores of
@@ -989,7 +1038,7 @@ test is neither available nor required for this extraction check.
       =O((\log\log N)^{-2})
   \]
   uniformly in \(\lvert L-\log_2N\rvert\le C\). The canonical entry depends
-  only on AGG, Evertse--Silverman, Halter--Koch, and Nicolas--Robin. The former
+  only on AGG, Evertse--Silverman, and Nicolas--Robin. The former
   sector inputs and direct Pell inputs are removed. The finer intermediate
   formula of 13.6 is not claimed: the coarser harmonic bound suffices for the
   final rate.
@@ -1013,8 +1062,8 @@ test is neither available nor required for this extraction check.
     d_{\rm TV}\!\left(\mathcal L(Z_{N,L}(A_N)),
       \operatorname{Pois}(|A_N|2^{-L})\right)=o_C(1).
   \]
-  The canonical endpoint takes exactly AGG, Evertse--Silverman,
-  Halter--Koch, and Nicolas--Robin. The former internal interfaces of
+  The canonical endpoint takes exactly AGG, Evertse--Silverman, and
+  Nicolas--Robin. The former internal interfaces of
   Proposition 11.2 and their public wrappers are removed in v041; the
   canonical signature is unchanged.
 - `PaperC.Asymptotics.MaskedPoissonRate` closes Remark 14.3 at its printed
@@ -1119,7 +1168,7 @@ test is neither available nor required for this extraction check.
   the source law are exactly the marked functionals at tests \(s\log p_e\),
   those of the target are the product of the Poisson transforms, and Dirichlet
   inversion yields convergence of each vector atom. The canonical endpoint
-  takes only AGG, Evertse--Silverman, Halter--Koch, and Nicolas--Robin.
+  takes only AGG, Evertse--Silverman, and Nicolas--Robin.
 - `PaperC.Asymptotics.SectionFourteenClosure` supplies the two public
   endpoints `theorem_one_two_ii_laplace` and
   `theorem_one_two_iii_laplace_and_tightness`. The latter quantifies over a
@@ -1333,7 +1382,7 @@ test is neither available nor required for this extraction check.
   v041. The canonical API constructs the three deep sectors: it no longer
   exposes \(K\), a terminal family, or any Section 17 hypothesis. Only AGG,
   PNT, Laishram--Shorey, Balasubramanian--Shorey, Evertse--Silverman,
-  Halter--Koch, and Nicolas--Robin remain visible. The arithmetic interface of
+  and Nicolas--Robin remain visible. The arithmetic interface of
   9.10 and the aggregate fixed-ratio interface have disappeared from this
   canonical route.
 - `PaperC.LinearAlgebra.PrivatePivots` and
@@ -1539,16 +1588,14 @@ outside the covered zone.
 ## Building
 
 The project pins Lean `v4.32.2` and mathlib `v4.32.2`. The `lean-toolchain`
-file, `lakefile.toml`, and the Lake manifest lock this toolchain for v0.48.0.
-The repository contains 381 modules under `PaperC/` plus the root module
-`PaperC.lean`: 382 audited Lean source files and 146,391 lines. The generated
-manifest records 4,065 theorems and five lemmas, hence 4,070 public
-declarations and 4,072 audit targets: 3,912 declarations have no registered
-bridge premise and 158 are conditional. Relative to the content-frozen v044,
-v045 added eight modules and 94 public declarations; v046--v048 remove no
-public name and change no earlier core signature. The earlier 521-line
-increase from v042 to v043 consisted exclusively of proof-body adaptations to
-Lean 4.32.2.
+file, `lakefile.toml`, and the Lake manifest lock this toolchain for v0.48.1;
+the pins are unchanged from v0.48.0.
+The v0.48.1 conductor construction changes the audited Lean source digest,
+public declaration inventory, conditionality map, and main Comparator
+signature. Exact counts and hashes must therefore be taken from the regenerated
+`audit_manifest.json`, `AXIOM_AUDIT.md`, and release binding after the source
+commit is frozen; the v0.48.0 totals are historical and must not be reused to
+qualify this candidate.
 
 The exact source pins used by the v0.48.0 compatibility work are:
 
@@ -1612,8 +1659,10 @@ either file is absent or differs from `audit_config.json`. The source-digest
 check covers the exact native-filesystem set recorded as
 `core_source_fileset: ["PaperC.lean", "PaperC/**/*.lean"]`, independently of
 the Comparator fileset. The literature-certificate check independently binds
-the four source-audit reports, their bridge mapping, and their aggregate
-digest. The hygiene scan, `check_comparator_sources.mjs`, and isolated root
+the three active source certificates and the historical Halter--Koch closure
+note, distinguishes open obligations from that discharged boundary, and
+records the aggregate digest of all four documentary files. The hygiene scan,
+`check_comparator_sources.mjs`, and isolated root
 guards then establish the core token policy, the
 Challenge/Solution structural boundary, and that changing `PaperC.lean`
 invalidates the digest
@@ -1630,10 +1679,11 @@ or lemma and for the two historical public proof-carrying constructions.
 manifest target, and rejects anything outside the foundational allowlist. The
 final `--check` hashes both PDFs again and verifies that `AuditCheck.lean`,
 `audit_manifest.json`, `formalization.yaml`, and the generated registry in
-`AXIOM_AUDIT.md` are exactly current.  Schema-2 `audit_config.json` is the sole
+`AXIOM_AUDIT.md` are exactly current.  Schema-5 `audit_config.json` is the sole
 input for the editorial item map; generation checks names, declaring files,
-bridge identifiers, conditionality, and the theorem names listed by each
-Comparator configuration. The public workflow implementing this sequence is
+bridge identifiers, conditionality, the theorem names listed by each
+Comparator configuration, and the immutable source-snapshot/packaging-evidence
+boundary. The public workflow implementing this sequence is
 `.github/workflows/reproducibility.yml`; it archives `AuditCheck.log` as a CI
 artifact. The generator's source enumeration is independent of `rg`; the
 workflow nevertheless installs `ripgrep` explicitly before the separate
@@ -1843,8 +1893,12 @@ sequences.  Failures preserve the diagnostic directory and never create a
 `scripts/assemble_comparator_evidence.mjs` validation does the runner create:
 
 - an evidence directory ending in the certified commit and UTC timestamp;
-- a sibling `.tar.zst` upload bundle;
-- a sibling `.tar.zst.sha256` checksum file.
+- a sibling private raw `.tar.zst` bundle that **must not be uploaded**;
+- a sibling checksum for that private raw bundle.
+
+Publication requires the separate, omission-only derivation and independent
+verification described in `scripts/PUBLIC_COMPARATOR_ARCHIVE.md`. Only its
+`paper-c-hardened-public-<full-commit>.tar.zst` output is a publication asset.
 
 Preserved `*.partial` directories and temporary work trees are forensic
 diagnostics only: do not rename, promote, or reuse them.  Evidence production
@@ -1956,11 +2010,12 @@ LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
 
 The automated runner always executes the main finite-cylinder and independent
 infinite-to-finite transfer configurations. Do not infer transfer coverage
-from the main result alone. A hardened reference run succeeded for both
-byte-identical Comparator configurations at Paper C commit `27c91f8bdd5c...`.
-The final v0.48.0 metadata layer does not change those configurations. The
-runner remains the reproduction procedure; rerunning it is required before a
-later change to the Comparator fileset can be claimed as certified.
+from the main result alone. A hardened reference run succeeded for the
+v0.48.0 configurations at Paper C commit `27c91f8bdd5c...`. The v0.48.1
+snapshot changes the main configuration to three premises, so that historical
+run is not evidence for it. The runner remains the reproduction procedure;
+the result for v0.48.1 is read only from a validated packaging layer bound to
+the exact source snapshot, never from a temporal claim in source metadata.
 
 The axiom audit does not detect ordinary hypotheses. Their inventory is the
 bridge registry in `audit_manifest.json` and `AXIOM_AUDIT.md`: each entry has
@@ -1982,8 +2037,9 @@ parser did not inventory.
 ## What still blocks complete certification
 
 External results are isolated from internal debt. Eight external interfaces
-are now registered: seven remain open, and the former specialized
-Nicolas--Robin envelope is retained as a discharged compatibility interface.
+are registered: six remain open. The historical Halter--Koch interface and the
+former specialized Nicolas--Robin envelope are retained as discharged
+compatibility interfaces.
 
 - Evertse–Silverman (Lemma 9.1), whose exact conditional interface is
   formalized;
@@ -1993,21 +2049,22 @@ Nicolas--Robin envelope is retained as a discharged compatibility interface.
   Lemma 15.1;
 - Corollary 1 of Laishram–Shorey, used in Lemma 15.2;
 - Theorem 1 of Balasubramanian–Shorey, used in Lemma 15.4;
-- the cited order/unit comparison of Halter--Koch, used to colour a norm
-  fibre by at most three unit cosets; Lean embeds those three values in the
-  historical `Fin 4` API and combines them with its proved
-  \(\tau(|M|)^2\) ideal-divisor bound;
 - the Nicolas–Robin theorem on the divisor function, in the direct logarithmic
   form used by `PellDivisorEnvelope`;
-- the former eventual specialization to polynomially bounded parameters in
-  9.2, now `discharged` by this module.
+
+The two discharged external compatibility interfaces are:
+
+- `HK13-QO-conductor-fibres`, now proved internally by the quadratic-field,
+  modulo-two residue construction;
+- the former Nicolas--Robin eventual specialization to polynomially bounded
+  parameters in 9.2, discharged by `PellDivisorEnvelope`.
 
 The five `internal` interfaces correspond to Pell, 9.10, 17.26, 17.28, and
 17.30; all are `discharged` and retained for traceability. The former P9.9,
 P9.11, T10.1, and C11.3 interfaces were removed with their generic public
 endpoints. Thus no `internal/open` bridge remains. The phrase "unconditional
 modulo the literature" describes the boundary of the canonical endpoints
-exactly: it consists solely of the seven external results that remain open.
+exactly: it consists solely of the six external results that remain open.
 
 Lemma 17.26 now assembles its signed-divisor and Evertse--Silverman sums;
 Lemma 17.28 assembles the mobile-host and two-singleton counts and chooses
@@ -2039,7 +2096,8 @@ then proves \(Q_{\rm res}\le N^{19/8+o_C(1)}\) and
 7.3--7.5 and the remaining deep core is also certified. Outstanding work
 notably includes generalizing the literal \(\alpha=3/16\) instance of Theorem
 8.1 to an arbitrary positive parameter. The internal Pell proof is discharged;
-only its two Halter--Koch and Nicolas--Robin literature inputs remain explicit.
+only the Nicolas--Robin literature input remains explicit, while the conductor
+comparison is proved in Lean.
 The former arbitrary public routes through 9.9–11.3 and §12 were removed in
 v041; their finite cores remain in the modules, while the canonical mother
 mass is supplied by the \(κ\)-proofs. Lemmas 13.3–13.5, the terms in Lemma
@@ -2050,8 +2108,8 @@ route. Corollary 13.10 assembles the edge term at the terminal cutoff, the
 quantitative Chen–Stein terms, and the total variation triangle to give the
 uniform rate \(O((\log\log N)^{-2})\). This conclusion is the conditional
 quantitative form of Theorem 1.1 in the finite cylinder. Its canonical entry
-uses AGG, Evertse--Silverman, Halter--Koch, and the Nicolas--Robin logarithmic
-inequality. The \(o_C(N^2)\) in 13.6 is certified at the literal cutoff.
+uses AGG, Evertse--Silverman, and the Nicolas--Robin logarithmic inequality.
+The \(o_C(N^2)\) in 13.6 is certified at the literal cutoff.
 Proposition 14.1 is closed in the manuscript's log-log window, and canonical
 Proposition 14.2 now uses AGG and the quantitative \(κ\) mother mass, with no
 internal bridge. The Laplace identities, their Riemann limits, the marked

@@ -866,9 +866,9 @@ theorem corollary_thirteen_ten_uniformBigO_of_homogeneousMass
       hC hconditional
 
 /--
-Canonical Corollary 13.10 with the generalized-Pell package discharged from
-the quadratic-order comparison and the source-shaped Nicolas--Robin
-logarithmic divisor inequality.
+Canonical Corollary 13.10 with the generalized-Pell package discharged by the
+internal quadratic-order conductor descent and the source-shaped
+Nicolas--Robin logarithmic divisor inequality.
 -/
 theorem corollary_thirteen_ten_uniformBigO_canonical
     {C : ℝ} (hC : 0 ≤ C)
@@ -876,8 +876,6 @@ theorem corollary_thirteen_ten_uniformBigO_canonical
       ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformBigOOn
@@ -887,7 +885,7 @@ theorem corollary_thirteen_ten_uniformBigO_canonical
   corollary_thirteen_ten_uniformBigO_of_homogeneousMass
     hC hAGG 3
       (DyadicKappaQuantitative.homogeneousMass_uniformBigO
-        hC hES hConductor hDivisor)
+        hC hES hDivisor)
 
 /--
 Canonical theorem-level form of Theorem 1.1 with only source-shaped external
@@ -899,8 +897,6 @@ theorem theorem_one_one_uniformBigO_canonical
       ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformBigOOn
@@ -908,7 +904,7 @@ theorem theorem_one_one_uniformBigO_canonical
       SectionThirteenCritical.fullDyadicTargetPoissonTotalVariation
       inverseLogLogSquaredRate :=
   corollary_thirteen_ten_uniformBigO_canonical
-    hC hAGG hES hConductor hDivisor
+    hC hAGG hES hDivisor
 
 /--
 Theorem 1.1 stated directly for the dyadic start-count random variable on the
@@ -922,8 +918,6 @@ theorem theorem_one_one_infinite_model
       ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
     (hES :
       EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
-    (hConductor :
-      PellInput.QuadraticOrderConductorFiberBoundStatement)
     (hDivisor :
       PellInput.NicolasRobinDivisorLogBoundStatement) :
     UniformBigOOn
@@ -935,7 +929,7 @@ theorem theorem_one_one_infinite_model
       inverseLogLogSquaredRate := by
   have hfinite :=
     theorem_one_one_uniformBigO_canonical
-      hC hAGG hES hConductor hDivisor
+      hC hAGG hES hDivisor
   change
     UniformBigOOn
       (CriticalRunWindow.InRunLengthWindow C)

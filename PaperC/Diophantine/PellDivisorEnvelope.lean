@@ -1,4 +1,4 @@
-import PaperC.Diophantine.GeneralizedPell
+import PaperC.Diophantine.HalterKochConductorDescent
 import Mathlib.Analysis.SpecialFunctions.Log.Base
 import Mathlib.Analysis.SpecialFunctions.Log.Monotone
 import Mathlib.Analysis.Complex.ExponentialBounds
@@ -589,6 +589,16 @@ theorem generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
   generalizedPellPolynomialBox_of_quadraticOrder_nicolasRobin
     hConductor
     (nicolasRobinPellEnvelope_of_divisorLogBound hNR)
+
+/--
+Lemma 9.2 from the source-shaped Nicolas--Robin inequality, with the
+quadratic-order comparison supplied by its internal modulo-two construction.
+-/
+theorem generalizedPellPolynomialBox_of_divisorLogBound
+    (hNR : NicolasRobinDivisorLogBoundStatement) :
+    GeneralizedPellPolynomialBoxStatement :=
+  generalizedPellPolynomialBox_of_quadraticOrder_divisorLogBound
+    quadraticOrderConductorFiberBound hNR
 
 end
 
