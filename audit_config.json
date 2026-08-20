@@ -16,7 +16,7 @@
       "PaperC/**/*.lean"
     ],
     "file_count": 382,
-    "digest_sha256": "cb23714a797f2c11e856a1f9bf1ce8569c4a5a2cb67b3fcc0b45d9ded3b18a26"
+    "digest_sha256": "3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137"
   },
   "target_pdf": {
     "filename": "paper_C_complete_v09_en.pdf",

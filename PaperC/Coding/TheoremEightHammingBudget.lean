@@ -495,13 +495,11 @@ theorem componentHammingRadius_conditions_of_loglog
   componentHammingRadius_conditions hloglog
     (log_linear_le_of_loglog hloglog) hm
 
-/--
-Uniform eventual Hamming budget in the manuscript run-length window.
-
-Here the prime cutoff is `B = L + 1`.  The threshold is independent of the
-admissible run length `L` and of the component count `m`.
--/
-theorem componentHammingRadius_conditions_runLengthWindow_eventually
+-- Keep the threshold symbolic here: external kernels can otherwise try to
+-- normalize the astronomically large closed double-exponential threshold.
+private opaque
+    componentHammingRadius_conditions_runLengthWindow_eventually_of_threshold
+    (T : ℕ) (hT : 16384 ≤ T)
     {C : ℝ} (hC : 0 ≤ C) :
     ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ L,
       CriticalRunWindow.InRunLengthWindow C N L →
@@ -513,7 +511,7 @@ theorem componentHammingRadius_conditions_runLengthWindow_eventually
               2 ^ ((PrimesUpTo.count (L + 1) + 2) /
                 componentHammingRadius (L + 1) + 1) ≤
             m := by
-  let K : ℕ := 2 ^ (2 ^ 16384)
+  let K : ℕ := 2 ^ (2 ^ T)
   obtain ⟨Nwindow, hNwindow⟩ :=
     CriticalRunWindow.firstMomentWindow_eventually hC
   obtain ⟨Nadm, hNadm⟩ :=
@@ -544,13 +542,36 @@ theorem componentHammingRadius_conditions_runLengthWindow_eventually
   have hheight : K ≤ L + 1 :=
     hNheight N hNheightN (L + 1) hadmissible
   have hfirstLog :
-      2 ^ 16384 ≤ Nat.log 2 (L + 1) := by
+      2 ^ T ≤ Nat.log 2 (L + 1) := by
     apply Nat.le_log_of_pow_le Nat.one_lt_two
     simpa only [K] using hheight
-  have hloglog :
-      16384 ≤ Nat.log 2 (Nat.log 2 (L + 1)) := by
+  have hthresholdLog :
+      T ≤ Nat.log 2 (Nat.log 2 (L + 1)) := by
     exact Nat.le_log_of_pow_le Nat.one_lt_two hfirstLog
-  exact componentHammingRadius_conditions_of_loglog hloglog hm
+  exact
+    componentHammingRadius_conditions_of_loglog
+      (hT.trans hthresholdLog) hm
+
+/--
+Uniform eventual Hamming budget in the manuscript run-length window.
+
+Here the prime cutoff is `B = L + 1`.  The threshold is independent of the
+admissible run length `L` and of the component count `m`.
+-/
+theorem componentHammingRadius_conditions_runLengthWindow_eventually
+    {C : ℝ} (hC : 0 ≤ C) :
+    ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ L,
+      CriticalRunWindow.InRunLengthWindow C N L →
+      ∀ m, (L + 1) / 16 ≤ m →
+        1 ≤ componentHammingRadius (L + 1) ∧
+          2 * componentHammingRadius (L + 1) ≤ m ∧
+          PrimesUpTo.count (L + 1) + 2 ≤ m ∧
+          2 * componentHammingRadius (L + 1) *
+              2 ^ ((PrimesUpTo.count (L + 1) + 2) /
+                componentHammingRadius (L + 1) + 1) ≤
+            m :=
+  componentHammingRadius_conditions_runLengthWindow_eventually_of_threshold
+    16384 le_rfl hC
 
 /--
 Direct instantiation of the two-parity Hamming theorem with

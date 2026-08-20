@@ -133,8 +133,8 @@
     "PaperC.lean",
     "PaperC/**/*.lean"
   ],
-  "core_source_digest_sha256": "cb23714a797f2c11e856a1f9bf1ce8569c4a5a2cb67b3fcc0b45d9ded3b18a26",
-  "source_digest_sha256": "cb23714a797f2c11e856a1f9bf1ce8569c4a5a2cb67b3fcc0b45d9ded3b18a26",
+  "core_source_digest_sha256": "3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137",
+  "source_digest_sha256": "3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137",
   "comparator_fileset": [
     "Challenge.lean",
     "ChallengeTransfer.lean",
@@ -33830,7 +33830,7 @@
       "name": "PaperC.TheoremEightAlignedClosure.alignedHammingNumerics_eventually",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremEightAlignedClosure.lean",
-      "line": 182,
+      "line": 258,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -33846,7 +33846,7 @@
       "name": "PaperC.TheoremEightAlignedClosure.no_aligned_deep_core_eventually",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremEightAlignedClosure.lean",
-      "line": 260,
+      "line": 284,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -33886,7 +33886,7 @@
       "name": "PaperC.TheoremEightHammingBudget.componentHammingRadius_conditions_runLengthWindow_eventually",
       "kind": "theorem",
       "source": "PaperC/Coding/TheoremEightHammingBudget.lean",
-      "line": 504,
+      "line": 561,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -33894,7 +33894,7 @@
       "name": "PaperC.TheoremEightHammingBudget.exists_nonzero_kernel_word_of_component_density",
       "kind": "theorem",
       "source": "PaperC/Coding/TheoremEightHammingBudget.lean",
-      "line": 559,
+      "line": 580,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },

@@ -44,6 +44,16 @@ The submitted Comparator file preserves the historical release record with
 field and writes a protected copy with NanoDa enabled. The qualification replay
 mirrors that behavior without changing the certified historical configuration.
 
+The replay initially exposed eager normalization of a closed
+double-exponential threshold in NanoDa. Two internal proofs now keep that
+threshold symbolic in private opaque proof helpers and instantiate it only
+through their public wrappers. This proof-engineering change leaves every
+public declaration statement, the compared theorem, and the permitted axiom
+set unchanged. It changes the audited core-source digest, so the checked-in
+v0.48.1 Lean-only evidence remains historical evidence for its recorded
+commit; the dual-kernel Palomar qualification below is a separate replay of
+the candidate bytes.
+
 `palomar/verify-comparator.sh` uses the trusted-tool revisions pinned by
 `PalomarRegistry/PalomarSubmission` at commit
 `0a2c287a924d2a7cb22e2b12f12b27321bb485a3` (2026-08-20). It builds and runs
