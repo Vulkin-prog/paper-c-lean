@@ -174,12 +174,10 @@ theorem componentHammingRadius_cast_le_real_log
       (by positivity)
       hrealDenPos hden)
 
-/--
-Uniform package for the Hamming branch: the fixed radius has the correct
-real order and satisfies all four finite code inequalities as soon as the
-component family has cardinality at least `B/16`.
--/
-theorem alignedHammingNumerics_eventually
+-- Keep the threshold symbolic here: external kernels can otherwise try to
+-- normalize the astronomically large closed double-exponential threshold.
+private opaque alignedHammingNumerics_eventually_of_threshold
+    (T : ℕ) (hT : 16384 ≤ T)
     {C : ℝ} (hC : 0 ≤ C) :
     ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ L,
       CriticalRunWindow.InRunLengthWindow C N L →
@@ -195,7 +193,7 @@ theorem alignedHammingNumerics_eventually
         2 * componentHammingRadius (L + 1) *
             2 ^ ((PrimesUpTo.count (L + 1) + 2) /
               componentHammingRadius (L + 1) + 1) ≤ m := by
-  let K : ℕ := 2 ^ (2 ^ 16384)
+  let K : ℕ := 2 ^ (2 ^ T)
   obtain ⟨Nwindow, hNwindow⟩ :=
     CriticalRunWindow.firstMomentWindow_eventually hC
   obtain ⟨Nadm, hNadm⟩ :=
@@ -237,17 +235,43 @@ theorem alignedHammingNumerics_eventually
   have hB64 : 64 ≤ L + 1 :=
     hNheight64 N hNheight64N (L + 1) hadmissible
   have hfirstLog :
-      2 ^ 16384 ≤ Nat.log 2 (L + 1) := by
+      2 ^ T ≤ Nat.log 2 (L + 1) := by
     apply Nat.le_log_of_pow_le Nat.one_lt_two
     simpa only [K] using hheight
+  have hthresholdLog :
+      T ≤ Nat.log 2 (Nat.log 2 (L + 1)) :=
+    Nat.le_log_of_pow_le Nat.one_lt_two hfirstLog
   have hloglog :
       16384 ≤ Nat.log 2 (Nat.log 2 (L + 1)) :=
-    Nat.le_log_of_pow_le Nat.one_lt_two hfirstLog
+    hT.trans hthresholdLog
   refine
     ⟨hB64,
       componentHammingRadius_cast_le_real_log hloglog, ?_⟩
   intro m hm
   exact componentHammingRadius_conditions_of_loglog hloglog hm
+
+/--
+Uniform package for the Hamming branch: the fixed radius has the correct
+real order and satisfies all four finite code inequalities as soon as the
+component family has cardinality at least `B/16`.
+-/
+theorem alignedHammingNumerics_eventually
+    {C : ℝ} (hC : 0 ≤ C) :
+    ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ L,
+      CriticalRunWindow.InRunLengthWindow C N L →
+      64 ≤ L + 1 ∧
+      (componentHammingRadius (L + 1) : ℝ) ≤
+        65 * (L + 1 : ℕ) /
+          (Real.log (L + 1 : ℕ) *
+            Real.log (Real.log (L + 1 : ℕ))) ∧
+      ∀ m, (L + 1) / 16 ≤ m →
+        1 ≤ componentHammingRadius (L + 1) ∧
+        2 * componentHammingRadius (L + 1) ≤ m ∧
+        PrimesUpTo.count (L + 1) + 2 ≤ m ∧
+        2 * componentHammingRadius (L + 1) *
+            2 ^ ((PrimesUpTo.count (L + 1) + 2) /
+              componentHammingRadius (L + 1) + 1) ≤ m :=
+  alignedHammingNumerics_eventually_of_threshold 16384 le_rfl hC
 
 /--
 Eventual exclusion of the aligned part of the deep core appearing after the

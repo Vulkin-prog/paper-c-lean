@@ -2,6 +2,9 @@
 
 ## 0.48.1 (candidate; not released)
 
+- Kept the two double-exponential Hamming thresholds symbolic inside private
+  opaque proof helpers. This avoids eager normalization by NanoDa while
+  preserving every public theorem statement, hypothesis and axiom set.
 - Discharged `HK13-QO-conductor-fibres` entirely in Lean.  The new
   quadratic-order construction builds `K = ℚ(√D)`, the order embedding and
   ideal data, proves `2 O_K ⊆ ℤ[√D]`, and uses the four residues of
