@@ -23,7 +23,7 @@ française v08 synchronisée est enregistrée séparément sous `source_pdf_fr`.
 Les citations attachées aux ponts conservent leur provenance historique v07c,
 sans modifier les identifiants, natures ou statuts du registre.
 
-L'audit utilise Lean `v4.32.2` sur le point d'entrée `PaperC.Main`. La liste
+L'audit utilise Lean `v4.32.0` sur le point d'entrée `PaperC.Main`. La liste
 admise reste `[propext, Classical.choice, Quot.sound]`; toute apparition de
 `sorryAx`, `Lean.ofReduceBool` ou d'un postulat mathématique propre au papier
 invalide le jalon.

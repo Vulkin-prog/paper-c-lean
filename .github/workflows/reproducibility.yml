@@ -17,8 +17,8 @@ permissions:
   contents: read
 
 env:
-  LEAN_COMMIT: f3b06c705e6c85f5314019d5d3baab0fec5b580c
-  MATHLIB_COMMIT: 905b95818eb32af7874a58b427f50c1711a5e96c
+  LEAN_COMMIT: 8c9756b28d64dab099da31a4c09229a9e6a2ef35
+  MATHLIB_COMMIT: 81a5d257c8e410db227a6665ed08f64fea08e997
   COMPARATOR_COMMIT: 51491237b1d2f96cca203af9c34bced6fe38e0d8
   LEAN4EXPORT_COMMIT: af5aa64bb914c3c2c781f378088dbd38acf4f804
   LANDRUN_COMMIT: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
@@ -304,7 +304,7 @@ jobs:
           echo 'preexisting_project_olean_count=0'
           echo 'olean_count=0' >> "$GITHUB_OUTPUT"
 
-      - name: Set up the Paper C Lean 4.32.2 toolchain and Mathlib cache (attempt 1)
+      - name: Set up the Paper C Lean 4.32.0 toolchain and Mathlib cache (attempt 1)
         id: comparator_lean_setup_1
         continue-on-error: true
         # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
@@ -320,7 +320,7 @@ jobs:
           # created by the ordinary build could contain Solution.olean.
           use-github-cache: false
 
-      - name: Set up the Paper C Lean 4.32.2 toolchain and Mathlib cache (retry)
+      - name: Set up the Paper C Lean 4.32.0 toolchain and Mathlib cache (retry)
         if: steps.comparator_lean_setup_1.outcome == 'failure'
         # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
         uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
@@ -348,7 +348,7 @@ jobs:
 
           (
             cd tools/comparator
-            # Comparator has no official Lean 4.32.2 tag.  Build the pinned
+            # Comparator has no release matching this exact source stack. Build the pinned
             # source commit with Paper C's exact toolchain, which is the
             # compatibility combination tested for this release.
             elan run "$project_toolchain" lake build comparator

@@ -2,6 +2,15 @@
 
 ## 0.48.1 (candidate; not released)
 
+- Returned jointly to Lean and Mathlib `v4.32.0`. Mathlib commit
+  `81a5d257c8e410db227a6665ed08f64fea08e997` is in canonical `master` history,
+  as required by Palomar; its Mathlib source tree and all transitive dependency
+  revisions are identical to the previous `v4.32.2` pin. No mathematical Lean
+  source, Comparator statement, or scientific metadata changed.
+- Added a Palomar prequalification guard that reproduces the registry's
+  canonical-Mathlib ancestry check, and matched the dual-kernel replay to
+  lean4export `v4.32.0`. Existing release evidence remains historical evidence
+  for its recorded snapshot and must be rebound after this toolchain change.
 - Kept the two double-exponential Hamming thresholds symbolic inside private
   opaque proof helpers. This avoids eager normalization by NanoDa while
   preserving every public theorem statement, hypothesis and axiom set.

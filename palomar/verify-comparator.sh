@@ -13,7 +13,7 @@ protected_config="$cache_root/protected-comparator.json"
 # PalomarSubmission commit 0a2c287a924d2a7cb22e2b12f12b27321bb485a3,
 # workflow submission.yml, read on 2026-08-20.
 comparator_commit=575674928e239f5bc452aab72d1dd7b0f1326494
-lean4export_commit=86e4a339507466921dc8c5417c8cb1de1ce7df60
+lean4export_commit=4e7915201d3f9f04470d9eae002fa695f7cdc589
 landrun_commit=811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
 nanoda_commit=68d5ca9db226849b41a6fff59d796ff19d0a8840
 submission_commit=0a2c287a924d2a7cb22e2b12f12b27321bb485a3
@@ -24,6 +24,8 @@ for required_command in cargo git go lake python3; do
     exit 1
   fi
 done
+
+"$repository_root/palomar/check-mathlib-canonical-ancestry.sh"
 
 python3 - "$repository_root/comparator/theorem_one_one.json" "$protected_config" <<'PY'
 import json

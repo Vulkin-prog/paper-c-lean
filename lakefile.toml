@@ -20,4 +20,4 @@ name = "SolutionTransfer"
 [[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4.git"
-rev = "v4.32.2"
+rev = "v4.32.0"
