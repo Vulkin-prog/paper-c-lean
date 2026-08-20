@@ -1,0 +1,231 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# Metadata for the single Palomar entry selected by
+# comparator/theorem_one_one.json.
+version: "v0.4"
+
+project:
+  name: "Paper C: a critical Poisson law in a dyadic block"
+  description: >-
+    Lean 4 formalization of a quantitative Poisson approximation for the
+    starting points of long constant stretches of an extended Rademacher
+    random completely multiplicative function in a dyadic block. The compared
+    theorem uses a finite prime-sign cylinder and proves, uniformly in the
+    critical window |L - log_2 N| <= C, that the total-variation distance to
+    Pois(N/2^L) is O_C((log log N)^-2). It is conditional on three fully stated
+    ordinary propositions specialized from Arratia--Goldstein--Gordon,
+    Evertse--Silverman, and Nicolas--Robin; those propositions are theorem
+    arguments, not Lean axioms.
+  authors:
+    - "Brice Pouly"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Brice Pouly"
+
+# This repository contains the substantive development, so the optional
+# repository block is intentionally omitted.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.PR"
+  msc2020:
+    - "11K65"
+    - "60F05"
+
+sources:
+  - title: >-
+      A critical Poisson law in a dyadic block -- Starting points of long
+      constant stretches of an extended Rademacher random completely
+      multiplicative function
+    authors:
+      - "Brice Pouly"
+    id: "https://doi.org/10.33774/coe-2026-z3l74"
+    type: "paper"
+    location: >-
+      Theorem 1.1, printed/PDF p. 3; quantitative proof in Corollary 13.10,
+      printed/PDF p. 43 of paper_C_complete_v09_en.pdf, SHA-256
+      ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189
+    relationship: "adapts"
+    note: >-
+      The Palomar statement is the finite-cylinder, explicitly conditional
+      audit form of the paper's infinite-product theorem. The exact
+      finite-cylinder/infinite-product law identity is proved separately in
+      the repository but is not selected as a second Palomar entry here. The
+      Challenge.lean and Solution.lean module documentation retains its
+      historical v08 source anchor, SHA-256
+      2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927,
+      recoverable at repository commit
+      b31c17c606710d2692bb16f05267154dcc7f4e3a. The current v09 manuscript
+      cited above preserves the paper's Theorem 1.1 statement; Corollary
+      13.10 appears on p. 43 rather than p. 41.
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "Two moments suffice for Poisson approximations: the Chen--Stein method"
+    authors:
+      - "Richard Arratia"
+      - "Larry Goldstein"
+      - "Louis Gordon"
+    id: "https://doi.org/10.1214/aop/1176991491"
+    type: "paper"
+    location: "Theorem 1 and definitions of b1, b2, and b3, printed pp. 10--11"
+    relationship: "background"
+    note: >-
+      The finite dependency-graph specialization with exact outside-vector
+      independence and b3 = 0 is exposed as the ordinary theorem hypothesis
+      hAGG. The source-to-hypothesis implication is documented by the
+      AGG89-T1-finite-dependency-b3-zero agent-reviewed certificate; it is not
+      proved in Lean or independently human-certified.
+  - title: "Uniform bounds for the number of solutions to Y^n = f(X)"
+    authors:
+      - "J.-H. Evertse"
+      - "J. H. Silverman"
+    id: "https://doi.org/10.1017/S0305004100066068"
+    type: "paper"
+    location: "Theorem 1(b), printed p. 238"
+    relationship: "background"
+    note: >-
+      The split-polynomial specialization K = L = Q with exponent two and an
+      abscissa count is exposed as the ordinary theorem hypothesis hES. The
+      specialization is documented by the ES86-T1b-Q-split-n2 agent-reviewed
+      certificate; it is not proved in Lean or independently human-certified.
+  - title: "Majorations explicites pour le nombre de diviseurs de N"
+    authors:
+      - "J.-L. Nicolas"
+      - "G. Robin"
+    id: "https://doi.org/10.4153/CMB-1983-078-5"
+    type: "paper"
+    location: "Definition of f and Theorem 1, printed p. 485"
+    relationship: "background"
+    note: >-
+      The direct logarithmic divisor inequality above n = 64, with the safe
+      coefficient 2 log 2, is exposed as the ordinary theorem hypothesis
+      hDivisor. The specialization is documented by the
+      NR83-T1-divisor-log-bound agent-reviewed certificate; it is not proved in
+      Lean or independently human-certified.
+
+related_formalizations: []
+
+status:
+  scope: >-
+    This Palomar candidate selects only
+    paper_c_theorem_one_one_finite_cylinder through
+    comparator/theorem_one_one.json. The proved Solution declaration contains
+    no sorry. Challenge.lean contains the single deliberate Comparator
+    placeholder for that declaration. The repository contains a broader
+    formalization and a separate exact infinite-product/finite-cylinder
+    transfer target, but those declarations are outside this entry. The
+    compared theorem remains conditional on hAGG, hES, and hDivisor; it does
+    not prove those three literature propositions.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "paper_c_theorem_one_one_finite_cylinder"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator/theorem_one_one.json"
+      literature_dependencies:
+        - statement: >-
+            Finite Arratia--Goldstein--Gordon dependency-graph Poisson bound
+            with exact outside-vector independence and b3 = 0.
+          source: "https://doi.org/10.1214/aop/1176991491"
+        - statement: >-
+            Evertse--Silverman split-Q exponent-two abscissa bound.
+          source: "https://doi.org/10.1017/S0305004100066068"
+        - statement: >-
+            Nicolas--Robin logarithmic divisor bound above n = 64.
+          source: "https://doi.org/10.4153/CMB-1983-078-5"
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "n/a"
+      tool_setup: >-
+        Brice Pouly directed the research, selected the mathematical and
+        release requirements, evaluated agent outputs, and curated the public
+        statement and evidence boundaries.
+      prompting_notes: "n/a"
+    - method: "agent"
+      models:
+        - "Claude Fable 5"
+        - "Claude Opus 4.8"
+        - "GPT 5.6 Sol (gpt-5.6-sol)"
+      framework: "Anthropic Claude and ChatGPT Work Mode / Codex"
+      tool_setup: >-
+        AI-assisted lemma exploration, drafting, Lean development,
+        reconnaissance programs, iterative local Lake builds, generated
+        declaration and bridge audits, and adversarial counter-audits by
+        distinct agent instances and models from multiple providers.
+      prompting_notes: >-
+        Work was divided into bounded mathematical, Lean, audit, and release
+        tasks, followed by explicit counter-review and mechanically checked
+        reconciliation passes.
+  spend_usd: "subscription-based usage; not separately tracked"
+  notes: >-
+    The human maintainer set goals and acceptance criteria and decided what to
+    publish. Agents supplied substantial mathematical, formalization,
+    documentation, and audit assistance. This workflow is disclosed in the
+    manuscript and repository and is not represented as independent review.
+
+fidelity:
+  divergences: >-
+    The paper starts from an infinite product of independent prime signs; the
+    compared statement uses the finite uniform cylinder of primes at most
+    2N+L because the dyadic observable is cylindrical. A separate proved
+    target establishes the exact equality with the infinite law but is outside
+    this entry. Bits in ZMod 2 encode signs. The sign function and start event
+    are totalized on natural numbers, including unused small or out-of-cutoff
+    values; the eventual dyadic theorem never observes those values. Total
+    variation is the discrete half-l1 sum rather than the paper's equivalent
+    supremum-over-events convention. UniformBigOOn exposes constants and
+    quantifiers, with a threshold uniform in L and allowed to depend on C. The
+    Lean statement permits C = 0 whereas the paper states C > 0. Most
+    importantly, the paper states Theorem 1.1 without theorem-level premises,
+    while the compared Lean theorem is explicitly conditional on the three
+    source-shaped propositions hAGG, hES, and hDivisor. Their implications from
+    the cited literature have agent-reviewed documentary certificates but no
+    Lean proofs or independent external human certification.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Claude Fable 5 agent instances"
+    - "Claude Opus 4.8 agent instances"
+    - "OpenAI GPT 5.6 Sol agent instances"
+  notes: >-
+    Distinct agent instances and models performed repeated adversarial
+    mathematical, source, Lean, and release counter-reviews, alongside
+    exhaustive mechanical declaration and axiom audits. This is neither
+    independent scientific validation nor human peer review. No independent
+    external human mathematical peer review has been completed. The three
+    literature certificates assess source-to-proposition implications but do
+    not turn the hypotheses into kernel-verified theorems.
+
+alignment:
+  namespace: "PaperCAudit"
+  statements:
+    - source: >-
+        Paper C, Theorem 1.1, printed/PDF p. 3; quantitative proof in
+        Corollary 13.10, printed/PDF p. 43
+      lean: "paper_c_theorem_one_one_finite_cylinder"
+      module: "Solution"
+      status: "proved modulo three explicit ordinary literature premises"
+      note: >-
+        For every C >= 0, uniformly when |L - log N/log 2| <= C, the
+        finite-cylinder dyadic start-count law has total-variation distance
+        O_C((log log N)^-2) from the Poisson law of rate N/2^L. The exact
+        premises are hAGG, hES, and hDivisor; no other literature premise is
+        consumed by the compared endpoint.
+
+acknowledgements: >-
+  Built on Lean 4 and Mathlib. The exact source-facing bridge identifiers and
+  their documentary qualifications are recorded in audit_manifest.json and
+  literature_certificates/.

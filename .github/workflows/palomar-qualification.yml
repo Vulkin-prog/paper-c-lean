@@ -1,0 +1,108 @@
+name: Palomar qualification
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/palomar-qualification.yml"
+      - "palomar/**"
+      - "comparator/theorem_one_one.json"
+      - "Challenge.lean"
+      - "Solution.lean"
+      - "PaperC.lean"
+      - "PaperC/**"
+      - "lakefile.toml"
+      - "lake-manifest.json"
+      - "lean-toolchain"
+      - "LICENSE"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  metadata:
+    name: Validate Palomar metadata and configuration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11.10"
+      - name: Check against the pinned Palomar submission contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          policy_root="$RUNNER_TEMP/PalomarSubmission"
+          git clone --filter=blob:none \
+            https://github.com/PalomarRegistry/PalomarSubmission.git \
+            "$policy_root"
+          git -C "$policy_root" checkout \
+            0a2c287a924d2a7cb22e2b12f12b27321bb485a3
+          python -m pip install --disable-pip-version-check \
+            --require-hashes --no-deps -r "$policy_root/requirements.txt"
+          PALOMAR_SUBMISSION="$policy_root" python - <<'PY'
+          import os
+          import pathlib
+          import sys
+
+          root = pathlib.Path(os.environ["PALOMAR_SUBMISSION"])
+          sys.path.insert(0, str(root))
+
+          from scripts.submission_contract import (
+              load_formalization_metadata,
+              normalized_provenance,
+          )
+          from scripts.verify_submission import load_comparator_config
+
+          metadata = load_formalization_metadata(
+              pathlib.Path("palomar/formalization.yaml")
+          )
+          provenance = normalized_provenance(metadata)
+          config = load_comparator_config(
+              pathlib.Path("comparator/theorem_one_one.json")
+          )
+
+          assert metadata.get("version") == "v0.4"
+          assert provenance["repository_role"] == "substantive-development"
+          assert provenance["result_origin"] == "source-based"
+          assert config["theorem_names"] == [
+              "paper_c_theorem_one_one_finite_cylinder"
+          ]
+          print("PALOMAR_METADATA_CONTRACT_OK")
+          PY
+
+  nanoda:
+    name: Replay the theorem with Lean and NanoDa
+    needs: metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be # v1.3.1
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: true
+          swap-storage: false
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          build: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: "1.24.0"
+          cache: false
+      - name: Run the pinned dual-kernel Comparator replay
+        env:
+          PALOMAR_COMPARATOR_CACHE: ${{ runner.temp }}/paper-c-palomar
+        run: ./palomar/verify-comparator.sh

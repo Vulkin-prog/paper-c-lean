@@ -74,6 +74,27 @@ must therefore return no matches. This certifies only the modules present, not
 the complete 77-page target manuscript or its synchronized 79-page French
 source.
 
+## Palomar qualification candidate
+
+The repository carries a dedicated Palomar v0.4 candidate under
+[`palomar/`](palomar/README.md). It selects only
+`paper_c_theorem_one_one_finite_cylinder`, using
+`comparator/theorem_one_one.json` and `palomar/formalization.yaml`. The
+metadata gives the current v09 manuscript source, the exact conditionality and
+fidelity limitations, the AI-assisted production and agent-only review status,
+and the three literature propositions that remain ordinary theorem premises.
+It also reconciles the historical v08 source anchor retained in the compared
+Lean modules with the unchanged Theorem 1.1 statement in the current v09
+manuscript.
+
+The qualification workflow validates the metadata against a pinned current
+PalomarSubmission contract and mirrors Palomar's protected configuration,
+which forces NanoDa on even though the historical Comparator evidence records
+`enable_nanoda: false`. It replays the selected proof with both Lean and
+NanoDa using the toolchain-matched lean4export release. This is a
+candidate-side compatibility check; Palomar's own public verification of the
+final immutable commit remains authoritative.
+
 ## External semantic audit boundary
 
 Version `0.48.0` introduced the project-independent semantic boundary. The
@@ -1608,12 +1629,16 @@ The exact source pins used by the v0.48.0 compatibility work are:
 | landrun | `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4` |
 | formalization.yaml v0.3 template | `fab03cbbed1a5857de17af32de30421a734c77c6` |
 
-There is no official Comparator/lean4export `v4.32.2` tag.  The exact commits
-above therefore replace a nonexistent version tag.  In particular, the
-Comparator binary and the standalone lean4export binary must both be built
-from their pinned sources with the Paper C Lean `v4.32.2` toolchain; do not
-silently build Comparator with the newer toolchain named by its source
-checkout.  These are source
+At the time of the v0.48.1 release qualification, there was no official
+lean4export `v4.32.2` tag. The exact commits above remain the normative tools
+for reproducing that historical evidence and must not be retroactively
+replaced. An official lean4export `v4.32.2` release now exists; the separate
+Palomar candidate uses its resolved commit together with Palomar's current
+Comparator and NanoDa pins, as recorded in `palomar/verify-comparator.sh`.
+For the historical procedure, the Comparator binary and standalone
+lean4export binary must still be built from the pinned sources above with the
+Paper C Lean `v4.32.2` toolchain; do not silently build Comparator with the
+newer toolchain named by its source checkout. These are source
 pins, not evidence of a hardened execution; the actual smoke-test and
 publication status is stated above.
 
