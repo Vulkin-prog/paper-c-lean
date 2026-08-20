@@ -1608,9 +1608,12 @@ outside the covered zone.
 
 ## Building
 
-The project pins Lean `v4.32.2` and mathlib `v4.32.2`. The `lean-toolchain`
-file, `lakefile.toml`, and the Lake manifest lock this toolchain for v0.48.1;
-the pins are unchanged from v0.48.0.
+The project pins Lean `v4.32.0` and mathlib `v4.32.0`. The `lean-toolchain`
+file, `lakefile.toml`, and the Lake manifest lock this toolchain for v0.48.1.
+Mathlib commit `81a5d257c8e410db227a6665ed08f64fea08e997` is an ancestor of
+the canonical `master` branch, as required by Palomar's verifier. Its Mathlib
+source tree and transitive dependency revisions are identical to those of the
+previous `v4.32.2` pin; this change only realigns the compiler and provenance.
 The v0.48.1 conductor construction changes the audited Lean source digest,
 public declaration inventory, conditionality map, and main Comparator
 signature. Exact counts and hashes must therefore be taken from the regenerated
@@ -1629,12 +1632,12 @@ The exact source pins used by the v0.48.0 compatibility work are:
 | landrun | `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4` |
 | formalization.yaml v0.3 template | `fab03cbbed1a5857de17af32de30421a734c77c6` |
 
-At the time of the v0.48.1 release qualification, there was no official
-lean4export `v4.32.2` tag. The exact commits above remain the normative tools
-for reproducing that historical evidence and must not be retroactively
-replaced. An official lean4export `v4.32.2` release now exists; the separate
-Palomar candidate uses its resolved commit together with Palomar's current
-Comparator and NanoDa pins, as recorded in `palomar/verify-comparator.sh`.
+The exact commits above remain the normative tools for reproducing the
+historical v0.48.0 compatibility work and must not be retroactively replaced.
+The separate Palomar candidate uses lean4export commit
+`4e7915201d3f9f04470d9eae002fa695f7cdc589`, matched to Lean `v4.32.0`,
+together with Palomar's current Comparator and NanoDa pins, as recorded in
+`palomar/verify-comparator.sh`.
 For the historical procedure, the Comparator binary and standalone
 lean4export binary must still be built from the pinned sources above with the
 Paper C Lean `v4.32.2` toolchain; do not silently build Comparator with the
@@ -1740,7 +1743,7 @@ incompatible with Comparator's clean-checkout trust assumption.
 
 The following one-time setup uses independent tool checkouts.  It requires
 Git, Elan/Lake, Go 1.24 or later, and a Linux host for real landrun.  The
-Comparator and lean4export are both built with Paper C's exact `v4.32.2`
+Comparator and lean4export are both built with Paper C's exact `v4.32.0`
 toolchain.  Comparator's source checkout names `v4.33.0-rc1`, but that is not
 the compatibility combination tested for this release.
 
@@ -1751,12 +1754,12 @@ mkdir -p "$PAPER_C_TOOLS/bin"
 git clone https://github.com/leanprover/comparator.git "$PAPER_C_TOOLS/comparator"
 git -C "$PAPER_C_TOOLS/comparator" checkout 51491237b1d2f96cca203af9c34bced6fe38e0d8
 (cd "$PAPER_C_TOOLS/comparator" && \
-  ELAN_TOOLCHAIN=leanprover/lean4:v4.32.2 lake build comparator)
+  ELAN_TOOLCHAIN=leanprover/lean4:v4.32.0 lake build comparator)
 
-git clone https://github.com/leanprover/lean4export.git "$PAPER_C_TOOLS/lean4export-4.32.2"
-git -C "$PAPER_C_TOOLS/lean4export-4.32.2" checkout af5aa64bb914c3c2c781f378088dbd38acf4f804
-(cd "$PAPER_C_TOOLS/lean4export-4.32.2" && \
-  ELAN_TOOLCHAIN=leanprover/lean4:v4.32.2 lake build lean4export)
+git clone https://github.com/leanprover/lean4export.git "$PAPER_C_TOOLS/lean4export-4.32.0"
+git -C "$PAPER_C_TOOLS/lean4export-4.32.0" checkout af5aa64bb914c3c2c781f378088dbd38acf4f804
+(cd "$PAPER_C_TOOLS/lean4export-4.32.0" && \
+  ELAN_TOOLCHAIN=leanprover/lean4:v4.32.0 lake build lean4export)
 
 git clone https://github.com/Zouuup/landrun.git "$PAPER_C_TOOLS/landrun"
 git -C "$PAPER_C_TOOLS/landrun" checkout 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
@@ -1775,7 +1778,7 @@ following commands list the required tool fields for an exploratory run:
 
 ```bash
 git -C "$PAPER_C_TOOLS/comparator" rev-parse HEAD
-git -C "$PAPER_C_TOOLS/lean4export-4.32.2" rev-parse HEAD
+git -C "$PAPER_C_TOOLS/lean4export-4.32.0" rev-parse HEAD
 git -C "$PAPER_C_TOOLS/landrun" rev-parse HEAD
 git -C "$PAPER_C_TOOLS/formalization-yaml" rev-parse HEAD
 lean --version
@@ -1783,7 +1786,7 @@ lake env lean --version
 sha256sum \
   "$PAPER_C_TOOLS/comparator/.lake/build/bin/comparator" \
   "$PAPER_C_TOOLS/comparator/scripts/fake-landrun.sh" \
-  "$PAPER_C_TOOLS/lean4export-4.32.2/.lake/build/bin/lean4export" \
+  "$PAPER_C_TOOLS/lean4export-4.32.0/.lake/build/bin/lean4export" \
   "$PAPER_C_TOOLS/bin/landrun"
 ```
 
@@ -1802,7 +1805,7 @@ never the hardened publication evidence:
 ```bash
 PAPER_C_TOOLS="$(realpath ../paper-c-v048-tools)"
 COMPARATOR_LANDRUN="$(realpath "$PAPER_C_TOOLS/comparator/scripts/fake-landrun.sh")" \
-COMPARATOR_LEAN4EXPORT="$(realpath "$PAPER_C_TOOLS/lean4export-4.32.2/.lake/build/bin/lean4export")" \
+COMPARATOR_LEAN4EXPORT="$(realpath "$PAPER_C_TOOLS/lean4export-4.32.0/.lake/build/bin/lean4export")" \
 lake env "$(realpath "$PAPER_C_TOOLS/comparator/.lake/build/bin/comparator")" \
   comparator/theorem_one_one.json
 ```
@@ -1948,7 +1951,7 @@ capture, and machine-readable final validation.
 PAPER_C_TOOLS="$(realpath ../paper-c-v048-tools)"
 export COMPARATOR_BIN="$(realpath "$PAPER_C_TOOLS/comparator/.lake/build/bin/comparator")"
 export COMPARATOR_LANDRUN="$(realpath "$PAPER_C_TOOLS/bin/landrun")"
-export COMPARATOR_LEAN4EXPORT="$(realpath "$PAPER_C_TOOLS/lean4export-4.32.2/.lake/build/bin/lean4export")"
+export COMPARATOR_LEAN4EXPORT="$(realpath "$PAPER_C_TOOLS/lean4export-4.32.0/.lake/build/bin/lean4export")"
 CONFIG=comparator/theorem_one_one.json
 LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
 
@@ -1978,7 +1981,7 @@ LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
     "$COMPARATOR_LANDRUN" --version
     systemd-run --version | sed -n '1p'
     echo "comparator_commit=$(git -C "$PAPER_C_TOOLS/comparator" rev-parse HEAD)"
-    echo "lean4export_commit=$(git -C "$PAPER_C_TOOLS/lean4export-4.32.2" rev-parse HEAD)"
+    echo "lean4export_commit=$(git -C "$PAPER_C_TOOLS/lean4export-4.32.0" rev-parse HEAD)"
     echo "landrun_commit=$(git -C "$PAPER_C_TOOLS/landrun" rev-parse HEAD)"
     sha256sum \
       "$COMPARATOR_BIN" \

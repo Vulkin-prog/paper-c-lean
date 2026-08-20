@@ -3,15 +3,15 @@
 ## Versions fixées
 
 - paper_c_lean : `0.48.1` candidate (no tag/release yet)
-- Lean : `v4.32.2`, commit
-  `f3b06c705e6c85f5314019d5d3baab0fec5b580c`
-- mathlib : `v4.32.2`, commit
-  `905b95818eb32af7874a58b427f50c1711a5e96c`
+- Lean : `v4.32.0`, commit
+  `8c9756b28d64dab099da31a4c09229a9e6a2ef35`
+- mathlib : `v4.32.0`, commit
+  `81a5d257c8e410db227a6665ed08f64fea08e997`
 - Comparator : commit
   `51491237b1d2f96cca203af9c34bced6fe38e0d8`
 - lean4export : commit
   `af5aa64bb914c3c2c781f378088dbd38acf4f804`, compilé avec Lean
-  `v4.32.2`
+  `v4.32.0`
 - landrun : commit
   `811cfff51ceaf3d9843708aa6d22e9b84ccac8b4`
 - modèle officiel `formalization.yaml` v0.3 : commit
@@ -35,11 +35,18 @@
 > [`RELEASE_QUALIFICATION.md`](RELEASE_QUALIFICATION.md).
 
 Le fichier `lean-toolchain` et la révision de `lakefile.toml` rendent ces choix
-reproductibles. Il n’existe pas de tag officiel Comparator/lean4export
-`v4.32.2` : les commits complets ci-dessus sont donc normatifs. Le binaire
+reproductibles. Les commits complets Comparator/lean4export ci-dessus sont
+normatifs. Le binaire
 lean4export doit être compilé séparément avec la toolchain Lean de Paper C,
 et non remplacé silencieusement par le binaire construit sous la toolchain
 plus récente propre à Comparator.
+
+Le retour conjoint à Lean/mathlib `v4.32.0` aligne le snapshot sur le commit
+Mathlib `81a5d257c8e410db227a6665ed08f64fea08e997`, ancêtre de la branche
+canonique `master`. Les sources Mathlib et toutes les révisions transitives
+sont identiques à celles du pin `v4.32.2` précédent ; le changement porte sur
+le compilateur et la provenance. La qualification Palomar vérifie désormais
+explicitement cette ascendance avant tout replay coûteux.
 
 Le candidat courant a recalculé les octets présents dans le dépôt :
 `paper_C_complete_v09_en.pdf` est le blob Git
@@ -705,7 +712,7 @@ Le build des trois outils épinglés et leurs chemins complets sont détaillés
 dans le README. Comparator au commit
 `51491237b1d2f96cca203af9c34bced6fe38e0d8` et lean4export au commit
 `af5aa64bb914c3c2c781f378088dbd38acf4f804` sont tous deux construits avec
-`ELAN_TOOLCHAIN=leanprover/lean4:v4.32.2`; la toolchain plus récente nommée
+`ELAN_TOOLCHAIN=leanprover/lean4:v4.32.0`; la toolchain plus récente nommée
 dans le checkout source de Comparator n'est pas la combinaison testée ici.
 Pour chacun des deux runs Paper C destiné à servir de preuve de publication,
 le transcript unique contient le commit du dépôt et de Mathlib, les commits et
@@ -723,7 +730,7 @@ le test sémantique suivant :
 ```bash
 PAPER_C_TOOLS="$(realpath ../paper-c-v048-tools)"
 COMPARATOR_LANDRUN="$(realpath "$PAPER_C_TOOLS/comparator/scripts/fake-landrun.sh")" \
-COMPARATOR_LEAN4EXPORT="$(realpath "$PAPER_C_TOOLS/lean4export-4.32.2/.lake/build/bin/lean4export")" \
+COMPARATOR_LEAN4EXPORT="$(realpath "$PAPER_C_TOOLS/lean4export-4.32.0/.lake/build/bin/lean4export")" \
 lake env "$(realpath "$PAPER_C_TOOLS/comparator/.lake/build/bin/comparator")" \
   comparator/theorem_one_one.json
 ```
@@ -860,7 +867,7 @@ sûre et la validation finale machine-lisible.
 PAPER_C_TOOLS="$(realpath ../paper-c-v048-tools)"
 export COMPARATOR_BIN="$(realpath "$PAPER_C_TOOLS/comparator/.lake/build/bin/comparator")"
 export COMPARATOR_LANDRUN="$(realpath "$PAPER_C_TOOLS/bin/landrun")"
-export COMPARATOR_LEAN4EXPORT="$(realpath "$PAPER_C_TOOLS/lean4export-4.32.2/.lake/build/bin/lean4export")"
+export COMPARATOR_LEAN4EXPORT="$(realpath "$PAPER_C_TOOLS/lean4export-4.32.0/.lake/build/bin/lean4export")"
 CONFIG=comparator/theorem_one_one.json
 LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
 
@@ -890,7 +897,7 @@ LOG="$(cd .. && pwd)/comparator-theorem-one-one-hardened.log"
     "$COMPARATOR_LANDRUN" --version
     systemd-run --version | sed -n '1p'
     echo "comparator_commit=$(git -C "$PAPER_C_TOOLS/comparator" rev-parse HEAD)"
-    echo "lean4export_commit=$(git -C "$PAPER_C_TOOLS/lean4export-4.32.2" rev-parse HEAD)"
+    echo "lean4export_commit=$(git -C "$PAPER_C_TOOLS/lean4export-4.32.0" rev-parse HEAD)"
     echo "landrun_commit=$(git -C "$PAPER_C_TOOLS/landrun" rev-parse HEAD)"
     sha256sum \
       "$COMPARATOR_BIN" \

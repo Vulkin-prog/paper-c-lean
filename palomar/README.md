@@ -66,7 +66,22 @@ PALOMAR_COMPARATOR_CACHE=/path/to/disposable/cache \
   ./palomar/verify-comparator.sh
 ```
 
+The candidate uses Lean `v4.32.0`, Mathlib `v4.32.0` at commit
+`81a5d257c8e410db227a6665ed08f64fea08e997`, and lean4export commit
+`4e7915201d3f9f04470d9eae002fa695f7cdc589`. The previous Mathlib `v4.32.2`
+commit changed only Mathlib's `lean-toolchain`, but it belongs to a maintenance
+branch that is not an ancestor of canonical `master`. Palomar treats that
+ancestry as a security condition. The Mathlib source tree and every transitive
+dependency revision are unchanged by the joint return to `v4.32.0`.
+
+`palomar/check-mathlib-canonical-ancestry.sh` mirrors the official mechanical
+guard: it fetches the manifest revision and canonical `refs/heads/master`, then
+requires `git merge-base --is-ancestor` to succeed. Both the early metadata job
+and the full dual-kernel replay run this guard, so a future noncanonical pin
+fails before the expensive Comparator and NanoDa builds.
+
 The GitHub workflow `.github/workflows/palomar-qualification.yml` runs both
-the current Palomar metadata contract and this NanoDa-enabled replay. A pass is
-a pre-submission compatibility result. Palomar's own public mechanical
-verification at the submitted immutable commit remains authoritative.
+the current Palomar metadata contract, the canonical-Mathlib ancestry guard,
+and this NanoDa-enabled replay. A pass is a pre-submission compatibility
+result. Palomar's own public mechanical verification at the submitted
+immutable commit remains authoritative.

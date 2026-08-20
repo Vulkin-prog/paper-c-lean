@@ -182,13 +182,13 @@
     },
     "toolchain": {
       "lean": {
-        "version": "4.32.2",
-        "toolchain": "leanprover/lean4:v4.32.2",
-        "commit": "f3b06c705e6c85f5314019d5d3baab0fec5b580c"
+        "version": "4.32.0",
+        "toolchain": "leanprover/lean4:v4.32.0",
+        "commit": "8c9756b28d64dab099da31a4c09229a9e6a2ef35"
       },
       "mathlib": {
-        "version": "v4.32.2",
-        "commit": "905b95818eb32af7874a58b427f50c1711a5e96c"
+        "version": "v4.32.0",
+        "commit": "81a5d257c8e410db227a6665ed08f64fea08e997"
       }
     },
     "literature_certificates": {
