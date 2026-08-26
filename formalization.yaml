@@ -740,7 +740,7 @@ alignment:
       source: "Theorem 1.4, p. 4 (paper-c-en-v09)"
       lean: "PaperC.SectionTwelveMoments.theorem_one_four_canonical"
       module: "PaperC/Asymptotics/TheoremOneFourCanonical.lean"
-      status: "proved modulo three ordinary literature premises"
+      status: "proved modulo two ordinary literature premises"
       conditionality: "conditionnel"
       bridge_ids:
         - "ES86-T1b-Q-split-n2"
@@ -1248,7 +1248,7 @@ alignment:
       source: "Corollary 11.3 (quantitative form of the homogeneous sum), p. 38 (paper-c-en-v09)"
       lean: "PaperC.DyadicKappaQuantitative.corollary_eleven_three_canonical"
       module: "PaperC/Asymptotics/DyadicKappaQuantitative.lean"
-      status: "proved modulo three external literature premises"
+      status: "proved modulo two external literature premises"
       conditionality: "conditionnel"
       bridge_ids:
         - "ES86-T1b-Q-split-n2"
