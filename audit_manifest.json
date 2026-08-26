@@ -552,7 +552,7 @@
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo three ordinary literature premises",
+      "formalization_status": "proved modulo two ordinary literature premises",
       "comparator": {
         "covered": false
       },
@@ -1527,7 +1527,7 @@
         "NR83-T1-divisor-log-bound"
       ],
       "conditionality": "conditionnel",
-      "formalization_status": "proved modulo three external literature premises",
+      "formalization_status": "proved modulo two external literature premises",
       "comparator": {
         "covered": false
       },
