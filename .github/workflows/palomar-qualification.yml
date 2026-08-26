@@ -5,9 +5,9 @@ on:
     paths:
       - ".github/workflows/palomar-qualification.yml"
       - "palomar/**"
-      - "comparator/theorem_one_one.json"
-      - "Challenge.lean"
-      - "Solution.lean"
+      - "comparator/*.json"
+      - "Challenge*.lean"
+      - "Solution*.lean"
       - "PaperC.lean"
       - "PaperC/**"
       - "lakefile.toml"
@@ -25,8 +25,28 @@ concurrency:
 
 jobs:
   metadata:
-    name: Validate Palomar metadata and configuration
+    name: Validate Palomar metadata - ${{ matrix.label }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: theorem-one-one
+            metadata: palomar/formalization.yaml
+            config: comparator/theorem_one_one.json
+            expected: '["paper_c_theorem_one_one_finite_cylinder"]'
+          - label: theorem-one-two
+            metadata: palomar/theorem_one_two/formalization.yaml
+            config: comparator/theorem_one_two.json
+            expected: '["paper_c_theorem_one_two_i_deterministic_masks","paper_c_theorem_one_two_ii_spatial_laplace","paper_c_theorem_one_two_iii_marked_laplace_and_tightness"]'
+          - label: theorem-one-four-and-corollary-eleven-three
+            metadata: palomar/theorem_one_four_and_corollary_eleven_three/formalization.yaml
+            config: comparator/theorem_one_four_and_corollary_eleven_three.json
+            expected: '["paper_c_theorem_one_four_moments","paper_c_corollary_eleven_three"]'
+          - label: theorem-sixteen-two-and-corollary-sixteen-four
+            metadata: palomar/theorem_sixteen_two_and_corollary_sixteen_four/formalization.yaml
+            config: comparator/theorem_sixteen_two_and_corollary_sixteen_four.json
+            expected: '["paper_c_theorem_sixteen_two_finite_cylinder","paper_c_theorem_sixteen_two_finite_cylinder_recentered","paper_c_theorem_sixteen_two_infinite_model","paper_c_corollary_sixteen_four_prefix_law"]'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -38,6 +58,10 @@ jobs:
         run: ./palomar/check-mathlib-canonical-ancestry.sh
       - name: Check against the pinned Palomar submission contract
         shell: bash
+        env:
+          PALOMAR_METADATA: ${{ matrix.metadata }}
+          PALOMAR_CONFIG: ${{ matrix.config }}
+          EXPECTED_THEOREMS: ${{ matrix.expected }}
         run: |
           set -euo pipefail
           policy_root="$RUNNER_TEMP/PalomarSubmission"
@@ -50,6 +74,7 @@ jobs:
             --require-hashes --no-deps -r "$policy_root/requirements.txt"
           PALOMAR_SUBMISSION="$policy_root" python - <<'PY'
           import os
+          import json
           import pathlib
           import sys
 
@@ -63,27 +88,39 @@ jobs:
           from scripts.verify_submission import load_comparator_config
 
           metadata = load_formalization_metadata(
-              pathlib.Path("palomar/formalization.yaml")
+              pathlib.Path(os.environ["PALOMAR_METADATA"])
           )
           provenance = normalized_provenance(metadata)
           config = load_comparator_config(
-              pathlib.Path("comparator/theorem_one_one.json")
+              pathlib.Path(os.environ["PALOMAR_CONFIG"])
           )
 
           assert metadata.get("version") == "v0.4"
           assert provenance["repository_role"] == "substantive-development"
           assert provenance["result_origin"] == "source-based"
-          assert config["theorem_names"] == [
-              "paper_c_theorem_one_one_finite_cylinder"
-          ]
+          assert config["theorem_names"] == json.loads(
+              os.environ["EXPECTED_THEOREMS"]
+          )
           print("PALOMAR_METADATA_CONTRACT_OK")
           PY
 
   nanoda:
-    name: Replay the theorem with Lean and NanoDa
+    name: Replay with Lean and NanoDa - ${{ matrix.label }}
     needs: metadata
     runs-on: ubuntu-latest
     timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: theorem-one-one
+            config: comparator/theorem_one_one.json
+          - label: theorem-one-two
+            config: comparator/theorem_one_two.json
+          - label: theorem-one-four-and-corollary-eleven-three
+            config: comparator/theorem_one_four_and_corollary_eleven_three.json
+          - label: theorem-sixteen-two-and-corollary-sixteen-four
+            config: comparator/theorem_sixteen_two_and_corollary_sixteen_four.json
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -107,4 +144,4 @@ jobs:
       - name: Run the pinned dual-kernel Comparator replay
         env:
           PALOMAR_COMPARATOR_CACHE: ${{ runner.temp }}/paper-c-palomar
-        run: ./palomar/verify-comparator.sh
+        run: ./palomar/verify-comparator.sh "${{ matrix.config }}"

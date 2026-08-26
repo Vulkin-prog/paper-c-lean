@@ -5,8 +5,27 @@ import path from 'node:path';
 import process from 'node:process';
 
 const root = process.cwd();
-const challengeFiles = ['Challenge.lean', 'ChallengeTransfer.lean'];
-const requiredSolutionFiles = ['Solution.lean', 'SolutionTransfer.lean'];
+const challengeFiles = [
+  'Challenge.lean',
+  'ChallengeTransfer.lean',
+  'ChallengeTheoremOneTwo.lean',
+  'ChallengeTheoremOneFour.lean',
+  'ChallengeTheoremSixteenTwo.lean',
+];
+const requiredSolutionFiles = [
+  'Solution.lean',
+  'SolutionTransfer.lean',
+  'SolutionTheoremOneTwo.lean',
+  'SolutionTheoremOneFour.lean',
+  'SolutionTheoremSixteenTwo.lean',
+];
+const expectedChallengePlaceholders = new Map([
+  ['Challenge.lean', 1],
+  ['ChallengeTransfer.lean', 1],
+  ['ChallengeTheoremOneTwo.lean', 3],
+  ['ChallengeTheoremOneFour.lean', 2],
+  ['ChallengeTheoremSixteenTwo.lean', 4],
+]);
 const hardenedRunnerFile = 'scripts/run_hardened_comparator.sh';
 const evidenceAssemblerFile = 'scripts/assemble_comparator_evidence.mjs';
 
@@ -56,15 +75,16 @@ const challengeSources = new Map(
   challengeFiles.map(file => [file, readRequired(file)]),
 );
 
-const challenge = challengeSources.get('Challenge.lean');
-if (challenge !== null) {
-  const imports = importsOf(challenge);
+for (const file of challengeFiles.filter(file => file !== 'ChallengeTransfer.lean')) {
+  const source = challengeSources.get(file);
+  if (source === null) continue;
+  const imports = importsOf(source);
   if (imports.length === 0) {
-    fail('Challenge.lean must import at least one Mathlib module.');
+    fail(`${file} must import at least one Mathlib module.`);
   }
   for (const moduleName of imports) {
     if (moduleName !== 'Mathlib' && !moduleName.startsWith('Mathlib.')) {
-      fail(`Challenge.lean has a non-Mathlib import: ${moduleName}`);
+      fail(`${file} has a non-Mathlib import: ${moduleName}`);
     }
   }
 }
@@ -85,11 +105,17 @@ const challengeForbidden =
 for (const [file, source] of challengeSources) {
   if (source === null) continue;
 
+  const expectedSorryCount = expectedChallengePlaceholders.get(file);
   const bySorryCount = countMatches(source, /\bby\s+sorry\b/g);
   const totalSorryCount = countMatches(source, /\bsorry\b/g);
-  if (bySorryCount !== 1 || totalSorryCount !== 1) {
+  if (
+    expectedSorryCount === undefined ||
+    bySorryCount !== expectedSorryCount ||
+    totalSorryCount !== expectedSorryCount
+  ) {
     fail(
-      `${file} must contain exactly one 'by sorry' and no other sorry ` +
+      `${file} must contain exactly ${expectedSorryCount ?? 'the configured number of'} ` +
+      `'by sorry' placeholders and no other sorry ` +
       `(by sorry: ${bySorryCount}; total sorry: ${totalSorryCount}).`,
     );
   }

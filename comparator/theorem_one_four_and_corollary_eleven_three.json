@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ChallengeTheoremOneFour",
+  "solution_module": "SolutionTheoremOneFour",
+  "theorem_names": [
+    "paper_c_theorem_one_four_moments",
+    "paper_c_corollary_eleven_three"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

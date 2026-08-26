@@ -57,14 +57,14 @@ distinguishes:
 3. external results that cannot honestly be replaced by axioms when the goal
    is certification.
 
-The Paper C Lean core and the two Solution files contain no
+The Paper C Lean core and every Solution file contain no
 `sorry` and introduce no mathematical axiom beyond `propext`, `Quot.sound`,
-and `Classical.choice`. `Challenge.lean` and `ChallengeTransfer.lean` each
-contain exactly one source-level `by sorry`, on their named final Comparator
-theorem. This count is per source file: `ChallengeTransfer` imports
-`Challenge`, so its transitive environment also contains the first Challenge
-placeholder. The generated proof-side `sorry_count` excludes these two
-intentional Comparator placeholders and is zero. The command
+and `Classical.choice`. Each Challenge contains one deliberate `by sorry` per
+selected Comparator theorem: one in `Challenge.lean`, one in
+`ChallengeTransfer.lean`, three in `ChallengeTheoremOneTwo.lean`, two in
+`ChallengeTheoremOneFour.lean`, and four in
+`ChallengeTheoremSixteenTwo.lean`. The generated proof-side `sorry_count`
+excludes these intentional Comparator placeholders and is zero. The command
 
 ```bash
 rg -n '(^|[[:space:]])(sorry|axiom|admit|native_decide|unsafe|partial)([[:space:]]|$)' --glob '*.lean' PaperC.lean PaperC
@@ -74,24 +74,20 @@ must therefore return no matches. This certifies only the modules present, not
 the complete 77-page target manuscript or its synchronized 79-page French
 source.
 
-## Palomar qualification candidate
+## Palomar qualification candidates
 
-The repository carries a dedicated Palomar v0.4 candidate under
-[`palomar/`](palomar/README.md). It selects only
-`paper_c_theorem_one_one_finite_cylinder`, using
-`comparator/theorem_one_one.json` and `palomar/formalization.yaml`. The
-metadata gives the current v09 manuscript source, the exact conditionality and
-fidelity limitations, the AI-assisted production and agent-only review status,
-and the three literature propositions that remain ordinary theorem premises.
-It also reconciles the historical v08 source anchor retained in the compared
-Lean modules with the unchanged Theorem 1.1 statement in the current v09
-manuscript.
+The repository carries four dedicated Palomar v0.4 candidates under
+[`palomar/`](palomar/README.md): Theorem 1.1, Theorem 1.2(i--iii), Theorem 1.4
+with Corollary 11.3, and Theorem 16.2 with Corollary 16.4. Each result group has
+one Comparator configuration and one metadata file. The metadata gives the
+current v09 manuscript source, exact conditionality and fidelity limitations,
+AI-assisted production and agent-only review status, and the ordinary
+literature premises retained by that result.
 
-The qualification workflow validates the metadata against a pinned current
-PalomarSubmission contract and mirrors Palomar's protected configuration,
-which forces NanoDa on even though the historical Comparator evidence records
-`enable_nanoda: false`. It replays the selected proof with both Lean and
-NanoDa using the toolchain-matched lean4export release. This is a
+The qualification workflow validates every metadata/configuration pair against
+a pinned current PalomarSubmission contract and mirrors Palomar's protected
+configuration. It replays every selected proof with both Lean and NanoDa using
+the toolchain-matched lean4export release. This is a
 candidate-side compatibility check; Palomar's own public verification of the
 final immutable commit remains authoritative.
 
@@ -102,13 +98,17 @@ v0.48.1 candidate changes its main theorem from four ordinary premises to
 three after the internal conductor discharge. `Challenge.lean` imports only
 Mathlib modules.
 `ChallengeTransfer.lean` imports exactly `Challenge`, and therefore depends
-transitively only on the first Challenge and Mathlib, never on `PaperC`. The
-matching Solution files do not import either Challenge module.
+transitively only on the first Challenge and Mathlib, never on `PaperC`. Each
+new theorem Challenge is autonomous and imports only Mathlib modules. The
+matching Solution files do not import any Challenge module.
 
 | Comparator target | Trusted statement | Solution-side interface and proof | Scope |
 |---|---|---|---|
 | `comparator/theorem_one_one.json` | `Challenge.lean` | `Solution.lean` | The quantitative finite-cylinder form of Theorem 1.1 |
 | `comparator/theorem_one_one_transfer.json` | `ChallengeTransfer.lean` | `SolutionTransfer.lean` | Exact identity of the infinite-product and finite-cylinder laws |
+| `comparator/theorem_one_two.json` | `ChallengeTheoremOneTwo.lean` | `SolutionTheoremOneTwo.lean` | Theorem 1.2(i--iii), including the Laplace-functional point-process forms |
+| `comparator/theorem_one_four_and_corollary_eleven_three.json` | `ChallengeTheoremOneFour.lean` | `SolutionTheoremOneFour.lean` | Theorem 1.4 and Corollary 11.3 |
+| `comparator/theorem_sixteen_two_and_corollary_sixteen_four.json` | `ChallengeTheoremSixteenTwo.lean` | `SolutionTheoremSixteenTwo.lean` | The finite, recentered, infinite, and prefix-law forms of Theorem 16.2/Corollary 16.4 |
 
 `Challenge.lean` imports only `Mathlib`.  It defines the finite uniform
 Rademacher cylinder, the associated completely multiplicative sign function,
@@ -127,9 +127,9 @@ proved record translation. The historical conductor declaration remains in
 the audit namespace for traceability but is not a theorem argument.
 `SolutionTransfer.lean` likewise reproduces the declarations
 specific to the infinite-model interface without importing
-`ChallengeTransfer.lean`, then applies the frozen exact law identity.  The
-two pairs are intentionally loaded in separate environments because their
-global names coincide.
+`ChallengeTransfer.lean`, then applies the frozen exact law identity. All
+Challenge/Solution pairs are intentionally loaded in separate environments
+because each pair redeclares a shared audit interface.
 
 Theorem 1.1 is stated unconditionally in the manuscript. The main Comparator
 theorem is instead an implication from the three fully stated propositions
@@ -1663,6 +1663,12 @@ lake env lean Challenge.lean
 lake env lean ChallengeTransfer.lean
 lake env lean Solution.lean
 lake env lean SolutionTransfer.lean
+lake env lean ChallengeTheoremOneTwo.lean
+lake env lean SolutionTheoremOneTwo.lean
+lake env lean ChallengeTheoremOneFour.lean
+lake env lean SolutionTheoremOneFour.lean
+lake env lean ChallengeTheoremSixteenTwo.lean
+lake env lean SolutionTheoremSixteenTwo.lean
 node scripts/generate_audit.mjs --check
 mkdir -p ci-logs
 lake env lean AuditCheck.lean 2>&1 | tee ci-logs/AuditCheck.log

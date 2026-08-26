@@ -109,9 +109,9 @@ jobs:
       - name: Build the project
         run: lake build
 
-      # Keep all four roots in separate Lean invocations.  Challenge and
-      # Solution intentionally redeclare the same global interface names and
-      # must never be imported into one shared environment.
+      # Keep every Comparator root in a separate Lean invocation. Challenge
+      # and Solution modules intentionally redeclare the same global interface
+      # names and must never be imported into one shared environment.
       - name: Compile Challenge separately
         run: lake build Challenge
 
@@ -123,6 +123,24 @@ jobs:
 
       - name: Compile SolutionTransfer separately
         run: lake build SolutionTransfer
+
+      - name: Compile Theorem 1.2 Challenge separately
+        run: lake build ChallengeTheoremOneTwo
+
+      - name: Compile Theorem 1.2 Solution separately
+        run: lake build SolutionTheoremOneTwo
+
+      - name: Compile Theorem 1.4 Challenge separately
+        run: lake build ChallengeTheoremOneFour
+
+      - name: Compile Theorem 1.4 Solution separately
+        run: lake build SolutionTheoremOneFour
+
+      - name: Compile Theorem 16.2 Challenge separately
+        run: lake build ChallengeTheoremSixteenTwo
+
+      - name: Compile Theorem 16.2 Solution separately
+        run: lake build SolutionTheoremSixteenTwo
 
       - name: Generate the exhaustive audit
         run: node scripts/generate_audit.mjs
