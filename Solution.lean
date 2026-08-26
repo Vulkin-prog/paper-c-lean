@@ -221,7 +221,7 @@ namespace SectionThirteenFiniteBound
 Reference: Paper C, Theorem 1.1, p. 3, and §13. Bridge: none. Relation: equal
 to the paper's supremum-over-events distance for discrete probability laws. -/
 noncomputable def natTotalVariation (p q : ℕ → ℝ) : ℝ :=
-  (2 : ℝ)⁻¹ * ∑' k : ℕ, |p k - q k|
+  ((2 : ℕ) : ℝ)⁻¹ * ∑' k : ℕ, |p k - q k|
 
 /-- Law of a natural-valued observable on a finite probability space.
 Reference: Paper C, §13. Bridge: none. Relation: exact pushforward mass. -/
@@ -432,7 +432,7 @@ discrete total-variation convention. -/
 noncomputable def totalVariationToPoisson
     {Ω : Type u} {ι : Type v} [Fintype Ω] [Fintype ι]
     (μ : FinitePMF Ω) (X : ι → Ω → Bool) : ℝ :=
-  (2 : ℝ)⁻¹ * ∑' k : ℕ,
+  ((2 : ℕ) : ℝ)⁻¹ * ∑' k : ℕ,
     |indicatorSumLaw μ X k - matchingPoissonLaw μ X k|
 
 /-- Arratia–Goldstein–Gordon literature premise.
@@ -472,7 +472,7 @@ noncomputable def fullDyadicStartLaw (N L : ℕ) : ℕ → ℝ :=
 /-- Target rate `λ_N = N/2^L`.
 Reference: Paper C, Theorem 1.1, p. 3. Bridge: none. Relation: exact. -/
 noncomputable def targetPoissonRate (N L : ℕ) : ℝ≥0 :=
-  ⟨(N : ℝ) / (2 : ℝ) ^ L, by positivity⟩
+  ⟨(N : ℝ) / ((2 : ℕ) : ℝ) ^ L, by positivity⟩
 
 /-- Poisson law at the target rate.
 Reference: Paper C, Theorem 1.1, p. 3. Bridge: none. Relation: exact. -/
@@ -487,7 +487,7 @@ namespace CriticalRunWindow
 Reference: Paper C, Theorem 1.1, p. 3. Bridge: none. Relation: exact, with
 `log₂ N` written as `log N / log 2`. -/
 def InRunLengthWindow (C : ℝ) (N L : ℕ) : Prop :=
-  |(L : ℝ) - Real.log N / Real.log 2| ≤ C
+  |(L : ℝ) - Real.log N / Real.log ((2 : ℕ) : ℝ)| ≤ C
 
 end CriticalRunWindow
 
@@ -671,7 +671,7 @@ nombre de diviseurs de N*, CMB 26 (1983), Théorème 1, p. 485.
 Audit bridge: `NR83-T1-divisor-log-bound`. Relation: safe value `2`, avoiding
 use of the rounded printed decimal `1.5379`. -/
 def nicolasRobinConstant : ℝ :=
-  2 * Real.log 2
+  ((2 : ℕ) : ℝ) * Real.log ((2 : ℕ) : ℝ)
 
 /-- Nicolas–Robin literature premise.
 Reference: Théorème 1, p. 485, DOI 10.4153/CMB-1983-078-5.

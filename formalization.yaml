@@ -2274,7 +2274,7 @@ verification:
       - "comparator/theorem_one_one_transfer.json"
       - "comparator/theorem_one_two.json"
       - "comparator/theorem_sixteen_two_and_corollary_sixteen_four.json"
-    digest_sha256: "baaa94bdf84b5ad7cd2c163d3ee631dec72bb096032b4cf3fa4eecc44ad3c5fb"
+    digest_sha256: "47c31ce103a1d7a76fa4d642a32a45a3077210f12acafadc480aa31bc8e5c87c"
     historical_published_evidence:
       release_tag: "v0.48.0"
       release_url: "https://github.com/Vulkin-prog/paper-c-lean/releases/tag/v0.48.0"

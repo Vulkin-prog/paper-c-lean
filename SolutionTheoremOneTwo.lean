@@ -21,6 +21,22 @@ namespace PaperCAudit
 
 /-! ## Infinite source model -/
 
+-- Make the notation `(2 : ℝ)` independent of Lean's generated proof cache.
+-- The imported solution surface and this standalone challenge otherwise can
+-- elaborate the standard `OfNat` instance with different proof constants.
+local instance instAtLeastTwoTwo : Nat.AtLeastTwo 2 :=
+  ⟨Nat.le_refl 2⟩
+
+local instance instOfNatRealTwo : OfNat ℝ 2 :=
+  @instOfNatAtLeastTwo ℝ 2 Real.instNatCast instAtLeastTwoTwo
+
+-- Pin the finite typeclass data used by every new Theorem 1.2 definition.
+-- Instance synthesis can otherwise reuse implementation-detail proofs from
+-- different earlier declarations in the challenge and solution modules.
+local instance instNeZeroTwo : NeZero (2 : ℕ) := ⟨by decide⟩
+local instance instFintypeF2 : Fintype F₂ := ZMod.fintype 2
+local instance instNonemptyF2 : Nonempty F₂ := ⟨0⟩
+
 namespace InfiniteRademacher
 
 local instance instMeasurableSpaceF2Discrete : MeasurableSpace F₂ := ⊤
@@ -55,8 +71,14 @@ namespace MaskedPoissonCritical
 open SectionThirteenCouplings
 open SectionThirteenFiniteBound
 
-local instance (P : Prop) : Decidable P :=
+local instance instDecidableProp (P : Prop) : Decidable P :=
   Classical.propDecidable P
+
+local instance instFintypeSampleSpace (M : ℕ) : Fintype (SampleSpace M) :=
+  @Pi.instFintype
+    (PrimeUpTo M) (fun _ => F₂)
+    (instDecidableEqPrimeUpTo M) (instFintypePrimeUpTo M)
+    (fun _ => instFintypeF2)
 
 /-- Target rate `|A_N|2⁻ᴸ` for a deterministic mask. -/
 noncomputable def maskedTargetPoissonRate
@@ -77,7 +99,9 @@ noncomputable def fullMaskedDyadicCount
 /-- Law of the complete masked start count. -/
 noncomputable def fullMaskedDyadicStartLaw
     (N L : ℕ) (mask : Finset ℕ) : ℕ → ℝ :=
-  finiteNatLaw
+  @finiteNatLaw
+    (SampleSpace (dyadicCutoff N L))
+    (instFintypeSampleSpace (dyadicCutoff N L))
     (fullUniformPMF (dyadicCutoff N L))
     (fullMaskedDyadicCount N L mask)
 
@@ -106,7 +130,7 @@ open InfiniteRademacher
 
 local instance instMeasurableSpaceF2Discrete : MeasurableSpace F₂ := ⊤
 
-local instance (P : Prop) : Decidable P :=
+local instance instDecidableProp (P : Prop) : Decidable P :=
   Classical.propDecidable P
 
 /-- Literal spatial Laplace functional under the infinite source model. -/
@@ -148,7 +172,7 @@ namespace FullMarkedLaplaceTransfer
 open InfiniteRademacher
 open MixedLengthAffine
 
-local instance (P : Prop) : Decidable P :=
+local instance instDecidableProp (P : Prop) : Decidable P :=
   Classical.propDecidable P
 
 /-- Literal Laplace functional of the complete marked source process. -/

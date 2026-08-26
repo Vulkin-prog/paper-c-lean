@@ -152,7 +152,7 @@ noncomputable def globalStartRate (M L : ℕ) : ℝ≥0 :=
     exact Finset.sum_nonneg fun x _ ↦ eventProbability_nonneg _ _⟩
 
 noncomputable def criticalScale (M L : ℕ) : ℝ :=
-  (M : ℝ) / (2 : ℝ) ^ L
+  (M : ℝ) / ((2 : ℕ) : ℝ) ^ L
 
 noncomputable def globalEmptyProbability (M L : ℕ) : ℝ :=
   globalStartLaw M L 0

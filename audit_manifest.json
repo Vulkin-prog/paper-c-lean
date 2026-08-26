@@ -152,7 +152,7 @@
     "comparator/theorem_one_two.json",
     "comparator/theorem_sixteen_two_and_corollary_sixteen_four.json"
   ],
-  "comparator_digest_sha256": "baaa94bdf84b5ad7cd2c163d3ee631dec72bb096032b4cf3fa4eecc44ad3c5fb",
+  "comparator_digest_sha256": "47c31ce103a1d7a76fa4d642a32a45a3077210f12acafadc480aa31bc8e5c87c",
   "source_snapshot_comparator_state": "definitions_and_digests_only",
   "release_evidence_state": "external_to_source_snapshot",
   "release_evidence_location": "release_evidence/v0.48.1/",

@@ -19,8 +19,8 @@ permissions:
 env:
   LEAN_COMMIT: 8c9756b28d64dab099da31a4c09229a9e6a2ef35
   MATHLIB_COMMIT: 81a5d257c8e410db227a6665ed08f64fea08e997
-  COMPARATOR_COMMIT: 51491237b1d2f96cca203af9c34bced6fe38e0d8
-  LEAN4EXPORT_COMMIT: af5aa64bb914c3c2c781f378088dbd38acf4f804
+  COMPARATOR_COMMIT: 575674928e239f5bc452aab72d1dd7b0f1326494
+  LEAN4EXPORT_COMMIT: 4e7915201d3f9f04470d9eae002fa695f7cdc589
   LANDRUN_COMMIT: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
 
 jobs:
@@ -363,17 +363,17 @@ jobs:
         run: |
           set -euo pipefail
           project_toolchain="$(tr -d '\r\n' < project/lean-toolchain)"
+          comparator_toolchain="$(tr -d '\r\n' < tools/comparator/lean-toolchain)"
+
+          elan run --install "$comparator_toolchain" lean --version
 
           (
             cd tools/comparator
-            # Comparator has no release matching this exact source stack. Build the pinned
-            # source commit with Paper C's exact toolchain, which is the
-            # compatibility combination tested for this release.
-            elan run "$project_toolchain" lake build comparator
+            # The Palomar-pinned Comparator has its own pinned build
+            # toolchain. Its external lean4export process is built separately
+            # below with Paper C's exact Lean toolchain.
+            elan run "$comparator_toolchain" lake build comparator
           )
-          test "$(
-            git -C tools/comparator/.lake/packages/lean4export rev-parse HEAD
-          )" = "$LEAN4EXPORT_COMMIT"
           (
             cd tools/lean4export
             elan run "$project_toolchain" lake build lean4export
@@ -400,6 +400,7 @@ jobs:
             exit 1
           fi
           config_sha="$(sha256sum "project/${{ matrix.config }}" | cut -d' ' -f1)"
+          comparator_toolchain="$(tr -d '\r\n' < tools/comparator/lean-toolchain)"
           fileset_sha="$(
             node - project/audit_config.json project <<'NODE'
           const crypto = require('node:crypto');
@@ -437,8 +438,8 @@ jobs:
             echo "$config_sha  ${{ matrix.config }}"
             echo "comparator_fileset_digest_sha256=$fileset_sha"
             echo "project_toolchain=$(tr -d '\r\n' < project/lean-toolchain)"
-            echo 'comparator_source_toolchain='"$(tr -d '\r\n' < tools/comparator/lean-toolchain)"
-            echo 'comparator_build_toolchain=Paper C project toolchain'
+            echo "comparator_source_toolchain=$comparator_toolchain"
+            echo "comparator_build_toolchain=$comparator_toolchain"
             echo 'lean4export_build_toolchain=Paper C project toolchain'
             echo 'ld_preload=unset'
             echo 'non_root=true'
@@ -464,9 +465,8 @@ jobs:
             )
             (
               cd tools/comparator
-              project_toolchain="$(tr -d '\r\n' < "$GITHUB_WORKSPACE/project/lean-toolchain")"
-              elan run "$project_toolchain" lean --version
-              elan run "$project_toolchain" lake --version
+              elan run "$comparator_toolchain" lean --version
+              elan run "$comparator_toolchain" lake --version
             )
             go version
             if mathlib_checkout_commit="$(
@@ -708,11 +708,21 @@ jobs:
           name: paper-c-comparator-evidence-${{ matrix.label }}-${{ steps.source_identity.outputs.source_sha }}
           path: |
             project/ci-logs/
-            project/${{ matrix.config }}
             project/Challenge.lean
             project/Solution.lean
             project/ChallengeTransfer.lean
             project/SolutionTransfer.lean
+            project/ChallengeTheoremOneTwo.lean
+            project/SolutionTheoremOneTwo.lean
+            project/ChallengeTheoremOneFour.lean
+            project/SolutionTheoremOneFour.lean
+            project/ChallengeTheoremSixteenTwo.lean
+            project/SolutionTheoremSixteenTwo.lean
+            project/comparator/theorem_one_one.json
+            project/comparator/theorem_one_one_transfer.json
+            project/comparator/theorem_one_two.json
+            project/comparator/theorem_one_four_and_corollary_eleven_three.json
+            project/comparator/theorem_sixteen_two_and_corollary_sixteen_four.json
             project/audit_config.json
             project/lean-toolchain
             project/lake-manifest.json

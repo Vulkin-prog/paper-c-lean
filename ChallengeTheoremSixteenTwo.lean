@@ -113,7 +113,7 @@ end FinitePMF
 namespace SectionThirteenFiniteBound
 
 noncomputable def natTotalVariation (p q : ℕ → ℝ) : ℝ :=
-  (2 : ℝ)⁻¹ * ∑' k : ℕ, |p k - q k|
+  ((2 : ℕ) : ℝ)⁻¹ * ∑' k : ℕ, |p k - q k|
 
 noncomputable def finiteNatLaw
     {Ω : Type*} [Fintype Ω]
@@ -240,7 +240,7 @@ noncomputable def matchingPoissonLaw
 noncomputable def totalVariationToPoisson
     {Ω : Type u} {ι : Type v} [Fintype Ω] [Fintype ι]
     (μ : FinitePMF Ω) (X : ι → Ω → Bool) : ℝ :=
-  (2 : ℝ)⁻¹ * ∑' k : ℕ,
+  ((2 : ℕ) : ℝ)⁻¹ * ∑' k : ℕ,
     |indicatorSumLaw μ X k - matchingPoissonLaw μ X k|
 
 def ArratiaGoldsteinGordonStatement : Prop :=
@@ -376,7 +376,7 @@ end EvertseSilvermanInput
 namespace PellInput
 
 def nicolasRobinConstant : ℝ :=
-  2 * Real.log 2
+  ((2 : ℕ) : ℝ) * Real.log ((2 : ℕ) : ℝ)
 
 def NicolasRobinDivisorLogBoundStatement : Prop :=
   ∀ n : ℕ, 64 ≤ n →
@@ -391,7 +391,7 @@ end PellInput
 namespace CriticalRunWindow
 
 def InRunLengthWindow (C : ℝ) (N L : ℕ) : Prop :=
-  |(L : ℝ) - Real.log N / Real.log 2| ≤ C
+  |(L : ℝ) - Real.log N / Real.log ((2 : ℕ) : ℝ)| ≤ C
 
 end CriticalRunWindow
 
@@ -439,7 +439,7 @@ noncomputable def globalStartRate (M L : ℕ) : ℝ≥0 :=
     exact Finset.sum_nonneg fun x _ ↦ eventProbability_nonneg _ _⟩
 
 noncomputable def criticalScale (M L : ℕ) : ℝ :=
-  (M : ℝ) / (2 : ℝ) ^ L
+  (M : ℝ) / ((2 : ℕ) : ℝ) ^ L
 
 noncomputable def globalEmptyProbability (M L : ℕ) : ℝ :=
   globalStartLaw M L 0

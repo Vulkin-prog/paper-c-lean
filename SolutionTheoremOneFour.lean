@@ -54,7 +54,8 @@ abbrev 𝔽₂ := PaperCAudit.F₂
 
 open scoped Classical
 
-local instance : Fact (Nat.Prime 2) := Fact.mk Nat.prime_two
+local instance factPrimeTwo : Fact (Nat.Prime 2) :=
+  Fact.mk Nat.prime_two
 
 section Relations
 
@@ -200,7 +201,7 @@ noncomputable def dyadicVariance (N L : ℕ) : ℚ :=
     (fun ω : DyadicSample N L => (dyadicCount N L ω : ℚ))
 
 noncomputable def criticalMean (N L : ℕ) : ℝ :=
-  (N : ℝ) / (2 : ℝ) ^ L
+  (N : ℝ) / ((2 : ℕ) : ℝ) ^ L
 
 noncomputable def dyadicFirstMomentPoissonError
     (N L : ℕ) : ℝ :=
