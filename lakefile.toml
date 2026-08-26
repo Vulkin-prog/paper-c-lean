@@ -17,6 +17,24 @@ name = "ChallengeTransfer"
 [[lean_lib]]
 name = "SolutionTransfer"
 
+[[lean_lib]]
+name = "ChallengeTheoremOneTwo"
+
+[[lean_lib]]
+name = "SolutionTheoremOneTwo"
+
+[[lean_lib]]
+name = "ChallengeTheoremOneFour"
+
+[[lean_lib]]
+name = "SolutionTheoremOneFour"
+
+[[lean_lib]]
+name = "ChallengeTheoremSixteenTwo"
+
+[[lean_lib]]
+name = "SolutionTheoremSixteenTwo"
+
 [[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4.git"

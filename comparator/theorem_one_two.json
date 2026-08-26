@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ChallengeTheoremOneTwo",
+  "solution_module": "SolutionTheoremOneTwo",
+  "theorem_names": [
+    "paper_c_theorem_one_two_i_deterministic_masks",
+    "paper_c_theorem_one_two_ii_spatial_laplace",
+    "paper_c_theorem_one_two_iii_marked_laplace_and_tightness"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

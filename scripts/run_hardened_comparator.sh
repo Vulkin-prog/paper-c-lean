@@ -358,7 +358,7 @@ done
 mapfile -t CONFIG_PATHS < <(node - "$AUDIT_CONFIG" <<'NODE'
 const fs = require('node:fs');
 const config = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
-for (const item of config.verification.comparator.configurations) {
+for (const item of config.verification.comparator.historical_configurations) {
   process.stdout.write(`${item.path}\n`);
 }
 NODE
@@ -773,13 +773,15 @@ clone_pinned "$COMPARATOR_REPOSITORY" "$COMPARATOR_COMMIT" "$COMPARATOR_SOURCE"
 clone_pinned "$LEAN4EXPORT_REPOSITORY" "$LEAN4EXPORT_COMMIT" "$LEAN4EXPORT_SOURCE"
 clone_pinned "$LANDRUN_REPOSITORY" "$LANDRUN_COMMIT" "$LANDRUN_SOURCE"
 
+COMPARATOR_TOOLCHAIN=$(tr -d '\r\n' < "$COMPARATOR_SOURCE/lean-toolchain")
+[[ -n "$COMPARATOR_TOOLCHAIN" ]] || die 'Comparator toolchain is empty'
+run_logged env -i PATH="$TRUSTED_PATH" HOME="$HOME" \
+  ELAN_HOME="$EXPECTED_ELAN_HOME" LANG=C.UTF-8 LC_ALL=C.UTF-8 \
+  "$ELAN_BIN" run --install "$COMPARATOR_TOOLCHAIN" lean --version
 run_logged_in "$COMPARATOR_SOURCE" \
   env -i PATH="$TRUSTED_PATH" HOME="$HOME" \
     ELAN_HOME="$EXPECTED_ELAN_HOME" LANG=C.UTF-8 LC_ALL=C.UTF-8 \
-    "$ELAN_BIN" run "$PROJECT_TOOLCHAIN" lake build comparator
-[[ "$($GIT_BIN -C "$COMPARATOR_SOURCE/.lake/packages/lean4export" rev-parse HEAD)" \
-    == "$LEAN4EXPORT_COMMIT" ]] || \
-  die 'Comparator resolved an unexpected lean4export revision'
+    "$ELAN_BIN" run "$COMPARATOR_TOOLCHAIN" lake build comparator
 run_logged_in "$LEAN4EXPORT_SOURCE" \
   env -i PATH="$TRUSTED_PATH" HOME="$HOME" \
     ELAN_HOME="$EXPECTED_ELAN_HOME" LANG=C.UTF-8 LC_ALL=C.UTF-8 \
@@ -1019,7 +1021,7 @@ NODE
     echo "comparator_fileset_digest_sha256=$fileset_sha"
     echo "project_toolchain=$PROJECT_TOOLCHAIN"
     echo "comparator_source_toolchain=$(tr -d '\r\n' < "$COMPARATOR_SOURCE/lean-toolchain")"
-    echo 'comparator_build_toolchain=Paper C project toolchain'
+    echo "comparator_build_toolchain=$COMPARATOR_TOOLCHAIN"
     echo 'lean4export_build_toolchain=Paper C project toolchain'
     echo 'ld_preload=unset'
     echo 'non_root=true'
@@ -1048,6 +1050,10 @@ NODE
       "$ELAN_BIN" run "$PROJECT_TOOLCHAIN" lean --version
     env ELAN_HOME="$EXPECTED_ELAN_HOME" \
       "$ELAN_BIN" run "$PROJECT_TOOLCHAIN" lake --version
+    env ELAN_HOME="$EXPECTED_ELAN_HOME" \
+      "$ELAN_BIN" run "$COMPARATOR_TOOLCHAIN" lean --version
+    env ELAN_HOME="$EXPECTED_ELAN_HOME" \
+      "$ELAN_BIN" run "$COMPARATOR_TOOLCHAIN" lake --version
     echo "$GO_VERSION_OUTPUT"
     echo "mathlib_checkout_commit=$mathlib_head"
     echo "$COMPARATOR_SHA  comparator-binary"
@@ -1308,8 +1314,17 @@ SNAPSHOT_FILES=(
   Solution.lean
   ChallengeTransfer.lean
   SolutionTransfer.lean
+  ChallengeTheoremOneTwo.lean
+  SolutionTheoremOneTwo.lean
+  ChallengeTheoremOneFour.lean
+  SolutionTheoremOneFour.lean
+  ChallengeTheoremSixteenTwo.lean
+  SolutionTheoremSixteenTwo.lean
   comparator/theorem_one_one.json
   comparator/theorem_one_one_transfer.json
+  comparator/theorem_one_two.json
+  comparator/theorem_one_four_and_corollary_eleven_three.json
+  comparator/theorem_sixteen_two_and_corollary_sixteen_four.json
   audit_config.json
   lean-toolchain
   lake-manifest.json

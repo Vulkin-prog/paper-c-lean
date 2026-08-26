@@ -2,13 +2,32 @@
 set -euo pipefail
 
 repository_root=$(cd "$(dirname "$0")/.." && pwd)
+configuration=${1:-comparator/theorem_one_one.json}
+case "$configuration" in
+  comparator/theorem_one_one.json | \
+  comparator/theorem_one_one_transfer.json | \
+  comparator/theorem_one_two.json | \
+  comparator/theorem_one_four_and_corollary_eleven_three.json | \
+  comparator/theorem_sixteen_two_and_corollary_sixteen_four.json)
+    ;;
+  *)
+    echo "error: unsupported Palomar Comparator configuration: $configuration" >&2
+    exit 2
+    ;;
+esac
+source_config="$repository_root/$configuration"
+if [ ! -f "$source_config" ]; then
+  echo "error: Comparator configuration not found: $configuration" >&2
+  exit 1
+fi
 cache_root=${PALOMAR_COMPARATOR_CACHE:-"$repository_root/.cache/palomar-qualification"}
 bin_dir="$cache_root/bin"
 comparator_dir="$cache_root/comparator"
 lean4export_dir="$cache_root/lean4export"
 nanoda_dir="$cache_root/nanoda"
 submission_dir="$cache_root/palomar-submission"
-protected_config="$cache_root/protected-comparator.json"
+config_slug=$(basename "$configuration" .json)
+protected_config="$cache_root/protected-$config_slug.json"
 
 # PalomarSubmission commit 0a2c287a924d2a7cb22e2b12f12b27321bb485a3,
 # workflow submission.yml, read on 2026-08-20.
@@ -27,7 +46,7 @@ done
 
 "$repository_root/palomar/check-mathlib-canonical-ancestry.sh"
 
-python3 - "$repository_root/comparator/theorem_one_one.json" "$protected_config" <<'PY'
+python3 - "$source_config" "$protected_config" <<'PY'
 import json
 import pathlib
 import sys

@@ -1,0 +1,229 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Paper C: moments and a quantitative homogeneous sum"
+  description: >-
+    Lean 4 formalization of the first two moments and variance of the number
+    of long constant-stretch starts of an extended Rademacher random
+    completely multiplicative function in a dyadic block, together with the
+    quantitative exponential estimate for the separated homogeneous
+    two-start sum. Uniformly in the critical window, Theorem 1.4 gives the
+    first-moment rate, second falling-factorial-moment convergence,
+    R_2(N,L)=o_C(N^2), and variance convergence; Corollary 11.3 gives the
+    stronger bound R_2(N,L) <<_C N^2 exp(-c_R sqrt(log N)/log log N) for some
+    c_R>0. Both compared statements are conditional on exactly two fully
+    stated ordinary propositions specialized from Evertse--Silverman and
+    Nicolas--Robin. Those propositions are theorem arguments, not Lean
+    axioms.
+  authors:
+    - "Brice Pouly"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Brice Pouly"
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.PR"
+  msc2020:
+    - "11K65"
+    - "60F05"
+
+sources:
+  - title: >-
+      A critical Poisson law in a dyadic block -- Starting points of long
+      constant stretches of an extended Rademacher random completely
+      multiplicative function
+    authors:
+      - "Brice Pouly"
+    id: "https://doi.org/10.33774/coe-2026-z3l74"
+    type: "paper"
+    location: >-
+      Theorem 1.4, printed/PDF p. 4, and Corollary 11.3, printed/PDF p. 38
+      of paper_C_complete_v09_en.pdf, SHA-256
+      ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189
+    relationship: "adapts"
+    note: >-
+      The compared statements use the exact finite prime-sign cylinder on
+      which the dyadic observable is defined. For fixed N and L this is the
+      cylindrical restriction of the paper's infinite product law. The
+      repository proves the exact finite-cylinder/infinite-product law
+      identity separately; that transfer is outside this Comparator target.
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "Uniform bounds for the number of solutions to Y^n = f(X)"
+    authors:
+      - "J.-H. Evertse"
+      - "J. H. Silverman"
+    id: "https://doi.org/10.1017/S0305004100066068"
+    type: "paper"
+    location: "Theorem 1(b), printed p. 238"
+    relationship: "background"
+    note: >-
+      The split-polynomial specialization K = L = Q with exponent two and an
+      abscissa count is exposed as the ordinary theorem hypothesis hES. Its
+      source-to-hypothesis implication is documented by the
+      ES86-T1b-Q-split-n2 agent-reviewed certificate; it is not proved in Lean
+      or independently human-certified.
+  - title: "Majorations explicites pour le nombre de diviseurs de N"
+    authors:
+      - "J.-L. Nicolas"
+      - "G. Robin"
+    id: "https://doi.org/10.4153/CMB-1983-078-5"
+    type: "paper"
+    location: "Definition of f and Theorem 1, printed p. 485"
+    relationship: "background"
+    note: >-
+      The direct logarithmic divisor inequality above n = 64, with the safe
+      coefficient 2 log 2, is exposed as the ordinary theorem hypothesis
+      hDivisor. Its source-to-hypothesis implication is documented by the
+      NR83-T1-divisor-log-bound agent-reviewed certificate; it is not proved
+      in Lean or independently human-certified.
+
+related_formalizations: []
+
+status:
+  scope: >-
+    This Palomar candidate selects exactly
+    paper_c_theorem_one_four_moments and
+    paper_c_corollary_eleven_three through
+    comparator/theorem_one_four_and_corollary_eleven_three.json. The two
+    declarations in SolutionTheoremOneFour.lean contain no sorry.
+    ChallengeTheoremOneFour.lean is a standalone Mathlib-only statement
+    boundary containing the two deliberate Comparator placeholders. The
+    compared endpoints remain conditional on hES and hDivisor; they do not
+    prove those two literature propositions. Arratia--Goldstein--Gordon is
+    not consumed by either endpoint, and the former generalized-Pell and
+    Halter--Koch interfaces are discharged internally.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "paper_c_theorem_one_four_moments"
+      file: "SolutionTheoremOneFour.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: >-
+        comparator/theorem_one_four_and_corollary_eleven_three.json
+      literature_dependencies:
+        - statement: >-
+            Evertse--Silverman split-Q exponent-two abscissa bound.
+          source: "https://doi.org/10.1017/S0305004100066068"
+        - statement: >-
+            Nicolas--Robin logarithmic divisor bound above n = 64.
+          source: "https://doi.org/10.4153/CMB-1983-078-5"
+    - declaration: "paper_c_corollary_eleven_three"
+      file: "SolutionTheoremOneFour.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: >-
+        comparator/theorem_one_four_and_corollary_eleven_three.json
+      literature_dependencies:
+        - statement: >-
+            Evertse--Silverman split-Q exponent-two abscissa bound.
+          source: "https://doi.org/10.1017/S0305004100066068"
+        - statement: >-
+            Nicolas--Robin logarithmic divisor bound above n = 64.
+          source: "https://doi.org/10.4153/CMB-1983-078-5"
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "n/a"
+      tool_setup: >-
+        Brice Pouly directed the research, selected the mathematical and
+        release requirements, evaluated agent outputs, and curated the public
+        statement and evidence boundaries.
+      prompting_notes: "n/a"
+    - method: "agent"
+      models:
+        - "Claude Fable 5"
+        - "Claude Opus 4.8"
+        - "GPT 5.6 Sol (gpt-5.6-sol)"
+      framework: "Anthropic Claude and ChatGPT Work Mode / Codex"
+      tool_setup: >-
+        AI-assisted lemma exploration, drafting, Lean development,
+        reconnaissance programs, iterative local Lake builds, generated
+        declaration and bridge audits, and adversarial counter-audits by
+        distinct agent instances and models from multiple providers.
+      prompting_notes: >-
+        Work was divided into bounded mathematical, Lean, audit, and release
+        tasks, followed by explicit counter-review and mechanically checked
+        reconciliation passes.
+  spend_usd: "subscription-based usage; not separately tracked"
+  notes: >-
+    The human maintainer set goals and acceptance criteria and decided what to
+    publish. Agents supplied substantial mathematical, formalization,
+    documentation, and audit assistance. This workflow is disclosed in the
+    manuscript and repository and is not represented as independent review.
+
+fidelity:
+  divergences: >-
+    The paper starts from an infinite product of independent prime signs; the
+    compared statements use the finite uniform cylinder because every fixed
+    dyadic count is cylindrical. The exact law transfer is proved elsewhere
+    in the repository but is outside this entry. Bits in ZMod 2 encode signs,
+    and the start event is totalized on natural numbers; eventual statements
+    never observe the harmless exceptional small values. UniformLittleOOn and
+    UniformBigOOn expose thresholds uniform in L and allowed to depend on C.
+    The reciprocal-power predicate gives the precise Lean convention for
+    N^(-1/2+o_C(1)). The Lean endpoints permit C = 0 whereas the paper states
+    C > 0. The homogeneous-mass route uses the canonical technical parameter
+    A = 3. Most importantly, the paper states the results without
+    theorem-level premises, while the compared Lean theorems are explicitly
+    conditional on the two source-shaped propositions hES and hDivisor.
+    Their implications from the cited literature have agent-reviewed
+    documentary certificates but no Lean proofs or independent external human
+    certification.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Claude Fable 5 agent instances"
+    - "Claude Opus 4.8 agent instances"
+    - "OpenAI GPT 5.6 Sol agent instances"
+  notes: >-
+    Distinct agent instances and models performed repeated adversarial
+    mathematical, source, Lean, and release counter-reviews, alongside
+    exhaustive mechanical declaration and axiom audits. These procedures are
+    neither independent scientific validation nor human peer review. No
+    independent external human mathematical peer review has been completed.
+    The two literature certificates assess source-to-proposition implications
+    but do not turn the hypotheses into kernel-verified theorems.
+
+alignment:
+  namespace: "PaperCAudit"
+  statements:
+    - source: "Paper C, Theorem 1.4, printed/PDF p. 4"
+      lean: "paper_c_theorem_one_four_moments"
+      module: "SolutionTheoremOneFour"
+      status: "proved modulo two explicit ordinary literature premises"
+      note: >-
+        For every C >= 0, uniformly when |L - log N/log 2| <= C, Lean proves
+        the N^(-1/2+o_C(1)) first-moment error, o_C(1) second
+        falling-factorial-moment error, o_C(N^2) homogeneous mass, and o_C(1)
+        variance error. The exact premises are hES and hDivisor.
+    - source: "Paper C, Corollary 11.3, printed/PDF p. 38"
+      lean: "paper_c_corollary_eleven_three"
+      module: "SolutionTheoremOneFour"
+      status: "proved modulo two explicit ordinary literature premises"
+      note: >-
+        For every C >= 0, there is c_R > 0 such that the homogeneous mass is
+        uniformly O_C(N^2 exp(-c_R sqrt(log N)/log log N)) in the exact
+        critical window. The exact premises are hES and hDivisor.
+
+acknowledgements: >-
+  Built on Lean 4 and Mathlib. The exact source-facing bridge identifiers and
+  their documentary qualifications are recorded in audit_manifest.json and
+  literature_certificates/.

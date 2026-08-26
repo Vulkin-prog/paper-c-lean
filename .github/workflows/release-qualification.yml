@@ -115,6 +115,12 @@ jobs:
           lake build ChallengeTransfer
           lake build Solution
           lake build SolutionTransfer
+          lake build ChallengeTheoremOneTwo
+          lake build SolutionTheoremOneTwo
+          lake build ChallengeTheoremOneFour
+          lake build SolutionTheoremOneFour
+          lake build ChallengeTheoremSixteenTwo
+          lake build SolutionTheoremSixteenTwo
           node scripts/generate_audit.mjs
           mkdir -p ci-logs
           lake env lean AuditCheck.lean 2>&1 | tee ci-logs/AuditCheck.log

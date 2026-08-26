@@ -2707,14 +2707,6 @@ for (const [index, run] of
   });
 }
 if (
-  JSON.stringify([...historicalComparatorConfigurationPaths].sort(binaryCompare)) !==
-  JSON.stringify([...currentComparatorConfigurationByPath.keys()].sort(binaryCompare))
-) {
-  throw new Error(
-    'historical and current Comparator configuration paths must match exactly',
-  );
-}
-if (
   historicalPublishedComparatorEvidence.paper_c_commit !==
     historicalComparatorSourceCommit ||
   historicalPublishedComparatorEvidence.comparator_fileset_digest_sha256 !==
@@ -2741,6 +2733,15 @@ const comparatorConfigByPath = new Map(
   parsedComparatorConfigurations.map(config => [config.path, config]),
 );
 const placeholderKeys = new Set();
+const placeholderCountByFile = auditConfig.challenge_placeholders.reduce(
+  (counts, placeholder) => {
+    if (placeholder !== null && typeof placeholder === 'object') {
+      counts.set(placeholder.file, (counts.get(placeholder.file) ?? 0) + 1);
+    }
+    return counts;
+  },
+  new Map(),
+);
 for (const [index, placeholder] of auditConfig.challenge_placeholders.entries()) {
   requirePlainObject(placeholder, `challenge_placeholders[${index}]`);
   const relativePath = requireNonemptyString(
@@ -2772,9 +2773,10 @@ for (const [index, placeholder] of auditConfig.challenge_placeholders.entries())
   }
   const source = fs.readFileSync(path.join(projectRoot, relativePath), 'utf8');
   const actualCount = source.split(placeholder.token).length - 1;
-  if (actualCount !== placeholder.count) {
+  const configuredCount = placeholderCountByFile.get(relativePath);
+  if (actualCount !== configuredCount) {
     throw new Error(
-      `${relativePath}: expected ${placeholder.count} ${placeholder.token} ` +
+      `${relativePath}: expected ${configuredCount} ${placeholder.token} ` +
       `placeholder, found ${actualCount}`,
     );
   }

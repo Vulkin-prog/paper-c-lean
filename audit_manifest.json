@@ -137,34 +137,43 @@
   "source_digest_sha256": "3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137",
   "comparator_fileset": [
     "Challenge.lean",
+    "ChallengeTheoremOneFour.lean",
+    "ChallengeTheoremOneTwo.lean",
+    "ChallengeTheoremSixteenTwo.lean",
     "ChallengeTransfer.lean",
     "Solution.lean",
+    "SolutionTheoremOneFour.lean",
+    "SolutionTheoremOneTwo.lean",
+    "SolutionTheoremSixteenTwo.lean",
     "SolutionTransfer.lean",
+    "comparator/theorem_one_four_and_corollary_eleven_three.json",
     "comparator/theorem_one_one.json",
-    "comparator/theorem_one_one_transfer.json"
+    "comparator/theorem_one_one_transfer.json",
+    "comparator/theorem_one_two.json",
+    "comparator/theorem_sixteen_two_and_corollary_sixteen_four.json"
   ],
-  "comparator_digest_sha256": "add629c9a32effa3032b2ef11d75336d700fc964eab5054fe62f604e68c82d4f",
+  "comparator_digest_sha256": "47c31ce103a1d7a76fa4d642a32a45a3077210f12acafadc480aa31bc8e5c87c",
   "source_snapshot_comparator_state": "definitions_and_digests_only",
   "release_evidence_state": "external_to_source_snapshot",
   "release_evidence_location": "release_evidence/v0.48.1/",
   "packaging_commit_required": true,
-  "comparator_state_note": "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. Release qualification is resolved only from release_evidence/v0.48.1/ in a validated single-parent packaging commit whose parent is this exact source commit. This protocol statement neither asserts the presence nor the absence of such a packaging commit. The published v0.48.0 evidence remains historical evidence for its recorded commit and fileset digest and does not qualify this source snapshot.",
+  "comparator_state_note": "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. release_evidence/v0.48.1/ applies only to the two historical Theorem 1.1 configurations and only through its validated single-parent packaging protocol. The three new Palomar configurations require their own Lean-and-NanoDa verification at the submitted immutable commit; neither the v0.48.1 package nor the published v0.48.0 evidence qualifies those new targets.",
   "comparator_tools": {
     "comparator": {
       "repository": "https://github.com/leanprover/comparator",
-      "commit": "51491237b1d2f96cca203af9c34bced6fe38e0d8"
+      "commit": "575674928e239f5bc452aab72d1dd7b0f1326494"
     },
     "lean4export": {
       "repository": "https://github.com/leanprover/lean4export",
-      "commit": "af5aa64bb914c3c2c781f378088dbd38acf4f804"
+      "commit": "4e7915201d3f9f04470d9eae002fa695f7cdc589"
     },
     "landrun": {
       "repository": "https://github.com/Zouuup/landrun",
       "commit": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
     },
     "nanoda": {
-      "installed": false,
-      "commit": null
+      "installed": true,
+      "commit": "68d5ca9db226849b41a6fff59d796ff19d0a8840"
     }
   },
   "comparator_compatibility_probe": {
@@ -238,6 +247,66 @@
       "source_snapshot_comparator_state": "definitions_and_digests_only",
       "challenge_file": "ChallengeTransfer.lean",
       "solution_file": "SolutionTransfer.lean"
+    },
+    {
+      "challenge_module": "ChallengeTheoremOneTwo",
+      "solution_module": "SolutionTheoremOneTwo",
+      "theorem_names": [
+        "paper_c_theorem_one_two_i_deterministic_masks",
+        "paper_c_theorem_one_two_ii_spatial_laplace",
+        "paper_c_theorem_one_two_iii_marked_laplace_and_tightness"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "enable_nanoda": true,
+      "path": "comparator/theorem_one_two.json",
+      "sha256": "eecf7dd9f69a25f43c979ea66823e3e83eb7c833009564ddaf42b16aa32d7e5a",
+      "source_snapshot_comparator_state": "definitions_and_digests_only",
+      "challenge_file": "ChallengeTheoremOneTwo.lean",
+      "solution_file": "SolutionTheoremOneTwo.lean"
+    },
+    {
+      "challenge_module": "ChallengeTheoremOneFour",
+      "solution_module": "SolutionTheoremOneFour",
+      "theorem_names": [
+        "paper_c_theorem_one_four_moments",
+        "paper_c_corollary_eleven_three"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "enable_nanoda": true,
+      "path": "comparator/theorem_one_four_and_corollary_eleven_three.json",
+      "sha256": "a09253379794358f0c7b93f07df8e4e985be52bff928d16e61bdc02ad092be65",
+      "source_snapshot_comparator_state": "definitions_and_digests_only",
+      "challenge_file": "ChallengeTheoremOneFour.lean",
+      "solution_file": "SolutionTheoremOneFour.lean"
+    },
+    {
+      "challenge_module": "ChallengeTheoremSixteenTwo",
+      "solution_module": "SolutionTheoremSixteenTwo",
+      "theorem_names": [
+        "paper_c_theorem_sixteen_two_finite_cylinder",
+        "paper_c_theorem_sixteen_two_finite_cylinder_recentered",
+        "paper_c_theorem_sixteen_two_infinite_model",
+        "paper_c_corollary_sixteen_four_prefix_law"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "enable_nanoda": true,
+      "path": "comparator/theorem_sixteen_two_and_corollary_sixteen_four.json",
+      "sha256": "1e509953927ff53dfb7004abff3017d1e747f9d777e1cea57d755709be0ed1bc",
+      "source_snapshot_comparator_state": "definitions_and_digests_only",
+      "challenge_file": "ChallengeTheoremSixteenTwo.lean",
+      "solution_file": "SolutionTheoremSixteenTwo.lean"
     }
   ],
   "comparator_historical_configurations": [
@@ -368,7 +437,7 @@
     "notes": "The project has undergone repeated adversarial counter-review by distinct agent instances and models from multiple providers, together with exhaustive mechanical declaration and axiom auditing. These procedures are neither independent scientific validation nor human certification, and the project has not yet received independent external human mathematical peer review. The completeness of the mapped paper-item list remains editorial metadata requiring human rereading; it is not inferred or certified by the generator. Comparator release outcomes must be reported only from evidence in a validated packaging commit bound to the exact source snapshot, and a semantic smoke test must not be presented as a sandboxed certificate."
   },
   "proof_sorry_count": 0,
-  "comparator_interface_sorry_count": 2,
+  "comparator_interface_sorry_count": 11,
   "comparator_interface_placeholders": [
     {
       "file": "Challenge.lean",
@@ -383,9 +452,72 @@
       "token": "by sorry",
       "count": 1,
       "purpose": "Intentional Comparator challenge placeholder for the exact infinite-product/finite-cylinder law identity; excluded from proof sorry_count."
+    },
+    {
+      "file": "ChallengeTheoremOneTwo.lean",
+      "declaration": "paper_c_theorem_one_two_i_deterministic_masks",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for Theorem 1.2(i); excluded from proof sorry_count."
+    },
+    {
+      "file": "ChallengeTheoremOneTwo.lean",
+      "declaration": "paper_c_theorem_one_two_ii_spatial_laplace",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for the Laplace-functional form of Theorem 1.2(ii); excluded from proof sorry_count."
+    },
+    {
+      "file": "ChallengeTheoremOneTwo.lean",
+      "declaration": "paper_c_theorem_one_two_iii_marked_laplace_and_tightness",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for the Laplace-functional and tightness form of Theorem 1.2(iii); excluded from proof sorry_count."
+    },
+    {
+      "file": "ChallengeTheoremOneFour.lean",
+      "declaration": "paper_c_theorem_one_four_moments",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for Theorem 1.4; excluded from proof sorry_count."
+    },
+    {
+      "file": "ChallengeTheoremOneFour.lean",
+      "declaration": "paper_c_corollary_eleven_three",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for Corollary 11.3; excluded from proof sorry_count."
+    },
+    {
+      "file": "ChallengeTheoremSixteenTwo.lean",
+      "declaration": "paper_c_theorem_sixteen_two_finite_cylinder",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for the finite-cylinder form of Theorem 16.2; excluded from proof sorry_count."
+    },
+    {
+      "file": "ChallengeTheoremSixteenTwo.lean",
+      "declaration": "paper_c_theorem_sixteen_two_finite_cylinder_recentered",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for the recentered finite-cylinder form of Theorem 16.2; excluded from proof sorry_count."
+    },
+    {
+      "file": "ChallengeTheoremSixteenTwo.lean",
+      "declaration": "paper_c_theorem_sixteen_two_infinite_model",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for the infinite-model form of Theorem 16.2; excluded from proof sorry_count."
+    },
+    {
+      "file": "ChallengeTheoremSixteenTwo.lean",
+      "declaration": "paper_c_corollary_sixteen_four_prefix_law",
+      "token": "by sorry",
+      "count": 1,
+      "purpose": "Intentional Comparator challenge placeholder for Corollary 16.4; excluded from proof sorry_count."
     }
   ],
-  "paper_item_count": 113,
+  "paper_item_count": 115,
   "paper_items": [
     {
       "id": "Thm-1.1-finite-cylinder",
@@ -469,7 +601,14 @@
       "conditionality": "conditionnel",
       "formalization_status": "proved modulo three ordinary literature premises",
       "comparator": {
-        "covered": false
+        "covered": true,
+        "configuration": "comparator/theorem_one_two.json",
+        "theorem_name": "paper_c_theorem_one_two_i_deterministic_masks",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
+        "configuration_sha256": "eecf7dd9f69a25f43c979ea66823e3e83eb7c833009564ddaf42b16aa32d7e5a",
+        "challenge_module": "ChallengeTheoremOneTwo",
+        "solution_module": "SolutionTheoremOneTwo",
+        "enable_nanoda": true
       },
       "note": "The canonical masked endpoint gives the uniform critical-window o_C(1) total-variation statement for every deterministic mask."
     },
@@ -499,7 +638,14 @@
       "conditionality": "conditionnel",
       "formalization_status": "proved by spatial Laplace-functional characterization modulo three ordinary literature premises",
       "comparator": {
-        "covered": false
+        "covered": true,
+        "configuration": "comparator/theorem_one_two.json",
+        "theorem_name": "paper_c_theorem_one_two_ii_spatial_laplace",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
+        "configuration_sha256": "eecf7dd9f69a25f43c979ea66823e3e83eb7c833009564ddaf42b16aa32d7e5a",
+        "challenge_module": "ChallengeTheoremOneTwo",
+        "solution_module": "SolutionTheoremOneTwo",
+        "enable_nanoda": true
       },
       "note": "Lean proves the spatial Poisson point-process characterization through convergence of Laplace functionals. It deliberately does not duplicate the paper's vague-topology convergence as a Tendsto statement because the required point-measure API is unavailable."
     },
@@ -529,7 +675,14 @@
       "conditionality": "conditionnel",
       "formalization_status": "proved by marked Laplace-functional characterization modulo three ordinary literature premises",
       "comparator": {
-        "covered": false
+        "covered": true,
+        "configuration": "comparator/theorem_one_two.json",
+        "theorem_name": "paper_c_theorem_one_two_iii_marked_laplace_and_tightness",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
+        "configuration_sha256": "eecf7dd9f69a25f43c979ea66823e3e83eb7c833009564ddaf42b16aa32d7e5a",
+        "challenge_module": "ChallengeTheoremOneTwo",
+        "solution_module": "SolutionTheoremOneTwo",
+        "enable_nanoda": true
       },
       "note": "Lean proves the marked Poisson point-process characterization through Laplace functionals, with the required mark-tail tightness proved in supporting modules. It does not restate vague-topology convergence as Tendsto because the required point-measure API is unavailable."
     },
@@ -554,7 +707,14 @@
       "conditionality": "conditionnel",
       "formalization_status": "proved modulo two ordinary literature premises",
       "comparator": {
-        "covered": false
+        "covered": true,
+        "configuration": "comparator/theorem_one_four_and_corollary_eleven_three.json",
+        "theorem_name": "paper_c_theorem_one_four_moments",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
+        "configuration_sha256": "a09253379794358f0c7b93f07df8e4e985be52bff928d16e61bdc02ad092be65",
+        "challenge_module": "ChallengeTheoremOneFour",
+        "solution_module": "SolutionTheoremOneFour",
+        "enable_nanoda": true
       },
       "note": "The canonical theorem packages the first-moment estimate, second factorial-moment control, the homogeneous-sum estimate, and the variance conclusion in the critical window."
     },
@@ -1529,7 +1689,14 @@
       "conditionality": "conditionnel",
       "formalization_status": "proved modulo two external literature premises",
       "comparator": {
-        "covered": false
+        "covered": true,
+        "configuration": "comparator/theorem_one_four_and_corollary_eleven_three.json",
+        "theorem_name": "paper_c_corollary_eleven_three",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
+        "configuration_sha256": "a09253379794358f0c7b93f07df8e4e985be52bff928d16e61bdc02ad092be65",
+        "challenge_module": "ChallengeTheoremOneFour",
+        "solution_module": "SolutionTheoremOneFour",
+        "enable_nanoda": true
       },
       "note": "The canonical declaration proves the manuscript's exponential homogeneous-mass rate with explicit uniformity in the critical window."
     },
@@ -2168,6 +2335,10 @@
       },
       "lean_declarations": [
         {
+          "name": "PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical",
+          "file": "PaperC/Asymptotics/TheoremSixteenTwo.lean"
+        },
+        {
           "name": "PaperC.TheoremSixteenTwoRecentered.theorem_sixteen_two_recentered_canonical",
           "file": "PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean"
         },
@@ -2188,9 +2359,86 @@
       "conditionality": "conditionnel",
       "formalization_status": "proved on the finite cylinder and infinite source law modulo six literature premises",
       "comparator": {
-        "covered": false
+        "covered": true,
+        "configuration": "comparator/theorem_sixteen_two_and_corollary_sixteen_four.json",
+        "theorem_name": "paper_c_theorem_sixteen_two_infinite_model",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
+        "configuration_sha256": "1e509953927ff53dfb7004abff3017d1e747f9d777e1cea57d755709be0ed1bc",
+        "challenge_module": "ChallengeTheoremSixteenTwo",
+        "solution_module": "SolutionTheoremSixteenTwo",
+        "enable_nanoda": true
       },
-      "note": "The two declarations record the recentered finite-cylinder result and its exact infinite-model transfer; neither is covered by the v0.48 Comparator target listed here."
+      "note": "The declarations record the exact-mean and recentered finite-cylinder results and the exact infinite-model transfer. The Comparator package exposes all three forms; this item selects the infinite-model form as its representative target."
+    },
+    {
+      "id": "Thm-16.2-finite-cylinder-audit-form",
+      "paper_locator": {
+        "result": "Theorem 16.2 (finite-cylinder exact-mean audit form)",
+        "pages": "54",
+        "edition": "paper-c-en-v09"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical",
+          "file": "PaperC/Asymptotics/TheoremSixteenTwo.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ADGR07-PNT",
+        "AGG89-T1-finite-dependency-b3-zero",
+        "BS93-Theorem-1",
+        "ES86-T1b-Q-split-n2",
+        "LS04-Corollary-1",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved on the finite cylinder modulo six literature premises",
+      "comparator": {
+        "covered": true,
+        "configuration": "comparator/theorem_sixteen_two_and_corollary_sixteen_four.json",
+        "theorem_name": "paper_c_theorem_sixteen_two_finite_cylinder",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
+        "configuration_sha256": "1e509953927ff53dfb7004abff3017d1e747f9d777e1cea57d755709be0ed1bc",
+        "challenge_module": "ChallengeTheoremSixteenTwo",
+        "solution_module": "SolutionTheoremSixteenTwo",
+        "enable_nanoda": true
+      },
+      "note": "Comparator-facing exact-mean finite-cylinder form of Theorem 16.2; tracked separately so every selected declaration has an explicit paper-item mapping."
+    },
+    {
+      "id": "Thm-16.2-recentered-finite-cylinder-audit-form",
+      "paper_locator": {
+        "result": "Theorem 16.2 (recentered finite-cylinder audit form)",
+        "pages": "54",
+        "edition": "paper-c-en-v09"
+      },
+      "lean_declarations": [
+        {
+          "name": "PaperC.TheoremSixteenTwoRecentered.theorem_sixteen_two_recentered_canonical",
+          "file": "PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean"
+        }
+      ],
+      "bridge_ids": [
+        "ADGR07-PNT",
+        "AGG89-T1-finite-dependency-b3-zero",
+        "BS93-Theorem-1",
+        "ES86-T1b-Q-split-n2",
+        "LS04-Corollary-1",
+        "NR83-T1-divisor-log-bound"
+      ],
+      "conditionality": "conditionnel",
+      "formalization_status": "proved in recentered finite-cylinder form modulo six literature premises",
+      "comparator": {
+        "covered": true,
+        "configuration": "comparator/theorem_sixteen_two_and_corollary_sixteen_four.json",
+        "theorem_name": "paper_c_theorem_sixteen_two_finite_cylinder_recentered",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
+        "configuration_sha256": "1e509953927ff53dfb7004abff3017d1e747f9d777e1cea57d755709be0ed1bc",
+        "challenge_module": "ChallengeTheoremSixteenTwo",
+        "solution_module": "SolutionTheoremSixteenTwo",
+        "enable_nanoda": true
+      },
+      "note": "Comparator-facing recentered finite-cylinder form of Theorem 16.2; tracked separately so every selected declaration has an explicit paper-item mapping."
     },
     {
       "id": "Cor-16.4",
@@ -2217,9 +2465,16 @@
       "conditionality": "conditionnel",
       "formalization_status": "proved modulo the same six literature premises as Theorem 16.2",
       "comparator": {
-        "covered": false
+        "covered": true,
+        "configuration": "comparator/theorem_sixteen_two_and_corollary_sixteen_four.json",
+        "theorem_name": "paper_c_corollary_sixteen_four_prefix_law",
+        "source_snapshot_comparator_state": "definitions_and_digests_only",
+        "configuration_sha256": "1e509953927ff53dfb7004abff3017d1e747f9d777e1cea57d755709be0ed1bc",
+        "challenge_module": "ChallengeTheoremSixteenTwo",
+        "solution_module": "SolutionTheoremSixteenTwo",
+        "enable_nanoda": true
       },
-      "note": "Direct canonical endpoint for the finite-prefix longest-run law; deliberately outside the present Comparator scope."
+      "note": "Direct canonical endpoint for the finite-prefix longest-run law, now included in the dedicated Theorem 16.2/Corollary 16.4 Comparator package."
     },
     {
       "id": "Lem-17.1",

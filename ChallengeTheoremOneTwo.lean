@@ -21,50 +21,25 @@ import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Positivity
 import Mathlib.Tactic.Ring
-import PaperC
+import Mathlib.MeasureTheory.Integral.Bochner.Basic
 
 noncomputable section
 
 /-!
-# Paper C external-audit solution: Theorem 1.1 on a finite cylinder
+# Paper C external-audit challenge: Theorem 1.2
 
-This file independently reproduces the human-readable interface of
-`Challenge.lean` in the fresh `PaperCAudit` namespace, without importing the
-Challenge.  It additionally imports the frozen Paper C core and closes the
-audited statement by the canonical endpoint.  Comparator therefore compares
-the statement together with its complete declarative closure under the exact
-same global names, types, and bodies.
+This trusted statement module imports only Mathlib.  It exposes the three
+clauses of Paper C, Theorem 1.2 through the exact finite-cylinder and infinite
+source-model observables used by the formalization.  The three ordinary
+literature premises are explicit theorem arguments rather than Lean axioms.
 
-Presentation notes relative to the frozen English paper:
-
-* The paper uses an infinite product of independent prime signs.  For fixed
-  `N,L`, the observable is cylindrical.  Here it is evaluated on the finite
-  uniform cylinder containing all primes at most `2*N+L`.  The separate
-  `ChallengeTransfer.lean` target states the exact equality with the infinite
-  law.
-* Bits in `ZMod 2` encode signs: bit addition is multiplication of signs.
-* The cylinder cutoff is deliberately generous rather than minimal; unused
-  prime coordinates integrate out under the uniform law.
-* The paper defines starts for `x ≥ 2` and the multiplicative function on
-  positive integers.  Here `StartEvent` and `randomMultiplicativeValue` are
-  totalized to `ℕ`; subtraction at `x = 0` is truncated and the
-  multiplicativity lemma assumes nonzero factors.  These extra values are
-  never observed in the eventual dyadic conclusion, since the restrictions
-  `N ≥ 2` and `L ≥ 1` may be absorbed into `N₀`.
-* Total variation is the discrete half-`ℓ¹` expression.  The paper writes the
-  equivalent supremum-over-events convention.
-* `UniformBigOOn` spells out `∃ K ≥ 0, ∃ N₀, ∀ N ≥ N₀, ∀ L` in the critical
-  window, so the threshold is independent of `L` and may depend on `C`.
-* The paper fixes `C > 0`; the library proves the harmless strengthening
-  `C ≥ 0`.  An explicit `L ≥ 1` is unnecessary because the eventual critical
-  window forces it.
-
-The main result is Theorem 1.1 on printed/PDF page 3 of
-`paper_C_complete_v08_en.pdf`, SHA-256
-`2f7c7b9fe3522059f0eb5fb7bf7871f0c3247e30aec534b1caa63abff5c8c927`.
+Clauses (ii) and (iii) use the formalization's source-facing
+Laplace-functional characterizations.  Clause (iii) includes the separate
+uniform mark-tightness assertion required for de-truncation.
 -/
 
-open scoped BigOperators NNReal NumberField Pointwise
+open scoped BigOperators ENNReal NNReal NumberField Pointwise Topology
+open Filter MeasureTheory Set
 
 namespace PaperCAudit
 
@@ -84,13 +59,6 @@ Reference: Paper C, §2. Bridge: none. Relation: exact parity-vector encoding. -
 noncomputable def parityVec (n : ℕ) : ℕ →₀ F₂ :=
   n.factorization.mapRange (fun e : ℕ => (e : F₂)) (by simp)
 
-/-- Multiplication becomes addition of parity vectors for nonzero integers.
-Reference: Paper C, §2. Bridge: none. Relation: exact multiplicative identity. -/
-theorem parityVec_mul {a b : ℕ} (ha : a ≠ 0) (hb : b ≠ 0) :
-    parityVec (a * b) = parityVec a + parityVec b := by
-  ext p
-  simp [parityVec, Nat.factorization_mul ha hb]
-
 /-- Bit type used by start events.
 Reference: Paper C, §1. Bridge: none. Relation: additive sign encoding. -/
 abbrev Bit := ZMod 2
@@ -101,6 +69,7 @@ the first conjunct pins the left edge and the second leaves excess length free. 
 def StartEvent (g : ℕ → Bit) (x L : ℕ) : Prop :=
   g (x - 1) + g x = 1 ∧
     ∀ j : ℕ, j < L → g (x + j) = g x
+
 
 /-- Primes at most the inclusive cutoff `M`.
 Reference: Paper C, finite-cylinder presentation of §§2 and 13. Bridge: none.
@@ -129,37 +98,6 @@ Reference: Paper C, §2. Bridge: none. Relation: exact prime-parity pairing. -/
 noncomputable def valueBit {M : ℕ} (ω : SampleSpace M) (n : ℕ) : F₂ :=
   ∑ p : PrimeUpTo M, ω p * parityVec n p.1
 
-/-- Complete multiplicativity in additive coordinates.
-Reference: Paper C, §2. Bridge: none. Relation: exact identity. -/
-theorem valueBit_mul {M a b : ℕ} (ω : SampleSpace M)
-    (ha : a ≠ 0) (hb : b ≠ 0) :
-    valueBit ω (a * b) = valueBit ω a + valueBit ω b := by
-  simp [valueBit, parityVec_mul ha hb, mul_add, Finset.sum_add_distrib]
-
-/-- Character converting a bit to a sign.
-Reference: Paper C, §§1–2. Bridge: none. Relation: exact `(-1)^z` map. -/
-def phase (z : F₂) : ℤ :=
-  if z = 0 then 1 else -1
-
-/-- Character law needed for complete multiplicativity.
-Reference: Paper C, §2. Bridge: none. Relation: exact two-element check. -/
-theorem phase_add (a b : F₂) : phase (a + b) = phase a * phase b := by
-  revert a b
-  decide
-
-/-- Finite-cylinder extended Rademacher function.
-Reference: Paper C, pp. 1–3. Bridge: none. Relation: exact sign-valued model. -/
-noncomputable def randomMultiplicativeValue {M : ℕ}
-    (ω : SampleSpace M) (n : ℕ) : ℤ :=
-  phase (valueBit ω n)
-
-/-- The associated sign-valued function is completely multiplicative.
-Reference: Paper C, pp. 1–3. Bridge: none. Relation: exact defining property. -/
-theorem randomMultiplicativeValue_mul {M a b : ℕ} (ω : SampleSpace M)
-    (ha : a ≠ 0) (hb : b ≠ 0) :
-    randomMultiplicativeValue ω (a * b) =
-      randomMultiplicativeValue ω a * randomMultiplicativeValue ω b := by
-  simp only [randomMultiplicativeValue, valueBit_mul ω ha hb, phase_add]
 
 /-- Inclusive prime cutoff covering every start window in `[N,2N)`.
 Reference: Paper C, finite-cylinder implementation of §§2 and 13. Bridge: none.
@@ -180,12 +118,6 @@ def dyadicBlock (N : ℕ) : Finset ℕ :=
 Reference: Paper C, `J_{x,L}`, p. 3. Bridge: none. Relation: exact bit form. -/
 noncomputable def startAt {M : ℕ} (ω : SampleSpace M) (x L : ℕ) : Prop :=
   StartEvent (valueBit ω) x L
-
-/-- Number `Z_{N,L}` of starts in the dyadic block.
-Reference: Paper C, Theorem 1.1, p. 3. Bridge: none. Relation: exact count. -/
-noncomputable def dyadicCount (N L : ℕ) (ω : DyadicSample N L) : ℕ := by
-  classical
-  exact ∑ x ∈ dyadicBlock N, if startAt ω x L then 1 else 0
 
 /-! ## Finite law, Poisson law, and total variation
 
@@ -461,23 +393,6 @@ Reference: Paper C, §13. Bridge: none. Relation: exact finite product law. -/
 noncomputable def fullUniformPMF (M : ℕ) : FinitePMF (SampleSpace M) :=
   FinitePMF.uniform _
 
-/-- Law of the complete dyadic start count.
-Reference: Paper C, Theorem 1.1, p. 3, and §13. Bridge: none. Relation:
-finite-cylinder law exactly transferred to the infinite model separately. -/
-noncomputable def fullDyadicStartLaw (N L : ℕ) : ℕ → ℝ :=
-  finiteNatLaw
-    (fullUniformPMF (dyadicCutoff N L))
-    (dyadicCount N L)
-
-/-- Target rate `λ_N = N/2^L`.
-Reference: Paper C, Theorem 1.1, p. 3. Bridge: none. Relation: exact. -/
-noncomputable def targetPoissonRate (N L : ℕ) : ℝ≥0 :=
-  ⟨(N : ℝ) / ((2 : ℕ) : ℝ) ^ L, by positivity⟩
-
-/-- Poisson law at the target rate.
-Reference: Paper C, Theorem 1.1, p. 3. Bridge: none. Relation: exact. -/
-noncomputable def targetPoissonLaw (N L : ℕ) : ℕ → ℝ :=
-  poissonPMFReal (targetPoissonRate N L)
 
 end SectionThirteenCouplings
 
@@ -490,49 +405,6 @@ def InRunLengthWindow (C : ℝ) (N L : ℕ) : Prop :=
   |(L : ℝ) - Real.log N / Real.log ((2 : ℕ) : ℝ)| ≤ C
 
 end CriticalRunWindow
-
-/-- Uniform Big-O with all quantifiers exposed.
-Reference: Paper C, convention `O_C` used in Theorem 1.1. Bridge: none.
-Relation: `K,N₀` may depend on `C`, while `N₀` is uniform in admissible `L`. -/
-def UniformBigOOn
-    (admissible : ℕ → ℕ → Prop) (f g : ℕ → ℕ → ℝ) : Prop :=
-  ∃ K : ℝ, 0 ≤ K ∧
-    ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ L, admissible N L →
-      |f N L| ≤ K * |g N L|
-
-namespace SectionThirteenRate
-
-/-- Rate `1/(log log N)^2`.
-Reference: Paper C, (1.1), p. 3, proved in Corollary 13.10, pp. 41–42.
-Bridge: none. Relation: exact displayed rate; small `N` values are irrelevant
-because `UniformBigOOn` only constrains the eventual tail. -/
-noncomputable def inverseLogLogSquaredRate (N _L : ℕ) : ℝ :=
-  1 / (Real.log (Real.log N)) ^ 2
-
-end SectionThirteenRate
-
-namespace SectionThirteenCritical
-
-open SectionThirteenCouplings SectionThirteenFiniteBound
-
-/-- Total variation in Theorem 1.1.
-Reference: Paper C, Theorem 1.1, p. 3. Bridge: none. Relation: exact
-finite-cylinder law versus `Pois(N*2⁻ᴸ)`, using half-`ℓ¹`. -/
-noncomputable def fullDyadicTargetPoissonTotalVariation (N L : ℕ) : ℝ :=
-  natTotalVariation
-    (fullDyadicStartLaw N L)
-    (targetPoissonLaw N L)
-
-end SectionThirteenCritical
-
-/-! ## Evertse–Silverman literature premise
-
-Reference: J.-H. Evertse and J. H. Silverman, *Uniform bounds for the
-number of solutions to Y^n=f(X)*, Math. Proc. Camb. Phil. Soc. 100 (1986),
-Theorem 1(b), p. 238, DOI 10.1017/S0305004100066068.
-Audit bridge: `ES86-T1b-Q-split-n2`.  Relation: specialization to `K=L=ℚ`,
-a split polynomial and exponent two, supplying Lemma 9.1, (9.2), pp. 27–28.
--/
 
 namespace EvertseSilvermanInput
 
@@ -623,47 +495,9 @@ def EvertseSilvermanAbscissaStatement : Prop :=
 
 end EvertseSilvermanInput
 
-/-! ## Historical conductor interface and Nicolas–Robin literature premise -/
+/-! ## Nicolas--Robin literature premise -/
 
 namespace PellInput
-
-/-- Integral quadratic element attached to a solution pair.
-Reference: Paper C, Lemma 9.2, pp. 28–29. Bridge: none. Relation: exact. -/
-def toZsqrtd (D : ℕ) (s : ℤ × ℤ) : ℤ√(D : ℤ) :=
-  ⟨s.1, s.2⟩
-
-/-- Historical data interface for descent from the maximal quadratic order.
-The source-shaped factorisation was motivated by Halter--Koch; the production
-proof now realizes this `Fin 4` interface internally by reduction modulo two. -/
-structure QuadraticOrderConductorData (D : ℕ) (M : ℤ) where
-  K : Type
-  [fieldK : Field K]
-  [numberFieldK : NumberField K]
-  [quadraticK : Algebra.IsQuadraticExtension ℚ K]
-  idealOf :
-    ℤ × ℤ →
-      {I : Ideal (𝓞 K) //
-        I ∣ Ideal.span ({(M : 𝓞 K)} : Set (𝓞 K))}
-  conductorColour : ℤ × ℤ → Fin 4
-  same_principalIdeal_of_same_extension :
-    ∀ s t : ℤ × ℤ,
-      s.1 ^ 2 - (D : ℤ) * s.2 ^ 2 = M →
-      t.1 ^ 2 - (D : ℤ) * t.2 ^ 2 = M →
-      conductorColour s = conductorColour t →
-      idealOf s = idealOf t →
-      Ideal.span ({toZsqrtd D s} : Set (ℤ√(D : ℤ))) =
-        Ideal.span ({toZsqrtd D t} : Set (ℤ√(D : ℤ)))
-
-/-- Historical conductor-fibre compatibility interface, now discharged by the
-internal quadratic-order construction in `PaperC`.  It is retained here only
-so the declarative audit namespace records the former boundary exactly. -/
-def QuadraticOrderConductorFiberBoundStatement : Prop :=
-  ∀ (D : ℕ) (M : ℤ),
-    0 < D →
-    Squarefree D →
-    ¬ IsSquare (D : ℚ) →
-    M ≠ 0 →
-    Nonempty (QuadraticOrderConductorData D M)
 
 /-- Safe exact majorant used for Nicolas–Robin.
 Reference: J.-L. Nicolas and G. Robin, *Majorations explicites pour le
@@ -685,79 +519,267 @@ def NicolasRobinDivisorLogBoundStatement : Prop :=
       nicolasRobinConstant * Real.log (n : ℝ)
 
 end PellInput
+
+/-! ## Infinite source model -/
+
+-- Make the notation `(2 : ℝ)` independent of Lean's generated proof cache.
+-- The imported solution surface and this standalone challenge otherwise can
+-- elaborate the standard `OfNat` instance with different proof constants.
+local instance instAtLeastTwoTwo : Nat.AtLeastTwo 2 :=
+  ⟨Nat.le_refl 2⟩
+
+local instance instOfNatRealTwo : OfNat ℝ 2 :=
+  @instOfNatAtLeastTwo ℝ 2 Real.instNatCast instAtLeastTwoTwo
+
+-- Pin the finite typeclass data used by every new Theorem 1.2 definition.
+-- Instance synthesis can otherwise reuse implementation-detail proofs from
+-- different earlier declarations in the challenge and solution modules.
+local instance instNeZeroTwo : NeZero (2 : ℕ) := ⟨by decide⟩
+local instance instFintypeF2 : Fintype F₂ := ZMod.fintype 2
+local instance instNonemptyF2 : Nonempty F₂ := ⟨0⟩
+
+namespace InfiniteRademacher
+
+local instance instMeasurableSpaceF2Discrete : MeasurableSpace F₂ := ⊤
+
+/-- Infinite assignments of independent prime bits. -/
+abbrev InfiniteSample := ℕ → F₂
+
+/-- Uniform law of one Rademacher bit. -/
+noncomputable def coordinateMeasure : Measure F₂ :=
+  (PMF.uniformOfFintype F₂).toMeasure
+
+/-- Probability normalization of the coordinate law. -/
+noncomputable instance instIsProbabilityMeasureCoordinateMeasure :
+    IsProbabilityMeasure coordinateMeasure := by
+  unfold coordinateMeasure
+  infer_instance
+
+/-- Infinite product law of the prime bits. -/
+noncomputable def infiniteRademacherMeasure : Measure InfiniteSample :=
+  Measure.infinitePi (fun _ : ℕ => coordinateMeasure)
+
+/-- Infinite-model parity functional. -/
+noncomputable def infiniteValueBit (ω : InfiniteSample) (n : ℕ) : F₂ :=
+  (parityVec n).sum fun p e => ω (Nat.primeCounting' p) * e
+
+end InfiniteRademacher
+
+/-! ## Deterministically masked count -/
+
+namespace MaskedPoissonCritical
+
+open SectionThirteenCouplings
+open SectionThirteenFiniteBound
+
+local instance instDecidableProp (P : Prop) : Decidable P :=
+  Classical.propDecidable P
+
+local instance instFintypeSampleSpace (M : ℕ) : Fintype (SampleSpace M) :=
+  @Pi.instFintype
+    (PrimeUpTo M) (fun _ => F₂)
+    (instDecidableEqPrimeUpTo M) (instFintypePrimeUpTo M)
+    (fun _ => instFintypeF2)
+
+/-- Target rate `|A_N|2⁻ᴸ` for a deterministic mask. -/
+noncomputable def maskedTargetPoissonRate
+    (L : ℕ) (mask : Finset ℕ) : ℝ≥0 :=
+  ⟨(mask.card : ℝ) / (2 : ℝ) ^ L, by positivity⟩
+
+/-- Poisson law at the masked target rate. -/
+noncomputable def maskedTargetPoissonLaw
+    (L : ℕ) (mask : Finset ℕ) : ℕ → ℝ :=
+  ProbabilityTheory.poissonPMFReal (maskedTargetPoissonRate L mask)
+
+/-- Literal masked start count on the complete cylinder. -/
+noncomputable def fullMaskedDyadicCount
+    (N L : ℕ) (mask : Finset ℕ)
+    (ω : SampleSpace (dyadicCutoff N L)) : ℕ :=
+  ∑ x ∈ mask, if startAt ω x L then 1 else 0
+
+/-- Law of the complete masked start count. -/
+noncomputable def fullMaskedDyadicStartLaw
+    (N L : ℕ) (mask : Finset ℕ) : ℕ → ℝ :=
+  @finiteNatLaw
+    (SampleSpace (dyadicCutoff N L))
+    (instFintypeSampleSpace (dyadicCutoff N L))
+    (fullUniformPMF (dyadicCutoff N L))
+    (fullMaskedDyadicCount N L mask)
+
+/-- Total variation in Theorem 1.2(i). -/
+noncomputable def maskedPoissonTotalVariation
+    (N L : ℕ) (mask : Finset ℕ) : ℝ :=
+  natTotalVariation
+    (fullMaskedDyadicStartLaw N L mask)
+    (maskedTargetPoissonLaw L mask)
+
+end MaskedPoissonCritical
+
+/-! ## Spatial source observable -/
+
+namespace SpatialMarkedParameters
+
+/-- Exact critical scale `N / 2^L`. -/
+def criticalSpatialScale (N L : ℕ) : ℝ :=
+  (N : ℝ) / (2 : ℝ) ^ L
+
+end SpatialMarkedParameters
+
+namespace InfiniteLaplaceTransfer
+
+open InfiniteRademacher
+
+local instance instMeasurableSpaceF2Discrete : MeasurableSpace F₂ := ⊤
+
+local instance instDecidableProp (P : Prop) : Decidable P :=
+  Classical.propDecidable P
+
+/-- Literal spatial Laplace functional under the infinite source model. -/
+def infiniteSpatialLaplaceFunctional
+    (N L : ℕ) (g : ℝ → ℝ)
+    (ω : InfiniteSample) : ℝ :=
+  Real.exp
+    (-(∑ x ∈ dyadicBlock N,
+      if StartEvent (infiniteValueBit ω) x L then
+        g ((x : ℝ) / (N : ℝ))
+      else 0))
+
+/-- Spatial expectation under the literal infinite Rademacher law. -/
+def infiniteSpatialLaplaceExpectation
+    (N L : ℕ) (g : ℝ → ℝ) : ℝ :=
+  ∫ ω, infiniteSpatialLaplaceFunctional N L g ω
+    ∂infiniteRademacherMeasure
+
+end InfiniteLaplaceTransfer
+
+/-! ## Complete marked source observable and mark tails -/
+
+namespace MixedLengthAffine
+
+/-- Bit-valued exact-run event with `q` affine rows. -/
+def ExactLengthEvent (g : ℕ → F₂) (x q : ℕ) : Prop :=
+  g (x - 1) + g x = 1 ∧
+    (∀ j : ℕ, 0 < j → j + 1 < q → g x = g (x + j)) ∧
+    g x + g (x + (q - 1)) = 1
+
+/-- Number of affine rows attached to excess length `e`. -/
+def excessRowCount (L e : ℕ) : ℕ :=
+  L + e + 1
+
+end MixedLengthAffine
+
+namespace FullMarkedLaplaceTransfer
+
+open InfiniteRademacher
+open MixedLengthAffine
+
+local instance instDecidableProp (P : Prop) : Decidable P :=
+  Classical.propDecidable P
+
+/-- Literal Laplace functional of the complete marked source process. -/
+def infiniteFullMarkedLaplaceFunctional
+    (N L : ℕ) (g : ℝ → ℕ → ℝ)
+    (ω : InfiniteSample) : ℝ :=
+  Real.exp
+    (-(∑ x ∈ dyadicBlock N,
+      ∑' e : ℕ,
+        if ExactLengthEvent (infiniteValueBit ω) x
+            (excessRowCount L e) then
+          g ((x : ℝ) / (N : ℝ)) e
+        else 0))
+
+/-- Expectation of the complete marked Laplace functional. -/
+def infiniteFullMarkedLaplaceExpectation
+    (N L : ℕ) (g : ℝ → ℕ → ℝ) : ℝ :=
+  ∫ ω, infiniteFullMarkedLaplaceFunctional N L g ω
+    ∂infiniteRademacherMeasure
+
+end FullMarkedLaplaceTransfer
+
+namespace MarkedDetruncation
+
+open InfiniteRademacher
+open MixedLengthAffine
+
+local instance instMeasurableSpaceF2Discrete : MeasurableSpace F₂ := ⊤
+
+/-- Event that the marked process contains a mark strictly larger than `E`. -/
+def infiniteMarkTailEvent (N L E : ℕ) : Set InfiniteSample :=
+  {ω | ∃ x ∈ dyadicBlock N, ∃ e : ℕ, E < e ∧
+    ExactLengthEvent (infiniteValueBit ω) x
+      (excessRowCount L e)}
+
+/-- Source probability that some mark exceeds `E`. -/
+def infiniteMarkTailProbability (N L E : ℕ) : ℝ :=
+  (infiniteRademacherMeasure
+    (infiniteMarkTailEvent N L E)).toReal
+
+end MarkedDetruncation
+
+/-! ## Laplace-functional endpoint predicates -/
+
+namespace SectionFourteenClosure
+
+open FullMarkedLaplaceTransfer
+open InfiniteLaplaceTransfer
+open MarkedDetruncation
+open SpatialMarkedParameters
+
+/-- A nonnegative continuous test with finite support in the mark coordinate. -/
+structure CompactMarkedTest where
+  cutoff : ℕ
+  toFun : ℝ → ℕ → ℝ
+  continuousOn : ∀ e ≤ cutoff,
+    ContinuousOn (fun t ↦ toFun t e) (Set.Icc (1 : ℝ) 2)
+  nonnegative : ∀ t e, 0 ≤ toFun t e
+  vanishesAbove : ∀ t e, cutoff < e → toFun t e = 0
+
+/-- Full marked PPP target written using the finite support witness. -/
+def compactMarkedPPPLaplaceTarget
+    (rate : ℝ) (g : CompactMarkedTest) : ℝ :=
+  Real.exp
+    (-(rate * ∫ t in Set.Ico (1 : ℝ) 2,
+      ∑ e ∈ Finset.range (g.cutoff + 1),
+        (1 / (2 : ℝ) ^ (e + 1)) *
+          (1 - Real.exp (-g.toFun t e))))
+
+/-- Laplace-functional characterization of `PPP(rate · dt)` on `[1,2)`. -/
+def SpatialPPPLaplaceCharacterization
+    (Lseq : ℕ → ℕ) (rate : ℝ) : Prop :=
+  ∀ g : ℝ → ℝ,
+    ContinuousOn g (Set.Icc (1 : ℝ) 2) →
+    (∀ t, 0 ≤ g t) →
+    Tendsto
+      (fun N : ℕ ↦
+        infiniteSpatialLaplaceExpectation N (Lseq N) g)
+      atTop
+      (𝓝 (Real.exp
+        (-(rate * ∫ t in Set.Ico (1 : ℝ) 2,
+          (1 - Real.exp (-g t))))))
+
+/-- Laplace-functional characterization of the marked limiting PPP. -/
+def MarkedPPPLaplaceCharacterization
+    (Lseq : ℕ → ℕ) (rate : ℝ) : Prop :=
+  ∀ g : CompactMarkedTest,
+    Tendsto
+      (fun N : ℕ ↦
+        infiniteFullMarkedLaplaceExpectation
+          N (Lseq N) g.toFun)
+      atTop
+      (𝓝 (compactMarkedPPPLaplaceTarget rate g))
+
+/-- Uniform tightness of the discrete mark coordinate. -/
+def MarkedMarksUniformlyTight
+    (Lseq : ℕ → ℕ) : Prop :=
+  ∀ ε : ℝ, 0 < ε →
+    ∃ E N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+      infiniteMarkTailProbability N (Lseq N) E ≤ ε
+
+end SectionFourteenClosure
 end PaperCAudit
 
-
-end
-
-/-! ## Explicit translations to the frozen Paper C endpoint
-
-The finite probability records in the readable AGG premise and the quadratic-
-order conductor records are intentionally distinct interface structures.  The
-two private lemmas below make those non-definitional record translations
-explicit.  All remaining interface definitions reduce definitionally to the
-frozen endpoint.
--/
-
-noncomputable section
-
-private theorem auditAGG_to_paperC
-    (h : PaperCAudit.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement) :
-    PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement := by
-  classical
-  letI (p : Prop) : Decidable p := Classical.propDecidable p
-  unfold PaperCAudit.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement at h
-  unfold PaperC.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement
-  intro Ω ι instΩ instι instDec μ X G hdep
-  let μAudit : PaperCAudit.FinitePMF Ω :=
-    { prob := μ.prob
-      nonneg := μ.nonneg
-      sum_prob := μ.sum_prob }
-  have hdepAudit :
-      PaperCAudit.ArratiaGoldsteinGordonInput.HasExactDependencyGraph μAudit X G := by
-    simpa [
-      PaperCAudit.ArratiaGoldsteinGordonInput.HasExactDependencyGraph,
-      PaperC.ArratiaGoldsteinGordonInput.HasExactDependencyGraph,
-      PaperCAudit.ArratiaGoldsteinGordonInput.HasOutsidePattern,
-      PaperC.ArratiaGoldsteinGordonInput.HasOutsidePattern,
-      PaperCAudit.ArratiaGoldsteinGordonInput.OutsideIndex,
-      PaperC.ArratiaGoldsteinGordonInput.OutsideIndex,
-      PaperCAudit.ArratiaGoldsteinGordonInput.closedNeighborhood,
-      PaperC.ArratiaGoldsteinGordonInput.closedNeighborhood,
-      PaperCAudit.ArratiaGoldsteinGordonInput.eventProbability,
-      PaperC.ArratiaGoldsteinGordonInput.eventProbability,
-      μAudit] using hdep
-  have hRate :
-      PaperCAudit.ArratiaGoldsteinGordonInput.poissonRate μAudit X =
-        PaperC.ArratiaGoldsteinGordonInput.poissonRate μ X := by
-    apply Subtype.ext
-    rfl
-  have bound := h Ω ι μAudit X G hdepAudit
-  simp only [
-    PaperCAudit.ArratiaGoldsteinGordonInput.totalVariationToPoisson,
-    PaperC.ArratiaGoldsteinGordonInput.totalVariationToPoisson,
-    PaperCAudit.ArratiaGoldsteinGordonInput.indicatorSumLaw,
-    PaperC.ArratiaGoldsteinGordonInput.indicatorSumLaw,
-    PaperCAudit.ArratiaGoldsteinGordonInput.matchingPoissonLaw,
-    PaperC.ArratiaGoldsteinGordonInput.matchingPoissonLaw,
-    PaperCAudit.ArratiaGoldsteinGordonInput.bOne,
-    PaperC.ArratiaGoldsteinGordonInput.bOne,
-    PaperCAudit.ArratiaGoldsteinGordonInput.bTwo,
-    PaperC.ArratiaGoldsteinGordonInput.bTwo,
-    PaperCAudit.ArratiaGoldsteinGordonInput.marginal,
-    PaperC.ArratiaGoldsteinGordonInput.marginal,
-    PaperCAudit.ArratiaGoldsteinGordonInput.jointMarginal,
-    PaperC.ArratiaGoldsteinGordonInput.jointMarginal,
-    PaperCAudit.ArratiaGoldsteinGordonInput.eventProbability,
-    PaperC.ArratiaGoldsteinGordonInput.eventProbability,
-    PaperCAudit.ArratiaGoldsteinGordonInput.indicatorSum,
-    PaperC.ArratiaGoldsteinGordonInput.indicatorSum,
-    PaperCAudit.ArratiaGoldsteinGordonInput.closedNeighborhood,
-    PaperC.ArratiaGoldsteinGordonInput.closedNeighborhood,
-    μAudit, hRate] at bound ⊢
-  exact bound
-
-theorem paper_c_theorem_one_one_finite_cylinder
+/-- Paper C, Theorem 1.2(i): uniform masked Poisson approximation. -/
+theorem paper_c_theorem_one_two_i_deterministic_masks
     {C : ℝ} (hC : 0 ≤ C)
     (hAGG :
       PaperCAudit.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
@@ -765,12 +787,54 @@ theorem paper_c_theorem_one_one_finite_cylinder
       PaperCAudit.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
     (hDivisor :
       PaperCAudit.PellInput.NicolasRobinDivisorLogBoundStatement) :
-    PaperCAudit.UniformBigOOn
-      (PaperCAudit.CriticalRunWindow.InRunLengthWindow C)
-      PaperCAudit.SectionThirteenCritical.fullDyadicTargetPoissonTotalVariation
-      PaperCAudit.SectionThirteenRate.inverseLogLogSquaredRate := by
-  exact
-    PaperC.CorollaryThirteenTen.theorem_one_one_uniformBigO_canonical
-      hC (auditAGG_to_paperC hAGG) hES hDivisor
+    ∀ ε : ℝ, 0 < ε →
+      ∃ N₀ : ℕ, ∀ N : ℕ, N₀ ≤ N →
+        ∀ L : ℕ, PaperCAudit.CriticalRunWindow.InRunLengthWindow C N L →
+          ∀ mask : Finset ℕ, mask ⊆ PaperCAudit.dyadicBlock N →
+            PaperCAudit.MaskedPoissonCritical.maskedPoissonTotalVariation
+              N L mask ≤ ε := by sorry
+
+/-- Paper C, Theorem 1.2(ii), in Laplace-functional form. -/
+theorem paper_c_theorem_one_two_ii_spatial_laplace
+    (hAGG :
+      PaperCAudit.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
+    {C rate : ℝ} (hC : 0 ≤ C)
+    (hES :
+      PaperCAudit.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
+    (hDivisor :
+      PaperCAudit.PellInput.NicolasRobinDivisorLogBoundStatement)
+    (Lseq : ℕ → ℕ)
+    (hwindow :
+      ∀ᶠ N : ℕ in atTop,
+        PaperCAudit.CriticalRunWindow.InRunLengthWindow C N (Lseq N))
+    (hscale :
+      Tendsto
+        (fun N : ℕ ↦
+          PaperCAudit.SpatialMarkedParameters.criticalSpatialScale N (Lseq N))
+        atTop (𝓝 rate)) :
+    PaperCAudit.SectionFourteenClosure.SpatialPPPLaplaceCharacterization
+      Lseq rate := by sorry
+
+/-- Paper C, Theorem 1.2(iii), marked Laplace form plus mark tightness. -/
+theorem paper_c_theorem_one_two_iii_marked_laplace_and_tightness
+    (hAGG :
+      PaperCAudit.ArratiaGoldsteinGordonInput.ArratiaGoldsteinGordonStatement)
+    {C rate : ℝ} (hC : 0 ≤ C)
+    (hES :
+      PaperCAudit.EvertseSilvermanInput.EvertseSilvermanAbscissaStatement)
+    (hDivisor :
+      PaperCAudit.PellInput.NicolasRobinDivisorLogBoundStatement)
+    (Lseq : ℕ → ℕ)
+    (hwindow :
+      ∀ᶠ N : ℕ in atTop,
+        PaperCAudit.CriticalRunWindow.InRunLengthWindow C N (Lseq N))
+    (hscale :
+      Tendsto
+        (fun N : ℕ ↦
+          PaperCAudit.SpatialMarkedParameters.criticalSpatialScale N (Lseq N))
+        atTop (𝓝 rate)) :
+    PaperCAudit.SectionFourteenClosure.MarkedPPPLaplaceCharacterization
+        Lseq rate ∧
+      PaperCAudit.SectionFourteenClosure.MarkedMarksUniformlyTight Lseq := by sorry
 
 end

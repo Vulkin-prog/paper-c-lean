@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ChallengeTheoremSixteenTwo",
+  "solution_module": "SolutionTheoremSixteenTwo",
+  "theorem_names": [
+    "paper_c_theorem_sixteen_two_finite_cylinder",
+    "paper_c_theorem_sixteen_two_finite_cylinder_recentered",
+    "paper_c_theorem_sixteen_two_infinite_model",
+    "paper_c_corollary_sixteen_four_prefix_law"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

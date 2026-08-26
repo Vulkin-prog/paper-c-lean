@@ -1,0 +1,282 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Paper C: masked, spatial, and marked Poisson limits"
+  description: >-
+    Lean 4 formalization of all three clauses of Paper C, Theorem 1.2.
+    Clause (i) proves a total-variation Poisson approximation uniformly over
+    every deterministic mask of the dyadic block. Clause (ii) gives the
+    Laplace-functional characterization of the limiting spatial Poisson point
+    process. Clause (iii) gives the corresponding marked characterization
+    together with uniform tightness of the discrete marks. All three compared
+    statements are conditional on exactly three fully stated ordinary
+    propositions specialized from Arratia--Goldstein--Gordon,
+    Evertse--Silverman, and Nicolas--Robin. Those propositions are theorem
+    arguments, not Lean axioms.
+  authors:
+    - "Brice Pouly"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Brice Pouly"
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.PR"
+  msc2020:
+    - "11K65"
+    - "60F05"
+
+sources:
+  - title: >-
+      A critical Poisson law in a dyadic block -- Starting points of long
+      constant stretches of an extended Rademacher random completely
+      multiplicative function
+    authors:
+      - "Brice Pouly"
+    id: "https://doi.org/10.33774/coe-2026-z3l74"
+    type: "paper"
+    location: >-
+      Theorem 1.2(i), printed/PDF p. 3, and Theorem 1.2(ii)--(iii),
+      printed/PDF p. 4 of paper_C_complete_v09_en.pdf, SHA-256
+      ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189
+    relationship: "adapts"
+    note: >-
+      Clause (i) uses the exact finite prime-sign cylinder for each masked
+      count. Clauses (ii) and (iii) use the literal infinite product source
+      measure. Because Mathlib does not presently provide the required
+      topology of locally finite point measures, the latter clauses are
+      registered through complete Laplace-functional characterizations;
+      clause (iii) also records the proved mark-tail tightness needed for
+      de-truncation.
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "Two moments suffice for Poisson approximations: the Chen--Stein method"
+    authors:
+      - "Richard Arratia"
+      - "Larry Goldstein"
+      - "Louis Gordon"
+    id: "https://doi.org/10.1214/aop/1176991491"
+    type: "paper"
+    location: "Theorem 1 and definitions of b1, b2, and b3, printed pp. 10--11"
+    relationship: "background"
+    note: >-
+      The finite dependency-graph specialization with exact outside-vector
+      independence and b3 = 0 is exposed as the ordinary theorem hypothesis
+      hAGG. Its source-to-hypothesis implication is documented by the
+      AGG89-T1-finite-dependency-b3-zero agent-reviewed certificate; it is not
+      proved in Lean or independently human-certified.
+  - title: "Uniform bounds for the number of solutions to Y^n = f(X)"
+    authors:
+      - "J.-H. Evertse"
+      - "J. H. Silverman"
+    id: "https://doi.org/10.1017/S0305004100066068"
+    type: "paper"
+    location: "Theorem 1(b), printed p. 238"
+    relationship: "background"
+    note: >-
+      The split-polynomial specialization K = L = Q with exponent two and an
+      abscissa count is exposed as the ordinary theorem hypothesis hES. Its
+      source-to-hypothesis implication is documented by the
+      ES86-T1b-Q-split-n2 agent-reviewed certificate; it is not proved in Lean
+      or independently human-certified.
+  - title: "Majorations explicites pour le nombre de diviseurs de N"
+    authors:
+      - "J.-L. Nicolas"
+      - "G. Robin"
+    id: "https://doi.org/10.4153/CMB-1983-078-5"
+    type: "paper"
+    location: "Definition of f and Theorem 1, printed p. 485"
+    relationship: "background"
+    note: >-
+      The direct logarithmic divisor inequality above n = 64, with the safe
+      coefficient 2 log 2, is exposed as the ordinary theorem hypothesis
+      hDivisor. Its source-to-hypothesis implication is documented by the
+      NR83-T1-divisor-log-bound agent-reviewed certificate; it is not proved
+      in Lean or independently human-certified.
+
+related_formalizations: []
+
+status:
+  scope: >-
+    This Palomar candidate selects exactly the three declarations
+    paper_c_theorem_one_two_i_deterministic_masks,
+    paper_c_theorem_one_two_ii_spatial_laplace, and
+    paper_c_theorem_one_two_iii_marked_laplace_and_tightness through
+    comparator/theorem_one_two.json. SolutionTheoremOneTwo.lean contains no
+    sorry. ChallengeTheoremOneTwo.lean is a standalone Mathlib-only statement
+    boundary containing exactly the three deliberate Comparator placeholders
+    and no imported local challenge. Every compared endpoint remains
+    conditional on hAGG, hES, and hDivisor; none proves those three literature
+    propositions. The former generalized-Pell conductor interface is
+    discharged internally and is not an endpoint premise.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "paper_c_theorem_one_two_i_deterministic_masks"
+      file: "SolutionTheoremOneTwo.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator/theorem_one_two.json"
+      literature_dependencies:
+        - statement: >-
+            Finite Arratia--Goldstein--Gordon dependency-graph Poisson bound
+            with exact outside-vector independence and b3 = 0.
+          source: "https://doi.org/10.1214/aop/1176991491"
+        - statement: >-
+            Evertse--Silverman split-Q exponent-two abscissa bound.
+          source: "https://doi.org/10.1017/S0305004100066068"
+        - statement: >-
+            Nicolas--Robin logarithmic divisor bound above n = 64.
+          source: "https://doi.org/10.4153/CMB-1983-078-5"
+    - declaration: "paper_c_theorem_one_two_ii_spatial_laplace"
+      file: "SolutionTheoremOneTwo.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator/theorem_one_two.json"
+      literature_dependencies:
+        - statement: >-
+            Finite Arratia--Goldstein--Gordon dependency-graph Poisson bound
+            with exact outside-vector independence and b3 = 0.
+          source: "https://doi.org/10.1214/aop/1176991491"
+        - statement: >-
+            Evertse--Silverman split-Q exponent-two abscissa bound.
+          source: "https://doi.org/10.1017/S0305004100066068"
+        - statement: >-
+            Nicolas--Robin logarithmic divisor bound above n = 64.
+          source: "https://doi.org/10.4153/CMB-1983-078-5"
+    - declaration: "paper_c_theorem_one_two_iii_marked_laplace_and_tightness"
+      file: "SolutionTheoremOneTwo.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "comparator/theorem_one_two.json"
+      literature_dependencies:
+        - statement: >-
+            Finite Arratia--Goldstein--Gordon dependency-graph Poisson bound
+            with exact outside-vector independence and b3 = 0.
+          source: "https://doi.org/10.1214/aop/1176991491"
+        - statement: >-
+            Evertse--Silverman split-Q exponent-two abscissa bound.
+          source: "https://doi.org/10.1017/S0305004100066068"
+        - statement: >-
+            Nicolas--Robin logarithmic divisor bound above n = 64.
+          source: "https://doi.org/10.4153/CMB-1983-078-5"
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "n/a"
+      tool_setup: >-
+        Brice Pouly directed the research, selected the mathematical and
+        release requirements, evaluated agent outputs, and curated the public
+        statement and evidence boundaries.
+      prompting_notes: "n/a"
+    - method: "agent"
+      models:
+        - "Claude Fable 5"
+        - "Claude Opus 4.8"
+        - "GPT 5.6 Sol (gpt-5.6-sol)"
+      framework: "Anthropic Claude and ChatGPT Work Mode / Codex"
+      tool_setup: >-
+        AI-assisted lemma exploration, drafting, Lean development,
+        reconnaissance programs, iterative local Lake builds, generated
+        declaration and bridge audits, and adversarial counter-audits by
+        distinct agent instances and models from multiple providers.
+      prompting_notes: >-
+        Work was divided into bounded mathematical, Lean, audit, and release
+        tasks, followed by explicit counter-review and mechanically checked
+        reconciliation passes.
+  spend_usd: "subscription-based usage; not separately tracked"
+  notes: >-
+    The human maintainer set goals and acceptance criteria and decided what to
+    publish. Agents supplied substantial mathematical, formalization,
+    documentation, and audit assistance. This workflow is disclosed in the
+    manuscript and repository and is not represented as independent review.
+
+fidelity:
+  divergences: >-
+    Clause (i) uses a finite uniform prime-sign cylinder because each masked
+    count is cylindrical; the paper starts from an infinite product. The
+    repository separately proves exact finite/infinite cylinder transfer.
+    Bits in ZMod 2 encode signs, and the start predicates are totalized on
+    natural numbers; eventual dyadic statements never observe the harmless
+    exceptional small values. The displayed supremum over masks in clause
+    (i) is represented by a final uniform quantifier over every mask contained
+    in the dyadic block, and total variation is the equivalent discrete
+    half-l1 expression. Clauses (ii) and (iii) are formalized through
+    convergence of all relevant Laplace functionals rather than direct
+    Tendsto statements for laws in the paper's vague topology. Clause (iii)
+    pairs that characterization with uniform tightness of the discrete mark
+    coordinate. The Lean endpoints permit C = 0 whereas the paper states
+    C > 0. Most importantly, the paper states Theorem 1.2 without
+    theorem-level premises, while all three compared Lean theorems are
+    explicitly conditional on the source-shaped propositions hAGG, hES, and
+    hDivisor. Their implications from the cited literature have
+    agent-reviewed documentary certificates but no Lean proofs or independent
+    external human certification.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Claude Fable 5 agent instances"
+    - "Claude Opus 4.8 agent instances"
+    - "OpenAI GPT 5.6 Sol agent instances"
+  notes: >-
+    Distinct agent instances and models performed repeated adversarial
+    mathematical, source, Lean, and release counter-reviews, alongside
+    exhaustive mechanical declaration and axiom audits. These procedures are
+    neither independent scientific validation nor human peer review. No
+    independent external human mathematical peer review has been completed.
+    The three literature certificates assess source-to-proposition
+    implications but do not turn the hypotheses into kernel-verified
+    theorems.
+
+alignment:
+  namespace: "PaperCAudit"
+  statements:
+    - source: "Paper C, Theorem 1.2(i), printed/PDF p. 3"
+      lean: "paper_c_theorem_one_two_i_deterministic_masks"
+      module: "SolutionTheoremOneTwo"
+      status: "proved modulo three explicit ordinary literature premises"
+      note: >-
+        For every C >= 0, uniformly throughout the critical run-length
+        window, the total-variation error tends to zero uniformly over every
+        deterministic mask of the dyadic block.
+    - source: "Paper C, Theorem 1.2(ii), printed/PDF p. 4"
+      lean: "paper_c_theorem_one_two_ii_spatial_laplace"
+      module: "SolutionTheoremOneTwo"
+      status: "proved modulo three explicit ordinary literature premises"
+      note: >-
+        Along every critical-window sequence whose exact scale N/2^L tends to
+        rate, the spatial source process has the stated Poisson
+        Laplace-functional limit for every nonnegative continuous test on
+        [1,2].
+    - source: "Paper C, Theorem 1.2(iii), printed/PDF p. 4"
+      lean: "paper_c_theorem_one_two_iii_marked_laplace_and_tightness"
+      module: "SolutionTheoremOneTwo"
+      status: "proved modulo three explicit ordinary literature premises"
+      note: >-
+        Along the same sequences, the complete marked source process has the
+        marked Poisson Laplace-functional limit for every finitely
+        mark-supported nonnegative continuous test, together with uniform
+        tightness of the mark coordinate.
+
+acknowledgements: >-
+  Built on Lean 4 and Mathlib. The exact source-facing bridge identifiers and
+  their documentary qualifications are recorded in audit_manifest.json and
+  literature_certificates/.

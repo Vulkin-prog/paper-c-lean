@@ -1,0 +1,304 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Paper C: the global and finite-prefix Poisson laws"
+  description: >-
+    Lean 4 formalization of Paper C, Theorem 16.2 and Corollary 16.4. The
+    selected declarations give the global interior start-count Poisson law on
+    a finite prime-sign cylinder, its recentering at M/2^L, the corresponding
+    theorem on the infinite Rademacher product, and the finite-prefix
+    start-count and longest-stretch law. All asymptotics are uniform in the
+    critical window |L - log_2 M| <= C. Each declaration is conditional on
+    exactly six fully stated ordinary source propositions; those propositions
+    are theorem arguments, not Lean axioms.
+  authors:
+    - "Brice Pouly"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Brice Pouly"
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.PR"
+  msc2020:
+    - "11K65"
+    - "60F05"
+
+sources:
+  - title: >-
+      A critical Poisson law in a dyadic block -- Starting points of long
+      constant stretches of an extended Rademacher random completely
+      multiplicative function
+    authors:
+      - "Brice Pouly"
+    id: "https://doi.org/10.33774/coe-2026-z3l74"
+    type: "paper"
+    location: >-
+      Theorem 16.2, printed/PDF pp. 54--55, and Corollary 16.4, printed/PDF
+      p. 55 of paper_C_complete_v09_en.pdf, SHA-256
+      ccef4908838fc3b428aed862937a6a3a9129fc6e378fa7368384a9ed45b05189
+    relationship: "adapts"
+    note: >-
+      The Palomar entry exposes all three canonical formal forms of Theorem
+      16.2 and the canonical infinite-product finite-prefix corollary. Unlike
+      the paper's unconditional presentation, the compared declarations make
+      the six remaining source propositions explicit as ordinary hypotheses.
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "A formally verified proof of the prime number theorem"
+    authors:
+      - "Jeremy Avigad"
+      - "Kevin Donnelly"
+      - "David Gray"
+      - "Paul Raff"
+    id: "https://doi.org/10.1145/1297658.1297660"
+    type: "paper"
+    location: "Prime-number-theorem statement, abstract and printed p. 1"
+    relationship: "background"
+    note: >-
+      The sequential real form pi(L) log(L)/L -> 1 is exposed as hPNT. Its
+      source implication is not proved by the compared declaration.
+  - title: "Number of prime divisors in a product of consecutive integers"
+    authors:
+      - "Shanta Laishram"
+      - "T. N. Shorey"
+    id: "https://doi.org/10.4064/aa113-4-3"
+    type: "paper"
+    location: "Corollary 1, equation (10), printed p. 330"
+    relationship: "background"
+    note: >-
+      The exact natural-number lower bound, including its correction term, is
+      exposed as hLS. Its source implication is not proved in Lean here.
+  - title: "Majorations explicites pour le nombre de diviseurs de N"
+    authors:
+      - "J.-L. Nicolas"
+      - "G. Robin"
+    id: "https://doi.org/10.4153/CMB-1983-078-5"
+    type: "paper"
+    location: "Definition of f and Theorem 1, printed p. 485"
+    relationship: "background"
+    note: >-
+      The logarithmic divisor bound above n = 64 with the safe coefficient
+      2 log 2 is exposed as hDivisor. Its source implication is not proved in
+      Lean here.
+  - title: "Squares in products from a block of consecutive integers"
+    authors:
+      - "R. Balasubramanian"
+      - "T. N. Shorey"
+    id: "https://doi.org/10.4064/aa-65-3-213-220"
+    type: "paper"
+    location: "Theorem 1 and equations (1), (4), and (5), printed pp. 213--214"
+    relationship: "background"
+    note: >-
+      The equivalent finset form of the dense square-subproduct theorem is
+      exposed as hBS. Its source implication is not proved in Lean here.
+  - title: "Two moments suffice for Poisson approximations: the Chen--Stein method"
+    authors:
+      - "Richard Arratia"
+      - "Larry Goldstein"
+      - "Louis Gordon"
+    id: "https://doi.org/10.1214/aop/1176991491"
+    type: "paper"
+    location: "Theorem 1 and definitions of b1, b2, and b3, printed pp. 10--11"
+    relationship: "background"
+    note: >-
+      The finite dependency-graph specialization with exact outside-vector
+      independence and b3 = 0 is exposed as hAGG. Its source implication is
+      not proved in Lean here.
+  - title: "Uniform bounds for the number of solutions to Y^n = f(X)"
+    authors:
+      - "J.-H. Evertse"
+      - "J. H. Silverman"
+    id: "https://doi.org/10.1017/S0305004100066068"
+    type: "paper"
+    location: "Theorem 1(b), printed p. 238"
+    relationship: "background"
+    note: >-
+      The split-Q exponent-two abscissa bound is exposed as hES. Its source
+      implication is not proved in Lean here.
+
+related_formalizations: []
+
+status:
+  scope: >-
+    This Palomar candidate selects exactly four declarations through
+    comparator/theorem_sixteen_two_and_corollary_sixteen_four.json:
+    the exact-mean finite-cylinder form of Theorem 16.2, its finite-cylinder
+    recentered form, its infinite-model exact-mean form, and Corollary 16.4.
+    SolutionTheoremSixteenTwo.lean contains no sorry.
+    ChallengeTheoremSixteenTwo.lean is a standalone Mathlib-only declaration
+    boundary with exactly four deliberate Comparator placeholders. Every
+    selected endpoint remains conditional on hPNT, hLS, hDivisor, hBS, hAGG,
+    and hES; it does not prove those six literature propositions.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "paper_c_theorem_sixteen_two_finite_cylinder"
+      file: "SolutionTheoremSixteenTwo.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: >-
+        comparator/theorem_sixteen_two_and_corollary_sixteen_four.json
+      literature_dependencies:
+        - statement: "Prime number theorem in sequential real form."
+          source: "https://doi.org/10.1145/1297658.1297660"
+        - statement: "Laishram--Shorey consecutive-product prime-divisor bound."
+          source: "https://doi.org/10.4064/aa113-4-3"
+        - statement: "Nicolas--Robin logarithmic divisor bound."
+          source: "https://doi.org/10.4153/CMB-1983-078-5"
+        - statement: "Balasubramanian--Shorey dense square-subproduct bound."
+          source: "https://doi.org/10.4064/aa-65-3-213-220"
+        - statement: "Finite AGG dependency-graph Poisson bound with b3 = 0."
+          source: "https://doi.org/10.1214/aop/1176991491"
+        - statement: "Evertse--Silverman split-Q exponent-two abscissa bound."
+          source: "https://doi.org/10.1017/S0305004100066068"
+    - declaration: "paper_c_theorem_sixteen_two_finite_cylinder_recentered"
+      file: "SolutionTheoremSixteenTwo.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: >-
+        comparator/theorem_sixteen_two_and_corollary_sixteen_four.json
+      literature_dependencies:
+        - statement: "The same six source propositions as the exact-mean form."
+          source: "https://doi.org/10.33774/coe-2026-z3l74"
+    - declaration: "paper_c_theorem_sixteen_two_infinite_model"
+      file: "SolutionTheoremSixteenTwo.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: >-
+        comparator/theorem_sixteen_two_and_corollary_sixteen_four.json
+      literature_dependencies:
+        - statement: "The same six source propositions as the finite model."
+          source: "https://doi.org/10.33774/coe-2026-z3l74"
+    - declaration: "paper_c_corollary_sixteen_four_prefix_law"
+      file: "SolutionTheoremSixteenTwo.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: >-
+        comparator/theorem_sixteen_two_and_corollary_sixteen_four.json
+      literature_dependencies:
+        - statement: "The same six source propositions as Theorem 16.2."
+          source: "https://doi.org/10.33774/coe-2026-z3l74"
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "n/a"
+      tool_setup: >-
+        Brice Pouly directed the research, selected the mathematical and
+        release requirements, evaluated agent outputs, and curated the public
+        statement and evidence boundaries.
+      prompting_notes: "n/a"
+    - method: "agent"
+      models:
+        - "Claude Fable 5"
+        - "Claude Opus 4.8"
+        - "GPT 5.6 Sol (gpt-5.6-sol)"
+      framework: "Anthropic Claude and ChatGPT Work Mode / Codex"
+      tool_setup: >-
+        AI-assisted lemma exploration, drafting, Lean development,
+        reconnaissance programs, iterative local Lake builds, generated
+        declaration and bridge audits, and adversarial counter-audits by
+        distinct agent instances and models from multiple providers.
+      prompting_notes: >-
+        Work was divided into bounded mathematical, Lean, audit, and release
+        tasks, followed by explicit counter-review and mechanically checked
+        reconciliation passes.
+  spend_usd: "subscription-based usage; not separately tracked"
+  notes: >-
+    The human maintainer set goals and acceptance criteria and decided what to
+    publish. Agents supplied substantial mathematical, formalization,
+    documentation, and audit assistance. This workflow is disclosed in the
+    manuscript and repository and is not represented as independent review.
+
+fidelity:
+  divergences: >-
+    The finite-cylinder declarations use the exact finite prime-sign cylinder
+    on which the observable depends; a separately selected declaration states
+    the same exact-mean result directly on the paper's infinite product law.
+    Bits in ZMod 2 encode signs. Start predicates are totalized on natural
+    numbers, although the selected counts only use the manuscript ranges.
+    Total variation is the discrete half-l1 expression, equivalent to the
+    event-supremum convention. UniformLittleOOn exposes a threshold independent
+    of L and allowed to depend on C. The exact-mean form first compares with
+    Pois(Lambda_M), while the recentered form compares with Pois(M/2^L); both
+    forms selected here are part of the formal theorem surface. Most
+    importantly, the paper presents Theorem 16.2 and Corollary 16.4 without
+    theorem-level premises, while every compared declaration is explicitly
+    conditional on the six source-shaped propositions hPNT, hLS, hDivisor,
+    hBS, hAGG, and hES. Their source implications are documented by repository
+    audit materials but are not kernel proofs or independent external human
+    certifications.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Claude Fable 5 agent instances"
+    - "Claude Opus 4.8 agent instances"
+    - "OpenAI GPT 5.6 Sol agent instances"
+  notes: >-
+    Distinct agent instances and models performed repeated adversarial
+    mathematical, source, Lean, and release counter-reviews, alongside
+    mechanical declaration and axiom audits. These procedures are neither
+    independent scientific validation nor human peer review. No independent
+    external human mathematical peer review has been completed. The six
+    literature certificates assess source-to-proposition implications but do
+    not turn the hypotheses into kernel-verified theorems.
+
+alignment:
+  namespace: "PaperCAudit"
+  statements:
+    - source: "Paper C, Theorem 16.2, printed/PDF pp. 54--55"
+      lean: "paper_c_theorem_sixteen_two_finite_cylinder"
+      module: "SolutionTheoremSixteenTwo"
+      status: "proved modulo six explicit ordinary literature premises"
+      note: >-
+        Uniformly in |L-log(M)/log(2)| <= C, the finite-cylinder global
+        start-count law is o_C(1) in total variation from Pois(Lambda_M),
+        Lambda_M-M/2^L=o_C(M/2^L), and its zero mass differs by o_C(1) from
+        exp(-Lambda_M).
+    - source: "Paper C, Theorem 16.2, printed/PDF pp. 54--55"
+      lean: "paper_c_theorem_sixteen_two_finite_cylinder_recentered"
+      module: "SolutionTheoremSixteenTwo"
+      status: "proved modulo six explicit ordinary literature premises"
+      note: >-
+        The same finite-cylinder law is o_C(1) in total variation from the
+        printed Pois(M/2^L), and its zero mass is exp(-M/2^L)+o_C(1).
+    - source: "Paper C, Theorem 16.2, printed/PDF pp. 54--55"
+      lean: "paper_c_theorem_sixteen_two_infinite_model"
+      module: "SolutionTheoremSixteenTwo"
+      status: "proved modulo six explicit ordinary literature premises"
+      note: >-
+        The exact-mean statement is expressed directly for the literal global
+        start count under the infinite Rademacher product measure.
+    - source: "Paper C, Corollary 16.4, printed/PDF p. 55"
+      lean: "paper_c_corollary_sixteen_four_prefix_law"
+      module: "SolutionTheoremSixteenTwo"
+      status: "proved modulo six explicit ordinary literature premises"
+      note: >-
+        The infinite-product finite-prefix start-count law is o_C(1) in total
+        variation from Pois(M/2^L), and P(R_M<L)=exp(-M/2^L)+o_C(1).
+
+acknowledgements: >-
+  Built on Lean 4 and Mathlib. Exact source-facing bridge identifiers and
+  documentary qualifications are recorded in audit_manifest.json and
+  literature_certificates/.
