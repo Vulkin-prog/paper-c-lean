@@ -2,7 +2,7 @@
 version: "v0.4"
 
 project:
-  name: "Paper C: moments and a quantitative homogeneous sum"
+  name: "Moments and a quantitative homogeneous sum in a dyadic block"
   description: >-
     Lean 4 formalization of the first two moments and variance of the number
     of long constant-stretch starts of an extended Rademacher random
@@ -205,7 +205,8 @@ review:
 alignment:
   namespace: "PaperCAudit"
   statements:
-    - source: "Paper C, Theorem 1.4, printed/PDF p. 4"
+    - source: >-
+        A critical Poisson law in a dyadic block, Theorem 1.4, printed/PDF p. 4
       lean: "paper_c_theorem_one_four_moments"
       module: "SolutionTheoremOneFour"
       status: "proved modulo two explicit ordinary literature premises"
@@ -214,7 +215,9 @@ alignment:
         the N^(-1/2+o_C(1)) first-moment error, o_C(1) second
         falling-factorial-moment error, o_C(N^2) homogeneous mass, and o_C(1)
         variance error. The exact premises are hES and hDivisor.
-    - source: "Paper C, Corollary 11.3, printed/PDF p. 38"
+    - source: >-
+        A critical Poisson law in a dyadic block, Corollary 11.3, printed/PDF
+        p. 38
       lean: "paper_c_corollary_eleven_three"
       module: "SolutionTheoremOneFour"
       status: "proved modulo two explicit ordinary literature premises"

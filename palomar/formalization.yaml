@@ -4,7 +4,7 @@
 version: "v0.4"
 
 project:
-  name: "Paper C: a critical Poisson law in a dyadic block"
+  name: "Quantitative Poisson approximation in a dyadic block"
   description: >-
     Lean 4 formalization of a quantitative Poisson approximation for the
     starting points of long constant stretches of an extended Rademacher
@@ -213,8 +213,8 @@ alignment:
   namespace: "PaperCAudit"
   statements:
     - source: >-
-        Paper C, Theorem 1.1, printed/PDF p. 3; quantitative proof in
-        Corollary 13.10, printed/PDF p. 43
+        A critical Poisson law in a dyadic block, Theorem 1.1, printed/PDF
+        p. 3; quantitative proof in Corollary 13.10, printed/PDF p. 43
       lean: "paper_c_theorem_one_one_finite_cylinder"
       module: "Solution"
       status: "proved modulo three explicit ordinary literature premises"
