@@ -1,32 +1,32 @@
-# Palomar qualification candidates
+# Palomar qualification entries
 
-This repository prepares four independent Palomar entries. Palomar accepts one
-Comparator configuration per submission, while one configuration may select
-several declarations. The related clauses of a paper theorem are therefore
-grouped together instead of being submitted one declaration at a time.
+This repository maintains four independent Palomar entries. Palomar accepts
+one Comparator configuration per submission, while one configuration may
+select several declarations. The related clauses of a paper theorem are
+therefore grouped together instead of being submitted one declaration at a
+time.
 
-After the pull request is merged, use the same full 40-character merge commit
-for every entry, leave the project path blank (the Lean project is at the
-repository root), and submit these path pairs:
+Each registered result has a stable identifier and a fixed path pair:
 
-| Entry | Comparator configuration | Formalization metadata |
-|---|---|---|
-| Theorem 1.1 | `comparator/theorem_one_one.json` | `palomar/formalization.yaml` |
-| Theorem 1.2(i--iii) | `comparator/theorem_one_two.json` | `palomar/theorem_one_two/formalization.yaml` |
-| Theorem 1.4 and Corollary 11.3 | `comparator/theorem_one_four_and_corollary_eleven_three.json` | `palomar/theorem_one_four_and_corollary_eleven_three/formalization.yaml` |
-| Theorem 16.2 and Corollary 16.4 | `comparator/theorem_sixteen_two_and_corollary_sixteen_four.json` | `palomar/theorem_sixteen_two_and_corollary_sixteen_four/formalization.yaml` |
+| Entry | Palomar identifier | Comparator configuration | Formalization metadata |
+|---|---|---|---|
+| Theorem 1.1 | `PALOMAR-2026-08-20-000007` | `comparator/theorem_one_one.json` | `palomar/formalization.yaml` |
+| Theorem 1.2(i--iii) | `PALOMAR-2026-08-26-000010` | `comparator/theorem_one_two.json` | `palomar/theorem_one_two/formalization.yaml` |
+| Theorem 1.4 and Corollary 11.3 | `PALOMAR-2026-08-26-000012` | `comparator/theorem_one_four_and_corollary_eleven_three.json` | `palomar/theorem_one_four_and_corollary_eleven_three/formalization.yaml` |
+| Theorem 16.2 and Corollary 16.4 | `PALOMAR-2026-08-27-000008` | `comparator/theorem_sixteen_two_and_corollary_sixteen_four.json` | `palomar/theorem_sixteen_two_and_corollary_sixteen_four/formalization.yaml` |
 
-These are separate Palomar submissions, not versions of the Theorem 1.1 entry:
-they select different mathematical results and different Comparator
-configurations. A v2 of the existing entry should be reserved for a correction
-to that same entry.
+These are separate Palomar results because they select different mathematical
+claims and different Comparator configurations. A correction to one result
+must cite its existing identifier and retain the same repository, project path,
+and Comparator path; Palomar then creates the next version of that identifier.
+Unchanged results should not be resubmitted.
 
 ## Challenge boundaries
 
 Every new Challenge is autonomous and imports only Mathlib modules. It does not
 import `PaperC`, another local Challenge, or a local helper. Each Solution
 reproduces the same declarative interface independently, imports the proved
-Paper C development, and contains no `sorry`.
+project development, and contains no `sorry`.
 
 | Challenge | Lines | Bytes | Intentional placeholders |
 |---|---:|---:|---:|

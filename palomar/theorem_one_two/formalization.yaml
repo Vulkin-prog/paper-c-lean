@@ -2,13 +2,16 @@
 version: "v0.4"
 
 project:
-  name: "Paper C: masked, spatial, and marked Poisson limits"
+  name: "Masked, spatial, and marked Poisson limits in a dyadic block"
   description: >-
-    Lean 4 formalization of all three clauses of Paper C, Theorem 1.2.
-    Clause (i) proves a total-variation Poisson approximation uniformly over
-    every deterministic mask of the dyadic block. Clause (ii) gives the
+    Lean 4 formalization of three Poisson-limit statements for the starting
+    points of long constant stretches of an extended Rademacher random
+    completely multiplicative function in a dyadic block, corresponding to
+    the three clauses of Theorem 1.2 in the cited source article. The first
+    proves a total-variation Poisson approximation uniformly over every
+    deterministic mask of the dyadic block. The second gives the
     Laplace-functional characterization of the limiting spatial Poisson point
-    process. Clause (iii) gives the corresponding marked characterization
+    process. The third gives the corresponding marked characterization
     together with uniform tightness of the discrete marks. All three compared
     statements are conditional on exactly three fully stated ordinary
     propositions specialized from Arratia--Goldstein--Gordon,
@@ -249,7 +252,9 @@ review:
 alignment:
   namespace: "PaperCAudit"
   statements:
-    - source: "Paper C, Theorem 1.2(i), printed/PDF p. 3"
+    - source: >-
+        A critical Poisson law in a dyadic block, Theorem 1.2(i), printed/PDF
+        p. 3
       lean: "paper_c_theorem_one_two_i_deterministic_masks"
       module: "SolutionTheoremOneTwo"
       status: "proved modulo three explicit ordinary literature premises"
@@ -257,7 +262,9 @@ alignment:
         For every C >= 0, uniformly throughout the critical run-length
         window, the total-variation error tends to zero uniformly over every
         deterministic mask of the dyadic block.
-    - source: "Paper C, Theorem 1.2(ii), printed/PDF p. 4"
+    - source: >-
+        A critical Poisson law in a dyadic block, Theorem 1.2(ii), printed/PDF
+        p. 4
       lean: "paper_c_theorem_one_two_ii_spatial_laplace"
       module: "SolutionTheoremOneTwo"
       status: "proved modulo three explicit ordinary literature premises"
@@ -266,7 +273,9 @@ alignment:
         rate, the spatial source process has the stated Poisson
         Laplace-functional limit for every nonnegative continuous test on
         [1,2].
-    - source: "Paper C, Theorem 1.2(iii), printed/PDF p. 4"
+    - source: >-
+        A critical Poisson law in a dyadic block, Theorem 1.2(iii), printed/PDF
+        p. 4
       lean: "paper_c_theorem_one_two_iii_marked_laplace_and_tightness"
       module: "SolutionTheoremOneTwo"
       status: "proved modulo three explicit ordinary literature premises"

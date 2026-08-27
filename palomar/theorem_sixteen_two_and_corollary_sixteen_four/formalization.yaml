@@ -2,16 +2,19 @@
 version: "v0.4"
 
 project:
-  name: "Paper C: the global and finite-prefix Poisson laws"
+  name: "Global and finite-prefix Poisson laws for long constant stretches"
   description: >-
-    Lean 4 formalization of Paper C, Theorem 16.2 and Corollary 16.4. The
-    selected declarations give the global interior start-count Poisson law on
-    a finite prime-sign cylinder, its recentering at M/2^L, the corresponding
-    theorem on the infinite Rademacher product, and the finite-prefix
-    start-count and longest-stretch law. All asymptotics are uniform in the
-    critical window |L - log_2 M| <= C. Each declaration is conditional on
-    exactly six fully stated ordinary source propositions; those propositions
-    are theorem arguments, not Lean axioms.
+    Lean 4 formalization of global and finite-prefix Poisson laws for the
+    starting points of long constant stretches of an extended Rademacher
+    random completely multiplicative function, corresponding to Theorem 16.2
+    and Corollary 16.4 of the cited source article. The selected declarations
+    give the global interior start-count law on a finite prime-sign cylinder,
+    its recentering at M/2^L, the corresponding theorem on the infinite
+    Rademacher product, and the finite-prefix start-count and longest-stretch
+    law. All asymptotics are uniform in the critical window
+    |L - log_2 M| <= C. Each declaration is conditional on exactly six fully
+    stated ordinary source propositions; those propositions are theorem
+    arguments, not Lean axioms.
   authors:
     - "Brice Pouly"
   license: "Apache-2.0"
@@ -267,7 +270,9 @@ review:
 alignment:
   namespace: "PaperCAudit"
   statements:
-    - source: "Paper C, Theorem 16.2, printed/PDF pp. 54--55"
+    - source: >-
+        A critical Poisson law in a dyadic block, Theorem 16.2, printed/PDF
+        pp. 54--55
       lean: "paper_c_theorem_sixteen_two_finite_cylinder"
       module: "SolutionTheoremSixteenTwo"
       status: "proved modulo six explicit ordinary literature premises"
@@ -276,21 +281,27 @@ alignment:
         start-count law is o_C(1) in total variation from Pois(Lambda_M),
         Lambda_M-M/2^L=o_C(M/2^L), and its zero mass differs by o_C(1) from
         exp(-Lambda_M).
-    - source: "Paper C, Theorem 16.2, printed/PDF pp. 54--55"
+    - source: >-
+        A critical Poisson law in a dyadic block, Theorem 16.2, printed/PDF
+        pp. 54--55
       lean: "paper_c_theorem_sixteen_two_finite_cylinder_recentered"
       module: "SolutionTheoremSixteenTwo"
       status: "proved modulo six explicit ordinary literature premises"
       note: >-
         The same finite-cylinder law is o_C(1) in total variation from the
         printed Pois(M/2^L), and its zero mass is exp(-M/2^L)+o_C(1).
-    - source: "Paper C, Theorem 16.2, printed/PDF pp. 54--55"
+    - source: >-
+        A critical Poisson law in a dyadic block, Theorem 16.2, printed/PDF
+        pp. 54--55
       lean: "paper_c_theorem_sixteen_two_infinite_model"
       module: "SolutionTheoremSixteenTwo"
       status: "proved modulo six explicit ordinary literature premises"
       note: >-
         The exact-mean statement is expressed directly for the literal global
         start count under the infinite Rademacher product measure.
-    - source: "Paper C, Corollary 16.4, printed/PDF p. 55"
+    - source: >-
+        A critical Poisson law in a dyadic block, Corollary 16.4, printed/PDF
+        p. 55
       lean: "paper_c_corollary_sixteen_four_prefix_law"
       module: "SolutionTheoremSixteenTwo"
       status: "proved modulo six explicit ordinary literature premises"
