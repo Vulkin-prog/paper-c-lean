@@ -22,8 +22,14 @@ manifest will be added only after the endpoint statements are frozen.
 - `TruncatedDefectCount.lean` isolates the exact finite support truncation
   needed before the Rankin tilt in Proposition 3.3.
 - `RankinTilt.lean` proves the finite termwise Rankin comparison and closes it
-  into the exact small-prime Euler product; the prime-harmonic envelope remains
-  a separate next step.
+  into the exact small-prime Euler product with exponent `-1 + sigma`.
+- `RankinEnvelope.lean` turns that Euler product into the exponential form of
+  (3.4), parameterized only by the remaining finite reciprocal-prime bound.
+- `PrimeHarmonic.lean` proves that reciprocal-prime bound with the explicit
+  absolute constant `120`, using only the retained Chebyshev shell estimate.
+- `SharpKernelDefect.lean` fixes the exact `A(X,T)` count, closes the literal
+  paper-shaped (3.4), and exposes
+  `PaperC.paper_c_v1_1_sharp_kernel_defect_finite`.
 - `SharpPrimeCutoff.lean` defines the v1.1 cutoff
   `floor (exp (S_N / sqrt 2))` without changing the historical
   `floor (B^2 * log B)` declaration.

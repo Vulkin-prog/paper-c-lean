@@ -1,5 +1,8 @@
 import PaperCV11.HardConditioningSaddle
+import PaperCV11.PrimeHarmonic
+import PaperCV11.RankinEnvelope
 import PaperCV11.RankinTilt
+import PaperCV11.SharpKernelDefect
 import PaperCV11.SharpPrimeCutoff
 import PaperCV11.SyndromeCollision
 import PaperCV11.TruncatedDefectCount

@@ -63,6 +63,14 @@ jobs:
             ci-logs/PaperCV11-Audit.log
           grep -F 'PaperC.V11.RankinTilt.card_kernel_one_cast_le_rankin_eulerProduct' \
             ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.V11.RankinEnvelope.card_kernel_one_cast_le_rankin_exp' \
+            ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.V11.PrimeHarmonic.sum_inv_smallPrimesUpTo_real_le_loglog' \
+            ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.V11.SharpKernelDefect.finite_equation_three_four_of_reciprocal_bound' \
+            ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.paper_c_v1_1_sharp_kernel_defect_finite' \
+            ci-logs/PaperCV11-Audit.log
           grep -F 'PaperC.V11.SharpPrimeCutoff.cast_sharpPrimeCutoff_le_scale' \
             ci-logs/PaperCV11-Audit.log
           if grep -F 'sorryAx' ci-logs/PaperCV11-Audit.log; then
@@ -79,7 +87,8 @@ jobs:
             echo '- The retained v1.0 core source digest is unchanged.'
             echo '- The direct syndrome-collision lemma and exact defect-support truncation build successfully.'
             echo '- The algebraic hard-conditioning saddle is exposed as `PaperC.paper_c_v1_1_hard_conditioning_saddle`.'
-            echo '- The finite Rankin tilt and the distinct v1.1 sharp cutoff build successfully.'
+            echo '- The complete finite equation (3.4) is exposed as `PaperC.paper_c_v1_1_sharp_kernel_defect_finite`.'
+            echo '- The distinct v1.1 sharp cutoff builds without changing the historical cutoff.'
             echo '- This workflow is developmental and does not itself create a Palomar qualification.'
           } >> "$GITHUB_STEP_SUMMARY"
 

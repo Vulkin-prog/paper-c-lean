@@ -7,7 +7,7 @@ closed.
 
 | Paper result | Intended Lean declaration | External statement interfaces | Status |
 |---|---|---|---|
-| Proposition 3.3 | `paper_c_v1_1_sharp_kernel_defect` | none | finite truncation and Rankin tilt proved; prime-harmonic envelope open |
+| Proposition 3.3 | `paper_c_v1_1_sharp_kernel_defect` | none | finite (3.4) closed as `paper_c_v1_1_sharp_kernel_defect_finite`; uniform compact-`a` consequence (3.5) open |
 | Proposition 3.11 | `paper_c_v1_1_hard_conditioning_saddle` | none | algebraic endpoint proved |
 | Theorem 6.16 | `paper_c_v1_1_terminal_density_closure` | NR83 | open |
 | Theorem 7.3 | `paper_c_v1_1_two_window_profile` | ES86, NR83 | open |
