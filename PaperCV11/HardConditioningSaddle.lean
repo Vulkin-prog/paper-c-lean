@@ -84,22 +84,60 @@ theorem hard_saddle_attained :
       (Real.sqrt 2)⁻¹ := by
   rw [two_mul_inv_sqrt_two, min_self]
 
+/-- Equality in the hard-saddle bound characterizes the crossing point. -/
+theorem hard_saddle_eq_iff
+    {a : ℝ} (ha : 0 < a) :
+    min a ((2 * a)⁻¹) = (Real.sqrt 2)⁻¹ ↔
+      a = (Real.sqrt 2)⁻¹ := by
+  constructor
+  · intro hEq
+    let c : ℝ := (Real.sqrt 2)⁻¹
+    have hcpos : 0 < c := by
+      dsimp [c]
+      positivity
+    have hc_le_a : c ≤ a := by
+      rw [← hEq]
+      exact min_le_left _ _
+    have hc_le_inv : c ≤ (2 * a)⁻¹ := by
+      rw [← hEq]
+      exact min_le_right _ _
+    have htwoapos : 0 < 2 * a := by positivity
+    have hc_le_div : c ≤ 1 / (2 * a) := by
+      simpa [one_div] using hc_le_inv
+    have hprod : c * (2 * a) ≤ 1 :=
+      (le_div_iff₀ htwoapos).mp hc_le_div
+    have hnorm : c * (2 * c) = 1 := by
+      dsimp [c]
+      rw [two_mul_inv_sqrt_two]
+      exact inv_mul_cancel₀ (by positivity)
+    have hmul : c * (2 * a) ≤ c * (2 * c) :=
+      hprod.trans_eq hnorm.symm
+    have htwice : 2 * a ≤ 2 * c :=
+      (mul_le_mul_left hcpos).mp hmul
+    have ha_le_c : a ≤ c := by
+      nlinarith
+    exact le_antisymm ha_le_c hc_le_a
+  · intro haEq
+    subst a
+    exact hard_saddle_attained
+
 end HardConditioningSaddle
 end V11
 
 /--
 Palomar-facing algebraic endpoint for Paper C v1.1, Proposition 3.11.
-It records both the universal max-min bound and attainment at the unique
-crossing used by the hard-conditioning proof.
+It records the universal max-min bound and the uniqueness of its maximizer.
 -/
 theorem paper_c_v1_1_hard_conditioning_saddle :
     (∀ a : ℝ, 0 < a →
       min a ((2 * a)⁻¹) ≤ (Real.sqrt 2)⁻¹) ∧
-    min ((Real.sqrt 2)⁻¹) ((2 * (Real.sqrt 2)⁻¹)⁻¹) =
-      (Real.sqrt 2)⁻¹ := by
+    (∀ a : ℝ, 0 < a →
+      (min a ((2 * a)⁻¹) = (Real.sqrt 2)⁻¹ ↔
+        a = (Real.sqrt 2)⁻¹)) := by
   constructor
   · intro a ha
     exact V11.HardConditioningSaddle.hard_saddle_upper ha
-  · exact V11.HardConditioningSaddle.hard_saddle_attained
+  · intro a ha
+    exact V11.HardConditioningSaddle.hard_saddle_eq_iff ha
 
 end PaperC
