@@ -4,11 +4,11 @@ import PaperC.Coding.HammingBound
 # Paper C v2: the elementary syndrome-collision bound
 
 The v2 manuscript replaces two sphere-packing presentations by the direct
-subset-syndrome argument.  A linear syndrome map is injective on words of
+subset-syndrome argument. A linear syndrome map is injective on words of
 weight at most `t` when its kernel has no nonzero word of weight at most
 `2 * t`; consequently the number of such words is at most `2 ^ r`.
 
-This file proves that statement directly.  It does not use the Hamming-ball
+This file proves that statement directly. It does not use the Hamming-ball
 bound, although it reuses the already formalized support/volume dictionary.
 -/
 
@@ -101,7 +101,7 @@ theorem volume_le_two_pow
     _ ≤ (Finset.univ : Finset (BinaryWord r)).card :=
       Finset.card_le_card (Finset.subset_univ _)
     _ = 2 ^ r := by
-      simp [Fintype.card_fun, ZMod.card]
+      simp [ZMod.card]
 
 /-- Contrapositive form used when extracting a short relation. -/
 theorem exists_short_kernel_word_of_two_pow_lt_volume
@@ -110,7 +110,7 @@ theorem exists_short_kernel_word_of_two_pow_lt_volume
     (hlarge : 2 ^ r < volume m t) :
     ∃ z : BinaryWord m, z ≠ 0 ∧ hammingNorm z ≤ 2 * t ∧ φ z = 0 := by
   by_contra hnone
-  push_neg at hnone
+  push Not at hnone
   have hshort : ∀ z : BinaryWord m,
       z ≠ 0 → hammingNorm z ≤ 2 * t → φ z ≠ 0 := by
     intro z hz hweight hzero
