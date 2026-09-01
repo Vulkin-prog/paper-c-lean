@@ -5,6 +5,7 @@ on:
     branches:
       - codex/paper-c-v2-mathematics
     paths:
+      - 'PaperCV11.lean'
       - 'PaperCV11/**'
       - '.github/workflows/v11-development.yml'
       - 'lakefile.toml'
@@ -12,6 +13,7 @@ on:
       - 'lean-toolchain'
   pull_request:
     paths:
+      - 'PaperCV11.lean'
       - 'PaperCV11/**'
       - '.github/workflows/v11-development.yml'
       - 'lakefile.toml'
@@ -49,13 +51,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lake env lean PaperCV11/Main.lean
+          lake build PaperCV11
 
       - name: Reject proof placeholders
         shell: bash
         run: |
           set -euo pipefail
-          if grep -RInE --include='*.lean' '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' PaperCV11; then
+          if grep -RInE --include='*.lean' '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' PaperCV11.lean PaperCV11; then
             echo 'Proof placeholder found in PaperCV11.' >&2
             exit 1
           fi
