@@ -1,3 +1,5 @@
 import PaperCV11.Main
 
 #print axioms PaperC.paper_c_v1_1_hard_conditioning_saddle
+#print axioms PaperC.V11.RankinTilt.card_kernel_one_cast_le_rankin_eulerProduct
+#print axioms PaperC.V11.SharpPrimeCutoff.cast_sharpPrimeCutoff_le_scale

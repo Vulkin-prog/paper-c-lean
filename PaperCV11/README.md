@@ -21,6 +21,12 @@ manifest will be added only after the endpoint statements are frozen.
   `PaperC.paper_c_v1_1_hard_conditioning_saddle`.
 - `TruncatedDefectCount.lean` isolates the exact finite support truncation
   needed before the Rankin tilt in Proposition 3.3.
+- `RankinTilt.lean` proves the finite termwise Rankin comparison and closes it
+  into the exact small-prime Euler product; the prime-harmonic envelope remains
+  a separate next step.
+- `SharpPrimeCutoff.lean` defines the v1.1 cutoff
+  `floor (exp (S_N / sqrt 2))` without changing the historical
+  `floor (B^2 * log B)` declaration.
 - `SyndromeCollision.lean` gives a direct subset-syndrome proof of the short
   kernel-word extraction used by the Hamming steps.
 
@@ -57,3 +63,9 @@ No seventh literature premise is introduced. The eventual v1.1 records retain
 exactly the six existing interfaces: PNT, AGG89, BS93, ES86, LS04 and NR83.
 The hard-conditioning saddle and Rankin estimate themselves require no new
 external input.
+
+The frozen AGG89 bridge currently exposes only the coarse bound
+`dTV ≤ 2 * (b1 + b2)`. The v1.1 global rate needs the intensity-sensitive
+factor `(1 ∧ lambda⁻¹)`. That factor must be proved internally or introduced
+under a new additive bridge fingerprint; no historical interface or Palomar
+record will be silently strengthened.

@@ -1,4 +1,6 @@
 import PaperCV11.HardConditioningSaddle
+import PaperCV11.RankinTilt
+import PaperCV11.SharpPrimeCutoff
 import PaperCV11.SyndromeCollision
 import PaperCV11.TruncatedDefectCount
 

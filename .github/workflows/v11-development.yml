@@ -61,6 +61,10 @@ jobs:
           lake env lean PaperCV11/Audit.lean 2>&1 | tee ci-logs/PaperCV11-Audit.log
           grep -F 'PaperC.paper_c_v1_1_hard_conditioning_saddle' \
             ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.V11.RankinTilt.card_kernel_one_cast_le_rankin_eulerProduct' \
+            ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.V11.SharpPrimeCutoff.cast_sharpPrimeCutoff_le_scale' \
+            ci-logs/PaperCV11-Audit.log
           if grep -F 'sorryAx' ci-logs/PaperCV11-Audit.log; then
             echo 'The v1.1 endpoint depends on sorryAx.' >&2
             exit 1
@@ -75,6 +79,7 @@ jobs:
             echo '- The retained v1.0 core source digest is unchanged.'
             echo '- The direct syndrome-collision lemma and exact defect-support truncation build successfully.'
             echo '- The algebraic hard-conditioning saddle is exposed as `PaperC.paper_c_v1_1_hard_conditioning_saddle`.'
+            echo '- The finite Rankin tilt and the distinct v1.1 sharp cutoff build successfully.'
             echo '- This workflow is developmental and does not itself create a Palomar qualification.'
           } >> "$GITHUB_STEP_SUMMARY"
 

@@ -112,7 +112,7 @@ theorem hard_saddle_eq_iff
           (Real.sqrt 2)⁻¹ * (2 * (Real.sqrt 2)⁻¹) :=
       hprod.trans_eq hnorm.symm
     have htwice : 2 * a ≤ 2 * (Real.sqrt 2)⁻¹ :=
-      (mul_le_mul_left hcpos).mp hmul
+      le_of_mul_le_mul_left hmul hcpos
     have ha_le_c : a ≤ (Real.sqrt 2)⁻¹ := by
       nlinarith
     exact le_antisymm ha_le_c hc_le_a
