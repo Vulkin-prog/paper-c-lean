@@ -1,19 +1,19 @@
 import PaperC.Coding.HammingBound
 
 /-!
-# Paper C v2: the elementary syndrome-collision bound
+# Paper C v1.1: direct syndrome-collision bound
 
-The v2 manuscript replaces two sphere-packing presentations by the direct
-subset-syndrome argument. A linear syndrome map is injective on words of
-weight at most `t` when its kernel has no nonzero word of weight at most
-`2 * t`; consequently the number of such words is at most `2 ^ r`.
+The v1.1 proofs use Hamming-type extraction twice. This development records a
+direct subset-syndrome formulation: a linear syndrome map is injective on
+words of weight at most `t` when its kernel has no nonzero word of weight at
+most `2 * t`; consequently the number of such words is at most `2 ^ r`.
 
-This file proves that statement directly. It does not use the Hamming-ball
-bound, although it reuses the already formalized support/volume dictionary.
+This is a proof-engineering lemma for the v1.1 pass. It reuses the retained
+rc4 support and volume dictionary and creates no parallel model.
 -/
 
 namespace PaperC
-namespace V2
+namespace V11
 namespace SyndromeCollision
 
 open scoped BigOperators
@@ -75,11 +75,7 @@ theorem subsetSyndrome_injectiveOn_smallSupports
   have hsupports := congrArg wordSupport hxy
   simpa [x, y] using hsupports
 
-/--
-Numerical syndrome-collision bound:
-
-`∑_{j≤t} choose m j ≤ 2^r`.
--/
+/-- Numerical syndrome-collision bound: `∑_{j≤t} choose m j ≤ 2^r`. -/
 theorem volume_le_two_pow
     {m r t : ℕ}
     (φ : BinaryWord m →ₗ[F₂] BinaryWord r)
@@ -119,5 +115,5 @@ theorem exists_short_kernel_word_of_two_pow_lt_volume
   omega
 
 end SyndromeCollision
-end V2
+end V11
 end PaperC

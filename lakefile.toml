@@ -6,6 +6,9 @@ defaultTargets = ["PaperC"]
 name = "PaperC"
 
 [[lean_lib]]
+name = "PaperCV11"
+
+[[lean_lib]]
 name = "Challenge"
 
 [[lean_lib]]

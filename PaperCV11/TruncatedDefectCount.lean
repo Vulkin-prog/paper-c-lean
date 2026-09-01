@@ -1,20 +1,18 @@
 import PaperC.Arithmetic.TerminalKernelCount
 
 /-!
-# Paper C v2: the exact truncation in the defect count
+# Paper C v1.1: exact truncation in the defect count
 
-The v1 numerical envelope extended the squarefree-support sum to a full Euler
-product at exponent `1/2`. The v2 argument keeps the natural restriction that
-the product of the selected small primes is at most the height `X` before
-applying Rankin's trick.
+Proposition 3.3 keeps the natural restriction that the product of the selected
+small primes is at most the height `X` before applying Rankin's trick. This
+file isolates that exact finite statement from the retained canonical kernel
+decomposition.
 
-This file isolates that exact finite statement from the already formalized
-canonical kernel decomposition. No asymptotic estimate and no new external
-input is used here.
+No asymptotic estimate and no new external input is used here.
 -/
 
 namespace PaperC
-namespace V2
+namespace V11
 namespace TruncatedDefectCount
 
 open scoped BigOperators
@@ -35,7 +33,7 @@ theorem mem_admissibleSmallSupports
       small ⊆ smallPrimesUpTo B ∧ small.prod id ≤ X := by
   simp [admissibleSmallSupports]
 
-/-- At terminal-kernel threshold `1`, the existing sigma count has one fibre. -/
+/-- At terminal-kernel threshold `1`, the retained sigma count has one fibre. -/
 theorem card_kernel_one_le_unfiltered_sqrt_sum
     (B X : ℕ) :
     (boundedLargeKernelValues B 1 X).card ≤
@@ -58,7 +56,7 @@ theorem sqrt_div_prod_eq_zero_of_not_admissible
   rw [Nat.div_eq_of_lt hlt]
   simp
 
-/-- The unfiltered square-root sum is exactly its restriction to admissible supports. -/
+/-- The unfiltered square-root sum equals its restriction to admissible supports. -/
 theorem sqrt_sum_eq_admissible_sum
     (B X : ℕ) :
     (∑ small ∈ (smallPrimesUpTo B).powerset,
@@ -77,7 +75,7 @@ theorem sqrt_sum_eq_admissible_sum
     simp
 
 /--
-Exact truncated form of the `Y`-defect count. The set on the left consists of
+Exact truncated form of the defect count. The set on the left consists of
 positive integers at most `X` whose large odd kernel above `B` is `1`.
 -/
 theorem card_kernel_one_le_truncated_sqrt_sum
@@ -89,5 +87,5 @@ theorem card_kernel_one_le_truncated_sqrt_sum
   exact card_kernel_one_le_unfiltered_sqrt_sum B X
 
 end TruncatedDefectCount
-end V2
+end V11
 end PaperC
