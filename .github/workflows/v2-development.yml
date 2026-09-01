@@ -33,11 +33,11 @@ jobs:
           lint: false
           use-mathlib-cache: true
 
-      - name: Build the v2 syndrome-collision module
+      - name: Build the assembled v2 development surface
         shell: bash
         run: |
           set -euo pipefail
-          lake build PaperC.V2.SyndromeCollision
+          lake build PaperC.V2.Main
 
       - name: Reject placeholders in the v2 development directory
         shell: bash
@@ -54,7 +54,7 @@ jobs:
           {
             echo '## Paper C v2 Lean development'
             echo
-            echo '- The direct syndrome-collision module built successfully.'
+            echo '- The direct syndrome-collision theorem and the optimal cutoff balance built successfully.'
             echo '- This workflow is developmental and does not create a Palomar or release qualification.'
             echo '- The v1 authority commit and records remain unchanged.'
           } >> "$GITHUB_STEP_SUMMARY"
