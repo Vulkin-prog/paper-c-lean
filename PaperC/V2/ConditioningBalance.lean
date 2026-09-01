@@ -7,9 +7,9 @@ import Mathlib.Tactic.Positivity
 
 After the truncated Rankin estimate, writing `u = log Y`, the two elementary
 conditioning exponents are `B / u` (removed starts) and `u` (dependency
-edges).  This file proves that their minimum is maximized at `u = sqrt B`.
+edges). This file proves that their minimum is maximized at `u = sqrt B`.
 
-The theorem is purely analytic.  It does not yet formalize the arithmetic
+The theorem is purely analytic. It does not yet formalize the arithmetic
 Rankin estimate that produces the first exponent.
 -/
 
@@ -26,8 +26,11 @@ theorem min_div_self_le_sqrt
   · have hsqrtLe : Real.sqrt B ≤ u := le_of_not_ge hsmall
     have hdiv : B / u ≤ Real.sqrt B := by
       apply (div_le_iff₀ hu).2
-      rw [← Real.sq_sqrt hB]
-      exact mul_le_mul_of_nonneg_left hsqrtLe (Real.sqrt_nonneg B)
+      calc
+        B = (Real.sqrt B) ^ 2 := (Real.sq_sqrt hB).symm
+        _ = Real.sqrt B * Real.sqrt B := by rw [pow_two]
+        _ ≤ Real.sqrt B * u :=
+          mul_le_mul_of_nonneg_left hsqrtLe (Real.sqrt_nonneg B)
     exact (min_le_left _ _).trans hdiv
 
 /-- At `u = sqrt B`, the two exponents are exactly equal. -/
