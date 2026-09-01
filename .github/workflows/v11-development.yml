@@ -1,0 +1,76 @@
+name: Paper C v1.1 Lean development
+
+on:
+  push:
+    branches:
+      - codex/paper-c-v2-mathematics
+    paths:
+      - 'PaperCV11/**'
+      - '.github/workflows/v11-development.yml'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'lean-toolchain'
+  pull_request:
+    paths:
+      - 'PaperCV11/**'
+      - '.github/workflows/v11-development.yml'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'lean-toolchain'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  LEAN_ABORT_ON_PANIC: '1'
+
+jobs:
+  build-v11-development:
+    name: Build Paper C v1.1 development surface
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Install Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/elan" toolchain install "$(cat lean-toolchain)"
+
+      - name: Restore Mathlib cache
+        uses: actions/cache@5a014d5c932487fc4a652b754da5c98644c11ccc # v4.3.0
+        with:
+          path: |
+            ~/.cache/mathlib
+            .lake/packages
+            .lake/build
+          key: v11-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}
+          restore-keys: |
+            v11-${{ runner.os }}-
+
+      - name: Fetch dependencies and cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake update
+          lake exe cache get
+
+      - name: Compile the isolated v1.1 surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean PaperCV11/Main.lean
+
+      - name: Reject proof placeholders
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE --include='*.lean' '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' PaperCV11; then
+            echo 'Proof placeholder found in PaperCV11.' >&2
+            exit 1
+          fi
