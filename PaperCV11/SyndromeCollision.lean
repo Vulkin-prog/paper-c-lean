@@ -8,8 +8,8 @@ syndrome map is injective on words of weight at most `t` when its kernel has
 no nonzero word of weight at most `2 * t`; consequently the number of such
 words is at most `2 ^ r`.
 
-This file proves that statement directly. It does not use the Hamming-ball
-bound, although it reuses the already formalized support/volume dictionary.
+This file proves that statement directly. It does not use sphere packing as a
+black box, although it reuses the already formalized Hamming-ball volume.
 -/
 
 namespace PaperC
@@ -26,9 +26,9 @@ def syndromeMap {m r : ℕ}
     (x : BinaryWord m) : BinaryWord r :=
   φ x
 
-/-- Low-weight words, represented as a finite set. -/
+/-- Low-weight words, represented as the Hamming ball about zero. -/
 def lowWeightWords (m t : ℕ) : Finset (BinaryWord m) :=
-  Finset.univ.filter fun x ↦ hammingNorm x ≤ t
+  ball (0 : BinaryWord m) t
 
 @[simp]
 theorem mem_lowWeightWords {m t : ℕ} {x : BinaryWord m} :
@@ -38,44 +38,8 @@ theorem mem_lowWeightWords {m t : ℕ} {x : BinaryWord m} :
 /-- The cardinality of the low-weight words is the binary Hamming volume. -/
 theorem card_lowWeightWords (m t : ℕ) :
     (lowWeightWords m t).card = volume m t := by
-  classical
-  rw [lowWeightWords, Finset.card_filter]
-  rw [volume_eq_card_supportSets]
-  let e : BinaryWord m ≃ Finset (Fin m) :=
-    { toFun := support
-      invFun := fun S i ↦ if i ∈ S then 1 else 0
-      left_inv := by
-        intro x
-        funext i
-        by_cases hx : x i = 0
-        · simp [support, hx]
-        · have hone : x i = 1 := by
-            fin_cases x i <;> simp_all
-          simp [support, hx, hone]
-      right_inv := by
-        intro S
-        ext i
-        simp [support] }
-  calc
-    (Finset.univ.filter fun x : BinaryWord m ↦ hammingNorm x ≤ t).card =
-        ((Finset.univ.filter fun x : BinaryWord m ↦ hammingNorm x ≤ t).image e).card := by
-      symm
-      apply Finset.card_image_of_injective
-      exact e.injective
-    _ = (Finset.univ.filter fun S : Finset (Fin m) ↦ S.card ≤ t).card := by
-      congr 1
-      ext S
-      simp only [Finset.mem_image, Finset.mem_filter, Finset.mem_univ, true_and]
-      constructor
-      · rintro ⟨x, hx, hxe⟩
-        subst S
-        simpa [e] using hx
-      · intro hS
-        refine ⟨e.symm S, ?_, by simp⟩
-        simpa [e] using hS
-    _ = volume m t := by
-      simpa only [Finset.mem_filter, Finset.mem_univ, true_and] using
-        (volume_eq_card_supportSets m t).symm
+  simpa [lowWeightWords] using
+    (card_ball (n := m) (t := t) (0 : BinaryWord m))
 
 /--
 If no nonzero kernel word has weight at most `2t`, then syndromes are
@@ -92,8 +56,13 @@ theorem syndrome_injective_on_lowWeight
   have hdiff_ne : x - y ≠ 0 := sub_ne_zero.mpr hne
   have hdiff_weight : hammingNorm (x - y) ≤ 2 * t := by
     calc
-      hammingNorm (x - y) ≤ hammingNorm x + hammingNorm y :=
-        hammingNorm_sub_le x y
+      hammingNorm (x - y) = hammingDist x y := by
+        simpa [differenceSupport] using
+          (hammingDist_eq_card_differenceSupport x y).symm
+      _ ≤ hammingDist x (0 : BinaryWord m) +
+          hammingDist (0 : BinaryWord m) y :=
+        hammingDist_triangle x 0 y
+      _ = hammingNorm x + hammingNorm y := by simp
       _ ≤ t + t := Nat.add_le_add hx hy
       _ = 2 * t := by omega
   have hkernel : φ (x - y) = 0 := by
