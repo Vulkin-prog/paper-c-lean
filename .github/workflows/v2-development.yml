@@ -1,0 +1,60 @@
+name: Paper C v2 Lean development
+
+on:
+  push:
+    branches:
+      - codex/paper-c-v2-mathematics
+    paths:
+      - "PaperC/V2/**"
+      - ".github/workflows/v2-development.yml"
+  pull_request:
+    paths:
+      - "PaperC/V2/**"
+      - ".github/workflows/v2-development.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-v2-development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out the v2 development branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set up the pinned Lean toolchain
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Build the v2 syndrome-collision module
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build PaperC.V2.SyndromeCollision
+
+      - name: Reject placeholders in the v2 development directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '(^|[^A-Za-z])(sorry|admit)([^A-Za-z]|$)' PaperC/V2 --include='*.lean'; then
+            echo 'Lean placeholder found in PaperC/V2.' >&2
+            exit 1
+          fi
+
+      - name: Record the development boundary
+        shell: bash
+        run: |
+          {
+            echo '## Paper C v2 Lean development'
+            echo
+            echo '- The direct syndrome-collision module built successfully.'
+            echo '- This workflow is developmental and does not create a Palomar or release qualification.'
+            echo '- The v1 authority commit and records remain unchanged.'
+          } >> "$GITHUB_STEP_SUMMARY"
