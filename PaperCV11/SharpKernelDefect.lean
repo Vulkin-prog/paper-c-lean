@@ -5,10 +5,10 @@ import PaperCV11.RankinEnvelope
 # Paper C v1.1: paper-shaped sharp kernel-defect contract
 
 This file fixes the exact finite counting function `A(X,T)` from Proposition
-3.3 and rewrites the Rankin envelope in the literal exponential form of
-equation (3.4).  The theorem remains parameterized by the one outstanding
-finite reciprocal-prime estimate, so the final Palomar endpoint name is not
-introduced prematurely.
+3.3, rewrites the Rankin envelope in the literal exponential form of equation
+(3.4), and supplies its prime-harmonic input from `PrimeHarmonic`.  The full
+Proposition 3.3 endpoint name remains reserved until the compact-uniform
+consequence (3.5) is also proved.
 -/
 
 namespace PaperC

@@ -14,7 +14,7 @@ The separate Lake library `PaperCV11` is deliberate: the historical
 while the new endpoints are developed. A dedicated v1.1 Comparator and audit
 manifest will be added only after the endpoint statements are frozen.
 
-## Qualified first milestone
+## Verified development milestones
 
 - `HardConditioningSaddle.lean` proves the exact max-min calculation
   `min a (2a)⁻¹ ≤ (sqrt 2)⁻¹`, with equality at `a = (sqrt 2)⁻¹`, and exposes
