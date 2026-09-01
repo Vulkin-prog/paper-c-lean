@@ -91,30 +91,29 @@ theorem hard_saddle_eq_iff
       a = (Real.sqrt 2)⁻¹ := by
   constructor
   · intro hEq
-    let c : ℝ := (Real.sqrt 2)⁻¹
-    have hcpos : 0 < c := by
-      dsimp [c]
-      positivity
-    have hc_le_a : c ≤ a := by
+    have hcpos : 0 < (Real.sqrt 2)⁻¹ := by positivity
+    have hc_le_a : (Real.sqrt 2)⁻¹ ≤ a := by
       rw [← hEq]
       exact min_le_left _ _
-    have hc_le_inv : c ≤ (2 * a)⁻¹ := by
+    have hc_le_inv : (Real.sqrt 2)⁻¹ ≤ (2 * a)⁻¹ := by
       rw [← hEq]
       exact min_le_right _ _
     have htwoapos : 0 < 2 * a := by positivity
-    have hc_le_div : c ≤ 1 / (2 * a) := by
+    have hc_le_div : (Real.sqrt 2)⁻¹ ≤ 1 / (2 * a) := by
       simpa [one_div] using hc_le_inv
-    have hprod : c * (2 * a) ≤ 1 :=
+    have hprod : (Real.sqrt 2)⁻¹ * (2 * a) ≤ 1 :=
       (le_div_iff₀ htwoapos).mp hc_le_div
-    have hnorm : c * (2 * c) = 1 := by
-      dsimp [c]
+    have hnorm :
+        (Real.sqrt 2)⁻¹ * (2 * (Real.sqrt 2)⁻¹) = 1 := by
       rw [two_mul_inv_sqrt_two]
       exact inv_mul_cancel₀ (by positivity)
-    have hmul : c * (2 * a) ≤ c * (2 * c) :=
+    have hmul :
+        (Real.sqrt 2)⁻¹ * (2 * a) ≤
+          (Real.sqrt 2)⁻¹ * (2 * (Real.sqrt 2)⁻¹) :=
       hprod.trans_eq hnorm.symm
-    have htwice : 2 * a ≤ 2 * c :=
+    have htwice : 2 * a ≤ 2 * (Real.sqrt 2)⁻¹ :=
       (mul_le_mul_left hcpos).mp hmul
-    have ha_le_c : a ≤ c := by
+    have ha_le_c : a ≤ (Real.sqrt 2)⁻¹ := by
       nlinarith
     exact le_antisymm ha_le_c hc_le_a
   · intro haEq
