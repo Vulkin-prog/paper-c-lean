@@ -16,6 +16,7 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S001 | Papier, p. 25, proposition 3.26 et équation (3.24) | Suggestion d'explicitation | Proposition à examiner |
 | V3-S002 | Papier, p. 9, preuve du corollaire 2.6 | Suggestion d'explicitation du modèle fini | Proposition à examiner |
 | V3-S003 | Papier, p. 14–15, preuve de la proposition 3.7 après (3.11) | Suggestion de simplification de la preuve | Proposition à examiner |
+| V3-S004 | Papier, p. 9, clause sommée du corollaire 2.6 | Suggestion d'explicitation de l'espérance et de l'uniformité | Proposition à examiner |
 
 **Compagnon technique : aucune correction confirmée à ce stade.** Les résultats finis déjà formalisés ne constituent pas une vérification intégrale de ses annexes. Les prochaines observations propres au compagnon seront ajoutées avec leur emplacement et leur justification ; aucune anomalie ne lui est attribuée par analogie avec le papier.
 
@@ -69,7 +70,7 @@ Les hôtes correspondants sont exactement les paires admettant un **sous-ensembl
 
 > For a fixed window of positive integers, choose a prime cutoff at least as large as its largest vertex. The word event depends only on these prime coordinates, so its probability in the infinite Rademacher product is exactly its probability on this finite cylinder.
 
-**Statut.** Proposition à examiner. Le transfert inconditionnel et la borne ponctuelle infinie (2.6) sont formalisés. Le transfert conditionnel sur chaque atome des petits premiers est également formalisé dans [InfiniteConditionalWords.lean](../PaperCV282/InfiniteConditionalWords.lean). La présentation par une espérance conditionnelle abstraite et l'estimation sommée du premier moment restent distinctes.
+**Statut.** Proposition à examiner. Le transfert inconditionnel et la borne ponctuelle infinie (2.6) sont formalisés. Le transfert conditionnel sur chaque atome des petits premiers est également formalisé dans [InfiniteConditionalWords.lean](../PaperCV282/InfiniteConditionalWords.lean). L'estimation sommée du premier moment est désormais formalisée pour les masques et dictionnaires dyadiques dans [WordFirstMomentAsymptotics.lean](../PaperCV282/WordFirstMomentAsymptotics.lean), avec la véritable espérance inconditionnelle du nombre d'occurrences et une uniformité explicitée en V3-S004. La présentation de la loi conditionnelle par une espérance conditionnelle abstraite reste distincte.
 
 **Preuves.** [InfiniteWordTransfer.lean](../PaperCV282/InfiniteWordTransfer.lean), `infiniteWordEvent_eq_preimage`, `infiniteWordEvent_measure_eq_uniformSolutionProbability` et `corollary_two_six_pointwise_infinite`.
 
@@ -94,6 +95,34 @@ Dans une bande `B ≤ C log M`, le facteur `B exp(4√B)` est déjà `M^{o(1)}`.
 **Statut.** Proposition à examiner. La majoration de la somme pondérée et son application uniforme aux hôtes dyadiques sont vérifiées en Lean sans hypothèse de littérature externe. L'extension formalisée aux autres géométries reste à faire ; cette suggestion ne revendique pas une preuve complète de la proposition macroscopique.
 
 **Preuves.** [RelationalHostBound.lean](../PaperC/Analysis/RelationalHostBound.lean), `sum_largeKernelWeight_le_sqrt_mul_exp` ; [FullHostAsymptotics.lean](../PaperCV282/FullHostAsymptotics.lean), `card_squareProductHosts_cast_le_exp_bound` et `card_squareProductHosts_uniformThreeHalves`. Le premier résultat est un lemme analytique historique réutilisé ; le raccord aux hôtes sans parité est nouveau.
+
+## V3-S004 — Expliciter le premier moment et l'uniformité sur les masques et dictionnaires
+
+**Document et emplacement.** Papier v2.8.2, p. 9, dernière clause du corollaire 2.6 : erreur du premier moment sommée sur une collection déterministe de mots distincts et un masque dans `I_N`.
+
+**Type.** Suggestion d'explicitation, **sans erreur identifiée**.
+
+**Justification.** La quantité considérée est l'espérance inconditionnelle, dans le modèle de Rademacher infini, du nombre total d'occurrences
+
+```text
+C_{s,W} = ∑_{x ∈ s} ∑_{w ∈ W} I_{x,w}.
+```
+
+Sa référence est `|s|·|W|·2⁻ᴮ`. La formalisation choisit le seuil en `N` avant la longueur `B`, le masque `s` et le dictionnaire `W`. Pour une bande fixée `0 < c₁ < c₂`, l'erreur est donc uniforme sur tous ces choix, même lorsque le masque, les mots et leur nombre varient avec `N` et `B`. Les dictionnaires et masques restent déterministes ; aucune indépendance entre occurrences n'est utilisée. Le cas du dictionnaire vide est inclus.
+
+Le masque sélectionne les **départs** dans `I_N = [N,2N)`. Chaque occurrence conserve ses `B` sommets `x−1,…,x+B−2`, même si certains sont hors du masque ou du bloc des départs. Cette précision évite de remplacer l'événement de mot par un événement tronqué au bord.
+
+**Formulation anglaise proposée.**
+
+> Fix `0 < c₁ < c₂`. Uniformly for `c₁ log N ≤ B ≤ c₂ log N`, every deterministic start mask `s ⊆ I_N` and every dictionary `W ⊆ {±1}^B` of distinct words satisfy
+>
+> `E[∑_{x ∈ s} ∑_{w ∈ W} I_{x,w}] = |s| |W| 2⁻ᴮ + O_{c₁,c₂}(|W| 2⁻ᴮ N^{1/2+o(1)})`.
+>
+> The expectation is unconditional, and the error bound is uniform in `s` and `W`, which may vary with `N` and `B`. The mask restricts the start positions; each occurrence uses all `B` vertices `x−1,…,x+B−2`, without truncation at the boundary of the mask or of `I_N`.
+
+**Statut.** Proposition à examiner. Le compte réel d'occurrences, son intégrabilité, l'identité d'espérance et la borne uniforme sommée sont formalisés sur les masques dyadiques. Le théorème n'impose ni condition de balance sur `N/2ᴮ`, ni hypothèse de bonnes fenêtres. Cette entrée n'étend pas la portée aux géométries macroscopiques ni au profil (3.25).
+
+**Preuves.** [InfiniteWordFirstMoment.lean](../PaperCV282/InfiniteWordFirstMoment.lean), `wordOccurrenceCount`, `integrable_wordOccurrenceCount`, `integral_wordOccurrenceCount` et `abs_wordProbabilitySum_sub_baseline_le` ; [WordFirstMomentAsymptotics.lean](../PaperCV282/WordFirstMomentAsymptotics.lean), `corollary_two_six_summed_probability` et `corollary_two_six_summed_expectation`. Le dernier énoncé place explicitement le seuil avant `B`, `s` et `W`.
 
 ## Suivi des prochaines observations
 

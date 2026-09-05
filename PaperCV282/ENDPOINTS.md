@@ -1,12 +1,12 @@
 # Paper C v2.8.2 endpoint ledger
 
-This ledger describes the current eleven-module development: 89 theorems,
-25 definitions and two named local instances, totaling 116 named
+This ledger describes the current fifteen-module development: 111 theorems,
+28 definitions and five named local instances, totaling 144 named
 declarations. It records the mathematical scope of the supplied proof terms;
 build and qualification outcomes belong in separate evidence. No entry is a
 new Palomar record. Names below have prefix `PaperC.V282.`.
 
-## Corollary 2.6: infinite pointwise bound and conditional atom law
+## Corollary 2.6: pointwise, conditional and dyadic summed clauses
 
 Source: article page 9, equation (2.6), its conditional clause and the
 following summed first-moment statement.
@@ -29,6 +29,14 @@ following summed first-moment statement.
 | `InfiniteConditionalWords.smallPrimeSigmaAlgebra_eq_primeCylinder` | For `Y ≤ M`, the represented small-prime sigma-algebra equals that of all prime coordinates at most `Y`, namely `F_Y`. |
 | `InfiniteConditionalWords.corollary_two_six_joint_infinite` | Exact identity `measure(word ∩ atom) = measure(atom) * (1 / 2^B)` in the infinite model. |
 | `InfiniteConditionalWords.corollary_two_six_conditioned_infinite` | The ratio `measure(word ∩ atom) / measure(atom)` is exactly `1 / 2^B` on every assignment atom. |
+| `InfiniteWordFirstMoment.wordOccurrenceCount` | Finite sum of indicators of the actual infinite word events over positions and distinct dictionary words. |
+| `InfiniteWordFirstMoment.integrable_wordOccurrenceCount` | Integrability under `infiniteRademacherMeasure`. |
+| `InfiniteWordFirstMoment.integral_wordOccurrenceCount` | Exact identity between the occurrence-count integral and `wordProbabilitySum`. |
+| `InfiniteWordFirstMoment.abs_wordProbabilitySum_sub_baseline_le` | Finite summed error bounded by `(|W| / 2^B)` times the mask's total word defect weight. |
+| `WordDefectCounting.wordDefectMass_le` | The shifted word mass is at most twice the historical mass plus the global count of possible defective roots. |
+| `WordDefectAsymptotics.wordDefectMass_uniformHalfPower_on_window` | Uniform `N^(1/2+o(1))` word defect mass on a fixed logarithmic band, with finite technical thresholds eliminated. |
+| `WordFirstMomentAsymptotics.corollary_two_six_summed_probability` | Summed word-probability error, with one threshold valid for every length, dyadic mask and dictionary. |
+| `WordFirstMomentAsymptotics.corollary_two_six_summed_expectation` | The same uniform estimate for the actual integral of the occurrence count under the infinite source law. |
 
 The infinite pointwise endpoint is, for `x ≥ 2` and every `b : Fin B → F₂`,
 
@@ -56,17 +64,42 @@ The atom definition, measurability, positive finite mass, and equality of
 the generated sigma-algebra with `F_Y` are proved independently of the
 good-window probability conclusion.
 
-Remaining for the full Corollary 2.6:
+The summed first moment uses `s : Finset ℕ` and
+`W : Finset (Fin B → F₂)`. Thus words are distinct, but their number and
+values can vary with `N` and `B`. The random variable is the finite sum
+of word-event indicators; linearity of its integral needs no independence
+between positions or words. Its baseline is `|s| |W| / 2^B`.
 
-1. Expose the general conditional-probability/expectation kernel API, if
-   required by downstream results. The infinite atom law and identification
-   with `F_Y` are already established.
-2. Sum over deterministic masks and distinct words, connect to uniform
-   defect-weight estimates in the logarithmic band, and conclude
-   `O(m p_B N^(1/2+o(1)))` with explicit uniformity quantifiers.
+The finite arithmetic bridge explicitly handles the root `x - 1`, rather
+than identifying the word window with the historical interval `[x, x+B]`.
+The resulting word defect mass is bounded by `sqrt N` times three times
+the retained subpolynomial residual factor. Uniform admissibility removes
+all finite technical thresholds in the logarithmic band.
 
-The unconditional word-event transfer, infinite pointwise estimate and
-exact conditional law on all positive `F_Y` atoms are complete.
+For fixed real numbers `0 < c₁ < c₂`, the terminal expectation theorem
+has the exact quantifier order
+
+```text
+∀ k : ℕ, 0 < k → ∃ N₀, ∀ N ≥ N₀, ∀ B : ℕ,
+  (c₁ log N ≤ B ∧ B ≤ c₂ log N) →
+  ∀ s : Finset ℕ, s ⊆ [N, 2N) →
+  ∀ W : Finset (Fin B → F₂),
+  |∫ wordOccurrenceCount B s W dμ - |s| |W| / 2^B|^(2k)
+    ≤ (|W| / 2^B)^(2k) N^(k+1),
+  where μ = infiniteRademacherMeasure.
+```
+
+The threshold depends only on `c₁`, `c₂` and `k`. In particular, it is
+independent of `B`, `s` and `W`. The scale `|W| / 2^B` is never divided
+out, so empty dictionaries and masks are covered. No balance bound on
+`N / 2^B` is assumed. This proves the dyadic
+`O(m p_B N^(1/2+o(1)))` clause with its uniformity over masks and dictionaries.
+
+The three clauses of Corollary 2.6 are therefore covered in their stated
+representations: infinite pointwise probability, exact conditional law on
+positive `F_Y` atoms, and the actual dyadic summed expectation. An abstract
+conditional-expectation API remains optional presentation work. These
+endpoints do not assert a macroscopic extension beyond `[N, 2N)`.
 
 The intended hypothesis is an odd **valuation** at a prime above `Y`.
 [`MANUSCRIPT_NOTES.md`](MANUSCRIPT_NOTES.md) proposes clearer wording for a
@@ -161,11 +194,12 @@ historical affine Fourier normalization, tree-boundary maps, finite and
 infinite Rademacher measures, cylinder transfer, private-prime arithmetic
 and square-product parity identities, together with mathlib.
 
-`PaperCV282/Audit.lean` covers every named declaration in the eleven modules,
-including `instMeasurableSpaceF2Discrete` in both `InfiniteWordTransfer` and
-`InfiniteConditionalWords`. Batch 3 adds 8 theorems in `FullPrimeAssignment`,
-5 in `FullHostCounting`, 4 in `FullHostAsymptotics`, and 22 declarations
-(15 theorems, 6 definitions, 1 instance) in `InfiniteConditionalWords`.
+`PaperCV282/Audit.lean` covers every named declaration in the fifteen modules,
+including all five named local instances. Batch 4 adds 22 theorems:
+6 in `InfiniteWordFirstMoment`, 6 in `WordDefectCounting`, 5 in
+`WordDefectAsymptotics` and 5 in `WordFirstMomentAsymptotics`. It also adds
+three definitions and three named local instances. The full inventory and
+instance names are recorded in the source manifest.
 The source inventory and kernel-axiom transcript are checked separately by
 `scripts/check_v282_audit.py`; coverage alone is not proof verification.
 

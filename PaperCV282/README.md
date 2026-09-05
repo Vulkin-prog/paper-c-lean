@@ -6,17 +6,19 @@ and rare patterns of a random completely multiplicative function*, version
 the historical `PaperC` model and proofs. The retained-core authority is
 commit `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The current three-batch development proves the pointwise bound of Corollary
-2.6 under the infinite Rademacher law and its exact conditional probability
-on every small-prime assignment atom. The partition into these positive
-measurable atoms generates exactly the sigma-algebra `F_Y` of all prime
-signs at most `Y`.
+The current four-batch development covers the three clauses of Corollary
+2.6 through explicit representations: the infinite pointwise bound, exact
+conditional probability on every positive `F_Y` atom, and the dyadic summed
+first-moment estimate for arbitrary masks and dictionaries in a fixed
+logarithmic band. The last result is an inequality for the actual integral
+of the occurrence count under the infinite Rademacher law. Its threshold
+is chosen before the length, mask and dictionary; no independence of
+occurrences is assumed.
+
 It also proves finite inequality (3.24) for actual separated windows and a
 uniform dyadic `N^(3/2+o(1))` bound for unrestricted square-product hosts.
-
-The general conditional-kernel formulation, the summed first-moment clause
-of Corollary 2.6, the macroscopic extensions and the relation profiles needed
-for the complete asymptotic conclusion (3.25) remain separate obligations.
+The macroscopic host extensions and relation profiles needed for the
+complete asymptotic conclusion (3.25) remain open.
 
 ## Sources and toolchain
 
@@ -43,11 +45,11 @@ These are reproduction instructions; execution outcomes belong in the
 corresponding build and audit evidence. The source manifest records input
 provenance and mathematical scope, not a release verdict.
 
-The eleven mathematical modules contain **116 named declarations: 89
-theorems, 25 definitions and two named local instances**. The audit includes
-`instMeasurableSpaceF2Discrete` in both `InfiniteWordTransfer` and
-`InfiniteConditionalWords`, supplying the discrete measurable structure
-used by the retained model. Its gate requires
+The fifteen mathematical modules contain **144 named declarations: 111
+theorems, 28 definitions and five named local instances**. The instances
+supply discrete measurable structures, the source probability-law instance,
+and local decidability of the defect predicate. Their complete names are
+recorded in the source manifest. The audit gate requires
 complete named-declaration coverage, allows only `propext`,
 `Classical.choice` and `Quot.sound` as kernel axiom dependencies, and checks
 the Lean/mathlib pins. The source inventory is a restricted coverage check;
@@ -62,6 +64,10 @@ the earlier `PaperCV11` overlay.
 | [`WindowValues.lean`](WindowValues.lean) | Actual consecutive vertices and prime pivots; pointwise and fixed-assignment conditional clauses of Corollary 2.6 in finite cylinders. |
 | [`InfiniteWordTransfer.lean`](InfiniteWordTransfer.lean) | Measurable word events, exact finite/infinite measure and probability identities, and the real pointwise bound of Corollary 2.6 in the infinite source model. |
 | [`InfiniteConditionalWords.lean`](InfiniteConditionalWords.lean) | Positive measurable assignment atoms, identification with `F_Y`, exact joint word/atom measure and conditional ratio in the infinite model. |
+| [`InfiniteWordFirstMoment.lean`](InfiniteWordFirstMoment.lean) | Finite probability sum, integrable occurrence count, exact first-moment identity and summed pointwise error. |
+| [`WordDefectCounting.lean`](WordDefectCounting.lean) | Word defect mass and finite comparison with the historical arithmetic mass, explicitly accounting for the shifted root `x - 1`. |
+| [`WordDefectAsymptotics.lean`](WordDefectAsymptotics.lean) | Uniform `N^(1/2+o(1))` word defect mass in every fixed logarithmic band. |
+| [`WordFirstMomentAsymptotics.lean`](WordFirstMomentAsymptotics.lean) | Summed probability and actual expectation clauses of Corollary 2.6, uniformly over all dyadic masks and distinct-word dictionaries. |
 | [`ValueRelations.lean`](ValueRelations.lean) | Abstract two-parity nullity and factor-four weight comparisons, including the finite host correction. |
 | [`TwoWindowParity.lean`](TwoWindowParity.lean) | Actual two-window value matrices, separate block parities, their linear equivalence with start relations, and finite sums over ordered separated pairs. |
 | [`ValueSquareRelations.lean`](ValueSquareRelations.lean) | Full-value relations characterized by square products of indexed subsets; nonzero nullity characterized by a nonempty square-product subset. |
@@ -90,9 +96,27 @@ exposes no cutoff hypothesis. The infinite conditional endpoint assumes
 `Y ≤ M`, `B ≤ Y`, and an odd valuation at a prime above `Y` for every
 vertex. It proves
 `measure(word ∩ atom) = measure(atom) / 2^B` and the corresponding exact
-ratio on every atom. Atom positivity and the equality of its generated
-sigma-algebra with `F_Y` are proved. A general conditional-expectation or
-kernel API is not asserted by these atom identities.
+ratio on every atom. The partition into positive measurable atoms generates
+exactly `F_Y`. A general conditional-expectation API could repackage this
+proved atom law; it is optional presentation work, not a missing step in
+the established summed first moment.
+
+For the summed clause, `s` is any finite mask in `[N, 2N)` and
+`W : Finset (Fin B → F₂)` is a dictionary of distinct words. The finite
+sum of event indicators is integrable and its integral equals
+`wordProbabilitySum B s W`. For fixed `0 < c₁ < c₂` and every integer
+`k > 0`, a threshold depending only on `c₁`, `c₂` and `k` gives
+
+```text
+|E[wordOccurrenceCount B s W] - |s| |W| / 2^B|^(2k)
+  ≤ (|W| / 2^B)^(2k) N^(k+1)
+```
+
+simultaneously for every `B` with `c₁ log N ≤ B ≤ c₂ log N`, every
+such `s`, and every `W`. This is the dyadic
+`O(|W| 2^(-B) N^(1/2+o(1)))` statement. Empty masks and dictionaries are
+included; no balance condition on `N / 2^B` is imposed. Macroscopic
+extensions beyond the dyadic mask domain are not asserted here.
 
 For two windows, `B = L + 1`. The final finite endpoint accepts any
 `I : Finset ℕ` such that every `x ∈ I` satisfies `2 ≤ x` and
@@ -122,8 +146,6 @@ the v2.8.2 documents bound above.
 
 ## Remaining work and qualification boundary
 
-- Corollary 2.6: expose the infinite conditional kernel and close the uniform
-  first-moment sum over masks and dictionaries in the logarithmic band.
 - Proposition 3.26: extend the dyadic host estimate to the remaining
   macroscopic/geometric regimes, prove the raw profile of Theorem 3.1,
   and assemble asymptotic conclusion (3.25). The dyadic host estimate and

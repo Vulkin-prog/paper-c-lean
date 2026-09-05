@@ -40,8 +40,19 @@ positive finite measure. With `Y ≤ M`,
 `InfiniteConditionalWords.smallPrimeSigmaAlgebra_eq_primeCylinder` proves
 that their generated sigma-algebra is precisely `F_Y`, the sigma-algebra
 of all prime signs at most `Y`. The finite cylinder also contains every
-word vertex. These results establish the concrete atom law; no general
-conditional-expectation kernel API is claimed.
+word vertex. These results establish the concrete atom law. An abstract
+conditional-expectation API could repackage it if needed for presentation;
+it is not required by the summed first-moment proof.
+
+Batch 4 additionally proves the dyadic summed clause of Corollary 2.6 as
+an inequality for the actual unconditional integral of the occurrence count.
+The pointwise, conditional-atom and dyadic summed clauses are now covered
+through these explicit representations. For a fixed logarithmic band and
+every positive integer `k`, the threshold precedes the length, position
+mask and distinct-word dictionary. The error has scale
+`|W| 2^(-B) N^(1/2+o(1))`; the proof uses linearity of expectation and does
+not assume independence of occurrences. Empty dictionaries are included.
+This result is dyadic and does not claim a macroscopic extension.
 
 The [v3 revision log](../docs/PAPER_V3_REVISION_LOG.md) tracks this proposed
 wording change and related exposition suggestions. Batch 3 also establishes

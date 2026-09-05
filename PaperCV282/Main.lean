@@ -2,6 +2,7 @@ import PaperCV282.FullHostAsymptotics
 import PaperCV282.FullHostCounting
 import PaperCV282.FullPrimeAssignment
 import PaperCV282.InfiniteConditionalWords
+import PaperCV282.InfiniteWordFirstMoment
 import PaperCV282.InfiniteWordTransfer
 import PaperCV282.PrescribedValues
 import PaperCV282.TwoWindowParity
@@ -9,3 +10,6 @@ import PaperCV282.TwoWindowSquareHosts
 import PaperCV282.ValueRelations
 import PaperCV282.ValueSquareRelations
 import PaperCV282.WindowValues
+import PaperCV282.WordDefectAsymptotics
+import PaperCV282.WordDefectCounting
+import PaperCV282.WordFirstMomentAsymptotics
