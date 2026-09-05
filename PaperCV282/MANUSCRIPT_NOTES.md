@@ -55,10 +55,26 @@ not assume independence of occurrences. Empty dictionaries are included.
 This result is dyadic and does not claim a macroscopic extension.
 
 The [v3 revision log](../docs/PAPER_V3_REVISION_LOG.md) tracks this proposed
-wording change and related exposition suggestions. Batch 3 also establishes
-a dyadic uniform bound for unrestricted square-product hosts, including
-every pair mask in the dyadic square. This does not close macroscopic
-extensions, the weighted relation profiles, or full conclusion (3.25).
+wording change and related exposition suggestions. The host count is now
+bounded uniformly for every pair mask in the global square `[2, M]²`.
+Batch 5 specializes this result to the exact macroscopic domain
+`[ceil(M^δ), M)`, proves that the start-host count is at most the full-host
+count, and establishes the latter's `M^(3/2+o(1))` bound. For fixed `C ≥ 0`
+and positive integer `k`, the threshold precedes both `L` and `δ`; the
+exposed hypotheses are `L + 1 ≤ C log M` and `δ > 0`. The actual
+start-relation cylinder has cutoff `M + L`. No new manuscript correction
+is inferred from this extension; the elementary host-bound simplification
+remains an exposition suggestion in the log.
+
+These results close the macroscopic host inequalities of Proposition 3.7.
+They do not establish Theorem 3.1's raw weighted relation profile,
+conclusion (3.25), or Proposition 3.27's capped profile. The bounded-ratio
+host extension also preserves the lower scale `N`: for fixed natural `κ`,
+it bounds every pair mask in `[2, M]²` by `N^(3/2+o(1))` when
+`N ≤ M ≤ κ N` and `L + 1 ≤ C log N`. The threshold precedes the upper
+endpoint, length and mask. Its specialization to separated starts in
+`[N, M)` includes the actual start-host comparison with cutoff `M + L`.
+The summed word result above remains dyadic.
 The exact formal scope and hypotheses are recorded in
 [`ENDPOINTS.md`](ENDPOINTS.md).
 

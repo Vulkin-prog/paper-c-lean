@@ -40,7 +40,7 @@
           "equation": "2.6"
         },
         {
-          "item": "Proposition 3.7: dyadic host-count component",
+          "item": "Proposition 3.7: start/full host comparison and macroscopic upper bound",
           "printed_pages": [
             14,
             15
@@ -74,20 +74,26 @@
     }
   ],
   "mathematical_modules": [
-    "PaperCV282/PrescribedValues.lean",
-    "PaperCV282/WindowValues.lean",
-    "PaperCV282/InfiniteWordTransfer.lean",
-    "PaperCV282/ValueRelations.lean",
-    "PaperCV282/TwoWindowParity.lean",
-    "PaperCV282/ValueSquareRelations.lean",
-    "PaperCV282/TwoWindowSquareHosts.lean",
-    "PaperCV282/InfiniteConditionalWords.lean",
-    "PaperCV282/FullPrimeAssignment.lean",
-    "PaperCV282/FullHostCounting.lean",
+    "PaperCV282/BoundedRatioFullHosts.lean",
     "PaperCV282/FullHostAsymptotics.lean",
+    "PaperCV282/FullHostComparison.lean",
+    "PaperCV282/FullHostCounting.lean",
+    "PaperCV282/FullIntervalHostAsymptotics.lean",
+    "PaperCV282/FullIntervalHostCounting.lean",
+    "PaperCV282/FullIntervalPrimeAssignment.lean",
+    "PaperCV282/FullPrimeAssignment.lean",
+    "PaperCV282/InfiniteConditionalWords.lean",
     "PaperCV282/InfiniteWordFirstMoment.lean",
-    "PaperCV282/WordDefectCounting.lean",
+    "PaperCV282/InfiniteWordTransfer.lean",
+    "PaperCV282/MacroscopicGeometry.lean",
+    "PaperCV282/PrescribedValues.lean",
+    "PaperCV282/TwoWindowParity.lean",
+    "PaperCV282/TwoWindowSquareHosts.lean",
+    "PaperCV282/ValueRelations.lean",
+    "PaperCV282/ValueSquareRelations.lean",
+    "PaperCV282/WindowValues.lean",
     "PaperCV282/WordDefectAsymptotics.lean",
+    "PaperCV282/WordDefectCounting.lean",
     "PaperCV282/WordFirstMomentAsymptotics.lean"
   ],
   "scope": {
@@ -163,7 +169,11 @@
         "Large-prime assignment for arbitrary full-value coefficients, without either block-parity restriction.",
         "Unrestricted square-product hosts in any dyadic pair mask lie in the retained congruence certificate cover.",
         "Explicit dyadic host bound 8 (L + 1) N sqrt(3N) exp(4 sqrt(L + 1)) for N >= 2 and L <= N.",
-        "Uniform dyadic N^(3/2+o(1)) host estimate over every pair mask in the dyadic square, with length- and mask-independent threshold in each fixed logarithmic band."
+        "Uniform dyadic N^(3/2+o(1)) host estimate over every pair mask in the dyadic square, with length- and mask-independent threshold in each fixed logarithmic band.",
+        "Unrestricted large-prime assignment and arithmetic host cover for arbitrary positive intervals [A,Z), without a bounded-ratio or block-parity hypothesis.",
+        "Finite global host count on every pair mask in [2,M]^2, followed by a uniform M^(3/2+o(1)) bound under only L+1 <= C*log M.",
+        "Exact macroscopic start interval [ceil(M^delta),M) and both host inequalities of Proposition 3.7, with cutoff M+L for start relations.",
+        "Uniform full-host bound normalized by the lower scale N on bounded-ratio intervals, with a threshold chosen before the upper endpoint M, length L and pair mask."
       ],
       "finite_endpoint": {
         "declaration": "PaperC.V282.TwoWindowSquareHosts.finite_equation_three_twenty_four_square_hosts",
@@ -177,7 +187,6 @@
         "host_definition_depends_on_cylinder_cutoff": false
       },
       "remaining": [
-        "Extensions of the proved dyadic host estimate to the remaining macroscopic and geometric regimes required by the article.",
         "Theorem 3.1 raw relation profile and its combination with finite (3.24) to obtain asymptotic (3.25), with all stated uniformity."
       ],
       "dyadic_host_endpoint": {
@@ -198,6 +207,19 @@
         "separation_required": false,
         "macroscopic_extension_claimed": false,
         "weighted_relation_profile_claimed": false
+      },
+      "global_host_endpoint": {
+        "declaration": "PaperC.V282.FullIntervalHostAsymptotics.card_squareProductHosts_uniformThreeHalves_logarithmic",
+        "quantifiers": "For every real C >= 0 and natural k > 0, there exists M0 such that for all M >= M0, every L with L+1 <= C*log M, and every pair mask s in [2,M]^2, card(squareProductHosts L s)^(2*k) <= M^(3*k+1).",
+        "mask": "Any s subset of Icc 2 M x Icc 2 M.",
+        "threshold_independent_of": [
+          "L",
+          "s"
+        ],
+        "block_parity_required": false,
+        "separation_required": false,
+        "bounded_ratio_required": false,
+        "weighted_relation_profile_claimed": false
       }
     },
     "additional_exclusions": [
@@ -205,7 +227,38 @@
       "Theorem 3.1 uniform two-window relation estimate.",
       "The complete signed marked-field, dictionary, and two-source crossover theorems."
     ],
-    "new_external_literature_premises_in_current_endpoints": []
+    "new_external_literature_premises_in_current_endpoints": [],
+    "proposition_3_7": {
+      "covered": "Both H_start <= H_full and the uniform macroscopic H_full <= M^(3/2+o(1)) host bound.",
+      "declaration": "PaperC.V282.FullIntervalHostAsymptotics.proposition_three_seven",
+      "interval": "Ico (ceil(M^delta) in Nat) M, exactly the natural starts satisfying M^delta <= x < M.",
+      "pair_mask": "Ordered pairs in the macroscopic interval with L < Nat.dist x y.",
+      "fixed_parameter": "Real C >= 0.",
+      "quantifiers": "For each natural k > 0, there exists M0 before all M >= M0, lengths L with L+1 <= C*log M, and real delta > 0.",
+      "conclusion": "card(startRelationHosts (M+L) L s) <= card(squareProductHosts L s) and card(squareProductHosts L s)^(2*k) <= M^(3*k+1).",
+      "cutoff": "M+L, sufficient for all actual vertices.",
+      "threshold_independent_of": [
+        "L",
+        "delta"
+      ],
+      "explicit_finite_bound": "8*(L+1)*M*sqrt(3*M)*exp(4*sqrt(L+1)), for M >= 2 and L <= M.",
+      "finite_bound_matches_equation_3_11_verbatim": false,
+      "note": "The finite estimate uses 3M instead of 2M. It proves the same claimed macroscopic asymptotic bound. No raw weighted relation profile is asserted.",
+      "bounded_ratio_endpoint": {
+        "general_declaration": "PaperC.V282.BoundedRatioFullHosts.card_squareProductHosts_uniformThreeHalves_boundedRatio",
+        "separated_interval_declaration": "PaperC.V282.BoundedRatioFullHosts.proposition_three_seven_boundedRatio",
+        "fixed_parameters": "Real C >= 0 and natural kappa.",
+        "quantifiers": "For each natural k > 0, there exists N0 before all N >= N0, all upper endpoints M with N <= M <= kappa*N, all lengths L with L+1 <= C*log N, and all masks s in [2,M]^2.",
+        "conclusion": "card(squareProductHosts L s)^(2*k) <= N^(3*k+1). On the separated pair mask of [N,M), the start/full host comparison with cutoff M+L is proved jointly.",
+        "ratio_lower_bound_required": false,
+        "normalization_scale": "N",
+        "threshold_independent_of": [
+          "M",
+          "L",
+          "s"
+        ]
+      }
+    }
   },
   "qualification": {
     "new_palomar_qualification_claimed": false,
@@ -214,14 +267,14 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 4,
+  "development_batch": 5,
   "declaration_inventory": {
-    "mathematical_module_count": 15,
-    "named_declarations": 144,
-    "theorems": 111,
-    "definitions": 28,
+    "mathematical_module_count": 21,
+    "named_declarations": 170,
+    "theorems": 135,
+    "definitions": 30,
     "named_instances": 5,
-    "coverage": "All named declarations in the fifteen mathematical modules, including all five named local instances.",
+    "coverage": "All named declarations in the twenty-one mathematical modules, including all five named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
     "named_instance_declarations": [
@@ -271,6 +324,38 @@
       },
       "WordFirstMomentAsymptotics": {
         "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      }
+    },
+    "batch_5_additions": {
+      "FullHostComparison": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "FullIntervalHostAsymptotics": {
+        "theorems": 7,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "FullIntervalHostCounting": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "FullIntervalPrimeAssignment": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroscopicGeometry": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "BoundedRatioFullHosts": {
+        "theorems": 2,
         "definitions": 0,
         "named_instances": 0
       }

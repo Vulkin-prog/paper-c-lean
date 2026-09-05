@@ -1,9 +1,15 @@
+import PaperCV282.BoundedRatioFullHosts
 import PaperCV282.FullHostAsymptotics
+import PaperCV282.FullHostComparison
 import PaperCV282.FullHostCounting
+import PaperCV282.FullIntervalHostAsymptotics
+import PaperCV282.FullIntervalHostCounting
+import PaperCV282.FullIntervalPrimeAssignment
 import PaperCV282.FullPrimeAssignment
 import PaperCV282.InfiniteConditionalWords
 import PaperCV282.InfiniteWordFirstMoment
 import PaperCV282.InfiniteWordTransfer
+import PaperCV282.MacroscopicGeometry
 import PaperCV282.PrescribedValues
 import PaperCV282.TwoWindowParity
 import PaperCV282.TwoWindowSquareHosts

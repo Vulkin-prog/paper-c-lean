@@ -1,7 +1,7 @@
 # Paper C v2.8.2 endpoint ledger
 
-This ledger describes the current fifteen-module development: 111 theorems,
-28 definitions and five named local instances, totaling 144 named
+This ledger describes the current twenty-one-module development: 135 theorems,
+30 definitions and five named local instances, totaling 170 named
 declarations. It records the mathematical scope of the supplied proof terms;
 build and qualification outcomes belong in separate evidence. No entry is a
 new Palomar record. Names below have prefix `PaperC.V282.`.
@@ -106,7 +106,82 @@ The intended hypothesis is an odd **valuation** at a prime above `Y`.
 future revision. The current source identity remains v2.8.2.
 See also the [v3 revision log](../docs/PAPER_V3_REVISION_LOG.md).
 
-## Proposition 3.26: finite arithmetic inequality and dyadic host bound
+## Proposition 3.7: global and macroscopic host inequalities
+
+Source: article pages 14–15, Proposition 3.7 and its proof. Here `B = L + 1`.
+
+| Declaration | Established result |
+|---|---|
+| `FullIntervalPrimeAssignment.right_mem_boundedAssignment_of_selected_left` and `left_mem_boundedAssignment_of_selected_right` | A selected full-value coefficient places the opposite start in the retained interval assignment classes for `[A, Z)`, without block parity. |
+| `FullIntervalHostCounting.squareProductHosts_subset_certificateCover` | Every unrestricted square-product host in a pair mask inside `[A, Z)²`, with `A ≥ 2`, belongs to the retained congruence cover. |
+| `FullIntervalHostCounting.card_squareProductHosts_Icc_cast_le_kernelSumQ` | For every mask in `[2, M]²`, finite bound `card ≤ 8 (L + 1) M ∑_{1≤n≤3M} largeKernelWeightQ (L + 1) n`, with `M ≥ 2` and `L ≤ M`. |
+| `FullIntervalHostAsymptotics.card_squareProductHosts_cast_le_exp_bound` | Explicit bound `card ≤ 8 (L + 1) M sqrt(3M) exp(4 sqrt(L + 1))` on the same global square. |
+| `FullIntervalHostAsymptotics.card_squareProductHosts_uniformThreeHalves_logarithmic` | Uniform `M^(3/2+o(1))` bound for every global pair mask, with finite technical thresholds absorbed and only the logarithmic length ceiling exposed. |
+| `MacroscopicGeometry.macroscopicStarts` and `mem_macroscopicStarts_iff_real` | Exact positive-integer start domain `[ceil(M^δ), M)`, equivalently `M^δ ≤ x < M`. |
+| `MacroscopicGeometry.separatedPairs_macroscopicStarts_subset_Icc_product` | For `M ≥ 2` and `δ > 0`, its separated pairs lie in `[2, M]²`. |
+| `FullHostComparison.startRelationHosts_subset_squareProductHosts` and `card_startRelationHosts_le_squareProductHosts` | Actual nonzero start-relation hosts form a subset of the unrestricted square-product hosts, under positivity and cylinder adequacy. |
+| `FullIntervalHostAsymptotics.proposition_three_seven_full_hosts` | Uniform full-host power bound on the exact macroscopic domain, with threshold independent of `L` and `δ`. |
+| `FullIntervalHostAsymptotics.proposition_three_seven` | Both Proposition 3.7 host inequalities together, using cutoff `M + L` for the actual start-relation count. |
+| `BoundedRatioFullHosts.card_squareProductHosts_uniformThreeHalves_boundedRatio` | Host bound normalized by `N` for `N ≤ M ≤ κ N`, uniformly over all masks in `[2, M]²`. |
+| `BoundedRatioFullHosts.proposition_three_seven_boundedRatio` | The same lower-scale bound conjoined with the start-host comparison on separated starts in `[N, M)`. |
+
+The finite assignment cover works on `[A, Z)` without a bounded-ratio or
+pair-separation hypothesis. For the global counting bound, `[2, M]` is
+`[2, M + 1)`, whose width is `M - 1`. With `L ≤ M`, the selected vertex
+and its large-prime kernel are at most `M + 1 + L ≤ 3M`. The congruence
+count's additive constant is absorbed using
+`(M - 1) + K ≤ 4M`; nonnegative kernel weights allow extension of the
+sum to `1 ≤ n ≤ 3M`. No block-parity constraint is added to the host set.
+
+For each fixed `C ≥ 0`, the final global bound has quantifier order
+
+```text
+∀ k : ℕ, 0 < k → ∃ M₀, ∀ M ≥ M₀, ∀ L : ℕ,
+  L + 1 ≤ C log M → ∀ s : Finset (ℕ × ℕ), s ⊆ [2, M]² →
+  card(squareProductHosts L s)^(2k) ≤ M^(3k+1).
+```
+
+The threshold absorbs `M ≥ 2` and `L ≤ M`; these are not additional
+hypotheses of this terminal theorem. There is no lower logarithmic bound
+and no restriction on the ratio or separation of the starts in `s`.
+
+For the macroscopic specialization, put
+`U = Finset.Ico ⌈(M : ℝ)^δ⌉₊ M` and `S = separatedPairs U L`.
+Under `δ > 0`, the same threshold, chosen before `L` and `δ`, gives
+
+```text
+card(startRelationHosts (M + L) L S) ≤ card(squareProductHosts L S)
+  ∧ card(squareProductHosts L S)^(2k) ≤ M^(3k+1).
+```
+
+The natural ceiling matches the positive-integer lower endpoint under
+`M ≥ 2` and `δ > 0`. No assumption `δ < 1` is required; the domain may
+be empty. The cutoff `M + L` contains all vertices of both windows, so
+the first count uses their actual start relations. This proves the host
+inequalities of Proposition 3.7 in an explicit uniform power formulation.
+The separate bounded-ratio endpoints preserve normalization by the lower
+scale `N`. For fixed `C ≥ 0` and `κ : ℕ`, they give
+
+```text
+∀ k : ℕ, 0 < k → ∃ N₀, ∀ N ≥ N₀, ∀ M : ℕ,
+  N ≤ M → M ≤ κ N → ∀ L : ℕ, L + 1 ≤ C log N →
+  ∀ s : Finset (ℕ × ℕ), s ⊆ [2, M]² →
+  card(squareProductHosts L s)^(2k) ≤ N^(3k+1).
+```
+
+The proof applies the global theorem with `2k` and chooses the threshold
+at least `κ^(6k+1)`. Then `H^(4k) ≤ M^(6k+1) ≤ N^(6k+2)` gives the
+displayed bound by comparison of nonnegative squares. The threshold
+depends on `C`, `κ` and `k`, and precedes `M`, `L` and the pair mask.
+No hypothesis `κ ≥ 1` is required: impossible endpoint
+ranges cause no exception. A second endpoint specializes to
+`S = separatedPairs (Finset.Ico N M) L`, adjoining
+`card(startRelationHosts (M + L) L S) ≤ card(squareProductHosts L S)`.
+This proves the bounded-ratio host estimate at scale `N`, including the
+actual start-system comparison. Neither endpoint asserts a weighted
+relation-profile bound.
+
+## Proposition 3.26: finite arithmetic inequality and host component
 
 Source: article page 25, Proposition 3.26 and equations (3.24)–(3.25).
 In these modules `B = L + 1`.
@@ -175,17 +250,16 @@ Thus `N₀` is independent of both the length and the pair mask. This is the
 power-form assertion of `N^(3/2+o(1))` uniformly in the logarithmic band.
 It also covers the actual separated mask.
 
-Remaining for the full Proposition 3.26:
+The global and macroscopic extension of this host count is now established
+by the Proposition 3.7 endpoints above. To complete Proposition 3.26, the
+raw relation profile of Theorem 3.1 must still be proved and combined with
+the finite inequality to obtain (3.25), with all stated uniformity. The
+host count alone does not establish the weighted relation profile.
 
-1. Extend the proved dyadic host estimate to the remaining macroscopic and
-   geometric regimes required by the article.
-2. Complete Theorem 3.1's raw relation profile and combine it with the finite
-   inequality to obtain (3.25), with all stated uniformity. The host count
-   alone does not establish the weighted relation profile.
-
-Finite (3.24) and the uniform dyadic unrestricted host count are covered;
-the full asymptotic proposition is not yet complete. Proposition 3.27's
-capped profile remains separate work.
+Finite (3.24) and the uniform dyadic, global and macroscopic unrestricted
+host counts are covered; the full asymptotic proposition is not yet
+complete. The bounded-ratio host extension also uses the correct lower
+scale `N`. Proposition 3.27's capped profile remains separate work.
 
 ## Dependencies, audit and historical boundary
 
@@ -194,11 +268,13 @@ historical affine Fourier normalization, tree-boundary maps, finite and
 infinite Rademacher measures, cylinder transfer, private-prime arithmetic
 and square-product parity identities, together with mathlib.
 
-`PaperCV282/Audit.lean` covers every named declaration in the fifteen modules,
-including all five named local instances. Batch 4 adds 22 theorems:
-6 in `InfiniteWordFirstMoment`, 6 in `WordDefectCounting`, 5 in
-`WordDefectAsymptotics` and 5 in `WordFirstMomentAsymptotics`. It also adds
-three definitions and three named local instances. The full inventory and
+`PaperCV282/Audit.lean` covers every named declaration in the twenty-one modules,
+including all five named local instances. Batch 5 adds 24 theorems:
+2 in `FullIntervalPrimeAssignment`, 5 in `FullIntervalHostCounting`,
+5 in `MacroscopicGeometry`, 3 in `FullHostComparison`, 7 in
+`FullIntervalHostAsymptotics` and 2 in `BoundedRatioFullHosts`.
+It also adds two definitions, in
+`MacroscopicGeometry` and `FullHostComparison`. The full inventory and
 instance names are recorded in the source manifest.
 The source inventory and kernel-axiom transcript are checked separately by
 `scripts/check_v282_audit.py`; coverage alone is not proof verification.

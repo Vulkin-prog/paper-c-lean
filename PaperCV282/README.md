@@ -6,7 +6,7 @@ and rare patterns of a random completely multiplicative function*, version
 the historical `PaperC` model and proofs. The retained-core authority is
 commit `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The current four-batch development covers the three clauses of Corollary
+The current five-batch development covers the three clauses of Corollary
 2.6 through explicit representations: the infinite pointwise bound, exact
 conditional probability on every positive `F_Y` atom, and the dyadic summed
 first-moment estimate for arbitrary masks and dictionaries in a fixed
@@ -15,10 +15,12 @@ of the occurrence count under the infinite Rademacher law. Its threshold
 is chosen before the length, mask and dictionary; no independence of
 occurrences is assumed.
 
-It also proves finite inequality (3.24) for actual separated windows and a
-uniform dyadic `N^(3/2+o(1))` bound for unrestricted square-product hosts.
-The macroscopic host extensions and relation profiles needed for the
-complete asymptotic conclusion (3.25) remain open.
+It also proves finite inequality (3.24) for actual separated windows and
+Proposition 3.7's macroscopic host inequalities: the start-relation count
+is at most the unrestricted square-product count, which is uniformly
+`M^(3/2+o(1))`. The host bound holds for every pair mask in `[2, M]²`,
+including the exact macroscopic start domain. The raw relation profile and
+its combination into asymptotic conclusion (3.25) remain open.
 
 ## Sources and toolchain
 
@@ -45,8 +47,8 @@ These are reproduction instructions; execution outcomes belong in the
 corresponding build and audit evidence. The source manifest records input
 provenance and mathematical scope, not a release verdict.
 
-The fifteen mathematical modules contain **144 named declarations: 111
-theorems, 28 definitions and five named local instances**. The instances
+The twenty-one mathematical modules contain **170 named declarations: 135
+theorems, 30 definitions and five named local instances**. The instances
 supply discrete measurable structures, the source probability-law instance,
 and local decidability of the defect predicate. Their complete names are
 recorded in the source manifest. The audit gate requires
@@ -75,6 +77,12 @@ the earlier `PaperCV11` overlay.
 | [`FullPrimeAssignment.lean`](FullPrimeAssignment.lean) | Large-prime assignment lemmas for arbitrary full-value coefficients, without either block-parity constraint. |
 | [`FullHostCounting.lean`](FullHostCounting.lean) | Inclusion of unrestricted square-product hosts in the retained congruence cover and an explicit finite dyadic kernel-sum bound. |
 | [`FullHostAsymptotics.lean`](FullHostAsymptotics.lean) | Explicit exponential majorant and uniform `N^(3/2+o(1))` bound for every pair mask within a dyadic square. |
+| [`FullIntervalPrimeAssignment.lean`](FullIntervalPrimeAssignment.lean) | Full-value prime assignments for arbitrary positive intervals `[A, Z)`, without block parity or an endpoint-ratio restriction. |
+| [`FullIntervalHostCounting.lean`](FullIntervalHostCounting.lean) | Interval congruence cover and finite kernel-sum bound for every pair mask in `[2, M]²`. |
+| [`MacroscopicGeometry.lean`](MacroscopicGeometry.lean) | Exact start set `[ceil(M^δ), M)` and its inclusion, with separated pairs, in the global positive interval. |
+| [`FullHostComparison.lean`](FullHostComparison.lean) | Actual start-relation hosts included in unrestricted square-product hosts under positivity and an adequate cylinder cutoff. |
+| [`FullIntervalHostAsymptotics.lean`](FullIntervalHostAsymptotics.lean) | Uniform global host bound and both inequalities of Proposition 3.7 on the exact macroscopic domain, with threshold before length and exponent. |
+| [`BoundedRatioFullHosts.lean`](BoundedRatioFullHosts.lean) | Host bounds normalized by the lower scale `N` when `N ≤ M ≤ κ N`, for arbitrary masks in `[2, M]²` and actual separated starts in `[N, M)`. |
 
 The main declarations and their exact hypotheses are listed in
 [`ENDPOINTS.md`](ENDPOINTS.md). These endpoints add no external literature
@@ -127,7 +135,7 @@ restriction** on either block. This arithmetic host set is defined without
 a cylinder cutoff and is proved equal to the full-value nullity host set
 under the stated conditions.
 
-The new counting theorem applies to every pair mask `s` inside
+The dyadic counting theorem applies to every pair mask `s` inside
 `dyadicBlock N × dyadicBlock N`, with `N ≥ 2` and `L ≤ N`; separation is
 not required for the host bound. Its explicit majorant is
 `8 (L + 1) N sqrt(3N) exp(4 sqrt(L + 1))`. For each `C ≥ 0` and integer
@@ -135,6 +143,30 @@ not required for the host bound. Its explicit majorant is
 gives `card(squareProductHosts L s)^(2k) ≤ N^(3k+1)` whenever
 `L + 1 ≤ C log N` and the other displayed hypotheses hold. This closes
 the dyadic unrestricted host-count component, including deterministic masks.
+
+The interval extension gives the same explicit majorant with `M` in place
+of `N` for every `s ⊆ [2, M]²`, initially with `M ≥ 2` and `L ≤ M`.
+It requires neither separation nor a bound on the ratio of the two starts.
+The terminal logarithmic theorem absorbs both finite conditions into its
+threshold: for fixed `C ≥ 0` and `k > 0`, it gives
+`card(squareProductHosts L s)^(2k) ≤ M^(3k+1)` simultaneously for all
+`L + 1 ≤ C log M` and all such pair masks.
+
+The macroscopic start set is exactly
+`Finset.Ico ⌈(M : ℝ)^δ⌉₊ M`. For `M ≥ 2` and `δ > 0` it lies in
+`[2, M]`; no hypothesis `δ < 1` is needed, and empty intervals are allowed.
+`FullIntervalHostAsymptotics.proposition_three_seven` chooses its threshold
+before both `L` and `δ` and proves the start-host comparison together with
+the full-host power bound on its separated ordered pairs. The actual
+start-relation system uses the explicit adequate prime cutoff `M + L`.
+The bounded-ratio extension also provides the normalization by a distinct
+lower scale `N`: for fixed `C ≥ 0`, natural `κ` and integer `k > 0`, one
+threshold works for every `N ≤ M ≤ κ N`, `L + 1 ≤ C log N` and pair mask
+in `[2, M]²`, giving `card(squareProductHosts L s)^(2k) ≤ N^(3k+1)`.
+Its specialization to separated starts in `[N, M)` includes the
+start-host comparison with cutoff `M + L`. The threshold is chosen before
+`M`, `L` and the mask. The ratio bound concerns the interval endpoints;
+the first endpoint imposes no ratio condition on the individual pairs.
 
 The conditional wording on article page 9 should explicitly say that the
 large prime has **odd valuation**. This is already the convention on page 8
@@ -146,10 +178,11 @@ the v2.8.2 documents bound above.
 
 ## Remaining work and qualification boundary
 
-- Proposition 3.26: extend the dyadic host estimate to the remaining
-  macroscopic/geometric regimes, prove the raw profile of Theorem 3.1,
-  and assemble asymptotic conclusion (3.25). The dyadic host estimate and
-  finite parity, relation and square-host identifications are complete.
+- Proposition 3.26: prove the raw profile of Theorem 3.1 and assemble
+  asymptotic conclusion (3.25), with its stated uniformity. The macroscopic
+  host inequalities of Proposition 3.7 and finite parity, relation and
+  square-host identifications are complete, including the host bound
+  normalized by the lower scale on bounded-ratio intervals.
 - Proposition 3.27 and the signed marked-field, dictionary and crossover
   theorems require further arithmetic and probabilistic development.
 
