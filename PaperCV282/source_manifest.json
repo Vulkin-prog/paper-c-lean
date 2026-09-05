@@ -40,6 +40,14 @@
           "equation": "2.6"
         },
         {
+          "item": "Proposition 3.7: dyadic host-count component",
+          "printed_pages": [
+            14,
+            15
+          ],
+          "equation": "3.11"
+        },
+        {
           "item": "Proposition 3.26",
           "printed_page": 25,
           "equations": [
@@ -72,7 +80,11 @@
     "PaperCV282/ValueRelations.lean",
     "PaperCV282/TwoWindowParity.lean",
     "PaperCV282/ValueSquareRelations.lean",
-    "PaperCV282/TwoWindowSquareHosts.lean"
+    "PaperCV282/TwoWindowSquareHosts.lean",
+    "PaperCV282/InfiniteConditionalWords.lean",
+    "PaperCV282/FullPrimeAssignment.lean",
+    "PaperCV282/FullHostCounting.lean",
+    "PaperCV282/FullHostAsymptotics.lean"
   ],
   "scope": {
     "corollary_2_6": {
@@ -80,12 +92,29 @@
         "Pointwise probability error in an adequate finite prime cylinder, with the actual defective-vertex count.",
         "Exact uniform word probability for every fixed assignment of the small prime coordinates in the finite cylinder.",
         "Measurable infinite word events and exact unconditional finite/infinite identities for their measures and real probabilities.",
-        "Pointwise real inequality (2.6) under the actual infinite Rademacher law, with no exposed cylinder cutoff."
+        "Pointwise real inequality (2.6) under the actual infinite Rademacher law, with no exposed cylinder cutoff.",
+        "Measurable infinite small-prime assignment atoms with explicit strictly positive finite mass for every assignment.",
+        "For Y <= M, the small-prime atom sigma-algebra is exactly the cylinder sigma-algebra of all prime signs at most Y (F_Y).",
+        "Exact infinite identity measure(word intersect atom) = measure(atom) / 2^B and conditional ratio 1 / 2^B under the odd-valuation good-window hypothesis."
       ],
       "remaining": [
-        "Explicit infinite conditional-kernel formulation corresponding to the finite fixed-assignment laws.",
+        "General conditional-probability or conditional-expectation kernel API beyond the proved positive-atom identities and F_Y identification.",
         "Uniform summed first-moment estimate over masks and dictionaries in a fixed logarithmic band."
-      ]
+      ],
+      "infinite_conditional_endpoint": {
+        "joint_declaration": "PaperC.V282.InfiniteConditionalWords.corollary_two_six_joint_infinite",
+        "ratio_declaration": "PaperC.V282.InfiniteConditionalWords.corollary_two_six_conditioned_infinite",
+        "sigma_algebra_declaration": "PaperC.V282.InfiniteConditionalWords.smallPrimeSigmaAlgebra_eq_primeCylinder",
+        "hypotheses": [
+          "2 <= x.",
+          "x - 1 + B <= M + 1.",
+          "Y <= M.",
+          "B <= Y.",
+          "Every vertex x - 1 + j, j < B, has odd valuation at some prime strictly greater than Y."
+        ],
+        "assignment": "Every sigma : SmallSample M Y; its atom has positive finite source measure.",
+        "general_conditional_kernel_claimed": false
+      }
     },
     "proposition_3_26": {
       "covered": [
@@ -94,7 +123,11 @@
         "Linear equivalence between the constrained full-value relation space and the actual two-start relation space.",
         "Full-value relations characterized by square products, and nonzero nullity by a nonempty indexed square-product subset, under positivity and cylinder adequacy.",
         "Identification of full-value hosts with unrestricted arithmetic square-product hosts, without either block-parity restriction.",
-        "Finite inequality (3.24) over actual ordered separated pairs, with the unrestricted arithmetic host correction."
+        "Finite inequality (3.24) over actual ordered separated pairs, with the unrestricted arithmetic host correction.",
+        "Large-prime assignment for arbitrary full-value coefficients, without either block-parity restriction.",
+        "Unrestricted square-product hosts in any dyadic pair mask lie in the retained congruence certificate cover.",
+        "Explicit dyadic host bound 8 (L + 1) N sqrt(3N) exp(4 sqrt(L + 1)) for N >= 2 and L <= N.",
+        "Uniform dyadic N^(3/2+o(1)) host estimate over every pair mask in the dyadic square, with length- and mask-independent threshold in each fixed logarithmic band."
       ],
       "finite_endpoint": {
         "declaration": "PaperC.V282.TwoWindowSquareHosts.finite_equation_three_twenty_four_square_hosts",
@@ -108,9 +141,28 @@
         "host_definition_depends_on_cylinder_cutoff": false
       },
       "remaining": [
-        "Uniform quantitative estimate for unrestricted square-product hosts in the logarithmic and spatial regimes of the article.",
-        "Theorem 3.1 raw relation profile and its combination with the finite inequality to obtain asymptotic (3.25), with the stated geometric uniformity."
-      ]
+        "Extensions of the proved dyadic host estimate to the remaining macroscopic and geometric regimes required by the article.",
+        "Theorem 3.1 raw relation profile and its combination with finite (3.24) to obtain asymptotic (3.25), with all stated uniformity."
+      ],
+      "dyadic_host_endpoint": {
+        "declaration": "PaperC.V282.FullHostAsymptotics.card_squareProductHosts_uniformThreeHalves",
+        "separated_specialization": "PaperC.V282.FullHostAsymptotics.card_separated_squareProductHosts_uniformThreeHalves",
+        "quantifiers": "For every real C >= 0 and natural k > 0, there exists N0 such that for all N >= N0, all admissible L, and every pair mask s in the dyadic square, card(squareProductHosts L s)^(2*k) <= N^(3*k+1).",
+        "admissibility": [
+          "2 <= N.",
+          "L <= N.",
+          "L + 1 <= C * log N."
+        ],
+        "mask": "Any s subset of dyadicBlock N x dyadicBlock N.",
+        "threshold_independent_of": [
+          "L",
+          "s"
+        ],
+        "block_parity_required": false,
+        "separation_required": false,
+        "macroscopic_extension_claimed": false,
+        "weighted_relation_profile_claimed": false
+      }
     },
     "additional_exclusions": [
       "Proposition 3.27 capped arithmetic profile.",
@@ -126,21 +178,48 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 2,
+  "development_batch": 3,
   "declaration_inventory": {
-    "mathematical_module_count": 7,
-    "named_declarations": 77,
-    "theorems": 57,
-    "definitions": 19,
-    "named_instances": 1,
-    "named_instance": "PaperC.V282.InfiniteWordTransfer.instMeasurableSpaceF2Discrete",
-    "coverage": "All named declarations in the seven mathematical modules, including the named local measurable-space instance.",
+    "mathematical_module_count": 11,
+    "named_declarations": 116,
+    "theorems": 89,
+    "definitions": 25,
+    "named_instances": 2,
+    "coverage": "All named declarations in the eleven mathematical modules, including both named local measurable-space instances.",
     "audit_file": "PaperCV282/Audit.lean",
-    "checker": "scripts/check_v282_audit.py"
+    "checker": "scripts/check_v282_audit.py",
+    "named_instance_declarations": [
+      "PaperC.V282.InfiniteWordTransfer.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.InfiniteConditionalWords.instMeasurableSpaceF2Discrete"
+    ],
+    "batch_3_additions": {
+      "FullPrimeAssignment": {
+        "theorems": 8,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "FullHostCounting": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "FullHostAsymptotics": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "InfiniteConditionalWords": {
+        "theorems": 15,
+        "definitions": 6,
+        "named_instances": 1
+      }
+    }
   },
   "manuscript_notes": {
     "path": "PaperCV282/MANUSCRIPT_NOTES.md",
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
-    "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2."
+    "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
+    "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
+    "formalization_context": "The infinite conditional atom law and identification with F_Y are now proved; the proposed wording still requires odd valuation. Future v3 revisions do not replace the current v2.8.2 source PDFs."
   }
 }

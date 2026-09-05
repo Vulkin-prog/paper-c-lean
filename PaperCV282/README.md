@@ -6,16 +6,17 @@ and rare patterns of a random completely multiplicative function*, version
 the historical `PaperC` model and proofs. The retained-core authority is
 commit `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The current two-batch development proves the pointwise bound of Corollary
-2.6 under the actual infinite Rademacher law, the exact conditional marginal
-for every fixed small-prime assignment in a finite cylinder, and the finite
-inequality (3.24) for actual separated windows with unrestricted arithmetic
-square-product hosts. The two block parities and their identification with
-start relations are fully instantiated.
+The current three-batch development proves the pointwise bound of Corollary
+2.6 under the infinite Rademacher law and its exact conditional probability
+on every small-prime assignment atom. The partition into these positive
+measurable atoms generates exactly the sigma-algebra `F_Y` of all prime
+signs at most `Y`.
+It also proves finite inequality (3.24) for actual separated windows and a
+uniform dyadic `N^(3/2+o(1))` bound for unrestricted square-product hosts.
 
-The infinite conditional-kernel formulation, the summed asymptotic clause
-of Corollary 2.6, and the uniform asymptotic estimates needed to complete
-Proposition 3.26 remain open.
+The general conditional-kernel formulation, the summed first-moment clause
+of Corollary 2.6, the macroscopic extensions and the relation profiles needed
+for the complete asymptotic conclusion (3.25) remain separate obligations.
 
 ## Sources and toolchain
 
@@ -42,10 +43,11 @@ These are reproduction instructions; execution outcomes belong in the
 corresponding build and audit evidence. The source manifest records input
 provenance and mathematical scope, not a release verdict.
 
-The seven mathematical modules contain **77 named declarations: 57
-theorems, 19 definitions and one named local instance**. The audit includes
-`InfiniteWordTransfer.instMeasurableSpaceF2Discrete`, which supplies the
-discrete measurable structure used by the retained model. Its gate requires
+The eleven mathematical modules contain **116 named declarations: 89
+theorems, 25 definitions and two named local instances**. The audit includes
+`instMeasurableSpaceF2Discrete` in both `InfiniteWordTransfer` and
+`InfiniteConditionalWords`, supplying the discrete measurable structure
+used by the retained model. Its gate requires
 complete named-declaration coverage, allows only `propext`,
 `Classical.choice` and `Quot.sound` as kernel axiom dependencies, and checks
 the Lean/mathlib pins. The source inventory is a restricted coverage check;
@@ -59,10 +61,14 @@ the earlier `PaperCV11` overlay.
 | [`PrescribedValues.lean`](PrescribedValues.lean) | Absolute valuation systems, affine word probabilities, private-coordinate rank bounds, and translation after fixing small primes. |
 | [`WindowValues.lean`](WindowValues.lean) | Actual consecutive vertices and prime pivots; pointwise and fixed-assignment conditional clauses of Corollary 2.6 in finite cylinders. |
 | [`InfiniteWordTransfer.lean`](InfiniteWordTransfer.lean) | Measurable word events, exact finite/infinite measure and probability identities, and the real pointwise bound of Corollary 2.6 in the infinite source model. |
+| [`InfiniteConditionalWords.lean`](InfiniteConditionalWords.lean) | Positive measurable assignment atoms, identification with `F_Y`, exact joint word/atom measure and conditional ratio in the infinite model. |
 | [`ValueRelations.lean`](ValueRelations.lean) | Abstract two-parity nullity and factor-four weight comparisons, including the finite host correction. |
 | [`TwoWindowParity.lean`](TwoWindowParity.lean) | Actual two-window value matrices, separate block parities, their linear equivalence with start relations, and finite sums over ordered separated pairs. |
 | [`ValueSquareRelations.lean`](ValueSquareRelations.lean) | Full-value relations characterized by square products of indexed subsets; nonzero nullity characterized by a nonempty square-product subset. |
 | [`TwoWindowSquareHosts.lean`](TwoWindowSquareHosts.lean) | Identification of full-value hosts with unrestricted arithmetic square-product hosts, and the finite inequality (3.24) with those hosts. |
+| [`FullPrimeAssignment.lean`](FullPrimeAssignment.lean) | Large-prime assignment lemmas for arbitrary full-value coefficients, without either block-parity constraint. |
+| [`FullHostCounting.lean`](FullHostCounting.lean) | Inclusion of unrestricted square-product hosts in the retained congruence cover and an explicit finite dyadic kernel-sum bound. |
+| [`FullHostAsymptotics.lean`](FullHostAsymptotics.lean) | Explicit exponential majorant and uniform `N^(3/2+o(1))` bound for every pair mask within a dyadic square. |
 
 The main declarations and their exact hypotheses are listed in
 [`ENDPOINTS.md`](ENDPOINTS.md). These endpoints add no external literature
@@ -80,9 +86,13 @@ and its real-valued probability.
 The finite one-window bounds require `x ≥ 2` and
 `x - 1 + B ≤ M + 1`, where `M` is the inclusive prime-cylinder cutoff.
 The infinite pointwise endpoint chooses an adequate cylinder internally and
-exposes no cutoff hypothesis. The conditional endpoint still concerns the
-uniform law on the remaining coordinates for each fixed small-prime
-assignment; the infinite conditional kernel is a separate obligation.
+exposes no cutoff hypothesis. The infinite conditional endpoint assumes
+`Y ≤ M`, `B ≤ Y`, and an odd valuation at a prime above `Y` for every
+vertex. It proves
+`measure(word ∩ atom) = measure(atom) / 2^B` and the corresponding exact
+ratio on every atom. Atom positivity and the equality of its generated
+sigma-algebra with `F_Y` are proved. A general conditional-expectation or
+kernel API is not asserted by these atom identities.
 
 For two windows, `B = L + 1`. The final finite endpoint accepts any
 `I : Finset ℕ` such that every `x ∈ I` satisfies `2 ≤ x` and
@@ -91,22 +101,33 @@ For two windows, `B = L + 1`. The final finite endpoint accepts any
 square-product subset of the full vertex occurrences, with **no parity
 restriction** on either block. This arithmetic host set is defined without
 a cylinder cutoff and is proved equal to the full-value nullity host set
-under the stated conditions. Its size is not yet bounded by a uniform
-asymptotic theorem.
+under the stated conditions.
+
+The new counting theorem applies to every pair mask `s` inside
+`dyadicBlock N × dyadicBlock N`, with `N ≥ 2` and `L ≤ N`; separation is
+not required for the host bound. Its explicit majorant is
+`8 (L + 1) N sqrt(3N) exp(4 sqrt(L + 1))`. For each `C ≥ 0` and integer
+`k > 0`, a threshold depending on `C` and `k`, independent of `L` and `s`,
+gives `card(squareProductHosts L s)^(2k) ≤ N^(3k+1)` whenever
+`L + 1 ≤ C log N` and the other displayed hypotheses hold. This closes
+the dyadic unrestricted host-count component, including deterministic masks.
 
 The conditional wording on article page 9 should explicitly say that the
 large prime has **odd valuation**. This is already the convention on page 8
 and in Lean. [`MANUSCRIPT_NOTES.md`](MANUSCRIPT_NOTES.md) records a proposed
 clarification for a future revision, with a counterexample to the literal
-weaker reading. No v3 manuscript replaces the v2.8.2 documents bound above.
+weaker reading. Proposed manuscript changes are tracked in the
+[v3 revision log](../docs/PAPER_V3_REVISION_LOG.md). No v3 manuscript replaces
+the v2.8.2 documents bound above.
 
 ## Remaining work and qualification boundary
 
 - Corollary 2.6: expose the infinite conditional kernel and close the uniform
   first-moment sum over masks and dictionaries in the logarithmic band.
-- Proposition 3.26: prove the uniform unrestricted host estimate and the
-  raw profile of Theorem 3.1, then assemble the asymptotic conclusion (3.25).
-  The finite parity, relation and square-host identifications are complete.
+- Proposition 3.26: extend the dyadic host estimate to the remaining
+  macroscopic/geometric regimes, prove the raw profile of Theorem 3.1,
+  and assemble asymptotic conclusion (3.25). The dyadic host estimate and
+  finite parity, relation and square-host identifications are complete.
 - Proposition 3.27 and the signed marked-field, dictionary and crossover
   theorems require further arithmetic and probabilistic development.
 

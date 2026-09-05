@@ -30,7 +30,26 @@ Suggested replacement in the next manuscript revision:
 
 Equivalently, require `K_Y(n) ≠ 1` at every vertex. This is the condition
 expressed by `¬HDefective Y n` in
-`WindowValues.corollary_two_six_conditioned`.
+`WindowValues.corollary_two_six_conditioned` and the infinite-model endpoints
+`InfiniteConditionalWords.corollary_two_six_joint_infinite` and
+`InfiniteConditionalWords.corollary_two_six_conditioned_infinite`.
+
+The latter results now prove the exact conditional ratio on every
+small-prime assignment atom. Each atom is measurable and has strictly
+positive finite measure. With `Y ≤ M`,
+`InfiniteConditionalWords.smallPrimeSigmaAlgebra_eq_primeCylinder` proves
+that their generated sigma-algebra is precisely `F_Y`, the sigma-algebra
+of all prime signs at most `Y`. The finite cylinder also contains every
+word vertex. These results establish the concrete atom law; no general
+conditional-expectation kernel API is claimed.
+
+The [v3 revision log](../docs/PAPER_V3_REVISION_LOG.md) tracks this proposed
+wording change and related exposition suggestions. Batch 3 also establishes
+a dyadic uniform bound for unrestricted square-product hosts, including
+every pair mask in the dyadic square. This does not close macroscopic
+extensions, the weighted relation profiles, or full conclusion (3.25).
+The exact formal scope and hypotheses are recorded in
+[`ENDPOINTS.md`](ENDPOINTS.md).
 
 The source PDF identity is recorded in
 [`source_manifest.json`](source_manifest.json). This note records a proposed
