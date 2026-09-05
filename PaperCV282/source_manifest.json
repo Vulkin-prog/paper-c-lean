@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "manifest_kind": "manuscript_provenance_and_formalization_scope",
+  "target_version": "2.8.2",
+  "target_language": "en",
+  "document_date": "2026-09-05",
+  "library": "PaperCV282",
+  "namespace": "PaperC.V282",
+  "retained_core": {
+    "library": "PaperC",
+    "authority_commit": "b3cf107d2df629453a5da8e84f2bad29eea0bf94",
+    "historical_manuscript_target": "v0.9",
+    "policy": "Additive overlay; historical canonical declarations and qualification scope are preserved."
+  },
+  "earlier_overlay": {
+    "library": "PaperCV11",
+    "role": "Earlier reusable development; its name and original theorem numbering are retained."
+  },
+  "toolchain": {
+    "lean": "leanprover/lean4:v4.32.0",
+    "mathlib_tag": "v4.32.0",
+    "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+    "mathlib_repository": "https://github.com/leanprover-community/mathlib4.git",
+    "upgrade_required": false
+  },
+  "sources": [
+    {
+      "role": "article",
+      "title": "Long runs and rare patterns of a random completely multiplicative function",
+      "author": "Brice Pouly",
+      "filename": "paper_C_version_2_8_2_en.pdf",
+      "page_count": 52,
+      "size_bytes": 693888,
+      "sha256": "263682a1f2aa8301f06bf811fea1f81f42cd4493ccc4e1b94242a66cacfbd623",
+      "source_kind": "user_supplied_pdf",
+      "current_batch_locators": [
+        {
+          "item": "Corollary 2.6",
+          "printed_page": 9,
+          "equation": "2.6"
+        },
+        {
+          "item": "Proposition 3.7: dyadic host-count component",
+          "printed_pages": [
+            14,
+            15
+          ],
+          "equation": "3.11"
+        },
+        {
+          "item": "Proposition 3.26",
+          "printed_page": 25,
+          "equations": [
+            "3.24",
+            "3.25"
+          ]
+        },
+        {
+          "item": "Formalization and availability",
+          "printed_page": 50
+        }
+      ]
+    },
+    {
+      "role": "technical_companion",
+      "title": "Technical companion to Long runs and rare patterns of a random completely multiplicative function",
+      "author": "Brice Pouly",
+      "filename": "paper_C_version_2_8_2_technical_companion_en.pdf",
+      "page_count": 23,
+      "size_bytes": 483599,
+      "sha256": "60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094",
+      "source_kind": "user_supplied_pdf",
+      "role_in_batch": "Companion of the target proof package; no complete appendix is claimed as formalized by this batch."
+    }
+  ],
+  "mathematical_modules": [
+    "PaperCV282/PrescribedValues.lean",
+    "PaperCV282/WindowValues.lean",
+    "PaperCV282/InfiniteWordTransfer.lean",
+    "PaperCV282/ValueRelations.lean",
+    "PaperCV282/TwoWindowParity.lean",
+    "PaperCV282/ValueSquareRelations.lean",
+    "PaperCV282/TwoWindowSquareHosts.lean",
+    "PaperCV282/InfiniteConditionalWords.lean",
+    "PaperCV282/FullPrimeAssignment.lean",
+    "PaperCV282/FullHostCounting.lean",
+    "PaperCV282/FullHostAsymptotics.lean",
+    "PaperCV282/InfiniteWordFirstMoment.lean",
+    "PaperCV282/WordDefectCounting.lean",
+    "PaperCV282/WordDefectAsymptotics.lean",
+    "PaperCV282/WordFirstMomentAsymptotics.lean"
+  ],
+  "scope": {
+    "corollary_2_6": {
+      "covered": [
+        "Pointwise probability error in an adequate finite prime cylinder, with the actual defective-vertex count.",
+        "Exact uniform word probability for every fixed assignment of the small prime coordinates in the finite cylinder.",
+        "Measurable infinite word events and exact unconditional finite/infinite identities for their measures and real probabilities.",
+        "Pointwise real inequality (2.6) under the actual infinite Rademacher law, with no exposed cylinder cutoff.",
+        "Measurable infinite small-prime assignment atoms with explicit strictly positive finite mass for every assignment.",
+        "For Y <= M, the small-prime atom sigma-algebra is exactly the cylinder sigma-algebra of all prime signs at most Y (F_Y).",
+        "Exact infinite identity measure(word intersect atom) = measure(atom) / 2^B and conditional ratio 1 / 2^B under the odd-valuation good-window hypothesis.",
+        "Finite distinct-word occurrence count in the actual infinite model, integrability, and exact integral equal to the sum of word probabilities.",
+        "Finite summed probability error bounded by (dictionary cardinality / 2^B) times the total word defect weight.",
+        "Finite shifted-root defect comparison and uniform N^(1/2+o(1)) word defect mass in every fixed logarithmic band.",
+        "Dyadic summed probability and actual unconditional expectation clauses, with the threshold chosen before length, position mask and dictionary."
+      ],
+      "remaining": [],
+      "infinite_conditional_endpoint": {
+        "joint_declaration": "PaperC.V282.InfiniteConditionalWords.corollary_two_six_joint_infinite",
+        "ratio_declaration": "PaperC.V282.InfiniteConditionalWords.corollary_two_six_conditioned_infinite",
+        "sigma_algebra_declaration": "PaperC.V282.InfiniteConditionalWords.smallPrimeSigmaAlgebra_eq_primeCylinder",
+        "hypotheses": [
+          "2 <= x.",
+          "x - 1 + B <= M + 1.",
+          "Y <= M.",
+          "B <= Y.",
+          "Every vertex x - 1 + j, j < B, has odd valuation at some prime strictly greater than Y."
+        ],
+        "assignment": "Every sigma : SmallSample M Y; its atom has positive finite source measure.",
+        "general_conditional_kernel_claimed": false
+      },
+      "coverage_summary": "The pointwise, conditional and dyadic summed clauses are proved through explicit infinite-probability, positive F_Y atom, and occurrence-integral representations.",
+      "optional_presentation_work": [
+        "General conditional-expectation API repackaging of the proved positive-atom law, if useful; this is not a missing step in the summed first-moment result."
+      ],
+      "scope_boundary": "The summed endpoints range over arbitrary finite masks within [N, 2N); no macroscopic extension beyond this dyadic domain is claimed.",
+      "summed_first_moment_endpoint": {
+        "probability_declaration": "PaperC.V282.WordFirstMomentAsymptotics.corollary_two_six_summed_probability",
+        "expectation_declaration": "PaperC.V282.WordFirstMomentAsymptotics.corollary_two_six_summed_expectation",
+        "integral_identity": "PaperC.V282.InfiniteWordFirstMoment.integral_wordOccurrenceCount",
+        "random_variable": "wordOccurrenceCount B s W: the finite sum of infiniteWordEvent indicators over x in s and b in W.",
+        "measure": "PaperC.InfiniteRademacher.infiniteRademacherMeasure",
+        "fixed_parameters": "Real c1,c2 with 0 < c1 < c2.",
+        "quantifiers": "For every natural k > 0, there exists N0 such that for all N >= N0, all lengths B in the fixed logarithmic band, all finite masks s in [N,2N), and all finite dictionaries W of distinct B-bit words, the displayed expectation bound holds.",
+        "logarithmic_band": "c1 * log N <= B <= c2 * log N.",
+        "conclusion": "abs(integral(wordOccurrenceCount B s W) - card(s)*card(W)/2^B)^(2*k) <= (card(W)/2^B)^(2*k) * N^(k+1).",
+        "threshold_depends_only_on": [
+          "c1",
+          "c2",
+          "k"
+        ],
+        "threshold_independent_of": [
+          "B",
+          "s",
+          "W"
+        ],
+        "dictionary_representation": "Finset (Fin B -> F2), so words are distinct.",
+        "empty_mask_and_dictionary_included": true,
+        "occurrence_independence_assumed": false,
+        "balance_condition_on_N_over_two_pow_B": false,
+        "macroscopic_extension_claimed": false
+      }
+    },
+    "proposition_3_26": {
+      "covered": [
+        "Abstract two-parity nullity and finite relation-weight comparisons.",
+        "Actual two-window valuation matrix and separate block-parity maps.",
+        "Linear equivalence between the constrained full-value relation space and the actual two-start relation space.",
+        "Full-value relations characterized by square products, and nonzero nullity by a nonempty indexed square-product subset, under positivity and cylinder adequacy.",
+        "Identification of full-value hosts with unrestricted arithmetic square-product hosts, without either block-parity restriction.",
+        "Finite inequality (3.24) over actual ordered separated pairs, with the unrestricted arithmetic host correction.",
+        "Large-prime assignment for arbitrary full-value coefficients, without either block-parity restriction.",
+        "Unrestricted square-product hosts in any dyadic pair mask lie in the retained congruence certificate cover.",
+        "Explicit dyadic host bound 8 (L + 1) N sqrt(3N) exp(4 sqrt(L + 1)) for N >= 2 and L <= N.",
+        "Uniform dyadic N^(3/2+o(1)) host estimate over every pair mask in the dyadic square, with length- and mask-independent threshold in each fixed logarithmic band."
+      ],
+      "finite_endpoint": {
+        "declaration": "PaperC.V282.TwoWindowSquareHosts.finite_equation_three_twenty_four_square_hosts",
+        "parameters": "M L : Nat; I : Finset Nat; word length B = L + 1",
+        "hypotheses": [
+          "For every x in I, 2 <= x.",
+          "For every x in I, x + L <= M + 1."
+        ],
+        "pair_set": "Ordered pairs (x,y) in I x I with L < Nat.dist x y.",
+        "host_meaning": "A nonempty indexed subset of the full vertex occurrences has square product; no parity restriction in either block.",
+        "host_definition_depends_on_cylinder_cutoff": false
+      },
+      "remaining": [
+        "Extensions of the proved dyadic host estimate to the remaining macroscopic and geometric regimes required by the article.",
+        "Theorem 3.1 raw relation profile and its combination with finite (3.24) to obtain asymptotic (3.25), with all stated uniformity."
+      ],
+      "dyadic_host_endpoint": {
+        "declaration": "PaperC.V282.FullHostAsymptotics.card_squareProductHosts_uniformThreeHalves",
+        "separated_specialization": "PaperC.V282.FullHostAsymptotics.card_separated_squareProductHosts_uniformThreeHalves",
+        "quantifiers": "For every real C >= 0 and natural k > 0, there exists N0 such that for all N >= N0, all admissible L, and every pair mask s in the dyadic square, card(squareProductHosts L s)^(2*k) <= N^(3*k+1).",
+        "admissibility": [
+          "2 <= N.",
+          "L <= N.",
+          "L + 1 <= C * log N."
+        ],
+        "mask": "Any s subset of dyadicBlock N x dyadicBlock N.",
+        "threshold_independent_of": [
+          "L",
+          "s"
+        ],
+        "block_parity_required": false,
+        "separation_required": false,
+        "macroscopic_extension_claimed": false,
+        "weighted_relation_profile_claimed": false
+      }
+    },
+    "additional_exclusions": [
+      "Proposition 3.27 capped arithmetic profile.",
+      "Theorem 3.1 uniform two-window relation estimate.",
+      "The complete signed marked-field, dictionary, and two-source crossover theorems."
+    ],
+    "new_external_literature_premises_in_current_endpoints": []
+  },
+  "qualification": {
+    "new_palomar_qualification_claimed": false,
+    "new_comparator_result_claimed": false,
+    "complete_pdf_formalization_claimed": false,
+    "build_result": "not_recorded_in_this_source_manifest",
+    "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
+  },
+  "development_batch": 4,
+  "declaration_inventory": {
+    "mathematical_module_count": 15,
+    "named_declarations": 144,
+    "theorems": 111,
+    "definitions": 28,
+    "named_instances": 5,
+    "coverage": "All named declarations in the fifteen mathematical modules, including all five named local instances.",
+    "audit_file": "PaperCV282/Audit.lean",
+    "checker": "scripts/check_v282_audit.py",
+    "named_instance_declarations": [
+      "PaperC.V282.InfiniteWordTransfer.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.InfiniteConditionalWords.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.InfiniteWordFirstMoment.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.InfiniteWordFirstMoment.instIsProbabilityMeasureInfiniteRademacher",
+      "PaperC.V282.WordDefectCounting.instDecidableHDefective"
+    ],
+    "batch_3_additions": {
+      "FullPrimeAssignment": {
+        "theorems": 8,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "FullHostCounting": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "FullHostAsymptotics": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "InfiniteConditionalWords": {
+        "theorems": 15,
+        "definitions": 6,
+        "named_instances": 1
+      }
+    },
+    "batch_4_additions": {
+      "InfiniteWordFirstMoment": {
+        "theorems": 6,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "WordDefectCounting": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "WordDefectAsymptotics": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "WordFirstMomentAsymptotics": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      }
+    }
+  },
+  "manuscript_notes": {
+    "path": "PaperCV282/MANUSCRIPT_NOTES.md",
+    "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
+    "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
+    "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
+    "formalization_context": "The pointwise, positive F_Y atom conditional, and actual dyadic summed expectation clauses of Corollary 2.6 are proved through explicit representations. The conditional wording still requires odd valuation. Future v3 revisions do not replace the current v2.8.2 source PDFs."
+  }
+}
