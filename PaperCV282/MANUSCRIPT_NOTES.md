@@ -75,6 +75,21 @@ it bounds every pair mask in `[2, M]²` by `N^(3/2+o(1))` when
 endpoint, length and mask. Its specialization to separated starts in
 `[N, M)` includes the actual start-host comparison with cutoff `M + L`.
 The summed word result above remains dyadic.
+
+Batch 6 defines the exact weighted start and value masses on this
+macroscopic domain with the same cutoff `M + L`. The start mass is
+identified with historical `R2κ`; its canonical systematic/residual
+decomposition transfers for every natural coding parameter `A`. This
+finite identity does not identify the manuscript's eight sectors or
+establish their raw profile. The macroscopic finite comparison further
+gives a uniform upper bound for `max(0, Rval - 4 Rstart)`: for every
+positive integer `k`, eventually its `2k`-th power is at most
+`M^(3k+1)`, uniformly in `L + 1 ≤ C log M` and `δ > 0`, with the
+threshold chosen before `L` and `δ`. This bounds the positive correction;
+it is not an absolute-error estimate or an asymptotic equality. No raw
+profile is assumed, and (3.25) remains open. This progress adds no new
+manuscript correction; V3-S001 records its bearing on the host correction.
+
 The exact formal scope and hypotheses are recorded in
 [`ENDPOINTS.md`](ENDPOINTS.md).
 

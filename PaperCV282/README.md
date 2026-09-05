@@ -6,7 +6,7 @@ and rare patterns of a random completely multiplicative function*, version
 the historical `PaperC` model and proofs. The retained-core authority is
 commit `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The current five-batch development covers the three clauses of Corollary
+The current six-batch development covers the three clauses of Corollary
 2.6 through explicit representations: the infinite pointwise bound, exact
 conditional probability on every positive `F_Y` atom, and the dyadic summed
 first-moment estimate for arbitrary masks and dictionaries in a fixed
@@ -19,8 +19,11 @@ It also proves finite inequality (3.24) for actual separated windows and
 Proposition 3.7's macroscopic host inequalities: the start-relation count
 is at most the unrestricted square-product count, which is uniformly
 `M^(3/2+o(1))`. The host bound holds for every pair mask in `[2, M]²`,
-including the exact macroscopic start domain. The raw relation profile and
-its combination into asymptotic conclusion (3.25) remain open.
+including the exact macroscopic start domain. Exact macroscopic weighted
+masses now connect to the retained canonical decomposition, and the
+positive excess of the value mass over four times the start mass has a
+uniform `M^(3/2+o(1))` upper bound. The raw relation profile and its
+combination into asymptotic conclusion (3.25) remain open.
 
 ## Sources and toolchain
 
@@ -47,8 +50,8 @@ These are reproduction instructions; execution outcomes belong in the
 corresponding build and audit evidence. The source manifest records input
 provenance and mathematical scope, not a release verdict.
 
-The twenty-one mathematical modules contain **170 named declarations: 135
-theorems, 30 definitions and five named local instances**. The instances
+The twenty-three mathematical modules contain **181 named declarations: 143
+theorems, 33 definitions and five named local instances**. The instances
 supply discrete measurable structures, the source probability-law instance,
 and local decidability of the defect predicate. Their complete names are
 recorded in the source manifest. The audit gate requires
@@ -83,6 +86,8 @@ the earlier `PaperCV11` overlay.
 | [`FullHostComparison.lean`](FullHostComparison.lean) | Actual start-relation hosts included in unrestricted square-product hosts under positivity and an adequate cylinder cutoff. |
 | [`FullIntervalHostAsymptotics.lean`](FullIntervalHostAsymptotics.lean) | Uniform global host bound and both inequalities of Proposition 3.7 on the exact macroscopic domain, with threshold before length and exponent. |
 | [`BoundedRatioFullHosts.lean`](BoundedRatioFullHosts.lean) | Host bounds normalized by the lower scale `N` when `N ≤ M ≤ κ N`, for arbitrary masks in `[2, M]²` and actual separated starts in `[N, M)`. |
+| [`MacroscopicRelationProfile.lean`](MacroscopicRelationProfile.lean) | Exact macroscopic start/value masses, equality with historical `R2κ`, transfer of its canonical systematic/residual decomposition, and finite (3.24) on the literal macroscopic mask. |
+| [`MacroscopicValueCorrection.lean`](MacroscopicValueCorrection.lean) | Positive excess of the value mass over four times the start mass, its bound by three times the full-host count, and an unconditional uniform `M^(3/2+o(1))` upper bound. |
 
 The main declarations and their exact hypotheses are listed in
 [`ENDPOINTS.md`](ENDPOINTS.md). These endpoints add no external literature
@@ -168,6 +173,28 @@ start-host comparison with cutoff `M + L`. The threshold is chosen before
 `M`, `L` and the mask. The ratio bound concerns the interval endpoints;
 the first endpoint imposes no ratio condition on the individual pairs.
 
+The exact masses `macroscopicStartMassNat` and `macroscopicValueMassNat`
+sum `2^ρ - 1` on the same separated pairs in `[ceil(M^δ), M)`, using
+cutoff `M + L`. The real cast of the start mass equals historical
+`PropositionSixteenOne.R2κ ⌈M^δ⌉₊ M L`. For `M ≥ 2`, `δ > 0` and every
+natural coding parameter `A`, it inherits that code's exact systematic
+plus residual decomposition. This transfers the historical canonical
+code; it does not identify the eight sectors of the v2.8.2 raw profile.
+
+The finite macroscopic comparison is `Rval ≤ 4 Rstart + 3 Hval`.
+The new quantity `macroscopicValueExcess` uses natural subtraction and
+casts exactly to `max(0, Rval - 4 Rstart)`. For fixed `C ≥ 0` and every
+positive integer `k`, one threshold before `L` and `δ` gives
+
+```text
+max(0, Rval - 4 Rstart)^(2k) ≤ M^(3k+1)
+```
+
+whenever `L + 1 ≤ C log M` and `δ > 0`. This bounds the positive
+correction unconditionally; it is neither an absolute-error estimate nor
+an asymptotic equality. No raw relation-profile hypothesis is used, and
+neither individual mass receives the raw profile bound from this result.
+
 The conditional wording on article page 9 should explicitly say that the
 large prime has **odd valuation**. This is already the convention on page 8
 and in Lean. [`MANUSCRIPT_NOTES.md`](MANUSCRIPT_NOTES.md) records a proposed
@@ -182,7 +209,10 @@ the v2.8.2 documents bound above.
   asymptotic conclusion (3.25), with its stated uniformity. The macroscopic
   host inequalities of Proposition 3.7 and finite parity, relation and
   square-host identifications are complete, including the host bound
-  normalized by the lower scale on bounded-ratio intervals.
+  normalized by the lower scale on bounded-ratio intervals. The exact
+  macroscopic masses and the uniform positive-correction bound are also
+  proved; the historical canonical decomposition still needs to be
+  connected to the article's eight-sector profile and its estimates.
 - Proposition 3.27 and the signed marked-field, dictionary and crossover
   theorems require further arithmetic and probabilistic development.
 

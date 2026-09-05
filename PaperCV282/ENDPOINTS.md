@@ -1,7 +1,7 @@
 # Paper C v2.8.2 endpoint ledger
 
-This ledger describes the current twenty-one-module development: 135 theorems,
-30 definitions and five named local instances, totaling 170 named
+This ledger describes the current twenty-three-module development: 143 theorems,
+33 definitions and five named local instances, totaling 181 named
 declarations. It records the mathematical scope of the supplied proof terms;
 build and qualification outcomes belong in separate evidence. No entry is a
 new Palomar record. Names below have prefix `PaperC.V282.`.
@@ -181,7 +181,7 @@ This proves the bounded-ratio host estimate at scale `N`, including the
 actual start-system comparison. Neither endpoint asserts a weighted
 relation-profile bound.
 
-## Proposition 3.26: finite arithmetic inequality and host component
+## Proposition 3.26: finite comparison and uniform positive correction
 
 Source: article page 25, Proposition 3.26 and equations (3.24)–(3.25).
 In these modules `B = L + 1`.
@@ -204,6 +204,15 @@ In these modules `B = L + 1`.
 | `FullHostAsymptotics.card_squareProductHosts_cast_le_exp_bound` | Explicit real bound `card ≤ 8 (L + 1) N sqrt(3N) exp(4 sqrt(L + 1))`. |
 | `FullHostAsymptotics.card_squareProductHosts_uniformThreeHalves` | Uniform dyadic `N^(3/2+o(1))` estimate for every pair mask, with the threshold independent of the mask. |
 | `FullHostAsymptotics.card_separated_squareProductHosts_uniformThreeHalves` | Specialization to actual separated ordered pairs in the dyadic block. |
+| `MacroscopicRelationProfile.macroscopicStartMassNat` and `macroscopicValueMassNat` | Exact natural weighted masses of actual start and full-value relations on the same macroscopic separated pairs and cutoff `M + L`. |
+| `MacroscopicRelationProfile.macroscopicSeparatedPairs_eq_boundedRatioPairs` | Exact equality with the retained interval pair population at lower endpoint `ceil(M^δ)`. |
+| `MacroscopicRelationProfile.macroscopicStartMassNat_cast_eq_R2kappa` | The start mass's real cast equals the historical interval mass `R2κ`, without ratio, length or positivity hypotheses for this definitional equality. |
+| `MacroscopicRelationProfile.macroscopicStartMassNat_cast_eq_systematic_add_residual` | Exact transfer of the historical canonical systematic/residual decomposition for every natural coding parameter `A`, with `M ≥ 2` and `δ > 0`. |
+| `MacroscopicRelationProfile.macroscopicValueMassNat_le_four_start_add_hosts` | Finite (3.24) for the literal macroscopic masses, with `M ≥ 2` and `δ > 0`. |
+| `MacroscopicValueCorrection.macroscopicValueExcess` and `macroscopicValueExcess_cast_eq_max` | Natural positive excess and its exact real representation `max(0, Rval - 4 Rstart)`. |
+| `MacroscopicValueCorrection.macroscopicValueExcess_le_three_hosts` | The positive excess is at most three times the unrestricted macroscopic host count. |
+| `MacroscopicValueCorrection.macroscopicValueExcess_uniformThreeHalves` | Uniform power bound for the natural excess, with threshold before length and macroscopic exponent. |
+| `MacroscopicValueCorrection.prescribed_value_correction_uniform` | The same unconditional bound for the actual real positive part `max(0, Rval - 4 Rstart)`. |
 
 The finite (3.24) endpoint accepts `M L : ℕ` and `I : Finset ℕ`, with
 
@@ -250,14 +259,57 @@ Thus `N₀` is independent of both the length and the pair mask. This is the
 power-form assertion of `N^(3/2+o(1))` uniformly in the logarithmic band.
 It also covers the actual separated mask.
 
-The global and macroscopic extension of this host count is now established
-by the Proposition 3.7 endpoints above. To complete Proposition 3.26, the
-raw relation profile of Theorem 3.1 must still be proved and combined with
-the finite inequality to obtain (3.25), with all stated uniformity. The
-host count alone does not establish the weighted relation profile.
+The global and macroscopic extension of this host count is established
+by the Proposition 3.7 endpoints above. The exact macroscopic masses use
+`U = Finset.Ico ⌈(M : ℝ)^δ⌉₊ M`, `S = separatedPairs U L` and cutoff
+`M + L`:
+
+```text
+Rstart = ∑ (x,y) ∈ S, (2^ρstart(M+L,x,y,L) - 1)
+Rval   = ∑ (x,y) ∈ S, (2^ρval(M+L,x,y,L) - 1).
+```
+
+Their Lean definitions are natural-valued; `Rstart` and `Rval` in the
+following display denote their real casts. The start mass is exactly
+`PropositionSixteenOne.R2κ ⌈M^δ⌉₊ M L`, including empty populations.
+For `M ≥ 2`, `δ > 0` and every `A : ℕ`, the retained canonical code gives
+
+```text
+Rstart = systematicMass A ⌈M^δ⌉₊ M L
+           + residualMass A ⌈M^δ⌉₊ M L.
+```
+
+This is an exact finite decomposition, without a ratio or logarithmic
+assumption. It includes `A = 3` but does not identify this canonical code
+with the eight sectors of the v2.8.2 manuscript, nor prove their raw
+asymptotic estimates.
+
+Finite (3.24) now also appears directly as
+`Rval ≤ 4 Rstart + 3 Hval` on `U`, with `M ≥ 2` and `δ > 0`.
+Natural subtraction defines the positive excess; its real cast is proved
+equal to `max(0, Rval - 4 Rstart)`. For fixed `C ≥ 0`, the terminal
+correction theorem states
+
+```text
+∀ k : ℕ, 0 < k → ∃ M₀, ∀ M ≥ M₀, ∀ L : ℕ,
+  L + 1 ≤ C log M → ∀ δ : ℝ, 0 < δ →
+  max(0, Rval - 4 Rstart)^(2k) ≤ M^(3k+1).
+```
+
+The threshold precedes both `L` and `δ`. The proof bounds the excess by
+`3 Hval`, applies the host theorem at exponent `2k`, and takes
+`M ≥ 3^(4k)` to absorb the fixed factor. This is an unconditional
+`M^(3/2+o(1))` upper bound for the positive part, not an absolute-difference
+bound or an asymptotic equality. It assumes no raw weighted profile.
+
+To complete Proposition 3.26, the raw relation profile of Theorem 3.1 must
+still be proved and combined with the finite comparison and correction
+bound to obtain (3.25), with all stated uniformity. Neither the host count
+nor the positive-correction bound establishes that raw profile.
 
 Finite (3.24) and the uniform dyadic, global and macroscopic unrestricted
-host counts are covered; the full asymptotic proposition is not yet
+host counts, exact macroscopic decomposition and uniform positive
+correction are covered; the full asymptotic proposition is not yet
 complete. The bounded-ratio host extension also uses the correct lower
 scale `N`. Proposition 3.27's capped profile remains separate work.
 
@@ -268,14 +320,12 @@ historical affine Fourier normalization, tree-boundary maps, finite and
 infinite Rademacher measures, cylinder transfer, private-prime arithmetic
 and square-product parity identities, together with mathlib.
 
-`PaperCV282/Audit.lean` covers every named declaration in the twenty-one modules,
-including all five named local instances. Batch 5 adds 24 theorems:
-2 in `FullIntervalPrimeAssignment`, 5 in `FullIntervalHostCounting`,
-5 in `MacroscopicGeometry`, 3 in `FullHostComparison`, 7 in
-`FullIntervalHostAsymptotics` and 2 in `BoundedRatioFullHosts`.
-It also adds two definitions, in
-`MacroscopicGeometry` and `FullHostComparison`. The full inventory and
-instance names are recorded in the source manifest.
+`PaperCV282/Audit.lean` covers every named declaration in the twenty-three modules,
+including all five named local instances. Batch 6 adds eight theorems:
+four in `MacroscopicRelationProfile` and four in
+`MacroscopicValueCorrection`. It also adds three definitions: two exact
+masses in the former module and their positive excess in the latter.
+The full inventory and instance names are recorded in the source manifest.
 The source inventory and kernel-axiom transcript are checked separately by
 `scripts/check_v282_audit.py`; coverage alone is not proof verification.
 
