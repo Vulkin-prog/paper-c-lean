@@ -69,6 +69,19 @@
         {
           "item": "Formalization and availability",
           "printed_page": 50
+        },
+        {
+          "item": "Lemma 3.3: uniqueness of the macroscopic canonical rational channel",
+          "printed_page": 11,
+          "equation": "3.5"
+        },
+        {
+          "item": "Proposition 3.8: the two canonical-height masses and the geometry-only mass",
+          "printed_page": 15,
+          "equations": [
+            "3.12",
+            "3.13"
+          ]
         }
       ]
     },
@@ -96,10 +109,17 @@
     "PaperCV282/InfiniteConditionalWords.lean",
     "PaperCV282/InfiniteWordFirstMoment.lean",
     "PaperCV282/InfiniteWordTransfer.lean",
+    "PaperCV282/IntervalRationalMass.lean",
+    "PaperCV282/LogarithmicWordPowers.lean",
+    "PaperCV282/MacroscopicCanonicalCode.lean",
     "PaperCV282/MacroscopicGeometry.lean",
     "PaperCV282/MacroscopicRelationProfile.lean",
     "PaperCV282/MacroscopicValueCorrection.lean",
     "PaperCV282/PrescribedValues.lean",
+    "PaperCV282/RationalGeometryMass.lean",
+    "PaperCV282/RationalHeightMass.lean",
+    "PaperCV282/RationalMassAsymptotics.lean",
+    "PaperCV282/RationalProfile.lean",
     "PaperCV282/TwoWindowParity.lean",
     "PaperCV282/TwoWindowSquareHosts.lean",
     "PaperCV282/ValueRelations.lean",
@@ -191,7 +211,8 @@
         "Unconditional equality of the real start mass with the historical R2kappa interval mass, including empty populations.",
         "Finite rational/residual decomposition for each historical canonical-code parameter A, under M >= 2 and delta > 0, without an endpoint-ratio condition.",
         "Equation (3.24) specialized to the literal macroscopic masses and arithmetic full hosts.",
-        "Unconditional uniform M^(3/2+o(1)) bound on max(0, Rvalue - 4*Rstart), with threshold before L and delta."
+        "Unconditional uniform M^(3/2+o(1)) bound on max(0, Rvalue - 4*Rstart), with threshold before L and delta.",
+        "The rational component of the raw profile is now independently covered through Proposition 3.8, keeping the distinct powers of Q_B; this does not yet establish the residual sectors or full (3.25)."
       ],
       "finite_endpoint": {
         "declaration": "PaperC.V282.TwoWindowSquareHosts.finite_equation_three_twenty_four_square_hosts",
@@ -301,6 +322,59 @@
           "s"
         ]
       }
+    },
+    "lemma_3_3_macroscopic": {
+      "declarations": [
+        "PaperC.V282.MacroscopicCanonicalCode.determinant_threshold_macroscopic_eventually",
+        "PaperC.V282.MacroscopicCanonicalCode.card_reduced_candidates_le_one_eventually",
+        "PaperC.V282.MacroscopicCanonicalCode.canonical_candidate_eq_some_eventually",
+        "PaperC.V282.MacroscopicCanonicalCode.canonical_rational_code_eq_of_nonzero_eventually"
+      ],
+      "fixed_parameters": "Real C >= 0 and delta > 0; coding parameter A = 3.",
+      "threshold": "Chosen before length L and starts x,y, under L+1 <= C*log M. Depends on C and delta.",
+      "arithmetic_inequality": "4*((L+1)^3)^2*(L+1) < M^delta <= x for x in the macroscopic domain.",
+      "covered": "At most one reduced candidate, selection of every available candidate, and equality of every nonzero primitive rational code with the canonical code, for an arbitrary prime cutoff.",
+      "channel_existence_forced": false,
+      "residual_mass_estimate_claimed": false
+    },
+    "proposition_3_8": {
+      "covered": [
+        "Finite actual rational masses filtered by canonical height exactly two and at least three, with weight 2^sigma - 1.",
+        "Exact partition of the total rational mass into these two filtered masses; lower heights have zero weight on separated pairs.",
+        "Finite independent bounds at the upper interval scale M, retaining the different exponents floor(L/2) and floor(L/3).",
+        "Exact finite support of every positive primitive geometry of height at least two and multiplicity m >= 2; binary geometry weight 2^(m-1), with no translation parameter.",
+        "All three uniform real-exponent inequalities (3.12)-(3.13), with Q_B = 2^(L+1) explicit.",
+        "A common threshold also guarantees the unique macroscopic canonical candidate for A=3."
+      ],
+      "declaration": "PaperC.V282.RationalProfile.proposition_three_eight",
+      "fixed_parameters": "Real C >= 0, delta > 0 and epsilon > 0.",
+      "quantifiers": "There exists M0 depending only on C,delta,epsilon, such that for every M >= M0 and every L with L+1 <= C*log M all three inequalities and canonical uniqueness hold.",
+      "macroscopic_domain": "Ico (Nat.ceil ((M : Real)^delta)) M.",
+      "height_mass_definitions": [
+        "PaperC.V282.RationalHeightMass.rationalHeightTwoMass",
+        "PaperC.V282.RationalHeightMass.rationalHeightAtLeastThreeMass"
+      ],
+      "height_mass_partition": "PaperC.V282.RationalHeightMass.boundedRationalMass_eq_height_masses",
+      "geometry_mass_definition": "PaperC.V282.RationalGeometryMass.geometryMass",
+      "geometry_support_equivalence": "PaperC.V282.RationalGeometryMass.geometry_mem_sum_iff",
+      "conclusions": [
+        "heightTwoMass <= M^epsilon * (M * Q_B^(1/2)).",
+        "heightAtLeastThreeMass <= M^epsilon * (M * Q_B^(1/3)).",
+        "geometryMass <= M^epsilon * Q_B^(1/2)."
+      ],
+      "finite_bounds": [
+        "heightTwoMass <= 6*M*(L+1)*2^(L/2).",
+        "heightAtLeastThreeMass <= 4*M*(L+1)^4*2^(L/3).",
+        "geometryMass <= 6*(L+1)^4*2^(L/2)."
+      ],
+      "finite_divisions_are_natural": true,
+      "word_space_size_replaced_by_ambient_scale": false,
+      "critical_balance_assumed": false,
+      "fixed_endpoint_ratio_assumed": false,
+      "lower_logarithmic_bound_required": false,
+      "canonical_uniqueness_threshold_depends_on_delta": true,
+      "raw_profile_3_1_claimed": false,
+      "external_literature_premises": []
     }
   },
   "qualification": {
@@ -310,14 +384,14 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 6,
+  "development_batch": 7,
   "declaration_inventory": {
-    "mathematical_module_count": 23,
-    "named_declarations": 181,
-    "theorems": 143,
-    "definitions": 33,
+    "mathematical_module_count": 30,
+    "named_declarations": 219,
+    "theorems": 178,
+    "definitions": 36,
     "named_instances": 5,
-    "coverage": "All named declarations in the twenty-three mathematical modules, including all five named local instances.",
+    "coverage": "All named declarations in the thirty mathematical modules, including all five named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
     "named_instance_declarations": [
@@ -412,6 +486,43 @@
       "MacroscopicValueCorrection": {
         "theorems": 4,
         "definitions": 1,
+        "named_instances": 0
+      }
+    },
+    "batch_7_additions": {
+      "IntervalRationalMass": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "LogarithmicWordPowers": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroscopicCanonicalCode": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "RationalGeometryMass": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "RationalHeightMass": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "RationalMassAsymptotics": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "RationalProfile": {
+        "theorems": 6,
+        "definitions": 0,
         "named_instances": 0
       }
     }

@@ -1,7 +1,7 @@
 # Paper C v2.8.2 endpoint ledger
 
-This ledger describes the current twenty-three-module development: 143 theorems,
-33 definitions and five named local instances, totaling 181 named
+This ledger describes the current thirty-module development: 178 theorems,
+36 definitions and five named local instances, totaling 219 named
 declarations. It records the mathematical scope of the supplied proof terms;
 build and qualification outcomes belong in separate evidence. No entry is a
 new Palomar record. Names below have prefix `PaperC.V282.`.
@@ -181,6 +181,81 @@ This proves the bounded-ratio host estimate at scale `N`, including the
 actual start-system comparison. Neither endpoint asserts a weighted
 relation-profile bound.
 
+## Lemma 3.3 and Proposition 3.8: canonical channels and rational profiles
+
+Source: article page 11, Lemma 3.3; page 15, Proposition 3.8,
+equations (3.12) and (3.13).
+Here `B = L + 1`, `Q_B = 2^B` and the manuscript's coding parameter is `A = 3`.
+
+| Declaration | Established result |
+|---|---|
+| `IntervalRationalMass.boundedRationalMass_le_interval_profile` | Finite total rational mass at most `6 M (L+1) 2^(L/2) + 4 M (L+1)^4 2^(L/3)` on `[N, M)`, with `1 ≤ M`, `N ≤ M` and `1 ≤ A`. |
+| `IntervalRationalMass.systematicMass_le_interval_profile` | Real-valued transfer to the retained systematic mass. |
+| `MacroscopicCanonicalCode.determinant_threshold_macroscopic_eventually` | For fixed `C ≥ 0` and `δ > 0`, eventually `4 B^7 < M^δ ≤ x` for every macroscopic start and every `B ≤ C log M`. |
+| `MacroscopicCanonicalCode.card_reduced_candidates_le_one_eventually` | At most one reduced candidate of height at most `B^3`, uniformly in the length, macroscopic first start and arbitrary natural second start. |
+| `MacroscopicCanonicalCode.canonical_candidate_eq_some_eventually` | Every candidate witness equals the bundled canonical choice beyond the same kind of threshold. |
+| `MacroscopicCanonicalCode.canonical_rational_code_eq_of_nonzero_eventually` | Every nonzero primitive rational code is the canonical code for `A = 3`, with both starts macroscopically positive and arbitrary prime cutoff. |
+| `RationalHeightMass.rationalHeightTwoMass` and `rationalHeightAtLeastThreeMass` | Exact sums of `2^sigma-1` filtered by the selected canonical height `q = 2` and `q ≥ 3`. |
+| `RationalHeightMass.canonicalPairSigma_eq_zero_of_height_lt_two` | No positive rational weight is omitted at heights zero or one on separated pairs. |
+| `RationalHeightMass.boundedRationalMass_eq_height_masses` | Exact decomposition of the full rational mass into the two filtered masses. |
+| `RationalHeightMass.rationalHeightTwoMass_le_interval_profile` | Separate finite height-two bound `6 M (L+1) 2^(L/2)`. |
+| `RationalHeightMass.rationalHeightAtLeastThreeMass_le_interval_profile` | Separate finite large-height bound `4 M (L+1)^4 2^(L/3)`. |
+| `RationalGeometryMass.geometryMass` and `geometry_mem_sum_iff` | Exact binary geometry-only sum and equivalence of its finite support with all positive primitive geometries of height at least two and multiplicity at least two. |
+| `RationalGeometryMass.geometryMass_le_poly_two_pow_half` | Explicit finite bound `G ≤ 6 (L+1)^4 2^(L/2)`. |
+| `LogarithmicWordPowers.two_pow_div_le_word_rpow` and `polynomial_factor_le_rpow_eventually` | Replace quotient exponents by actual roots of `Q_B`, and absorb fixed polynomial length factors into every prescribed `M^ε`. |
+| `RationalMassAsymptotics.systematicMass_uniform_profile` | Total real rational profile with both roots of `Q_B`, uniformly over arbitrary lower endpoints and `A ≥ 1`. |
+| `RationalMassAsymptotics.macroscopic_systematicMass_uniform_profile` | Total profile on `[ceil(M^δ), M)` with `A = 3`, with numerical threshold before `δ`. |
+| `RationalProfile.height_masses_uniform_profiles` | The two distinct real bounds of (3.12), uniformly over all lower endpoints and `A ≥ 1`. |
+| `RationalProfile.geometryMass_uniform_profile` | The real geometry-only bound (3.13), retaining the binary weight and no translation factor. |
+| `RationalProfile.proposition_three_eight` | All three bounds on the exact macroscopic domain with `A = 3`, together with uniqueness of any candidate channel beyond a fixed-`δ` threshold. |
+
+The height filters refer to `canonicalPairHeight`, not merely to the
+existence of some channel of that height. Each nonzero weight is supported
+on the appropriate retained cover; those covers are used only for upper
+bounds and need not be disjoint. The exact decomposition instead uses the
+disjoint filters `q = 2` and `q ≥ 3`. A positive weight at a lower height
+would force a unit channel with `Nat.dist x y ≤ L`, contradicting separation.
+
+The geometry-only sum is literally
+
+```text
+G(L) = ∑ q∈[2,L] ∑ (a,b)∈reducedRatiosAtHeight q
+         ∑ h∈nontrivialChannelHeights L a b 2^channelSigma(L,a,b,h).
+```
+
+The support condition means `a,b > 0`, `gcd(a,b) = 1`, `max(a,b) ≥ 2`
+and `m(a,b,h) ≥ 2`; the latter implies the displayed upper bound `q ≤ L`.
+The weight is `2^(m-1)`, without subtracting one from that weight and
+without translation parameters. The retained historical weighted mass
+uses base four and is a different quantity. The new base-two proof uses
+at most `2q` reduced pairs, at most `2qL+1` affine heights per pair and
+weight at most `2^(L/q)`.
+
+For fixed `C ≥ 0`, `δ > 0` and `ε > 0`, the final endpoint chooses `M₀`
+before the length and both starts. With `N = ceil(M^δ)`, it states
+
+```text
+∀ M ≥ M₀, ∀ L : ℕ, L + 1 ≤ C log M →
+  Rtwo(N,M,3,L)   ≤ M^ε M Q_B^(1/2) ∧
+  Rthree(N,M,3,L) ≤ M^ε M Q_B^(1/3) ∧
+  G(L)            ≤ M^ε   Q_B^(1/2) ∧
+  ∀ x∈[ceil(M^δ),M), ∀ y : ℕ,
+    card(reducedChannelCandidates x y B (B^3)) ≤ 1,
+  where B = L + 1 and Q_B = 2^B.
+```
+
+These are real inequalities with the actual `Q_B`, and no critical-balance
+condition is used. Only the polynomial length factors are absorbed into
+`M^ε`. The numerical mass bounds are uniform in arbitrary lower interval
+endpoints, including empty or reversed intervals. In contrast, identifying
+the unique macroscopic canonical channel requires `δ > 0` fixed before
+its threshold, exactly as in Lemma 3.3. Existence is supplied by a channel
+witness; uniqueness does not assert that every pair is aligned.
+
+This covers the three inequalities of Proposition 3.8. It does not bound
+the residual mass, identify the eight residual sectors, or establish the
+full raw profile of Theorem 3.1.
+
 ## Proposition 3.26: finite comparison and uniform positive correction
 
 Source: article page 25, Proposition 3.26 and equations (3.24)–(3.25).
@@ -303,9 +378,11 @@ The threshold precedes both `L` and `δ`. The proof bounds the excess by
 bound or an asymptotic equality. It assumes no raw weighted profile.
 
 To complete Proposition 3.26, the raw relation profile of Theorem 3.1 must
-still be proved and combined with the finite comparison and correction
-bound to obtain (3.25), with all stated uniformity. Neither the host count
-nor the positive-correction bound establishes that raw profile.
+still be completed through the eight residual sectors and combined with
+the finite comparison and correction bound to obtain (3.25), with all
+stated uniformity. The rational contribution is now covered by Proposition
+3.8 above. Neither it, the host count nor the positive-correction bound
+alone establishes the complete raw profile.
 
 Finite (3.24) and the uniform dyadic, global and macroscopic unrestricted
 host counts, exact macroscopic decomposition and uniform positive
@@ -320,11 +397,13 @@ historical affine Fourier normalization, tree-boundary maps, finite and
 infinite Rademacher measures, cylinder transfer, private-prime arithmetic
 and square-product parity identities, together with mathlib.
 
-`PaperCV282/Audit.lean` covers every named declaration in the twenty-three modules,
-including all five named local instances. Batch 6 adds eight theorems:
-four in `MacroscopicRelationProfile` and four in
-`MacroscopicValueCorrection`. It also adds three definitions: two exact
-masses in the former module and their positive excess in the latter.
+`PaperCV282/Audit.lean` covers every named declaration in the thirty modules,
+including all five named local instances. Batch 7 adds 35 theorems:
+5 in `IntervalRationalMass`, 5 in `MacroscopicCanonicalCode`,
+4 in `RationalGeometryMass`, 7 in `RationalHeightMass`,
+4 in `LogarithmicWordPowers`, 4 in `RationalMassAsymptotics` and
+6 in `RationalProfile`. It also adds three definitions: the binary
+geometry mass and the two canonical-height masses.
 The full inventory and instance names are recorded in the source manifest.
 The source inventory and kernel-axiom transcript are checked separately by
 `scripts/check_v282_audit.py`; coverage alone is not proof verification.

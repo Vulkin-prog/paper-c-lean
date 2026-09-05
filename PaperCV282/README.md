@@ -6,7 +6,7 @@ and rare patterns of a random completely multiplicative function*, version
 the historical `PaperC` model and proofs. The retained-core authority is
 commit `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The current six-batch development covers the three clauses of Corollary
+The current seven-batch development covers the three clauses of Corollary
 2.6 through explicit representations: the infinite pointwise bound, exact
 conditional probability on every positive `F_Y` atom, and the dyadic summed
 first-moment estimate for arbitrary masks and dictionaries in a fixed
@@ -22,8 +22,12 @@ is at most the unrestricted square-product count, which is uniformly
 including the exact macroscopic start domain. Exact macroscopic weighted
 masses now connect to the retained canonical decomposition, and the
 positive excess of the value mass over four times the start mass has a
-uniform `M^(3/2+o(1))` upper bound. The raw relation profile and its
-combination into asymptotic conclusion (3.25) remain open.
+uniform `M^(3/2+o(1))` upper bound. Proposition 3.8's two separate
+canonical-height bounds and its geometry-only bound are now established
+with `Q_B = 2^(L+1)` explicit. The macroscopic canonical channel is
+identified beyond a threshold depending on fixed `δ > 0`. The residual
+sectors of the raw relation profile and their combination into asymptotic
+conclusion (3.25) remain open.
 
 ## Sources and toolchain
 
@@ -50,8 +54,8 @@ These are reproduction instructions; execution outcomes belong in the
 corresponding build and audit evidence. The source manifest records input
 provenance and mathematical scope, not a release verdict.
 
-The twenty-three mathematical modules contain **181 named declarations: 143
-theorems, 33 definitions and five named local instances**. The instances
+The thirty mathematical modules contain **219 named declarations: 178
+theorems, 36 definitions and five named local instances**. The instances
 supply discrete measurable structures, the source probability-law instance,
 and local decidability of the defect predicate. Their complete names are
 recorded in the source manifest. The audit gate requires
@@ -88,6 +92,13 @@ the earlier `PaperCV11` overlay.
 | [`BoundedRatioFullHosts.lean`](BoundedRatioFullHosts.lean) | Host bounds normalized by the lower scale `N` when `N ≤ M ≤ κ N`, for arbitrary masks in `[2, M]²` and actual separated starts in `[N, M)`. |
 | [`MacroscopicRelationProfile.lean`](MacroscopicRelationProfile.lean) | Exact macroscopic start/value masses, equality with historical `R2κ`, transfer of its canonical systematic/residual decomposition, and finite (3.24) on the literal macroscopic mask. |
 | [`MacroscopicValueCorrection.lean`](MacroscopicValueCorrection.lean) | Positive excess of the value mass over four times the start mass, its bound by three times the full-host count, and an unconditional uniform `M^(3/2+o(1))` upper bound. |
+| [`IntervalRationalMass.lean`](IntervalRationalMass.lean) | Finite total systematic-mass bound on arbitrary intervals, retaining the distinct factors `2^(L/2)` and `2^(L/3)`. |
+| [`MacroscopicCanonicalCode.lean`](MacroscopicCanonicalCode.lean) | Macroscopic determinant threshold for `A = 3`, uniqueness of candidates and identification of every nonzero rational channel with the canonical code, for fixed positive `δ`. |
+| [`RationalGeometryMass.lean`](RationalGeometryMass.lean) | Exact geometry-only sum with binary weight `2^(m-1)`, exhaustive finite support and bound `6 (L+1)^4 2^(L/2)`. |
+| [`RationalHeightMass.lean`](RationalHeightMass.lean) | Actual canonical-height filters `q = 2` and `q ≥ 3`, exact decomposition of total rational mass and separate finite bounds. |
+| [`LogarithmicWordPowers.lean`](LogarithmicWordPowers.lean) | Explicit roots of `Q_B` and uniform absorption of polynomial length factors into each prescribed `M^ε`. |
+| [`RationalMassAsymptotics.lean`](RationalMassAsymptotics.lean) | Total rational profile with both roots of `Q_B`, uniformly over lower interval endpoints and historical coding parameters. |
+| [`RationalProfile.lean`](RationalProfile.lean) | All three real inequalities of Proposition 3.8, with separate canonical-height masses, the geometry-only sum and macroscopic candidate uniqueness. |
 
 The main declarations and their exact hypotheses are listed in
 [`ENDPOINTS.md`](ENDPOINTS.md). These endpoints add no external literature
@@ -195,6 +206,35 @@ correction unconditionally; it is neither an absolute-error estimate nor
 an asymptotic equality. No raw relation-profile hypothesis is used, and
 neither individual mass receives the raw profile bound from this result.
 
+For Proposition 3.8, `RationalHeightMass` filters the actual selected
+canonical height. The `q = 2` and `q ≥ 3` masses sum exactly to the full
+rational contribution, since separated pairs have zero weight at heights
+zero and one. Their finite upper bounds are
+`6 M (L+1) 2^(L/2)` and `4 M (L+1)^4 2^(L/3)` respectively.
+The geometry-only mass sums `2^(m-1)` over all positive primitive
+`(a,b,h)` with `max(a,b) ≥ 2` and `m ≥ 2`; it has no translation factor.
+Its finite support is exhaustive because `m ≥ 2` forces `max(a,b) ≤ L`.
+
+Writing `Rtwo` and `Rthree` for the filtered masses on
+`[ceil(M^δ), M)` with `A = 3`, and `G` for this geometry-only mass,
+`RationalProfile.proposition_three_eight` proves, for fixed `C ≥ 0`,
+`δ > 0` and `ε > 0`, eventually and uniformly in `L + 1 ≤ C log M`,
+
+```text
+Rtwo   ≤ M^ε M Q_B^(1/2)
+Rthree ≤ M^ε M Q_B^(1/3)
+G      ≤ M^ε   Q_B^(1/2),       Q_B = 2^(L+1).
+```
+
+The same endpoint ensures at most one candidate of height at most `B^3`
+for every macroscopic first start and every natural second start. The
+canonical-code module also identifies every nonzero primitive rational
+code with that selected code. This uniqueness threshold depends on fixed
+`δ`; it precedes `L` and both starts. The numerical mass estimates alone
+have thresholds independent of the lower interval endpoint. No critical
+balance between `Q_B` and `M` is imposed, and only polynomial factors in
+the logarithmic length are absorbed into `M^ε`.
+
 The conditional wording on article page 9 should explicitly say that the
 large prime has **odd valuation**. This is already the convention on page 8
 and in Lean. [`MANUSCRIPT_NOTES.md`](MANUSCRIPT_NOTES.md) records a proposed
@@ -211,8 +251,9 @@ the v2.8.2 documents bound above.
   square-host identifications are complete, including the host bound
   normalized by the lower scale on bounded-ratio intervals. The exact
   macroscopic masses and the uniform positive-correction bound are also
-  proved; the historical canonical decomposition still needs to be
-  connected to the article's eight-sector profile and its estimates.
+  proved. Proposition 3.8 now bounds the rational contribution separately;
+  the article's eight residual sectors, their estimates and the complete
+  raw profile still need to be established.
 - Proposition 3.27 and the signed marked-field, dictionary and crossover
   theorems require further arithmetic and probabilistic development.
 

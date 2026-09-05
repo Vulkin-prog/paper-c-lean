@@ -9,10 +9,17 @@ import PaperCV282.FullPrimeAssignment
 import PaperCV282.InfiniteConditionalWords
 import PaperCV282.InfiniteWordFirstMoment
 import PaperCV282.InfiniteWordTransfer
+import PaperCV282.IntervalRationalMass
+import PaperCV282.LogarithmicWordPowers
+import PaperCV282.MacroscopicCanonicalCode
 import PaperCV282.MacroscopicGeometry
 import PaperCV282.MacroscopicRelationProfile
 import PaperCV282.MacroscopicValueCorrection
 import PaperCV282.PrescribedValues
+import PaperCV282.RationalGeometryMass
+import PaperCV282.RationalHeightMass
+import PaperCV282.RationalMassAsymptotics
+import PaperCV282.RationalProfile
 import PaperCV282.TwoWindowParity
 import PaperCV282.TwoWindowSquareHosts
 import PaperCV282.ValueRelations

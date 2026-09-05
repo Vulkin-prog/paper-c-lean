@@ -90,6 +90,24 @@ it is not an absolute-error estimate or an asymptotic equality. No raw
 profile is assumed, and (3.25) remains open. This progress adds no new
 manuscript correction; V3-S001 records its bearing on the host correction.
 
+Batch 7 establishes the three rational-mass bounds of Proposition 3.8.
+The actual canonical-height filters `q = 2` and `q ≥ 3` retain their
+distinct square-root and cube-root factors of `Q_B = 2^(L+1)`. Their
+sum is exactly the total rational contribution. The separate geometry
+mass uses the binary weight `2^(m-1)` over all primitive geometries with
+`m ≥ 2` and height at least two, without translations. Its finite bound
+is `6 (L+1)^4 2^(L/2)`, and the three final real bounds absorb only the
+polynomial length factor into an arbitrary `M^ε`.
+
+The macroscopic channel is now identified with the historical canonical
+code for `A = 3` beyond the determinant threshold. Here `δ > 0` is fixed
+before that threshold, which then precedes `L` and both starts, as in
+Lemma 3.3. The numerical mass bounds themselves have thresholds independent
+of the lower interval endpoint. No critical-balance assumption is added.
+This closes the rational contribution while leaving the eight residual
+sectors, the complete raw profile and (3.25) open. No new manuscript
+correction was identified in this step.
+
 The exact formal scope and hypotheses are recorded in
 [`ENDPOINTS.md`](ENDPOINTS.md).
 
