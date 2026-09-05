@@ -54,63 +54,18 @@ mask and distinct-word dictionary. The error has scale
 not assume independence of occurrences. Empty dictionaries are included.
 This result is dyadic and does not claim a macroscopic extension.
 
-The [v3 revision log](../docs/PAPER_V3_REVISION_LOG.md) tracks this proposed
-wording change and related exposition suggestions. The host count is now
-bounded uniformly for every pair mask in the global square `[2, M]²`.
-Batch 5 specializes this result to the exact macroscopic domain
-`[ceil(M^δ), M)`, proves that the start-host count is at most the full-host
-count, and establishes the latter's `M^(3/2+o(1))` bound. For fixed `C ≥ 0`
-and positive integer `k`, the threshold precedes both `L` and `δ`; the
-exposed hypotheses are `L + 1 ≤ C log M` and `δ > 0`. The actual
-start-relation cylinder has cutoff `M + L`. No new manuscript correction
-is inferred from this extension; the elementary host-bound simplification
-remains an exposition suggestion in the log.
+The [v3 revision log](../docs/PAPER_V3_REVISION_LOG.md) is the authoritative
+register of proposed corrections and exposition changes. It now contains
+one confirmed wording correction and six suggestions, including a
+pointwise proof of the small-product sector that avoids growing moments,
+and a precise distinction between the verified uniform `M^epsilon`
+Pell/split-product consequences and the sharper quantitative rates in the
+manuscript. The companion has no confirmed correction at this stage.
 
-These results close the macroscopic host inequalities of Proposition 3.7.
-They do not establish Theorem 3.1's raw weighted relation profile,
-conclusion (3.25), or Proposition 3.27's capped profile. The bounded-ratio
-host extension also preserves the lower scale `N`: for fixed natural `κ`,
-it bounds every pair mask in `[2, M]²` by `N^(3/2+o(1))` when
-`N ≤ M ≤ κ N` and `L + 1 ≤ C log N`. The threshold precedes the upper
-endpoint, length and mask. Its specialization to separated starts in
-`[N, M)` includes the actual start-host comparison with cutoff `M + L`.
-The summed word result above remains dyadic.
-
-Batch 6 defines the exact weighted start and value masses on this
-macroscopic domain with the same cutoff `M + L`. The start mass is
-identified with historical `R2κ`; its canonical systematic/residual
-decomposition transfers for every natural coding parameter `A`. This
-finite identity does not identify the manuscript's eight sectors or
-establish their raw profile. The macroscopic finite comparison further
-gives a uniform upper bound for `max(0, Rval - 4 Rstart)`: for every
-positive integer `k`, eventually its `2k`-th power is at most
-`M^(3k+1)`, uniformly in `L + 1 ≤ C log M` and `δ > 0`, with the
-threshold chosen before `L` and `δ`. This bounds the positive correction;
-it is not an absolute-error estimate or an asymptotic equality. No raw
-profile is assumed, and (3.25) remains open. This progress adds no new
-manuscript correction; V3-S001 records its bearing on the host correction.
-
-Batch 7 establishes the three rational-mass bounds of Proposition 3.8.
-The actual canonical-height filters `q = 2` and `q ≥ 3` retain their
-distinct square-root and cube-root factors of `Q_B = 2^(L+1)`. Their
-sum is exactly the total rational contribution. The separate geometry
-mass uses the binary weight `2^(m-1)` over all primitive geometries with
-`m ≥ 2` and height at least two, without translations. Its finite bound
-is `6 (L+1)^4 2^(L/2)`, and the three final real bounds absorb only the
-polynomial length factor into an arbitrary `M^ε`.
-
-The macroscopic channel is now identified with the historical canonical
-code for `A = 3` beyond the determinant threshold. Here `δ > 0` is fixed
-before that threshold, which then precedes `L` and both starts, as in
-Lemma 3.3. The numerical mass bounds themselves have thresholds independent
-of the lower interval endpoint. No critical-balance assumption is added.
-This closes the rational contribution while leaving the eight residual
-sectors, the complete raw profile and (3.25) open. No new manuscript
-correction was identified in this step.
-
-The exact formal scope and hypotheses are recorded in
-[`ENDPOINTS.md`](ENDPOINTS.md).
-
-The source PDF identity is recorded in
-[`source_manifest.json`](source_manifest.json). This note records a proposed
-wording correction; it does not modify the supplied PDFs or the Lean proofs.
+Mathematical progress is recorded in [`ENDPOINTS.md`](ENDPOINTS.md), with
+source identities and toolchain pins in
+[`source_manifest.json`](source_manifest.json). Current proofs include the
+actual eight-sector partition and further arithmetic estimates; the
+ledger distinguishes completed bounds from finite reductions and remaining
+obligations. These notes do not modify the supplied v2.8.2 PDFs. Future V3
+source files can be incorporated once supplied and frozen by the author.

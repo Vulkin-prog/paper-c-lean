@@ -1,37 +1,30 @@
 # Paper C v2.8.2 formalization overlay
 
-`PaperCV282` is an additive Lean library for the English article *Long runs
-and rare patterns of a random completely multiplicative function*, version
-2.8.2, and its technical companion, both dated 5 September 2026. It reuses
-the historical `PaperC` model and proofs. The retained-core authority is
-commit `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
+`PaperCV282` develops the English article *Long runs and rare patterns of a
+random completely multiplicative function* and its technical companion,
+version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
+model and proofs, with retained-core authority
+`b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The current seven-batch development covers the three clauses of Corollary
-2.6 through explicit representations: the infinite pointwise bound, exact
-conditional probability on every positive `F_Y` atom, and the dyadic summed
-first-moment estimate for arbitrary masks and dictionaries in a fixed
-logarithmic band. The last result is an inequality for the actual integral
-of the occurrence count under the infinite Rademacher law. Its threshold
-is chosen before the length, mask and dictionary; no independence of
-occurrences is assumed.
+The eight-batch development now proves the three clauses of Corollary 2.6,
+the host and rational estimates of Propositions 3.7 and 3.8, the actual
+eight-sector partition, the profiles of sectors 1–7, the shifted-kernel
+energy of Lemma 3.24, and both explicit rational-family lower bounds
+(3.22)–(3.23). The polynomial-height Pell and split-product counts needed
+by the new host proofs are justified internally at the uniform `M^epsilon`
+scale. Their sharper displayed quantitative rates remain outside this scope.
 
-It also proves finite inequality (3.24) for actual separated windows and
-Proposition 3.7's macroscopic host inequalities: the start-relation count
-is at most the unrestricted square-product count, which is uniformly
-`M^(3/2+o(1))`. The host bound holds for every pair mask in `[2, M]²`,
-including the exact macroscopic start domain. Exact macroscopic weighted
-masses now connect to the retained canonical decomposition, and the
-positive excess of the value mass over four times the start mass has a
-uniform `M^(3/2+o(1))` upper bound. Proposition 3.8's two separate
-canonical-height bounds and its geometry-only bound are now established
-with `Q_B = 2^(L+1)` explicit. The macroscopic canonical channel is
-identified beyond a threshold depending on fixed `δ > 0`. The residual
-sectors of the raw relation profile and their combination into asymptotic
-conclusion (3.25) remain open.
+The remaining arithmetic step in the complete raw and capped profiles is
+the connection of **sector 8** to the proved kernel energy, with its partner
+counts, rank strata and summation over the larger-start scale. Theorem 3.1,
+Proposition 3.25, conclusion (3.25) and Proposition 3.27 are therefore not
+claimed complete. Exact finite capped decompositions and the nonterminal
+estimates are already available. Later marked-field, dictionary and
+crossover theorems remain further work.
 
-## Sources and toolchain
+## Sources, toolchain and verification
 
-The input documents remain exactly v2.8.2. Their identities are recorded in
+The supplied PDFs remain unchanged. Their exact identities are recorded in
 [`source_manifest.json`](source_manifest.json):
 
 | Input | Pages | SHA-256 |
@@ -39,227 +32,106 @@ The input documents remain exactly v2.8.2. Their identities are recorded in
 | `paper_C_version_2_8_2_en.pdf` | 52 | `263682a1f2aa8301f06bf811fea1f81f42cd4493ccc4e1b94242a66cacfbd623` |
 | `paper_C_version_2_8_2_technical_companion_en.pdf` | 23 | `60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094` |
 
-Use `leanprover/lean4:v4.32.0` and mathlib `v4.32.0`, locked to
-`81a5d257c8e410db227a6665ed08f64fea08e997`. The historical pins are retained.
-With the dependencies available, reproduce the build and declaration audit:
+The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
+`81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
+
+The 89 mathematical modules contain **619 named declarations: 525 theorems, 87 definitions and 7 named local instances**. Batch 8 adds 347 theorems in 59 new modules.
+
+The complete mathematical module and named-instance lists are in the source
+manifest. The source gate requires exact named-declaration coverage and the
+pinned versions. The kernel transcript permits only `propext`,
+`Classical.choice` and `Quot.sound`. Inventory checking is distinct from
+Lean kernel verification; importing a historical conditional interface does
+not introduce its assumptions into an independently proved endpoint.
+
+With dependencies available:
 
 ```sh
-lake build PaperCV282
+lake build PaperCV11 PaperCV282
 python3 scripts/check_v282_audit.py --check-source
 lake env lean PaperCV282/Audit.lean > PaperCV282-Audit.log
 python3 scripts/check_v282_audit.py --log PaperCV282-Audit.log
+python3 -m unittest discover -s scripts -p 'test_v282_audit.py'
 ```
 
-These are reproduction instructions; execution outcomes belong in the
-corresponding build and audit evidence. The source manifest records input
-provenance and mathematical scope, not a release verdict.
+Build outcomes and remote checks are recorded separately for the exact
+published commit. They do not constitute a new Palomar qualification.
 
-The thirty mathematical modules contain **219 named declarations: 178
-theorems, 36 definitions and five named local instances**. The instances
-supply discrete measurable structures, the source probability-law instance,
-and local decidability of the defect predicate. Their complete names are
-recorded in the source manifest. The audit gate requires
-complete named-declaration coverage, allows only `propext`,
-`Classical.choice` and `Quot.sound` as kernel axiom dependencies, and checks
-the Lean/mathlib pins. The source inventory is a restricted coverage check;
-Lean's kernel checks the proof terms. The development workflow also builds
-the earlier `PaperCV11` overlay.
+## Mathematical coverage
 
-## Implemented components
+Use `B=L+1`, `Q_B=2^B`, and the literal start interval
+`U=[ceil(M^delta),M)`. The separated pair mask consists of ordered pairs
+with `L < dist(x,y)`. Actual vertices are `x−1,…,x+L−1`; the mask selects
+starts and does not truncate a window. Empty populations are allowed.
 
-| Module | Content |
+For the sector profiles, fix `0 < betaMin < betaMax`, `delta>0` and
+`epsilon>0`. A threshold is chosen before every `M`, length and pair in the
+full band `betaMin log M ≤ B ≤ betaMax log M`. The canonical choice is
+`A=3`. Neither `Q_B≈M` nor a bounded ratio between the two starts is assumed.
+Some individual theorems have stronger uniformity in `A`, lower endpoints
+or `delta`; [`ENDPOINTS.md`](ENDPOINTS.md) records it explicitly.
+
+| Contribution | Proved upper profile, up to `M^epsilon` |
 |---|---|
-| [`PrescribedValues.lean`](PrescribedValues.lean) | Absolute valuation systems, affine word probabilities, private-coordinate rank bounds, and translation after fixing small primes. |
-| [`WindowValues.lean`](WindowValues.lean) | Actual consecutive vertices and prime pivots; pointwise and fixed-assignment conditional clauses of Corollary 2.6 in finite cylinders. |
-| [`InfiniteWordTransfer.lean`](InfiniteWordTransfer.lean) | Measurable word events, exact finite/infinite measure and probability identities, and the real pointwise bound of Corollary 2.6 in the infinite source model. |
-| [`InfiniteConditionalWords.lean`](InfiniteConditionalWords.lean) | Positive measurable assignment atoms, identification with `F_Y`, exact joint word/atom measure and conditional ratio in the infinite model. |
-| [`InfiniteWordFirstMoment.lean`](InfiniteWordFirstMoment.lean) | Finite probability sum, integrable occurrence count, exact first-moment identity and summed pointwise error. |
-| [`WordDefectCounting.lean`](WordDefectCounting.lean) | Word defect mass and finite comparison with the historical arithmetic mass, explicitly accounting for the shifted root `x - 1`. |
-| [`WordDefectAsymptotics.lean`](WordDefectAsymptotics.lean) | Uniform `N^(1/2+o(1))` word defect mass in every fixed logarithmic band. |
-| [`WordFirstMomentAsymptotics.lean`](WordFirstMomentAsymptotics.lean) | Summed probability and actual expectation clauses of Corollary 2.6, uniformly over all dyadic masks and distinct-word dictionaries. |
-| [`ValueRelations.lean`](ValueRelations.lean) | Abstract two-parity nullity and factor-four weight comparisons, including the finite host correction. |
-| [`TwoWindowParity.lean`](TwoWindowParity.lean) | Actual two-window value matrices, separate block parities, their linear equivalence with start relations, and finite sums over ordered separated pairs. |
-| [`ValueSquareRelations.lean`](ValueSquareRelations.lean) | Full-value relations characterized by square products of indexed subsets; nonzero nullity characterized by a nonempty square-product subset. |
-| [`TwoWindowSquareHosts.lean`](TwoWindowSquareHosts.lean) | Identification of full-value hosts with unrestricted arithmetic square-product hosts, and the finite inequality (3.24) with those hosts. |
-| [`FullPrimeAssignment.lean`](FullPrimeAssignment.lean) | Large-prime assignment lemmas for arbitrary full-value coefficients, without either block-parity constraint. |
-| [`FullHostCounting.lean`](FullHostCounting.lean) | Inclusion of unrestricted square-product hosts in the retained congruence cover and an explicit finite dyadic kernel-sum bound. |
-| [`FullHostAsymptotics.lean`](FullHostAsymptotics.lean) | Explicit exponential majorant and uniform `N^(3/2+o(1))` bound for every pair mask within a dyadic square. |
-| [`FullIntervalPrimeAssignment.lean`](FullIntervalPrimeAssignment.lean) | Full-value prime assignments for arbitrary positive intervals `[A, Z)`, without block parity or an endpoint-ratio restriction. |
-| [`FullIntervalHostCounting.lean`](FullIntervalHostCounting.lean) | Interval congruence cover and finite kernel-sum bound for every pair mask in `[2, M]²`. |
-| [`MacroscopicGeometry.lean`](MacroscopicGeometry.lean) | Exact start set `[ceil(M^δ), M)` and its inclusion, with separated pairs, in the global positive interval. |
-| [`FullHostComparison.lean`](FullHostComparison.lean) | Actual start-relation hosts included in unrestricted square-product hosts under positivity and an adequate cylinder cutoff. |
-| [`FullIntervalHostAsymptotics.lean`](FullIntervalHostAsymptotics.lean) | Uniform global host bound and both inequalities of Proposition 3.7 on the exact macroscopic domain, with threshold before length and exponent. |
-| [`BoundedRatioFullHosts.lean`](BoundedRatioFullHosts.lean) | Host bounds normalized by the lower scale `N` when `N ≤ M ≤ κ N`, for arbitrary masks in `[2, M]²` and actual separated starts in `[N, M)`. |
-| [`MacroscopicRelationProfile.lean`](MacroscopicRelationProfile.lean) | Exact macroscopic start/value masses, equality with historical `R2κ`, transfer of its canonical systematic/residual decomposition, and finite (3.24) on the literal macroscopic mask. |
-| [`MacroscopicValueCorrection.lean`](MacroscopicValueCorrection.lean) | Positive excess of the value mass over four times the start mass, its bound by three times the full-host count, and an unconditional uniform `M^(3/2+o(1))` upper bound. |
-| [`IntervalRationalMass.lean`](IntervalRationalMass.lean) | Finite total systematic-mass bound on arbitrary intervals, retaining the distinct factors `2^(L/2)` and `2^(L/3)`. |
-| [`MacroscopicCanonicalCode.lean`](MacroscopicCanonicalCode.lean) | Macroscopic determinant threshold for `A = 3`, uniqueness of candidates and identification of every nonzero rational channel with the canonical code, for fixed positive `δ`. |
-| [`RationalGeometryMass.lean`](RationalGeometryMass.lean) | Exact geometry-only sum with binary weight `2^(m-1)`, exhaustive finite support and bound `6 (L+1)^4 2^(L/2)`. |
-| [`RationalHeightMass.lean`](RationalHeightMass.lean) | Actual canonical-height filters `q = 2` and `q ≥ 3`, exact decomposition of total rational mass and separate finite bounds. |
-| [`LogarithmicWordPowers.lean`](LogarithmicWordPowers.lean) | Explicit roots of `Q_B` and uniform absorption of polynomial length factors into each prescribed `M^ε`. |
-| [`RationalMassAsymptotics.lean`](RationalMassAsymptotics.lean) | Total rational profile with both roots of `Q_B`, uniformly over lower interval endpoints and historical coding parameters. |
-| [`RationalProfile.lean`](RationalProfile.lean) | All three real inequalities of Proposition 3.8, with separate canonical-height masses, the geometry-only sum and macroscopic candidate uniqueness. |
+| Rational height 2 / height at least 3 | `M Q_B^(1/2)` / `M Q_B^(1/3)` |
+| Sector 1: `P#≤M` | `M^(3/2)+M Q_B^(1/2)` |
+| Sector 2: positive small-height channel | `M Q_B^(1/2)+M Q_B^(1/3)` |
+| Sector 3: shallow corrected core | `M^(3/2) Q_B^(1/6)` |
+| Sector 4: aligned, beyond the shallow cutoff | Empty eventually |
+| Sector 5: moderate deep core | `M Q_B^(2/3)` |
+| Sector 6: dense core and at least three corrected defects | `M^(1/2) Q_B` |
+| Sector 7: dense core, few defects, sufficient rank loss | `M Q_B^(2/3)` |
+| Sector 8 | Energy input proved; terminal mass assembly remains |
 
-The main declarations and their exact hypotheses are listed in
-[`ENDPOINTS.md`](ENDPOINTS.md). These endpoints add no external literature
-premise; importing a historical module containing such an interface does
-not itself make the new theorem conditional on that interface.
+The partition is successive and literal, with complementary tests and the
+actual canonical rank. Lean indices `0,…,7` correspond to manuscript
+sectors `1,…,8`. Its exact finite residual sum retains the true weight
+`2^sigma*(2^tau−1)`, without hypothetical rank or classification inputs.
 
-## Representation and scope
+The small-product proof uses `(B+1)^c#≤P#≤M` and the corrected-defect bound
+to obtain a pointwise subpolynomial factor. The sector-5 and sector-6
+proofs use internal polynomial-height Pell, squareclass localization and
+one-sided split-product counts. The size-two branch is counted jointly by
+a finite harmonic/Euler estimate. No Evertse–Silverman or Nicolas–Robin
+premise is assumed by these new arithmetic endpoints.
 
-Words are `Fin B → F₂`; a bit denotes its sign through the retained `phase`
-map. Their vertices are exactly `x - 1 + j`, for `j < B`. Finite probabilities
-are rational cardinality ratios. `InfiniteWordTransfer` identifies them
-with the corresponding event measure under `infiniteRademacherMeasure`
-and its real-valued probability.
+The terminal energy counts the literal binomial second moment
+`sum_{X≤x<2X} choose(A_T(x),2)`. For an integer kernel cap
+`T≤D*sqrt(X*B)` and `B≤C*log X`, it is at most
+`X^(2/3+epsilon)*B^2`, with a threshold before `L,T`. The proof includes
+small-kernel anchors, affine congruence fibres, both dyadic kernel-range
+sums, exact window double counting and the enlarged value interval at the
+window boundaries. The connection from terminal graph components to this
+analytic input is a separate remaining obligation.
 
-The finite one-window bounds require `x ≥ 2` and
-`x - 1 + B ≤ M + 1`, where `M` is the inclusive prime-cylinder cutoff.
-The infinite pointwise endpoint chooses an adequate cylinder internally and
-exposes no cutoff hypothesis. The infinite conditional endpoint assumes
-`Y ≤ M`, `B ≤ Y`, and an odd valuation at a prime above `Y` for every
-vertex. It proves
-`measure(word ∩ atom) = measure(atom) / 2^B` and the corresponding exact
-ratio on every atom. The partition into positive measurable atoms generates
-exactly `F_Y`. A general conditional-expectation API could repackage this
-proved atom law; it is optional presentation work, not a missing step in
-the established summed first moment.
+The explicit minorants retain both orientations of the families `(t,2t)`
+and `(2t,3t)`, their actual separated-domain membership, and their numerical
+coefficient errors. They prove (3.22) and (3.23) for the true relation mass;
+no canonical selection of these subspaces is presumed.
 
-For the summed clause, `s` is any finite mask in `[N, 2N)` and
-`W : Finset (Fin B → F₂)` is a dictionary of distinct words. The finite
-sum of event indicators is integrable and its integral equals
-`wordProbabilitySum B s W`. For fixed `0 < c₁ < c₂` and every integer
-`k > 0`, a threshold depending only on `c₁`, `c₂` and `k` gives
+## Module groups and exact endpoints
 
-```text
-|E[wordOccurrenceCount B s W] - |s| |W| / 2^B|^(2k)
-  ≤ (|W| / 2^B)^(2k) N^(k+1)
-```
+| Group | Main modules |
+|---|---|
+| Infinite word laws and first moments | `InfiniteWordTransfer`, `InfiniteConditionalWords`, `InfiniteWordFirstMoment`, `WordDefectAsymptotics`, `WordFirstMomentAsymptotics` |
+| Full-value parity and host comparison | `TwoWindowParity`, `ValueSquareRelations`, `TwoWindowSquareHosts`, `FullHostComparison`, `FullIntervalHostAsymptotics`, `BoundedRatioFullHosts` |
+| Canonical rational contribution | `MacroscopicCanonicalCode`, `RationalHeightMass`, `RationalGeometryMass`, `RationalProfile` |
+| Exact residual sectors | `ResidualSectorPartition`, `ResidualSectorMass`, `ResidualSectorMasks` |
+| Sectors 1–4 | `MacroscopicSmallProductProfile`, `MacroscopicSmallHeightSector`, `MacroscopicShallowSectors`, `MacroscopicAlignedExclusion`, `MacroscopicEarlyProfile` |
+| Internal polynomial-height arithmetic | `DivisorSubpolynomial`, `PolynomialPellCount`, `SplitProductLocalization`, `PositiveSquareclassPairs`, `PolynomialSplitProducts`, `PolynomialSplitSolutions`, `MacroscopicOneSidedFibers` |
+| Sectors 5–7 | `MacroscopicBoundedHosts`, `SectorFiveProfile`, `MacroscopicTwoDefectStarts`, `SectorSixProfile`, `SizeTwoHostAsymptotics` |
+| Kernel energy | `ShiftedKernelBoxCount`, `ShiftedKernelQuotients`, `ShiftedKernelRangeCount`, `ShiftedKernelBoxAsymptotics`, `SmallKernelAnchors`, `ShiftedKernelDyadicCover`, `ShiftedKernelPairCount`, `KernelWindowEnergy`, `MacroscopicKernelEnergy` |
+| Lower bounds | `RationalLowerBounds`, `RationalFamilyMass`, `IntervalRationalLowerBounds` |
+| Finite and nonterminal capped reductions | `CappedRelationMass`, `CappedSectorMass`, `CappedSectorSixProfile`, `NonterminalProfile` |
+| Numerical interpolation and conditional assembly | `ProfileMonomials`, `ProfileAssembly` |
 
-simultaneously for every `B` with `c₁ log N ≤ B ≤ c₂ log N`, every
-such `s`, and every `W`. This is the dyadic
-`O(|W| 2^(-B) N^(1/2+o(1)))` statement. Empty masks and dictionaries are
-included; no balance condition on `N / 2^B` is imposed. Macroscopic
-extensions beyond the dyadic mask domain are not asserted here.
+The [endpoint ledger](ENDPOINTS.md) gives the declarations and hypotheses.
+The [V3 revision log](../docs/PAPER_V3_REVISION_LOG.md) records **one confirmed
+wording correction and six suggestions**, including the small-product
+simplification and the distinction between quantitative rates. No error is
+attributed to the companion without evidence. V3 manuscript sources can be
+incorporated when supplied and frozen by the author.
 
-For two windows, `B = L + 1`. The final finite endpoint accepts any
-`I : Finset ℕ` such that every `x ∈ I` satisfies `2 ≤ x` and
-`x + L ≤ M + 1`. It sums over the ordered pairs in `I × I` with
-`L < Nat.dist x y`. The correction counts pairs having a nonempty
-square-product subset of the full vertex occurrences, with **no parity
-restriction** on either block. This arithmetic host set is defined without
-a cylinder cutoff and is proved equal to the full-value nullity host set
-under the stated conditions.
-
-The dyadic counting theorem applies to every pair mask `s` inside
-`dyadicBlock N × dyadicBlock N`, with `N ≥ 2` and `L ≤ N`; separation is
-not required for the host bound. Its explicit majorant is
-`8 (L + 1) N sqrt(3N) exp(4 sqrt(L + 1))`. For each `C ≥ 0` and integer
-`k > 0`, a threshold depending on `C` and `k`, independent of `L` and `s`,
-gives `card(squareProductHosts L s)^(2k) ≤ N^(3k+1)` whenever
-`L + 1 ≤ C log N` and the other displayed hypotheses hold. This closes
-the dyadic unrestricted host-count component, including deterministic masks.
-
-The interval extension gives the same explicit majorant with `M` in place
-of `N` for every `s ⊆ [2, M]²`, initially with `M ≥ 2` and `L ≤ M`.
-It requires neither separation nor a bound on the ratio of the two starts.
-The terminal logarithmic theorem absorbs both finite conditions into its
-threshold: for fixed `C ≥ 0` and `k > 0`, it gives
-`card(squareProductHosts L s)^(2k) ≤ M^(3k+1)` simultaneously for all
-`L + 1 ≤ C log M` and all such pair masks.
-
-The macroscopic start set is exactly
-`Finset.Ico ⌈(M : ℝ)^δ⌉₊ M`. For `M ≥ 2` and `δ > 0` it lies in
-`[2, M]`; no hypothesis `δ < 1` is needed, and empty intervals are allowed.
-`FullIntervalHostAsymptotics.proposition_three_seven` chooses its threshold
-before both `L` and `δ` and proves the start-host comparison together with
-the full-host power bound on its separated ordered pairs. The actual
-start-relation system uses the explicit adequate prime cutoff `M + L`.
-The bounded-ratio extension also provides the normalization by a distinct
-lower scale `N`: for fixed `C ≥ 0`, natural `κ` and integer `k > 0`, one
-threshold works for every `N ≤ M ≤ κ N`, `L + 1 ≤ C log N` and pair mask
-in `[2, M]²`, giving `card(squareProductHosts L s)^(2k) ≤ N^(3k+1)`.
-Its specialization to separated starts in `[N, M)` includes the
-start-host comparison with cutoff `M + L`. The threshold is chosen before
-`M`, `L` and the mask. The ratio bound concerns the interval endpoints;
-the first endpoint imposes no ratio condition on the individual pairs.
-
-The exact masses `macroscopicStartMassNat` and `macroscopicValueMassNat`
-sum `2^ρ - 1` on the same separated pairs in `[ceil(M^δ), M)`, using
-cutoff `M + L`. The real cast of the start mass equals historical
-`PropositionSixteenOne.R2κ ⌈M^δ⌉₊ M L`. For `M ≥ 2`, `δ > 0` and every
-natural coding parameter `A`, it inherits that code's exact systematic
-plus residual decomposition. This transfers the historical canonical
-code; it does not identify the eight sectors of the v2.8.2 raw profile.
-
-The finite macroscopic comparison is `Rval ≤ 4 Rstart + 3 Hval`.
-The new quantity `macroscopicValueExcess` uses natural subtraction and
-casts exactly to `max(0, Rval - 4 Rstart)`. For fixed `C ≥ 0` and every
-positive integer `k`, one threshold before `L` and `δ` gives
-
-```text
-max(0, Rval - 4 Rstart)^(2k) ≤ M^(3k+1)
-```
-
-whenever `L + 1 ≤ C log M` and `δ > 0`. This bounds the positive
-correction unconditionally; it is neither an absolute-error estimate nor
-an asymptotic equality. No raw relation-profile hypothesis is used, and
-neither individual mass receives the raw profile bound from this result.
-
-For Proposition 3.8, `RationalHeightMass` filters the actual selected
-canonical height. The `q = 2` and `q ≥ 3` masses sum exactly to the full
-rational contribution, since separated pairs have zero weight at heights
-zero and one. Their finite upper bounds are
-`6 M (L+1) 2^(L/2)` and `4 M (L+1)^4 2^(L/3)` respectively.
-The geometry-only mass sums `2^(m-1)` over all positive primitive
-`(a,b,h)` with `max(a,b) ≥ 2` and `m ≥ 2`; it has no translation factor.
-Its finite support is exhaustive because `m ≥ 2` forces `max(a,b) ≤ L`.
-
-Writing `Rtwo` and `Rthree` for the filtered masses on
-`[ceil(M^δ), M)` with `A = 3`, and `G` for this geometry-only mass,
-`RationalProfile.proposition_three_eight` proves, for fixed `C ≥ 0`,
-`δ > 0` and `ε > 0`, eventually and uniformly in `L + 1 ≤ C log M`,
-
-```text
-Rtwo   ≤ M^ε M Q_B^(1/2)
-Rthree ≤ M^ε M Q_B^(1/3)
-G      ≤ M^ε   Q_B^(1/2),       Q_B = 2^(L+1).
-```
-
-The same endpoint ensures at most one candidate of height at most `B^3`
-for every macroscopic first start and every natural second start. The
-canonical-code module also identifies every nonzero primitive rational
-code with that selected code. This uniqueness threshold depends on fixed
-`δ`; it precedes `L` and both starts. The numerical mass estimates alone
-have thresholds independent of the lower interval endpoint. No critical
-balance between `Q_B` and `M` is imposed, and only polynomial factors in
-the logarithmic length are absorbed into `M^ε`.
-
-The conditional wording on article page 9 should explicitly say that the
-large prime has **odd valuation**. This is already the convention on page 8
-and in Lean. [`MANUSCRIPT_NOTES.md`](MANUSCRIPT_NOTES.md) records a proposed
-clarification for a future revision, with a counterexample to the literal
-weaker reading. Proposed manuscript changes are tracked in the
-[v3 revision log](../docs/PAPER_V3_REVISION_LOG.md). No v3 manuscript replaces
-the v2.8.2 documents bound above.
-
-## Remaining work and qualification boundary
-
-- Proposition 3.26: prove the raw profile of Theorem 3.1 and assemble
-  asymptotic conclusion (3.25), with its stated uniformity. The macroscopic
-  host inequalities of Proposition 3.7 and finite parity, relation and
-  square-host identifications are complete, including the host bound
-  normalized by the lower scale on bounded-ratio intervals. The exact
-  macroscopic masses and the uniform positive-correction bound are also
-  proved. Proposition 3.8 now bounds the rational contribution separately;
-  the article's eight residual sectors, their estimates and the complete
-  raw profile still need to be established.
-- Proposition 3.27 and the signed marked-field, dictionary and crossover
-  theorems require further arithmetic and probabilistic development.
-
-The historical `PaperC` core, its canonical declarations and the existing
-Palomar records preserve their original scope. `PaperCV11` remains the name
-of the earlier reusable overlay; its numbering is not the v2.8.2 theorem map.
-No new Palomar qualification, Comparator result, or certification of the
-complete article–companion package is claimed here. A future submission
-requires its own frozen public statements, dependency audit and evidence.
+The historical `PaperC` core, earlier `PaperCV11` overlay and existing
+Palomar records retain their original identities and scope. A future
+Palomar submission requires its own frozen statements and evidence.

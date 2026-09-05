@@ -1,10 +1,10 @@
 # Paper C v2.8.2 endpoint ledger
 
-This ledger describes the current thirty-module development: 178 theorems,
-36 definitions and five named local instances, totaling 219 named
-declarations. It records the mathematical scope of the supplied proof terms;
-build and qualification outcomes belong in separate evidence. No entry is a
-new Palomar record. Names below have prefix `PaperC.V282.`.
+The 89 mathematical modules contain **619 named declarations: 525 theorems, 87 definitions and 7 named local instances**. Batch 8 adds 347 theorems in 59 new modules.
+
+This ledger records the mathematical scope of the supplied proof terms.
+Build and qualification outcomes belong in separate evidence. No entry is
+a new Palomar record. Declaration names below have prefix `PaperC.V282.`.
 
 ## Corollary 2.6: pointwise, conditional and dyadic summed clauses
 
@@ -355,9 +355,10 @@ Rstart = systematicMass A ⌈M^δ⌉₊ M L
 ```
 
 This is an exact finite decomposition, without a ratio or logarithmic
-assumption. It includes `A = 3` but does not identify this canonical code
-with the eight sectors of the v2.8.2 manuscript, nor prove their raw
-asymptotic estimates.
+assumption. It includes `A = 3`. The new `ResidualSectorPartition` and
+`ResidualSectorMass` modules further identify the eight successive sectors
+and prove their exact weighted decomposition, as detailed below. Estimates
+of their masses are separate theorems.
 
 Finite (3.24) now also appears directly as
 `Rval ≤ 4 Rstart + 3 Hval` on `U`, with `M ≥ 2` and `δ > 0`.
@@ -378,9 +379,9 @@ The threshold precedes both `L` and `δ`. The proof bounds the excess by
 bound or an asymptotic equality. It assumes no raw weighted profile.
 
 To complete Proposition 3.26, the raw relation profile of Theorem 3.1 must
-still be completed through the eight residual sectors and combined with
-the finite comparison and correction bound to obtain (3.25), with all
-stated uniformity. The rational contribution is now covered by Proposition
+still be completed through sector 8 and combined with the finite
+comparison and correction bound to obtain (3.25), with all stated
+uniformity. Sectors 1–7 and the terminal kernel-energy input are now proved. The rational contribution is now covered by Proposition
 3.8 above. Neither it, the host count nor the positive-correction bound
 alone establishes the complete raw profile.
 
@@ -390,23 +391,221 @@ correction are covered; the full asymptotic proposition is not yet
 complete. The bounded-ratio host extension also uses the correct lower
 scale `N`. Proposition 3.27's capped profile remains separate work.
 
+## Exact eight-sector partition and nonterminal profiles
+
+Sources: article pages 16–24, successive partition, Proposition 3.12 and
+the sector estimates in the assembly table. Set `B=L+1`, `Q=2^B`,
+`N=ceil(M^delta)`. Lean's `Fin 8` indices `0,…,7` denote manuscript
+sectors `1,…,8`. The classifier tests actual canonical quantities, in the
+printed order: `P#≤M`, a positive small-height rational channel,
+`6c#≤B`, alignment, `3c#≤2B`, `D#≥3`, and the actual rank/slack threshold
+`floor((L−1)/3)`. Its disjoint cover and membership equivalences do not
+accept an external classification or rank function.
+
+| Declaration or module | Established result |
+|---|---|
+| `ResidualSectorPartition` | Eight literal complementary populations; late-sector zero systematic dimension, nonalignment and actual rank identities. |
+| `ResidualSectorMass.residualMass_eq_sum_sectorMass` | Exact sum of the eight actual residual masses, with weight `2^sigma*(2^tau−1)`. |
+| `ResidualSectorMass.macroscopicStartMass_eq_systematic_add_sectors` | Exact macroscopic start mass = rational contribution + all eight sectors. |
+| `HostRankMass`, `HostRealPowers` | General masked homogeneous weight and real host bounds; corrected rank budget and exact `Q^(1/6)` factor. |
+| `MacroscopicSmallProductProfile.sector_one_mass_le_profile_eventually` | Sector 1 at most `M^epsilon*(M^(3/2)+M*Q^(1/2))`. |
+| `MacroscopicSmallHeightSector.sector_two_mass_le_rational_profile_eventually` | Sector 2 at most `M^epsilon*(M*Q^(1/2)+M*Q^(1/3))`. |
+| `MacroscopicShallowSectors.sector_three_mass_le_profile_eventually` | Sector 3 at most `M^epsilon*M^(3/2)*Q^(1/6)`. |
+| `MacroscopicShallowSectors.sector_four_mass_eq_zero_eventually` | Actual sector 4 is empty beyond the uniform threshold. |
+| `MacroscopicEarlyProfile.proposition_three_twelve` | Joint form of the first three profiles, plus empty sector 4, with one threshold for `A=3`. |
+| `MacroscopicBoundedHosts.card_boundedHosts_le_linear_profile_eventually` | For each fixed component-size bound `K`, at most `M^(1+epsilon)` hosts, uniformly in every lower endpoint `N≥2` and `A`. |
+| `SectorFiveProfile.macroscopic_sector_five_le_profile_eventually` | Actual sector 5 at most `M^epsilon*M*Q^(2/3)`. |
+| `MacroscopicTwoDefectStarts.card_twoDefectBaseCover_le_rpow_eventually` | Actual two-defect base cover has at most `M^epsilon` members on the macroscopic domain. |
+| `SectorSixProfile.card_sector_six_le_half_profile_eventually` | Actual sector-6 host count at most `M^epsilon*sqrt(M)`. |
+| `SectorSixProfile.macroscopic_sector_six_le_profile_eventually` | Actual sector 6 at most `M^epsilon*sqrt(M)*Q`. |
+| `SizeTwoHostAsymptotics.macroscopic_sector_seven_le_profile_eventually` | Actual sector 7 at most `M^epsilon*M*Q^(2/3)`. |
+
+For the combined sector statements, fix `0<betaMin<betaMax`, `delta>0`
+and `epsilon>0`. The threshold precedes all `M≥M0` and `L` in
+`betaMin*log M ≤ L+1 ≤ betaMax*log M`. The joint manuscript choice is
+`A=3`. Several individual statements are uniform in every natural `A`
+or every `A≥1`; their declarations retain this stronger quantifier order.
+No bound on the ratio of the two starts or balance `Q≈M` is used.
+
+The small-product proof shows `(B+1)^c#≤P#≤M`, obtains a uniform
+pointwise `2^tau≤M^epsilon`, and pays its two systematic branches by hosts
+and rational mass. It does not claim the growing-moment inequality itself.
+For sector 2, the strict positive-dimensional channel convention omits the
+harmless additional `M^(3/2)` term printed in Proposition 3.12.
+
+The alignment argument proves the density specialization needed by the
+actual fourth sector, namely eventual `6c#≤B`. The fully general fixed
+`alpha>0` statement of Proposition 3.19 is not asserted. Defect estimates
+are transported separately to both shifted starts `x−1` and `y−1`;
+comparability of the endpoints is not hidden in this step.
+
+Sector 5's strict average forces a component of size at most **11**.
+Sector 6's density forces size two, and three corrected defects force two
+true defective occurrences in one block. Its partner fibre then has degree
+one. Sector 7 uses the exact integer rank budget to obtain
+`3*tau≤2B+7`, hence a pointwise factor `8*Q^(2/3)`, followed by the finite
+size-two harmonic/Euler host count.
+
+`RemainingDeepProfile` records an earlier valid grouping isolating sectors
+5,6,8. It remains a finite reduction; `NonterminalProfile` gives the final
+stronger reduction after the individual fifth and sixth sectors are closed.
+
+## Internal divisor, Pell and split-product counts
+
+Sources: article pages 17–20, Lemmas 3.13–3.16 and the companion's
+polynomial-height arguments. The newly established rate is the uniform
+`M^epsilon` consequence, **not** the more precise displayed
+`exp(O(log M/loglog M))` rate.
+
+| Declaration | Established result |
+|---|---|
+| `DivisorSubpolynomial.card_divisors_pow_le_log_power_mul_self` | Elementary factorization bound `tau(n)^k≤(log_2(n)+1)^(k*2^k)*n` for positive `n`. |
+| `DivisorSubpolynomial.card_divisors_le_rpow_eventually` | For fixed natural `K` and `epsilon>0`, every `n≤M^K` has at most `M^epsilon` divisors beyond one threshold. Zero is included through the finite-divisor convention. |
+| `PolynomialPellCount.pellBox_atMost_rpow_eventually` | Internal uniform count of the actual polynomial-height generalized Pell box, for positive coefficients, nonsquare rational ratio and nonzero right-hand side. |
+| `SplitProductLocalization.squarefreeKernel_shift_dvd` | Each positive factor's squarefree part divides the coefficient times the nonzero shift-difference product. |
+| `PositiveSquareclassPairs.positiveSquareclassBox_atMost_rpow_eventually` | Positive-root count including equal squareclasses by signed factorization, and unequal squareclasses by the internal Pell bound. |
+| `PolynomialSplitProducts.splitProductStart_atMost_rpow_eventually` | Uniform count of integer starts in a fixed-degree positive split product, after localizing two squareclasses. |
+| `PolynomialSplitSolutions.splitProductSolution_atMost_rpow_eventually` | Uniform count of all integer pairs `(X,Y)`, accounting for both signs of `Y`; no extra height bound on `Y`. |
+| `MacroscopicOneSidedFibers.offsetProductNatFiber_atMost_rpow_eventually` | True natural `(start,root)` fibres of all degrees from 2 through a fixed bound, at most `M^epsilon`. |
+
+The threshold is selected after the fixed height exponent and degree, and
+before coefficients, distinct shift tuples and finite solution families.
+All shifted factors are positive. The split coefficient is positive; it
+need not be squarefree in the new bound. Fixing a positive factor determines
+its canonical nonnegative root, so the natural fibre injection is exact.
+
+`MacroscopicComponentNormalization`, `MacroscopicComponentFibers` and
+`MacroscopicBaseFibers` establish the actual component equation and the
+coefficient `sf(d*P)` before the mobile start is counted. Height bounds are
+polynomial in the upper scale, and the smooth squareclass population is
+uniformly subpolynomial. `MacroscopicSmoothKernels` even places its threshold
+before the auxiliary height cutoff, by bounding the entire squarefree
+smooth population by `2^pi(B)`.
+
+No Evertse–Silverman, Nicolas–Robin or unproved Pell proposition is a premise
+of these new endpoints. The proof uses the retained, internally proved
+conductor descent and unit-orbit counting, then the new elementary divisor
+bound. A historical namespace named after an external interface can still
+supply definitions; that name does not establish a dependency on an
+external premise. The exact exported theorem types and kernel transcript
+are authoritative. No height-free integral-point count is asserted.
+
+## Lemma 3.24: full shifted small-kernel energy
+
+Source: article pages 23–24, equation (3.21). Define
+
+```text
+A_T(x) = #{i in range(L+1) : K_(L+1)(x−1+i) ≤ T}
+windowEnergy = sum_{x in Ico X (2X)} choose(A_T(x),2).
+```
+
+`MacroscopicKernelEnergy.lemma_three_twenty_four` proves, for every fixed
+`C,D≥0` and `epsilon>0`, a threshold before all `X≥X0`, lengths `L` and
+**natural** caps `T`, under
+
+```text
+L+1 ≤ C*log X,     T ≤ D*sqrt(X*(L+1)),
+```
+
+the bound
+
+```text
+windowEnergy ≤ X^(2/3+epsilon)*(L+1)^2.
+```
+
+The natural cap is applied to integer kernels; the displayed endpoint does
+not define a separate real-cap energy. It needs no lower logarithmic
+bound. Its proof includes every following step, without an energy or
+population estimate supplied as a premise:
+
+- `ShiftedKernelBoxCount`: the integer equation `q*r+h=q'*s`, its gcd
+  obstruction, spacing and dyadic affine-fibre bound.
+- `ShiftedKernelQuotients` and `ShiftedKernelRangeCount`: actual canonical
+  quotients have kernel one; their square/smooth representations give the
+  finite joint box count.
+- `SmallKernelAnchors`: either kernel below `floor(X^(1/3))` supplies a
+  low-kernel anchor counted up to `3X`.
+- `ShiftedKernelDyadicCover`: exhaustive dyadic ranges based at
+  `ceil(X^(1/3))`, with the number of range pairs absorbed uniformly.
+- `ShiftedKernelPairCount`: complete two-kernel pair count on `[X,2X)`.
+- `KernelWindowEnergy`: exact binomial double counting of actual window
+  incidences and at most `L+1` placements per shifted pair.
+- `MacroscopicKernelEnergy`: three adjacent value slices cover
+  `[X−1,2X+L)`, including all boundary occurrences, before summing shifts.
+
+The terminal sector's actual graph components, determinants, partner
+fibres and rank strata must still be linked to this energy estimate to
+prove Proposition 3.25. This distinction is retained in the final scope.
+
+## Explicit rational lower bounds (3.22)–(3.23)
+
+Source: article page 24. `RationalLowerBounds` embeds an actual even exact-
+unit code into the relation space without assuming that the canonical code
+selected this particular rational channel. `RationalFamilyMass` keeps both
+orientations and proves they are distinct. `IntervalRationalLowerBounds`
+checks actual interval membership and separation before taking the mass.
+
+For every fixed upper logarithmic band, the eventual bounds are
+
+```text
+R2(N,L) ≥ (N/3−1) * (2^(floor((B+1)/3)−1)−1),
+R2_delta(M,L) ≥ (M−2*M^delta−2) * (2^(floor(B/2)−1)−1).
+```
+
+The endpoints are respectively
+`equation_three_twenty_two_eventually` and
+`equation_three_twenty_three_eventually` in that module. All exponents and
+subtractions inside the natural weight are natural arithmetic, as declared.
+The macroscopic `delta>0` is fixed before its threshold. Both bounds remain
+valid when their coefficient is negative or the finite population is empty.
+The particular positive lower exponents at critical balance are not exported
+as separate asymptotic lower-bound declarations in this batch.
+
+## Capped masses and the remaining terminal obligation
+
+`CappedRelationMass` defines the literal start and full-value sums
+`sum min(T,2^rho−1)` with a real cap and proves monotonicity, elementary
+bounds and the same-cap finite inequality `Rval[T]≤4*Rstart[T]+3*Hval`.
+`CappedSectorMass` provides the exact capped residual partition, and
+`min(T,a+b)≤a+min(T,b)` leaves the systematic part uncapped. Its finite
+`min(T,E*Q)≤E*min(T,Q)` step explicitly requires `E≥1` and `T≥0`.
+
+`CappedSectorSixProfile.capped_sector_six_le_profile_eventually` proves the
+actual sector-6 bound `M^epsilon*sqrt(M)*min(T,Q)` with a common threshold
+before every natural `A` and every real `T≥0`.
+
+`NonterminalProfile` combines the completed sectors and leaves precisely
+sector 8 explicit. Its capped start reduction uses
+
+```text
+cappedProfile(M,Q,T) = M^(3/2)*Q^(1/6) + M*Q^(2/3)
+                      + M^(2/3)*min(T,Q).
+```
+
+The bound is `Rstart[T]≤M^epsilon*cappedProfile+capSector8`, uniform in the
+cap. The uncapped reduction analogously gives
+`Rstart≤M^epsilon*rawProfile+sector8`, where
+
+```text
+rawProfile(M,Q) = M^(3/2)*Q^(1/6) + M*Q^(2/3) + M^(2/3)*Q.
+```
+
+These are proved reductions, not completed Theorem 3.1 or Proposition 3.27.
+`ProfileMonomials` proves the numerical weighted arithmetic–geometric mean
+step `rawProfile≤2*(M^(5/3)+M^(2/3)*Q)` and the domination of every row of
+the assembly table. `ProfileAssembly` keeps the necessary sector bounds as
+explicit hypotheses. It does not hide the missing terminal estimate in a
+new axiom or unmentioned assumption.
+
 ## Dependencies, audit and historical boundary
 
-The current endpoints add no external literature premise. They reuse the
-historical affine Fourier normalization, tree-boundary maps, finite and
-infinite Rademacher measures, cylinder transfer, private-prime arithmetic
-and square-product parity identities, together with mathlib.
+`PaperCV282/Audit.lean` covers all 619 named declarations in the 89 mathematical modules, including all 7 named local instances. Batch 8 adds 347 theorems and 53 definitions/instances; the complete per-module counts are in the source manifest.
 
-`PaperCV282/Audit.lean` covers every named declaration in the thirty modules,
-including all five named local instances. Batch 7 adds 35 theorems:
-5 in `IntervalRationalMass`, 5 in `MacroscopicCanonicalCode`,
-4 in `RationalGeometryMass`, 7 in `RationalHeightMass`,
-4 in `LogarithmicWordPowers`, 4 in `RationalMassAsymptotics` and
-6 in `RationalProfile`. It also adds three definitions: the binary
-geometry mass and the two canonical-height masses.
-The full inventory and instance names are recorded in the source manifest.
 The source inventory and kernel-axiom transcript are checked separately by
-`scripts/check_v282_audit.py`; coverage alone is not proof verification.
+`scripts/check_v282_audit.py`. Failure-path tests exercise missing entries,
+duplicate entries, forbidden dependencies and unsupported declaration forms.
+The complete module list and every named local instance are in the source
+manifest. Coverage alone is not a replacement for Lean's kernel check.
 
 The original PDF hashes and Lean/mathlib versions are listed in
 [`source_manifest.json`](source_manifest.json). The historical `PaperC`
