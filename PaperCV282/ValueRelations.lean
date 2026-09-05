@@ -10,9 +10,9 @@ Paper C v2.8.2. The full relation space is the existing `Affine.RelationSpace`.
 A map `P` records the two block parities. Its kernel inside the full relation
 space represents the relations satisfying both parity constraints.
 
-The connection of those constrained relations to the two start trees, and
-the uniform arithmetic estimate for their nonzero hosts, remain separate.
-No asymptotic estimate is asserted by this module.
+`TwoWindowParity` identifies those constrained relations with the two actual
+start trees. The uniform arithmetic estimate for their nonzero hosts remains
+separate. No asymptotic estimate is asserted by this module.
 -/
 
 namespace PaperC.V282.ValueRelations

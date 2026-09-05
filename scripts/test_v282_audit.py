@@ -34,10 +34,16 @@ class AuditTests(unittest.TestCase):
 
     def test_rejects_uninventoried_declaration_forms(self):
         source = "namespace PaperC.V282.Test\ntheorem t : True := by trivial\n"
-        for command in ("abbrev untracked : Nat := 0", "instance untracked : Inhabited Nat := ⟨0⟩",
+        for command in ("abbrev untracked : Nat := 0", "instance : Inhabited Nat := ⟨0⟩",
                         "constant untracked : Nat", "example : True := by trivial"):
             with self.subTest(command=command), self.assertRaises(ValueError):
                 declarations(source + command, "test")
+
+    def test_named_instances_are_inventoried(self):
+        source = "namespace PaperC.V282.Test\n"
+        for prefix in ("", "local "):
+            self.assertEqual(declarations(source + prefix +
+                "instance tracked : Inhabited Nat := ⟨0⟩", "test"), ["PaperC.V282.Test.tracked"])
 
     def test_missing_inventory_and_unimported_module(self):
         with tempfile.TemporaryDirectory() as temporary:

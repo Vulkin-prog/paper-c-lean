@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "manifest_kind": "manuscript_provenance_and_finite_scope",
+  "manifest_kind": "manuscript_provenance_and_formalization_scope",
   "target_version": "2.8.2",
   "target_language": "en",
   "document_date": "2026-09-05",
@@ -42,7 +42,10 @@
         {
           "item": "Proposition 3.26",
           "printed_page": 25,
-          "equations": ["3.24", "3.25"]
+          "equations": [
+            "3.24",
+            "3.25"
+          ]
         },
         {
           "item": "Formalization and availability",
@@ -65,29 +68,48 @@
   "mathematical_modules": [
     "PaperCV282/PrescribedValues.lean",
     "PaperCV282/WindowValues.lean",
-    "PaperCV282/ValueRelations.lean"
+    "PaperCV282/InfiniteWordTransfer.lean",
+    "PaperCV282/ValueRelations.lean",
+    "PaperCV282/TwoWindowParity.lean",
+    "PaperCV282/ValueSquareRelations.lean",
+    "PaperCV282/TwoWindowSquareHosts.lean"
   ],
   "scope": {
     "corollary_2_6": {
       "covered": [
         "Pointwise probability error in an adequate finite prime cylinder, with the actual defective-vertex count.",
-        "Exact uniform word probability for every fixed assignment of the small prime coordinates."
+        "Exact uniform word probability for every fixed assignment of the small prime coordinates in the finite cylinder.",
+        "Measurable infinite word events and exact unconditional finite/infinite identities for their measures and real probabilities.",
+        "Pointwise real inequality (2.6) under the actual infinite Rademacher law, with no exposed cylinder cutoff."
       ],
       "remaining": [
-        "Explicit transfer of the word event and conditional formulation to the infinite source model.",
+        "Explicit infinite conditional-kernel formulation corresponding to the finite fixed-assignment laws.",
         "Uniform summed first-moment estimate over masks and dictionaries in a fixed logarithmic band."
       ]
     },
     "proposition_3_26": {
       "covered": [
-        "Abstract nullity comparison after imposing a linear map into a two-dimensional binary space.",
-        "Factor-four relation-weight comparison and finite sum with a nonzero-host correction."
+        "Abstract two-parity nullity and finite relation-weight comparisons.",
+        "Actual two-window valuation matrix and separate block-parity maps.",
+        "Linear equivalence between the constrained full-value relation space and the actual two-start relation space.",
+        "Full-value relations characterized by square products, and nonzero nullity by a nonempty indexed square-product subset, under positivity and cylinder adequacy.",
+        "Identification of full-value hosts with unrestricted arithmetic square-product hosts, without either block-parity restriction.",
+        "Finite inequality (3.24) over actual ordered separated pairs, with the unrestricted arithmetic host correction."
       ],
+      "finite_endpoint": {
+        "declaration": "PaperC.V282.TwoWindowSquareHosts.finite_equation_three_twenty_four_square_hosts",
+        "parameters": "M L : Nat; I : Finset Nat; word length B = L + 1",
+        "hypotheses": [
+          "For every x in I, 2 <= x.",
+          "For every x in I, x + L <= M + 1."
+        ],
+        "pair_set": "Ordered pairs (x,y) in I x I with L < Nat.dist x y.",
+        "host_meaning": "A nonempty indexed subset of the full vertex occurrences has square product; no parity restriction in either block.",
+        "host_definition_depends_on_cylinder_cutoff": false
+      },
       "remaining": [
-        "Actual two-window valuation matrix and block-parity instantiation.",
-        "Identification with relative-sign start relations by the tree-boundary bijection.",
-        "Identification of the ordered separated-pair sum and unrestricted square-relation hosts.",
-        "Uniform arithmetic host and relation estimates needed for the asymptotic conclusion."
+        "Uniform quantitative estimate for unrestricted square-product hosts in the logarithmic and spatial regimes of the article.",
+        "Theorem 3.1 raw relation profile and its combination with the finite inequality to obtain asymptotic (3.25), with the stated geometric uniformity."
       ]
     },
     "additional_exclusions": [
@@ -95,7 +117,7 @@
       "Theorem 3.1 uniform two-window relation estimate.",
       "The complete signed marked-field, dictionary, and two-source crossover theorems."
     ],
-    "new_external_literature_premises_in_finite_endpoints": []
+    "new_external_literature_premises_in_current_endpoints": []
   },
   "qualification": {
     "new_palomar_qualification_claimed": false,
@@ -103,5 +125,22 @@
     "complete_pdf_formalization_claimed": false,
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
+  },
+  "development_batch": 2,
+  "declaration_inventory": {
+    "mathematical_module_count": 7,
+    "named_declarations": 77,
+    "theorems": 57,
+    "definitions": 19,
+    "named_instances": 1,
+    "named_instance": "PaperC.V282.InfiniteWordTransfer.instMeasurableSpaceF2Discrete",
+    "coverage": "All named declarations in the seven mathematical modules, including the named local measurable-space instance.",
+    "audit_file": "PaperCV282/Audit.lean",
+    "checker": "scripts/check_v282_audit.py"
+  },
+  "manuscript_notes": {
+    "path": "PaperCV282/MANUSCRIPT_NOTES.md",
+    "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
+    "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2."
   }
 }

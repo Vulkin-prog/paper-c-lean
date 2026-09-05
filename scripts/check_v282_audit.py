@@ -2,7 +2,7 @@
 """Check the named declaration inventory and kernel axiom output of PaperCV282.
 
 The source inventory deliberately supports this overlay's simple layout: one
-qualified namespace per proof module and named def/theorem/lemma declarations.
+qualified namespace per proof module and named def/theorem/lemma/instance declarations.
 It is a coverage/hygiene check, not a Lean parser or a replacement for the kernel.
 Unsupported declaration forms fail rather than silently leaving the inventory.
 """
@@ -22,7 +22,7 @@ MATHLIB_PIN = "81a5d257c8e410db227a6665ed08f64fea08e997"
 FORBIDDEN = re.compile(
     r"\b(sorry|admit|axiom|native_decide|unsafe|partial|opaque|"
     r"macro|elab|syntax|run_elab|run_meta|initialize|inductive|structure|class|"
-    r"abbrev|instance|constant|example|export|alias)\b"
+    r"abbrev|constant|example|export|alias)\b"
 )
 
 
@@ -51,7 +51,7 @@ def uncomment(source):
 
 def declarations(source, label):
     code = uncomment(source)
-    # This unnamed, fixed field instance is the only supported instance command.
+    # This fixed field instance is the only supported unnamed instance command.
     # Its proof is checked transitively by the actual kernel axiom transcript.
     code = re.sub(r"^local instance : Fact \(Nat.Prime 2\) := Fact.mk Nat.prime_two$",
                   "", code, flags=re.M)
@@ -63,8 +63,8 @@ def declarations(source, label):
     namespaces = re.findall(r"^namespace\s+(\S+)\s*$", code, re.M)
     if len(namespaces) != 1 or not namespaces[0].startswith("PaperC.V282."):
         raise ValueError(f"{label}: expected one qualified PaperC.V282 namespace")
-    names = re.findall(r"^(?:def|theorem|lemma)\s+([A-Za-z_][A-Za-z_0-9']*)\b", code, re.M)
-    if not names or len(names) != len(re.findall(r"\b(?:def|theorem|lemma)\b", code)):
+    names = re.findall(r"^(?:local\s+)?(?:def|theorem|lemma|instance)\s+([A-Za-z_][A-Za-z_0-9']*)\b", code, re.M)
+    if not names or len(names) != len(re.findall(r"\b(?:def|theorem|lemma|instance)\b", code)):
         raise ValueError(f"{label}: unsupported or empty declaration layout")
     return [f"{namespaces[0]}.{name}" for name in names]
 

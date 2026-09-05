@@ -1,108 +1,142 @@
-# Paper C v2.8.2 finite endpoint ledger
+# Paper C v2.8.2 endpoint ledger
 
-This ledger describes the first three mathematical modules of `PaperCV282`.
-“Proved in the finite representation” refers to the supplied Lean proof
-terms and their stated mathematical scope; build and qualification outcomes
-belong in separate validation evidence. No row is a new Palomar record.
+This ledger describes the current seven-module development: 57 theorems,
+19 definitions and one named local instance, totaling 77 audited named
+declarations. It records the mathematical scope of the supplied proof terms;
+build and qualification outcomes belong in separate evidence. No entry is a
+new Palomar record. Names below have prefix `PaperC.V282.`.
 
-## Corollary 2.6: prescribed words
+## Corollary 2.6: infinite pointwise bound and finite conditional marginal
 
-Source: article page 9, equation (2.6) and the following conditional and
-first-moment clauses. Words are encoded by binary bits in the existing
-completely multiplicative Rademacher model.
+Source: article page 9, equation (2.6), its conditional clause and the
+following summed first-moment statement.
 
-All names in this table have prefix `PaperC.V282.`.
+| Declaration | Established result |
+|---|---|
+| `PrescribedValues.probability_eq_eta_weight` | Exact finite affine probability `η 2^ρ / 2^B`. |
+| `PrescribedValues.probability_error_le_defect_weight` | Error at most `(2^m - 1) / 2^B` under private-coordinate witnesses outside an `m`-element defect set. |
+| `PrescribedValues.probability_eq_uniform_event` | Exact identification of the affine probability with the finite event of prescribed value bits. |
+| `PrescribedValues.assemble_solves_values_iff` | Fixing small-prime coordinates translates the right-hand side by their actual contribution. |
+| `WindowValues.corollary_two_six_pointwise` | Equation (2.6) in a finite cylinder, using the actual defective-vertex count. |
+| `WindowValues.corollary_two_six_conditioned` | Exact word probability `2^(-B)` for each fixed small-prime assignment, when all vertices are nondefective above the threshold. |
+| `InfiniteWordTransfer.infiniteWordEvent_eq_preimage` | The infinite word event is the preimage of its event on any adequate finite cylinder. |
+| `InfiniteWordTransfer.measurableSet_infiniteWordEvent` | Measurability in the actual infinite product model. |
+| `InfiniteWordTransfer.infiniteWordEvent_measure_eq_uniformSolutionProbability` | Exact equality of source measure with `ENNReal.ofReal` of the rational affine probability. |
+| `InfiniteWordTransfer.infiniteWordProbability_eq_uniformSolutionProbability` | Exact real-valued finite/infinite probability identity. |
+| `InfiniteWordTransfer.corollary_two_six_pointwise_infinite` | The real pointwise bound (2.6) for the infinite-product word probability. |
 
-| Declaration | Content | Boundary |
-|---|---|---|
-| `PrescribedValues.probability_eq_eta_weight` | The exact affine probability is `η 2^ρ / 2^B`. | Arbitrary finite uniform vector space and finite system of rows. |
-| `PrescribedValues.abs_probability_sub_baseline_le` | A supplied bound `ρ ≤ m` implies error at most `(2^m - 1) / 2^B`. | Finite algebraic estimate, uniform in the right-hand side. |
-| `PrescribedValues.relationRho_le_card_of_private_coordinates` | The full-value nullity is at most the number of rows without private-coordinate witnesses. | No even-cardinality constraint is imposed on full-value relations. |
-| `PrescribedValues.probability_eq_uniform_event` | The affine probability equals the finite-cylinder event probability for the displayed value bits. | An arbitrary family of integer arguments; cylinder adequacy is supplied by the window endpoints. |
-| `PrescribedValues.assemble_solves_values_iff` | Fixing small prime coordinates translates the right-hand side by their contribution. | Exact equations for the finite small/large coordinate split. |
-| `PrescribedValues.conditioned_value_probability_eq_baseline` | Every right-hand side has probability `2^(-B)` after any small-prime assignment is fixed. | Requires private-coordinate witnesses in the remaining large-coordinate system. |
-| `WindowValues.private_prime_of_not_defective` | An actual nondefective vertex has an odd-valuation prime coordinate private within the window and represented in the cylinder. | Requires `x ≥ 2`, `x - 1 + B ≤ M + 1`, and `B ≤ H`. |
-| `WindowValues.corollary_two_six_pointwise` | `abs(P(word) - 2^(-B)) ≤ 2^(-B) (2^(m_B(x)) - 1)`. | Proved in the finite cylinder, with `m_B(x)` the cardinality of the actual defect-index set. |
-| `WindowValues.corollary_two_six_conditioned` | The exact word probability is `2^(-B)` for each fixed small-prime assignment. | Requires every vertex to be nondefective above `Y`, `B ≤ Y`, and the same positivity/cylinder bounds. |
+The last endpoint is, for `x ≥ 2` and every `b : Fin B → F₂`,
 
-For the last two declarations, the vertex function is exactly
-`j ↦ x - 1 + j`, with `j < B`. Distinct indices have distinct vertices, so
-the defect-index count is the article's defective-vertex count. The bound
-`B ≤ Y` slightly extends the article's sufficient range `Y > B`: primes
-used as pivots are strictly above `Y`, and the window diameter is at most
-`B - 1`.
+```text
+|infiniteWordProbability x B b - 1 / 2^B|
+  ≤ (2^(defectIndices B x B).card - 1) / 2^B.
+```
 
-The pointwise statement permits any `B`, including the empty-window case;
-the article's intended positive word lengths are covered. Positivity of the
-arguments is required explicitly through `x ≥ 2`; no use of a truncated
-valuation at integer zero is hidden in the paper-facing endpoints.
+It has no exposed cutoff parameter: it chooses an adequate cylinder
+internally and uses the exact source-law identity. Vertices are
+`j ↦ x - 1 + j`, with `j < B`; distinct indices give distinct vertices.
+The law is the retained `infiniteRademacherMeasure`, not a new model of
+independent signs on integers.
+
+The finite window endpoints require `x ≥ 2` and
+`x - 1 + B ≤ M + 1`, so the cutoff contains every vertex. The conditional
+endpoint further assumes `B ≤ Y` and
+`∀ i : Fin B, ¬HDefective Y (vertex x B i)`. It proves uniformity for each
+fixed assignment of represented primes at most `Y`. Using `B ≤ Y` slightly
+extends the sufficient range `Y > B` printed in the article. The empty
+window is also covered; the article's positive lengths are included without
+relying on values at integer zero.
 
 Remaining for the full Corollary 2.6:
 
-1. State and prove the equality with the corresponding infinite-product word
-   event and the conditional kernel, using the retained cylinder transfers.
-   The finite fixed-assignment representation itself is already supplied.
-2. Sum the bound over deterministic masks and `m` distinct words, identifying
-   the defect sum with the applicable retained arithmetic bounds in the
-   required uniform logarithmic band.
-3. Close the quantified asymptotic first-moment error
-   `O(m p_B N^(1/2+o(1)))`. No such summed asymptotic endpoint is claimed yet.
+1. Expose the infinite conditional probability kernel and its relationship
+   to the proved finite fixed-assignment laws.
+2. Sum over deterministic masks and distinct words, connect to uniform
+   defect-weight estimates in the logarithmic band, and conclude
+   `O(m p_B N^(1/2+o(1)))` with explicit uniformity quantifiers.
 
-## Proposition 3.26: removing two block parities
+The unconditional word-event transfer and infinite pointwise estimate are
+complete and are not part of these remaining obligations.
 
-Source: article page 25, proof of Proposition 3.26 and equations
-(3.24)–(3.25).
+The intended hypothesis is an odd **valuation** at a prime above `Y`.
+[`MANUSCRIPT_NOTES.md`](MANUSCRIPT_NOTES.md) proposes clearer wording for a
+future revision. The current source identity remains v2.8.2.
 
-All names below have prefix `PaperC.V282.ValueRelations.`. For an arbitrary
-full-value system `A` and linear map `P` into `Fin 2 → F₂`, write `ρ_full`
-for `relationRho A` and `ρ_par` for `parityNullity A P`.
+## Proposition 3.26: actual parities and the finite arithmetic inequality
 
-| Declaration | Proved finite statement |
+Source: article page 25, Proposition 3.26 and equations (3.24)–(3.25).
+In these modules `B = L + 1`.
+
+| Declaration | Established result |
 |---|---|
-| `mem_parity_kernel_iff` | A relation is in the constrained kernel exactly when `P u = 0`. |
-| `parityNullity_le` | `ρ_par ≤ ρ_full`. |
-| `relationRho_le_parityNullity_add_two` | `ρ_full ≤ ρ_par + 2`. |
-| `relation_weight_le_four_parity_weight_add_host` | `2^ρ_full - 1 ≤ 4 (2^ρ_par - 1) + 3 · 1_{ρ_full ≠ 0}`. |
-| `sum_relation_weight_le_four_parity_weight_add_hosts` | The same comparison summed over any finite index set, with the extra term equal to three times its number of nonzero full-relation hosts. |
+| `ValueRelations.relationRho_le_parityNullity_add_two` | Abstract nullity loss at most two under two binary linear constraints. |
+| `TwoWindowParity.twoValueSystem` and `TwoWindowParity.blockParity` | Actual valuation rows of both windows and separate sums of coefficients in the two blocks. |
+| `TwoWindowParity.startRelationEquivParityKernel` | Linear equivalence from actual two-start relations to the kernel of both parities inside the full-value relation space. |
+| `TwoWindowParity.parityNullity_eq_start_relationRho` | Exact equality of constrained full-value nullity and start-system nullity. |
+| `TwoWindowParity.twoValueSystem_eq_consecutive` | Historical complete-vertex labels equal the displayed consecutive windows under positive-start hypotheses. |
+| `TwoWindowParity.value_weight_le_four_start_weight_add_host` | Pointwise factor-four comparison for actual matrices, with correction only at a nonzero full-value kernel. |
+| `ValueSquareRelations.mem_value_relation_iff_square_product` | A full-value relation is exactly a square product over its support, for positive values covered by the cutoff. |
+| `ValueSquareRelations.relationRho_ne_zero_iff_exists_nonempty_square_product` | Nonzero full-value nullity is equivalent to a nonempty indexed square-product subset. |
+| `TwoWindowSquareHosts.valueRelationalHosts_eq_squareProductHosts` | Full-value nullity hosts equal the unrestricted arithmetic square-product hosts under positivity and cylinder adequacy. |
+| `TwoWindowSquareHosts.finite_equation_three_twenty_four_square_hosts` | Finite (3.24) on ordered separated pairs, with actual start relations and unrestricted square-product hosts. |
 
-These are natural-number weights; subtraction is harmless because every
-power of two is at least one. The host correction vanishes at a zero full
-kernel. No assumption that the two parity equations are independent is
-needed: their rank is at most two.
+The final finite endpoint accepts `M L : ℕ` and `I : Finset ℕ`, with
 
-This is the **abstract finite kernel of Proposition 3.26**, not the completed
-proposition. The following identifications and estimates remain open in
-this overlay:
+```text
+∀ x ∈ I, 2 ≤ x
+∀ x ∈ I, x + L ≤ M + 1.
+```
 
-1. Instantiate `A` with all `2B` valuation rows of two separated windows and
-   instantiate `P` with the sums of coefficients in the two actual blocks.
-2. Use the retained tree-boundary bijection to identify the constrained
-   relation space with the two-start relative-sign relation space at length
-   `B - 1`. The current `parityNullity` is not yet identified with the
-   article's `ρ_(B-1)(x,y)`.
-3. Instantiate the finite index set with the article's ordered separated
-   pairs, and identify the correction count with the relevant unrestricted
-   square-relation host count. This yields the paper-specific finite
-   inequality (3.24).
-4. Supply the uniform host estimate of Proposition 3.7, the raw profile of
-   Theorem 3.1, and their compatibility with the macroscopic, dyadic and
-   bounded-ratio geometries. These give the asymptotic profile (3.25).
+Writing `S = separatedPairs I L`, its conclusion is
 
-The cap in Proposition 3.27 is not implemented here. A bound for an arbitrary
-two-equation map, or an uninstantiated finite sum, is not a substitute for
-that capped arithmetic estimate.
+```text
+∑ (x,y) ∈ S, (2^ρval(M,x,y,L) - 1)
+  ≤ 4 * ∑ (x,y) ∈ S, (2^ρstart(M,x,y,L) - 1)
+      + 3 * (squareProductHosts L S).card.
+```
 
-## Dependencies and evidence
+Here `S` is exactly the ordered pairs from `I × I` with
+`L < Nat.dist x y`. The set `I` may be an interval or deterministic mask.
+The cutoff contains the rightmost vertex `x + L - 1` of each window.
 
-The finite endpoints above add no literature assumptions. They reuse the
-retained affine Fourier normalization, finite Rademacher model,
-small/large-prime split and private-pivot arithmetic, together with mathlib
-linear algebra and finite sums. The broader historical development still
-has its own explicit literature interfaces; the full v2.8.2 dependency
-boundary has not yet been assembled.
+`squareProductHosts` is defined without a prime-cylinder parameter: a pair
+belongs when a **nonempty indexed subset** of its full vertex occurrences
+has square product. There is no even-cardinality restriction in either
+block. It includes pairs with nonzero full-value nullity but zero start
+nullity; the historical start-relation host set cannot replace it.
 
-The exact PDF inputs and Lean/mathlib versions are listed in
-[`source_manifest.json`](source_manifest.json). The historical proof core
-and prior Palomar records are preserved. Neither their evidence nor the
-earlier `PaperCV11` ledger qualifies these new endpoints or certifies all
-claims in the two v2.8.2 PDFs.
+The real block parities, tree-boundary identification, ordered-pair sum and
+arithmetic meaning of the host correction are now proved. The abstract
+`ValueRelations` bounds remain reusable components, rather than the limit
+of the current implementation.
+
+Remaining for the full Proposition 3.26:
+
+1. Prove the requisite **uniform quantitative bound** for unrestricted
+   square-product hosts in the logarithmic and spatial regimes of the article.
+2. Complete Theorem 3.1's raw relation profile and combine it with the finite
+   inequality to obtain (3.25), with the stated macroscopic, dyadic and
+   bounded-ratio uniformity.
+
+Finite (3.24) is therefore covered under explicit hypotheses; the asymptotic
+proposition is not yet complete. Proposition 3.27's capped profile remains
+separate work.
+
+## Dependencies, audit and historical boundary
+
+The current endpoints add no external literature premise. They reuse the
+historical affine Fourier normalization, tree-boundary maps, finite and
+infinite Rademacher measures, cylinder transfer, private-prime arithmetic
+and square-product parity identities, together with mathlib.
+
+`PaperCV282/Audit.lean` includes every named declaration in the seven modules,
+including the local measurable-space instance
+`InfiniteWordTransfer.instMeasurableSpaceF2Discrete`. The source inventory
+and kernel-axiom transcript are checked separately by
+`scripts/check_v282_audit.py`; coverage alone is not proof verification.
+
+The original PDF hashes and Lean/mathlib versions are listed in
+[`source_manifest.json`](source_manifest.json). The historical `PaperC`
+core, earlier `PaperCV11` overlay and prior Palomar records keep their
+original identities and scope. No new Palomar or Comparator qualification,
+or certification of the complete v2.8.2 PDFs, is claimed by this ledger.

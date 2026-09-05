@@ -1,3 +1,7 @@
-import PaperCV282.ValueRelations
+import PaperCV282.InfiniteWordTransfer
 import PaperCV282.PrescribedValues
+import PaperCV282.TwoWindowParity
+import PaperCV282.TwoWindowSquareHosts
+import PaperCV282.ValueRelations
+import PaperCV282.ValueSquareRelations
 import PaperCV282.WindowValues
