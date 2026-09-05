@@ -9,6 +9,9 @@ name = "PaperC"
 name = "PaperCV11"
 
 [[lean_lib]]
+name = "PaperCV282"
+
+[[lean_lib]]
 name = "Challenge"
 
 [[lean_lib]]

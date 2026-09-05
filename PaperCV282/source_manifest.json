@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "manifest_kind": "manuscript_provenance_and_finite_scope",
+  "target_version": "2.8.2",
+  "target_language": "en",
+  "document_date": "2026-09-05",
+  "library": "PaperCV282",
+  "namespace": "PaperC.V282",
+  "retained_core": {
+    "library": "PaperC",
+    "authority_commit": "b3cf107d2df629453a5da8e84f2bad29eea0bf94",
+    "historical_manuscript_target": "v0.9",
+    "policy": "Additive overlay; historical canonical declarations and qualification scope are preserved."
+  },
+  "earlier_overlay": {
+    "library": "PaperCV11",
+    "role": "Earlier reusable development; its name and original theorem numbering are retained."
+  },
+  "toolchain": {
+    "lean": "leanprover/lean4:v4.32.0",
+    "mathlib_tag": "v4.32.0",
+    "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+    "mathlib_repository": "https://github.com/leanprover-community/mathlib4.git",
+    "upgrade_required": false
+  },
+  "sources": [
+    {
+      "role": "article",
+      "title": "Long runs and rare patterns of a random completely multiplicative function",
+      "author": "Brice Pouly",
+      "filename": "paper_C_version_2_8_2_en.pdf",
+      "page_count": 52,
+      "size_bytes": 693888,
+      "sha256": "263682a1f2aa8301f06bf811fea1f81f42cd4493ccc4e1b94242a66cacfbd623",
+      "source_kind": "user_supplied_pdf",
+      "current_batch_locators": [
+        {
+          "item": "Corollary 2.6",
+          "printed_page": 9,
+          "equation": "2.6"
+        },
+        {
+          "item": "Proposition 3.26",
+          "printed_page": 25,
+          "equations": ["3.24", "3.25"]
+        },
+        {
+          "item": "Formalization and availability",
+          "printed_page": 50
+        }
+      ]
+    },
+    {
+      "role": "technical_companion",
+      "title": "Technical companion to Long runs and rare patterns of a random completely multiplicative function",
+      "author": "Brice Pouly",
+      "filename": "paper_C_version_2_8_2_technical_companion_en.pdf",
+      "page_count": 23,
+      "size_bytes": 483599,
+      "sha256": "60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094",
+      "source_kind": "user_supplied_pdf",
+      "role_in_batch": "Companion of the target proof package; no complete appendix is claimed as formalized by this batch."
+    }
+  ],
+  "mathematical_modules": [
+    "PaperCV282/PrescribedValues.lean",
+    "PaperCV282/WindowValues.lean",
+    "PaperCV282/ValueRelations.lean"
+  ],
+  "scope": {
+    "corollary_2_6": {
+      "covered": [
+        "Pointwise probability error in an adequate finite prime cylinder, with the actual defective-vertex count.",
+        "Exact uniform word probability for every fixed assignment of the small prime coordinates."
+      ],
+      "remaining": [
+        "Explicit transfer of the word event and conditional formulation to the infinite source model.",
+        "Uniform summed first-moment estimate over masks and dictionaries in a fixed logarithmic band."
+      ]
+    },
+    "proposition_3_26": {
+      "covered": [
+        "Abstract nullity comparison after imposing a linear map into a two-dimensional binary space.",
+        "Factor-four relation-weight comparison and finite sum with a nonzero-host correction."
+      ],
+      "remaining": [
+        "Actual two-window valuation matrix and block-parity instantiation.",
+        "Identification with relative-sign start relations by the tree-boundary bijection.",
+        "Identification of the ordered separated-pair sum and unrestricted square-relation hosts.",
+        "Uniform arithmetic host and relation estimates needed for the asymptotic conclusion."
+      ]
+    },
+    "additional_exclusions": [
+      "Proposition 3.27 capped arithmetic profile.",
+      "Theorem 3.1 uniform two-window relation estimate.",
+      "The complete signed marked-field, dictionary, and two-source crossover theorems."
+    ],
+    "new_external_literature_premises_in_finite_endpoints": []
+  },
+  "qualification": {
+    "new_palomar_qualification_claimed": false,
+    "new_comparator_result_claimed": false,
+    "complete_pdf_formalization_claimed": false,
+    "build_result": "not_recorded_in_this_source_manifest",
+    "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
+  }
+}

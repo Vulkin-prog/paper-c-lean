@@ -1,0 +1,34 @@
+import PaperCV282.Main
+
+#print axioms PaperC.V282.PrescribedValues.probability_eq_eta_weight
+#print axioms PaperC.V282.PrescribedValues.abs_probability_sub_baseline_le
+#print axioms PaperC.V282.PrescribedValues.relation_coefficient_eq_zero_of_private_coordinate
+#print axioms PaperC.V282.PrescribedValues.defectRestriction
+#print axioms PaperC.V282.PrescribedValues.defectRestriction_injective
+#print axioms PaperC.V282.PrescribedValues.relationRho_le_card_of_private_coordinates
+#print axioms PaperC.V282.PrescribedValues.probability_error_le_defect_weight
+#print axioms PaperC.V282.PrescribedValues.probability_eq_baseline_of_private_coordinates
+#print axioms PaperC.V282.PrescribedValues.valueSystem
+#print axioms PaperC.V282.PrescribedValues.valueSystem_apply
+#print axioms PaperC.V282.PrescribedValues.valueSystem_eq_iff
+#print axioms PaperC.V282.PrescribedValues.probability_eq_uniform_event
+#print axioms PaperC.V282.PrescribedValues.valueBit_prime_basis
+#print axioms PaperC.V282.PrescribedValues.valueSystem_prime_basis
+#print axioms PaperC.V282.PrescribedValues.value_probability_error_le_of_private_primes
+#print axioms PaperC.V282.PrescribedValues.largeValueSystem
+#print axioms PaperC.V282.PrescribedValues.conditionedValueRhs
+#print axioms PaperC.V282.PrescribedValues.assemble_solves_values_iff
+#print axioms PaperC.V282.PrescribedValues.conditioned_value_probability_eq_baseline
+#print axioms PaperC.V282.ValueRelations.parityOnRelations
+#print axioms PaperC.V282.ValueRelations.parityNullity
+#print axioms PaperC.V282.ValueRelations.mem_parity_kernel_iff
+#print axioms PaperC.V282.ValueRelations.parityNullity_le
+#print axioms PaperC.V282.ValueRelations.relationRho_le_parityNullity_add_two
+#print axioms PaperC.V282.ValueRelations.relation_weight_le_four_parity_weight_add_host
+#print axioms PaperC.V282.ValueRelations.sum_relation_weight_le_four_parity_weight_add_hosts
+#print axioms PaperC.V282.WindowValues.vertex
+#print axioms PaperC.V282.WindowValues.defectIndices
+#print axioms PaperC.V282.WindowValues.private_prime_of_not_defective
+#print axioms PaperC.V282.WindowValues.corollary_two_six_pointwise
+#print axioms PaperC.V282.WindowValues.extendLarge_prime_basis
+#print axioms PaperC.V282.WindowValues.corollary_two_six_conditioned

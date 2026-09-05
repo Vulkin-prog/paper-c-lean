@@ -1,5 +1,12 @@
 # Lean formalization of Paper C
 
+Development for the supplied v2.8.2 manuscript is documented in
+[`PaperCV282/README.md`](PaperCV282/README.md), with exact finite endpoints
+and remaining obligations in [`PaperCV282/ENDPOINTS.md`](PaperCV282/ENDPOINTS.md).
+It uses the same Lean/mathlib 4.32.0 pins and preserves the historical `PaperC`
+core. The historical manuscript and qualification statements below keep
+their original scope; the new overlay has no Palomar qualification yet.
+
 This repository accompanies the manuscript:
 
 > *A critical Poisson law in a dyadic block — Starting points of long constant
