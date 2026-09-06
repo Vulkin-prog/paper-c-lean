@@ -19,7 +19,6 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S004 | Papier, p. 9, clause sommée du corollaire 2.6 | Suggestion d'explicitation de l'espérance et de l'uniformité | Proposition à examiner |
 | V3-S005 | Papier, p. 17, proposition 3.12, secteur 1 ; définition p. 13 | Suggestion de simplification de preuve | Proposition à examiner |
 | V3-S006 | Papier, p. 17–18, lemmes 3.13–3.14 ; section de formalisation p. 50 | Suggestion de précision sur les taux formalisés | Proposition à examiner |
-
 | V3-S007 | Papier, p. 22–24, secteur 8 et proposition 3.25 ; p. 26, plafond de 3.27 | Suggestion de simplification de preuve démontrée | Proposition à examiner |
 
 **Compagnon technique : aucune correction confirmée à ce stade.** Les résultats finis déjà formalisés ne constituent pas une vérification intégrale de ses annexes. Les prochaines observations propres au compagnon seront ajoutées avec leur emplacement et leur justification ; aucune anomalie ne lui est attribuée par analogie avec le papier.
