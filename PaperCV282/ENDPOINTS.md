@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 193 mathematical modules contain **1552 named declarations: 1312 theorems, 205 definitions and 35 named local instances**. Batch 11 adds 147 theorems in 21 new modules.
+The 219 mathematical modules contain **1795 named declarations: 1495 theorems, 249 definitions and 51 named local instances**. Batch 12 adds 183 theorems in 26 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -966,3 +966,101 @@ Lemma 6.1, conditioning on a run statistic, resolved states, a labelled
 or aggregated marked path, or the remaining results of sections 5–7.
 B.3 is an application subsection, not an additional numbered companion
 result.
+
+## Theorem 5.1: complete site-and-word dictionary field
+
+Source: article pages 30–31, equations (5.1)–(5.7). Write `B=L+1`,
+`m=card W`, `a=m/2^B`, and `Lambda=N*a`. `W` is a nonempty finite set
+of prescribed binary words. Every bit, including the bit at `x-1`, is
+prescribed. The field carrier is the product of the actual dyadic sites
+and the actual dictionary words; no labels are discarded.
+
+| Declaration | Established result |
+|---|---|
+| `WordOverlap.Compatible` | Literal directed suffix/prefix equality at a proper shift. |
+| `WordOverlapProbability.equation_five_five_finite` | True local conditional joint probability, `2^(-(B+d))` for compatible words and zero otherwise, when the union is good. |
+| `WordOverlapSum.overlapWeight` | Exact normalized directed sum, including self- and cross-overlaps. |
+| `WordOverlapSum.orderedLocalMass_le` | Actual ordered local joint mass at most `2*card(mask)*a*Omega`. |
+| `DictionaryFieldModel.DictionaryIndex` | Entire site-and-word carrier. |
+| `DictionaryFieldDependency.hasExactDependencyGraph_maskedWordIndicator` | Exact dependency graph after fixing small-prime coordinates, including independence from the whole outside pattern. |
+| `DictionaryMarginalCap.dictionary_joint_cap` | Actual grouped joint probability at most `min(a,a^2*2^rhoValue)`, then at most `a^2*(1+min(1/a,2^rhoValue-1))`. |
+| `DictionaryFieldDeletion.average_bad_word_mass_le` | Genuine removed source mass at most `a*(Mval(mask)+card(bad mask))`. |
+| `DictionaryFieldFirstCost.bOne_dictionary_le` | True first process cost at most `a^2*(2*N*B+E_Y(mask))`. |
+| `DictionaryFieldSecondCost.average_bTwo_dictionary_le` | Mean second cost at most `2*Lambda*Omega+a^2*(E_Y(mask)+Rcap(mask))`. |
+| `DictionaryFieldBounds.equation_five_seven` | True conditional full-field distance bounded by `a*(Mval+2*Dval)+4*a^2*(N*B+E_Y+Rcap)+4*Lambda*Omega`. |
+| `DictionaryProfileNormalization.normalized_cappedProfile_le` | Exact normalization of the capped profile to the three dictionary monomials. |
+| `DictionaryErrorLedger.dictionary_ledger_hard_rate_eventually` | Actual arithmetic ledger bounded by eight times the printed three-term error, uniformly before cardinality and overlap. |
+| `DictionaryFieldInfinite.conditionalDictionaryLaw_eq_infinite_atom_ratio` | Every conditional field mass equals the actual infinite-source ratio on its positive prime atom. |
+| `DictionaryFieldInfinite.infiniteDictionaryLaw_eq_finiteFieldLaw` | Exact infinite-source law on an adequate finite cylinder. |
+| `DictionaryFieldRates.allWordRates_full_eq` | Every target coordinate has rate `2^(-B)`. |
+| `DictionaryFieldRates.theorem_five_one_full_band` | Equation (5.2) for the true mean full-F_Yhard conditional distance and unconditional distance, with absolute multiplier 8. |
+| `DictionaryFieldCritical.equation_five_four` | Equation (5.4) from the literal window and cardinal bound, for both true distances. |
+| `DictionaryFieldCritical.dictionary_field_critical_convergence` | Both distances tend to zero for growing dictionaries satisfying (5.3). |
+
+The cutoff is exactly `floor(exp(Vhard))`. Its upper bound by the cylinder
+and lower bound by `2*B` are proved from saddle admissibility. Consequently
+the represented sigma-algebra is all `F_Yhard`, rather than an incomplete
+subset of its primes. Each fixed positive `eta` gives the remainder
+`exp(-Vhard+eta*nuhard)`; its threshold is uniform before `L`, `W`, and `m`.
+No upper bound on `m` is needed for the full-band result.
+
+For the critical result, `m<=N^(1/2-delta)` and
+`abs(B-log2(N*m))<=C` imply bounded intensity and a fixed logarithmic band.
+Taking `epsilon=delta/6` bounds the polynomial contribution by `N^(-delta/2)`.
+The constant is `8*criticalDictionaryConstant(exp(C*log 2))`, independent
+of the words and their number. The convergence is unconditional and in
+mean conditional total variation; no almost-sure kernel limit is asserted.
+
+The only literature arguments are `ProcessAGGInput.ProcessAGGStatement`
+and `PrimeEulerPNT.PrimeNumberTheoremRemainder`. Marginals, deletion costs,
+local compatibility, the grouped marginal cap, complete-value ranks and
+arithmetic profiles are actual proved quantities. Scalar Stein factors
+are not required by these dictionary endpoints.
+
+## Deterministic restrictions and statistics of the dictionary field
+
+The discrete state space of the Poisson field is infinite; it is never
+given a fictitious finite-type instance. The following results apply to
+an arbitrary function from that field into any type, so in particular to
+every deterministic restriction of the site-and-word carrier.
+
+| Declaration | Established result |
+|---|---|
+| `MassPushforward.hasSum_pushforwardMass` | Exact mass preservation under fibre summation. |
+| `MassPushforward.massTotalVariation_pushforward_le` | Contraction of half-L1 total variation for normalized nonnegative masses. |
+| `DictionaryFieldStatistics.pushforward_infiniteDictionaryLaw_eq` | The image mass is exactly the true source law of the composed statistic. |
+| `DictionaryFieldStatistics.pushforward_conditionalDictionaryLaw_eq_atom_ratio` | Exact source-atom ratio for every composed statistic. |
+| `DictionaryFieldStatistics.full_FY_statistic_representation` | Full prime-sigma-algebra representation when the adequate cylinder also contains the cutoff. |
+| `DictionaryFieldStatistics.infinite_statistic_distance_le` | True statistic distance bounded by the full field distance. |
+| `DictionaryFieldStatistics.average_source_statistic_distance_le` | Mean true conditional statistic distance bounded by the full conditional distance. |
+
+Composing these inequalities with the full-band and critical endpoints
+preserves their constants and thresholds, and gives convergence for every
+chosen sequence of deterministic restrictions or statistics. The target
+is always the image of the same independent Poisson field. This does not
+prove the general stable product lift of Lemma 6.1 with a recorded random
+environment, nor the Poisson target identities particular to Corollaries
+5.2 or 5.5.
+
+## Corollary 5.4: explicit dictionaries without proper overlaps
+
+Source: article page 32. The family is the actual finite filter of words
+`0^k 1 u 1` whose middle contains no block of `k` zeros. Here
+`k=floor(log2(2*B))+1`. At exact powers of two this is one larger than the
+printed ceiling, and the same conclusion follows from `2*B<2^k<=4*B`.
+
+| Declaration | Established result |
+|---|---|
+| `MarkerDictionary.wordOfMiddle_not_compatible` | All proper directed overlaps are excluded, including a word with itself. |
+| `MarkerDictionaryCount.eraseBlock_injective_on_zeroBlockWords` | The actual fixed-zero-block family injects into its remaining coordinates. |
+| `MarkerDictionaryCount.two_pow_le_two_mul_card_admissibleMiddles` | The union bound leaves at least half the possible middle words. |
+| `MarkerDictionaryAsymptotics.corollary_five_four` | Explicit family of size at least `2^B/(32*B)` for every `B>=8`, with no proper overlaps and zero overlap weight for all subsets. |
+| `MarkerDictionaryCritical.marker_capacity_critical_eventually` | The true critical window eventually implies `B>=8` and enough capacity for the requested cardinality. |
+| `MarkerDictionaryCritical.critical_subdictionary_exists_eventually` | Actual selection of any requested critical cardinality with `Omega=0`, uniformly before length and size. |
+
+No external coding theorem is assumed. The marker construction's elementary
+injection, union bound and logarithmic capacity estimate are internal.
+Corollaries 5.2 (iid replacement), 5.3 (most dictionaries) and 5.5 (words up
+to a common sign) remain separate obligations. Their laws, expected overlap
+counts or specific aggregation identities are not consequences already
+encoded by naming these generic contraction tools.

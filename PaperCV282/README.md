@@ -6,26 +6,26 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The eleventh development batch completes the hard and soft bounds of
-Theorem 4.3 for the true source count and mean conditional distances on
-any fixed logarithmic band. The integer cutoffs represent their entire
-prime sigma-fields. The free-cutoff equation (4.10), the stated convergence
-regimes and scalar arithmetic-event information formulas (6.1)–(6.2)
-are also proved, including convergence under a positive soft information
-margin.
+The twelfth development batch establishes Theorem 5.1 for the actual
+site-and-word-labelled dictionary field: uniform full-band Poisson rates,
+critical growing-dictionary convergence, full prime-field conditioning and
+contraction to deterministic statistics. It also proves the explicit
+no-overlap family of Corollary 5.4, including its size and critical capacity.
+The previously established hard/soft count bounds and event conditioning
+remain available.
 
 The three explicit literature premises remain recorded in
 [LITERATURE_INPUTS.md](LITERATURE_INPUTS.md): positive-rate scalar Stein
 solution bounds, the finite process AGG theorem, and the ordinary prime
 number theorem remainder. They are theorem arguments, not new Lean axioms.
-The new scalar rate endpoints use only Stein and PNT and add no premise.
+The new dictionary field endpoints use process AGG and PNT and add no premise.
 An axiom audit does not prove the external hypotheses.
 
 Earlier batches retain the full relation profiles, actual terminal-sector
 proof, word first moments, touching pairs, true infinite-model moments,
 masked scalar and joint-field transfer, companion soft lemma, and both
 implicit saddle expansions. The whole paper and companion remain a larger
-project. Remaining work includes growing dictionaries, signed exact marks,
+project. Remaining work includes iid replacement, typical dictionaries, words up to sign, signed exact marks,
 aggregated fields, growing levels, the general stable product lift,
 resolved conditioning paths and microscopic crossover. The sharper
 Pell/split-product rate, size-two Euler refinement and aligned-core
@@ -45,7 +45,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 193 mathematical modules contain **1552 named declarations: 1312 theorems, 205 definitions and 35 named local instances**. Batch 11 adds 147 theorems in 21 new modules.
+The 219 mathematical modules contain **1795 named declarations: 1495 theorems, 249 definitions and 51 named local instances**. Batch 12 adds 183 theorems in 26 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -136,6 +136,8 @@ no canonical selection of these subspaces is presumed.
 | Finite and nonterminal capped reductions | `CappedRelationMass`, `CappedSectorMass`, `CappedSectorSixProfile`, `NonterminalProfile` |
 | Numerical interpolation and conditional assembly | `ProfileMonomials`, `ProfileAssembly` |
 | Hard/soft rates and genuine convergence | `HardPoissonRates`, `SoftRateAssembly`, `FreeCutoffSoftRates`, `PoissonRateConvergence` |
+| Dictionary fields and contraction | `WordOverlapSum`, `DictionaryFieldBounds`, `DictionaryFieldRates`, `DictionaryFieldCritical`, `DictionaryFieldStatistics` |
+| Explicit marker dictionaries | `MarkerDictionaryAsymptotics`, `MarkerDictionaryCritical` |
 | Actual prime-event conditioning and information | `PrimeFieldEventConditioning`, `RestrictedPoissonTransfer`, `RareConditioningRates` |
 
 The [endpoint ledger](ENDPOINTS.md) gives the declarations and hypotheses.
@@ -154,9 +156,9 @@ Palomar submission requires its own frozen statements and evidence.
 A separate coverage assessment tracks numbered manuscript statements and a
 weighted estimate of the remaining effort. The count of Lean declarations
 is an audit inventory, not a percentage of the complete paper. The current
-estimate is about 68% of the total formalization effort, with a conservative
-60–75% range; later probabilistic and companion results account for much of
-the remaining work. Strict statement coverage is 28/61 numbered article
+estimate is about 70% of the total formalization effort, with a conservative
+65–80% range; later probabilistic and companion results account for much of
+the remaining work. Strict statement coverage is 30/61 numbered article
 results, and 3/8 companion results (these fractions must not be added). See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)
 and the endpoint ledger for the exact definitions and proved scope.
 

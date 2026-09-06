@@ -242,3 +242,11 @@ Les voisins exceptionnels conservent leurs vraies probabilités marginales et co
 **Statut.** Proposition à examiner. Le passage est démontré et relu indépendamment ; il simplifie l'exposition et ne prétend ni optimalité du seuil, ni convergence à la frontière soft exacte. Les prémisses bibliographiques de Stein scalaire et du théorème des nombres premiers restent explicites.
 
 **Preuves.** [SoftArithmeticTransfer.lean](../PaperCV282/SoftArithmeticTransfer.lean), `average_conditionalMaskedLaw_soft_le` ; [SoftPoissonRates.lean](../PaperCV282/SoftPoissonRates.lean), `soft_rate_minimum_of_budget` et `soft_rate_rpow_of_budget` ; [SoftRateAssembly.lean](../PaperCV282/SoftRateAssembly.lean), `theorem_four_three_soft` ; [FreeCutoffSoftRates.lean](../PaperCV282/FreeCutoffSoftRates.lean), `equation_four_ten`.
+
+## Vérification du lot 12 — dictionnaires, sans nouvelle anomalie
+
+Le théorème 5.1 et le corollaire 5.4 ont été raccordés aux vraies lois, avec toutes les positions et tous les mots conservés. Le cap marginal de (5.6) est appliqué avant la sommation, et la compatibilité dirigée inclut les chevauchements propres et croisés. La borne (5.2) possède une constante explicite 8 dans la formalisation, sous les entrées bibliographiques AGG/PNT déjà déclarées. Le régime critique et la contraction vers les statistiques du champ sont établis.
+
+La construction effective de 5.4 fonctionne dès B≥8. Elle utilise k=floor(log₂(2B))+1 ; aux puissances de deux, ce nombre dépasse d’une unité le plafond choisi dans le papier, et les mêmes inégalités de taille donnent le minorant2^B/(32B). La possibilité de sélectionner le nombre voulu de mots dans la fenêtre critique est prouvée. Cette variante est un choix de présentation de la formalisation, sans correction demandée au manuscrit.
+
+Les relectures n’ont relevé aucune nouvelle erreur dans ces passages. Le registre conserve donc **une correction confirmée et neuf suggestions**. Lors de la préparation de la V3, la section consacrée à Lean pourra citer ces deux résultats et leurs limites précises à partir du [registre des déclarations](../PaperCV282/ENDPOINTS.md). Les corollaires 5.2,5.3 et5.5 restent séparés et ne sont pas annoncés comme formalisés.

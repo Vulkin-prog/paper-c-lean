@@ -35,25 +35,20 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Theorem 4.3: actual hard/soft laws, full logarithmic band and optimized cutoffs",
+          "item": "Theorem5.1 and explicit Corollary5.4",
           "printed_pages": [
-            29
+            30,
+            31,
+            32
           ],
           "equations": [
-            "4.8",
-            "4.9",
-            "4.10"
-          ]
-        },
-        {
-          "item": "Scalar prime-event information formulas and positive-margin convergence; general product lift not yet complete",
-          "printed_pages": [
-            38,
-            39
-          ],
-          "equations": [
-            "6.1",
-            "6.2"
+            "5.1",
+            "5.2",
+            "5.3",
+            "5.4",
+            "5.5",
+            "5.6",
+            "5.7"
           ]
         }
       ]
@@ -67,16 +62,8 @@
       "size_bytes": 483599,
       "sha256": "60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094",
       "source_kind": "user_supplied_pdf",
-      "role_in_batch": "Companion B.3: actual all-site soft costs and moving-cutoff arithmetic application; same-prime-field event restriction and single inverse-probability information cost.",
-      "current_batch_locators": [
-        {
-          "item": "B.3: applying Lemma B.2 at a movable cutoff, including the final arithmetic-event paragraph",
-          "printed_pages": [
-            8,
-            9
-          ]
-        }
-      ]
+      "role_in_batch": "No additional complete companion result credited; earlier source identity and proved results retained.",
+      "current_batch_locators": []
     }
   ],
   "mathematical_modules": [
@@ -103,6 +90,24 @@
     "PaperCV282/CutoffGraphFreeCutoff.lean",
     "PaperCV282/CutoffGraphScale.lean",
     "PaperCV282/DefectiveRankinCount.lean",
+    "PaperCV282/DictionaryArithmeticRates.lean",
+    "PaperCV282/DictionaryCriticalWindow.lean",
+    "PaperCV282/DictionaryErrorLedger.lean",
+    "PaperCV282/DictionaryFieldBounds.lean",
+    "PaperCV282/DictionaryFieldCritical.lean",
+    "PaperCV282/DictionaryFieldDeletion.lean",
+    "PaperCV282/DictionaryFieldDependency.lean",
+    "PaperCV282/DictionaryFieldFirstCost.lean",
+    "PaperCV282/DictionaryFieldInfinite.lean",
+    "PaperCV282/DictionaryFieldModel.lean",
+    "PaperCV282/DictionaryFieldRates.lean",
+    "PaperCV282/DictionaryFieldSecondCost.lean",
+    "PaperCV282/DictionaryFieldStatistics.lean",
+    "PaperCV282/DictionaryFieldTransfer.lean",
+    "PaperCV282/DictionaryMarginalCap.lean",
+    "PaperCV282/DictionaryPairCosts.lean",
+    "PaperCV282/DictionaryProfileNormalization.lean",
+    "PaperCV282/DictionaryRateConvergence.lean",
     "PaperCV282/DivisorSubpolynomial.lean",
     "PaperCV282/DyadicPoissonDistance.lean",
     "PaperCV282/DyadicRelationProfile.lean",
@@ -165,6 +170,10 @@
     "PaperCV282/MacroscopicTwoDefectStarts.lean",
     "PaperCV282/MacroscopicValueCorrection.lean",
     "PaperCV282/MacroscopicWordFirstMoment.lean",
+    "PaperCV282/MarkerDictionary.lean",
+    "PaperCV282/MarkerDictionaryAsymptotics.lean",
+    "PaperCV282/MarkerDictionaryCount.lean",
+    "PaperCV282/MarkerDictionaryCritical.lean",
     "PaperCV282/MaskedArithmeticAverages.lean",
     "PaperCV282/MaskedArithmeticCosts.lean",
     "PaperCV282/MaskedArithmeticGeometry.lean",
@@ -175,6 +184,7 @@
     "PaperCV282/MaskedScalarFullConditioning.lean",
     "PaperCV282/MaskedScalarRetained.lean",
     "PaperCV282/MaskedScalarTransfer.lean",
+    "PaperCV282/MassPushforward.lean",
     "PaperCV282/NonterminalProfile.lean",
     "PaperCV282/OrderedPairCounting.lean",
     "PaperCV282/PointwiseStartBounds.lean",
@@ -272,7 +282,10 @@
     "PaperCV282/WindowValues.lean",
     "PaperCV282/WordDefectAsymptotics.lean",
     "PaperCV282/WordDefectCounting.lean",
-    "PaperCV282/WordFirstMomentAsymptotics.lean"
+    "PaperCV282/WordFirstMomentAsymptotics.lean",
+    "PaperCV282/WordOverlap.lean",
+    "PaperCV282/WordOverlapProbability.lean",
+    "PaperCV282/WordOverlapSum.lean"
   ],
   "scope": {
     "corollary_2_6": {
@@ -440,7 +453,7 @@
     "additional_exclusions": [
       "Precise exp(O(log M/loglog M)) quantitative versions of the polynomial-height arithmetic counts.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
-      "Complete signed marked-field, dictionary and two-source crossover theorems."
+      "Complete signed marked-field and two-source crossover theorems; dictionary corollaries5.2/5.3/5.5 remain."
     ],
     "new_external_literature_premises_in_current_endpoints": [
       {
@@ -847,6 +860,28 @@
         "PaperC.V282.RareConditioningRates.hard_event_rate_min_eventually",
         "PaperC.V282.RareConditioningRates.soft_event_information_min_eventually"
       ]
+    },
+    "theorem_5_1": {
+      "status": "complete_under_explicit_process_AGG_and_PNT_premises",
+      "full_carrier": "(x in [N,2N)) times (w in W), W nonempty, B=L+1, all signs prescribed",
+      "per_coordinate_rate": "2^(-B)",
+      "conditional_law": "Literal infinite source atom ratios on all F_Yhard, represented by a proved adequate finite prime cylinder.",
+      "full_band_rate": "8*(Lambda*Omega+Lambda*(1+Lambda)*exp(-Vhard+eta*nuhard)+N^(-1/3+epsilon)*(Lambda+Lambda^(11/6)*m^(1/6)+Lambda^(4/3)*m^(2/3)))",
+      "uniformity": "Every fixed positive betaMin<betaMax, epsilon>0, eta>0; threshold before length, dictionary and its cardinality.",
+      "critical_regime": "m<=N^(1/2-delta), delta>0, abs(B-log2(N*m))<=C, Omega tends to zero.",
+      "contraction": "Every deterministic function of the full field, including arbitrary coordinate restrictions; actual composed laws and pushforward target.",
+      "almost_sure_kernel_convergence_claimed": false,
+      "remaining": []
+    },
+    "corollary_5_4": {
+      "status": "complete_internal",
+      "family": "0^k 1 u 1, u avoids0^k, k=floor(log2(2B))+1",
+      "length_threshold": 8,
+      "size_lower_bound": "2^B/(32B)",
+      "all_proper_overlaps_excluded": true,
+      "critical_capacity_derived": true,
+      "external_coding_premise": false,
+      "remaining": []
     }
   },
   "qualification": {
@@ -856,19 +891,32 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 11,
+  "development_batch": 12,
   "declaration_inventory": {
-    "mathematical_module_count": 193,
-    "named_declarations": 1552,
-    "theorems": 1312,
-    "definitions": 205,
-    "named_instances": 35,
+    "mathematical_module_count": 219,
+    "named_declarations": 1795,
+    "theorems": 1495,
+    "definitions": 249,
+    "named_instances": 51,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
     "named_instance_declarations": [
       "PaperC.V282.AllStartFieldCosts.instDecidableProposition",
       "PaperC.V282.AllStartFieldTransfer.instDecidableProposition",
+      "PaperC.V282.DictionaryFieldBounds.instDecidableProposition",
+      "PaperC.V282.DictionaryFieldCritical.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.DictionaryFieldDeletion.instDecidableProposition",
+      "PaperC.V282.DictionaryFieldFirstCost.instDecidableProposition",
+      "PaperC.V282.DictionaryFieldInfinite.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.DictionaryFieldInfinite.instDecidableProposition",
+      "PaperC.V282.DictionaryFieldModel.instDecidableProposition",
+      "PaperC.V282.DictionaryFieldRates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.DictionaryFieldSecondCost.instDecidableProposition",
+      "PaperC.V282.DictionaryFieldStatistics.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.DictionaryFieldTransfer.instDecidableProposition",
+      "PaperC.V282.DictionaryMarginalCap.instDecidableProposition",
+      "PaperC.V282.DictionaryPairCosts.instDecidableProposition",
       "PaperC.V282.DyadicPoissonDistance.instMeasurableSpaceF2Discrete",
       "PaperC.V282.FiniteFieldTotalVariation.instDecidableProposition",
       "PaperC.V282.FreeCutoffSoftRates.instMeasurableSpaceF2Discrete",
@@ -891,6 +939,7 @@
       "PaperC.V282.MaskedScalarCoupling.instDecidableProposition",
       "PaperC.V282.MaskedScalarFullConditioning.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MaskedScalarFullConditioning.instDecidableProposition",
+      "PaperC.V282.MassPushforward.instDecidableProposition",
       "PaperC.V282.PointwiseStartBounds.instMeasurableSpaceF2Discrete",
       "PaperC.V282.PrimeFieldEventConditioning.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RareConditioningRates.instMeasurableSpaceF2Discrete",
@@ -901,7 +950,9 @@
       "PaperC.V282.SoftArithmeticCosts.instDecidableProposition",
       "PaperC.V282.SoftRateAssembly.instMeasurableSpaceF2Discrete",
       "PaperC.V282.SteinTestTotalVariation.instDecidableProposition",
-      "PaperC.V282.WordDefectCounting.instDecidableHDefective"
+      "PaperC.V282.WordDefectCounting.instDecidableHDefective",
+      "PaperC.V282.WordOverlapProbability.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.WordOverlapProbability.instDecidableCompatible"
     ],
     "batch_3_additions": {
       "FullPrimeAssignment": {
@@ -1850,6 +1901,138 @@
         "definitions": 0,
         "named_instances": 0
       }
+    },
+    "batch_12_additions": {
+      "DictionaryArithmeticRates": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "DictionaryCriticalWindow": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "DictionaryErrorLedger": {
+        "theorems": 3,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "DictionaryFieldBounds": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "DictionaryFieldCritical": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "DictionaryFieldDeletion": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "DictionaryFieldDependency": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "DictionaryFieldFirstCost": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "DictionaryFieldInfinite": {
+        "theorems": 12,
+        "definitions": 6,
+        "named_instances": 2
+      },
+      "DictionaryFieldModel": {
+        "theorems": 11,
+        "definitions": 6,
+        "named_instances": 1
+      },
+      "DictionaryFieldRates": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "DictionaryFieldSecondCost": {
+        "theorems": 8,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "DictionaryFieldStatistics": {
+        "theorems": 14,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "DictionaryFieldTransfer": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "DictionaryMarginalCap": {
+        "theorems": 18,
+        "definitions": 5,
+        "named_instances": 1
+      },
+      "DictionaryPairCosts": {
+        "theorems": 15,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "DictionaryProfileNormalization": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "DictionaryRateConvergence": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MarkerDictionary": {
+        "theorems": 10,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "MarkerDictionaryAsymptotics": {
+        "theorems": 9,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "MarkerDictionaryCount": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "MarkerDictionaryCritical": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MassPushforward": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "WordOverlap": {
+        "theorems": 6,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "WordOverlapProbability": {
+        "theorems": 9,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "WordOverlapSum": {
+        "theorems": 7,
+        "definitions": 3,
+        "named_instances": 0
+      }
     }
   },
   "manuscript_notes": {
@@ -1857,7 +2040,7 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Batch11 completes Theorem4.3, free-cutoff4.10 and their true-law convergence regimes under the existing Stein/PNT premises. It proves scalar FY-event restriction and rare-information convergence. S009 records the verified same-cutoff soft simplification for all intensities. PDFs remain unchanged.",
+    "formalization_context": "Batch12 completes Theorem5.1 and explicit Corollary5.4. No new manuscript anomaly found. Marker rounding variant and explicit constants documented without adding a correction or suggestion. PDFs unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
       "suggestions": 9
@@ -1866,12 +2049,12 @@
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 68,
+    "effort_estimate_percent": 70,
     "conservative_interval_percent": [
-      60,
-      75
+      65,
+      80
     ],
-    "completed_article_results": 28,
+    "completed_article_results": 30,
     "numbered_article_results_excluding_intro_duplicates": 61,
     "companion_completed_named_results": 3,
     "companion_named_results": 8,

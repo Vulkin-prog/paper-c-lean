@@ -50,5 +50,7 @@ exact checked commit separately.
 
 The batch-11 full-band rates, free-cutoff ledger and scalar arithmetic-event
 conditioning consequences use only the scalar Stein and PNT propositions.
-They add no literature premise. The process AGG argument remains specific
-to the earlier field-transfer endpoints.
+They add no literature premise. The process AGG argument also supplies the batch-12 dictionary field
+comparison together with PNT. The local overlap formulas, marginal cap,
+marker construction and mass pushforward contraction are proved internally.
+No new coding-theory premise is introduced.
