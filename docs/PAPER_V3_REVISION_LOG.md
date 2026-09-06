@@ -357,3 +357,21 @@ Les **lemmes6.1 et6.2**, le **théorème6.3** et le **corollaire6.4** sont forma
 Le taux agrégé **(6.5)** est prouvé pour toutes les intensités positives. Sous **(6.7)**, sur une bande logarithmique explicite, l'erreur divisée par la vraie masse de Poisson est au plus `40√(2π)exp(1/12) exp(−cν/2)+N^(−1/6)→0`. Cela donne directement le contrôle du vrai futur après résolution. La réduction centrale avec coefficient `3/2`, les raffinements quantitatifs restants de D.1 et le dernier paragraphe de6.4 gardent leurs réserves.
 
 Le décompte strict atteint **42/61 dans l'article et4/8 dans le compagnon**. Les quatre entrées bibliographiques explicites restent inchangées. Aucune nouvelle erreur du papier n'est confirmée : le journal contient **une correction confirmée et douze suggestions**. Les sources du papier et du compagnon pourront accompagner leur future V3, avec les déclarations et le commit qualifié précisément indiqués.
+
+## Bilan du lot 18 — Équation (6.3) à petite intensité
+
+La conséquence relative du paragraphe précédant le théorème 6.3 est maintenant
+formalisée. Sous `I(C)≤V−cν`, pour tout événement positif du vrai champ premier
+dur et sur une bande logarithmique fixe, la distance en variation totale
+conditionnelle divisée par `λ` est au plus `20(exp(−cν/2)+N^(−1/6))`.
+Si `λ→0`, chacune des vraies probabilités `P(Z>0 | C)` et `P(Z=1 | C)`
+est donc équivalente à `λ`. La preuve donne en plus une erreur relative
+explicite d'au plus `20(exp(−cν/2)+N^(−1/6))+λ`.
+
+Voir [SmallIntensityConditioning.lean](../PaperCV282/SmallIntensityConditioning.lean),
+`small_intensity_relative_bound` et `equation_six_three`. L'équation (6.3)
+est distincte du théorème 6.3 : aucun résultat numéroté n'est compté deux fois.
+La réserve « relatif à petite intensité » du bilan de couverture précédent
+est levée. Aucun changement du texte mathématique n'est nécessaire ; aucun
+nouveau point de correction ou suggestion n'est ajouté. Le journal conserve
+**une correction confirmée et douze suggestions**, les PDF restent inchangés.

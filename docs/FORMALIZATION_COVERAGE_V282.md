@@ -1,10 +1,12 @@
-# Couverture du papier C v2.8.2 et du compagnon — lot 17
+# Couverture du papier C v2.8.2 et du compagnon — lot 18
 
 **Environ 81 % de l'effort total est acquis, avec une fourchette prudente de 75–88 %.** La même grille de 19 blocs et 105 unités donne **42/61 résultats numérotés complets dans l'article**, et séparément **4/8 dans le compagnon**. Ces fractions ne s'additionnent pas ; les reprises introductives 1.1–1.3 restent exclues du dénominateur 61.
 
-Ce lot complète les **lemmes 6.1 et 6.2, le théorème 6.3, le corollaire 6.4 et le théorème C.1**. Il prouve aussi le taux agrégé à toute intensité positive (6.5), une estimation locale de Poisson effective et le budget de résolution (6.7) sur une bande logarithmique explicite.
+Ce petit lot ferme **l’équation (6.3)** : sous la marge d’information dure et lorsque `λ_N→0`, les vraies probabilités conditionnelles `P(Z>0 | C)` et `P(Z=1 | C)` sont toutes deux équivalentes à `λ_N`. La borne explicite de chaque erreur relative est `20(exp(−cν/2)+N^(−1/6))+λ_N`. Cette équation est distincte du théorème 6.3 ; le comptage strict et l’estimation de 81 % restent inchangés.
 
-## Résultats nouveaux
+Le lot 17 a complété les **lemmes 6.1 et 6.2, le théorème 6.3, le corollaire 6.4 et le théorème C.1**. Il a aussi prouvé le taux agrégé à toute intensité positive (6.5), une estimation locale de Poisson effective et le budget de résolution (6.7) sur une bande logarithmique explicite.
+
+## Acquis du lot 17 conservés
 
 | Résultat | Portée démontrée |
 |---|---|
@@ -36,9 +38,9 @@ La [matrice JSON](FORMALIZATION_COVERAGE_V282.json) conserve ses 69 lignes. Les 
 
 ## Estimation de l'effort
 
-Le bloc des marques passe de 85–95 % à 95–100 %, celui des niveaux croissants de 65–80 % à 70–85 %, et celui du conditionnement de 20–35 % à 75–85 %. Les 16 autres blocs restent inchangés. Le total passe de **76,50–86,22 à 80,20–89,32 unités sur 105**, soit **76,38–85,07 %**, milieu **80,72 %**. La communication arrondit à **81 %**, avec prudence **75–88 %**. Le nombre de déclarations, les lignes et les outils génériques ne déterminent pas cette estimation.
+Le petit ajout de ce lot est absorbé dans la fourchette existante du bloc de conditionnement. Les 19 blocs conservent leurs valeurs du lot 17 : **80,20–89,32 unités sur 105**, soit **76,38–85,07 %**, milieu **80,72 %**. La communication arrondit à **81 %**, avec prudence **75–88 %**. Le nombre de déclarations, les lignes et les outils génériques ne déterminent pas cette estimation.
 
-| Bloc mathématique | Poids | Acquis après lot 16 | Acquis après lot 17 |
+| Bloc mathématique | Poids | Acquis après lot 17 | Acquis après lot 18 |
 |---|---:|---:|---:|
 | Modèle, Fourier, arbres et pivots | 6 | 90–98 % | 90–98 % |
 | Runge croissant et défauts | 8 | 95–100 % | 95–100 % |
@@ -51,9 +53,9 @@ Le bloc des marques passe de 85–95 % à 95–100 %, celui des niveaux croissan
 | Deux coupures et calcul uniforme des selles | 7 | 95–100 % | 95–100 % |
 | Transfert TV, rétention douce et moments | 7 | 100 % | 100 % |
 | Dictionnaires, recouvrements et constructions | 5 | 100 % | 100 % |
-| Marques, signes, comparaison agrégée et clusters | 7 | 85–95 % | 95–100 % |
-| Niveaux croissants et limite Poisson–Gauss | 5 | 65–80 % | 70–85 % |
-| Conditionnement, chemins et contrôle presque sûr | 5 | 20–35 % | 75–85 % |
+| Marques, signes, comparaison agrégée et clusters | 7 | 95–100 % | 95–100 % |
+| Niveaux croissants et limite Poisson–Gauss | 5 | 70–85 % | 70–85 % |
+| Conditionnement, chemins et contrôle presque sûr | 5 | 75–85 % | 75–85 % |
 | Frontière microscopique et rang d’incidence | 6 | 20–35 % | 20–35 % |
 | Départs intermédiaires et mésoscopiques | 3 | 35–55 % | 35–55 % |
 | Préfixe global et enveloppes presque sûres | 3 | 30–55 % | 30–55 % |
@@ -62,7 +64,7 @@ Le bloc des marques passe de 85–95 % à 95–100 %, celui des niveaux croissan
 
 ## Reste à établir
 
-La priorité suivante porte sur la frontière microscopique puis les régimes du §7 et le mélange des deux sources. Restent aussi Berry–Esseen, les déviations modérées, la réduction centrale du budget avec coefficient `3/2`, le raffinement scalaire relatif à petite intensité, et les conséquences de processus encore ouvertes dans D.4. La formule locale de Poisson est acquise ; cela ne ferme pas D.1 en entier.
+La priorité suivante porte sur la frontière microscopique puis les régimes du §7 et le mélange des deux sources. Restent aussi Berry–Esseen, les déviations modérées, la réduction centrale du budget avec coefficient `3/2`, et les conséquences de processus encore ouvertes dans D.4. La formule locale de Poisson est acquise ; cela ne ferme pas D.1 en entier.
 
 Le paragraphe suivant 6.4, concernant le champ étiqueté, les noyaux scalaires simultanés sur `O(log N)` longueurs et les couplages maximaux, n'est pas annoncé complet. Aucun couplage canonique de toutes les échelles ni toute la trajectoire inverse infinie n'est revendiqué.
 
@@ -70,6 +72,6 @@ Les réserves arithmétiques antérieures demeurent : tout `α>0` en 3.19, taux 
 
 ## Sources et validation
 
-Base publiée du lot 16 : `5e9ce0e497ff5316c6ac82819642977ab386d0a0`. **Lean 4.32.0 et mathlib v4.32.0** restent ceux de la v0.9. Le cœur historique et les deux PDF conservent leurs identités dans le [manifeste](../PaperCV282/source_manifest.json).
+Base publiée du lot 17 : `5689f585ca099c1442b400c1321be9d4d28e8e7f`. **Lean 4.32.0 et mathlib v4.32.0** restent ceux de la v0.9. Le cœur historique et les deux PDF conservent leurs identités dans le [manifeste](../PaperCV282/source_manifest.json).
 
-Le [journal V3](PAPER_V3_REVISION_LOG.md) contient **une correction confirmée et douze suggestions**, dont la borne effective de Stirling proposée dans ce lot. Aucune nouvelle erreur du papier n'est confirmée. Compilation, audit exhaustif, relectures et contrôles du commit publié sont consignés séparément ; aucun nouvel enregistrement Palomar n'est annoncé.
+Le [journal V3](PAPER_V3_REVISION_LOG.md) contient **une correction confirmée et douze suggestions**, dont la borne effective de Stirling proposée au lot 17. Aucune nouvelle erreur du papier n'est confirmée. Compilation, audit exhaustif, relectures et contrôles du commit publié sont consignés séparément ; aucun nouvel enregistrement Palomar n'est annoncé.

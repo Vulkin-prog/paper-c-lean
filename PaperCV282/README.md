@@ -6,7 +6,15 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The seventeenth development batch completes the exact unsigned finite
+The eighteenth batch closes equation (6.3), the scalar small-intensity
+consequence: under the hard information margin, the true conditional
+non-vacancy and singleton probabilities are both asymptotic to the true
+intensity. The proof supplies the uniform relative error
+`20*(exp(-c*nu/2)+N^(-1/6))+lambda`, without a new literature premise.
+This small batch adds 3 modules and 14 theorems; the overlay now contains
+400 mathematical modules and 3486 named declarations.
+
+The seventeenth development batch completed the exact unsigned finite
 comparison C.1, the general stable product lift6.1, sharp conditioning6.2,
 the full resolved future and finite reverse segment6.3, and almost-sure
 environmental control6.4. The all-intensity aggregate rate6.5 and the local
@@ -40,7 +48,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 397 mathematical modules contain **3468 named declarations: 2666 theorems, 594 definitions and 208 named instances**. Batch 17 adds 199 theorems in 32 new modules.
+The 400 mathematical modules contain **3486 named declarations: 2680 theorems, 596 definitions and 210 named instances**. Batch 18 adds 14 theorems in 3 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -135,7 +143,7 @@ no canonical selection of these subspaces is presumed.
 | Random and common-sign dictionaries | `RandomDictionaryCritical`, `RandomDictionaryOverlap`, `SignOverlap`, `SignPatternCounts` |
 | Dictionary fields and contraction | `WordOverlapSum`, `DictionaryFieldBounds`, `DictionaryFieldRates`, `DictionaryFieldCritical`, `DictionaryFieldStatistics` |
 | Explicit marker dictionaries | `MarkerDictionaryAsymptotics`, `MarkerDictionaryCritical` |
-| Actual prime-event conditioning and information | `PrimeFieldEventConditioning`, `RestrictedPoissonTransfer`, `RareConditioningRates` |
+| Actual prime-event conditioning and information | `PrimeFieldEventConditioning`, `RestrictedPoissonTransfer`, `RareConditioningRates`, `HardRelativeMargin`, `PoissonRareProbabilities`, `SmallIntensityConditioning` |
 
 The [endpoint ledger](ENDPOINTS.md) gives the declarations and hypotheses.
 The [V3 revision log](../docs/PAPER_V3_REVISION_LOG.md) records **one confirmed

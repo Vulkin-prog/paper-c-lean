@@ -35,6 +35,17 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
+          "item": "Conditional non-vacancy and singleton asymptotics at small intensity; distinct from Theorem6.3",
+          "printed_pages": [
+            38
+          ],
+          "equations": [
+            "6.3"
+          ]
+        }
+      ],
+      "batch_17_locators": [
+        {
           "item": "Lemmas6.1–6.2, Theorem6.3 and Corollary6.4; equations6.5–6.7",
           "printed_pages": [
             38,
@@ -59,8 +70,9 @@
       "size_bytes": 483599,
       "sha256": "60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094",
       "source_kind": "user_supplied_pdf",
-      "role_in_batch": "Exact unsigned finite theoremC.1 is complete; local Poisson estimate and resolution budget are proved, while Berry–Esseen, central entropy and other quantitative/path refinements remain separate. Companion strict count4/8.",
-      "current_batch_locators": [
+      "role_in_batch": "No additional companion result is claimed in batch18. The four complete companion results and the quantitative/path reserves from batch17 are preserved.",
+      "current_batch_locators": [],
+      "batch_17_locators": [
         {
           "item": "Exact unsigned finite C.1/C.5; local Poisson estimate in D.1 and resolved/quenched arguments D.2–D.3",
           "printed_pages": [
@@ -207,6 +219,7 @@
     "PaperCV282/GrowingMarkedTruncation.lean",
     "PaperCV282/HardPoissonBounds.lean",
     "PaperCV282/HardPoissonRates.lean",
+    "PaperCV282/HardRelativeMargin.lean",
     "PaperCV282/HostRankMass.lean",
     "PaperCV282/HostRealPowers.lean",
     "PaperCV282/IidWordComparison.lean",
@@ -303,6 +316,7 @@
     "PaperCV282/PoissonIntensityBounds.lean",
     "PaperCV282/PoissonPointProcess.lean",
     "PaperCV282/PoissonPolynomialIntegrability.lean",
+    "PaperCV282/PoissonRareProbabilities.lean",
     "PaperCV282/PoissonRateConvergence.lean",
     "PaperCV282/PoissonResolutionBudget.lean",
     "PaperCV282/PoissonResolvedComparison.lean",
@@ -402,6 +416,7 @@
     "PaperCV282/SignedMarkedSeparatedRelations.lean",
     "PaperCV282/SizeTwoHostAsymptotics.lean",
     "PaperCV282/SizeTwoHostCounting.lean",
+    "PaperCV282/SmallIntensityConditioning.lean",
     "PaperCV282/SmallKernelAnchors.lean",
     "PaperCV282/SmallProductComponentBound.lean",
     "PaperCV282/SmallProductMass.lean",
@@ -641,7 +656,7 @@
     "additional_exclusions": [
       "Precise exp(O(log M/loglog M)) quantitative versions of the polynomial-height arithmetic counts.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
-      "Quantitative Berry–Esseen and moderate deviations; central entropy expansion with coefficient3/2 in the resolution budget; relative small-intensity scalar refinement; remaining D.4 process consequences.",
+      "Quantitative Berry–Esseen and moderate deviations; central entropy expansion with coefficient3/2 in the resolution budget; remaining D.4 process consequences.",
       "Unnumbered extensions following6.4: labelled-field environmental bound, simultaneous scalar control over O(logN) lengths and separate maximal couplings.",
       "Microscopic boundary, macroscopic transports, prefix regimes and two-source crossover of section7."
     ],
@@ -1304,6 +1319,18 @@
         "simultaneous scalar logarithmic bands",
         "maximal couplings"
       ]
+    },
+    "small_intensity_equation_6_3": {
+      "status": "complete_under_existing_scalar_Stein_and_PNT_premises",
+      "counted_as_new_numbered_result": false,
+      "evidence": [
+        "PaperCV282/HardRelativeMargin.lean: hard_relative_margin_eventually",
+        "PaperCV282/SmallIntensityConditioning.lean: small_intensity_relative_bound",
+        "PaperCV282/SmallIntensityConditioning.lean: equation_six_three"
+      ],
+      "hypotheses": "Fixed positive logarithmic band, sizes tending to infinity, eventually positive events in the full hard prime field, information <= V-c*nu for fixed c>0, and true intensity tending to zero.",
+      "conclusion": "Both true conditional probability ratios P(Z>0 given C)/lambda and P(Z=1 given C)/lambda tend to one.",
+      "explicit_relative_error": "20*(exp(-c*nu/2)+N^(-1/6))+lambda"
     }
   },
   "qualification": {
@@ -1313,13 +1340,13 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 17,
+  "development_batch": 18,
   "declaration_inventory": {
-    "mathematical_module_count": 397,
-    "named_declarations": 3468,
-    "theorems": 2666,
-    "definitions": 594,
-    "named_instances": 208,
+    "mathematical_module_count": 400,
+    "named_declarations": 3486,
+    "theorems": 2680,
+    "definitions": 596,
+    "named_instances": 210,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
@@ -1489,6 +1516,8 @@
       "PaperC.V282.SignedAggregateHardBudget.instMeasurableSpaceF2Discrete",
       "PaperC.V282.SignedAggregateTruncation.instProbabilityInfiniteRademacher",
       "PaperC.V282.SignedMarkedSeparatedRelations.instDecidableProposition",
+      "PaperC.V282.SmallIntensityConditioning.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.SmallIntensityConditioning.instProbabilityInfiniteRademacher",
       "PaperC.V282.SoftArithmeticCosts.instDecidableProposition",
       "PaperC.V282.SoftRateAssembly.instMeasurableSpaceF2Discrete",
       "PaperC.V282.SpatialDiffuseMarks.instTopologicalSign",
@@ -3511,6 +3540,23 @@
         "theorems": 5,
         "definitions": 2,
         "named_instances": 1
+      }
+    },
+    "batch_18_additions": {
+      "HardRelativeMargin": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "PoissonRareProbabilities": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SmallIntensityConditioning": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 2
       }
     }
   },

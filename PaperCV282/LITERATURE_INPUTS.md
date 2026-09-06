@@ -1,6 +1,6 @@
 # Literature inputs for the v2.8.2 transfer and cutoff proofs
 
-The results through batch 17 separate published probability/prime-distribution inputs
+The results through batch 18 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
 There is no new Lean `axiom`, and no proof of these four propositions is
@@ -157,3 +157,8 @@ Stirling limit and Robbins stepwise inequality, with remainder1/(12n).
 Neither a local-limit theorem nor the desired resolved comparison is
 supplied as a literature hypothesis. The four earlier propositions remain
 explicit, unproved theorem arguments under the same qualification boundary.
+
+Batch 18 adds no literature input. Its relative hard scalar comparison and
+equation (6.3) use only the existing `ScalarSteinFactorsStatement` and
+`PrimeNumberTheoremRemainder`. The Poisson non-vacancy and singleton estimates,
+the conditional source pushforward, and the ratio limits are proved internally.

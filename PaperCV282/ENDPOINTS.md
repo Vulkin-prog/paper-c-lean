@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 397 mathematical modules contain **3468 named declarations: 2666 theorems, 594 definitions and 208 named instances**. Batch 17 adds 199 theorems in 32 new modules.
+The 400 mathematical modules contain **3486 named declarations: 2680 theorems, 596 definitions and 210 named instances**. Batch 18 adds 14 theorems in 3 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -1419,3 +1419,25 @@ conditional-kernel TV is identified a.e. with the observed-atom TV in
 PrimeEnvironmentStableLift. The final result does not require an extra
 depth hypothesis. The unnumbered extensions to labelled fields, simultaneous
 O(logN) scalar lengths and maximal couplings remain separate obligations.
+
+## Equation (6.3): conditional scalar probabilities at small intensity
+
+This is equation (6.3) in the paragraph preceding the resolved-kernel theorem;
+it is distinct from Theorem 6.3 and adds no numbered-result credit.
+Fix a positive logarithmic band and `c>0`. The conditioning event is any
+positive event in the entire hard small-prime field, with
+`I(C)=-log P(C) <= V-c*nu`. The threshold precedes both the length and event.
+
+| Declaration | Established result |
+|---|---|
+| `HardRelativeMargin.hard_relative_margin_eventually` | Actual conditional count TV divided by `lambda` is at most `20*(exp(-c*nu/2)+N^(-1/6))`; no upper or lower intensity regime is imposed. |
+| `HardRelativeMargin.hard_relative_distance_tendsto_zero` | The true relative TV tends to zero along every eventually admissible size subsequence and moving positive event. |
+| `PoissonRareProbabilities.rare_probabilities_relative_bound` | For any probability law on the naturals and `lambda>0`, each relative non-vacancy/singleton error is at most `TV/lambda+lambda`. |
+| `SmallIntensityConditioning.conditionalStartMeasure_tv_eq` | Identifies the true conditional source pushforward and its measure TV with the arithmetic count-law comparison. |
+| `SmallIntensityConditioning.small_intensity_relative_bound` | Both literal conditional probability ratios have absolute error at most `20*(exp(-c*nu/2)+N^(-1/6))+lambda`. |
+| `SmallIntensityConditioning.equation_six_three` | If also `lambda` tends to zero, both `P(Z>0 given C)/lambda` and `P(Z=1 given C)/lambda` tend to one. |
+
+The arithmetic endpoint uses the existing scalar Stein and PNT propositions.
+The elementary Poisson estimates and conditional-measure identifications
+are proved internally. No convergence of the desired probability ratios is
+assumed, and this closes no microscopic or crossover result in section 7.
