@@ -1,6 +1,6 @@
 # Literature inputs for the v2.8.2 transfer and cutoff proofs
 
-The results through batch 16 separate published probability/prime-distribution inputs
+The results through batch 17 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
 There is no new Lean `axiom`, and no proof of these four propositions is
@@ -11,7 +11,7 @@ claimed. An axiom audit does not discharge a theorem's hypotheses.
 | `ScalarSteinInput.ScalarSteinFactorsStatement` | Existence, for every positive Poisson rate and every test set, of a solution of the actual Poisson Stein equation with supremum bound `min(1,lambda^(-1/2))` and first-difference bound `min(1,lambda^(-1))`. | Finite scalar dependency-graph estimates, the soft-exception lemma and their actual conditional arithmetic instances. |
 | `ProcessAGGInput.ProcessAGGStatement` | Finite indicator-to-independent-Poisson field comparison for an exact dependency graph, in half-L1 convention, bounded by `2(b1+b2)`. | Actual masked field transfer, including arithmetic costs, deletion of actual sites and of target coordinates. |
 | `PrimeEulerPNT.PrimeNumberTheoremRemainder` | For every `eta>0`, eventually `abs(pi(t)-Ei(log t)) <= eta*t/log t`, with the actual prime-counting function. | Weighted partial summation, its lower endpoint, the finite Rankin estimate and subsequent cutoff estimates to the extent recorded in the endpoint ledger. |
-| `DirectionalSteinInput.DirectionalSteinFactorsStatement` | Existence of a solution of the finite multivariate Poisson immigration–death equation, with the two published quadratic Hessian bounds; dimension at least two and positive target coordinates. | Entrywise bounds by polarization, typed dependency graph, true independent Poisson filling, the signed analogue of C.1, aggregate 5.8–5.9 and transfer of the proved target limit 5.10. |
+| `DirectionalSteinInput.DirectionalSteinFactorsStatement` | Existence of a solution of the finite multivariate Poisson immigration–death equation, with the two published quadratic Hessian bounds; dimension at least two and positive target coordinates. | Entrywise bounds by polarization, typed dependency graph, true independent Poisson filling, the exact unsigned C.1 and its signed analogue, aggregate5.8–5.9, the proved target limit5.10, resolved paths and the mean bound for6.4. |
 
 The scalar input is taken from the standard Stein solution estimates in
 [Krokowski, arXiv:1505.01417v3, Section 2.5, equations (2.14)–(2.15)](https://arxiv.org/pdf/1505.01417).
@@ -113,9 +113,10 @@ Writing the target coordinates as t_i=λμ_i gives the coefficient
 bound and the unweighted bound at every natural configuration, together
 with the actual immigration–death Stein equation for every test set.
 
-The signed analogue of C.1 is a deduction, never an input. C.1 remains
-partial in the strict ledger because its printed unsigned cost and support
-condition are not reproduced verbatim. The entrywise min bound is derived by
+The signed analogue of C.1 is a deduction, never an input. In batch16, C.1
+remained partial because the unsigned cost and support condition were not
+yet reproduced. The exact unsigned proof in batch17 closes that obligation.
+The entrywise min bound is derived by
 polarization. The proof retains an arbitrary outside offset when telescoping
 local dependence. An actual independent Poisson field fills missing target
 means, including when every retained indicator is zero. Every gradient
@@ -139,3 +140,20 @@ independence, and stationary AR(1) innovations are proved using mathlib.
 No CLT, Gaussian independence, or desired source convergence is an added
 premise. Berry–Esseen, local Gaussian and moderate-deviation rates in D.1
 are not consequences claimed by this weak-limit proof.
+
+
+## Batch 17: exact C.1, conditional kernels and local resolution
+
+No new literature proposition is added. The exact unsigned finite C.1
+uses the existing directional Stein input; the full arithmetic rates6.5,
+the sufficient resolved budget6.7 and almost-sure6.4 add ordinary PNT.
+The dimension condition includes E=0 because two signs are retained during
+the comparison. This does not require a fifth scalar input for that case.
+
+The general stable lift6.1, sharp conditioning6.2, the geometric and reverse
+Poisson target identities, and Markov/Borel–Cantelli are proved internally.
+The effective local Poisson estimate is derived from mathlib's proved
+Stirling limit and Robbins stepwise inequality, with remainder1/(12n).
+Neither a local-limit theorem nor the desired resolved comparison is
+supplied as a literature hypothesis. The four earlier propositions remain
+explicit, unproved theorem arguments under the same qualification boundary.

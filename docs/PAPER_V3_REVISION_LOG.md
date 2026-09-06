@@ -326,3 +326,34 @@ Le **théorème 5.10** porte sur les vrais compteurs arithmétiques conditionné
 Cette preuve de limite faible n'ajoute aucune prémisse de CLT. Elle ne fournit pas les taux quantitatifs de Berry–Esseen, les estimations locales ou les déviations modérées de D.1, ni les raffinements ultérieurs de trajectoires. Les réserves du bilan 15 concernant les parties agrégées de 5.8–5.9 et la limite 5.10 sont levées ; la réserve littérale sur C.1 est maintenue pour les raisons indiquées en V3-S011. Le comptage strict devient **38/61 pour l'article et 3/8 pour le compagnon**, avec la même convention de dénominateurs.
 
 Aucune nouvelle erreur du papier ou du compagnon n'est confirmée. Le registre contient désormais **une correction confirmée et onze suggestions**. Les PDF restent inchangés.
+
+
+## V3-S012 — Donner une version effective de la formule locale de Poisson
+
+**Document et emplacement.** Article v2.8.2, p.39, paragraphe précédant (6.7), et compagnon technique, D.1, formule locale de Stirling.
+
+**Type.** Suggestion de renforcement explicite, **sans erreur identifiée**.
+
+**Justification.** Le terme relatif `1+O(1/n)` peut être remplacé par une correction indépendante de l'intensité : pour tout `n≥1` et `λ>0`,
+
+`p_λ(n)=exp(−δ_n) exp(−λ h(n/λ))/√(2πn)`, avec `0≤δ_n≤1/(12n)`.
+
+L'erreur relative est donc au plus `1/(12n)`, uniformément en toute intensité positive. La preuve télescope l'inégalité de Robbins puis utilise la limite de Stirling démontrée dans mathlib. Elle n'introduit pas une approximation locale comme hypothèse.
+
+**Formulation anglaise proposée.**
+
+> For every integer n≥1 and every λ>0, one has p_λ(n)=exp(−δ_n) exp(−λh(n/λ))/√(2πn), where 0≤δ_n≤1/(12n). In particular, the relative error in the local approximation is at most 1/(12n), uniformly over all positive intensities.
+
+**Preuves.** [PoissonStirlingBounds.lean](../PaperCV282/PoissonStirlingBounds.lean), `poisson_local_exact`, `poisson_local_bounds` et `poisson_local_relative_error` ; [PoissonResolutionBudget.lean](../PaperCV282/PoissonResolutionBudget.lean), `poisson_atom_reciprocal_le`. Le cas `n=0` conserve sa formule exacte `exp(−λ)` ; cette écriture avec racine de n ne s'y applique pas.
+
+**Statut.** Proposition à examiner par l'auteur pour la V3. La borne précise peut remplacer le O local et expliciter le coût de résolution. Elle ne dispense pas des arguments séparés de Berry–Esseen, de développement central de l'entropie ou de déviation modérée. Les PDF restent inchangés.
+
+## Bilan du lot 17 — C.1 exact et conditionnements du §6
+
+La réserve du lot16 sur **C.1** est levée : la formule non signée utilise exactement `R2(N,Q)`, `Q=L+E+1` et le seul seuil `2Q<Y`, y compris `E=0`. Les deux signes sont conservés dans la comparaison directionnelle puis sommés à chaque paire d'excès fixée avant la borne relative. Voir [UnsignedAggregateC1.lean](../PaperCV282/UnsignedAggregateC1.lean). Aucune modification de l'énoncé du compagnon n'est nécessaire.
+
+Les **lemmes6.1 et6.2**, le **théorème6.3** et le **corollaire6.4** sont formalisés sur les véritables lois et noyaux conditionnels. La variable enregistrée de6.1 peut prendre ses valeurs dans un espace mesurable arbitraire. La positivité après résolution du compteur est démontrée ; le futur entier et tout segment inférieur fini conservent la bonne loi cible et le coût exact. Le résultat presque sûr emploie le même espace de signes à toutes les échelles, sans indépendance entre celles-ci. Le budget suffit lui-même à obtenir la condition de profondeur.
+
+Le taux agrégé **(6.5)** est prouvé pour toutes les intensités positives. Sous **(6.7)**, sur une bande logarithmique explicite, l'erreur divisée par la vraie masse de Poisson est au plus `40√(2π)exp(1/12) exp(−cν/2)+N^(−1/6)→0`. Cela donne directement le contrôle du vrai futur après résolution. La réduction centrale avec coefficient `3/2`, les raffinements quantitatifs restants de D.1 et le dernier paragraphe de6.4 gardent leurs réserves.
+
+Le décompte strict atteint **42/61 dans l'article et4/8 dans le compagnon**. Les quatre entrées bibliographiques explicites restent inchangées. Aucune nouvelle erreur du papier n'est confirmée : le journal contient **une correction confirmée et douze suggestions**. Les sources du papier et du compagnon pourront accompagner leur future V3, avec les déclarations et le commit qualifié précisément indiqués.

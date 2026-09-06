@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 365 mathematical modules contain **3201 named declarations: 2467 theorems, 555 definitions and 179 named instances**. Batch 16 adds 292 theorems in 46 new modules.
+The 397 mathematical modules contain **3468 named declarations: 2666 theorems, 594 definitions and 208 named instances**. Batch 17 adds 199 theorems in 32 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -1289,8 +1289,9 @@ with p=2^(-L), Q=L+E+1 and s=min(1,12(1+log⁺(2λ))/λ).
 The relation profile includes all Q+1 values. Its cutoff conversion is
 proved; it is never replaced by the smaller base-start profile. The support
 condition is 2(Q+1)≤Y. The printed C.1 instead uses an unsigned start-relation
-profile at Q and 2Q<Y: that exact finite statement remains partial, although
-the enlarged signed estimate proves all aggregate consequences below.
+profile at Q and 2Q<Y. This was the precise remaining obligation in batch16;
+the exact unsigned proof in batch17 below now closes it. The enlarged signed
+estimate continues to prove all aggregate consequences below.
 
 ## Batch 16: aggregate 5.8(ii), signed 5.9 and all threshold paths
 
@@ -1331,3 +1332,90 @@ product, for every fixed J and finite R⊂ℤ. The two explicit literature input
 are the directional Stein solution theorem and PNT. Positive conditioning
 probabilities define each member of the sequence. No Berry–Esseen/local
 rate, moderate-deviation estimate, or general result from D.1/D.4 is claimed.
+
+
+## Batch 17: exact unsigned companion C.1 and all-intensity paths
+
+| Declaration | Established result |
+|---|---|
+| `UnsignedMarkedRelations` | Sum the two signs at each fixed excess pair, then inject the actual relative kernel into the Q-row start relation space. |
+| `UnsignedLocalProbability` | Exact local bound with only2Q<Y, including Y=2Q+1. |
+| `UnsignedDirectionalCosts` | Geometric weighted near/far costs using the relative R2 profile, without merging excess coordinates before weighting. |
+| `UnsignedAggregateC1.theorem_c_one` | The true finite mean conditional TV is at most12 times the printed unsigned budget, Q=L+E+1 and2Q<Y. |
+| `UnsignedAggregateC1.theorem_c_one_event` | The actual full-F_Y positive-event comparison pays one division by P(C). |
+| `UnsignedLowIntensityRates.signed_aggregate_ledger_all_intensities_eventually` | The enlarged signed numerical profile retains the polynomial cost2^(2E+2)(lambda²+lambda); no lambda>=1 hypothesis. |
+| `UnsignedResolvedPathRates.resolved_aggregate_event_bound` | Whole signed and unsigned configurations satisfy40exp(I)lambda(1+log⁺(2lambda))exp(-V+eta*nu)+N^(-1/3+epsilon), uniformly before length and event. |
+
+For C.1, p=2^(-L), lambda=Np and
+s12(lambda)=min(1,12(1+log⁺(2lambda))/lambda). The budget is
+p*M_L+p*D_Q+s12(lambda)*p²*(NQ+edges_Y(Q)+R2(N,Q)).
+The external argument is only the existing directional Stein proposition.
+Keeping both signs during the comparison gives dimension2(E+1)>=2 even
+when E=0; the signs are then forgotten by a proved map contraction.
+The target rates are the actual independent coordinate Poisson rates.
+
+The all-intensity rate assumes I+log⁺lambda<=A*V for a fixed A>=0.
+The proof cutoff is3ceil(V/log2); its full cost is retained before
+absorption into a fixed arbitrary exponent slack. The source and target
+tails are removed. Exact path/configuration TV equality supplies6.5.
+
+## Batch 17: stable lift, sharp conditioning and full resolved paths
+
+| Declaration | Established result |
+|---|---|
+| `KernelTotalVariation.measurable_kernel_totalVariation` | Actual TV of Markov kernels is measurable on any source when the target is countably generated. |
+| `StableConditionalKernel.conditionalKernel_ae_eq_condExp` | The defined kernel is the genuine conditional distribution over the given sub-sigma-algebra. |
+| `StableProductLift.lemma_six_one` | Expected conditional TV controls the actual joint law with any F-measurable recorded variable against its marginal product. |
+| `StableProductLift.lemma_six_one_conditioned` | Both observed and joint laws under a positive F-event satisfy epsilon/P(C). |
+| `PrimeEnvironmentStableLift.conditionalKernel_ae_eq_observedAtom` | The genuine regular conditional law agrees a.e. with conditioning on the observed small-prime atom. |
+| `PrimeEnvironmentStableLift.fullFY_conditioned_stable_product_lift` | Arithmetic finite-atom means support the general recorded-variable lift under every positive full-F_Y event. |
+| `SharpConditioning.lemma_six_two` | Actual conditional TV<=epsilon/max(p,q)<=epsilon/p, with source positivity derived from epsilon<p. |
+| `SharpConditioningDiscrete.measureTotalVariation_eq_mass` | The general measurable-test-set convention equals the earlier countable half-L1 convention. |
+| `PoissonResolvedTarget.conditional_future_path_eq` | Conditioning the whole geometric configuration by its size n gives the entire path of n iid geometric lifetimes. |
+| `PoissonResolvedComparison.theorem_six_three_future` | The actual C intersect{Z=n} is positive and its whole future law has the exact epsilon/p bound. |
+| `PoissonConfigurationSplit.hasLaw_split_configuration` | Every finite lower Poisson vector is independent of the complete shifted configuration. |
+| `PoissonResolvedLowerComparison.theorem_six_three_lower_segment` | The genuine source retains an arbitrary finite reverse segment jointly with the whole future; the error is based at the lowest level, the atom at the resolved level. |
+| `PoissonReverseImmigration.reverse_increment_rate` | Reverse increment mean is exactly lambda_present*(2^j-1), with the product law supplying independence from the resolved future. |
+
+The observed space in6.1 is standard Borel; the original probability
+space, sub-sigma-algebra and recorded target space remain arbitrary.
+No standard-Borel assumption on the recorded variable is hidden in the proof.
+No entire infinite reverse path or canonical all-scale coupling is claimed.
+
+## Batch 17: effective local Poisson cost and budget6.7
+
+| Declaration | Established result |
+|---|---|
+| `PoissonStirlingBounds.stirlingLogError_le` | Robbins' stepwise bound telescopes to0<=delta_n<=1/(12n), n>=1. |
+| `PoissonStirlingBounds.poisson_local_exact` | p_lambda(n)=exp(-delta_n)*exp(-lambda*h(n/lambda))/sqrt(2*pi*n), with correction independent of every lambda>0. |
+| `PoissonStirlingBounds.poisson_local_relative_error` | Effective relative error at most1/(12n), uniform in the positive intensity. |
+| `PoissonResolutionBudget.poisson_atom_reciprocal_le` | The true reciprocal is at most C*exp(log(n)/2+lambda*h(n/lambda)), C=sqrt(2*pi)*exp(1/12). |
+| `PoissonResolutionBudget.poisson_resolved_polynomial_bound_eventually` | Under the full resolution budget the reciprocal atom is subpolynomial, so the divided polynomial error still decays. |
+| `ResolvedInformationTheorem.resolved_ratio_bound_eventually` | Actual complete configuration error divided by its Poisson resolution atom is <=40*C*exp(-c*nu/2)+N^(-1/6). |
+| `ResolvedInformationTheorem.resolved_future_under_information_budget` | The true resolved event is positive and the entire actual future obeys that bound, with threshold before L,C,n>=1. |
+| `ResolvedInformationTheorem.resolvedBudgetRemainder_tendsto_zero` | The explicit remainder tends to zero for every fixed c>0. |
+
+The budget is literally
+I+log⁺lambda+log(1+log⁺(2lambda))+log(n)/2+lambda*h(n/lambda)<=V-c*nu.
+The base length is in an explicit fixed positive logarithmic band. The
+theorem works already for every n>=1, not only a sequence tending to infinity.
+No Berry–Esseen bound, moderate-deviation comparison or central expansion
+with coefficient3/2 is inferred from this local result.
+
+## Batch 17: almost-sure environmental control6.4
+
+| Declaration | Established result |
+|---|---|
+| `FinitePrimeEnvironment.integral_environmentDistance` | The genuine observed-atom distance integrates to the exact finite mean. |
+| `MeanAggregateTruncation.mean_signed_aggregate_le_ledger_and_tails` | Source tails remain actual conditional probabilities before averaging, avoiding a spurious number-of-atoms factor. |
+| `MeanAggregateBudget.integral_environment_aggregate_hard_rate` | Actual mean conditional full-configuration bound under logLambda<=V-c*nu. |
+| `GeometricSaddleSummability.summable_exp_neg_nu` | True saddle errors are summable along every geometric lower growth. |
+| `QuenchedBorelCantelli.ae_eventually_saddle_bound` | Markov and first Borel–Cantelli, with no independence assumption between scales. |
+| `QuenchedBudgetDomain.depth_div_log_tendsto_zero_of_saddle_budget` | The budget rules out natural-subtraction truncation and forces d/logN->0. |
+| `QuenchedBudgetDomain.corollary_six_four_geometric` | Full aggregate and staircase conditional distances<=exp(-beta*nu) eventually almost surely, for each0<beta<c, assuming only the budget and geometric lower growth. |
+
+All scales use the same original infinite Rademacher space. The canonical
+conditional-kernel TV is identified a.e. with the observed-atom TV in
+PrimeEnvironmentStableLift. The final result does not require an extra
+depth hypothesis. The unnumbered extensions to labelled fields, simultaneous
+O(logN) scalar lengths and maximal couplings remain separate obligations.

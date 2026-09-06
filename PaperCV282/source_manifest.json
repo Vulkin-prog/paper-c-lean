@@ -35,15 +35,17 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Theorem 5.8(ii), aggregated Corollary 5.9 and Theorem 5.10",
+          "item": "Lemmas6.1–6.2, Theorem6.3 and Corollary6.4; equations6.5–6.7",
           "printed_pages": [
-            35,
-            36,
-            37
+            38,
+            39,
+            40
           ],
           "equations": [
-            "5.21",
-            "5.22"
+            "6.4",
+            "6.5",
+            "6.6",
+            "6.7"
           ]
         }
       ]
@@ -57,18 +59,17 @@
       "size_bytes": 483599,
       "sha256": "60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094",
       "source_kind": "user_supplied_pdf",
-      "role_in_batch": "A signed directional finite comparison sufficient for aggregate 5.8/5.9/5.10 is proved. The exact unsigned finite bound C.1 is not credited complete; companion remains 3/8.",
+      "role_in_batch": "Exact unsigned finite theoremC.1 is complete; local Poisson estimate and resolution budget are proved, while Berry–Esseen, central entropy and other quantitative/path refinements remain separate. Companion strict count4/8.",
       "current_batch_locators": [
         {
-          "item": "Directional Stein factors and finite aggregate comparison C.1; signed variant proved, exact printed C.5 remains partial",
+          "item": "Exact unsigned finite C.1/C.5; local Poisson estimate in D.1 and resolved/quenched arguments D.2–D.3",
           "printed_pages": [
-            10,
             11,
-            12
+            12,
+            14,
+            15
           ],
           "equations": [
-            "C.3",
-            "C.4",
             "C.5"
           ]
         }
@@ -175,9 +176,11 @@
     "PaperCV282/ExactMarkedValueProbability.lean",
     "PaperCV282/ExponentialIntegral.lean",
     "PaperCV282/ExponentialIntegralAsymptotics.lean",
+    "PaperCV282/FiniteConditionalKernel.lean",
     "PaperCV282/FiniteFieldPoissonCoupling.lean",
     "PaperCV282/FiniteFieldTotalVariation.lean",
     "PaperCV282/FinitePoissonCLT.lean",
+    "PaperCV282/FinitePrimeEnvironment.lean",
     "PaperCV282/FreeCutoffAdmissibility.lean",
     "PaperCV282/FreeCutoffSoftRates.lean",
     "PaperCV282/FullBandArithmetic.lean",
@@ -197,6 +200,8 @@
     "PaperCV282/GeometricClusterTruncation.lean",
     "PaperCV282/GeometricConfigurationCounts.lean",
     "PaperCV282/GeometricMarkedConfiguration.lean",
+    "PaperCV282/GeometricSaddleSummability.lean",
+    "PaperCV282/GeometricScaleInstances.lean",
     "PaperCV282/GoodTouchingProbability.lean",
     "PaperCV282/GrowingLevelParameters.lean",
     "PaperCV282/GrowingMarkedTruncation.lean",
@@ -221,6 +226,8 @@
     "PaperCV282/IntervalRationalLowerBounds.lean",
     "PaperCV282/IntervalRationalMass.lean",
     "PaperCV282/KernelEnergyCounting.lean",
+    "PaperCV282/KernelProductVariation.lean",
+    "PaperCV282/KernelTotalVariation.lean",
     "PaperCV282/KernelWindowEnergy.lean",
     "PaperCV282/LabelledInformationBudget.lean",
     "PaperCV282/LabelledProcessCosts.lean",
@@ -269,6 +276,8 @@
     "PaperCV282/MaskedScalarRetained.lean",
     "PaperCV282/MaskedScalarTransfer.lean",
     "PaperCV282/MassPushforward.lean",
+    "PaperCV282/MeanAggregateBudget.lean",
+    "PaperCV282/MeanAggregateTruncation.lean",
     "PaperCV282/MovableMarkedBudget.lean",
     "PaperCV282/MovingMarkedComparison.lean",
     "PaperCV282/MovingMarkedLevels.lean",
@@ -278,6 +287,7 @@
     "PaperCV282/PointMeasureSpace.lean",
     "PaperCV282/PointwiseStartBounds.lean",
     "PaperCV282/PoissonCLT.lean",
+    "PaperCV282/PoissonConfigurationSplit.lean",
     "PaperCV282/PoissonConfigurationTransform.lean",
     "PaperCV282/PoissonFieldAggregation.lean",
     "PaperCV282/PoissonFieldMeasure.lean",
@@ -294,12 +304,20 @@
     "PaperCV282/PoissonPointProcess.lean",
     "PaperCV282/PoissonPolynomialIntegrability.lean",
     "PaperCV282/PoissonRateConvergence.lean",
+    "PaperCV282/PoissonResolutionBudget.lean",
+    "PaperCV282/PoissonResolvedComparison.lean",
+    "PaperCV282/PoissonResolvedLowerComparison.lean",
+    "PaperCV282/PoissonResolvedPast.lean",
+    "PaperCV282/PoissonResolvedTarget.lean",
+    "PaperCV282/PoissonReverseImmigration.lean",
+    "PaperCV282/PoissonStirlingBounds.lean",
     "PaperCV282/PoissonThresholdTarget.lean",
     "PaperCV282/PolynomialPellCount.lean",
     "PaperCV282/PolynomialSplitProducts.lean",
     "PaperCV282/PolynomialSplitSolutions.lean",
     "PaperCV282/PositiveSquareclassPairs.lean",
     "PaperCV282/PrescribedValues.lean",
+    "PaperCV282/PrimeEnvironmentStableLift.lean",
     "PaperCV282/PrimeEulerAbel.lean",
     "PaperCV282/PrimeEulerCutoff.lean",
     "PaperCV282/PrimeEulerFreeCutoff.lean",
@@ -313,6 +331,9 @@
     "PaperCV282/ProcessAGGInput.lean",
     "PaperCV282/ProfileAssembly.lean",
     "PaperCV282/ProfileMonomials.lean",
+    "PaperCV282/QuenchedAggregateTheorem.lean",
+    "PaperCV282/QuenchedBorelCantelli.lean",
+    "PaperCV282/QuenchedBudgetDomain.lean",
     "PaperCV282/RandomDictionary.lean",
     "PaperCV282/RandomDictionaryCritical.lean",
     "PaperCV282/RandomDictionaryIndependence.lean",
@@ -330,6 +351,7 @@
     "PaperCV282/ResidualSectorMasks.lean",
     "PaperCV282/ResidualSectorMass.lean",
     "PaperCV282/ResidualSectorPartition.lean",
+    "PaperCV282/ResolvedInformationTheorem.lean",
     "PaperCV282/RestrictedPoissonTransfer.lean",
     "PaperCV282/RunFiniteness.lean",
     "PaperCV282/SaddleArithmeticBounds.lean",
@@ -355,6 +377,8 @@
     "PaperCV282/SectorSevenRank.lean",
     "PaperCV282/SectorSixHostCover.lean",
     "PaperCV282/SectorSixProfile.lean",
+    "PaperCV282/SharpConditioning.lean",
+    "PaperCV282/SharpConditioningDiscrete.lean",
     "PaperCV282/ShiftedKernelBoxAsymptotics.lean",
     "PaperCV282/ShiftedKernelBoxCount.lean",
     "PaperCV282/ShiftedKernelDyadicCover.lean",
@@ -411,6 +435,8 @@
     "PaperCV282/SpatialPointEmbedding.lean",
     "PaperCV282/SpatialPointSupport.lean",
     "PaperCV282/SplitProductLocalization.lean",
+    "PaperCV282/StableConditionalKernel.lean",
+    "PaperCV282/StableProductLift.lean",
     "PaperCV282/SteinFiniteExpectation.lean",
     "PaperCV282/SteinLocalTelescoping.lean",
     "PaperCV282/SteinScalarTelescoping.lean",
@@ -427,8 +453,15 @@
     "PaperCV282/TwoWindowParity.lean",
     "PaperCV282/TwoWindowSquareHosts.lean",
     "PaperCV282/UniformSpatialGrid.lean",
+    "PaperCV282/UnsignedAggregateC1.lean",
     "PaperCV282/UnsignedAggregateComparison.lean",
     "PaperCV282/UnsignedAggregateTarget.lean",
+    "PaperCV282/UnsignedDirectionalCosts.lean",
+    "PaperCV282/UnsignedLocalProbability.lean",
+    "PaperCV282/UnsignedLowIntensityRates.lean",
+    "PaperCV282/UnsignedMarkedRelations.lean",
+    "PaperCV282/UnsignedResolvedPathRates.lean",
+    "PaperCV282/UnsignedWeightedPairs.lean",
     "PaperCV282/ValueRelations.lean",
     "PaperCV282/ValueSquareRelations.lean",
     "PaperCV282/VariableMeasureWeakTransfer.lean",
@@ -608,8 +641,9 @@
     "additional_exclusions": [
       "Precise exp(O(log M/loglog M)) quantitative versions of the polynomial-height arithmetic counts.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
-      "Exact printed unsigned finite comparison C.1, including its start-relation profile and condition 2Q<Y. The enlarged signed variant proves all aggregate conclusions of 5.8(ii), 5.9 and 5.10.",
-      "General stable product lift, resolved conditioning paths, almost-sure control, quantitative Gaussian/local/moderate-deviation refinements, microscopic and two-source crossover."
+      "Quantitative Berry–Esseen and moderate deviations; central entropy expansion with coefficient3/2 in the resolution budget; relative small-intensity scalar refinement; remaining D.4 process consequences.",
+      "Unnumbered extensions following6.4: labelled-field environmental bound, simultaneous scalar control over O(logN) lengths and separate maximal couplings.",
+      "Microscopic boundary, macroscopic transports, prefix regimes and two-source crossover of section7."
     ],
     "new_external_literature_premises_in_current_endpoints": [
       {
@@ -1153,23 +1187,17 @@
       "moving_path_identity": "PaperC.V282.AggregateMovingCoordinates.conditional_moving_path_distance_eq"
     },
     "companion_C_1": {
-      "status": "partial_exact_printed_bound",
-      "covered": [
-        "Entrywise minimum factors derived by polarization from the quadratic literature bounds.",
-        "Generic exact dependency graph with arbitrary offsets and true independent Poisson filling at the full target intensity.",
-        "Legitimate filling integration: all required polynomial moments and gradient growth bounds proved, including zero filling rates.",
-        "Signed mixed value relations embedded by zero into the common full value space.",
-        "Actual mean conditional finite aggregate distance and restriction to every positive full-F_Y event."
-      ],
-      "endpoint": "PaperC.V282.SignedAggregateComparison.average_finite_aggregate_le_ledger",
-      "event_endpoint": "PaperC.V282.SignedAggregateComparison.conditional_finite_signed_aggregate_le_ledger",
-      "proved_ledger": "p*(M_L+2*D_Q)+p^2*min(1,12*(1+log^+(2*lambda))/lambda)*(10*N*(Q+1)+2*edges_Y(Q)+R_values(Q+1)), Q=L+E+1, p=2^(-L), lambda=N*p.",
-      "support_condition": "2*(Q+1)<=Y, with an adequate full prime cylinder C>=Y.",
-      "remaining": [
-        "Exact unsigned printed C.5 with start-relation profile R2 at Q and the weaker hypothesis 2Q<Y."
-      ],
-      "desired_aggregate_comparison_assumed": false,
-      "strict_companion_result_complete": false
+      "status": "complete_exact_unsigned_under_existing_directional_Stein_input",
+      "endpoint": "PaperC.V282.UnsignedAggregateC1.theorem_c_one",
+      "event_endpoint": "PaperC.V282.UnsignedAggregateC1.theorem_c_one_event",
+      "proved_ledger": "12*(p*M_L+p*D_Q+s12(lambda)*p^2*(N*Q+edges_Y(Q)+R2(N,Q))), Q=L+E+1, p=2^(-L), lambda=N*p, s12=min(1,12*(1+log^+(2*lambda))/lambda).",
+      "support_condition": "Only2Q<Y, E>=0, and an adequate prime cylinder containing Y and the actual support.",
+      "relative_kernel": "Sum signs at each fixed pair of excesses before injecting the mixed relative kernel into the Q-row start relation space.",
+      "E_zero_included": true,
+      "actual_full_FY_atom_average": true,
+      "desired_comparison_assumed": false,
+      "strict_companion_result_complete": true,
+      "remaining": []
     },
     "theorem_5_8_aggregate": {
       "status": "complete_part_ii_under_explicit_directional_Stein_and_PNT",
@@ -1205,6 +1233,77 @@
       "CLT_or_independence_added_as_premise": false,
       "quantitative_Berry_Esseen_local_or_moderate_deviation_claimed": false,
       "remaining": []
+    },
+    "lemma_6_1": {
+      "status": "complete_without_external_premise",
+      "endpoint": "PaperC.V282.StableProductLift.lemma_six_one",
+      "conditioned_endpoint": "PaperC.V282.StableProductLift.lemma_six_one_conditioned",
+      "prime_environment_endpoint": "PaperC.V282.PrimeEnvironmentStableLift.fullFY_conditioned_stable_product_lift",
+      "source_and_recorded_spaces": "Arbitrary measurable spaces; only the observed space is standard Borel.",
+      "actual_kernel": "condDistrib W id μ with identity mapping into the sub-sigma-algebra; disintegration and conditional expectations identified.",
+      "measurable_actual_TV": true,
+      "cost": "Mean conditional TV before restriction, divided by P(C) once under positive F-events.",
+      "remaining": []
+    },
+    "lemma_6_2": {
+      "status": "complete_without_external_premise",
+      "endpoint": "PaperC.V282.SharpConditioning.lemma_six_two",
+      "bound": "epsilon/max(p,q)<=epsilon/p with q>0 derived from epsilon<p.",
+      "space": "Arbitrary probability measures and measurable conditioning set; contraction supplies the projected marginal version.",
+      "remaining": []
+    },
+    "theorem_6_3": {
+      "status": "complete_numbered_result_without_new_literature_premise",
+      "future_endpoint": "PaperC.V282.PoissonResolvedComparison.theorem_six_three_future",
+      "lower_endpoint": "PaperC.V282.PoissonResolvedLowerComparison.theorem_six_three_lower_segment",
+      "source": "True cond μ(C intersect{actual Z=n}), with positive mass proved.",
+      "target": "n iid geometric lifetimes for the entire future; every finite retained lower vector remains an independent Poisson vector with exact reverse means.",
+      "error": "epsilon/p, error at lowest retained level and atom at resolved level.",
+      "infinite_reverse_path_claimed": false,
+      "remaining": []
+    },
+    "equation_6_5": {
+      "status": "proved_under_existing_directional_Stein_and_PNT",
+      "endpoint": "PaperC.V282.UnsignedResolvedPathRates.resolved_aggregate_event_bound",
+      "bound": "40*exp(I)*lambda*(1+log^+(2*lambda))*exp(-V+eta*nu)+N^(-1/3+epsilon)",
+      "domain": "All positive intensities, fixed positive logarithmic band, I+log^+lambda<=A*V with fixed A>=0.",
+      "uniformity": "Threshold before L and the actual positive full-FYhard event; both signed and unsigned complete configurations, hence whole threshold path by exact equality."
+    },
+    "poisson_local_estimate": {
+      "status": "proved_internally_from_mathlib_Stirling_and_Robbins",
+      "endpoint": "PaperC.V282.PoissonStirlingBounds.poisson_local_relative_error",
+      "identity_endpoint": "PaperC.V282.PoissonStirlingBounds.poisson_local_exact",
+      "domain": "Every n>=1 and every positive real lambda; remainder depends only on n.",
+      "formula": "p_lambda(n)=exp(-delta_n)*exp(-lambda*h(n/lambda))/sqrt(2*pi*n), 0<=delta_n<=1/(12*n).",
+      "relative_error_bound": "1/(12*n)",
+      "new_literature_input": false
+    },
+    "equation_6_7": {
+      "status": "proved_on_explicit_fixed_logarithmic_band",
+      "endpoint": "PaperC.V282.ResolvedInformationTheorem.resolved_future_under_information_budget",
+      "ratio_endpoint": "PaperC.V282.ResolvedInformationTheorem.resolved_ratio_bound_eventually",
+      "budget": "I+log^+lambda+log(1+log^+(2*lambda))+log(n)/2+lambda*h(n/lambda)<=V-c*nu, c>0,n>=1.",
+      "bound": "40*sqrt(2*pi)*exp(1/12)*exp(-c*nu/2)+N^(-1/6), tending to zero.",
+      "actual_resolved_event_positive": true,
+      "uniformity": "Threshold before L,C,n; true full future under C intersect{Z=n}.",
+      "central_three_halves_reduction_claimed": false,
+      "common_band_from_unrestricted_base_budget_claimed": false
+    },
+    "corollary_6_4": {
+      "status": "complete_under_existing_directional_Stein_and_PNT",
+      "endpoint": "PaperC.V282.QuenchedBudgetDomain.corollary_six_four_geometric",
+      "kernel_identity": "PaperC.V282.PrimeEnvironmentStableLift.conditionalTV_primeCylinder_ae_eq_environmentDistance",
+      "bound": "For each0<beta<c, true full aggregate and staircase conditional distances<=exp(-beta*nu) eventually almost surely.",
+      "scale": "Geometric lower bound D*q^k<=N_k, D>0,q>1; no upper bound needed.",
+      "budget": "logLambda<=V-c*nu eventually; this itself supplies depth/logN->0 and prevents natural-subtraction truncation.",
+      "independence_between_scales_assumed": false,
+      "extra_depth_hypothesis": false,
+      "remaining_numbered_result": [],
+      "separate_unnumbered_extensions": [
+        "labelled fields",
+        "simultaneous scalar logarithmic bands",
+        "maximal couplings"
+      ]
     }
   },
   "qualification": {
@@ -1214,13 +1313,13 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 16,
+  "development_batch": 17,
   "declaration_inventory": {
-    "mathematical_module_count": 365,
-    "named_declarations": 3201,
-    "theorems": 2467,
-    "definitions": 555,
-    "named_instances": 179,
+    "mathematical_module_count": 397,
+    "named_declarations": 3468,
+    "theorems": 2666,
+    "definitions": 594,
+    "named_instances": 208,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
@@ -1284,6 +1383,8 @@
       "PaperC.V282.ExactMarkedSourceTail.instDecidableProposition",
       "PaperC.V282.ExactMarkedUnsignedProbability.instDecidableProposition",
       "PaperC.V282.FiniteFieldTotalVariation.instDecidableProposition",
+      "PaperC.V282.FinitePrimeEnvironment.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.FinitePrimeEnvironment.instProbabilityInfiniteRademacher",
       "PaperC.V282.FreeCutoffSoftRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.FullCylinderStartLaw.instMeasurableSpaceF2Discrete",
       "PaperC.V282.FullCylinderStartLaw.instDecidableProposition",
@@ -1325,6 +1426,10 @@
       "PaperC.V282.MaskedScalarFullConditioning.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MaskedScalarFullConditioning.instDecidableProposition",
       "PaperC.V282.MassPushforward.instDecidableProposition",
+      "PaperC.V282.MeanAggregateBudget.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MeanAggregateBudget.instProbabilityInfiniteRademacher",
+      "PaperC.V282.MeanAggregateTruncation.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MeanAggregateTruncation.instProbabilityInfiniteRademacher",
       "PaperC.V282.MovingMarkedComparison.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MovingMarkedComparison.instMeasurableExcessConfiguration",
       "PaperC.V282.MovingMarkedComparison.instMeasurableSingletonExcessConfiguration",
@@ -1348,17 +1453,31 @@
       "PaperC.V282.PoissonFilling.instIsProbabilityMeasureFilling",
       "PaperC.V282.PoissonFillingCoupling.instDecidableProposition",
       "PaperC.V282.PoissonGaussianSource.instProbabilityInfiniteRademacher",
+      "PaperC.V282.PoissonResolvedComparison.instProbabilityInfiniteRademacher",
+      "PaperC.V282.PoissonResolvedLowerComparison.instProbabilityInfiniteRademacher",
+      "PaperC.V282.PoissonResolvedPast.instDecidableProposition",
+      "PaperC.V282.PoissonResolvedPast.instProbabilityResolvedPastFuture",
+      "PaperC.V282.PoissonResolvedTarget.instDecidableProposition",
+      "PaperC.V282.PoissonResolvedTarget.instProbabilityThinConfiguration",
+      "PaperC.V282.PoissonResolvedTarget.instProbabilityThinningPath",
+      "PaperC.V282.PoissonReverseImmigration.instDecidableProposition",
+      "PaperC.V282.PrimeEnvironmentStableLift.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.PrimeEnvironmentStableLift.instProbabilityInfiniteRademacher",
       "PaperC.V282.PrimeFieldEventConditioning.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.QuenchedAggregateTheorem.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.QuenchedAggregateTheorem.instProbabilityInfiniteRademacher",
       "PaperC.V282.RandomDictionary.instDecidableProposition",
       "PaperC.V282.RandomDictionaryOverlap.instDecidableProposition",
       "PaperC.V282.RandomDictionaryWordCount.instDecidableProposition",
       "PaperC.V282.RareConditioningRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RareConditioningRates.instIsProbabilityMeasureInfiniteRademacher",
+      "PaperC.V282.ResolvedInformationTheorem.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RestrictedPoissonTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RunFiniteness.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RunFiniteness.instDecidableProposition",
       "PaperC.V282.ScalarPoissonBounds.instDecidableProposition",
       "PaperC.V282.ScalarSteinInput.instDecidableProposition",
+      "PaperC.V282.SharpConditioningDiscrete.instDecidableProposition",
       "PaperC.V282.SignOverlap.instDecidableCompatibleUpToSign",
       "PaperC.V282.SignPatternCounts.instMeasurableSpaceF2Discrete",
       "PaperC.V282.SignPatternCounts.instDecidableProposition",
@@ -1394,11 +1513,20 @@
       "PaperC.V282.SpatialMarkedTarget.instProbabilitySpatialTarget",
       "PaperC.V282.SpatialMarkedTypes.instMeasurableSpatialMarkedConfig",
       "PaperC.V282.SpatialMarkedTypes.instMeasurableSingletonSpatialMarkedConfig",
+      "PaperC.V282.StableConditionalKernel.instMarkovConditionalKernel",
+      "PaperC.V282.StableConditionalKernel.instProbabilityTrim",
       "PaperC.V282.SteinTestTotalVariation.instDecidableProposition",
       "PaperC.V282.ThresholdPathEquivalence.instCountableThresholdPath",
       "PaperC.V282.UniformSpatialGrid.instProbabilityUnitIntervalUniform",
       "PaperC.V282.UniformSpatialGrid.instProbabilityUniformGrid",
+      "PaperC.V282.UnsignedAggregateC1.instDecidableProposition",
+      "PaperC.V282.UnsignedAggregateC1.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.UnsignedAggregateC1.instProbabilityInfiniteRademacher",
       "PaperC.V282.UnsignedAggregateComparison.instProbabilityInfiniteRademacher",
+      "PaperC.V282.UnsignedLocalProbability.instDecidableProposition",
+      "PaperC.V282.UnsignedMarkedRelations.instDecidableProposition",
+      "PaperC.V282.UnsignedResolvedPathRates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.UnsignedWeightedPairs.instDecidableProposition",
       "PaperC.V282.WeightedLabelledCosts.instDecidableEq",
       "PaperC.V282.WeightedLabelledCosts.instDecidableProposition",
       "PaperC.V282.WordDefectCounting.instDecidableHDefective",
@@ -3222,6 +3350,168 @@
         "definitions": 1,
         "named_instances": 2
       }
+    },
+    "batch_17_additions": {
+      "FiniteConditionalKernel": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "FinitePrimeEnvironment": {
+        "theorems": 11,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "GeometricSaddleSummability": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "GeometricScaleInstances": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "KernelProductVariation": {
+        "theorems": 8,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "KernelTotalVariation": {
+        "theorems": 8,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MeanAggregateBudget": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MeanAggregateTruncation": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "PoissonConfigurationSplit": {
+        "theorems": 6,
+        "definitions": 5,
+        "named_instances": 0
+      },
+      "PoissonResolutionBudget": {
+        "theorems": 8,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "PoissonResolvedComparison": {
+        "theorems": 8,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "PoissonResolvedLowerComparison": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "PoissonResolvedPast": {
+        "theorems": 9,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "PoissonResolvedTarget": {
+        "theorems": 10,
+        "definitions": 3,
+        "named_instances": 3
+      },
+      "PoissonReverseImmigration": {
+        "theorems": 10,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "PoissonStirlingBounds": {
+        "theorems": 7,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "PrimeEnvironmentStableLift": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "QuenchedAggregateTheorem": {
+        "theorems": 5,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "QuenchedBorelCantelli": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "QuenchedBudgetDomain": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "ResolvedInformationTheorem": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "SharpConditioning": {
+        "theorems": 12,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SharpConditioningDiscrete": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "StableConditionalKernel": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "StableProductLift": {
+        "theorems": 9,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "UnsignedAggregateC1": {
+        "theorems": 11,
+        "definitions": 4,
+        "named_instances": 3
+      },
+      "UnsignedDirectionalCosts": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "UnsignedLocalProbability": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "UnsignedLowIntensityRates": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "UnsignedMarkedRelations": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "UnsignedResolvedPathRates": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "UnsignedWeightedPairs": {
+        "theorems": 5,
+        "definitions": 2,
+        "named_instances": 1
+      }
     }
   },
   "manuscript_notes": {
@@ -3229,23 +3519,23 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Batch 16 closes 5.8(ii), aggregated 5.9 and actual conditional joint 5.10. Exact printed C.1 remains partial; the signed enlarged bound is sufficient. Fourth explicit literature proposition: multivariate Stein solution/quadratic bounds. Larger truncation is an alternative proof, not a manuscript correction. PDFs unchanged.",
+    "formalization_context": "Batch17 closes exactC.1 and all four numbered results6.1–6.4, plus all-intensity6.5 and effective local resolution6.7 on an explicit band. Four literature propositions unchanged. No new manuscript error. Effective local Stirling bound suggested for V3; PDFs unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
-      "suggestions": 11
+      "suggestions": 12
     }
   },
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 78,
+    "effort_estimate_percent": 81,
     "conservative_interval_percent": [
-      70,
-      85
+      75,
+      88
     ],
-    "completed_article_results": 38,
+    "completed_article_results": 42,
     "numbered_article_results_excluding_intro_duplicates": 61,
-    "companion_completed_named_results": 3,
+    "companion_completed_named_results": 4,
     "companion_named_results": 8,
     "denominators_must_not_be_added": true,
     "metric_is_lean_declaration_count": false

@@ -1,25 +1,24 @@
-# Couverture du papier C v2.8.2 et du compagnon — lot 16
+# Couverture du papier C v2.8.2 et du compagnon — lot 17
 
-**Environ 78 % de l'effort total est acquis, avec une fourchette prudente de 70–85 %.** La grille conserve les mêmes 19 blocs et 105 unités. Le comptage strict atteint **38 résultats complets sur 61 dans l'article (62,3 %)** et reste, séparément, à **3/8 dans le compagnon**. Les deux fractions ne s'additionnent pas.
+**Environ 81 % de l'effort total est acquis, avec une fourchette prudente de 75–88 %.** La même grille de 19 blocs et 105 unités donne **42/61 résultats numérotés complets dans l'article**, et séparément **4/8 dans le compagnon**. Ces fractions ne s'additionnent pas ; les reprises introductives 1.1–1.3 restent exclues du dénominateur 61.
 
-Ce lot complète les **théorèmes 5.8 et 5.10 et le corollaire 5.9** : comparaison agrégée sous le budget de conditionnement à un facteur d'intensité, version signée, puis véritable limite faible Poisson–Gauss des compteurs arithmétiques conditionnés. Le théorème introductif 1.1 et les parties étiquetées acquises au lot 15 restent acquis. Les reprises introductives 1.1–1.3 sont toujours exclues du dénominateur 61.
-
-La comparaison directionnelle nécessaire est démontrée à partir d'une nouvelle **entrée bibliographique explicite sur la solution de Stein multivariée et deux bornes quadratiques du Hessien**. Elle porte le total à quatre entrées : PNT, Stein scalaire, AGG de processus et Stein multivarié directionnel. Les conclusions nouvelles agrégées et le transfert de 5.10 utilisent seulement les arguments directionnel et PNT ; la convergence gaussienne de la cible n'ajoute aucune prémisse de CLT. Ces arguments bibliographiques ne sont ni des axiomes Lean nouveaux ni des théorèmes démontrés par l'audit : voir les [hypothèses déclarées](../PaperCV282/LITERATURE_INPUTS.md).
+Ce lot complète les **lemmes 6.1 et 6.2, le théorème 6.3, le corollaire 6.4 et le théorème C.1**. Il prouve aussi le taux agrégé à toute intensité positive (6.5), une estimation locale de Poisson effective et le budget de résolution (6.7) sur une bande logarithmique explicite.
 
 ## Résultats nouveaux
 
 | Résultat | Portée démontrée |
 |---|---|
-| Comparaison agrégée signée | Vrai vecteur de comptes, suppression des mauvais sites et remplissage indépendant de Poisson. Les taux de la cible complète sont préservés, même lorsque tous les sites sont supprimés. La somme des poids directionnels ne dépend pas du nombre de marques. |
-| Théorème 5.8(ii), (5.21)–(5.22) | Sous `I+logΛ≤V−cν`, vraie variation totale signée et non signée au plus `2 exp(−c′ν)+N^(−1/3+ε)`, pour tout `0<c′<c` et `ε>0`. Le seuil précède la longueur et l'événement positif de tout `F_Yhard` ; tous les excès sont retenus. La convergence utilise `ε<1/3`. |
-| Corollaire 5.9 | Les deux signes sont conservés dans le calcul joint et la cible indépendante. Le changement exact `r=e−d` donne l'intensité signée `2^(phase−r−2)`. Les distances agrégées sont préservées, ainsi que celle du chemin entier des seuils. |
-| Théorème 5.10 | Pour tout segment fini `0≤j≤J` et tout ensemble fini de niveaux critiques entiers, vraie convergence faible conjointe sous le conditionnement du papier. Les tailles peuvent suivre une sous-suite quelconque, avec `d→∞`, `d/logN→0` et convergence de la phase dyadique. Le centrage et l'échelle utilisent la véritable intensité `Λ_N`. |
-| Cible Poisson–Gauss | Covariance gaussienne `2^(−max(j,k))`, moyennes critiques Poisson `2^(θ−r−1)` et indépendance des deux blocs dans la limite. Cette indépendance est déduite de la même configuration de Poisson sous-jacente ; elle n'est pas supposée pour les observables à taille finie. |
-| Description AR(1) | Après standardisation, covariance `2^(−|j−k|/2)`, innovations normales indépendantes et récurrence de coefficient `1/√2` sur chaque segment fini. Aucune convergence de trajectoires gaussiennes infinies n'est annoncée par ces seuls résultats. |
+| C.1 / (C.5) exact | Vrais comptes non signés, profil relatif `R2(N,Q)` pour `Q=L+E+1`, seul seuil `2Q<Y`, cas `E=0` inclus. La moyenne sur tout `F_Y` et la restriction aux événements positifs sont identifiées. |
+| Lemme 6.1 | Vrai noyau conditionnel pour une observation standard borélienne, sur un espace source arbitraire. Toute variable enregistrée mesurable pour la sous-tribu peut être retenue. La restriction à un événement positif coûte une seule division par sa probabilité. |
+| Lemme 6.2 | Borne exacte `ε/max(p,q)≤ε/p` pour des lois générales ; la positivité de l'événement source est démontrée dès que `ε<p`. |
+| Théorème 6.3 | Vraie loi de tout le futur sous `C∩{Z=n}`, cible de `n` durées géométriques indépendantes. Un segment inférieur fini conserve les incréments de Poisson indépendants, conjointement avec le futur entier. |
+| Taux (6.5) | Erreur agrégée au plus `40 exp(I)λ(1+log⁺(2λ))exp(−V+ην)+N^(−1/3+ε)`, sans hypothèse `λ≥1`, sous une enveloppe `I+log⁺λ≤A V`. Le seuil précède la longueur et l'événement. |
+| Estimation locale et (6.7) | Pour `n≥1`, la correction multiplicative de Stirling vaut `exp(−δ_n)`, avec `0≤δ_n≤1/(12n)`, uniformément en `λ>0`. Sous (6.7), l'erreur divisée par la vraie masse de Poisson est au plus `40 C exp(−cν/2)+N^(−1/6)→0`, où `C=√(2π)exp(1/12)`. La vraie loi résolue satisfait cette même borne. |
+| Corollaire 6.4 | Vraie TV conditionnelle de toute la configuration agrégée et de tout l'escalier, au plus `exp(−βν)` finalement presque sûrement sur les tailles géométriques. Le budget entraîne la condition sur la profondeur ; aucune indépendance entre échelles n'est supposée. |
 
-Les raccords principaux sont [SignedAggregateHardBudget.lean](../PaperCV282/SignedAggregateHardBudget.lean), [AggregateMovingCoordinates.lean](../PaperCV282/AggregateMovingCoordinates.lean) et [PoissonGaussianTheorem.lean](../PaperCV282/PoissonGaussianTheorem.lean). Le dernier démontre l'erreur de comparaison de la source avant de transférer la limite ; il ne prend pas cette erreur tendant vers zéro comme hypothèse finale.
+Les [déclarations précises](../PaperCV282/ENDPOINTS.md) donnent les interfaces vérifiées. La correspondance entre les atomes premiers et le véritable noyau conditionnel est démontrée dans [PrimeEnvironmentStableLift.lean](../PaperCV282/PrimeEnvironmentStableLift.lean). C.1 est maintenant complet au sens strict ; la réserve du lot 16 sur `Q` et `2Q<Y` est levée.
 
-**C.1 reste partiel au sens strict.** L'analogue signé effectivement démontré utilise la masse des relations complètes de valeurs à longueur `Q=L+E+1` et la condition `2*(Q+1)≤Y`. L'équation (C.5) imprimée, non signée, utilise la masse relative `R2(N,Q)` et `2Q<Y`. Aucun raccord exact entre ces deux formules n'est revendiqué. L'enveloppe signée suffit aux preuves achevées de 5.8–5.10 ; cela ne justifie pas de changer les quantités de l'énoncé C.1. Le [ledger exact](../PaperCV282/SignedAggregateRates.lean) et sa [comparaison réelle](../PaperCV282/SignedAggregateComparison.lean) rendent cette distinction vérifiable.
+Les quatre [propositions bibliographiques](../PaperCV282/LITERATURE_INPUTS.md) sont inchangées. C.1 utilise l'entrée directionnelle de Stein ; les nouveaux taux arithmétiques ajoutent PNT. Les noyaux, le conditionnement précis, les cibles géométriques, Stirling et Borel–Cantelli ne requièrent aucune nouvelle prémisse. L'audit des axiomes ne démontre pas les hypothèses bibliographiques.
 
 ## Comptage strict
 
@@ -29,19 +28,17 @@ Les raccords principaux sont [SignedAggregateHardBudget.lean](../PaperCV282/Sign
 | §3 | 25 | 19 | 6 | 0 | 0 |
 | §4 | 4 | 4 | 0 | 0 | 0 |
 | §5 | 10 | 10 | 0 | 0 | 0 |
-| §6 | 4 | 0 | 1 | 0 | 3 |
+| §6 | 4 | 4 | 0 | 0 | 0 |
 | §7 | 10 | 0 | 5 | 1 | 4 |
-| Compagnon | 8 | 3 | 4 | 0 | 1 |
+| Compagnon | 8 | 4 | 3 | 0 | 1 |
 
-La [matrice JSON](FORMALIZATION_COVERAGE_V282.json) conserve ses 69 lignes documentaires. Les résultats 5.8 et 5.9 passent de « partiel » à « complet », et 5.10 de « à établir / non identifié » à « complet ». Les dix résultats numérotés du §5 sont ainsi couverts ; les arguments non numérotés plus précis du compagnon conservent leur propre réserve. Aucun nouveau crédit strict n'est attribué au compagnon dans ce lot.
+La [matrice JSON](FORMALIZATION_COVERAGE_V282.json) conserve ses 69 lignes. Les quatre résultats numérotés du §6 sont couverts. Les paragraphes non numérotés et les raffinements du compagnon conservent leurs réserves propres.
 
 ## Estimation de l'effort
 
-Le bloc des marques (7 unités) passe de **75–85 % à 85–95 %**, soit +0,70 unité aux deux bornes. Le bloc des niveaux croissants et de la limite Poisson–Gauss (5 unités) passe de **30–40 % à 65–80 %**, soit +1,75/+2,00 unités. Les 17 autres blocs restent inchangés. La réserve sur C.1 ne retire pas le travail réel de son analogue signé ; les outils génériques, le CLT et l'égalité des distances des chemins ne reçoivent pas de second crédit dans les chapitres suivants.
+Le bloc des marques passe de 85–95 % à 95–100 %, celui des niveaux croissants de 65–80 % à 70–85 %, et celui du conditionnement de 20–35 % à 75–85 %. Les 16 autres blocs restent inchangés. Le total passe de **76,50–86,22 à 80,20–89,32 unités sur 105**, soit **76,38–85,07 %**, milieu **80,72 %**. La communication arrondit à **81 %**, avec prudence **75–88 %**. Le nombre de déclarations, les lignes et les outils génériques ne déterminent pas cette estimation.
 
-Le total passe de **74,05–83,52 à 76,50–86,22 unités sur 105**, soit **72,86–82,11 %**. Le milieu est **77,49 %**, communiqué comme « environ 78 % », avec une fourchette prudente de **70–85 %**. Ce jugement d'effort ne mesure ni le nombre de déclarations Lean, ni les lignes, ni la durée du lot.
-
-| Bloc mathématique | Poids | Acquis après lot 15 | Acquis après lot 16 |
+| Bloc mathématique | Poids | Acquis après lot 16 | Acquis après lot 17 |
 |---|---:|---:|---:|
 | Modèle, Fourier, arbres et pivots | 6 | 90–98 % | 90–98 % |
 | Runge croissant et défauts | 8 | 95–100 % | 95–100 % |
@@ -54,10 +51,10 @@ Le total passe de **74,05–83,52 à 76,50–86,22 unités sur 105**, soit **72,
 | Deux coupures et calcul uniforme des selles | 7 | 95–100 % | 95–100 % |
 | Transfert TV, rétention douce et moments | 7 | 100 % | 100 % |
 | Dictionnaires, recouvrements et constructions | 5 | 100 % | 100 % |
-| Marques, signes, comparaison agrégée et clusters | 7 | 75–85 % | 85–95 % |
-| Niveaux croissants et limite Poisson–Gauss | 5 | 30–40 % | 65–80 % |
-| Conditionnement, chemins et contrôle presque sûr | 5 | 20–35 % | 20–35 % |
-| Frontière microscopique et rang d'incidence | 6 | 20–35 % | 20–35 % |
+| Marques, signes, comparaison agrégée et clusters | 7 | 85–95 % | 95–100 % |
+| Niveaux croissants et limite Poisson–Gauss | 5 | 65–80 % | 70–85 % |
+| Conditionnement, chemins et contrôle presque sûr | 5 | 20–35 % | 75–85 % |
+| Frontière microscopique et rang d’incidence | 6 | 20–35 % | 20–35 % |
 | Départs intermédiaires et mésoscopiques | 3 | 35–55 % | 35–55 % |
 | Préfixe global et enveloppes presque sûres | 3 | 30–55 % | 30–55 % |
 | Transport macroscopique et noyau signé relatif | 3 | 20–40 % | 20–40 % |
@@ -65,12 +62,14 @@ Le total passe de **74,05–83,52 à 76,50–86,22 unités sur 105**, soit **72,
 
 ## Reste à établir
 
-Le raccord littéral à (C.5), les taux de **Berry–Esseen, les estimations locales et les déviations modérées de D.1** restent ouverts. La limite faible de 5.10 ne démontre pas ces taux. Les raffinements de trajectoires de D.2–D.4, le relèvement produit général 6.1 avec environnement enregistré, les conditionnements précis et le presque sûr, la frontière microscopique, les transports macroscopiques et le mélange de deux sources restent distincts des acquis de ce lot.
+La priorité suivante porte sur la frontière microscopique puis les régimes du §7 et le mélange des deux sources. Restent aussi Berry–Esseen, les déviations modérées, la réduction centrale du budget avec coefficient `3/2`, le raffinement scalaire relatif à petite intensité, et les conséquences de processus encore ouvertes dans D.4. La formule locale de Poisson est acquise ; cela ne ferme pas D.1 en entier.
 
-Les réserves arithmétiques antérieures sont conservées : tout `α>0` en 3.19, taux précis `exp(O(logM/loglogM))` en 3.13/3.14/A.2, raffinements 3.17/3.18, Fourier arbitraire et rang cyclomatique. Aucun crédit nouveau n'est attribué à ces obligations.
+Le paragraphe suivant 6.4, concernant le champ étiqueté, les noyaux scalaires simultanés sur `O(log N)` longueurs et les couplages maximaux, n'est pas annoncé complet. Aucun couplage canonique de toutes les échelles ni toute la trajectoire inverse infinie n'est revendiqué.
+
+Les réserves arithmétiques antérieures demeurent : tout `α>0` en 3.19, taux précis de Pell et split-products en 3.13/3.14/A.2, raffinements 3.17/3.18, Fourier arbitraire et rang cyclomatique.
 
 ## Sources et validation
 
-Base publiée du lot 15 : `a6bafe2027ec6c9fa53ea41db01e0cee7edee27c`. **Lean 4.32.0 et mathlib v4.32.0** restent ceux de la formalisation historique v0.9. Le cœur historique et les deux PDF conservent leurs identités dans le [manifeste](../PaperCV282/source_manifest.json).
+Base publiée du lot 16 : `5e9ce0e497ff5316c6ac82819642977ab386d0a0`. **Lean 4.32.0 et mathlib v4.32.0** restent ceux de la v0.9. Le cœur historique et les deux PDF conservent leurs identités dans le [manifeste](../PaperCV282/source_manifest.json).
 
-Le [journal V3](PAPER_V3_REVISION_LOG.md) précise la frontière directionnelle Röllin/Barbour et distingue la formule C.1 imprimée de l'analogue signé démontré. Aucune nouvelle erreur du manuscrit n'est confirmée. Le registre contient **une correction confirmée et onze suggestions**. Les [déclarations](../PaperCV282/ENDPOINTS.md), les relectures et la validation séparée documentent les preuves vérifiées ; aucune validation distante ni nouvel enregistrement Palomar n'est présumé par cette évaluation.
+Le [journal V3](PAPER_V3_REVISION_LOG.md) contient **une correction confirmée et douze suggestions**, dont la borne effective de Stirling proposée dans ce lot. Aucune nouvelle erreur du papier n'est confirmée. Compilation, audit exhaustif, relectures et contrôles du commit publié sont consignés séparément ; aucun nouvel enregistrement Palomar n'est annoncé.
