@@ -35,27 +35,15 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Theorem1.1, complete spatial field and diffuse limit",
+          "item": "Theorem 5.8(ii), aggregated Corollary 5.9 and Theorem 5.10",
           "printed_pages": [
-            3
-          ],
-          "equations": [
-            "1.3"
-          ]
-        },
-        {
-          "item": "Theorem5.8(i), labelled Corollary5.9 and threshold-path identity",
-          "printed_pages": [
-            34,
             35,
-            36
+            36,
+            37
           ],
           "equations": [
-            "5.16",
-            "5.17",
-            "5.18",
-            "5.19",
-            "5.20"
+            "5.21",
+            "5.22"
           ]
         }
       ]
@@ -69,11 +57,31 @@
       "size_bytes": 483599,
       "sha256": "60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094",
       "source_kind": "user_supplied_pdf",
-      "role_in_batch": "No additional complete companion result credited; earlier source identity and proved results retained.",
-      "current_batch_locators": []
+      "role_in_batch": "A signed directional finite comparison sufficient for aggregate 5.8/5.9/5.10 is proved. The exact unsigned finite bound C.1 is not credited complete; companion remains 3/8.",
+      "current_batch_locators": [
+        {
+          "item": "Directional Stein factors and finite aggregate comparison C.1; signed variant proved, exact printed C.5 remains partial",
+          "printed_pages": [
+            10,
+            11,
+            12
+          ],
+          "equations": [
+            "C.3",
+            "C.4",
+            "C.5"
+          ]
+        }
+      ]
     }
   ],
   "mathematical_modules": [
+    "PaperCV282/AggregateActualTail.lean",
+    "PaperCV282/AggregateBudgetRates.lean",
+    "PaperCV282/AggregateCoordinateIdentities.lean",
+    "PaperCV282/AggregateCutoffRemainder.lean",
+    "PaperCV282/AggregateInformationBudget.lean",
+    "PaperCV282/AggregateMovingCoordinates.lean",
     "PaperCV282/AllStartConditionalDependency.lean",
     "PaperCV282/AllStartFieldCosts.lean",
     "PaperCV282/AllStartFieldTransfer.lean",
@@ -129,7 +137,16 @@
     "PaperCV282/DictionaryPairCosts.lean",
     "PaperCV282/DictionaryProfileNormalization.lean",
     "PaperCV282/DictionaryRateConvergence.lean",
+    "PaperCV282/DirectionalGeneratorIdentity.lean",
+    "PaperCV282/DirectionalGradientGrowth.lean",
+    "PaperCV282/DirectionalHessian.lean",
+    "PaperCV282/DirectionalMarkedCosts.lean",
+    "PaperCV282/DirectionalPoissonComparison.lean",
+    "PaperCV282/DirectionalSteinComparison.lean",
+    "PaperCV282/DirectionalSteinInput.lean",
+    "PaperCV282/DirectionalSteinIntegration.lean",
     "PaperCV282/DivisorSubpolynomial.lean",
+    "PaperCV282/DyadicFullValueProfile.lean",
     "PaperCV282/DyadicPoissonDistance.lean",
     "PaperCV282/DyadicRelationProfile.lean",
     "PaperCV282/ExactMarkedAggregation.lean",
@@ -160,6 +177,7 @@
     "PaperCV282/ExponentialIntegralAsymptotics.lean",
     "PaperCV282/FiniteFieldPoissonCoupling.lean",
     "PaperCV282/FiniteFieldTotalVariation.lean",
+    "PaperCV282/FinitePoissonCLT.lean",
     "PaperCV282/FreeCutoffAdmissibility.lean",
     "PaperCV282/FreeCutoffSoftRates.lean",
     "PaperCV282/FullBandArithmetic.lean",
@@ -171,6 +189,9 @@
     "PaperCV282/FullIntervalHostCounting.lean",
     "PaperCV282/FullIntervalPrimeAssignment.lean",
     "PaperCV282/FullPrimeAssignment.lean",
+    "PaperCV282/GaussianThresholdAR.lean",
+    "PaperCV282/GaussianThresholdCovariance.lean",
+    "PaperCV282/GaussianThresholdIncrements.lean",
     "PaperCV282/GeneralPoissonMarking.lean",
     "PaperCV282/GeometricClusterTarget.lean",
     "PaperCV282/GeometricClusterTruncation.lean",
@@ -256,11 +277,24 @@
     "PaperCV282/OrderedPairCounting.lean",
     "PaperCV282/PointMeasureSpace.lean",
     "PaperCV282/PointwiseStartBounds.lean",
+    "PaperCV282/PoissonCLT.lean",
+    "PaperCV282/PoissonConfigurationTransform.lean",
     "PaperCV282/PoissonFieldAggregation.lean",
     "PaperCV282/PoissonFieldMeasure.lean",
+    "PaperCV282/PoissonFilling.lean",
+    "PaperCV282/PoissonFillingCoupling.lean",
+    "PaperCV282/PoissonFillingIdentity.lean",
+    "PaperCV282/PoissonGaussianCritical.lean",
+    "PaperCV282/PoissonGaussianLimit.lean",
+    "PaperCV282/PoissonGaussianSource.lean",
+    "PaperCV282/PoissonGaussianTarget.lean",
+    "PaperCV282/PoissonGaussianTheorem.lean",
+    "PaperCV282/PoissonGaussianTransform.lean",
     "PaperCV282/PoissonIntensityBounds.lean",
     "PaperCV282/PoissonPointProcess.lean",
+    "PaperCV282/PoissonPolynomialIntegrability.lean",
     "PaperCV282/PoissonRateConvergence.lean",
+    "PaperCV282/PoissonThresholdTarget.lean",
     "PaperCV282/PolynomialPellCount.lean",
     "PaperCV282/PolynomialSplitProducts.lean",
     "PaperCV282/PolynomialSplitSolutions.lean",
@@ -331,7 +365,17 @@
     "PaperCV282/SignOverlap.lean",
     "PaperCV282/SignPatternCounts.lean",
     "PaperCV282/SignPatternRates.lean",
+    "PaperCV282/SignedAggregateArithmetic.lean",
+    "PaperCV282/SignedAggregateComparison.lean",
+    "PaperCV282/SignedAggregateConfiguration.lean",
+    "PaperCV282/SignedAggregateFilling.lean",
+    "PaperCV282/SignedAggregateHardBudget.lean",
+    "PaperCV282/SignedAggregateRates.lean",
+    "PaperCV282/SignedAggregateTruncation.lean",
+    "PaperCV282/SignedDirectionalFactors.lean",
     "PaperCV282/SignedExactMarks.lean",
+    "PaperCV282/SignedGeometricWeights.lean",
+    "PaperCV282/SignedMarkedSeparatedRelations.lean",
     "PaperCV282/SizeTwoHostAsymptotics.lean",
     "PaperCV282/SizeTwoHostCounting.lean",
     "PaperCV282/SmallKernelAnchors.lean",
@@ -383,8 +427,12 @@
     "PaperCV282/TwoWindowParity.lean",
     "PaperCV282/TwoWindowSquareHosts.lean",
     "PaperCV282/UniformSpatialGrid.lean",
+    "PaperCV282/UnsignedAggregateComparison.lean",
+    "PaperCV282/UnsignedAggregateTarget.lean",
     "PaperCV282/ValueRelations.lean",
     "PaperCV282/ValueSquareRelations.lean",
+    "PaperCV282/VariableMeasureWeakTransfer.lean",
+    "PaperCV282/WeightedLabelledCosts.lean",
     "PaperCV282/WholeRelationProfile.lean",
     "PaperCV282/WindowValues.lean",
     "PaperCV282/WordDefectAsymptotics.lean",
@@ -560,7 +608,8 @@
     "additional_exclusions": [
       "Precise exp(O(log M/loglog M)) quantitative versions of the polynomial-height arithmetic counts.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
-      "Directional aggregated comparisonC.1, Theorem5.8(ii), signed aggregated5.9, Poisson-Gaussian5.10 and two-source crossover. Complete spatial1.1, finite5.6, compound5.7 and labelled5.8(i)/5.9 are proved under the stated literature boundary."
+      "Exact printed unsigned finite comparison C.1, including its start-relation profile and condition 2Q<Y. The enlarged signed variant proves all aggregate conclusions of 5.8(ii), 5.9 and 5.10.",
+      "General stable product lift, resolved conditioning paths, almost-sure control, quantitative Gaussian/local/moderate-deviation refinements, microscopic and two-source crossover."
     ],
     "new_external_literature_premises_in_current_endpoints": [
       {
@@ -583,6 +632,16 @@
         "source": "Classical prime number theorem; see LITERATURE_INPUTS.md.",
         "proved_in_lean": false,
         "lean_axiom": false
+      },
+      {
+        "declaration": "PaperC.V282.DirectionalSteinInput.DirectionalSteinFactorsStatement",
+        "content": "Actual finite multivariate Poisson immigration–death Stein solution for every test set, with both published quadratic Hessian bounds; dimension at least two and every full target rate positive. No retained-indicator or retained-mean lower bound.",
+        "source": "A. Röllin, On the Optimality of Stein Factors, arXiv:0706.0879v3, printed page 5, equation (3.1), citing Barbour (1988), Lemma 3.",
+        "source_url": "https://arxiv.org/pdf/0706.0879v3",
+        "source_pdf_sha256": "cca9b417622e06ab0cf759f838fc75664d2d766b6032d8c4664685ec8090f440",
+        "proved_in_lean": false,
+        "lean_axiom": false,
+        "introduced_in_batch": 16
       }
     ],
     "proposition_3_7": {
@@ -1052,7 +1111,7 @@
       "weight_endpoint": "PaperC.V282.GeometricMarkedConfiguration.hasLaw_configurationWeight",
       "full_spatial_countable_source_comparison_claimed": false,
       "diffuse_limit_claimed": false,
-      "boundary": "This entry records the earlier aggregated construction. The separate spatial comparison and diffuse endpoint are now recorded under theorem_1_1."
+      "boundary": "This entry records the earlier target construction. Its exact source identification is now in UnsignedAggregateTarget.hasLaw_aggregateExcess, and the true conditioned aggregate comparison and Gaussian consequences are recorded below."
     },
     "theorem_1_1": {
       "status": "complete_under_explicit_process_AGG_and_PNT_premises",
@@ -1074,26 +1133,78 @@
       "actual_complete_signed_field": true,
       "conditioning": "Actual ProbabilityTheory.cond by positive events measurable with respect to full FYhard/FYsoft.",
       "depth": "Natural d=o(logN), L=floor(log2N)-d, all integer levelsr>=-d.",
-      "remaining_in_full_theorem": [
-        "Part(ii), directional aggregated boundC.1 and5.21–5.22."
-      ]
+      "remaining_in_full_theorem": []
     },
     "corollary_5_9_labelled": {
-      "status": "complete_labelled_clause_only",
+      "status": "complete_labelled_clause_under_explicit_process_AGG_and_PNT",
       "endpoints": [
         "PaperC.V282.MovingMarkedComparison.moving_labelled_hard_tendsto_zero",
         "PaperC.V282.MovingMarkedComparison.moving_labelled_movable_tendsto_zero"
       ],
       "target": "All signed spatial atom means2^(-b-r-2); exact phase-based means proved.",
-      "remaining": [
-        "Signed aggregated clause corresponding to5.8(ii)."
-      ]
+      "remaining": []
     },
     "threshold_path_inversion": {
       "status": "proved_for_actual_full_paths_including_conditioning",
       "endpoint": "PaperC.V282.MovingMarkedComparison.conditional_start_path_totalVariation_eq",
       "content": "Exact-level counts with finite total mass map measurably and injectively to all tails, inverse finite differences; exact equality of distances.",
-      "stronger_aggregated_rate_claimed": false
+      "stronger_aggregated_rate_claimed": true,
+      "aggregate_rate_endpoint": "PaperC.V282.SignedAggregateHardBudget.hard_aggregate_event_bound",
+      "moving_path_identity": "PaperC.V282.AggregateMovingCoordinates.conditional_moving_path_distance_eq"
+    },
+    "companion_C_1": {
+      "status": "partial_exact_printed_bound",
+      "covered": [
+        "Entrywise minimum factors derived by polarization from the quadratic literature bounds.",
+        "Generic exact dependency graph with arbitrary offsets and true independent Poisson filling at the full target intensity.",
+        "Legitimate filling integration: all required polynomial moments and gradient growth bounds proved, including zero filling rates.",
+        "Signed mixed value relations embedded by zero into the common full value space.",
+        "Actual mean conditional finite aggregate distance and restriction to every positive full-F_Y event."
+      ],
+      "endpoint": "PaperC.V282.SignedAggregateComparison.average_finite_aggregate_le_ledger",
+      "event_endpoint": "PaperC.V282.SignedAggregateComparison.conditional_finite_signed_aggregate_le_ledger",
+      "proved_ledger": "p*(M_L+2*D_Q)+p^2*min(1,12*(1+log^+(2*lambda))/lambda)*(10*N*(Q+1)+2*edges_Y(Q)+R_values(Q+1)), Q=L+E+1, p=2^(-L), lambda=N*p.",
+      "support_condition": "2*(Q+1)<=Y, with an adequate full prime cylinder C>=Y.",
+      "remaining": [
+        "Exact unsigned printed C.5 with start-relation profile R2 at Q and the weaker hypothesis 2Q<Y."
+      ],
+      "desired_aggregate_comparison_assumed": false,
+      "strict_companion_result_complete": false
+    },
+    "theorem_5_8_aggregate": {
+      "status": "complete_part_ii_under_explicit_directional_Stein_and_PNT",
+      "endpoint": "PaperC.V282.SignedAggregateHardBudget.hard_aggregate_event_bound",
+      "sequence_endpoint": "PaperC.V282.SignedAggregateHardBudget.theorem_five_eight_aggregate_hard_sequences",
+      "actual_law": "All exact excess counts, including both signs in the stronger endpoint; true ProbabilityTheory.cond under the infinite Rademacher measure.",
+      "budget": "I+log(lambda)<=Vhard-c*nuhard, c>0; actual I=-log P(A), lambda>=1.",
+      "bound": "2*exp(-cprime*nuhard)+N^(-1/3+epsilon), every 0<cprime<c and epsilon>0.",
+      "uniformity": "Fixed positive logarithmic band; threshold before length and every positive event measurable for the whole F_Yhard.",
+      "depth": "Any natural d=o(log N); arbitrary size subsequences tending to infinity.",
+      "proof_cutoff": "E=3*ceil(Vhard/log 2), with explicit factor 2^(2E+2) retained then absorbed. Conditional first-moment tails are sufficient under this information budget.",
+      "remaining": []
+    },
+    "corollary_5_9_aggregate": {
+      "status": "complete_aggregate_clause_under_explicit_directional_Stein_and_PNT",
+      "endpoint": "PaperC.V282.AggregateMovingCoordinates.corollary_five_nine_aggregate_sequences",
+      "carrier": "Finitely supported configurations on integer levels r>=-d, with or without sign.",
+      "target_rates": "2^(theta_N-r-2) per sign; 2^(theta_N-r-1) after forgetting signs.",
+      "reindexing_preserves_total_variation": true,
+      "remaining": []
+    },
+    "theorem_5_10": {
+      "status": "complete_under_explicit_directional_Stein_and_PNT",
+      "endpoint": "PaperC.V282.PoissonGaussianTheorem.theorem_five_ten",
+      "target_endpoint": "PaperC.V282.PoissonGaussianCritical.theorem_five_ten_target",
+      "literal_critical_length_identity": "PaperC.V282.PoissonGaussianTheorem.criticalExactCount_eq_eventually",
+      "parameters": "Arbitrary sizes->infinity, d->infinity, d/log(sizes)->0, dyadic phase->theta, fixed finite J and finite R subset of integers.",
+      "source": "Actual conditioned vector of normalized threshold start counts at L+j and exact run counts at b_N+r; the same sample supplies both.",
+      "conditioning": "Positive probabilities for every member of the probability-measure sequence; full-F_Yhard measurability and one-factor information budget eventually.",
+      "target": "Centered Gaussian vector with covariance 2^(-max(j,k)), independent of the finite critical Poisson vector with means 2^(theta-r-1).",
+      "gaussian_AR": "Each finite normalized segment has a stationary AR(1) representation with coefficient 1/sqrt(2), independent standard-normal initial value and innovations.",
+      "source_total_variation_convergence_assumed": false,
+      "CLT_or_independence_added_as_premise": false,
+      "quantitative_Berry_Esseen_local_or_moderate_deviation_claimed": false,
+      "remaining": []
     }
   },
   "qualification": {
@@ -1103,17 +1214,18 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 15,
+  "development_batch": 16,
   "declaration_inventory": {
-    "mathematical_module_count": 319,
-    "named_declarations": 2801,
-    "theorems": 2175,
-    "definitions": 466,
-    "named_instances": 160,
+    "mathematical_module_count": 365,
+    "named_declarations": 3201,
+    "theorems": 2467,
+    "definitions": 555,
+    "named_instances": 179,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
     "named_instance_declarations": [
+      "PaperC.V282.AggregateMovingCoordinates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.AllStartFieldCosts.instDecidableProposition",
       "PaperC.V282.AllStartFieldTransfer.instDecidableProposition",
       "PaperC.V282.CompoundPoissonTail.instDecidableProposition",
@@ -1143,6 +1255,9 @@
       "PaperC.V282.DictionaryFieldTransfer.instDecidableProposition",
       "PaperC.V282.DictionaryMarginalCap.instDecidableProposition",
       "PaperC.V282.DictionaryPairCosts.instDecidableProposition",
+      "PaperC.V282.DirectionalMarkedCosts.instDecidableProposition",
+      "PaperC.V282.DirectionalPoissonComparison.instDecidableProposition",
+      "PaperC.V282.DirectionalSteinInput.instDecidableProposition",
       "PaperC.V282.DyadicPoissonDistance.instMeasurableSpaceF2Discrete",
       "PaperC.V282.ExactMarkedAggregation.instDecidableEq",
       "PaperC.V282.ExactMarkedAggregation.instDecidableProposition",
@@ -1229,6 +1344,10 @@
       "PaperC.V282.PointMeasureSpace.instContinuousAddPointMeasure",
       "PaperC.V282.PointwiseStartBounds.instMeasurableSpaceF2Discrete",
       "PaperC.V282.PoissonFieldMeasure.instIsProbabilityMeasureField",
+      "PaperC.V282.PoissonFilling.instDecidableProposition",
+      "PaperC.V282.PoissonFilling.instIsProbabilityMeasureFilling",
+      "PaperC.V282.PoissonFillingCoupling.instDecidableProposition",
+      "PaperC.V282.PoissonGaussianSource.instProbabilityInfiniteRademacher",
       "PaperC.V282.PrimeFieldEventConditioning.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RandomDictionary.instDecidableProposition",
       "PaperC.V282.RandomDictionaryOverlap.instDecidableProposition",
@@ -1243,6 +1362,14 @@
       "PaperC.V282.SignOverlap.instDecidableCompatibleUpToSign",
       "PaperC.V282.SignPatternCounts.instMeasurableSpaceF2Discrete",
       "PaperC.V282.SignPatternCounts.instDecidableProposition",
+      "PaperC.V282.SignedAggregateComparison.instDecidableProposition",
+      "PaperC.V282.SignedAggregateComparison.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.SignedAggregateConfiguration.instMeasurableSignedAggregateConfig",
+      "PaperC.V282.SignedAggregateConfiguration.instMeasurableSingletonSignedAggregateConfig",
+      "PaperC.V282.SignedAggregateFilling.instDecidableProposition",
+      "PaperC.V282.SignedAggregateHardBudget.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.SignedAggregateTruncation.instProbabilityInfiniteRademacher",
+      "PaperC.V282.SignedMarkedSeparatedRelations.instDecidableProposition",
       "PaperC.V282.SoftArithmeticCosts.instDecidableProposition",
       "PaperC.V282.SoftRateAssembly.instMeasurableSpaceF2Discrete",
       "PaperC.V282.SpatialDiffuseMarks.instTopologicalSign",
@@ -1271,6 +1398,9 @@
       "PaperC.V282.ThresholdPathEquivalence.instCountableThresholdPath",
       "PaperC.V282.UniformSpatialGrid.instProbabilityUnitIntervalUniform",
       "PaperC.V282.UniformSpatialGrid.instProbabilityUniformGrid",
+      "PaperC.V282.UnsignedAggregateComparison.instProbabilityInfiniteRademacher",
+      "PaperC.V282.WeightedLabelledCosts.instDecidableEq",
+      "PaperC.V282.WeightedLabelledCosts.instDecidableProposition",
       "PaperC.V282.WordDefectCounting.instDecidableHDefective",
       "PaperC.V282.WordOverlapProbability.instMeasurableSpaceF2Discrete",
       "PaperC.V282.WordOverlapProbability.instDecidableCompatible"
@@ -2860,6 +2990,238 @@
         "definitions": 3,
         "named_instances": 2
       }
+    },
+    "batch_16_additions": {
+      "AggregateActualTail": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AggregateBudgetRates": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AggregateCoordinateIdentities": {
+        "theorems": 8,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "AggregateCutoffRemainder": {
+        "theorems": 7,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AggregateInformationBudget": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "AggregateMovingCoordinates": {
+        "theorems": 13,
+        "definitions": 7,
+        "named_instances": 1
+      },
+      "DirectionalGeneratorIdentity": {
+        "theorems": 10,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "DirectionalGradientGrowth": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "DirectionalHessian": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "DirectionalMarkedCosts": {
+        "theorems": 16,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "DirectionalPoissonComparison": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "DirectionalSteinComparison": {
+        "theorems": 9,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "DirectionalSteinInput": {
+        "theorems": 4,
+        "definitions": 10,
+        "named_instances": 1
+      },
+      "DirectionalSteinIntegration": {
+        "theorems": 8,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "DyadicFullValueProfile": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "FinitePoissonCLT": {
+        "theorems": 4,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "GaussianThresholdAR": {
+        "theorems": 18,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "GaussianThresholdCovariance": {
+        "theorems": 5,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "GaussianThresholdIncrements": {
+        "theorems": 7,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "PoissonCLT": {
+        "theorems": 8,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "PoissonConfigurationTransform": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "PoissonFilling": {
+        "theorems": 6,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "PoissonFillingCoupling": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "PoissonFillingIdentity": {
+        "theorems": 8,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "PoissonGaussianCritical": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "PoissonGaussianLimit": {
+        "theorems": 1,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PoissonGaussianSource": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "PoissonGaussianTarget": {
+        "theorems": 8,
+        "definitions": 6,
+        "named_instances": 0
+      },
+      "PoissonGaussianTheorem": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "PoissonGaussianTransform": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PoissonPolynomialIntegrability": {
+        "theorems": 7,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PoissonThresholdTarget": {
+        "theorems": 11,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "SignedAggregateArithmetic": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SignedAggregateComparison": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "SignedAggregateConfiguration": {
+        "theorems": 5,
+        "definitions": 6,
+        "named_instances": 2
+      },
+      "SignedAggregateFilling": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "SignedAggregateHardBudget": {
+        "theorems": 7,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "SignedAggregateRates": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SignedAggregateTruncation": {
+        "theorems": 7,
+        "definitions": 4,
+        "named_instances": 1
+      },
+      "SignedDirectionalFactors": {
+        "theorems": 9,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "SignedGeometricWeights": {
+        "theorems": 7,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SignedMarkedSeparatedRelations": {
+        "theorems": 8,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "UnsignedAggregateComparison": {
+        "theorems": 4,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "UnsignedAggregateTarget": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "VariableMeasureWeakTransfer": {
+        "theorems": 1,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "WeightedLabelledCosts": {
+        "theorems": 2,
+        "definitions": 1,
+        "named_instances": 2
+      }
     }
   },
   "manuscript_notes": {
@@ -2867,21 +3229,21 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Batch15 closes complete spatial1.1 and labelled5.8(i)/5.9, with actual diffuse probability-law convergence and movable conditioning. No new confirmed error;1correction10suggestions, PDFs unchanged.",
+    "formalization_context": "Batch 16 closes 5.8(ii), aggregated 5.9 and actual conditional joint 5.10. Exact printed C.1 remains partial; the signed enlarged bound is sufficient. Fourth explicit literature proposition: multivariate Stein solution/quadratic bounds. Larger truncation is an alternative proof, not a manuscript correction. PDFs unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
-      "suggestions": 10
+      "suggestions": 11
     }
   },
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 75,
+    "effort_estimate_percent": 78,
     "conservative_interval_percent": [
-      65,
-      80
+      70,
+      85
     ],
-    "completed_article_results": 35,
+    "completed_article_results": 38,
     "numbered_article_results_excluding_intro_duplicates": 61,
     "companion_completed_named_results": 3,
     "companion_named_results": 8,

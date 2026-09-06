@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 319 mathematical modules contain **2801 named declarations: 2175 theorems, 466 definitions and 160 named instances**. Batch 15 adds 275 theorems in 43 new modules.
+The 365 mathematical modules contain **3201 named declarations: 2467 theorems, 555 definitions and 179 named instances**. Batch 16 adds 292 theorems in 46 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -684,7 +684,7 @@ moment is inferred from total variation convergence.
 
 ## Dependencies, audit and historical boundary
 
-`PaperCV282/Audit.lean` covers all 2,801 named declarations in the 319 mathematical modules, including all 160 named instances. Batch 15 adds 275 theorems, 86 definitions and 49 named instances; the complete per-module counts are in the source manifest.
+`PaperCV282/Audit.lean` covers all 3,201 named declarations in 365 mathematical modules, including 179 named instances. Batch 16 adds 292 theorems, 89 definitions and 19 named instances.
 
 The source inventory and kernel-axiom transcript are checked separately by
 `scripts/check_v282_audit.py`. Failure-path tests exercise missing entries,
@@ -1199,7 +1199,7 @@ finite categories. `GeometricMarkedConfiguration` constructs the aggregated
 countable excess configuration on ℕ→₀ℕ with its finite projection laws and
 compound total weight. At the end of batch14, the complete spatial field
 and weak diffuse limit of introductory1.1 were not yet claimed. Batch15
-closes these and the labelled part of5.9 below; companionC.1 remains open.
+closes these and the labelled part of5.9 below; batch16 proves the signed comparison below; printed C.1 remains partial.
 
 
 ## Batch 15: complete spatial field and Theorem 1.1
@@ -1263,8 +1263,71 @@ its cost is o(logN), and both actual tails are absorbed. All arithmetic
 comparisons assume only the already declared process AGG and ordinary PNT.
 The independently proved target and reindexing results add no premise.
 
-This closes the labelled clauses only. The stronger aggregate one-factor
-range (5.21)–(5.22), directional comparisonC.1, signed aggregation in5.9,
-and joint Poisson–Gaussian5.10 remain open. Exact equality of path distances
-does not supply the missing aggregated estimate. Thus5.8 and5.9 remain
-partial in the numbered-result ledger; introductory1.1 is not counted twice.
+Batch 15 closed the labelled clauses. Batch 16 supplies the distinct aggregate
+estimate and joint weak limit below. Introductory 1.1 is not counted twice.
+
+
+## Batch 16: directional finite comparison related to companion C.1
+
+The new literature argument supplies the multivariate Stein solution and
+its two quadratic bounds, as specified in [LITERATURE_INPUTS.md](LITERATURE_INPUTS.md).
+The comparison itself is proved. Signed categories already have dimension
+two when E=0. The full target intensity is used even if no good sites remain.
+
+| Declaration | Established result |
+|---|---|
+| `DirectionalHessian` | Polarization of quadratic bounds to the true entrywise minimum factor. |
+| `DirectionalPoissonComparison.directional_product_poisson_comparison` | Actual independent filling and category-valued indicator counts have TV at most their weighted dependency-graph cost. |
+| `PoissonFillingIdentity` and `PoissonPolynomialIntegrability` | Exact filling identities and all polynomial moments, including zero rates; legitimate integral linearity in the generator. |
+| `SignedMarkedSeparatedRelations` | Mixed signed kernels embed by zero into the largest full value-relation space; true separated joint probabilities are averaged over F_Y. |
+| `SignedAggregateComparison.average_finite_aggregate_le_ledger` | The genuine mean conditional aggregate TV is bounded by the actual signed comparison ledger. |
+| `SignedAggregateComparison.conditional_finite_signed_aggregate_le_ledger` | Every positive event in the whole F_Y has actual aggregate distance at most that ledger/P(A). |
+| `SignedAggregateRates.signed_aggregate_ledger_rate_eventually` | Full-band ledger ≤32[λ(1+log⁺(2λ)) exp(-V+ην)+2^(2E+2)λ²N^(-1/3+ε)], uniformly before L,E. |
+
+The ledger is p(M_L+2D_Q)+p²s(λ)[10N(Q+1)+2E_Y(Q)+R_values(Q+1)],
+with p=2^(-L), Q=L+E+1 and s=min(1,12(1+log⁺(2λ))/λ).
+The relation profile includes all Q+1 values. Its cutoff conversion is
+proved; it is never replaced by the smaller base-start profile. The support
+condition is 2(Q+1)≤Y. The printed C.1 instead uses an unsigned start-relation
+profile at Q and 2Q<Y: that exact finite statement remains partial, although
+the enlarged signed estimate proves all aggregate consequences below.
+
+## Batch 16: aggregate 5.8(ii), signed 5.9 and all threshold paths
+
+| Declaration | Established result |
+|---|---|
+| `SignedAggregateTruncation.conditional_signedAggregate_tv_le_finite_and_tails` | True complete signed aggregate versus its independent countable Poisson target; source tail/P(A), actual finite count distance, and separate target tail. |
+| `UnsignedAggregateTarget.hasLaw_aggregateExcess` | Summing positions and signs of the full spatial target gives exactly the geometric Poisson configuration at rate λ. |
+| `AggregateBudgetRates.aggregate_ledger_under_budget` | Under I+logλ≤V−cν, the conditional finite ledger at E=3ceil(V/log2) is ≤exp(-c'ν)+N^(-1/3+ε), for every 0<c'<c and ε>0. |
+| `SignedAggregateHardBudget.hard_aggregate_event_bound` | Both actual infinite aggregate distances are ≤2exp(-c'ν)+N^(-1/3+ε), with the threshold before L and the full-F_Y event A. |
+| `SignedAggregateHardBudget.theorem_five_eight_aggregate_hard_sequences` | Both signed and unsigned aggregate distances tend to zero for arbitrary sizes→∞ and d/log(sizes)→0 under the actual hard information budget. |
+| `AggregateMovingCoordinates.corollary_five_nine_aggregate_sequences` | Exact signed/unsigned reindexing on r≥−d, actual phase means2^(θ_N−r−2) and2^(θ_N−r−1), and convergence of both laws. |
+| `UnsignedAggregateComparison.conditional_path_distance_eq` | Exact equality with the total variation distance of the entire actual conditioned path of threshold start counts. |
+
+The proof uses the larger cutoff E=3ceil(V/log2). Under the one-factor
+budget, the actual conditional first-moment tail is sufficient; the combined
+tails are ≤3exp(-2V), hence smaller than each fixed ν-scale remainder.
+This is a proof choice, not a correction to the manuscript's shorter-cutoff
+argument. The enlarged profile is absorbed only after keeping its explicit
+2^(2E+2) cost. No comparison retaining positions in the stronger one-factor
+range is asserted.
+
+## Batch 16: actual joint Poisson–Gaussian Theorem 5.10
+
+| Declaration | Established result |
+|---|---|
+| `PoissonCLT` and `FinitePoissonCLT` | Genuine centered normalized Poisson weak limits, with arbitrary diverging real rates and finite product limits. |
+| `PoissonThresholdTarget.normalizedThresholdLaw_tendsto` | True vector of all displayed tail counts; the last finite category keeps the entire infinite upper tail. |
+| `PoissonGaussianLimit.jointThresholdLaw_tendsto` | Same geometric configuration supplies thresholds and critical levels. Their finite interaction is computed, then vanishes to give the independent Gaussian/Poisson limit. |
+| `GaussianThresholdCovariance` and `GaussianThresholdIncrements` | Actual centered Gaussian law with covariance2^(-max(j,k)), identified with sums of independent increments. |
+| `GaussianThresholdAR` | Each finite normalized Gaussian segment is stationary AR(1), with independent standard-normal innovations and coefficient2^(-1/2). |
+| `PoissonGaussianCritical.theorem_five_ten_target` | Exact moving lengths, dyadic phase, arbitrary size subsequences and integer critical levels; target means2^(θ−r−1). |
+| `PoissonGaussianSource.ae_actualJointVector_eq` | The normalized coordinates are literally the actual start counts; the critical coordinates count exact lengths on the same conditioned sample. |
+| `PoissonGaussianTheorem.criticalExactCount_eq_eventually` | Natural excess(d+r).toNat equals the literal critical level b_N+r eventually, with no silent truncation of negative lengths. |
+| `PoissonGaussianTheorem.theorem_five_ten` | Actual conditional joint weak limit under the hypotheses of5.8(ii), d→∞ and phase→θ. Vanishing source TV is derived, not assumed. |
+
+The limit is in the topology of probability measures on the finite Euclidean
+product, for every fixed J and finite R⊂ℤ. The two explicit literature inputs
+are the directional Stein solution theorem and PNT. Positive conditioning
+probabilities define each member of the sequence. No Berry–Esseen/local
+rate, moderate-deviation estimate, or general result from D.1/D.4 is claimed.

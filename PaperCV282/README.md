@@ -6,27 +6,31 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The fifteenth development batch completes the introductory Theorem 1.1:
-the actual complete signed spatial field, its uniform exponential lattice
-comparison, the scalar start count, and the weak diffuse Poisson limit along
-intensity-convergent subsequences. It also proves both labelled growing-field
-budgets in Theorem 5.8(i), the movable rate (5.20), and their signed version
-in Corollary 5.9. The stronger aggregated clauses remain open.
-The dictionary and finite exact-mark results 5.1–5.7 remain complete.
+The sixteenth development batch proves a signed directional aggregate comparison
+sufficient for Theorem 5.8(ii), the aggregate signed clause of Corollary
+5.9, and the actual conditional joint Poisson–Gaussian limit in Theorem 5.10.
+Together with batch 15, both full growing-field results 5.8 and 5.9 are now
+complete under the declared literature boundary. C.1 remains partial in the
+strict numbered ledger: its printed unsigned cost and geometric hypothesis
+differ from the enlarged signed comparison proved here. The dictionary and marked
+results 5.1–5.7 and introductory Theorem 1.1 remain complete.
 
-The three explicit literature premises remain recorded in
-[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md): positive-rate scalar Stein
-solution bounds, the finite process AGG theorem, and the ordinary prime
-number theorem remainder. They are theorem arguments, not new Lean axioms.
-The new spatial and conditioned arithmetic endpoints use process AGG and PNT and add no premise. The countable targets and genuine weak-limit constructions are proved internally.
-An axiom audit does not prove the external hypotheses.
+Four explicit literature propositions are recorded in
+[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md). Batch 16 adds only the published
+multivariate Poisson Stein solution and its two quadratic Hessian bounds.
+Polarization, dependency-graph telescoping, independent Poisson filling,
+integrability, arithmetic comparison and removal of tails are proved here.
+The aggregate arithmetic endpoints and Theorem 5.10 use this directional
+input and ordinary PNT. The target joint weak limit, Gaussian covariance,
+independence and AR(1) representation add no external premise.
+These propositions are explicit theorem arguments, not new Lean axioms.
+An axiom audit does not prove external hypotheses.
 
 Earlier batches retain the full relation profiles, actual terminal-sector
 proof, word first moments, touching pairs, true infinite-model moments,
 masked scalar and joint-field transfer, companion soft lemma, and both
 implicit saddle expansions. The whole paper and companion remain a larger
-project. Remaining work includes the directional aggregated comparison C.1,
-Theorem 5.8(ii), signed aggregation and Poisson–Gaussian 5.10, the general stable product lift,
+project. Remaining work includes the exact printed C.1 bound, the general stable product lift,
 resolved conditioning paths and microscopic crossover. The sharper
 Pell/split-product rate, size-two Euler refinement and aligned-core
 proposition at every positive density remain distinct from their proved
@@ -45,7 +49,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 319 mathematical modules contain **2801 named declarations: 2175 theorems, 466 definitions and 160 named instances**. Batch 15 adds 275 theorems in 43 new modules.
+The 365 mathematical modules contain **3201 named declarations: 2467 theorems, 555 definitions and 179 named instances**. Batch 16 adds 292 theorems in 46 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -144,7 +148,7 @@ no canonical selection of these subspaces is presumed.
 
 The [endpoint ledger](ENDPOINTS.md) gives the declarations and hypotheses.
 The [V3 revision log](../docs/PAPER_V3_REVISION_LOG.md) records **one confirmed
-wording correction and ten suggestions**, including the small-product
+wording correction and eleven suggestions**, including the small-product
 simplification and the distinction between quantitative rates. No error is
 attributed to the companion without evidence. V3 manuscript sources can be
 incorporated when supplied and frozen by the author.
@@ -158,15 +162,18 @@ Palomar submission requires its own frozen statements and evidence.
 A separate coverage assessment tracks numbered manuscript statements and a
 weighted estimate of the remaining effort. The count of Lean declarations
 is an audit inventory, not a percentage of the complete paper. The current
-estimate is about 75% of the total formalization effort, with a conservative
-65–80% range; later probabilistic and companion results account for much of
-the remaining work. Strict statement coverage is 35/61 numbered article
+estimate is about 78% of the total formalization effort, with a conservative
+70–85% range; later probabilistic and companion results account for much of
+the remaining work. Strict statement coverage is 38/61 numbered article
 results, and 3/8 companion results (these fractions must not be added). See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)
 and the endpoint ledger for the exact definitions and proved scope.
 
-The V3 revision log contains one confirmed wording correction and ten
+The V3 revision log contains one confirmed wording correction and eleven
 suggestions. S007 records the verified two-branch simplification of the
 terminal summation; S008 records the mask-local deletion budget of 4.1;
 S009 records the unified soft proof at the same cutoff for all intensities.
 S010 strengthens the random-dictionary overlap estimate to an exact expectation.
 The supplied PDFs and historical Palomar boundary remain unchanged.
+
+S011 records the directional Stein input and the internally proved signed
+comparison, with the exact printed C.1 bound retained as a separate obligation.

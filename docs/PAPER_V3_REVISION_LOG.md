@@ -23,6 +23,7 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S008 | Papier, p. 27–28, théorème 4.1 et suppression masquée | Suggestion de renforcement local au masque | Proposition à examiner |
 | V3-S009 | Papier, p. 29, théorème 4.3 ; compagnon B.3, p. 8–9 | Suggestion de preuve soft commune à toutes les intensités | Proposition à examiner |
 | V3-S010 | Papier, p. 32, corollaire 5.3 et équation (5.8) | Suggestion de renforcement en une espérance exacte | Proposition à examiner |
+| V3-S011 | Compagnon, p. 10–12, preuve directionnelle autour de (C.2)–(C.5) | Suggestion d'explicitation de l'entrée bibliographique | Proposition à examiner |
 
 **Compagnon technique : aucune correction confirmée à ce stade.** Les résultats finis déjà formalisés ne constituent pas une vérification intégrale de ses annexes. Les prochaines observations propres au compagnon seront ajoutées avec leur emplacement et leur justification ; aucune anomalie ne lui est attribuée par analogie avec le papier.
 
@@ -297,3 +298,31 @@ Toute la partie **5.8(i)** est également acquise, avec les budgets hard(5.18), 
 La bijection entre comptes exacts à masse finie et leurs seuils est mesurable dans les deux sens et conserve **exactement** la variation totale, même pour le chemin entier des compteurs réels conditionnés. Ce fait ne ferme pas la comparaison agrégée plus forte de5.8(ii), sa version signée niC.1. Ces obligations et la limite Poisson–Gauss5.10 devront rester présentées comme ouvertes dans une description de la couverture actuelle.
 
 La V3 pourra utiliser les [déclarations précises](../PaperCV282/ENDPOINTS.md) pour citer ces acquis, en indiquant les arguments bibliographiques AGG de processus/PNT. Aucune nouvelle erreur du papier n'a été confirmée. Le registre reste à **une correction confirmée et dix suggestions** ; les PDF demeurent inchangés. L'avertissement du bilan14 sur le champ spatial est désormais levé par les preuves du lot15.
+
+
+## V3-S011 — Identifier précisément l'entrée de Stein directionnelle
+
+**Document et emplacement.** Compagnon technique v2.8.2, p. 10–12, dérivation directionnelle autour de (C.2)–(C.5).
+
+**Type.** Suggestion d'explicitation bibliographique, **sans erreur identifiée**. Le texte distingue déjà le facteur directionnel de la comparaison agrégée ; la proposition précise ce qui est emprunté à la littérature et ce qui est démontré ensuite.
+
+**Justification.** La formalisation utilise `DirectionalSteinFactorsStatement`, qui fournit une solution de l'équation de Stein multivariée et deux bornes de formes quadratiques de son Hessien, pour des intensités positives en dimension au moins deux. L'entrée reprend la forme publiée dans Röllin, *On the Optimality of Stein Factors*, arXiv:0706.0879v3, p. 5, équation (3.1), reproduisant le lemme 3 de Barbour (1988). Les bornes entrée par entrée, la sommation des poids géométriques, l'identité de remplissage indépendant de Poisson et la comparaison par graphe sont ensuite dérivées. La comparaison arithmétique ou une erreur de variation totale ne fait pas partie de cette entrée.
+
+**Formulation anglaise proposée.**
+
+> We use the multivariate Poisson Stein solution and its two quadratic-form Hessian estimates, in the form recorded by Röllin, equation (3.1), reproducing Barbour's Lemma 3. The entrywise directional bounds, the cancellation of the independent Poisson filling, and the dependency-graph comparison are derived below. In particular, the finite aggregated comparison is not itself a literature input.
+
+**Statut.** Proposition à examiner par l'auteur. La frontière formelle comporte désormais quatre propositions bibliographiques explicites ; aucune n'est présentée comme un nouvel axiome Lean ni comme un résultat prouvé par l'audit des axiomes. Cette suggestion ne demande pas de remplacer l'énoncé C.1 par un autre.
+
+**Preuves et limites.** [DirectionalSteinInput.lean](../PaperCV282/DirectionalSteinInput.lean), [DirectionalHessian.lean](../PaperCV282/DirectionalHessian.lean), [PoissonFillingIdentity.lean](../PaperCV282/PoissonFillingIdentity.lean), [DirectionalPoissonComparison.lean](../PaperCV282/DirectionalPoissonComparison.lean) et [SignedAggregateComparison.lean](../PaperCV282/SignedAggregateComparison.lean). L'analogue arithmétique signé est compilé et suffit aux conclusions de 5.8–5.10. Il conserve une masse de relations complètes de valeurs à longueur `Q=L+E+1` et `2*(Q+1)≤Y` ; le C.1 imprimé utilise la masse relative `R2(N,Q)` et `2Q<Y`. Aucun raccord exact entre ces formules n'est encore revendiqué, donc C.1 reste **partiel dans le comptage strict**. C'est une limite de couverture, sans erreur du compagnon identifiée.
+
+
+## Bilan du lot 16 — Comparaison agrégée et limite Poisson–Gauss
+
+Le **théorème 5.8(ii)** est désormais formalisé avec le budget `I+logΛ≤V−cν`, le vrai conditionnement par tout `F_Yhard` et tous les excès conservés. La borne est `2 exp(−c′ν)+N^(−1/3+ε)`, uniformément avant la longueur et l'événement conditionnant, pour `0<c′<c` et `ε>0` ; la convergence utilise `ε<1/3`. La comparaison signée et non signée et le raccord littéral aux coordonnées `r=e−d` ferment aussi le **corollaire 5.9**. Le chemin entier des seuils conserve exactement la distance des comptes exacts. Voir [SignedAggregateHardBudget.lean](../PaperCV282/SignedAggregateHardBudget.lean) et [AggregateMovingCoordinates.lean](../PaperCV282/AggregateMovingCoordinates.lean).
+
+Le **théorème 5.10** porte sur les vrais compteurs arithmétiques conditionnés, le long de tailles quelconques tendant vers l'infini, avec `d→∞`, `d/logN→0` et convergence de la phase. Le centrage et la normalisation utilisent la véritable intensité `Λ_N`. Pour chaque segment fini de niveaux inférieurs et chaque ensemble fini de niveaux critiques, la limite est le produit d'une gaussienne de covariance `2^(−max(j,k))` et de Poisson indépendants de moyennes `2^(θ−r−1)`. L'indépendance limite est démontrée à partir de la même configuration de Poisson sous-jacente. Les innovations et la récurrence AR(1) sont identifiées sur chaque segment fini. Voir [PoissonGaussianTheorem.lean](../PaperCV282/PoissonGaussianTheorem.lean) et [GaussianThresholdAR.lean](../PaperCV282/GaussianThresholdAR.lean).
+
+Cette preuve de limite faible n'ajoute aucune prémisse de CLT. Elle ne fournit pas les taux quantitatifs de Berry–Esseen, les estimations locales ou les déviations modérées de D.1, ni les raffinements ultérieurs de trajectoires. Les réserves du bilan 15 concernant les parties agrégées de 5.8–5.9 et la limite 5.10 sont levées ; la réserve littérale sur C.1 est maintenue pour les raisons indiquées en V3-S011. Le comptage strict devient **38/61 pour l'article et 3/8 pour le compagnon**, avec la même convention de dénominateurs.
+
+Aucune nouvelle erreur du papier ou du compagnon n'est confirmée. Le registre contient désormais **une correction confirmée et onze suggestions**. Les PDF restent inchangés.

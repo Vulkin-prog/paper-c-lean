@@ -1,9 +1,9 @@
 # Literature inputs for the v2.8.2 transfer and cutoff proofs
 
-The results from batches 10 and 11 separate published probability/prime-distribution inputs
+The results through batch 16 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
-There is no new Lean `axiom`, and no proof of these three propositions is
+There is no new Lean `axiom`, and no proof of these four propositions is
 claimed. An axiom audit does not discharge a theorem's hypotheses.
 
 | Explicit proposition | Mathematical content | What the overlay proves from it |
@@ -11,6 +11,7 @@ claimed. An axiom audit does not discharge a theorem's hypotheses.
 | `ScalarSteinInput.ScalarSteinFactorsStatement` | Existence, for every positive Poisson rate and every test set, of a solution of the actual Poisson Stein equation with supremum bound `min(1,lambda^(-1/2))` and first-difference bound `min(1,lambda^(-1))`. | Finite scalar dependency-graph estimates, the soft-exception lemma and their actual conditional arithmetic instances. |
 | `ProcessAGGInput.ProcessAGGStatement` | Finite indicator-to-independent-Poisson field comparison for an exact dependency graph, in half-L1 convention, bounded by `2(b1+b2)`. | Actual masked field transfer, including arithmetic costs, deletion of actual sites and of target coordinates. |
 | `PrimeEulerPNT.PrimeNumberTheoremRemainder` | For every `eta>0`, eventually `abs(pi(t)-Ei(log t)) <= eta*t/log t`, with the actual prime-counting function. | Weighted partial summation, its lower endpoint, the finite Rankin estimate and subsequent cutoff estimates to the extent recorded in the endpoint ledger. |
+| `DirectionalSteinInput.DirectionalSteinFactorsStatement` | Existence of a solution of the finite multivariate Poisson immigration–death equation, with the two published quadratic Hessian bounds; dimension at least two and positive target coordinates. | Entrywise bounds by polarization, typed dependency graph, true independent Poisson filling, the signed analogue of C.1, aggregate 5.8–5.9 and transfer of the proved target limit 5.10. |
 
 The scalar input is taken from the standard Stein solution estimates in
 [Krokowski, arXiv:1505.01417v3, Section 2.5, equations (2.14)–(2.15)](https://arxiv.org/pdf/1505.01417).
@@ -93,8 +94,48 @@ Poisson iid samples, the weak topology, actual integral transfer and the
 uniform spatial-grid limit add no literature premise. Neither a Poisson
 process convergence theorem nor a desired joint law is assumed.
 
-The directional aggregated Stein comparison in companionC.1 has not been
-introduced as a new premise or proved here. The one-factor aggregated range
-of5.8(ii), its signed version and Poisson–Gaussian5.10 remain open. The
-kernel audit does not discharge AGG/PNT or the scalar premises retained by
-earlier endpoints.
+At the end of batch 15, companion C.1 and the aggregate range remained
+open. The aggregate consequences are proved by the chain below; the exact
+printed unsigned C.1 bound remains a separate obligation. The kernel audit
+does not discharge the explicit literature hypotheses of any batch.
+
+
+## Batch 16: directional aggregation and the actual joint Gaussian limit
+
+The new input is exactly the analytic solution theorem and quadratic bounds in
+[A. Röllin, *On the Optimality of Stein Factors*, arXiv:0706.0879v3,
+printed page 5, equation (3.1)](https://arxiv.org/pdf/0706.0879v3), reproducing
+Barbour (1988), Lemma 3. The dimension condition d≥2 was checked visually
+against the primary PDF. Its SHA-256 is
+`cca9b417622e06ab0cf759f838fc75664d2d766b6032d8c4664685ec8090f440`.
+Writing the target coordinates as t_i=λμ_i gives the coefficient
+(1+2 log⁺(2Σt_i))/2 multiplying Σα_i²/t_i. The proposition states this
+bound and the unweighted bound at every natural configuration, together
+with the actual immigration–death Stein equation for every test set.
+
+The signed analogue of C.1 is a deduction, never an input. C.1 remains
+partial in the strict ledger because its printed unsigned cost and support
+condition are not reproduced verbatim. The entrywise min bound is derived by
+polarization. The proof retains an arbitrary outside offset when telescoping
+local dependence. An actual independent Poisson field fills missing target
+means, including when every retained indicator is zero. Every gradient
+integral and coordinate-times-gradient integral used for linearity is
+justified by proved polynomial moments and the Hessian growth bound.
+Zero filling rates and natural-coordinate boundaries are included.
+
+The signed arithmetic comparison uses mixed value kernels extended by zero
+into the complete value-relation space at L+E+2 vertices. Its separated
+joint bound is averaged over the actual full F_Y assignments. The geometric
+square-root sums are bounded uniformly before the mark cutoff; the full
+profile cost 2^(2E+2) is retained before absorption. All this is internal.
+PNT enters only the subsequent hard-cutoff arithmetic asymptotics.
+
+The proof of Theorem 5.10 derives the vanishing source distance from the signed comparison and
+the one-factor information budget. Its joint target is built from one real
+geometric Poisson configuration; the interaction of threshold and exact
+counts is computed before passing to the limit. The scalar CLT, finite
+joint characteristic functions, Gaussian covariance 2^(-max(j,k)), limiting
+independence, and stationary AR(1) innovations are proved using mathlib.
+No CLT, Gaussian independence, or desired source convergence is an added
+premise. Berry–Esseen, local Gaussian and moderate-deviation rates in D.1
+are not consequences claimed by this weak-limit proof.
