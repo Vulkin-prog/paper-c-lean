@@ -52,11 +52,12 @@ every positive integer `k`, the threshold precedes the length, position
 mask and distinct-word dictionary. The error has scale
 `|W| 2^(-B) N^(1/2+o(1))`; the proof uses linearity of expectation and does
 not assume independence of occurrences. Empty dictionaries are included.
-This result is dyadic and does not claim a macroscopic extension.
+Batch 9 additionally proves the macroscopic extension, uniformly before
+the position mask and dictionary, in `MacroscopicWordFirstMoment`.
 
 The [v3 revision log](../docs/PAPER_V3_REVISION_LOG.md) is the authoritative
 register of proposed corrections and exposition changes. It now contains
-one confirmed wording correction and six suggestions, including a
+one confirmed wording correction and seven suggestions, including a
 pointwise proof of the small-product sector that avoids growing moments,
 and a precise distinction between the verified uniform `M^epsilon`
 Pell/split-product consequences and the sharper quantitative rates in the

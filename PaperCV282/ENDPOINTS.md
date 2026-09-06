@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 89 mathematical modules contain **619 named declarations: 525 theorems, 87 definitions and 7 named local instances**. Batch 8 adds 347 theorems in 59 new modules.
+The 115 mathematical modules contain **830 named declarations: 707 theorems, 111 definitions and 12 named local instances**. Batch 9 adds 182 theorems in 26 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -99,7 +99,8 @@ The three clauses of Corollary 2.6 are therefore covered in their stated
 representations: infinite pointwise probability, exact conditional law on
 positive `F_Y` atoms, and the actual dyadic summed expectation. An abstract
 conditional-expectation API remains optional presentation work. These
-endpoints do not assert a macroscopic extension beyond `[N, 2N)`.
+dyadic endpoints are complemented by the batch 9 macroscopic extension in
+`MacroscopicWordFirstMoment`, with arbitrary masks in `[ceil(M^δ), M)`.
 
 The intended hypothesis is an odd **valuation** at a prime above `Y`.
 [`MANUSCRIPT_NOTES.md`](MANUSCRIPT_NOTES.md) proposes clearer wording for a
@@ -378,18 +379,10 @@ The threshold precedes both `L` and `δ`. The proof bounds the excess by
 `M^(3/2+o(1))` upper bound for the positive part, not an absolute-difference
 bound or an asymptotic equality. It assumes no raw weighted profile.
 
-To complete Proposition 3.26, the raw relation profile of Theorem 3.1 must
-still be completed through sector 8 and combined with the finite
-comparison and correction bound to obtain (3.25), with all stated
-uniformity. Sectors 1–7 and the terminal kernel-energy input are now proved. The rational contribution is now covered by Proposition
-3.8 above. Neither it, the host count nor the positive-correction bound
-alone establishes the complete raw profile.
-
-Finite (3.24) and the uniform dyadic, global and macroscopic unrestricted
-host counts, exact macroscopic decomposition and uniform positive
-correction are covered; the full asymptotic proposition is not yet
-complete. The bounded-ratio host extension also uses the correct lower
-scale `N`. Proposition 3.27's capped profile remains separate work.
+The complete profiles are now supplied by `WholeRelationProfile` and
+`BoundedRatioRelationProfiles`, detailed below. The intermediate finite
+comparison and positive-correction theorems retain their own narrower
+statements; the new global endpoints discharge every residual sector.
 
 ## Exact eight-sector partition and nonterminal profiles
 
@@ -533,9 +526,10 @@ population estimate supplied as a premise:
 - `MacroscopicKernelEnergy`: three adjacent value slices cover
   `[X−1,2X+L)`, including all boundary occurrences, before summing shifts.
 
-The terminal sector's actual graph components, determinants, partner
-fibres and rank strata must still be linked to this energy estimate to
-prove Proposition 3.25. This distinction is retained in the final scope.
+The batch 9 terminal modules now connect the actual graph components,
+determinants, partner fibres and rank strata to this energy estimate.
+`SectorEightProfile` completes Proposition 3.25 and its same-cap version;
+see the complete terminal and global profiles above.
 
 ## Explicit rational lower bounds (3.22)–(3.23)
 
@@ -561,7 +555,7 @@ valid when their coefficient is negative or the finite population is empty.
 The particular positive lower exponents at critical balance are not exported
 as separate asymptotic lower-bound declarations in this batch.
 
-## Capped masses and the remaining terminal obligation
+## Capped masses and the retained nonterminal reduction
 
 `CappedRelationMass` defines the literal start and full-value sums
 `sum min(T,2^rho−1)` with a real cap and proves monotonicity, elementary
@@ -590,16 +584,107 @@ cap. The uncapped reduction analogously gives
 rawProfile(M,Q) = M^(3/2)*Q^(1/6) + M*Q^(2/3) + M^(2/3)*Q.
 ```
 
-These are proved reductions, not completed Theorem 3.1 or Proposition 3.27.
+These intermediate reductions are now discharged by `SectorEightProfile`
+and `WholeRelationProfile`, which prove Theorem 3.1 and Proposition 3.27.
 `ProfileMonomials` proves the numerical weighted arithmetic–geometric mean
 step `rawProfile≤2*(M^(5/3)+M^(2/3)*Q)` and the domination of every row of
 the assembly table. `ProfileAssembly` keeps the necessary sector bounds as
-explicit hypotheses. It does not hide the missing terminal estimate in a
-new axiom or unmentioned assumption.
+explicit hypotheses. Its premises are explicit; the unconditional endpoints are assembled
+separately from the actual proved sectors.
+
+## Complete terminal sector and global relation profiles (batch 9)
+
+`SectorEightGeometry` extracts the actual isolated components, distinct
+coprime nontrivial kernels, and nonzero cross-determinants. `TerminalSliceGeometry`
+transfers the small-kernel lower bound to both original windows. The
+`TerminalPartnerCount` and `TerminalSliceContainer` populations are genuine
+finite sets with internal counts, uniformly before their moving parameters.
+`OrderedPairCounting` counts both orientations with a factor two without
+assuming that `sectorOf` is symmetric.
+
+`TerminalSliceGeometry.lemma_three_twenty_two` additionally exposes the
+exact ambient package `0<abs(Delta)<=4*M*B`, with coprime common kernels
+and their product dividing the determinant. The slice cap retains 6*X*B.
+
+`SectorEightProfile.proposition_three_twenty_five` proves exactly
+`M^epsilon*(M^(2/3)*Q+M^(3/4)*Q^(2/3))` for sector 8. Its `_capped`
+analogue replaces the first Q by `min(T,Q)`, with the same threshold before
+T>=0. Coding A>=1 is explicit; the global assembly uses A=3.
+`MacroscopicDyadicSlices` proves exact fibrewise summation by the logarithm
+of the larger start and transports the logarithmic band from M to each
+nonempty slice. No bounded endpoint ratio is used on the macroscopic domain.
+
+| Module and declaration | Actual conclusion |
+|---|---|
+| `WholeRelationProfile.theorem_three_one_raw_macroscopic` | Complete start raw profile on `[ceil(M^delta),M)`. |
+| `WholeRelationProfile.theorem_three_one_coarse_macroscopic` | Coarse start profile after weighted arithmetic–geometric mean. |
+| `WholeRelationProfile.proposition_three_twenty_six_raw_macroscopic` | Raw full-value profile, including the true host correction. |
+| `WholeRelationProfile.proposition_three_twenty_six_coarse_macroscopic` | Coarse full-value profile. |
+| `WholeRelationProfile.proposition_three_twenty_seven_start_macroscopic` | Same-cap start profile, all real T>=0 after the threshold. |
+| `WholeRelationProfile.proposition_three_twenty_seven_value_macroscopic` | Same-cap full-value profile. |
+| `DyadicRelationProfile.jointDefectMass_separated_le_coarse_eventually` | Actual separated defect sum used in the finite factorial-moment identity. |
+| `RelationProfileRestriction.value_relationRho_cutoff_eq` | Full-value nullity independent of any adequate prime cylinder. |
+| `BoundedRatioRelationProfiles.raw_masses_le_profile_boundedRatio_eventually` | Joint start/full raw profile for arbitrary masks in `[N,M)`, M<=kappa*N. |
+| `BoundedRatioRelationProfiles.coarse_masses_le_profile_boundedRatio_eventually` | The corresponding coarse profile, normalized at N. |
+| `BoundedRatioRelationProfiles.capped_masses_le_profile_boundedRatio_eventually` | Joint start/full capped profile, with threshold before M,L,mask,cylinder,T. |
+| `BoundedRatioRelationProfiles.*_dyadic_eventually` | Three explicit specializations to `[N,2N)`. |
+
+The ratio parameter kappa is a fixed natural number. This includes any
+fixed real upper ratio by taking an integer majorant. No ratio is assumed
+between the two individual coordinates within a macroscopic pair.
+
+## Corollaries 2.5, 2.6 and local pairs (batch 9)
+
+`PointwiseStartBounds` proves both displayed pointwise inequalities of 2.5
+for every affine right-hand side in the true infinite model. The boundary
+of a relation is supported on actual defective vertices and has even total
+parity, giving the rank improvement `max(m-1,0)`.
+`MacroscopicFirstMoment.corollary_two_five_macroscopic_expectation` gives
+the real masked start-count integral with error `M^(1/2+epsilon)/2^L`.
+Its affine version allows the right-hand side to depend on the position.
+The dyadic endpoint retains the historical reciprocal-power convention.
+The uniform threshold precedes the length and every mask; no critical
+balance condition is used.
+
+`MacroscopicFirstMoment.sum_fullDefectWeight_le_half_power_eventually`
+also proves the summed macroscopic defect weight needed in (2.4).
+`MacroscopicWordFirstMoment.corollary_two_six_macroscopic_expectation`
+extends the dictionary first moment to the full macroscopic interval, with
+error `(|W|/2^B)*M^(1/2+epsilon)`. The actual dictionary size and all words
+are chosen after the threshold. Empty masks and dictionaries are allowed.
+
+`TouchingPairMass.lemma_two_eight_overlap` is deterministic exclusion for
+`0<dist(x,y)<L`. The `_dyadic` and `_macroscopic` endpoints prove the
+actual ordered touching sum `sum 2^rho <= N^(1+epsilon)` or `M^(1+epsilon)`.
+The cylinder may be any adequate cutoff. The transfer to the retained
+`TouchingMass.touchingMass` is explicit, preserving the offset minus one
+and both orientations.
+
+## Corollary 4.4: genuine infinite-model moments (batch 9)
+
+`CriticalVarianceMoments.corollary_four_four` states, for each C>=0 and
+epsilon>0, a common N0 before every N>=N0 and natural L with
+`abs(L-log(N)/log(2))<=C`:
+
+```text
+|infiniteCountMean - lambda|             <= N^(-1/2+epsilon)
+|infiniteCountFactorialMoment-lambda^2|  <= N^(-1/3+epsilon)
+|infiniteCountVariance-lambda|           <= N^(-1/3+epsilon)
+lambda = N/2^L.
+```
+
+All three quantities are the actual integrals defined in
+`InfiniteCountMoments`, which proves integrability and exact finite-cylinder
+transfer. The finite second factorial baseline is exactly
+`N*(N-1)/2^(2L)`, and its correction to lambda squared is `-N/2^(2L)`.
+`CriticalProfileNormalization` retains `Q=2^(L+1)=2*2^L` when dividing the
+coarse profile by the joint baseline denominator. Variance follows from the
+exact centered-square identity and the two moment errors. No unbounded
+moment is inferred from total variation convergence.
 
 ## Dependencies, audit and historical boundary
 
-`PaperCV282/Audit.lean` covers all 619 named declarations in the 89 mathematical modules, including all 7 named local instances. Batch 8 adds 347 theorems and 53 definitions/instances; the complete per-module counts are in the source manifest.
+`PaperCV282/Audit.lean` covers all 830 named declarations in the 115 mathematical modules, including all 12 named local instances. Batch 9 adds 182 theorems and 29 definitions/instances; the complete per-module counts are in the source manifest.
 
 The source inventory and kernel-axiom transcript are checked separately by
 `scripts/check_v282_audit.py`. Failure-path tests exercise missing entries,

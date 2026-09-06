@@ -145,10 +145,16 @@
   ],
   "mathematical_modules": [
     "PaperCV282/BoundedRatioFullHosts.lean",
+    "PaperCV282/BoundedRatioRelationProfiles.lean",
     "PaperCV282/CappedRelationMass.lean",
     "PaperCV282/CappedSectorMass.lean",
     "PaperCV282/CappedSectorSixProfile.lean",
+    "PaperCV282/CriticalFactorialMoments.lean",
+    "PaperCV282/CriticalFirstMomentRate.lean",
+    "PaperCV282/CriticalProfileNormalization.lean",
+    "PaperCV282/CriticalVarianceMoments.lean",
     "PaperCV282/DivisorSubpolynomial.lean",
+    "PaperCV282/DyadicRelationProfile.lean",
     "PaperCV282/FullHostAsymptotics.lean",
     "PaperCV282/FullHostComparison.lean",
     "PaperCV282/FullHostCounting.lean",
@@ -159,10 +165,12 @@
     "PaperCV282/HostRankMass.lean",
     "PaperCV282/HostRealPowers.lean",
     "PaperCV282/InfiniteConditionalWords.lean",
+    "PaperCV282/InfiniteCountMoments.lean",
     "PaperCV282/InfiniteWordFirstMoment.lean",
     "PaperCV282/InfiniteWordTransfer.lean",
     "PaperCV282/IntervalRationalLowerBounds.lean",
     "PaperCV282/IntervalRationalMass.lean",
+    "PaperCV282/KernelEnergyCounting.lean",
     "PaperCV282/KernelWindowEnergy.lean",
     "PaperCV282/LogarithmicWordPowers.lean",
     "PaperCV282/MacroscopicAlignedExclusion.lean",
@@ -172,7 +180,9 @@
     "PaperCV282/MacroscopicCanonicalCode.lean",
     "PaperCV282/MacroscopicComponentFibers.lean",
     "PaperCV282/MacroscopicComponentNormalization.lean",
+    "PaperCV282/MacroscopicDyadicSlices.lean",
     "PaperCV282/MacroscopicEarlyProfile.lean",
+    "PaperCV282/MacroscopicFirstMoment.lean",
     "PaperCV282/MacroscopicGeometry.lean",
     "PaperCV282/MacroscopicKernelEnergy.lean",
     "PaperCV282/MacroscopicLogarithms.lean",
@@ -190,7 +200,10 @@
     "PaperCV282/MacroscopicSmoothKernels.lean",
     "PaperCV282/MacroscopicTwoDefectStarts.lean",
     "PaperCV282/MacroscopicValueCorrection.lean",
+    "PaperCV282/MacroscopicWordFirstMoment.lean",
     "PaperCV282/NonterminalProfile.lean",
+    "PaperCV282/OrderedPairCounting.lean",
+    "PaperCV282/PointwiseStartBounds.lean",
     "PaperCV282/PolynomialPellCount.lean",
     "PaperCV282/PolynomialSplitProducts.lean",
     "PaperCV282/PolynomialSplitSolutions.lean",
@@ -204,10 +217,15 @@
     "PaperCV282/RationalLowerBounds.lean",
     "PaperCV282/RationalMassAsymptotics.lean",
     "PaperCV282/RationalProfile.lean",
+    "PaperCV282/RelationProfileRestriction.lean",
     "PaperCV282/RemainingDeepProfile.lean",
     "PaperCV282/ResidualSectorMasks.lean",
     "PaperCV282/ResidualSectorMass.lean",
     "PaperCV282/ResidualSectorPartition.lean",
+    "PaperCV282/SectorEightGeometry.lean",
+    "PaperCV282/SectorEightProfile.lean",
+    "PaperCV282/SectorEightSliceMass.lean",
+    "PaperCV282/SectorEightWeights.lean",
     "PaperCV282/SectorFiveProfile.lean",
     "PaperCV282/SectorFiveRank.lean",
     "PaperCV282/SectorSevenRank.lean",
@@ -225,10 +243,18 @@
     "PaperCV282/SmallProductComponentBound.lean",
     "PaperCV282/SmallProductMass.lean",
     "PaperCV282/SplitProductLocalization.lean",
+    "PaperCV282/TerminalPartnerCount.lean",
+    "PaperCV282/TerminalSectorMasks.lean",
+    "PaperCV282/TerminalSliceContainer.lean",
+    "PaperCV282/TerminalSliceCounting.lean",
+    "PaperCV282/TerminalSliceGeometry.lean",
+    "PaperCV282/TouchingPairGeometry.lean",
+    "PaperCV282/TouchingPairMass.lean",
     "PaperCV282/TwoWindowParity.lean",
     "PaperCV282/TwoWindowSquareHosts.lean",
     "PaperCV282/ValueRelations.lean",
     "PaperCV282/ValueSquareRelations.lean",
+    "PaperCV282/WholeRelationProfile.lean",
     "PaperCV282/WindowValues.lean",
     "PaperCV282/WordDefectAsymptotics.lean",
     "PaperCV282/WordDefectCounting.lean",
@@ -247,7 +273,8 @@
         "Finite distinct-word occurrence count in the actual infinite model, integrability, and exact integral equal to the sum of word probabilities.",
         "Finite summed probability error bounded by (dictionary cardinality / 2^B) times the total word defect weight.",
         "Finite shifted-root defect comparison and uniform N^(1/2+o(1)) word defect mass in every fixed logarithmic band.",
-        "Dyadic summed probability and actual unconditional expectation clauses, with the threshold chosen before length, position mask and dictionary."
+        "Dyadic summed probability and actual unconditional expectation clauses, with the threshold chosen before length, position mask and dictionary.",
+        "Macroscopic summed probability and actual expectation clauses over arbitrary masks in [ceil(M^delta), M), with the threshold chosen before length, mask and dictionary."
       ],
       "remaining": [],
       "infinite_conditional_endpoint": {
@@ -264,11 +291,11 @@
         "assignment": "Every sigma : SmallSample M Y; its atom has positive finite source measure.",
         "general_conditional_kernel_claimed": false
       },
-      "coverage_summary": "The pointwise, conditional and dyadic summed clauses are proved through explicit infinite-probability, positive F_Y atom, and occurrence-integral representations.",
+      "coverage_summary": "The pointwise, conditional, dyadic and macroscopic summed clauses are proved through explicit infinite-probability, positive F_Y atom, and occurrence-integral representations.",
       "optional_presentation_work": [
         "General conditional-expectation API repackaging of the proved positive-atom law, if useful; this is not a missing step in the summed first-moment result."
       ],
-      "scope_boundary": "The summed endpoints range over arbitrary finite masks within [N, 2N); no macroscopic extension beyond this dyadic domain is claimed.",
+      "scope_boundary": "The original dyadic endpoints range over arbitrary finite masks within [N, 2N); MacroscopicWordFirstMoment extends the summed laws to masks within [ceil(M^delta), M), for fixed delta > 0 and a fixed positive logarithmic band.",
       "summed_first_moment_endpoint": {
         "probability_declaration": "PaperC.V282.WordFirstMomentAsymptotics.corollary_two_six_summed_probability",
         "expectation_declaration": "PaperC.V282.WordFirstMomentAsymptotics.corollary_two_six_summed_expectation",
@@ -293,7 +320,8 @@
         "empty_mask_and_dictionary_included": true,
         "occurrence_independence_assumed": false,
         "balance_condition_on_N_over_two_pow_B": false,
-        "macroscopic_extension_claimed": false
+        "macroscopic_extension_claimed": true,
+        "macroscopic_extension_declaration": "PaperC.V282.MacroscopicWordFirstMoment.corollary_two_six_macroscopic_expectation"
       }
     },
     "proposition_3_26": {
@@ -317,7 +345,7 @@
         "Finite rational/residual decomposition for each historical canonical-code parameter A, under M >= 2 and delta > 0, without an endpoint-ratio condition.",
         "Equation (3.24) specialized to the literal macroscopic masses and arithmetic full hosts.",
         "Unconditional uniform M^(3/2+o(1)) bound on max(0, Rvalue - 4*Rstart), with threshold before L and delta.",
-        "The rational contribution and sectors 1–7 have proved profiles. Lemma 3.24 kernel energy is established. Sector 8 mass assembly is still needed for the raw profile and full (3.25)."
+        "All eight actual residual sectors are bounded. Complete raw/coarse start and full-value profiles hold on the macroscopic, dyadic and bounded-ratio domains, uniformly before the mask and adequate cylinder."
       ],
       "finite_endpoint": {
         "declaration": "PaperC.V282.TwoWindowSquareHosts.finite_equation_three_twenty_four_square_hosts",
@@ -330,9 +358,7 @@
         "host_meaning": "A nonempty indexed subset of the full vertex occurrences has square product; no parity restriction in either block.",
         "host_definition_depends_on_cylinder_cutoff": false
       },
-      "remaining": [
-        "Connect sector 8 to the proved energy and internal Pell count through the actual isolated-component determinants, partner fibres, rank strata and larger-start dyadic summation; finish Theorem 3.1 and combine it with finite (3.24) for asymptotic (3.25)."
-      ],
+      "remaining": [],
       "dyadic_host_endpoint": {
         "declaration": "PaperC.V282.FullHostAsymptotics.card_squareProductHosts_uniformThreeHalves",
         "separated_specialization": "PaperC.V282.FullHostAsymptotics.card_separated_squareProductHosts_uniformThreeHalves",
@@ -389,12 +415,15 @@
         "absolute_difference_bound_claimed": false,
         "raw_weighted_profile_assumed": false,
         "full_equation_3_25_claimed": false
-      }
+      },
+      "complete_profile_modules": [
+        "WholeRelationProfile",
+        "DyadicRelationProfile",
+        "RelationProfileRestriction",
+        "BoundedRatioRelationProfiles"
+      ]
     },
     "additional_exclusions": [
-      "Complete sector 8 mass and Proposition 3.25.",
-      "Theorem 3.1 raw and interpolated relation profiles.",
-      "Proposition 3.26 asymptotic (3.25) and complete Proposition 3.27 capped arithmetic profiles.",
       "Precise exp(O(log M/loglog M)) quantitative versions of the polynomial-height arithmetic counts.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
       "Complete signed marked-field, dictionary and two-source crossover theorems."
@@ -533,10 +562,15 @@
         "declaration": "PaperC.V282.SizeTwoHostAsymptotics.macroscopic_sector_seven_le_profile_eventually",
         "bound": "M^epsilon*M*Q_B^(2/3)"
       },
-      "sector_8_complete": false,
+      "sector_8_complete": true,
       "bounded_endpoint_ratio_required": false,
       "critical_balance_required": false,
-      "external_literature_premises": []
+      "external_literature_premises": [],
+      "sector_8": {
+        "declaration": "PaperC.V282.SectorEightProfile.proposition_three_twenty_five",
+        "bound": "M^epsilon*(M^(2/3)*Q_B+M^(3/4)*Q_B^(2/3))",
+        "proof": "Actual isolated components, coprime shared kernels, determinant bound, internal Pell partner count, literal window energy and exact larger-start dyadic summation."
+      }
     },
     "polynomial_height_arithmetic": {
       "divisor_declaration": "PaperC.V282.DivisorSubpolynomial.card_divisors_le_rpow_eventually",
@@ -595,16 +629,104 @@
         "Literal min(T,2^rho-1) weights on actual pair masks.",
         "Exact residual-sector decomposition and systematic-plus-capped-residual inequality.",
         "Same-cap finite full-value <=4*start+3*full-host comparison.",
-        "Uniform capped sixth-sector and combined nonterminal reductions, leaving sector 8 explicit."
+        "All eight sectors, including the literal terminal cap, and the complete raw/capped profiles on the macroscopic, dyadic and bounded-ratio domains."
       ],
       "cap": "Real, nonnegative for the combined profiles; common threshold chosen before T.",
       "nonterminal_modules": [
         "CappedSectorSixProfile",
         "NonterminalProfile"
       ],
-      "complete_proposition_3_27_claimed": false,
-      "remaining": "Terminal sector 8 capped stratum count and its larger-start scale summation.",
-      "conditional_numerical_assembly": "ProfileAssembly retains every unproved sector bound as an explicit premise; no unconditional Theorem 3.1 is inferred from it."
+      "complete_proposition_3_27_claimed": true,
+      "remaining": [],
+      "conditional_numerical_assembly": "The intermediate ProfileAssembly remains a generic conditional lemma. WholeRelationProfile and BoundedRatioRelationProfiles discharge the actual sector estimates and give the unconditional endpoints.",
+      "terminal_endpoint": "PaperC.V282.SectorEightProfile.proposition_three_twenty_five_capped"
+    },
+    "corollary_2_5": {
+      "modules": [
+        "PointwiseStartBounds",
+        "MacroscopicFirstMoment"
+      ],
+      "covered": [
+        "Both pointwise inequalities for every affine right-hand side in the actual infinite model.",
+        "Uniform dyadic masked first moment in reciprocal-power form.",
+        "Actual macroscopic masked integral with error M^(1/2+epsilon)/2^L.",
+        "Uniformity before every mask and even a position-dependent family of affine right-hand sides."
+      ],
+      "external_literature_premises": []
+    },
+    "macroscopic_dictionary_first_moment": {
+      "module": "MacroscopicWordFirstMoment",
+      "declaration": "PaperC.V282.MacroscopicWordFirstMoment.corollary_two_six_macroscopic_expectation",
+      "error": "(|W|/2^(L+1))*M^(1/2+epsilon)",
+      "threshold_before": [
+        "L",
+        "position mask",
+        "dictionary cardinality",
+        "all words"
+      ],
+      "empty_dictionary_allowed": true,
+      "external_literature_premises": []
+    },
+    "lemma_2_8": {
+      "modules": [
+        "TouchingPairGeometry",
+        "TouchingPairMass"
+      ],
+      "covered": [
+        "Universal deterministic exclusion for 0<dist(x,y)<L.",
+        "Actual ordered touching mass sum 2^rho <= N^(1+epsilon) in every fixed dyadic logarithmic band.",
+        "Macroscopic analogue M^(1+epsilon), without comparison between the starts.",
+        "Arbitrary adequate prime cylinder and exact historical touchingMass transfer."
+      ],
+      "critical_balance_required": false,
+      "external_literature_premises": []
+    },
+    "corollary_4_4": {
+      "declaration": "PaperC.V282.CriticalVarianceMoments.corollary_four_four",
+      "model": "Retained infinite Rademacher prime-sign law; genuine mean, factorial-moment and centered-variance integrals.",
+      "window": "abs(L-log(N)/log(2))<=C, C>=0 fixed",
+      "quantifiers": "For every epsilon>0 a common N0 precedes N and L.",
+      "bounds": [
+        "abs(mean-lambda)<=N^(-1/2+epsilon)",
+        "abs(second factorial moment-lambda^2)<=N^(-1/3+epsilon)",
+        "abs(variance-lambda)<=N^(-1/3+epsilon)"
+      ],
+      "lambda": "N/2^L",
+      "total_variation_argument_used": false,
+      "external_literature_premises": []
+    },
+    "terminal_slice_arithmetic": {
+      "modules": [
+        "SectorEightGeometry",
+        "TerminalSliceGeometry",
+        "TerminalPartnerCount",
+        "TerminalSliceContainer",
+        "TerminalSliceCounting"
+      ],
+      "partners": "X^epsilon, uniformly before fixed first start and every smaller partner; no comparable-start assumption",
+      "one_kernel_container": "X^(3/4+epsilon)",
+      "two_kernel_mask": "X^(2/3+epsilon)",
+      "orientations": "Normalization max/min has fibres at most two; no symmetry of the canonical classifier is assumed.",
+      "external_literature_premises": [],
+      "exact_ambient_endpoint": "PaperC.V282.TerminalSliceGeometry.lemma_three_twenty_two",
+      "exact_ambient_determinant_bound": "0<abs(crossDeterminant)<=4*M*(L+1), with actual interval starts, L<=M and two distinct terminal components."
+    },
+    "complete_relation_profiles": {
+      "modules": [
+        "WholeRelationProfile",
+        "BoundedRatioRelationProfiles"
+      ],
+      "raw": "M^(3/2)*Q^(1/6)+M*Q^(2/3)+M^(2/3)*Q",
+      "coarse": "M^(5/3)+M^(2/3)*Q",
+      "capped": "M^(3/2)*Q^(1/6)+M*Q^(2/3)+M^(2/3)*min(T,Q)",
+      "Q": "2^(L+1), retained explicitly",
+      "domains": [
+        "Ico ceil(M^delta) M, fixed delta>0",
+        "Ico N (2*N)",
+        "Ico N M with fixed natural kappa and M<=kappa*N; arbitrary real bounded ratios are majorized by a fixed integer"
+      ],
+      "uniformity": "Fixed positive lower/upper logarithmic band and epsilon; threshold before upper endpoint, length, mask, adequate cylinder and real nonnegative cap. Bounded-ratio estimates are normalized at N.",
+      "external_literature_premises": []
     }
   },
   "qualification": {
@@ -614,23 +736,28 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 8,
+  "development_batch": 9,
   "declaration_inventory": {
-    "mathematical_module_count": 89,
-    "named_declarations": 619,
-    "theorems": 525,
-    "definitions": 87,
-    "named_instances": 7,
+    "mathematical_module_count": 115,
+    "named_declarations": 830,
+    "theorems": 707,
+    "definitions": 111,
+    "named_instances": 12,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
     "named_instance_declarations": [
       "PaperC.V282.InfiniteConditionalWords.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.InfiniteCountMoments.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteWordFirstMoment.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteWordFirstMoment.instIsProbabilityMeasureInfiniteRademacher",
       "PaperC.V282.InfiniteWordTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MacroscopicAlignedExclusion.instDecidableAlignedDeepPredicate",
       "PaperC.V282.MacroscopicComponentNormalization.instDecidableComponentAdj",
+      "PaperC.V282.MacroscopicFirstMoment.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroscopicFirstMoment.instIsProbabilityMeasureInfiniteRademacher",
+      "PaperC.V282.MacroscopicWordFirstMoment.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.PointwiseStartBounds.instMeasurableSpaceF2Discrete",
       "PaperC.V282.WordDefectCounting.instDecidableHDefective"
     ],
     "batch_3_additions": {
@@ -1054,6 +1181,138 @@
         "definitions": 1,
         "named_instances": 0
       }
+    },
+    "batch_9_additions": {
+      "BoundedRatioRelationProfiles": {
+        "theorems": 8,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CriticalFactorialMoments": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CriticalFirstMomentRate": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CriticalProfileNormalization": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CriticalVarianceMoments": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "DyadicRelationProfile": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "InfiniteCountMoments": {
+        "theorems": 7,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "KernelEnergyCounting": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroscopicDyadicSlices": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MacroscopicFirstMoment": {
+        "theorems": 15,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "MacroscopicWordFirstMoment": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "OrderedPairCounting": {
+        "theorems": 4,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "PointwiseStartBounds": {
+        "theorems": 18,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "RelationProfileRestriction": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SectorEightGeometry": {
+        "theorems": 8,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SectorEightProfile": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SectorEightSliceMass": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SectorEightWeights": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "TerminalPartnerCount": {
+        "theorems": 12,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "TerminalSectorMasks": {
+        "theorems": 7,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "TerminalSliceContainer": {
+        "theorems": 9,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "TerminalSliceCounting": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "TerminalSliceGeometry": {
+        "theorems": 15,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "TouchingPairGeometry": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "TouchingPairMass": {
+        "theorems": 14,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "WholeRelationProfile": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      }
     }
   },
   "manuscript_notes": {
@@ -1061,10 +1320,25 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "The pointwise, positive F_Y atom conditional, and actual dyadic summed expectation clauses of Corollary 2.6 are proved through explicit representations. The conditional wording still requires odd valuation. Future v3 revisions do not replace the current v2.8.2 source PDFs.",
+    "formalization_context": "Corollaries 2.5 and 2.6, touching pairs, all eight actual sectors, full raw/coarse/capped profiles and the actual infinite-model moments of Corollary 4.4 are proved. S007 records a terminal summation simplification. Current v2.8.2 PDFs remain unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
-      "suggestions": 6
+      "suggestions": 7
     }
+  },
+  "whole_manuscript_coverage": {
+    "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
+    "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
+    "effort_estimate_percent": 60,
+    "conservative_interval_percent": [
+      50,
+      65
+    ],
+    "completed_article_results": 25,
+    "numbered_article_results_excluding_intro_duplicates": 61,
+    "companion_completed_named_results": 1,
+    "companion_named_results": 8,
+    "denominators_must_not_be_added": true,
+    "metric_is_lean_declaration_count": false
   }
 }

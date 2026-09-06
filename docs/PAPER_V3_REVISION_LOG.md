@@ -1,6 +1,6 @@
 # Registre des révisions proposées pour le papier et le compagnon — v3
 
-Dernière mise à jour : 5 septembre 2026.
+Dernière mise à jour : 6 septembre 2026.
 
 Ce registre rassemble les corrections, clarifications et améliorations suggérées par la formalisation. La version source examinée est la **v2.8.2 anglaise** du papier et de son compagnon technique. La « v3 » désigne ici la prochaine révision à préparer ; les PDF fournis n'ont pas été modifiés.
 
@@ -19,6 +19,8 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S004 | Papier, p. 9, clause sommée du corollaire 2.6 | Suggestion d'explicitation de l'espérance et de l'uniformité | Proposition à examiner |
 | V3-S005 | Papier, p. 17, proposition 3.12, secteur 1 ; définition p. 13 | Suggestion de simplification de preuve | Proposition à examiner |
 | V3-S006 | Papier, p. 17–18, lemmes 3.13–3.14 ; section de formalisation p. 50 | Suggestion de précision sur les taux formalisés | Proposition à examiner |
+
+| V3-S007 | Papier, p. 22–24, secteur 8 et proposition 3.25 ; p. 26, plafond de 3.27 | Suggestion de simplification de preuve démontrée | Proposition à examiner |
 
 **Compagnon technique : aucune correction confirmée à ce stade.** Les résultats finis déjà formalisés ne constituent pas une vérification intégrale de ses annexes. Les prochaines observations propres au compagnon seront ajoutées avec leur emplacement et leur justification ; aucune anomalie ne lui est attribuée par analogie avec le papier.
 
@@ -64,7 +66,7 @@ Les masses pondérées macroscopiques `Rstart` et `Rval` sont désormais défini
 
 **Preuves du coût positif.** [MacroscopicRelationProfile.lean](../PaperCV282/MacroscopicRelationProfile.lean), `macroscopicStartMassNat_cast_eq_R2kappa`, `macroscopicStartMassNat_cast_eq_systematic_add_residual` et `macroscopicValueMassNat_le_four_start_add_hosts` ; [MacroscopicValueCorrection.lean](../PaperCV282/MacroscopicValueCorrection.lean), `macroscopicValueExcess_cast_eq_max` et `prescribed_value_correction_uniform`.
 
-**Avancement du profil rationnel.** Les trois bornes de la proposition 3.8 sont désormais formalisées séparément : masses réellement filtrées par hauteur canonique `q=2` et `q≥3`, et somme de géométries en base 2 sans translations. Les facteurs `Q_B^(1/2)` et `Q_B^(1/3)`, avec `Q_B=2^(L+1)`, restent explicites. Le raccord au canal canonique macroscopique pour `A=3` utilise un seuil dépendant de `δ>0` fixé, choisi avant la longueur et les départs ; les bornes numériques seules sont uniformes sur la borne inférieure de l'intervalle. La contribution rationnelle est complète. Le lot 8 définit également les huit secteurs et prouve leurs premières estimations ; l'état exact des secteurs profonds figure dans le registre des résultats. La conclusion globale du profil brut et (3.25) reste distincte de ces acquis. Il n'ajoute aucune correction de formulation. Voir [RationalHeightMass.lean](../PaperCV282/RationalHeightMass.lean), `boundedRationalMass_eq_height_masses` ; [RationalGeometryMass.lean](../PaperCV282/RationalGeometryMass.lean), `geometry_mem_sum_iff` et `geometryMass_le_poly_two_pow_half` ; [MacroscopicCanonicalCode.lean](../PaperCV282/MacroscopicCanonicalCode.lean), `canonical_rational_code_eq_of_nonzero_eventually` ; [RationalProfile.lean](../PaperCV282/RationalProfile.lean), `proposition_three_eight`.
+**Avancement du profil rationnel.** Les trois bornes de la proposition 3.8 sont désormais formalisées séparément : masses réellement filtrées par hauteur canonique `q=2` et `q≥3`, et somme de géométries en base 2 sans translations. Les facteurs `Q_B^(1/2)` et `Q_B^(1/3)`, avec `Q_B=2^(L+1)`, restent explicites. Le raccord au canal canonique macroscopique pour `A=3` utilise un seuil dépendant de `δ>0` fixé, choisi avant la longueur et les départs ; les bornes numériques seules sont uniformes sur la borne inférieure de l'intervalle. La contribution rationnelle est complète. Le lot 8 définit également les huit secteurs et prouve leurs premières estimations ; l'état exact des secteurs profonds figure dans le registre des résultats. Le lot 9 complète le secteur 8 et les profils globaux brut, interpolé et plafonné, dans les domaines macroscopique, dyadique et à rapport borné. Il n'ajoute aucune correction de formulation. Voir [RationalHeightMass.lean](../PaperCV282/RationalHeightMass.lean), `boundedRationalMass_eq_height_masses` ; [RationalGeometryMass.lean](../PaperCV282/RationalGeometryMass.lean), `geometry_mem_sum_iff` et `geometryMass_le_poly_two_pow_half` ; [MacroscopicCanonicalCode.lean](../PaperCV282/MacroscopicCanonicalCode.lean), `canonical_rational_code_eq_of_nonzero_eventually` ; [RationalProfile.lean](../PaperCV282/RationalProfile.lean), `proposition_three_eight`.
 
 ## V3-S002 — Indiquer pourquoi un cylindre fini donne exactement la loi du mot
 
@@ -169,6 +171,28 @@ La forme plus précise `exp(O(log M / log log M))` affichée dans les lemmes 3.1
 **Statut.** Proposition à réévaluer au moment de figer la V3, selon la couverture alors atteinte. Cette entrée documente une limite de la formalisation actuelle, pas une correction mathématique du papier ou du compagnon.
 
 **Preuves.** [DivisorSubpolynomial.lean](../PaperCV282/DivisorSubpolynomial.lean), `card_divisors_le_rpow_eventually` ; [PolynomialPellCount.lean](../PaperCV282/PolynomialPellCount.lean), `pellBox_atMost_rpow_eventually` ; [PolynomialSplitProducts.lean](../PaperCV282/PolynomialSplitProducts.lean), `splitProductStart_atMost_rpow_eventually` ; [PolynomialSplitSolutions.lean](../PaperCV282/PolynomialSplitSolutions.lean) ; [MacroscopicOneSidedFibers.lean](../PaperCV282/MacroscopicOneSidedFibers.lean), `offsetProductNatFiber_atMost_rpow_eventually`.
+
+## V3-S007 — Simplifier la sommation du secteur terminal en deux populations
+
+**Document et emplacement.** Papier v2.8.2, p. 22–24, lemmes 3.22–3.24 et preuve de la proposition 3.25. Le plafond de la proposition 3.27 (p. 26) se conserve dans la même preuve.
+
+**Type.** Suggestion de simplification de preuve démontrée, **sans erreur identifiée dans le manuscrit**.
+
+**Justification.** Sur une tranche du plus grand départ `X ≤ max(x,y) < 2X`, poser `j=s+ktilde` et `m=B−3j−1`. Le vrai test du secteur 8 donne `m≥1`. Les composantes isolées fournissent des noyaux non triviaux, distincts et deux à deux premiers entre eux, présents dans les deux fenêtres. La borne déterminant implique qu'au plus un dépasse `floor(sqrt(6XB))`, donc chaque fenêtre possède au moins `m` petits noyaux. Le comptage des partenaires donne `X^epsilon`, sans supposer que le plus petit départ soit comparable à `X`.
+
+Réunir tous les couples pour lesquels `m≥2`. Chaque plus grand départ contribue au moins une unité à l'énergie `choose(A_T(x),2)`. Le lemme 3.24 compte donc ces départs avec la borne `X^(2/3+epsilon)B²`, et les partenaires ajoutent seulement un facteur sous-polynomial. L'identité exacte `tau+j=B+D#`, avec `D#≤2`, donne un poids au plus `4Q_B`. Le facteur deux des orientations et `B²` s'absorbent dans l'erreur d'exposant.
+
+Sur le complément `m≤1`, on a `3tau≤2B+8`, donc un poids au plus `8Q_B^(2/3)`. Le conteneur à un petit noyau et les partenaires comptent au plus `X^(3/4+epsilon)` couples. Cette séparation suffit sans sommation géométrique des strates de rang. Les fibres exactes du logarithme dyadique du plus grand départ couvrent tous les couples ; la borne macroscopique inférieure transporte uniformément la bande logarithmique et permet d'absorber leur nombre.
+
+On retrouve exactement `M^epsilon (M^(2/3)Q_B+M^(3/4)Q_B^(2/3))`. Pour un plafond réel commun `T≥0`, la première branche utilise `min(T,w)≤4min(T,Q_B)` et la seconde conserve sa borne non plafonnée. Tous les seuils précèdent `T`. Aucune symétrie du choix canonique n'est supposée : seul le comptage emploie les coordonnées maximum et minimum.
+
+**Formulation anglaise proposée.**
+
+> Split the terminal population according to whether the index forces at least two small kernels in each window. In the first population, the binomial energy bounds the number of larger starts directly, while the uniform partner count and the pointwise bound `2^tau−1≤4Q_B` give the two-thirds term. In the complementary population, the index identity implies `3tau≤2B+8`, hence weight at most `8Q_B^(2/3)`; the one-kernel container gives the three-quarter term. Summing the larger-start dyadic slices proves Proposition 3.25. The same argument keeps any common nonnegative cap by replacing `Q_B` in the first term with `min(T,Q_B)`.
+
+**Statut.** Proposition à examiner pour la V3. Preuve formalisée et relue indépendamment. Elle ne revendique ni un meilleur exposant ni les taux plus précis de Pell laissés ouverts dans V3-S006.
+
+**Preuves.** [SectorEightWeights.lean](../PaperCV282/SectorEightWeights.lean), [TerminalSliceGeometry.lean](../PaperCV282/TerminalSliceGeometry.lean), [TerminalSliceCounting.lean](../PaperCV282/TerminalSliceCounting.lean), [SectorEightSliceMass.lean](../PaperCV282/SectorEightSliceMass.lean) et [SectorEightProfile.lean](../PaperCV282/SectorEightProfile.lean), `proposition_three_twenty_five` et `proposition_three_twenty_five_capped`.
 
 ## Suivi des prochaines observations
 

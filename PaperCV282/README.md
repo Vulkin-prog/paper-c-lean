@@ -6,21 +6,21 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The eight-batch development now proves the three clauses of Corollary 2.6,
-the host and rational estimates of Propositions 3.7 and 3.8, the actual
-eight-sector partition, the profiles of sectors 1–7, the shifted-kernel
-energy of Lemma 3.24, and both explicit rational-family lower bounds
-(3.22)–(3.23). The polynomial-height Pell and split-product counts needed
-by the new host proofs are justified internally at the uniform `M^epsilon`
-scale. Their sharper displayed quantitative rates remain outside this scope.
+The ninth development batch closes the actual eighth sector and assembles
+Theorem 3.1 and Propositions 3.25–3.27: raw, coarse and capped start/full
+relation profiles on the macroscopic, dyadic and bounded-ratio domains.
+It also completes Corollary 2.5, Lemma 2.8 and Corollary 4.4, including the
+actual infinite-model mean, second factorial moment and variance. The
+macroscopic dictionary first moment extends Corollary 2.6 uniformly before
+the position mask and the dictionary.
 
-The remaining arithmetic step in the complete raw and capped profiles is
-the connection of **sector 8** to the proved kernel energy, with its partner
-counts, rank strata and summation over the larger-start scale. Theorem 3.1,
-Proposition 3.25, conclusion (3.25) and Proposition 3.27 are therefore not
-claimed complete. Exact finite capped decompositions and the nonterminal
-estimates are already available. Later marked-field, dictionary and
-crossover theorems remain further work.
+The complete paper and companion remain a larger project. In particular,
+the sharp two-saddle analysis, intensity-sensitive Stein transfer, growing
+marked/dictionary fields, conditional paths and microscopic crossover are
+not claimed complete. Some auxiliary arithmetic refinements also remain:
+the precise Pell/split-product exp(log/loglog) rate, the sharpened size-two
+Euler rate, and the aligned-core proposition for every positive density.
+The proved uniform M^epsilon consequences suffice for the profiles above.
 
 ## Sources, toolchain and verification
 
@@ -35,7 +35,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 89 mathematical modules contain **619 named declarations: 525 theorems, 87 definitions and 7 named local instances**. Batch 8 adds 347 theorems in 59 new modules.
+The 115 mathematical modules contain **830 named declarations: 707 theorems, 111 definitions and 12 named local instances**. Batch 9 adds 182 theorems in 26 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -81,7 +81,7 @@ or `delta`; [`ENDPOINTS.md`](ENDPOINTS.md) records it explicitly.
 | Sector 5: moderate deep core | `M Q_B^(2/3)` |
 | Sector 6: dense core and at least three corrected defects | `M^(1/2) Q_B` |
 | Sector 7: dense core, few defects, sufficient rank loss | `M Q_B^(2/3)` |
-| Sector 8 | Energy input proved; terminal mass assembly remains |
+| Sector 8 | `M^(2/3) Q_B + M^(3/4) Q_B^(2/3)` |
 
 The partition is successive and literal, with complementary tests and the
 actual canonical rank. Lean indices `0,…,7` correspond to manuscript
@@ -101,8 +101,9 @@ The terminal energy counts the literal binomial second moment
 `X^(2/3+epsilon)*B^2`, with a threshold before `L,T`. The proof includes
 small-kernel anchors, affine congruence fibres, both dyadic kernel-range
 sums, exact window double counting and the enlarged value interval at the
-window boundaries. The connection from terminal graph components to this
-analytic input is a separate remaining obligation.
+window boundaries. The terminal graph-to-kernel bridge, uniform partners, first-start container
+and complete larger-start summation are now proved. The two-branch proof
+retains the same real cap, with no symmetry premise on canonical sectors.
 
 The explicit minorants retain both orientations of the families `(t,2t)`
 and `(2t,3t)`, their actual separated-domain membership, and their numerical
@@ -127,7 +128,7 @@ no canonical selection of these subspaces is presumed.
 
 The [endpoint ledger](ENDPOINTS.md) gives the declarations and hypotheses.
 The [V3 revision log](../docs/PAPER_V3_REVISION_LOG.md) records **one confirmed
-wording correction and six suggestions**, including the small-product
+wording correction and seven suggestions**, including the small-product
 simplification and the distinction between quantitative rates. No error is
 attributed to the companion without evidence. V3 manuscript sources can be
 incorporated when supplied and frozen by the author.
@@ -135,3 +136,19 @@ incorporated when supplied and frozen by the author.
 The historical `PaperC` core, earlier `PaperCV11` overlay and existing
 Palomar records retain their original identities and scope. A future
 Palomar submission requires its own frozen statements and evidence.
+
+## Global progress and manuscript revision
+
+A separate coverage assessment tracks numbered manuscript statements and a
+weighted estimate of the remaining effort. The count of Lean declarations
+is an audit inventory, not a percentage of the complete paper. The current
+estimate is about 60% of the total formalization effort, with a conservative
+50–65% range; later probabilistic and companion results account for much of
+the remaining work. Strict statement coverage is 25/61 numbered article
+results. See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)
+and the endpoint ledger for the exact definitions and proved scope.
+
+The V3 revision log contains one confirmed wording correction and seven
+suggestions. S007 records the verified two-branch simplification of the
+terminal summation. The supplied PDFs and historical Palomar boundary remain
+unchanged.
