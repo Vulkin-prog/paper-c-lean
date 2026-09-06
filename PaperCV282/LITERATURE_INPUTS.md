@@ -1,9 +1,9 @@
 # Literature inputs for the v2.8.2 transfer and cutoff proofs
 
-The results through batch 19 separate published probability/prime-distribution inputs
+The results through batch 20 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
-There is no new Lean `axiom`, and no proof of these four propositions is
+There is no new Lean `axiom`, and no proof of these seven propositions is
 claimed. An axiom audit does not discharge a theorem's hypotheses.
 
 | Explicit proposition | Mathematical content | What the overlay proves from it |
@@ -12,6 +12,9 @@ claimed. An axiom audit does not discharge a theorem's hypotheses.
 | `ProcessAGGInput.ProcessAGGStatement` | Finite indicator-to-independent-Poisson field comparison for an exact dependency graph, in half-L1 convention, bounded by `2(b1+b2)`. | Actual masked field transfer, including arithmetic costs, deletion of actual sites and of target coordinates. |
 | `PrimeEulerPNT.PrimeNumberTheoremRemainder` | For every `eta>0`, eventually `abs(pi(t)-Ei(log t)) <= eta*t/log t`, with the actual prime-counting function. | Weighted partial summation, its lower endpoint, the finite Rankin estimate and subsequent cutoff estimates to the extent recorded in the endpoint ledger. |
 | `DirectionalSteinInput.DirectionalSteinFactorsStatement` | Existence of a solution of the finite multivariate Poisson immigration–death equation, with the two published quadratic Hessian bounds; dimension at least two and positive target coordinates. | Entrywise bounds by polarization, typed dependency graph, true independent Poisson filling, the exact unsigned C.1 and its signed analogue, aggregate5.8–5.9, the proved target limit5.10, resolved paths and the mean bound for6.4. |
+| `LaishramUniformInput.UniformPrimeDivisorStatement` | For every epsilon>0, eventually in k uniformly for every n>k, omega(Delta(n,k)) >= (2-epsilon)*pi(k). | Actual large-prime species, private rows, quadratic rank surplus, microscopic first moment and localization. |
+| `PostQuadraticLiterature.ShoreySquareProductStatement` | Square-product specialization of Shorey equation (15), with arbitrary positive k-smooth coefficient and the stated height/density conditions; threshold uniform in all later data. | The k^2 threshold, shifts, true post-quadratic defects, gap/prime-count divergence, probabilities and sums. |
+| `PellInput.NicolasRobinDivisorLogBoundStatement` | Historical divisor bound log(tau(n))*log(log(n)) <= 2*log(2)*log(n), n>=64. | Historical ideals/orbits/divisor envelope and actual uniform intermediate two-defect counts exp(O(logM/loglogM)). |
 
 The scalar input is taken from the standard Stein solution estimates in
 [Krokowski, arXiv:1505.01417v3, Section 2.5, equations (2.14)–(2.15)](https://arxiv.org/pdf/1505.01417).
@@ -96,7 +99,7 @@ process convergence theorem nor a desired joint law is assumed.
 
 At the end of batch 15, companion C.1 and the aggregate range remained
 open. The aggregate consequences are proved by the chain below; the exact
-printed unsigned C.1 bound remains a separate obligation. The kernel audit
+printed unsigned C.1 bound remained a separate obligation until batch17. The kernel audit
 does not discharge the explicit literature hypotheses of any batch.
 
 
@@ -168,3 +171,36 @@ asymptotics with bounded rounding, and absorption of the logarithmic Stein
 cost are proved internally from the pinned library. The actual resolved
 future endpoint uses the same `DirectionalSteinFactorsStatement` and
 `PrimeNumberTheoremRemainder` as the previously proved budget (6.7).
+
+## Batch 20: microscopic and mesoscopic arithmetic
+
+The active boundary expands from four to seven propositions. These three
+arguments are not new Lean axioms, and no desired rank, defect count, Pell
+solution count, or start-probability conclusion is postulated.
+
+The uniform Laishram–Shorey input is [equation(14), printed p.331, in
+Acta Arithmetica113.4(2004)](https://www.impan.pl/shop/en/publication/transaction/download/product/83314).
+The threshold depends on epsilon, uniformly for every n>k. The historical
+Corollary1 input has a weaker coefficient and does not supply this near2π(k)
+bound. Its deduction to actual large-prime species is proved in the overlay.
+
+The square-product input is [Shorey, RIMS Kokyuroku886(1994), pp.55–56,
+equation(15)](https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/0886-05.pdf).
+The smooth coefficient is positive, with all prime factors at most k; its
+size is unrestricted. From this square-case input, the k² threshold and shifts to
+the actual windows are derived. The cited source-shaped proposition contains
+neither a rank bound nor a probability estimate.
+
+The retained `PellInput.NicolasRobinDivisorLogBoundStatement` uses
+[Nicolas–Robin, Theorem1, p.485(1983)](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D424A2915C0A748C93CF4962D0120B94/S0008439500065188a.pdf/majorations_explicites_pour_le_nombre_de_diviseurs_de_n.pdf).
+It uses the safe constant2 for n>=64, not an equality to a rounded decimal.
+The historical conductor, ideal, orbit and divisor-envelope proofs connect
+this divisor bound to the precise Pell rate. The new global count then gives
+Lemma7.2 with exp(O(logM/loglogM)) uniformly before the height slice.
+The earlier polynomial/subpolynomial sector results remain independent of it.
+
+Theorem7.1 and the actual microscopic prime-clock limit use uniform LS,
+Shorey and PNT. Lemma7.2 uses PNT and Nicolas–Robin. Proposition7.3 uses all
+four arithmetic arguments; its deep/cutoff branches need only Shorey, PNT
+and Nicolas–Robin, while the prefix starting at2 adds LS. Exact border and
+affine identities and the unconditioned border prime clock are internal.

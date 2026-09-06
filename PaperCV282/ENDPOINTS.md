@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 403 mathematical modules contain **3507 named declarations: 2699 theorems, 596 definitions and 212 named instances**. Batch 19 adds 19 theorems in 3 new modules.
+The 455 mathematical modules contain **3901 named declarations: 3006 theorems, 649 definitions and 246 named instances**. Batch 20 adds 307 theorems in 52 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -1465,3 +1465,53 @@ internally. This is a sufficient budget, not a sharp threshold. The soft
 local-transfer counterpart and quantitative Gaussian/moderate-tail results
 remain separate; neither this paragraph nor D.1 is counted as a new complete
 numbered theorem.
+
+## Batch20: microscopic boundary, intermediate heights and clocks
+
+Use B=L+1, alpha_L=2^(-pi(L)), and q_L equal to the true probability of
+non-vacancy in the microscopic window. All events below live in the actual
+infinite Rademacher model. Explicit literature arguments are listed in
+[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md); none of the following ranks,
+defect counts, probability estimates or desired limits is assumed.
+
+| Declaration | Established result |
+|---|---|
+| `MicroscopicBorderEvents.equation_seven_one` | The exact border event has mass alpha_L; all starts2<=x<=L-1 are impossible. |
+| `MatrixAffineRank.rank_add_relationRho` | Actual matrix rank plus the dimension of its row-relation space equals the number of rows. |
+| `MicroscopicValuationMatrix.valuation_rank_le_start_rank_add_one` | Passing from B prescribed values to the actual start equations loses at most one rank. Finite and infinite probability bounds are derived from the rank. |
+| `SimpleIncidenceRank.lemma_e_two` | For an actual F2 matrix with row weight<=2, column weight<=K and distinct weight-two supports, incidence mass<=(K+1)*rank. Zero rows, pins and empty systems are included. This is companion LemmaE.2. |
+| `PrivateIncidenceRank.rank_eq_private_add_deleted` | Private unit rows split off exactly; the rank is the number of private rows plus the rank after deleting them. |
+| `MicroscopicIncidenceRank.microscopic_rank_medium_primes` | Under the actual positive quadratic-window geometry and B>=1332, 11 times the large-prime species count plus the odd medium-prime incidence count is at most12 times the valuation rank. |
+| `MediumSquareExceptions.squareIncidences_card_le` | The square-divisibility incidence exception has a uniform absolute bound854, derived by122 coefficient fibers with at most7 square multiples each. |
+| `MediumPrimeLayers.floor_sum_eq_prime_layers` | Exact ten-layer decomposition of the medium-prime floor sum; PNT gives its normalized limit H_11-1, with the square exception subtracted. |
+| `HarmonicIncidenceSurplus` | The surplus (H_K-2)/(K+1) has its unique global natural maximum atK=11; delta*=28271/332640>1/12. |
+| `TransitionPrimeAsymptotics.lemma_e_one` | The actual identity minor yields, uniformly for L<=x<=L+2, probability<=2^(-(2-epsilon)*pi(B)). The statement is stronger by allowing any affine right-hand side. |
+| `MicroscopicQuadraticAsymptotics.quadratic_affine_probability_eventually` | For every delta<delta*, all starts L+3<=x<=B²+2 have actual affine probability<=2^(-(1+delta)*pi(B)), using uniform LS and PNT. |
+| `PostQuadraticGap.lemma_e_three` | Uniformly for every x>B²+2, the true defect count is at most B-gap and start probability<=2^(-gap), with gap/pi(B) tending to infinity. This uses the source-shaped Shorey argument and PNT. |
+| `MicroscopicInteriorBounds.theorem_seven_one_interior_sum` | For0<delta<delta*, the sum of true start probabilities over2<=x<=2L² is eventually at most2^(-(1+delta)*pi(L)); the growing number of sites is absorbed in a strictly positive exponent margin. |
+| `MicroscopicBoundaryDominance.theorem_seven_one` | Simultaneously, the interior bound, 0<=q_L/alpha_L-1<=2^(-delta*pi(L)), conditional unique-border probability>=1-2^(-delta*pi(L)), and TV(mu given micro,mu given border)<=2^(-delta*pi(L)). |
+| `MicroscopicBoundaryDominance.theorem_seven_one_one_twelfth` | Explicit delta=1/12 specialization, with the actual small and large starts already joined. |
+| `IntermediateDefectCount.lemma_seven_two_ambient_scale` | Actual intermediate two-defect count<=exp(C logM/loglogM), uniformly in the fixed positive logarithmic band and every2L²<=X<=M. The threshold precedes L and X. |
+| `MesoscopicPrefixMass.equation_seven_seven` | Sum over the literal prefix2<=x<M^delta is at most M^delta*2^(-L)+2exp(-c logM/loglogM), c=betaMin*log2/8>0. The threshold precedes delta in(0,1). |
+| `DeepStartEvents.equation_seven_eight` | The genuine deep-event probability below the real power cutoff has the baseline cutoff mass and an exponentially small defect remainder. |
+| `MesoscopicCutoff.equation_seven_nine` | For every T<=2^L, the actual probability of any start in(2L²,T] is at most T/2^L+exp(K L/logL)*2^(-gap). |
+| `MesoscopicRareLimit.proposition_seven_three_rare_negligibility` | The actual deep probability is o(alpha_L+lambda_M), hence o(q_L+lambda_M), in the stated rare logarithmic regime. The lower logarithmic band is deduced from the rare-mean condition. |
+| `MesoscopicStability.conditional_record_tv_le` | True zero-padded records under enlarged and original non-vacancy conditioning have TV<=2*P(extra starts)/alpha_L. Coordinate1 records the border; remaining coordinates record actual starts. |
+| `MesoscopicStability.cutoff_conditioned_stability_of_littleO` | T=o(2^(L-pi(L))) alone gives TV convergence to zero for the two actual conditioned records. The auxiliary T<=2^L condition is deduced. |
+| `PrimeClockDistribution.equation_seven_twenty_prime_rank` | The first negative prime after the border has the exact geometric(1/2) law in prime-rank coordinates. |
+| `PrimeClockIntegerOvershoot` and `PrimeClockGaps` | Integer-overshoot tails equal2^(-(pi(L+h)-pi(L))); factorial prime gaps prove non-tightness on the integer scale. |
+| `PrimeClockMicroscopicTransfer.conditionalPrimeClockLaw_eq_geometric` | The border-conditioned clock law equals the standard geometric measure, including its entire distribution. |
+| `MicroscopicBoundaryDominance.microscopic_prime_clock_limit` | The true prime clock conditioned on microscopic non-vacancy converges in TV to geometric(1/2), under uniform LS, Shorey and PNT. |
+| `AffineBorderCylinders.theorem_seven_ten_exact_border_mass` | For the actual compatible affine system, border mass is2^(-(pi(L)-kappa)), where kappa is the dimension of the dual row-space intersection. |
+| `AffineBorderPrimeClock.affine_prime_tail_probability` | A block of K future prime signs is zero with probability0 if incompatible, otherwise2^(-(K-intersection dimension)). Zero overlap implies compatibility and the geometric tail. |
+
+Theorem7.1, Lemma7.2, Proposition7.3 and companion LemmasE.1–E.3 are complete
+under their stated literature arguments. Equation(7.7) belongs to
+Proposition7.3; the distinct signed-bulk Theorem7.7 remains unconnected.
+The exact border, integer and affine clock identities do not establish the
+full two-source Theorems7.8–7.10. In particular, affine rare non-vacancy,
+affine localization and the bulk/border mixture remain open. No limiting
+statement for physical integer overshoots is inferred from the prime-rank law.
+The global prefix7.4, almost-sure envelopes7.5 and macroscopic7.6–7.7 remain
+separate. The precise intermediate count does not automatically close all
+source-shaped Pell/split-product statements3.13/3.14/A.2.

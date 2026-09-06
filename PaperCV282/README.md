@@ -6,13 +6,14 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The nineteenth small batch proves the central three-halves information
-budget following equation (6.7). It derives the Poisson entropy expansion
-for `n=lambda+t*sqrt(lambda)+O(1)`, with `lambda` tending to infinity and
-`t=o(lambda^(1/6))`, including the bounded integer-rounding error. Any
-strictly smaller positive margin controls the actual resolved full future;
-the common logarithmic band and positivity of the resolved event are proved.
-The previous small-intensity equation (6.3) is preserved.
+The twentieth batch completes microscopic non-vacancy and boundary localization
+(7.1), the precise intermediate two-defect count (7.2), deep-start and
+mesoscopic estimates (7.3), and companion lemmas E.1–E.3. It constructs the
+actual incidence matrices and private-row quotient, counts square-divisibility
+exceptions, proves the optimal K=11 surplus, and connects every range to the
+true infinite start events. It also proves the genuine prime-clock limit,
+exact integer-overshoot identities, and the border/next-prime affine formulas
+within the still-partial Theorem7.10. All earlier results are preserved.
 
 The seventeenth development batch completed the exact unsigned finite
 comparison C.1, the general stable product lift6.1, sharp conditioning6.2,
@@ -21,15 +22,15 @@ environmental control6.4. The all-intensity aggregate rate6.5 and the local
 resolution budget6.7 are also proved on an explicit logarithmic band.
 The previous aggregate and Poisson–Gaussian results5.8–5.10 are preserved.
 
-Four explicit literature propositions remain recorded in
-[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md); this batch adds none.
-C.1 uses the directional Stein input, and the arithmetic rates add PNT.
-The regular conditional kernels, sharp conditioning, geometric target
-identities, effective Stirling remainder and Borel–Cantelli argument are
-proved internally. An axiom audit does not discharge literature hypotheses.
+Seven explicit literature propositions are now recorded in
+[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md). The four earlier inputs are
+preserved; the uniform Laishram–Shorey bound, Shorey's square-product bound
+and the historical Nicolas–Robin divisor bound become active in this batch.
+The incidence ranks, probability estimates and Pell reductions are proved
+from these arguments. An axiom audit does not discharge literature hypotheses.
 
 The whole paper and companion remain a larger project. Remaining work
-includes the microscopic boundary and two-source crossover, quantitative
+includes the global prefix and macroscopic regimes, the two-source crossover, quantitative
 Gaussian and moderate-deviation refinements, the soft central local-transfer budget, and the unnumbered labelled/uniform-band quenched extensions.
 The earlier precise Pell/split-product, Euler and positive-density
 aligned-core reserves remain distinct from their proved consequences.
@@ -47,7 +48,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 403 mathematical modules contain **3507 named declarations: 2699 theorems, 596 definitions and 212 named instances**. Batch 19 adds 19 theorems in 3 new modules.
+The 455 mathematical modules contain **3901 named declarations: 3006 theorems, 649 definitions and 246 named instances**. Batch 20 adds 307 theorems in 52 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -105,7 +106,7 @@ to obtain a pointwise subpolynomial factor. The sector-5 and sector-6
 proofs use internal polynomial-height Pell, squareclass localization and
 one-sided split-product counts. The size-two branch is counted jointly by
 a finite harmonic/Euler estimate. No Evertse–Silverman or Nicolas–Robin
-premise is assumed by these new arithmetic endpoints.
+premise is assumed by these sector endpoints. Batch20 uses Nicolas–Robin explicitly for the distinct precise intermediate count.
 
 The terminal energy counts the literal binomial second moment
 `sum_{X≤x<2X} choose(A_T(x),2)`. For an integer kernel cap
@@ -146,7 +147,7 @@ no canonical selection of these subspaces is presumed.
 
 The [endpoint ledger](ENDPOINTS.md) gives the declarations and hypotheses.
 The [V3 revision log](../docs/PAPER_V3_REVISION_LOG.md) records **one confirmed
-wording correction and twelve suggestions**, including the small-product
+wording correction and thirteen suggestions**, including the small-product
 simplification and the distinction between quantitative rates. No error is
 attributed to the companion without evidence. V3 manuscript sources can be
 incorporated when supplied and frozen by the author.
@@ -160,13 +161,13 @@ Palomar submission requires its own frozen statements and evidence.
 A separate coverage assessment tracks numbered manuscript statements and a
 weighted estimate of the remaining effort. The count of Lean declarations
 is an audit inventory, not a percentage of the complete paper. The current
-estimate is about 81% of the total formalization effort, with a conservative
-75–88% range; later probabilistic and companion results account for much of
-the remaining work. Strict statement coverage is 42/61 numbered article
-results, and 4/8 companion results (these fractions must not be added). See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)
+estimate is about 87% of the total formalization effort, with a conservative
+80–93% range; later probabilistic and companion results account for much of
+the remaining work. Strict statement coverage is 45/61 numbered article
+results, and 7/8 companion results (these fractions must not be added). See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)
 and the endpoint ledger for the exact definitions and proved scope.
 
-The V3 revision log contains one confirmed wording correction and twelve
+The V3 revision log contains one confirmed wording correction and thirteen
 suggestions. S007 records the verified two-branch simplification of the
 terminal summation; S008 records the mask-local deletion budget of 4.1;
 S009 records the unified soft proof at the same cutoff for all intensities.
@@ -176,3 +177,6 @@ The supplied PDFs and historical Palomar boundary remain unchanged.
 S011 records the directional Stein input and the internally proved comparison.
 The exact printed C.1 obligation is now closed. S012 records the effective
 intensity-uniform local Poisson estimate with relative error at most1/(12n).
+
+S013 records the proved global counting simplification for deep first moments,
+without an extra dyadic-slice factor.

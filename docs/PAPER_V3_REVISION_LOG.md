@@ -25,6 +25,9 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S010 | Papier, p. 32, corollaire 5.3 et équation (5.8) | Suggestion de renforcement en une espérance exacte | Proposition à examiner |
 | V3-S011 | Compagnon, p. 10–12, preuve directionnelle autour de (C.2)–(C.5) | Suggestion d'explicitation de l'entrée bibliographique | Proposition à examiner |
 
+| V3-S012 | Papier p.40 ; compagnon D.1 p.15, formule locale de Poisson | Suggestion de reste effectif | Proposition à examiner |
+| V3-S013 | Papier p.42, proposition7.3 ; compagnon E.5 p.20 | Suggestion de simplification par comptage global | Proposition à examiner |
+
 **Compagnon technique : aucune correction confirmée à ce stade.** Les résultats finis déjà formalisés ne constituent pas une vérification intégrale de ses annexes. Les prochaines observations propres au compagnon seront ajoutées avec leur emplacement et leur justification ; aucune anomalie ne lui est attribuée par analogie avec le papier.
 
 ## V3-C001 — Exiger une valuation impaire, pas seulement un premier impair
@@ -396,3 +399,47 @@ de seuil optimal. Aucun changement du papier ni nouvelle suggestion n'est
 nécessaire. Le transfert local central du taux doux, Berry–Esseen et les
 queues de déviation modérée restent distincts. Le registre conserve
 **une correction confirmée et douze suggestions** ; les PDF restent inchangés.
+
+## V3-S013 — Compter les fenêtres profondes dans une seule population
+
+**Document et emplacement.** Papier p.42, preuve de la proposition7.3 et
+équations(7.8–7.9) ; compagnon E.5 p.20, estimation mésoscopique.
+
+**Type.** Suggestion de simplification démontrée, sans erreur du texte actuel.
+
+Le comptage uniforme de Pell s'applique directement à toute population finie
+de départs jusqu'à2M. Il donne, pour les départs profonds d'un masque s,
+`Σ_{x∈s} P(J_x,L=1) ≤ |s|2^−L + exp(C L/log L)2^−g_L`.
+Les coupures suivent sans découpage supplémentaire en tranches dyadiques
+ni facteur extérieur L. Le taux exponentiel n'est pas annoncé meilleur.
+Les arguments bibliographiques de Shorey, PNT et Nicolas–Robin restent explicites.
+
+**Preuves.** [IntermediateDefectCount.lean](../PaperCV282/IntermediateDefectCount.lean),
+`global_two_defect_count_eventually`, et
+[DeepStartMass.lean](../PaperCV282/DeepStartMass.lean), `deep_mass_bound_eventually`.
+
+**Formulation anglaise proposée.**
+
+> The uniform Pell box counts all two-defect windows in an arbitrary finite population up to twice the ambient height at once. The deep first moment is therefore bounded by the baseline population mass plus exp(C L/log L)·2^(−g_L), without a separate dyadic-slice factor. The same argument applies to every upper cutoff in that population.
+
+**Statut.** Proposition à examiner par l'auteur ; les PDF ne sont pas modifiés.
+
+## Bilan du lot20 — Frontière, départs profonds et horloges
+
+Les résultats7.1–7.3 et les lemmes E.1–E.3 sont formalisés sur les vrais
+événements arithmétiques. La frontière microscopique fournit la masse q_L,
+la localisation conditionnelle, la marge1/12 et la loi limite géométrique
+sur l'horloge des nombres premiers. Les configurations prolongées par zéro
+sont stables sous les coupures mésoscopiques du papier. Les identités affines
+de masse du bord et de queue sur les prochains premiers sont établies ;
+le théorème7.10 complet et le mélange des deux sources restent ouverts.
+
+La réserve V3-S006 est levée pour le taux précis des deux-défauts intermédiaires,
+sous Nicolas–Robin explicite ; elle n'est pas levée globalement pour3.13/3.14/A.2.
+La frontière bibliographique active passe de quatre à sept propositions :
+LS uniforme, Shorey carré et la borne historique de Nicolas–Robin s'ajoutent.
+Elles doivent figurer dans la future description de la formalisation V3.
+
+Aucune nouvelle erreur du papier n'est identifiée. Le registre compte désormais
+**une correction confirmée et treize suggestions**, dont la simplification
+V3-S013. Les PDF et les preuves historiques restent inchangés.

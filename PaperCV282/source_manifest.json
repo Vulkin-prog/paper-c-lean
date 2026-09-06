@@ -35,11 +35,27 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Central three-halves sufficient information budget following equation(6.7)",
+          "item": "Theorem7.1, Lemma7.2, Proposition7.3; exact clocks and partial affine7.10",
           "printed_pages": [
-            40
+            40,
+            41,
+            42,
+            46,
+            47,
+            48
           ],
-          "equations": []
+          "equations": [
+            "7.1",
+            "7.2",
+            "7.3",
+            "7.4",
+            "7.5",
+            "7.6",
+            "7.7",
+            "7.8",
+            "7.9",
+            "7.20"
+          ]
         }
       ],
       "batch_17_locators": [
@@ -68,6 +84,15 @@
             "6.3"
           ]
         }
+      ],
+      "batch_19_locators": [
+        {
+          "item": "Central three-halves sufficient information budget following equation(6.7)",
+          "printed_pages": [
+            40
+          ],
+          "equations": []
+        }
       ]
     },
     {
@@ -79,12 +104,18 @@
       "size_bytes": 483599,
       "sha256": "60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094",
       "source_kind": "user_supplied_pdf",
-      "role_in_batch": "Central Taylor and logarithmic expansions are proved, with bounded rounding. No new complete companion theorem; quantitative and soft local-transfer obligations remain separate.",
+      "role_in_batch": "E.1–E.3 completed; incidence/private quotient, square-incidence cap, K=11 optimum and post-quadratic bound proved. Exact border clocks and affine formulas proved; full crossover remains separate.",
       "current_batch_locators": [
         {
-          "item": "D.1 central entropy and logarithmic expansion with bounded rounding; whole D.1 remains partial",
+          "item": "LemmasE.1–E.3, microscopic incidence proof, deep estimates and two clocks E.6–E.7",
           "printed_pages": [
-            15
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
           ],
           "equations": []
         }
@@ -103,10 +134,22 @@
           ]
         }
       ],
-      "batch_18_locators": []
+      "batch_18_locators": [],
+      "batch_19_locators": [
+        {
+          "item": "D.1 central entropy and logarithmic expansion with bounded rounding; whole D.1 remains partial",
+          "printed_pages": [
+            15
+          ],
+          "equations": []
+        }
+      ]
     }
   ],
   "mathematical_modules": [
+    "PaperCV282/AffineBorderCylinders.lean",
+    "PaperCV282/AffineBorderLinear.lean",
+    "PaperCV282/AffineBorderPrimeClock.lean",
     "PaperCV282/AggregateActualTail.lean",
     "PaperCV282/AggregateBudgetRates.lean",
     "PaperCV282/AggregateCoordinateIdentities.lean",
@@ -149,6 +192,8 @@
     "PaperCV282/CutoffGraphDegree.lean",
     "PaperCV282/CutoffGraphFreeCutoff.lean",
     "PaperCV282/CutoffGraphScale.lean",
+    "PaperCV282/DeepStartEvents.lean",
+    "PaperCV282/DeepStartMass.lean",
     "PaperCV282/DefectiveRankinCount.lean",
     "PaperCV282/DictionaryArithmeticRates.lean",
     "PaperCV282/DictionaryCountTargets.lean",
@@ -239,6 +284,7 @@
     "PaperCV282/HardPoissonBounds.lean",
     "PaperCV282/HardPoissonRates.lean",
     "PaperCV282/HardRelativeMargin.lean",
+    "PaperCV282/HarmonicIncidenceSurplus.lean",
     "PaperCV282/HostRankMass.lean",
     "PaperCV282/HostRealPowers.lean",
     "PaperCV282/IidWordComparison.lean",
@@ -255,6 +301,9 @@
     "PaperCV282/InfiniteSoftTransfer.lean",
     "PaperCV282/InfiniteWordFirstMoment.lean",
     "PaperCV282/InfiniteWordTransfer.lean",
+    "PaperCV282/IntermediateDefectCount.lean",
+    "PaperCV282/IntermediateDefectCover.lean",
+    "PaperCV282/IntermediateDefectScales.lean",
     "PaperCV282/IntervalRationalLowerBounds.lean",
     "PaperCV282/IntervalRationalMass.lean",
     "PaperCV282/KernelEnergyCounting.lean",
@@ -264,6 +313,7 @@
     "PaperCV282/LabelledInformationBudget.lean",
     "PaperCV282/LabelledProcessCosts.lean",
     "PaperCV282/LabelledSupportGraph.lean",
+    "PaperCV282/LaishramUniformInput.lean",
     "PaperCV282/LogarithmicWordPowers.lean",
     "PaperCV282/MacroscopicAlignedExclusion.lean",
     "PaperCV282/MacroscopicAlignedRunge.lean",
@@ -308,8 +358,29 @@
     "PaperCV282/MaskedScalarRetained.lean",
     "PaperCV282/MaskedScalarTransfer.lean",
     "PaperCV282/MassPushforward.lean",
+    "PaperCV282/MatrixAffineRank.lean",
     "PaperCV282/MeanAggregateBudget.lean",
     "PaperCV282/MeanAggregateTruncation.lean",
+    "PaperCV282/MediumIncidenceAsymptotics.lean",
+    "PaperCV282/MediumMultipleCounts.lean",
+    "PaperCV282/MediumPrimeGeometry.lean",
+    "PaperCV282/MediumPrimeLayers.lean",
+    "PaperCV282/MediumPrimeScaling.lean",
+    "PaperCV282/MediumSquareExceptions.lean",
+    "PaperCV282/MediumSquarePacking.lean",
+    "PaperCV282/MesoscopicCutoff.lean",
+    "PaperCV282/MesoscopicPrefixMass.lean",
+    "PaperCV282/MesoscopicRareLimit.lean",
+    "PaperCV282/MesoscopicStability.lean",
+    "PaperCV282/MicroscopicBorderEvents.lean",
+    "PaperCV282/MicroscopicBoundaryDominance.lean",
+    "PaperCV282/MicroscopicExponentialScale.lean",
+    "PaperCV282/MicroscopicIncidenceRank.lean",
+    "PaperCV282/MicroscopicInteriorBounds.lean",
+    "PaperCV282/MicroscopicNonvacancy.lean",
+    "PaperCV282/MicroscopicPrivatePrimes.lean",
+    "PaperCV282/MicroscopicQuadraticAsymptotics.lean",
+    "PaperCV282/MicroscopicValuationMatrix.lean",
     "PaperCV282/MovableMarkedBudget.lean",
     "PaperCV282/MovingMarkedComparison.lean",
     "PaperCV282/MovingMarkedLevels.lean",
@@ -351,7 +422,17 @@
     "PaperCV282/PolynomialSplitProducts.lean",
     "PaperCV282/PolynomialSplitSolutions.lean",
     "PaperCV282/PositiveSquareclassPairs.lean",
+    "PaperCV282/PostQuadraticDecay.lean",
+    "PaperCV282/PostQuadraticGap.lean",
+    "PaperCV282/PostQuadraticLiterature.lean",
+    "PaperCV282/PostQuadraticPrimeBounds.lean",
+    "PaperCV282/PostQuadraticStartBounds.lean",
     "PaperCV282/PrescribedValues.lean",
+    "PaperCV282/PrimeClockDistribution.lean",
+    "PaperCV282/PrimeClockEvents.lean",
+    "PaperCV282/PrimeClockGaps.lean",
+    "PaperCV282/PrimeClockIntegerOvershoot.lean",
+    "PaperCV282/PrimeClockMicroscopicTransfer.lean",
     "PaperCV282/PrimeEnvironmentStableLift.lean",
     "PaperCV282/PrimeEulerAbel.lean",
     "PaperCV282/PrimeEulerCutoff.lean",
@@ -363,6 +444,9 @@
     "PaperCV282/PrimeEulerSaddle.lean",
     "PaperCV282/PrimeEulerUniform.lean",
     "PaperCV282/PrimeFieldEventConditioning.lean",
+    "PaperCV282/PrivateIncidenceBudget.lean",
+    "PaperCV282/PrivateIncidenceCounting.lean",
+    "PaperCV282/PrivateIncidenceRank.lean",
     "PaperCV282/ProcessAGGInput.lean",
     "PaperCV282/ProfileAssembly.lean",
     "PaperCV282/ProfileMonomials.lean",
@@ -435,6 +519,10 @@
     "PaperCV282/SignedExactMarks.lean",
     "PaperCV282/SignedGeometricWeights.lean",
     "PaperCV282/SignedMarkedSeparatedRelations.lean",
+    "PaperCV282/SimpleIncidenceCounting.lean",
+    "PaperCV282/SimpleIncidenceKernel.lean",
+    "PaperCV282/SimpleIncidenceModel.lean",
+    "PaperCV282/SimpleIncidenceRank.lean",
     "PaperCV282/SizeTwoHostAsymptotics.lean",
     "PaperCV282/SizeTwoHostCounting.lean",
     "PaperCV282/SmallIntensityConditioning.lean",
@@ -486,6 +574,10 @@
     "PaperCV282/ThresholdPathEquivalence.lean",
     "PaperCV282/TouchingPairGeometry.lean",
     "PaperCV282/TouchingPairMass.lean",
+    "PaperCV282/TransitionPrimeAsymptotics.lean",
+    "PaperCV282/TransitionPrimeMinor.lean",
+    "PaperCV282/TransitionPrimeRows.lean",
+    "PaperCV282/TransitionPrimeScales.lean",
     "PaperCV282/TwoWindowParity.lean",
     "PaperCV282/TwoWindowSquareHosts.lean",
     "PaperCV282/UniformSpatialGrid.lean",
@@ -675,11 +767,11 @@
       ]
     },
     "additional_exclusions": [
-      "Precise exp(O(log M/loglog M)) quantitative versions of the polynomial-height arithmetic counts.",
+      "Full source-shaped precise Pell/split-product statements3.13/3.14/A.2; the precise intermediate two-defect consequence7.2 is now proved.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
       "Quantitative Berry–Esseen and moderate deviations; soft central local-transfer counterpart; remaining D.4 process consequences.",
       "Unnumbered extensions following6.4: labelled-field environmental bound, simultaneous scalar control over O(logN) lengths and separate maximal couplings.",
-      "Microscopic boundary, macroscopic transports, prefix regimes and two-source crossover of section7."
+      "Global prefix7.4–7.5, macroscopic transport7.6–7.7 and full two-source/affine crossover7.8–7.10."
     ],
     "new_external_literature_premises_in_current_endpoints": [
       {
@@ -712,6 +804,36 @@
         "proved_in_lean": false,
         "lean_axiom": false,
         "introduced_in_batch": 16
+      },
+      {
+        "declaration": "PaperC.V282.LaishramUniformInput.UniformPrimeDivisorStatement",
+        "content": "For every epsilon>0, eventually in k uniformly for every n>k, omega(Delta(n,k)) >= (2-epsilon)*pi(k).",
+        "source": "Laishram–Shorey (2004), equation (14), p.331.",
+        "source_url": "https://www.impan.pl/shop/en/publication/transaction/download/product/83314",
+        "proved_in_lean": false,
+        "lean_axiom": false,
+        "introduced_in_overlay_batch": 20,
+        "existing_core_definition": false
+      },
+      {
+        "declaration": "PaperC.V282.PostQuadraticLiterature.ShoreySquareProductStatement",
+        "content": "Square-product specialization of Shorey equation (15), with arbitrary positive k-smooth coefficient and the stated height/density conditions; threshold uniform in all later data.",
+        "source": "Shorey, RIMS Kokyuroku 886 (1994), pp.55–56.",
+        "source_url": "https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/0886-05.pdf",
+        "proved_in_lean": false,
+        "lean_axiom": false,
+        "introduced_in_overlay_batch": 20,
+        "existing_core_definition": false
+      },
+      {
+        "declaration": "PaperC.PellInput.NicolasRobinDivisorLogBoundStatement",
+        "content": "Historical divisor bound log(tau(n))*log(log(n)) <= 2*log(2)*log(n), n>=64.",
+        "source": "Nicolas–Robin (1983), Theorem1, p.485; safe constant2.",
+        "source_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D424A2915C0A748C93CF4962D0120B94/S0008439500065188a.pdf/majorations_explicites_pour_le_nombre_de_diviseurs_de_n.pdf",
+        "proved_in_lean": false,
+        "lean_axiom": false,
+        "introduced_in_overlay_batch": 20,
+        "existing_core_definition": true
       }
     ],
     "proposition_3_7": {
@@ -1365,6 +1487,79 @@
       ],
       "hypotheses": "Sizes tend to infinity; true intensity tends to infinity; t/lambda^(1/6) tends to zero; bounded eventual rounding n-lambda-t*sqrt(lambda); positive hard-prime events with I+(3/2)*log(lambda)+t^2/2<=V-c*nu.",
       "conclusion": "For every 0<cprime<c, eventual positivity of C intersect {Z=n}, actual full-future TV <= resolvedBudgetRemainder N cprime, and convergence of this TV to zero. The logarithmic band is deduced."
+    },
+    "theorem_7_1": {
+      "status": "complete_under_explicit_literature_arguments_where_needed",
+      "evidence": [
+        "PaperCV282/MicroscopicBorderEvents.lean: equation_seven_one",
+        "PaperCV282/MicroscopicBoundaryDominance.lean: theorem_seven_one",
+        "PaperCV282/MicroscopicBoundaryDominance.lean: theorem_seven_one_one_twelfth",
+        "PaperCV282/MicroscopicBoundaryDominance.lean: microscopic_probability_ratio_tendsto_one"
+      ],
+      "actual_arithmetic_source": true,
+      "remaining": []
+    },
+    "theorem_7_2": {
+      "status": "complete_under_explicit_literature_arguments_where_needed",
+      "evidence": [
+        "PaperCV282/IntermediateDefectCount.lean: lemma_seven_two_ambient_scale"
+      ],
+      "actual_arithmetic_source": true,
+      "remaining": []
+    },
+    "theorem_7_3": {
+      "status": "complete_under_explicit_literature_arguments_where_needed",
+      "evidence": [
+        "PaperCV282/MesoscopicPrefixMass.lean: equation_seven_seven",
+        "PaperCV282/DeepStartEvents.lean: equation_seven_eight",
+        "PaperCV282/MesoscopicCutoff.lean: equation_seven_nine",
+        "PaperCV282/MesoscopicRareLimit.lean: proposition_seven_three_rare_negligibility",
+        "PaperCV282/MesoscopicStability.lean: cutoff_conditioned_stability_of_littleO"
+      ],
+      "actual_arithmetic_source": true,
+      "remaining": []
+    },
+    "companion_E_1": {
+      "status": "complete_under_explicit_literature_arguments_where_needed",
+      "evidence": [
+        "PaperCV282/TransitionPrimeMinor.lean: transition_value_rank_lower",
+        "PaperCV282/MicroscopicValuationMatrix.lean: valuation_rank_le_start_rank_add_one",
+        "PaperCV282/TransitionPrimeAsymptotics.lean: lemma_e_one"
+      ],
+      "actual_arithmetic_source": true,
+      "remaining": []
+    },
+    "companion_E_2": {
+      "status": "complete_under_explicit_literature_arguments_where_needed",
+      "evidence": [
+        "PaperCV282/SimpleIncidenceRank.lean: lemma_e_two",
+        "PaperCV282/PrivateIncidenceRank.lean: rank_eq_private_add_deleted",
+        "PaperCV282/MicroscopicIncidenceRank.lean: microscopic_rank_medium_primes"
+      ],
+      "actual_arithmetic_source": true,
+      "remaining": []
+    },
+    "companion_E_3": {
+      "status": "complete_under_explicit_literature_arguments_where_needed",
+      "evidence": [
+        "PaperCV282/PostQuadraticGap.lean: lemma_e_three"
+      ],
+      "actual_arithmetic_source": true,
+      "remaining": []
+    },
+    "prime_and_integer_clocks": {
+      "evidence": [
+        "PaperCV282/PrimeClockMicroscopicTransfer.lean: conditionalPrimeClockLaw_eq_geometric",
+        "PaperCV282/MicroscopicBoundaryDominance.lean: microscopic_prime_clock_limit"
+      ],
+      "content": "Exact geometric(1/2) prime clock under border and TV limit under actual microscopic non-vacancy; integer overshoot tails and non-tightness are also proved.",
+      "counted_as_new_numbered_result": false
+    },
+    "affine_border_and_future_prime_clock": {
+      "status": "partial_theorem_7_10",
+      "exact_border_mass": "2^-(πL−κ), with κ the actual dual-row-space intersection dimension",
+      "future_tail": "Zero if incompatible, otherwise2^-(K−intersection dimension); zero intersection implies compatibility and the geometric tail.",
+      "full_affine_crossover_claimed": false
     }
   },
   "qualification": {
@@ -1374,17 +1569,22 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 19,
+  "development_batch": 20,
   "declaration_inventory": {
-    "mathematical_module_count": 403,
-    "named_declarations": 3507,
-    "theorems": 2699,
-    "definitions": 596,
-    "named_instances": 212,
+    "mathematical_module_count": 455,
+    "named_declarations": 3901,
+    "theorems": 3006,
+    "definitions": 649,
+    "named_instances": 246,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
     "named_instance_declarations": [
+      "PaperC.V282.AffineBorderCylinders.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineBorderCylinders.instPrimeTwo",
+      "PaperC.V282.AffineBorderLinear.instPrimeTwo",
+      "PaperC.V282.AffineBorderPrimeClock.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineBorderPrimeClock.instPrimeTwo",
       "PaperC.V282.AggregateMovingCoordinates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.AllStartFieldCosts.instDecidableProposition",
       "PaperC.V282.AllStartFieldTransfer.instDecidableProposition",
@@ -1404,6 +1604,8 @@
       "PaperC.V282.ConstantWindowRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.CountablePrimeEventTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.CountablePrimeEventTransfer.instProbabilityInfiniteRademacher",
+      "PaperC.V282.DeepStartEvents.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.DeepStartEvents.instProbabilityInfiniteRademacher",
       "PaperC.V282.DictionaryFieldBounds.instDecidableProposition",
       "PaperC.V282.DictionaryFieldCritical.instMeasurableSpaceF2Discrete",
       "PaperC.V282.DictionaryFieldDeletion.instDecidableProposition",
@@ -1489,10 +1691,23 @@
       "PaperC.V282.MaskedScalarFullConditioning.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MaskedScalarFullConditioning.instDecidableProposition",
       "PaperC.V282.MassPushforward.instDecidableProposition",
+      "PaperC.V282.MatrixAffineRank.instPrimeTwo",
       "PaperC.V282.MeanAggregateBudget.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MeanAggregateBudget.instProbabilityInfiniteRademacher",
       "PaperC.V282.MeanAggregateTruncation.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MeanAggregateTruncation.instProbabilityInfiniteRademacher",
+      "PaperC.V282.MesoscopicCutoff.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MesoscopicCutoff.instProbabilityInfiniteRademacher",
+      "PaperC.V282.MesoscopicRareLimit.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MesoscopicRareLimit.instProbabilityInfiniteRademacher",
+      "PaperC.V282.MesoscopicStability.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MesoscopicStability.instProbabilityInfinite",
+      "PaperC.V282.MicroscopicBorderEvents.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MicroscopicBoundaryDominance.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MicroscopicBoundaryDominance.instProbabilityInfinite",
+      "PaperC.V282.MicroscopicNonvacancy.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MicroscopicNonvacancy.instProbabilityInfiniteRademacher",
+      "PaperC.V282.MicroscopicValuationMatrix.instPrimeTwo",
       "PaperC.V282.MovingMarkedComparison.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MovingMarkedComparison.instMeasurableExcessConfiguration",
       "PaperC.V282.MovingMarkedComparison.instMeasurableSingletonExcessConfiguration",
@@ -1524,9 +1739,19 @@
       "PaperC.V282.PoissonResolvedTarget.instProbabilityThinConfiguration",
       "PaperC.V282.PoissonResolvedTarget.instProbabilityThinningPath",
       "PaperC.V282.PoissonReverseImmigration.instDecidableProposition",
+      "PaperC.V282.PrimeClockDistribution.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.PrimeClockDistribution.instProbabilityInfinite",
+      "PaperC.V282.PrimeClockEvents.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.PrimeClockEvents.instProbabilityInfinite",
+      "PaperC.V282.PrimeClockGaps.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.PrimeClockIntegerOvershoot.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.PrimeClockIntegerOvershoot.instProbabilityInfinite",
+      "PaperC.V282.PrimeClockMicroscopicTransfer.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.PrimeClockMicroscopicTransfer.instProbabilityInfinite",
       "PaperC.V282.PrimeEnvironmentStableLift.instMeasurableSpaceF2Discrete",
       "PaperC.V282.PrimeEnvironmentStableLift.instProbabilityInfiniteRademacher",
       "PaperC.V282.PrimeFieldEventConditioning.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.PrivateIncidenceRank.instPrimeTwo",
       "PaperC.V282.QuenchedAggregateTheorem.instMeasurableSpaceF2Discrete",
       "PaperC.V282.QuenchedAggregateTheorem.instProbabilityInfiniteRademacher",
       "PaperC.V282.RandomDictionary.instDecidableProposition",
@@ -1552,6 +1777,9 @@
       "PaperC.V282.SignedAggregateHardBudget.instMeasurableSpaceF2Discrete",
       "PaperC.V282.SignedAggregateTruncation.instProbabilityInfiniteRademacher",
       "PaperC.V282.SignedMarkedSeparatedRelations.instDecidableProposition",
+      "PaperC.V282.SimpleIncidenceKernel.instPrimeTwo",
+      "PaperC.V282.SimpleIncidenceModel.instDecidableIncidenceAdj",
+      "PaperC.V282.SimpleIncidenceRank.instDecidableComponentPinned",
       "PaperC.V282.SmallIntensityConditioning.instMeasurableSpaceF2Discrete",
       "PaperC.V282.SmallIntensityConditioning.instProbabilityInfiniteRademacher",
       "PaperC.V282.SoftArithmeticCosts.instDecidableProposition",
@@ -1582,6 +1810,7 @@
       "PaperC.V282.StableConditionalKernel.instProbabilityTrim",
       "PaperC.V282.SteinTestTotalVariation.instDecidableProposition",
       "PaperC.V282.ThresholdPathEquivalence.instCountableThresholdPath",
+      "PaperC.V282.TransitionPrimeMinor.instPrimeTwo",
       "PaperC.V282.UniformSpatialGrid.instProbabilityUnitIntervalUniform",
       "PaperC.V282.UniformSpatialGrid.instProbabilityUniformGrid",
       "PaperC.V282.UnsignedAggregateC1.instDecidableProposition",
@@ -3611,6 +3840,268 @@
         "definitions": 0,
         "named_instances": 0
       }
+    },
+    "batch_20_additions": {
+      "AffineBorderCylinders": {
+        "theorems": 11,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "AffineBorderLinear": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "AffineBorderPrimeClock": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "DeepStartEvents": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "DeepStartMass": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "HarmonicIncidenceSurplus": {
+        "theorems": 11,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "IntermediateDefectCount": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "IntermediateDefectCover": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "IntermediateDefectScales": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "LaishramUniformInput": {
+        "theorems": 1,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MatrixAffineRank": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "MediumIncidenceAsymptotics": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MediumMultipleCounts": {
+        "theorems": 5,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "MediumPrimeGeometry": {
+        "theorems": 12,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MediumPrimeLayers": {
+        "theorems": 7,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MediumPrimeScaling": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MediumSquareExceptions": {
+        "theorems": 2,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MediumSquarePacking": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MesoscopicCutoff": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MesoscopicPrefixMass": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MesoscopicRareLimit": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MesoscopicStability": {
+        "theorems": 10,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "MicroscopicBorderEvents": {
+        "theorems": 12,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "MicroscopicBoundaryDominance": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MicroscopicExponentialScale": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MicroscopicIncidenceRank": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MicroscopicInteriorBounds": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MicroscopicNonvacancy": {
+        "theorems": 13,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "MicroscopicPrivatePrimes": {
+        "theorems": 9,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "MicroscopicQuadraticAsymptotics": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MicroscopicValuationMatrix": {
+        "theorems": 10,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "PostQuadraticDecay": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PostQuadraticGap": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PostQuadraticLiterature": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "PostQuadraticPrimeBounds": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PostQuadraticStartBounds": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PrimeClockDistribution": {
+        "theorems": 6,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "PrimeClockEvents": {
+        "theorems": 14,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "PrimeClockGaps": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "PrimeClockIntegerOvershoot": {
+        "theorems": 7,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "PrimeClockMicroscopicTransfer": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "PrivateIncidenceBudget": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PrivateIncidenceCounting": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PrivateIncidenceRank": {
+        "theorems": 8,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "SimpleIncidenceCounting": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SimpleIncidenceKernel": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "SimpleIncidenceModel": {
+        "theorems": 7,
+        "definitions": 5,
+        "named_instances": 1
+      },
+      "SimpleIncidenceRank": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "TransitionPrimeAsymptotics": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "TransitionPrimeMinor": {
+        "theorems": 10,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "TransitionPrimeRows": {
+        "theorems": 8,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "TransitionPrimeScales": {
+        "theorems": 7,
+        "definitions": 1,
+        "named_instances": 0
+      }
     }
   },
   "manuscript_notes": {
@@ -3618,23 +4109,23 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Batch17 closes exactC.1 and all four numbered results6.1–6.4, plus all-intensity6.5 and effective local resolution6.7 on an explicit band. Four literature propositions unchanged. No new manuscript error. Effective local Stirling bound suggested for V3; PDFs unchanged.",
+    "formalization_context": "Batch20 closes7.1–7.3 and companion E.1–E.3; exact prime/integer clocks and partial affine7.10. Seven explicit literature propositions are active: four earlier inputs plus uniform LS, Shorey square-product and the historical Nicolas–Robin bound. No new manuscript error; global deep-counting simplification suggested as V3-S013; PDFs unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
-      "suggestions": 12
+      "suggestions": 13
     }
   },
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 81,
+    "effort_estimate_percent": 87,
     "conservative_interval_percent": [
-      75,
-      88
+      80,
+      93
     ],
-    "completed_article_results": 42,
+    "completed_article_results": 45,
     "numbered_article_results_excluding_intro_duplicates": 61,
-    "companion_completed_named_results": 4,
+    "companion_completed_named_results": 7,
     "companion_named_results": 8,
     "denominators_must_not_be_added": true,
     "metric_is_lean_declaration_count": false
