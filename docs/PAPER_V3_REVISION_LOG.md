@@ -250,7 +250,7 @@ Le théorème 5.1 et le corollaire 5.4 ont été raccordés aux vraies lois, ave
 
 La construction effective de 5.4 fonctionne dès B≥8. Elle utilise k=floor(log₂(2B))+1 ; aux puissances de deux, ce nombre dépasse d’une unité le plafond choisi dans le papier, et les mêmes inégalités de taille donnent le minorant2^B/(32B). La possibilité de sélectionner le nombre voulu de mots dans la fenêtre critique est prouvée. Cette variante est un choix de présentation de la formalisation, sans correction demandée au manuscrit.
 
-Les relectures n’ont relevé aucune nouvelle erreur dans ces passages. Le registre conserve donc **une correction confirmée et neuf suggestions**. Lors de la préparation de la V3, la section consacrée à Lean pourra citer ces deux résultats et leurs limites précises à partir du [registre des déclarations](../PaperCV282/ENDPOINTS.md). Les corollaires 5.2,5.3 et5.5 restent séparés et ne sont pas annoncés comme formalisés.
+À l’issue du lot 12, les relectures n’avaient relevé aucune nouvelle erreur dans ces passages. Le registre comptait alors **une correction confirmée et neuf suggestions**. Lors de la préparation de la V3, la section consacrée à Lean pourra citer ces deux résultats et leurs limites précises à partir du [registre des déclarations](../PaperCV282/ENDPOINTS.md). À l’issue du lot 12, les corollaires 5.2,5.3 et5.5 restaient séparés et n’étaient pas encore annoncés comme formalisés ; ils ont été fermés au lot 13.
 
 ## V3-S010 — Donner l'espérance exacte du recouvrement d'un dictionnaire uniforme
 
@@ -277,3 +277,12 @@ Cette égalité peut remplacer (5.8), avec une courte adaptation de la preuve. L
 **Preuves.** [RandomDictionaryWordCount.lean](../PaperCV282/RandomDictionaryWordCount.lean), `card_selfOverlapWords`, `card_compatibleSecondWords` et `sum_distinct_directedOverlapWeight` ; [RandomDictionary.lean](../PaperCV282/RandomDictionary.lean), `dictionaryAverage_eq_expectation` et `dictionaryFraction_eq_probability` ; [RandomDictionaryOverlap.lean](../PaperCV282/RandomDictionaryOverlap.lean), `average_overlapWeight_eq`, `equation_five_eight` et `dictionaryFraction_overlapWeight_gt_le`.
 
 **Statut.** Proposition à examiner par l'auteur pour la V3. Le tirage sans remise, les comptes exacts et leurs probabilités sont démontrés. Les PDF sont inchangés. Le registre atteint désormais **une correction confirmée et dix suggestions**.
+
+
+## Bilan du lot 14 — Marques exactes et loi composée
+
+Le théorème **5.6**, y compris ses versions signée et non signée et le taux uniforme, et le corollaire **5.7** sur le vrai compteur de fenêtres constantes sont désormais formalisés sous les entrées bibliographiques déclarées. Les valeurs locales et la représentation composée avec tailles géométriques indépendantes sont démontrées. La V3 pourra citer ces résultats et leurs [déclarations précises](../PaperCV282/ENDPOINTS.md).
+
+La formalisation garde explicitement la longueur de base L dans la masse de défauts et R2, et Q=L+E+1 dans les supports maximaux. Elle confirme le rôle essentiel de (5.15). Le cylindre premier peut être choisi égal au maximum de Y et du seuil couvrant le champ, ce qui rend le conditionnement par tout F_Y explicite. Les deux événements de bord sont ceux du texte ; aucune erreur d'indice n'a été relevée.
+
+Aucune nouvelle correction du papier n'est confirmée dans ce lot. Le registre reste à **une correction confirmée et dix suggestions**. Le recours à une égalité presque sûre dans la preuve Lean de (5.16) ne suffit pas à conclure que l'égalité imprimée serait erronée. Le champ spatial à toutes marques et sa limite diffuse restent distincts des résultats 5.6–5.7 acquis ; ils ne devront pas être annoncés comme complètement formalisés à ce stade. Les PDF restent inchangés.

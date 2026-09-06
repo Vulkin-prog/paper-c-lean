@@ -35,18 +35,19 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Corollaries5.2,5.3,5.5",
+          "item": "Theorem5.6 and Corollary5.7",
           "printed_pages": [
-            31,
-            32,
-            33
+            33,
+            34,
+            35
           ],
           "equations": [
-            "5.3",
-            "5.4",
-            "5.8",
-            "5.9",
-            "5.10"
+            "5.11",
+            "5.12",
+            "5.13",
+            "5.14",
+            "5.15",
+            "5.16"
           ]
         }
       ]
@@ -78,7 +79,15 @@
     "PaperCV282/CappedRelationMass.lean",
     "PaperCV282/CappedSectorMass.lean",
     "PaperCV282/CappedSectorSixProfile.lean",
+    "PaperCV282/CompoundPoissonMarking.lean",
+    "PaperCV282/CompoundPoissonTail.lean",
+    "PaperCV282/CompoundPoissonTarget.lean",
+    "PaperCV282/CompoundPoissonTransform.lean",
     "PaperCV282/ConditionalFieldTransfer.lean",
+    "PaperCV282/ConstantWindowBoundary.lean",
+    "PaperCV282/ConstantWindowClusters.lean",
+    "PaperCV282/ConstantWindowCompoundConvergence.lean",
+    "PaperCV282/ConstantWindowRates.lean",
     "PaperCV282/CriticalFactorialMoments.lean",
     "PaperCV282/CriticalFirstMomentRate.lean",
     "PaperCV282/CriticalProfileNormalization.lean",
@@ -110,6 +119,29 @@
     "PaperCV282/DivisorSubpolynomial.lean",
     "PaperCV282/DyadicPoissonDistance.lean",
     "PaperCV282/DyadicRelationProfile.lean",
+    "PaperCV282/ExactMarkedAggregation.lean",
+    "PaperCV282/ExactMarkedArithmeticRates.lean",
+    "PaperCV282/ExactMarkedClusterTarget.lean",
+    "PaperCV282/ExactMarkedClusterTransfer.lean",
+    "PaperCV282/ExactMarkedCritical.lean",
+    "PaperCV282/ExactMarkedDeletion.lean",
+    "PaperCV282/ExactMarkedDependency.lean",
+    "PaperCV282/ExactMarkedFieldBounds.lean",
+    "PaperCV282/ExactMarkedFieldTransfer.lean",
+    "PaperCV282/ExactMarkedFiniteComparison.lean",
+    "PaperCV282/ExactMarkedFirstCost.lean",
+    "PaperCV282/ExactMarkedInfinite.lean",
+    "PaperCV282/ExactMarkedLedger.lean",
+    "PaperCV282/ExactMarkedLocalGeometry.lean",
+    "PaperCV282/ExactMarkedLocalProbability.lean",
+    "PaperCV282/ExactMarkedModel.lean",
+    "PaperCV282/ExactMarkedPairCosts.lean",
+    "PaperCV282/ExactMarkedRates.lean",
+    "PaperCV282/ExactMarkedSignProjection.lean",
+    "PaperCV282/ExactMarkedSourceTail.lean",
+    "PaperCV282/ExactMarkedTailTarget.lean",
+    "PaperCV282/ExactMarkedUnsignedProbability.lean",
+    "PaperCV282/ExactMarkedValueProbability.lean",
     "PaperCV282/ExponentialIntegral.lean",
     "PaperCV282/ExponentialIntegralAsymptotics.lean",
     "PaperCV282/FiniteFieldPoissonCoupling.lean",
@@ -117,6 +149,7 @@
     "PaperCV282/FreeCutoffAdmissibility.lean",
     "PaperCV282/FreeCutoffSoftRates.lean",
     "PaperCV282/FullBandArithmetic.lean",
+    "PaperCV282/FullCylinderStartLaw.lean",
     "PaperCV282/FullHostAsymptotics.lean",
     "PaperCV282/FullHostComparison.lean",
     "PaperCV282/FullHostCounting.lean",
@@ -124,6 +157,9 @@
     "PaperCV282/FullIntervalHostCounting.lean",
     "PaperCV282/FullIntervalPrimeAssignment.lean",
     "PaperCV282/FullPrimeAssignment.lean",
+    "PaperCV282/GeometricClusterTarget.lean",
+    "PaperCV282/GeometricClusterTruncation.lean",
+    "PaperCV282/GeometricMarkedConfiguration.lean",
     "PaperCV282/GoodTouchingProbability.lean",
     "PaperCV282/HardPoissonBounds.lean",
     "PaperCV282/HardPoissonRates.lean",
@@ -139,6 +175,7 @@
     "PaperCV282/InfiniteCountMoments.lean",
     "PaperCV282/InfiniteFieldTransfer.lean",
     "PaperCV282/InfiniteMaskedScalarTransfer.lean",
+    "PaperCV282/InfiniteMassCoupling.lean",
     "PaperCV282/InfiniteSoftTransfer.lean",
     "PaperCV282/InfiniteWordFirstMoment.lean",
     "PaperCV282/InfiniteWordTransfer.lean",
@@ -146,6 +183,8 @@
     "PaperCV282/IntervalRationalMass.lean",
     "PaperCV282/KernelEnergyCounting.lean",
     "PaperCV282/KernelWindowEnergy.lean",
+    "PaperCV282/LabelledProcessCosts.lean",
+    "PaperCV282/LabelledSupportGraph.lean",
     "PaperCV282/LogarithmicWordPowers.lean",
     "PaperCV282/MacroscopicAlignedExclusion.lean",
     "PaperCV282/MacroscopicAlignedRunge.lean",
@@ -264,6 +303,7 @@
     "PaperCV282/SignOverlap.lean",
     "PaperCV282/SignPatternCounts.lean",
     "PaperCV282/SignPatternRates.lean",
+    "PaperCV282/SignedExactMarks.lean",
     "PaperCV282/SizeTwoHostAsymptotics.lean",
     "PaperCV282/SizeTwoHostCounting.lean",
     "PaperCV282/SmallKernelAnchors.lean",
@@ -469,7 +509,7 @@
     "additional_exclusions": [
       "Precise exp(O(log M/loglog M)) quantitative versions of the polynomial-height arithmetic counts.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
-      "Complete signed marked-field and two-source crossover theorems. Dictionary results5.1–5.5 are complete under the stated literature boundary."
+      "Complete countably marked spatial field and diffuse limit of1.1, growing sign-resolved fields5.9, and two-source crossover theorems. Finite5.6 and compound-cluster5.7 are complete under the stated literature boundary."
     ],
     "new_external_literature_premises_in_current_endpoints": [
       {
@@ -927,6 +967,40 @@
       "rate": "Constant(C)*(Theta+exp(-Vhard+eta*nuhard)+N^(-1/3+epsilon)), everyepsilon,eta>0",
       "least_shift_and_run_start_example": true,
       "remaining": []
+    },
+    "theorem_5_6": {
+      "status": "complete_under_explicit_process_AGG_and_PNT_premises",
+      "finite_endpoint": "PaperC.V282.ExactMarkedFiniteComparison.equation_five_thirteen",
+      "rate_endpoint": "PaperC.V282.ExactMarkedFiniteComparison.theorem_five_six",
+      "carrier": "All sites in a deterministic dyadic mask times exact excess0..E, with or without both signs.",
+      "target": "Independent Poisson coordinates of exact means2^(-L-e-1) or2^(-L-e-2).",
+      "conditional_scope": "Actual source atom ratios, explicit C>=Y and full FY identity; C free >=dyadicCutoff N Q.",
+      "geometry": "Base L for defect/R2, Q=L+E+1 for deletion and support edges.",
+      "no_polynomial_mark_factor": true,
+      "finite_constant": 40,
+      "rate_constant": 32,
+      "full_band_threshold_before_L_E": true,
+      "remaining": [],
+      "boundary": "Finite Theorem5.6 is complete; subsequent countable spatial field and diffuse limit of introductory1.1 remain unclosed."
+    },
+    "corollary_5_7": {
+      "status": "complete_under_explicit_process_AGG_and_PNT_premises",
+      "endpoint": "PaperC.V282.ConstantWindowCompoundConvergence.corollary_five_seven",
+      "source": "Actual count of every constant length-L window whose left endpoint is in[N,2N), without left maximality.",
+      "target": "Actual sum_(i<P_N)H_i; P_N~Poisson(N/2^L), positive iid geometric H_i of mass2^-h, independent of P_N.",
+      "pgf_endpoint": "PaperC.V282.GeometricClusterTarget.geometricCompound_pgf",
+      "pgf": "exp(lambda*(z/(2-z)-1)),0<=z<=1",
+      "proof": "Actual boundary coupling, finite signed field aggregation, exact source/target tails, fixed truncation first then removal of tails.",
+      "moment_convergence_claimed": false,
+      "remaining": []
+    },
+    "aggregated_countable_geometric_target": {
+      "status": "proved_target_construction_only",
+      "space": "Natural finitely supported excess configurations, Nat ->0 Nat.",
+      "finite_projection_endpoint": "PaperC.V282.GeometricMarkedConfiguration.hasLaw_finite_configuration",
+      "weight_endpoint": "PaperC.V282.GeometricMarkedConfiguration.hasLaw_configurationWeight",
+      "full_spatial_countable_source_comparison_claimed": false,
+      "diffuse_limit_claimed": false
     }
   },
   "qualification": {
@@ -936,19 +1010,31 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 13,
+  "development_batch": 14,
   "declaration_inventory": {
-    "mathematical_module_count": 237,
-    "named_declarations": 1986,
-    "theorems": 1629,
-    "definitions": 294,
-    "named_instances": 63,
+    "mathematical_module_count": 276,
+    "named_declarations": 2391,
+    "theorems": 1900,
+    "definitions": 380,
+    "named_instances": 111,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
     "named_instance_declarations": [
       "PaperC.V282.AllStartFieldCosts.instDecidableProposition",
       "PaperC.V282.AllStartFieldTransfer.instDecidableProposition",
+      "PaperC.V282.CompoundPoissonTail.instDecidableProposition",
+      "PaperC.V282.CompoundPoissonTarget.instProbabilityMarkSequence",
+      "PaperC.V282.CompoundPoissonTarget.instProbabilityCompoundSample",
+      "PaperC.V282.CompoundPoissonTarget.instProbabilityCompound",
+      "PaperC.V282.CompoundPoissonTarget.instProbabilityMappedMark",
+      "PaperC.V282.ConstantWindowBoundary.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ConstantWindowBoundary.instIsProbabilityMeasureInfiniteRademacher",
+      "PaperC.V282.ConstantWindowBoundary.instDecidableProposition",
+      "PaperC.V282.ConstantWindowClusters.instDecidableProposition",
+      "PaperC.V282.ConstantWindowCompoundConvergence.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ConstantWindowCompoundConvergence.instIsProbabilityMeasureInfiniteRademacher",
+      "PaperC.V282.ConstantWindowRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.DictionaryFieldBounds.instDecidableProposition",
       "PaperC.V282.DictionaryFieldCritical.instMeasurableSpaceF2Discrete",
       "PaperC.V282.DictionaryFieldDeletion.instDecidableProposition",
@@ -963,8 +1049,40 @@
       "PaperC.V282.DictionaryMarginalCap.instDecidableProposition",
       "PaperC.V282.DictionaryPairCosts.instDecidableProposition",
       "PaperC.V282.DyadicPoissonDistance.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ExactMarkedAggregation.instDecidableEq",
+      "PaperC.V282.ExactMarkedAggregation.instDecidableProposition",
+      "PaperC.V282.ExactMarkedClusterTransfer.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ExactMarkedClusterTransfer.instProbabilityInfiniteRademacher",
+      "PaperC.V282.ExactMarkedDeletion.instDecidableProposition",
+      "PaperC.V282.ExactMarkedDependency.instDecidableEq",
+      "PaperC.V282.ExactMarkedDependency.instDecidableProposition",
+      "PaperC.V282.ExactMarkedFieldBounds.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ExactMarkedFieldTransfer.instDecidableEq",
+      "PaperC.V282.ExactMarkedFieldTransfer.instDecidableProposition",
+      "PaperC.V282.ExactMarkedFiniteComparison.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ExactMarkedInfinite.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ExactMarkedInfinite.instDecidableProposition",
+      "PaperC.V282.ExactMarkedLocalProbability.instDecidableProposition",
+      "PaperC.V282.ExactMarkedModel.instDecidableProposition",
+      "PaperC.V282.ExactMarkedPairCosts.instDecidableProposition",
+      "PaperC.V282.ExactMarkedRates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ExactMarkedSignProjection.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ExactMarkedSignProjection.instDecidableProposition",
+      "PaperC.V282.ExactMarkedSourceTail.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ExactMarkedSourceTail.instIsProbabilityMeasureInfiniteRademacher",
+      "PaperC.V282.ExactMarkedSourceTail.instDecidableProposition",
+      "PaperC.V282.ExactMarkedUnsignedProbability.instDecidableProposition",
       "PaperC.V282.FiniteFieldTotalVariation.instDecidableProposition",
       "PaperC.V282.FreeCutoffSoftRates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.FullCylinderStartLaw.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.FullCylinderStartLaw.instDecidableProposition",
+      "PaperC.V282.GeometricClusterTarget.instProbabilityGeometricCluster",
+      "PaperC.V282.GeometricClusterTarget.instProbabilityGeometricCompound",
+      "PaperC.V282.GeometricClusterTruncation.instProbabilityTruncatedGeometric",
+      "PaperC.V282.GeometricClusterTruncation.instProbabilityWeightedGeometric",
+      "PaperC.V282.GeometricMarkedConfiguration.instMeasurableClusterConfiguration",
+      "PaperC.V282.GeometricMarkedConfiguration.instMeasurableSingletonClusterConfiguration",
+      "PaperC.V282.GeometricMarkedConfiguration.instProbabilityConfiguration",
       "PaperC.V282.HardPoissonRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.IidWordCosts.instDecidableProposition",
       "PaperC.V282.IidWordDependency.instDecidableProposition",
@@ -977,10 +1095,14 @@
       "PaperC.V282.InfiniteFieldTransfer.instDecidableProposition",
       "PaperC.V282.InfiniteMaskedScalarTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteMaskedScalarTransfer.instDecidableProposition",
+      "PaperC.V282.InfiniteMassCoupling.instDecidableProposition",
       "PaperC.V282.InfiniteSoftTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteWordFirstMoment.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteWordFirstMoment.instIsProbabilityMeasureInfiniteRademacher",
       "PaperC.V282.InfiniteWordTransfer.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.LabelledProcessCosts.instDecidableEq",
+      "PaperC.V282.LabelledProcessCosts.instDecidableProposition",
+      "PaperC.V282.LabelledSupportGraph.instDecidableEq",
       "PaperC.V282.MacroscopicAlignedExclusion.instDecidableAlignedDeepPredicate",
       "PaperC.V282.MacroscopicComponentNormalization.instDecidableComponentAdj",
       "PaperC.V282.MacroscopicFirstMoment.instMeasurableSpaceF2Discrete",
@@ -2182,6 +2304,203 @@
         "definitions": 2,
         "named_instances": 0
       }
+    },
+    "batch_14_additions": {
+      "CompoundPoissonMarking": {
+        "theorems": 11,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "CompoundPoissonTail": {
+        "theorems": 8,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "CompoundPoissonTarget": {
+        "theorems": 13,
+        "definitions": 6,
+        "named_instances": 4
+      },
+      "CompoundPoissonTransform": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "ConstantWindowBoundary": {
+        "theorems": 9,
+        "definitions": 4,
+        "named_instances": 3
+      },
+      "ConstantWindowClusters": {
+        "theorems": 8,
+        "definitions": 4,
+        "named_instances": 1
+      },
+      "ConstantWindowCompoundConvergence": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "ConstantWindowRates": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "ExactMarkedAggregation": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "ExactMarkedArithmeticRates": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "ExactMarkedClusterTarget": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "ExactMarkedClusterTransfer": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "ExactMarkedCritical": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "ExactMarkedDeletion": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "ExactMarkedDependency": {
+        "theorems": 8,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "ExactMarkedFieldBounds": {
+        "theorems": 5,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "ExactMarkedFieldTransfer": {
+        "theorems": 6,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "ExactMarkedFiniteComparison": {
+        "theorems": 3,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "ExactMarkedFirstCost": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "ExactMarkedInfinite": {
+        "theorems": 17,
+        "definitions": 5,
+        "named_instances": 2
+      },
+      "ExactMarkedLedger": {
+        "theorems": 1,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "ExactMarkedLocalGeometry": {
+        "theorems": 14,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "ExactMarkedLocalProbability": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "ExactMarkedModel": {
+        "theorems": 15,
+        "definitions": 11,
+        "named_instances": 1
+      },
+      "ExactMarkedPairCosts": {
+        "theorems": 16,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "ExactMarkedRates": {
+        "theorems": 1,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "ExactMarkedSignProjection": {
+        "theorems": 14,
+        "definitions": 6,
+        "named_instances": 2
+      },
+      "ExactMarkedSourceTail": {
+        "theorems": 9,
+        "definitions": 1,
+        "named_instances": 3
+      },
+      "ExactMarkedTailTarget": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "ExactMarkedUnsignedProbability": {
+        "theorems": 8,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "ExactMarkedValueProbability": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "FullCylinderStartLaw": {
+        "theorems": 7,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "GeometricClusterTarget": {
+        "theorems": 10,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "GeometricClusterTruncation": {
+        "theorems": 5,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "GeometricMarkedConfiguration": {
+        "theorems": 9,
+        "definitions": 4,
+        "named_instances": 3
+      },
+      "InfiniteMassCoupling": {
+        "theorems": 7,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "LabelledProcessCosts": {
+        "theorems": 7,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "LabelledSupportGraph": {
+        "theorems": 3,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "SignedExactMarks": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      }
     }
   },
   "manuscript_notes": {
@@ -2189,7 +2508,7 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Batch13 completes5.2/5.3/5.5. SuggestionV3-S010 strengthens5.8 to an exact expectation, without identifying a new error. PDFs unchanged.",
+    "formalization_context": "Batch14 completes finite exact marks5.6 and true compound-cluster law5.7. No new confirmed manuscript error; existing1correction10suggestions retained. PDFs unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
       "suggestions": 10
@@ -2198,12 +2517,12 @@
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 72,
+    "effort_estimate_percent": 74,
     "conservative_interval_percent": [
       65,
       80
     ],
-    "completed_article_results": 33,
+    "completed_article_results": 35,
     "numbered_article_results_excluding_intro_duplicates": 61,
     "companion_completed_named_results": 3,
     "companion_named_results": 8,

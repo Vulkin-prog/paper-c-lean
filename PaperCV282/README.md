@@ -6,26 +6,26 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The thirteenth development batch completes Corollaries5.2,5.3 and5.5:
-replacement by an actual infinite iid-sign field, uniform random dictionaries
-with exact expected overlap, and low-overlap words up to a common sign.
-Exact Poisson aggregation proves the independent word-count targets and
-the scalar masked target. Together with the preceding Theorem5.1 and
-explicit Corollary5.4 this completes the dictionary block5.1–5.5.
+The fourteenth development batch completes Theorem 5.6 and Corollary 5.7:
+actual signed and unsigned exact-mark fields, error bounds uniform before
+both lengths, and the true compound-Poisson law for all constant windows.
+The product target has the exact excess-dependent rates. Independent positive
+geometric marks give its compound representation and generating function.
+The preceding dictionary block 5.1–5.5 remains complete.
 
 The three explicit literature premises remain recorded in
 [LITERATURE_INPUTS.md](LITERATURE_INPUTS.md): positive-rate scalar Stein
 solution bounds, the finite process AGG theorem, and the ordinary prime
 number theorem remainder. They are theorem arguments, not new Lean axioms.
-The new dictionary field endpoints use process AGG and PNT and add no premise.
+The new marked field and cluster endpoints use process AGG and PNT and add no premise.
 An axiom audit does not prove the external hypotheses.
 
 Earlier batches retain the full relation profiles, actual terminal-sector
 proof, word first moments, touching pairs, true infinite-model moments,
 masked scalar and joint-field transfer, companion soft lemma, and both
 implicit saddle expansions. The whole paper and companion remain a larger
-project. Remaining work includes signed exact marks,
-aggregated fields, growing levels, the general stable product lift,
+project. Remaining work includes the complete countably marked spatial field and its
+diffuse limit, aggregated fields, growing levels, the general stable product lift,
 resolved conditioning paths and microscopic crossover. The sharper
 Pell/split-product rate, size-two Euler refinement and aligned-core
 proposition at every positive density remain distinct from their proved
@@ -44,7 +44,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 237 mathematical modules contain **1986 named declarations: 1629 theorems, 294 definitions and 63 named instances**. Batch 13 adds 134 theorems in 18 new modules.
+The 276 mathematical modules contain **2391 named declarations: 1900 theorems, 380 definitions and 111 named instances**. Batch 14 adds 271 theorems in 39 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -157,9 +157,9 @@ Palomar submission requires its own frozen statements and evidence.
 A separate coverage assessment tracks numbered manuscript statements and a
 weighted estimate of the remaining effort. The count of Lean declarations
 is an audit inventory, not a percentage of the complete paper. The current
-estimate is about 72% of the total formalization effort, with a conservative
+estimate is about 74% of the total formalization effort, with a conservative
 65–80% range; later probabilistic and companion results account for much of
-the remaining work. Strict statement coverage is 33/61 numbered article
+the remaining work. Strict statement coverage is 35/61 numbered article
 results, and 3/8 companion results (these fractions must not be added). See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)
 and the endpoint ledger for the exact definitions and proved scope.
 

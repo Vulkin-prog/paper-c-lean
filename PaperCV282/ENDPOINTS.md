@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 237 mathematical modules contain **1986 named declarations: 1629 theorems, 294 definitions and 63 named instances**. Batch 13 adds 134 theorems in 18 new modules.
+The 276 mathematical modules contain **2391 named declarations: 1900 theorems, 380 definitions and 111 named instances**. Batch 14 adds 271 theorems in 39 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -684,7 +684,7 @@ moment is inferred from total variation convergence.
 
 ## Dependencies, audit and historical boundary
 
-`PaperCV282/Audit.lean` covers all 1,986 named declarations in the 237 mathematical modules, including all 63 named instances. Batch 13 adds 134 theorems, 45 definitions and 12 named instances; the complete per-module counts are in the source manifest.
+`PaperCV282/Audit.lean` covers all 2,391 named declarations in the 276 mathematical modules, including all 111 named instances. Batch 14 adds 271 theorems, 86 definitions and 48 named instances; the complete per-module counts are in the source manifest.
 
 The source inventory and kernel-axiom transcript are checked separately by
 `scripts/check_v282_audit.py`. Failure-path tests exercise missing entries,
@@ -1137,3 +1137,66 @@ All thresholds precedeL, the word and the mask. Each positiveeta quantifies
 the exponential remainder. AGG of processes and PNT remain explicit theorem
 arguments; no new literature premise, stable-product lift or almost-sure
 conditional convergence is claimed by this batch.
+
+
+## Theorem 5.6: finite exact marks, signed and unsigned
+
+Source: article pages 33–34, (5.11)–(5.15). `L≥1`, `0≤e≤E`,
+`Q=L+E+1`. The actual signed word has `L+e+2` values, including
+both changes, with the sign read at x. Its marginal is `2^(-L-e-2)`;
+summing signs gives `2^(-L-e-1)`. Maximal support vertices are
+`x−1,…,x+Q−1`, with Q+1 actual values.
+
+| Declaration | Established result |
+|---|---|
+| `SignedExactMarks.conditioned_signedMark_probability` | Actual exact marginal, uniform in the represented small-prime assignment. |
+| `ExactMarkedLocalProbability.conditioned_signed_pair_le_four` | True short-union joint probabilities, with all four compatibility cases proved. |
+| `LabelledSupportGraph.hasExactDependencyGraph_of_labelled_locality` | Complete outside-pattern independence, arbitrary finite labels and free cylinder C. |
+| `ExactMarkedDependency.hasExactDependencyGraph_signed` | Instantiation on actual signed exact events and maximal supports. |
+| `ExactMarkedAggregation.sum_signed_joint_probability_le_base` | Sum both labels before bounding by the base two-start probability. |
+| `ExactMarkedDeletion.average_bad_signed_mass_le` | Actual deletion dominated by base-L defects, even when the bad vertex occurs later. |
+| `ExactMarkedPairCosts.average_bTwo_signed_le` | Bound `[8N(Q+1)+edges_Q+R2_L]/2^(2L)`, without a mark-cardinality factor. |
+| `ExactMarkedInfinite.signed_fullFY_identification` | True source atom ratios and full F_Y when C covers both the observation and Y. |
+| `ExactMarkedSignProjection.pushforward_signed_target` | Sum only the two signs at each site/excess, obtaining the exact unsigned Poisson product. |
+| `ExactMarkedFiniteComparison.equation_five_thirteen` | Explicit constant40 times the five printed terms, both conditional and unconditional fields, and explicit full-F_Y identity. |
+| `ExactMarkedFiniteComparison.theorem_five_six` | Both fields with bound32λ(1+λ)[exp(−V+ην)+N^(−1/3+ε)], threshold before L,E in the full logarithmic band. |
+
+The finite process estimate assumes only ProcessAGGStatement. The rate adds
+PrimeNumberTheoremRemainder. Its free C can be chosen as max(Y,dyadicCutoff(N,Q));
+no partial prime cylinder is silently identified with full F_Y. Defect mass and
+R2 always use the base L, while deletion and support edges use Q.
+
+## Corollary 5.7: the actual compound-Poisson cluster law
+
+Source: article pages 34–35. `ConstantWindowClusters` defines the genuine
+constant-window count without a left-maximality requirement. Outside the
+windows beginning at N and2N−1 it equals the full weighted sum of exact
+marks. `ConstantWindowRates` proves that the probability of the two actual
+boundary events vanishes in the literal window `|L−log₂N|≤C`.
+
+`CompoundPoissonTarget` constructs a true product of a Poisson count and
+an infinite iid mark sequence, proves independence, and takes the finite
+initial random sum. `GeometricClusterTarget` shifts the geometric law to
+positive integers, proves mass2^(-h) for h≥1, and proves
+`geometricCompound_pgf = exp(λ*(z/(2−z)−1))`, for0≤z≤1.
+
+`GeometricClusterTruncation.weightedGeometricPoisson_eq_compound` identifies
+the weighted finite Poisson field with the actual compound construction
+whose large marks are suppressed. `ExactMarkedClusterTarget` aggregates
+all positions and signs with exact intensity λ=N/2^L. The source counterpart
+is `ExactMarkedClusterTransfer.truncated_source_to_compound_tv_le`.
+
+`ExactMarkedSourceTail.source_mark_tail_le_eventually` gives the true tail
+bound λ2^(-E−1)(1+N^(-1/2+ε)) with a threshold before both lengths.
+`ExactMarkedTailTarget.compound_target_truncation_tv_le` gives the independent
+target tail λ2^(-E−1). `ConstantWindowCompoundConvergence.corollary_five_seven`
+combines boundary, finite-field and both tail comparisons: the true window
+count law is o(1) in TV from the stated compound law, with its exact varying λ_N.
+No moment convergence is inferred from the unbounded weighted sum.
+
+`CompoundPoissonMarking` additionally proves the joint product law of all
+finite categories. `GeometricMarkedConfiguration` constructs the aggregated
+countable excess configuration on ℕ→₀ℕ with its finite projection laws and
+compound total weight. This is useful infrastructure, but the complete spatial
+countable field and weak diffuse limit of introductory1.1 are not yet claimed.
+Neither the growing sign-resolved5.9 nor companionC.1 is closed by these results.

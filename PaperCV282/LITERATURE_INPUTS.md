@@ -65,3 +65,17 @@ identities and exact Poisson aggregation are proved internally. No additional
 probabilistic or coding premise is introduced. The product Poisson target
 is proved from mathlib's Poisson measure, including full independence of
 column sums. The kernel audit does not discharge theorem arguments.
+
+
+## Batch 14: exact marks and compound clusters
+
+Theorem5.6 uses the same ProcessAGGStatement for the finite field comparison;
+its uniform arithmetic rate and Corollary5.7 add only the existing PNT argument.
+The actual signed/unsigned words, local probabilities, maximal-support graph,
+label aggregation, free-cylinder source transfer and sign projection are proved.
+The Poisson count and iid geometric marks are constructed independently on a
+product probability space; the weighted target identity, joint category laws,
+PGF, source boundaries and tail couplings add no external premise. Neither
+scalar Stein factors nor a compound-Poisson approximation theorem is assumed
+in the new process/cluster endpoints. Kernel auditing does not discharge the
+explicit process AGG and PNT theorem arguments.
