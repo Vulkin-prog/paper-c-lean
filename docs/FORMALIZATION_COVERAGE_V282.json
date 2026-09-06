@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "assessment_date": "2026-09-06",
-  "baseline": "End of batch14: actual signed and unsigned finite exact-mark fields, full-band rates and true compound-Poisson cluster law; compared with published batch13.",
+  "baseline": "End of batch15: complete signed spatial field and diffuse limit1.1; actual hard and movable labelled growing fields5.8(i)/5.9, compared with published batch14.",
   "retained_core_commit": "b3cf107d2df629453a5da8e84f2bad29eea0bf94",
   "toolchain": {
     "lean": "leanprover/lean4:v4.32.0",
@@ -42,9 +42,9 @@
   },
   "counts": {
     "article": {
-      "reuse_unconnected": 5,
+      "reuse_unconnected": 3,
       "complete": 35,
-      "partial": 13,
+      "partial": 15,
       "not_identified": 8
     },
     "companion": {
@@ -57,10 +57,10 @@
   "statement_fraction_complete_companion": 0.375,
   "effort": {
     "total_weight": 105,
-    "completed_weight_low": 72.7,
-    "completed_weight_high": 82.17,
-    "completed_fraction_low": 0.6923809523809524,
-    "completed_fraction_high": 0.7825714285714286,
+    "completed_weight_low": 74.05,
+    "completed_weight_high": 83.52,
+    "completed_fraction_low": 0.7052380952380952,
+    "completed_fraction_high": 0.7954285714285714,
     "communicable_completed_percent_range": [
       65,
       80
@@ -69,12 +69,12 @@
       20,
       35
     ],
-    "rough_central_estimate_percent": 74,
-    "baseline_completed_weight_low": 70.25,
-    "baseline_completed_weight_high": 80.07,
-    "added_weight_low": 2.45,
-    "added_weight_high": 2.1,
-    "rounding_note": "Same19blocks105units. Calculated69.24–78.26%, midpoint73.75%; communicated about74%, cautious65–80%. Acquired effort judgment, not declaration counts, lines or time.",
+    "rough_central_estimate_percent": 75,
+    "baseline_completed_weight_low": 72.7,
+    "baseline_completed_weight_high": 82.17,
+    "added_weight_low": 1.35,
+    "added_weight_high": 1.35,
+    "rounding_note": "Same19blocks105units. Calculated70.52–79.54%, midpoint75.03%; communicated about75%, cautious65–80%. Only marked_fields +0.35unit and growing_gaussian +1unit; no credit for Gaussian or aggregated claims still open. Not declarations, lines or time.",
     "cautious_range_percent": [
       65,
       80
@@ -94,7 +94,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "runge_defects",
@@ -109,7 +110,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "one_window",
@@ -124,7 +126,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "canonical_core",
@@ -139,7 +142,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "hosts_rational",
@@ -154,7 +158,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "sectors",
@@ -169,7 +174,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "pell_precise",
@@ -184,7 +190,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "terminal_assembly",
@@ -199,7 +206,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "cutoffs",
@@ -214,7 +222,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "poisson_transfer",
@@ -229,7 +238,8 @@
       "batch_11_credit_reason": "4.3 whole-band hard/soft optimized actual-law rates, free ledger4.10, convergence, all at actual conditioning fields.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "dictionaries",
@@ -244,29 +254,31 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "True site-word field, exact dependency graph, directed local overlaps, cap before summation, uniform full-band and critical rates, true law convergence and arbitrary statistic contraction; explicit marker family and critical capacity. Corollaries5.2,5.3,5.5 still require their concrete laws/identities.",
       "batch_13_credit_reason": "All clauses of5.2/5.3/5.5: actual infinite iid field, exact local graph/costs, field triangle and independent word-count targets; uniform without-replacement dictionaries, exact overlap expectation and critical exceptional fraction; up-to-sign identity, masked actual count law, uniform rate, least-shift convergence and run-start example. Together with existing5.1/5.4 this closes this block under the retained literature boundary.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "marked_fields",
       "title": "Marques, signes, comparaison agrégée et clusters",
       "weight": 7,
-      "completed_fraction_low": 0.7,
-      "completed_fraction_high": 0.8,
+      "completed_fraction_low": 0.75,
+      "completed_fraction_high": 0.85,
       "locators": "5.6,5.7,5.9; compagnon C.1 et C.1–C.7",
-      "baseline_completed_fraction_low": 0.35,
-      "baseline_completed_fraction_high": 0.5,
+      "baseline_completed_fraction_low": 0.7,
+      "baseline_completed_fraction_high": 0.8,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Theorem5.6 and Corollary5.7 closed with actual source laws, both mark/sign fields, full FY and independent geometric compound representation. Growing signed fields5.9, companion aggregatedC.1 and full spatial countable/diffuse1.1 remain separate. Additional target configuration and source tail proofs are real infrastructure, not full credit for those results."
+      "batch_14_credit_reason": "Theorem5.6 and Corollary5.7 closed with actual source laws, both mark/sign fields, full FY and independent geometric compound representation. Growing signed fields5.9, companion aggregatedC.1 and full spatial countable/diffuse1.1 remain separate. Additional target configuration and source tail proofs are real infrastructure, not full credit for those results.",
+      "batch_15_credit_reason": "Actual complete spatial field, independent countable target, weak diffuse limit1.1 and signed growing-coordinate identity are integrated. Modest credit avoids counting5.8 budgets twice and retains the unresolved aggregated directional comparisonC.1 and5.9(ii)."
     },
     {
       "id": "growing_gaussian",
       "title": "Niveaux croissants et limite Poisson–Gauss",
       "weight": 5,
-      "completed_fraction_low": 0.1,
-      "completed_fraction_high": 0.2,
+      "completed_fraction_low": 0.3,
+      "completed_fraction_high": 0.4,
       "locators": "5.8,5.10; compagnon D.1",
       "baseline_completed_fraction_low": 0.1,
       "baseline_completed_fraction_high": 0.2,
@@ -274,7 +286,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Both true labelled information budgets5.18/5.19 and full movable rate5.20 are proved with growing d=o(logN), actual full-FY conditioning and removed tails. Aggregated5.8(ii), its sharper one-factor range and all Poisson-Gaussian5.10 remain uncredited."
     },
     {
       "id": "conditioning_paths",
@@ -289,7 +302,8 @@
       "batch_11_credit_reason": "Actual source-event probabilities, normalized count law, inverse-probability TV cost and soft information-margin convergence; no general product lift, resolved path or almost-sure endpoint.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "microscopic",
@@ -304,7 +318,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "intermediate_deep",
@@ -319,7 +334,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "prefix_as",
@@ -334,7 +350,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "macro_bulk",
@@ -349,7 +366,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     },
     {
       "id": "crossover",
@@ -364,7 +382,8 @@
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
       "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters.",
-      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications."
+      "batch_14_credit_reason": "Unchanged from batch13; no credit from presumed later applications.",
+      "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications."
     }
   ],
   "results": [
@@ -1305,7 +1324,7 @@
       ],
       "remaining": "",
       "reuse": "verified_endpoint",
-      "note": "Finite exact-mark comparison5.13 and5.14 for all sites and excesses0..E, signed or unsigned, with exact product targets. Labels are summed before costs, no polynomial E factor. Base L controls defect and R2; maximal Q=L+E+1 controls deletion/edges. Arbitrary adequate C, with C>=Y for true full FY; hard cutoff wrapper chooses max(Y,dyadicCutoff N Q). Constants40 and32 are explicit. AGG finite, AGG+PNT rate. The subsequent countable spatial field and diffuse limit of1.1 are not credited.",
+      "note": "Finite exact-mark comparison5.13 and5.14 for all sites and excesses0..E, signed or unsigned, with exact product targets. Labels are summed before costs, no polynomial E factor. Base L controls defect and R2; maximal Q=L+E+1 controls deletion/edges. Arbitrary adequate C, with C>=Y for true full FY; hard cutoff wrapper chooses max(Y,dyadicCutoff N Q). Constants40 and32 are explicit. AGG finite, AGG+PNT rate. The countable spatial field and diffuse limit of1.1 are now separately credited under introductory_results_batch_15.",
       "source": "article",
       "id": "5.6",
       "kind": "Theorem",
@@ -1344,15 +1363,17 @@
       "new_full_credit_batch_14": true
     },
     {
-      "status": "reuse_unconnected",
+      "status": "partial",
       "effort_block": "growing_gaussian",
       "evidence": [
-        "PaperC/Asymptotics/SectionFourteenClosure.lean: theorem_one_two_iii_laplace_and_tightness",
-        "PaperC/Probability/MarkedLaplaceFiniteClosure.lean"
+        "PaperCV282/SpatialMarkedHardBudget.lean: theorem_five_eight_labelled_hard",
+        "PaperCV282/SpatialMarkedMovableBudget.lean: theorem_five_eight_labelled_movable and spatial_event_movable_rate",
+        "PaperCV282/MovingMarkedComparison.lean: moving_labelled_hard_tendsto_zero, moving_labelled_movable_tendsto_zero and conditional_start_path_totalVariation_eq",
+        "PaperCV282/GrowingLevelParameters.lean: fullRate_eq_phase and growing_length_band_eventually"
       ],
-      "remaining": "Growing levels/intensity, information budgets, field vs aggregated distinction and directional Stein smoothing are not provided by fixed-mark qualitative Laplace convergence.",
-      "reuse": "verified",
-      "note": "",
+      "remaining": "Part(ii), including the aggregate one-factor range5.21, rate5.22 and the directional finite comparisonC.1, remains open. Exact-level/threshold-path TV equality is proved, but supplies no missing rate.",
+      "reuse": "verified_endpoints",
+      "note": "Part(i) is proved on the actual complete spatial signed field, including5.18,5.19,5.20. Integer moving levels and positive conditioning by all FY are explicit. The signed result also implies its unsigned statistic by contraction.",
       "source": "article",
       "id": "5.8",
       "kind": "Theorem",
@@ -1364,16 +1385,18 @@
       "new_full_credit_batch_10": false
     },
     {
-      "status": "reuse_unconnected",
+      "status": "partial",
       "effort_block": "marked_fields",
       "evidence": [
-        "PaperCV282/InfiniteConditionalWords.lean",
-        "PaperC/Affine/Fourier.lean",
-        "PaperCV282/ExactMarkedFiniteComparison.lean: theorem_five_six (finite signed prerequisite only)"
+        "PaperCV282/MovingMarkedComparison.lean: conditional_moving_source_tv_eq and both moving_labelled_*_tendsto_zero",
+        "PaperCV282/GrowingLevelParameters.lean: signed_level_mean and signed_site_mean",
+        "PaperCV282/SpatialMarkedTargetProjection.lean: hasLaw_projectConfiguration",
+        "PaperCV282/ThresholdPathEquivalence.lean: thresholdFunction_injective",
+        "PaperCV282/MovingMarkedSource.lean: actual_start_path_totalVariation_eq"
       ],
-      "remaining": "Finite signed exact fields and independent half-intensity targets are proved in5.6. Still required: the moving-level reindexing, growing-depth sign-resolved comparison and simultaneous threshold/count conclusions specific to5.9.",
-      "reuse": "verified",
-      "note": "No full credit is inferred from finite5.6. The actual growing-level source/target and all stated clauses must be connected explicitly.",
+      "remaining": "The signed aggregated conclusion corresponding to5.8(ii) remains open, including its directional Stein bound and enlarged-length arithmetic remainder. Hence no full-statement credit.",
+      "reuse": "verified_endpoints",
+      "note": "The whole labelled signed conclusion is connected to actual moving coordinates r>=-d and exact signed rates. Full threshold-path and aggregated-level distances are exactly equal; this identity does not establish the stronger aggregated comparison.",
       "source": "article",
       "id": "5.9",
       "kind": "Corollary",
@@ -1789,7 +1812,8 @@
       "extracted_line": 629,
       "statement_weight": 1,
       "full_statement_credit": false,
-      "new_full_credit_batch_10": false
+      "new_full_credit_batch_10": false,
+      "note": "Finite labelled rates, countable targets, exact tail removal and measurable path inversion are now available. None proves the directional aggregated comparison; no full credit or new directional literature premise is introduced."
     },
     {
       "status": "not_identified",
@@ -1866,13 +1890,13 @@
       "detail": "Removed obsolete reservations about the free cutoff, implicit saddle existence, exact second-order constants and scalar full-F_Y conditioning after compiled closure; 3.19 and all prior stronger auxiliary-rate limitations remain unchanged."
     }
   ],
-  "comparison_baseline_git_commit": "e8bb75fa629a1f414fb1c5dc99a704a0f7b2af0a",
-  "snapshot_kind": "Batch14 mathematical coverage; validation and publication are separate evidence.",
+  "comparison_baseline_git_commit": "0af618dd8924e38d60a2b2332c74acd1bfbbd706",
+  "snapshot_kind": "Batch15 mathematical coverage; validation and publication are separate evidence.",
   "validation_reported_by_main_task": {
     "global_build": "Recorded separately for the exact published tree.",
     "overlay_axiom_audit": "Recorded separately for the exact published tree.",
     "guard_checker_tests": "Recorded separately.",
-    "retained_core_digest": "unchanged from batch13",
+    "retained_core_digest": "unchanged from batch14",
     "publication_commit": "Recorded in the separate validation report."
   },
   "priority_after_batch_10": [
@@ -2046,6 +2070,48 @@
     "Full countably marked spatial field and diffuse limit in introductory1.1; finite5.6 and scalar5.7 are closed.",
     "Growing levels, aggregated comparison, sign-resolved fields and Poisson–Gaussian limit5.8–5.10, companionC.1.",
     "General stable product lift, sharp conditioning, paths and almost-sure control.",
+    "Microscopic and two-source crossover; retained precise arithmetic refinements."
+  ],
+  "introductory_results_batch_15": {
+    "1.1": {
+      "status": "complete_under_explicit_process_AGG_and_PNT_premises",
+      "counted_again_in_61": false,
+      "evidence": [
+        "PaperCV282/SpatialMarkedCritical.lean: theorem_one_one_lattice",
+        "PaperCV282/SpatialMarkedStatistics.lean: theorem_one_one_start_count",
+        "PaperCV282/SpatialMarkedDiffuse.lean: theorem_one_one_diffuse",
+        "PaperCV282/SpatialPointConvergence.lean: spatialPointTargetLaw_tendsto",
+        "PaperCV282/SpatialPointSupport.lean"
+      ],
+      "representation": "Actual full signed configuration on (Fin N x (Nat x F2)) ->0 Nat. Physical embedding at1+i/N into finite measures on Real x (Nat x F2), with the Borel structure of the weak topology and actual zero mass off[1,2]. F2 encodes the two signs. Weak convergence along arbitrary sizes->infinity and fullRate->rate; no TV convergence to the diffuse law is claimed."
+    }
+  },
+  "new_complete_article_results_batch_15": [],
+  "new_complete_companion_results_batch_15": [],
+  "literature_premises_batch_15": [
+    {
+      "name": "PrimeEulerPNT.PrimeNumberTheoremRemainder",
+      "content": "Ordinary prime number theorem remainder |pi(floor t)-Ei(log t)| <= eta*t/log t eventually for every eta>0.",
+      "internally_proved": false,
+      "derived_internally": "Abel summation, both signed weighted prime/Euler errors, actual free-band bad counts."
+    },
+    {
+      "name": "ScalarSteinInput.ScalarSteinFactorsStatement",
+      "content": "For each positive Poisson rate and test set, a Stein solution with the standard supremum and first-difference factors.",
+      "internally_proved": false,
+      "derived_internally": "Zero-rate case, telescoping, scalar TV, soft B.4, measurable-environment averaging."
+    },
+    {
+      "name": "ProcessAGGInput.ProcessAGGStatement",
+      "content": "Published process AGG comparison with independent product-Poisson field, distinct from the scalar factor statement.",
+      "internally_proved": false,
+      "derived_internally": "All-site/full-mask arithmetic costs, deletion, Poisson target perturbation, finite joint-field comparison and actual infinite conditional/unconditional joint-field transfer."
+    }
+  ],
+  "new_literature_premises_added_batch_15": [],
+  "priority_after_batch_15": [
+    "Directional aggregated comparisonC.1, one-factor budget5.8(ii), signed aggregate5.9 and Poisson-Gaussian5.10.",
+    "General stable product lift with recorded environment, sharp conditioning, paths and almost-sure control.",
     "Microscopic and two-source crossover; retained precise arithmetic refinements."
   ]
 }

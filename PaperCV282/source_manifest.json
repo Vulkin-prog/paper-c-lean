@@ -35,19 +35,27 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Theorem5.6 and Corollary5.7",
+          "item": "Theorem1.1, complete spatial field and diffuse limit",
           "printed_pages": [
-            33,
-            34,
-            35
+            3
           ],
           "equations": [
-            "5.11",
-            "5.12",
-            "5.13",
-            "5.14",
-            "5.15",
-            "5.16"
+            "1.3"
+          ]
+        },
+        {
+          "item": "Theorem5.8(i), labelled Corollary5.9 and threshold-path identity",
+          "printed_pages": [
+            34,
+            35,
+            36
+          ],
+          "equations": [
+            "5.16",
+            "5.17",
+            "5.18",
+            "5.19",
+            "5.20"
           ]
         }
       ]
@@ -84,10 +92,15 @@
     "PaperCV282/CompoundPoissonTarget.lean",
     "PaperCV282/CompoundPoissonTransform.lean",
     "PaperCV282/ConditionalFieldTransfer.lean",
+    "PaperCV282/ConditionedCountableLaw.lean",
     "PaperCV282/ConstantWindowBoundary.lean",
     "PaperCV282/ConstantWindowClusters.lean",
     "PaperCV282/ConstantWindowCompoundConvergence.lean",
     "PaperCV282/ConstantWindowRates.lean",
+    "PaperCV282/CountableExpectationTransfer.lean",
+    "PaperCV282/CountableLawTransfer.lean",
+    "PaperCV282/CountablePrimeEventTransfer.lean",
+    "PaperCV282/CountableWeakTransfer.lean",
     "PaperCV282/CriticalFactorialMoments.lean",
     "PaperCV282/CriticalFirstMomentRate.lean",
     "PaperCV282/CriticalProfileNormalization.lean",
@@ -135,6 +148,7 @@
     "PaperCV282/ExactMarkedLocalGeometry.lean",
     "PaperCV282/ExactMarkedLocalProbability.lean",
     "PaperCV282/ExactMarkedModel.lean",
+    "PaperCV282/ExactMarkedMovableRates.lean",
     "PaperCV282/ExactMarkedPairCosts.lean",
     "PaperCV282/ExactMarkedRates.lean",
     "PaperCV282/ExactMarkedSignProjection.lean",
@@ -157,10 +171,14 @@
     "PaperCV282/FullIntervalHostCounting.lean",
     "PaperCV282/FullIntervalPrimeAssignment.lean",
     "PaperCV282/FullPrimeAssignment.lean",
+    "PaperCV282/GeneralPoissonMarking.lean",
     "PaperCV282/GeometricClusterTarget.lean",
     "PaperCV282/GeometricClusterTruncation.lean",
+    "PaperCV282/GeometricConfigurationCounts.lean",
     "PaperCV282/GeometricMarkedConfiguration.lean",
     "PaperCV282/GoodTouchingProbability.lean",
+    "PaperCV282/GrowingLevelParameters.lean",
+    "PaperCV282/GrowingMarkedTruncation.lean",
     "PaperCV282/HardPoissonBounds.lean",
     "PaperCV282/HardPoissonRates.lean",
     "PaperCV282/HostRankMass.lean",
@@ -183,6 +201,7 @@
     "PaperCV282/IntervalRationalMass.lean",
     "PaperCV282/KernelEnergyCounting.lean",
     "PaperCV282/KernelWindowEnergy.lean",
+    "PaperCV282/LabelledInformationBudget.lean",
     "PaperCV282/LabelledProcessCosts.lean",
     "PaperCV282/LabelledSupportGraph.lean",
     "PaperCV282/LogarithmicWordPowers.lean",
@@ -229,12 +248,18 @@
     "PaperCV282/MaskedScalarRetained.lean",
     "PaperCV282/MaskedScalarTransfer.lean",
     "PaperCV282/MassPushforward.lean",
+    "PaperCV282/MovableMarkedBudget.lean",
+    "PaperCV282/MovingMarkedComparison.lean",
+    "PaperCV282/MovingMarkedLevels.lean",
+    "PaperCV282/MovingMarkedSource.lean",
     "PaperCV282/NonterminalProfile.lean",
     "PaperCV282/OrderedPairCounting.lean",
+    "PaperCV282/PointMeasureSpace.lean",
     "PaperCV282/PointwiseStartBounds.lean",
     "PaperCV282/PoissonFieldAggregation.lean",
     "PaperCV282/PoissonFieldMeasure.lean",
     "PaperCV282/PoissonIntensityBounds.lean",
+    "PaperCV282/PoissonPointProcess.lean",
     "PaperCV282/PoissonRateConvergence.lean",
     "PaperCV282/PolynomialPellCount.lean",
     "PaperCV282/PolynomialSplitProducts.lean",
@@ -272,12 +297,15 @@
     "PaperCV282/ResidualSectorMass.lean",
     "PaperCV282/ResidualSectorPartition.lean",
     "PaperCV282/RestrictedPoissonTransfer.lean",
+    "PaperCV282/RunFiniteness.lean",
     "PaperCV282/SaddleArithmeticBounds.lean",
     "PaperCV282/SaddleAsymptotics.lean",
     "PaperCV282/SaddleBranch.lean",
     "PaperCV282/SaddleBranchAsymptotics.lean",
     "PaperCV282/SaddleCutoffAdmissibility.lean",
+    "PaperCV282/SaddleErrorExponent.lean",
     "PaperCV282/SaddleExpansion.lean",
+    "PaperCV282/SaddleMarkTruncation.lean",
     "PaperCV282/SaddleParameters.lean",
     "PaperCV282/SaddlePoissonScales.lean",
     "PaperCV282/SaddleRateConvergence.lean",
@@ -317,6 +345,27 @@
     "PaperCV282/SoftPoissonRates.lean",
     "PaperCV282/SoftRateAssembly.lean",
     "PaperCV282/SoftRateLedger.lean",
+    "PaperCV282/SpatialDiffuseMarks.lean",
+    "PaperCV282/SpatialMarkedCritical.lean",
+    "PaperCV282/SpatialMarkedDiffuse.lean",
+    "PaperCV282/SpatialMarkedEventComparison.lean",
+    "PaperCV282/SpatialMarkedFieldComparison.lean",
+    "PaperCV282/SpatialMarkedHardBudget.lean",
+    "PaperCV282/SpatialMarkedLawExt.lean",
+    "PaperCV282/SpatialMarkedMovableBudget.lean",
+    "PaperCV282/SpatialMarkedPoissonIdentification.lean",
+    "PaperCV282/SpatialMarkedSource.lean",
+    "PaperCV282/SpatialMarkedStatistics.lean",
+    "PaperCV282/SpatialMarkedTarget.lean",
+    "PaperCV282/SpatialMarkedTargetAggregation.lean",
+    "PaperCV282/SpatialMarkedTargetCompound.lean",
+    "PaperCV282/SpatialMarkedTargetLaplace.lean",
+    "PaperCV282/SpatialMarkedTargetProjection.lean",
+    "PaperCV282/SpatialMarkedTargetTail.lean",
+    "PaperCV282/SpatialMarkedTypes.lean",
+    "PaperCV282/SpatialPointConvergence.lean",
+    "PaperCV282/SpatialPointEmbedding.lean",
+    "PaperCV282/SpatialPointSupport.lean",
     "PaperCV282/SplitProductLocalization.lean",
     "PaperCV282/SteinFiniteExpectation.lean",
     "PaperCV282/SteinLocalTelescoping.lean",
@@ -328,10 +377,12 @@
     "PaperCV282/TerminalSliceContainer.lean",
     "PaperCV282/TerminalSliceCounting.lean",
     "PaperCV282/TerminalSliceGeometry.lean",
+    "PaperCV282/ThresholdPathEquivalence.lean",
     "PaperCV282/TouchingPairGeometry.lean",
     "PaperCV282/TouchingPairMass.lean",
     "PaperCV282/TwoWindowParity.lean",
     "PaperCV282/TwoWindowSquareHosts.lean",
+    "PaperCV282/UniformSpatialGrid.lean",
     "PaperCV282/ValueRelations.lean",
     "PaperCV282/ValueSquareRelations.lean",
     "PaperCV282/WholeRelationProfile.lean",
@@ -509,7 +560,7 @@
     "additional_exclusions": [
       "Precise exp(O(log M/loglog M)) quantitative versions of the polynomial-height arithmetic counts.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
-      "Complete countably marked spatial field and diffuse limit of1.1, growing sign-resolved fields5.9, and two-source crossover theorems. Finite5.6 and compound-cluster5.7 are complete under the stated literature boundary."
+      "Directional aggregated comparisonC.1, Theorem5.8(ii), signed aggregated5.9, Poisson-Gaussian5.10 and two-source crossover. Complete spatial1.1, finite5.6, compound5.7 and labelled5.8(i)/5.9 are proved under the stated literature boundary."
     ],
     "new_external_literature_premises_in_current_endpoints": [
       {
@@ -981,7 +1032,7 @@
       "rate_constant": 32,
       "full_band_threshold_before_L_E": true,
       "remaining": [],
-      "boundary": "Finite Theorem5.6 is complete; subsequent countable spatial field and diffuse limit of introductory1.1 remain unclosed."
+      "boundary": "Finite Theorem5.6 remains complete; batch15 also closes the distinct complete spatial field and diffuse limit of introductory1.1."
     },
     "corollary_5_7": {
       "status": "complete_under_explicit_process_AGG_and_PNT_premises",
@@ -1000,7 +1051,49 @@
       "finite_projection_endpoint": "PaperC.V282.GeometricMarkedConfiguration.hasLaw_finite_configuration",
       "weight_endpoint": "PaperC.V282.GeometricMarkedConfiguration.hasLaw_configurationWeight",
       "full_spatial_countable_source_comparison_claimed": false,
-      "diffuse_limit_claimed": false
+      "diffuse_limit_claimed": false,
+      "boundary": "This entry records the earlier aggregated construction. The separate spatial comparison and diffuse endpoint are now recorded under theorem_1_1."
+    },
+    "theorem_1_1": {
+      "status": "complete_under_explicit_process_AGG_and_PNT_premises",
+      "counted_again_in_61": false,
+      "evidence": [
+        "PaperCV282/SpatialMarkedCritical.lean: theorem_one_one_lattice",
+        "PaperCV282/SpatialMarkedStatistics.lean: theorem_one_one_start_count",
+        "PaperCV282/SpatialMarkedDiffuse.lean: theorem_one_one_diffuse",
+        "PaperCV282/SpatialPointConvergence.lean: spatialPointTargetLaw_tendsto",
+        "PaperCV282/SpatialPointSupport.lean"
+      ],
+      "representation": "Actual full signed configuration on (Fin N x (Nat x F2)) ->0 Nat. Physical embedding at1+i/N into finite measures on Real x (Nat x F2), with the Borel structure of the weak topology and actual zero mass off[1,2]. F2 encodes the two signs. Weak convergence along arbitrary sizes->infinity and fullRate->rate; no TV convergence to the diffuse law is claimed."
+    },
+    "theorem_5_8_labelled": {
+      "status": "complete_part_i_under_existing_AGG_PNT",
+      "hard_endpoint": "PaperC.V282.SpatialMarkedHardBudget.theorem_five_eight_labelled_hard",
+      "movable_endpoint": "PaperC.V282.SpatialMarkedMovableBudget.theorem_five_eight_labelled_movable",
+      "movable_rate_endpoint": "PaperC.V282.SpatialMarkedMovableBudget.spatial_event_movable_rate",
+      "actual_complete_signed_field": true,
+      "conditioning": "Actual ProbabilityTheory.cond by positive events measurable with respect to full FYhard/FYsoft.",
+      "depth": "Natural d=o(logN), L=floor(log2N)-d, all integer levelsr>=-d.",
+      "remaining_in_full_theorem": [
+        "Part(ii), directional aggregated boundC.1 and5.21–5.22."
+      ]
+    },
+    "corollary_5_9_labelled": {
+      "status": "complete_labelled_clause_only",
+      "endpoints": [
+        "PaperC.V282.MovingMarkedComparison.moving_labelled_hard_tendsto_zero",
+        "PaperC.V282.MovingMarkedComparison.moving_labelled_movable_tendsto_zero"
+      ],
+      "target": "All signed spatial atom means2^(-b-r-2); exact phase-based means proved.",
+      "remaining": [
+        "Signed aggregated clause corresponding to5.8(ii)."
+      ]
+    },
+    "threshold_path_inversion": {
+      "status": "proved_for_actual_full_paths_including_conditioning",
+      "endpoint": "PaperC.V282.MovingMarkedComparison.conditional_start_path_totalVariation_eq",
+      "content": "Exact-level counts with finite total mass map measurably and injectively to all tails, inverse finite differences; exact equality of distances.",
+      "stronger_aggregated_rate_claimed": false
     }
   },
   "qualification": {
@@ -1010,13 +1103,13 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 14,
+  "development_batch": 15,
   "declaration_inventory": {
-    "mathematical_module_count": 276,
-    "named_declarations": 2391,
-    "theorems": 1900,
-    "definitions": 380,
-    "named_instances": 111,
+    "mathematical_module_count": 319,
+    "named_declarations": 2801,
+    "theorems": 2175,
+    "definitions": 466,
+    "named_instances": 160,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
@@ -1035,6 +1128,8 @@
       "PaperC.V282.ConstantWindowCompoundConvergence.instMeasurableSpaceF2Discrete",
       "PaperC.V282.ConstantWindowCompoundConvergence.instIsProbabilityMeasureInfiniteRademacher",
       "PaperC.V282.ConstantWindowRates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CountablePrimeEventTransfer.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CountablePrimeEventTransfer.instProbabilityInfiniteRademacher",
       "PaperC.V282.DictionaryFieldBounds.instDecidableProposition",
       "PaperC.V282.DictionaryFieldCritical.instMeasurableSpaceF2Discrete",
       "PaperC.V282.DictionaryFieldDeletion.instDecidableProposition",
@@ -1064,6 +1159,7 @@
       "PaperC.V282.ExactMarkedInfinite.instDecidableProposition",
       "PaperC.V282.ExactMarkedLocalProbability.instDecidableProposition",
       "PaperC.V282.ExactMarkedModel.instDecidableProposition",
+      "PaperC.V282.ExactMarkedMovableRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.ExactMarkedPairCosts.instDecidableProposition",
       "PaperC.V282.ExactMarkedRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.ExactMarkedSignProjection.instMeasurableSpaceF2Discrete",
@@ -1076,6 +1172,8 @@
       "PaperC.V282.FreeCutoffSoftRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.FullCylinderStartLaw.instMeasurableSpaceF2Discrete",
       "PaperC.V282.FullCylinderStartLaw.instDecidableProposition",
+      "PaperC.V282.GeneralPoissonMarking.instProbabilityMarkSequence",
+      "PaperC.V282.GeneralPoissonMarking.instProbabilityMarkSample",
       "PaperC.V282.GeometricClusterTarget.instProbabilityGeometricCluster",
       "PaperC.V282.GeometricClusterTarget.instProbabilityGeometricCompound",
       "PaperC.V282.GeometricClusterTruncation.instProbabilityTruncatedGeometric",
@@ -1112,6 +1210,23 @@
       "PaperC.V282.MaskedScalarFullConditioning.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MaskedScalarFullConditioning.instDecidableProposition",
       "PaperC.V282.MassPushforward.instDecidableProposition",
+      "PaperC.V282.MovingMarkedComparison.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MovingMarkedComparison.instMeasurableExcessConfiguration",
+      "PaperC.V282.MovingMarkedComparison.instMeasurableSingletonExcessConfiguration",
+      "PaperC.V282.MovingMarkedComparison.instProbabilityInfiniteRademacher",
+      "PaperC.V282.MovingMarkedLevels.instCountableMovingLevel",
+      "PaperC.V282.MovingMarkedSource.instDecidableProposition",
+      "PaperC.V282.MovingMarkedSource.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MovingMarkedSource.instMeasurableExcessConfiguration",
+      "PaperC.V282.MovingMarkedSource.instMeasurableSingletonExcessConfiguration",
+      "PaperC.V282.MovingMarkedSource.instMeasurableMovingConfiguration",
+      "PaperC.V282.MovingMarkedSource.instMeasurableSingletonMovingConfiguration",
+      "PaperC.V282.MovingMarkedSource.instProbabilityInfiniteRademacher",
+      "PaperC.V282.PointMeasureSpace.instTopologicalPointMeasure",
+      "PaperC.V282.PointMeasureSpace.instMeasurablePointMeasure",
+      "PaperC.V282.PointMeasureSpace.instBorelPointMeasure",
+      "PaperC.V282.PointMeasureSpace.instAddCommMonoidPointMeasure",
+      "PaperC.V282.PointMeasureSpace.instContinuousAddPointMeasure",
       "PaperC.V282.PointwiseStartBounds.instMeasurableSpaceF2Discrete",
       "PaperC.V282.PoissonFieldMeasure.instIsProbabilityMeasureField",
       "PaperC.V282.PrimeFieldEventConditioning.instMeasurableSpaceF2Discrete",
@@ -1121,6 +1236,8 @@
       "PaperC.V282.RareConditioningRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RareConditioningRates.instIsProbabilityMeasureInfiniteRademacher",
       "PaperC.V282.RestrictedPoissonTransfer.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.RunFiniteness.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.RunFiniteness.instDecidableProposition",
       "PaperC.V282.ScalarPoissonBounds.instDecidableProposition",
       "PaperC.V282.ScalarSteinInput.instDecidableProposition",
       "PaperC.V282.SignOverlap.instDecidableCompatibleUpToSign",
@@ -1128,7 +1245,32 @@
       "PaperC.V282.SignPatternCounts.instDecidableProposition",
       "PaperC.V282.SoftArithmeticCosts.instDecidableProposition",
       "PaperC.V282.SoftRateAssembly.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.SpatialDiffuseMarks.instTopologicalSign",
+      "PaperC.V282.SpatialDiffuseMarks.instDiscreteTopologySign",
+      "PaperC.V282.SpatialDiffuseMarks.instProbabilitySignMeasure",
+      "PaperC.V282.SpatialDiffuseMarks.instProbabilitySpatialMark",
+      "PaperC.V282.SpatialMarkedDiffuse.instProbabilityInfiniteRademacher",
+      "PaperC.V282.SpatialMarkedEventComparison.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.SpatialMarkedEventComparison.instProbabilityInfiniteRademacher",
+      "PaperC.V282.SpatialMarkedFieldComparison.instProbabilityInfiniteRademacher",
+      "PaperC.V282.SpatialMarkedHardBudget.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.SpatialMarkedHardBudget.instProbabilityInfiniteRademacher",
+      "PaperC.V282.SpatialMarkedMovableBudget.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.SpatialMarkedMovableBudget.instProbabilityInfiniteRademacher",
+      "PaperC.V282.SpatialMarkedPoissonIdentification.instMeasurableFiniteCategory",
+      "PaperC.V282.SpatialMarkedPoissonIdentification.instMeasurableSingletonFiniteCategory",
+      "PaperC.V282.SpatialMarkedSource.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.SpatialMarkedSource.instIsProbabilityMeasureInfiniteRademacher",
+      "PaperC.V282.SpatialMarkedSource.instDecidableProposition",
+      "PaperC.V282.SpatialMarkedStatistics.instProbabilityInfiniteRademacher",
+      "PaperC.V282.SpatialMarkedTarget.instProbabilitySpatialRows",
+      "PaperC.V282.SpatialMarkedTarget.instProbabilitySpatialTarget",
+      "PaperC.V282.SpatialMarkedTypes.instMeasurableSpatialMarkedConfig",
+      "PaperC.V282.SpatialMarkedTypes.instMeasurableSingletonSpatialMarkedConfig",
       "PaperC.V282.SteinTestTotalVariation.instDecidableProposition",
+      "PaperC.V282.ThresholdPathEquivalence.instCountableThresholdPath",
+      "PaperC.V282.UniformSpatialGrid.instProbabilityUnitIntervalUniform",
+      "PaperC.V282.UniformSpatialGrid.instProbabilityUniformGrid",
       "PaperC.V282.WordDefectCounting.instDecidableHDefective",
       "PaperC.V282.WordOverlapProbability.instMeasurableSpaceF2Discrete",
       "PaperC.V282.WordOverlapProbability.instDecidableCompatible"
@@ -2501,6 +2643,223 @@
         "definitions": 1,
         "named_instances": 0
       }
+    },
+    "batch_15_additions": {
+      "ConditionedCountableLaw": {
+        "theorems": 7,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "CountableExpectationTransfer": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CountableLawTransfer": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CountablePrimeEventTransfer": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "CountableWeakTransfer": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "ExactMarkedMovableRates": {
+        "theorems": 6,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "GeneralPoissonMarking": {
+        "theorems": 11,
+        "definitions": 5,
+        "named_instances": 2
+      },
+      "GeometricConfigurationCounts": {
+        "theorems": 6,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "GrowingLevelParameters": {
+        "theorems": 12,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "GrowingMarkedTruncation": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "LabelledInformationBudget": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MovableMarkedBudget": {
+        "theorems": 8,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "MovingMarkedComparison": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 4
+      },
+      "MovingMarkedLevels": {
+        "theorems": 12,
+        "definitions": 4,
+        "named_instances": 1
+      },
+      "MovingMarkedSource": {
+        "theorems": 13,
+        "definitions": 3,
+        "named_instances": 7
+      },
+      "PointMeasureSpace": {
+        "theorems": 4,
+        "definitions": 4,
+        "named_instances": 5
+      },
+      "PoissonPointProcess": {
+        "theorems": 6,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "RunFiniteness": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "SaddleErrorExponent": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SaddleMarkTruncation": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SpatialDiffuseMarks": {
+        "theorems": 9,
+        "definitions": 4,
+        "named_instances": 4
+      },
+      "SpatialMarkedCritical": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SpatialMarkedDiffuse": {
+        "theorems": 1,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "SpatialMarkedEventComparison": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "SpatialMarkedFieldComparison": {
+        "theorems": 10,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "SpatialMarkedHardBudget": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "SpatialMarkedLawExt": {
+        "theorems": 7,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SpatialMarkedMovableBudget": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "SpatialMarkedPoissonIdentification": {
+        "theorems": 5,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "SpatialMarkedSource": {
+        "theorems": 19,
+        "definitions": 4,
+        "named_instances": 3
+      },
+      "SpatialMarkedStatistics": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "SpatialMarkedTarget": {
+        "theorems": 5,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "SpatialMarkedTargetAggregation": {
+        "theorems": 6,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "SpatialMarkedTargetCompound": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SpatialMarkedTargetLaplace": {
+        "theorems": 4,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "SpatialMarkedTargetProjection": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SpatialMarkedTargetTail": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SpatialMarkedTypes": {
+        "theorems": 7,
+        "definitions": 7,
+        "named_instances": 2
+      },
+      "SpatialPointConvergence": {
+        "theorems": 2,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SpatialPointEmbedding": {
+        "theorems": 5,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "SpatialPointSupport": {
+        "theorems": 4,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "ThresholdPathEquivalence": {
+        "theorems": 15,
+        "definitions": 7,
+        "named_instances": 1
+      },
+      "UniformSpatialGrid": {
+        "theorems": 11,
+        "definitions": 3,
+        "named_instances": 2
+      }
     }
   },
   "manuscript_notes": {
@@ -2508,7 +2867,7 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Batch14 completes finite exact marks5.6 and true compound-cluster law5.7. No new confirmed manuscript error; existing1correction10suggestions retained. PDFs unchanged.",
+    "formalization_context": "Batch15 closes complete spatial1.1 and labelled5.8(i)/5.9, with actual diffuse probability-law convergence and movable conditioning. No new confirmed error;1correction10suggestions, PDFs unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
       "suggestions": 10
@@ -2517,7 +2876,7 @@
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 74,
+    "effort_estimate_percent": 75,
     "conservative_interval_percent": [
       65,
       80

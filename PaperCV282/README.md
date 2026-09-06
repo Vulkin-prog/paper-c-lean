@@ -6,26 +6,27 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The fourteenth development batch completes Theorem 5.6 and Corollary 5.7:
-actual signed and unsigned exact-mark fields, error bounds uniform before
-both lengths, and the true compound-Poisson law for all constant windows.
-The product target has the exact excess-dependent rates. Independent positive
-geometric marks give its compound representation and generating function.
-The preceding dictionary block 5.1–5.5 remains complete.
+The fifteenth development batch completes the introductory Theorem 1.1:
+the actual complete signed spatial field, its uniform exponential lattice
+comparison, the scalar start count, and the weak diffuse Poisson limit along
+intensity-convergent subsequences. It also proves both labelled growing-field
+budgets in Theorem 5.8(i), the movable rate (5.20), and their signed version
+in Corollary 5.9. The stronger aggregated clauses remain open.
+The dictionary and finite exact-mark results 5.1–5.7 remain complete.
 
 The three explicit literature premises remain recorded in
 [LITERATURE_INPUTS.md](LITERATURE_INPUTS.md): positive-rate scalar Stein
 solution bounds, the finite process AGG theorem, and the ordinary prime
 number theorem remainder. They are theorem arguments, not new Lean axioms.
-The new marked field and cluster endpoints use process AGG and PNT and add no premise.
+The new spatial and conditioned arithmetic endpoints use process AGG and PNT and add no premise. The countable targets and genuine weak-limit constructions are proved internally.
 An axiom audit does not prove the external hypotheses.
 
 Earlier batches retain the full relation profiles, actual terminal-sector
 proof, word first moments, touching pairs, true infinite-model moments,
 masked scalar and joint-field transfer, companion soft lemma, and both
 implicit saddle expansions. The whole paper and companion remain a larger
-project. Remaining work includes the complete countably marked spatial field and its
-diffuse limit, aggregated fields, growing levels, the general stable product lift,
+project. Remaining work includes the directional aggregated comparison C.1,
+Theorem 5.8(ii), signed aggregation and Poisson–Gaussian 5.10, the general stable product lift,
 resolved conditioning paths and microscopic crossover. The sharper
 Pell/split-product rate, size-two Euler refinement and aligned-core
 proposition at every positive density remain distinct from their proved
@@ -44,7 +45,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 276 mathematical modules contain **2391 named declarations: 1900 theorems, 380 definitions and 111 named instances**. Batch 14 adds 271 theorems in 39 new modules.
+The 319 mathematical modules contain **2801 named declarations: 2175 theorems, 466 definitions and 160 named instances**. Batch 15 adds 275 theorems in 43 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -157,7 +158,7 @@ Palomar submission requires its own frozen statements and evidence.
 A separate coverage assessment tracks numbered manuscript statements and a
 weighted estimate of the remaining effort. The count of Lean declarations
 is an audit inventory, not a percentage of the complete paper. The current
-estimate is about 74% of the total formalization effort, with a conservative
+estimate is about 75% of the total formalization effort, with a conservative
 65–80% range; later probabilistic and companion results account for much of
 the remaining work. Strict statement coverage is 35/61 numbered article
 results, and 3/8 companion results (these fractions must not be added). See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)

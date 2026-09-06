@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 276 mathematical modules contain **2391 named declarations: 1900 theorems, 380 definitions and 111 named instances**. Batch 14 adds 271 theorems in 39 new modules.
+The 319 mathematical modules contain **2801 named declarations: 2175 theorems, 466 definitions and 160 named instances**. Batch 15 adds 275 theorems in 43 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -684,7 +684,7 @@ moment is inferred from total variation convergence.
 
 ## Dependencies, audit and historical boundary
 
-`PaperCV282/Audit.lean` covers all 2,391 named declarations in the 276 mathematical modules, including all 111 named instances. Batch 14 adds 271 theorems, 86 definitions and 48 named instances; the complete per-module counts are in the source manifest.
+`PaperCV282/Audit.lean` covers all 2,801 named declarations in the 319 mathematical modules, including all 160 named instances. Batch 15 adds 275 theorems, 86 definitions and 49 named instances; the complete per-module counts are in the source manifest.
 
 The source inventory and kernel-axiom transcript are checked separately by
 `scripts/check_v282_audit.py`. Failure-path tests exercise missing entries,
@@ -1197,6 +1197,74 @@ No moment convergence is inferred from the unbounded weighted sum.
 `CompoundPoissonMarking` additionally proves the joint product law of all
 finite categories. `GeometricMarkedConfiguration` constructs the aggregated
 countable excess configuration on ℕ→₀ℕ with its finite projection laws and
-compound total weight. This is useful infrastructure, but the complete spatial
-countable field and weak diffuse limit of introductory1.1 are not yet claimed.
-Neither the growing sign-resolved5.9 nor companionC.1 is closed by these results.
+compound total weight. At the end of batch14, the complete spatial field
+and weak diffuse limit of introductory1.1 were not yet claimed. Batch15
+closes these and the labelled part of5.9 below; companionC.1 remains open.
+
+
+## Batch 15: complete spatial field and Theorem 1.1
+
+Source: article page3, Theorem1.1/(1.3), and pages33–35, (5.11)–(5.16).
+`SpatialMarkedConfig N` is the countable space `(Fin N × (ℕ × F₂)) →₀ ℕ`.
+The site i represents x=N+i, and F₂ encodes the two signs.
+`SpatialMarkedSource` constructs the actual full field on the infinite prime
+probability space. Its projection at every finite excess cutoff equals the
+previous actual signed field. Finite support and measurability are proved,
+and almost-sure run termination identifies its full total with the start count.
+
+| Declaration | Established result |
+|---|---|
+| `SpatialMarkedTargetProjection.hasLaw_projectConfiguration` | Every finite projection of the actual countable target is the independent product with atom rate2^(-L-e-2). |
+| `SpatialMarkedLawExt` | Equality of complete configuration laws from all finite projections; no assumed tail convergence. |
+| `SpatialMarkedFieldComparison.spatial_signed_full_band` | Complete spatial TV bounded by32 times the finite arithmetic rate and explicit geometric tails, uniformly before L,E. |
+| `SpatialMarkedCritical.theorem_one_one_lattice` | For every a<1/√2, eventually TV≤exp(−a√(logN·loglogN)), uniformly before L in the critical window. |
+| `SpatialMarkedStatistics.theorem_one_one_start_count` | Same coefficient and uniformity for the actual scalar start count and Pois(N/2^L). |
+| `SpatialMarkedStatistics.spatial_statistic_tv_le` | Every deterministic statistic contracts the full comparison. |
+| `SpatialMarkedTargetAggregation.hasLaw_totalSpatialCount` | Actual target total has exactly the Poisson law of rateN/2^L. |
+| `SpatialMarkedTargetCompound` | Actual target weighted total has the geometric compound-Poisson law. |
+| `SpatialMarkedTargetLaplace` | Genuine Laplace integral for the full spatial target. |
+| `GeneralPoissonMarking` and `SpatialMarkedPoissonIdentification` | Actual Poisson count and independent iid marks have the complete countable product law; proved through joint category laws and finite-projection uniqueness. |
+| `SpatialPointConvergence.spatialPointTargetLaw_tendsto` | True target point-measure laws converge weakly along sizes→∞ and rates→rate. |
+| `SpatialMarkedDiffuse.theorem_one_one_diffuse` | The actual arithmetic source has the same genuine weak diffuse limit in the critical window along these subsequences. |
+
+The common weak-limit space is `PointMeasure (ℝ × (ℕ × F₂))`, represented
+by finite measures with the Borel structure of the weak topology. Every
+actual configuration is a finite sum of natural multiples of Dirac measures
+at `1+i/N`; `SpatialPointSupport` proves zero mass outside[1,2] both for
+these configurations and for every sample constructing the diffuse target.
+The latter is a genuine Poisson count with independent uniform positions,
+geometric excesses and equiprobable signs. Uniform grid cells identify the
+entire prelimit target; no fixed-truncation or Laplace-only conclusion is
+substituted for weak convergence. `CountableWeakTransfer` transfers actual
+integrals of bounded continuous tests using the countable lattice TV error.
+No TV convergence to the diffuse law or moment convergence is claimed.
+
+## Batch 15: labelled growing fields, 5.8(i) and labelled 5.9
+
+Source: article pages35–36, (5.17)–(5.20). Depth d is natural and
+`d/logN→0`, base b=floor(log₂N), length L=b−d. Actual full-F_Y events A
+have positive probability, I=−logP(A), and Λ=N/2^L. The proof establishes
+eventually L≥1 and Λ≥1; these are not extra asymptotic restrictions.
+
+| Declaration | Established result |
+|---|---|
+| `SpatialMarkedEventComparison.spatial_event_tv_le_finite_and_tails` | Actual normalized restriction given A; finite error and source tail divided by P(A), independent target tail paid separately. |
+| `SpatialMarkedHardBudget.theorem_five_eight_labelled_hard` | (5.18): I+logΛ+log(1+Λ)≤V−cν gives full signed spatial TV→0. |
+| `SpatialMarkedMovableBudget.spatial_event_movable_rate` | (5.20): constant64 times exp(I)[Λexp(−Vsoft/2+ηνsoft)+Λ²exp(−Vsoft+ηνsoft)+Λ(1+Λ)N^(-1/3+ε)], for each 0<ε<1/3 and η>0, with threshold before L,A and no remaining tail. |
+| `SpatialMarkedMovableBudget.theorem_five_eight_labelled_movable` | (5.19): I+logΛ≤Vsoft/2−cνsoft gives full signed spatial TV→0 at full F_Ysoft. |
+| `GrowingLevelParameters` | Actual dyadic phase, intensities and growing-depth logarithmic band. |
+| `MovingMarkedComparison.conditional_moving_source_tv_eq` | Literal signed reindexing r=e−d preserves the true conditional-field distance exactly. |
+| `MovingMarkedComparison.moving_labelled_hard_tendsto_zero` and `moving_labelled_movable_tendsto_zero` | Both conclusions in the integer moving coordinates, retaining every position and sign. |
+| `ThresholdPathEquivalence` | Measurable bijection between finite-mass exact levels and their full antitone threshold sequence, with finite-difference inverse. |
+| `MovingMarkedComparison.conditional_start_path_totalVariation_eq` | Exact distance equality for the entire path of actual conditioned threshold counts and the aggregated exact levels. |
+
+The rate uses a moving excess cutoff3ceil(V/log2), or its soft analogue;
+its cost is o(logN), and both actual tails are absorbed. All arithmetic
+comparisons assume only the already declared process AGG and ordinary PNT.
+The independently proved target and reindexing results add no premise.
+
+This closes the labelled clauses only. The stronger aggregate one-factor
+range (5.21)–(5.22), directional comparisonC.1, signed aggregation in5.9,
+and joint Poisson–Gaussian5.10 remain open. Exact equality of path distances
+does not supply the missing aggregated estimate. Thus5.8 and5.9 remain
+partial in the numbered-result ledger; introductory1.1 is not counted twice.

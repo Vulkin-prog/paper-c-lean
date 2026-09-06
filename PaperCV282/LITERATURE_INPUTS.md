@@ -79,3 +79,22 @@ PGF, source boundaries and tail couplings add no external premise. Neither
 scalar Stein factors nor a compound-Poisson approximation theorem is assumed
 in the new process/cluster endpoints. Kernel auditing does not discharge the
 explicit process AGG and PNT theorem arguments.
+
+
+## Batch 15: complete spatial fields, weak limits and growing conditioning
+
+The uniform critical lattice comparison, scalar consequence, actual-source
+diffuse limit and both labelled growing information budgets use only the
+existing process AGG and ordinary PNT propositions. These are explicit
+arguments, not new axioms. The actual full F_Y conditioning, separate source
+and target tails, integer reindexing and whole threshold-path identities are
+proved. Countable product targets, joint marking, their identification with
+Poisson iid samples, the weak topology, actual integral transfer and the
+uniform spatial-grid limit add no literature premise. Neither a Poisson
+process convergence theorem nor a desired joint law is assumed.
+
+The directional aggregated Stein comparison in companionC.1 has not been
+introduced as a new premise or proved here. The one-factor aggregated range
+of5.8(ii), its signed version and Poisson–Gaussian5.10 remain open. The
+kernel audit does not discharge AGG/PNT or the scalar premises retained by
+earlier endpoints.

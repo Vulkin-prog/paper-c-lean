@@ -286,3 +286,14 @@ Le théorème **5.6**, y compris ses versions signée et non signée et le taux 
 La formalisation garde explicitement la longueur de base L dans la masse de défauts et R2, et Q=L+E+1 dans les supports maximaux. Elle confirme le rôle essentiel de (5.15). Le cylindre premier peut être choisi égal au maximum de Y et du seuil couvrant le champ, ce qui rend le conditionnement par tout F_Y explicite. Les deux événements de bord sont ceux du texte ; aucune erreur d'indice n'a été relevée.
 
 Aucune nouvelle correction du papier n'est confirmée dans ce lot. Le registre reste à **une correction confirmée et dix suggestions**. Le recours à une égalité presque sûre dans la preuve Lean de (5.16) ne suffit pas à conclure que l'égalité imprimée serait erronée. Le champ spatial à toutes marques et sa limite diffuse restent distincts des résultats 5.6–5.7 acquis ; ils ne devront pas être annoncés comme complètement formalisés à ce stade. Les PDF restent inchangés.
+
+
+## Bilan du lot 15 — Champ spatial complet, limite diffuse et niveaux croissants
+
+Le **théorème 1.1** est maintenant formalisé sur le vrai champ spatial signé à toutes marques : comparaison sur la grille dénombrable avec le coefficient1/√2, conséquence pour le compteur de départs, puis vraie convergence faible vers le processus de Poisson diffus. La version Lean conserve les sous-suites de tailles et l'intensité mobile du papier. La cible est construite par un nombre de Poisson et des marques indépendantes, avec positions uniformes sur[1,2], excès géométriques et signes équiprobables ; ses identités de lois et son support sont prouvés.
+
+Toute la partie **5.8(i)** est également acquise, avec les budgets hard(5.18), mobile(5.19) et la borne(5.20), sous le conditionnement par tout F_Y correspondant. La version signée étiquetée de **5.9** et le changement exact de coordonnées r=e−d sont démontrés. La formalisation emploie pour les queues le choix simple E=3⌈V/log2⌉ ou son analogue mobile, suffisant dans les budgets considérés. C'est un choix de preuve, sans correction demandée au texte.
+
+La bijection entre comptes exacts à masse finie et leurs seuils est mesurable dans les deux sens et conserve **exactement** la variation totale, même pour le chemin entier des compteurs réels conditionnés. Ce fait ne ferme pas la comparaison agrégée plus forte de5.8(ii), sa version signée niC.1. Ces obligations et la limite Poisson–Gauss5.10 devront rester présentées comme ouvertes dans une description de la couverture actuelle.
+
+La V3 pourra utiliser les [déclarations précises](../PaperCV282/ENDPOINTS.md) pour citer ces acquis, en indiquant les arguments bibliographiques AGG de processus/PNT. Aucune nouvelle erreur du papier n'a été confirmée. Le registre reste à **une correction confirmée et dix suggestions** ; les PDF demeurent inchangés. L'avertissement du bilan14 sur le champ spatial est désormais levé par les preuves du lot15.
