@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 172 mathematical modules contain **1379 named declarations: 1165 theorems, 189 definitions and 25 named local instances**. Batch 10 adds 458 theorems in 57 new modules.
+The 193 mathematical modules contain **1552 named declarations: 1312 theorems, 205 definitions and 35 named local instances**. Batch 11 adds 147 theorems in 21 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -765,8 +765,8 @@ lemma on the actual conditional family of all dyadic sites.
 `SoftGraphDegree.actual_neighbour_marginal_sum_le_defects` controls the
 neighbour term through the true all-site degree and first moment. Bad
 neighbours keep their actual marginal and joint probabilities throughout.
-This establishes the soft lemma and its finite model application, while
-the optimized full-band rates in Theorem 4.3 remain a separate assembly.
+This established the soft lemma and its finite model application in batch 10.
+Batch 11 below completes the optimized full-band rates of Theorem 4.3.
 
 ### Actual exponential integral and implicit saddles
 
@@ -870,3 +870,99 @@ lengths and all dyadic masks. The resulting bound is
 finite `1/N` contribution is absorbed into this larger envelope. This
 implies the degree and edge presentation of (4.5) and completes the
 cutoff conclusions together with the Rankin and saddle results above.
+
+## Batch 11: full-band hard/soft rates and arithmetic-event conditioning
+
+Source: article Theorem 4.3 and equations (4.8)–(4.10), printed page 29;
+companion B.3, pages 8–9; scalar information formulas in article section
+6.1, pages 38–39. The only literature arguments of the new asymptotic
+endpoints are `ScalarSteinFactorsStatement` and
+`PrimeNumberTheoremRemainder`. The process AGG premise used by earlier
+field theorems is not required here.
+
+Write `lambda=N/2^L`, `H=log N`, `w_h=V_1(H)`, `w_s=V_2(H)` and
+`nu_a=H/V_a(H)`. For every fixed logarithmic band, epsilon>0 and eta>0,
+one threshold is chosen before the natural run length. The cutoffs are
+exactly `floor(exp(w_h))` and `floor(exp(w_s))`. Their admissibility, their
+inclusion in the count's prime cylinder and equality with the entire
+conditioning field `F_Y` are proved, rather than assumed.
+
+| Declaration | Established result |
+|---|---|
+| `FullBandArithmetic.fullDefectMass_div_block_le_eventually` | Actual complete-vertex mass `M/N <= N^(-1/2+epsilon)`. |
+| `FullBandArithmetic.normalized_relation_mass_le_eventually` | Actual separated relation mass `R/2^(2L) <= N^(-1/3+epsilon)*(lambda^2+2lambda)` without bounded intensity. |
+| `FullBandArithmetic.touching_mass_le_eventually` | The actual homogeneous touching mass in the same dyadic cylinder. |
+| `SaddleCutoffAdmissibility.saddleCutoff_nat_admissible_eventually` | Integer cutoffs contain the required short supports and lie inside the cylinder, uniformly before L. |
+| `SaddleArithmeticBounds.normalized_fullBadMask_saddle_cost_le_eventually` | Actual full-support bad mass at either saddle, with arbitrary deterministic submask. |
+| `SaddleArithmeticBounds.normalized_degree_and_edges_saddle_le_eventually` | Actual all-site degree and ordered edges, with no PNT premise for these two bounds. |
+| `HardPoissonBounds.half_rate_le_retainedRate` | Actual retained mean is at least half the full mean once the bad fraction is at most one half. |
+| `SoftArithmeticCosts`, `SoftArithmeticTransfer` | Full good-to-all neighbour ledger: bad neighbours keep their actual marginal and joint probabilities; overlaps, touching and separated pairs have distinct proved bounds. |
+| `DyadicPoissonDistance.conditionalDistance_eq_source_atom_average` | The mean distance is exactly the average of the positive source-atom measure-ratio laws. |
+| `HardPoissonRates.theorem_four_three_hard` | Equation (4.8) for both the true source count and the mean conditional distance, with constant 20 and the entire expression multiplied by lambda. |
+| `SoftRateAssembly.theorem_four_three_soft` | Equation (4.9) for both laws, at the soft cutoff, with constant 6, all intensities and a minimum with one. |
+| `FreeCutoffSoftRates.free_soft_ledger_eventually` | Free-cutoff ledger with the two independent costs `exp(-D(H/w)+eta*H/w)` and `exp(-w+eta*H/w)`, retaining `max(1,lambda)`. |
+| `FreeCutoffSoftRates.equation_four_ten` | The three printed terms with coefficients 2, 3, 6 under `lambda>=1` and `log lambda<=A*w`, uniformly for each fixed square-root cutoff band. |
+
+Explicitly, the two optimized upper bounds are
+
+```text
+20 min(1, lambda*(exp(-w_h+eta*nu_h) + N^(-1/3+epsilon))),
+ 6 min(1, exp(-(w_s-max(0,log lambda))/2+eta*nu_s) + N^(-1/3+epsilon)).
+```
+
+The quantification over every positive eta represents the little-o
+exponential error; no computable threshold or optimality assertion is
+made. The normalized costs are the actual `M/N`, `D/N`, `E/N^2`,
+`Delta/N`, `R/2^(2L)` and `T/N^2`. In particular the proof does not replace
+a bad neighbour's probability by the good marginal.
+
+The soft proof also covers lambda<1 directly by the same soft calculation.
+In the nontrivial branch `ell=max(0,log lambda)<=w_s`, so the intensity
+envelope can be absorbed in a small power of N. This preserves the exact
+soft `F_Y`; it is the demonstrated simplification recorded as V3-S009.
+
+### Genuine convergence regimes
+
+`PoissonRateConvergence.hard_convergence_of_bounded_intensity` proves
+convergence to zero of the hard conditional mean distance and the actual
+count distance for every bounded-intensity sequence in the fixed band.
+`soft_convergence_of_margin` proves the two soft conclusions under
+`log^+ lambda <= w_s-c*nu_s`, for fixed c>0.
+`soft_convergence_at_hard_endpoint` includes
+`log^+ lambda <= w_h+K`, for any fixed K. The numerical saddle limits
+are separately established in `SaddleRateConvergence`. These conclusions
+are limits of total-variation distances and conditional averages, not
+almost-sure convergence of conditioning kernels. No convergence at the
+exact soft boundary `log lambda=w_s` is asserted.
+
+### Positive events in the chosen prime field
+
+`PrimeFieldEventConditioning` represents every event of the finite prime
+sigma-algebra as a union of its source atoms and proves the true event
+probability. `RestrictedPoissonTransfer.restrictedCountLaw` is literally
+`P(Z=k and E)/P(E)`. Its normalization and the exact selected-atom mixture
+are proved. For E measurable in the chosen `F_Y` with P(E)>0,
+`event_tv_le_conditionalDistance` bounds its distance by the averaged
+conditional distance divided by P(E).
+
+`RareConditioningRates` defines `I=-log P(E)`, proves I>=0 and
+`exp(I)=1/P(E)`, and obtains the hard and soft restricted rates at their
+respective cutoffs. `hard_event_rate_min_eventually` and
+`soft_event_information_min_eventually` put the minimum with one after
+the inverse-probability cost, yielding the scalar formulas (6.1)–(6.2).
+The soft information ledger has leading term
+`exp(-(w_s-(2I+log^+lambda))/2+eta*nu_s)` and polynomial term
+`exp(I)*N^(-1/3+epsilon)`.
+`soft_event_margin_bound_eventually` chooses a threshold before both L
+and E. Under `2I+log^+lambda<=w_s-c*nu_s`, it gives the vanishing bound
+`6*(exp(-c*nu_s/4)+N^(-1/6))`.
+`soft_event_convergence_of_information_margin` applies this to moving
+positive events and run lengths in the true source model.
+
+This is the scalar finite-prime-event specialization of the conditioning
+argument and its actual rate consequences. It does not yet prove the
+standard-Borel product lift with an extra recorded random variable in
+Lemma 6.1, conditioning on a run statistic, resolved states, a labelled
+or aggregated marked path, or the remaining results of sections 5–7.
+B.3 is an application subsection, not an additional numbered companion
+result.

@@ -1,6 +1,6 @@
 # Literature inputs for the v2.8.2 transfer and cutoff proofs
 
-The batch-10 results separate published probability/prime-distribution inputs
+The results from batches 10 and 11 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
 There is no new Lean `axiom`, and no proof of these three propositions is
@@ -47,3 +47,8 @@ historical development. Full mathematical coverage under that boundary is
 different from an entirely internal formalization of the bibliography.
 Any future Palomar submission must state the selected hypotheses and its
 exact checked commit separately.
+
+The batch-11 full-band rates, free-cutoff ledger and scalar arithmetic-event
+conditioning consequences use only the scalar Stein and PNT propositions.
+They add no literature premise. The process AGG argument remains specific
+to the earlier field-transfer endpoints.

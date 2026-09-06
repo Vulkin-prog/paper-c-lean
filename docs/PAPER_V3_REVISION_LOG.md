@@ -21,6 +21,7 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S006 | Papier, p. 17–18, lemmes 3.13–3.14 ; section de formalisation p. 50 | Suggestion de précision sur les taux formalisés | Proposition à examiner |
 | V3-S007 | Papier, p. 22–24, secteur 8 et proposition 3.25 ; p. 26, plafond de 3.27 | Suggestion de simplification de preuve démontrée | Proposition à examiner |
 | V3-S008 | Papier, p. 27–28, théorème 4.1 et suppression masquée | Suggestion de renforcement local au masque | Proposition à examiner |
+| V3-S009 | Papier, p. 29, théorème 4.3 ; compagnon B.3, p. 8–9 | Suggestion de preuve soft commune à toutes les intensités | Proposition à examiner |
 
 **Compagnon technique : aucune correction confirmée à ce stade.** Les résultats finis déjà formalisés ne constituent pas une vérification intégrale de ses annexes. Les prochaines observations propres au compagnon seront ajoutées avec leur emplacement et leur justification ; aucune anomalie ne lui est attribuée par analogie avec le papier.
 
@@ -215,3 +216,29 @@ La contribution totale de suppression est donc `p(M_B(A)+2|D_Y(A)|)`. Elle impli
 ## Suivi des prochaines observations
 
 Chaque nouvelle entrée indiquera le document, la version, la page et l'énoncé ; distinguera erreur, clarification et suggestion ; donnera une justification vérifiable, une formulation proposée, le statut d'intégration et un lien vers la preuve ou la note correspondante. Lorsqu'une observation sera réglée, son entrée conservera l'historique et identifiera la version du manuscrit qui l'a intégrée.
+
+## V3-S009 — Une preuve soft commune à toutes les intensités
+
+**Document et emplacement.** Papier v2.8.2, p. 29, preuve du théorème 4.3, de (4.10) à (4.9) ; compagnon, section B.3, p. 8–9.
+
+**Type.** Suggestion de simplification de preuve démontrée, sans erreur identifiée dans le texte actuel.
+
+**Justification.** La preuve du papier traite les intensités inférieures à un en rejouant le transfert hard au seuil soft. La formalisation obtient aussi cette plage directement à partir de B.2, au même seuil soft. Poser `ell = max(0, log λ)` et `K = max(1, λ)`. Dans la branche non triviale précisée ci-dessous, les deux facteurs de Stein donnent, pour les véritables coûts arithmétiques, une borne `2q + 3r + 6KP`, où
+
+```text
+q = exp(-(w-ell)/2 + ην),
+r = exp(ell-w + ην),
+P = N^(-1/3+ε/2).
+```
+
+Si `q + N^(-1/3+ε) ≥ 1`, la borne triviale en variation totale suffit. Sinon `q ≤ 1` entraîne `ell ≤ w`, donc `r ≤ q`. Puis `K = exp(ell)` et `w = o(log N)` permettent d'absorber `K` dans `N^(ε/2)`. Ainsi `KP ≤ N^(-1/3+ε) < 1` et `K ≥ 1` donnent aussi `P ≤ 1`, hypothèse du calcul du registre soft. On obtient `6 min(1, q + N^(-1/3+ε))`, sans hypothèse globale de croissance sur l'intensité. Le seuil en `N` est choisi avant la longueur dans toute la bande logarithmique fixée.
+
+Les voisins exceptionnels conservent leurs vraies probabilités marginales et conjointes dans B.2. Le résultat porte à la fois sur la vraie loi du compte et sur la moyenne des distances conditionnelles sachant **tout** `F_Y` au seuil soft. Il ne déduit pas cette dernière conclusion d'un conditionnement au seuil hard.
+
+**Formulation anglaise proposée.**
+
+> The soft estimate also covers intensities below one directly at the same cutoff. Set ell = max(0, log lambda) and K = max(1, lambda). The two Stein factors give the same error ledger for all intensities. In the nontrivial range ell is at most w, and K is absorbed into the polynomial remainder using w = o(log N).
+
+**Statut.** Proposition à examiner. Le passage est démontré et relu indépendamment ; il simplifie l'exposition et ne prétend ni optimalité du seuil, ni convergence à la frontière soft exacte. Les prémisses bibliographiques de Stein scalaire et du théorème des nombres premiers restent explicites.
+
+**Preuves.** [SoftArithmeticTransfer.lean](../PaperCV282/SoftArithmeticTransfer.lean), `average_conditionalMaskedLaw_soft_le` ; [SoftPoissonRates.lean](../PaperCV282/SoftPoissonRates.lean), `soft_rate_minimum_of_budget` et `soft_rate_rpow_of_budget` ; [SoftRateAssembly.lean](../PaperCV282/SoftRateAssembly.lean), `theorem_four_three_soft` ; [FreeCutoffSoftRates.lean](../PaperCV282/FreeCutoffSoftRates.lean), `equation_four_ten`.

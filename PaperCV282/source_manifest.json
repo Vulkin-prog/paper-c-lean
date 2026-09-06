@@ -35,28 +35,26 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Theorem 4.1: masked scalar and joint-field arithmetic-to-Poisson transfer",
+          "item": "Theorem 4.3: actual hard/soft laws, full logarithmic band and optimized cutoffs",
           "printed_pages": [
-            27,
-            28
-          ],
-          "equation": "4.3"
-        },
-        {
-          "item": "Proposition 4.2: free cutoff, all-site degree and both implicit saddles",
-          "printed_pages": [
-            28,
             29
           ],
           "equations": [
-            "4.5",
-            "4.6",
-            "4.7"
+            "4.8",
+            "4.9",
+            "4.10"
           ]
         },
         {
-          "item": "Theorem 4.3: soft-neighbour building blocks only; optimized rate assembly remains",
-          "printed_page": 29
+          "item": "Scalar prime-event information formulas and positive-margin convergence; general product lift not yet complete",
+          "printed_pages": [
+            38,
+            39
+          ],
+          "equations": [
+            "6.1",
+            "6.2"
+          ]
         }
       ]
     },
@@ -69,17 +67,10 @@
       "size_bytes": 483599,
       "sha256": "60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094",
       "source_kind": "user_supplied_pdf",
-      "role_in_batch": "Companion B.1 free Rankin/PNT estimate and both implicit saddles; B.2 finite and general measurable-environment soft retention. Explicit external literature premises are documented separately.",
+      "role_in_batch": "Companion B.3: actual all-site soft costs and moving-cutoff arithmetic application; same-prime-field event restriction and single inverse-probability information cost.",
       "current_batch_locators": [
         {
-          "item": "Proposition B.1",
-          "printed_pages": [
-            7,
-            8
-          ]
-        },
-        {
-          "item": "Lemma B.2 and its all-site-neighbour application",
+          "item": "B.3: applying Lemma B.2 at a movable cutoff, including the final arithmetic-event paragraph",
           "printed_pages": [
             8,
             9
@@ -113,11 +104,15 @@
     "PaperCV282/CutoffGraphScale.lean",
     "PaperCV282/DefectiveRankinCount.lean",
     "PaperCV282/DivisorSubpolynomial.lean",
+    "PaperCV282/DyadicPoissonDistance.lean",
     "PaperCV282/DyadicRelationProfile.lean",
     "PaperCV282/ExponentialIntegral.lean",
     "PaperCV282/ExponentialIntegralAsymptotics.lean",
     "PaperCV282/FiniteFieldPoissonCoupling.lean",
     "PaperCV282/FiniteFieldTotalVariation.lean",
+    "PaperCV282/FreeCutoffAdmissibility.lean",
+    "PaperCV282/FreeCutoffSoftRates.lean",
+    "PaperCV282/FullBandArithmetic.lean",
     "PaperCV282/FullHostAsymptotics.lean",
     "PaperCV282/FullHostComparison.lean",
     "PaperCV282/FullHostCounting.lean",
@@ -126,12 +121,15 @@
     "PaperCV282/FullIntervalPrimeAssignment.lean",
     "PaperCV282/FullPrimeAssignment.lean",
     "PaperCV282/GoodTouchingProbability.lean",
+    "PaperCV282/HardPoissonBounds.lean",
+    "PaperCV282/HardPoissonRates.lean",
     "PaperCV282/HostRankMass.lean",
     "PaperCV282/HostRealPowers.lean",
     "PaperCV282/InfiniteConditionalWords.lean",
     "PaperCV282/InfiniteCountMoments.lean",
     "PaperCV282/InfiniteFieldTransfer.lean",
     "PaperCV282/InfiniteMaskedScalarTransfer.lean",
+    "PaperCV282/InfiniteSoftTransfer.lean",
     "PaperCV282/InfiniteWordFirstMoment.lean",
     "PaperCV282/InfiniteWordTransfer.lean",
     "PaperCV282/IntervalRationalLowerBounds.lean",
@@ -180,6 +178,8 @@
     "PaperCV282/NonterminalProfile.lean",
     "PaperCV282/OrderedPairCounting.lean",
     "PaperCV282/PointwiseStartBounds.lean",
+    "PaperCV282/PoissonIntensityBounds.lean",
+    "PaperCV282/PoissonRateConvergence.lean",
     "PaperCV282/PolynomialPellCount.lean",
     "PaperCV282/PolynomialSplitProducts.lean",
     "PaperCV282/PolynomialSplitSolutions.lean",
@@ -194,9 +194,11 @@
     "PaperCV282/PrimeEulerRankin.lean",
     "PaperCV282/PrimeEulerSaddle.lean",
     "PaperCV282/PrimeEulerUniform.lean",
+    "PaperCV282/PrimeFieldEventConditioning.lean",
     "PaperCV282/ProcessAGGInput.lean",
     "PaperCV282/ProfileAssembly.lean",
     "PaperCV282/ProfileMonomials.lean",
+    "PaperCV282/RareConditioningRates.lean",
     "PaperCV282/RationalFamilyMass.lean",
     "PaperCV282/RationalGeometryMass.lean",
     "PaperCV282/RationalHeightMass.lean",
@@ -208,11 +210,16 @@
     "PaperCV282/ResidualSectorMasks.lean",
     "PaperCV282/ResidualSectorMass.lean",
     "PaperCV282/ResidualSectorPartition.lean",
+    "PaperCV282/RestrictedPoissonTransfer.lean",
+    "PaperCV282/SaddleArithmeticBounds.lean",
     "PaperCV282/SaddleAsymptotics.lean",
     "PaperCV282/SaddleBranch.lean",
     "PaperCV282/SaddleBranchAsymptotics.lean",
+    "PaperCV282/SaddleCutoffAdmissibility.lean",
     "PaperCV282/SaddleExpansion.lean",
     "PaperCV282/SaddleParameters.lean",
+    "PaperCV282/SaddlePoissonScales.lean",
+    "PaperCV282/SaddleRateConvergence.lean",
     "PaperCV282/SaddleScales.lean",
     "PaperCV282/ScalarPoissonBounds.lean",
     "PaperCV282/ScalarSteinInput.lean",
@@ -236,9 +243,14 @@
     "PaperCV282/SmallKernelAnchors.lean",
     "PaperCV282/SmallProductComponentBound.lean",
     "PaperCV282/SmallProductMass.lean",
+    "PaperCV282/SoftArithmeticCosts.lean",
+    "PaperCV282/SoftArithmeticTransfer.lean",
     "PaperCV282/SoftConditionalPoisson.lean",
     "PaperCV282/SoftGraphDegree.lean",
     "PaperCV282/SoftMeasureAverage.lean",
+    "PaperCV282/SoftPoissonRates.lean",
+    "PaperCV282/SoftRateAssembly.lean",
+    "PaperCV282/SoftRateLedger.lean",
     "PaperCV282/SplitProductLocalization.lean",
     "PaperCV282/SteinFiniteExpectation.lean",
     "PaperCV282/SteinLocalTelescoping.lean",
@@ -789,7 +801,52 @@
         "Actual dyadic all-site instance and degree-times-actual-first-moment estimate."
       ],
       "interface_boundary": "Conditional joint laws are supplied as measurable finite PMFs. No automatic conditional-expectation/kernel construction from an arbitrary probability-space presentation is claimed.",
-      "remaining_for_theorem_4_3": "Optimized hard/soft full-band rate assembly, including the requested conditional fields."
+      "remaining_for_theorem_4_3": []
+    },
+    "theorem_4_3": {
+      "status": "complete_under_explicit_scalar_Stein_and_PNT_premises",
+      "declarations": [
+        "PaperC.V282.HardPoissonRates.theorem_four_three_hard",
+        "PaperC.V282.SoftRateAssembly.theorem_four_three_soft",
+        "PaperC.V282.FreeCutoffSoftRates.equation_four_ten"
+      ],
+      "fixed_parameters": "0<betaMin<betaMax, epsilon>0, eta>0; a single threshold before L in the full logarithmic band. Free cutoff also fixes positive c,C and A>=0.",
+      "intensity": "lambda=N/2^L, not assumed bounded or globally subpolynomial for the optimized estimates.",
+      "hard_bound": "20*min(1,lambda*(exp(-Vhard+eta*nuhard)+N^(-1/3+epsilon)))",
+      "soft_bound": "6*min(1,exp(-(Vsoft-max(0,log lambda))/2+eta*nusoft)+N^(-1/3+epsilon))",
+      "law_representation": "Actual infinite source count; mean of conditional half-L1 distances over actual positive source atoms of the entire F_Y.",
+      "cutoffs": "floor(exp(Vhard)) and floor(exp(Vsoft)); admissibility and equality to the entire prime sigma-algebra are proved.",
+      "free_cutoff_4_10": "Uniform before w and L in each fixed c*sqrt(H*log H)<=w<=C*sqrt(H*log H) band, assuming lambda>=1 and log lambda<=A*w; three coefficients 2,3,6, absorbed polynomial remainder.",
+      "soft_small_intensities": "Same soft proof and same soft conditioning field, without a hard-cutoff substitution.",
+      "convergence": [
+        "Bounded intensity via the hard rate.",
+        "Positive soft margin log^+lambda<=Vsoft-c*nusoft, c>0.",
+        "Old hard endpoint log^+lambda<=Vhard+K, K fixed."
+      ],
+      "almost_sure_kernel_convergence_claimed": false,
+      "exact_soft_endpoint_convergence_claimed": false,
+      "remaining": []
+    },
+    "scalar_arithmetic_event_conditioning": {
+      "status": "proved_scalar_finite_prime_field_specialization_and_rate_consequences",
+      "modules": [
+        "PrimeFieldEventConditioning",
+        "RestrictedPoissonTransfer",
+        "RareConditioningRates"
+      ],
+      "event_law": "Literal P(Z=k and E)/P(E), normalized and equal to the selected source-atom mixture.",
+      "event_hypotheses": "E belongs to the entire F_Y at the chosen hard or soft cutoff; P(E)>0.",
+      "information": "I=-log P(E)>=0 and exp(I)=1/P(E), exact source probability.",
+      "soft_margin": "2I+log^+lambda<=Vsoft-c*nusoft for fixed c>0.",
+      "uniform_vanishing_bound": "6*(exp(-c*nusoft/4)+N^(-1/6)), threshold before L and E.",
+      "sequence_convergence": "Actual restricted-count total variation tends to zero for moving lengths and positive FYsoft events obeying the band and margin eventually.",
+      "general_standard_Borel_product_lift_proved": false,
+      "arbitrary_postselection_on_run_statistics_proved": false,
+      "whole_section_6_proved": false,
+      "printed_minimum_formulas": [
+        "PaperC.V282.RareConditioningRates.hard_event_rate_min_eventually",
+        "PaperC.V282.RareConditioningRates.soft_event_information_min_eventually"
+      ]
     }
   },
   "qualification": {
@@ -799,26 +856,30 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 10,
+  "development_batch": 11,
   "declaration_inventory": {
-    "mathematical_module_count": 172,
-    "named_declarations": 1379,
-    "theorems": 1165,
-    "definitions": 189,
-    "named_instances": 25,
+    "mathematical_module_count": 193,
+    "named_declarations": 1552,
+    "theorems": 1312,
+    "definitions": 205,
+    "named_instances": 35,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
     "named_instance_declarations": [
       "PaperC.V282.AllStartFieldCosts.instDecidableProposition",
       "PaperC.V282.AllStartFieldTransfer.instDecidableProposition",
+      "PaperC.V282.DyadicPoissonDistance.instMeasurableSpaceF2Discrete",
       "PaperC.V282.FiniteFieldTotalVariation.instDecidableProposition",
+      "PaperC.V282.FreeCutoffSoftRates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.HardPoissonRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteConditionalWords.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteCountMoments.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteFieldTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteFieldTransfer.instDecidableProposition",
       "PaperC.V282.InfiniteMaskedScalarTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteMaskedScalarTransfer.instDecidableProposition",
+      "PaperC.V282.InfiniteSoftTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteWordFirstMoment.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteWordFirstMoment.instIsProbabilityMeasureInfiniteRademacher",
       "PaperC.V282.InfiniteWordTransfer.instMeasurableSpaceF2Discrete",
@@ -831,8 +892,14 @@
       "PaperC.V282.MaskedScalarFullConditioning.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MaskedScalarFullConditioning.instDecidableProposition",
       "PaperC.V282.PointwiseStartBounds.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.PrimeFieldEventConditioning.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.RareConditioningRates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.RareConditioningRates.instIsProbabilityMeasureInfiniteRademacher",
+      "PaperC.V282.RestrictedPoissonTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.ScalarPoissonBounds.instDecidableProposition",
       "PaperC.V282.ScalarSteinInput.instDecidableProposition",
+      "PaperC.V282.SoftArithmeticCosts.instDecidableProposition",
+      "PaperC.V282.SoftRateAssembly.instMeasurableSpaceF2Discrete",
       "PaperC.V282.SteinTestTotalVariation.instDecidableProposition",
       "PaperC.V282.WordDefectCounting.instDecidableHDefective"
     ],
@@ -1676,6 +1743,113 @@
         "definitions": 0,
         "named_instances": 1
       }
+    },
+    "batch_11_additions": {
+      "DyadicPoissonDistance": {
+        "theorems": 9,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "FreeCutoffAdmissibility": {
+        "theorems": 1,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "FreeCutoffSoftRates": {
+        "theorems": 3,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "FullBandArithmetic": {
+        "theorems": 8,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "HardPoissonBounds": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "HardPoissonRates": {
+        "theorems": 2,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "InfiniteSoftTransfer": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "PoissonIntensityBounds": {
+        "theorems": 19,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PoissonRateConvergence": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PrimeFieldEventConditioning": {
+        "theorems": 11,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "RareConditioningRates": {
+        "theorems": 14,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "RestrictedPoissonTransfer": {
+        "theorems": 7,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "SaddleArithmeticBounds": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SaddleCutoffAdmissibility": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SaddlePoissonScales": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SaddleRateConvergence": {
+        "theorems": 9,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SoftArithmeticCosts": {
+        "theorems": 14,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "SoftArithmeticTransfer": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SoftPoissonRates": {
+        "theorems": 13,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "SoftRateAssembly": {
+        "theorems": 5,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "SoftRateLedger": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      }
     }
   },
   "manuscript_notes": {
@@ -1683,21 +1857,21 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "The previous relation profiles and moments are retained. Batch10 adds masked scalar/field Poisson transfer, complete free-cutoff and saddle analysis under explicit literature premises, and companion B.2. S008 records the stronger mask-local deletion term. Source PDFs remain unchanged.",
+    "formalization_context": "Batch11 completes Theorem4.3, free-cutoff4.10 and their true-law convergence regimes under the existing Stein/PNT premises. It proves scalar FY-event restriction and rare-information convergence. S009 records the verified same-cutoff soft simplification for all intensities. PDFs remain unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
-      "suggestions": 8
+      "suggestions": 9
     }
   },
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 65,
+    "effort_estimate_percent": 68,
     "conservative_interval_percent": [
       60,
       75
     ],
-    "completed_article_results": 27,
+    "completed_article_results": 28,
     "numbered_article_results_excluding_intro_duplicates": 61,
     "companion_completed_named_results": 3,
     "companion_named_results": 8,
