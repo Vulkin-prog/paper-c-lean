@@ -6,21 +6,30 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The ninth development batch closes the actual eighth sector and assembles
-Theorem 3.1 and Propositions 3.25–3.27: raw, coarse and capped start/full
-relation profiles on the macroscopic, dyadic and bounded-ratio domains.
-It also completes Corollary 2.5, Lemma 2.8 and Corollary 4.4, including the
-actual infinite-model mean, second factorial moment and variance. The
-macroscopic dictionary first moment extends Corollary 2.6 uniformly before
-the position mask and the dictionary.
+The tenth development batch proves the actual masked scalar and joint-field
+Poisson transfers of Theorem 4.1, including the infinite source law and
+all small-prime conditioning cutoffs. It establishes the companion's soft
+retention lemma with both intensity factors and actual exceptional-neighbour
+probabilities. It also closes the free-cutoff Rankin/PNT estimates and the
+two implicit saddle expansions in Proposition 4.2 and companion B.1.
 
-The complete paper and companion remain a larger project. In particular,
-the sharp two-saddle analysis, intensity-sensitive Stein transfer, growing
-marked/dictionary fields, conditional paths and microscopic crossover are
-not claimed complete. Some auxiliary arithmetic refinements also remain:
-the precise Pell/split-product exp(log/loglog) rate, the sharpened size-two
-Euler rate, and the aligned-core proposition for every positive density.
-The proved uniform M^epsilon consequences suffice for the profiles above.
+Three explicit literature premises are recorded in
+[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md): positive-rate scalar Stein
+solution bounds, the finite process AGG theorem, and the ordinary prime
+number theorem remainder. They are theorem arguments, not new Lean axioms.
+The arithmetic, telescoping, coupling, averaging, exponential-integral and
+saddle deductions have internal proofs. An axiom audit does not prove the
+external hypotheses.
+
+Earlier batches retain the complete raw, coarse and capped relation
+profiles, the actual terminal-sector proof, pointwise and dictionary first
+moments, touching pairs, and the infinite-model moment bounds of Corollary
+4.4. The whole paper and companion remain a larger project. Remaining work
+includes the optimized hard/soft rates of Theorem 4.3, later dictionaries,
+marked fields, growing levels, conditioning paths and microscopic crossover.
+The sharper Pell/split-product rate, size-two Euler refinement and the
+aligned-core proposition at every positive density also remain distinct
+from their already proved consequences.
 
 ## Sources, toolchain and verification
 
@@ -35,7 +44,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 115 mathematical modules contain **830 named declarations: 707 theorems, 111 definitions and 12 named local instances**. Batch 9 adds 182 theorems in 26 new modules.
+The 172 mathematical modules contain **1379 named declarations: 1165 theorems, 189 definitions and 25 named local instances**. Batch 10 adds 458 theorems in 57 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -128,7 +137,7 @@ no canonical selection of these subspaces is presumed.
 
 The [endpoint ledger](ENDPOINTS.md) gives the declarations and hypotheses.
 The [V3 revision log](../docs/PAPER_V3_REVISION_LOG.md) records **one confirmed
-wording correction and seven suggestions**, including the small-product
+wording correction and eight suggestions**, including the small-product
 simplification and the distinction between quantitative rates. No error is
 attributed to the companion without evidence. V3 manuscript sources can be
 incorporated when supplied and frozen by the author.
@@ -142,13 +151,13 @@ Palomar submission requires its own frozen statements and evidence.
 A separate coverage assessment tracks numbered manuscript statements and a
 weighted estimate of the remaining effort. The count of Lean declarations
 is an audit inventory, not a percentage of the complete paper. The current
-estimate is about 60% of the total formalization effort, with a conservative
-50–65% range; later probabilistic and companion results account for much of
-the remaining work. Strict statement coverage is 25/61 numbered article
-results. See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)
+estimate is about 65% of the total formalization effort, with a conservative
+60–75% range; later probabilistic and companion results account for much of
+the remaining work. Strict statement coverage is 27/61 numbered article
+results, and 3/8 companion results (these fractions must not be added). See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)
 and the endpoint ledger for the exact definitions and proved scope.
 
-The V3 revision log contains one confirmed wording correction and seven
+The V3 revision log contains one confirmed wording correction and eight
 suggestions. S007 records the verified two-branch simplification of the
-terminal summation. The supplied PDFs and historical Palomar boundary remain
+terminal summation; S008 records the mask-local deletion budget of 4.1. The supplied PDFs and historical Palomar boundary remain
 unchanged.

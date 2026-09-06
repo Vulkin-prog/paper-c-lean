@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 115 mathematical modules contain **830 named declarations: 707 theorems, 111 definitions and 12 named local instances**. Batch 9 adds 182 theorems in 26 new modules.
+The 172 mathematical modules contain **1379 named declarations: 1165 theorems, 189 definitions and 25 named local instances**. Batch 10 adds 458 theorems in 57 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -684,7 +684,7 @@ moment is inferred from total variation convergence.
 
 ## Dependencies, audit and historical boundary
 
-`PaperCV282/Audit.lean` covers all 830 named declarations in the 115 mathematical modules, including all 12 named local instances. Batch 9 adds 182 theorems and 29 definitions/instances; the complete per-module counts are in the source manifest.
+`PaperCV282/Audit.lean` covers all 1,379 named declarations in the 172 mathematical modules, including all 25 named local instances. Batch 10 adds 458 theorems and 91 definitions/instances; the complete per-module counts are in the source manifest.
 
 The source inventory and kernel-axiom transcript are checked separately by
 `scripts/check_v282_audit.py`. Failure-path tests exercise missing entries,
@@ -697,3 +697,176 @@ The original PDF hashes and Lean/mathlib versions are listed in
 core, earlier `PaperCV11` overlay and prior Palomar records keep their
 original identities and scope. No new Palomar or Comparator qualification,
 or certification of the complete v2.8.2 PDFs, is claimed by this ledger.
+
+## Batch 10: scalar and field Poisson transfer, soft retention and cutoff analysis
+
+The literature boundary of this batch is explicit in
+[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md). `ScalarSteinFactorsStatement`
+asserts only the positive-rate Stein solutions and their two norm bounds.
+`ProcessAGGStatement` is the published finite process theorem, distinct
+from the historical coarse scalar interface. `PrimeNumberTheoremRemainder`
+asserts the ordinary prime-counting remainder relative to `Ei(log t)`.
+They are theorem arguments, not new Lean axioms. The deductions described
+below do not constitute proofs of those three external propositions.
+
+### Genuine masked scalar transfer (article 4.1)
+
+For `p=2^(-L)`, `G=A\D_Y`, `mu=|G|p`, the proved bound is
+
+```text
+p*(M_B(A) + 2*|A intersect D_Y|)
+ + 2*min(1,1/mu)*p^2*(|A| + E_Y(A) + R2(A)),
+```
+
+with the factor interpreted as one at zero. `M_B(A)` retains the actual
+mask's complete-vertex defect mass. `D_Y` includes the root `x-1`.
+`E_Y(A)` counts the ordered support edges of the whole mask, and `R2(A)`
+uses the genuine separated-pair nullity. The resulting stronger local
+budget implies the full-block presentation in the article. No replacement
+of `mu` by the ambient mean is made.
+
+| Declaration | Established result |
+|---|---|
+| `MaskedArithmeticGeometry.fullBadStarts` | The whole-support deletion rule, including `x-1`. |
+| `GoodTouchingProbability` | Exact `p^2` for touching good starts under the common cutoff. |
+| `MaskedArithmeticCosts.average_stein_terms_le_twice` | Actual `b1` and mean `b2` controlled by the mask's cardinality, edges and full relation mass. |
+| `MaskedScalarTransfer.theorem_four_one_scalar_conditional` | Mean half-L1 distance of the complete conditional count to `Pois(|A|p)`. |
+| `MaskedScalarTransfer.theorem_four_one_scalar` | The same bound after unconditional mixing. |
+| `InfiniteMaskedScalarTransfer.theorem_four_one_scalar_infinite` | The law of the actual masked count under the infinite Rademacher model. |
+| `MaskedScalarFullConditioning.theorem_four_one_scalar_full_FY` | Actual conditional source-atom ratios and equality of the represented sigma-algebra with all primes at most `Y`, for every admissible `Y`. |
+
+The final atom cylinder is `max(Y,dyadicCutoff N L)`. Thus no small-prime
+coordinate is silently missing when `Y` exceeds the event cylinder. In
+that case every masked site is bad, and a direct whole-count deletion
+proves the bound. The atoms have exactly uniform positive source mass.
+The finite conditions `N>=2`, `L>0`, `2L<=Y` include the manuscript's
+`Y>2(L+1)` range without restricting the ambient intensity or mask size.
+
+### Soft retention (companion B.2)
+
+`SteinLocalTelescoping.local_stein_error_le` proves the outside-neighbourhood
+factorization and each good-site telescoping estimate. The exceptional
+sum is bounded by the zeroth Stein factor. `SteinTestTotalVariation`
+identifies the supremum over test sets with the exact half-L1 metric.
+Zero target rate has its own explicit Stein solution proved internally.
+
+`ScalarPoissonBounds.lemma_b_two_finite` and
+`SoftConditionalPoisson.lemma_b_two_average` prove (B.4) for finite laws and
+finite conditioning environments. `SoftMeasureAverage.lemma_b_two_integral`
+extends the averaging to any probability environment with measurable
+finite conditional joint laws. It proves total-variation measurability
+and integrability before integrating; dependency and good-marginal
+conditions are required only almost everywhere. The representation takes
+these conditional joint laws as input; it does not automatically build a
+conditional-expectation object or kernel from an arbitrary presentation.
+
+`AllStartSoftPoisson.average_full_count_soft_poisson_le` instantiates the
+lemma on the actual conditional family of all dyadic sites.
+`SoftGraphDegree.actual_neighbour_marginal_sum_le_defects` controls the
+neighbour term through the true all-site degree and first moment. Bad
+neighbours keep their actual marginal and joint probabilities throughout.
+This establishes the soft lemma and its finite model application, while
+the optimized full-band rates in Theorem 4.3 remain a separate assembly.
+
+### Actual exponential integral and implicit saddles
+
+The eight `Saddle*` / `ExponentialIntegral*` modules define the upper branch
+`u>=1` of `exp(u)/u=nu`, the standard normalized exponential integral and
+`D(nu)=nu*u(nu)-Ei(u(nu))`. Existence and uniqueness of the positive
+solutions `V_a=a D(H/V_a)` within the upper-branch domain `H/V_a>=exp(1)` are proved for every fixed `a>0` and all
+sufficiently large `H`. No asymptotic formula for `Ei` or saddle existence
+is an external premise.
+
+`SaddleExpansion.saddle_cutoff_second_order` proves
+
+```text
+V_a(H)^2/H - (a/2)*(log H + log log H - log(2a) - 2) -> 0.
+```
+
+The cases `a=1` and `a=2` are exactly (4.6)–(4.7).
+`SaddleScales.tendsto_soft_div_hard_saddle` proves the ratio `sqrt(2)`;
+`tendsto_log_div_saddleNu` proves `log H=o(H/V_a)`.
+The corollaries on `H=log N` use the actual natural-to-real logarithmic
+scale. The parameter `a` is fixed before the limit, as required for the
+two manuscript saddles.
+
+### Rankin, PNT and a genuinely free cutoff (article 4.2 / companion B.1)
+
+`DefectiveRankinCount` counts the actual positive defective integers by
+their canonical square/squarefree-smooth factorization. `PrimeEulerRankin`
+identifies the finite Euler product and bounds its logarithmic correction.
+`PrimeEulerAbel` proves the exact identity with the actual prime-counting
+step function. `PrimeEulerPNT` introduces only the source-shaped PNT
+remainder and proves its weighted integral estimate, retaining both
+endpoints. `PrimeEulerLowerSplit` controls `Ei` near zero, including the
+logarithmic lower endpoint that moves with the Rankin exponent.
+
+`PrimeEulerUniform` deduces the normalized error of the genuine weighted
+prime sum and of the genuine log Euler product. `PrimeEulerFreeScales`
+proves the required scalar hypotheses uniformly on a broad power band.
+Consequently `PrimeEulerFreeCutoff.euler_errors_sqrt_log_band_of_pnt`
+chooses a threshold before every `w` in each fixed positive band
+`c*sqrt(H log H) <= w <= C*sqrt(H log H)`. The cutoff is exactly
+`floor(exp w)`; no floor error is omitted.
+
+`BadStartRankinFreeCutoff.normalized_fullBadMask_free_cutoff_le_eventually`
+then proves
+
+```text
+|A intersect D_floor(exp w)|/N <= exp(-D(log N/w) + epsilon*(log N/w)),
+```
+
+with one threshold before `w`, `L` and the deterministic mask, on every
+fixed logarithmic upper band for `L+1`. The full-block case is included.
+The analogous `normalized_defectiveValues_free_cutoff_le_eventually`
+is the actual integer count in B.1. Separate saddle-specialized endpoints
+are retained for later probability-rate assembly.
+
+The graph bounds use the literal all-site graph, including defective
+starts. `CutoffGraphCompatibility` identifies its open and closed degrees
+with the arithmetic neighbour sets; the closed degree adds exactly one.
+The finite bound is proved without PNT and is uniform before the mask.
+
+
+### Joint field on the same site lattice (article 4.1)
+
+`FiniteFieldTotalVariation` works on the actual natural-valued finite-site
+vector space. Finite pushforwards and product-Poisson masses have proved
+mass one; no finite instance is imposed on the infinite vector state space.
+`FiniteFieldPoissonCoupling` proves rate perturbation by the sum of absolute
+rate differences and both actual-site and target-site deletions with
+coefficient one.
+
+`AllStartFieldCosts.bOne_fullGood_allStart_eq` and
+`bTwo_fullGood_allStart_eq` identify the costs on the all-site carrier with
+the previously bounded retained carrier. This is an exact transport of
+indicators that are zero outside the retained mask, not an assumed
+arithmetic budget. `AllStartFieldTransfer.average_allStart_field_le_arithmetic`
+then bounds the complete conditional field by
+
+```text
+p*(M_B(A) + 2*|A intersect D_Y|)
+ + 2*p^2*(|A| + 2*E_Y(A) + R2(A)).
+```
+
+This is the joint-field form of (4.3), with an absolute constant and no
+intensity factor. Its target has rate `p` on the mask and zero elsewhere
+on the same finite dyadic lattice.
+`InfiniteFieldTransfer.theorem_four_one_field_full_FY` proves the bound
+for true source-atom conditional vector laws and identifies the entire
+`F_Y`, using the adequate cylinder `max(Y,dyadicCutoff)`. The large-cutoff
+case uses actual whole-field deletion. Every conditional ratio is a
+normalized law. `theorem_four_one_field_unconditional` gives the same
+budget for the actual infinite vector law after mixing.
+
+### All-site degree and edge closure (article 4.2)
+
+`CutoffGraphFreeCutoff.normalized_degree_and_edges_free_cutoff_le_eventually`
+proves, without PNT, both the actual maximum-degree bound after division
+by `N` and the ordered masked-edge bound after division by `N^2`, with a
+threshold before all cutoffs in the free square-root band, all admissible
+lengths and all dyadic masks. The resulting bound is
+`exp(-w + epsilon*(log N/w))`. In that band `w<=log N` eventually, so the
+finite `1/N` contribution is absorbed into this larger envelope. This
+implies the degree and edge presentation of (4.5) and completes the
+cutoff conclusions together with the Rankin and saddle results above.

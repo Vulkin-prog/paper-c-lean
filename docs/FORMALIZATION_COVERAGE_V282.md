@@ -1,54 +1,87 @@
-# Couverture du papier C v2.8.2 et du compagnon — après le lot 9
+# Couverture indépendante du papier C v2.8.2 et du compagnon — lot 10
 
-**Environ 60 % du travail total de formalisation est acquis ; une fourchette prudente est 50–65 %. Il reste donc environ 35–50 % de l’effort.** Cette estimation porte sur l’ensemble de l’article et du compagnon, avec les modèles, les preuves réutilisables et les raccords nécessaires. Elle ne mesure ni la proportion de lignes Lean ni le temps déjà passé.
+**Environ 65 % de l’effort total de formalisation est acquis ; une fourchette prudente est 60–75 %. Il reste donc environ 25–40 % de l’effort.** Le périmètre est l’article entier et son compagnon, avec leurs modèles, leurs preuves et leurs raccords. Cette estimation conserve exactement les **19 blocs et 105 unités relatives** du lot 9. Elle ne résulte ni du nombre de théorèmes Lean, ni des lignes écrites, ni des heures écoulées.
 
-Le comptage strict des énoncés donne **25 résultats complets sur 61 dans l’article, soit 41,0 %**, contre 16/61 après le lot 8. Neuf résultats supplémentaires reçoivent le crédit complet : 2.5, 2.8, 3.1, 3.22, 3.23, 3.25, 3.26, 3.27 et 4.4. Le compagnon conserve 1/8 énoncé nommé complet ; ses preuves intermédiaires sont souvent partiellement réutilisables. Les deux fractions ne s’additionnent pas : plusieurs énoncés du compagnon développent les mêmes résultats que l’article.
+Le comptage strict passe de **25 à 27 énoncés complets sur 61 dans l’article, soit 44,3 %** : 4.1 et 4.2 s’ajoutent aux résultats déjà acquis. Le compagnon passe de **1 à 3 énoncés nommés complets sur 8**, grâce à B.1 et B.2. B.1 développe 4.2 ; ces deux crédits ne représentent pas deux travaux indépendants et leurs pourcentages ne s’additionnent pas.
 
-Le présent bilan conserve la méthode et les 105 unités d’effort relatif du bilan initial du lot 9. Il évalue les sources finales compilées et leurs signatures. Le contrôle final communiqué par la tâche principale a réussi : construction globale, audit des 830 déclarations, huit tests du garde-fou et empreinte du cœur historique inchangée. La référence de publication reste dans le rapport de validation séparé. Il ne s’agit pas d’une nouvelle qualification Palomar.
+« Complet » conserve ici la convention du bilan précédent : les conclusions sont formalisées relativement aux entrées de littérature explicitement énoncées et à leurs représentations documentées. Le lot 10 ne démontre pas intérieurement le théorème des nombres premiers, l’existence classique des solutions de Stein avec leurs facteurs, ou le théorème AGG de processus. Ces trois frontières sont décrites plus bas.
 
-## Ce que le lot 9 termine
+Le bilan compare les preuves à la base publiée du lot 9, **24ea13304f5919ae2c1fa202cd9e2685727f2193**. La compilation globale a réussi (4 360 étapes), ainsi que l’audit exhaustif des 1 379 déclarations et les huit tests du garde d’audit. Le commit publié et les contrôles distants sont consignés dans le rapport de validation séparé. Ce bilan n’annonce aucune nouvelle qualification Palomar.
 
-La chaîne arithmétique nécessaire aux profils globaux est maintenant fermée. Le secteur terminal est traité sur les tranches du **plus grand départ**, sans imposer que les deux départs soient comparables. Les noyaux et déterminants effectifs donnent les partenaires et le conteneur ; la somme des tranches conserve le terme M^(3/4)Q_B^(2/3) du texte. Les profils brut, interpolé et plafonné sont disponibles pour les relations relatives et pour toutes les relations de valeurs. Ils s’appliquent au véritable intervalle [⌈M^δ⌉,M), aux blocs dyadiques et aux intervalles à rapport borné.
+## Conclusions du lot 10
 
-Les seuils sont choisis avant les longueurs variables, les masques, les coupures adéquates et les plafonds. Les extensions à rapport borné utilisent un κ naturel fixé ; tout rapport réel fixé est couvert en le majorant par un entier. Les sommes portent sur des paires ordonnées, et Q_B reste exactement 2^(L+1).
+| Résultat | Page | Statut strict | Portée maintenant acquise |
+|---|---:|---|---|
+| Théorème 4.1 | Article 27–28 | Complet, avec entrées explicites | Transfert masqué scalaire et vectoriel, vraie source infinie, moyenne conditionnelle sur F_Y pour tous Y admissibles, puis loi inconditionnelle par mélange. |
+| Proposition 4.2 | Article 28–29 | Complet, sous PNT pour la suppression | Vraie coupure libre, mauvais départs, arêtes et degré de tous les sites, deux selles uniques et constantes de second ordre. |
+| Proposition B.1 | Compagnon 7–8 | Complet, sous PNT | Calcul de Rankin et sommes d’Euler uniformes avant la coupure libre, puis toutes les conclusions de 4.2. |
+| Lemme B.2 | Compagnon 8 | Complet, avec facteurs de Stein explicites | Rétention des indicateurs exceptionnels, deux facteurs d’intensité, cas zéro et moyenne dans un environnement probabilisé arbitraire représenté par ses lois conditionnelles finies mesurables. |
+| Théorème 4.3 | Article 29–30 | Partiel | Les briques du transfert dur/doux sont acquises ; les taux optimisés (4.8)–(4.10) et leurs cas d’intensité restent à assembler. |
 
-Le corollaire 2.5 dispose maintenant de ses deux bornes ponctuelles pour tout second membre affine et de ses vraies espérances masquées dans toute la bande logarithmique. Le lemme 2.8 couvre les recouvrements impossibles et les paires touchantes. Le corollaire 4.4 donne l’espérance, le **second moment factoriel** et la variance du vrai compteur infini, aux taux critiques annoncés. Ces moments sont prouvés directement ; aucune convergence de moments non bornés n’est déduite de la seule distance en variation totale.
+Pour **4.1**, le masque reste le masque demandé. Le coût de suppression porte sur sa propre masse de défauts et sur ses mauvais départs effectifs, racine x−1 comprise. Avec p=2^−L, le terme prouvé est p(M_B(A)+2|D_Y(A)|). Le facteur scalaire dépend de la moyenne retenue µ_A=|A∩G_Y|p ; une intensité ambiante ne lui est pas substituée. Le champ vectoriel garde sa cible produit de Poisson indépendante, avec le facteur de processus adapté.
 
-Le corollaire 2.6 était déjà couvert dans le lot précédent par le modèle infini, les atomes positifs de F_Y et les sommes de mots. Le lot 9 ajoute les dictionnaires et la somme des erreurs absolues sur les masques macroscopiques, avec le facteur exact |W|/2^B et un seuil indépendant du dictionnaire. Un `Finset` représente des mots distincts.
+Le conditionnement utilise le cylindre max(coupure des événements,Y). Les atomes ont une masse strictement positive, sont équiprobables et leur partition engendre exactement F_Y. Le cas Y supérieur à la coupure des événements est traité par la suppression complète ; il ne crée donc pas de restriction cachée Y≤coupure. Les identités de cylindre puis de mélange portent sur les vraies lois du compteur et du vecteur de la source infinie. Les masses conditionnelles du champ somment bien à un.
 
-## Méthode de comptage
+Les endpoints principaux sont `MaskedScalarFullConditioning.theorem_four_one_scalar_full_FY`, `InfiniteMaskedScalarTransfer.theorem_four_one_scalar_infinite`, `InfiniteFieldTransfer.theorem_four_one_field_full_FY` et `InfiniteFieldTransfer.theorem_four_one_field_unconditional`.
 
-Les 61 énoncés sont les Lemma/Theorem/Proposition/Corollary numérotés des §§2–7 de l’article. Les théorèmes introductifs 1.1–1.3 sont des reformulations et ne sont pas comptés deux fois. Définitions, preuves intermédiaires, remarques et questions futures du §8 ne créent pas de nouvelles lignes ; leur travail nécessaire est inclus dans les blocs d’effort. Les pages ci-dessous sont celles du PDF fourni.
+Pour **4.2/B.1**, fixer c,C,β et ε précède le seuil N₀, puis viennent N, la coupure libre w, la longueur L et le masque. Toute la bande c√(log N·log log N)≤w≤C√(log N·log log N) est couverte. Les deux erreurs signées de la somme sur les premiers et du logarithme du produit d’Euler sont ≤ε(log N/w). Elles sont déduites de la sommation d’Abel et du PNT ordinaire, sans supposer leur propre terme principal pondéré.
 
-« Complet » signifie que toutes les conclusions mathématiques de l’énoncé sont couvertes par les représentations explicites compilées ou une spécialisation historique vérifiée. Les formulations équivalentes à exposant ε ou à puissance entière de o(1) sont acceptées. « Partiel » conserve un taux plus fort, une branche ou une généralité manquante. « Réemploi non raccordé » désigne des preuves pertinentes qui ne donnent pas encore ensemble l’énoncé actuel. « À établir / non identifié » n’exclut pas l’existence de briques utiles dans mathlib.
+`BadStartRankinFreeCutoff.normalized_fullBadMask_free_cutoff_le_eventually` donne exp(−D(log N/w)+ε log N/w) pour les vrais mauvais départs. `CutoffGraphFreeCutoff.normalized_degree_and_edges_free_cutoff_le_eventually` donne exp(−w+ε log N/w) pour le degré divisé par N et les arêtes ordonnées divisées par N², y compris les sites mauvais. Cette dernière estimation est sans prémisse PNT et absorbe, sur la bande considérée, le terme supplémentaire N^−1+o(1) du texte. Les développements des selles, leur rapport √2 et log log N=o(ν_N) sont des théorèmes internes séparés. Trois équivalents auxiliaires affichés au cours de la preuve de B.1 ne sont pas isolés comme endpoints ; cela ne laisse aucune conclusion de la proposition en prémisse.
 
-| Partie | Énoncés | Complets | Partiels | Réemploi non raccordé | À établir / non identifiés |
+## Relecture indépendante de la chaîne Stein
+
+La lecture ciblée des onze modules demandés n’a révélé **aucun défaut matériel**. L’indépendance utilisée porte sur le motif complet des indicateurs hors voisinage ; une indépendance seulement deux à deux ne lui est pas substituée. Les marginales variables et les zéros hors masque sont conservés. La normalisation de la variation totale est la moitié de la somme des différences absolues, et son passage aux ensembles tests est prouvé.
+
+Dans B.2, les voisins exceptionnels gardent leurs vraies marginales, puis leur moyenne est prise. La partie bonne utilise le facteur min(1,1/λ), la partie exceptionnelle min(1,1/√λ), avec la convention un à λ=0. Ce cas zéro est prouvé séparément. L’inégalité locale, le télescopage, la sommation, le passage à la variation totale et l’intégration sont internes : aucun endpoint arithmétique à démontrer n’est posé comme hypothèse.
+
+`SoftMeasureAverage.lemma_b_two_integral` travaille sur un environnement probabilisé arbitraire. Ses lois conditionnelles jointes sont des PMF sur un espace fini, dépendant mesurablement de l’environnement ; graphe exact et marginales bonnes ne sont requis que presque partout. La mesurabilité et l’intégrabilité de la distance sont démontrées. Il ne construit pas automatiquement un noyau conditionnel régulier à partir de tout espace probabilisé initial ; cette limite de représentation n’est pas un manque de l’inégalité B.4 dans le modèle fourni.
+
+Une précision de portée subsiste pour `SoftConditionalPoisson.weighted_environment_restriction_le` : son dénominateur positif générique n’est pas automatiquement identifié à la probabilité de l’événement d’environnement. L’inégalité est valide ; elle ne doit pas être présentée seule comme un théorème complet de conditionnement sur événement. Aucun crédit supplémentaire n’est attribué pour cette raison au §6.
+
+La suggestion V3-S008 de localiser le budget de suppression au masque est confirmée. C’est un renforcement pour les masques clairsemés, et non une erreur du budget global imprimé. Les PDF v2.8.2 restent les seules sources du présent bilan.
+
+## Les trois entrées de littérature
+
+| Entrée explicite | Ce qu’elle fournit | Ce qui est prouvé à partir d’elle |
+|---|---|---|
+| `PrimeEulerPNT.PrimeNumberTheoremRemainder` | Pour tout η>0, l’erreur absolue π(⌊t⌋)−Ei(log t) est ≤ηt/log t à partir d’un seuil. | Sommes pondérées et produits d’Euler, coupure libre et mauvais départs réels. Les graphes, les selles et leurs développements sont internes. |
+| `ScalarSteinInput.ScalarSteinFactorsStatement` | Solutions de l’équation de Stein pour toute intensité positive et tout ensemble test, avec bornes classiques de norme et de différence. | Cas zéro, télescopage, transfert scalaire masqué, rétention douce et moyenne mesurable B.4. |
+| `ProcessAGGInput.ProcessAGGStatement` | Comparaison AGG de processus avec le produit de lois de Poisson, distincte du résultat scalaire. | Coûts arithmétiques, suppression, déplacement de cible et véritable champ infini conditionnel/inconditionnel. |
+
+Ces entrées ne sont ni cachées dans un import ni annoncées comme démontrées intérieurement. Le pourcentage adopte la même frontière de littérature que les bilans précédents. Exiger aussi la formalisation intégrale de toutes les preuves externes changerait l’objectif et son dénominateur ; ce bilan ne donne pas de pourcentage pour cet objectif élargi.
+
+## Comptage strict des énoncés
+
+Le dénominateur de l’article reste ses **61 énoncés numérotés des §§2–7**. Les reformulations introductives 1.1–1.3 ne sont pas comptées une seconde fois. Définitions, preuves non numérotées, discussions et développements du compagnon sont pris en compte dans l’effort nécessaire, sans créer artificiellement des énoncés supplémentaires.
+
+| Partie | Énoncés | Complets | Partiels | Réemploi non raccordé | À établir / non identifié |
 |---|---:|---:|---:|---:|---:|
 | §2 | 8 | 5 | 1 | 2 | 0 |
 | §3 | 25 | 19 | 6 | 0 | 0 |
-| §4 | 4 | 1 | 3 | 0 | 0 |
+| §4 | 4 | 3 | 1 | 0 | 0 |
 | §5 | 10 | 0 | 1 | 4 | 5 |
 | §6 | 4 | 0 | 0 | 0 | 4 |
 | §7 | 10 | 0 | 5 | 1 | 4 |
+| Compagnon | 8 | 3 | 4 | 0 | 1 |
 
-Le nombre de théorèmes Lean n’intervient pas dans ce calcul. Un résultat du papier peut demander des dizaines de lemmes ; une seule preuve historique peut servir plusieurs chapitres. Le cœur arithmétique est beaucoup plus avancé que les lois probabilistes de la seconde moitié du texte.
+Le JSON associé conserve les **69 lignes documentaires**, avec pages, statut, preuves précises et reste. Elles ne constituent pas 69 résultats indépendants : A.1, A.2 et B.1 recouvrent directement 2.3, 3.13 et 4.2. Hors 4.1, 4.2, B.1 et B.2, aucun résultat précédemment partiel ou non raccordé ne reçoit de crédit complet par simple transitivité supposée des nouveaux outils.
 
-## Estimation de l’effort sur l’ensemble des deux textes
+## Effort total : dénominateur inchangé
 
-Les 19 blocs conservent exactement leurs poids antérieurs, pour un total de **105 unités relatives**. Seuls les crédits justifiés par les résultats du lot 9 changent. Le calcul donne 56,25–68,42 unités acquises, soit environ **54–65 %** ; la présentation 50–65 % arrondit volontairement la borne basse vers l’extérieur. Le point central « environ 60 % » aide à situer l’avancement et n’est pas une mesure objective. La fourchette précédente était 45–60 %. Une grande partie des briques terminales était déjà créditée avant leur assemblage ; leur fermeture ne doit donc pas être comptée une seconde fois.
+Seuls les blocs « deux coupures » et « transfert TV » reçoivent du crédit nouveau. L’estimation passe de **56,25–68,42 à 63,60–74,37 unités acquises sur 105**, soit environ **61–71 %** selon le calcul interne. La présentation **60–75 %**, avec un repère central à 65 %, arrondit vers l’extérieur. Il s’agit d’un jugement sur la difficulté du travail restant, et non d’une mesure statistique. Les nouveaux raccords et les bibliothèques génériques réduisent déjà le reste ; ils ne sont pas crédités à nouveau dans chaque chapitre futur.
 
-| Bloc mathématique | Poids | Acquis après lot 8 | Acquis après lot 9 |
+| Bloc mathématique | Poids | Acquis après lot 9 | Acquis après lot 10 |
 |---|---:|---:|---:|
-| Modèle, Fourier, arbres et pivots | 6 | 85–95 % | 90–98 % |
-| Runge croissant et défauts | 8 | 90–100 % | 95–100 % |
-| Probabilités ponctuelles et moments à une fenêtre | 4 | 65–85 % | 100 % |
+| Modèle, Fourier, arbres et pivots | 6 | 90–98 % | 90–98 % |
+| Runge croissant et défauts | 8 | 95–100 % | 95–100 % |
+| Probabilités ponctuelles et moments à une fenêtre | 4 | 100 % | 100 % |
 | Canal canonique, résolution, quotient et cellules | 6 | 90–100 % | 90–100 % |
 | Hôtes globaux, masse rationnelle et CRT | 5 | 85–95 % | 85–95 % |
 | Secteurs 1–7 et hôtes de composantes | 8 | 90–98 % | 90–98 % |
 | Pell et split-products, y compris taux précis | 4 | 55–75 % | 55–75 % |
-| Secteur terminal, énergie, profils globaux et minorants | 8 | 35–55 % | 95–100 % |
-| Deux coupures et calcul uniforme des selles | 7 | 20–40 % | 20–40 % |
-| Transfert TV, rétention douce et moments | 7 | 30–50 % | 50–65 % |
+| Secteur terminal, énergie, profils globaux et minorants | 8 | 95–100 % | 95–100 % |
+| Deux coupures et calcul uniforme des selles | 7 | 20–40 % | 95–100 % |
+| Transfert TV, rétention douce et moments | 7 | 50–65 % | 80–90 % |
 | Dictionnaires, recouvrements et constructions | 5 | 10–20 % | 10–20 % |
 | Marques, signes, comparaison agrégée et clusters | 7 | 35–50 % | 35–50 % |
 | Niveaux croissants et limite Poisson–Gauss | 5 | 10–20 % | 10–20 % |
@@ -59,125 +92,25 @@ Les 19 blocs conservent exactement leurs poids antérieurs, pour un total de **1
 | Transport macroscopique et noyau signé relatif | 3 | 20–40 % | 20–40 % |
 | Mélange des deux sources et horloges affines | 5 | 5–15 % | 5–15 % |
 
-Cette estimation suppose des entrées de littérature explicitement transcrites et auditées quand elles sont nécessaires, selon la convention du périmètre historique. Formaliser aussi toutes les démonstrations des résultats externes de la bibliographie serait un objectif plus large et changerait le dénominateur. Une prémisse nouvelle ne peut pas être assimilée à une preuve interne ni être dissimulée dans un import.
+## Reste prioritaire
 
-## Limites qui restent réellement ouvertes
+**4.3 est la prochaine conclusion structurante.** Les erreurs dures et douces doivent encore être assemblées sur toute la bande logarithmique, avec les vraies contributions arithmétiques du masque et les facteurs sensibles à λ. Le cas λ<1 de la branche douce doit conserver le conditionnement à sa propre coupure douce ; un résultat seulement à la coupure dure ne suffirait pas. Il reste aussi le minimum avec un, le domaine non trivial d’intensité croissante et l’absorption rigoureuse des restes polynomiaux au taux N^−1/3+ε. B.2 et les deux selles, même complets séparément, ne remplacent pas cette preuve.
 
-Les profils globaux ne rendent pas complets tous leurs lemmes auxiliaires sous leur forme la plus forte. La proposition 3.19 reste **partielle** : l’exclusion au seuil effectif 6c#>B ferme le secteur 4, mais ne prouve pas l’énoncé pour tout α>0 fixé. Les comptes de Pell et de produits décalés donnent uniformément M^ε, suffisant aux profils ; ils ne donnent pas encore le taux exp(O(log M/log log M)) de 3.13, 3.14 et A.2. Les comptes harmoniques ferment les hôtes principaux de 3.18, avec une enveloppe Euler élémentaire ; le raffinement exp(O(√B/log B)) de 3.17 et de la seconde clause de 3.18 reste à démontrer.
+Viennent ensuite les dictionnaires du §5 : recouvrements dirigés, constructions et dictionnaires croissants, puis marques exactes et signées. Le modèle infini, les lois finies/infinies, les graphes conditionnels, les couplages et les marques historiques sont de vraies briques réutilisables. Ils ne donnent pas encore les pertes uniformes en nombre de marques, la comparaison agrégée de C.1 ni la limite Poisson–Gauss. Les chapitres sur les chemins conditionnels, le presque sûr, la frontière microscopique et le mélange de deux sources conservent leurs obligations propres.
 
-Le conditionnement du corollaire 2.6 est bien acquis : la partition en atomes positifs engendre exactement F_Y. La formulation imprimée « odd prime divisor » doit toutefois se lire avec une **valuation impaire**, comme le précise le contexte de la page précédente et la note de manuscrit. L’API abstraite d’espérance conditionnelle pourrait améliorer la présentation ; son absence ne rouvre pas les conclusions déjà établies sur ces atomes.
+Les limites arithmétiques antérieures ne sont pas effacées : la proposition 3.19 reste partielle pour tout α>0 général ; les taux précis exp(O(log M/log log M)) de 3.13, 3.14 et A.2 dépassent les comptes M^ε actuellement prouvés ; le raffinement exp(O(√B/log B)) de 3.17 et de la seconde clause de 3.18 reste ouvert. Les wrappers de Fourier pour un tuple arbitraire et la dimension cyclomatique générale restent également à raccorder. Leur travail est déjà inclus dans les 105 unités.
 
-## Prochaine priorité : 4.1 et 4.2 / B.1
+## Provenance et validation
 
-**4.1 est le prochain raccord probabiliste structurant.** Le modèle Rademacher infini, les probabilités conditionnelles sur bonnes fenêtres, l’indépendance hors voisinage et les nouveaux profils arithmétiques sont disponibles. Il reste à réunir ces éléments dans le transfert masqué exact, en conservant la moyenne propre du masque µ_A. Le facteur scalaire demandé est min(1,1/µ_A) ; il ne peut pas être remplacé par une intensité ambiante lorsqu’un masque est clairsemé. La comparaison du champ fini emploie, elle, le facteur non lissé. L’interface AGG historique ne fournit que 2(b₁+b₂), ce qui ne suffit pas à déclarer la version actuelle terminée.
-
-Un premier sous-lot utile isolerait le théorème fini conditionnel, le coût exact de suppression des mauvais sites et l’identification des termes b₁/b₂ avec les masses maintenant prouvées. Il faudrait en parallèle établir ou transcrire fidèlement l’entrée de Stein sensible à l’intensité, puis transporter les lois vers le modèle infini. Le compagnon B.2 ajoute une autre obligation : conserver les indicateurs exceptionnels dans l’équation de Stein avec le facteur min(1,1/√λ). Cette rétention douce n’est pas contenue dans l’ancien théorème de suppression.
-
-**4.2 et B.1 forment un chantier analytique parallèle.** `PaperCV11` apporte le produit de Rankin fini et l’équilibre dominant donnant 1/√2. Il reste la somme pondérée sur les nombres premiers avec terme principal PNT, la fonction Ei, l’existence et l’unicité des deux selles implicites, leurs développements de second ordre et les restes uniformes. Le résultat doit conserver une coupure libre avant de spécialiser aux deux selles, ainsi que les erreurs de partie entière et la normalisation du degré maximal sur tous les sites, y compris les mauvais. Un résultat à constante dominante indéterminée ne suffirait pas aux constantes de (4.6)–(4.7).
-
-Ces deux chantiers ouvrent 4.3 puis les dictionnaires et champs marqués. Les anciennes marques exactes et égalités de lois finies/infinies sont directement réutilisables pour 5.6. En revanche, les dictionnaires croissants, les recouvrements, le champ signé, la comparaison agrégée sans perte en nombre de marques et la limite Poisson–Gauss demandent leurs propres raccords. La branche microscopique et le crossover viennent avec les obligations du compagnon E ; l’ancien input LS04 (Corollaire 1, équation (10)) ne remplace pas silencieusement sa borne (2−ε)π(B) de l’équation (14).
-
-## Réemploi probabiliste concret conservé
-
-| Brique vérifiée | Source réutilisable | Portée et limite |
-|---|---|---|
-| Modèle infini et cylindres | `InfiniteRademacher`, `FiniteCylinderCountTransport`, `InfiniteCountMoments` | Modèle, égalités de lois et vraies intégrales ; reconstruction inutile. |
-| Bonnes fibres et graphe | `ConditionalStartProbability`, `ConditionalDependencyGraph` | Marginales exactes et indépendance hors voisinage, utilisables pour 4.1. |
-| Marques exactes | `ExactLengthCountVectorTransfer`, `MarkedConditionalDependencyGraph`, `MarkedSteinChenTerms` | Comptes, graphes et lois finies/infinies ; nouveau contrôle uniforme du champ croissant restant. |
-| Cible Poisson et Laplace | `PoissonVectorMass`, `SectionFourteenClosure`, `CorollaryFourteenEightCounts` | Marques fixes et atomes ; ne constitue pas déjà la comparaison TV signée ou une limite gaussienne. |
-| Ancien Poisson masqué | `MaskedPoissonCanonical` | Loi critique qualitative conditionnelle aux prémisses historiques ; plein domaine et nouveaux taux non automatiques. |
-| Préfixe infini | `CorollaryPrefixLawCanonical` | Couplages de bord et de débordement réutilisables ; taux actuels et bande complète restant. |
-
-## Inventaire de tous les résultats numérotés de l’article
-
-Les noms exacts des preuves et les éléments de provenance sont conservés dans le JSON associé. Les conclusions faibles ou spécialisées sont signalées explicitement dans ce tableau.
-
-| Résultat | Page | Statut | Portée acquise ou travail restant |
-|---|---:|---|---|
-| 2.1 | 7 | Réemploi non raccordé | Identité de Fourier finie vérifiée ; raccord explicite au tuple arbitraire du modèle infini et conséquence en caractères à terminer. |
-| 2.2 | 7 | Réemploi non raccordé | Bijection arbre/frontière et deux fenêtres acquises ; tuple arbitraire et caractère affine à réunir. |
-| 2.3 | 8 | Complet | Borne de Runge complète par spécialisation historique, constante absolue explicite. |
-| 2.4 | 8 | Complet | Bornes dyadiques complètes ; la somme macroscopique (2.4) est maintenant explicite. |
-| 2.5 | 9 | Complet | Deux bornes affines ponctuelles et vraies espérances masquées dyadiques/macroscopiques, dans toute la bande. |
-| 2.6 | 9 | Complet | Trois clauses acquises sur atomes positifs de F_Y ; extension macroscopique des dictionnaires ajoutée. |
-| 2.7 | 9 | Partiel | Cas arbre et inclusion dans l’espace des cycles prouvés ; dimension cyclomatique générale encore en prémisse. |
-| 2.8 | 10 | Complet | Incompatibilité des recouvrements et masse des paires touchantes N^(1+ε), avec analogue macroscopique. |
-| 3.1 | 10 | Complet | Profils brut et interpolé, paires ordonnées et trois géométries ; seuil uniforme avant masque et coupure. |
-| 3.2 | 11 | Complet | Dimension et hauteur du code rationnel historiques vérifiées. |
-| 3.3 | 11 | Complet | Unicité du canal sur le véritable intervalle macroscopique, paramètre canonique A=3. |
-| 3.5 | 12 | Complet | Résolution finie et classes de carrés des composantes, réutilisées dans les comptes effectifs. |
-| 3.6 | 13 | Complet | Rang du quotient, capacité et défaut uniforme logarithmique. |
-| 3.7 | 14 | Complet | Vrais hôtes de relations relatives et de toutes les relations de carrés : borne M^(3/2+ε). |
-| 3.8 | 15 | Complet | Deux masses réellement filtrées par hauteur et masse géométrique en base 2, avec Q_B explicite. |
-| 3.10 | 15 | Complet | Bornes finies des cellules résiduelles réutilisées hors de l’ancienne fenêtre critique. |
-| 3.11 | 16 | Partiel | CRT pour certificats et sommes finies vérifiés ; généralité exacte de l’énoncé et série factorielle à réunir. |
-| 3.12 | 17 | Complet | Trois secteurs couverts ; le secteur 2 dispose même d’une meilleure borne. |
-| 3.13 | 17 | Partiel | Conséquence M^ε en hauteur polynomiale prouvée intérieurement ; taux exp(O(log M/log log M)) restant. |
-| 3.14 | 18 | Partiel | Même distinction : compte M^ε acquis ; taux exponentiel plus précis restant. |
-| 3.15 | 18 | Complet | Normalisation exacte du coefficient d·P, de sa classe de carrés et de sa hauteur. |
-| 3.16 | 18 | Complet | Comptage à un côté M^ε en degré mobile ≥2 et alternative racine carrée pour un singleton. |
-| 3.17 | 19 | Partiel | Compte harmonique/Euler suffisant pour M^(1+ε) ; raffinement exp(O(√B/log B)) non acquis. |
-| 3.18 | 19 | Partiel | Borne principale M^(1+ε) acquise ; seconde clause plus précise dépend encore du raffinement de 3.17. |
-| 3.19 | 20 | Partiel | Secteur 4 exclu au seuil 6c#>B ; l’énoncé pour tout α>0 fixé reste partiel. |
-| 3.20 | 21 | Complet | Nombre macroscopique de départs avec deux défauts : M^ε. |
-| 3.21 | 22 | Complet | Masse effective du secteur 6 : M^(1/2+ε)Q_B. |
-| 3.22 | 22 | Complet | Paquet exact : noyaux égaux et non triviaux, coprimalité, divisibilité, 0<|Δ|≤4MB. |
-| 3.23 | 23 | Complet | Partenaires X^ε et conteneur X^(3/4+ε), raccordés aux vraies tranches du plus grand départ. |
-| 3.24 | 23 | Complet | Énergie décalée avec vrai second moment binomial fini et coupure T≤D√(XB). |
-| 3.25 | 24 | Complet | Masse du secteur 8 avec les deux termes exacts M^(2/3)Q_B et M^(3/4)Q_B^(2/3). |
-| 3.26 | 25 | Complet | Deux parités et vrais hôtes ; profils des valeurs complètes, bruts/interpolés, dans les trois géométries. |
-| 3.27 | 26 | Complet | Deux masses réellement plafonnées ; seuil avant tout plafond T, même T≥0. |
-| 4.1 | 27 | Partiel | Graphes conditionnels et arithmétique disponibles ; transfert exact avec moyenne propre du masque et facteur de Stein restant. |
-| 4.2 | 28 | Partiel | Rankin fini et balance dominante disponibles ; deux selles implicites, Ei/PNT et restes uniformes restant. |
-| 4.3 | 29 | Partiel | Ancienne loi critique qualitative réutilisable ; taux dur/doux et intensité croissante encore dépendants de 4.1, 4.2 et B.2. |
-| 4.4 | 29 | Complet | Espérance, second moment factoriel et variance : trois taux critiques dans le vrai modèle infini. |
-| 5.1 | 30 | Réemploi non raccordé | Graphes par site/mot disponibles ; recouvrements dirigés et loi quantitative du dictionnaire croissant à raccorder. |
-| 5.2 | 31 | À établir / non identifié | Remplacement par signes indépendants : conclusion actuelle non identifiée. |
-| 5.3 | 32 | À établir / non identifié | Dictionnaires aléatoires à faible recouvrement : compte et conclusion à établir. |
-| 5.4 | 32 | À établir / non identifié | Construction explicite sans recouvrements : à établir. |
-| 5.5 | 33 | À établir / non identifié | Loi quantitative des motifs à faible recouvrement : à établir à partir de 5.1. |
-| 5.6 | 33 | Partiel | Marques fixes non signées disponibles ; champ complet, support maximal et absence de perte en nombre de marques restant. |
-| 5.7 | 34 | Réemploi non raccordé | Atomes de marques finies réutilisables ; transformation en loi composée quantitative à raccorder. |
-| 5.8 | 35 | Réemploi non raccordé | Deux niveaux d’approximation et intensité croissante ne découlent pas de l’ancienne convergence de Laplace. |
-| 5.9 | 36 | Réemploi non raccordé | Modèle de signes disponible ; champ signé conjoint et demi-intensités indépendantes à formaliser. |
-| 5.10 | 37 | À établir / non identifié | Limite conjointe Poisson–Gauss et covariance : nouvelle conclusion à établir. |
-| 6.1 | 38 | À établir / non identifié | Atomes finis positifs acquis ; relèvement stable sur espaces standard boréliens arbitraires restant. |
-| 6.2 | 39 | À établir / non identifié | Inégalité de conditionnement avec dénominateur max(p,q) : endpoint non identifié. |
-| 6.3 | 39 | À établir / non identifié | Amincissement de Bernoulli réutilisable ; noyaux futurs complets, immigration inverse et coûts conditionnels restant. |
-| 6.4 | 40 | À établir / non identifié | Briques de Markov/Borel–Cantelli possibles ; estimations environnementales sommables et conclusion uniforme restant. |
-| 7.1 | 40 | Partiel | Événement exact au bord disponible ; asymptotique relative, rang d’incidence et localisation restant. |
-| 7.2 | 42 | Partiel | Compte macroscopique M^ε disponible ; portée intermédiaire jusqu’à 2L² et taux plus précis restant. |
-| 7.3 | 42 | Partiel | Estimations profondes partielles ; erreur relative et stabilité mésoscopique restant. |
-| 7.4 | 42 | Partiel | Ancienne loi du préfixe infini critique disponible ; bande complète et nouveaux taux à raccorder. |
-| 7.5 | 43 | À établir / non identifié | Enveloppes presque sûres asymétriques : conclusion et argument sommable à établir. |
-| 7.6 | 43 | Partiel | Transport global non signé réutilisable ; champ croissant, taux et censure explicite restant. |
-| 7.7 | 44 | Réemploi non raccordé | Marques et noyaux finis disponibles ; erreur relative o(λ_M), version signée et factorisation au bord restant. |
-| 7.8 | 45 | À établir / non identifié | Loi rare à deux sources et localisation conditionnelle : endpoint actuel non identifié. |
-| 7.9 | 46 | À établir / non identifié | Comparaison signée sur le réseau, deux horloges et poids mobiles : à établir. |
-| 7.10 | 47 | À établir / non identifié | Crossover sous contraintes affines : algèbre disponible, loi quantitative à établir. |
-
-## Compagnon complet
-
-| Résultat nommé | Page | Statut | Portée acquise ou travail restant |
-|---|---:|---|---|
-| A.1 | 3 | Complet | Runge au niveau des coefficients : preuve historique complète. |
-| A.2 | 4 | Partiel | M^ε acquis ; taux exp(O(log M/log log M)) non acquis. |
-| B.1 | 7 | Partiel | Calcul libre, deux selles et restes PNT/Ei uniformes restant. |
-| B.2 | 8 | À établir / non identifié | Rétention douce et deux facteurs sensibles à l’intensité : endpoint suffisant non identifié. |
-| C.1 | 11 | Partiel | Comparaison agrégée, remplissage Poisson et lissage directionnel sans perte en nombre de marques restant. |
-| E.1 | 17 | À établir / non identifié | Mineur d’identité de rang (2−o(1))π(B) aux trois départs de transition : à établir. |
-| E.2 | 18 | Partiel | Algèbre de graphes disponible ; borne de rang E/(K+1) à raccorder explicitement. |
-| E.3 | 19 | Partiel | Raccord exact des prémisses BS et des décalages ; somme microscopique relative restant. |
-
-Les développements non numérotés A.3–A.5 sont inclus dans normalisation, quotient et exclusion alignée ; B.3 dans les transferts ; C.1–C.7 dans marques, agrégats et transport ; D.1–D.4 dans Gauss, chemins et conditionnement ; E.1–E.7 dans frontière, rang et crossover. Ils ne sont donc pas omis du pourcentage d’effort. A.1, A.2 et B.1 recouvrent directement des résultats de l’article : additionner 61 et 8 créerait un faux dénominateur indépendant.
-
-## Sources et reproductibilité
-
-Les deux PDF restent strictement ceux de la v2.8.2 fournis par l’utilisateur : article de 52 pages, compagnon de 23 pages. Aucune V3 future n’est traitée comme une source déjà livrée. Le modèle historique est conservé, avec Lean `leanprover/lean4:v4.32.0` et mathlib `v4.32.0` (révision `81a5d257c8e410db227a6665ed08f64fea08e997`). Le cœur de référence reste `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
+Les textes restent ceux remis par l’utilisateur : article v2.8.2 de 52 pages et compagnon de 23 pages. Le cœur conservé est `b3cf107d2df629453a5da8e84f2bad29eea0bf94`, Lean `leanprover/lean4:v4.32.0`, mathlib `v4.32.0`, révision `81a5d257c8e410db227a6665ed08f64fea08e997`. Aucun changement de version ou nouvelle qualification Palomar n’est crédité.
 
 | PDF | SHA-256 |
 |---|---|
 | Article | `263682a1f2aa8301f06bf811fea1f81f42cd4493ccc4e1b94242a66cacfbd623` |
 | Compagnon | `60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094` |
 
-Bilan établi le 6 septembre 2026 par lecture des textes intégraux extraits, des registres et des signatures pertinentes dans `PaperC`, `PaperCV11` et `PaperCV282`. La comparaison porte sur le lot 8 publié au commit `031c7d5075d632a65813a7862b1869eb714b9261`. Les sources nouvelles sont compilées sous la version fixée ; la construction globale (4 270 étapes) et l’audit final ont réussi selon le résultat communiqué par la tâche principale. Le commit final est consigné dans le rapport de validation séparé. Le présent bilan ne remplace ni ce contrôle ni une qualification externe.
+Bilan indépendant établi le 6 septembre 2026, à partir des textes extraits, des signatures et des dernières compilations confirmées. Les 830 déclarations auditées et les 4 270 étapes de compilation du rapport précédent décrivent le lot 9, pas le lot 10. La tâche principale consigne séparément les nouveaux comptes, le contrôle global et le commit de publication. Le présent document reste utilisable sans anticiper ces résultats.
+
+## Validation locale coordonnée
+
+Compilation globale réussie sous Lean 4.32.0 et mathlib v4.32.0 ; audit de 1 379 déclarations réussi, limité aux trois axiomes usuels autorisés. Les trois propositions de littérature restent des hypothèses explicites. Une alerte de dépréciation non bloquante concerne le pont vers le nom Poisson historique ; le cœur conservé et les versions n’ont pas été modifiés. La relecture complémentaire des quatre modules de coupure libre confirme les seuils uniformes et les crédits 4.2/B.1.

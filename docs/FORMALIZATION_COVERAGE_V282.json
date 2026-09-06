@@ -1,7 +1,7 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "assessment_date": "2026-09-06",
-  "baseline": "End of batch 9: compiled theorem sources and exact historical specializations; publication commit and global audit are recorded by the main task.",
+  "baseline": "End of batch-10 theorem implementation: scalar and joint-field 4.1, free-cutoff 4.2/B.1 and soft B.2 endpoints have individually compiled; 4.3 remains partial. Compared with the published end of batch 9.",
   "retained_core_commit": "b3cf107d2df629453a5da8e84f2bad29eea0bf94",
   "toolchain": {
     "lean": "leanprover/lean4:v4.32.0",
@@ -35,46 +35,46 @@
     "excluded_from_statement_denominator": "Definitions, remarks, proof paragraphs, discussion, bibliography; their necessary mathematical work is included in effort blocks.",
     "no_independent_69_denominator": "Companion A.1,A.2,B.1 duplicate/expand 2.3,3.13,4.2; other companion arguments also feed article endpoints.",
     "complete_rule": "All mathematical conclusions of a numbered result are covered by compiled explicit overlay representations or verified exact historical specialization. A building block or weaker quantitative rate gets no full credit. Equivalent epsilon/power forms of o(1) and finite positive F_Y-atom conditioning are accepted with their representations stated.",
-    "workload_rule": "The same 19 blocks and 105 weighted units as the lot-8 baseline; an estimate of acquired proof and integration work over the whole article and companion, not a count of Lean declarations, hours, elapsed time, or a probability of correctness.",
-    "literature_boundary": "Allows explicit source-faithful audited literature premises, as in the historical qualification. Does not include internally proving every external theorem in the bibliography; that stronger goal would require a new workload estimate.",
+    "workload_rule": "Exactly the same 19 blocks and 105 weighted units as batch 9; acquired proof and integration effort across the entire article and companion, not Lean declaration counts, line counts, hours or probability of correctness. Generic work is not credited twice in later chapters without a verified new endpoint.",
+    "literature_boundary": "Same scope convention as batch 9: source-faithful explicit literature premises may support a complete relative formalization. Batch 10 exposes the ordinary PNT remainder, positive-rate scalar Stein solution/factor statement, and the separate process AGG statement. They are not internally proved here and are never counted as internally proved theorems.",
     "unverified_reuse": "Names found without a checked sufficient signature receive only component/presumed credit, not complete status.",
-    "validation_scope": "Read-only source/signature assessment combined with successful direct compilations and the final coordinated global build (4270 jobs), 830-declaration axiom audit and 8 guard tests reported by the main task. This assessment introduces no theorem or new qualification."
+    "validation_scope": "Independent source/signature review, followed by a successful coordinated build (4360 jobs), complete source/kernel audit of 1379 declarations and 8 audit-guard tests. Three named literature propositions remain explicit hypotheses, not internally proved results."
   },
   "counts": {
     "article": {
       "reuse_unconnected": 7,
-      "complete": 25,
-      "partial": 16,
+      "complete": 27,
+      "partial": 14,
       "not_identified": 13
     },
     "companion": {
-      "complete": 1,
-      "partial": 5,
-      "not_identified": 2
+      "complete": 3,
+      "partial": 4,
+      "not_identified": 1
     }
   },
-  "statement_fraction_complete_article": 0.4098360655737705,
-  "statement_fraction_complete_companion": 0.125,
+  "statement_fraction_complete_article": 0.4426229508196721,
+  "statement_fraction_complete_companion": 0.375,
   "effort": {
     "total_weight": 105,
-    "completed_weight_low": 56.25,
-    "completed_weight_high": 68.42,
-    "completed_fraction_low": 0.5357142857142857,
-    "completed_fraction_high": 0.6516190476190477,
+    "completed_weight_low": 63.6,
+    "completed_weight_high": 74.37,
+    "completed_fraction_low": 0.6057142857142858,
+    "completed_fraction_high": 0.7082857142857143,
     "communicable_completed_percent_range": [
-      50,
-      65
+      60,
+      75
     ],
     "communicable_remaining_percent_range": [
-      35,
-      50
+      25,
+      40
     ],
-    "rough_central_estimate_percent": 60,
-    "baseline_completed_weight_low": 47.95,
-    "baseline_completed_weight_high": 62.99,
-    "added_weight_low": 8.3,
-    "added_weight_high": 5.43,
-    "rounding_note": "Calculated range is about 54–65%; the communicated 50–65% is deliberately rounded outward at the lower end. The approximate central figure 60% is not a measured statistic."
+    "rough_central_estimate_percent": 65,
+    "baseline_completed_weight_low": 56.25,
+    "baseline_completed_weight_high": 68.42,
+    "added_weight_low": 7.35,
+    "added_weight_high": 5.95,
+    "rounding_note": "Calculated current acquired-work range is about 61–71%; the communicated 60–75% rounds outwards. Approximately 65% is a judgment about remaining formalization effort, not a measured statistic. All 19 weights are unchanged."
   },
   "blocks": [
     {
@@ -84,9 +84,9 @@
       "completed_fraction_low": 0.9,
       "completed_fraction_high": 0.98,
       "locators": "2.1,2.2,2.7; modèle infini préalable",
-      "baseline_completed_fraction_low": 0.85,
-      "baseline_completed_fraction_high": 0.95,
-      "batch_9_credit_reason": "New affine infinite-cylinder transfer and exact integration interfaces; arbitrary tuple/graph wrappers remain."
+      "baseline_completed_fraction_low": 0.9,
+      "baseline_completed_fraction_high": 0.98,
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "runge_defects",
@@ -95,9 +95,9 @@
       "completed_fraction_low": 0.95,
       "completed_fraction_high": 1,
       "locators": "2.3,2.4; compagnon A.1",
-      "baseline_completed_fraction_low": 0.9,
+      "baseline_completed_fraction_low": 0.95,
       "baseline_completed_fraction_high": 1,
-      "batch_9_credit_reason": "The macroscopic full-defect weighted sum (2.4) is now explicit; no need to infer it from a dyadic slicing sketch."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "one_window",
@@ -106,9 +106,9 @@
       "completed_fraction_low": 1,
       "completed_fraction_high": 1,
       "locators": "2.5,2.6,2.8",
-      "baseline_completed_fraction_low": 0.65,
-      "baseline_completed_fraction_high": 0.85,
-      "batch_9_credit_reason": "All three numbered results 2.5,2.6,2.8, including pointwise, conditional, full-band masked and touching clauses, are represented."
+      "baseline_completed_fraction_low": 1,
+      "baseline_completed_fraction_high": 1,
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "canonical_core",
@@ -119,7 +119,7 @@
       "locators": "3.2,3.3,3.5,3.6,3.10",
       "baseline_completed_fraction_low": 0.9,
       "baseline_completed_fraction_high": 1,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "hosts_rational",
@@ -130,7 +130,7 @@
       "locators": "3.7,3.8,3.11",
       "baseline_completed_fraction_low": 0.85,
       "baseline_completed_fraction_high": 0.95,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "sectors",
@@ -141,7 +141,7 @@
       "locators": "3.12,3.15–3.21; partition exacte",
       "baseline_completed_fraction_low": 0.9,
       "baseline_completed_fraction_high": 0.98,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "pell_precise",
@@ -152,7 +152,7 @@
       "locators": "3.13,3.14; compagnon A.2",
       "baseline_completed_fraction_low": 0.55,
       "baseline_completed_fraction_high": 0.75,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "terminal_assembly",
@@ -161,31 +161,31 @@
       "completed_fraction_low": 0.95,
       "completed_fraction_high": 1,
       "locators": "3.1,3.22–3.27; (3.22)–(3.23)",
-      "baseline_completed_fraction_low": 0.35,
-      "baseline_completed_fraction_high": 0.55,
-      "batch_9_credit_reason": "Terminal geometry, partners, container, sector 8, all raw/coarse/capped profiles, and all requested geometries are closed."
+      "baseline_completed_fraction_low": 0.95,
+      "baseline_completed_fraction_high": 1,
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "cutoffs",
       "title": "Deux coupures et calcul uniforme des selles",
       "weight": 7,
-      "completed_fraction_low": 0.2,
-      "completed_fraction_high": 0.4,
+      "completed_fraction_low": 0.95,
+      "completed_fraction_high": 1,
       "locators": "4.2; compagnon B.1",
       "baseline_completed_fraction_low": 0.2,
       "baseline_completed_fraction_high": 0.4,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "Actual free-cutoff Rankin/Euler errors under ordinary PNT, all-site degree/edge normalization, both implicit saddles and their exact second-order constants are now compiled. B.1 and 4.2 share this one block."
     },
     {
       "id": "poisson_transfer",
       "title": "Transfert TV, rétention douce et moments",
       "weight": 7,
-      "completed_fraction_low": 0.5,
-      "completed_fraction_high": 0.65,
+      "completed_fraction_low": 0.8,
+      "completed_fraction_high": 0.9,
       "locators": "4.1,4.3,4.4; compagnon B.2",
-      "baseline_completed_fraction_low": 0.3,
-      "baseline_completed_fraction_high": 0.5,
-      "batch_9_credit_reason": "The genuine first, second factorial and variance moments close 4.4. Scalar/field transfer, intensity-sensitive Stein factors and soft retention remain."
+      "baseline_completed_fraction_low": 0.5,
+      "baseline_completed_fraction_high": 0.65,
+      "batch_10_credit_reason": "Exact own-mask scalar and joint-field infinite/all-F_Y transfer, root-inclusive deletion, scalar Stein telescoping and general-environment soft B.4 are complete under their explicit literature inputs. Optimized hard/soft 4.3 rates remain to assemble and receive no full credit."
     },
     {
       "id": "dictionaries",
@@ -196,7 +196,7 @@
       "locators": "5.1–5.5",
       "baseline_completed_fraction_low": 0.1,
       "baseline_completed_fraction_high": 0.2,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "marked_fields",
@@ -207,7 +207,7 @@
       "locators": "5.6,5.7,5.9; compagnon C.1 et C.1–C.7",
       "baseline_completed_fraction_low": 0.35,
       "baseline_completed_fraction_high": 0.5,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "growing_gaussian",
@@ -218,7 +218,7 @@
       "locators": "5.8,5.10; compagnon D.1",
       "baseline_completed_fraction_low": 0.1,
       "baseline_completed_fraction_high": 0.2,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "conditioning_paths",
@@ -229,7 +229,7 @@
       "locators": "6.1–6.4; compagnon D.2–D.4",
       "baseline_completed_fraction_low": 0.05,
       "baseline_completed_fraction_high": 0.15,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "microscopic",
@@ -240,7 +240,7 @@
       "locators": "7.1; compagnon E.1–E.5",
       "baseline_completed_fraction_low": 0.2,
       "baseline_completed_fraction_high": 0.35,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "intermediate_deep",
@@ -251,7 +251,7 @@
       "locators": "7.2,7.3; fin de E.5",
       "baseline_completed_fraction_low": 0.35,
       "baseline_completed_fraction_high": 0.55,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "prefix_as",
@@ -262,7 +262,7 @@
       "locators": "7.4,7.5",
       "baseline_completed_fraction_low": 0.3,
       "baseline_completed_fraction_high": 0.55,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "macro_bulk",
@@ -273,7 +273,7 @@
       "locators": "7.6,7.7; compagnon C.6–C.7",
       "baseline_completed_fraction_low": 0.2,
       "baseline_completed_fraction_high": 0.4,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     },
     {
       "id": "crossover",
@@ -284,7 +284,7 @@
       "locators": "7.8–7.10; compagnon E.6–E.7",
       "baseline_completed_fraction_low": 0.05,
       "baseline_completed_fraction_high": 0.15,
-      "batch_9_credit_reason": "No added workload credit; relevant reuse was already included in the previous baseline."
+      "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements."
     }
   ],
   "results": [
@@ -305,7 +305,8 @@
       "page_start": 7,
       "extracted_line": 349,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "reuse_unconnected",
@@ -325,7 +326,8 @@
       "page_start": 7,
       "extracted_line": 379,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -343,7 +345,8 @@
       "page_start": 8,
       "extracted_line": 405,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -365,7 +368,7 @@
       "extracted_line": 424,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": false
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -391,7 +394,7 @@
       "extracted_line": 471,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": true
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -414,7 +417,7 @@
       "extracted_line": 489,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": false
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -434,7 +437,8 @@
       "page_start": 9,
       "extracted_line": 505,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -458,7 +462,7 @@
       "extracted_line": 517,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": true
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -483,7 +487,7 @@
       "extracted_line": 544,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": true
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -502,7 +506,8 @@
       "page_start": 11,
       "extracted_line": 594,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -521,7 +526,8 @@
       "page_start": 11,
       "extracted_line": 616,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -542,7 +548,8 @@
       "page_start": 12,
       "extracted_line": 655,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -562,7 +569,8 @@
       "page_start": 13,
       "extracted_line": 694,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -581,7 +589,8 @@
       "page_start": 14,
       "extracted_line": 772,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -601,7 +610,8 @@
       "page_start": 15,
       "extracted_line": 819,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -622,7 +632,8 @@
       "page_start": 15,
       "extracted_line": 846,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -642,7 +653,8 @@
       "page_start": 16,
       "extracted_line": 879,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -662,7 +674,8 @@
       "page_start": 17,
       "extracted_line": 935,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -681,7 +694,8 @@
       "page_start": 17,
       "extracted_line": 983,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -701,7 +715,8 @@
       "page_start": 18,
       "extracted_line": 999,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -720,7 +735,8 @@
       "page_start": 18,
       "extracted_line": 1030,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -740,7 +756,8 @@
       "page_start": 18,
       "extracted_line": 1050,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -759,7 +776,8 @@
       "page_start": 19,
       "extracted_line": 1068,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -778,7 +796,8 @@
       "page_start": 19,
       "extracted_line": 1113,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -797,7 +816,8 @@
       "page_start": 20,
       "extracted_line": 1152,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -815,7 +835,8 @@
       "page_start": 21,
       "extracted_line": 1238,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -834,7 +855,8 @@
       "page_start": 22,
       "extracted_line": 1255,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -858,7 +880,7 @@
       "extracted_line": 1282,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": true
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -884,7 +906,7 @@
       "extracted_line": 1316,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": true
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -903,7 +925,8 @@
       "page_start": 23,
       "extracted_line": 1342,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -924,7 +947,7 @@
       "extracted_line": 1383,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": true
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -950,7 +973,7 @@
       "extracted_line": 1462,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": true
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -975,19 +998,24 @@
       "extracted_line": 1507,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": true
+      "new_full_credit_batch_10": false
     },
     {
-      "status": "partial",
+      "status": "complete",
       "effort_block": "poisson_transfer",
       "evidence": [
-        "PaperC/Probability/ConditionalStartProbability.lean: conditionedStartProbability_eq_baseline",
-        "PaperC/Probability/ConditionalDependencyGraph.lean: conditionedStart_independent_of_nonNeighbors",
-        "PaperC/Asymptotics/MaskedPoissonCanonical.lean: theorem_one_two_i"
+        "PaperCV282/MaskedArithmeticCosts.lean: average_stein_terms_le_twice",
+        "PaperCV282/MaskedScalarTransfer.lean: theorem_four_one_scalar_conditional; theorem_four_one_scalar",
+        "PaperCV282/InfiniteMaskedScalarTransfer.lean: theorem_four_one_scalar_infinite",
+        "PaperCV282/MaskedScalarFullConditioning.lean: theorem_four_one_scalar_full_FY; conditioningAtoms_equiprobable",
+        "PaperCV282/ProcessAGGInput.lean: ProcessAGGStatement",
+        "PaperCV282/AllStartFieldCosts.lean",
+        "PaperCV282/AllStartFieldTransfer.lean: average_allStart_field_le_arithmetic; mixed_allStart_field_le_arithmetic",
+        "PaperCV282/InfiniteFieldTransfer.lean: theorem_four_one_field_full_FY; theorem_four_one_field_unconditional; infiniteMaskedFieldLaw_eq_finiteFieldLaw; cylinderFieldLaw_eq_uniformMixture; hasSum_source_conditional_field"
       ],
-      "remaining": "Full-band finite/infinite masked theorem with its own mean and precise errors; intensity-sensitive Stein factor absent from frozen coarse AGG interface.",
-      "reuse": "verified",
-      "note": "",
+      "remaining": "No missing numbered scalar or joint-field conclusion, relative to the separate explicit scalar Stein-factor and process AGG premises. Infinite-source conditional laws are represented by the positive equiprobable atoms generating exactly F_Y, with cylinder max(eventCutoff,Y); actual unconditional laws follow by proved cylinder and mixture identities.",
+      "reuse": "verified_overlay_and_core",
+      "note": "Own-mask mean and full root-inclusive bad set are preserved. Explicit scalar Stein and process AGG premises are separate. Local deletion cost is p*(M_B(mask)+2*badcard), stronger than the printed global budget.",
       "source": "article",
       "id": "4.1",
       "kind": "Theorem",
@@ -995,19 +1023,24 @@
       "page_start": 27,
       "extracted_line": 1611,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": true
     },
     {
-      "status": "partial",
+      "status": "complete",
       "effort_block": "cutoffs",
       "evidence": [
-        "PaperCV11/RankinTilt.lean",
-        "PaperCV11/SharpKernelDefect.lean",
-        "PaperCV11/HardConditioningSaddle.lean"
+        "PaperCV282/DefectiveRankinCount.lean: exists_unique_square_smooth; normalized_defectiveValues_le_rankin",
+        "PaperCV282/PrimeEulerFreeCutoff.lean: euler_errors_sqrt_log_band_of_pnt",
+        "PaperCV282/BadStartRankinFreeCutoff.lean: normalized_defectiveValues_free_cutoff_le_eventually; normalized_fullBadMask_free_cutoff_le_eventually",
+        "PaperCV282/CutoffGraphFreeCutoff.lean: normalized_degree_and_edges_free_cutoff_le_eventually",
+        "PaperCV282/SaddleParameters.lean: hard_and_soft_saddles_exist; existsUnique_saddleCutoff",
+        "PaperCV282/SaddleExpansion.lean: hard_saddle_second_order; soft_saddle_second_order",
+        "PaperCV282/SaddleScales.lean: tendsto_soft_div_hard_saddle; log_log_small_against_hard_nu"
       ],
-      "remaining": "Finite Rankin machinery and leading max-min saddle exist. The two implicit saddles, Ei, PNT-dependent uniform remainders, bad-mass and edge/degree rates are not closed.",
-      "reuse": "verified",
-      "note": "",
+      "remaining": "No missing numbered conclusion, relative to the explicit ordinary PNT remainder premise. The finite degree and edge bounds, saddle existence and expansions are proved without PNT.",
+      "reuse": "verified_overlay_and_core",
+      "note": "Actual floor(exp w), full-support bad starts and all-site graphs. Threshold precedes free w, L and mask. The degree/edge bound exp(-w+epsilon*nu) is stronger on this band than the printed bound with the additional N^(-1+o(1)).",
       "source": "article",
       "id": "4.2",
       "kind": "Proposition",
@@ -1015,18 +1048,24 @@
       "page_start": 28,
       "extracted_line": 1664,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": true
     },
     {
       "status": "partial",
       "effort_block": "poisson_transfer",
       "evidence": [
-        "PaperC/Asymptotics/MaskedPoissonCanonical.lean",
-        "PaperCV11/ENDPOINTS.md"
+        "PaperCV282/MaskedScalarFullConditioning.lean: theorem_four_one_scalar_full_FY",
+        "PaperCV282/SoftMeasureAverage.lean: lemma_b_two_integral",
+        "PaperCV282/AllStartSoftPoisson.lean",
+        "PaperCV282/SoftGraphDegree.lean",
+        "PaperCV282/BadStartRankinFreeCutoff.lean",
+        "PaperCV282/CutoffGraphFreeCutoff.lean",
+        "PaperCV282/SaddleScales.lean"
       ],
-      "remaining": "Historical critical qualitative Poisson law is not hard/soft full-band growing-intensity TV. Needs 4.1, 4.2 and companion B.2.",
-      "reuse": "verified",
-      "note": "",
+      "remaining": "The full-band optimized hard/soft TV endpoints are not yet compiled. Must combine actual good-neighbor terms, exceptional first moments, relation profiles and free cutoffs; keep the same soft F_Y when lambda<1, treat growing intensity and the trivial bound 1, and absorb the polynomial remainder with a smaller epsilon.",
+      "reuse": "verified_components",
+      "note": "The hard and soft ingredients are now proved; their existence does not itself prove formulas (4.8)–(4.10). No new full credit is granted.",
       "source": "article",
       "id": "4.3",
       "kind": "Theorem",
@@ -1034,7 +1073,8 @@
       "page_start": 29,
       "extracted_line": 1701,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -1059,7 +1099,7 @@
       "extracted_line": 1744,
       "statement_weight": 1,
       "full_statement_credit": true,
-      "new_full_credit_batch_9": true
+      "new_full_credit_batch_10": false
     },
     {
       "status": "reuse_unconnected",
@@ -1079,7 +1119,8 @@
       "page_start": 30,
       "extracted_line": 1784,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1097,7 +1138,8 @@
       "page_start": 31,
       "extracted_line": 1878,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1115,7 +1157,8 @@
       "page_start": 32,
       "extracted_line": 1895,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1133,7 +1176,8 @@
       "page_start": 32,
       "extracted_line": 1915,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1151,7 +1195,8 @@
       "page_start": 33,
       "extracted_line": 1951,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -1171,7 +1216,8 @@
       "page_start": 33,
       "extracted_line": 1991,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "reuse_unconnected",
@@ -1190,7 +1236,8 @@
       "page_start": 34,
       "extracted_line": 2051,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "reuse_unconnected",
@@ -1209,7 +1256,8 @@
       "page_start": 35,
       "extracted_line": 2103,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "reuse_unconnected",
@@ -1228,7 +1276,8 @@
       "page_start": 36,
       "extracted_line": 2180,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1246,7 +1295,8 @@
       "page_start": 37,
       "extracted_line": 2232,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1264,7 +1314,8 @@
       "page_start": 38,
       "extracted_line": 2277,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1280,7 +1331,8 @@
       "page_start": 39,
       "extracted_line": 2332,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1299,7 +1351,8 @@
       "page_start": 39,
       "extracted_line": 2363,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1315,7 +1368,8 @@
       "page_start": 40,
       "extracted_line": 2397,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -1335,7 +1389,8 @@
       "page_start": 40,
       "extracted_line": 2435,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -1354,7 +1409,8 @@
       "page_start": 42,
       "extracted_line": 2514,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -1374,7 +1430,8 @@
       "page_start": 42,
       "extracted_line": 2525,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -1393,7 +1450,8 @@
       "page_start": 42,
       "extracted_line": 2556,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1411,7 +1469,8 @@
       "page_start": 43,
       "extracted_line": 2587,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -1431,7 +1490,8 @@
       "page_start": 43,
       "extracted_line": 2613,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "reuse_unconnected",
@@ -1450,7 +1510,8 @@
       "page_start": 44,
       "extracted_line": 2681,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1469,7 +1530,8 @@
       "page_start": 45,
       "extracted_line": 2724,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1488,7 +1550,8 @@
       "page_start": 46,
       "extracted_line": 2788,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1507,7 +1570,8 @@
       "page_start": 47,
       "extracted_line": 2848,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "complete",
@@ -1525,7 +1589,8 @@
       "page_start": 3,
       "extracted_line": 100,
       "statement_weight": 1,
-      "full_statement_credit": true
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -1543,17 +1608,23 @@
       "page_start": 4,
       "extracted_line": 198,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
-      "status": "partial",
+      "status": "complete",
       "effort_block": "cutoffs",
       "evidence": [
-        "PaperCV11/HardConditioningSaddle.lean",
-        "PaperCV11/RankinTilt.lean"
+        "PaperCV282/PrimeEulerPNT.lean: PrimeNumberTheoremRemainder; weighted_prime_error_identity",
+        "PaperCV282/PrimeEulerUniform.lean: log_euler_normalized_error_of_pnt; weighted_prime_sum_normalized_error_of_pnt",
+        "PaperCV282/PrimeEulerFreeCutoff.lean: euler_errors_sqrt_log_band_of_pnt",
+        "PaperCV282/BadStartRankinFreeCutoff.lean",
+        "PaperCV282/CutoffGraphFreeCutoff.lean: normalized_degree_and_edges_free_cutoff_le_eventually",
+        "PaperCV282/SaddleExpansion.lean",
+        "PaperCV282/SaddleScales.lean"
       ],
-      "remaining": "Both PNT/Ei saddles and their uniform remainders remain.",
-      "reuse": "verified_components",
+      "remaining": "No missing conclusion of the numbered proposition, relative to ordinary PNT. Three auxiliary equivalences displayed in its proof are not isolated as dedicated endpoints; sufficient scalar estimates prove the actual conclusions.",
+      "reuse": "verified_overlay_and_core",
       "duplicate_of_article": "4.2",
       "source": "companion",
       "id": "B.1",
@@ -1562,16 +1633,24 @@
       "page_start": 7,
       "extracted_line": 335,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": true,
+      "note": "The signed Euler errors tend to zero after division by nu, uniformly before the free cutoff. This is derived by Abel summation from ordinary PNT, not postulated as a weighted PNT assumption.",
+      "new_full_credit_batch_10": true
     },
     {
-      "status": "not_identified",
+      "status": "complete",
       "effort_block": "poisson_transfer",
       "evidence": [
-        "PaperC/Probability/ArratiaGoldsteinGordonInput.lean"
+        "PaperCV282/ScalarSteinInput.lean: ScalarSteinFactorsStatement",
+        "PaperCV282/SteinLocalTelescoping.lean",
+        "PaperCV282/SteinScalarTelescoping.lean",
+        "PaperCV282/SteinSoftTelescoping.lean",
+        "PaperCV282/ScalarPoissonBounds.lean: lemma_b_two_finite",
+        "PaperCV282/SoftConditionalPoisson.lean: lemma_b_two_average",
+        "PaperCV282/SoftMeasureAverage.lean: lemma_b_two_integral"
       ],
-      "remaining": "Soft-exception Stein bound with both intensity factors and arbitrary bad indicators is not the existing coarse AGG interface.",
-      "reuse": "verified_components",
+      "remaining": "No missing B.4 inequality in the stated conditional-law representation, relative to the explicit positive-rate classical Stein-factor premise. Automatic construction of a regular conditional kernel for an arbitrary original probability space is not included.",
+      "reuse": "verified_overlay_and_core",
       "duplicate_of_article": null,
       "source": "companion",
       "id": "B.2",
@@ -1580,7 +1659,9 @@
       "page_start": 8,
       "extracted_line": 414,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": true,
+      "note": "Arbitrary probability environment with measurable finite conditional joint laws; graph and good marginal assumptions only almost everywhere; TV integrability proved. Both intensity factors and the lambda=0 convention are correct, with no baseline assumption on exceptional neighbors. The generic weighted event restriction does not itself identify an arbitrary denominator with the environment event probability.",
+      "new_full_credit_batch_10": true
     },
     {
       "status": "partial",
@@ -1599,7 +1680,8 @@
       "page_start": 11,
       "extracted_line": 629,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "not_identified",
@@ -1617,7 +1699,8 @@
       "page_start": 17,
       "extracted_line": 980,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -1636,7 +1719,8 @@
       "page_start": 18,
       "extracted_line": 1044,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     },
     {
       "status": "partial",
@@ -1655,7 +1739,8 @@
       "page_start": 19,
       "extracted_line": 1103,
       "statement_weight": 1,
-      "full_statement_credit": false
+      "full_statement_credit": false,
+      "new_full_credit_batch_10": false
     }
   ],
   "assessment_corrections": [
@@ -1667,33 +1752,54 @@
     {
       "batch": 9,
       "detail": "3.19 remains partial: only the actual sector-4 density threshold 6*c#>B is proved, not every fixed alpha>0. Precise exp(log/loglog) Pell and sqrt(B)/log(B) refinements remain partial as before."
+    },
+    {
+      "batch": 10,
+      "detail": "Removed obsolete reservations about the free cutoff, implicit saddle existence, exact second-order constants and scalar full-F_Y conditioning after compiled closure; 3.19 and all prior stronger auxiliary-rate limitations remain unchanged."
     }
   ],
-  "comparison_baseline_git_commit": "031c7d5075d632a65813a7862b1869eb714b9261",
-  "snapshot_kind": "Working-tree theorem snapshot before publication; no new Palomar qualification claimed.",
-  "new_complete_article_results_batch_9": [
-    "2.5",
-    "2.8",
-    "3.1",
-    "3.22",
-    "3.23",
-    "3.25",
-    "3.26",
-    "3.27",
-    "4.4"
-  ],
-  "priority_after_batch_9": [
-    "4.1: exact masked arithmetic-to-Poisson scalar and finite-field transfer, preserving the mask own mean and intensity-sensitive Stein factor.",
-    "4.2 / companion B.1: finite Rankin-to-PNT weighted Euler sum, free cutoff, both implicit saddles, second-order constants and uniform remainders.",
-    "Companion B.2 and 4.3: soft retention and hard/soft full-band probability bounds.",
-    "5.1–5.6 and C.1: dictionaries, exact/sign-resolved marks, aggregated comparison and growing levels.",
-    "6 and 7 / companion D,E: conditioning paths, almost-sure control, microscopic relative law and two-source crossover."
-  ],
+  "comparison_baseline_git_commit": "24ea13304f5919ae2c1fa202cd9e2685727f2193",
+  "snapshot_kind": "Validated source tree before publication; the publication commit is recorded separately to avoid a self-referential document commit. No new Palomar qualification.",
   "validation_reported_by_main_task": {
-    "global_build": "passed, 4270 jobs",
-    "overlay_axiom_audit": "passed, 830 declarations",
+    "global_build": "passed, 4360 jobs",
+    "overlay_axiom_audit": "passed, 1379 declarations",
     "guard_checker_tests": "8 passed",
+    "new_overlay_warnings": "One intentional compatibility reference to the historical deprecated poissonPMFReal name in MaskedScalarCoupling.lean:145; no error.",
     "retained_core_digest": "unchanged",
-    "publication_commit": "See the separate final validation report; intentionally omitted here to avoid a self-referential document commit."
-  }
+    "publication_commit": "See the separate final validation report."
+  },
+  "priority_after_batch_10": [
+    "4.3: assemble hard and soft full-band rates, keeping the soft conditioning cutoff also for lambda<1, own intensity, and the minimum with 1.",
+    "5.1–5.6 and companion C: growing dictionaries, directed overlaps, exact/sign-resolved marks and aggregated comparison without loss in the number of marks.",
+    "6–7 and companion D/E: conditioning paths, almost-sure control, microscopic relative law and two-source crossover."
+  ],
+  "new_complete_article_results_batch_10": [
+    "4.1",
+    "4.2"
+  ],
+  "new_complete_companion_results_batch_10": [
+    "B.1",
+    "B.2"
+  ],
+  "literature_premises_batch_10": [
+    {
+      "name": "PrimeEulerPNT.PrimeNumberTheoremRemainder",
+      "content": "Ordinary prime number theorem remainder |pi(floor t)-Ei(log t)| <= eta*t/log t eventually for every eta>0.",
+      "internally_proved": false,
+      "derived_internally": "Abel summation, both signed weighted prime/Euler errors, actual free-band bad counts."
+    },
+    {
+      "name": "ScalarSteinInput.ScalarSteinFactorsStatement",
+      "content": "For each positive Poisson rate and test set, a Stein solution with the standard supremum and first-difference factors.",
+      "internally_proved": false,
+      "derived_internally": "Zero-rate case, telescoping, scalar TV, soft B.4, measurable-environment averaging."
+    },
+    {
+      "name": "ProcessAGGInput.ProcessAGGStatement",
+      "content": "Published process AGG comparison with independent product-Poisson field, distinct from the scalar factor statement.",
+      "internally_proved": false,
+      "derived_internally": "All-site/full-mask arithmetic costs, deletion, Poisson target perturbation, finite joint-field comparison and actual infinite conditional/unconditional joint-field transfer."
+    }
+  ],
+  "pending_at_snapshot": []
 }

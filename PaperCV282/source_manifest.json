@@ -35,99 +35,28 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Corollary 2.6",
-          "printed_page": 9,
-          "equation": "2.6"
-        },
-        {
-          "item": "Proposition 3.7: start/full host comparison and macroscopic upper bound",
+          "item": "Theorem 4.1: masked scalar and joint-field arithmetic-to-Poisson transfer",
           "printed_pages": [
-            14,
-            15
+            27,
+            28
           ],
-          "equation": "3.11"
+          "equation": "4.3"
         },
         {
-          "item": "Theorem 3.1: exact weighted mass and finite decomposition only, not the asymptotic profile",
+          "item": "Proposition 4.2: free cutoff, all-site degree and both implicit saddles",
           "printed_pages": [
-            10,
-            12
+            28,
+            29
           ],
           "equations": [
-            "3.3",
-            "3.6"
+            "4.5",
+            "4.6",
+            "4.7"
           ]
         },
         {
-          "item": "Proposition 3.26",
-          "printed_page": 25,
-          "equations": [
-            "3.24",
-            "3.25"
-          ]
-        },
-        {
-          "item": "Formalization and availability",
-          "printed_page": 50
-        },
-        {
-          "item": "Lemma 3.3: uniqueness of the macroscopic canonical rational channel",
-          "printed_page": 11,
-          "equation": "3.5"
-        },
-        {
-          "item": "Proposition 3.8: the two canonical-height masses and the geometry-only mass",
-          "printed_page": 15,
-          "equations": [
-            "3.12",
-            "3.13"
-          ]
-        },
-        {
-          "item": "Proposition 3.12 and successive residual sectors",
-          "printed_pages": [
-            16,
-            17
-          ]
-        },
-        {
-          "item": "Lemmas 3.13–3.14: uniform M^epsilon consequences only",
-          "printed_pages": [
-            17,
-            18
-          ]
-        },
-        {
-          "item": "Deep sector profiles and two-defect starts",
-          "printed_pages": [
-            20,
-            21,
-            22
-          ]
-        },
-        {
-          "item": "Lemma 3.24 shifted small-kernel energy",
-          "printed_pages": [
-            23,
-            24
-          ],
-          "equation": "3.21"
-        },
-        {
-          "item": "Rational-family lower bounds",
-          "printed_page": 24,
-          "equations": [
-            "3.22",
-            "3.23"
-          ]
-        },
-        {
-          "item": "Proposition 3.27: finite/nonterminal capped steps only",
-          "printed_page": 26,
-          "equations": [
-            "3.26",
-            "3.27"
-          ]
+          "item": "Theorem 4.3: soft-neighbour building blocks only; optimized rate assembly remains",
+          "printed_page": 29
         }
       ]
     },
@@ -140,21 +69,55 @@
       "size_bytes": 483599,
       "sha256": "60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094",
       "source_kind": "user_supplied_pdf",
-      "role_in_batch": "Technical source for polynomial-height arithmetic; the new internal proofs establish uniform M^epsilon consequences. No complete appendix or sharper exp(log/loglog) rate is claimed."
+      "role_in_batch": "Companion B.1 free Rankin/PNT estimate and both implicit saddles; B.2 finite and general measurable-environment soft retention. Explicit external literature premises are documented separately.",
+      "current_batch_locators": [
+        {
+          "item": "Proposition B.1",
+          "printed_pages": [
+            7,
+            8
+          ]
+        },
+        {
+          "item": "Lemma B.2 and its all-site-neighbour application",
+          "printed_pages": [
+            8,
+            9
+          ]
+        }
+      ]
     }
   ],
   "mathematical_modules": [
+    "PaperCV282/AllStartConditionalDependency.lean",
+    "PaperCV282/AllStartFieldCosts.lean",
+    "PaperCV282/AllStartFieldTransfer.lean",
+    "PaperCV282/AllStartSoftPoisson.lean",
+    "PaperCV282/BadStartRankin.lean",
+    "PaperCV282/BadStartRankinAsymptotics.lean",
+    "PaperCV282/BadStartRankinFreeCutoff.lean",
+    "PaperCV282/BadStartRankinSaddle.lean",
     "PaperCV282/BoundedRatioFullHosts.lean",
     "PaperCV282/BoundedRatioRelationProfiles.lean",
     "PaperCV282/CappedRelationMass.lean",
     "PaperCV282/CappedSectorMass.lean",
     "PaperCV282/CappedSectorSixProfile.lean",
+    "PaperCV282/ConditionalFieldTransfer.lean",
     "PaperCV282/CriticalFactorialMoments.lean",
     "PaperCV282/CriticalFirstMomentRate.lean",
     "PaperCV282/CriticalProfileNormalization.lean",
     "PaperCV282/CriticalVarianceMoments.lean",
+    "PaperCV282/CutoffGraphCompatibility.lean",
+    "PaperCV282/CutoffGraphDegree.lean",
+    "PaperCV282/CutoffGraphFreeCutoff.lean",
+    "PaperCV282/CutoffGraphScale.lean",
+    "PaperCV282/DefectiveRankinCount.lean",
     "PaperCV282/DivisorSubpolynomial.lean",
     "PaperCV282/DyadicRelationProfile.lean",
+    "PaperCV282/ExponentialIntegral.lean",
+    "PaperCV282/ExponentialIntegralAsymptotics.lean",
+    "PaperCV282/FiniteFieldPoissonCoupling.lean",
+    "PaperCV282/FiniteFieldTotalVariation.lean",
     "PaperCV282/FullHostAsymptotics.lean",
     "PaperCV282/FullHostComparison.lean",
     "PaperCV282/FullHostCounting.lean",
@@ -162,10 +125,13 @@
     "PaperCV282/FullIntervalHostCounting.lean",
     "PaperCV282/FullIntervalPrimeAssignment.lean",
     "PaperCV282/FullPrimeAssignment.lean",
+    "PaperCV282/GoodTouchingProbability.lean",
     "PaperCV282/HostRankMass.lean",
     "PaperCV282/HostRealPowers.lean",
     "PaperCV282/InfiniteConditionalWords.lean",
     "PaperCV282/InfiniteCountMoments.lean",
+    "PaperCV282/InfiniteFieldTransfer.lean",
+    "PaperCV282/InfiniteMaskedScalarTransfer.lean",
     "PaperCV282/InfiniteWordFirstMoment.lean",
     "PaperCV282/InfiniteWordTransfer.lean",
     "PaperCV282/IntervalRationalLowerBounds.lean",
@@ -201,6 +167,16 @@
     "PaperCV282/MacroscopicTwoDefectStarts.lean",
     "PaperCV282/MacroscopicValueCorrection.lean",
     "PaperCV282/MacroscopicWordFirstMoment.lean",
+    "PaperCV282/MaskedArithmeticAverages.lean",
+    "PaperCV282/MaskedArithmeticCosts.lean",
+    "PaperCV282/MaskedArithmeticGeometry.lean",
+    "PaperCV282/MaskedBadMass.lean",
+    "PaperCV282/MaskedPairBounds.lean",
+    "PaperCV282/MaskedPairGeometry.lean",
+    "PaperCV282/MaskedScalarCoupling.lean",
+    "PaperCV282/MaskedScalarFullConditioning.lean",
+    "PaperCV282/MaskedScalarRetained.lean",
+    "PaperCV282/MaskedScalarTransfer.lean",
     "PaperCV282/NonterminalProfile.lean",
     "PaperCV282/OrderedPairCounting.lean",
     "PaperCV282/PointwiseStartBounds.lean",
@@ -209,6 +185,16 @@
     "PaperCV282/PolynomialSplitSolutions.lean",
     "PaperCV282/PositiveSquareclassPairs.lean",
     "PaperCV282/PrescribedValues.lean",
+    "PaperCV282/PrimeEulerAbel.lean",
+    "PaperCV282/PrimeEulerCutoff.lean",
+    "PaperCV282/PrimeEulerFreeCutoff.lean",
+    "PaperCV282/PrimeEulerFreeScales.lean",
+    "PaperCV282/PrimeEulerLowerSplit.lean",
+    "PaperCV282/PrimeEulerPNT.lean",
+    "PaperCV282/PrimeEulerRankin.lean",
+    "PaperCV282/PrimeEulerSaddle.lean",
+    "PaperCV282/PrimeEulerUniform.lean",
+    "PaperCV282/ProcessAGGInput.lean",
     "PaperCV282/ProfileAssembly.lean",
     "PaperCV282/ProfileMonomials.lean",
     "PaperCV282/RationalFamilyMass.lean",
@@ -222,6 +208,14 @@
     "PaperCV282/ResidualSectorMasks.lean",
     "PaperCV282/ResidualSectorMass.lean",
     "PaperCV282/ResidualSectorPartition.lean",
+    "PaperCV282/SaddleAsymptotics.lean",
+    "PaperCV282/SaddleBranch.lean",
+    "PaperCV282/SaddleBranchAsymptotics.lean",
+    "PaperCV282/SaddleExpansion.lean",
+    "PaperCV282/SaddleParameters.lean",
+    "PaperCV282/SaddleScales.lean",
+    "PaperCV282/ScalarPoissonBounds.lean",
+    "PaperCV282/ScalarSteinInput.lean",
     "PaperCV282/SectorEightGeometry.lean",
     "PaperCV282/SectorEightProfile.lean",
     "PaperCV282/SectorEightSliceMass.lean",
@@ -242,7 +236,15 @@
     "PaperCV282/SmallKernelAnchors.lean",
     "PaperCV282/SmallProductComponentBound.lean",
     "PaperCV282/SmallProductMass.lean",
+    "PaperCV282/SoftConditionalPoisson.lean",
+    "PaperCV282/SoftGraphDegree.lean",
+    "PaperCV282/SoftMeasureAverage.lean",
     "PaperCV282/SplitProductLocalization.lean",
+    "PaperCV282/SteinFiniteExpectation.lean",
+    "PaperCV282/SteinLocalTelescoping.lean",
+    "PaperCV282/SteinScalarTelescoping.lean",
+    "PaperCV282/SteinSoftTelescoping.lean",
+    "PaperCV282/SteinTestTotalVariation.lean",
     "PaperCV282/TerminalPartnerCount.lean",
     "PaperCV282/TerminalSectorMasks.lean",
     "PaperCV282/TerminalSliceContainer.lean",
@@ -428,7 +430,29 @@
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
       "Complete signed marked-field, dictionary and two-source crossover theorems."
     ],
-    "new_external_literature_premises_in_current_endpoints": [],
+    "new_external_literature_premises_in_current_endpoints": [
+      {
+        "declaration": "PaperC.V282.ScalarSteinInput.ScalarSteinFactorsStatement",
+        "content": "Existence of positive-rate Poisson Stein solutions with the two displayed norm bounds. Zero-rate solution is proved internally.",
+        "source": "Krokowski arXiv:1505.01417v3, Section2.5, equations2.14–2.15.",
+        "proved_in_lean": false,
+        "lean_axiom": false
+      },
+      {
+        "declaration": "PaperC.V282.ProcessAGGInput.ProcessAGGStatement",
+        "content": "Finite indicator process AGG theorem: half-L1 <=2(b1+b2) for an exact graph, including zero coordinates.",
+        "source": "Arratia–Goldstein–Gordon (1989), Theorem2, printed page11.",
+        "proved_in_lean": false,
+        "lean_axiom": false
+      },
+      {
+        "declaration": "PaperC.V282.PrimeEulerPNT.PrimeNumberTheoremRemainder",
+        "content": "Actual prime-counting remainder pi(t)-Ei(log t)=o(t/log t); does not assume the target moving-weight sum.",
+        "source": "Classical prime number theorem; see LITERATURE_INPUTS.md.",
+        "proved_in_lean": false,
+        "lean_axiom": false
+      }
+    ],
     "proposition_3_7": {
       "covered": "Both H_start <= H_full and the uniform macroscopic H_full <= M^(3/2+o(1)) host bound.",
       "declaration": "PaperC.V282.FullIntervalHostAsymptotics.proposition_three_seven",
@@ -727,6 +751,45 @@
       ],
       "uniformity": "Fixed positive lower/upper logarithmic band and epsilon; threshold before upper endpoint, length, mask, adequate cylinder and real nonnegative cap. Bounded-ratio estimates are normalized at N.",
       "external_literature_premises": []
+    },
+    "literature_boundary_document": "PaperCV282/LITERATURE_INPUTS.md",
+    "theorem_4_1": {
+      "status": "complete_under_explicit_literature_premises",
+      "covered": [
+        "Actual scalar conditional and unconditional masked count laws, with the mask own retained mean and sharp first Stein factor.",
+        "Complete-support bad sites including x-1; true masked deletion cost and target-rate change.",
+        "Actual ordered edges, exact touching probabilities and separated relation costs.",
+        "True infinite count law and positive source atoms of the entire F_Y, using max(Y,dyadicCutoff) for every Y.",
+        "Actual same-lattice joint indicator field and product-Poisson target, including deletion, mixture and infinite atom transport."
+      ],
+      "stronger_mask_local_deletion_budget": "p*(M_B(A)+2*card(A intersect D_Y))",
+      "zero_intensity_convention": "Both scalar factors equal one.",
+      "remaining": []
+    },
+    "proposition_4_2_companion_B_1": {
+      "status": "complete_under_explicit_PNT_premise",
+      "covered": [
+        "Canonical square/squarefree-smooth Rankin count of actual positive defective integers.",
+        "Exact weighted Abel identity using actual prime counts; explicit lower endpoint; moving weighted prime sum and log Euler = Ei(u)+o(nu).",
+        "One threshold before every w in each fixed c*sqrt(H log H)<=w<=C*sqrt(H log H) band, length and deterministic mask.",
+        "Actual full-support bad count and actual all-site degree/ordered edge bounds.",
+        "Existence/uniqueness of both implicit cutoffs among V > 0 with H/V >= exp(1), exact normalized Ei, second-order constants -log2-2 and -log4-2, ratio sqrt2 and loglogN=o(nu)."
+      ],
+      "PNT_is_proved_in_overlay": false,
+      "Ei_or_saddle_asymptotics_assumed": false,
+      "degree_requires_PNT": false,
+      "remaining": []
+    },
+    "companion_B_2": {
+      "status": "complete_in_explicit_conditional_joint_law_representation_under_Stein_factors",
+      "covered": [
+        "Finite exact-graph soft lemma, including arbitrary bad indicators and true bad-neighbour marginal/joint sums.",
+        "Finite conditioning averages and arbitrary probability environments with measurable finite joint laws.",
+        "Measurability and integrability of total variation; graph and good marginals required only almost everywhere.",
+        "Actual dyadic all-site instance and degree-times-actual-first-moment estimate."
+      ],
+      "interface_boundary": "Conditional joint laws are supplied as measurable finite PMFs. No automatic conditional-expectation/kernel construction from an arbitrary probability-space presentation is claimed.",
+      "remaining_for_theorem_4_3": "Optimized hard/soft full-band rate assembly, including the requested conditional fields."
     }
   },
   "qualification": {
@@ -736,19 +799,26 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 9,
+  "development_batch": 10,
   "declaration_inventory": {
-    "mathematical_module_count": 115,
-    "named_declarations": 830,
-    "theorems": 707,
-    "definitions": 111,
-    "named_instances": 12,
+    "mathematical_module_count": 172,
+    "named_declarations": 1379,
+    "theorems": 1165,
+    "definitions": 189,
+    "named_instances": 25,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
     "named_instance_declarations": [
+      "PaperC.V282.AllStartFieldCosts.instDecidableProposition",
+      "PaperC.V282.AllStartFieldTransfer.instDecidableProposition",
+      "PaperC.V282.FiniteFieldTotalVariation.instDecidableProposition",
       "PaperC.V282.InfiniteConditionalWords.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteCountMoments.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.InfiniteFieldTransfer.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.InfiniteFieldTransfer.instDecidableProposition",
+      "PaperC.V282.InfiniteMaskedScalarTransfer.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.InfiniteMaskedScalarTransfer.instDecidableProposition",
       "PaperC.V282.InfiniteWordFirstMoment.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteWordFirstMoment.instIsProbabilityMeasureInfiniteRademacher",
       "PaperC.V282.InfiniteWordTransfer.instMeasurableSpaceF2Discrete",
@@ -757,7 +827,13 @@
       "PaperC.V282.MacroscopicFirstMoment.instMeasurableSpaceF2Discrete",
       "PaperC.V282.MacroscopicFirstMoment.instIsProbabilityMeasureInfiniteRademacher",
       "PaperC.V282.MacroscopicWordFirstMoment.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MaskedScalarCoupling.instDecidableProposition",
+      "PaperC.V282.MaskedScalarFullConditioning.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MaskedScalarFullConditioning.instDecidableProposition",
       "PaperC.V282.PointwiseStartBounds.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.ScalarPoissonBounds.instDecidableProposition",
+      "PaperC.V282.ScalarSteinInput.instDecidableProposition",
+      "PaperC.V282.SteinTestTotalVariation.instDecidableProposition",
       "PaperC.V282.WordDefectCounting.instDecidableHDefective"
     ],
     "batch_3_additions": {
@@ -1313,6 +1389,293 @@
         "definitions": 0,
         "named_instances": 0
       }
+    },
+    "batch_10_additions": {
+      "AllStartConditionalDependency": {
+        "theorems": 15,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "AllStartFieldCosts": {
+        "theorems": 9,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "AllStartFieldTransfer": {
+        "theorems": 8,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "AllStartSoftPoisson": {
+        "theorems": 4,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "BadStartRankin": {
+        "theorems": 8,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "BadStartRankinAsymptotics": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "BadStartRankinFreeCutoff": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "BadStartRankinSaddle": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "ConditionalFieldTransfer": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "CutoffGraphCompatibility": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CutoffGraphDegree": {
+        "theorems": 14,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "CutoffGraphFreeCutoff": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CutoffGraphScale": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "DefectiveRankinCount": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "ExponentialIntegral": {
+        "theorems": 12,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "ExponentialIntegralAsymptotics": {
+        "theorems": 9,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "FiniteFieldPoissonCoupling": {
+        "theorems": 11,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "FiniteFieldTotalVariation": {
+        "theorems": 21,
+        "definitions": 5,
+        "named_instances": 1
+      },
+      "GoodTouchingProbability": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "InfiniteFieldTransfer": {
+        "theorems": 17,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "InfiniteMaskedScalarTransfer": {
+        "theorems": 8,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "MaskedArithmeticAverages": {
+        "theorems": 15,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MaskedArithmeticCosts": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MaskedArithmeticGeometry": {
+        "theorems": 15,
+        "definitions": 6,
+        "named_instances": 0
+      },
+      "MaskedBadMass": {
+        "theorems": 10,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MaskedPairBounds": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MaskedPairGeometry": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MaskedScalarCoupling": {
+        "theorems": 9,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "MaskedScalarFullConditioning": {
+        "theorems": 12,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "MaskedScalarRetained": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MaskedScalarTransfer": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PrimeEulerAbel": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "PrimeEulerCutoff": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PrimeEulerFreeCutoff": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PrimeEulerFreeScales": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "PrimeEulerLowerSplit": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PrimeEulerPNT": {
+        "theorems": 11,
+        "definitions": 3,
+        "named_instances": 0
+      },
+      "PrimeEulerRankin": {
+        "theorems": 11,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "PrimeEulerSaddle": {
+        "theorems": 9,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "PrimeEulerUniform": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "ProcessAGGInput": {
+        "theorems": 7,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "SaddleAsymptotics": {
+        "theorems": 10,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "SaddleBranch": {
+        "theorems": 17,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "SaddleBranchAsymptotics": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SaddleExpansion": {
+        "theorems": 8,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SaddleParameters": {
+        "theorems": 21,
+        "definitions": 6,
+        "named_instances": 0
+      },
+      "SaddleScales": {
+        "theorems": 9,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "ScalarPoissonBounds": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "ScalarSteinInput": {
+        "theorems": 11,
+        "definitions": 6,
+        "named_instances": 1
+      },
+      "SoftConditionalPoisson": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SoftGraphDegree": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SoftMeasureAverage": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SteinFiniteExpectation": {
+        "theorems": 20,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SteinLocalTelescoping": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SteinScalarTelescoping": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "SteinSoftTelescoping": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "SteinTestTotalVariation": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 1
+      }
     }
   },
   "manuscript_notes": {
@@ -1320,23 +1683,23 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Corollaries 2.5 and 2.6, touching pairs, all eight actual sectors, full raw/coarse/capped profiles and the actual infinite-model moments of Corollary 4.4 are proved. S007 records a terminal summation simplification. Current v2.8.2 PDFs remain unchanged.",
+    "formalization_context": "The previous relation profiles and moments are retained. Batch10 adds masked scalar/field Poisson transfer, complete free-cutoff and saddle analysis under explicit literature premises, and companion B.2. S008 records the stronger mask-local deletion term. Source PDFs remain unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
-      "suggestions": 7
+      "suggestions": 8
     }
   },
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 60,
+    "effort_estimate_percent": 65,
     "conservative_interval_percent": [
-      50,
-      65
+      60,
+      75
     ],
-    "completed_article_results": 25,
+    "completed_article_results": 27,
     "numbered_article_results_excluding_intro_duplicates": 61,
-    "companion_completed_named_results": 1,
+    "companion_completed_named_results": 3,
     "companion_named_results": 8,
     "denominators_must_not_be_added": true,
     "metric_is_lean_declaration_count": false

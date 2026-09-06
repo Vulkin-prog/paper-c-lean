@@ -20,6 +20,7 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S005 | Papier, p. 17, proposition 3.12, secteur 1 ; définition p. 13 | Suggestion de simplification de preuve | Proposition à examiner |
 | V3-S006 | Papier, p. 17–18, lemmes 3.13–3.14 ; section de formalisation p. 50 | Suggestion de précision sur les taux formalisés | Proposition à examiner |
 | V3-S007 | Papier, p. 22–24, secteur 8 et proposition 3.25 ; p. 26, plafond de 3.27 | Suggestion de simplification de preuve démontrée | Proposition à examiner |
+| V3-S008 | Papier, p. 27–28, théorème 4.1 et suppression masquée | Suggestion de renforcement local au masque | Proposition à examiner |
 
 **Compagnon technique : aucune correction confirmée à ce stade.** Les résultats finis déjà formalisés ne constituent pas une vérification intégrale de ses annexes. Les prochaines observations propres au compagnon seront ajoutées avec leur emplacement et leur justification ; aucune anomalie ne lui est attribuée par analogie avec le papier.
 
@@ -57,9 +58,9 @@ Les hôtes correspondants sont exactement les paires admettant un **sous-ensembl
 
 > Here the host count includes every separated ordered pair admitting a nonempty square-product subset of the full vertex occurrences. No even-cardinality condition is imposed in either block; a pair can contribute to this count even when its relative-sign kernel is zero.
 
-**Statut.** Proposition à examiner. L'identification et l'inégalité finie (3.24) sont formalisées sous leurs hypothèses explicites. La borne dyadique est désormais complétée par la borne `M^(3/2+o(1))` sur tout masque de paires dans `[2,M]²`, puis sur les paires séparées du domaine macroscopique exact `[ceil(M^δ),M)`. Le théorème `FullIntervalHostAsymptotics.proposition_three_seven` établit conjointement la comparaison des compteurs de départs et de valeurs et la borne du second, avec cutoff `M+L` pour les relations de départ. Le seuil précède `L` et `δ`, sous `L+1 ≤ C log M` et `δ > 0`. Les inégalités d'hôtes de la proposition 3.7 sont ainsi acquises. Le raccord à rapport borné établit aussi la borne à l'échelle inférieure `N`, pour `N ≤ M ≤ κ N` avec `κ` naturel fixé et `L+1 ≤ C log N`, uniformément sur les masques dans `[2,M]²`. Il inclut la comparaison des compteurs sur les paires séparées de `[N,M)`. Le profil brut du théorème 3.1 et sa combinaison en (3.25) restent ouverts.
+**Statut.** Proposition à examiner. L'identification et l'inégalité finie (3.24) sont formalisées sous leurs hypothèses explicites. La borne dyadique est désormais complétée par la borne `M^(3/2+o(1))` sur tout masque de paires dans `[2,M]²`, puis sur les paires séparées du domaine macroscopique exact `[ceil(M^δ),M)`. Le théorème `FullIntervalHostAsymptotics.proposition_three_seven` établit conjointement la comparaison des compteurs de départs et de valeurs et la borne du second, avec cutoff `M+L` pour les relations de départ. Le seuil précède `L` et `δ`, sous `L+1 ≤ C log M` et `δ > 0`. Les inégalités d'hôtes de la proposition 3.7 sont ainsi acquises. Le raccord à rapport borné établit aussi la borne à l'échelle inférieure `N`, pour `N ≤ M ≤ κ N` avec `κ` naturel fixé et `L+1 ≤ C log N`, uniformément sur les masques dans `[2,M]²`. Il inclut la comparaison des compteurs sur les paires séparées de `[N,M)`. Le lot 9 a ensuite complété le profil brut du théorème 3.1 et sa combinaison en (3.25), comme indiqué ci-dessous.
 
-Les masses pondérées macroscopiques `Rstart` et `Rval` sont désormais définies exactement sur ce même domaine et ce même cutoff. La masse de départs est identifiée à `R2κ` et hérite de la décomposition systématique/résiduelle du code canonique historique, pour tout paramètre naturel `A`. La partition successive des huit secteurs est maintenant définie et sa décomposition de masse est prouvée dans `ResidualSectorPartition` et `ResidualSectorMass`. L'identité seule ne fournit pas leurs estimations asymptotiques. Le coût positif de la comparaison est maintenant formalisé : `max(0,Rval−4Rstart) ≤ 3 Hval`, puis, pour tout entier `k > 0`, sa puissance `2k` est finalement au plus `M^(3k+1)`, uniformément sous `L+1 ≤ C log M` et `δ > 0`, avec seuil avant `L` et `δ`. Il s'agit d'une **majoration de la partie positive**, sans hypothèse de profil brut ; ni une erreur absolue, ni une égalité asymptotique, ni (3.25) ne sont affirmées.
+Les masses pondérées macroscopiques `Rstart` et `Rval` sont désormais définies exactement sur ce même domaine et ce même cutoff. La masse de départs est identifiée à `R2κ` et hérite de la décomposition systématique/résiduelle du code canonique historique, pour tout paramètre naturel `A`. La partition successive des huit secteurs est maintenant définie et sa décomposition de masse est prouvée dans `ResidualSectorPartition` et `ResidualSectorMass`. L'identité seule ne fournit pas leurs estimations asymptotiques. Le coût positif de la comparaison est maintenant formalisé : `max(0,Rval−4Rstart) ≤ 3 Hval`, puis, pour tout entier `k > 0`, sa puissance `2k` est finalement au plus `M^(3k+1)`, uniformément sous `L+1 ≤ C log M` et `δ > 0`, avec seuil avant `L` et `δ`. Il s'agit d'une **majoration de la partie positive**, sans hypothèse de profil brut ; ces seuls lemmes intermédiaires ne donnent ni une erreur absolue, ni une égalité asymptotique, ni (3.25). Cette limite ne décrit pas la couverture globale obtenue au lot 9.
 
 **Preuves.** [TwoWindowParity.lean](../PaperCV282/TwoWindowParity.lean), `startRelationEquivParityKernel` et `value_weight_le_four_start_weight_add_host` ; [ValueSquareRelations.lean](../PaperCV282/ValueSquareRelations.lean), `relationRho_ne_zero_iff_exists_nonempty_square_product` ; [TwoWindowSquareHosts.lean](../PaperCV282/TwoWindowSquareHosts.lean), `finite_equation_three_twenty_four_square_hosts` ; [FullHostComparison.lean](../PaperCV282/FullHostComparison.lean), `card_startRelationHosts_le_squareProductHosts` ; [FullIntervalHostAsymptotics.lean](../PaperCV282/FullIntervalHostAsymptotics.lean), `proposition_three_seven` ; [BoundedRatioFullHosts.lean](../PaperCV282/BoundedRatioFullHosts.lean).
 
@@ -192,6 +193,24 @@ On retrouve exactement `M^epsilon (M^(2/3)Q_B+M^(3/4)Q_B^(2/3))`. Pour un plafon
 **Statut.** Proposition à examiner pour la V3. Preuve formalisée et relue indépendamment. Elle ne revendique ni un meilleur exposant ni les taux plus précis de Pell laissés ouverts dans V3-S006.
 
 **Preuves.** [SectorEightWeights.lean](../PaperCV282/SectorEightWeights.lean), [TerminalSliceGeometry.lean](../PaperCV282/TerminalSliceGeometry.lean), [TerminalSliceCounting.lean](../PaperCV282/TerminalSliceCounting.lean), [SectorEightSliceMass.lean](../PaperCV282/SectorEightSliceMass.lean) et [SectorEightProfile.lean](../PaperCV282/SectorEightProfile.lean), `proposition_three_twenty_five` et `proposition_three_twenty_five_capped`.
+
+## V3-S008 — Localiser le coût de suppression au masque
+
+**Document et emplacement.** Papier v2.8.2, p. 27–28, théorème 4.1, équation (4.3) et première phrase de sa preuve.
+
+**Type.** Suggestion de précision et de renforcement, **sans erreur identifiée dans le manuscrit**.
+
+**Justification.** La formalisation conserve les ensembles réellement supprimés avant de les majorer par le bloc entier. Pour `A⊆I_N`, poser `M_B(A)=Σ_{x∈A}(2^{m_B(x)}−1)` et `D_Y(A)=A∩D_Y`, avec les mêmes supports complets, y compris `x−1`. La somme des vraies probabilités des sites supprimés est au plus `p(M_B(A)+|D_Y(A)|)`. La suppression des coordonnées de la cible Poisson ajoute exactement au plus `p|D_Y(A)|`.
+
+La contribution totale de suppression est donc `p(M_B(A)+2|D_Y(A)|)`. Elle implique la forme globale imprimée, et peut être plus informative pour un masque clairsemé. Les autres termes restent `|A|`, `E_Y(A)` et `R2(A)` ; le facteur scalaire continue d'utiliser la moyenne propre `μ_A=|A∩G_Y|p`. La suggestion ne remplace pas cette moyenne par l'intensité ambiante.
+
+**Formulation anglaise proposée.**
+
+> For a mask A, set M_B(A)=Σ_{x∈A}(2^{m_B(x)}−1) and D_Y(A)=A∩D_Y. The deletion contribution can be sharpened to p(M_B(A)+2|D_Y(A)|), while the Stein factor continues to use μ_A=|A∩G_Y|p.
+
+**Statut.** Proposition à examiner pour la V3. Le budget scalaire a été formalisé sur les vrais atomes de `F_Y`, pour toute coupure admissible, puis dans le modèle infini après mélange. La relecture indépendante valide ce renforcement. Les PDF n'ont pas été modifiés.
+
+**Preuves.** [MaskedBadMass.lean](../PaperCV282/MaskedBadMass.lean), `maskedBadStartMass_le` et `masked_total_deletion_cost_le` ; [MaskedScalarTransfer.lean](../PaperCV282/MaskedScalarTransfer.lean), `theorem_four_one_scalar_conditional` ; [MaskedScalarFullConditioning.lean](../PaperCV282/MaskedScalarFullConditioning.lean), `theorem_four_one_scalar_full_FY`.
 
 ## Suivi des prochaines observations
 
