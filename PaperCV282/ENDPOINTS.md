@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 400 mathematical modules contain **3486 named declarations: 2680 theorems, 596 definitions and 210 named instances**. Batch 18 adds 14 theorems in 3 new modules.
+The 403 mathematical modules contain **3507 named declarations: 2699 theorems, 596 definitions and 212 named instances**. Batch 19 adds 19 theorems in 3 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -1441,3 +1441,27 @@ The arithmetic endpoint uses the existing scalar Stein and PNT propositions.
 The elementary Poisson estimates and conditional-measure identifications
 are proved internally. No convergence of the desired probability ratios is
 assumed, and this closes no microscopic or crossover result in section 7.
+
+## Central three-halves budget following equation (6.7)
+
+Source: article p.40 and companion D.1, p.15. The rate tends to infinity,
+`n=lambda+t*sqrt(lambda)+O(1)`, and `t/lambda^(1/6)` tends to zero. The rounding
+error has an arbitrary fixed eventual absolute bound. The event has positive
+source probability and belongs to the entire hard small-prime field.
+
+| Declaration | Established result |
+|---|---|
+| `PoissonEntropyTaylor.entropy_taylor_remainder_le` | For `abs(x)<=1/2`, `abs(h(1+x)-x^2/2)<=2*abs(x)^3`. |
+| `PoissonEntropyTaylor.entropy_central_remainder_le` | The actual entropy error is at most `2*abs(n-lambda)^3/lambda^2` for positive lambda and `abs(n-lambda)<=lambda/2`. |
+| `PoissonCentralAsymptotics.bounded_rounding_central_errors` | Both `log(n)-log(lambda)` and `lambda*h(n/lambda)-t^2/2` tend to zero, derived from the central range and bounded rounding. |
+| `CentralResolutionBudget.central_cost_budget_eventually` | Under `I+(3/2)*log(lambda)+t^2/2<=V-c*nu`, bounded central errors fit the full cost (6.7) with any `0<c'<c`. |
+| `CentralResolutionBudget.central_common_band_eventually` | `lambda>=1` and `log(lambda)<=V` imply one fixed positive logarithmic length band for the true arithmetic intensity. |
+| `CentralResolutionBudget.central_resolved_future` | The true event `C intersect {Z=n}` is eventually positive, its entire future is within `resolvedBudgetRemainder N c'` of the geometric thinning target, and that actual TV tends to zero. |
+
+The last endpoint requires no extra logarithmic-band or source-resolution
+positivity assumption. It uses the existing directional Stein and PNT
+propositions; Taylor, integer rounding and the budget reduction are proved
+internally. This is a sufficient budget, not a sharp threshold. The soft
+local-transfer counterpart and quantitative Gaussian/moderate-tail results
+remain separate; neither this paragraph nor D.1 is counted as a new complete
+numbered theorem.

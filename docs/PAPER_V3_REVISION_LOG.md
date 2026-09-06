@@ -375,3 +375,24 @@ La réserve « relatif à petite intensité » du bilan de couverture précéden
 est levée. Aucun changement du texte mathématique n'est nécessaire ; aucun
 nouveau point de correction ou suggestion n'est ajouté. Le journal conserve
 **une correction confirmée et douze suggestions**, les PDF restent inchangés.
+
+## Bilan du lot 19 — Budget central avec coefficient 3/2
+
+Le développement central annoncé après (6.7), et détaillé en D.1, est prouvé
+avec l'arrondi entier borné : si `λ→∞`, `n=λ+t√λ+O(1)` et
+`t=o(λ^(1/6))`, alors `λh(n/λ)=t²/2+o(1)` et `log n=log λ+o(1)`.
+Une borne cubique explicite contrôle le reste d'entropie.
+
+Sous `I+(3/2)log λ+t²/2≤V−cν`, toute marge `0<c'<c` donne le budget
+complet (6.7), puis la positivité de `C∩{Z=n}` et la convergence de la vraie
+loi conditionnelle de tout le futur vers sa cible de durées géométriques.
+La bande logarithmique est une conséquence du budget. Voir
+[CentralResolutionBudget.lean](../PaperCV282/CentralResolutionBudget.lean),
+`central_resolved_future`.
+
+Cette preuve précise le sens de « with a fixed margin » déjà présent dans
+l'article. Le coefficient 3/2 demeure un budget suffisant, sans affirmation
+de seuil optimal. Aucun changement du papier ni nouvelle suggestion n'est
+nécessaire. Le transfert local central du taux doux, Berry–Esseen et les
+queues de déviation modérée restent distincts. Le registre conserve
+**une correction confirmée et douze suggestions** ; les PDF restent inchangés.

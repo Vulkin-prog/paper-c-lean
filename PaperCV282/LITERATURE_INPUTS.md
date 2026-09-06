@@ -1,6 +1,6 @@
 # Literature inputs for the v2.8.2 transfer and cutoff proofs
 
-The results through batch 18 separate published probability/prime-distribution inputs
+The results through batch 19 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
 There is no new Lean `axiom`, and no proof of these four propositions is
@@ -162,3 +162,9 @@ Batch 18 adds no literature input. Its relative hard scalar comparison and
 equation (6.3) use only the existing `ScalarSteinFactorsStatement` and
 `PrimeNumberTheoremRemainder`. The Poisson non-vacancy and singleton estimates,
 the conditional source pushforward, and the ratio limits are proved internally.
+
+Batch 19 adds no literature input. The entropy remainder, its central
+asymptotics with bounded rounding, and absorption of the logarithmic Stein
+cost are proved internally from the pinned library. The actual resolved
+future endpoint uses the same `DirectionalSteinFactorsStatement` and
+`PrimeNumberTheoremRemainder` as the previously proved budget (6.7).

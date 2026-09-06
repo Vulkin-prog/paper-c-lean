@@ -6,13 +6,13 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The eighteenth batch closes equation (6.3), the scalar small-intensity
-consequence: under the hard information margin, the true conditional
-non-vacancy and singleton probabilities are both asymptotic to the true
-intensity. The proof supplies the uniform relative error
-`20*(exp(-c*nu/2)+N^(-1/6))+lambda`, without a new literature premise.
-This small batch adds 3 modules and 14 theorems; the overlay now contains
-400 mathematical modules and 3486 named declarations.
+The nineteenth small batch proves the central three-halves information
+budget following equation (6.7). It derives the Poisson entropy expansion
+for `n=lambda+t*sqrt(lambda)+O(1)`, with `lambda` tending to infinity and
+`t=o(lambda^(1/6))`, including the bounded integer-rounding error. Any
+strictly smaller positive margin controls the actual resolved full future;
+the common logarithmic band and positivity of the resolved event are proved.
+The previous small-intensity equation (6.3) is preserved.
 
 The seventeenth development batch completed the exact unsigned finite
 comparison C.1, the general stable product lift6.1, sharp conditioning6.2,
@@ -30,8 +30,7 @@ proved internally. An axiom audit does not discharge literature hypotheses.
 
 The whole paper and companion remain a larger project. Remaining work
 includes the microscopic boundary and two-source crossover, quantitative
-Gaussian and moderate-deviation refinements, the central3/2 resolution
-budget, and the unnumbered labelled/uniform-band quenched extensions.
+Gaussian and moderate-deviation refinements, the soft central local-transfer budget, and the unnumbered labelled/uniform-band quenched extensions.
 The earlier precise Pell/split-product, Euler and positive-density
 aligned-core reserves remain distinct from their proved consequences.
 
@@ -48,7 +47,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 400 mathematical modules contain **3486 named declarations: 2680 theorems, 596 definitions and 210 named instances**. Batch 18 adds 14 theorems in 3 new modules.
+The 403 mathematical modules contain **3507 named declarations: 2699 theorems, 596 definitions and 212 named instances**. Batch 19 adds 19 theorems in 3 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the

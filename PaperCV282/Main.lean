@@ -17,6 +17,7 @@ import PaperCV282.BoundedRatioRelationProfiles
 import PaperCV282.CappedRelationMass
 import PaperCV282.CappedSectorMass
 import PaperCV282.CappedSectorSixProfile
+import PaperCV282.CentralResolutionBudget
 import PaperCV282.CompoundPoissonMarking
 import PaperCV282.CompoundPoissonTail
 import PaperCV282.CompoundPoissonTarget
@@ -209,8 +210,10 @@ import PaperCV282.OrderedPairCounting
 import PaperCV282.PointMeasureSpace
 import PaperCV282.PointwiseStartBounds
 import PaperCV282.PoissonCLT
+import PaperCV282.PoissonCentralAsymptotics
 import PaperCV282.PoissonConfigurationSplit
 import PaperCV282.PoissonConfigurationTransform
+import PaperCV282.PoissonEntropyTaylor
 import PaperCV282.PoissonFieldAggregation
 import PaperCV282.PoissonFieldMeasure
 import PaperCV282.PoissonFilling

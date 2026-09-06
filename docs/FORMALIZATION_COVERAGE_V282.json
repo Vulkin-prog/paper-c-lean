@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "assessment_date": "2026-09-06",
-  "baseline": "Batch 18: small batch closing equation (6.3), the relative conditional non-vacancy and singleton limits at small intensity; batch17 endpoints retained.",
+  "baseline": "Batch19: central entropy expansion with bounded rounding and the three-halves information budget controlling the actual resolved future; prior endpoints preserved.",
   "retained_core_commit": "b3cf107d2df629453a5da8e84f2bad29eea0bf94",
   "toolchain": {
     "lean": "leanprover/lean4:v4.32.0",
@@ -74,7 +74,7 @@
     "baseline_completed_weight_high": 89.32,
     "added_weight_low": 0,
     "added_weight_high": 0,
-    "rounding_note": "Same19blocks105units and acquired range80.20–89.32; calculated76.38–85.07%, midpoint80.72%. Small equation(6.3) completion is absorbed in this existing uncertainty interval. Communicated about81%, cautious75–88%; no declaration-count bonus or duplicate numbered credit.",
+    "rounding_note": "Same19blocks105units and acquired range80.20–89.32; calculated76.38–85.07%, midpoint80.72%. The small central-budget completion is absorbed in the existing uncertainty interval. Communicated about81%, cautious75–88%; no declaration-count bonus or duplicate numbered credit.",
     "cautious_range_percent": [
       75,
       88
@@ -98,7 +98,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "runge_defects",
@@ -117,7 +118,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "one_window",
@@ -136,7 +138,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "canonical_core",
@@ -155,7 +158,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "hosts_rational",
@@ -174,7 +178,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "sectors",
@@ -193,7 +198,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "pell_precise",
@@ -212,7 +218,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "terminal_assembly",
@@ -231,7 +238,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "cutoffs",
@@ -250,7 +258,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "poisson_transfer",
@@ -269,7 +278,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "dictionaries",
@@ -288,7 +298,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "marked_fields",
@@ -307,7 +318,8 @@
       "batch_15_credit_reason": "Actual complete spatial field, independent countable target, weak diffuse limit1.1 and signed growing-coordinate identity are integrated. Modest credit avoids counting5.8 budgets twice and retains the unresolved aggregated directional comparisonC.1 and5.9(ii).",
       "batch_16_credit_reason": "Actual dimension-uniform signed aggregate comparison, Poisson filling and sharp hard budget close the aggregated part of5.9. The signed C.1 analogue is substantial proved work, but literal(C.5) with relative R2 and its exact cutoff remains partial. No second credit for later macroscopic transport.",
       "batch_17_credit_reason": "The exact unsigned C.1 ledger with relative R2(N,Q), 2Q<Y and E=0 is now proved, including true full-FY averages and positive-event restriction. Subsequent macroscopic transports retain their own block.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "growing_gaussian",
@@ -326,7 +338,8 @@
       "batch_15_credit_reason": "Both true labelled information budgets5.18/5.19 and full movable rate5.20 are proved with growing d=o(logN), actual full-FY conditioning and removed tails. Aggregated5.8(ii), its sharper one-factor range and all Poisson-Gaussian5.10 remain uncredited.",
       "batch_16_credit_reason": "Closes5.8(ii) with actual full-FY conditioned signed/unsigned counts and quantitative rate5.22, and5.10 with the genuine joint weak limit, covariance, limiting independence and every finite AR(1) segment. Quantitative Berry–Esseen/local/moderate-deviation arguments ofD.1 remain uncredited, as do later path refinements.",
       "batch_17_credit_reason": "Effective Poisson local estimate is proved uniformly in every positive intensity, with relative error at most1/(12n). Berry–Esseen, central entropy expansion and moderate deviations are not credited.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "conditioning_paths",
@@ -345,7 +358,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Closes all four numbered results6.1–6.4: actual general regular conditional kernels and recorded product, sharp epsilon/max(p,q), genuine full future and finite reverse law, and almost-sure environmental control. Also proves all-intensity6.5 and the actual future budget6.7. The central3/2 reduction, small-intensity relative scalar refinement, labelled/uniform-band quenched extensions and remainingD.4 consequences retain a reserve.",
-      "batch_18_credit_reason": "Equation(6.3) relative small-intensity consequence now proved. The small addition is absorbed in the existing interval; no extra numerical credit, no recount of Theorem6.3."
+      "batch_18_credit_reason": "Equation(6.3) relative small-intensity consequence now proved. The small addition is absorbed in the existing interval; no extra numerical credit, no recount of Theorem6.3.",
+      "batch_19_credit_reason": "Central three-halves resolved-future budget now proved, including sixth-root range, bounded rounding and common-band derivation. Small addition absorbed in the existing effort interval; no numbered result recounted."
     },
     {
       "id": "microscopic",
@@ -364,7 +378,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "intermediate_deep",
@@ -383,7 +398,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "prefix_as",
@@ -402,7 +418,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "macro_bulk",
@@ -421,7 +438,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     },
     {
       "id": "crossover",
@@ -440,7 +458,8 @@
       "batch_15_credit_reason": "Unchanged from batch14; no credit from generic tools or presumed later applications.",
       "batch_16_credit_reason": "Unchanged from batch15; no extra credit for generic probability tools or presumed later applications.",
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
-      "batch_18_credit_reason": "Unchanged from batch17."
+      "batch_18_credit_reason": "Unchanged from batch17.",
+      "batch_19_credit_reason": "Unchanged from batch18."
     }
   ],
   "results": [
@@ -1554,11 +1573,12 @@
         "PaperCV282/PoissonResolvedPast.lean: conditional_retained_path_eq",
         "PaperCV282/PoissonReverseImmigration.lean: reverse_increment_rate",
         "PaperCV282/UnsignedResolvedPathRates.lean: resolved_aggregate_event_bound",
-        "PaperCV282/ResolvedInformationTheorem.lean: resolved_future_under_information_budget"
+        "PaperCV282/ResolvedInformationTheorem.lean: resolved_future_under_information_budget",
+        "PaperCV282/CentralResolutionBudget.lean: central_resolved_future"
       ],
       "remaining": "",
       "reuse": "verified_endpoints",
-      "note": "Actual conditioning by C intersect {Z=n}, positive source probability derived from epsilon<p, and entire future path of n iid geometric lifetimes. Every finite lower segment is retained jointly with the unlimited future through an exact product construction of independent lower Poisson counts; the comparison error is taken at the lowest retained level and the denominator at the resolved level. The whole infinite reverse path is not claimed. The all-intensity6.5 rate and the local-cost6.7 sufficient budget are additionally proved on an explicit fixed logarithmic band; the central3/2 simplification remains separate.",
+      "note": "Actual conditioning by C intersect {Z=n}, positive source probability derived from epsilon<p, and entire future path of n iid geometric lifetimes. Every finite lower segment is retained jointly with the unlimited future through an exact product construction of independent lower Poisson counts; the comparison error is taken at the lowest retained level and the denominator at the resolved level. The whole infinite reverse path is not claimed. The all-intensity6.5 rate and the local-cost6.7 sufficient budget are additionally proved on an explicit fixed logarithmic band; the central3/2 simplification is now also proved, including bounded rounding and the common logarithmic band.",
       "source": "article",
       "id": "6.3",
       "kind": "Theorem",
@@ -1987,8 +2007,8 @@
       "detail": "Removed obsolete reservations about the free cutoff, implicit saddle existence, exact second-order constants and scalar full-F_Y conditioning after compiled closure; 3.19 and all prior stronger auxiliary-rate limitations remain unchanged."
     }
   ],
-  "comparison_baseline_git_commit": "5689f585ca099c1442b400c1321be9d4d28e8e7f",
-  "snapshot_kind": "Batch18 mathematical coverage; exact global validation and publication are separate evidence.",
+  "comparison_baseline_git_commit": "90fc3c5b40a5d3441a9c1b407f19f244b6eeb728",
+  "snapshot_kind": "Batch19 mathematical coverage; exact global validation and publication are separate evidence.",
   "validation_reported_by_main_task": {
     "global_build": "Recorded separately for the exact published tree.",
     "overlay_axiom_audit": "Recorded separately for the exact published tree.",
@@ -2344,6 +2364,56 @@
       ],
       "hypotheses": "Fixed positive logarithmic band, sizes tending to infinity, eventually positive events in the full hard prime field, information <= V-c*nu for fixed c>0, and true intensity tending to zero.",
       "conclusion": "Both true conditional probability ratios P(Z>0 given C)/lambda and P(Z=1 given C)/lambda tend to one."
+    }
+  },
+  "new_complete_article_results_batch_19": [],
+  "new_complete_companion_results_batch_19": [],
+  "literature_premises_batch_19": [
+    {
+      "name": "PrimeEulerPNT.PrimeNumberTheoremRemainder",
+      "content": "Ordinary prime number theorem remainder |pi(floor t)-Ei(log t)| <= eta*t/log t eventually for every eta>0.",
+      "internally_proved": false,
+      "derived_internally": "Abel summation, both signed weighted prime/Euler errors, actual free-band bad counts."
+    },
+    {
+      "name": "ScalarSteinInput.ScalarSteinFactorsStatement",
+      "content": "For each positive Poisson rate and test set, a Stein solution with the standard supremum and first-difference factors.",
+      "internally_proved": false,
+      "derived_internally": "Zero-rate case, telescoping, scalar TV, soft B.4, measurable-environment averaging."
+    },
+    {
+      "name": "ProcessAGGInput.ProcessAGGStatement",
+      "content": "Published process AGG comparison with independent product-Poisson field, distinct from the scalar factor statement.",
+      "internally_proved": false,
+      "derived_internally": "All-site/full-mask arithmetic costs, deletion, Poisson target perturbation, finite joint-field comparison and actual infinite conditional/unconditional joint-field transfer."
+    },
+    {
+      "name": "DirectionalSteinInput.DirectionalSteinFactorsStatement",
+      "content": "Positive coordinate rates in finite dimension at least2: a genuine multivariate Poisson Stein solution and the two published quadratic-form Hessian bounds of Röllin arXiv:0706.0879v3 p.5 equation(3.1), reproducing Barbour(1988) Lemma3.",
+      "internally_proved": false,
+      "derived_internally": "Entrywise directional bounds, Poisson filling cancellation, dependency-graph comparison, actual signed aggregate costs, hard information budget and source Poisson–Gaussian transfer. No desired C.1/TV/CLT conclusion is assumed."
+    }
+  ],
+  "new_literature_premises_added_batch_19": [],
+  "priority_after_batch_19": [
+    "Microscopic non-vacancy and incidence-rank construction, then post-quadratic/intermediate and prefix results7.1–7.5.",
+    "Macroscopic transports and two-source crossover7.6–7.10; their actual source laws and rates remain distinct obligations.",
+    "Quantitative Berry–Esseen and moderate deviations, soft central local-transfer counterpart, remainingD.4 process consequences and the unnumbered labelled/uniform-band quenched extensions.",
+    "Earlier precise arithmetic reserves: full positive-density3.19, precise Pell/split-product rates3.13/3.14/A.2,3.17/3.18 and remaining full Fourier/cyclomatic formulations."
+  ],
+  "unnumbered_consequences_batch_19": {
+    "central_three_halves_budget": {
+      "status": "complete_under_existing_directional_Stein_and_PNT_premises",
+      "counted_as_new_numbered_result": false,
+      "evidence": [
+        "PaperCV282/PoissonEntropyTaylor.lean: entropy_central_remainder_le",
+        "PaperCV282/PoissonCentralAsymptotics.lean: bounded_rounding_central_errors",
+        "PaperCV282/CentralResolutionBudget.lean: central_cost_budget_eventually",
+        "PaperCV282/CentralResolutionBudget.lean: central_common_band_eventually",
+        "PaperCV282/CentralResolutionBudget.lean: central_resolved_future"
+      ],
+      "hypotheses": "Sizes tend to infinity; true intensity tends to infinity; t/lambda^(1/6) tends to zero; bounded eventual rounding n-lambda-t*sqrt(lambda); positive hard-prime events with I+(3/2)*log(lambda)+t^2/2<=V-c*nu.",
+      "conclusion": "For every 0<cprime<c, eventual positivity of C intersect {Z=n}, actual full-future TV <= resolvedBudgetRemainder N cprime, and convergence of this TV to zero. The logarithmic band is deduced."
     }
   }
 }

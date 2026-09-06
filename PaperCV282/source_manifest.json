@@ -35,13 +35,11 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Conditional non-vacancy and singleton asymptotics at small intensity; distinct from Theorem6.3",
+          "item": "Central three-halves sufficient information budget following equation(6.7)",
           "printed_pages": [
-            38
+            40
           ],
-          "equations": [
-            "6.3"
-          ]
+          "equations": []
         }
       ],
       "batch_17_locators": [
@@ -59,6 +57,17 @@
             "6.7"
           ]
         }
+      ],
+      "batch_18_locators": [
+        {
+          "item": "Conditional non-vacancy and singleton asymptotics at small intensity; distinct from Theorem6.3",
+          "printed_pages": [
+            38
+          ],
+          "equations": [
+            "6.3"
+          ]
+        }
       ]
     },
     {
@@ -70,8 +79,16 @@
       "size_bytes": 483599,
       "sha256": "60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094",
       "source_kind": "user_supplied_pdf",
-      "role_in_batch": "No additional companion result is claimed in batch18. The four complete companion results and the quantitative/path reserves from batch17 are preserved.",
-      "current_batch_locators": [],
+      "role_in_batch": "Central Taylor and logarithmic expansions are proved, with bounded rounding. No new complete companion theorem; quantitative and soft local-transfer obligations remain separate.",
+      "current_batch_locators": [
+        {
+          "item": "D.1 central entropy and logarithmic expansion with bounded rounding; whole D.1 remains partial",
+          "printed_pages": [
+            15
+          ],
+          "equations": []
+        }
+      ],
       "batch_17_locators": [
         {
           "item": "Exact unsigned finite C.1/C.5; local Poisson estimate in D.1 and resolved/quenched arguments D.2–D.3",
@@ -85,7 +102,8 @@
             "C.5"
           ]
         }
-      ]
+      ],
+      "batch_18_locators": []
     }
   ],
   "mathematical_modules": [
@@ -108,6 +126,7 @@
     "PaperCV282/CappedRelationMass.lean",
     "PaperCV282/CappedSectorMass.lean",
     "PaperCV282/CappedSectorSixProfile.lean",
+    "PaperCV282/CentralResolutionBudget.lean",
     "PaperCV282/CompoundPoissonMarking.lean",
     "PaperCV282/CompoundPoissonTail.lean",
     "PaperCV282/CompoundPoissonTarget.lean",
@@ -300,8 +319,10 @@
     "PaperCV282/PointMeasureSpace.lean",
     "PaperCV282/PointwiseStartBounds.lean",
     "PaperCV282/PoissonCLT.lean",
+    "PaperCV282/PoissonCentralAsymptotics.lean",
     "PaperCV282/PoissonConfigurationSplit.lean",
     "PaperCV282/PoissonConfigurationTransform.lean",
+    "PaperCV282/PoissonEntropyTaylor.lean",
     "PaperCV282/PoissonFieldAggregation.lean",
     "PaperCV282/PoissonFieldMeasure.lean",
     "PaperCV282/PoissonFilling.lean",
@@ -656,7 +677,7 @@
     "additional_exclusions": [
       "Precise exp(O(log M/loglog M)) quantitative versions of the polynomial-height arithmetic counts.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
-      "Quantitative Berry–Esseen and moderate deviations; central entropy expansion with coefficient3/2 in the resolution budget; remaining D.4 process consequences.",
+      "Quantitative Berry–Esseen and moderate deviations; soft central local-transfer counterpart; remaining D.4 process consequences.",
       "Unnumbered extensions following6.4: labelled-field environmental bound, simultaneous scalar control over O(logN) lengths and separate maximal couplings.",
       "Microscopic boundary, macroscopic transports, prefix regimes and two-source crossover of section7."
     ],
@@ -1301,7 +1322,7 @@
       "bound": "40*sqrt(2*pi)*exp(1/12)*exp(-c*nu/2)+N^(-1/6), tending to zero.",
       "actual_resolved_event_positive": true,
       "uniformity": "Threshold before L,C,n; true full future under C intersect{Z=n}.",
-      "central_three_halves_reduction_claimed": false,
+      "central_three_halves_reduction_claimed": true,
       "common_band_from_unrestricted_base_budget_claimed": false
     },
     "corollary_6_4": {
@@ -1331,6 +1352,19 @@
       "hypotheses": "Fixed positive logarithmic band, sizes tending to infinity, eventually positive events in the full hard prime field, information <= V-c*nu for fixed c>0, and true intensity tending to zero.",
       "conclusion": "Both true conditional probability ratios P(Z>0 given C)/lambda and P(Z=1 given C)/lambda tend to one.",
       "explicit_relative_error": "20*(exp(-c*nu/2)+N^(-1/6))+lambda"
+    },
+    "central_three_halves_budget": {
+      "status": "complete_under_existing_directional_Stein_and_PNT_premises",
+      "counted_as_new_numbered_result": false,
+      "evidence": [
+        "PaperCV282/PoissonEntropyTaylor.lean: entropy_central_remainder_le",
+        "PaperCV282/PoissonCentralAsymptotics.lean: bounded_rounding_central_errors",
+        "PaperCV282/CentralResolutionBudget.lean: central_cost_budget_eventually",
+        "PaperCV282/CentralResolutionBudget.lean: central_common_band_eventually",
+        "PaperCV282/CentralResolutionBudget.lean: central_resolved_future"
+      ],
+      "hypotheses": "Sizes tend to infinity; true intensity tends to infinity; t/lambda^(1/6) tends to zero; bounded eventual rounding n-lambda-t*sqrt(lambda); positive hard-prime events with I+(3/2)*log(lambda)+t^2/2<=V-c*nu.",
+      "conclusion": "For every 0<cprime<c, eventual positivity of C intersect {Z=n}, actual full-future TV <= resolvedBudgetRemainder N cprime, and convergence of this TV to zero. The logarithmic band is deduced."
     }
   },
   "qualification": {
@@ -1340,13 +1374,13 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 18,
+  "development_batch": 19,
   "declaration_inventory": {
-    "mathematical_module_count": 400,
-    "named_declarations": 3486,
-    "theorems": 2680,
+    "mathematical_module_count": 403,
+    "named_declarations": 3507,
+    "theorems": 2699,
     "definitions": 596,
-    "named_instances": 210,
+    "named_instances": 212,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
@@ -1354,6 +1388,8 @@
       "PaperC.V282.AggregateMovingCoordinates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.AllStartFieldCosts.instDecidableProposition",
       "PaperC.V282.AllStartFieldTransfer.instDecidableProposition",
+      "PaperC.V282.CentralResolutionBudget.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CentralResolutionBudget.instProbabilityInfiniteRademacher",
       "PaperC.V282.CompoundPoissonTail.instDecidableProposition",
       "PaperC.V282.CompoundPoissonTarget.instProbabilityMarkSequence",
       "PaperC.V282.CompoundPoissonTarget.instProbabilityCompoundSample",
@@ -3557,6 +3593,23 @@
         "theorems": 5,
         "definitions": 1,
         "named_instances": 2
+      }
+    },
+    "batch_19_additions": {
+      "CentralResolutionBudget": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "PoissonCentralAsymptotics": {
+        "theorems": 12,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "PoissonEntropyTaylor": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
       }
     }
   },
