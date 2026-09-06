@@ -22,6 +22,7 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S007 | Papier, p. 22–24, secteur 8 et proposition 3.25 ; p. 26, plafond de 3.27 | Suggestion de simplification de preuve démontrée | Proposition à examiner |
 | V3-S008 | Papier, p. 27–28, théorème 4.1 et suppression masquée | Suggestion de renforcement local au masque | Proposition à examiner |
 | V3-S009 | Papier, p. 29, théorème 4.3 ; compagnon B.3, p. 8–9 | Suggestion de preuve soft commune à toutes les intensités | Proposition à examiner |
+| V3-S010 | Papier, p. 32, corollaire 5.3 et équation (5.8) | Suggestion de renforcement en une espérance exacte | Proposition à examiner |
 
 **Compagnon technique : aucune correction confirmée à ce stade.** Les résultats finis déjà formalisés ne constituent pas une vérification intégrale de ses annexes. Les prochaines observations propres au compagnon seront ajoutées avec leur emplacement et leur justification ; aucune anomalie ne lui est attribuée par analogie avec le papier.
 
@@ -250,3 +251,29 @@ Le théorème 5.1 et le corollaire 5.4 ont été raccordés aux vraies lois, ave
 La construction effective de 5.4 fonctionne dès B≥8. Elle utilise k=floor(log₂(2B))+1 ; aux puissances de deux, ce nombre dépasse d’une unité le plafond choisi dans le papier, et les mêmes inégalités de taille donnent le minorant2^B/(32B). La possibilité de sélectionner le nombre voulu de mots dans la fenêtre critique est prouvée. Cette variante est un choix de présentation de la formalisation, sans correction demandée au manuscrit.
 
 Les relectures n’ont relevé aucune nouvelle erreur dans ces passages. Le registre conserve donc **une correction confirmée et neuf suggestions**. Lors de la préparation de la V3, la section consacrée à Lean pourra citer ces deux résultats et leurs limites précises à partir du [registre des déclarations](../PaperCV282/ENDPOINTS.md). Les corollaires 5.2,5.3 et5.5 restent séparés et ne sont pas annoncés comme formalisés.
+
+## V3-S010 — Donner l'espérance exacte du recouvrement d'un dictionnaire uniforme
+
+**Document et emplacement.** Papier v2.8.2, p. 32, corollaire 5.3, équation (5.8) et sa preuve.
+
+**Type.** Suggestion de renforcement, sans erreur identifiée dans la majoration actuelle.
+
+**Résultat.** Si W est choisi uniformément parmi les m-sous-ensembles de l'espace des mots binaires de longueur B, avec 1≤m≤2^B, alors
+
+```text
+E_W Ω(W) = m(B−1)/2^B.
+```
+
+La formule s'entend pour B≥1 dans la présentation du papier. Elle est légèrement plus forte que la majoration par m(B−1)/(2^B−1) affichée en (5.8).
+
+**Justification.** À chaque déplacement propre d, il existe exactement 2^d mots auto-compatibles. Le nombre total de paires ordonnées compatibles est 2^(B+d), dont 2^d diagonales ; il reste donc 2^d(2^B−1) paires distinctes. En multipliant par les probabilités d'inclusion sans remise m/2^B et m(m−1)/(2^B(2^B−1)), puis par le poids 2^(-d)/m, la contribution attendue de chaque déplacement est exactement m/2^B. La sommation sur les B−1 déplacements donne l'identité. Le cas m=1 est inclus.
+
+**Formulation anglaise proposée.**
+
+> For a uniformly chosen m-element dictionary, the expected overlap weight is exactly E_W Ω(W)=m(B−1)/2^B. At each proper displacement d, the number of ordered compatible distinct pairs is 2^d(2^B−1); combining the diagonal and off-diagonal inclusion probabilities gives m/2^B per displacement.
+
+Cette égalité peut remplacer (5.8), avec une courte adaptation de la preuve. La suite par Markov et l'ordre de la fraction exceptionnelle restent inchangés. Il s'agit toujours d'un résultat sur une classe de dictionnaires déterministes ; le théorème de Poisson ne suppose pas un nouveau tirage de dictionnaire.
+
+**Preuves.** [RandomDictionaryWordCount.lean](../PaperCV282/RandomDictionaryWordCount.lean), `card_selfOverlapWords`, `card_compatibleSecondWords` et `sum_distinct_directedOverlapWeight` ; [RandomDictionary.lean](../PaperCV282/RandomDictionary.lean), `dictionaryAverage_eq_expectation` et `dictionaryFraction_eq_probability` ; [RandomDictionaryOverlap.lean](../PaperCV282/RandomDictionaryOverlap.lean), `average_overlapWeight_eq`, `equation_five_eight` et `dictionaryFraction_overlapWeight_gt_le`.
+
+**Statut.** Proposition à examiner par l'auteur pour la V3. Le tirage sans remise, les comptes exacts et leurs probabilités sont démontrés. Les PDF sont inchangés. Le registre atteint désormais **une correction confirmée et dix suggestions**.

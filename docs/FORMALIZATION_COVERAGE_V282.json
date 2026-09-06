@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "assessment_date": "2026-09-06",
-  "baseline": "End of batch12: full labelled dictionary Theorem5.1 and explicit no-overlap Corollary5.4, compared with published batch11.",
+  "baseline": "End of batch13: Corollaries5.2,5.3,5.5 with actual iid laws, uniform subset laws and exact count targets; compared with published batch12.",
   "retained_core_commit": "b3cf107d2df629453a5da8e84f2bad29eea0bf94",
   "toolchain": {
     "lean": "leanprover/lean4:v4.32.0",
@@ -43,9 +43,9 @@
   "counts": {
     "article": {
       "reuse_unconnected": 6,
-      "complete": 30,
+      "complete": 33,
       "partial": 14,
-      "not_identified": 11
+      "not_identified": 8
     },
     "companion": {
       "complete": 3,
@@ -53,14 +53,14 @@
       "not_identified": 1
     }
   },
-  "statement_fraction_complete_article": 0.4918032786885246,
+  "statement_fraction_complete_article": 0.5409836065573771,
   "statement_fraction_complete_companion": 0.375,
   "effort": {
     "total_weight": 105,
-    "completed_weight_low": 68.75,
-    "completed_weight_high": 79.32,
-    "completed_fraction_low": 0.6547619047619048,
-    "completed_fraction_high": 0.7554285714285713,
+    "completed_weight_low": 70.25,
+    "completed_weight_high": 80.07,
+    "completed_fraction_low": 0.669047619047619,
+    "completed_fraction_high": 0.7625714285714285,
     "communicable_completed_percent_range": [
       65,
       80
@@ -69,12 +69,12 @@
       20,
       35
     ],
-    "rough_central_estimate_percent": 70,
-    "baseline_completed_weight_low": 65.75,
-    "baseline_completed_weight_high": 76.07,
-    "added_weight_low": 3,
-    "added_weight_high": 3.25,
-    "rounding_note": "Same19blocks105units. Calculated65.48–75.54%, midpoint70.51%; communicated about70%, conservative rounded65–80%. Judgment of acquired effort, not names, lines or time.",
+    "rough_central_estimate_percent": 72,
+    "baseline_completed_weight_low": 68.75,
+    "baseline_completed_weight_high": 79.32,
+    "added_weight_low": 1.5,
+    "added_weight_high": 0.75,
+    "rounding_note": "Same19blocks105units. Calculated66.90–76.26%, midpoint71.58%; communicated about72%, conservative rounded65–80%. Acquired effort judgment, not declaration counts, lines or time.",
     "cautious_range_percent": [
       65,
       80
@@ -92,7 +92,8 @@
       "baseline_completed_fraction_high": 0.98,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "runge_defects",
@@ -105,7 +106,8 @@
       "baseline_completed_fraction_high": 1,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "one_window",
@@ -118,7 +120,8 @@
       "baseline_completed_fraction_high": 1,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "canonical_core",
@@ -131,7 +134,8 @@
       "baseline_completed_fraction_high": 1,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "hosts_rational",
@@ -144,7 +148,8 @@
       "baseline_completed_fraction_high": 0.95,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "sectors",
@@ -157,7 +162,8 @@
       "baseline_completed_fraction_high": 0.98,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "pell_precise",
@@ -170,7 +176,8 @@
       "baseline_completed_fraction_high": 0.75,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "terminal_assembly",
@@ -183,7 +190,8 @@
       "baseline_completed_fraction_high": 1,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "cutoffs",
@@ -196,7 +204,8 @@
       "baseline_completed_fraction_high": 1,
       "batch_10_credit_reason": "Actual free-cutoff Rankin/Euler errors under ordinary PNT, all-site degree/edge normalization, both implicit saddles and their exact second-order constants are now compiled. B.1 and 4.2 share this one block.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "poisson_transfer",
@@ -209,20 +218,22 @@
       "baseline_completed_fraction_high": 1.0,
       "batch_10_credit_reason": "Exact own-mask scalar and joint-field infinite/all-F_Y transfer, root-inclusive deletion, scalar Stein telescoping and general-environment soft B.4 are complete under their explicit literature inputs. Optimized hard/soft 4.3 rates remain to assemble and receive no full credit.",
       "batch_11_credit_reason": "4.3 whole-band hard/soft optimized actual-law rates, free ledger4.10, convergence, all at actual conditioning fields.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "dictionaries",
       "title": "Dictionnaires, recouvrements et constructions",
       "weight": 5,
-      "completed_fraction_low": 0.7,
-      "completed_fraction_high": 0.85,
+      "completed_fraction_low": 1,
+      "completed_fraction_high": 1,
       "locators": "5.1–5.5",
-      "baseline_completed_fraction_low": 0.1,
-      "baseline_completed_fraction_high": 0.2,
+      "baseline_completed_fraction_low": 0.7,
+      "baseline_completed_fraction_high": 0.85,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "True site-word field, exact dependency graph, directed local overlaps, cap before summation, uniform full-band and critical rates, true law convergence and arbitrary statistic contraction; explicit marker family and critical capacity. Corollaries5.2,5.3,5.5 still require their concrete laws/identities."
+      "batch_12_credit_reason": "True site-word field, exact dependency graph, directed local overlaps, cap before summation, uniform full-band and critical rates, true law convergence and arbitrary statistic contraction; explicit marker family and critical capacity. Corollaries5.2,5.3,5.5 still require their concrete laws/identities.",
+      "batch_13_credit_reason": "All clauses of5.2/5.3/5.5: actual infinite iid field, exact local graph/costs, field triangle and independent word-count targets; uniform without-replacement dictionaries, exact overlap expectation and critical exceptional fraction; up-to-sign identity, masked actual count law, uniform rate, least-shift convergence and run-start example. Together with existing5.1/5.4 this closes this block under the retained literature boundary."
     },
     {
       "id": "marked_fields",
@@ -235,7 +246,8 @@
       "baseline_completed_fraction_high": 0.5,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "growing_gaussian",
@@ -248,7 +260,8 @@
       "baseline_completed_fraction_high": 0.2,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "conditioning_paths",
@@ -261,7 +274,8 @@
       "baseline_completed_fraction_high": 0.35,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Actual source-event probabilities, normalized count law, inverse-probability TV cost and soft information-margin convergence; no general product lift, resolved path or almost-sure endpoint.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "microscopic",
@@ -274,7 +288,8 @@
       "baseline_completed_fraction_high": 0.35,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "intermediate_deep",
@@ -287,7 +302,8 @@
       "baseline_completed_fraction_high": 0.55,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "prefix_as",
@@ -300,7 +316,8 @@
       "baseline_completed_fraction_high": 0.55,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "macro_bulk",
@@ -313,7 +330,8 @@
       "baseline_completed_fraction_high": 0.4,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     },
     {
       "id": "crossover",
@@ -326,7 +344,8 @@
       "baseline_completed_fraction_high": 0.15,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
-      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters."
+      "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
+      "batch_13_credit_reason": "Unchanged from batch12; no credit for presumed applications in later chapters."
     }
   ],
   "results": [
@@ -1166,14 +1185,18 @@
       "new_full_credit_batch_12": true
     },
     {
-      "status": "not_identified",
+      "status": "complete",
       "effort_block": "dictionaries",
       "evidence": [
-        "PaperCV282/PrescribedValues.lean"
+        "PaperCV282/IidWordDependency.lean: hasExactDependencyGraph_iidWordField",
+        "PaperCV282/IidWordInfinite.lean: infiniteIidFieldLaw_eq_iidFieldLaw",
+        "PaperCV282/IidWordPoisson.lean: infinite_iid_poisson_distance_le",
+        "PaperCV282/IidWordComparison.lean: corollary_five_two and corollary_five_two_word_counts",
+        "PaperCV282/DictionaryCountTargets.lean: pushforward_dictionary_word_counts_target"
       ],
-      "remaining": "Actual iid-sign field, local dependency graph and Poisson comparison, triangle with the multiplicative field, and per-word count target identity remain.",
-      "reuse": "presumed_only",
-      "note": "",
+      "remaining": "",
+      "reuse": "verified_endpoint",
+      "note": "Both fields use the same full site-word carrier and product Poisson target. The iid sequence is the actual independent coordinates of the infinite Rademacher product. Exact column aggregation proves the product law of word counts with ratesN*2^(-B), also for growing word number. Process AGG plus PNT are explicit arguments.",
       "source": "article",
       "id": "5.2",
       "kind": "Corollary",
@@ -1181,18 +1204,22 @@
       "page_start": 31,
       "extracted_line": 1878,
       "statement_weight": 1,
-      "full_statement_credit": false,
-      "new_full_credit_batch_10": false
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false,
+      "new_full_credit_batch_13": true
     },
     {
-      "status": "not_identified",
+      "status": "complete",
       "effort_block": "dictionaries",
       "evidence": [
-        "PaperCV282/PrescribedValues.lean"
+        "PaperCV282/RandomDictionary.lean: uniformDictionaryPMF, dictionaryAverage_eq_expectation and dictionaryFraction_eq_probability",
+        "PaperCV282/RandomDictionaryOverlap.lean: average_overlapWeight_eq and equation_five_eight",
+        "PaperCV282/RandomDictionaryCritical.lean: corollary_five_three_exceptional_fraction and nonexceptional_dictionary_field_rate",
+        "PaperCV282/RandomDictionaryIndependence.lean: dictionary_event_independent_source"
       ],
-      "remaining": "Uniform m-subset dictionary law, expected diagonal and cross-overlap counts giving5.8, then Markov and critical exceptional fraction remain.",
-      "reuse": "presumed_only",
-      "note": "",
+      "remaining": "",
+      "reuse": "verified_endpoint",
+      "note": "Uniform actual m-subsets, not independent draws of m words. Exact meanEΩ=m(B−1)/2^B strengthens5.8. Markov is applied to the true exceptional fraction. Thresholds precedeB,m and each chosen dictionary; the remaining dictionaries are deterministic. Combinatorics internal; arithmetic field bound retains AGG/PNT.",
       "source": "article",
       "id": "5.3",
       "kind": "Corollary",
@@ -1200,8 +1227,9 @@
       "page_start": 32,
       "extracted_line": 1895,
       "statement_weight": 1,
-      "full_statement_credit": false,
-      "new_full_credit_batch_10": false
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false,
+      "new_full_credit_batch_13": true
     },
     {
       "status": "complete",
@@ -1225,14 +1253,16 @@
       "new_full_credit_batch_12": true
     },
     {
-      "status": "not_identified",
+      "status": "complete",
       "effort_block": "dictionaries",
       "evidence": [
-        "PaperCV282/PrescribedValues.lean"
+        "PaperCV282/SignOverlap.lean: overlapWeight_signDictionary, theta_tendsto_zero_of_leastCompatibleShift and runStartWord_compatible_iff",
+        "PaperCV282/SignPatternRates.lean: sign_field_rate_eventually",
+        "PaperCV282/SignPatternCounts.lean: maskedDictionaryCount_sign_eq, corollary_five_five and masked_sign_count_convergence"
       ],
-      "remaining": "No theorem for the current dictionary result identified. Requires 5.1 and/or new combinatorial overlap estimates and explicit constructions.",
-      "reuse": "presumed_only",
-      "note": "",
+      "remaining": "",
+      "reuse": "verified_endpoint",
+      "note": "Opposite word is bit complement1+a, not additive negation inF₂. Genuine disjoint word events give the common-sign occurrence count. Every deterministic spatial mask receives the exact mean|mask|2^(-L), and the full window is literally|L−log₂N|≤C. Quantified exponential remainder, least-shift geometric tail and run-start example all included.",
       "source": "article",
       "id": "5.5",
       "kind": "Corollary",
@@ -1240,8 +1270,9 @@
       "page_start": 33,
       "extracted_line": 1951,
       "statement_weight": 1,
-      "full_statement_credit": false,
-      "new_full_credit_batch_10": false
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false,
+      "new_full_credit_batch_13": true
     },
     {
       "status": "partial",
@@ -1806,14 +1837,14 @@
       "detail": "Removed obsolete reservations about the free cutoff, implicit saddle existence, exact second-order constants and scalar full-F_Y conditioning after compiled closure; 3.19 and all prior stronger auxiliary-rate limitations remain unchanged."
     }
   ],
-  "comparison_baseline_git_commit": "89fc443af53ff7c3296a6c91203bf3d59f7605e8",
-  "snapshot_kind": "Batch12 mathematical source and independently assessed coverage; exact validation and publication reported separately.",
+  "comparison_baseline_git_commit": "b5e2baec0dc20b1490a6f58940c76d4c5efa6a79",
+  "snapshot_kind": "Batch13 mathematical coverage; validation and publication require separate evidence.",
   "validation_reported_by_main_task": {
-    "global_build": "Passed: lake build PaperCV11 PaperCV282, 4407 jobs.",
-    "overlay_axiom_audit": "Passed: all1795names with kernel dependencies within propext,Classical.choice,Quot.sound.",
-    "guard_checker_tests": "Passed:8tests.",
-    "retained_core_digest": "unchanged from batch11",
-    "publication_commit": "See separate final validation report."
+    "global_build": "Recorded in the separate final validation report for the exact published tree.",
+    "overlay_axiom_audit": "Recorded in the separate final validation report.",
+    "guard_checker_tests": "Recorded in the separate final validation report.",
+    "retained_core_digest": "unchanged from batch12",
+    "publication_commit": "Recorded in the separate final validation report."
   },
   "priority_after_batch_10": [
     "4.3: assemble hard and soft full-band rates, keeping the soft conditioning cutoff also for lambda<1, own intensity, and the minimum with 1.",
@@ -1849,7 +1880,7 @@
     }
   ],
   "pending_at_snapshot": [
-    "Publication identity and remote checks recorded separately after publication."
+    "Exact publication identity and remote checks are separate evidence."
   ],
   "priority_after_batch_11": [
     "5.1 actual site-word field and capped growing dictionary transfer;5.2-5.5 overlaps/constructions",
@@ -1920,6 +1951,39 @@
   "priority_after_batch_12": [
     "Corollaries5.2/5.3/5.5: iid replacement, uniform random dictionaries, words up to sign.",
     "Signed exact marks and aggregated comparison, then growing levels and Poisson–Gaussian limit.",
+    "General stable product lift, sharp conditioning, paths and almost-sure control.",
+    "Microscopic and two-source crossover; retained precise arithmetic refinements."
+  ],
+  "new_complete_article_results_batch_13": [
+    "5.2",
+    "5.3",
+    "5.5"
+  ],
+  "new_complete_companion_results_batch_13": [],
+  "literature_premises_batch_13": [
+    {
+      "name": "PrimeEulerPNT.PrimeNumberTheoremRemainder",
+      "content": "Ordinary prime number theorem remainder |pi(floor t)-Ei(log t)| <= eta*t/log t eventually for every eta>0.",
+      "internally_proved": false,
+      "derived_internally": "Abel summation, both signed weighted prime/Euler errors, actual free-band bad counts."
+    },
+    {
+      "name": "ScalarSteinInput.ScalarSteinFactorsStatement",
+      "content": "For each positive Poisson rate and test set, a Stein solution with the standard supremum and first-difference factors.",
+      "internally_proved": false,
+      "derived_internally": "Zero-rate case, telescoping, scalar TV, soft B.4, measurable-environment averaging."
+    },
+    {
+      "name": "ProcessAGGInput.ProcessAGGStatement",
+      "content": "Published process AGG comparison with independent product-Poisson field, distinct from the scalar factor statement.",
+      "internally_proved": false,
+      "derived_internally": "All-site/full-mask arithmetic costs, deletion, Poisson target perturbation, finite joint-field comparison and actual infinite conditional/unconditional joint-field transfer."
+    }
+  ],
+  "new_literature_premises_added_batch_13": [],
+  "priority_after_batch_13": [
+    "Signed exact marks and actual compound-Poisson aggregation, Theorem5.6/Corollary5.7.",
+    "Growing levels, sign-resolved fields and Poisson–Gaussian limit5.8–5.10.",
     "General stable product lift, sharp conditioning, paths and almost-sure control.",
     "Microscopic and two-source crossover; retained precise arithmetic refinements."
   ]

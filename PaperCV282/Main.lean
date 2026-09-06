@@ -22,6 +22,7 @@ import PaperCV282.CutoffGraphFreeCutoff
 import PaperCV282.CutoffGraphScale
 import PaperCV282.DefectiveRankinCount
 import PaperCV282.DictionaryArithmeticRates
+import PaperCV282.DictionaryCountTargets
 import PaperCV282.DictionaryCriticalWindow
 import PaperCV282.DictionaryErrorLedger
 import PaperCV282.DictionaryFieldBounds
@@ -61,6 +62,12 @@ import PaperCV282.HardPoissonBounds
 import PaperCV282.HardPoissonRates
 import PaperCV282.HostRankMass
 import PaperCV282.HostRealPowers
+import PaperCV282.IidWordComparison
+import PaperCV282.IidWordCosts
+import PaperCV282.IidWordDependency
+import PaperCV282.IidWordField
+import PaperCV282.IidWordInfinite
+import PaperCV282.IidWordPoisson
 import PaperCV282.InfiniteConditionalWords
 import PaperCV282.InfiniteCountMoments
 import PaperCV282.InfiniteFieldTransfer
@@ -119,6 +126,8 @@ import PaperCV282.MassPushforward
 import PaperCV282.NonterminalProfile
 import PaperCV282.OrderedPairCounting
 import PaperCV282.PointwiseStartBounds
+import PaperCV282.PoissonFieldAggregation
+import PaperCV282.PoissonFieldMeasure
 import PaperCV282.PoissonIntensityBounds
 import PaperCV282.PoissonRateConvergence
 import PaperCV282.PolynomialPellCount
@@ -139,6 +148,11 @@ import PaperCV282.PrimeFieldEventConditioning
 import PaperCV282.ProcessAGGInput
 import PaperCV282.ProfileAssembly
 import PaperCV282.ProfileMonomials
+import PaperCV282.RandomDictionary
+import PaperCV282.RandomDictionaryCritical
+import PaperCV282.RandomDictionaryIndependence
+import PaperCV282.RandomDictionaryOverlap
+import PaperCV282.RandomDictionaryWordCount
 import PaperCV282.RareConditioningRates
 import PaperCV282.RationalFamilyMass
 import PaperCV282.RationalGeometryMass
@@ -179,6 +193,10 @@ import PaperCV282.ShiftedKernelDyadicCover
 import PaperCV282.ShiftedKernelPairCount
 import PaperCV282.ShiftedKernelQuotients
 import PaperCV282.ShiftedKernelRangeCount
+import PaperCV282.SignDictionary
+import PaperCV282.SignOverlap
+import PaperCV282.SignPatternCounts
+import PaperCV282.SignPatternRates
 import PaperCV282.SizeTwoHostAsymptotics
 import PaperCV282.SizeTwoHostCounting
 import PaperCV282.SmallKernelAnchors

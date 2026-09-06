@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 219 mathematical modules contain **1795 named declarations: 1495 theorems, 249 definitions and 51 named local instances**. Batch 12 adds 183 theorems in 26 new modules.
+The 237 mathematical modules contain **1986 named declarations: 1629 theorems, 294 definitions and 63 named instances**. Batch 13 adds 134 theorems in 18 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -684,12 +684,12 @@ moment is inferred from total variation convergence.
 
 ## Dependencies, audit and historical boundary
 
-`PaperCV282/Audit.lean` covers all 1,379 named declarations in the 172 mathematical modules, including all 25 named local instances. Batch 10 adds 458 theorems and 91 definitions/instances; the complete per-module counts are in the source manifest.
+`PaperCV282/Audit.lean` covers all 1,986 named declarations in the 237 mathematical modules, including all 63 named instances. Batch 13 adds 134 theorems, 45 definitions and 12 named instances; the complete per-module counts are in the source manifest.
 
 The source inventory and kernel-axiom transcript are checked separately by
 `scripts/check_v282_audit.py`. Failure-path tests exercise missing entries,
 duplicate entries, forbidden dependencies and unsupported declaration forms.
-The complete module list and every named local instance are in the source
+The complete module list and every named instance are in the source
 manifest. Coverage alone is not a replacement for Lean's kernel check.
 
 The original PDF hashes and Lean/mathlib versions are listed in
@@ -1039,8 +1039,8 @@ preserves their constants and thresholds, and gives convergence for every
 chosen sequence of deterministic restrictions or statistics. The target
 is always the image of the same independent Poisson field. This does not
 prove the general stable product lift of Lemma 6.1 with a recorded random
-environment, nor the Poisson target identities particular to Corollaries
-5.2 or 5.5.
+environment. Batch13 separately proves the Poisson target identities
+particular to Corollaries5.2 and5.5, as recorded below.
 
 ## Corollary 5.4: explicit dictionaries without proper overlaps
 
@@ -1060,7 +1060,80 @@ printed ceiling, and the same conclusion follows from `2*B<2^k<=4*B`.
 
 No external coding theorem is assumed. The marker construction's elementary
 injection, union bound and logarithmic capacity estimate are internal.
-Corollaries 5.2 (iid replacement), 5.3 (most dictionaries) and 5.5 (words up
-to a common sign) remain separate obligations. Their laws, expected overlap
-counts or specific aggregation identities are not consequences already
-encoded by naming these generic contraction tools.
+The remaining dictionary consequences5.2,5.3 and5.5 are now completed below.
+
+## Corollary 5.2: replacement by the actual iid sequence
+
+Source: article pages31–32. IidWordField constructs real independent fair bits
+on integer coordinates and proves exact word and compatible-joint probabilities.
+IidWordDependency.hasExactDependencyGraph_iidWordField proves independence
+from the entire outside pattern for the graph of overlapping windows.
+IidWordCosts derives b1≤2NBa² and b2≤2ΛΩ. The explicit process AGG argument
+gives IidWordPoisson.infinite_iid_poisson_distance_le with rate
+4(ΛΩ+Λ²B/N). No arithmetic assumption is used in these iid costs.
+
+IidWordInfinite.infiniteIidFieldLaw_eq_iidFieldLaw identifies this law with
+the field of the actual infinite independent coordinates omega n.
+IidWordComparison.corollary_five_two compares both genuine fields with the
+same site-word Poisson product and proves TV→0 under(5.3).
+Its corollary_five_two_word_counts gives convergence of the actual vector
+of word counts to independent Poisson variables of meanN2^(-B), allowing
+the number of words to grow.
+
+PoissonFieldMeasure constructs the genuine product measure on count vectors.
+PoissonFieldAggregation.hasLaw_columnField and hasLaw_column_sums prove
+rearrangement and mutually independent column sums. DictionaryCountTargets
+proves the exact pushforward targets for dictionaryWordCounts and
+maskedDictionaryCount, then contracts the actual unconditional and averaged
+conditional source laws. These are full-law identities, not just marginal
+mean calculations or pairwise independence assertions.
+
+## Corollary 5.3: uniform dictionaries without replacement
+
+Source: article page32, equation(5.8). RandomDictionary.uniformDictionaryPMF
+is the equal probability law on the actual m-subsets of the2^B words;
+its expectation and event probabilities are exactly dictionaryAverage and
+dictionaryFraction. RandomDictionaryIndependence constructs its product with
+any finite multiplicative source cylinder and proves factorization against
+any observation of that source. No extra randomness is needed to apply the
+field theorem to a chosen dictionary.
+
+RandomDictionaryWordCount proves the real self-overlap and completion counts.
+At each positive proper shift the weighted diagonal sum is1 and the weighted
+distinct-pair sum is2^B−1. Exact without-replacement inclusion counts yield
+RandomDictionaryOverlap.average_overlapWeight_eq:
+
+    E_W Ω(W) = m(B−1)/2^B,  1≤m≤2^B.
+
+This strengthens the printed inequality, which is also proved in
+equation_five_eight. dictionaryFraction_overlapWeight_gt_le is Markov for
+the true sampled event. RandomDictionaryCritical.corollary_five_three_exceptional_fraction
+bounds the fractionΩ>N^(-1/2) by a constant timeslogN/√N, uniformly beforeB,m
+in the literal critical window. nonexceptional_dictionary_field_rate gives
+every remaining dictionary the conditional and unconditional bound(5.4),
+withΩ replaced byN^(-1/2). Only this arithmetic application uses AGG/PNT.
+
+## Corollary 5.5: low-overlap words up to a common sign
+
+Source: article page33, equations(5.9)–(5.10). SignDictionary.oppositeWord
+is the complement1+a inF₂; additive negation inF₂ would be incorrect.
+The two words are distinct for positive length and their actual occurrence
+events are disjoint. SignOverlap.overlapWeight_signDictionary provesΩ=Θ.
+The module provesΘ≤2^(1−d*) and its convergence when the least compatible
+shift diverges; runStartWord_compatible_iff and theta_runStartWord prove
+that the word(-,+,…,+) has only shiftL and weight2^(-L).
+
+SignPatternRates.sign_field_rate_eventually uses the exact window
+|L−log₂N|≤C and preserves theN^(-1/3+ε) error with fixedm=2.
+SignPatternCounts.maskedDictionaryCount_sign_eq identifies the field sum
+with the genuine count of the disjoint union of the two source events.
+corollary_five_five proves the rate for every deterministic maskA⊆[N,2N),
+with exact targetPois(|A|2^(-L)), for the unconditional distance and mean
+conditional distance. signPatternRate_dyadic specializes the mean toN2^(-L).
+masked_sign_count_convergence derives the masked convergence from divergence
+of the least compatible shift, for arbitrary sequences of deterministic masks.
+
+All thresholds precedeL, the word and the mask. Each positiveeta quantifies
+the exponential remainder. AGG of processes and PNT remain explicit theorem
+arguments; no new literature premise, stable-product lift or almost-sure
+conditional convergence is claimed by this batch.

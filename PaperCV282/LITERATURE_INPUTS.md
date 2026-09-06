@@ -54,3 +54,14 @@ They add no literature premise. The process AGG argument also supplies the batch
 comparison together with PNT. The local overlap formulas, marginal cap,
 marker construction and mass pushforward contraction are proved internally.
 No new coding-theory premise is introduced.
+
+## Batch 13: dictionary consequences
+
+Corollaries5.2 and5.5 and the arithmetic conclusion for each nonexceptional
+dictionary in5.3 use the same explicit process AGG and PNT arguments.
+The iid probability computations and dependency graph, finite sampling
+without replacement, exact mean overlap, Markov fraction, common-sign
+identities and exact Poisson aggregation are proved internally. No additional
+probabilistic or coding premise is introduced. The product Poisson target
+is proved from mathlib's Poisson measure, including full independence of
+column sums. The kernel audit does not discharge theorem arguments.

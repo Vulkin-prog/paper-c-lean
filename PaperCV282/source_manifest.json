@@ -35,20 +35,18 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Theorem5.1 and explicit Corollary5.4",
+          "item": "Corollaries5.2,5.3,5.5",
           "printed_pages": [
-            30,
             31,
-            32
+            32,
+            33
           ],
           "equations": [
-            "5.1",
-            "5.2",
             "5.3",
             "5.4",
-            "5.5",
-            "5.6",
-            "5.7"
+            "5.8",
+            "5.9",
+            "5.10"
           ]
         }
       ]
@@ -91,6 +89,7 @@
     "PaperCV282/CutoffGraphScale.lean",
     "PaperCV282/DefectiveRankinCount.lean",
     "PaperCV282/DictionaryArithmeticRates.lean",
+    "PaperCV282/DictionaryCountTargets.lean",
     "PaperCV282/DictionaryCriticalWindow.lean",
     "PaperCV282/DictionaryErrorLedger.lean",
     "PaperCV282/DictionaryFieldBounds.lean",
@@ -130,6 +129,12 @@
     "PaperCV282/HardPoissonRates.lean",
     "PaperCV282/HostRankMass.lean",
     "PaperCV282/HostRealPowers.lean",
+    "PaperCV282/IidWordComparison.lean",
+    "PaperCV282/IidWordCosts.lean",
+    "PaperCV282/IidWordDependency.lean",
+    "PaperCV282/IidWordField.lean",
+    "PaperCV282/IidWordInfinite.lean",
+    "PaperCV282/IidWordPoisson.lean",
     "PaperCV282/InfiniteConditionalWords.lean",
     "PaperCV282/InfiniteCountMoments.lean",
     "PaperCV282/InfiniteFieldTransfer.lean",
@@ -188,6 +193,8 @@
     "PaperCV282/NonterminalProfile.lean",
     "PaperCV282/OrderedPairCounting.lean",
     "PaperCV282/PointwiseStartBounds.lean",
+    "PaperCV282/PoissonFieldAggregation.lean",
+    "PaperCV282/PoissonFieldMeasure.lean",
     "PaperCV282/PoissonIntensityBounds.lean",
     "PaperCV282/PoissonRateConvergence.lean",
     "PaperCV282/PolynomialPellCount.lean",
@@ -208,6 +215,11 @@
     "PaperCV282/ProcessAGGInput.lean",
     "PaperCV282/ProfileAssembly.lean",
     "PaperCV282/ProfileMonomials.lean",
+    "PaperCV282/RandomDictionary.lean",
+    "PaperCV282/RandomDictionaryCritical.lean",
+    "PaperCV282/RandomDictionaryIndependence.lean",
+    "PaperCV282/RandomDictionaryOverlap.lean",
+    "PaperCV282/RandomDictionaryWordCount.lean",
     "PaperCV282/RareConditioningRates.lean",
     "PaperCV282/RationalFamilyMass.lean",
     "PaperCV282/RationalGeometryMass.lean",
@@ -248,6 +260,10 @@
     "PaperCV282/ShiftedKernelPairCount.lean",
     "PaperCV282/ShiftedKernelQuotients.lean",
     "PaperCV282/ShiftedKernelRangeCount.lean",
+    "PaperCV282/SignDictionary.lean",
+    "PaperCV282/SignOverlap.lean",
+    "PaperCV282/SignPatternCounts.lean",
+    "PaperCV282/SignPatternRates.lean",
     "PaperCV282/SizeTwoHostAsymptotics.lean",
     "PaperCV282/SizeTwoHostCounting.lean",
     "PaperCV282/SmallKernelAnchors.lean",
@@ -453,7 +469,7 @@
     "additional_exclusions": [
       "Precise exp(O(log M/loglog M)) quantitative versions of the polynomial-height arithmetic counts.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
-      "Complete signed marked-field and two-source crossover theorems; dictionary corollaries5.2/5.3/5.5 remain."
+      "Complete signed marked-field and two-source crossover theorems. Dictionary results5.1–5.5 are complete under the stated literature boundary."
     ],
     "new_external_literature_premises_in_current_endpoints": [
       {
@@ -882,6 +898,35 @@
       "critical_capacity_derived": true,
       "external_coding_premise": false,
       "remaining": []
+    },
+    "corollary_5_2": {
+      "status": "complete_under_explicit_process_AGG_and_PNT_premises",
+      "iid_source": "Actual infinite independent fair binary coordinates, with proved finite-prefix law.",
+      "dependency": "Whole outside pattern independent; only overlapping sites joined.",
+      "iid_error": "4*(Lambda*Omega+Lambda^2*B/N)",
+      "comparison": "True iid and multiplicative field distances converge by comparison with the same full Poisson product.",
+      "word_counts": "Exact target product of independent Pois(N*2^(-B)), even for growing number of words.",
+      "remaining": []
+    },
+    "corollary_5_3": {
+      "status": "complete_under_retained_literature_boundary",
+      "sampling": "Uniform actual m-subsets, without replacement,1<=m<=2^B.",
+      "exact_expectation": "E Omega=m*(B-1)/2^B",
+      "printed_bound_also_proved": true,
+      "exceptional_fraction": "Actual probability Omega>N^(-1/2) is O_C,delta(logN/sqrtN).",
+      "deterministic_conclusion": "Every dictionary outside the exceptional set receives the true field bound.",
+      "remaining": []
+    },
+    "corollary_5_5": {
+      "status": "complete_under_explicit_process_AGG_and_PNT_premises",
+      "opposite_word": "1+a inF2, representing common sign reversal.",
+      "identity": "Omega({a,opposite a})=Theta(a)",
+      "actual_count": "Sum of disjoint-union word-event indicators, identified with label aggregation.",
+      "target": "Pois(card(mask)*2^(-L)) for every deterministic mask in the dyadic block.",
+      "window": "abs(L-log2N)<=C",
+      "rate": "Constant(C)*(Theta+exp(-Vhard+eta*nuhard)+N^(-1/3+epsilon)), everyepsilon,eta>0",
+      "least_shift_and_run_start_example": true,
+      "remaining": []
     }
   },
   "qualification": {
@@ -891,13 +936,13 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 12,
+  "development_batch": 13,
   "declaration_inventory": {
-    "mathematical_module_count": 219,
-    "named_declarations": 1795,
-    "theorems": 1495,
-    "definitions": 249,
-    "named_instances": 51,
+    "mathematical_module_count": 237,
+    "named_declarations": 1986,
+    "theorems": 1629,
+    "definitions": 294,
+    "named_instances": 63,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
@@ -921,6 +966,11 @@
       "PaperC.V282.FiniteFieldTotalVariation.instDecidableProposition",
       "PaperC.V282.FreeCutoffSoftRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.HardPoissonRates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.IidWordCosts.instDecidableProposition",
+      "PaperC.V282.IidWordDependency.instDecidableProposition",
+      "PaperC.V282.IidWordField.instDecidableProposition",
+      "PaperC.V282.IidWordInfinite.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.IidWordInfinite.instDecidableProposition",
       "PaperC.V282.InfiniteConditionalWords.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteCountMoments.instMeasurableSpaceF2Discrete",
       "PaperC.V282.InfiniteFieldTransfer.instMeasurableSpaceF2Discrete",
@@ -941,12 +991,19 @@
       "PaperC.V282.MaskedScalarFullConditioning.instDecidableProposition",
       "PaperC.V282.MassPushforward.instDecidableProposition",
       "PaperC.V282.PointwiseStartBounds.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.PoissonFieldMeasure.instIsProbabilityMeasureField",
       "PaperC.V282.PrimeFieldEventConditioning.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.RandomDictionary.instDecidableProposition",
+      "PaperC.V282.RandomDictionaryOverlap.instDecidableProposition",
+      "PaperC.V282.RandomDictionaryWordCount.instDecidableProposition",
       "PaperC.V282.RareConditioningRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RareConditioningRates.instIsProbabilityMeasureInfiniteRademacher",
       "PaperC.V282.RestrictedPoissonTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.ScalarPoissonBounds.instDecidableProposition",
       "PaperC.V282.ScalarSteinInput.instDecidableProposition",
+      "PaperC.V282.SignOverlap.instDecidableCompatibleUpToSign",
+      "PaperC.V282.SignPatternCounts.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.SignPatternCounts.instDecidableProposition",
       "PaperC.V282.SoftArithmeticCosts.instDecidableProposition",
       "PaperC.V282.SoftRateAssembly.instMeasurableSpaceF2Discrete",
       "PaperC.V282.SteinTestTotalVariation.instDecidableProposition",
@@ -2033,6 +2090,98 @@
         "definitions": 3,
         "named_instances": 0
       }
+    },
+    "batch_13_additions": {
+      "DictionaryCountTargets": {
+        "theorems": 8,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "IidWordComparison": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "IidWordCosts": {
+        "theorems": 7,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "IidWordDependency": {
+        "theorems": 5,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "IidWordField": {
+        "theorems": 10,
+        "definitions": 7,
+        "named_instances": 1
+      },
+      "IidWordInfinite": {
+        "theorems": 10,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "IidWordPoisson": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "PoissonFieldAggregation": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "PoissonFieldMeasure": {
+        "theorems": 10,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "RandomDictionary": {
+        "theorems": 11,
+        "definitions": 5,
+        "named_instances": 1
+      },
+      "RandomDictionaryCritical": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "RandomDictionaryIndependence": {
+        "theorems": 2,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "RandomDictionaryOverlap": {
+        "theorems": 9,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "RandomDictionaryWordCount": {
+        "theorems": 12,
+        "definitions": 4,
+        "named_instances": 1
+      },
+      "SignDictionary": {
+        "theorems": 9,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "SignOverlap": {
+        "theorems": 12,
+        "definitions": 5,
+        "named_instances": 1
+      },
+      "SignPatternCounts": {
+        "theorems": 8,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "SignPatternRates": {
+        "theorems": 6,
+        "definitions": 2,
+        "named_instances": 0
+      }
     }
   },
   "manuscript_notes": {
@@ -2040,21 +2189,21 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Batch12 completes Theorem5.1 and explicit Corollary5.4. No new manuscript anomaly found. Marker rounding variant and explicit constants documented without adding a correction or suggestion. PDFs unchanged.",
+    "formalization_context": "Batch13 completes5.2/5.3/5.5. SuggestionV3-S010 strengthens5.8 to an exact expectation, without identifying a new error. PDFs unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
-      "suggestions": 9
+      "suggestions": 10
     }
   },
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 70,
+    "effort_estimate_percent": 72,
     "conservative_interval_percent": [
       65,
       80
     ],
-    "completed_article_results": 30,
+    "completed_article_results": 33,
     "numbered_article_results_excluding_intro_duplicates": 61,
     "companion_completed_named_results": 3,
     "companion_named_results": 8,
