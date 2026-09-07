@@ -315,6 +315,13 @@ def markSampleMeasure (rate : ℝ≥0) : Measure (ℕ × (ℕ → unitInterval))
 instance instProbabilityMarkSample (rate : ℝ≥0) : IsProbabilityMeasure (markSampleMeasure rate) := by
   unfold markSampleMeasure; infer_instance
 abbrev IntegerSpatialSample := ℤ → (ℕ × (ℕ → unitInterval))
+/- Keep the product sigma-algebra explicit in both independent environments.
+This also fixes the declaration identity used by the strict Comparator. -/
+instance instMeasurableIntegerSpatialSample : MeasurableSpace IntegerSpatialSample :=
+  @MeasurableSpace.pi ℤ (fun _ => ℕ × (ℕ → unitInterval)) (fun _ =>
+    @Prod.instMeasurableSpace ℕ (ℕ → unitInterval) Nat.instMeasurableSpace
+      (@MeasurableSpace.pi ℕ (fun _ => unitInterval) (fun _ =>
+        @Subtype.instMeasurableSpace ℝ (fun x => x ∈ unitInterval) Real.measurableSpace)))
 def integerSpatialSampleMeasure (theta : ℝ) : Measure IntegerSpatialSample :=
   Measure.infinitePi (fun r => markSampleMeasure (integerLevelRate theta r))
 def integerPointRow (sample : IntegerSpatialSample) (r : ℤ) : Measure (ℝ × ℤ) :=
@@ -337,6 +344,10 @@ namespace Limits
 open MeasureTheory ProbabilityTheory
 open scoped BigOperators ENNReal NNReal Topology
 
+/- Fix the same discrete sign topology in both comparison environments. -/
+instance instTopologicalSign : TopologicalSpace F₂ := ⊥
+instance instDiscreteTopologySign : DiscreteTopology F₂ := ⟨rfl⟩
+
 /- Actual finite point measures with the Borel sigma-algebra of weak convergence. -/
 def PointMeasure (X : Type*) [MeasurableSpace X] := FiniteMeasure X
 instance instTopologicalPointMeasure (X : Type*) [MeasurableSpace X] [TopologicalSpace X]
@@ -355,6 +366,8 @@ def fixedPointMeasure {X : Type*} [MeasurableSpace X] (n : ℕ) (marks : ℕ →
 
 /- The measurable inverse only totalizes the null set of infinite upper tails. -/
 local instance instMeasurableHalfCounts : MeasurableSpace (ℕ →₀ ℕ) := ⊤
+local instance instMeasurableSingletonHalfCounts : MeasurableSingletonClass (ℕ →₀ ℕ) :=
+  ⟨fun _ => MeasurableSpace.measurableSet_top⟩
 theorem measurableEmbedding_halfCounts :
     MeasurableEmbedding (fun c : ℕ →₀ ℕ => (c : ℕ → ℕ)) :=
   ⟨(fun _ _ h => Finsupp.ext (congrFun h)), measurable_of_countable _, fun {_} _ =>
