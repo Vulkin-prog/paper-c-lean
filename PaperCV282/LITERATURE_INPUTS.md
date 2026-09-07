@@ -1,6 +1,6 @@
 # Literature inputs for the v2.8.2 transfer and cutoff proofs
 
-The results through batch 23 separate published probability/prime-distribution inputs
+The results through batch 24 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
 There is no new Lean `axiom`, and no proof of these seven propositions is
@@ -266,3 +266,21 @@ the arithmetic endpoints in every final theorem.
 
 The kernel audit verifies the proofs relative to those explicit arguments;
 it does not prove the arguments themselves or create a new Palomar record.
+
+## Batch24: completed relative scope, unchanged seven inputs
+
+Batch24 adds no external literature proposition. Precise Pell/split-product
+endpoints now use the already active historical Nicolas–Robin divisor
+bound explicitly where required. The sharp Euler estimate and fixed-K
+prime-incidence asymptotics use the existing ordinary PNT proposition.
+Fourier, cycle rank, coding, maximal coupling construction, Gaussian/Mills
+and moderate-tail estimates, and point-measure law identification are proved
+internally. In particular, no Berry–Esseen, moderate-deviation, independence
+or desired process-convergence conclusion is postulated as a new input.
+
+The article and companion scope is complete relative to these seven arguments.
+An endpoint only uses the arguments visible in its signature; importing a
+module does not assert all its hypotheses. Source-to-proof completeness,
+kernel correctness, proof of the literature propositions themselves, and
+Palomar qualification remain distinct claims. Only the first two are part
+of this completed development; validation evidence records the exact bytes.

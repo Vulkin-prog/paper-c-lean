@@ -1,6 +1,12 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 638 mathematical modules contain **5386 named declarations: 4008 theorems, 915 definitions and 463 named instances**. Batch 23 adds 192 theorems in 43 new modules.
+**Current status: batch24 closes the relative mathematical scope of both
+documents.** Earlier dated batch sections below are retained as history;
+their statements of remaining work are superseded by the final section.
+Seven explicit literature arguments remain unproved.
+
+
+The 752 mathematical modules contain **6082 named declarations: 4530 theorems, 1037 definitions and 515 named instances**. Batch24 adds 522 theorems in 114 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -1709,3 +1715,90 @@ uniform Laishram–Shorey, Shorey square-product and Nicolas–Robin. All seven
 global literature propositions remain unchanged. No new Palomar claim is
 made; quantitative Gaussian/moderate-deviation, soft central transfer,
 unnumbered quenched and the earlier precise arithmetic reserves remain.
+
+## Batch24: final relative mathematical closure
+
+All 61 numbered article statements and separately 8 companion statements are
+covered, under their source hypotheses and seven unchanged literature
+arguments. The following explicit endpoints close the last numbered gaps.
+
+| Source | Final declarations in `PaperC.V282` |
+|---|---|
+| 2.1 | `ClosureAlgebraStartTuple.lemma_two_one`, `ClosureAlgebraFourier.affine_fourier_relation_sum` |
+| 2.2 | `ClosureAlgebraSquareTuple.lemma_two_two_character`, `ClosureAlgebraWindowSubsets.integer_window_character` |
+| 2.7 | `ClosureAlgebraIncidence.finrank_cycleSpace`, `ClosureAlgebraPrivateGraph.lemma_two_seven`, `ClosureAlgebraPrivateGraph.lemma_two_seven_tree` |
+| 3.11 | `ClosureCRTCellSeries.lemma_three_eleven_interval`, `ClosureCRTCellSeries.lemma_three_eleven_rectangle` |
+| 3.13 | `PrecisePellCount.lemma_three_thirteen` |
+| 3.14 | `PreciseSplitSolutions.lemma_three_fourteen` |
+| 3.17 | `PreciseSingletonTriplesOffsets.lemma_three_seventeen_integer_offsets` |
+| 3.18 | `PreciseSingletonHosts.lemma_three_eighteen_size_two` |
+| 3.19 | `DensityAlignedExclusion.proposition_three_nineteen` |
+| A.2 | `PrecisePellCount.lemma_a_two` |
+
+The statements use the actual finite arithmetic populations or the retained
+infinite Rademacher source. Precise Pell/split-product estimates retain the
+exp(O(log M/log log M)) rate; singleton triples and size-two hosts retain
+exp(O(sqrt B/log B)). The aligned-core exclusion covers every fixed alpha>0,
+with thresholds chosen before all lengths and starts in the fixed band.
+
+D.1 now has an internal all-rate Gaussian CDF estimate C/sqrt(lambda), local
+Gaussian ratios with bounded rounding, and the quantitative Poisson upper-tail
+ratio error C(1+t^3)/sqrt(lambda). The moderate regime is t>=0 and
+t=o(lambda^(1/6)); the actual hard-conditioned transfer pays
+I+log-plus(lambda)+t²/2+log(1+t). Hard local central transfers require I+(3/2)log(lambda)+t²/2<=V-c*nu;
+soft local central transfers require 2I+2log(lambda)+t²<=V_soft-c*nu_soft.
+These respective information costs are paid before taking limits. No desired
+Gaussian or moderate-tail comparison is assumed as a literature input.
+
+After6.4, `QuenchedScalarBand.corollary_six_four_uniform_scalar` controls
+every scalar length in the fixed logarithmic band simultaneously almost
+surely. `QuenchedSpatialDomain.corollary_six_four_labelled` retains all
+spatial marks. MaximalCouplingMass/Measure construct actual couplings;
+QuenchedMaximalCouplings and QuenchedConfigurationCouplings give their true
+marginals and disagreement probabilities. These are individual-scale
+couplings; no joint coherent coupling across all scales is added.
+
+D.4 has a genuine integer-indexed Poisson count process and point measure,
+local finiteness and infinite total mass, exact covariance and joint PGF,
+the actual half-line restriction, single-Poisson half-line law and iid
+continuous-uniform/geometric marks after conditioning on its count.
+D4GridIdentification connects the whole spatial configuration by all joint
+projections; PointMeasureWeakUniqueness supplies uniqueness of the genuine
+weak limit. D4ClosureLaplace derives the finite level band from a compact
+test, proves the true conditioned source Laplace approximation against the
+moving target, and identifies the whole target formula. D4ClosureExtreme
+proves the extreme law. No phase convergence is imposed on moving-target
+comparisons.
+
+The final unnumbered audit additionally checks independent logarithmic
+defect width/threshold, the actual terminal-container lower exponent3/4,
+the all-fixed-K incidence estimate E.3/E.4, the infinite square-root
+geometric sum C.4, and the literal free-cutoff auxiliary scales in B.1.
+These do not create extra numbered denominator credit.
+
+The complete final module list is in source_manifest.json. Every named
+declaration is included in Audit.lean, including named local instances.
+Companion B.2 retains its measurable finite conditional-joint-law interface;
+no arbitrary-space regular-conditional-kernel construction is claimed.
+The seven literature arguments are not proved by the kernel transcript.
+Publication checks and any Palomar qualification are separate.
+
+### Exact declarations for the final unnumbered clauses
+
+Names below are in `PaperC.V282`; the preceding paragraphs give their hypotheses.
+
+| Clause | Declaration |
+|---|---|
+| after (2.4) | `IndependentDefectParameters.pointwise_defects_independent_eventually`, `IndependentDefectParameters.weighted_defects_independent_eventually` |
+| after (3.20) | `TerminalContainerSharpness.terminal_container_three_quarters_sharp` |
+| B.1 auxiliary scales | `FreeCutoffClosureBand.companion_B1_auxiliary_scales` |
+| C.4 | `ClosureGeometricWeights.equation_c_four` |
+| D.1 Gaussian CDF and moderate tails | `PoissonQuantitativeBerry.poisson_gaussian_CDF_error`, `PoissonQuantitativeModerate.poisson_moderate_relative_error` |
+| D.1 actual conditional tails | `PoissonQuantitativeTailRates.hard_conditional_tail_normal_ratio_tendsto_one`, `PoissonQuantitativeTailRates.hard_conditional_tail_poisson_ratio_tendsto_one` |
+| D.1 hard and soft local central transfer | `HardLocalClosureCentral.hard_central_local_probabilities`, `SoftLocalClosureCentral.soft_central_local_probabilities` |
+| after6.4 actual couplings | `QuenchedMaximalCouplings.corollary_six_four_scalar_couplings`, `QuenchedConfigurationCouplings.corollary_six_four_labelled_couplings` |
+| D.4 whole measure and restriction | `D4ClosureInfiniteMass.ae_integerPointMeasure_univ_top`, `D4ClosureWholeRestriction.ae_halfLinePointConfiguration_is_restriction` |
+| D.4 half-line laws | `D4ClosureSpatialIdentification.halfLinePointLaw_eq_poisson`, `D4ClosureSpatialIdentification.conditional_halfLinePointConfiguration` |
+| D.4 actual arithmetic resolution | `D4ClosureResolvedArithmetic.companion_D4_resolved_arithmetic_weak` |
+| D.4 Laplace and extremes | `D4ClosureLaplaceTheorem.companion_D4_laplace_actual_target`, `D4ClosureLaplaceTarget.integer_target_laplace`, `D4ClosureExtremeTheorem.companion_D4_extreme` |
+| E.3/E.4 for every fixed K | `FixedMediumAsymptotics.equation_E_three`, `FixedMediumIncidenceRank.equation_E_four_intermediate_start`, `FixedMediumRank.equation_E_four_start` |

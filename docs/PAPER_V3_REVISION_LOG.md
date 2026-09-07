@@ -6,7 +6,7 @@ Ce registre rassemble les corrections, clarifications et améliorations suggér�
 
 Les identifiants restent stables au fil des mises à jour. Une **correction confirmée** répond à un énoncé littéralement incorrect ou à une ambiguïté dont une lecture est réfutée. Une **suggestion** améliore l'exposition sans signaler d'erreur du texte actuel. Le statut « à intégrer » ne signifie pas que la modification est déjà acceptée par l'auteur ou appliquée au manuscrit.
 
-L'identité exacte des deux PDF est conservée dans le [manifeste des sources](../PaperCV282/source_manifest.json). Les pages ci-dessous sont les pages imprimées du document concerné. La [liste des résultats formalisés](../PaperCV282/ENDPOINTS.md) distingue les preuves obtenues des obligations encore ouvertes.
+L'identité exacte des deux PDF est conservée dans le [manifeste des sources](../PaperCV282/source_manifest.json). Les pages ci-dessous sont les pages imprimées du document concerné. La [liste des résultats formalisés](../PaperCV282/ENDPOINTS.md) précise les preuves obtenues, leurs hypothèses et les limites des représentations utilisées.
 
 ## Tableau de suivi
 
@@ -30,7 +30,7 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S015 | Papier pp.46–47, théorème7.9 et mélange(7.22) | Suggestion de normalisation et détronquature | Proposition à examiner |
 | V3-S016 | Papier pp.44 et47, théorème7.10 ; compagnon E.7 pp.21–22 | Suggestion de clarification du régime et des quantificateurs futurs | Proposition à examiner |
 
-**Compagnon technique : aucune correction confirmée à ce stade.** Les résultats finis déjà formalisés ne constituent pas une vérification intégrale de ses annexes. Les prochaines observations propres au compagnon seront ajoutées avec leur emplacement et leur justification ; aucune anomalie ne lui est attribuée par analogie avec le papier.
+**Compagnon technique : aucune correction confirmée à ce stade.** Le périmètre mathématique des annexes est désormais couvert relativement aux sept propositions bibliographiques explicites, qui ne sont pas démontrées dans Lean. Aucune anomalie ne lui est attribuée par analogie avec le papier.
 
 ## V3-C001 — Exiger une valuation impaire, pas seulement un premier impair
 
@@ -162,23 +162,23 @@ Avec la borne macroscopique `2^D# = M^{o(1)}` et `tau ≤ D# + c#`, on a `2^tau 
 
 **Preuves.** [SmallProductComponentBound.lean](../PaperCV282/SmallProductComponentBound.lean), `base_pow_componentCount_le_primeProduct` ; [MacroscopicSmallProductLoss.lean](../PaperCV282/MacroscopicSmallProductLoss.lean), `two_pow_pairTau_le_rpow_eventually` ; [SmallProductMass.lean](../PaperCV282/SmallProductMass.lean), `sectorMass_le_factor_hosts_add_rational` ; [MacroscopicSmallProductProfile.lean](../PaperCV282/MacroscopicSmallProductProfile.lean), `sector_one_mass_le_profile_eventually`.
 
-## V3-S006 — Identifier la conséquence uniforme effectivement vérifiée pour Pell et les produits décalés
+## V3-S006 — Préciser les taux de Pell et les produits décalés, avec leurs hypothèses
 
-**Document et emplacement.** Papier v2.8.2, p. 17–18, lemmes 3.13 et 3.14 ; annonce de formalisation p. 50. Le compagnon fournit le développement quantitatif auquel ces lemmes renvoient.
+**Document et emplacement.** Papier v2.8.2, p.17–18, lemmes3.13 et3.14 ; annonce de formalisation p.50 ; compagnon A.2.
 
-**Type.** Suggestion de précision pour la future section de formalisation, **sans erreur identifiée dans les estimations du manuscrit**.
+**Type.** Suggestion de précision pour la future section de formalisation, sans erreur identifiée dans les estimations du manuscrit. Mise à jour après clôture du lot24.
 
-**Justification.** Le développement Lean actuel prouve la conséquence suivante : pour chaque hauteur polynomiale fixée et chaque `epsilon>0`, un seul seuil rend les comptages inférieurs à `M^epsilon` pour tous les coefficients et décalages admissibles. Dans le produit décalé, le degré est fixé avant ce seuil, les facteurs sont positifs et les décalages distincts. Les deux signes possibles de la racine sont comptés. Cette uniformité suffit aux raccords de comptage des hôtes.
+**Justification.** Les premiers lots prouvaient intérieurement les conséquences uniformes `M^epsilon`, suffisantes aux comptages d'hôtes. Le lot24 raccorde aussi les énoncés précis des lemmes3.13–3.14 et A.2, avec le taux `exp(O(log M/log log M))`. Les seuils restent uniformes sur les coefficients et décalages admissibles après fixation de la hauteur polynomiale et du degré. Les deux signes de la racine sont comptés.
 
-La forme plus précise `exp(O(log M / log log M))` affichée dans les lemmes 3.13–3.14 n'est pas identique à cette conséquence : elle apporte un taux supplémentaire. La nouvelle preuve interne du diviseur et son application à Pell ne revendiquent pas encore ce taux. Pour présenter honnêtement la couverture de la V3, il convient donc de distinguer cette conséquence uniforme des lemmes quantitatifs complets, sauf si le taux plus fin est formalisé ultérieurement.
+Pour la V3, la réserve ancienne sur ce taux n'est donc plus à reprendre. Il convient en revanche de rendre visible sa dépendance à la proposition bibliographique explicite de Nicolas–Robin déjà active, qui reste un argument non démontré dans Lean. La conséquence sous-polynomiale interne et l'énoncé précis relatif à cet argument ont des frontières de dépendances différentes.
 
-**Formulation anglaise proposée pour l'état actuel.**
+**Formulation anglaise proposée.**
 
-> The Lean development verifies the uniform `M^epsilon` consequences of the polynomial-height Pell and split-product counts: after the height exponent, degree and positive error exponent are fixed, the threshold is independent of all admissible coefficients and shifts. The sharper displayed `exp(O(log M / log log M))` rate is outside this part of the present formal scope.
+> The Lean development covers the source-shaped polynomial-height Pell and split-product bounds, including the displayed exp(O(log M/log log M)) rate, relative to the explicit Nicolas–Robin divisor-bound argument. The corresponding uniform M^epsilon consequences also have internal proofs used by the host-counting endpoints. Thresholds are uniform over all admissible coefficients and shifts after the fixed height and degree parameters are chosen.
 
-**Statut.** Proposition à réévaluer au moment de figer la V3, selon la couverture alors atteinte. Cette entrée documente une limite de la formalisation actuelle, pas une correction mathématique du papier ou du compagnon.
+**Statut.** Proposition à examiner pour la présentation de la V3. L'ancien constat d'une réserve sur le taux précis est levé ; aucune correction mathématique du papier ou du compagnon n'est suggérée ici.
 
-**Preuves.** [DivisorSubpolynomial.lean](../PaperCV282/DivisorSubpolynomial.lean), `card_divisors_le_rpow_eventually` ; [PolynomialPellCount.lean](../PaperCV282/PolynomialPellCount.lean), `pellBox_atMost_rpow_eventually` ; [PolynomialSplitProducts.lean](../PaperCV282/PolynomialSplitProducts.lean), `splitProductStart_atMost_rpow_eventually` ; [PolynomialSplitSolutions.lean](../PaperCV282/PolynomialSplitSolutions.lean) ; [MacroscopicOneSidedFibers.lean](../PaperCV282/MacroscopicOneSidedFibers.lean), `offsetProductNatFiber_atMost_rpow_eventually`.
+**Preuves.** [PrecisePellCount.lean](../PaperCV282/PrecisePellCount.lean), `lemma_three_thirteen` et `lemma_a_two` ; [PreciseSplitSolutions.lean](../PaperCV282/PreciseSplitSolutions.lean), `lemma_three_fourteen`. Conséquences internes conservées : [PolynomialPellCount.lean](../PaperCV282/PolynomialPellCount.lean), [PolynomialSplitProducts.lean](../PaperCV282/PolynomialSplitProducts.lean) et [PolynomialSplitSolutions.lean](../PaperCV282/PolynomialSplitSolutions.lean).
 
 ## V3-S007 — Simplifier la sommation du secteur terminal en deux populations
 
@@ -198,7 +198,7 @@ On retrouve exactement `M^epsilon (M^(2/3)Q_B+M^(3/4)Q_B^(2/3))`. Pour un plafon
 
 > Split the terminal population according to whether the index forces at least two small kernels in each window. In the first population, the binomial energy bounds the number of larger starts directly, while the uniform partner count and the pointwise bound `2^tau−1≤4Q_B` give the two-thirds term. In the complementary population, the index identity implies `3tau≤2B+8`, hence weight at most `8Q_B^(2/3)`; the one-kernel container gives the three-quarter term. Summing the larger-start dyadic slices proves Proposition 3.25. The same argument keeps any common nonnegative cap by replacing `Q_B` in the first term with `min(T,Q_B)`.
 
-**Statut.** Proposition à examiner pour la V3. Preuve formalisée et relue indépendamment. Elle ne revendique ni un meilleur exposant ni les taux plus précis de Pell laissés ouverts dans V3-S006.
+**Statut.** Proposition à examiner pour la V3. Preuve formalisée et relue indépendamment. Elle ne revendique ni un meilleur exposant ni une amélioration des taux plus précis de Pell, traités séparément dans V3-S006.
 
 **Preuves.** [SectorEightWeights.lean](../PaperCV282/SectorEightWeights.lean), [TerminalSliceGeometry.lean](../PaperCV282/TerminalSliceGeometry.lean), [TerminalSliceCounting.lean](../PaperCV282/TerminalSliceCounting.lean), [SectorEightSliceMass.lean](../PaperCV282/SectorEightSliceMass.lean) et [SectorEightProfile.lean](../PaperCV282/SectorEightProfile.lean), `proposition_three_twenty_five` et `proposition_three_twenty_five_capped`.
 
@@ -612,3 +612,25 @@ quantitatives et arithmétiques sont consignées dans la matrice de couverture.
 Les sources de la future V3 et du compagnon seront à intégrer lorsque
 l'auteur les aura fournies et figées ; aucun enregistrement Palomar nouveau
 n'est annoncé dans ce lot.
+
+## Bilan du lot24 — Clôture mathématique relative
+
+La formalisation couvre désormais **61/61 énoncés de l'article** et,
+séparément, **8/8 du compagnon**, ainsi que les conclusions non numérotées
+auditées, notamment D.1, D.4 et les extensions après6.4. Les deux dénominateurs
+ne s'additionnent pas. Les 19 blocs de la grille atteignent 100% du périmètre
+mathématique relatif aux sept propositions bibliographiques explicites.
+Celles-ci restent des arguments non démontrés dans Lean.
+
+La dernière passe ferme également les paramètres de défaut indépendants,
+la minoration du vrai conteneur unidimensionnel, l'incidence pour tout K
+fixé et la somme géométrique infinie. Aucune nouvelle erreur du papier
+n'a été identifiée par ces raccords. Le registre conserve **une correction
+confirmée et seize suggestions** ; les bilans des lots précédents sont
+historiques et leur liste de travail restant est dépassée.
+
+Pour la V3, décrire le périmètre en distinguant les résultats démontrés des
+sept entrées bibliographiques et renvoyer au manifeste et aux déclarations
+précises du dépôt. Les fichiers source de l'article et du compagnon seront
+à intégrer après la révision de l'auteur. Les PDF v2.8.2 demeurent inchangés.
+Cette clôture mathématique ne crée aucun nouvel enregistrement Palomar.

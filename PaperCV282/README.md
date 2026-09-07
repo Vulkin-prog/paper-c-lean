@@ -6,32 +6,19 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The twenty-third batch completes the affine-conditioned crossover (7.10).
-The exact border rank deficit controls the true rare tail and all conditional
-location phases. Microscopic non-vacancy concentrates on the border. These
-results require no condition on future primes. The full marked comparison
-retains the geometric future clock under the distinct eventual neutrality
-condition for each fixed finite number of future coordinates. Earlier
-macroscopic transport and unconditioned crossover results are preserved.
+Batch24 completes the mathematical scope of the article and technical
+companion **relative to seven explicit literature propositions**. All 61
+numbered article results and, separately, all 8 companion results are covered.
+The introductory duplicates1.1–1.3 are excluded from 61; the two denominators
+must not be added. The final review also covers the unnumbered conclusions,
+including D.1, D.4 and the extensions after6.4.
 
-The seventeenth development batch completed the exact unsigned finite
-comparison C.1, the general stable product lift6.1, sharp conditioning6.2,
-the full resolved future and finite reverse segment6.3, and almost-sure
-environmental control6.4. The all-intensity aggregate rate6.5 and the local
-resolution budget6.7 are also proved on an explicit logarithmic band.
-The previous aggregate and Poisson–Gaussian results5.8–5.10 are preserved.
-
-Seven explicit literature propositions are now recorded in
-[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md). The four earlier inputs are
-preserved; the uniform Laishram–Shorey bound, Shorey's square-product bound
-and the historical Nicolas–Robin divisor bound became active in batch20. Batch23 adds no literature input.
-The incidence ranks, probability estimates and Pell reductions are proved
-from these arguments. An axiom audit does not discharge literature hypotheses.
-
-The whole paper and companion remain a larger project. Remaining work
-includes quantitative Gaussian and moderate-deviation refinements, the soft central local-transfer budget, and the unnumbered labelled/uniform-band quenched extensions.
-The earlier precise Pell/split-product, Euler and positive-density
-aligned-core reserves remain distinct from their proved consequences.
+The seven propositions remain unproved theorem arguments, not Lean axioms.
+The axiom audit does not discharge them. See
+[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md) for the exact boundary and
+[ENDPOINTS.md](ENDPOINTS.md) for the actual source laws and quantifiers.
+The completion percentage describes the audited source-to-proof scope;
+it is not a probability of correctness or a new Palomar qualification.
 
 ## Sources, toolchain and verification
 
@@ -46,7 +33,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 638 mathematical modules contain **5386 named declarations: 4008 theorems, 915 definitions and 463 named instances**. Batch 23 adds 192 theorems in 43 new modules.
+The 752 mathematical modules contain **6082 named declarations: 4530 theorems, 1037 definitions and 515 named instances**. Batch24 adds 522 theorems in 114 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -156,14 +143,7 @@ Palomar submission requires its own frozen statements and evidence.
 
 ## Global progress and manuscript revision
 
-A separate coverage assessment tracks numbered manuscript statements and a
-weighted estimate of the remaining effort. The count of Lean declarations
-is an audit inventory, not a percentage of the complete paper. The current
-estimate is about 94% of the total formalization effort, with a conservative
-88–99% range; later probabilistic and companion results account for much of
-the remaining work. Strict statement coverage is 52/61 numbered article
-results, and 7/8 companion results (these fractions must not be added). See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)
-and the endpoint ledger for the exact definitions and proved scope.
+The [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md) records the final closure of all 19 fixed effort blocks and 105 units. The relative mathematical scope is 100% complete: 61/61 numbered article results and, separately, 8/8 companion results. The two denominators must not be added. All previously open unnumbered conclusions are included; declaration counts remain an audit inventory, not the completion metric.
 
 The V3 revision log contains one confirmed wording correction and sixteen
 suggestions. S007 records the verified two-branch simplification of the
@@ -191,3 +171,26 @@ S016 suggests making the inherited rare regime and future-neutrality
 quantifiers explicit in7.10. It is a clarification, not a newly identified
 mathematical error. All ten numbered results of section7 are now covered
 under the existing explicit literature arguments.
+
+## Final batch24 scope
+
+Precise Pell and split-product rates, sharp singleton Euler estimates,
+arbitrary positive aligned-core density, arbitrary Fourier tuples and
+cyclomatic ranks are now explicit. Intrinsic Gaussian/local/moderate-tail
+estimates and their actual hard/soft transfers close D.1. Constructed
+couplings close the labelled and simultaneous-band quenched extensions.
+D.4 is represented by the whole integer-level point measure, its actual
+half-line restrictions and conditional mark laws, Laplace formulas and
+extremes. Auxiliary unnumbered estimates were audited separately.
+
+Companion B.2 is expressed through measurable finite conditional joint
+laws on an arbitrary probability environment. The source hypotheses are
+required almost everywhere; automatic kernel construction from another
+presentation of the original probability space is outside this interface.
+Only fixed lower reverse segments and individual-scale maximal couplings
+are asserted, with the source quantifiers. The existing future-neutrality
+condition is used only where the full affine geometric clock requires it.
+
+The V3 revision log contains one confirmed correction and sixteen suggestions.
+Author revision, incorporation of the future V3 source files and any new
+Palomar registration are subsequent editorial/release work.
