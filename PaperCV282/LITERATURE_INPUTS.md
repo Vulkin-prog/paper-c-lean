@@ -1,6 +1,6 @@
 # Literature inputs for the v2.8.2 transfer and cutoff proofs
 
-The results through batch 21 separate published probability/prime-distribution inputs
+The results through batch 22 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
 There is no new Lean `axiom`, and no proof of these seven propositions is
@@ -225,3 +225,25 @@ The spatial point processes at x/M are actual pushforwards of these laws.
 Neither their Poisson approximation nor their asymptotic independence is an
 additional literature premise. Kernel auditing still does not prove any
 of the seven explicit input propositions.
+
+## Batch22: macroscopic transport and the two-source crossover
+
+No new literature input is added. The seven explicit propositions and their
+recorded source qualifications remain unchanged. The full labelled7.6
+and the final7.8–7.9 endpoints use process AGG, PNT, uniform
+Laishram–Shorey, Shorey square-product and Nicolas–Robin. The aggregate7.6
+endpoint uses directional Stein factors instead of process AGG.
+
+The restored macroscopic comparisons, information budgets, full exact-mark
+tails, actual source/candidate coupling, true one-point Poisson law, sparse
+mixture normalization, prime-clock uncapping, sign formula and right-censor
+cost are proved internally. The conditional-location limits use the proved
+marked comparison and a genuine weak grid-to-Lebesgue limit. Neither a final
+conditional TV conclusion nor any desired independence is postulated.
+
+The additional prime cutoff uses Bertrand's theorem already proved in the
+pinned mathlib. It does not create an eighth literature proposition. A finite
+cylinder representative for the capped prime clock is constructed and then
+transferred by almost-everywhere equality; the null-event default is not used
+to assume finite-field measurability. Kernel auditing still does not prove
+the seven explicitly supplied literature propositions.

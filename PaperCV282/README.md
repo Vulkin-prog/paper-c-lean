@@ -6,15 +6,15 @@ version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
 model and proofs, with retained-core authority
 `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-The twenty-first batch completes the finite-prefix quantitative and critical
-Poisson laws (7.4), the almost-sure asymmetric longest-run envelopes (7.5),
-and the relative signed marked bulk kernel (7.7). It proves the required
-summability on the actual infinite probability space and connects all marks,
-both signs and spatial positions x/M to the true full-prime conditional laws.
-The microscopic record and bulk factorize with error o(lambda), hence also
-o(q_L+lambda). All earlier results, including 7.1–7.3 and companion E.1–E.3,
-are preserved. Macroscopic all-intensity transport7.6 and the full two-source
-crossover7.8–7.10 remain distinct open endpoints.
+The twenty-second batch completes macroscopic exact-mark transport (7.6),
+the two-source rare tail and conditional location laws (7.8), and the actual
+marked crossover with sign bias and right censoring (7.9). The macroscopic
+field retains every exact mark and the literal positions, with hard and
+movable labelled budgets and the distinct one-factor aggregate budget.
+The crossover retains the prime-index and integer-excess clocks separately;
+its target weights may oscillate. Location limits include finite phase,
+both infinite phases and the version with source labels and separate scales.
+The full affine-conditioned crossover (7.10) remains partial.
 
 The seventeenth development batch completed the exact unsigned finite
 comparison C.1, the general stable product lift6.1, sharp conditioning6.2,
@@ -26,12 +26,12 @@ The previous aggregate and Poisson–Gaussian results5.8–5.10 are preserved.
 Seven explicit literature propositions are now recorded in
 [LITERATURE_INPUTS.md](LITERATURE_INPUTS.md). The four earlier inputs are
 preserved; the uniform Laishram–Shorey bound, Shorey's square-product bound
-and the historical Nicolas–Robin divisor bound became active in batch20. Batch21 adds no literature input.
+and the historical Nicolas–Robin divisor bound became active in batch20. Batch22 adds no literature input.
 The incidence ranks, probability estimates and Pell reductions are proved
 from these arguments. An axiom audit does not discharge literature hypotheses.
 
 The whole paper and companion remain a larger project. Remaining work
-includes the full macroscopic transport7.6, the two-source crossover, quantitative
+includes the affine-conditioned crossover7.10, quantitative
 Gaussian and moderate-deviation refinements, the soft central local-transfer budget, and the unnumbered labelled/uniform-band quenched extensions.
 The earlier precise Pell/split-product, Euler and positive-density
 aligned-core reserves remain distinct from their proved consequences.
@@ -49,7 +49,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 511 mathematical modules contain **4382 named declarations: 3351 theorems, 726 definitions and 305 named instances**. Batch 21 adds 345 theorems in 56 new modules.
+The 595 mathematical modules contain **5103 named declarations: 3816 theorems, 872 definitions and 415 named instances**. Batch 22 adds 465 theorems in 84 new modules.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -148,7 +148,7 @@ no canonical selection of these subspaces is presumed.
 
 The [endpoint ledger](ENDPOINTS.md) gives the declarations and hypotheses.
 The [V3 revision log](../docs/PAPER_V3_REVISION_LOG.md) records **one confirmed
-wording correction and fourteen suggestions**, including the small-product
+wording correction and fifteen suggestions**, including the small-product
 simplification and the distinction between quantitative rates. No error is
 attributed to the companion without evidence. V3 manuscript sources can be
 incorporated when supplied and frozen by the author.
@@ -162,13 +162,13 @@ Palomar submission requires its own frozen statements and evidence.
 A separate coverage assessment tracks numbered manuscript statements and a
 weighted estimate of the remaining effort. The count of Lean declarations
 is an audit inventory, not a percentage of the complete paper. The current
-estimate is about 90% of the total formalization effort, with a conservative
-84–96% range; later probabilistic and companion results account for much of
-the remaining work. Strict statement coverage is 48/61 numbered article
+estimate is about 93% of the total formalization effort, with a conservative
+87–98% range; later probabilistic and companion results account for much of
+the remaining work. Strict statement coverage is 51/61 numbered article
 results, and 7/8 companion results (these fractions must not be added). See the [whole-paper assessment](../docs/FORMALIZATION_COVERAGE_V282.md)
 and the endpoint ledger for the exact definitions and proved scope.
 
-The V3 revision log contains one confirmed wording correction and fourteen
+The V3 revision log contains one confirmed wording correction and fifteen
 suggestions. S007 records the verified two-branch simplification of the
 terminal summation; S008 records the mask-local deletion budget of 4.1;
 S009 records the unified soft proof at the same cutoff for all intensities.
@@ -184,3 +184,8 @@ without an extra dyadic-slice factor.
 
 S014 records the proved simplification of the contained-prefix overflow
 correction, using the existing masked first moment.
+
+S015 records the exact one-hit mixture normalization and a simpler proof of
+the moving marked crossover: truncate only the prime-index clock, then remove
+that truncation by uniform geometric tails. No convergence of the weights
+or exact finite-size independence is assumed.

@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 511 mathematical modules contain **4382 named declarations: 3351 theorems, 726 definitions and 305 named instances**. Batch 21 adds 345 theorems in 56 new modules.
+The 595 mathematical modules contain **5103 named declarations: 3816 theorems, 872 definitions and 415 named instances**. Batch 22 adds 465 theorems in 84 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -1559,3 +1559,87 @@ literature propositions retain their qualification boundary. This batch
 adds no proposition or Lean axiom. The base-contained all-intensity
 transport7.6, its movable and aggregate budgets, and the full crossover
 7.8–7.10 are not completed by these results.
+
+## Batch22: macroscopic transport and the actual two-source crossover
+
+This section gives the current status of 7.6, 7.8 and 7.9, superseding the open
+status recorded for these results in the earlier dated batch sections.
+The affine-conditioned theorem 7.10 retains its separate reservation.
+
+### Macroscopic exact marks, equation(7.14) and Theorem7.6
+
+Let b=floor(log2 M), d=o(log M), L=b-d and lambda=M/2^L. The true population
+is 2 through M-L+1, with total target intensity (M-L)/2^L. Only the base
+window is contained: larger exact marks may extend beyond M. For every
+positive logarithmic band and epsilon,eta>0, the threshold precedes L and
+the positive event A in the actual full prime field. The explicit arbitrary
+eta form exp(-V+eta*nu) represents the printed exp(-V+o(nu)) term.
+
+| Declaration | Established result |
+|---|---|
+| `MacroTransportQuantitative.equation_seven_fourteen_eventually` | Actual full signed labelled TV<=37exp(I)lambda(1+lambda)(exp(-V+eta*nu)+M^(-1/3+epsilon))+2exp(-(betaMin*log2/16)*logM/loglogM), lambda>=1. The restoration lambda/sqrt(M) is absorbed in the polynomial term; the deep error stays outside exp(I). |
+| `MacroTransportHardBudget.theorem_seven_six_labelled_hard_sequences` | True labelled TV tends to zero under I+log(lambda)+log(1+lambda)<=V-c*nu, c>0, arbitrary sizes tending to infinity and d=o(log M). |
+| `MacroTransportMovableBudget.theorem_seven_six_labelled_movable_sequences` | True labelled TV tends to zero under I+log(lambda)<=Vsoft/2-c*nusoft, at the actual movable cutoff. Linear and quadratic intensity costs are kept distinct in the proof. |
+| `MacroTransportCoordinateRates.theorem_seven_six_positioned_hard_sequences` / `theorem_seven_six_positioned_movable_sequences` | Those limits at the literal positions(x/M,e-d,s), with signed rate2^(-b-r-2) and exact physical length b+r. The coordinate map is injective and preserves TV exactly. |
+| `MacroTransportUnsigned.unsignedTarget_unique` / `unsignedDistance_le` | The complete unsigned target is identified by all its finite independent Poisson projections, of mean2^(-L-e-1). The actual unsigned source contracts from the signed field. |
+| `MacroAggregateTheorem.theorem_seven_six_aggregate` | Under I+log(lambda)<=V-c*nu, actual aggregate TV<=2exp(-cprime*nu)+2M^(-1/3+epsilon)+2exp(-(betaMin*log2/16)*logM/loglogM), for0<cprime<c. |
+| `MacroAggregateCoordinates.moving_aggregate_comparison_tendsto_zero` / `moving_path_comparison_tendsto_zero` | Both signed and unsigned centered aggregate laws, and the whole actual threshold path on the base-contained population, converge under the same one-factor budget. The unsigned exact-level target mean is(M-L)2^(-b-r-1). |
+
+Labelled contraction applies to measurable functionals and spatial masks.
+Aggregation discards locations. The aggregate proof allows the true contained
+intensity to be below1; lambda>=1 concerns only the ambient upper scale.
+Its directional comparison is not replaced by a labelled two-factor cost.
+
+### Rare tail, conditional positions and the marked law, Theorems7.8–7.9
+
+Fix 0<delta<1. Let M and L tend to infinity along arbitrary sequences,
+L<=beta*log M eventually with beta>0, and lambda_full=M/2^L tend to zero.
+The bulk sites are exactly[ceil(M^delta),M-L+1]. Put alpha=2^(-pi(L)) and
+b=card(bulk)/2^L; b/lambda_full tends to1. The real phase is
+L-log2 M-pi(L). Every final endpoint below applies to the actual infinite
+Rademacher source and the actual event{R_M>=L}.
+
+| Declaration | Established result |
+|---|---|
+| `RarePrefixMass.equation_seven_eighteen` | P(R_M>=L)/(q_L+lambda_full)->1 for the true microscopic non-vacancy mass q_L. |
+| `CrossoverLocationTheorem.equation_seven_nineteen` | The true conditional law of the least contained start divided by M converges weakly to[1/(1+2^(-s))]delta0+[2^(-s)/(1+2^(-s))]Leb[0,1] when the phase tends to real s. |
+| `CrossoverLocationTheorem.equation_seven_nineteen_phase_atTop` / `equation_seven_nineteen_phase_atBot` | Positive-infinite phase gives delta0; negative-infinite phase gives Leb[0,1]. |
+| `CrossoverResolvedLocationTheorem.equation_seven_nineteen_resolved` / `equation_seven_nineteen_resolved_phase_atTop` / `equation_seven_nineteen_resolved_phase_atBot` | The same three limits with the source label retained: actual microscopic location divided by L^2 and bulk location divided by M, on Bool x real. |
+| `CrossoverMarkedConvergence.theorem_seven_nine` | TV of the true conditional Gamma law versus the moving full marked target tends to0, without any limiting phase or mixture weight assumption. |
+| `CrossoverSignTheorem.theorem_seven_nine_sign` | The true positive-sign probability at the first departure equals(alpha+b/2)/(alpha+b)+o(1). |
+| `CrossoverCensored.theorem_seven_nine_censored` | The actual right-censored source also approaches the same uncensored moving target. Its additional TV cost is at most1/card(bulk), which tends to0. |
+
+The global record distinguishes cemetery, border prime-index excess, and bulk
+site/integer excess/sign. The target weights are alpha/(alpha+b) and
+b/(alpha+b). The border clock is geometric with mass2^(-k-1); the bulk
+branch is the genuine product of a uniform site, a geometric integer excess
+and a fair sign. Target cemetery mass is zero. A bulk exact mark may extend
+beyond M; the censored variant replaces only e by min(e,M-L+1-x), retaining
+the label, position and sign. Its length is exactly min(L+e,M+1-x).
+
+The finite comparison uses the real sparse source event and a product target
+event with mass exp(-b)*(alpha+(1-alpha)*b). Normalization gives exact weights
+alpha/(alpha+(1-alpha)*b) and(1-alpha)*b/(alpha+(1-alpha)*b), whose TV error
+relative to the advertised moving mixture is at most b. Relative error
+normalization is by alpha+b, never by a possibly vanishing mixture weight.
+
+Only the border prime-index clock is capped, at a fixed K. A genuinely finite
+prime cylinder agrees almost everywhere with min(G_L,K); the arbitrary
+default on the null nontermination event is not claimed literally measurable
+in that finite field. Mathlib's proved Bertrand theorem places these finitely
+many extra primes below the hard cutoff eventually. Uniform source and
+target tails, each at most2^(-K-1), then remove this cap after M tends to
+infinity. All comparisons precede the weak uniform-grid limit.
+
+### Literature boundary and remaining endpoint
+
+The labelled7.6 branch and the final7.8–7.9 results take process AGG, PNT,
+uniform Laishram–Shorey, Shorey square-product and Nicolas–Robin as their
+five existing explicit arguments. The aggregate7.6 branch uses directional
+Stein factors in place of process AGG. The seven active propositions in
+the repository remain unchanged. No desired TV, independence, conditional
+limit or rare-tail statement is introduced as a new input.
+
+The affine-conditioned7.10 requires its own relative comparison under the
+rank information budget. Exact affine boundary masses and future-prime
+identities are preserved but do not by themselves prove that theorem.

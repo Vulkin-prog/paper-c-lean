@@ -484,3 +484,62 @@ inchangées. Aucune nouvelle erreur du papier n’est identifiée : le registre
 contient **une correction confirmée et quatorze suggestions**, dont V3-S014.
 Les fichiers source du papier et du compagnon pourront accompagner la future
 V3, avec son périmètre formalisé et le commit précisément indiqués.
+
+## V3-S015 — Simplifier la normalisation du mélange marqué et sa détronquature
+
+**Document et emplacement.** Papier pp.46–47, preuve du théorème7.9 et mélange(7.22).
+
+**Type.** Suggestion de clarification et de simplification démontrée. Aucune
+erreur du texte actuel n’est alléguée.
+
+Poser alpha=2^(-pi(L)) et b=card(bulk)2^(-L). Dans la vraie cible produit,
+l’événement « bord présent et aucun point bulk, ou bord absent et un seul
+point bulk » a exactement la masse exp(-b)[alpha+(1-alpha)b]. Conditionner
+sur cet événement donne les poids alpha/[alpha+(1-alpha)b] et
+(1-alpha)b/[alpha+(1-alpha)b]. Leur écart de mélange avec les poids
+alpha/(alpha+b), b/(alpha+b) est au plus b, uniformément même si l’un des
+poids tend vers zéro ou si les poids oscillent. Cette identité rend visible
+la normalisation avant le passage à la limite.
+
+La comparaison déjà disponible porte sur toutes les marques bulk : seul
+l’indice de l’horloge première au bord doit être tronqué, à un K fixé.
+Un représentant mesurable dans un véritable cylindre fini coïncide presque
+sûrement avec min(G_L,K). Cette précaution traite correctement la valeur
+arbitraire donnée à G_L sur l’événement négligeable de non-terminaison.
+Le théorème de Bertrand déjà formalisé suffit à placer les K prochains
+premiers sous le cutoff pour L assez grand. Les queues source et cible
+valent chacune au plus2^(-K-1) ; on laisse ensuite K tendre vers l’infini.
+La preuve conserve ainsi les deux horloges et les poids mobiles sans
+requérir de convergence de phase ni d’indépendance exacte à taille finie.
+
+**Preuves.** [CrossoverSparseTarget.lean](../PaperCV282/CrossoverSparseTarget.lean),
+`sparse_mass` ; [CrossoverSparseWeights.lean](../PaperCV282/CrossoverSparseWeights.lean),
+`conditional_candidate_tv_le` ;
+[CrossoverPrimeClockCylinder.lean](../PaperCV282/CrossoverPrimeClockCylinder.lean),
+[CrossoverPrimeClockCutoff.lean](../PaperCV282/CrossoverPrimeClockCutoff.lean),
+[CrossoverUncapping.lean](../PaperCV282/CrossoverUncapping.lean) et
+[CrossoverMarkedConvergence.lean](../PaperCV282/CrossoverMarkedConvergence.lean),
+`theorem_seven_nine`.
+
+**Formulation anglaise proposée.**
+
+> In the product comparison, retain either a boundary hit and no bulk point, or no boundary hit and exactly one bulk point. Its mass is exp(−b)[alpha+(1−alpha)b], and the resulting mixture differs from(7.22) by at most b. This bound is uniform in the moving weights. Only the boundary prime-index clock needs a fixed truncation; the full bulk marks are already retained. A finite-cylinder representative and uniform geometric tails remove this truncation after the limit in M.
+
+**Statut.** Proposition à examiner par l’auteur ; les deux PDF restent inchangés.
+
+## Bilan du lot22 — Transport macroscopique et mélange à deux sources
+
+Les résultats7.6,7.8 et7.9 sont formalisés avec leurs vrais objets : champ
+macroscopique à base contenue, budgets étiquetés dur et mobile, budget agrégé
+à un facteur, queue rare, localisation avec ou sans label de source, mélange
+marqué aux poids mobiles, biais de signe et variante censurée. Les phases
+réelles et les deux phases infinies sont couvertes. La version conditionnée
+par une information affine7.10 conserve sa réserve distincte.
+
+Le décompte strict atteint **51/61 dans l’article**, et reste **7/8 dans le
+compagnon**. Les sept propositions bibliographiques explicites restent
+inchangées. Le registre contient **une correction confirmée et quinze
+suggestions**, dont V3-S015 ; aucune nouvelle erreur du papier n’est
+identifiée. La future V3 pourra préciser les énoncés formalisés et le commit
+exact du dépôt ; ses sources et celles du compagnon pourront alors être
+ajoutées après leur fourniture et leur gel par l’auteur.

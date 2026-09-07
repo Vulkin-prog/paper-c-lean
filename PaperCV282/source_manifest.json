@@ -35,23 +35,23 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Theorem7.4, Corollary7.5, Theorem7.7; quantitative prefix, almost-sure envelopes and relative signed bulk",
+          "item": "Theorems7.6,7.8,7.9; macroscopic exact-mark transport, two-source rare tail/location and signed two-clock crossover",
           "printed_pages": [
-            42,
             43,
             44,
-            45
+            45,
+            46,
+            47
           ],
           "equations": [
-            "7.10",
-            "7.11",
-            "7.12",
-            "7.13",
-            "7.15",
-            "7.16",
-            "7.17"
+            "7.14",
+            "7.18",
+            "7.19",
+            "7.21",
+            "7.22",
+            "7.23"
           ],
-          "excluded_equation": "7.14 and the complete transport7.6 remain open."
+          "scope": "Full hard/movable labelled and aggregate budgets, source-resolved location, finite/infinite phases, moving marked target and right censoring. Theorem7.10 remains partial."
         }
       ],
       "batch_17_locators": [
@@ -114,6 +114,27 @@
             "7.20"
           ]
         }
+      ],
+      "batch_21_locators": [
+        {
+          "item": "Theorem7.4, Corollary7.5, Theorem7.7; quantitative prefix, almost-sure envelopes and relative signed bulk",
+          "printed_pages": [
+            42,
+            43,
+            44,
+            45
+          ],
+          "equations": [
+            "7.10",
+            "7.11",
+            "7.12",
+            "7.13",
+            "7.15",
+            "7.16",
+            "7.17"
+          ],
+          "excluded_equation": "7.14 and the complete transport7.6 remain open."
+        }
       ]
     },
     {
@@ -128,13 +149,15 @@
       "role_in_batch": "E.1–E.3 completed; incidence/private quotient, square-incidence cap, K=11 optimum and post-quadratic bound proved. Exact border clocks and affine formulas proved; full crossover remains separate.",
       "current_batch_locators": [
         {
-          "item": "E.7 relative bulk normalization; no new named companion result",
+          "item": "C.6 macroscopic transport/containment and E.7 relative two-source comparison; no new numbered companion result",
           "printed_pages": [
+            13,
+            14,
             21,
             22
           ],
           "equations": [],
-          "scope": "Relative bulk and microscopic-record factorization only. The affine-conditioned crossover is still open."
+          "scope": "Actual macroscopic labelled/aggregate transport and unconditioned crossover. Full affine conditioning remains reserved."
         }
       ],
       "batch_17_locators": [
@@ -174,6 +197,17 @@
             23
           ],
           "equations": []
+        }
+      ],
+      "batch_21_locators": [
+        {
+          "item": "E.7 relative bulk normalization; no new named companion result",
+          "printed_pages": [
+            21,
+            22
+          ],
+          "equations": [],
+          "scope": "Relative bulk and microscopic-record factorization only. The affine-conditioned crossover is still open."
         }
       ]
     }
@@ -219,6 +253,7 @@
     "PaperCV282/BulkMarkedTypes.lean",
     "PaperCV282/BulkMicroscopicRecord.lean",
     "PaperCV282/BulkPointProcess.lean",
+    "PaperCV282/BulkPopulation.lean",
     "PaperCV282/BulkProcessCosts.lean",
     "PaperCV282/BulkStartFieldComparison.lean",
     "PaperCV282/BulkSupportGraph.lean",
@@ -244,6 +279,48 @@
     "PaperCV282/CriticalFirstMomentRate.lean",
     "PaperCV282/CriticalProfileNormalization.lean",
     "PaperCV282/CriticalVarianceMoments.lean",
+    "PaperCV282/CrossoverBulkAtoms.lean",
+    "PaperCV282/CrossoverBulkOnePoint.lean",
+    "PaperCV282/CrossoverBulkTestMass.lean",
+    "PaperCV282/CrossoverCensored.lean",
+    "PaperCV282/CrossoverClockRecordMass.lean",
+    "PaperCV282/CrossoverConditioningTools.lean",
+    "PaperCV282/CrossoverConfigurationAtoms.lean",
+    "PaperCV282/CrossoverLocationExtreme.lean",
+    "PaperCV282/CrossoverLocationGrid.lean",
+    "PaperCV282/CrossoverLocationMixture.lean",
+    "PaperCV282/CrossoverLocationPhase.lean",
+    "PaperCV282/CrossoverLocationProjection.lean",
+    "PaperCV282/CrossoverLocationTheorem.lean",
+    "PaperCV282/CrossoverLocationTransfer.lean",
+    "PaperCV282/CrossoverMarkedCandidate.lean",
+    "PaperCV282/CrossoverMarkedComparison.lean",
+    "PaperCV282/CrossoverMarkedConvergence.lean",
+    "PaperCV282/CrossoverMarkedModel.lean",
+    "PaperCV282/CrossoverMarkedTarget.lean",
+    "PaperCV282/CrossoverMovingTarget.lean",
+    "PaperCV282/CrossoverPrimeClockBase.lean",
+    "PaperCV282/CrossoverPrimeClockCutoff.lean",
+    "PaperCV282/CrossoverPrimeClockCylinder.lean",
+    "PaperCV282/CrossoverPrimeClockLaw.lean",
+    "PaperCV282/CrossoverPrimeClockStable.lean",
+    "PaperCV282/CrossoverRareScale.lean",
+    "PaperCV282/CrossoverRareScaleExceptions.lean",
+    "PaperCV282/CrossoverRareScaleProbabilities.lean",
+    "PaperCV282/CrossoverResolvedLocationSource.lean",
+    "PaperCV282/CrossoverResolvedLocationTarget.lean",
+    "PaperCV282/CrossoverResolvedLocationTheorem.lean",
+    "PaperCV282/CrossoverRightCensor.lean",
+    "PaperCV282/CrossoverSignComparison.lean",
+    "PaperCV282/CrossoverSignTheorem.lean",
+    "PaperCV282/CrossoverSourceCoupling.lean",
+    "PaperCV282/CrossoverSourceGeometry.lean",
+    "PaperCV282/CrossoverSourceSigns.lean",
+    "PaperCV282/CrossoverSparseSource.lean",
+    "PaperCV282/CrossoverSparseTarget.lean",
+    "PaperCV282/CrossoverSparseWeights.lean",
+    "PaperCV282/CrossoverUncapping.lean",
+    "PaperCV282/CrossoverUncappingLimit.lean",
     "PaperCV282/CutoffGraphCompatibility.lean",
     "PaperCV282/CutoffGraphDegree.lean",
     "PaperCV282/CutoffGraphFreeCutoff.lean",
@@ -383,6 +460,41 @@
     "PaperCV282/LabelledSupportGraph.lean",
     "PaperCV282/LaishramUniformInput.lean",
     "PaperCV282/LogarithmicWordPowers.lean",
+    "PaperCV282/MacroAggregateArithmetic.lean",
+    "PaperCV282/MacroAggregateBudget.lean",
+    "PaperCV282/MacroAggregateComparison.lean",
+    "PaperCV282/MacroAggregateCoordinates.lean",
+    "PaperCV282/MacroAggregateCosts.lean",
+    "PaperCV282/MacroAggregateFilling.lean",
+    "PaperCV282/MacroAggregateGeometry.lean",
+    "PaperCV282/MacroAggregateHard.lean",
+    "PaperCV282/MacroAggregateModel.lean",
+    "PaperCV282/MacroAggregatePaths.lean",
+    "PaperCV282/MacroAggregateRates.lean",
+    "PaperCV282/MacroAggregateRestoration.lean",
+    "PaperCV282/MacroAggregateTheorem.lean",
+    "PaperCV282/MacroAggregateTruncation.lean",
+    "PaperCV282/MacroAggregateUnsigned.lean",
+    "PaperCV282/MacroAggregateValueProfile.lean",
+    "PaperCV282/MacroAggregateWeightedCosts.lean",
+    "PaperCV282/MacroTransportCoordinateRates.lean",
+    "PaperCV282/MacroTransportCoordinates.lean",
+    "PaperCV282/MacroTransportFunctionals.lean",
+    "PaperCV282/MacroTransportHardBudget.lean",
+    "PaperCV282/MacroTransportHardComparison.lean",
+    "PaperCV282/MacroTransportHardRetained.lean",
+    "PaperCV282/MacroTransportInformation.lean",
+    "PaperCV282/MacroTransportModel.lean",
+    "PaperCV282/MacroTransportMovableBudget.lean",
+    "PaperCV282/MacroTransportMovableComparison.lean",
+    "PaperCV282/MacroTransportMovableInformation.lean",
+    "PaperCV282/MacroTransportMovableLedger.lean",
+    "PaperCV282/MacroTransportMovableRetained.lean",
+    "PaperCV282/MacroTransportQuantitative.lean",
+    "PaperCV282/MacroTransportRestoration.lean",
+    "PaperCV282/MacroTransportRestriction.lean",
+    "PaperCV282/MacroTransportStatistics.lean",
+    "PaperCV282/MacroTransportUnsigned.lean",
     "PaperCV282/MacroscopicAlignedExclusion.lean",
     "PaperCV282/MacroscopicAlignedRunge.lean",
     "PaperCV282/MacroscopicArithmeticBounds.lean",
@@ -547,6 +659,12 @@
     "PaperCV282/RandomDictionaryOverlap.lean",
     "PaperCV282/RandomDictionaryWordCount.lean",
     "PaperCV282/RareConditioningRates.lean",
+    "PaperCV282/RarePrefixEvents.lean",
+    "PaperCV282/RarePrefixGeometry.lean",
+    "PaperCV282/RarePrefixMass.lean",
+    "PaperCV282/RarePrefixMassBounds.lean",
+    "PaperCV282/RarePrefixPoisson.lean",
+    "PaperCV282/RarePrefixSubsequence.lean",
     "PaperCV282/RationalFamilyMass.lean",
     "PaperCV282/RationalGeometryMass.lean",
     "PaperCV282/RationalHeightMass.lean",
@@ -859,7 +977,7 @@
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
       "Quantitative Berry–Esseen and moderate deviations; soft central local-transfer counterpart; remaining D.4 process consequences.",
       "Unnumbered extensions following6.4: labelled-field environmental bound, simultaneous scalar control over O(logN) lengths and separate maximal couplings.",
-      "Full macroscopic base-contained transport7.6 and its hard/movable/aggregate budgets; full two-source and affine crossover7.8–7.10. Prefix7.4–7.5 and relative signed bulk7.7 are complete."
+      "Full affine-conditioned rare-tail, location and marked crossover7.10 under its information budget. Unconditioned two-source7.8–7.9 and complete macroscopic transport7.6 are now proved."
     ],
     "new_external_literature_premises_in_current_endpoints": [
       {
@@ -1686,6 +1804,51 @@
       "content": "Complete signed configuration over Iccceil(M^delta)(M-L+1), all exact excesses and independent Poisson means2^(-L-e-2). True full-FY atom mean error <=67lambda*(exp(-V+eta*nu)+M^(-1/3+epsilon)). Mark/sign aggregation gives o(lambda); true microscopic record B_L and bulk factorize at o(lambda), hence o(q_L+lambda). Actual sums of Dirac masses at x/M are also connected. Process AGG and PNT remain explicit; the lower band is deduced from lambda->0.",
       "actual_arithmetic_source": true,
       "remaining": []
+    },
+    "theorem_7_6": {
+      "status": "complete_under_existing_explicit_literature_arguments",
+      "evidence": [
+        "PaperCV282/MacroTransportQuantitative.lean: equation_seven_fourteen_eventually",
+        "PaperCV282/MacroTransportHardBudget.lean: theorem_seven_six_labelled_hard_sequences",
+        "PaperCV282/MacroTransportMovableBudget.lean: theorem_seven_six_labelled_movable_sequences",
+        "PaperCV282/MacroTransportCoordinateRates.lean: theorem_seven_six_positioned_hard_sequences",
+        "PaperCV282/MacroTransportCoordinateRates.lean: theorem_seven_six_positioned_movable_sequences",
+        "PaperCV282/MacroTransportUnsigned.lean: unsignedTarget_unique",
+        "PaperCV282/MacroAggregateTheorem.lean: theorem_seven_six_aggregate",
+        "PaperCV282/MacroAggregateCoordinates.lean: moving_aggregate_comparison_tendsto_zero",
+        "PaperCV282/MacroAggregateCoordinates.lean: moving_path_comparison_tendsto_zero"
+      ],
+      "content": "Full base-contained field on starts2 through M-L+1, all exact excesses and both signs. True independent unsigned Poisson coordinates have means2^(-b-r-1), total(M-L)2^(-L); exact marks may extend past M. Equation7.14 is proved with the ambient lambda and the deep remainder outside exp(I). Hard/movable labelled budgets and the directional one-factor aggregate budget, arbitrary size/depth sequences, actual coordinates and whole threshold paths are proved. Five existing inputs for each branch; no comparison conclusion is assumed.",
+      "actual_arithmetic_source": true,
+      "remaining": []
+    },
+    "theorem_7_8": {
+      "status": "complete_under_existing_explicit_literature_arguments",
+      "evidence": [
+        "PaperCV282/RarePrefixMass.lean: equation_seven_eighteen",
+        "PaperCV282/CrossoverLocationTheorem.lean: equation_seven_nineteen",
+        "PaperCV282/CrossoverLocationTheorem.lean: equation_seven_nineteen_phase_atTop",
+        "PaperCV282/CrossoverLocationTheorem.lean: equation_seven_nineteen_phase_atBot",
+        "PaperCV282/CrossoverResolvedLocationTheorem.lean: equation_seven_nineteen_resolved",
+        "PaperCV282/CrossoverResolvedLocationTheorem.lean: equation_seven_nineteen_resolved_phase_atTop",
+        "PaperCV282/CrossoverResolvedLocationTheorem.lean: equation_seven_nineteen_resolved_phase_atBot"
+      ],
+      "content": "Actual rare tail P(R_M>=L)/(q_L+lambda_full)->1. The true least contained start, conditioned on a hit, has the printed weak mixture for finite phase and its two degenerate limits. The separate source-resolved observable retains the microscopic/bulk label and divides its true position by L^2 or M, respectively; all three phase regimes are proved. The uniform lattice target converges weakly to actual Lebesgue measure on[0,1]. Five existing process/arithmetic inputs.",
+      "actual_arithmetic_source": true,
+      "remaining": []
+    },
+    "theorem_7_9": {
+      "status": "complete_under_existing_explicit_literature_arguments",
+      "evidence": [
+        "PaperCV282/CrossoverMarkedConvergence.lean: theorem_seven_nine",
+        "PaperCV282/CrossoverSignTheorem.lean: theorem_seven_nine_sign",
+        "PaperCV282/CrossoverCensored.lean: theorem_seven_nine_censored",
+        "PaperCV282/CrossoverCensored.lean: censored_run_length",
+        "PaperCV282/CrossoverMarkedTarget.lean: mixedLaw"
+      ],
+      "content": "The actual conditional Gamma record converges in total variation to the moving two-source mixture on the complete record space, without convergence of either mixture weight. The prime-index clock and the integer bulk excess are distinct, and the bulk target has independent uniform site, geometric excess and fair sign. The true first-start sign bias and the right-censored version with the same uncensored target are proved. Fixed prime-clock truncation is removed using uniform actual source and target tails; no final independence or TV conclusion is supplied as an input.",
+      "actual_arithmetic_source": true,
+      "remaining": []
     }
   },
   "qualification": {
@@ -1695,13 +1858,13 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 21,
+  "development_batch": 22,
   "declaration_inventory": {
-    "mathematical_module_count": 511,
-    "named_declarations": 4382,
-    "theorems": 3351,
-    "definitions": 726,
-    "named_instances": 305,
+    "mathematical_module_count": 595,
+    "named_declarations": 5103,
+    "theorems": 3816,
+    "definitions": 872,
+    "named_instances": 415,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
@@ -1765,6 +1928,60 @@
       "PaperC.V282.ConstantWindowRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.CountablePrimeEventTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.CountablePrimeEventTransfer.instProbabilityInfiniteRademacher",
+      "PaperC.V282.CrossoverBulkAtoms.instDecidableEq",
+      "PaperC.V282.CrossoverBulkAtoms.instDecidableProposition",
+      "PaperC.V282.CrossoverBulkOnePoint.instDecidableProposition",
+      "PaperC.V282.CrossoverBulkOnePoint.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverBulkOnePoint.instMeasurableOptionIndex",
+      "PaperC.V282.CrossoverBulkOnePoint.instMeasurableSingletonOptionIndex",
+      "PaperC.V282.CrossoverBulkOnePoint.instProbabilityUniformSite",
+      "PaperC.V282.CrossoverBulkOnePoint.instProbabilityLabel",
+      "PaperC.V282.CrossoverClockRecordMass.instDecidableProposition",
+      "PaperC.V282.CrossoverClockRecordMass.instProbabilityInfinite",
+      "PaperC.V282.CrossoverClockRecordMass.instProbabilityRecordMeasure",
+      "PaperC.V282.CrossoverClockRecordMass.instProbabilityCappedBorderLaw",
+      "PaperC.V282.CrossoverConfigurationAtoms.instDecidableProposition",
+      "PaperC.V282.CrossoverLocationGrid.instDecidableProposition",
+      "PaperC.V282.CrossoverLocationProjection.instDecidableProposition",
+      "PaperC.V282.CrossoverLocationProjection.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverLocationTransfer.instDecidableProposition",
+      "PaperC.V282.CrossoverLocationTransfer.instProbabilityInfinite",
+      "PaperC.V282.CrossoverMarkedComparison.instProbabilityInfinite",
+      "PaperC.V282.CrossoverMarkedModel.instDecidableProposition",
+      "PaperC.V282.CrossoverMarkedModel.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverMarkedModel.instMeasurableRecord",
+      "PaperC.V282.CrossoverMarkedModel.instMeasurableSingletonRecord",
+      "PaperC.V282.CrossoverMarkedTarget.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverMarkedTarget.instProbabilityBorderLaw",
+      "PaperC.V282.CrossoverMarkedTarget.instProbabilityBulkLaw",
+      "PaperC.V282.CrossoverMarkedTarget.instProbabilityMixedLaw",
+      "PaperC.V282.CrossoverMovingTarget.instDecidableProposition",
+      "PaperC.V282.CrossoverMovingTarget.instProbabilityTargetLaw",
+      "PaperC.V282.CrossoverPrimeClockBase.instDecidableProposition",
+      "PaperC.V282.CrossoverPrimeClockBase.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverPrimeClockCylinder.instDecidableProposition",
+      "PaperC.V282.CrossoverPrimeClockCylinder.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverPrimeClockLaw.instDecidableProposition",
+      "PaperC.V282.CrossoverPrimeClockLaw.instProbabilityInfinite",
+      "PaperC.V282.CrossoverPrimeClockStable.instDecidableProposition",
+      "PaperC.V282.CrossoverPrimeClockStable.instProbabilityInfiniteRademacher",
+      "PaperC.V282.CrossoverResolvedLocationSource.instDecidableProposition",
+      "PaperC.V282.CrossoverResolvedLocationSource.instProbabilityInfinite",
+      "PaperC.V282.CrossoverResolvedLocationTarget.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverRightCensor.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverSignComparison.instProbabilityInfinite",
+      "PaperC.V282.CrossoverSourceCoupling.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverSourceCoupling.instProbabilityInfiniteRademacher",
+      "PaperC.V282.CrossoverSourceGeometry.instDecidableProposition",
+      "PaperC.V282.CrossoverSourceGeometry.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverSourceSigns.instDecidableProposition",
+      "PaperC.V282.CrossoverSourceSigns.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverSparseSource.instProbabilityInfinite",
+      "PaperC.V282.CrossoverSparseSource.instProbabilitySourceJoint",
+      "PaperC.V282.CrossoverSparseTarget.instProbabilityProductJoint",
+      "PaperC.V282.CrossoverUncapping.instDecidableProposition",
+      "PaperC.V282.CrossoverUncapping.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.CrossoverUncapping.instProbabilityInfiniteRademacher",
       "PaperC.V282.DeepStartEvents.instMeasurableSpaceF2Discrete",
       "PaperC.V282.DeepStartEvents.instProbabilityInfiniteRademacher",
       "PaperC.V282.DictionaryFieldBounds.instDecidableProposition",
@@ -1852,6 +2069,53 @@
       "PaperC.V282.LabelledProcessCosts.instDecidableEq",
       "PaperC.V282.LabelledProcessCosts.instDecidableProposition",
       "PaperC.V282.LabelledSupportGraph.instDecidableEq",
+      "PaperC.V282.MacroAggregateComparison.instDecidableProposition",
+      "PaperC.V282.MacroAggregateComparison.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroAggregateCoordinates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroAggregateCosts.instDecidableProposition",
+      "PaperC.V282.MacroAggregateFilling.instDecidableProposition",
+      "PaperC.V282.MacroAggregateHard.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroAggregateRestoration.instProbabilityInfinite",
+      "PaperC.V282.MacroAggregateTruncation.instProbabilityInfiniteRademacher",
+      "PaperC.V282.MacroAggregateUnsigned.instProbabilityInfinite",
+      "PaperC.V282.MacroAggregateWeightedCosts.instDecidableEq",
+      "PaperC.V282.MacroAggregateWeightedCosts.instDecidableProposition",
+      "PaperC.V282.MacroTransportCoordinateRates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportCoordinates.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportCoordinates.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportCoordinates.instMeasurablePositionedConfiguration",
+      "PaperC.V282.MacroTransportCoordinates.instSingletonPositionedConfiguration",
+      "PaperC.V282.MacroTransportCoordinates.instProbabilityPositionedTarget",
+      "PaperC.V282.MacroTransportFunctionals.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportFunctionals.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportHardBudget.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportHardBudget.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportHardComparison.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportHardComparison.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportHardRetained.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportHardRetained.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportModel.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportModel.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportModel.instProbabilityTarget",
+      "PaperC.V282.MacroTransportMovableBudget.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportMovableBudget.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportMovableComparison.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportMovableComparison.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportMovableRetained.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportMovableRetained.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportQuantitative.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportQuantitative.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportRestoration.instDecidableEq",
+      "PaperC.V282.MacroTransportRestoration.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportRestoration.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportRestriction.instDecidableEq",
+      "PaperC.V282.MacroTransportStatistics.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportStatistics.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportUnsigned.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.MacroTransportUnsigned.instProbabilityInfinite",
+      "PaperC.V282.MacroTransportUnsigned.instMeasurableUnsignedConfiguration",
+      "PaperC.V282.MacroTransportUnsigned.instSingletonUnsignedConfiguration",
+      "PaperC.V282.MacroTransportUnsigned.instProbabilityUnsignedTarget",
       "PaperC.V282.MacroscopicAlignedExclusion.instDecidableAlignedDeepPredicate",
       "PaperC.V282.MacroscopicComponentNormalization.instDecidableComponentAdj",
       "PaperC.V282.MacroscopicFirstMoment.instMeasurableSpaceF2Discrete",
@@ -1944,6 +2208,15 @@
       "PaperC.V282.RandomDictionaryWordCount.instDecidableProposition",
       "PaperC.V282.RareConditioningRates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RareConditioningRates.instIsProbabilityMeasureInfiniteRademacher",
+      "PaperC.V282.RarePrefixEvents.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.RarePrefixEvents.instProbabilityInfiniteRademacher",
+      "PaperC.V282.RarePrefixGeometry.instDecidableProposition",
+      "PaperC.V282.RarePrefixGeometry.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.RarePrefixMass.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.RarePrefixMassBounds.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.RarePrefixPoisson.instDecidableProposition",
+      "PaperC.V282.RarePrefixPoisson.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.RarePrefixPoisson.instProbabilityInfiniteRademacher",
       "PaperC.V282.ResolvedInformationTheorem.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RestrictedPoissonTransfer.instMeasurableSpaceF2Discrete",
       "PaperC.V282.RunFiniteness.instMeasurableSpaceF2Discrete",
@@ -4569,6 +4842,428 @@
         "definitions": 0,
         "named_instances": 1
       }
+    },
+    "batch_22_additions": {
+      "BulkPopulation": {
+        "theorems": 8,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "CrossoverBulkAtoms": {
+        "theorems": 9,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "CrossoverBulkOnePoint": {
+        "theorems": 9,
+        "definitions": 3,
+        "named_instances": 6
+      },
+      "CrossoverBulkTestMass": {
+        "theorems": 3,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "CrossoverCensored": {
+        "theorems": 11,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "CrossoverClockRecordMass": {
+        "theorems": 5,
+        "definitions": 2,
+        "named_instances": 4
+      },
+      "CrossoverConditioningTools": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CrossoverConfigurationAtoms": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "CrossoverLocationExtreme": {
+        "theorems": 9,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CrossoverLocationGrid": {
+        "theorems": 10,
+        "definitions": 5,
+        "named_instances": 1
+      },
+      "CrossoverLocationMixture": {
+        "theorems": 4,
+        "definitions": 6,
+        "named_instances": 0
+      },
+      "CrossoverLocationPhase": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "CrossoverLocationProjection": {
+        "theorems": 10,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "CrossoverLocationTheorem": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CrossoverLocationTransfer": {
+        "theorems": 8,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "CrossoverMarkedCandidate": {
+        "theorems": 4,
+        "definitions": 6,
+        "named_instances": 0
+      },
+      "CrossoverMarkedComparison": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "CrossoverMarkedConvergence": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "CrossoverMarkedModel": {
+        "theorems": 7,
+        "definitions": 9,
+        "named_instances": 4
+      },
+      "CrossoverMarkedTarget": {
+        "theorems": 10,
+        "definitions": 7,
+        "named_instances": 4
+      },
+      "CrossoverMovingTarget": {
+        "theorems": 3,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "CrossoverPrimeClockBase": {
+        "theorems": 6,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "CrossoverPrimeClockCutoff": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CrossoverPrimeClockCylinder": {
+        "theorems": 6,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "CrossoverPrimeClockLaw": {
+        "theorems": 7,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "CrossoverPrimeClockStable": {
+        "theorems": 6,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "CrossoverRareScale": {
+        "theorems": 9,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "CrossoverRareScaleExceptions": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CrossoverRareScaleProbabilities": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CrossoverResolvedLocationSource": {
+        "theorems": 9,
+        "definitions": 8,
+        "named_instances": 2
+      },
+      "CrossoverResolvedLocationTarget": {
+        "theorems": 7,
+        "definitions": 5,
+        "named_instances": 1
+      },
+      "CrossoverResolvedLocationTheorem": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CrossoverRightCensor": {
+        "theorems": 7,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "CrossoverSignComparison": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "CrossoverSignTheorem": {
+        "theorems": 1,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "CrossoverSourceCoupling": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "CrossoverSourceGeometry": {
+        "theorems": 10,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "CrossoverSourceSigns": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "CrossoverSparseSource": {
+        "theorems": 6,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "CrossoverSparseTarget": {
+        "theorems": 6,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "CrossoverSparseWeights": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "CrossoverUncapping": {
+        "theorems": 8,
+        "definitions": 1,
+        "named_instances": 3
+      },
+      "CrossoverUncappingLimit": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroAggregateArithmetic": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "MacroAggregateBudget": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroAggregateComparison": {
+        "theorems": 7,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "MacroAggregateCoordinates": {
+        "theorems": 10,
+        "definitions": 4,
+        "named_instances": 1
+      },
+      "MacroAggregateCosts": {
+        "theorems": 16,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "MacroAggregateFilling": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "MacroAggregateGeometry": {
+        "theorems": 1,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroAggregateHard": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "MacroAggregateModel": {
+        "theorems": 4,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "MacroAggregatePaths": {
+        "theorems": 8,
+        "definitions": 2,
+        "named_instances": 0
+      },
+      "MacroAggregateRates": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroAggregateRestoration": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "MacroAggregateTheorem": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroAggregateTruncation": {
+        "theorems": 7,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "MacroAggregateUnsigned": {
+        "theorems": 9,
+        "definitions": 3,
+        "named_instances": 1
+      },
+      "MacroAggregateValueProfile": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroAggregateWeightedCosts": {
+        "theorems": 2,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "MacroTransportCoordinateRates": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "MacroTransportCoordinates": {
+        "theorems": 13,
+        "definitions": 6,
+        "named_instances": 5
+      },
+      "MacroTransportFunctionals": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MacroTransportHardBudget": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MacroTransportHardComparison": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MacroTransportHardRetained": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MacroTransportInformation": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroTransportModel": {
+        "theorems": 9,
+        "definitions": 6,
+        "named_instances": 3
+      },
+      "MacroTransportMovableBudget": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MacroTransportMovableComparison": {
+        "theorems": 1,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "MacroTransportMovableInformation": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroTransportMovableLedger": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "MacroTransportMovableRetained": {
+        "theorems": 2,
+        "definitions": 3,
+        "named_instances": 2
+      },
+      "MacroTransportQuantitative": {
+        "theorems": 1,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MacroTransportRestoration": {
+        "theorems": 7,
+        "definitions": 0,
+        "named_instances": 3
+      },
+      "MacroTransportRestriction": {
+        "theorems": 11,
+        "definitions": 5,
+        "named_instances": 1
+      },
+      "MacroTransportStatistics": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "MacroTransportUnsigned": {
+        "theorems": 9,
+        "definitions": 9,
+        "named_instances": 5
+      },
+      "RarePrefixEvents": {
+        "theorems": 5,
+        "definitions": 2,
+        "named_instances": 2
+      },
+      "RarePrefixGeometry": {
+        "theorems": 12,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "RarePrefixMass": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "RarePrefixMassBounds": {
+        "theorems": 2,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "RarePrefixPoisson": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 3
+      },
+      "RarePrefixSubsequence": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      }
     }
   },
   "manuscript_notes": {
@@ -4576,21 +5271,21 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Batch21 completes7.4,7.5,7.7 with no new literature premise. V3-S014 simplifies the contained-prefix overflow correction using the established masked first moment. No new manuscript error; PDFs unchanged.",
+    "formalization_context": "Batch22 completes7.6,7.8,7.9 with no new literature premise. V3-S015 records a simpler sparse-mixture normalization and fixed prime-clock uncapping proof of7.9. No new manuscript error; PDFs unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
-      "suggestions": 14
+      "suggestions": 15
     }
   },
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 90,
+    "effort_estimate_percent": 93,
     "conservative_interval_percent": [
-      84,
-      96
+      87,
+      98
     ],
-    "completed_article_results": 48,
+    "completed_article_results": 51,
     "numbered_article_results_excluding_intro_duplicates": 61,
     "companion_completed_named_results": 7,
     "companion_named_results": 8,
