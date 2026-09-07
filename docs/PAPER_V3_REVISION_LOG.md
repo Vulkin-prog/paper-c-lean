@@ -1,6 +1,6 @@
 # Registre des révisions proposées pour le papier et le compagnon — v3
 
-Dernière mise à jour : 6 septembre 2026.
+Dernière mise à jour : 7 septembre 2026.
 
 Ce registre rassemble les corrections, clarifications et améliorations suggérées par la formalisation. La version source examinée est la **v2.8.2 anglaise** du papier et de son compagnon technique. La « v3 » désigne ici la prochaine révision à préparer ; les PDF fournis n'ont pas été modifiés.
 
@@ -24,9 +24,11 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S009 | Papier, p. 29, théorème 4.3 ; compagnon B.3, p. 8–9 | Suggestion de preuve soft commune à toutes les intensités | Proposition à examiner |
 | V3-S010 | Papier, p. 32, corollaire 5.3 et équation (5.8) | Suggestion de renforcement en une espérance exacte | Proposition à examiner |
 | V3-S011 | Compagnon, p. 10–12, preuve directionnelle autour de (C.2)–(C.5) | Suggestion d'explicitation de l'entrée bibliographique | Proposition à examiner |
-
 | V3-S012 | Papier p.40 ; compagnon D.1 p.15, formule locale de Poisson | Suggestion de reste effectif | Proposition à examiner |
 | V3-S013 | Papier p.42, proposition7.3 ; compagnon E.5 p.20 | Suggestion de simplification par comptage global | Proposition à examiner |
+| V3-S014 | Papier p.43, équation(7.11) et théorème7.4 | Suggestion de simplification du préfixe contenu | Proposition à examiner |
+| V3-S015 | Papier pp.46–47, théorème7.9 et mélange(7.22) | Suggestion de normalisation et détronquature | Proposition à examiner |
+| V3-S016 | Papier pp.44 et47, théorème7.10 ; compagnon E.7 pp.21–22 | Suggestion de clarification du régime et des quantificateurs futurs | Proposition à examiner |
 
 **Compagnon technique : aucune correction confirmée à ce stade.** Les résultats finis déjà formalisés ne constituent pas une vérification intégrale de ses annexes. Les prochaines observations propres au compagnon seront ajoutées avec leur emplacement et leur justification ; aucune anomalie ne lui est attribuée par analogie avec le papier.
 
@@ -543,3 +545,70 @@ suggestions**, dont V3-S015 ; aucune nouvelle erreur du papier n’est
 identifiée. La future V3 pourra préciser les énoncés formalisés et le commit
 exact du dépôt ; ses sources et celles du compagnon pourront alors être
 ajoutées après leur fourniture et leur gel par l’auteur.
+
+## V3-S016 — Rendre autonome le régime du crossover affine et préciser la marque future
+
+**Document et emplacement.** Papier p.44, régime introduit au début de §7.4,
+p.47, théorème7.10 et paragraphe suivant ; compagnon E.7, pp.21–22.
+
+**Type.** Suggestion de clarification démontrée ; aucune nouvelle erreur
+mathématique identifiée. Le régime rare et le bon ordre des quantificateurs
+sont déjà présents dans le texte. Un rappel local rendrait7.10 autonome.
+
+Séparer l'identité finie P(bord|A)=2^(-d), qui exige seulement la coupure
+adéquate et la compatibilité, des conclusions asymptotiques. Pour ces
+dernières, rappeler M,L→∞, L=O(log M), M·2^(-L)→0 et le budget
+r·log2≤V−cν avec c>0 fixé. Les équations, leurs codomaines et leurs seconds
+membres peuvent varier le long de la suite.
+
+Dans la preuve, multiplier le majorant quantitatif par exp(I) avant le
+passage à la limite : un simple o(lambda) non quantifié ne peut pas être
+amplifié après coup par un facteur divergent. Les preuves Lean repartent
+effectivement de ces majorants pour le bulk, l'intérieur et le milieu.
+L'intérieur reste négligeable relativement au bord affine lui-même ; les
+autres erreurs de mélange sont normalisées par alpha+lambda_bulk.
+
+Aucune neutralité sur les premiers futurs n'est nécessaire à la queue rare,
+à la concentration microscopique ou aux localisations. Pour conserver la
+marque géométrique, écrire explicitement : pour chaque K fixé, à partir
+d'un seuil pouvant dépendre de K. On fixe K, passe à la limite en taille,
+puis laisse K→∞. Cela ne demande ni un seuil commun à tous les K ni une
+neutralité uniforme pour une troncature K(M) croissante.
+
+Rappeler aussi que kappa compte les conséquences linéaires entièrement
+supportées sur le bord, et non les lignes d'entrée qui le mentionnent.
+Sans neutralité future, conserver l'alternative exacte : queue nulle si
+l'empilement étendu est incompatible, sinon exposant donné par son déficit
+de rang. La convergence spatiale faible et la comparaison en variation
+totale sur le réseau restent distinctes ; aucune erreur relative pour une
+composante dont le poids disparaît n'est déduite.
+
+**Preuves.** [AffineCrossoverErrorsAffine.lean](../PaperCV282/AffineCrossoverErrorsAffine.lean),
+`affine_errors_under_rank_budget` ;
+[AffineCrossoverRareTheorem.lean](../PaperCV282/AffineCrossoverRareTheorem.lean),
+[AffineCrossoverLocationTheorem.lean](../PaperCV282/AffineCrossoverLocationTheorem.lean),
+[AffineCrossoverUncappingTheorem.lean](../PaperCV282/AffineCrossoverUncappingTheorem.lean)
+et [AffineCrossoverPrimeClock.lean](../PaperCV282/AffineCrossoverPrimeClock.lean).
+
+**Formulation anglaise proposée.**
+
+> For the asymptotic conclusions, retain the rare-intensity regime of §7.4: along any sequence with M→∞ and L→∞, assume L=O(log M) and M·2^(-L)→0. Fix c>0 and suppose r_M log2≤V_M−cν_M eventually. No condition on future prime coordinates is needed for the rare-tail formula, border concentration, or conditional location laws. To retain the geometric future mark as well, require the displayed neutrality condition eventually for each fixed K; its threshold may depend on K. First fix K and take the size limit, then let K→∞.
+
+**Statut.** Proposition à examiner par l'auteur. Les PDF restent inchangés.
+
+## Bilan du lot23 — Crossover affine complet
+
+Le théorème7.10 est maintenant raccordé aux vraies lois conditionnelles :
+masse exacte par le rang, queue rare, concentration microscopique, toutes
+les phases de localisation et marques complètes sous la condition future
+distincte. La section7 atteint dix résultats complets sur dix. Le comptage
+strict atteint **52/61 dans l'article**, et reste **7/8 dans le compagnon**.
+Ces deux dénominateurs ne s'additionnent pas. Les sept propositions
+bibliographiques sont inchangées.
+
+Le registre contient **une correction confirmée et seize suggestions**.
+La formalisation de l'ensemble du manuscrit demeure inachevée : les réserves
+quantitatives et arithmétiques sont consignées dans la matrice de couverture.
+Les sources de la future V3 et du compagnon seront à intégrer lorsque
+l'auteur les aura fournies et figées ; aucun enregistrement Palomar nouveau
+n'est annoncé dans ce lot.

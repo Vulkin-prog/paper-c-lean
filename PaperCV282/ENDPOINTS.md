@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 595 mathematical modules contain **5103 named declarations: 3816 theorems, 872 definitions and 415 named instances**. Batch 22 adds 465 theorems in 84 new modules.
+The 638 mathematical modules contain **5386 named declarations: 4008 theorems, 915 definitions and 463 named instances**. Batch 23 adds 192 theorems in 43 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -1643,3 +1643,69 @@ limit or rare-tail statement is introduced as a new input.
 The affine-conditioned7.10 requires its own relative comparison under the
 rank information budget. Exact affine boundary masses and future-prime
 identities are preserved but do not by themselves prove that theorem.
+
+## Batch23: the complete affine-conditioned crossover
+
+This section supersedes the open7.10 status in earlier dated batch sections.
+Let M,L tend to infinity along arbitrary sequences, L<=beta*log M with
+fixed beta>0, lambda=M/2^L->0, and fix0<delta<1. The actual bulk population
+is[ceil(M^delta),M-L+1]. The affine equations and their codomains may vary:
+A={G X(hardCutoff M)=b}. Compatibility with the border is needed only
+eventually. Write I=rank(G)*log2 and assume I<=V-c*nu eventually for a
+fixed c>0. No desired error limit is an input of the final theorems.
+
+Let kappa=dim(rowG intersect U_L), d=pi(L)-kappa, alpha=2^(-d),
+and b_bulk=card(bulk)/2^L. The deficit is computed from the actual row
+spaces. It counts consequences supported wholly on the border, not
+equations merely mentioning border primes.
+
+| Declaration | Established result |
+|---|---|
+| `AffineCrossoverCylinder.conditional_border_probability` | Exact P(border given A)=alpha; kappa<=min(rankG,pi(L)), and alpha>=2^(-pi(L)). |
+| `AffineCrossoverCylinderInformation.eventInformation_eq_cylinderInformation` | The information of the actual infinite cylinder is exactly rankG*log2. |
+| `AffineCrossoverErrorsAffine.affine_errors_under_rank_budget` | Five genuine zero limits: alpha, conditioned interior/alpha, interior/(alpha+b_bulk), middle/(alpha+b_bulk), and actual joint TV/(alpha+b_bulk). The factor exp(I) is paid in quantitative estimates before taking limits. |
+| `AffineCrossoverRareTheorem.theorem_seven_ten_rare_tail` | P(R_M>=L given A)/(2^(-d)+M/2^L)->1 with the literal rank deficit and full prefix intensity. |
+| `AffineCrossoverRareTheorem.theorem_seven_ten_microscopic` | P(micro given A)/alpha->1, TV(P(. given A intersect micro),P(. given A intersect border))->0, and probability of the unique-border event given A intersect micro tends to1. |
+| `AffineCrossoverTheorem.theorem_seven_ten_zero_cap` | Actual hit normalization, true marked comparison after forgetting only the boundary clock, and P(interior given A intersect hit)->0. No future neutrality. |
+| `AffineCrossoverLocationTheorem.theorem_seven_ten_location` | For L-log2 M-d->s, actual firstStart/M given A intersect hit converges weakly to delta0/(1+2^(-s))+2^(-s)Leb[0,1]/(1+2^(-s)). The source-resolved law on Bool x real is proved simultaneously, with true microscopic position/L^2 and bulk position/M. |
+| `AffineCrossoverLocationTheorem.theorem_seven_ten_location_phase_atTop` / `theorem_seven_ten_location_phase_atBot` | Positive-infinite phase gives the border limit; negative-infinite phase gives the bulk Lebesgue limit, both with and without source labels. No future neutrality. |
+| `AffineCrossoverUncappingTheorem.theorem_seven_ten_complete_clock_deficit` | Under the separate future neutrality, actual full Gamma TV tends to zero against the moving marked lattice target with weights alpha/(alpha+b_bulk),b_bulk/(alpha+b_bulk). No phase or weight convergence required. |
+| `AffineCrossoverPrimeClock.nested_affine_prime_tail_probability` | The true future survival under A and border is zero if the extended stack is incompatible; otherwise it is2^(-(K-rowOverlap(stack,futureProjection))). |
+
+Two additional consequences are proved in this batch. In
+`AffineCrossoverSign.theorem_seven_ten_sign`, the actual positive-sign
+probability given A intersect hit differs from(alpha+b_bulk/2)/(alpha+b_bulk)
+by a quantity tending to zero, without future neutrality. In
+`AffineCrossoverCensoredTheorem.theorem_seven_ten_censored`, the literal
+source conditioned by A intersect hit and right-censored in the bulk excess
+has the same complete uncensored moving target, under future neutrality.
+The additional cost is at most1/card(bulk). Censoring preserves the source
+label, position and sign; only the integer bulk excess is replaced by
+min(e,M-L+1-x).
+
+Future neutrality means(rowG+U_L) intersect span(q1,...,qK)={0},
+eventually for each fixed K. The threshold may depend on K. This condition
+is used only for the geometric future mark. Each capped conditional record
+law is proved from all its finite survival probabilities; the source and
+target tails then remove the cap after the size limit. Neither a common
+threshold for all K nor neutrality for a growing K(M) is assumed.
+
+The moving target retains a geometric prime-index excess at the border,
+and an independent uniform site, geometric integer excess and fair sign
+on the bulk branch. These are distinct clocks. The zero-cap operation
+changes only the border excess, preserving source labels, positions and
+signs. The lattice comparison is total variation; passage to the continuous
+uniform location is a separate weak limit. No relative error for a
+disappearing mixture component is claimed.
+
+The rare event is the actual prefix hit and all nested conditionings are
+identified with intersections of actual events. Initial inadmissible indices
+are handled by total probability definitions and removed by eventual equality
+in the conclusions. The proof-independent deficit uses min(L,Y) only
+before the cutoff contains L; its eventual value is the printed d exactly.
+
+The final affine chain uses the five existing arguments process AGG, PNT,
+uniform Laishram–Shorey, Shorey square-product and Nicolas–Robin. All seven
+global literature propositions remain unchanged. No new Palomar claim is
+made; quantitative Gaussian/moderate-deviation, soft central transfer,
+unnumbered quenched and the earlier precise arithmetic reserves remain.

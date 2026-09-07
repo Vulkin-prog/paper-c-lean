@@ -1,6 +1,6 @@
 # Literature inputs for the v2.8.2 transfer and cutoff proofs
 
-The results through batch 22 separate published probability/prime-distribution inputs
+The results through batch 23 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
 There is no new Lean `axiom`, and no proof of these seven propositions is
@@ -247,3 +247,22 @@ cylinder representative for the capped prime clock is constructed and then
 transferred by almost-everywhere equality; the null-event default is not used
 to assume finite-field measurability. Kernel auditing still does not prove
 the seven explicitly supplied literature propositions.
+
+## Batch23: affine-conditioned rare crossover
+
+No new literature input is added. The final7.10 chain uses the same five
+process/arithmetic arguments as7.8–7.9: process AGG, PNT, uniform LS,
+Shorey square-product and Nicolas–Robin. The seven global proposition
+definitions and their source qualifications remain unchanged.
+
+Exact affine ranks and compatibility, the amplified quantitative estimates,
+true conditional rare normalization, all location phases, microscopic
+concentration and fixed-cap removal are proved internally. Future neutrality
+is a concrete row-space condition on the supplied affine matrix. It is not
+an independence statement or desired limiting law introduced as a new
+literature argument. It is unnecessary for rare-tail and location claims.
+The generic intermediate comparison lemmas are explicitly instantiated by
+the arithmetic endpoints in every final theorem.
+
+The kernel audit verifies the proofs relative to those explicit arguments;
+it does not prove the arguments themselves or create a new Palomar record.

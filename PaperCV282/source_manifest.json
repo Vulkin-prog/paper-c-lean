@@ -35,23 +35,13 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Theorems7.6,7.8,7.9; macroscopic exact-mark transport, two-source rare tail/location and signed two-clock crossover",
+          "item": "Theorem7.10 affine-conditioned crossover and future-prime discussion",
           "printed_pages": [
-            43,
             44,
-            45,
-            46,
             47
           ],
-          "equations": [
-            "7.14",
-            "7.18",
-            "7.19",
-            "7.21",
-            "7.22",
-            "7.23"
-          ],
-          "scope": "Full hard/movable labelled and aggregate budgets, source-resolved location, finite/infinite phases, moving marked target and right censoring. Theorem7.10 remains partial."
+          "equations": [],
+          "scope": "Exact rank probabilities, amplified quantitative errors, actual rare tail and weak location, microscopic concentration, and full marked comparison under separate fixed-K future neutrality."
         }
       ],
       "batch_17_locators": [
@@ -135,6 +125,27 @@
           ],
           "excluded_equation": "7.14 and the complete transport7.6 remain open."
         }
+      ],
+      "batch_22_locators": [
+        {
+          "item": "Theorems7.6,7.8,7.9; macroscopic exact-mark transport, two-source rare tail/location and signed two-clock crossover",
+          "printed_pages": [
+            43,
+            44,
+            45,
+            46,
+            47
+          ],
+          "equations": [
+            "7.14",
+            "7.18",
+            "7.19",
+            "7.21",
+            "7.22",
+            "7.23"
+          ],
+          "scope": "Full hard/movable labelled and aggregate budgets, source-resolved location, finite/infinite phases, moving marked target and right censoring. Theorem7.10 remains partial."
+        }
       ]
     },
     {
@@ -149,15 +160,13 @@
       "role_in_batch": "E.1–E.3 completed; incidence/private quotient, square-incidence cap, K=11 optimum and post-quadratic bound proved. Exact border clocks and affine formulas proved; full crossover remains separate.",
       "current_batch_locators": [
         {
-          "item": "C.6 macroscopic transport/containment and E.7 relative two-source comparison; no new numbered companion result",
+          "item": "E.7 affine conditioning and relative normalization; no new numbered companion result",
           "printed_pages": [
-            13,
-            14,
             21,
             22
           ],
           "equations": [],
-          "scope": "Actual macroscopic labelled/aggregate transport and unconditioned crossover. Full affine conditioning remains reserved."
+          "scope": "Exact rank probabilities, amplified quantitative errors, actual rare tail and weak location, microscopic concentration, and full marked comparison under separate fixed-K future neutrality."
         }
       ],
       "batch_17_locators": [
@@ -209,6 +218,19 @@
           "equations": [],
           "scope": "Relative bulk and microscopic-record factorization only. The affine-conditioned crossover is still open."
         }
+      ],
+      "batch_22_locators": [
+        {
+          "item": "C.6 macroscopic transport/containment and E.7 relative two-source comparison; no new numbered companion result",
+          "printed_pages": [
+            13,
+            14,
+            21,
+            22
+          ],
+          "equations": [],
+          "scope": "Actual macroscopic labelled/aggregate transport and unconditioned crossover. Full affine conditioning remains reserved."
+        }
       ]
     }
   ],
@@ -216,6 +238,49 @@
     "PaperCV282/AffineBorderCylinders.lean",
     "PaperCV282/AffineBorderLinear.lean",
     "PaperCV282/AffineBorderPrimeClock.lean",
+    "PaperCV282/AffineCrossoverBudget.lean",
+    "PaperCV282/AffineCrossoverCappedBudget.lean",
+    "PaperCV282/AffineCrossoverCensored.lean",
+    "PaperCV282/AffineCrossoverCensoredTheorem.lean",
+    "PaperCV282/AffineCrossoverCylinder.lean",
+    "PaperCV282/AffineCrossoverCylinderInformation.lean",
+    "PaperCV282/AffineCrossoverDeficit.lean",
+    "PaperCV282/AffineCrossoverErrors.lean",
+    "PaperCV282/AffineCrossoverErrorsAffine.lean",
+    "PaperCV282/AffineCrossoverErrorsInterior.lean",
+    "PaperCV282/AffineCrossoverErrorsMiddle.lean",
+    "PaperCV282/AffineCrossoverErrorsNormalized.lean",
+    "PaperCV282/AffineCrossoverErrorsScales.lean",
+    "PaperCV282/AffineCrossoverFullScale.lean",
+    "PaperCV282/AffineCrossoverFuture.lean",
+    "PaperCV282/AffineCrossoverFutureCutoff.lean",
+    "PaperCV282/AffineCrossoverLocationLimits.lean",
+    "PaperCV282/AffineCrossoverLocationProjection.lean",
+    "PaperCV282/AffineCrossoverLocationSource.lean",
+    "PaperCV282/AffineCrossoverLocationTarget.lean",
+    "PaperCV282/AffineCrossoverLocationTheorem.lean",
+    "PaperCV282/AffineCrossoverLocationTransfer.lean",
+    "PaperCV282/AffineCrossoverMarkedComparison.lean",
+    "PaperCV282/AffineCrossoverMarkedConvergence.lean",
+    "PaperCV282/AffineCrossoverMicroscopic.lean",
+    "PaperCV282/AffineCrossoverModel.lean",
+    "PaperCV282/AffineCrossoverNormalization.lean",
+    "PaperCV282/AffineCrossoverPhase.lean",
+    "PaperCV282/AffineCrossoverPrimeClock.lean",
+    "PaperCV282/AffineCrossoverRareMass.lean",
+    "PaperCV282/AffineCrossoverRareTheorem.lean",
+    "PaperCV282/AffineCrossoverRecordMass.lean",
+    "PaperCV282/AffineCrossoverSign.lean",
+    "PaperCV282/AffineCrossoverSourceCoupling.lean",
+    "PaperCV282/AffineCrossoverSparseNormalization.lean",
+    "PaperCV282/AffineCrossoverSparseTarget.lean",
+    "PaperCV282/AffineCrossoverStable.lean",
+    "PaperCV282/AffineCrossoverStableClock.lean",
+    "PaperCV282/AffineCrossoverTarget.lean",
+    "PaperCV282/AffineCrossoverTheorem.lean",
+    "PaperCV282/AffineCrossoverUncapping.lean",
+    "PaperCV282/AffineCrossoverUncappingLimit.lean",
+    "PaperCV282/AffineCrossoverUncappingTheorem.lean",
     "PaperCV282/AggregateActualTail.lean",
     "PaperCV282/AggregateBudgetRates.lean",
     "PaperCV282/AggregateCoordinateIdentities.lean",
@@ -976,8 +1041,7 @@
       "Full source-shaped precise Pell/split-product statements3.13/3.14/A.2; the precise intermediate two-defect consequence7.2 is now proved.",
       "General alpha>0 version of Proposition 3.19 beyond the proved sector-4 specialization.",
       "Quantitative Berry–Esseen and moderate deviations; soft central local-transfer counterpart; remaining D.4 process consequences.",
-      "Unnumbered extensions following6.4: labelled-field environmental bound, simultaneous scalar control over O(logN) lengths and separate maximal couplings.",
-      "Full affine-conditioned rare-tail, location and marked crossover7.10 under its information budget. Unconditioned two-source7.8–7.9 and complete macroscopic transport7.6 are now proved."
+      "Unnumbered extensions following6.4: labelled-field environmental bound, simultaneous scalar control over O(logN) lengths and separate maximal couplings."
     ],
     "new_external_literature_premises_in_current_endpoints": [
       {
@@ -1762,10 +1826,12 @@
       "counted_as_new_numbered_result": false
     },
     "affine_border_and_future_prime_clock": {
-      "status": "partial_theorem_7_10",
+      "status": "complete_theorem_7_10",
       "exact_border_mass": "2^-(πL−κ), with κ the actual dual-row-space intersection dimension",
       "future_tail": "Zero if incompatible, otherwise2^-(K−intersection dimension); zero intersection implies compatibility and the geometric tail.",
-      "full_affine_crossover_claimed": false
+      "full_affine_crossover_claimed": true,
+      "future_neutrality_scope": "Only the geometric future marked law; rare tail, microscopic concentration and location do not require it.",
+      "future_quantifiers": "For every fixed K, eventually along the size sequence; no common threshold for all K."
     },
     "theorem_7_4": {
       "status": "complete_under_existing_explicit_literature_arguments",
@@ -1849,6 +1915,32 @@
       "content": "The actual conditional Gamma record converges in total variation to the moving two-source mixture on the complete record space, without convergence of either mixture weight. The prime-index clock and the integer bulk excess are distinct, and the bulk target has independent uniform site, geometric excess and fair sign. The true first-start sign bias and the right-censored version with the same uncensored target are proved. Fixed prime-clock truncation is removed using uniform actual source and target tails; no final independence or TV conclusion is supplied as an input.",
       "actual_arithmetic_source": true,
       "remaining": []
+    },
+    "theorem_7_10": {
+      "status": "complete_under_existing_explicit_literature_arguments",
+      "evidence": [
+        "PaperCV282/AffineCrossoverCylinder.lean: conditional_border_probability",
+        "PaperCV282/AffineCrossoverCylinderInformation.lean: eventInformation_eq_cylinderInformation",
+        "PaperCV282/AffineCrossoverRareTheorem.lean: theorem_seven_ten_rare_tail",
+        "PaperCV282/AffineCrossoverRareTheorem.lean: theorem_seven_ten_microscopic",
+        "PaperCV282/AffineCrossoverLocationTheorem.lean: theorem_seven_ten_location",
+        "PaperCV282/AffineCrossoverLocationTheorem.lean: theorem_seven_ten_location_phase_atTop",
+        "PaperCV282/AffineCrossoverLocationTheorem.lean: theorem_seven_ten_location_phase_atBot",
+        "PaperCV282/AffineCrossoverUncappingTheorem.lean: theorem_seven_ten_complete_clock_deficit",
+        "PaperCV282/AffineCrossoverPrimeClock.lean: nested_affine_prime_tail_probability"
+      ],
+      "content": "Exact conditional border mass2^(-d), d=pi(L)-dim(rowG intersect U_L), and actual information rank(G)*log2. Under the strong rank budget, true conditional rare-tail ratio at2^(-d)+M2^(-L), microscopic mass ratio, unique-border concentration and TV of the complete microscopic source conditionings are proved. The actual least-start location given A intersect hit has the printed weak mixture in finite phase and both infinite phases, including the source-resolved L^2/M variant, without future neutrality. The complete moving marked lattice TV limit retains the geometric future clock under neutrality eventually for each fixed K. The general future survival keeps its compatibility test and rank deficit. All final error limits are derived from quantitative arithmetic estimates before conditioning amplification. Five existing process/arithmetic inputs; compatible cylinders and their codomains may vary, with compatibility only eventual.",
+      "actual_arithmetic_source": true,
+      "remaining": []
+    },
+    "affine_sign_and_censoring": {
+      "counted_as_new_numbered_result": false,
+      "sign_endpoint": "PaperC.V282.AffineCrossoverSign.theorem_seven_ten_sign",
+      "censored_endpoint": "PaperC.V282.AffineCrossoverCensoredTheorem.theorem_seven_ten_censored",
+      "sign_requires_future_neutrality": false,
+      "censored_complete_clock_requires_future_neutrality": true,
+      "censored_extra_cost": "1/card(bulk)",
+      "same_uncensored_target": true
     }
   },
   "qualification": {
@@ -1858,13 +1950,13 @@
     "build_result": "not_recorded_in_this_source_manifest",
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes."
   },
-  "development_batch": 22,
+  "development_batch": 23,
   "declaration_inventory": {
-    "mathematical_module_count": 595,
-    "named_declarations": 5103,
-    "theorems": 3816,
-    "definitions": 872,
-    "named_instances": 415,
+    "mathematical_module_count": 638,
+    "named_declarations": 5386,
+    "theorems": 4008,
+    "definitions": 915,
+    "named_instances": 463,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
@@ -1874,6 +1966,54 @@
       "PaperC.V282.AffineBorderLinear.instPrimeTwo",
       "PaperC.V282.AffineBorderPrimeClock.instMeasurableSpaceF2Discrete",
       "PaperC.V282.AffineBorderPrimeClock.instPrimeTwo",
+      "PaperC.V282.AffineCrossoverCensored.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverCensoredTheorem.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverCylinder.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverCylinder.instPrimeTwo",
+      "PaperC.V282.AffineCrossoverCylinder.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverCylinderInformation.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverCylinderInformation.instPrimeTwo",
+      "PaperC.V282.AffineCrossoverDeficit.instPrimeTwo",
+      "PaperC.V282.AffineCrossoverErrors.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverErrors.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverErrorsAffine.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverErrorsAffine.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverErrorsNormalized.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverErrorsNormalized.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverFuture.instPrimeTwo",
+      "PaperC.V282.AffineCrossoverFutureCutoff.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverFutureCutoff.instPrimeTwo",
+      "PaperC.V282.AffineCrossoverLocationProjection.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverLocationSource.instDecidableProposition",
+      "PaperC.V282.AffineCrossoverLocationSource.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverLocationTheorem.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverLocationTheorem.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverLocationTransfer.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverLocationTransfer.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverModel.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverModel.instProbabilityRecordMeasure",
+      "PaperC.V282.AffineCrossoverModel.instProbabilitySourceJoint",
+      "PaperC.V282.AffineCrossoverModel.instProbabilityProductJoint",
+      "PaperC.V282.AffineCrossoverPrimeClock.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverPrimeClock.instDecidableProposition",
+      "PaperC.V282.AffineCrossoverPrimeClock.instPrimeTwo",
+      "PaperC.V282.AffineCrossoverPrimeClock.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverRareTheorem.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverRareTheorem.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverSign.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverSign.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverStable.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverStable.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverStableClock.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverStableClock.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverTarget.instProbabilityMixedLaw",
+      "PaperC.V282.AffineCrossoverTarget.instProbabilityTargetLaw",
+      "PaperC.V282.AffineCrossoverTheorem.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverTheorem.instProbabilityInfinite",
+      "PaperC.V282.AffineCrossoverTheorem.instProbabilityConditionedMeasure",
+      "PaperC.V282.AffineCrossoverUncapping.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverUncappingLimit.instMeasurableSpaceF2Discrete",
+      "PaperC.V282.AffineCrossoverUncappingTheorem.instMeasurableSpaceF2Discrete",
       "PaperC.V282.AggregateMovingCoordinates.instMeasurableSpaceF2Discrete",
       "PaperC.V282.AllStartFieldCosts.instDecidableProposition",
       "PaperC.V282.AllStartFieldTransfer.instDecidableProposition",
@@ -5264,6 +5404,223 @@
         "definitions": 0,
         "named_instances": 0
       }
+    },
+    "batch_23_additions": {
+      "AffineCrossoverBudget": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "AffineCrossoverCappedBudget": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "AffineCrossoverCensored": {
+        "theorems": 4,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "AffineCrossoverCensoredTheorem": {
+        "theorems": 1,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "AffineCrossoverCylinder": {
+        "theorems": 16,
+        "definitions": 5,
+        "named_instances": 3
+      },
+      "AffineCrossoverCylinderInformation": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "AffineCrossoverDeficit": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "AffineCrossoverErrors": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "AffineCrossoverErrorsAffine": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "AffineCrossoverErrorsInterior": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverErrorsMiddle": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverErrorsNormalized": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "AffineCrossoverErrorsScales": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverFullScale": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverFuture": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 1
+      },
+      "AffineCrossoverFutureCutoff": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "AffineCrossoverLocationLimits": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverLocationProjection": {
+        "theorems": 10,
+        "definitions": 2,
+        "named_instances": 1
+      },
+      "AffineCrossoverLocationSource": {
+        "theorems": 6,
+        "definitions": 5,
+        "named_instances": 2
+      },
+      "AffineCrossoverLocationTarget": {
+        "theorems": 8,
+        "definitions": 4,
+        "named_instances": 0
+      },
+      "AffineCrossoverLocationTheorem": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "AffineCrossoverLocationTransfer": {
+        "theorems": 8,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "AffineCrossoverMarkedComparison": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverMarkedConvergence": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverMicroscopic": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverModel": {
+        "theorems": 5,
+        "definitions": 9,
+        "named_instances": 4
+      },
+      "AffineCrossoverNormalization": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "AffineCrossoverPhase": {
+        "theorems": 9,
+        "definitions": 1,
+        "named_instances": 0
+      },
+      "AffineCrossoverPrimeClock": {
+        "theorems": 6,
+        "definitions": 0,
+        "named_instances": 4
+      },
+      "AffineCrossoverRareMass": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverRareTheorem": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 2
+      },
+      "AffineCrossoverRecordMass": {
+        "theorems": 4,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverSign": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "AffineCrossoverSourceCoupling": {
+        "theorems": 1,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverSparseNormalization": {
+        "theorems": 3,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverSparseTarget": {
+        "theorems": 5,
+        "definitions": 0,
+        "named_instances": 0
+      },
+      "AffineCrossoverStable": {
+        "theorems": 5,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "AffineCrossoverStableClock": {
+        "theorems": 3,
+        "definitions": 1,
+        "named_instances": 2
+      },
+      "AffineCrossoverTarget": {
+        "theorems": 7,
+        "definitions": 4,
+        "named_instances": 2
+      },
+      "AffineCrossoverTheorem": {
+        "theorems": 4,
+        "definitions": 1,
+        "named_instances": 3
+      },
+      "AffineCrossoverUncapping": {
+        "theorems": 8,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "AffineCrossoverUncappingLimit": {
+        "theorems": 1,
+        "definitions": 0,
+        "named_instances": 1
+      },
+      "AffineCrossoverUncappingTheorem": {
+        "theorems": 2,
+        "definitions": 0,
+        "named_instances": 1
+      }
     }
   },
   "manuscript_notes": {
@@ -5271,21 +5628,21 @@
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
     "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Batch22 completes7.6,7.8,7.9 with no new literature premise. V3-S015 records a simpler sparse-mixture normalization and fixed prime-clock uncapping proof of7.9. No new manuscript error; PDFs unchanged.",
+    "formalization_context": "Batch23 completes7.10 without a new literature input. V3-S016 suggests making the inherited rare regime and fixed-K future-neutrality quantifiers explicit; no new manuscript error, PDFs unchanged.",
     "revision_entries": {
       "confirmed_corrections": 1,
-      "suggestions": 15
+      "suggestions": 16
     }
   },
   "whole_manuscript_coverage": {
     "assessment": "docs/FORMALIZATION_COVERAGE_V282.json",
     "human_readable": "docs/FORMALIZATION_COVERAGE_V282.md",
-    "effort_estimate_percent": 93,
+    "effort_estimate_percent": 94,
     "conservative_interval_percent": [
-      87,
-      98
+      88,
+      99
     ],
-    "completed_article_results": 51,
+    "completed_article_results": 52,
     "numbered_article_results_excluding_intro_duplicates": 61,
     "companion_completed_named_results": 7,
     "companion_named_results": 8,
