@@ -1,0 +1,214 @@
+\section{Prime cutoffs and scalar smoothing}\label{supp:sec:cutoffs}
+This appendix verifies the free cutoff before specializing it to either
+saddle. The distinction matters: the hard route deletes all exceptional
+starts, whereas the soft scalar route leaves them in the Stein equation.
+
+\subsection{A uniform weighted prime sum}
+\begin{proposition}[Free Rankin calculation and both saddles]
+\label{supp:prop:cutoff-calculation}
+The bounds and expansions in \cref{prop:cutoffs} hold uniformly for $w$
+in a fixed multiplicative neighbourhood of $\sqrt{H\log H}$,
+where $H=\log N$.
+\end{proposition}
+\begin{proof}
+Every $Y$-defective integer has the unique form $n=a^2s$ with $s$
+squarefree and $Y$-smooth. Therefore, for $0<\zeta<1/2$,
+\begin{equation}\label{supp:eq:rankin}
+ \frac{A(X,Y)}X\le X^{-\zeta}
+                         \prod_{p\le Y}(1+p^{-1+\zeta}).
+\end{equation}
+Indeed sum $\sqrt{X/s}$ over $s\le X$ and use
+$s^{-1/2}\le X^{1/2-\zeta}s^{-1+\zeta}$.
+Put $\nu=H/w$, choose the larger solution $u\ge1$ of $e^u/u=\nu$,
+and set $\zeta=u/w$. Uniformly in the stated range,
+\[
+ u\sim\tfrac12\log H,\quad
+ \nu\asymp\sqrt{H/\log H},\quad
+ \zeta\asymp\sqrt{\log H/H},\quad
+ \log H=o(\nu).
+\]
+For $X/N$ in a fixed compact subset of $(0,\infty)$,
+$\zeta\log X=u\nu+o(\nu)$.
+
+We require the prime number theorem inside the weighted Euler product,
+not merely an upper bound with an unspecified constant. Let
+$R(t)=\pi(t)-\operatorname{Li}(t)$. Given $\epsilon>0$, choose a fixed
+lower split point beyond which $|R(t)|\le\epsilon t/\log t$.
+Stieltjes integration by parts gives, uniformly in $w$,
+\begin{align*}
+ \sum_{p\le e^w}p^{-1+\zeta}
+ &=\int_2^{e^w}\frac{t^{-1+\zeta}}{\log t}\,dt\nobreak
+       +O_\epsilon(1)
+       +O\left(\epsilon\frac{e^u}{w}
+           +\epsilon\int_2^{e^w}\frac{t^{-1+\zeta}}{\log t}\,dt\right)\\
+ &=\operatorname{Ei}(u)+o(\nu).
+\end{align*}
+For the second equality first let $N\to\infty$ and then
+$\epsilon\downarrow0$. The substitution $z=\zeta\log t$ costs only
+$O(\log(1/\zeta))=o(\nu)$ at the lower endpoint, and
+$\operatorname{Ei}(u)\asymp e^u/u=\nu$. Also
+$\sum_p p^{-2+2\zeta}=O(1)$, so logarithms of the Euler factors give
+\begin{equation}\label{supp:eq:weighted-primes}
+ \sum_{p\le e^w}\log(1+p^{-1+\zeta})
+       =\operatorname{Ei}(u)+o(\nu).
+\end{equation}
+Floors in $Y=\lfloor e^w\rfloor$ alter these estimates by a negligible
+quantity. Equations \eqref{supp:eq:rankin}--\eqref{supp:eq:weighted-primes}
+yield
+\[
+ \log(A(X,Y)/X)\le-\nu u+\operatorname{Ei}(u)+o(\nu)
+                      =-D(\nu)+o(\nu).
+\]
+A bad integer contaminates at most $B$ windows; $\log B=o(\nu)$ absorbs
+this factor. The graph-edge estimate in the article gives
+$E_Y/N^2\le e^{-w+o(\nu)}+N^{-1+o(1)}$.
+A window uses at most $CBH/w$ large primes, and each prime meets at most
+$CB(N/Y+1)$ starts. Hence
+\begin{equation}\label{supp:eq:max-degree}
+ \Delta_Y\ll B^2(H/w)(N/e^w+1),\qquad
+ \Delta_Y/N\le e^{-w+o(\nu)}+N^{-1+o(1)}.
+\end{equation}
+This maximum-degree bound applies to the graph on all starts, including
+exceptional ones.
+
+For a unified expansion write $V_a=aD(H/V_a)$ for $a=1$ or $2$,
+$\nu_a=H/V_a$, and $u_a=u(\nu_a)$. Since $D'=u>0$, the defining
+function decreases strictly in $V_a$. At zero its sign is positive;
+at $H/e$ its sign is negative for sufficiently large $H$. Thus the root
+is unique. The parametric identities are
+\[
+ \nu_a=e^{u_a}/u_a,\qquad
+ V_a=a(e^{u_a}-\operatorname{Ei}(u_a)).
+\]
+Using $\operatorname{Ei}(u)=e^u u^{-1}(1+u^{-1}+O(u^{-2}))$ gives
+\[
+ \log H=2u_a-\log u_a+\log a+O(u_a^{-1}),\qquad
+ u_a=\tfrac12(\log H+\log\log H-\log(2a))+o(1),
+\]
+and $V_a^2/H=a(u_a-1+O(u_a^{-1}))$. Substitution gives
+\eqref{eq:hard-expansion} and \eqref{eq:soft-expansion}.
+\end{proof}
+The second-order constants belong to this PNT main-term optimization.
+They are not matching lower bounds for the probability distance.
+
+\subsection{A finite soft-exception Stein lemma}
+\begin{lemma}[Retention of exceptional indicators]\label{supp:lem:soft-retention}
+Let a finite indicator family $(I_\alpha)_{\alpha\in\mathcal I}$ have an
+exact dependency graph conditionally on $\mathcal F$. Split
+$\mathcal I=\mathcal G\sqcup\mathcal X$ deterministically, and assume
+$\EE(I_\alpha\mid\mathcal F)=p$ for every $\alpha\in\mathcal G$.
+Put $W=\sum I_\alpha$, $\lambda=|\mathcal I|p$,
+$\lambda_{\mathcal X}=|\mathcal X|p$ and
+$W_{\mathcal X}=\sum_{\alpha\in\mathcal X}I_\alpha$.
+Let $p_\beta(\omega)=\EE(I_\beta\mid\mathcal F)(\omega)$. The mean
+conditional Poisson distance is at most a constant times
+\begin{align}
+ &(1\wedge\lambda^{-1})\left[|\mathcal G|p^2+
+     p\sum_{\alpha\in\mathcal G}\sum_{\beta\in B_\alpha\setminus\{\alpha\}}
+                                     \EE I_\beta
+     +\sum_{\alpha\in\mathcal G}\sum_{\beta\in B_\alpha\setminus\{\alpha\}}
+                                     \EE(I_\alpha I_\beta)\right]\notag\\
+ &\hspace{10mm}+(1\wedge\lambda^{-1/2})
+                          (\lambda_{\mathcal X}+\EE W_{\mathcal X}).
+ \label{supp:eq:soft-finite}
+\end{align}
+The two minimum factors are interpreted as one if $\lambda=0$.
+No marginal assumption is made for exceptional neighbours.
+\end{lemma}
+\begin{proof}
+If $\lambda=0$, all good indicators vanish almost surely and
+$\dTV(\Law(W\mid\mathcal F),\delta_0)\le
+\EE(W_{\mathcal X}\mid\mathcal F)$; averaging proves the claim.
+For $\lambda>0$ and a target test set $A\subset\NN$, let $f=f_{\lambda,A}$ solve
+$\lambda f(k+1)-kf(k)=\1_A(k)-\Pois(\lambda)(A)$.
+The standard factors are
+\[
+ \|f\|_\infty\le1\wedge\sqrt{2/(e\lambda)},\qquad
+ \|\Delta f\|_\infty\le(1-e^{-\lambda})/\lambda
+                         \le1\wedge\lambda^{-1}
+\]
+\cite[(2.15)]{Krokowski2017}; see also
+\cite[(2.4)]{Rollin2012SteinFactors}.
+For $\alpha\in\mathcal G$ set
+$U_\alpha=\sum_{\beta\in B_\alpha\setminus\{\alpha\}}I_\beta$ and
+$V_\alpha=W-I_\alpha-U_\alpha$. On each fibre $I_\alpha$ is independent
+of $V_\alpha$. Add and subtract
+$p\EE[f(V_\alpha+1)\mid\mathcal F]$. Telescoping gives
+\begin{align*}
+ &|p\EE[f(W+1)\mid\mathcal F]-\EE[I_\alpha f(W)\mid\mathcal F]|\\
+ &\quad\le\|\Delta f\|_\infty
+ \left[p^2+p\sum_{\beta\in B_\alpha\setminus\{\alpha\}}p_\beta
+             +\sum_{\beta\in B_\alpha\setminus\{\alpha\}}
+                            \EE(I_\alpha I_\beta\mid\mathcal F)\right].
+\end{align*}
+The remaining term is bounded directly by
+\[
+ |\EE[\lambda_{\mathcal X}f(W+1)-W_{\mathcal X}f(W)\mid\mathcal F]|
+ \le\|f\|_\infty
+                  (\lambda_{\mathcal X}+\EE[W_{\mathcal X}\mid\mathcal F]).
+\]
+The bound is uniform in the test set, so taking the supremum on each
+fibre and then averaging proves \eqref{supp:eq:soft-finite}.
+\end{proof}
+
+\subsection{Applying the lemma at a movable cutoff}\label{supp:sec:soft-application}
+Take $\mathcal X=D_Y$, $p=2^{-L}$ and $\lambda=Np>0$.
+Set $\ell=\log^+\lambda$ and $K=\max(1,\lambda)$.
+The elementary inequalities
+\[
+ (1\wedge\lambda^{-1})\lambda^2\le K,\qquad
+ (1\wedge\lambda^{-1})(\lambda^2+\lambda)\le2K,\qquad
+ (1\wedge\lambda^{-1/2})\lambda\le\sqrt K
+\]
+hold on both sides of intensity one.
+For neighbour marginals use the maximum degree of the graph on all sites:
+\[
+ p\sum_{x\in\mathcal G}\sum_{y\in B_x\setminus\{x\}}\EE J_{y,L}
+ \le p\Delta_Y\EE Z_{N,L}
+ \le p\Delta_Y(\lambda+p\mathcal M_B).
+\]
+The first-difference factor makes this at most
+$K(\Delta_Y/N)(1+N^{-1/2+o(1)})$.
+The true marginals of exceptional neighbours have not been replaced by $p$.
+For the joint sum, overlapping starts contribute zero and the local bound
+treats touching pairs; the separated pairs give
+\[
+ \sum_{x\in\mathcal G}\sum_{y\in B_x\setminus\{x\}}
+       \PP(J_{x,L}J_{y,L}=1)
+ \ll p^2\bigl(N^{1+o(1)}+N\Delta_Y+R_2(N,L)\bigr).
+\]
+Since $R_2/N^2\ll N^{-1/3+\varepsilon/4}(1+\lambda^{-1})$,
+its contribution, after the Stein factor, is at most
+$K N^{-1/3+\varepsilon/2}$ after enlarging the threshold.
+The diagonal and local polynomial costs are smaller.
+Finally the exceptional zeroth-order term is at most
+\[
+ C\sqrt K\left(\frac{\mathcal M_B}{N}+\frac{|D_Y|}{N}\right)
+ \le C e^{\ell/2-D(H/w)+o(H/w)}+K N^{-1/3+\varepsilon/2}.
+\]
+Together with \eqref{supp:eq:max-degree}, these estimates give
+\eqref{eq:soft-free-rate} for all intensities.
+
+At $w=\widehat V_N$, let $\nu=H/w$ and choose a common $\eta_N\ge0$,
+$\eta_N\to0$, dominating the displayed remainder terms. Put
+\[
+ q=e^{-(w-\ell)/2+\eta_N\nu},\qquad
+ r=e^{\ell-w+\eta_N\nu},\qquad P=N^{-1/3+\varepsilon/2}.
+\]
+Up to an absolute constant, the error is at most $q+r+KP$.
+If $q+N^{-1/3+\varepsilon}\ge1$, the trivial total-variation bound suffices.
+Otherwise $q<1$ implies $\ell\le w$ and $r\le q$.
+Since $w=o(\log N)$, eventually $K\le e^w\le N^{\varepsilon/2}$, so
+$KP\le N^{-1/3+\varepsilon}$. This proves the soft minimum bound,
+including $\lambda<1$, at the same cutoff and on the full $\mathcal F_Y$.
+All thresholds depend only on the fixed band and the error margin, not on
+its length parameter. The numerical constants in a coarser ledger do not
+affect the claimed asymptotic bound.
+
+All terms admit their conditional versions: integrate the fibrewise
+bound over $C\in\mathcal F_Y$ and divide by $\PP(C)$. A single factor
+$e^I$ multiplies the ledger, where $I=-\log\PP(C)$; the leading soft
+exponent consequently has sufficient budget $2I+\log^+\lambda<\widehat V$.
+This argument applies only to events measurable in the chosen prime
+field. It does not turn arbitrary post-selection on a run statistic into
+an arithmetic conditioning event.

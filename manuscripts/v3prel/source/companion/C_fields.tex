@@ -1,0 +1,400 @@
+\section{Marked fields and spatial aggregation}\label{supp:sec:fields}
+The distinction between a labelled field and its aggregate is already visible
+in a finite family. This appendix gives the finite inequalities first; all
+passages to countably many marks are then controlled by a single tail event.
+
+\subsection{The marginal ceiling for dictionaries}
+The marginal-ceiling calculation in the proof of
+\cref{thm:word-field} gives the finite inequality
+\[
+ \EE\Delta_{\mathcal W}\ll
+ a\bigl(\mathcal M_B^{\rm val}+|D_Y^{\rm val}|\bigr)
+ +a^2\bigl(NB+E_Y+R_2^{\mathrm{val},[1/a]}(N,B)\bigr)
+ +\Lambda\Omega(\mathcal W),
+\]
+where $a=m2^{-B}$ and $\Lambda=Na$.
+The comparison retains the full site--word index set; only the error
+terms have been summed over words. We verify here the substitutions
+and the uniform absorption of secondary terms.
+With $T=N/\Lambda$ and $Q_B=Nm/\Lambda\ge T$, the three capped-profile
+terms become, respectively,
+\[
+ N^{-1/3+\varepsilon}\Lambda^{11/6}m^{1/6},\qquad
+ N^{-1/3+\varepsilon}\Lambda^{4/3}m^{2/3},\qquad
+ N^{-1/3+\varepsilon}\Lambda.
+\]
+These substitutions are exact because $a=\Lambda/N$ and
+$Q_B=Nm/\Lambda$. The restrictions $1\le m\le2^B$ also give
+$0<a\le1$, so the arithmetic cap $T=1/a$ is always at least one.
+The secondary edge contribution is absorbed in every admissible
+intensity regime, not only at criticality: $m\ge\Lambda/N$ implies
+\[
+ \frac{\Lambda^2}{N}
+ \le N^{-1/3}\Lambda^{4/3}m^{2/3}.
+\]
+Factors $N^{o(1)}$ in these smaller terms are absorbed by fixing a
+smaller arithmetic error exponent first.
+At bounded positive $\Lambda$ and $m\le N^{1/2-\eta}$, the powers of
+$N$ in the three terms, with $\varepsilon=\eta/6$, are at most
+\[
+ -\frac14,\qquad -\frac\eta2,\qquad
+ -\frac13+\frac\eta6\le-\frac\eta2\quad(0<\eta<1/2).
+\]
+Thus all three are $O(N^{-\eta/2})$, uniformly in the dictionary. No independent random marks
+are added to the multiplicative sequence, and no word identity is lost
+when the error terms are summed.
+
+\subsection{Local pairs and the role of the maximal support}\label{supp:sec:local-marks}
+From here on, $p=2^{-L}$, $q_e=2^{-e-1}$, $p_e=pq_e$,
+$\lambda=Np$ and $0\le e\le E$. The largest row length is
+$Q=L+E+1$; its support has $Q+1$ vertices. An unsigned mark of excess $e$
+imposes $L+e+1$ relative equations; prescribing its sign fixes all
+$L+e+2$ values on the same support.
+
+A good maximal support contains no $Y$-defective vertex and has diameter
+$Q<Y$. Every exact-mark system on that support consequently has full rank
+above $Y$, with conditional marginal $p_e$. If two actual supports intersect,
+their union has diameter at most $2Q<Y$; every vertex of the union then has a
+prime coordinate private to that union. For two compatible exact runs the
+only possible intersecting cases are a common terminal/border vertex or a
+common terminal edge. Equivalently, for $x<y$, they satisfy
+$y-x=L+e+1$ or $y-x=L+e$. The union of the two constraint trees has cycle
+rank at most one, so its probability is at most $2p_ep_f$.
+
+The actual supports can also be disjoint while the \emph{maximal} supports
+intersect. In that case all their private coordinates are still distinct,
+and the probability is $p_ep_f$. Thus the bound
+\begin{equation}\label{supp:eq:local-marked}
+ \PP(K_{x,e}K_{y,f}=1\mid\mathcal F_Y)\le 2p_ep_f
+ \qquad(0<|x-y|\le Q)
+\end{equation}
+holds for every good pair; it does not assert that only two separations are
+possible among pairs of intersecting maximal supports. At the same site,
+different exact marks are mutually exclusive.
+
+For $|x-y|>Q$, zero-extension of the coefficient vectors embeds the mixed
+relation space into the two-window space at row length $Q$. Therefore
+\begin{equation}\label{supp:eq:mixed-domination}
+ \PP(K_{x,e}K_{y,f}=1)\le p_ep_f\,2^{\rho_Q(x,y)}.
+\end{equation}
+This is an averaged, not necessarily fibrewise, estimate: the small-prime
+phase in the affine formula can vary with the environment.
+
+
+For signed marks, put $p_{e,s}=p_e/2$ and let $a=L+e$, $b=L+f$.
+On a good local union the raw value vector is uniform. For $x<y$,
+$d=y-x$, the exact joint probabilities are
+\[
+ \PP(K^s_{x,e}K^t_{y,f}=1\mid\mathcal F_Y)=
+ \begin{cases}
+  0,&d<a,\\
+  4p_{e,s}p_{f,t}\1_{\{t=-s\}},&d=a,\\
+  2p_{e,s}p_{f,t}\1_{\{t=s\}},&d=a+1,\\
+  p_{e,s}p_{f,t},&a+1<d\le Q.
+ \end{cases}
+\]
+The final case concerns disjoint actual supports inside intersecting
+maximal supports. The factor four, rather than two, is needed when signs
+are prescribed. After summing signs one recovers
+\eqref{supp:eq:local-marked}. For separated signed systems, zero-extension
+instead gives the bound
+$p_{e,s}p_{f,t}2^{\rho^{\rm val}_{Q+1}(x,y)}$.
+\Cref{prop:absolute-profile} controls its weighted sum.
+
+\subsection{The directional multivariate Stein factor}\label{supp:sec:stein-factor}
+Let $\pi=\bigotimes_{i=1}^d\Pois(\lambda_i)$, with $d\ge2$,
+$\lambda_i>0$, $\lambda'=\sum_i\lambda_i$ and
+$\mu_i=\lambda_i/\lambda'$. For a test set $A\subseteq\NN^d$, use
+Barbour's immigration--death solution, with its sign chosen so that
+\[
+ \mathcal A g(z)=\1_A(z)-\pi(A),\qquad
+ \mathcal A g(z)=\sum_i\{\lambda_i\Delta_i g(z)
+                           +z_i[g(z-\boldsymbol e_i)-g(z)]\}.
+\]
+At $z_i=0$ the corresponding death term is zero.
+Write $H(z)=(\Delta_{ij}g(z))_{i,j}$ and
+$c(\lambda')=(1+2\log^+(2\lambda'))/2$.
+Barbour's Lemmas~2 and~3 \cite[p.~179]{Barbour1988SteinProcess}
+give, for this same solution,
+\[
+ |\Delta_{ij}g(z)|\le1,\qquad
+ |\alpha^T H(z)\alpha|
+ \le c(\lambda')\sum_i\frac{\alpha_i^2}{\lambda_i}.
+\]
+The weighted bound, stated there for integer directions, extends to
+rational directions by homogeneity and to real directions by continuity.
+The literature input consists of the solution and these analytic bounds,
+not an arithmetic or aggregated total-variation estimate.
+
+For clarity, the constant entrywise bound also follows directly from the
+solution's semigroup representation. Couple the processes started at
+$z$, $z+\boldsymbol e_i$, $z+\boldsymbol e_j$ and
+$z+\boldsymbol e_i+\boldsymbol e_j$ by adding two independent particles
+of rate-one exponential lifetimes. The second difference vanishes once
+either added particle dies; before that time the second difference of an
+indicator is at most two in absolute value. Its time integral is thus
+bounded by $\int_0^\infty 2e^{-2t}\,dt=1$. The argument includes $i=j$.
+
+To obtain the weighted entrywise bound, conjugate the symmetric matrix
+$H(z)$ by $D=\operatorname{diag}(\sqrt{\lambda_i})$.
+The quadratic inequality gives $\|D H(z)D\|_{2\to2}\le c(\lambda')$.
+Bounding each entry by this norm, and using the constant bound above,
+yields
+\begin{equation}\label{supp:eq:directional-factor}
+ |\Delta_{ij}g(z)|\le
+ \min\left\{1,\frac{1+2\log^+(2\lambda')}
+                    {2\lambda'\sqrt{\mu_i\mu_j}}\right\}
+ \le\min\left\{1,\frac{C(1+\log^+(2\lambda'))}
+                    {\lambda'\sqrt{\mu_i\mu_j}}\right\}.
+\end{equation}
+The logarithmic term in multivariate Stein factors is discussed in
+\cite{Rollin2012SteinFactors}; the two bounds used above are taken directly
+from Barbour.
+For the truncated geometric marks,
+$S_E=\sum_{e=0}^Eq_e\in[1/2,1]$, $\lambda'=\lambda S_E$ and
+$\mu_e=q_e/S_E$. The second expression is thus bounded by
+$C(1+\log^+(2\lambda))/(\lambda\sqrt{q_eq_f})$.
+The summability that removes dependence on the number of marks is
+\begin{equation}\label{supp:eq:square-root-sum}
+ \sum_{e\ge0}\sqrt{q_e}=1+\sqrt2.
+\end{equation}
+
+\begin{samepage}
+\begin{theorem}[Finite aggregated comparison]\label{supp:thm:aggregated}
+Let $X_e=\sum_{x\in I_N}K_{x,e}$, and let $D_Y(Q)$ be the bad maximal
+supports. Put
+\[
+ s(\lambda)=1\wedge
+          \frac{C(1+\log^+(2\lambda))}{\lambda}.
+\]
+Uniformly while $L+1$ and $Q+1$ remain in a fixed positive logarithmic
+band and $2Q<Y$, one has
+\begin{align}\label{supp:eq:aggregate-finite}
+ &\EE\,\dTV\left(\Law((X_e)_{0\le e\le E}\mid\mathcal F_Y),
+                  \bigotimes_{e=0}^E\Pois(\lambda q_e)\right)\notag\\
+ &\hspace{1cm}\ll p\mathcal M_B+p|D_Y(Q)|
+    +s(\lambda)p^2\bigl(NQ+E_Y(Q)+R_2(N,Q)\bigr).
+\end{align}
+Here $\mathcal M_B$ is the one-window defect mass at the base length,
+and $E_Y(Q)$ is the ordered large-prime edge count for maximal supports.
+\end{theorem}
+\end{samepage}
+\begin{proof}
+Write $D=D_Y(Q)$ and retain the good-site counts
+$G_e=\sum_{x\notin D}K_{x,e}$. Independently of the arithmetic variables,
+introduce independent $Z_e\sim\Pois(\zeta_e)$ with
+$\zeta_e=|D|pq_e$, and put $W=G+Z$. Removing the actual bad-site marks
+and adding this Poisson filling changes the law by at most
+\[
+ \sum_{x\in D}\PP(J_{x,L}=1)+\sum_{e=0}^E\zeta_e
+ \ll p\mathcal M_B+p|D|.
+\]
+This is an averaged conditional coupling bound. It has no factor $E$,
+since the actual marks are disjoint refinements of $J_{x,L}$ and
+$\sum_{e\le E}q_e\le1$.
+
+Use the Stein solution for the \emph{full} target means $\lambda q_e$.
+For the coordinate vector $\boldsymbol e_e$ and
+$\Delta_eg(w)=g(w+\boldsymbol e_e)-g(w)$, Poisson summation gives,
+conditionally on the good indicators and $\mathcal F_Y$,
+\[
+ \EE\bigl[Z_e\Delta_eg(W-\boldsymbol e_e)\mid G,\mathcal F_Y\bigr]
+ =\zeta_e\EE\bigl[\Delta_eg(W)\mid G,\mathcal F_Y\bigr].
+\]
+Indeed $z\PP(Z_e=z)=\zeta_e\PP(Z_e=z-1)$ for $z\ge1$; the term with
+$Z_e=0$ is zero. Thus the filling terms cancel the $\zeta_e$ part of the
+birth rates in
+\[
+ \sum_{e=0}^E\{\lambda q_e\Delta_eg(W)
+              -W_e\Delta_eg(W-\boldsymbol e_e)\}.
+\]
+Only the good indicators remain to be telescoped. The target parameters
+are still $\lambda'=\lambda S_E$ and $\mu_e=q_e/S_E$, so
+$\lambda'\sqrt{\mu_e\mu_f}=\lambda\sqrt{q_eq_f}$ exactly.
+No comparison of the good-site intensity with $\lambda$ is needed,
+even if every site was removed. The independent vector $Z$ stays in the
+outside count during each telescoping step, so the good-site dependency
+graph is unchanged. For good sites, apply the multivariate dependency-graph Stein argument
+\cite{Barbour1988SteinProcess,Rollin2012SteinFactors} to the \emph{counts by mark}, not to
+counts by site and mark. On the first-difference telescoping terms each
+pair of types contributes its joint or product mass multiplied by
+$|\Delta_{ef}g|$. The product masses are $p_ep_f$.
+For local pairs use \eqref{supp:eq:local-marked}; for separated pairs use
+\eqref{supp:eq:mixed-domination} after averaging. Decompose
+$2^{\rho_Q}=1+(2^{\rho_Q}-1)$ and sum the second part by $R_2(N,Q)$.
+The diagonal and all local pairs are bounded by $O(NQp^2)$.
+
+Using the first bound in \eqref{supp:eq:directional-factor} sums the mark
+weights to at most one. Using the second sums them to
+$\sum_{e,f}\sqrt{q_eq_f}\le(1+\sqrt2)^2$. Take the better of these two estimates. This proves \eqref{supp:eq:aggregate-finite}
+when $E\ge1$. For $E=0$, retain both signs during the same comparison,
+so there are two positive target coordinates. At fixed excesses the
+factor does not depend on the chosen signs; summing their probabilities
+before the relative-pair bound again gives $R_2(N,Q)$.
+The signed local factor is at most four, an absolute constant.
+Thus the result also covers $E=0$ without extending the literature
+statement to dimension one.
+Notice that the arithmetic argument is used at $Q$, rather than merely
+at $L$: after insertion of the directional weights, the unweighted
+folding identity for marks is not the inequality being summed.
+\end{proof}
+
+At $Y=Y_N^\sharp$, the first two arithmetic error sources in
+\eqref{supp:eq:aggregate-finite} are bounded by
+\[
+ \lambda e^{-V_N+o(\nu_N)}+N^{-1/2+o(1)}\lambda,
+ \qquad
+ \lambda(1+\log^+(2\lambda))e^{-V_N+o(\nu_N)}.
+\]
+For clarity, before absorbing subpolynomial factors the profile term is
+\[
+ p^2R_2(N,Q)
+ \ll N^{-1/3+\varepsilon}
+              \bigl(\lambda^2+\lambda 2^{E+2}\bigr).
+\]
+If $I+\log^+\lambda=O(V_N)$ and $E=O(V_N)$, multiplication by
+$e^Is(\lambda)$ leaves only an $N^{o(1)}$ factor. Start with a smaller
+arithmetic $\varepsilon$ to obtain the final remainder
+$N^{-1/3+\varepsilon}$ at any prescribed positive $\varepsilon$.
+This is the step that prevents an unrecorded exponential mark-cutoff loss.
+
+
+For aggregation with signs retained, replace $q_e$ by
+$q_{e,s}=q_e/2$ and $R_2(N,Q)$ by $R^{\rm val}_2(N,Q+1)$ in
+\eqref{supp:eq:aggregate-finite}. The local factor is at most four and
+$\sum_{e,s}\sqrt{q_{e,s}}=\sqrt2(1+\sqrt2)$, both fixed constants.
+The full-value profile at $Q+1$ vertices has the same envelope as the
+relative profile at $Q$ rows. It therefore leaves the same polynomial
+remainder and the same one-factor budget. By contrast, the unweighted
+labelled argument sums signs and marks first and continues to use
+$R_2(N,L)$ at the base length.
+
+\subsection{Removing the mark cutoff}
+Assume $I+\log^+\lambda\le V_N-c\nu_N$, and choose
+$0<c'<c''<c$. Set
+\[
+ E_N=\left\lceil
+        \frac{\log^+\lambda+c''\nu_N}{\log2}\right\rceil .
+\]
+Then $E_N=O(V_N)=o(\log N)$, and the target tail has mass
+$\mu_N=\lambda2^{-E_N-1}\le e^{-c''\nu_N}$.
+The actual tail event is exactly a hit at length $L+E_N+1$.
+The scalar hard-conditioning inequality at that shifted length gives
+\[
+ \PP(\exists x,\ e>E_N:K_{x,e}=1\mid C)
+ \le \mu_N+
+ O\left(e^I\mu_N
+      (e^{-V_N+o(\nu_N)}+N^{-1/3+\varepsilon})\right).
+\]
+It is $O(\mu_N)$ under the displayed budget. Couple each tail to zero,
+apply the finite theorem, and absorb
+$\log(1+\log^+\lambda)=o(\nu_N)$. This gives
+\[
+ \dTV\left(\Law((X_e)_{e\ge0}\mid C),
+                  \bigotimes_{e\ge0}\Pois(\lambda q_e)\right)
+ \ll e^{-c'\nu_N}+N^{-1/3+\varepsilon}.
+\]
+For finite-mass sequences, tail summation is a measurable bijection,
+with inverse $X_e=T_e-T_{e+1}$. The entire threshold path has exactly the
+same total-variation distance.
+
+\subsection{Keeping the spatial labels}
+For the labelled comparison no factor \eqref{supp:eq:directional-factor}
+is inserted. The two simple identities
+\[
+ \sum_ep_e\le p,\qquad
+ \sum_{e,f}\PP(K_{x,e}K_{y,f}=1)
+                  \le\PP(J_{x,L}J_{y,L}=1)
+\]
+then allow the separated-pair contribution to be folded at the
+\emph{base} length. This is why the labelled finite inequality uses
+$R_2(N,L)$ even though its graph and bad supports use $Q$.
+At a free cutoff $Y=e^w$ its leading errors after conditioning are
+\[
+ e^I\lambda e^{-D(H/w)+o(H/w)},\qquad
+ e^I\lambda^2 e^{-w+o(H/w)},\qquad H=\log N.
+\]
+For zero information cost the permitted $\log\lambda$ is below
+$\min\{D(H/w),w/2\}$. The first function decreases and the second
+increases, giving their crossing $w=\widehat V_N$.
+The sufficient budget
+$I+\log\lambda\le\widehat V_N/2-c\widehat\nu_N$
+makes both errors tend to zero. It is a convenient sufficient
+condition; it is not asserted to be the exact optimized boundary for
+every positive information cost.
+
+One can remove the marked tail by taking, for instance,
+$E=\lceil(I+\widehat V_N+\log(2+\lambda))/\log2\rceil$.
+On every nontrivial budget this is $O(\widehat V_N)=o(\log N)$.
+The unconditional first-moment bound at the shifted length makes the
+actual conditional tail $O(e^I\lambda2^{-E})$, and the target tail is
+$O(\lambda2^{-E})$; both are absorbed by the preceding ledger.
+If its right side is at least a constant, the distance bound follows
+instead from $\dTV\le1$, so no unjustified logarithmic-band choice is
+required outside the effective range.
+
+\subsection{Macroscopic transport and containment}\label{supp:sec:macro-marked}
+Let $L_M=\lfloor\log_2M\rfloor-a_M$, $a_M=o(\log M)$, and
+$\lambda=M2^{-L_M}$. The base-contained interior starts are
+$2\le x\le M-L_M+1$; their number is $M-L_M$.
+First retain $\lceil M^{1/2}\rceil\le x\le M-L_M+1$.
+The conditional ranks and graph construction are local and unchanged.
+The one-window defect masses, summed on dyadic slices, are
+$M^{1/2+o(1)}$; the edge estimate uses the upper height $M$; and the
+separated-pair mass is bounded by the macroscopic profile
+\eqref{eq:master-envelope}. Thus the labelled finite comparison is
+\[
+ \ll\lambda(1+\lambda)
+             \bigl(e^{-V_M+o(\nu_M)}+M^{-1/3+\varepsilon}\bigr).
+\]
+Restoring the deep starts costs the bound \eqref{eq:deep-starts},
+\[
+ O\left(\lambda M^{-1/2}
+             +\exp(-c_0\log M/\log\log M)\right).
+\]
+The target deletion costs only $O(\lambda M^{-1/2})$.
+Conditioning on a compatible event in the chosen prime field multiplies
+the averaged error by at most $e^I$.
+
+Choose $E=\lceil(I+V_M+\log(2+\lambda))/\log2\rceil$ in the hard
+labelled regime. The exact mark-tail identity and the global scalar
+bound control the real tail. Besides the intensity-linear tail term,
+the scalar bound has the separate deep-start error just displayed;
+that error is already present in the full-field inequality. In
+particular it must not be silently dropped from a finite-prefix tail
+calculation. Both tails are absorbed by
+\eqref{eq:macro-field-rate}. The free-cutoff proof is identical with
+$V_M$ replaced by the optimized cutoff in its two leading terms.
+
+For aggregated counts apply \cref{supp:thm:aggregated} on the retained
+macroscopic set, with $R_{2,\delta}(M,Q)$ in place of $R_2(N,Q)$.
+The same geometric square-root sum applies. Under
+$I+\log^+\lambda\le V_M-c\nu_M$, the deep-start correction times
+$e^I$ is smaller than every fixed $e^{-c'\nu_M}$, and the aggregate
+mark cutoff above removes both tails. This proves the macroscopic
+one-factor staircase without an additional marked arithmetic input.
+
+At exact centered level $r$ the target mean is precisely
+$(M-L_M)2^{-b_M-r-1}$, not $M2^{-b_M-r-1}$.
+All these fields retain the full rightward mark of a base-contained
+start. They are not the list of blocks censored at the right end of the
+finite sequence. The containment diagram in the article distinguishes
+the two objects.
+
+\subsection{Deterministic masks and diffuse limits}
+A deterministic restriction of a lattice field contracts total
+variation. At bounded intensity, if
+$N^{-1}\sum_{x\in A_N}\delta_{x/N}\Rightarrow\mu$, the restricted marked
+field therefore converges weakly to
+$\operatorname{PPP}(\lambda\mu\otimes\nu_{\rm geo})$, along a subsequence
+$N2^{-L}\to\lambda$. The same statement holds for the macroscopic field,
+with scaling by $M$. It follows directly from the target Laplace
+functional and weak convergence of the deterministic empirical measures.
+There is no universal numerical rate for this last deterministic step
+without a quantitative assumption on the mask or the test function.
+
+Nor is the diffuse limit a total-variation target. The actual field is
+supported on its lattice, while the diffuse target has positive
+probability $1-e^{-\lambda\mu(\mathbb R)}$ of a nonempty configuration
+outside that lattice. The approximation in total variation always takes
+place \emph{before} passing from the grid to the continuum.

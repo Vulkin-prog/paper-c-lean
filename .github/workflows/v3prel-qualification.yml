@@ -1,0 +1,91 @@
+name: V3PREL candidate qualification
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preflight:
+    name: V3PREL fixed candidates and official metadata contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11.10"
+      - name: Load the exact current submission contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          policy_root="$RUNNER_TEMP/PalomarSubmission"
+          git clone --filter=blob:none https://github.com/PalomarRegistry/PalomarSubmission.git "$policy_root"
+          git -C "$policy_root" checkout --detach c605f23466450a52999fcfb3c6d68ed8febc56bf
+          test "$(git -C "$policy_root" rev-parse HEAD)" = c605f23466450a52999fcfb3c6d68ed8febc56bf
+          python -m pip install --disable-pip-version-check --require-hashes --no-deps -r "$policy_root/requirements.txt"
+          python -m unittest discover -s scripts -p 'test_check_v3prel_candidates.py' -v
+          python -m unittest discover -s scripts -p 'test_v3prel_sources.py' -v
+          python scripts/check_v3prel_candidates.py --metadata-only --contract-root "$policy_root" --receipt "$RUNNER_TEMP/v3prel-metadata.json"
+      - name: Save the metadata receipt
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: v3prel-metadata
+          path: ${{ runner.temp }}/v3prel-metadata.json
+          if-no-files-found: warn
+
+  dual-kernel:
+    name: V3PREL Lean and NanoDa - ${{ matrix.family }}
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        family: [critical_field, patterns, limits, boundary, crossover]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be # v1.3.1
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: true
+          swap-storage: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11.10"
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          build: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: "1.24.0"
+          cache: false
+      - name: Repeat full source preflight and replay both kernels
+        env:
+          PALOMAR_COMPARATOR_CACHE: ${{ runner.temp }}/v3prel-palomar
+        run: ./palomar/v3prel/verify-comparator.sh "comparator/v3prel_${{ matrix.family }}.json"
+      - name: Preserve exact candidate receipts and Comparator output
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: v3prel-replay-${{ matrix.family }}
+          path: |
+            ${{ runner.temp }}/v3prel-palomar/preflight-*.json
+            ${{ runner.temp }}/v3prel-palomar/postflight-*.json
+            ${{ runner.temp }}/v3prel-palomar/protected-*.json
+            ${{ runner.temp }}/v3prel-palomar/replay-*.log
+          if-no-files-found: warn

@@ -1,0 +1,611 @@
+\section{Rare word fields, exact marks and the Poisson staircase}
+\label{sec:patterns-fields}
+The two-window estimate controls dependence between distant words. Their
+local dependence has a different origin: a suffix of one word may coincide
+with a prefix of another. Keeping these two issues separate gives a joint
+law for a growing dictionary of prescribed words, and then a sign-resolved
+law for long runs.
+
+\subsection{A dictionary of prescribed words}\label{sec:word-dictionaries}
+Joint word and clump approximations are classical in Markov sequences
+\cite{ReinertSchbath1998}. Here the local overlap condition is kept
+separate from the arithmetic estimate for separated windows.
+Let $\mathcal W\subset\{\pm1\}^B$ be a nonempty deterministic set of distinct
+words, and write $m=|\mathcal W|$, $p_B=2^{-B}$ and $\Lambda=Nmp_B$.
+All signs, including the first one, are prescribed. Define
+\[
+ I_{x,w}=\1_{\{f(x-1+j)=w_j\ (0\le j<B)\}},
+              \qquad x\in I_N,\quad w\in\mathcal W.
+\]
+The first letter is at $x-1$; this indexing matches the left-border
+convention for runs.
+For $1\le d<B$ write $w\mathrel{\sim_d}v$ when
+$w_{d+j}=v_j$ for $0\le j<B-d$. The directed overlap weight is
+\begin{equation}\label{eq:dictionary-overlap}
+ \Omega(\mathcal W)=\frac1m\sum_{w,v\in\mathcal W}
+                   \sum_{d=1}^{B-1}2^{-d}\1_{\{w\sim_d v\}}.
+\end{equation}
+The normalization makes $\Lambda\Omega$ the expected scale of ordered
+local pairs, up to an absolute factor. It includes self-overlaps and
+cross-overlaps; controlling each word separately would miss the latter.
+For example, $(+,+,-)$ followed one site later by $(+,-,+)$ is compatible:
+the two occurrences fit into $(+,+,-,+)$. The overlap is a constraint on
+the words themselves, before the values of the multiplicative function
+are considered.
+
+\Needspace{25\baselineskip}
+\begin{theorem}[Joint Poisson approximation for a word dictionary]
+\label{thm:word-field}
+Fix $0<\beta_-<\beta_+<\infty$ and $0<\varepsilon<1/3$. Uniformly for
+$\beta_-\log N\le B\le\beta_+\log N$ and all dictionaries $\mathcal W$,
+\begin{align}
+ &\EE\,\dTV\left(\Law((I_{x,w})_{x\in I_N,w\in\mathcal W}
+                       \mid\mathcal F_{Y_N^\sharp}),
+            \bigotimes_{x\in I_N,w\in\mathcal W}\Pois(p_B)\right)
+       \notag\\
+ &\quad\ll_{\beta_-,\beta_+,\varepsilon}
+ \Lambda\Omega(\mathcal W)
+ +\Lambda(1+\Lambda)e^{-V_N+o(\nu_N)}\notag\\
+ &\qquad\quad
+ +N^{-1/3+\varepsilon}
+       \left(\Lambda+\Lambda^{11/6}m^{1/6}
+                       +\Lambda^{4/3}m^{2/3}\right).
+       \label{eq:word-field-rate}
+\end{align}
+The implied constant and the little-oh term are independent of the words
+and of $m$. In particular, fix $0<\eta<1/2$ and $C>0$. If
+\begin{equation}\label{eq:dictionary-critical}
+ m_N\le N^{1/2-\eta},\qquad
+ |B_N-\log_2(Nm_N)|\le C,\qquad
+ \Omega(\mathcal W_N)\longrightarrow0,
+\end{equation}
+then the entire site-and-word-labelled field converges in total variation
+to the independent Poisson field. Its error is
+\begin{equation}\label{eq:dictionary-critical-rate}
+ O_{C,\eta}\!\left(\Omega(\mathcal W_N)
+                  +e^{-V_N+o(\nu_N)}+N^{-\eta/2}\right).
+\end{equation}
+Every deterministic restriction of the site--word index set, and every
+measurable function of the field, satisfies the same bound.
+\end{theorem}
+\begin{proof}
+Use $Y=Y_N^\sharp$ and remove starts whose $B$-vertex support contains a
+$Y$-defective integer. Let $D_Y^{\rm val}$ denote this set and put
+$\mathcal M_B^{\rm val}=\sum_{x\in I_N}(2^{m_B(x)}-1)$ and $a=mp_B$.
+Distinct words at a site are mutually exclusive, so $0<a\le1$ and
+$\Lambda=Na$. By \cref{cor:absolute-marginal}, deleting the actual and
+target coordinates costs at most
+\[
+ a\mathcal M_B^{\rm val}+2a|D_Y^{\rm val}|.
+\]
+All retained word events have conditional marginal $p_B$. Join all words
+at the same site and all words at sites with intersecting prime supports
+above $Y$, adding edges for overlapping supports if necessary. After
+conditioning this is an exact dependency graph. Its first Poisson term is
+$O(a^2(NB+E_Y))$, where $E_Y$ counts ordered pairs of distinct sites
+sharing a prime above $Y$.
+
+For $y=x+d$ with $1\le d<B$, two specified words are incompatible unless
+$w\sim_d v$. In the compatible case they prescribe all $B+d$ values in
+the union. Every vertex of a good union has a private coordinate above
+$Y$, because its diameter is less than $2B<Y$. Hence
+\begin{equation}\label{eq:absolute-overlap-law}
+ \PP(I_{x,w}I_{x+d,v}=1\mid\mathcal F_Y)
+          =2^{-(B+d)}\1_{\{w\sim_d v\}}.
+\end{equation}
+Summing ordered local pairs costs at most $2\Lambda\Omega(\mathcal W)$.
+Different words at the same site contribute zero to the second term.
+
+For separated good sites put $I_x^{\mathcal W}=\sum_{w\in\mathcal W}I_{x,w}$.
+This is an indicator, not a count with possible multiplicities, and
+$\PP(I_x^{\mathcal W}=1)=a$. Fourier inversion on the valuation rows also gives
+$\PP(I_x^{\mathcal W}I_y^{\mathcal W}=1)\le a^2 2^{\rho_B^{\rm val}(x,y)}$. Combining the two
+bounds \emph{before} summing over sites yields
+\begin{align}
+ \sum_{w,v\in\mathcal W}\PP(I_{x,w}I_{y,v}=1)
+ &=\PP(I_x^{\mathcal W}I_y^{\mathcal W}=1)\notag\\
+ &\le \min\{a,a^2 2^{\rho_B^{\rm val}(x,y)}\}\notag\\
+ &\le a^2\left(1+
+       \min\{a^{-1},2^{\rho_B^{\rm val}(x,y)}-1\}\right).
+       \label{eq:dictionary-saturation}
+\end{align}
+Only the error summands have been grouped: the Poisson theorem is still
+applied to the full family indexed by $(x,w)$. No word or position
+label is discarded. Its averaged second term over separated graph
+edges is therefore at most
+$a^2(E_Y+R_2^{\mathrm{val},[1/a]}(N,B))$. We have proved the finite
+transfer inequality
+\begin{align}
+ \EE\,\dTV
+ &\ll a(\mathcal M_B^{\rm val}+|D_Y^{\rm val}|)
+       +a^2\left(NB+E_Y+R_2^{\mathrm{val},[1/a]}(N,B)\right)
+       +\Lambda\Omega(\mathcal W).
+       \label{eq:dictionary-finite-transfer}
+\end{align}
+
+Here $\mathcal M_B^{\rm val}\le N^{1/2+o(1)}$,
+$|D_Y^{\rm val}|/N\le e^{-V_N+o(\nu_N)}$, and
+$E_Y/N^2\le e^{-V_N+o(\nu_N)}+N^{-1+o(1)}$.
+Use \cref{prop:capped-profile} with $T=N/\Lambda$ and
+$Q_B=2^B=Nm/\Lambda\ge T$. Its three contributions, after multiplication
+by $a^2$, are bounded by
+\[
+ N^{-1/3+\varepsilon}
+ \left(\Lambda^{11/6}m^{1/6}
+                +\Lambda^{4/3}m^{2/3}+\Lambda\right).
+\]
+The smaller polynomial errors are absorbed with a smaller intermediate
+$\varepsilon$: for example, $m\ge\Lambda/N$ implies
+$\Lambda^2/N\le
+N^{-1/3}\Lambda^{4/3}m^{2/3}$. This proves
+\eqref{eq:word-field-rate}.
+Under \eqref{eq:dictionary-critical}, $\Lambda$ is bounded above and
+below and $B/\log N$ stays in one fixed compact interval. The polynomial
+term is $O(N^{-\eta/2})$ on taking $\varepsilon=\eta/6$.
+Restriction and measurable contraction cannot increase total variation.
+\end{proof}
+
+The exponent $1/2$ is a sufficient bound, not an optimality claim. The
+remaining restriction comes from the nonterminal term $NQ_B^{2/3}$:
+after normalization it gives $N^{-1/3+\varepsilon}m^{2/3}$ at bounded
+intensity. The terminal term has instead been capped by the marginal
+probability. This distinction matters: a large raw relation count need
+not produce a proportionally large probability of seeing a dictionary
+word.
+
+\begin{corollary}[Replacement by independent signs]\label{cor:iid-word-replacement}
+Let $(\xi_n)$ be independent fair signs and let $I^{\rm iid}_{x,w}$ be the
+same word indicators formed from them. Under
+\eqref{eq:dictionary-critical},
+\[
+ \dTV\left(\Law((I_{x,w})_{x,w}),
+                     \Law((I^{\rm iid}_{x,w})_{x,w})\right)\longrightarrow0.
+\]
+In particular the vector of counts of the individual words is jointly
+close to independent Poisson variables of mean $N2^{-B}$, even when the
+number of words tends to infinity.
+\end{corollary}
+\begin{proof}
+For the independent sequence the graph needs only overlapping supports.
+Equation \eqref{eq:absolute-overlap-law} is exact without conditioning,
+and its process Poisson error is
+$O(\Lambda\Omega(\mathcal W)+\Lambda^2B/N)$.
+Compare both fields with the same independent Poisson field and apply
+\cref{thm:word-field}. Summing sites is a measurable contraction.
+\end{proof}
+
+\begin{corollary}[Most dictionaries have small overlap]\label{cor:generic-dictionaries}
+Let $B\ge1$ and $1\le m\le2^B$. Choose an $m$-element subset $\mathcal W$
+uniformly among the subsets of $\{\pm1\}^B$.
+This auxiliary choice is independent of $f$. Then
+\begin{equation}\label{eq:generic-overlap}
+ \EE_{\mathcal W}\Omega(\mathcal W)=\frac{m(B-1)}{2^B}.
+\end{equation}
+Under the first two conditions in \eqref{eq:dictionary-critical}, the
+fraction of dictionaries with $\Omega(\mathcal W)>N^{-1/2}$ is
+$O_{C,\eta}(\log N/\sqrt N)$. Every dictionary outside this exceptional
+set has the field approximation \eqref{eq:dictionary-critical-rate}.
+\end{corollary}
+\begin{proof}
+Put $Q=2^B$. At each proper displacement $1\le d<B$, there are
+$2^d$ self-compatible words and $2^{B+d}$ ordered compatible pairs.
+The number of distinct compatible pairs is therefore $2^d(Q-1)$.
+A word belongs to the dictionary with probability $m/Q$; a distinct
+ordered pair belongs with probability $m(m-1)/(Q(Q-1))$.
+After multiplication by $2^{-d}/m$, the expected contribution of this
+displacement is exactly
+\[
+ \frac{2^{-d}}m\left(2^d\frac mQ
+       +2^d(Q-1)\frac{m(m-1)}{Q(Q-1)}\right)=\frac mQ.
+\]
+Sum over the $B-1$ displacements to get \eqref{eq:generic-overlap}.
+This also covers $m=1$; for $B=1$ the sum is empty.
+At criticality $m2^{-B}=\Lambda/N=O_C(1/N)$ and $B=O_\eta(\log N)$.
+Markov's inequality proves the exceptional-fraction estimate. The result
+is a statement about the size of a class of deterministic dictionaries;
+no additional randomness is required in \cref{thm:word-field}.
+\end{proof}
+
+\begin{corollary}[Explicit dictionaries with no overlaps]
+\label{cor:marker-dictionaries}
+For all sufficiently large $B$, there is an explicitly described family
+$\mathcal C_B\subset\{0,1\}^B$ of size at least $2^B/(32B)$ with no
+proper suffix of any word equal to a prefix of any word, including itself.
+Every subset of $\mathcal C_B$, after identifying $0,1$ with $-1,+1$,
+has $\Omega=0$. In particular deterministic examples exist throughout
+the range \eqref{eq:dictionary-critical}.
+\end{corollary}
+\begin{proof}
+This is the binary marker construction of Chee, Kiah, Purkayastha and
+Wang~\cite[Section III]{CheeKiahPurkayasthaWang2013}; we include the
+short argument and the coarse size bound needed here.
+Set $k=\lceil\log_2(2B)\rceil$ and take all words
+\[
+                0^k\,1\,u\,1,
+       \qquad |u|=B-k-2,
+       \qquad u\text{ contains no }0^k.
+\]
+The only occurrence of $0^k$ in such a word starts at its first position:
+the first following letter and the last letter are both $1$.
+An overlap of length at most $k$ is impossible because the prefix is all
+zeros and the suffix ends in $1$. A longer proper overlap would put
+$0^k$ at a later position, also impossible.
+There are $2^{B-k-2}$ choices before the restriction on $u$. A union
+bound over at most $B$ positions excludes at most the fraction
+$B2^{-k}\le1/2$. Thus
+$|\mathcal C_B|\ge2^{B-k-3}\ge2^B/(32B)$.
+At the critical dictionary length, $m/2^B=O(1/N)$ and $B=O(\log N)$,
+so any required $m$ words can be selected from this family for large $N$.
+\end{proof}
+For example, one may select $\lfloor N^{2/5}\rfloor$ such words at length
+$B=(7/5)\log_2N+O(1)$. Their full labelled field has a Poisson
+approximation. The coding construction is classical; the conclusion for
+the multiplicative sequence is the application of the theorem above.
+
+\subsection{Words up to a common sign}
+For $a=(a_0,\ldots,a_L)\in\{\pm1\}^{L+1}$ put
+$I_x(a)=I_{x,a}+I_{x,-a}$. Define
+\begin{equation}\label{eq:overlap-definition}
+ \mathcal O(a)=\{1\le d\le L:\exists\eta\in\{\pm1\},\
+         a_{d+j}=\eta a_j\ (0\le j\le L-d)\},\qquad
+ \Theta(a)=\sum_{d\in\mathcal O(a)}2^{-d}.
+\end{equation}
+For the two-word dictionary $\{a,-a\}$ one has
+$\Omega(\{a,-a\})=\Theta(a)$: every compatible shift has two directed
+sign choices.
+\begin{corollary}[Poisson law for low-overlap patterns]\label{thm:patterns}
+Fix $C>0$ and $\varepsilon>0$. Uniformly in $a=a_N$ and
+$|L-\log_2N|\le C$,
+\begin{equation}\label{eq:pattern-rate}
+ \dTV\left(\Law\left(\sum_{x\in I_N}I_x(a)\right),\Pois(N2^{-L})\right)
+ \ll_{C,\varepsilon}\Theta(a)+e^{-V_N+o_C(\nu_N)}+N^{-1/3+\varepsilon}.
+\end{equation}
+The same bound holds under any deterministic spatial mask, with target
+mean $|A_N|2^{-L}$.
+\end{corollary}
+\begin{proof}
+Apply \cref{thm:word-field} with $B=L+1$, $m=2$, and merge the two word
+coordinates. Their events are disjoint and their target means add.
+\end{proof}
+If the least compatible shift $d_*(a_N)$ tends to infinity, then
+$\Theta(a_N)\le2^{1-d_*(a_N)}\to0$. For the run-start word
+$(-1,+1,\ldots,+1)$ only $d=L$ is compatible. Periodic words can instead
+retain a short overlap and need declustering. Notice that the preceding
+dictionary theorem also separates $a$ and $-a$: their asymptotic
+independence is not assumed in this corollary.
+
+The dictionary comparison now controls the rare occurrences of each
+prescribed word. We return to constant runs and keep their attributes
+together: a start, its full length, its sign and all thresholds it exceeds.
+
+\subsection{Exact marks without a growing-mark loss}
+Almost surely every rightward constant run is finite. Indeed constancy on
+$[x,\infty)$ would make all prime signs beyond $x$ equal, an event of
+probability zero; take a countable union over $x$. Thus
+\begin{equation}\label{eq:mark-partition}
+ J_{x,L}=\sum_{e\ge0}K_{x,e},\qquad
+ K_{x,e}=\1_{\{f(x-1)=-f(x),\ f(x)=\cdots=f(x+L+e-1),\
+                              f(x+L+e)=-f(x)\}}.
+\end{equation}
+This system has $L+e+1$ independent homogeneous rows on a good support and
+conditional marginal $p_e=2^{-L-e-1}$. Its homogeneous rows are nested in
+those for a larger mark, although the terminal affine right-hand side
+changes. Marks at the same start are mutually exclusive. We may retain the sign as
+well:
+\begin{equation}\label{eq:signed-mark}
+ K^s_{x,e}=K_{x,e}\1_{\{f(x)=s\}},\qquad
+ p_{e,s}=2^{-L-e-2},\qquad s\in\{\pm1\}.
+\end{equation}
+On a good support this event prescribes every value, so its conditional
+probability is $p_{e,s}$. The exact identities are
+$\sum_sK^s_{x,e}=K_{x,e}$ and $\sum_{e,s}K^s_{x,e}=J_{x,L}$.
+
+\begin{theorem}[Finite exact-mark comparison]\label{thm:marked-field}
+Let $E\ge0$, $Q=L+E+1$, and assume
+$\beta_-\log N\le L+1\le Q+1\le\beta_+\log N$.
+For $Y>2(Q+1)$ let $D_Y(Q)$ be the starts whose support
+$\{x-1,\ldots,x+Q-1\}$ contains a $Y$-defective integer, and let $E_Y(Q)$
+be the ordered graph-edge count for these maximal supports. Then
+\begin{align}
+ &\EE\,\dTV\left(\Law((K_{x,e})_{x\in I_N,\ 0\le e\le E}\mid\mathcal F_Y),
+                 \bigotimes_{x\in I_N,\ 0\le e\le E}\Pois(p_e)\right)
+ \notag\\
+ &\quad\ll p\mathcal M_B+p|D_Y(Q)|
+       +p^2\bigl(NQ+E_Y(Q)+R_2(N,L)\bigr),\qquad p=2^{-L}.
+       \label{eq:marked-finite}
+\end{align}
+Exactly the same upper bound holds for the sign-resolved family
+$(K^s_{x,e})_{x\in I_N,\,0\le e\le E,\,s\in\{\pm1\}}$, compared with
+independent Poisson variables of means $p_{e,s}$. There is no polynomial
+factor in the number of marks. At $Y=Y_N^\sharp$,
+the right side is at most
+\begin{equation}\label{eq:marked-hard}
+ C_\varepsilon\lambda_N(1+\lambda_N)
+       \left(e^{-V_N+o(\nu_N)}+N^{-1/3+\varepsilon}\right).
+\end{equation}
+\end{theorem}
+\begin{proof}
+On good maximal supports all marginals are $p_e$. Apply the process
+Poisson theorem to the marked family, allowing all marks on neighbouring
+supports to be neighbours, and all marks at the same site to be neighbours.
+The two identities
+\begin{equation}\label{eq:mark-folding}
+ \sum_{e=0}^Ep_e\le p,\qquad
+ \sum_{e,f=0}^E\PP(K_{x,e}K_{y,f}=1)\le\PP(J_{x,L}J_{y,L}=1)
+\end{equation}
+remove any double sum over marks before estimating the pair mass.
+Local pairs cost $O(NQp^2)$ and separated pairs cost
+$p^2(E_Y(Q)+R_2(N,L))$. Bad actual marks at one site have total mass at
+most that of $J_{x,L}$, so their deletion is bounded by
+$p\mathcal M_B+p|D_Y(Q)|$, regardless of which late vertex caused removal.
+This proves \eqref{eq:marked-finite}.
+The bounds $|D_Y(Q)|\le(Q+1)A(3N,Y)$ and \eqref{eq:edge-count} with
+$B$ replaced by $Q+1$, together with \cref{thm:master-profile,prop:cutoffs},
+give \eqref{eq:marked-hard}.
+
+For the signed version, the same-site alternatives are still disjoint and
+both sums in \eqref{eq:mark-folding} remain valid after summing signs.
+It remains to check local pairs before that summation. Put $a=L+e$,
+$b=L+f$, and $d=y-x>0$. If $d<a$ the pair is impossible. If $d=a$, the
+two prescribed value strings share two vertices, require the second run
+sign to be the opposite of the first, and have probability
+$4p_{e,s}p_{f,t}$ when compatible. If $d=a+1$, they share one vertex,
+require equal run signs, and have probability $2p_{e,s}p_{f,t}$.
+For $d>a+1$ their actual supports are disjoint, and a good local union has
+probability $p_{e,s}p_{f,t}$. These assertions follow by counting the
+prescribed values in a union whose private coordinates make them uniform.
+Thus the local sum is still $O(NQp^2)$ and all other terms are unchanged.
+\end{proof}
+The use of \eqref{eq:mark-folding} is essential. An exact mark $e<E$ does
+not imply a threshold event at length $L+E+1$; a bad vertex can occur beyond
+its support. We bound deletion by the base event, not the longest event.
+
+The exact tail identity is
+\begin{equation}\label{eq:mark-tail}
+ \{\exists x\in I_N,e>E:K_{x,e}=1\}=
+                      \{Z_{N,L+E+1}>0\}.
+\end{equation}
+The first-moment estimate bounds this probability by
+$\lambda_N2^{-(E+1)}(1+N^{-1/2+o(1)})$ whenever the enlarged length is in
+a fixed logarithmic band. The independent target tail has mass
+$\lambda_N2^{-(E+1)}$. Couple both tails to zero.
+At criticality choose $E=\lceil V_N/\log2\rceil$. This is $o(\log N)$;
+\eqref{eq:marked-hard} and \eqref{eq:mark-tail} prove the full-field
+estimate, including signs, in \cref{thm:poisson-main}. Riemann sums and
+geometric tail tightness give its weak diffuse limit.
+
+\begin{corollary}[An explicit compound-Poisson cluster law]
+\label{cor:window-clusters}
+Let $C_{N,L}$ count all constant length-$L$ windows whose left endpoint
+lies in $I_N$, without requiring left maximality. At criticality its law
+is at distance $o(1)$ from that of
+\[
+ \sum_{i=1}^{P_N}H_i,\qquad P_N\sim\Pois(\lambda_N),\qquad
+ \PP(H_i=h)=2^{-h},\quad h\ge1,
+\]
+with independent $H_i$ and $P_N$. The target probability generating function
+is $\exp[\lambda_N(z/(2-z)-1)]$ for $0\le z\le1$.
+\end{corollary}
+\begin{proof}
+A maximal run of length $L+e$ contributes $e+1$ windows. Thus, apart from
+runs crossing an endpoint of $I_N$,
+$C_{N,L}=\sum_{x\in I_N,e\ge0}(e+1)K_{x,e}$.
+A discrepancy implies a constant length-$L$ window starting at $N$ or
+at $2N-1$. Each such event has $L-1$ relative constraints; private pivots
+and the pointwise defect bound give probability at most
+$2^{-(L-1)+O(\log N/\log\log N)}=N^{-1+o(1)}$.
+The full marked-field comparison contracts under the measurable weighted
+sum. Its target is the stated compound Poisson law, since $H=e+1$.
+No moment convergence is inferred from this contraction.
+\end{proof}
+
+\subsection{Growing depth: distinguish positions from counts}
+Put $b_N=\lfloor\log_2N\rfloor$, $\vartheta_N=\log_2N-b_N$. For
+$d_N\in\NN$ with $d_N=o(\log N)$, set
+\[
+ L_N=b_N-d_N,\qquad \Lambda_N=N2^{-L_N}=2^{\vartheta_N+d_N}.
+\]
+Let $K^{\rm ex}_{x,q}$ denote the exact-length event for a left-maximal run
+of length $q$ (zero for $q<1$). The moving field and its target are
+\begin{equation}\label{eq:moving-field}
+ \mathcal E_{N,d_N}=\sum_{x\in I_N}\sum_{r\ge-d_N}
+             K^{\rm ex}_{x,b_N+r}\delta_{(x/N,r)},\qquad
+ \EE\Pi_{N,d_N}\{(x/N,r)\}=2^{-b_N-r-1},
+\end{equation}
+where the target atoms are independent Poisson variables. Their total mean
+is $\Lambda_N$. Define exact-level and threshold counts by
+\[
+ X_{N,r}=\sum_{x\in I_N}K^{\rm ex}_{x,b_N+r},\qquad
+ T_{N,m}=\sum_{r\ge m}X_{N,r}=Z_{N,b_N+m}.
+\]
+For the target write $P_{N,r}=\Pi_{N,d_N}([1,2]\times\{r\})$ and
+$S_{N,m}=\sum_{r\ge m}P_{N,r}$. Thus
+$P_{N,r}\sim\Pois(2^{\vartheta_N-r-1})$ independently.
+
+The preceding estimates bound the mean, over the small-prime environment,
+of a conditional total-variation distance. Restricting this average to an
+event $C_N\in\mathcal F_Y$ multiplies the error by at most
+$1/\PP(C_N)$; this is the stable-kernel principle of
+\cref{lem:stable-lift}. It is the first information cost below.
+
+\begin{theorem}[Two levels of joint approximation]\label{thm:moving-comparison}
+Fix $c>0$ and $0<\varepsilon<1/3$. Let $C_N$ be an arithmetic
+conditioning event of positive probability and
+put $I_N^{\rm info}=-\log\PP(C_N)$.
+
+\textup{(i) Labelled field.} If $C_N\in\mathcal F_{Y_N^\sharp}$, a
+sufficient condition for full-field total variation to tend to zero is
+\begin{equation}\label{eq:labelled-hard-budget}
+ I_N^{\rm info}+\log\Lambda_N+\log(1+\Lambda_N)\le V_N-c\nu_N.
+\end{equation}
+At a movable cutoff, if $C_N\in\mathcal F_{\widehat Y_N}$, the sufficient
+condition improves to
+\begin{equation}\label{eq:labelled-budget}
+ I_N^{\rm info}+\log\Lambda_N\le\widehat V_N/2-c\widehat\nu_N.
+\end{equation}
+In the nontrivial range, the latter comparison has upper bound
+\begin{align}
+ &e^{I_N^{\rm info}+\log\Lambda_N-\widehat V_N/2+o(\widehat\nu_N)}
+ +e^{I_N^{\rm info}+2\log\Lambda_N-\widehat V_N+o(\widehat\nu_N)}\notag\\
+ &\hspace{20mm}+e^{I_N^{\rm info}}\Lambda_N(1+\Lambda_N)
+                         N^{-1/3+\varepsilon+o(1)}.
+ \label{eq:labelled-rate}
+\end{align}
+\textup{(ii) Aggregated exact levels.} If $C_N\in\mathcal F_{Y_N^\sharp}$
+and
+\begin{equation}\label{eq:staircase-budget}
+ I_N^{\rm info}+\log\Lambda_N\le V_N-c\nu_N,
+\end{equation}
+then, for every $0<c'<c$ and $0<\varepsilon<1/3$,
+\begin{equation}\label{eq:staircase-rate}
+ \dTV\left(\Law((X_{N,r})_{r\ge-d_N}\mid C_N),
+       \bigotimes_{r\ge-d_N}\Pois(2^{\vartheta_N-r-1})\right)
+ \ll e^{-c'\nu_N}+N^{-1/3+\varepsilon}.
+\end{equation}
+Exactly the same distance holds for the full threshold paths
+$(T_{N,m})_{m\ge-d_N}$ and $(S_{N,m})_{m\ge-d_N}$.
+\end{theorem}
+\begin{proof}
+Conditioning multiplies any averaged kernel error by at most
+$e^{I_N^{\rm info}}$. For (i), apply \cref{thm:marked-field} with base
+$L_N$ and then remove the mark tail using \eqref{eq:mark-tail}.
+For the hard bound one may take
+$E=\lceil(I_N^{\rm info}+V_N+\log(2+\Lambda_N))/\log2\rceil$.
+Under \eqref{eq:labelled-hard-budget} this is $o(\log N)$ and both tail
+costs are absorbed by the displayed error.
+At a free cutoff $Y=e^w$, the leading process errors are
+\[
+ e^{I_N^{\rm info}}\Lambda_N e^{-D(H_N/w)+o(H_N/w)},\qquad
+ e^{I_N^{\rm info}}\Lambda_N^2e^{-w+o(H_N/w)}.
+\]
+Choose $w=\widehat V_N$, so $D(H_N/w)=w/2$, and take an equally large
+$o(\log N)$ tail cutoff. This proves \eqref{eq:labelled-rate} and
+\eqref{eq:labelled-budget}. The hard choice remains sharper at bounded
+intensity; the movable choice improves the admissible growing intensity.
+
+For (ii), aggregate sites \emph{before} solving the multivariate Poisson
+Stein equation. If $q_e=2^{-(e+1)}$ are the normalized category masses,
+Barbour's Lemmas~2--3 \cite[p.~179]{Barbour1988SteinProcess}, as
+applied in the companion, bound the directional second-difference factor by
+\[
+ C\frac{1+\log^+(2\Lambda_N)}{\Lambda_N\sqrt{q_eq_f}}.
+\]
+The mark sum remains uniform because
+$\sum_{e\ge0}\sqrt{q_e}=1+\sqrt2$.
+The full argument and the precise finite-cutoff bound are given in
+\cref{supp:thm:aggregated}. It yields a leading error
+$e^{I_N^{\rm info}}\Lambda_N(1+\log^+(2\Lambda_N))e^{-V_N+o(\nu_N)}$
+and a polynomial remainder after the enlarged-length arithmetic estimate.
+All subpolynomial factors in that remainder are absorbed by choosing a
+smaller initial $\varepsilon$. Choose a constant strictly between $c'$ and
+$c$ for the tail cutoff. The scalar relative estimate at the shifted length
+bounds both tails by $O(e^{-c'\nu_N})$; see \cref{supp:thm:aggregated}.
+Finally, on finite-mass sequences, the map $X_r\mapsto\sum_{s\ge r}X_s$
+is a measurable bijection with inverse $X_r=T_r-T_{r+1}$. Total variation
+is preserved, not merely contracted.
+\end{proof}
+Part (ii) retains every statistic of the multiset of lengths, but not the
+positions. A maximal coupling identifies all those retained statistics at
+once, with no union bound over thresholds. A field coupling from (i) also
+retains positions. The ranges are sufficient bounds for these methods, not
+phase transitions. In particular the full one-factor labelled range is not
+proved by these comparisons.
+
+
+\begin{corollary}[Sign-resolved growing fields]\label{cor:signed-growing}
+Both conclusions of \cref{thm:moving-comparison} remain valid after retaining
+the sign of each run. The labelled target has atom means $2^{-b_N-r-2}$
+for each $s\in\{\pm1\}$, and the aggregated target has independent means
+$2^{\vartheta_N-r-2}$ at each pair $(r,s)$.
+\end{corollary}
+\begin{proof}
+For the labelled result use the signed version of \cref{thm:marked-field}
+and the unchanged tail identity. For aggregation, the normalized category
+weights are $q_{e,s}=2^{-e-2}$ and
+$\sum_{e,s}\sqrt{q_{e,s}}=\sqrt2(1+\sqrt2)$.
+The directional Stein bound therefore has the same summability.
+At the largest retained support, the full value-relation space dominates
+each mixed signed kernel by extension of coefficient vectors by zero;
+\cref{prop:absolute-profile} supplies the same two-window envelope.
+The retained support has $L+E+2$ vertices, differing by only one from the
+relative-mark convention. Since $E=O(V_N)=o(\log N)$, its polynomial
+remainder is absorbed exactly as in part (ii). The signed local-pair calculation and the same tail bound finish
+the proof.
+\end{proof}
+
+\subsection{Target kernels, extremes and the Gaussian lower edge}
+The independent target levels give, exactly,
+\begin{align}
+ S_{N,m}&\sim\Pois(2^{\vartheta_N-m}),\label{eq:target-marginal}\\
+ S_{N,m+j}\mid S_{N,m}=n&\sim\operatorname{Bin}(n,2^{-j}),\label{eq:target-forward}\\
+ S_{N,m-j}\mid S_{N,m}=n&\ \stackrel d=\ n+
+      \Pois(2^{\vartheta_N-m}(2^j-1)),\label{eq:target-reverse}
+\end{align}
+when the lower levels are retained. The whole forward path is the number
+of survivors among $n$ independent geometric lifetimes, each with
+$\PP(E=e)=2^{-(e+1)}$. These are identities for the Poisson target, not
+exact finite-$N$ Markov assertions for the multiplicative sequence.
+
+For any integer $m\ge0$, the dyadic excess maximum
+$M_{N,L}=\max\{\ell_x-L:x\in I_N,J_{x,L}=1\}$, with empty value $-\infty$,
+satisfies the exact identity
+\begin{equation}\label{eq:excess-void}
+ \{M_{N,L}\le m\}=\{Z_{N,L+m+1}=0\}.
+\end{equation}
+Thus the scalar estimate at $L'=L+m+1$, with $\mu=N2^{-L'}$, gives
+\[
+ \PP(M_{N,L}\le m)=e^{-\mu}
+ +O\left(\min\{1,\mu(e^{-V_N+o(\nu_N)}+N^{-1/3+\varepsilon})\}\right)
+\]
+whenever $L'+1$ is in a fixed logarithmic band. In particular one-hit upper
+tails are relative when $N2^{-L'}\to0$.
+For the $k$th largest run length among starts in $I_N$, along a subsequence
+$\vartheta_N\to\vartheta$,
+\begin{equation}\label{eq:order-statistic}
+ \PP(R_N^{[k]}-b_N<m)\longrightarrow
+ e^{-2^{\vartheta-m}}\sum_{j=0}^{k-1}\frac{(2^{\vartheta-m})^j}{j!}.
+\end{equation}
+This is just the event that fewer than $k$ starts exceed the threshold.
+
+\begin{theorem}[Joint Poisson--Gaussian limit]\label{thm:bridge}
+Assume $d_N\to\infty$ and the hypotheses of part (ii) of
+\cref{thm:moving-comparison}. Put
+\[
+ G_N(j)=\frac{Z_{N,b_N-d_N+j}-\Lambda_N2^{-j}}{\sqrt{\Lambda_N}}.
+\]
+Along $\vartheta_N\to\vartheta$, for every fixed $J$ and every finite
+$R\subset\Z$, conditionally on $C_N$,
+\[
+ ((G_N(j))_{0\le j\le J},(X_{N,r})_{r\in R})
+ \Longrightarrow ((G(j))_{0\le j\le J},(P_r^{(\vartheta)})_{r\in R}),
+\]
+where $\EE G(j)G(k)=2^{-\max(j,k)}$, the variables
+$P_r^{(\vartheta)}\sim\Pois(2^{\vartheta-r-1})$ are independent, and the
+Gaussian and Poisson vectors are independent. The normalized Gaussian
+sequence $H(j)=2^{j/2}G(j)$ is the stationary AR(1) chain
+$H(j+1)=2^{-1/2}H(j)+2^{-1/2}\zeta_{j+1}$,
+where $(\zeta_j)_{j\ge1}$ are independent standard normal random variables,
+independent of $H(0)\sim N(0,1)$.
+\end{theorem}
+\begin{proof}
+Transfer to the independent target by \eqref{eq:staircase-rate}.
+Choose a fixed $r_0<\min R$ (any fixed $r_0$ if $R$ is empty).
+The lower-edge sums restricted to $r<r_0$ are independent of the displayed
+critical levels and satisfy the multivariate Poisson central limit theorem.
+Their covariance after normalization tends to $2^{-\max(j,k)}$.
+The centered sum over $r\ge r_0$ has bounded variance and hence vanishes
+after division by $\sqrt{\Lambda_N}$. This proves the joint limit and
+independence. The covariance of $H$ is $2^{-|j-k|/2}$, giving the stated
+Gaussian autoregression.
+\end{proof}
+For fixed compact sets of levels, the untruncated centered field has the
+phase-indexed target
+\[
+ {\rm PPP}\left(dt\otimes\sum_{r\in\Z}2^{\vartheta_N-r-1}\delta_r\right).
+\]
+Riemann sums give the corresponding Laplace approximation without assuming
+that $\vartheta_N$ converges. A phase-convergent subsequence turns it into
+a fixed weak limit; its intensity is locally finite although it diverges
+towards $r=-\infty$. Full formulas and conditional configuration statements
+are in \cref{supp:sec:target-consequences}. No continuous run lengths or
+canonical coupling simultaneously over all $N$ is asserted.

@@ -1,0 +1,101 @@
+name: Paper C v1.1 Lean development
+
+on:
+  push:
+    branches:
+      - codex/paper-c-v11-formalization
+    paths:
+      - "PaperCV11.lean"
+      - "PaperCV11/**"
+      - "lakefile.toml"
+      - ".github/workflows/v11-development.yml"
+  pull_request:
+    paths:
+      - "PaperCV11.lean"
+      - "PaperCV11/**"
+      - "lakefile.toml"
+      - ".github/workflows/v11-development.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-v11-development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out the v1.1 development branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set up the pinned Lean toolchain
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Verify that the retained v1.0 core digest is unchanged
+        run: node scripts/generate_audit.mjs --check-source-digest
+
+      - name: Build the assembled v1.1 development surface
+        run: lake build PaperCV11
+
+      - name: Reject forbidden proof placeholders and source features
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE '(^|[^A-Za-z])(sorry|admit|native_decide|unsafe|partial|axiom)([^A-Za-z]|$)' \
+              PaperCV11.lean PaperCV11 --include='*.lean'; then
+            echo 'Forbidden Lean token found in the Paper C v1.1 overlay.' >&2
+            exit 1
+          fi
+
+      - name: Print the axioms of the first v1.1 endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ci-logs
+          lake env lean PaperCV11/Audit.lean 2>&1 | tee ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.paper_c_v1_1_hard_conditioning_saddle' \
+            ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.V11.RankinTilt.card_kernel_one_cast_le_rankin_eulerProduct' \
+            ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.V11.RankinEnvelope.card_kernel_one_cast_le_rankin_exp' \
+            ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.V11.PrimeHarmonic.sum_inv_smallPrimesUpTo_real_le_loglog' \
+            ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.V11.SharpKernelDefect.finite_equation_three_four_of_reciprocal_bound' \
+            ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.paper_c_v1_1_sharp_kernel_defect_finite' \
+            ci-logs/PaperCV11-Audit.log
+          grep -F 'PaperC.V11.SharpPrimeCutoff.cast_sharpPrimeCutoff_le_scale' \
+            ci-logs/PaperCV11-Audit.log
+          if grep -F 'sorryAx' ci-logs/PaperCV11-Audit.log; then
+            echo 'The v1.1 endpoint depends on sorryAx.' >&2
+            exit 1
+          fi
+
+      - name: Record the development boundary
+        shell: bash
+        run: |
+          {
+            echo '## Paper C v1.1 Lean development'
+            echo
+            echo '- The retained v1.0 core source digest is unchanged.'
+            echo '- The direct syndrome-collision lemma and exact defect-support truncation build successfully.'
+            echo '- The algebraic hard-conditioning saddle is exposed as `PaperC.paper_c_v1_1_hard_conditioning_saddle`.'
+            echo '- The complete finite equation (3.4) is exposed as `PaperC.paper_c_v1_1_sharp_kernel_defect_finite`.'
+            echo '- The distinct v1.1 sharp cutoff builds without changing the historical cutoff.'
+            echo '- This workflow is developmental and does not itself create a Palomar qualification.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve the v1.1 endpoint audit log
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-c-v11-audit-${{ github.sha }}
+          path: ci-logs/PaperCV11-Audit.log
+          if-no-files-found: warn

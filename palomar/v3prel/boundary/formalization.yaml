@@ -1,0 +1,243 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: V3PREL microscopic boundary, contained prefix laws and almost-sure longest runs
+  description: The actual infinite multiplicative source is used throughout. The selected declarations
+    prove the exact border probability, q_L/2^(-pi(L))-1 between zero and 2^(-pi(L)/256), conditional
+    uniqueness and TV localization, and stability of true zero-padded mesoscopic records. They also prove
+    a quantitative Poisson bound for the contained-prefix count, a uniform critical-window TV and longest-run
+    void law, the asymmetric almost-sure envelopes, and the O(loglog M) consequence. The thresholds precede
+    the run length. Borel-Cantelli and interpolation to all integer prefixes are internal.
+  authors:
+  - Brice Pouly
+  responsible_maintainers:
+  - Brice Pouly
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.NT
+  - math.PR
+  msc2020:
+  - 11K65
+  - 60F05
+sources:
+- title: Long runs and rare patterns of a random completely multiplicative function, version 3PREL
+  authors:
+  - Brice Pouly
+  id: https://doi.org/10.33774/coe-2026-z3l74
+  type: paper
+  location: Theorem 7.1, Proposition 7.3 (mesoscopic stability), Theorem 7.4, Corollary 7.5; equations
+    (7.1), (7.11)-(7.13). Snapshot manuscripts/v3prel/paper_C_version_3PREL_en.pdf, SHA-256 0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7.
+  relationship: adapts
+  license: CC-BY-4.0
+  author_endorsement: participated
+  note: This is a new candidate, independent of the four historical v0.9 IDs. Its scope is exactly the
+    listed declarations; no previous qualification is reused.
+- title: Technical companion to Long runs and rare patterns of a random completely multiplicative function,
+    version 3PREL
+  authors:
+  - Brice Pouly
+  type: paper
+  location: Appendix E and the explicitly cited probability inputs. Snapshot manuscripts/v3prel/paper_C_version_3PREL_technical_companion_en.pdf,
+    SHA-256 d64150c995f07ee39b016bb20a16b5fc3a01ce53b0ddcda893d1ceb41eefadee.
+  relationship: adapts
+  note: All source-shaped literature arguments are visible in the standalone challenge. This family does
+    not consume the corrected multivariate directional Stein premise; the correction C002 is exercised
+    by other V3PREL candidates.
+- title: Poisson approximation of Rademacher functionals by the Chen-Stein method and Malliavin calculus
+  authors:
+  - Kai Krokowski
+  id: https://arxiv.org/abs/1505.01417
+  type: paper
+  location: arXiv:1505.01417v3, Section 2.5, equations (2.14)-(2.15)
+  relationship: background
+  note: Analysis.ScalarSteinFactorsStatement requires a solution of the scalar Poisson Stein equation
+    with both analytic bounds. No arithmetic TV comparison is assumed.
+- title: Number of prime divisors in a product of consecutive integers
+  authors:
+  - Shanta Laishram
+  - T. N. Shorey
+  id: https://doi.org/10.4064/aa113-4-3
+  type: paper
+  location: Acta Arithmetica 113 (2004), equation (14), printed page 331
+  relationship: background
+  note: Boundary.UniformPrimeDivisorStatement is the published eventual bound uniform in n>k, with the
+    threshold before n. It is an ordinary theorem hypothesis, not an axiom or an assumed probability estimate.
+- title: Applications of Baker's theory of linear forms in logarithms to exponential diophantine equations
+  authors:
+  - T. N. Shorey
+  type: paper
+  location: RIMS Kokyuroku 886 (1994), pages 55-56, equation (15) and the square case
+  relationship: background
+  note: Boundary.ShoreySquareProductStatement displays the square-product exclusion with arbitrary positive
+    smooth coefficient, true height and density thresholds, and uniform quantifier order. The arithmetic/probability
+    consequences are proved internally.
+- title: Newman’s Short Proof of the Prime Number Theorem
+  authors:
+  - Don Zagier
+  id: https://doi.org/10.2307/2975232
+  type: paper
+  location: American Mathematical Monthly 104 (1997), pages 705-708
+  relationship: background
+  note: Analysis.PrimeNumberTheoremRemainder is the ordinary prime-counting remainder o(t/log t); the
+    exact Ei normalization is displayed. The weighted prime estimates and saddle consequences are internal.
+- title: Majorations explicites pour le nombre de diviseurs de N
+  authors:
+  - J.-L. Nicolas
+  - G. Robin
+  id: https://doi.org/10.4153/CMB-1983-078-5
+  type: paper
+  location: Theorem 1, printed page 485 (1983)
+  relationship: background
+  note: Boundary.DivisorLogBoundStatement displays log(tau(n))*log(log n) <= 2*log(2)*log n for n>=64,
+    a safe source specialization. It supplies no Poisson or crossover conclusion.
+related_formalizations: []
+status:
+  scope: New candidate v3prel_boundary. One standalone Mathlib-only Challenge (264 lines, 15181 bytes)
+    and one independently defined Solution, with 7 selected theorem declarations. Intentional placeholders
+    occur only in the Challenge; the Solution has no proof holes. The actual infinite multiplicative source
+    is used throughout. The selected declarations prove the exact border probability, q_L/2^(-pi(L))-1
+    between zero and 2^(-pi(L)/256), conditional uniqueness and TV localization, and stability of true
+    zero-padded mesoscopic records. They also prove a quantitative Poisson bound for the contained-prefix
+    count, a uniform critical-window TV and longest-run void law, the asymmetric almost-sure envelopes,
+    and the O(loglog M) consequence. The thresholds precede the run length. Borel-Cantelli and interpolation
+    to all integer prefixes are internal. No Palomar outcome, Comparator pass or NanoDa result is asserted
+    by this metadata.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: PaperCV3Audit.v3_boundary_exact
+    file: SolutionV3Boundary.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_boundary.json
+  - declaration: PaperCV3Audit.v3_boundary_microscopic
+    file: SolutionV3Boundary.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_boundary.json
+  - declaration: PaperCV3Audit.v3_boundary_mesoscopic
+    file: SolutionV3Boundary.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_boundary.json
+  - declaration: PaperCV3Audit.v3_boundary_prefix_quantitative
+    file: SolutionV3Boundary.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_boundary.json
+  - declaration: PaperCV3Audit.v3_boundary_prefix_critical
+    file: SolutionV3Boundary.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_boundary.json
+  - declaration: PaperCV3Audit.v3_boundary_asymmetric_envelopes
+    file: SolutionV3Boundary.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_boundary.json
+  - declaration: PaperCV3Audit.v3_boundary_longest_loglog
+    file: SolutionV3Boundary.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_boundary.json
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: n/a
+    tool_setup: The human maintainer selected the mathematical scope, candidate families and publication
+      requirements.
+    prompting_notes: n/a
+  - method: agent
+    models:
+    - OpenAI Codex agents
+    framework: Codex
+    tool_setup: Agent-assisted Lean construction, independent mathematical reviews and mechanical source/statement
+      checks.
+    prompting_notes: Bounded proof and review subtasks, with source-to-interface bridges and explicit
+      literature boundaries.
+  spend_usd: subscription-based usage; not separately tracked
+  notes: The workflow is disclosed and is not represented as independent human peer review.
+fidelity:
+  divergences: F2 bits encode signs, with zero meaning positive. The prefix count includes the genuine
+    border indicator and starts from 2 through M-L+1. The selected quantitative inequality uses explicit
+    constants 43 and 4 and keeps the exact border and L*2^(-L) terms. The small fixed exponent 1/256 is
+    a weakening of the internally proved 1/12 choice. The actual longest run is defined by the finite
+    maximum of contained constant lengths. No dyadic surrogate replaces it. These seven declarations do
+    not individually restate every microscopic arithmetic lemma, the prime-clock law or the entire article.
+    The paper states its results without theorem-level premises, whereas the Lean endpoints explicitly
+    consume the displayed literature propositions. Those hypotheses are not proved by kernel checking
+    the conditional results.
+review:
+  status: agent-reviewed
+  reviewers:
+  - Independent Codex agent instances
+  notes: The underlying development has independent agent reviews at frozen source hashes. Final new-candidate
+    mechanical validation and review are recorded separately; this metadata alone does not certify a Palomar
+    outcome or human peer review.
+alignment:
+  namespace: PaperCV3Audit
+  statements:
+  - source: Theorem 7.1, Proposition 7.3 (mesoscopic stability), Theorem 7.4, Corollary 7.5; equations
+      (7.1), (7.11)-(7.13).
+    lean: PaperCV3Audit.v3_boundary_exact
+    module: SolutionV3Boundary
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorem 7.1, Proposition 7.3 (mesoscopic stability), Theorem 7.4, Corollary 7.5; equations
+      (7.1), (7.11)-(7.13).
+    lean: PaperCV3Audit.v3_boundary_microscopic
+    module: SolutionV3Boundary
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorem 7.1, Proposition 7.3 (mesoscopic stability), Theorem 7.4, Corollary 7.5; equations
+      (7.1), (7.11)-(7.13).
+    lean: PaperCV3Audit.v3_boundary_mesoscopic
+    module: SolutionV3Boundary
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorem 7.1, Proposition 7.3 (mesoscopic stability), Theorem 7.4, Corollary 7.5; equations
+      (7.1), (7.11)-(7.13).
+    lean: PaperCV3Audit.v3_boundary_prefix_quantitative
+    module: SolutionV3Boundary
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorem 7.1, Proposition 7.3 (mesoscopic stability), Theorem 7.4, Corollary 7.5; equations
+      (7.1), (7.11)-(7.13).
+    lean: PaperCV3Audit.v3_boundary_prefix_critical
+    module: SolutionV3Boundary
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorem 7.1, Proposition 7.3 (mesoscopic stability), Theorem 7.4, Corollary 7.5; equations
+      (7.1), (7.11)-(7.13).
+    lean: PaperCV3Audit.v3_boundary_asymmetric_envelopes
+    module: SolutionV3Boundary
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorem 7.1, Proposition 7.3 (mesoscopic stability), Theorem 7.4, Corollary 7.5; equations
+      (7.1), (7.11)-(7.13).
+    lean: PaperCV3Audit.v3_boundary_longest_loglog
+    module: SolutionV3Boundary
+    status: proved modulo the explicit literature premises in its statement, if any
+acknowledgements: Built on Lean 4.32.0 and Mathlib. Source archives and the detailed manuscript migration
+  matrix are preserved separately.

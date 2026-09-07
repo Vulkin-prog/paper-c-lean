@@ -1,0 +1,23 @@
+{
+  "challenge_module": "ChallengeV3Crossover",
+  "solution_module": "SolutionV3Crossover",
+  "theorem_names": [
+    "PaperCV3Audit.v3_crossover_affine_border_mass",
+    "PaperCV3Audit.v3_crossover_complete_moving_mixture",
+    "PaperCV3Audit.v3_crossover_locations",
+    "PaperCV3Audit.v3_crossover_locations_atTop",
+    "PaperCV3Audit.v3_crossover_locations_atBot",
+    "PaperCV3Audit.v3_crossover_sign",
+    "PaperCV3Audit.v3_crossover_affine_complete_clock",
+    "PaperCV3Audit.v3_crossover_affine_locations",
+    "PaperCV3Audit.v3_crossover_affine_locations_atTop",
+    "PaperCV3Audit.v3_crossover_affine_locations_atBot",
+    "PaperCV3Audit.v3_crossover_affine_sign"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

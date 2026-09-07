@@ -1,0 +1,9 @@
+import PaperCV11.Main
+
+#print axioms PaperC.paper_c_v1_1_hard_conditioning_saddle
+#print axioms PaperC.V11.RankinTilt.card_kernel_one_cast_le_rankin_eulerProduct
+#print axioms PaperC.V11.RankinEnvelope.card_kernel_one_cast_le_rankin_exp
+#print axioms PaperC.V11.PrimeHarmonic.sum_inv_smallPrimesUpTo_real_le_loglog
+#print axioms PaperC.V11.SharpKernelDefect.finite_equation_three_four_of_reciprocal_bound
+#print axioms PaperC.paper_c_v1_1_sharp_kernel_defect_finite
+#print axioms PaperC.V11.SharpPrimeCutoff.cast_sharpPrimeCutoff_le_scale

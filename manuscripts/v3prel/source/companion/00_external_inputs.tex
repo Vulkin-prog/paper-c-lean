@@ -1,0 +1,54 @@
+\section*{External inputs and internal deductions}
+\addcontentsline{toc}{section}{External inputs and internal deductions}
+This register identifies the non-elementary inputs, their precise role,
+and the calculations proved in this package. References are local to this
+companion; statement links lead to the relevant document. Classical
+finite-dimensional linear algebra, conditioning and elementary inequalities
+are not separate imported hypotheses.
+
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.16}
+\noindent\begin{tabularx}{\textwidth}{@{}L{.225\textwidth}L{.315\textwidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Input and source & Form consumed & Use and internal deduction\\\midrule
+Prime number theorem; standard prime sums \cite{Tenenbaum2015}
+& $\pi(t)\sim t/\log t$; elementary weighted consequences
+& \Cref{supp:prop:cutoff-calculation} proves the moving weighted sum, its uniform error and both cutoff balances.\\
+Finite-dependency Poisson approximation \cite{ArratiaGoldsteinGordon1989,ArratiaGoldsteinGordon1990}
+& Scalar and process theorems; $b_3=0$ for an exact graph
+& \Cref{thm:transfer,thm:word-field,thm:marked-field}; the supremum convention for variation is half the sources' norm.\\
+Scalar Stein factors \cite[(2.15)]{Krokowski2017}
+& Zeroth and first differences, of orders $\lambda^{-1/2}$ and $\lambda^{-1}$
+& \Cref{supp:lem:soft-retention} proves the exceptional-set decomposition; no Malliavin input is used.\\
+Directional Poisson factor \cite[p.~179, Lemmas~2--3]{Barbour1988SteinProcess}
+& Weighted quadratic Hessian bound and $|\Delta_{ij}g|\le1$, for the same solution
+& \Cref{supp:eq:directional-factor,supp:thm:aggregated}; Hessian conjugation, independent Poisson filling and geometric mark summation are explicit.\\
+Quadratic ideals and units \cite{HalterKoch2013}; divisors \cite{NicolasRobin1983}
+& Ideal factorization, unit orbits and $\tau(n)=\exp(O(\log n/\log\log n))$
+& \Cref{supp:lem:pell} proves the uniform bounded-height Pell count. Split-product localization is internal.\\
+Laishram--Shorey \cite[eq.~(14), p.~331]{LaishramShorey2004}
+& $\omega(\prod_{j<B}(n+j))\ge(2-\varepsilon)\pi(B)$, uniformly for $n>B$
+& Appendix E.2 records the quantifiers; the private-coordinate and medium-prime rank arguments are internal.\\
+Balasubramanian--Shorey \cite{BalasubramanianShorey1993}, as recorded in \cite[pp.~55--56]{Shorey1994BakerApplications}
+& Square-product exclusion with $P^+(b)\le k$ and the stated height/density conditions
+& \Cref{supp:lem:pointwise-maximum} gives the substitutions and contrapositive. No size bound on the smooth coefficient is added.\\
+Berry's normal approximation bound \cite{Berry1941}
+& Third-absolute-moment normal approximation
+& Appendix D uses the explicit Poisson specialization; the marked comparison and joint limiting independence are proved here.\\
+Binary marker construction \cite{CheeKiahPurkayasthaWang2013}
+& A classical cross-bifix-free family
+& \Cref{cor:marker-dictionaries} proves the particular binary construction and its size bound. This illustrative application is not an input to the arithmetic theorem.\\
+\bottomrule
+\end{tabularx}
+\endgroup
+
+\medskip
+Runge's split-product estimate, the Hamming-ball argument, the raw and
+capped two-window profiles, the simple-incidence rank lemma and the
+relative bulk normalization are proved in the article--companion pair.
+Evertse--Silverman is contextual only; the separate process article is
+not a proof dependency. The table concerns the mathematical inputs to the
+written arguments. In particular the directional estimate is obtained
+directly from Barbour's two lemmas, while the arithmetic comparison and
+Poisson filling are proved here.

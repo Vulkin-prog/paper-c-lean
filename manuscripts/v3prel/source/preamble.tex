@@ -1,0 +1,183 @@
+\ifdefined\pdftrailerid\pdftrailerid{}\fi
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[nopatch=footnote]{microtype}
+\usepackage{geometry}
+\geometry{margin=2.6cm}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{aliascnt}
+\usepackage{booktabs,longtable,tabularx,array}
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{3pt}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+% Keep bibliography entries readable without an isolated final reference page.
+\apptocmd{\thebibliography}{\setlength{\itemsep}{2pt}\setlength{\parsep}{0pt}}{}{}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{needspace}
+\usepackage{xr}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,fit,positioning,shapes.geometric}
+
+% Sober palette; every colour distinction is reinforced by line style or shape.
+\definecolor{FigBlue}{HTML}{315D78}
+\definecolor{FigRust}{HTML}{9A5A32}
+\definecolor{FigInk}{HTML}{30363B}
+\definecolor{FigGray}{HTML}{6F767B}
+\definecolor{FigPaleBlue}{HTML}{E8EFF3}
+\definecolor{FigPaleRust}{HTML}{F4EAE3}
+\definecolor{FigPaleGray}{HTML}{F1F2F2}
+\tikzset{
+  >={Latex[length=2.2mm,width=1.35mm]},
+  figlabel/.style={font=\footnotesize, text=FigInk, align=center},
+  figsmall/.style={font=\scriptsize, text=FigInk, align=center},
+  flow/.style={draw=FigInk, rounded corners=1.5pt, line width=.55pt,
+    fill=FigPaleGray, minimum height=10mm, text width=50mm,
+    inner sep=4pt, font=\footnotesize, align=center},
+  flowblue/.style={flow, draw=FigBlue, fill=FigPaleBlue},
+  flowrust/.style={flow, draw=FigRust, fill=FigPaleRust},
+  flowarrow/.style={->, line width=.65pt, draw=FigInk},
+  occurrence/.style={circle, draw=FigInk, fill=white, line width=.55pt,
+    minimum size=4.2mm, inner sep=0pt},
+  defect/.style={rectangle, draw=FigInk, fill=white, line width=.7pt,
+    minimum size=4.2mm, inner sep=0pt},
+  eventedge/.style={draw=FigGray, line width=.45pt},
+  channel/.style={draw=FigBlue, line width=1.15pt},
+  residual/.style={draw=FigRust, dashed, line width=1pt},
+}
+
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{csquotes}
+
+\hypersetup{
+  colorlinks=true,
+  bookmarksdepth=2,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  linkcolor=black,
+  citecolor=black,
+  filecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={Long runs and rare patterns of a random completely multiplicative function},
+  pdfauthor={Brice Pouly},
+  pdflang={en-GB},
+  pdfsubject={Preprint Version 3PREL; arithmetic Poisson approximation, long runs, rare sign patterns and boundary effects},
+  pdfkeywords={random multiplicative functions, Poisson approximation, Poisson point process, Chen-Stein, consecutive values, Pell equations}
+}
+
+\setstretch{1.04}
+\setlist{nosep,leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Long runs and rare multiplicative patterns}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlength{\headheight}{14pt}
+
+\newtheorem{theorem}{Theorem}[section]
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+\newaliascnt{claim}{theorem}
+\newtheorem{claim}[claim]{Claim}
+\aliascntresetthe{claim}
+\newaliascnt{hypothesis}{theorem}
+\newtheorem{hypothesis}[hypothesis]{Hypothesis}
+\aliascntresetthe{hypothesis}
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+\theoremstyle{remark}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\def\crefpairconjunction{ and }
+\def\creflastconjunction{, and }
+\def\crefrangeconjunction{ to }
+\crefname{theorem}{Theorem}{Theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{proposition}{propositions}
+\Crefname{proposition}{Proposition}{Propositions}
+\crefname{lemma}{Lemma}{Lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{corollary}{Corollary}{Corollaries}
+\Crefname{corollary}{Corollary}{Corollaries}
+\crefname{claim}{Claim}{Claims}
+\Crefname{claim}{Claim}{Claims}
+\crefname{hypothesis}{hypothesis}{hypotheses}
+\Crefname{hypothesis}{Hypothesis}{Hypotheses}
+\crefname{definition}{Definition}{Definitions}
+\Crefname{definition}{Definition}{Definitions}
+\crefname{remark}{Remark}{Remarks}
+\Crefname{remark}{Remark}{Remarks}
+
+
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\calR}{\mathcal R}
+\newcommand{\calS}{\mathcal S}
+\newcommand{\calQ}{\mathcal Q}
+\newcommand{\calT}{\mathcal T}
+\newcommand{\calA}{\mathcal A}
+\newcommand{\calH}{\mathcal H}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\sqf}{\operatorname{sqf}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Kern}{\mathcal K}
+\newcommand{\Pois}{\operatorname{Pois}}
+\newcommand{\dTV}{d_{\mathrm{TV}}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\numberwithin{equation}{section}
+
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\QB}{Q_B}
+\newcommand{\UM}{U_{M,\delta}}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\Cres}{\mathcal C_{\mathrm{res}}}
+\newcommand{\Srat}{\mathcal S_{\mathrm{rat}}}
+\newcommand{\Rspace}{\mathcal R}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\Ker}{\operatorname{ker}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\sfpart}{\operatorname{sf}}
+\newcommand{\Ber}{\operatorname{Ber}}
+\newcommand{\Leb}{\operatorname{Leb}}
+\newcommand{\Geo}{\operatorname{Geo}}
+\newcommand{\NN}{\mathbb N_0}
+\newcommand{\calF}{\mathcal F}
+\newcommand{\Law}{\mathcal L}
+\newcommand{\suppref}[1]{companion~\cref{#1}}
+\newaliascnt{convention}{theorem}
+\newtheorem{convention}[convention]{Convention}
+\aliascntresetthe{convention}
+\crefname{convention}{Convention}{Conventions}
+\Crefname{convention}{Convention}{Conventions}
+\setcounter{tocdepth}{1}
+\setlength{\emergencystretch}{1.5em}
+\widowpenalty=8000
+\clubpenalty=8000

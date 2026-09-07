@@ -1,0 +1,1142 @@
+\Needspace{12\baselineskip}
+\section{A uniform two-window relation estimate}\label{sec:two-window-anatomy}
+The transfer in \cref{thm:transfer} separates four costs: weighted
+one-window defects, supports removed at the prime cutoff, shared-prime
+graph edges, and the weighted relations estimated here. Only the last
+requires the two-window arithmetic. We sum $2^{\rho(x,y)}-1$, not merely
+count pairs with a relation, by separating exact rational identities from
+residual prime relations in one macroscopic geometry. Word overlaps are
+treated separately in \cref{thm:word-field}.
+
+Fix $0<\delta<1$ and $0<\beta_-<\beta_+<\infty$. Throughout this section,
+\begin{equation}\label{eq:uniform-band}
+ U=U_{M,\delta},\qquad \beta_-\log M\le B=L+1\le\beta_+\log M,
+ \qquad Q_B=2^B.
+\end{equation}
+A factor $M^{o(1)}$ is uniform in this band, with dependence only on the
+fixed parameters (and on an explicitly fixed component size when one is
+used). All these parameters are fixed before $M$. Every occurrence lies in
+\begin{equation}\label{macro:eq:occ-range}
+ M^\delta-1\le n\le M+B\le2M.
+\end{equation}
+
+\begin{theorem}[Uniform weighted relation profile]\label{thm:master-profile}
+For every $\varepsilon>0$,
+\begin{align}
+ R_{2,\delta}(M,L)
+ &:=\sum_{\substack{x,y\in U\\|x-y|>L}}(2^{\rho_L(x,y)}-1)\notag\\
+ &\ll_{\delta,\beta_-,\beta_+,\varepsilon}
+ M^\varepsilon\left(M^{3/2}Q_B^{1/6}+MQ_B^{2/3}+M^{2/3}Q_B\right)
+ \label{eq:master-profile}\\
+ &\ll_{\delta,\beta_-,\beta_+,\varepsilon}
+ M^\varepsilon\left(M^{5/3}+M^{2/3}Q_B\right).
+ \label{eq:master-envelope}
+\end{align}
+The defining sum is over ordered pairs. In particular
+$R_2(N,L)\ll_{C,\varepsilon}N^{5/3+\varepsilon}$ when
+$|L-\log_2N|\le C$ in a dyadic block. The same conclusion, with a constant
+depending on the fixed upper ratio, holds on $[N,\kappa N)$.
+\end{theorem}
+The last assertions follow by restriction from \eqref{eq:master-envelope}
+at $M=2N$ or $M=\kappa N$ and, for example, $\delta=1/2$; the lower endpoint
+is then at least $M^\delta$ for large $N$. No sum of independent block laws
+is being taken. The proof of the estimates occupies the rest of this section.
+
+There are three obstacles to counting the relations. Exact rational
+identities may create many of them for one identifiable reason; we remove
+that subspace first. Residual relations are then controlled by combining
+rarity of their hosts with a bound on their dimension. In the terminal
+case neither resource is sufficient separately: determinants force
+several small kernels into one window, and it is this simultaneous
+concentration, rather than the size of the candidate set, that must be
+counted. The partition below distinguishes which of these resources is
+available.
+
+
+\subsection{Rational identities and the residual graph}
+For a separated pair, use the even-subset description in
+\cref{lem:even-subsets}. An exact rational relation can be present before
+any primes are exposed. For example, with $x=100$, $y=67$ and $L=3$, the
+windows contain the two units $(99,66)$ and $(102,68)$ of ratio $3:2$.
+Their product is $6732^2$. Each selected subset in a window has two vertices,
+so this gives a nonzero homogeneous relation; its two root occurrences also
+make the affine character even. In fact the individual ranks are three and
+the stacked rank is five, giving joint probability $1/32$, rather than
+$1/64$ for independent starts.
+
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[x=1.5cm,y=1.1cm]
+\foreach \i/\t in {0/99,1/100,2/101,3/102}{
+ \node[occurrence] (a\i) at (\i,1) {};
+ \node[above=2mm of a\i,font=\small] {$\t$};}
+\foreach \i/\t in {0/66,1/67,2/68,3/69}{
+ \node[occurrence] (b\i) at (\i,0) {};
+ \node[below=2mm of b\i,font=\small] {$\t$};}
+\draw[eventedge] (a0)--(a1)--(a2);\draw[eventedge] (a1) to[bend left=20] (a3);
+\draw[eventedge] (b0)--(b1)--(b2);\draw[eventedge] (b1) to[bend right=20] (b3);
+\draw[channel] (a0)--(b0);\draw[channel] (a3)--(b2);
+\node[align=left,font=\small,anchor=west] at (3.6,.5)
+ {$2\cdot99=3\cdot66$\\$2\cdot102=3\cdot68$};
+\end{tikzpicture}
+\caption{An exact two-unit relation. The thick edges are rational units;
+the thin edges encode the affine start trees. Even subsets of the units
+produce relations. This macroscopic example also illustrates why counting
+all prime coincidences without quotienting the rational subspace loses
+information.}\label{fig:rational-example}
+\end{figure}
+For coprime $a,b\geq1$, set $h=by-ax$ and
+\[
+ \mathcal M_{a,b}(h)=\{(i,j)\in I_L^2:ai-bj=h\},
+ \qquad m(a,b,h)=|\mathcal M_{a,b}(h)|.
+\]
+A member of $\mathcal M_{a,b}(h)$ is an exact unit, because
+$a(x+i)=b(y+j)$.  Even subsets of the exact units form a subspace
+$\mathcal S_{a,b,h}\subset\Rspace(x,y)$.
+
+\begin{lemma}[Rational code and height]\label{macro:lem:rational-code}
+If $m=m(a,b,h)\geq1$, then
+$\dim\mathcal S_{a,b,h}=m-1$.  If $m\geq2$, then
+\[
+ \max(a,b)\leq L<B.
+\]
+This conclusion is independent of the ratio between the endpoints
+$x$ and $y$.
+\end{lemma}
+
+\begin{proof}
+For an exact unit, coprimality gives integers $t$ with
+$x+i=bt$ and $y+j=at$.  An even collection $E$ of units satisfies
+\[
+ \prod_{(i,j)\in E}(x+i)(y+j)
+ =(ab)^{|E|}\left(\prod_{(i,j)\in E}t\right)^2,
+\]
+which is a square.  The even subsets of an $m$-element set have
+dimension $m-1$.  Distinct solutions of $ai-bj=h$ differ by
+$(b,a)$; since both offsets remain in an interval of diameter $L$,
+one has $a,b\leq L$.
+\end{proof}
+
+Fix once and for all $A=3$.  Call $(x,y)$ aligned if there are
+coprime $a,b\leq B^A$ such that
+\begin{equation}\label{macro:eq:aligned}
+ |by-ax|<(a+b)B.
+\end{equation}
+
+\begin{lemma}[Uniqueness of the macroscopic channel]\label{macro:lem:channel-unique}
+For $M$ sufficiently large in terms of
+$(\delta,\beta_-,\beta_+)$, an aligned pair has at most one reduced
+fraction $(a,b)$ satisfying \eqref{macro:eq:aligned}.  Every channel with at
+least two exact units is aligned and therefore has this unique
+fraction.
+\end{lemma}
+
+\begin{proof}
+If $(a,b)$ and $(a',b')$ both satisfy \eqref{macro:eq:aligned}, then
+\[
+ |(a'b-ab')x|<4B^{2A+1}.
+\]
+But $x\geq M^\delta$ and $B=O(\log M)$, so the right-hand side is
+$o(M^\delta)$.  The integer $a'b-ab'$ is therefore zero for large
+$M$, and reducedness gives $(a,b)=(a',b')$.  If a channel has two
+units, Lemma~\ref{macro:lem:rational-code} gives $a,b\leq L$, and for any
+unit $h=ai-bj$ satisfies $|h|<(a+b)B$.
+\end{proof}
+
+When the canonical aligned channel has $m\geq2$, define
+\[
+ \Srat=\mathcal S_{a,b,h},\qquad \sigma=m-1.
+\]
+Otherwise define $\Srat=0$ and $\sigma=0$.  In all cases put
+\[
+ \tau=\rho-\sigma.
+\]
+Thus no contraction is made when $m_{\rm ex}\leq1$.
+
+\begin{remark}[Disparate scales]\label{macro:rem:disparate}
+Suppose, for example, that $x\asymp M^\delta$ and $y\asymp M$.
+If there were two exact units, then $a,b\leq L$ and
+$x+i=bt$, $y+j=at$, so
+\[
+ y\leq L(x+B)+B=o(M),
+\]
+a contradiction.  Hence every genuinely disparate-scale pair has
+$m_{\rm ex}\leq1$.  It remains in the ordinary large-prime graph and
+is treated by the small-product, shallow-core or deep-core bounds below;
+no illegitimate valuation identity or code contraction is used.
+\end{remark}
+
+Now form the graph $G_{>B}(x,y)$ on the occurrence set
+$\cO=V_x\sqcup V_y$.  For a prime $p>B$, let $\cO_p$ be the
+occurrences at which $v_p$ is odd.  Each block has diameter $B-1<p$,
+so $|\cO_p|\leq2$, with at most one occurrence in each block.  If
+$|\cO_p|=1$, pin that vertex to zero; if $|\cO_p|=2$, join the two
+vertices; parallel equations are deduplicated.  A vertex with no
+large-prime label is defective.  Let $D$ be the number of defective
+vertices and $c$ the number of nontrivial unpinned components.
+
+\begin{lemma}[Resolution and square class of components]\label{macro:lem:graph-resolution}
+The solution space of the $p>B$ equations is canonically isomorphic,
+after one representative is chosen in each component, to
+\[
+ \F^D\oplus\F^c.
+\]
+In particular, $D+2c\leq2B$.  Every nontrivial unpinned component
+$C$ meets both blocks and has a unique representation
+\[
+ \prod_{n\in C}n=d_Cz_C^2,
+\]
+where $d_C$ is positive, squarefree, and $B$-smooth.
+\end{lemma}
+
+\begin{proof}
+A pinned component is zero.  All variables in an unpinned component
+containing an edge are equal and contribute one free coordinate.  An
+isolated defective vertex contributes one free coordinate.  Every
+nontrivial component uses at least two occurrences, giving
+$D+2c\leq2B$.
+
+Every edge is bipartite.  For each $p>B$, an unpinned component
+contains either both odd occurrences of $p$ or none; a single odd
+occurrence would pin it.  Hence the total $p$-valuation of the product
+of the component is even for every $p>B$.  Its squarefree part is
+therefore supported on $p\leq B$, and uniqueness is immediate.
+\end{proof}
+
+Assume $m\geq2$.  An exact unit has the form
+$x+i=bt$, $y+j=at$ with $a,b<B$.
+For every $p>B$, $p\nmid ab$ and therefore
+\[
+ v_p(x+i)\equiv v_p(t)\equiv v_p(y+j)\pmod2.
+\]
+If $K_B(t)=1$, the two occurrences are defective; otherwise they form
+an isolated unpinned component of size two.  Distinct exact units use
+disjoint occurrences.  Let $d$ be the number of exact units of the
+first type and $n=m-d$ the number of the second type, and define
+\[
+ D^\#=D-d,
+ \qquad c^\#=c-n,
+\]
+removing the $n$ exact components from the residual component set
+$\Cres$.  If $m<2$, set $D^\#=D$, $c^\#=c$, and let $\Cres$ be all
+nontrivial unpinned components.  Notice that $D^\#$ is a dimensional
+correction, not literally a number of remaining defective vertices.
+
+\begin{lemma}[Quotient core]\label{macro:lem:quotient-core}
+Uniformly for all separated pairs,
+\[
+ \tau\leq D^\#+c^\#,
+ \qquad D^\#+2c^\#\leq2B,
+ \qquad D^\#=O(B/\log B).
+\]
+\end{lemma}
+
+\begin{proof}
+For $m\geq2$, the $m$ exact-unit vectors are independent in the
+large-prime solution space and the even code has dimension $m-1$.
+The parity functional of the first block descends to the quotient and
+is nonzero there; hence the even-first-block subspace has dimension
+$D+c-m$.  The full relation quotient embeds in that subspace, and the
+small-prime equations can only decrease dimension.  Therefore
+\[
+ \tau\leq D+c-m=(D-d)+(c-n)=D^\#+c^\#.
+\]
+For $m<2$, the estimate is the direct inclusion
+$\Rspace\subset W_{>B}$.  The inequality
+$D^\#+2c^\#\leq2B$ follows from $D+2c\leq2B$.  The defect estimate follows from \cref{prop:defects}, applied to each
+window on its own dyadic slice; \eqref{eq:uniform-band} makes the constants
+uniform.
+\end{proof}
+
+From each component of $\Cres$, choose canonically its smallest
+large-prime label and then the lexicographically first edge carrying
+that label.  This gives
+\[
+ (i_s,j_s,p_s),\qquad 1\leq s\leq c^\#,
+\]
+with distinct offsets in each block, distinct primes $p_s>B$, and
+$p_s\mid x+i_s$, $p_s\mid y+j_s$.  When $m\geq2$, these cells are not
+exact; when $m=1$, only the at most two components meeting the two
+occurrences of the unique exact unit can be exceptions.  Put
+\[
+ P^\#=\prod_{s=1}^{c^\#}p_s,
+\]
+with the empty product equal to one.
+
+
+The dimension decomposition gives the exact identity
+\begin{equation}\label{eq:weight-split}
+ 2^\rho-1=(2^\sigma-1)+2^\sigma(2^\tau-1).
+\end{equation}
+We first sum the rational term. The residual term will be divided into
+exhaustive geometric sectors.
+
+\subsection{Hosts and rational mass}
+The elementary prime and divisor estimates used below are
+\begin{align}
+ \pi(B)&\ll B/\log B,&
+ \sum_{p\le B}p^{-1/2}+B\sum_{p>B}p^{-3/2}
+ &\ll \sqrt B/\log B,\label{macro:eq:prime-half}\\
+ \sum_{p>B}p^{-2}&\ll(B\log B)^{-1},&
+ \omega(n)+\log\tau(n)&\ll_K\log M/\log\log M
+ \quad(1\le n\le M^K).
+ \label{macro:eq:omega-tau}
+\end{align}
+Here $\tau(n)$ in \eqref{macro:eq:omega-tau} is the divisor function,
+not the residual dimension. The last bound is used only for fixed $K$.
+Partial summation of the prime number theorem proves the prime estimates;
+the divisor estimate is standard \cite{Tenenbaum2015,NicolasRobin1983}.
+In particular,
+\begin{equation}\label{macro:eq:euler-subpoly}
+ \prod_{p\le B}(1+c p^{-1/2})=M^{o(1)},\qquad 2^{\pi(B)}=M^{o(1)}
+ \quad(c\hbox{ fixed}),
+\end{equation}
+while a squarefree $B$-smooth integer has size at most
+\begin{equation}\label{macro:eq:Bsmooth-height}
+ \prod_{p\le B}p=\exp(O(B))=M^{O_{\beta_+}(1)}.
+\end{equation}
+Let $H_{2,\delta}(M,L)$ count separated ordered pairs in $U^2$ with
+$\rho_L(x,y)>0$. We also need $H^{\rm val}_{2,\delta}(M,B)$, the number of
+such pairs for which some nonempty subset of $V_x\sqcup V_y$ has square
+product, with no parity requirement in either window.
+\begin{proposition}[Host bound]\label{macro:prop:host}
+Uniformly in the fixed band,
+\[
+ H_{2,\delta}(M,L)\le H^{\rm val}_{2,\delta}(M,B)\le M^{3/2+o(1)}.
+\]
+\end{proposition}
+
+\begin{proof}
+For each pair counted by $H^{\rm val}_{2,\delta}$, choose a nonempty
+square-product subset and its first selected occurrence, ordering first the $x$-block, then the $y$-block, and then
+the offsets increasingly.  Suppose first that this occurrence is
+$n=x+i$; the other orientation costs a factor two.  Put $K=K_B(n)$.
+For every $p\mid K$, the parity of the selected square product forces
+an occurrence of odd $p$-valuation in the other block.  It is unique
+there because $p>B$ and the block diameter is $B-1$.  Forgetting
+compatibility between primes, there are at most $B^{\omega(K)}$
+assignments of the primes of $K$ to offsets of the other block.
+
+A fixed assignment determines one residue class for $y$ modulo every
+$p\mid K$, hence one class modulo $K$.  The interval $\UM$ has length
+less than $M$, so it contains at most $M/K+1$ representatives.  By
+\eqref{macro:eq:occ-range}, $K\leq n\leq2M$, and therefore
+\[
+ M/K+1\leq3M/K,
+\]
+including $K=1$.  The orientation and selected offset cost at most
+$2B$, and hence
+\begin{equation}\label{macro:eq:host-raw}
+ H^{\rm val}_{2,\delta}(M,B)
+ \ll BM\sum_{n\leq2M}\frac{B^{\omega(K_B(n))}}{K_B(n)}.
+\end{equation}
+Write uniquely $n=a^2ur$, where $u$ is squarefree and $B$-smooth and
+$r=K_B(n)$ is squarefree with all prime factors $>B$.  Summing over
+$a$ first gives
+\begin{align*}
+ \sum_{n\leq2M}\frac{B^{\omega(K_B(n))}}{K_B(n)}
+ &\leq \sqrt{2M}
+ \sum_u u^{-1/2}\sum_r B^{\omega(r)}r^{-3/2}\\
+ &\leq \sqrt{2M}
+ \prod_{p\leq B}(1+p^{-1/2})
+ \prod_{p>B}(1+Bp^{-3/2}).
+\end{align*}
+For this host estimate, elementary integer sums suffice:
+\[
+ \sum_{p\le B}p^{-1/2}\le\sum_{n=1}^B n^{-1/2}\le2\sqrt B,
+ \qquad B\sum_{p>B}p^{-3/2}
+ \le B\int_B^\infty t^{-3/2}\,dt=2\sqrt B.
+\]
+Since $\log(1+t)\le t$, the weighted kernel sum is at most
+$\sqrt{2M}\exp(4\sqrt B)$. Under $B\le\beta_+\log M$,
+$B\exp(4\sqrt B)=M^{o(1)}$, uniformly in the length. Substitution in
+\eqref{macro:eq:host-raw} proves the claim. The sharper prime-sum bounds
+are not needed at this step.
+\end{proof}
+\begin{proposition}[Rational mass]\label{macro:prop:systematic}
+The contributions with canonical height $q=\max(a,b)$ satisfy
+\begin{equation}\label{eq:systematic}
+ \sum_{q\ge3}(2^\sigma-1)\le MQ_B^{1/3}M^{o(1)},\qquad
+ \sum_{q=2}(2^\sigma-1)\le MQ_B^{1/2}M^{o(1)}.
+\end{equation}
+The geometry-only sum, without translation parameters, satisfies
+\begin{equation}\label{macro:eq:geometry-sum}
+ \sum_{\substack{(a,b)=1,\ \max(a,b)\ge2,\ h\in\Z\\m(a,b,h)\ge2}}2^{m(a,b,h)-1}\le Q_B^{1/2}M^{o(1)}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+At height $q$ there are $O(q)$ reduced pairs $(a,b)$ and $O(qB)$
+possible nonempty values of $h$. A unit $(i_0,j_0)$ gives
+$x=bt-i_0$, $y=at-j_0$, with $O(M/q)$ choices of $t$.
+Units are spaced by $(b,a)$, so $m-1\le B/q$, and $m\ge2$ implies
+$q\le L$. Summing $O(MqB2^{B/q})$ for $q\ge3$ gives the first bound;
+$q=2$ gives the second. At $q=1$, separation excludes a unit.
+Omitting the $O(M/q)$ translation factor and summing the same geometries
+proves \eqref{macro:eq:geometry-sum}.
+\end{proof}
+\begin{remark}[Why the dyadic interval helps, and what it does not remove]\label{rem:dyadic-edge}
+The starts $(x,2x)$ cannot both belong to $[N,2N)$. This removes the
+volumetric $2:1$ family, not all ratio-two occurrences in two windows:
+$(N-1,2N-2)$ can still occur when the starts are $N$ and $2N-1$.
+Our master estimate keeps the volumetric branch and therefore also applies
+to the finite prefix. In a dyadic restriction, a more precise channel count
+improves this particular term, but that improvement is not needed for
+\eqref{eq:master-envelope}.
+\end{remark}
+\subsection{The partition and the shallow sectors}
+For a nonaligned pair let $\widetilde k$ be the rank of the small-prime
+and two block-parity equations after solving all large-prime equations.
+Then
+\begin{equation}\label{macro:lem:exact-rank}
+ \tau=D^\#+c^\#-\widetilde k.
+\end{equation}
+Set $T_B=\lfloor(B-2)/3\rfloor$. After removing $2^\sigma-1$ in
+\eqref{eq:weight-split}, apply the following tests successively:
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}cX@{}}\toprule
+Sector & Defining test, after the preceding tests have failed\\\midrule
+1 & $P^\#\le M$.\\
+2 & $\sigma>0$ and the canonical channel has $q\le\sqrt{\log B}$.\\
+3 & $c^\#\le B/6$.\\
+4 & The pair is aligned.\\
+5 & $c^\#\le2B/3$.\\
+6 & $D^\#\ge3$.\\
+7 & Write $c^\#=B-s$; then $s+\widetilde k>T_B$.\\
+8 & $s+\widetilde k\le T_B$.\\\bottomrule
+\end{tabularx}
+\end{center}
+The tests are complementary at each step. In sectors 5--8 the pair is
+nonaligned, $\sigma=0$, and $D^\#=D$, $c^\#=c$. In sectors 7--8 one
+also has $c^\#>2B/3$ and $D^\#\le2$. Thus this is a disjoint partition
+of all residual mass, including pairs with very different heights.
+
+\begin{proposition}[Direct bounds in sectors 1--3]\label{prop:shallow-final}
+Up to a common factor $M^{o(1)}$, the residual masses of sectors 1, 2 and 3
+are bounded, respectively, by
+\[
+ M^{3/2}+MQ_B^{1/2},\qquad
+ M^{3/2}+MQ_B^{1/2}+MQ_B^{1/3},\qquad
+ M^{3/2}Q_B^{1/6}.
+\]
+\end{proposition}
+\begin{proof}
+In sector 1 the canonical certificate contains exactly $c^\#$ distinct
+primes, all greater than $B$. Hence
+\begin{equation}\label{eq:growing-moment} 
+ (B+1)^{c^\#}\le P^\#\le M,\qquad
+ c^\#\le\frac{\log M}{\log(B+1)},\qquad 2^{c^\#}=M^{o(1)}.
+\end{equation}
+The last estimate is uniform in the fixed positive logarithmic band.
+Together with $D^\#=O(B/\log B)$ and
+$\tau\le D^\#+c^\#$, it gives $2^\tau=M^{o(1)}$ pointwise.
+When $\sigma=0$, only relational hosts contribute, and their number is
+$M^{3/2+o(1)}$ by \cref{macro:prop:host}. When $\sigma>0$, use
+\[
+ 2^\sigma(2^\tau-1)
+ \le2(2^\sigma-1)M^{o(1)}
+\]
+and sum the rational mass in \cref{macro:prop:systematic}.
+The two branches give
+$M^{o(1)}(M^{3/2}+MQ_B^{1/2})$, without a critical-scale substitution
+or any restriction on the ratio between the starts.
+
+In sector 2, write the canonical channel as $h=by-ax$.
+If a prime $p>B$ joins a nonexact cell $(i,j)$, it divides
+$a(x+i)-b(y+j)=ai-bj-h\ne0$. The existence of an exact unit bounds
+this integer by $O(qB)$. Thus every residual certificate prime is at
+most a fixed multiple of $qB$.
+Consequently $c^\#\le\pi(CqB)=o(B)$ uniformly for
+$q\le\sqrt{\log B}$. Also $D^\#=o(B)$, so $\tau=o(B)$.
+Summing the systematic weights by \eqref{eq:systematic} bounds this
+sector. The displayed $M^{3/2}$ term is harmless and also covers a
+partition convention that sends a zero-dimensional rational code here.
+
+In sector 3, $\sigma=0$ or $q>\sqrt{\log B}$, hence $\sigma=o(B)$.
+The quotient estimate gives
+$2^\sigma(2^\tau-1)\le Q_B^{1/6}M^{o(1)}$.
+Only relational hosts contribute. Multiply by their $M^{3/2+o(1)}$ count.
+\end{proof}
+
+The untreated pairs now have a large certificate product and more than
+$B/6$ residual components. The next step either rules out their alignment
+or extracts a bounded component whose square class supplies a rigid
+Diophantine equation.
+
+\subsection{Diophantine counting and deep cores}
+A bounded component forces a product of a fixed number of shifted values
+to lie in one square class. We need to count solutions only in a polynomial
+height range. Two of the factors already suffice: after localizing their
+square classes, they satisfy a Pell equation. This bounded-height argument
+keeps the uniformity we need without a height-free integral-point theorem.
+\begin{lemma}[Uniform Pell count]\label{macro:lem:pell}
+Fix $K_0>0$.  Let $A,C$ be positive squarefree integers with
+$A/C\notin\mathbb Q^{\times2}$, and let $e\neq0$.  If
+$A,C,|e|\leq M^{K_0}$, then the number of integer solutions of
+\[
+ Az^2-Cw^2=e,
+ \qquad |z|,|w|\leq M^{K_0},
+\]
+is
+\[
+ \exp\!\left(O_{K_0}\!\left(\frac{\log M}{\log\log M}\right)\right)
+ =M^{o(1)}.
+\]
+\end{lemma}
+
+\begin{proof}The detailed reduction and uniformity checks are given in \cref{supp:lem:pell}.\end{proof}
+\begin{lemma}[Split products in a polynomial range]\label{lem:split-bounded}
+Fix $d\ge2$ and $K>0$. Let $h_1,\ldots,h_d$ be distinct integers and
+$e$ a positive squarefree integer with $|h_i|,e\le M^K$.
+The number of integer pairs $(X,Y)$ satisfying
+\[
+ |X|\le M^K,\qquad X+h_i>0\ (1\le i\le d),\qquad
+              \prod_{i=1}^d(X+h_i)=eY^2
+\]
+is at most $\exp(O_{d,K}(\log M/\log\log M))$.
+\end{lemma}
+\begin{proof}
+Put $\Delta=\prod_{i<j}(h_i-h_j)\ne0$ and
+$S=\{p:p\mid e\Delta\}$. If $p\notin S$, it divides at most one
+factor $X+h_i$ and has even valuation in the product. Hence the
+squarefree part of every factor is supported on $S$.
+In particular
+\[
+ X+h_1=su^2,\qquad X+h_2=tv^2,
+ \qquad su^2-tv^2=h_1-h_2\ne0,
+\]
+where $s,t$ are positive squarefree integers supported on $S$.
+There are at most $4^{|S|}$ choices of $(s,t)$. We need retain only
+$s,t\le2M^K$, and $u,v\le(2M^K)^{1/2}$.
+For $s\ne t$, their quotient is not a rational square, so
+\cref{macro:lem:pell} bounds the solutions uniformly. For $s=t$,
+the equation $s(u-v)(u+v)=h_1-h_2$ is bounded by the divisor estimate.
+Each pair $(u,v)$ determines $X$, and then at most two values of $Y$.
+Finally $|e\Delta|\le M^{O_{d,K}(1)}$, so
+$|S|=O_{d,K}(\log M/\log\log M)$; the divisor and Pell bounds have the
+same exponential scale. Multiplying the bounds proves the claim.
+\end{proof}
+This argument counts bounded-height solutions, not all integral points.
+The distinction is precisely what makes a single Pell equation sufficient.
+The square-class and height bookkeeping is recorded in
+\cref{supp:sec:split-localization}.
+
+\begin{lemma}[Normalization of a component]\label{lem:component-normalization}
+Let $I,J$ be two nonempty sets of offsets, with $|I|+|J|\le K_0$, and let $d$ be a positive squarefree $B$-smooth integer. If
+\begin{equation}\label{eq:component-square}
+ P_I(x)Q_J(y)=dz^2,
+ \qquad
+ P_I(X)=\prod_{i\in I}(X+i),
+ \quad
+ Q_J(Y)=\prod_{j\in J}(Y+j),
+\end{equation}
+then, after fixing $x,I,J,d$, there is a positive squarefree integer $e\le M^{O_{K_0}(1)}$ such that
+\begin{equation}\label{eq:normalized-mobile}
+ Q_J(y)=ev^2.
+\end{equation}
+The integer $e$ is the squarefree part of $dP_I(x)$.
+\end{lemma}
+
+\begin{proof}
+In the group $\mathbb Q^\times/\mathbb Q^{\times2}$, the equality \eqref{eq:component-square} gives
+\[
+ [Q_J(y)]=[dP_I(x)].
+\]
+The positive squarefree representative of the right-hand class is $e$; the squarefree part of $Q_J(y)$ is therefore $e$. Since $|I|\le K_0$, we have $dP_I(x)\le M^{O_{K_0}(1)}$.
+\end{proof}
+\begin{lemma}[One-sided count of a component]\label{lem:one-sided-component}
+Fix $K_0$. For $x,I,J,d$ fixed as in \cref{lem:component-normalization}, the number of $y\in U_{M,\delta}$ satisfying \eqref{eq:component-square} is
+\[
+ \begin{cases}
+ O(M^{1/2}),&|J|=1,\\
+ M^{o_{K_0}(1)},&|J|\ge2.
+ \end{cases}
+\]
+The same assertion holds after exchanging the two blocks.
+\end{lemma}
+
+\begin{proof}
+\Cref{lem:component-normalization} gives $Q_J(y)=ev^2$.
+For $|J|=1$, the equation $y+j=ev^2$ leaves at most
+$1+\sqrt{3M/e}=O(M^{1/2})$ values.
+For $|J|\ge2$, use \cref{lem:split-bounded}. Its degree is at most
+$K_0$, all shifted factors are positive, $y\le M$, and
+$e\le M^{O_{K_0}(1)}$. Thus a single fixed polynomial-height exponent
+covers every coefficient and variable. The symmetric statement follows
+by interchanging the blocks.
+\end{proof}
+\begin{lemma}[Two singleton components]\label{lem:singleton-pair}
+Fix two offsets $i,j$. The number of triples $(x,y,d)$, with $x,y\in U_{M,\delta}$, $d$ positive, squarefree and $B$-smooth, satisfying
+\[
+ (x+i)(y+j)=dz^2
+\]
+is
+\begin{equation}\label{eq:size2-hosts}
+ M\exp\!\left(O\!\left(\frac{\sqrt B}{\log B}\right)\right).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Set $X=x+i$, $Y=y+j$. A prime-by-prime analysis of $XY=dz^2$ gives a unique parametrization
+\[
+ X=ecu^2,
+ \qquad
+ Y=(d/e)cv^2,
+\]
+where $e\mid d$, where $c$ is squarefree and $(c,d)=1$. For fixed $e$, the conditions $1\le X,Y\le3M$ force
+\[
+ c\le C_e:=\frac{3M}{\max(e,d/e)}.
+\]
+Dropping the ``squarefree'' and ``coprime to $d$'' conditions, which only increases the count, the number of triples $(u,v,c)$ is at most
+\begin{align*}
+ \sum_{c\le C_e}
+ \left(1+\sqrt{\frac{3M}{ec}}\right)
+ \left(1+\sqrt{\frac{3Me}{dc}}\right)
+ &\ll
+ C_e
+ +\sqrt{\frac Me}\sqrt{C_e}
+ +\sqrt{\frac{Me}d}\sqrt{C_e}
+ +\frac M{\sqrt d}\sum_{c\le C_e}\frac1c\\
+ &\ll
+ \frac{M\log M}{\sqrt d}.
+\end{align*}
+Here we used $\max(e,d/e)\ge\sqrt d$. After summing over $e\mid d$, the number of solutions for fixed $d$ is
+\[
+ \ll\frac{M\tau(d)\log M}{\sqrt d}.
+\]
+Finally
+\[
+ \sum_{\substack{d\text{ squarefree}\\p\mid d\Rightarrow p\le B}}
+ \frac{\tau(d)}{\sqrt d}
+ =\prod_{p\le B}\left(1+\frac2{\sqrt p}\right)
+ =\exp\!\left(O\!\left(\frac{\sqrt B}{\log B}\right)\right).
+\]
+The factor $\log M$ is absorbed into the exponential $M^{o(1)}$.
+\end{proof}
+\begin{lemma}[Hosts of a bounded component]\label{lem:bounded-component}
+Fix $K_0$. The number of separated pairs $(x,y)$ whose non-aligned residual graph contains a nontrivial unpinned component meeting both blocks and of size at most $K_0$ is
+\begin{equation}\label{eq:bounded-hosts}
+ M^{1+o_{K_0}(1)}.
+\end{equation}
+If this component has exactly two vertices, one in each block, we have the sharper bound
+\[
+ M\exp\!\left(O\!\left(\frac{\sqrt B}{\log B}\right)\right).
+\]
+\end{lemma}
+
+\begin{proof}
+Let $I,J$ be the offset sets of the component.
+\Cref{macro:lem:graph-resolution} provides, with a unique coefficient
+$d$, equation \eqref{eq:component-square}. There are only
+$B^{O_{K_0}(1)}=M^{o(1)}$ choices of the two offset sets. We separate
+three branches.
+
+\paragraph{Two degrees at least two.}
+If $|I|,|J|\ge2$, fix $x$, the offsets and $d$.
+\Cref{lem:one-sided-component} leaves $M^{o_{K_0}(1)}$ values of
+$y$. Summing over the $M$ values of $x$ and the
+$2^{\pi(B)}=M^{o(1)}$ coefficients $d$ gives
+$M^{1+o_{K_0}(1)}$ hosts.
+
+\paragraph{A single degree equal to one.}
+If $|I|=1<|J|$, the same argument fixes $x$ and uses the mobile side of
+degree $|J|\ge2$. If $|J|=1<|I|$, we exchange the two blocks. We again
+obtain $M^{1+o_{K_0}(1)}$ after summing over $d$.
+
+\paragraph{Two singletons.}
+If $|I|=|J|=1$, \cref{lem:singleton-pair} applies directly. It already
+counts the triples $(x,y,d)$ and, in particular, performs the
+simultaneous summation
+\[
+ \sum_{d\ B\text{-smooth, squarefree}}\frac{\tau(d)}{\sqrt d}.
+\]
+No factor $2^{\pi(B)}$ must be reintroduced in this branch.
+After the union over the $B^2$ offset pairs, absorbed into the
+exponential, the sharp bound remains
+\[
+ M\exp\!\left(O\!\left(\frac{\sqrt B}{\log B}\right)\right).
+\]
+The three branches give both assertions.
+\end{proof}
+\begin{proposition}[No aligned residual core of linear density]\label{macro:prop:aligned}
+For every fixed $\alpha>0$, no aligned pair in $\UM^2$ satisfies
+$c^\#\geq\alpha B$ once $M$ is sufficiently large in terms of the
+fixed parameters and $\alpha$.
+\end{proposition}
+
+\begin{proof}
+Let $m_{\rm ex}$ be the number of exact units of the canonical
+channel.  If $m_{\rm ex}\geq2$, the nondefective exact components have
+already been removed in $\Cres$.  If $m_{\rm ex}=1$, make no height or
+valuation assumption and remove directly the at most two graph
+components containing its two occurrences.  If $m_{\rm ex}=0$, remove
+nothing.  In every case, from $c^\#\geq\alpha B$ there remain at least
+$\alpha B/2$ nontrivial components containing no exact unit.  Their
+total size is at most $2B$, so at least $m\geq\alpha B/4$ have size at
+most $K_\alpha=\lceil8/\alpha\rceil$.
+
+For each such component $C_t$ form the column
+\[
+ \Phi(C_t)=\left(
+ (v_p(\prod_{n\in C_t}n)\bmod2)_{p\leq B},
+ |C_t\cap V_x|\bmod2,
+ |C_t\cap V_y|\bmod2
+ \right)
+ \in\F^{\pi(B)+2}.
+\]
+The kernel of the matrix of these $m$ columns has codimension at most
+$r=\pi(B)+2$.  Choose
+\[
+ t=\left\lceil C_\alpha\frac{B}{\log B\log\log B}\right\rceil
+\]
+with $C_\alpha$ large.  If no nonzero kernel word had weight at most
+$2t$, the Hamming bound would give
+$\sum_{j\leq t}\binom{m}{j}\leq2^r$.  Since $m\gg_\alpha B$ and
+$t=o(m)$,
+\[
+ \log \binom{m}{t}
+ \geq t\log(m/t)-O(t)
+ =(C_\alpha+o_\alpha(1))\frac{B}{\log B},
+\]
+which exceeds $r\log2$ when $C_\alpha$ is fixed sufficiently large.
+Thus a nonzero word uses
+\[
+ O_\alpha\!\left(\frac{B}{\log B\,\log\log B}\right)
+\]
+components.
+
+Let $I,J$ be the unions of their offsets.  The last two coordinates of
+$\Phi$ make $|I|$ and $|J|$ even; the remaining coordinates, together
+with the large-prime equations internal to each component, show that
+\[
+ \prod_{i\in I}(x+i)\prod_{j\in J}(y+j)
+\]
+is a square.  Put $d_0=|I|+|J|$; then
+\[
+ d_0\ll_\alpha\frac{B}{\log B\log\log B}.
+\]
+For the canonical channel $(a,b,h)$ define
+\[
+ G(T)=\prod_{i\in I}(T+ai)
+      \prod_{j\in J}(T+h+bj).
+\]
+There are no root collisions: one would be an exact unit, and all
+components containing such a unit were removed.  At $T=ax$,
+\[
+ G(ax)=a^{|I|}b^{|J|}
+       \prod_{i\in I}(x+i)\prod_{j\in J}(y+j)
+\]
+is an integer square.  All roots have modulus $O(B^{A+1})$, while
+$ax\geq x\geq M^\delta$; in particular $ax\geq2R$ for the root
+radius $R=O(B^{A+1})$ once $M$ is large.  \Cref{lem:runge} gives
+\[
+ ax\leq(Cd_0B^{A+1})^{2d_0}.
+\]
+The logarithm of the right-hand side is
+$O_\alpha(B/\log\log B)=o(B)$, whereas
+\[
+ \log(ax)\geq\delta\log M
+ \geq(\delta/\beta_+)B.
+\]
+This contradiction closes the aligned deep sector directly at scale
+$M$.
+\end{proof}
+We now work in the nonaligned complement. A component of size at most
+$2/\alpha$ exists whenever $c^\#\ge\alpha B$, since the total number of
+occurrences is $2B$. The preceding component count therefore gives
+$M^{1+o(1)}$ hosts in every fixed positive-density deep sector.
+For sector 5, $\tau\le D^\#+c^\#\le2B/3+o(B)$, so its mass is
+$MQ_B^{2/3}M^{o(1)}$.
+\begin{lemma}[Two defects in one block]\label{macro:lem:two-defects}
+The number of starts $x\in\UM$ whose window contains two distinct
+$B$-defective occurrences is $M^{o(1)}$.
+\end{lemma}
+
+\begin{proof}
+Write
+$x+i_1=d_1u^2$ and $x+i_2=d_2v^2$, with $d_1,d_2$ squarefree and
+$B$-smooth.  If $d_1\neq d_2$, then $d_1/d_2$ is not a square and
+\[
+ d_1u^2-d_2v^2=i_1-i_2\neq0
+\]
+is covered by Lemma~\ref{macro:lem:pell}; all coefficients and variables are
+in fixed polynomial ranges by \eqref{macro:eq:Bsmooth-height} and
+\eqref{macro:eq:occ-range}.  If $d_1=d_2=d$, then $d\mid i_1-i_2$ and
+\[
+ (u-v)(u+v)=(i_1-i_2)/d,
+\]
+which has $M^{o(1)}$ solutions by the divisor bound.  There are
+$4^{\pi(B)}B^2=M^{o(1)}$ choices of coefficients and offsets.
+\end{proof}
+\begin{proposition}[Sector 6]\label{macro:prop:sector6}
+For nonaligned deep-core pairs with $c^\#>2B/3$ and $D^\#\geq3$,
+\[
+ R_{\rm res}\leq M^{1/2}\QB M^{o(1)}.
+\]
+\end{proposition}
+
+\begin{proof}
+One block contains at least two defects, so its start has
+$M^{o(1)}$ choices by Lemma~\ref{macro:lem:two-defects}.  Since
+$c^\#>2B/3$, a residual component has bounded size.  Fix its offsets
+and square class at a cost $M^{o(1)}$.  The start in the other block is
+then counted by Lemma~\ref{lem:one-sided-component}: at most $M^{1/2}$ choices
+when its component degree is one, and $M^{o(1)}$ otherwise.  Hence the
+number of hosts is $M^{1/2+o(1)}$.
+
+Finally $D^\#+2c^\#\leq2B$ and
+$D^\#=O(B/\log B)$ imply
+$D^\#+c^\#\leq B+o(B)$.  Therefore
+$2^\tau\leq\QB M^{o(1)}$, and multiplication proves the result.
+\end{proof}
+For sector 7, integrality gives $s+\widetilde k\ge T_B+1$.
+Thus \eqref{macro:lem:exact-rank} and $D^\#\le2$ imply
+$\tau\le B+1-T_B=2B/3+O(1)$. The same deep-host count bounds its mass
+by $MQ_B^{2/3}M^{o(1)}$.
+
+\subsection{Terminal kernels: count clustering, not just candidates}
+It remains to consider sector 8. Write $j=s+\widetilde k\le T_B$.
+If a component has size $2+e_t$, then
+$\sum_t e_t\le2B-2c^\#=2s$. At most $2s$ components have size greater
+than two, so at least $B-3s\ge B-3j\ge2$ are isolated size-two
+components. For such a component $\{x+i_t,y+j_t\}$ put
+$R_t=K_B(x+i_t)$.
+\begin{lemma}[Terminal kernels and determinants]\label{macro:lem:determinant}
+For every isolated size-two component,
+\[
+ R_t=K_B(x+i_t)=K_B(y+j_t)>1.
+\]
+Kernels belonging to distinct components are coprime.  For $s\neq t$,
+\[
+ R_sR_t\mid
+ \Delta_{s,t}:=(x+i_s)(y+j_t)-(x+i_t)(y+j_s),
+\]
+and
+\[
+ 0<|\Delta_{s,t}|\leq4MB
+\]
+for large $M$.
+\end{lemma}
+
+\begin{proof}
+An isolated unpinned component contains exactly the two occurrences
+carrying every one of its $p>B$ labels, so the full kernels agree and
+are nontrivial.  A prime cannot label two components, because each
+block contains at most one odd occurrence of that prime; hence the
+kernels are coprime.  Divisibility of the determinant follows term by
+term.
+
+If the determinant vanished, the two occurrence ratios would be equal.
+Writing their common reduced ratio as $b/a$ gives
+$x+i_s=bu_s$, $y+j_s=au_s$ and similarly with $u_t$.  Subtraction yields
+\[
+ i_s-i_t=b(u_s-u_t),
+ \qquad j_s-j_t=a(u_s-u_t).
+\]
+Distinct components have distinct offsets, so $u_s\neq u_t$, and
+$a,b\leq L$.  The two cells would therefore be two units of an aligned
+exact channel, contradicting nonalignment.  Finally
+\[
+ |\Delta_{s,t}|
+ \leq|x+i_s||j_t-j_s|+|y+j_s||i_s-i_t|
+ \leq4MB
+\]
+by \eqref{macro:eq:occ-range}.
+\end{proof}
+Slice terminal pairs by $X\le\max(x,y)<2X$, where
+$M^\delta/2\le X\le M$. For counting, call the larger coordinate $z$
+and the smaller one its partner; keep each pair's original canonical data.
+The two possible orientations cost only a factor two, and no symmetry
+of the canonical selection is assumed. On this slice
+$R_sR_t\ll XB$. Set $T_X=(C XB)^{1/2}$ with an absolute constant large
+enough for this inequality. At most one isolated kernel exceeds $T_X$.
+
+\begin{lemma}[Partners and a one-dimensional container]\label{lem:terminal-partners}
+On a terminal slice, a fixed value of either start has $X^{o(1)}$
+possible partners. The number of possible values of either coordinate,
+and hence of the larger start, is at most $X^{3/4+o(1)}$.
+All constants are uniform in the slice.
+\end{lemma}
+\begin{proof}
+Fix either start and write it as $x$, with partner $y$, for this count
+only; the original canonical data of the pair are unchanged.
+Choose two isolated components at a cost $O(B^4)=X^{o(1)}$.
+Their distinct coprime kernels $R,S>1$ are fixed by $x$. The other
+occurrences have the unique forms
+$y+j=Ruz^2$, $y+v=Su'w^2$ with independent squarefree $B$-smooth
+coefficients $u,u'$.
+Thus
+\[
+ Ruz^2-Su'w^2=j-v\ne0.
+\]
+The coefficients $Ru,Su'$ are squarefree, of size $O(X)$, and their
+quotient is nonsquare because the large-prime supports of $R,S$ are
+disjoint. The Pell bound gives $X^{o(1)}$ partners per pair of smooth
+coefficients, of which there are $4^{\pi(B)}=X^{o(1)}$.
+This argument needs only $y\ll X$, not $y\asymp X$.
+
+At least one isolated kernel is at most $T_X$. Integers with such a
+kernel have the unique representation $n=ua^2r$, where $u$ is squarefree
+and $B$-smooth and $r=K_B(n)\le T_X$. Therefore
+\begin{equation}\label{eq:kernel-container}
+ \#\{n\le3X:K_B(n)\le T_X\}
+ \le\sqrt{3X}\prod_{p\le B}(1+p^{-1/2})\sum_{r\le T_X}r^{-1/2}
+ \ll X^{3/4+o(1)}.
+\end{equation}
+Each such integer lies in at most $B=X^{o(1)}$ windows, whether the
+coordinate is the first or the second start. Their union also bounds the
+larger starts. Since
+$B/\log X$ stays in a fixed compact interval, all constants are uniform.
+\end{proof}
+
+\begin{lemma}[Shifted small-kernel energy]\label{lem:kernel-energy}
+For $T\ll(XB)^{1/2}$ put
+$A_T(x)=\#\{i\in I_L:K_B(x+i)\le T\}$. Uniformly on every slice,
+\begin{equation}\label{eq:kernel-energy}
+ \sum_{X\le x<2X}\binom{A_T(x)}2\ll_\varepsilon X^{2/3+\varepsilon}B^2.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let $W_B=\prod_{p\le B}(1+p^{-1/2})=X^{o(1)}$.
+Kernels $r\le R_0=X^{1/3}$ occur at at most
+\[
+ \sqrt{3X}W_B\sum_{r\le R_0}r^{-1/2}=X^{2/3+o(1)}
+\]
+integers in $[X/2,3X]$. Each can anchor at most $O(B^2)$ pairs of
+occurrences and windows, so these integers give the required bound.
+
+For the remaining pairs fix $1\le h\le B$ and dyadic ranges
+$r=K_B(n)\asymp R$, $s=K_B(n+h)\asymp S$, with
+$R,S\ge X^{1/3}$ and $R,S\ll(XB)^{1/2}$.
+Set $q=n/r$, $q'=(n+h)/s$. Both are a square times a squarefree
+$B$-smooth integer. There are at most
+$X^{o(1)}\sqrt{X/R}$ and $X^{o(1)}\sqrt{X/S}$ choices, respectively.
+Moreover $q\asymp X/R$ and $q'\asymp X/S$, because $n\asymp X$.
+For a fixed pair, the equation
+\[
+ qr+h=q's
+\]
+requires $(q,q')\mid h$; if soluble, its integer solutions have steps
+$q'/(q,q')$ and $q/(q,q')$. Hence at most $1+O(BRS/X)$ solutions lie
+in the specified boxes. Their total is
+\[
+ X^{o(1)}\left(\frac{X}{\sqrt{RS}}+B\sqrt{RS}\right)
+ \le X^{2/3+o(1)}.
+\]
+There are $X^{o(1)}$ pairs of dyadic ranges. Sum over $h$ and note
+that a shifted pair lies in at most $B$ windows. This proves
+\eqref{eq:kernel-energy}.
+\end{proof}
+
+\begin{proposition}[Terminal mass]\label{prop:terminal-final}
+Sector 8 contributes at most
+\[
+ M^\varepsilon\left(M^{2/3}Q_B+M^{3/4}Q_B^{2/3}\right).
+\]
+\end{proposition}
+\begin{proof}
+On a fixed larger-start slice put $j=s+\widetilde k$ and
+$m_j=B-3j-1$. The sector test gives $m_j\ge1$.
+By \cref{macro:lem:exact-rank},
+$\tau+j=B+D^\#$ with $D^\#\le2$.
+There are at least $B-3j$ isolated kernels, all but at most one below
+$T_X$, so each window has at least $m_j$ small kernels.
+
+First collect all pairs with $m_j\ge2$, without separating the values
+of $j$. Their larger start $z$ satisfies
+$\binom{A_{T_X}(z)}2\ge1$. The energy estimate counts at most
+$X^{2/3+o(1)}B^2$ such starts, and the uniform partner bound contributes
+only $X^{o(1)}$. Since $2^\tau-1\le4Q_B$, the total mass is at most
+$X^{2/3+o(1)}Q_B$; the factor $B^2$ is subpolynomial.
+
+In the complementary population, $m_j\le1$ implies $3j\ge B-2$.
+Consequently $3\tau\le2B+8$, and
+$2^\tau-1\le8Q_B^{2/3}$. At least one small kernel remains, so the
+one-dimensional container and partner bound give at most
+$X^{3/4+o(1)}$ pairs. Their mass is at most
+$X^{3/4+o(1)}Q_B^{2/3}$.
+
+The dyadic slices of the larger coordinate exhaust the terminal pairs.
+Their logarithmic bands are uniform, and geometric summation proves the
+claim. The partner estimate uses only its upper height bound, never
+comparability with $X$.
+\end{proof}
+
+\subsection{Assembly and lower bounds}
+\begin{proof}[Proof of \cref{thm:master-profile}]
+The completed estimates are as follows; a factor $M^{o(1)}$ is suppressed.
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}lXl@{}}\toprule
+Population & Mechanism & Weighted mass\\\midrule
+Rational & Exact-unit enumeration & $MQ_B^{1/3}+MQ_B^{1/2}$\\
+1 & Small product and rational mass & $M^{3/2}+MQ_B^{1/2}$\\
+2 & Small channel height & $M^{3/2}+MQ_B^{1/2}+MQ_B^{1/3}$\\
+3 & Host count and rank & $M^{3/2}Q_B^{1/6}$\\
+4 & Runge and a short codeword & $0$\\
+5 & Bounded components & $MQ_B^{2/3}$\\
+6 & Two defects and a component & $M^{1/2}Q_B$\\
+7 & Exact rank deficit & $MQ_B^{2/3}$\\
+8 & Shifted kernel energy and Pell & $M^{2/3}Q_B+M^{3/4}Q_B^{2/3}$\\\bottomrule
+\end{tabularx}
+\end{center}
+Every entry is bounded by one of the three monomials in
+\eqref{eq:master-profile}. The partition is exhaustive and
+\eqref{eq:weight-split} is exact, so summation proves that profile.
+Finally
+\[
+ M^{3/2}Q_B^{1/6}=(M^{5/3})^{5/6}(M^{2/3}Q_B)^{1/6},\qquad
+ MQ_B^{2/3}=(M^{5/3})^{1/3}(M^{2/3}Q_B)^{2/3};
+\]
+weighted arithmetic--geometric mean proves \eqref{eq:master-envelope}.
+\end{proof}
+
+The exponent $5/3$ is an upper bound, not an optimality claim. In a dyadic
+block, the ordered pairs $x=2t,y=3t$, $N/2\le t<2N/3$, and their reversals
+give
+\begin{equation}\label{eq:rational-lower-dyadic}
+ R_2(N,L)\ge\left(\frac N3+O(1)\right)
+       \left(2^{\lfloor(B+1)/3\rfloor-1}-1\right).
+\end{equation}
+On $U_{M,\delta}$, the pairs $x=t,y=2t$ and their reversals give
+\begin{equation}\label{eq:rational-lower-macro}
+ R_{2,\delta}(M,L)\ge(M-2M^\delta+O(1))
+       \left(2^{\lfloor B/2\rfloor-1}-1\right).
+\end{equation}
+These follow simply by counting the even code of exact units, regardless
+of any extra residual relations. At criticality the lower exponents are
+$4/3$ and $3/2$, respectively. The one-dimensional container
+\eqref{eq:kernel-container} is itself of order $X^{3/4+o(1)}$ when
+$T\asymp\sqrt{XB}$: choose $r$ prime near $T$ and $n=ra^2\asymp X$.
+What improves the terminal estimate is not a smaller container, but the
+fact that its elements cannot cluster sufficiently often in one short
+window, as quantified by \eqref{eq:kernel-energy}.
+
+
+The weighted relation estimate is now available. A Poisson comparison
+still requires the conditional marginal probabilities, an exact dependency
+graph and the local overlap counts. Before constructing that graph, we
+record two forms of the estimate adapted to prescribed words.
+
+\subsection{From relative signs to prescribed values}\label{sec:absolute-relations}
+There is little extra arithmetic in prescribing the sign of a word rather
+than identifying it with its negative. What changes is the parity
+restriction on square-product subsets.
+
+For separated windows let $\rho^{\rm val}_B(x,y)$ be the nullity of the
+transpose of the matrix with all $2B$ valuation rows $v(n)$,
+$n\in V_x\sqcup V_y$. Thus its kernel consists of all square-product
+subsets, without requiring even cardinality in each block. Write
+$R^{\rm val}_{2,\delta}(M,B)$ for the sum of
+$2^{\rho^{\rm val}_B(x,y)}-1$ over the same separated pairs as $R_{2,\delta}$,
+and $R^{\rm val}_2(N,B)$ for its dyadic analogue.
+
+\begin{proposition}[Prescribing the global signs]\label{prop:absolute-profile}
+Uniformly under the hypotheses of \cref{thm:master-profile},
+\begin{align}
+ R^{\rm val}_{2,\delta}(M,B)
+ &\le4R_{2,\delta}(M,B-1)+3H^{\rm val}_{2,\delta}(M,B),
+       \label{eq:absolute-profile-comparison}\\
+ R^{\rm val}_{2,\delta}(M,B)
+ &\ll_\varepsilon M^\varepsilon
+   \left(M^{3/2}Q_B^{1/6}+MQ_B^{2/3}+M^{2/3}Q_B\right)
+ \ll_\varepsilon M^\varepsilon(M^{5/3}+M^{2/3}Q_B).
+       \label{eq:absolute-profile}
+\end{align}
+The same conclusion holds on a dyadic block and on bounded-ratio
+subintervals, with the corresponding ambient scale.
+\end{proposition}
+\begin{proof}
+Imposing the two block-parity equations on the full square-relation
+kernel gives exactly the relative-sign kernel, by the tree boundary
+bijection. Therefore
+\[
+ \rho_{B-1}(x,y)\le\rho^{\rm val}_B(x,y)
+                         \le\rho_{B-1}(x,y)+2.
+\]
+If the full kernel is zero both weights vanish. Otherwise
+\[
+ 2^{\rho^{\rm val}_B}-1
+ \le4(2^{\rho_{B-1}}-1)+3.
+\]
+The host term includes every separated ordered pair admitting a
+nonempty square-product subset of the full vertex occurrences, with no
+even-cardinality condition in either block. In particular it may count a
+pair whose relative-sign kernel is zero. Sum the inequality using exactly
+this unrestricted host estimate from \cref{macro:prop:host}. Its $M^{3/2+o(1)}$ term is absorbed by the first
+monomial in \eqref{eq:master-profile}. Restriction proves the other
+geometries. The extra two affine constraints therefore cost only a fixed
+factor and a sparse set of new relational pairs, not an exponential
+factor in the window length.
+\end{proof}
+
+
+\subsection{Capping the relation weight}\label{sec:capped-relations}
+The full relation weight is useful when estimating moments. For the
+probability that one of many mutually exclusive words occurs, however,
+its largest values can be wasteful: a joint probability cannot exceed
+either marginal. We record a version of the arithmetic estimate that
+preserves this elementary ceiling.
+
+For $T\ge1$ define
+\[
+ R_{2,\delta}^{[T]}(M,L)
+   =\sum_{\substack{x,y\in U_{M,\delta}\\|x-y|>L}}
+                         \min\{T,2^{\rho_L(x,y)}-1\}.
+\]
+The notation $R_{2,\delta}^{\mathrm{val},[T]}(M,B)$ has the same meaning
+with the full-value nullity $\rho_B^{\rm val}$; omission of $\delta$
+denotes the corresponding dyadic sum.
+\begin{proposition}[Capped two-window profile]\label{prop:capped-profile}
+Under the fixed-band hypotheses of \cref{thm:master-profile}, uniformly
+also for $T\ge1$,
+\begin{align}
+ R_{2,\delta}^{[T]}(M,L)
+ &\ll_\varepsilon M^\varepsilon
+ \left(M^{3/2}Q_B^{1/6}+MQ_B^{2/3}
+                    +M^{2/3}\min\{T,Q_B\}\right),
+       \label{eq:capped-profile}\\
+ R_{2,\delta}^{\mathrm{val},[T]}(M,B)
+ &\ll_\varepsilon M^\varepsilon
+ \left(M^{3/2}Q_B^{1/6}+MQ_B^{2/3}
+                    +M^{2/3}\min\{T,Q_B\}\right).
+       \label{eq:capped-value-profile}
+\end{align}
+The same bounds hold on dyadic and bounded-ratio subintervals. The
+implicit constants are independent of $T$.
+\end{proposition}
+\begin{proof}
+Write $2^\rho-1=(2^\sigma-1)+2^\sigma(2^\tau-1)$ and use
+$\min(T,a+b)\le a+\min(T,b)$ for $a,b\ge0$.
+The rational contribution and sectors 1--5 and 7 are left uncapped;
+the assembly table bounds their sum by
+$M^{o(1)}(M^{3/2}Q_B^{1/6}+MQ_B^{2/3})$.
+In sector 6, the proof of its host bound gives $M^{1/2+o(1)}$ pairs,
+and the pointwise weight is at most $Q_BM^{o(1)}$. Here the factor is
+chosen independently of $T$. The inequality
+$\min(T,EQ_B)\le E\min(T,Q_B)$ for $E\ge1$ therefore bounds this
+contribution by $M^{1/2+o(1)}\min(T,Q_B)$.
+
+For sector 8, use the two populations in the proof of
+\cref{prop:terminal-final}. On a larger-start slice, the first population
+has at most $X^{2/3+o(1)}$ pairs and pointwise weight at most $4Q_B$.
+All geometric and partner bounds were fixed before $T$, so
+\[
+ \min\{T,2^\tau-1\}\le4\min\{T,Q_B\}
+\]
+gives capped mass $X^{2/3+o(1)}\min\{T,Q_B\}$ with a common
+subpolynomial factor independent of $T$. Leave the complementary
+population uncapped: its mass
+$X^{3/4+o(1)}Q_B^{2/3}$ is absorbed by $X^{1+o(1)}Q_B^{2/3}$.
+Geometric summation proves \eqref{eq:capped-profile}.
+
+Finally, the two parity constraints give the pointwise inequality
+\[
+ \min\{T,2^{\rho_B^{\rm val}}-1\}
+ \le4\min\{T,2^{\rho_{B-1}}-1\}
+                       +3\1_{\{\rho_B^{\rm val}>0\}}.
+\]
+The last indicator has sum $M^{3/2+o(1)}$ by the full-value host
+bound. This proves \eqref{eq:capped-value-profile}; restriction proves
+the other geometries.
+\end{proof}
+The cap changes only the dense terminal contribution. Its benefit will
+come from choosing $T$ according to a probability, rather than from
+improving the uncapped exponent $5/3$.

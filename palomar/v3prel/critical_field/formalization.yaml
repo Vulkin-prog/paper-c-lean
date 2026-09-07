@@ -1,0 +1,252 @@
+version: v0.4
+project:
+  name: V3PREL critical field and stable small-prime conditioning
+  description: Thirteen source-facing declarations for the actual critical run field, scalar and spatial
+    Poisson laws, hard and soft small-prime conditional means, arbitrary deterministic statistics
+    and masks, stable recorded variables, and uniform quenched convergence. Source and targets are
+    explicitly constructed in a standalone Mathlib-only challenge.
+  authors:
+  - Brice Pouly
+  responsible_maintainers:
+  - Brice Pouly
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.NT
+  - math.PR
+  msc2020:
+  - 11K65
+  - 60F05
+sources:
+- title: Long runs and rare patterns of a random completely multiplicative function, version 3PREL
+  authors:
+  - Brice Pouly
+  id: https://doi.org/10.33774/coe-2026-z3l74
+  type: paper
+  location: 'Introduction and Sections 4 and 6: critical lattice and diffuse field, start counts,
+    equations (4.1), (4.8), (4.9), stable product lift and uniform quenched bands. Source snapshot
+    manuscripts/v3prel/paper_C_version_3PREL_en.pdf, SHA-256 0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7.'
+  relationship: adapts
+  license: CC-BY-4.0
+  author_endorsement: participated
+  note: This is a new strengthened family, selected by comparator/v3prel_critical_field.json. Its
+    thirteen declarations do not individually restate every result of the article.
+- title: Technical companion to Long runs and rare patterns of a random completely multiplicative
+    function, version 3PREL
+  authors:
+  - Brice Pouly
+  type: paper
+  location: Conditional field transfers, hard and soft information budgets. Snapshot manuscripts/v3prel/paper_C_version_3PREL_technical_companion_en.pdf,
+    SHA-256 d64150c995f07ee39b016bb20a16b5fc3a01ce53b0ddcda893d1ceb41eefadee.
+  relationship: adapts
+  note: The selected spatial laws retain every excess and both signs. The full small-prime sigma-algebra
+    and its actual conditional laws are explicit.
+- title: 'Two moments suffice for Poisson approximations: the Chen--Stein method'
+  authors:
+  - Richard Arratia
+  - Larry Goldstein
+  - Louis Gordon
+  id: https://doi.org/10.1214/aop/1176991491
+  type: paper
+  location: Theorem 2, printed page 11, exact dependency-graph specialization
+  relationship: background
+  note: Process.ProcessAGGStatement states the finite field comparison in half-l1 convention with
+    factor 2(b1+b2), exact outside-vector independence, and all target coordinates. It is a visible
+    theorem argument. The arithmetic dependency graph and its costs are proved internally, not supplied
+    as premises.
+- title: Newman's Short Proof of the Prime Number Theorem
+  authors:
+  - Don Zagier
+  id: https://doi.org/10.2307/2975232
+  type: paper
+  location: American Mathematical Monthly 104 (1997), pages 705-708
+  relationship: background
+  note: Analysis.PrimeNumberTheoremRemainder is the ordinary prime-counting remainder o(t/log t),
+    with Li(t)=Ei(log t). The normalization of Ei, saddle roots and weighted prime estimates are proved
+    in the local development. No desired arithmetic error is assumed.
+- title: Scalar Poisson Stein solution estimates, arXiv:1505.01417v3
+  authors:
+  - K. Krokowski
+  id: https://arxiv.org/abs/1505.01417v3
+  type: paper
+  location: Section 2.5, equations (2.14)-(2.15). Analysis.ScalarSteinFactorsStatement uses the published
+    first-difference bound and the weaker zeroth bound min(1,lambda^(-1/2)).
+  relationship: background
+  note: Only the existence and analytic factors of the actual scalar Stein solution are external.
+    No comparison or arithmetic conclusion is assumed.
+related_formalizations: []
+status:
+  scope: New candidate v3prel_critical_field; it does not reuse any historical v0.9 identifier. The
+    autonomous challenge has 469 lines, 28846 bytes, and exactly thirteen selected proof placeholders.
+    Its independent solution has no holes. These local compilation facts are not a Palomar registration,
+    Comparator pass or NanoDa result.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: PaperCV3Audit.CriticalField.exact_source_coefficients
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: &id001
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.critical_lattice
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.critical_start_count
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.deterministic_statistic
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.hard_conditional
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.soft_conditional
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.spatial_hard_conditioning
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.spatial_soft_conditioning
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.uniform_quenched_scalar
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.critical_diffuse
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.stable_small_prime_record
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.masked_conditional_kernel
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+  - declaration: PaperCV3Audit.CriticalField.spatial_conditional_mean
+    file: SolutionV3CriticalField.lean
+    sorry_count: 0
+    axioms: *id001
+    comparator_config: comparator/v3prel_critical_field.json
+automation:
+  methods:
+  - method: agent
+    models:
+    - GPT-6 Codex agents
+    framework: Codex
+    tool_setup: Agent-assisted mathematical development, source checks, Lean builds, and independent
+      agent review, directed by the human maintainer.
+    prompting_notes: Preserve actual sources and targets, expose literature propositions, and use
+      standalone challenge modules with separately proved bridges.
+  notes: The repository contains the substantive proofs, so repository metadata is omitted and the
+    ordinary substantive-development classification applies. Proof development and comparison-interface
+    review are not human peer review.
+fidelity:
+  divergences: 'The family retains the actual prime-bit source. A classical epsilon defines the spatial
+    finite-support configuration without hiding an existence assumption: exact_source_coefficients
+    proves all its coefficients and the solution identifies it with the actual source. The hard spatial
+    event theorem permits rates below one and assumes only a fixed upper rate bound; the soft theorem
+    retains its printed one-intensity information budget. The scalar hard and soft assertions are
+    genuine expectations over the full small-prime environment. The masked conditional kernel is quantitative
+    before asymptotics and retains actual bad sites, graph edges, affine relation ranks, the retained
+    mean and the Stein factor. The spatial conditional mean is over all signed excesses. The stable
+    product lift uses a genuine expected conditional distance and one division by the positive conditioning
+    probability; its source-facing specialization is countable in the approximated observation and
+    arbitrary in the recorded variable. Uniform quenched scalar convergence uses geometric lower size
+    scales and every admissible length. Diffuse convergence is weak convergence of actual probability
+    laws of finite measures along arbitrary diverging size subsequences; the target is constructed
+    by an independent Poisson count and iid uniform positions and geometric signed marks. Existential
+    probability-law wrappers remove administrative measurability proofs from the challenge, not mathematical
+    conclusions. Only process AGG, scalar Stein and PNT are used, explicitly as propositions; the
+    global list of seven literature-input names is retained; the directional proposition was corrected
+    in lot25, and this family does not depend on it, and no new Lean axiom or desired TV/rank conclusion
+    is introduced.'
+review:
+  status: agent-reviewed
+  notes: The standalone challenge and independent solution compile. Independent agent review checked
+    all thirteen proofs and exact equality of the copied interface definitions and selected signatures;
+    it found no material reservation (work/lot25-critical-independent-review.json records the evidence
+    during preparation). No human peer review, exact-commit Comparator/NanoDa outcome, Palomar editorial
+    approval or registration is claimed by this metadata.
+alignment:
+  namespace: PaperCV3Audit.CriticalField
+  statements:
+  - source: Exact coefficients of the actual signed all-excess source.
+    lean: PaperCV3Audit.CriticalField.exact_source_coefficients
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Critical lattice comparison of the full actual field.
+    lean: PaperCV3Audit.CriticalField.critical_lattice
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Critical start-count Poisson approximation.
+    lean: PaperCV3Audit.CriticalField.critical_start_count
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Contraction to any deterministic statistic, including masked observations.
+    lean: PaperCV3Audit.CriticalField.deterministic_statistic
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Hard full-small-prime conditional scalar mean.
+    lean: PaperCV3Audit.CriticalField.hard_conditional
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Soft full-small-prime conditional scalar mean.
+    lean: PaperCV3Audit.CriticalField.soft_conditional
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Hard spatial conditioning including intensities below one.
+    lean: PaperCV3Audit.CriticalField.spatial_hard_conditioning
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Soft spatial information budget for all excesses and signs.
+    lean: PaperCV3Audit.CriticalField.spatial_soft_conditioning
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Uniform quenched scalar band over every admissible length.
+    lean: PaperCV3Audit.CriticalField.uniform_quenched_scalar
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Critical diffuse weak convergence along size subsequences.
+    lean: PaperCV3Audit.CriticalField.critical_diffuse
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Stable recorded small-prime joint lift and positive-event restriction.
+    lean: PaperCV3Audit.CriticalField.stable_small_prime_record
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Equation (4.1), actual masked conditional kernel and its arithmetic ledger.
+    lean: PaperCV3Audit.CriticalField.masked_conditional_kernel
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: Labelled hard-budget spatial conditional mean.
+    lean: PaperCV3Audit.CriticalField.spatial_conditional_mean
+    module: SolutionV3CriticalField
+    status: proved with the explicit literature premises shown in the theorem, if any

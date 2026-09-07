@@ -1,0 +1,211 @@
+\section{Conditional laws and the Poisson target}\label{supp:sec:conditional-details}
+The arithmetic theorems provide total-variation errors. This appendix
+records exactly when those errors are small enough to transfer a local
+probability, a conditional state, or a Gaussian limit. Properties of the
+independent Poisson target are not additional arithmetic results.
+
+\subsection{Scalar Gaussian and local estimates}
+Let $P_\lambda\sim\Pois(\lambda)$ and let $\epsilon_N$ denote any proved
+conditional scalar total-variation bound in the article. If $\lambda\to\infty$,
+\[
+ \sup_t\left|\PP\left(\frac{Z-\lambda}{\sqrt\lambda}\le t\mid C\right)
+                       -\Phi(t)\right|
+ \le\epsilon_N+C\lambda^{-1/2}.
+\]
+For example, write $P_\lambda$ as a sum of $\lceil\lambda\rceil$
+independent Poisson variables of mean at most one and use the classical
+Berry bound \cite{Berry1941}. Their third absolute centered moments
+are $O(\lambda/\lceil\lambda\rceil)$, which gives the displayed scale.
+The normalization uses the deterministic comparison mean $\lambda$;
+replacing it by an actual conditional mean requires a separate moment
+estimate and is not inferred from total variation alone.
+
+For every integer $n\ge1$ and every $\lambda>0$, one has the exact form
+\begin{equation}\label{supp:eq:poisson-atom}
+ \PP(P_\lambda=n)=\frac{e^{-\delta_n}}{\sqrt{2\pi n}}
+                    \exp[-\lambda h(n/\lambda)],\qquad
+ 0\le\delta_n\le\frac1{12n}.
+\end{equation}
+Here $h(u)=u\log u-u+1$, and $\delta_n$ is independent of $\lambda$. To check the remainder, set
+\[
+ \delta_n=\log(n!)-(n+\tfrac12)\log n+n-\tfrac12\log(2\pi).
+\]
+Stirling's limit gives $\delta_n\to0$. With $t=(2n+1)^{-1}$,
+\[
+ \begin{aligned}
+ \delta_n-\delta_{n+1}
+ &=(n+\tfrac12)\log(1+1/n)-1
+   =\sum_{j\ge1}\frac{t^{2j}}{2j+1},\\
+ 0\le\delta_n-\delta_{n+1}
+ &\le\frac{t^2}{3(1-t^2)}=\frac1{12n(n+1)}.
+ \end{aligned}
+\]
+Telescoping to infinity proves the stated bounds. Substitution of the
+factorial identity into $e^{-\lambda}\lambda^n/n!$ proves
+\eqref{supp:eq:poisson-atom}; moreover
+$0\le1-e^{-\delta_n}\le1/(12n)$, uniformly in the intensity.
+For $n=0$ the mass is exactly $e^{-\lambda}$ and the square-root formula
+is not used.
+
+Thus relative transfer at $n$ requires
+$\epsilon_N/\PP(P_\lambda=n)\to0$. For the hard scalar rate a sufficient
+condition is
+\[
+ I+\log^+\lambda+\tfrac12\log n+\lambda h(n/\lambda)
+                  \le V_N-c\nu_N,
+\]
+and for the soft rate a sufficient condition is
+\[
+ 2I+\log^+\lambda+\log n+2\lambda h(n/\lambda)
+                  \le\widehat V_N-c\widehat\nu_N.
+\]
+In both cases the event must be measurable at the corresponding prime
+cutoff. The logarithms of the reciprocal target masses are then
+$O(V_N)$ or $O(\widehat V_N)$, so division by that mass does not destroy
+the polynomial remainder.
+
+In the central range
+$n=\lambda+t\sqrt\lambda+O(1)$, $|t|=o(\lambda^{1/6})$,
+Taylor expansion gives
+$\lambda h(n/\lambda)=t^2/2+o(1)$ and $\log n=\log\lambda+o(1)$.
+The respective central local budgets are therefore
+\[
+ I+\tfrac32\log\lambda+\tfrac12t^2\le V_N-c\nu_N,
+ \qquad
+ 2I+2\log\lambda+t^2\le\widehat V_N-c\widehat\nu_N.
+\]
+A global scalar approximation at its upper intensity endpoint does not
+by itself imply a relative local approximation there.
+
+For completeness, the analogous relative upper-tail transfer has the
+additional denominator $\PP(P_\lambda\ge\lceil\lambda+t\sqrt\lambda\rceil)$.
+Stirling's formula and summation of successive Poisson masses yield the
+usual Gaussian moderate-tail comparison for
+$0\le t=o(\lambda^{1/6})$. Equivalently, expanding the exponent uniformly
+on the contributing $O(\sqrt\lambda/(1+t))$ scale gives relative error
+$O((1+t^3)/\sqrt\lambda)$; the exponentially smaller outer part of the
+sum is bounded by the ratio of successive masses. Since
+$1-\Phi(t)\asymp e^{-t^2/2}/(1+t)$ for $t\ge0$, a sufficient hard
+arithmetic condition is
+\[
+ I+\log^+\lambda+\tfrac12t^2+\log(1+t)\le V_N-c\nu_N.
+\]
+This condition must be combined with the intrinsic Poisson restriction
+$t=o(\lambda^{1/6})$. It is not a claim about larger deviation scales.
+
+\subsection{Resolving an entire conditional path}
+Let $\epsilon^{\rm path}$ be the aggregate staircase error based at the
+present threshold. The sharpened conditioning inequality
+\eqref{eq:sharp-conditioning} gives a full future-path error at most
+$\epsilon^{\rm path}/p_\lambda(n)$, where
+$p_\lambda(n)=\PP(P_\lambda=n)>\epsilon^{\rm path}$.
+The same assertion holds jointly with any fixed available lower segment.
+Forward transitions are binomial thinning; backward transitions add
+independent Poisson increments.
+
+Before division, the aggregate proof gives
+\[
+ \epsilon^{\rm path}\ll
+ e^I\lambda(1+\log^+(2\lambda))e^{-V_N+o(\nu_N)}
+                      +N^{-1/3+\varepsilon},
+\]
+provided the information, log-intensity and mark cutoff are $O(V_N)$.
+Combining this with \eqref{supp:eq:poisson-atom} proves the budget
+\eqref{eq:resolved-budget}. Its hypotheses also validate that use of the
+common logarithmic band. Indeed, for $n\ge2$, if $\lambda\ge1$ the budget
+bounds $\log\lambda$ by $O(V_N)$. If $\lambda<1$, use
+\[
+ \lambda h(n/\lambda)=n\log n-n+\lambda-n\log\lambda
+\]
+to conclude $|\log\lambda|=O(V_N)$. Thus the base offset, information
+cost and chosen mark cutoff are all $O(V_N)=o(\log N)$.
+The atom's reciprocal is $\exp(O(V_N))=N^{o(1)}$, which can be absorbed
+by first choosing a smaller arithmetic $\varepsilon$.
+For a fixed present state at a fixed positive limiting intensity the
+atom stays bounded away from zero, and no extra logarithmic cost is needed.
+
+The condition $p_\lambda(n)>\epsilon^{\rm path}$ only makes the
+conditional law well-defined and gives a bound. Convergence requires
+$\epsilon^{\rm path}/p_\lambda(n)\to0$. Nothing here supplies a single
+finite-intensity comparison for the entire reverse path: its target
+mass diverges toward thresholds $m\to-\infty$.
+
+\subsection{Quenched transfer along geometric scales}
+The proof of \cref{cor:quenched} gives the single-length
+Markov--Borel--Cantelli argument. Its uniform extension uses the bound
+\[
+ e^{-(c-\beta)\nu_{N_k}+o(\nu_{N_k})}
+       +e^{\beta\nu_{N_k}}N_k^{-1/3+\varepsilon},\qquad 0<\beta<c,
+\]
+for the exceptional probability on $N_k\asymp q^k$, $q>1$.
+Since $\nu_{N_k}\asymp\sqrt{k/\log k}$, multiplication by
+$O(\log N_k)=O(k)$ preserves summability. A single union bound therefore
+covers every integer length in a fixed logarithmic band, provided the
+error margin is uniform. The resulting almost-sure statement concerns
+these conditional laws at individual scales; it requires no independence
+between scales and asserts no canonical coupling over all scales.
+
+\subsection{Exact target consequences}\label{supp:sec:target-consequences}
+For a phase $\vartheta\in[0,1]$, let
+$P_r\sim\Pois(2^{\vartheta-r-1})$ independently for $r\in\Z$, and
+$S_m=\sum_{r\ge m}P_r$. Each tail sum is finite almost surely. Then
+\[
+ S_m\sim\Pois(2^{\vartheta-m}),\qquad
+ \operatorname{Cov}(S_m,S_n)=2^{\vartheta-\max(m,n)}.
+\]
+Splitting $S_m=P_m+S_{m+1}$ gives the exact forward thinning and
+backward immigration kernels in the article. For $s\ge0$ the joint
+probability generating function is
+\[
+ \EE\prod_{j=0}^s z_j^{S_{m+j}}
+ =\exp\left[
+ \sum_{r=m}^{m+s-1}2^{\vartheta-r-1}
+       \left(\prod_{j=0}^{r-m}z_j-1\right)
+ +2^{\vartheta-m-s}\left(\prod_{j=0}^sz_j-1\right)\right].
+\]
+Conditionally on $S_m=n$, the $n$ points have independent uniform
+positions and independent geometric overshoots
+$\PP(E=e)=2^{-e-1}$. For lattice targets the positions are uniform on
+the corresponding finite grid. Conditioning the critical prelimit field
+on a fixed count transfers this assertion by the sharp conditioning
+lemma; only the final grid-to-uniform passage is weak convergence.
+
+The complete centered target is locally finite on $[1,2]\times\Z$,
+although it has infinite total mass toward $r=-\infty$. For every
+nonnegative continuous compactly supported $g$ put
+\[
+ \Psi_\vartheta(g)=
+ \exp\left[-\int_1^2\sum_{r\in\Z}2^{\vartheta-r-1}
+                                (1-e^{-g(t,r)})\,dt\right].
+\]
+Compact support meets finitely many levels. At those levels the lattice
+comparison and a Riemann sum give
+\[
+ \EE(e^{-\langle g,\mathcal E_N\rangle}\mid C_N)
+                         =\Psi_{\vartheta_N}(g)+o_g(1)
+\]
+whenever $I_N\le V_N-c\nu_N$. A convergent phase subsequence is needed
+only to replace this moving deterministic target by a single limit law.
+
+For a base intensity $\lambda_N\to\infty$, the exact maximum identity
+in the article, applied at
+$m_N=\lfloor\log_2\lambda_N\rfloor+j$, gives, along
+$\{\log_2\lambda_N\}\to\vartheta$,
+\[
+ \PP(M_{N,L}-\lfloor\log_2\lambda_N\rfloor\le j)
+                         \longrightarrow e^{-2^{\vartheta-j-1}}.
+\]
+This is a lattice extreme law. The identity uses the scalar comparison
+at the shifted critical length, not an unproved uniform law for every
+large marked field.
+
+Finally, the Poisson--Gaussian bridge follows by splitting the independent
+levels at a fixed critical level $r_0$. Below it, the normalized Poisson
+sums satisfy a multivariate central limit theorem with covariance
+$2^{-\max(j,k)}$. The centered contribution of the levels at or above
+$r_0$ has variance $O(\Lambda_N^{-1})$ after normalization, whereas
+those levels retain their Poisson law and are independent of the lower
+part. This proves joint independence in the limit. Continuous-time
+embeddings and phase-removing auxiliary randomizations belong to the
+separate process article \cite{PoulyLatticePoissonFlows2026}; no such enlargement
+is used in the arithmetic proofs here.

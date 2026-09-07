@@ -1,0 +1,242 @@
+\section{From arithmetic relations to Poisson laws}\label{sec:poisson-transfer}
+The arithmetic estimate is now available independently of the probability
+argument. The remaining difficulty is not a lack of pair information, but
+the absence of a sparse unconditional dependency graph. Conditioning on the
+small prime signs supplies exactly such a graph.
+
+\subsection{An explicit transfer inequality}
+Let $\mathcal F_Y=\sigma(X_p:p\le Y)$, with $Y>2B$. Let $D_Y$ be the
+starts in $I_N$ for which some vertex of $V_x$ is $Y$-defective, and put
+$G_Y=I_N\setminus D_Y$. We deliberately use the whole support in this
+removal rule, so that the same convention works for marks and overlaps.
+For $x\in G_Y$, the private-pivot lemma gives, for every environment,
+\begin{equation}\label{eq:conditional-marginal}
+ \PP(A_xX=b\mid\mathcal F_Y)=2^{-L}
+ \quad\hbox{for every }b\in\F^L.
+\end{equation}
+After conditioning, an event at $x$ depends only on the prime coordinates
+\[
+ \Pi_x(Y)=\{p>Y:\exists n\in V_x,\ v_p(n)\hbox{ odd}\}.
+\]
+Join starts whose coordinate sets intersect. Disjoint collections with no
+edge between them use disjoint independent coordinates. This is an exact
+conditional dependency graph, not an approximate decorrelation assertion.
+
+Write $E_Y(A)$ for its ordered edge count restricted to a mask $A$, and set
+\[
+ \mathcal M_B(A)=\sum_{x\in A}(2^{m_B(x)}-1),\qquad
+ D_Y(A)=A\cap D_Y,\qquad \mathcal M_B=\mathcal M_B(I_N).
+\]
+All defect counts use the complete support, including $x-1$.
+By \cref{cor:first-moment}, the actual probability mass removed from $A$
+is at most $p(\mathcal M_B(A)+|D_Y(A)|)$, where $p=2^{-L}$.
+Deleting the corresponding Poisson target coordinates costs at most
+$p|D_Y(A)|$.
+The edge count obeys
+\begin{equation}\label{eq:edge-count}
+ E_Y(I_N)\ll B^2\left(\frac{N^2}{Y\log Y}
+                   +N\log\log N+\frac N{\log N}\right).
+\end{equation}
+Indeed a prime $p>Y$ can occur in at most $O(B(N/p+1))$ windows;
+sum the square of this quantity over $Y<p\le3N$ and use partial summation.
+
+We use the dependency-graph form of the Arratia--Goldstein--Gordon theorem
+\cite{ArratiaGoldsteinGordon1989,ArratiaGoldsteinGordon1990}.
+For indicators $(I_\alpha)$ with neighbourhoods $B_\alpha$ containing
+$\alpha$, let
+\[
+ b_1=\sum_\alpha\sum_{\beta\in B_\alpha}p_\alpha p_\beta,
+ \qquad
+ b_2=\sum_\alpha\sum_{\substack{\beta\in B_\alpha\\\beta\ne\alpha}}
+                  \EE(I_\alpha I_\beta),\qquad \mu=\sum_\alpha p_\alpha.
+\]
+An exact dependency graph has no third error term. The scalar
+Poisson distance is at most $C(1\wedge\mu^{-1})(b_1+b_2)$; the joint
+indicator-to-independent-Poisson distance is at most $C(b_1+b_2)$.
+These assertions also apply on every fibre of $\mathcal F_Y$.
+
+\begin{theorem}[Masked arithmetic-to-Poisson transfer]\label{thm:transfer}
+For every deterministic $A\subset I_N$, put
+$\mu_A=|A\cap G_Y|p$ and
+$R_2(A)=\sum_{x,y\in A,\ |x-y|>L}(2^{\rho(x,y)}-1)$.
+Then
+\begin{align}
+ &\EE\,\dTV\left(\Law\left(\sum_{x\in A}J_{x,L}\mid\mathcal F_Y\right),
+                         \Pois(|A|p)\right)\notag\\
+ &\quad\ll p(\mathcal M_B(A)+2|D_Y(A)|)
+ +(1\wedge\mu_A^{-1})p^2\bigl(|A|+E_Y(A)+R_2(A)\bigr).
+ \label{eq:transfer}
+\end{align}
+The multiplier is interpreted as one if $\mu_A=0$. Replacing it by one
+gives a valid joint-field bound on the same finite site lattice.
+\end{theorem}
+\begin{proof}
+Delete bad actual sites and their target coordinates. The natural coupling
+costs at most $p(\mathcal M_B(A)+2|D_Y(A)|)$. On each remaining fibre, the
+marginals are exactly $p$, and the graph above is a dependency graph.
+Thus $b_1\le p^2(|A|+E_Y(A))$.
+Overlapping starts are incompatible. At distance $L$, the union is a tree
+with all its vertices possessing private coordinates above $Y$, since its
+diameter is $2L<Y$. Its joint probability is therefore $p^2$.
+For separated pairs the affine Fourier identity gives, after averaging,
+\[
+ \EE b_2\ll p^2\bigl(|A|+E_Y(A)+R_2(A)\bigr).
+\]
+Apply the scalar or process theorem on each fibre, average, and add the
+deletions. The target is deterministic, so mixing also gives the same
+unconditional bound.
+\end{proof}
+The denominator uses the mask's own mean. For a sparse mask it cannot be
+replaced by the ambient intensity $Np$. At bounded ambient intensity,
+all nonnegative sums are bounded by their full-block values, so the critical
+estimate is uniform over all deterministic masks.
+
+\subsection{The two prime-cutoff scales}\label{sec:cutoff-definition}
+The leading scales are already visible without any special functions.
+Set $S_N=\sqrt{\log N\log\log N}$ and $Y=e^{aS_N}$. The normalized number of bad
+starts has leading upper exponent $1/(2a)$, while the normalized edge count
+has exponent $a$. Their balance is $a=1/\sqrt2$.
+For rare conditioning events and growing intensities we retain the smaller
+second-order terms. The following definitions keep these terms explicit.
+
+For $\nu\ge e$, let $u(\nu)\ge1$ solve $e^{u}/u=\nu$, and define
+\[
+ D(\nu)=\nu u(\nu)-\operatorname{Ei}(u(\nu)),\qquad
+ H_N=\log N.
+\]
+For sufficiently large $N$, define $V_N$ and $\widehat V_N$ by
+\begin{equation}\label{eq:saddle-definitions}
+ V_N=D(H_N/V_N),\qquad
+ \widehat V_N=2D(H_N/\widehat V_N),
+ \qquad \nu_N=H_N/V_N,\quad\widehat\nu_N=H_N/\widehat V_N.
+\end{equation}
+The relevant solutions have $H_N/V_N,H_N/\widehat V_N\ge e$.
+Since $D'(\nu)=u(\nu)>0$, each equation has exactly one such solution
+for large $N$. Put $Y_N^\sharp=\lfloor e^{V_N}\rfloor$ and
+$\widehat Y_N=\lfloor e^{\widehat V_N}\rfloor$.
+
+\begin{proposition}[Uniform cutoff estimates]\label{prop:cutoffs}
+Let $w\asymp\sqrt{H_N\log H_N}$, $\nu_w=H_N/w$ and $Y=\lfloor e^w\rfloor$.
+Uniformly in a fixed logarithmic band,
+\begin{equation}\label{eq:free-cutoff}
+ \frac{|D_Y|}{N}\le e^{-D(\nu_w)+o(\nu_w)},\qquad
+ \frac{E_Y(I_N)}{N^2}\le e^{-w+o(\nu_w)}+N^{-1+o(1)}.
+\end{equation}
+The maximum degree $\Delta_Y$ of the graph on all starts, including bad
+ones, satisfies the same second bound after normalization by $N$.
+Moreover,
+\begin{align}
+ V_N^2&=\frac{H_N}{2}
+       \bigl(\log H_N+\log\log H_N-\log2-2+o(1)\bigr),
+       \label{eq:hard-expansion}\\
+ \widehat V_N^2&=H_N
+       \bigl(\log H_N+\log\log H_N-\log4-2+o(1)\bigr).
+       \label{eq:soft-expansion}
+\end{align}
+In particular $\widehat V_N\sim\sqrt2 V_N$ and
+$\log\log N=o(\nu_N)$.
+\end{proposition}
+\begin{proof}
+If $A(X,Y)$ counts $Y$-defective integers up to $X$, their unique
+square--smooth factorization gives, for $0<\zeta<1/2$,
+\[
+ A(X,Y)/X\le X^{-\zeta}\prod_{p\le Y}(1+p^{-1+\zeta}).
+\]
+Choose $\zeta=u(\nu_w)/w$. The prime number theorem and partial summation
+give $\sum_{p\le e^w}\log(1+p^{-1+\zeta})
+=\operatorname{Ei}(u(\nu_w))+o(\nu_w)$.
+This proves the first bound, because $|D_Y|\le B A(3N,Y)$ and
+$\log B=o(\nu_w)$. The edge bound follows from \eqref{eq:edge-count}.
+Each window uses $O(BH_N/w)$ primes above $Y$, each meeting
+$O(B(N/Y+1))$ other windows, which proves the maximum-degree bound.
+The expansions follow by substituting the asymptotic expansion of
+$\operatorname{Ei}(u)$ into \eqref{eq:saddle-definitions}.
+\Cref{supp:prop:cutoff-calculation} gives the uniform remainder calculation
+and both expansions in detail.
+\end{proof}
+
+\begin{theorem}[Hard deletion and soft retention]\label{thm:scalar-rates}
+Fix $0<\beta_-<\beta_+<\infty$. Uniformly when
+$\beta_-\log N\le L+1\le\beta_+\log N$, for every $\varepsilon>0$,
+\begin{align}
+ \dTV(\Law(Z_{N,L}),\Pois(\lambda_N))
+ &\ll\min\left\{1,\lambda_N
+       \left(e^{-V_N+o(\nu_N)}+N^{-1/3+\varepsilon}\right)\right\},
+       \label{eq:hard-rate}\\
+ \dTV(\Law(Z_{N,L}),\Pois(\lambda_N))
+ &\ll\min\left\{1,
+       e^{-(\widehat V_N-\log^+\lambda_N)/2+o(\widehat\nu_N)}
+                   +N^{-1/3+\varepsilon}\right\}.
+       \label{eq:soft-rate}
+\end{align}
+The first estimate also bounds the mean conditional distance given
+$\mathcal F_{Y_N^\sharp}$, and the second given
+$\mathcal F_{\widehat Y_N}$. Neither saddle is asserted to be optimal for
+the distribution itself.
+\end{theorem}
+\begin{proof}
+At the hard cutoff, $|D_Y|=o(N)$ and $\mu_{I_N}\asymp\lambda_N$.
+The master estimate and $Q_B=2N/\lambda_N$ give
+\[
+ R_2(N,L)/N^2\ll N^{-1/3+\varepsilon}(1+\lambda_N^{-1}).
+\]
+Its contribution to \eqref{eq:transfer} is
+$O(\lambda_NN^{-1/3+\varepsilon})$. The defect mass contributes
+$\lambda_NN^{-1/2+o(1)}$ and the cutoff terms contribute
+$\lambda_Ne^{-V_N+o(\nu_N)}$. This proves \eqref{eq:hard-rate}.
+
+For the second estimate retain the exceptional indicators in the scalar
+sum instead of coupling all of them to zero. The scalar Stein equation
+has factors $\|f\|_\infty\ll1\wedge\lambda^{-1/2}$ and
+$\|\Delta f\|_\infty\le1\wedge\lambda^{-1}$
+\cite{Krokowski2017,Rollin2012SteinFactors}.
+Telescope only the good-start terms, using their exact conditional
+marginal. Bound the exceptional part by its total first moment times
+$\|f\|_\infty$. Exceptional neighbours of a good start stay in the
+neighbour sums; their mean is controlled after averaging, not pointwise.
+Set $\ell=\log^+\lambda$ and $K=\max(1,\lambda)=e^\ell$.
+The same two Stein factors, at the same cutoff, give for every $\lambda>0$
+the upper bound
+\begin{equation}\label{eq:soft-free-rate}
+ e^{\ell/2-D(H_N/w)+o(H_N/w)}
+ +e^{\ell-w+o(H_N/w)}+K N^{-1/3+\varepsilon/2}.
+\end{equation}
+Here a smaller arithmetic exponent absorbs the subpolynomial terms.
+The detailed calculation is in \cref{supp:sec:soft-application}.
+At $w=\widehat V_N$ choose a common nonnegative remainder
+$\eta_N\widehat\nu_N$, $\eta_N\to0$, in the two exponentials and put
+$q=\exp(-(w-\ell)/2+\eta_N\widehat\nu_N)$.
+If $q+N^{-1/3+\varepsilon}\ge1$, the bound $\dTV\le1$ suffices.
+Otherwise $q<1$ implies $\ell\le w$, the second exponential is at most
+$q$, and $K\le e^w\le N^{\varepsilon/2}$ for all sufficiently large $N$.
+This proves \eqref{eq:soft-rate}. In particular intensities below one
+are covered directly, without switching to a different conditioning
+argument. All thresholds precede the length in the fixed band; the
+fibrewise proof gives the claimed mean distance for the full
+$\mathcal F_{\widehat Y_N}$.
+\end{proof}
+The hard estimate is more accurate at bounded intensity. The soft estimate
+permits larger intensities: $\log^+\lambda_N\le\widehat V_N-c\widehat\nu_N$
+for fixed $c>0$ suffices. In particular the hard-cutoff endpoint
+$\log\lambda_N=V_N+O(1)$ is covered, but no convergence at the exact
+new endpoint $\log\lambda_N=\widehat V_N$ is inferred.
+
+Write $(z)_2=z(z-1)$ for the second falling factorial.
+\begin{corollary}[First two moments]\label{cor:moments}
+At critical lengths,
+\begin{align*}
+ \EE Z_{N,L}&=\lambda_N+O(N^{-1/2+o(1)}),\\
+ \EE(Z_{N,L})_2&=\lambda_N^2+O_\varepsilon(N^{-1/3+\varepsilon}),\\
+ \operatorname{Var}Z_{N,L}&=\lambda_N+O_\varepsilon(N^{-1/3+\varepsilon}).
+\end{align*}
+\end{corollary}
+\begin{proof}
+The first assertion is \cref{cor:first-moment}. Expand the second factorial
+moment over ordered distinct starts. Overlaps cost $O(NLp^2)$;
+touching pairs cost $p^2N^{1+o(1)}$ by \cref{lem:local-pairs}.
+Separated pairs differ from $p^2$ by at most
+$p^2(2^{\rho(x,y)}-1)$, whose sum is
+$O_\varepsilon(N^{-1/3+\varepsilon})$. The variance identity concludes.
+This argument proves the moments directly: total variation alone would
+not imply convergence of unbounded moments.
+\end{proof}

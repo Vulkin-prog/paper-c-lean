@@ -1,0 +1,101 @@
+name: Paper C v2.8.2 Lean development
+
+on:
+  push:
+    branches:
+      - codex/paper-c-v11-formalization
+    paths:
+      - "PaperCV282.lean"
+      - "PaperCV282/**"
+      - "PaperCV11.lean"
+      - "PaperCV11/**"
+      - "PaperC.lean"
+      - "PaperC/**"
+      - "lean-toolchain"
+      - "lake-manifest.json"
+      - "lakefile.toml"
+      - "lakefile.lean"
+      - "audit_config.json"
+      - "scripts/**"
+      - ".github/workflows/v282-development.yml"
+  pull_request:
+    paths:
+      - "PaperCV282.lean"
+      - "PaperCV282/**"
+      - "PaperCV11.lean"
+      - "PaperCV11/**"
+      - "PaperC.lean"
+      - "PaperC/**"
+      - "lean-toolchain"
+      - "lake-manifest.json"
+      - "lakefile.toml"
+      - "lakefile.lean"
+      - "audit_config.json"
+      - "scripts/**"
+      - ".github/workflows/v282-development.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-v282-development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out the v2.8.2 development surface
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Verify that the retained core digest is unchanged
+        run: node scripts/generate_audit.mjs --check-source-digest
+
+      - name: Test the v2.8.2 audit checker
+        run: python3 -m unittest discover -s scripts -p test_v282_audit.py
+
+      - name: Check the v2.8.2 proof sources
+        run: python3 scripts/check_v282_audit.py --check-source
+
+      - name: Set up the pinned Lean toolchain
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Build the retained v1.1 development surface
+        run: lake build PaperCV11
+
+      - name: Build the assembled v2.8.2 development surface
+        run: lake build PaperCV282
+
+      - name: Print the axioms of the v2.8.2 audit targets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ci-logs
+          lake env lean PaperCV282/Audit.lean 2>&1 | tee ci-logs/PaperCV282-Audit.log
+
+      - name: Verify the v2.8.2 audit transcript
+        run: python3 scripts/check_v282_audit.py --log ci-logs/PaperCV282-Audit.log
+
+      - name: Record the development boundary
+        shell: bash
+        run: |
+          {
+            echo '## Paper C v2.8.2 Lean development'
+            echo
+            echo '- The retained core source digest is unchanged.'
+            echo '- The v1.1 and v2.8.2 development surfaces build with the committed Lean and Mathlib pins.'
+            echo '- The v2.8.2 source and axiom-transcript checks pass.'
+            echo '- This workflow checks the current development surface and does not create a new Palomar qualification or certify the complete manuscript.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve the v2.8.2 audit log
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-c-v282-audit-${{ github.sha }}
+          path: ci-logs/PaperCV282-Audit.log
+          if-no-files-found: warn

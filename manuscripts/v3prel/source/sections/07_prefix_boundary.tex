@@ -1,0 +1,618 @@
+\Needspace{10\baselineskip}
+\section{Finite prefixes and the arithmetic boundary}\label{sec:global-prefix}
+A finite prefix is not a union of independent dyadic experiments. Its
+retained bulk must be treated in one Poisson comparison, using the
+macroscopic relation estimate. The starts near the origin need a different
+argument: there the initial run costs one sign per prime, rather than one
+sign per integer. The two candidate masses are
+$\alpha_L=2^{-\pi(L)}$ at the boundary and
+$\lambda_M=M2^{-L}$ in the bulk. To compare them, we must bound the other
+microscopic starts, discard the intervening region, and approximate the
+bulk with error $o(\lambda_M)$. A critical-scale error of size $o(1)$ is
+not sufficient for this last task.
+
+The limiting source weights arise by normalizing these two masses.
+The stronger conclusion of \cref{thm:two-clock} also distinguishes their
+marks: both excess laws are geometric, but one counts new primes and the
+other new integer positions. This distinction is arithmetic, not a
+property of the common geometric distribution.
+
+\subsection{The exact boundary event}
+Set
+\begin{align*}
+ C_L&=\1_{\{f(1)=\cdots=f(L)\}},&
+ \mathbf B_L&=(C_L,(J_{x,L})_{2\le x\le2L^2}),\\
+ B_L^{\rm mic}&=C_L+\sum_{2\le x\le2L^2}J_{x,L},&
+ q_L&=\PP(B_L^{\rm mic}>0).
+\end{align*}
+Because $f(1)=1$, the event $C_L=1$ prescribes precisely the prime signs
+up to $L$. Hence
+\begin{equation}\label{eq:exact-border}
+ \PP(C_L=1)=2^{-\pi(L)}
+\end{equation}
+exactly. The quantity $q_L$ is different: it includes all other microscopic
+starts. The next result shows that their combined mass is smaller by a
+fixed exponential factor in $\pi(L)$.
+
+\begin{theorem}[Microscopic non-vacancy and localization]\label{thm:boundary}
+Let $\delta_*=28271/332640$. As $L\to\infty$,
+\begin{equation}\label{eq:interior-micro}
+ \sum_{x=2}^{2L^2}\PP(J_{x,L}=1)
+       \le2^{-(1+\delta_*-o(1))\pi(L)}.
+\end{equation}
+Consequently, for every fixed $0<\delta_0<\delta_*$,
+\begin{equation}\label{eq:boundary-asymptotic}
+ q_L=2^{-\pi(L)}(1+O_{\delta_0}(2^{-\delta_0\pi(L)})).
+\end{equation}
+In particular $\delta_0=1/12$ is admissible. Conditional on microscopic
+non-vacancy, the exact border is the unique recorded start with probability
+$1-O_{\delta_0}(2^{-\delta_0\pi(L)})$.
+\end{theorem}
+\begin{proof}
+Let $M_x$ be the matrix whose rows are $v(n)$, $n\in V_x$.
+The start matrix is $A_x=D_xM_x$, where
+\[
+ D_xz=(z_{x-1}+z_x,z_x+z_{x+1},\ldots,z_x+z_{x+L-1}).
+\]
+The kernel of $D_x$ consists of constant vectors. Therefore
+\begin{equation}\label{eq:boundary-rank-drop}
+ \rank A_x\ge\rank M_x-1,\qquad
+ \PP(J_{x,L}=1)\le2^{-\rank A_x}.
+\end{equation}
+If $2\le x\le L-1$, both $2x$ and $2x-2$ lie in the proposed constant
+run. The first forces $f(2)=1$, and the second forces $f(2)=-1$.
+Thus these starts are impossible. For the three transition starts
+$x\in\{L,L+1,L+2\}$, primes between $2\sqrt B$ and $B$, together
+with prime vertices above $B$, give an identity minor of size
+$(2-o(1))\pi(B)$. The explicit choice of rows is in
+\cref{supp:lem:transition}.
+
+For $B+2\le x\le B^2+2$, the uniform Laishram--Shorey bound gives
+\[
+ \omega\left(\prod_{n\in V_x}n\right)\ge(2-o(1))\pi(B).
+\]
+After discarding the prime divisors at most $B$, at least
+$t_x\ge(1-o(1))\pi(B)$ primes $q>B$ remain. All vertices are at most
+$B^2+B<q^2$, so such a prime occurs to valuation one at one vertex only;
+two such primes cannot occupy the same vertex. Their columns span a
+$t_x$-dimensional coordinate subspace.
+
+Use the medium primes $B/11<p\le B$. Their total odd-valuation incidence
+count satisfies
+\begin{equation}\label{eq:medium-incidences}
+ E_x\ge(H_{11}-1-o(1))\pi(B),\qquad H_{11}=\sum_{j=1}^{11}j^{-1}.
+\end{equation}
+Here the loss from even valuations is only $O(1)$ \emph{over the entire
+prime range}: if $p^2\mid n\le B^2+B$ then $n=ap^2$ with $a\le122$,
+and for each $a$ there are only $O(1)$ possibilities in an interval of
+length $B$. This global count avoids paying one lost incidence per prime.
+
+Delete the private rows. Each deleted row removes at most one medium
+incidence, each remaining row has weight at most two, each column has
+weight at most eleven, and a pair of medium primes cannot occur together
+in two rows. The associated incidence graph is therefore simple.
+The elementary simple-incidence estimate \cref{supp:lem:simple-incidence}
+gives rank at least $E/12$. Passing to the quotient by the private
+coordinate subspace yields
+\[
+ \rank M_x\ge t_x+\frac{(E_x-t_x)_+}{12}
+ \ge\left(1+\frac{H_{11}-2}{12}-o(1)\right)\pi(B).
+\]
+Since $(H_{11}-2)/12=28271/332640$, \eqref{eq:boundary-rank-drop} proves the desired
+uniform surplus in the quadratic range.
+
+For $x>B^2+2$, the pointwise Balasubramanian--Shorey consequence
+\cref{supp:lem:pointwise-maximum} gives
+\begin{equation}\label{eq:gL}
+ m_B(x)\le B-g_L,\qquad
+ g_L=\frac B{\log B}
+   (\log\log B-\log\log\log B-\theta_0+o(1)),
+ \qquad \frac{g_L}{\pi(B)}\longrightarrow\infty.
+\end{equation}
+The affine bound then gives $\PP(J_{x,L}=1)\le2^{-g_L}$.
+Sum the four ranges; their polynomial number of starts is absorbed in
+the $o(\pi(B))$ exponent. Since $\pi(B)=\pi(L)+O(1)$, this proves
+\eqref{eq:interior-micro}. Equation \eqref{eq:exact-border} and a union
+bound prove the remaining conclusions. The complete incidence count,
+the uniform literature input and the choice $K=11$ are detailed in
+\cref{supp:sec:boundary}, with local product thresholds distinguished
+from the thresholds of the asymptotic inputs.
+\end{proof}
+
+\subsection{Discarding deep starts without assuming independence}
+\begin{lemma}[Two-defect windows at intermediate heights]
+\label{lem:meso-defects}
+Assume $B\asymp\log M$. The number of starts
+$x\in[2L^2,2M]\cap\Z$ with at least two $B$-defective vertices is at most
+$\exp(O(\log M/\log\log M))$. The same bound holds for every subpopulation;
+in particular it is uniform on each $[X,2X)$ with $2L^2\le X\le M$.
+\end{lemma}
+\begin{proof}
+Two such vertices have forms $d_1a^2,d_2b^2$ differing by a nonzero
+integer of modulus at most $L$, with squarefree $B$-smooth $d_i$.
+There are at most $4^{\pi(B)}=\exp(O(\log M/\log\log M))$ coefficient
+pairs and $O(B^2)$ offset pairs. For $d_1\ne d_2$, use the uniform
+Pell bound at ambient scale $M$; the coefficients and variables are
+polynomially bounded in $M$. For equal coefficients use
+$(a-b)(a+b)=(i-j)/d_1$ and the divisor bound. A solution determines the
+start once the offsets are fixed. This counts the entire population up
+to height $2M$ in a single Pell box, not once per dyadic interval.
+\end{proof}
+
+\begin{proposition}[Deep-start and mesoscopic estimates]\label{prop:deep-starts}
+For each fixed $0<\delta<1$ and fixed logarithmic band,
+\begin{equation}\label{eq:deep-starts}
+ \sum_{2\le x<M^\delta}\PP(J_{x,L}=1)
+ \ll \lambda_M M^{\delta-1}+\exp(-c\log M/\log\log M),
+ \qquad\lambda_M=M2^{-L},
+\end{equation}
+where $c>0$ depends only on that band and $\delta$.
+More precisely,
+\begin{equation}\label{eq:mesoscopic}
+ \PP(\exists x\in(2L^2,M^\delta):J_{x,L}=1)
+ \le M^\delta2^{-L}+C_1 e^{C_2L/\log L}2^{-g_L}.
+\end{equation}
+If $L\to\infty$, $L=O(\log M)$ and $\lambda_M\to0$, the latter bound
+is $o(q_L+\lambda_M)$.
+\end{proposition}
+\begin{proof}
+For any deterministic $A\subset[2L^2,2M]\cap\Z$, starts with at most
+one defect have probability at most $2^{-L}$. The remaining starts are
+counted together by \cref{lem:meso-defects}, and \eqref{eq:gL} bounds each
+probability by $2^{-g_L}$. Uniformly in $A$,
+\[
+ \sum_{x\in A}\PP(J_{x,L}=1)
+ \le |A|2^{-L}+C_1 e^{C_2L/\log L}2^{-g_L}.
+\]
+The constants depend only on the fixed logarithmic band. Adding the
+microscopic range, controlled by \cref{thm:boundary}, proves
+\eqref{eq:deep-starts}; restricting this mask proves \eqref{eq:mesoscopic}.
+No exterior factor counting height slices is needed. For the last assertion,
+$M^\delta2^{-L}=o(\lambda_M)$, while
+$g_L-\pi(L)\gg L\log\log L/\log L$ dominates the sieve prefactor.
+Thus the second term is $o(2^{-\pi(L)})=o(q_L)$.
+\end{proof}
+
+The same argument gives cutoff stability. For $2L^2\le K\le2^L$,
+\begin{equation}\label{eq:cutoff-stability}
+ \PP(\exists x\in(2L^2,K]:J_{x,L}=1)
+ \le K2^{-L}+O(e^{CL/\log L}2^{-g_L}).
+\end{equation}
+One may use the artificial ambient scale $2^L$ in
+\cref{lem:meso-defects}. If $K=o(2^{L-\pi(L)})$, the entire bound is
+$o(q_L)$. Hence the boundary asymptotic and conditional uniqueness remain
+valid with cutoff $K$, and the two conditional microscopic configurations,
+padded by zeros, are at total-variation distance $o(1)$ by
+\cref{lem:conditioning-floor}.
+
+\subsection{Global laws and the longest run}
+\begin{theorem}[Finite-prefix Poisson approximation]\label{thm:prefix-poisson}
+In a fixed logarithmic band, for every $\varepsilon>0$,
+\begin{align}
+ &\dTV\left(\Law\left(\sum_{2\le x<M}J_{x,L}\right),\Pois(M2^{-L})\right)
+ \notag\\
+ &\quad\ll\min\{1,\lambda_M(e^{-V_M+o(\nu_M)}+M^{-1/3+\varepsilon})\}
+               +e^{-c\log M/\log\log M}.
+               \label{eq:global-rate}
+\end{align}
+For $W_{M,L}=C_L+\sum_{2\le x\le M-L+1}J_{x,L}$, enlarge the
+constant multiplying the existing deep-start remainder and add
+\begin{equation}\label{eq:prefix-correction}
+ 2^{-\pi(L)}+O(L2^{-L}).
+\end{equation}
+In particular $\PP(R_M<L)=e^{-M2^{-L}}+o_C(1)$ at critical lengths.
+\end{theorem}
+\begin{proof}
+Retain the single interval $U_{M,1/2}$. The proof of
+\cref{thm:transfer} uses only support heights $O(M)$, the one-window
+mass, the edge count and the separated-pair profile. These are supplied
+by \eqref{eq:macro-defects}, \eqref{eq:edge-count} at upper scale $M$,
+and \cref{thm:master-profile}. Thus \eqref{eq:hard-rate} applies on the
+retained interval with mean $|U_{M,1/2}|2^{-L}$. Restoring deep starts
+costs \eqref{eq:deep-starts}; the deterministic target-mean discrepancy
+is $O(\lambda_M M^{-1/2})$. This proves \eqref{eq:global-rate}.
+
+The event $W_{M,L}=0$ is exactly $R_M<L$: every long run contained in
+the prefix either begins at one or has a left-maximal start at most
+$M-L+1$. The full interior count differs only if the border event occurs
+or a start lies in the excluded mask $M-L+2\le x<M$.
+This mask has at most $L$ sites and lies above $2L^2$ for large $M$.
+The mask bound in the proof of \cref{prop:deep-starts} gives total mass
+\[
+ L2^{-L}+O(e^{CL/\log L}2^{-g_L})
+ \le L2^{-L}+O(e^{-c\log M/\log\log M}).
+\]
+Absorb the second term into the remainder already present in
+\eqref{eq:global-rate}. The exact border probability then proves
+\eqref{eq:prefix-correction} and the void law.
+\end{proof}
+
+\begin{corollary}[Almost-sure asymmetric envelopes]\label{cor:as-longest}
+For every fixed $\varepsilon>0$, with probability one, eventually
+\begin{align}
+ R_M-\log_2M&\ge-\log_2(\log\log M)-O(1),
+                                          \label{eq:as-lower}\\
+ R_M-\log_2M&\le\log_2(\log M)
+        +(1+\varepsilon)\log_2(\log\log M)+O_\varepsilon(1).
+                                          \label{eq:as-upper}
+\end{align}
+In particular $R_M=\log_2M+O(\log\log M)$ almost surely.
+\end{corollary}
+\begin{proof}
+Set $M_k=2^k$ and, for sufficiently large $k$, choose
+\[
+ L_k^-=\lfloor k-\log_2(\log k)-1\rfloor,\qquad
+ L_k^+=\lceil k+\log_2k+(1+\varepsilon)\log_2(\log k)\rceil.
+\]
+The lower intensity satisfies $2\log k\le M_k2^{-L_k^-}<4\log k$,
+so the target void probability is at most $k^{-2}$. The upper intensity
+is at most $1/[k(\log k)^{1+\varepsilon}]$, a summable sequence.
+Every error in \eqref{eq:global-rate}--\eqref{eq:prefix-correction} is also
+summable: the cutoff error is a polynomial in $k$ times
+$e^{-c\sqrt{k\log k}}$, and the deep-start and border errors are at most
+$e^{-c'k/\log k}$. Borel--Cantelli gives
+$L_k^-\le R_{2^k}<L_k^+$ for all sufficiently large $k$, almost surely.
+For $2^k\le M<2^{k+1}$ use $R_{2^k}\le R_M\le R_{2^{k+1}}$.
+The change from $k$ to $\log M/\log2$ and from $k$ to $k+1$ costs only
+a bounded additive term. This proves both envelopes. No independence
+between different scales has been used, and no matching lower bound for
+the upper fluctuations is asserted.
+\end{proof}
+
+\begin{theorem}[Macroscopic exact-mark transport]\label{thm:macro-field}
+Let $a_M=o(\log M)$ be a nonnegative integer, $b_M=\lfloor\log_2M\rfloor$,
+$L_M=b_M-a_M$, and $\lambda=M2^{-L_M}$. Define
+\[
+ \mathcal E^{\rm base}_{M,a_M}
+ =\sum_{x=2}^{M-L_M+1}\sum_{r\ge-a_M}
+             K^{\rm ex}_{x,b_M+r}\delta_{(x/M,r)}.
+\]
+Its target has independent Poisson masses $2^{-b_M-r-1}$ on the same
+lattice, and total intensity $(M-L_M)2^{-L_M}$.
+For $A_M\in\mathcal F_{Y_M^\sharp}$ with $\PP(A_M)>0$, put
+$I_M^{\rm info}=-\log\PP(A_M)$;
+the full-field distance is bounded by
+\begin{equation}\label{eq:macro-field-rate}
+ C_\varepsilon e^{I_M^{\rm info}}
+ \left[\lambda(1+\lambda)(e^{-V_M+o(\nu_M)}+M^{-1/3+\varepsilon})
+            +\lambda M^{-1/2}+e^{-c\log M/\log\log M}\right].
+\end{equation}
+It tends to zero under the hard labelled budget
+$I_M^{\rm info}+\log\lambda+\log(1+\lambda)\le V_M-c'\nu_M$.
+The movable-cutoff labelled budget and the aggregated one-factor budget
+of \cref{thm:moving-comparison} also hold, with $N$ replaced by $M$ and
+exact-level target means $(M-L_M)2^{-b_M-r-1}$.
+\end{theorem}
+\begin{proof}
+On $[\lceil M^{1/2}\rceil,M-L_M+1]$ use the finite marked comparison
+with the macroscopic master profile; the identities
+\eqref{eq:mark-folding} still collapse the separated-pair term to the
+base threshold event. Restore lower starts with \eqref{eq:deep-starts}
+and condition using \cref{lem:stable-lift}. Remove the exact-mark tail
+using \eqref{eq:mark-tail} and the global scalar bound. A cutoff
+$E=\lceil(I_M^{\rm info}+V_M+\log(2+\lambda))/\log2\rceil$ is
+$o(\log M)$ whenever the bound is nontrivial; the deep-start tail error
+is absorbed by the last term of \eqref{eq:macro-field-rate}.
+This proves the displayed bound.
+For the movable cutoff repeat with $w=\widehat V_M$.
+For aggregation, sum over positions before applying the directional Stein
+factor; the deep-start error is negligible under its information
+budget. \Cref{supp:sec:macro-marked} details the finite-cutoff calculation.
+\end{proof}
+The superscript ``base'' is important: only the base $L_M$-window is
+required to be contained. The exact right endpoint of a larger marked run
+may lie beyond $M$. This is not the list of right-censored maximal runs of
+the finite sequence. All measurable functionals of this base-contained
+field, including spatial masks and order statistics, transfer under the
+labelled comparison. Aggregated couplings do not retain locations.
+
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[x=.85cm,y=1cm]
+\draw[->] (0,0)--(13,0);
+\draw[thick] (1,0)--(11,0);
+\foreach \x/\t in {1/1,6/x,11/M}{\draw (\x,.09)--(\x,-.09);
+ \node[below,font=\small] at (\x,-.1) {$\t$};}
+\draw[draw=FigBlue,line width=2pt] (6,.45)--(9.5,.45);
+\node[above,font=\small,text=FigBlue] at (7.75,.45) {contained base window};
+\draw[draw=FigRust,dashed,line width=1.2pt] (6,1.25)--(12,1.25);
+\node[above,font=\small,text=FigRust] at (9,1.25) {exact run may continue beyond $M$};
+\draw[dotted] (11,-.1)--(11,1.6);
+\end{tikzpicture}
+\caption{Containment of a base window does not censor an exact mark.
+The longest-run void event instead uses the threshold-specific upper
+start $M-L+1$. The two conventions agree where stated, but are not
+interchangeable.}\label{fig:containment}
+\end{figure}
+
+\subsection{Relative bulk approximation and the crossover}
+Assume from now on $L\to\infty$, $L=O(\log M)$ and
+$\lambda_M=M2^{-L}\to0$. Fix $0<\delta<1$ and put
+$H_M=\lceil M^\delta\rceil$,
+$I^{\rm bulk}_{M,L}=[H_M,M-L+1]\cap\Z$ and
+$\Xi^{\rm bulk}_{M,L}=\sum_{x\in I^{\rm bulk}_{M,L}}J_{x,L}\delta_{x/M}$.
+Let $\Pi^{\rm bulk,lat}_{M,L}$ have independent Poisson masses $p=2^{-L}$
+at those same sites; its intensity is
+$\lambda_M^{\rm bulk}=|I^{\rm bulk}_{M,L}|p\sim\lambda_M$.
+Fix an upper-band constant $A_0$ with $L\le A_0\log M$ for all large
+$M$. The rare-intensity assumption supplies the positive lower band.
+Constants and little-oh terms in this subsection may depend on
+$\delta$, $A_0$ and the displayed error exponent, but not on $M$ or $L$.
+
+\begin{theorem}[Relative signed marked bulk kernel]\label{thm:relative-bulk}
+Let $\mathcal K^{\rm bulk}_{M,L}=(K^s_{x,e})_{x\in I^{\rm bulk}_{M,L},\,e\ge0,\,s\in\{\pm1\}}$
+and let $\mathcal P^{\rm bulk}_{M,L}$ have independent Poisson coordinates
+of means $2^{-L-e-2}$ on this same index set. At $Y=Y_M^\sharp$, for every
+fixed $0<\varepsilon<1/3$,
+\begin{equation}\label{eq:relative-bulk-rate}
+ \EE\,\dTV\left(\Law(\mathcal K^{\rm bulk}_{M,L}\mid\mathcal F_Y),
+                         \Law(\mathcal P^{\rm bulk}_{M,L})\right)
+ \ll_{\delta,A_0,\varepsilon}\lambda_M
+               \left(e^{-V_M+o(\nu_M)}+M^{-1/3+\varepsilon}\right).
+\end{equation}
+In particular, summing marks and signs gives
+\begin{equation}\label{eq:relative-bulk}
+ \EE\,\dTV(\Law(\Xi^{\rm bulk}_{M,L}\mid\mathcal F_Y),
+                    \Law(\Pi^{\rm bulk,lat}_{M,L}))=o(\lambda_M).
+\end{equation}
+\end{theorem}
+\begin{proof}
+For a finite mark cutoff $E$, repeat the signed comparison of
+\cref{thm:marked-field} on this single macroscopic interval. With
+$Q=L+E+1$ and $p=2^{-L}$ its error is at most
+\[
+ Cp(\mathcal M_B+|D_Y(Q)|)
+       +Cp^2(MQ+E_Y(Q)+R_{2,\delta}(M,L)).
+\]
+The signed marks are summed before the separated-pair bound, so the
+relation sum is at the base length $L$. Divide by $Mp=\lambda_M$.
+The defect and support terms become $M^{-1/2+o(1)}$ and
+$e^{-V_M+o(\nu_M)}$, respectively. The edge term becomes
+$\lambda_M(e^{-V_M+o(\nu_M)}+M^{-1+o(1)})$.
+By \eqref{eq:master-envelope} and $2^B=2/p$, the relation term is
+$O_\varepsilon(M^{-1/3+\varepsilon}(1+\lambda_M))$.
+The local term $pQ$ is smaller because $\lambda_M\to0$.
+
+Take $E=\lceil V_M/\log2\rceil$. Then $E=o(\log M)$ and the base and
+maximal support lengths stay in a fixed logarithmic band. The target
+tail has mass at most $\lambda_M2^{-E-1}$. The actual tail is the event
+that some retained site starts a run at length $L+E+1$; the macroscopic
+masked first-moment bound gives the same upper bound times
+$1+M^{-1/2+o(1)}$. Couple both tails to zero and average. Since
+$\lambda_M\le1$ for large $M$, the preceding bounds give
+\eqref{eq:relative-bulk-rate}. Measurable contraction proves
+\eqref{eq:relative-bulk}.
+\end{proof}
+Every coordinate of $\mathbf B_L$ depends only on prime signs up to
+$2L^2+L<Y_M^\sharp$. The stable product lift therefore gives
+\begin{equation}\label{eq:boundary-bulk-factorization}
+ \dTV\left(\Law(\mathbf B_L,\Xi^{\rm bulk}_{M,L}),
+       \Law(\mathbf B_L)\otimes\Law(\Pi^{\rm bulk,lat}_{M,L})\right)
+       =o(\lambda_M)=o(q_L+\lambda_M).
+\end{equation}
+This is asymptotic factorization at the indicated error scale, not exact
+finite-$M$ independence.
+
+\begin{theorem}[Two-source rare tail and conditional location]
+\label{thm:crossover}
+Under the preceding rare-intensity assumptions,
+\begin{equation}\label{eq:two-source-tail}
+ \PP(R_M\ge L)=q_L+\lambda_M+o(q_L+\lambda_M).
+\end{equation}
+Let $X^*_{M,L}$ be the least start of a contained run of length at least
+$L$, on the event that one exists. If
+$L-\log_2M-\pi(L)\to s\in\mathbb R$, then
+\begin{equation}\label{eq:crossover-location}
+ \Law(X^*_{M,L}/M\mid R_M\ge L)
+ \Longrightarrow \frac1{1+2^{-s}}\delta_0+
+                         \frac{2^{-s}}{1+2^{-s}}\Leb_{[0,1]}.
+\end{equation}
+The source-resolved version assigns a microscopic start its location divided
+by $L^2$, and a bulk start its location divided by $M$; its limit is the
+same mixture with the two source labels retained. The weights also have
+their evident degenerate limits when $s\to\pm\infty$.
+\end{theorem}
+\begin{proof}
+The mesoscopic region has mass $o(q_L+\lambda_M)$ by
+\cref{prop:deep-starts}. Under the product target in
+\eqref{eq:boundary-bulk-factorization}, a simultaneous microscopic and
+bulk hit has probability $O(q_L\lambda_M)$, and at least two bulk hits
+have probability $O(\lambda_M^2)$. Both are negligible on the combined
+scale. This proves \eqref{eq:two-source-tail}.
+Given a microscopic hit, \cref{thm:boundary} puts the start at one with
+probability $1-o(1)$. Given exactly one bulk target point, its location
+is uniform on the common lattice. Finally
+\[
+ \frac{\lambda_M}{q_L}
+   =2^{-(L-\log_2M-\pi(L))}(1+o(1))\longrightarrow2^{-s}.
+\]
+Divide the two one-hit masses by \eqref{eq:two-source-tail} and pass from
+the uniform grid to Lebesgue measure weakly. All total-variation comparisons
+precede this final diffuse limit.
+\end{proof}
+
+\subsection{The prime clock}\label{sec:prime-clock}
+Let $p_1=2<p_2<\cdots$. Almost surely
+$J_\partial=\min\{j:f(p_j)=-1\}$ is finite and the maximal initial
+positive run has length $\ell_\partial=p_{J_\partial}-1$: every smaller
+integer has only positive prime factors, whereas that negative prime
+changes sign. On this full-measure event and $C_L=1$, put
+$G_L=J_\partial-\pi(L)-1$; assign $G_L=0$ elsewhere whenever a globally
+defined random variable is needed. Then
+\begin{equation}\label{eq:prime-clock}
+ \PP(G_L=k\mid C_L=1)=2^{-(k+1)},\qquad
+ \PP(\ell_\partial-L\ge h\mid C_L=1)
+                    =2^{-[\pi(L+h)-\pi(L)]}.
+\end{equation}
+Thus prime rank, not integer distance, is its geometric clock.
+The boundary theorem makes the law of $G_L$ given $B_L^{\rm mic}>0$
+$O(2^{-\delta_0\pi(L)})$-close to $\nu_{\rm geo}$.
+The prime number theorem gives $\ell_\partial/L\to1$ conditionally, but
+the unscaled integer overshoot is not tight: for $L=m!+1$ the following
+$m-1$ integers contain no prime.
+
+\subsection{A lattice crossover with two geometric clocks}\label{sec:two-clock}
+The two branches have the same geometric law but different clocks:
+additional integers in a bulk run, and additional positive prime signs at
+the initial boundary. A moving discrete target states their joint law
+without requiring a limiting ratio of the two rare masses.
+
+Write $\alpha_L=2^{-\pi(L)}$ and $\lambda^{\rm bulk}=\lambda_M^{\rm bulk}$.
+On $\{R_M\ge L\}$, let $X^*=X^*_{M,L}$ and define
+\[
+ \Gamma_{M,L}=
+ \begin{cases}
+  (\partial,1,+1,G_L),&X^*=1,\\
+  (\mathrm{bulk},X^*,f(X^*),\ell_{X^*}-L),&X^*\in I^{\rm bulk}_{M,L},\\
+  \dagger,&\text{otherwise}.
+ \end{cases}
+\]
+Here $\dagger$ records an exceptional start in the intervening region.
+Let $\nu_\pm=(\delta_{-1}+\delta_{+1})/2$, and let
+$\operatorname{Unif}(I^{\rm bulk}_{M,L})$ be the uniform law on that
+integer grid.
+
+\begin{theorem}[Sign-resolved, two-clock crossover]\label{thm:two-clock}
+Under the rare-intensity assumptions of \cref{thm:crossover},
+\begin{equation}\label{eq:two-clock-tv}
+ \dTV\left(\Law(\Gamma_{M,L}\mid R_M\ge L),Q_{M,L}\right)\longrightarrow0,
+\end{equation}
+where the deterministic probability law on the same discrete state space is
+\begin{align}
+ Q_{M,L}
+ &=\frac{\alpha_L}{\alpha_L+\lambda^{\rm bulk}}
+        \delta_{(\partial,1,+1)}\otimes\nu_{\rm geo}
+       \notag\\
+ &\quad+\frac{\lambda^{\rm bulk}}{\alpha_L+\lambda^{\rm bulk}}
+        \delta_{\mathrm{bulk}}\otimes
+        \operatorname{Unif}(I^{\rm bulk}_{M,L})\otimes\nu_\pm
+                     \otimes\nu_{\rm geo}.
+       \label{eq:two-clock-target}
+\end{align}
+No convergence of $\lambda^{\rm bulk}/\alpha_L$ is needed. In particular,
+\begin{equation}\label{eq:crossover-positive-sign}
+ \PP(f(X^*)=+1\mid R_M\ge L)
+  =\frac{\alpha_L+\lambda^{\rm bulk}/2}
+         {\alpha_L+\lambda^{\rm bulk}}+o(1).
+\end{equation}
+The bulk excess in \eqref{eq:two-clock-tv} may instead be measured using
+the right-censored run length in the finite word $(f(1),\ldots,f(M))$.
+\end{theorem}
+\begin{proof}
+Fix $K\ge1$. Count the consecutive positive signs among the first $K$
+primes after $L$, capped at $K$, and set the result to zero off $C_L=1$.
+This is a genuine finite-cylinder random variable, agreeing almost surely
+with $G_L\wedge K$. For fixed $K$, Bertrand's postulate places these
+primes below $2^K L<Y_M^\sharp$ for large $M$. The stable lift applied to
+\cref{thm:relative-bulk} therefore retains the microscopic vector and
+this clock jointly with \emph{all} signed bulk marks, at error
+$o(\lambda_M)$. No bulk-mark truncation is needed here.
+The interior microscopic and mesoscopic errors are
+$o(\alpha_L+\lambda_M)$ by \cref{thm:boundary,prop:deep-starts}.
+
+Write $\alpha=\alpha_L$ and $b=\lambda^{\rm bulk}$.
+In the product target, keep either a boundary hit with no bulk point,
+or no boundary hit with exactly one bulk point. This event has exact mass
+\[
+ e^{-b}\bigl[\alpha+(1-\alpha)b\bigr].
+\]
+Its conditional source weights are
+$\alpha/[\alpha+(1-\alpha)b]$ and
+$(1-\alpha)b/[\alpha+(1-\alpha)b]$.
+Their mixture differs from the weights in \eqref{eq:two-clock-target}
+by at most
+\[
+ \frac{\alpha^2b}{(\alpha+b)[\alpha+(1-\alpha)b]}\le b.
+\]
+The discarded simultaneous and multiple hits cost
+$O(\alpha b+b^2)=o(\alpha+b)$.
+Given the one bulk point, its site, sign and excess have the independent
+laws in \eqref{eq:two-clock-target}. Normalize all comparison errors by
+$\alpha+b$, not by the smaller source mass. This proves the comparison
+with the boundary clock capped at $K$, uniformly in the moving weights.
+
+Under the actual law, a recorded boundary tail $G_L>K$ has conditional
+probability at most $2^{-K-1}$, since
+$\PP(C_L=1,G_L>K)=\alpha2^{-K-1}$ and
+$\PP(R_M\ge L)\ge\alpha$. The target boundary tail is also at most
+$2^{-K-1}$. Let $M\to\infty$ first and then $K\to\infty$.
+This proves \eqref{eq:two-clock-tv}; projecting the sign gives
+\eqref{eq:crossover-positive-sign}.
+
+For the last assertion, under the one-hit bulk target a mark is censored
+at site $x$ only if $e>M-x+1-L$. The average of this geometric tail is
+\[
+ \frac1{|I^{\rm bulk}_{M,L}|}
+ \sum_{x\in I^{\rm bulk}_{M,L}}2^{-(M-x+2-L)}
+       \le\frac1{|I^{\rm bulk}_{M,L}|}=o(1).
+\]
+The total-variation comparison transfers this estimate, so replacing that
+mark changes the conditional law by $o(1)$.
+\end{proof}
+After scaling sites by $M$, convergence of the ratio recovers the mixture
+in \cref{thm:crossover}, now with signs and both overshoot clocks retained.
+The spatial limit is weak; the stronger statement
+\eqref{eq:two-clock-tv} is entirely on the prelimit lattice. Its $o(1)$
+error is on the combined source scale. It does not supply a relative
+estimate for the smaller source when its mixture weight tends to zero.
+
+\subsection{Affine information at the boundary}
+\begin{theorem}[Affine-conditioned crossover]\label{thm:affine-crossover}
+Let $A_M=\{G_M X(Y_M^\sharp)=b_M^{\rm aff}\}$ be a compatible affine
+cylinder of rank $r_M$, and assume compatibility also with $C_L=1$.
+Set
+\[
+ U_L=\Span\{e_p:p\le L\},\qquad
+ \kappa_M=\dim(\operatorname{row}G_M\cap U_L),\qquad
+ d_M=\pi(L)-\kappa_M.
+\]
+Whenever $L\le Y_M^\sharp$, the finite identity
+$\PP(C_L=1\mid A_M)=2^{-d_M}$ holds exactly.
+For the asymptotic conclusions, let $M,L\to\infty$ with
+$L=O(\log M)$ and $\lambda_M=M2^{-L}\to0$.
+Fix $c>0$ and assume $r_M\log2\le V_M-c\nu_M$ eventually.
+The affine equations, their number and their right-hand sides may all
+vary along the sequence. Then the rare-tail formula is
+\[
+ \PP(R_M\ge L\mid A_M)=2^{-d_M}+\lambda_M+o(2^{-d_M}+\lambda_M).
+\]
+If $L-\log_2M-d_M\to s$, the conditional location law given
+$A_M$ and $R_M\ge L$ is \eqref{eq:crossover-location} with the same
+weights. Microscopic non-vacancy under $A_M$ is concentrated on the border.
+\end{theorem}
+\begin{proof}
+The stacked cylinder and border system has rank
+$r_M+\pi(L)-\kappa_M$, proving the exact mass ratio.
+Write $I=r_M\log2$. Apply the factor $e^I$ to the quantitative bound
+\eqref{eq:relative-bulk-rate} \emph{before} taking a limit. Its normalized
+cutoff term is at most $e^{-c\nu_M+o(\nu_M)}$, and its polynomial term
+vanishes because $I=O(V_M)=o(\log M)$. Hence the conditional bulk error
+is $o(\lambda_M)$.
+The microscopic interior mass, after conditioning and division by
+$2^{-d_M}$, is at most
+$O(e^I2^{-\delta_0\pi(L)-\kappa_M})=o(1)$, since
+$I=O(V_M)=o(\pi(L))$. Similarly the two terms of
+\eqref{eq:mesoscopic} become $o(\lambda_M)$ and $o(2^{-d_M})$.
+The conditional stable lift and the exact one-hit normalization in the
+proof of \cref{thm:two-clock} now apply, with total normalization
+$2^{-d_M}+\lambda_M^{\rm bulk}$.
+\end{proof}
+The parameter $\kappa_M$ counts linear consequences supported wholly on
+the border coordinates, not input equations merely mentioning them.
+No condition on future primes is needed for the rare tail, microscopic
+concentration or location laws. The geometric future mark requires a
+separate condition. Let $q_1<q_2<\cdots$ be the primes after $L$.
+If, for each fixed $K$, eventually in $M$ with a threshold that may depend
+on $K$,
+\[
+ (\operatorname{row}G_M+U_L)\cap\Span\{e_{q_1},\ldots,e_{q_K}\}=\{0\},
+\]
+then the geometric boundary mark and the full mixture of
+\cref{thm:two-clock} survive under $A_M$, with $\alpha_L$ replaced by
+$2^{-d_M}$. First fix $K$ and pass to the size limit, then let $K\to\infty$;
+no common threshold for all $K$ or neutrality for a growing $K(M)$ is
+assumed. In general, if the extended affine stack is compatible,
+$\PP(G_L\ge K\mid A_M,C_L=1)$ equals
+$2^{-[K-\dim((\operatorname{row}G_M+U_L)\cap\Span\{e_{q_1},\ldots,e_{q_K}\})]}$;
+if incompatible, the tail is zero. This separates the information that
+changes the border mass from information that changes its future mark.
+\Cref{supp:sec:boundary-conditioning} records the rank calculation.

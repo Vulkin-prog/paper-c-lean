@@ -1,0 +1,275 @@
+\section{Affine events and private prime coordinates}\label{sec:affine-one-window}
+A run event is a linear system over $\F$. Its probability is determined by
+rank and compatibility; its dependence on a second event is determined by
+relations between the two systems. This elementary observation lets us keep
+arithmetic and probability separate.
+For $n\ge1$, let
+\[
+ v(n)=(v_p(n)\bmod2)_p\in\F^{(\mathcal P)}.
+\]
+Write the prime signs additively: $X=(X_p)_{p\in\mathcal P}$
+denotes the sequence of independent Bernoulli variables, uniform on
+$\F$, defined by $f(p)=(-1)^{X_p}$. Then
+\[
+ f(n)=(-1)^{\langle X,v(n)\rangle}.
+\]
+
+For a start $x$, introduce the $L$ rows
+\begin{align*}
+ a_{x,0}&=v(x-1)+v(x), & b_{x,0}&=1,\\
+ a_{x,j}&=v(x)+v(x+j), & b_{x,j}&=0,
+ \qquad 1\le j<L.
+\end{align*}
+Let $A_x$ be the matrix with rows $a_{x,j}$ and $b_x=(1,0,\dots,0)$. Then
+\[
+ J_{x,L}=\1_{\{A_xX=b_x\}}.
+\]
+For a tuple $\mathbf x=(x_1,\dots,x_k)$, stack the matrices and the right-hand sides. Set
+\[
+ \calR(\mathbf x)=\ker(A_{\mathbf x}^{\mathsf T}),
+ \qquad
+ \rho(\mathbf x)=\dim\calR(\mathbf x),
+\]
+and
+\[
+ q_{\mathbf x}(c)=\langle c,b_{\mathbf x}\rangle.
+\]
+
+\begin{lemma}[Affine Fourier identity]\label{lem:fourier}
+For every tuple $\mathbf x=(x_1,\dots,x_k)$,
+\[
+ 2^{kL}\PP(J_{x_1,L}=\cdots=J_{x_k,L}=1)
+ =\sum_{c\in\calR(\mathbf x)}(-1)^{q_{\mathbf x}(c)}.
+\]
+Consequently,
+\[
+ \PP(J_{x_1,L}=\cdots=J_{x_k,L}=1)
+ =2^{-kL}\eta(\mathbf x)2^{\rho(\mathbf x)},
+\]
+where $\eta(\mathbf x)=1$ if $q_{\mathbf x}$ vanishes on $\calR(\mathbf x)$, and $0$ otherwise. Finally,
+\begin{equation}\label{eq:affine-abs}
+\left|\eta(\mathbf x)2^{\rho(\mathbf x)}-1\right|
+ \le2^{\rho(\mathbf x)}-1.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For a matrix with $m=kL$ rows,
+\[
+ \1_{\{AX=b\}}
+ =2^{-m}\sum_{c\in\F^m}(-1)^{\langle c,AX-b\rangle}.
+\]
+Taking expectations, the terms with $A^{\mathsf T}c\ne0$ vanish. A character sum over a vector space equals the cardinality of that space if the character is trivial, and $0$ otherwise. If $\eta=0$, then $q$ is nontrivial, hence $\rho\ge1$, and $1\le2^\rho-1$.
+\end{proof}
+
+
+\subsection{The boundary map of a tree}
+Put $B=L+1$, $I_L=\{-1,0,\ldots,L-1\}$ and
+$V_x=\{x+i:i\in I_L\}$. The rows of $A_x$ are the edge vectors of the
+star with edges $\{x-1,x\}$ and $\{x,x+j\}$, $1\le j<L$.
+For a finite tree, the map taking an edge set to the vertices of odd degree
+is a bijection onto the even vertex subsets. Thus a relation among the
+rows of $A_x$ selects an even subset of $V_x$ whose product is a square.
+
+\begin{lemma}[Square-product interpretation]\label{lem:even-subsets}
+For disjoint windows $V_{x_1},\ldots,V_{x_k}$, the relation space is in
+bijection with tuples of even subsets $S_i\subset V_{x_i}$ such that
+$\prod_i\prod_{n\in S_i}n$ is a square. The affine character is
+$\sum_i\1_{\{x_i-1\in S_i\}}$ modulo two.
+More generally, the edge relations of any tree are identified with its
+square-product even vertex subsets.
+\end{lemma}
+\begin{proof}
+The sum of the selected edge vectors is the sum of the valuation vectors
+at the odd-degree vertices. It vanishes exactly when their product is a
+square. The boundary map is injective because a tree has no nonempty even
+degree edge subgraph, and its image has dimension $|V|-1$, the dimension of
+the even-subset space. The affine character records the root leaf edges.
+\end{proof}
+
+\subsection{One-window arithmetic}
+For $H\ge2$ define the odd large-prime kernel
+\[
+ K_H(n)=\prod_{\substack{p>H\\v_p(n)\ \text{odd}}}p.
+\]
+Call $n$ \emph{$H$-defective} when $K_H(n)=1$. If an interval has diameter
+less than $H$, every nondefective vertex has a prime coordinate appearing
+there and nowhere else in the interval. Such a coordinate is a private
+pivot. Notice that the definition uses odd valuations, not merely the
+presence of a large prime divisor.
+
+\begin{lemma}[Split-product Runge bound]\label{lem:runge}
+There is an absolute $C_0$ such that the following holds. Let $d=2k\ge2$,
+let $\gamma_1,\ldots,\gamma_d$ be distinct integers with
+$|\gamma_i|\le R$, where $R\ge1$, and set $G(T)=\prod_i(T+\gamma_i)$.
+If $U\in\Z$, $U\ge2R$, and $G(U)$ is an integer square, then
+\begin{equation}\label{eq:runge-bound}
+ U\le(C_0dR)^{2d}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Expand $\sqrt{G(T)}$ at infinity and let $P(T)$ be its polynomial part.
+Its coefficients lie in $2^{-d}\Z$ and, for $U>4R$,
+$|\sqrt{G(U)}-P(U)|\le(CdR)^d/U$.
+If the difference is nonzero, integrality of $U$ and $\sqrt{G(U)}$ makes
+its modulus at least $2^{-d}$. Otherwise the nonzero integer polynomial
+$2^{2d}(G-P^2)$ vanishes at $U$; its coefficient height is at most
+$(CdR)^{2d}$, and the integral-root bound applies. The range $2R\le U\le4R$
+is immediate. All constants and the growing-degree coefficient estimates
+are given in \cref{supp:lem:runge-calculation}. This is a direct
+split-product implementation of Runge's method, not an unqualified
+invocation of a fixed-degree theorem \cite{Runge1887,Walsh1992}.
+\end{proof}
+
+\begin{proposition}[Few defects, with their exponential weight]
+\label{prop:defects}
+Fix $0<c_1<c_2$. Uniformly for integers $c_1\log X\le H\le c_2\log X$, an
+interval of $H+1$ integers in $[X/2,3X]$ contains
+$O_{c_1,c_2}(\log X/\log\log X)$ $H$-defective integers. If $m_u$ counts
+these defects in $[u,u+H]$, then
+\begin{equation}\label{eq:defect-weight}
+ \sum_{X\le u<2X}(2^{m_u}-1)\le X^{1/2+o_{c_1,c_2}(1)}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Write each defective integer as $sa^2$, where $s$ is squarefree and
+$H$-smooth. Associate to the $m$ defects in a window the columns
+$((v_p(s))_{p\le H},1)\in\F^{\pi(H)+1}$. A nonzero kernel word selects
+an even number $d$ of distinct integers with square product. The Runge
+bound gives $X/2\le(CdH)^{2d}$; consequently its Hamming weight is at
+least $c\log X/\log H$ for a fixed $c>0$.
+Let $t$ be an integer of order $\log X/\log H$ with
+$2t+1\le c\log X/\log H$. If the kernel is zero, $m\le\pi(H)+1$.
+If $m<2t$, the desired bound is again immediate. Otherwise disjoint
+Hamming balls about its words give
+\[
+ \sum_{j\le t}\binom mj\le2^{\pi(H)+1},\qquad
+ (m/t)^t\le2^{\pi(H)+1}.
+\]
+Since $(\pi(H)+1)/t=O_{c_1,c_2}(1)$, it follows that
+$m=O_{c_1,c_2}(\log X/\log\log X)$.
+
+On the other hand the number of defective integers up to $3X$ is at most
+\[
+ \sqrt{3X}\sum_{\substack{s\ \text{squarefree}\\P^+(s)\le H}}s^{-1/2}
+ =\sqrt{3X}\prod_{p\le H}(1+p^{-1/2})=X^{1/2+o(1)}.
+\]
+Each belongs to at most $H+1=X^{o(1)}$ windows. Only
+$X^{1/2+o(1)}$ windows therefore have a defect, and the pointwise bound
+makes each weight $2^{m_u}$ equal to $X^{o(1)}$. This proves the sum.
+\end{proof}
+
+For $0<\delta<1$, write $U_{M,\delta}=[\lceil M^\delta\rceil,M)\cap\Z$.
+If $B\asymp\log M$, a dyadic slice $X\le x<2X$ in this interval has
+$B\asymp_\delta\log X$. Applying \cref{prop:defects} on these slices gives
+\begin{equation}\label{eq:macro-defects}
+ \sum_{x\in U_{M,\delta}}(2^{m_B(x)}-1)\le M^{1/2+o(1)},\qquad
+ m_B(x)=\#\{n\in V_x:K_B(n)=1\}.
+\end{equation}
+The same assertion holds for windows whose width and defect threshold are
+any two comparable quantities in a fixed logarithmic band: use an enclosing
+window of width equal to a fixed multiple of the threshold and subdivide
+it into a bounded number of windows before the coding argument. In the
+applications below the threshold can always be chosen at least the width.
+
+\begin{corollary}[Uniform first moment and an affine bound]
+\label{cor:first-moment}
+Put $p=2^{-L}$ and $m_B^\circ(x)=\#\{n\in V_x\setminus\{x-1\}:K_B(n)=1\}$.
+For any right-hand side $b\in\F^L$,
+\begin{equation}\label{eq:one-affine-error}
+ \left|\PP(A_xX=b)-p\right|
+ \le p(2^{m_B^\circ(x)}-1),\qquad
+ \PP(A_xX=b)\le2^{-L+\max(m_B(x)-1,0)}.
+\end{equation}
+For every deterministic $A\subset I_N$ and $B$ in a fixed logarithmic band,
+\[
+ \EE\sum_{x\in A}J_{x,L}=|A|p+O(pN^{1/2+o(1)}).
+\]
+The analogous error over any subset of $U_{M,\delta}$ is $O(pM^{1/2+o(1)})$.
+\end{corollary}
+\begin{proof}
+A private pivot excludes its vertex from any relation. An even subset of
+$m$ defective vertices has at most $\max(m-1,0)$ degrees of freedom.
+Thus $\rho(x)\le\max(m_B(x)-1,0)\le m_B^\circ(x)$.
+Apply \cref{lem:fourier}, which is unchanged by the affine right-hand side,
+and sum \cref{prop:defects} or \eqref{eq:macro-defects}. Restricting a
+nonnegative error sum to a mask can only decrease it.
+\end{proof}
+
+
+For $Y\ge2$ write
+$\mathcal F_Y=\sigma(f(p):p\text{ prime},\ p\le Y)$ for the information
+carried by the small prime signs.
+
+\begin{corollary}[Prescribed values in one window]\label{cor:absolute-marginal}
+Let $M_x$ have rows $v(n)$, $n\in V_x$, and let $w\in\{\pm1\}^B$.
+Write $I_{x,w}=\1_{\{(f(x-1+j))_{0\le j<B}=w\}}$ and $p_B=2^{-B}$.
+Then
+\begin{equation}\label{eq:absolute-marginal}
+ |\PP(I_{x,w}=1)-p_B|\le p_B(2^{m_B(x)}-1).
+\end{equation}
+If, for every vertex $n\in V_x$, there is a prime $p>Y$, where $Y>B$,
+such that $v_p(n)$ is odd, then
+$\PP(I_{x,w}=1\mid\mathcal F_Y)=p_B$ for every realization of
+$\mathcal F_Y$.
+Fix $0<c_1<c_2$. Uniformly for $c_1\log N\le B\le c_2\log N$,
+every deterministic start mask $A\subset I_N$ and dictionary
+$\mathcal W\subset\{\pm1\}^B$ satisfy
+\[
+ \EE\sum_{x\in A}\sum_{w\in\mathcal W}I_{x,w}
+ =|A|\,|\mathcal W|\,2^{-B}
+ +O_{c_1,c_2}\!\left(|\mathcal W|\,2^{-B}N^{1/2+o_{c_1,c_2}(1)}\right).
+\]
+The expectation is unconditional. The threshold and error are uniform in
+$B,A,\mathcal W$, which may vary with $N$; empty masks and dictionaries
+are allowed. The mask restricts starts, not vertices: every occurrence
+uses all $B$ values $x-1,\ldots,x+B-2$, without truncation at the mask or
+at the boundary of $I_N$.
+\end{corollary}
+\begin{proof}
+For a fixed window of positive integers, take a prime cutoff at least
+as large as its largest vertex, and at least $Y$ when conditioning.
+The word event in the infinite product
+is the inverse image of the corresponding finite-cylinder event, so their
+probabilities agree exactly. Only the prime signs are independent; the
+integer values retain all their multiplicative relations.
+In a relation among the rows of $M_x$, every nondefective vertex is
+excluded by its private coordinate. Hence the nullity is at most $m_B(x)$,
+without the even-subset restriction used for relative signs. Finite Fourier
+inversion gives \eqref{eq:absolute-marginal}. On a good support, the
+projection of $M_x$ onto primes above $Y$ has an identity minor of order
+$B$, so every prescribed value vector has probability $2^{-B}$ on each
+positive-mass assignment atom of $\mathcal F_Y$. Sum the nonnegative
+bound using \cref{prop:defects}, then use linearity of expectation.
+The same threshold works for every mask and every dictionary; no
+independence between occurrences is needed.
+\end{proof}
+
+\begin{lemma}[Private pivots on a graph]\label{lem:private-tree}
+Let $G$ be a finite graph. In each connected component suppose all vertices
+except possibly one have distinct private prime coordinates in the whole
+graph. The kernel of its edge vectors, projected onto these coordinates,
+is contained in its cycle space. In particular its rank is at least
+$|E(G)|-\beta_1(G)$, where $\beta_1(G)=|E(G)|-|V(G)|+c(G)$.
+For a tree this rank is $|E(G)|$.
+\end{lemma}
+\begin{proof}
+A vanishing edge combination has even degree at every pivoted vertex.
+The sum of degrees in a connected component is even, so its possible
+unpivoted vertex has even degree as well. The selected edge set is therefore
+in the cycle space, of dimension $\beta_1(G)$.
+\end{proof}
+
+\begin{lemma}[Local run pairs]\label{lem:local-pairs}
+If $0<|x-y|<L$, then $J_{x,L}J_{y,L}=0$. Over ordered pairs with
+$|x-y|=L$ in a dyadic block or in $U_{M,\delta}$, the homogeneous weights
+$2^{\rho(x,y)}$ have sum at most $N^{1+o(1)}$ or $M^{1+o(1)}$, respectively.
+\end{lemma}
+\begin{proof}
+An overlapping start requires two consecutive signs within the first
+constant run to be opposite. At distance $L$, the two start trees form a
+tree on an interval of diameter $2L$. With threshold $2L+1$, private
+pivots and \cref{prop:defects} bound its relation dimension by
+$O(\log N/\log\log N)$ on a slice. There are $O(N)$ such pairs;
+summing slices gives the macroscopic assertion.
+\end{proof}

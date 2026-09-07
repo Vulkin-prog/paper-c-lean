@@ -1,0 +1,340 @@
+\section{Introduction}\label{sec:introduction}
+In a sequence of independent fair signs, a long constant run is rare for a
+simple reason: each additional sign must agree with the preceding one.
+A left-maximal run of length at least $L$ starts with probability $2^{-L}$,
+so $N$ potential starts have natural intensity $N2^{-L}$. The transition
+between many runs and no runs occurs at $L=\log_2N+O(1)$; recording starts
+rather than all constant windows removes the local clustering within a run
+\cite{ArratiaGoldsteinGordon1990,ArratiaGordonWaterman1990,Godbole1991}.
+
+Logarithmic blocks also underlie the original Erd\H{o}s--R\'enyi law
+of large numbers \cite{ErdosRenyi1970}; the distributional and marked
+run laws used here are the later results cited above.
+
+Now impose complete multiplicativity. Choose the signs $f(p)$ independently
+at the primes and set
+\begin{equation}\label{eq:model}
+ f(1)=1,\qquad f(n)=\prod_p f(p)^{v_p(n)},\qquad
+ \PP(f(p)=1)=\PP(f(p)=-1)=\tfrac12.
+\end{equation}
+In particular $f(n^2)=1$. This is the completely multiplicative, sometimes
+called \emph{extended Rademacher}, model, not the squarefree-supported model. Random
+multiplicative models go back to Wintner \cite{Wintner1944}; the
+completely multiplicative convention here is fixed by \eqref{eq:model}.
+The identity $f(2n)=f(2)f(n)$ persists at every scale. Distant blocks therefore cannot simply be treated as independent: the
+effect of these identities must be counted. Nevertheless, the critical run
+statistics have the independent-sign Poisson form.
+
+There is a second, quite different mechanism at the left boundary. Requiring
+$f(1),\ldots,f(L)$ to be equal is exactly the requirement that every prime
+sign up to $L$ be positive. Its probability is $2^{-\pi(L)}$, not $2^{-L}$.
+Thus a sufficiently exceptional run can be produced either by many potential
+starts in the bulk or by a single arithmetically cheaper event at the boundary.
+Our results quantify both mechanisms and their competition.
+
+The same approach also distinguishes many prescribed words at once. Two
+sources of dependence must be separated: words can overlap because a
+suffix matches a prefix, and distant occurrences can interact because a
+product of their integer arguments is a square. The first is a property
+of the dictionary; the second is a property of the arithmetic sequence.
+Keeping them separate is the organizing principle of the paper.
+
+\subsection{Main results}
+For $x\ge2$ and $L\ge1$, let
+\begin{equation}\label{eq:start}
+ J_{x,L}=\1_{\{f(x-1)=-f(x),\ f(x)=\cdots=f(x+L-1)\}}.
+\end{equation}
+Write $I_N=[N,2N)\cap\Z$, $Z_{N,L}=\sum_{x\in I_N}J_{x,L}$ and
+$\lambda_N=N2^{-L}$. On a start, let $\ell_x$ be the maximal rightward run
+length. Every such length is almost surely finite. Define
+\[
+ K_{x,e}=\1_{\{J_{x,L}=1,\ \ell_x=L+e\}},\qquad
+ K^s_{x,e}=K_{x,e}\1_{\{f(x)=s\}},\quad e\in\NN,\ s\in\{\pm1\}.
+\]
+Let $\nu_{\rm geo}\{e\}=2^{-e-1}$ and
+$\nu_\pm=(\delta_{-1}+\delta_{+1})/2$.
+A \emph{word} is a prescribed finite sign sequence, a \emph{dictionary}
+is a set of such words, and \emph{pattern} is the broader term for the
+corresponding occurrence observable. All logarithms without an indicated
+base are natural. All total-variation distances below use the convention
+$\dTV(\mu,\nu)=\sup_A|\mu(A)-\nu(A)|$.
+
+\begin{theorem}[Critical sign-resolved run field]\label{thm:poisson-main}
+Fix $C>0$. Uniformly for integer lengths $|L-\log_2N|\le C$,
+\begin{equation}\label{eq:poisson-main}
+ \dTV\left(\Law((K^s_{x,e})_{x,e,s}),
+       \bigotimes_{x,e,s}\Pois(2^{-L-e-2})\right)
+ \le \exp\left[-\left(\frac1{\sqrt2}+o_C(1)\right)
+                    \sqrt{\log N\log\log N}\right].
+\end{equation}
+Here $(x,e,s)$ ranges over $I_N\times\NN\times\{\pm1\}$, and the
+comparison is on the common countable lattice. In particular the same
+upper bound applies to $\dTV(\Law(Z_{N,L}),\Pois(\lambda_N))$.
+\end{theorem}
+Since $L$ is integral, changing it by one divides $\lambda_N$ by two;
+$\lambda_N$ need not converge. This is why the approximation retains
+its moving parameter. For continuous positions, the consequence is a weak limit. Along a
+subsequence with $\lambda_N\to\lambda\in(0,\infty)$,
+\[
+ \sum_{x\in I_N}\sum_{e\ge0}\sum_{s\in\{\pm1\}}K^s_{x,e}\delta_{(x/N,e,s)}
+ \ \Longrightarrow\ {\rm PPP}(\lambda\,dt\otimes\nu_{\rm geo}\otimes\nu_\pm)
+\]
+weakly on finite point configurations on $[1,2]\times\NN\times\{\pm1\}$.
+The nonempty configurations on a deterministic spatial grid and those of a
+diffuse Poisson process are singular. Consequently the last convergence is
+weak, not in total variation. The lattice comparison is stronger in the
+appropriate prelimit space: a single coupling controls positions, excesses,
+signs, threshold counts and order statistics simultaneously. In the bulk,
+positive and negative long runs have equal limiting intensities, despite
+the deterministic positivity of every square.
+
+Let $R_M$ be the longest constant run in $(f(1),\ldots,f(M))$.
+\begin{theorem}[Longest run and competing rare-event sources]
+\label{thm:global-summary}
+At critical lengths $|L-\log_2M|\le C$,
+\begin{equation}\label{eq:intro-prefix}
+ \PP(R_M<L)=\exp(-M2^{-L})+o_C(1).
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:intro-as}
+ R_M=\log_2M+O(\log\log M)\qquad\hbox{almost surely}.
+\end{equation}
+Suppose instead that $L\to\infty$, $L=O(\log M)$, and
+$\lambda_M=M2^{-L}\to0$. Then
+\begin{equation}\label{eq:intro-two-source}
+ \PP(R_M\ge L)=2^{-\pi(L)}+M2^{-L}
+                  +o(2^{-\pi(L)}+M2^{-L}).
+\end{equation}
+Let $X_{M,L}$ be the leftmost start of a length-$L$ constant window contained
+in $[1,M]$, on the event $R_M\ge L$. If
+$L-\log_2M-\pi(L)\to s\in\mathbb R$, then
+\begin{equation}\label{eq:intro-location}
+ \Law(X_{M,L}/M\mid R_M\ge L)
+ \ \Longrightarrow\
+ \frac1{1+2^{-s}}\delta_0+
+ \frac{2^{-s}}{1+2^{-s}}\Leb_{[0,1]}.
+\end{equation}
+The boundary branch is more precise than its atom at macroscopic position
+zero: with conditional probability tending to one its start is exactly $1$.
+\end{theorem}
+The centring in \eqref{eq:intro-location} compares two exact
+costs, $L-\log_2M$ and $\pi(L)$, rather than replacing the prime count by a
+first-order asymptotic at a precision where that replacement is invalid.
+\Cref{thm:two-clock} strengthens the location law to a lattice comparison
+with moving source weights, sign and overshoot. Its geometric clock counts
+integers in the bulk and prime ranks at the boundary; no phase-convergent
+subsequence is needed for that prelimit comparison.
+
+The third result treats many words at once, with their absolute signs
+prescribed. Let $\mathcal W_N\subset\{\pm1\}^{B_N}$ be a deterministic
+set of $m_N\ge1$ distinct words. Define
+\[
+ I_{x,w}=\1_{\{f(x-1+j)=w_j\ (0\le j<B_N)\}},\qquad
+                     x\in I_N,\ w\in\mathcal W_N.
+\]
+Write $w\sim_d v$ if the suffix $(w_d,\ldots,w_{B_N-1})$ equals the
+prefix $(v_0,\ldots,v_{B_N-d-1})$, and set
+\begin{equation}\label{eq:intro-overlap}
+ \Omega(\mathcal W_N)=\frac1{m_N}\sum_{w,v\in\mathcal W_N}
+           \sum_{d=1}^{B_N-1}2^{-d}\1_{\{w\sim_d v\}}.
+\end{equation}
+\Needspace{14\baselineskip}
+\begin{theorem}[Growing dictionaries of rare words]\label{thm:patterns-summary}
+Fix $C>0$ and $0<\eta<1/2$. Suppose
+\[
+ m_N\le N^{1/2-\eta},\qquad
+ |B_N-\log_2(Nm_N)|\le C,\qquad
+ \Omega(\mathcal W_N)\longrightarrow0.
+\]
+Then
+\begin{equation}\label{eq:intro-word-field}
+ \dTV\left(\Law((I_{x,w})_{x\in I_N,w\in\mathcal W_N}),
+       \bigotimes_{x\in I_N,w\in\mathcal W_N}\Pois(2^{-B_N})\right)
+                          \longrightarrow0.
+\end{equation}
+The same conclusion holds after any deterministic restriction of the
+site--word index set. The rare-word field is also asymptotically equivalent
+in total variation to the field formed from independent fair signs.
+\end{theorem}
+The total target intensity is $Nm_N2^{-B_N}$, while each word has mean
+$N2^{-B_N}$. Thus the comparison retains both the location and identity
+of a rare word, even when the dictionary grows. The theorem is proved
+quantitatively in \cref{thm:word-field}; \cref{cor:generic-dictionaries}
+shows that all but an $O(\log N/\sqrt N)$ fraction of dictionaries of the
+stated size have a suitably small overlap weight.
+There are also explicit deterministic examples with no overlaps at all:
+\cref{cor:marker-dictionaries} uses a classical binary marker construction.
+For example, $\lfloor N^{2/5}\rfloor$ prescribed words of length
+$(7/5)\log_2N+O(1)$ can be treated simultaneously. In this example the
+number of word types grows, but the expected total number of occurrences
+stays bounded. These are different parameters, and the theorem controls
+the former without discarding any labels.
+
+For a single word counted up to sign, take $\mathcal W=\{a,-a\}$.
+The run-start word $a=(-1,+1,\ldots,+1)$ has overlap weight $2^{-L}$.
+Dictionaries with nonvanishing weighted overlap are outside the theorem;
+short-period words illustrate the possible local clusters.
+The compound-Poisson law in \cref{cor:window-clusters} describes the
+clusters produced by counting every constant window rather than only
+run starts.
+
+The three main results use the same comparison in three forms: the raw
+profile controls run fields, the capped profile handles growing families
+of mutually exclusive words, and the relative comparison resolves the
+competition between the exact boundary event and the bulk.
+
+\subsection{The mechanism and the arithmetic estimate}
+Write prime signs as $f(p)=(-1)^{X_p}$ with independent uniform
+$X_p\in\mathbb F_2$. A pattern up to sign prescribes $L$ affine linear
+conditions on these prime coordinates. For two separated windows, let
+$\rho_L(x,y)$ be the dimension of the homogeneous relation space of their
+stacked systems. It depends on the windows, not on the prescribed signs.
+The affine Fourier identity gives
+\[
+ \left|\PP(I_x=I_y=1)-2^{-2L}\right|
+ \le 2^{-2L}(2^{\rho_L(x,y)}-1).
+\]
+Thus the useful arithmetic object counts \emph{all nonzero relations},
+with their full multiplicity, rather than merely the pairs that carry one.
+For prescribed absolute words the relevant kernel omits the two block-parity
+conditions. Its dimension increases by at most two. A host count valid
+without parity restrictions shows that the same weighted bound survives;
+this is the first bridge from relative signs to the dictionary theorem.
+
+\Needspace{4\baselineskip}
+The second bridge is probabilistic: at a fixed site the dictionary words are
+mutually exclusive, so the chance of a joint occurrence cannot exceed a
+single-site probability. Capping the relation weight at this ceiling,
+before summing over pairs, is what permits dictionaries of size
+$N^{1/2-\eta}$.
+
+The uniform estimate proved in \cref{sec:two-window-anatomy} is, for fixed
+$0<\delta<1$ and $B=L+1\asymp\log M$,
+\begin{equation}\label{eq:intro-master-profile}
+ \sum_{\substack{M^\delta\le x,y<M\\|x-y|>L}}
+ (2^{\rho_L(x,y)}-1)
+ \ll_\varepsilon M^\varepsilon
+ \left(M^{3/2}2^{B/6}+M2^{2B/3}+M^{2/3}2^B\right).
+\end{equation}
+The fixed logarithmic band and $\delta$ are understood in the implicit
+constant. This single geometry includes the dyadic and bounded-ratio
+estimates by restriction. At criticality the bound is $M^{5/3+\varepsilon}$.
+
+Two devices make the proof work. Exact rational coincidences are first
+removed as a systematic binary code. The remaining relations are resolved
+by the graph of prime coordinates larger than $B$. For the hardest terminal
+population, determinants force many small odd kernels into the same short
+window. Counting the kernels separately is wasteful; a shifted pair-energy
+estimate detects the necessary concentration. Finally one conditions on
+prime signs below a larger cutoff $Y$. Most starts then have exact
+conditional marginal $2^{-L}$, and disjoint prime supports give an exact
+conditional dependency graph. Chen--Stein is applied \emph{after} this
+arithmetic separation, not as a substitute for it.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[node distance=9mm and 9mm]
+\node[flowblue,text width=60mm] (a) {Affine word systems (Section~2)\\
+\small relative signs and prescribed values};
+\node[flowrust,text width=60mm,right=of a] (b) {Rational code and residual graph\\(Section~3)\\
+\small CRT, Runge, Pell and kernel energy};
+\node[flowblue,text width=60mm,below=of a] (c) {Condition on small primes (Section~4)\\
+\small private pivots;\\exact dependency graph};
+\node[flowrust,text width=60mm,right=of c] (d) {Poisson comparison (Sections~4--6)\\
+\small word fields and signed run marks};
+\draw[flowarrow] (a)--(b);
+\draw[flowarrow] (b)--(d);
+\draw[flowarrow] (a)--(c);
+\draw[flowarrow] (c)--(d);
+\end{tikzpicture}
+\caption{The arithmetic and probabilistic interfaces. The weighted two-window
+estimate bounds the separated-pair term. Private pivots supply the exact
+conditional graph and the correct marginals; local overlap is treated
+separately. Neither interface is dispensable.}\label{fig:proof-flow}
+\end{figure}
+
+\subsection{Relation to earlier work}
+The independent-sign theory supplies the run-start normalization, the
+geometric excess law and the lattice extreme-value comparison
+\cite{Foldes1979,GordonSchillingWaterman1986,ArratiaGordonWaterman1990}.
+Dependency-graph Poisson approximation is classical
+\cite{ArratiaGoldsteinGordon1989,ArratiaGoldsteinGordon1990,ChenRollin2013}.
+Poisson approximation for occurrences of prescribed words and the role of
+self-overlap are also classical \cite{Godbole1991,GodboleSchaffner1993}.
+For several words, Reinert--Schbath \cite{ReinertSchbath1998} give
+Poisson-process and compound-Poisson approximations for clumps in Markov
+chains; Roquain--Schbath \cite{RoquainSchbath2007} treat overlapping rare
+word families. Thus a joint approximation with word types is not itself
+a new probabilistic principle.
+The contribution here is to verify joint, site-labelled comparisons in a
+nonstationary arithmetic sequence with exact multiplicative identities,
+uniformly for logarithmic word length and a growing dictionary.
+
+Najnudel proves eventual independence of fixed-length blocks and almost-sure
+equidistribution of fixed words in roots-of-unity models \cite{Najnudel2020}.
+In the sign model the individual laws can be degenerate at squares, so
+this independence does not say that every coordinate is a fair sign. Fixed-pattern and sign-complexity questions also
+arise for deterministic multiplicative functions
+\cite{ButtkewitzElsholtz2011,MatomakiRadziwillTao2016,Mangerel2024}.
+Our growing block length and simultaneous count over moving starts require
+uniform weighted control of pairs of windows, beyond a fixed-block
+independence statement. The pattern theorem makes explicit which part of that
+control is insensitive to the affine right-hand side.
+
+Square-product paucity and Diophantine rigidity are important tools in random
+multiplicative functions. Related applications include short-interval central
+limit theorems and random Chowla problems
+\cite{ChatterjeeSoundararajan2012,SoundararajanXu2023,KlurmanShkredovXu2023,ChinisShala2025}. For fixed polynomial values, de la Bret\`eche, Wang and Xu
+use square-product counts and Evertse--Silverman or Pell estimates
+\cite{deLaBretecheWangXu2026}. Munsch--Shparlinski--Sun--Xiao
+\cite[Theorem~1.3]{MunschShparlinskiSunXiao2026} prove an unconditional
+square-product bound, uniform in the translation of one interval, for
+each fixed number of factors. The constants depend on that fixed number;
+the result does not directly control all relation weights in two moving
+windows of logarithmic length. Tao's study of products of consecutive integers
+with unusual anatomy provides a particularly close comparison for the
+smooth-number and Diophantine mechanisms \cite{Tao2026}.
+These works do not provide the growing-window profile
+\eqref{eq:intro-master-profile} as an immediate specialization.
+The properly normalized short-interval sums of Harper, Soundararajan and Xu
+\cite{HarperSoundararajanXu2026} concern a different observable and, in their
+stated model, Steinhaus prime values rather than binary run indicators.
+
+We use Runge's method in an explicitly proved split-product form
+\cite{Runge1887,Walsh1992}; for fixed-degree component counts, bounded-height square-class localization
+and a Pell equation suffice (\cref{lem:split-bounded}). Uniform integral-point
+theorems such as Evertse--Silverman~\cite{EvertseSilverman1986} provide
+stronger, height-free information, but are not inputs to our proof.
+The microscopic analysis uses
+the uniform prime-divisor lower bound of Laishram--Shorey
+\cite{LaishramShorey2004} and the pointwise result of
+Balasubramanian--Shorey \cite{BalasubramanianShorey1993}.
+The geometric marked target, its thinning chain and its Gaussian limits are
+probabilistic consequences once the arithmetic comparison is established;
+they are not presented as new properties of Poisson processes.
+
+\subsection{Reading guide and scope}
+Section~\ref{sec:affine-one-window} develops the affine encoding and the
+one-window bounds. Section~\ref{sec:two-window-anatomy} proves the final
+uniform two-window estimate and its extension to prescribed values.
+Sections~\ref{sec:poisson-transfer}--\ref{sec:conditional-laws} extract scalar,
+pattern, marked and conditional consequences. Section~\ref{sec:global-prefix}
+handles the finite prefix, the boundary and the relative crossover.
+A reader primarily interested in probability may take the uniform,
+prescribed-value and capped two-window profiles as arithmetic inputs
+(\cref{thm:master-profile,prop:absolute-profile,prop:capped-profile}), then
+continue with Sections~\ref{sec:poisson-transfer}--\ref{sec:global-prefix}.
+The two-window proof includes its Diophantine counting arguments, using
+standard ideal and unit theory for the Pell step. Section~\ref{sec:global-prefix}
+adds the explicitly stated prime-divisor and smooth-product inputs needed
+near the boundary. The companion expands the technical steps called from
+the article, rather than giving a second proof of the relation estimate.
+The exact prime-cutoff definitions in Section~\ref{sec:poisson-transfer}
+are not needed to read the three main statements.
+
+We do not assert optimality of the exponent $5/3$ or of the prime-cutoff
+ranges. The full one-factor range for the spatially labelled field remains
+unproved. The dictionary-size exponent is likewise a sufficient bound,
+not an optimality statement. Records, occupation laws, scale flows and
+auxiliary phase removal are developed in the separate process article
+\cite{PoulyLatticePoissonFlows2026}; none is a proof input here.
