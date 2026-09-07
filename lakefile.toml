@@ -45,3 +45,33 @@ name = "SolutionTheoremSixteenTwo"
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4.git"
 rev = "v4.32.0"
+
+[[lean_lib]]
+name = "ChallengeV3CriticalField"
+
+[[lean_lib]]
+name = "SolutionV3CriticalField"
+
+[[lean_lib]]
+name = "ChallengeV3Patterns"
+
+[[lean_lib]]
+name = "SolutionV3Patterns"
+
+[[lean_lib]]
+name = "ChallengeV3Limits"
+
+[[lean_lib]]
+name = "SolutionV3Limits"
+
+[[lean_lib]]
+name = "ChallengeV3Boundary"
+
+[[lean_lib]]
+name = "SolutionV3Boundary"
+
+[[lean_lib]]
+name = "ChallengeV3Crossover"
+
+[[lean_lib]]
+name = "SolutionV3Crossover"

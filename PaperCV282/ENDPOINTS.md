@@ -1,12 +1,13 @@
-# Paper C v2.8.2 endpoint ledger
+# Paper C endpoint ledger: v2.8.2 baseline and V3PREL
 
-**Current status: batch24 closes the relative mathematical scope of both
-documents.** Earlier dated batch sections below are retained as history;
-their statements of remaining work are superseded by the final section.
-Seven explicit literature arguments remain unproved.
+The current source mapping is [V3PREL](../docs/FORMALIZATION_COVERAGE_V3PREL.md).
+Earlier sections retain baseline numbering and dated history. Seven explicit
+literature arguments remain unproved; batch25 corrects the formerly false
+directional Stein premise, as explained in [LITERATURE_INPUTS.md](LITERATURE_INPUTS.md).
 
-
-The 752 mathematical modules contain **6082 named declarations: 4530 theorems, 1037 definitions and 515 named instances**. Batch24 adds 522 theorems in 114 new modules.
+The 753 mathematical modules contain **6094 named declarations: 4539 theorems,
+1039 definitions and 516 named instances**. The new five Palomar interfaces
+are documented [separately](../docs/PALOMAR_V3PREL.md).
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is

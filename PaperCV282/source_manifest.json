@@ -35,8 +35,8 @@
       "source_kind": "user_supplied_pdf",
       "current_batch_locators": [
         {
-          "item": "Final closure across the supplied article and companion; exact source labels in the coverage matrix and ENDPOINTS.md",
-          "scope": "All remaining numbered and unnumbered mathematical conclusions, relative to unchanged literature inputs."
+          "item": "Historical batch24 closure of the supplied v2.8.2 article and companion; original source labels remain in the baseline coverage matrix and ENDPOINTS.md.",
+          "scope": "Historical assessment relative to the seven literature arguments then stated. The former directional Stein premise was false and is corrected in batch25; current_revision identifies the current V3PREL mapping."
         }
       ],
       "batch_17_locators": [
@@ -167,8 +167,8 @@
       "role_in_batch": "Final relative mathematical closure of the article and companion, including precise arithmetic, quantitative Gaussian/moderate estimates, environmental couplings and the whole D.4 point process. Exact clauses and declaration index are recorded in scope.",
       "current_batch_locators": [
         {
-          "item": "Final closure across the supplied article and companion; exact source labels in the coverage matrix and ENDPOINTS.md",
-          "scope": "All remaining numbered and unnumbered mathematical conclusions, relative to unchanged literature inputs."
+          "item": "Historical batch24 closure of the supplied v2.8.2 article and companion; original source labels remain in the baseline coverage matrix and ENDPOINTS.md.",
+          "scope": "Historical assessment relative to the seven literature arguments then stated. The former directional Stein premise was false and is corrected in batch25; current_revision identifies the current V3PREL mapping."
         }
       ],
       "batch_17_locators": [
@@ -480,6 +480,7 @@
     "PaperCV282/DirectionalMarkedCosts.lean",
     "PaperCV282/DirectionalPoissonComparison.lean",
     "PaperCV282/DirectionalSteinComparison.lean",
+    "PaperCV282/DirectionalSteinCounterexample.lean",
     "PaperCV282/DirectionalSteinInput.lean",
     "PaperCV282/DirectionalSteinIntegration.lean",
     "PaperCV282/DivisorSubpolynomial.lean",
@@ -2609,13 +2610,13 @@
     "note": "Input hashes establish document identity only. Build, dependency-audit and qualification outcomes require separate evidence for the exact source bytes.",
     "formalization_qualification": "Complete relative to seven explicit literature arguments and stated equivalent representations; no claim that these arguments are proved, no new comparator result and no new Palomar qualification."
   },
-  "development_batch": 24,
+  "development_batch": 25,
   "declaration_inventory": {
-    "mathematical_module_count": 752,
-    "named_declarations": 6082,
-    "theorems": 4530,
-    "definitions": 1037,
-    "named_instances": 515,
+    "mathematical_module_count": 753,
+    "named_declarations": 6094,
+    "theorems": 4539,
+    "definitions": 1039,
+    "named_instances": 516,
     "coverage": "Every named declaration in every mathematical module, including all named local instances.",
     "audit_file": "PaperCV282/Audit.lean",
     "checker": "scripts/check_v282_audit.py",
@@ -2821,6 +2822,7 @@
       "PaperC.V282.DictionaryPairCosts.instDecidableProposition",
       "PaperC.V282.DirectionalMarkedCosts.instDecidableProposition",
       "PaperC.V282.DirectionalPoissonComparison.instDecidableProposition",
+      "PaperC.V282.DirectionalSteinCounterexample.instDecidableProposition",
       "PaperC.V282.DirectionalSteinInput.instDecidableProposition",
       "PaperC.V282.DyadicPoissonDistance.instMeasurableSpaceF2Discrete",
       "PaperC.V282.DyadicPrefixProbability.instMeasurableSpaceF2Discrete",
@@ -6337,10 +6339,16 @@
   "manuscript_notes": {
     "path": "PaperCV282/MANUSCRIPT_NOTES.md",
     "subject": "Clarify the conditional clause of Corollary 2.6: the prime valuation must be odd.",
-    "status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
+    "status": "Historical C001 note from the v2.8.2 baseline: the odd-valuation correction is incorporated in the archived V3PREL sources. Original v2.8.2 input identities remain historical.",
     "revision_log": "docs/PAPER_V3_REVISION_LOG.md",
-    "formalization_context": "Batch24 closes the relative mathematical scope. One confirmed correction and sixteen existing suggestions remain for the author; source PDFs unchanged. V3 sources and a new Palomar record are separate future steps.",
+    "formalization_context": "Batch25 integrates the author-supplied V3PREL article and companion and corrects the old false directional Stein premise (C002), with a formal counterexample. The source mapping is relative to seven explicit literature propositions, one corrected and none discharged. New Palomar candidates have separate validation and registration requirements.",
     "revision_entries": {
+      "confirmed_corrections": 2,
+      "suggestions": 16
+    },
+    "historical_batch24_status": "Proposed wording clarification for a future manuscript revision; current input PDFs remain v2.8.2.",
+    "historical_batch24_formalization_context": "Batch24 closes the relative mathematical scope. One confirmed correction and sixteen existing suggestions remain for the author; source PDFs unchanged. V3 sources and a new Palomar record are separate future steps.",
+    "historical_batch24_revision_entries": {
       "confirmed_corrections": 1,
       "suggestions": 16
     }
@@ -6358,6 +6366,20 @@
     "companion_completed_named_results": 8,
     "companion_named_results": 8,
     "denominators_must_not_be_added": true,
-    "metric_is_lean_declaration_count": false
+    "metric_is_lean_declaration_count": false,
+    "historical_assessment_notice": "The 61+8 denominators and batch24 completion assessment here retain the v2.8.2 snapshot. Its formerly false directional Stein premise is corrected in batch25; use current_revision.coverage for the current 59+8 V3PREL mapping."
+  },
+  "current_revision": {
+    "version": "3PREL",
+    "source_manifest": "../manuscripts/v3prel/manifest.json",
+    "coverage": "../docs/FORMALIZATION_COVERAGE_V3PREL.json",
+    "historical_numbering_basis": "The scope keys and target_version in this baseline manifest retain v2.8.2 numbering. Use the V3PREL correspondence for current result labels.",
+    "directional_stein_correction": "The former unweighted Euclidean quadratic premise is false. It is replaced by the same-solution entrywise bound from Barbour Lemma2, retaining the weighted Lemma3 bound. All downstream conclusions retain their bounds.",
+    "regression_proof": "DirectionalSteinCounterexample.lean",
+    "external_literature_argument_count": 7,
+    "inputs_changed_not_discharged": [
+      "DirectionalSteinInput.DirectionalSteinFactorsStatement"
+    ],
+    "new_palomar_records_claimed": false
   }
 }

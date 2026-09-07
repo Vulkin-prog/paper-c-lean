@@ -1,0 +1,21 @@
+{
+  "challenge_module": "ChallengeV3Patterns",
+  "solution_module": "SolutionV3Patterns",
+  "theorem_names": [
+    "PaperCV3Audit.Patterns.word_overlap_probability",
+    "PaperCV3Audit.Patterns.dictionary_critical",
+    "PaperCV3Audit.Patterns.exact_marked_quantitative",
+    "PaperCV3Audit.Patterns.exact_sign_partition",
+    "PaperCV3Audit.Patterns.aggregate_hard_budget",
+    "PaperCV3Audit.Patterns.geometric_joint_configuration",
+    "PaperCV3Audit.Patterns.geometric_compound_weight",
+    "PaperCV3Audit.Patterns.geometric_compound_pgf",
+    "PaperCV3Audit.Patterns.constant_windows_compound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

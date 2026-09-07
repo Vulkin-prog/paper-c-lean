@@ -1,0 +1,292 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: V3PREL moving crossover mixtures and affine first-departure localization
+  description: The selected declarations use the least genuinely contained departure, the full signed
+    excess record and an independent geometric/uniform-site/fair-sign mixture with moving weights. They
+    give the full marked TV limit, the ordinary and source-resolved positions in all three real/infinite
+    phase regimes, and the actual sign bias. The affine family uses varying linear maps and right-hand
+    sides on the true hard prime cylinder, compatibility only eventually, and the actual rank information
+    budget. Its exact conditional border mass is 2^(-d), with d the true row-space deficit. Affine localization
+    and sign bias require no future neutrality; the full affine marked clock assumes neutrality only eventually
+    for each fixed finite future prefix.
+  authors:
+  - Brice Pouly
+  responsible_maintainers:
+  - Brice Pouly
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.NT
+  - math.PR
+  msc2020:
+  - 11K65
+  - 60F05
+sources:
+- title: Long runs and rare patterns of a random completely multiplicative function, version 3PREL
+  authors:
+  - Brice Pouly
+  id: https://doi.org/10.33774/coe-2026-z3l74
+  type: paper
+  location: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias. Snapshot manuscripts/v3prel/paper_C_version_3PREL_en.pdf,
+    SHA-256 0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7.
+  relationship: adapts
+  license: CC-BY-4.0
+  author_endorsement: participated
+  note: This is a new candidate, independent of the four historical v0.9 IDs. Its scope is exactly the
+    listed declarations; no previous qualification is reused.
+- title: Technical companion to Long runs and rare patterns of a random completely multiplicative function,
+    version 3PREL
+  authors:
+  - Brice Pouly
+  type: paper
+  location: Appendix E and the explicitly cited probability inputs. Snapshot manuscripts/v3prel/paper_C_version_3PREL_technical_companion_en.pdf,
+    SHA-256 d64150c995f07ee39b016bb20a16b5fc3a01ce53b0ddcda893d1ceb41eefadee.
+  relationship: adapts
+  note: All source-shaped literature arguments are visible in the standalone challenge. This family does
+    not consume the corrected multivariate directional Stein premise; the correction C002 is exercised
+    by other V3PREL candidates.
+- title: 'Two moments suffice for Poisson approximations: the Chen-Stein method'
+  authors:
+  - Richard Arratia
+  - Larry Goldstein
+  - Louis Gordon
+  id: https://doi.org/10.1214/aop/1176991491
+  type: paper
+  location: Theorem 2, printed page 11, exact dependency-graph specialization
+  relationship: background
+  note: Process.ProcessAGGStatement displays the generic finite indicator-field bound in half-l1 convention,
+    factor 2(b1+b2), and exact whole-outside-vector independence. The arithmetic graph, costs, conditioning
+    and sparse comparison are proved internally.
+- title: Number of prime divisors in a product of consecutive integers
+  authors:
+  - Shanta Laishram
+  - T. N. Shorey
+  id: https://doi.org/10.4064/aa113-4-3
+  type: paper
+  location: Acta Arithmetica 113 (2004), equation (14), printed page 331
+  relationship: background
+  note: Boundary.UniformPrimeDivisorStatement is the published eventual bound uniform in n>k, with the
+    threshold before n. It is an ordinary theorem hypothesis, not an axiom or an assumed probability estimate.
+- title: Applications of Baker's theory of linear forms in logarithms to exponential diophantine equations
+  authors:
+  - T. N. Shorey
+  type: paper
+  location: RIMS Kokyuroku 886 (1994), pages 55-56, equation (15) and the square case
+  relationship: background
+  note: Boundary.ShoreySquareProductStatement displays the square-product exclusion with arbitrary positive
+    smooth coefficient, true height and density thresholds, and uniform quantifier order. The arithmetic/probability
+    consequences are proved internally.
+- title: Newman’s Short Proof of the Prime Number Theorem
+  authors:
+  - Don Zagier
+  id: https://doi.org/10.2307/2975232
+  type: paper
+  location: American Mathematical Monthly 104 (1997), pages 705-708
+  relationship: background
+  note: Analysis.PrimeNumberTheoremRemainder is the ordinary prime-counting remainder o(t/log t); the
+    exact Ei normalization is displayed. The weighted prime estimates and saddle consequences are internal.
+- title: Majorations explicites pour le nombre de diviseurs de N
+  authors:
+  - J.-L. Nicolas
+  - G. Robin
+  id: https://doi.org/10.4153/CMB-1983-078-5
+  type: paper
+  location: Theorem 1, printed page 485 (1983)
+  relationship: background
+  note: Boundary.DivisorLogBoundStatement displays log(tau(n))*log(log n) <= 2*log(2)*log n for n>=64,
+    a safe source specialization. It supplies no Poisson or crossover conclusion.
+related_formalizations: []
+status:
+  scope: New candidate v3prel_crossover. One standalone Mathlib-only Challenge (442 lines, 27446 bytes)
+    and one independently defined Solution, with 11 selected theorem declarations. Intentional placeholders
+    occur only in the Challenge; the Solution has no proof holes. The selected declarations use the least
+    genuinely contained departure, the full signed excess record and an independent geometric/uniform-site/fair-sign
+    mixture with moving weights. They give the full marked TV limit, the ordinary and source-resolved
+    positions in all three real/infinite phase regimes, and the actual sign bias. The affine family uses
+    varying linear maps and right-hand sides on the true hard prime cylinder, compatibility only eventually,
+    and the actual rank information budget. Its exact conditional border mass is 2^(-d), with d the true
+    row-space deficit. Affine localization and sign bias require no future neutrality; the full affine
+    marked clock assumes neutrality only eventually for each fixed finite future prefix. No Palomar outcome,
+    Comparator pass or NanoDa result is asserted by this metadata.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: PaperCV3Audit.v3_crossover_affine_border_mass
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+  - declaration: PaperCV3Audit.v3_crossover_complete_moving_mixture
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+  - declaration: PaperCV3Audit.v3_crossover_locations
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+  - declaration: PaperCV3Audit.v3_crossover_locations_atTop
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+  - declaration: PaperCV3Audit.v3_crossover_locations_atBot
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+  - declaration: PaperCV3Audit.v3_crossover_sign
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+  - declaration: PaperCV3Audit.v3_crossover_affine_complete_clock
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+  - declaration: PaperCV3Audit.v3_crossover_affine_locations
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+  - declaration: PaperCV3Audit.v3_crossover_affine_locations_atTop
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+  - declaration: PaperCV3Audit.v3_crossover_affine_locations_atBot
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+  - declaration: PaperCV3Audit.v3_crossover_affine_sign
+    file: SolutionV3Crossover.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_crossover.json
+automation:
+  methods:
+  - method: manual
+    models: []
+    framework: n/a
+    tool_setup: The human maintainer selected the mathematical scope, candidate families and publication
+      requirements.
+    prompting_notes: n/a
+  - method: agent
+    models:
+    - OpenAI Codex agents
+    framework: Codex
+    tool_setup: Agent-assisted Lean construction, independent mathematical reviews and mechanical source/statement
+      checks.
+    prompting_notes: Bounded proof and review subtasks, with source-to-interface bridges and explicit
+      literature boundaries.
+  spend_usd: subscription-based usage; not separately tracked
+  notes: The workflow is disclosed and is not represented as independent human peer review.
+fidelity:
+  divergences: The record explicitly has a cemetery value, a border component containing the prime-rank
+    clock, and a bulk component containing the actual integer site, full excess and F2 sign. Position
+    limits are stated by all bounded continuous test integrals on the true laws conditioned by A intersected
+    with non-vacancy, equivalent to weak convergence. False labels are microscopic with x/L^2, true labels
+    are bulk with x/M. A null clock is totalized to zero; the proof shows the exceptional events vanish.
+    The bulk target uses the actual contained population, so its weights may oscillate. The affine codomain
+    may vary and be any F2 module. The finite future row-space condition is fully displayed; no desired
+    TV error is a premise. Right-censored variants and the separate resolved-future theorems of Section
+    6 are not selected by this candidate. The paper states its results without theorem-level premises,
+    whereas the Lean endpoints explicitly consume the displayed literature propositions. Those hypotheses
+    are not proved by kernel checking the conditional results.
+review:
+  status: agent-reviewed
+  reviewers:
+  - Independent Codex agent instances
+  notes: The underlying development has independent agent reviews at frozen source hashes. Final new-candidate
+    mechanical validation and review are recorded separately; this metadata alone does not certify a Palomar
+    outcome or human peer review.
+alignment:
+  namespace: PaperCV3Audit
+  statements:
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_affine_border_mass
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_complete_moving_mixture
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_locations
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_locations_atTop
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_locations_atBot
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_sign
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_affine_complete_clock
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_affine_locations
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_affine_locations_atTop
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_affine_locations_atBot
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+  - source: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias.
+    lean: PaperCV3Audit.v3_crossover_affine_sign
+    module: SolutionV3Crossover
+    status: proved modulo the explicit literature premises in its statement, if any
+acknowledgements: Built on Lean 4.32.0 and Mathlib. Source archives and the detailed manuscript migration
+  matrix are preserved separately.

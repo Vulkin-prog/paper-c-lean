@@ -2,9 +2,9 @@
 
 Dernière mise à jour : 7 septembre 2026.
 
-Ce registre rassemble les corrections, clarifications et améliorations suggérées par la formalisation. La version source examinée est la **v2.8.2 anglaise** du papier et de son compagnon technique. La « v3 » désigne ici la prochaine révision à préparer ; les PDF fournis n'ont pas été modifiés.
+Ce registre conserve les corrections, clarifications et améliorations issues de la formalisation de la **v2.8.2 anglaise**, puis leur suivi dans la **V3PREL du 7 septembre 2026** fournie par l'auteur. Les bilans des lots antérieurs restent historiques : leurs mentions de PDF inchangés, de couverture ou de propositions à intégrer décrivent leur date de rédaction. Les PDF V3PREL sont conservés séparément, sans modification de leurs octets.
 
-Les identifiants restent stables au fil des mises à jour. Une **correction confirmée** répond à un énoncé littéralement incorrect ou à une ambiguïté dont une lecture est réfutée. Une **suggestion** améliore l'exposition sans signaler d'erreur du texte actuel. Le statut « à intégrer » ne signifie pas que la modification est déjà acceptée par l'auteur ou appliquée au manuscrit.
+Les identifiants restent stables au fil des mises à jour. Le suivi courant comprend **deux corrections confirmées et seize suggestions** : C001 est une correction de formulation du papier déjà intégrée à V3PREL ; C002 corrige le dépôt Lean, et non le compagnon V3PREL. Une **correction confirmée** répond à un énoncé littéralement incorrect ou à une ambiguïté dont une lecture est réfutée. Une **suggestion** améliore l'exposition sans signaler d'erreur du texte actuel. Le statut « à intégrer » ne signifie pas que la modification est déjà acceptée par l'auteur ou appliquée au manuscrit.
 
 L'identité exacte des deux PDF est conservée dans le [manifeste des sources](../PaperCV282/source_manifest.json). Les pages ci-dessous sont les pages imprimées du document concerné. La [liste des résultats formalisés](../PaperCV282/ENDPOINTS.md) précise les preuves obtenues, leurs hypothèses et les limites des représentations utilisées.
 
@@ -12,7 +12,8 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 
 | ID | Document et emplacement | Type | Statut |
 |---|---|---|---|
-| V3-C001 | Papier, p. 9, clause conditionnelle du corollaire 2.6 ; convention p. 8 | Correction confirmée de formulation | À intégrer dans le prochain brouillon ; PDF inchangé |
+| V3-C001 | Papier, p. 9, clause conditionnelle du corollaire 2.6 ; convention p. 8 | Correction confirmée de formulation | Intégrée dans la V3PREL fournie, p. 9 |
+| V3-C002 | Dépôt Lean, `DirectionalSteinInput` ; compagnon V3PREL C.3 pour la bonne référence | Correction confirmée du dépôt | Corrigée, contre-exemple formalisé et relecture indépendante obtenue |
 | V3-S001 | Papier, p. 25, proposition 3.26 et équation (3.24) | Suggestion d'explicitation | Proposition à examiner |
 | V3-S002 | Papier, p. 9, preuve du corollaire 2.6 | Suggestion d'explicitation du modèle fini | Proposition à examiner |
 | V3-S003 | Papier, p. 14–15, preuve de la proposition 3.7 après (3.11) | Suggestion de simplification de la preuve | Proposition à examiner |
@@ -30,7 +31,7 @@ L'identité exacte des deux PDF est conservée dans le [manifeste des sources](.
 | V3-S015 | Papier pp.46–47, théorème7.9 et mélange(7.22) | Suggestion de normalisation et détronquature | Proposition à examiner |
 | V3-S016 | Papier pp.44 et47, théorème7.10 ; compagnon E.7 pp.21–22 | Suggestion de clarification du régime et des quantificateurs futurs | Proposition à examiner |
 
-**Compagnon technique : aucune correction confirmée à ce stade.** Le périmètre mathématique des annexes est désormais couvert relativement aux sept propositions bibliographiques explicites, qui ne sont pas démontrées dans Lean. Aucune anomalie ne lui est attribuée par analogie avec le papier.
+**Compagnon V3PREL : aucune erreur confirmée par C002.** Sa section C.3 emploie déjà les bonnes bornes de Barbour. Les sept noms de propositions bibliographiques restent explicites ; la proposition directionnelle du dépôt a changé au lot25. Leur présence comme hypothèses ne constitue pas une preuve Lean de ces résultats bibliographiques.
 
 ## V3-C001 — Exiger une valuation impaire, pas seulement un premier impair
 
@@ -48,9 +49,23 @@ Contre-exemple à la lecture littérale : prendre `B = 2`, `Y = 3`, `x = 26`, do
 
 On peut également écrire « every vertex satisfies `K_Y(n) ≠ 1` », en renvoyant à la définition p. 8. Cette modification concerne la clause conditionnelle, sans changer l'équation (2.6).
 
-**Statut.** À intégrer dans le prochain brouillon ; proposition non encore appliquée aux PDF. Le contre-exemple est un argument arithmétique explicite documenté dans la note, sans revendication d'une déclaration Lean dédiée à `{25,26}`.
+**Statut.** Intégrée dans la V3PREL fournie, p. 9 : la clause exige explicitement un premier `p > Y` tel que `v_p(n)` soit impair. Le texte historique v2.8.2 et son contre-exemple restent consignés ci-dessus. Ce contre-exemple est un argument arithmétique explicite documenté dans la note, sans revendication d'une déclaration Lean dédiée à `{25,26}`.
 
 **Preuve et notes.** [Note détaillée](../PaperCV282/MANUSCRIPT_NOTES.md) ; [WindowValues.lean](../PaperCV282/WindowValues.lean), déclarations `private_prime_of_not_defective` et `corollary_two_six_conditioned`. Cette dernière utilise explicitement `¬HDefective Y n`. Le module [InfiniteConditionalWords.lean](../PaperCV282/InfiniteConditionalWords.lean) établit désormais cette loi dans le modèle infini, sur chaque atome de masse positive de la sigma-algèbre des premiers au plus `Y`, identifiée explicitement. La présentation par un noyau général ou une espérance conditionnelle abstraite reste distincte.
+
+## V3-C002 — Corriger la prémisse directionnelle du dépôt
+
+**Document et emplacement.** Dépôt Lean, `PaperCV282/DirectionalSteinInput.lean`, proposition `DirectionalSteinFactorsStatement` introduite au lot16. La section C.3 du compagnon **V3PREL** fournit déjà les bonnes estimations ; C002 ne lui attribue aucune erreur.
+
+**Type.** Correction confirmée du dépôt et de sa justification bibliographique. L'ancienne prémisse exigeait, pour une même solution réelle de l'équation de Stein, la borne quadratique euclidienne `|αᵀ H_g(z) α| ≤ Σ_i α_i²`. Cette borne, imprimée dans Röllin, arXiv:0706.0879v3, équation (3.1), est fausse. La compilation des preuves relatives à cette hypothèse n'en établissait pas la validité mathématique.
+
+**Contre-exemple démontré.** Pour deux intensités `t=(1/2,1/2)` et le véritable ensemble test `A={e₁,e₂}`, la masse de Poisson produit vaut `exp(-1)`. Les équations de Stein aux deux vecteurs unités imposent, pour toute solution `g`, `αᵀ H_g(0) α = 4(1-exp(-1)) > 2` lorsque `α=(1,1)`. Cela contredit `Σ_i α_i²=2`, sans supposer une solution particulière, une unicité ou une condition de croissance. Les déclarations `no_euclidean_solution` et `not_euclidean_solution_statement` de [DirectionalSteinCounterexample.lean](../PaperCV282/DirectionalSteinCounterexample.lean) prouvent cette contradiction à partir des vraies masses et du générateur.
+
+**Correction appliquée.** [Barbour (1988), p. 179, lemmes 2–3](https://doi.org/10.2307/3214155), donne pour la **même solution** la borne constante entrée par entrée `|Δ_iΔ_j g(z)|≤1` et la borne quadratique pondérée `|αᵀ H_g(z) α|≤c(t)Σ_i α_i²/t_i`, où `c(t)=(1+2 log⁺(2Σ_i t_i))/2`. Le premier énoncé inclut `i=j`. Le second passe des directions entières aux directions réelles par homogénéité et continuité. L'alternative quadratique non pondérée de Barbour est `(Σ_i |α_i|)²`, et non `Σ_i α_i²`.
+
+La première clause erronée est remplacée par la borne constante dans [DirectionalSteinInput.lean](../PaperCV282/DirectionalSteinInput.lean). [DirectionalHessian.lean](../PaperCV282/DirectionalHessian.lean) combine cette clause avec la polarisation pondérée pour retrouver le même facteur final `min(1,c(t)/sqrt(t_i*t_j))`. Les coûts arithmétiques signés et non signés restent inchangés. La comparaison par graphe, le remplissage de Poisson et les conditionnements restent des déductions ; aucune borne de TV arithmétique n'est introduite comme hypothèse.
+
+**Statut et frontière.** Correctif et contre-exemple compilés, puis relus indépendamment. Les **sept noms** d'entrées bibliographiques sont conservés, mais le contenu de l'entrée directionnelle est modifié. Aucun nouvel axiome Lean n'est ajouté et le résultat analytique de Barbour reste une proposition bibliographique explicite. Les preuves antérieures demeurent des preuves relatives à leurs anciennes hypothèses ; leur audit noyau ne doit pas être présenté comme une validation de la prémisse réfutée. La [bibliographie des entrées](../PaperCV282/LITERATURE_INPUTS.md#batch25-corrected-directional-premise-same-seven-names) documente les sources et leur empreinte. La suggestion historique S011 est actualisée ci-dessous en conséquence.
 
 ## V3-S001 — Rendre explicite le compteur d'hôtes sans parité
 
@@ -311,15 +326,15 @@ La V3 pourra utiliser les [déclarations précises](../PaperCV282/ENDPOINTS.md) 
 
 **Type.** Suggestion d'explicitation bibliographique, **sans erreur identifiée**. Le texte distingue déjà le facteur directionnel de la comparaison agrégée ; la proposition précise ce qui est emprunté à la littérature et ce qui est démontré ensuite.
 
-**Justification.** La formalisation utilise `DirectionalSteinFactorsStatement`, qui fournit une solution de l'équation de Stein multivariée et deux bornes de formes quadratiques de son Hessien, pour des intensités positives en dimension au moins deux. L'entrée reprend la forme publiée dans Röllin, *On the Optimality of Stein Factors*, arXiv:0706.0879v3, p. 5, équation (3.1), reproduisant le lemme 3 de Barbour (1988). Les bornes entrée par entrée, la sommation des poids géométriques, l'identité de remplissage indépendant de Poisson et la comparaison par graphe sont ensuite dérivées. La comparaison arithmétique ou une erreur de variation totale ne fait pas partie de cette entrée.
+**Justification actualisée au lot25.** Le conseil historique d'identifier l'entrée bibliographique reste pertinent, mais l'ancienne justification par les « deux bornes quadratiques » de Röllin est remplacée par C002. L'entrée corrigée fournit une même solution avec la borne constante entrée par entrée et la forme quadratique pondérée de Barbour (1988), lemmes 2–3. C'est déjà la présentation mathématique du compagnon V3PREL C.3. La sommation des poids, le remplissage indépendant et la comparaison par graphe restent démontrés dans le dépôt.
 
-**Formulation anglaise proposée.**
+**Formulation anglaise actualisée.**
 
-> We use the multivariate Poisson Stein solution and its two quadratic-form Hessian estimates, in the form recorded by Röllin, equation (3.1), reproducing Barbour's Lemma 3. The entrywise directional bounds, the cancellation of the independent Poisson filling, and the dependency-graph comparison are derived below. In particular, the finite aggregated comparison is not itself a literature input.
+> We use one multivariate Poisson Stein solution with Barbour's constant entrywise estimate and weighted quadratic-form estimate (Lemmas 2–3). Polarization gives the weighted entrywise factor. The independent Poisson filling and dependency-graph comparison are derived; the finite arithmetic aggregated comparison is not a literature input.
 
-**Statut.** Proposition à examiner par l'auteur. La frontière formelle comporte désormais quatre propositions bibliographiques explicites ; aucune n'est présentée comme un nouvel axiome Lean ni comme un résultat prouvé par l'audit des axiomes. Cette suggestion ne demande pas de remplacer l'énoncé C.1 par un autre.
+**Statut.** Suggestion d'explicitation historique, à confronter à la présentation déjà adoptée dans V3PREL. Elle n'ajoute pas de correction au compagnon. Le lot16 comptait quatre propositions explicites ; le développement courant en conserve sept, avec l'entrée directionnelle corrigée par C002.
 
-**Preuves et limites.** [DirectionalSteinInput.lean](../PaperCV282/DirectionalSteinInput.lean), [DirectionalHessian.lean](../PaperCV282/DirectionalHessian.lean), [PoissonFillingIdentity.lean](../PaperCV282/PoissonFillingIdentity.lean), [DirectionalPoissonComparison.lean](../PaperCV282/DirectionalPoissonComparison.lean) et [SignedAggregateComparison.lean](../PaperCV282/SignedAggregateComparison.lean). L'analogue arithmétique signé est compilé et suffit aux conclusions de 5.8–5.10. Il conserve une masse de relations complètes de valeurs à longueur `Q=L+E+1` et `2*(Q+1)≤Y` ; le C.1 imprimé utilise la masse relative `R2(N,Q)` et `2Q<Y`. Aucun raccord exact entre ces formules n'est encore revendiqué, donc C.1 reste **partiel dans le comptage strict**. C'est une limite de couverture, sans erreur du compagnon identifiée.
+**Preuves et limites historiques.** [DirectionalSteinInput.lean](../PaperCV282/DirectionalSteinInput.lean), [DirectionalHessian.lean](../PaperCV282/DirectionalHessian.lean), [PoissonFillingIdentity.lean](../PaperCV282/PoissonFillingIdentity.lean), [DirectionalPoissonComparison.lean](../PaperCV282/DirectionalPoissonComparison.lean) et [SignedAggregateComparison.lean](../PaperCV282/SignedAggregateComparison.lean). Au lot16, le coût signé à profil de valeurs et support maximal suffisait à 5.8–5.10 mais ne fermait pas encore le C.1 non signé littéral. Cette réserve historique a été levée au lot17 par la masse relative `R2(N,Q)` sous `2Q<Y`. Le correctif C002 ne change pas ces coûts ni ces conditions de support.
 
 
 ## Bilan du lot 16 — Comparaison agrégée et limite Poisson–Gauss

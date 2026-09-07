@@ -1,28 +1,31 @@
-# Paper C v2.8.2 formalization overlay
+# Paper C development: v2.8.2 baseline and V3PREL
 
-`PaperCV282` develops the English article *Long runs and rare patterns of a
-random completely multiplicative function* and its technical companion,
-version 2.8.2, dated 5 September 2026. It reuses the historical `PaperC`
-model and proofs, with retained-core authority
-`b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
+The `PaperCV282` namespace is retained to preserve theorem names and imports.
+Its current source is the supplied V3PREL article and companion, archived in
+[manuscripts/v3prel](../manuscripts/v3prel/README.md). The historical `PaperC`
+core retains authority `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
 
-Batch24 completes the mathematical scope of the article and technical
-companion **relative to seven explicit literature propositions**. All 61
-numbered article results and, separately, all 8 companion results are covered.
-The introductory duplicates1.1–1.3 are excluded from 61; the two denominators
-must not be added. The final review also covers the unnumbered conclusions,
-including D.1, D.4 and the extensions after6.4.
+Batch25 audits all **59 numbered article results and, separately, 8 companion
+results**, together with the unnumbered conclusions; see the
+[V3PREL mapping](../docs/FORMALIZATION_COVERAGE_V3PREL.md). The earlier v2.8.2
+denominator was 61 because two arithmetic lemmas were removed in the revision.
 
-The seven propositions remain unproved theorem arguments, not Lean axioms.
-The axiom audit does not discharge them. See
-[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md) for the exact boundary and
-[ENDPOINTS.md](ENDPOINTS.md) for the actual source laws and quantifiers.
-The completion percentage describes the audited source-to-proof scope;
-it is not a probability of correctness or a new Palomar qualification.
+Seven literature propositions remain explicit, unproved theorem arguments.
+Batch25 **changes the directional Stein proposition**: the former Euclidean
+quadratic estimate was false. The corrected same-solution entrywise constant
+and weighted quadratic estimates match V3PREL C.3. The development proves a
+counterexample to the old formulation and rederives the downstream bounds.
+Thus the earlier batch24 claim cannot be read as completion under seven
+unchanged source-faithful propositions. See
+[LITERATURE_INPUTS.md](LITERATURE_INPUTS.md) and the current mapping.
+
+The [five new Palomar candidates](../docs/PALOMAR_V3PREL.md) specify selected
+results. A source mapping, Lean build or axiom inventory is not a Palomar
+registration and does not prove the literature inputs themselves.
 
 ## Sources, toolchain and verification
 
-The supplied PDFs remain unchanged. Their exact identities are recorded in
+The baseline v2.8.2 PDFs below are historical inputs. Their identities are recorded in
 [`source_manifest.json`](source_manifest.json):
 
 | Input | Pages | SHA-256 |
@@ -33,7 +36,7 @@ The supplied PDFs remain unchanged. Their exact identities are recorded in
 The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
 `81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
 
-The 752 mathematical modules contain **6082 named declarations: 4530 theorems, 1037 definitions and 515 named instances**. Batch24 adds 522 theorems in 114 new modules.
+The 753 mathematical modules contain **6094 named declarations: 4539 theorems, 1039 definitions and 516 named instances**. Batch25 adds the formal Stein counterexample; the candidate interfaces are counted separately.
 
 The complete mathematical module and named-instance lists are in the source
 manifest. The source gate requires exact named-declaration coverage and the
@@ -172,7 +175,7 @@ quantifiers explicit in7.10. It is a clarification, not a newly identified
 mathematical error. All ten numbered results of section7 are now covered
 under the existing explicit literature arguments.
 
-## Final batch24 scope
+## Historical batch24 scope (read with the batch25 correction)
 
 Precise Pell and split-product rates, sharp singleton Euler estimates,
 arbitrary positive aligned-core density, arbitrary Fourier tuples and
@@ -191,6 +194,7 @@ Only fixed lower reverse segments and individual-scale maximal couplings
 are asserted, with the source quantifiers. The existing future-neutrality
 condition is used only where the full affine geometric clock requires it.
 
-The V3 revision log contains one confirmed correction and sixteen suggestions.
-Author revision, incorporation of the future V3 source files and any new
-Palomar registration are subsequent editorial/release work.
+The revision log preserves the earlier suggestions and records their V3PREL
+status. V3PREL sources are now integrated. The correction of the old Stein
+premise is documented separately; new Palomar registration remains a
+subsequent action after qualification of the selected candidates.

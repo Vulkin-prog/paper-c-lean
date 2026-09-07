@@ -1,0 +1,257 @@
+\section{Runge coefficients and uniform Diophantine inputs}\label{supp:sec:diophantine}
+This appendix supplies the growing-degree Runge calculation and the
+bounded-height Pell argument used in the article. The two types of
+uniformity are different: the Runge degree is allowed to grow, whereas a
+component's degree and its polynomial-height exponent are fixed before
+the ambient scale. No height-free integral-point estimate is needed.
+
+\subsection{The split-product calculation}
+\begin{lemma}[Coefficient-level Runge estimate]\label{supp:lem:runge-calculation}
+Under the hypotheses of \cref{lem:runge}, including $U\in\Z$, the bound
+$U\le(C_0dR)^{2d}$ holds with an absolute constant $C_0$.
+\end{lemma}
+\begin{proof}
+The $\gamma_\nu$ being distinct and $d\ge2$, we have $R\ge1$ and $G$ is not the square of a polynomial. Set
+\[
+ F(z)=\prod_{\nu=1}^{d}(1+\gamma_\nu z)^{1/2}
+      =\sum_{m\ge0}c_mz^m,
+\]
+where each square root is the analytic branch equal to $1$ at $0$, and
+\[
+ P(T)=\sum_{m=0}^{k}c_mT^{k-m}.
+\]
+
+For $m\le k$, the identity
+\[
+ \binom{1/2}{j}
+ =(-1)^{j-1}\frac{\operatorname{Cat}_{j-1}}{2^{2j-1}}
+ \quad(j\ge1)
+\]
+implies $2^{2j}\binom{1/2}{j}\in\Z$ and
+$|\binom{1/2}{j}|\le1$. More explicitly,
+\[
+ c_m=
+ \sum_{j_1+\cdots+j_d=m}
+ \prod_{\nu=1}^d
+ \binom{1/2}{j_\nu}\gamma_\nu^{j_\nu}.
+\]
+The number of weak compositions of $m$ into $d$ parts is
+$\binom{m+d-1}{d-1}\le2^{m+d}$. Since $m\le k=d/2$ and
+$|\gamma_\nu|\le R$, we obtain simultaneously
+\begin{equation}\label{supp:eq:runge-coefficients}
+ 2^dc_m\in\Z,
+ \qquad
+ |c_m|\le2^{m+d}R^m\le(8R)^d,
+ \qquad 0\le m\le k.
+\end{equation}
+In particular $2^dP\in\Z[T]$, uniformly as $d$ grows with the ambient scale.
+
+If $2R\le U\le4R$, the conclusion is immediate after enlarging $C_0$. Assume therefore $U>4R$. On the circle $|z|=(2R)^{-1}$,
+\[
+ |F(z)|\le(3/2)^{d/2}=:M_d.
+\]
+Cauchy's formula gives $|c_m|\le M_d(2R)^m$. Since $2R/U<1/2$,
+\begin{align}
+ |\sqrt{G(U)}-P(U)|
+ &=U^k\left|\sum_{m\ge k+1}c_mU^{-m}\right|\notag\\
+ &\le
+ U^kM_d\sum_{m\ge k+1}(2R/U)^m\notag\\
+ &\le
+ \frac{2M_d(2R)^{k+1}}{U}
+ \le\frac{(C_1dR)^d}{U}.
+ \label{supp:eq:runge-tail}
+\end{align}
+
+If the difference is nonzero, $\sqrt{G(U)}$ is an integer and, by \eqref{supp:eq:runge-coefficients}, $P(U)\in2^{-d}\Z$. It is therefore at least $2^{-d}$ in absolute value. Inequality \eqref{supp:eq:runge-tail} then implies
+\[
+ U\le2^d(C_1dR)^d\le(C_0dR)^{2d}.
+\]
+
+Assume finally $\sqrt{G(U)}=P(U)$. The polynomial
+\[
+ Q(T)=2^{2d}G(T)-(2^dP(T))^2
+\]
+has integer coefficients. It is nonzero, since $G$ is not a square. The expansion at infinity gives $\sqrt{G(T)}-P(T)=O(T^{-1})$, whence
+\[
+ \deg Q\le k-1.
+\]
+The coefficient of $T^r$ in $G$ is a symmetric polynomial containing at most
+$\binom dr\le2^d$ monomials, each of modulus at most $R^d$ after the
+uniform upper bound $R\ge1$. By \eqref{supp:eq:runge-coefficients}, every
+coefficient of $2^dP$ is at most $(16R)^d$ in modulus. A coefficient
+of $(2^dP)^2$ is the sum of at most $d+1$ products of two such
+coefficients. Consequently
+\[
+ H(2^{2d}G)\le(8R)^{2d},
+ \qquad
+ H((2^dP)^2)\le(d+1)(16R)^{2d},
+\]
+and therefore, for an absolute constant $C_2$,
+\[
+ H(Q)\le(C_2dR)^{2d}.
+\]
+This estimate is uniform in $d$; it hides no step where
+$d$ would be fixed. An integer zero of a nonzero integer polynomial has
+modulus at most $1+H(Q)$, by the elementary Cauchy bound. After
+enlarging $C_0$, we again obtain \eqref{eq:runge-bound}.
+\end{proof}
+
+
+The integrality of $U$ is used precisely in the separation by $2^{-d}$.
+Without it the statement is false: for $G(T)=T(T+1)$ the real numbers
+$U_m=(\sqrt{1+4m^2}-1)/2$ tend to infinity and satisfy $G(U_m)=m^2$.
+
+\subsection{Pell equations with varying coefficients}
+\begin{lemma}[Uniform Pell count in a polynomial range]\label{supp:lem:pell}
+Fix $K_0>0$. Let $A,C$ be positive squarefree integers such that $A/C$ is not a rational square, and let $e\ne0$. Assume
+\[
+ A,C,|e|\le M^{K_0}.
+\]
+The number of integer solutions $(z,w)$ of
+\[
+ Az^2-Cw^2=e,
+ \qquad
+ |z|,|w|\le M^{K_0},
+\]
+is
+\begin{equation}\label{supp:eq:pell-uniform}
+ \exp\!\left(O_{K_0}\!\left(\frac{\log M}{\log\log M}\right)\right).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Set $g=(A,C)$, $A=gA_0$, $C=gC_0$. Since $A,C$ are squarefree, $A_0,C_0$ are squarefree, coprime, and their prime supports are disjoint. If a solution exists, $g\mid e$; write $e=ge_0$. After multiplying by $A_0$ and substituting $X=A_0z$, the equation becomes
+\begin{equation}\label{supp:eq:pell-norm}
+ X^2-Dw^2=m_0,
+ \qquad
+ D=A_0C_0,
+ \qquad
+ m_0=A_0e_0.
+\end{equation}
+The product $D$ is squarefree. The hypothesis on $A/C$ gives $D>1$.
+
+In the real quadratic field $K_D=\mathbb Q(\sqrt D)$, using the standard
+ideal-and-unit description of quadratic orders \cite{HalterKoch2013}, the element
+\[
+ \alpha=X+w\sqrt D
+\]
+belongs to the ring of integers $\mathcal O_{K_D}$, since $\sqrt D$ is an algebraic integer. Its norm is $m_0$. Consequently
+\[
+ (\alpha)(\bar\alpha)=(m_0),
+\]
+and the integral ideal $(\alpha)$ divides the ideal $(m_0)$. For each rational prime $p^a\Vert m_0$, the number of choices for the part above $p$ is at most $(a+1)^2$: it equals $(a+1)^2$ if $p$ splits, $a+1$ if it is inert, and $2a+1\le(a+1)^2$ if it ramifies, since then $(p)=\mathfrak p^2$. The number of ideal divisors of $(m_0)$ is therefore at most
+\[
+ \prod_{p^a\Vert m_0}(a+1)^2=\tau(|m_0|)^2.
+\]
+
+Only the principal ideals $\mathfrak a=(\alpha)$ of absolute norm
+$|m_0|$ that admit a generator of norm exactly $m_0$ can come from a
+solution of \eqref{supp:eq:pell-norm}. Fix such an ideal and a generator
+$\alpha_0$ of norm $m_0$. Then
+\[
+ |\sigma_1(\alpha_0)\sigma_2(\alpha_0)|=|m_0|.
+\]
+All relevant generators are among
+\[
+ \pm\alpha_0\varepsilon_D^n,
+ \qquad n\in\mathbb Z,
+\]
+where $\varepsilon_D>1$ generates the free part of the unit group. If a unit of norm $-1$ exists, the norm-$m_0$ condition selects only one parity class of $n$, which cannot increase the number of solutions.
+
+The bounds on $A,C,z,w$ give, for the two real embeddings $\sigma_1,\sigma_2$,
+\[
+ |\sigma_j(\alpha)|\le H:=M^{O_{K_0}(1)}.
+\]
+The inequalities
+\[
+ |\sigma_1(\alpha_0)|\varepsilon_D^n\le H,
+ \qquad
+ |\sigma_2(\alpha_0)|\varepsilon_D^{-n}\le H
+\]
+define an interval of integers $n$ of length at most
+\[
+ \frac{2\log H-\log|m_0|}{\log\varepsilon_D}+O(1)
+ =O_{K_0}(\log M),
+\]
+since every real quadratic unit $\varepsilon>1$ satisfies
+$\varepsilon\ge(1+\sqrt5)/2$. Indeed its conjugate is $\pm\varepsilon^{-1}$
+and its trace is an integer. For norm $-1$, this gives
+$\varepsilon-\varepsilon^{-1}\ge1$; for norm $+1$,
+$\varepsilon+\varepsilon^{-1}\ge3$. Both give the asserted lower bound.
+Thus the number of solutions is at most
+\[
+ O_{K_0}(\tau(|m_0|)^2\log M).
+\]
+Since $|m_0|\le M^{O_{K_0}(1)}$, the standard explicit divisor bound
+\cite{NicolasRobin1983} gives
+\[
+ \tau(|m_0|)^2\log M
+ =
+ \exp\!\left(
+ O_{K_0}\!\left(\frac{\log M}{\log\log M}\right)
+ \right),
+\]
+which proves \eqref{supp:eq:pell-uniform}; the sign of $m_0$ does not affect the
+argument.
+\end{proof}
+The exponent $K_0$ is fixed in every use. There is no appeal to a uniform
+lower bound for a regulator that deteriorates with the discriminant: the
+elementary absolute lower bound on a real quadratic fundamental unit
+already controls the number of generators in each ideal class.
+
+\subsection{Square-class localization in bounded height}
+\label{supp:sec:split-localization}
+In \cref{lem:split-bounded}, the decisive set is
+$S=\{p:p\mid e\prod_{i<j}(h_i-h_j)\}$.
+For a solution, a prime outside $S$ can divide only one shifted factor;
+its valuation there is therefore even. We enumerate the squarefree parts
+of only the first two factors, not of all $d$ factors. There are at most
+$4^{|S|}$ pairs, and the two-factor equation has a nonzero right-hand side
+because $h_1\ne h_2$.
+
+Here is an explicit check on the order of parameters. Fix $d,K$ first.
+For $M\ge2$,
+\[
+ \log|e\Delta|\le K\log M+
+         \binom d2(K\log M+\log2)=O_{d,K}(\log M).
+\]
+Thus $4^{|S|}=\exp(O_{d,K}(\log M/\log\log M))$.
+Independently, every retained squarefree coefficient is at most $2M^K$,
+not an unrestricted product of primes in $S$. The coefficients, right-hand
+side and square variables of its Pell equation are therefore all covered
+by the fixed exponent $K+1$ (increasing the ambient threshold if needed).
+The Pell constant does not depend on $S$, the offsets or the chosen pair.
+When the squarefree coefficients agree, divisor factorization treats the
+case that the nonsquare Pell lemma deliberately excludes.
+
+For a component, $d=|J|\le K_0$ and the normalizing coefficient is the
+squarefree part of $d_C\prod_{i\in I}(x+i)$. The smooth coefficient
+$d_C\le\exp(O(B))$ and $|I|\le K_0$ put this integer in one fixed
+polynomial range. This supplies exactly the uniformity consumed by
+\cref{lem:one-sided-component}, even when the two starts have different
+scales.
+
+\subsection{Why a single rational unit is not contracted}
+Two units force the reduced channel height to be at most $L$. One unit
+does not. For example, take $N=2^{100}$, $L=100$, $a=103$, $b=102$ and
+$t=12427947061061072563693168687$, with $x=bt$, $y=at$.
+Both starts lie in $[N,2N)$, and $103i=102j$ has only $(i,j)=(0,0)$
+in $\{-1,\ldots,99\}^2$. Yet $103>B=101$, and $t\equiv100\pmod{103}$
+gives $v_{103}(x)=0$, $v_{103}(y)=1$.
+No vertex of the first window is divisible by $103$, so the second
+occurrence is pinned rather than isolated with the first. This is why the
+article defines $\sigma=0$, $D^\#=D$ and $c^\#=c$ when $m\le1$.
+The aligned deep-core proof removes the at most two components meeting
+a single unit directly; it never assigns that unit a false private-kernel
+identity.
+
+\subsection{Uniformity across the master interval}
+All vertices are $O(M)$ and at least $M^\delta-1$. Squarefree
+$B$-smooth coefficients have size $M^{O(1)}$, while a fixed number of
+offsets and smooth choices contributes $M^{o(1)}$. On a larger-start
+terminal slice $X\le\max(x,y)<2X$, $B/\log X$ remains in a fixed
+compact interval depending only on $(\delta,\beta_-,\beta_+)$. Thus the
+Pell estimates can be applied at scale $X$ there, even when the other
+start is smaller. The proof never identifies a macroscopic cross-block
+pair with an intra-block pair, and never applies a fixed-ratio theorem
+with a growing ratio.

@@ -1,8 +1,9 @@
 import PaperCV282.DirectionalSteinInput
 
 /-! # Entrywise Hessian bounds derived by polarization
-The primary source supplies quadratic-form bounds. This module proves the
-entrywise estimate internally, including diagonal entries and both signs.
+The primary source supplies a constant entrywise bound and a weighted
+quadratic-form bound for the same solution. This module extracts the
+weighted entrywise estimate by polarization and combines the two bounds.
 -/
 namespace PaperC.V282.DirectionalHessian
 
@@ -79,13 +80,11 @@ theorem entry_le_of_quadratic (g : (κ → ℕ) → ℝ) (z : κ → ℕ) (u : �
 /-- The two source bounds give their minimum, without a dimension factor. -/
 theorem secondDifference_le_entryFactor (t : κ → ℝ≥0) (ht : ∀ i, 0<t i)
     (g : (κ → ℕ) → ℝ)
-    (hone : ∀ z alpha, |hessianQuadratic g z alpha|≤∑ i, (alpha i)^2)
+    (hone : ∀ z i j, |secondDifference g i j z|≤1)
     (hweight : ∀ z alpha, |hessianQuadratic g z alpha|≤directionalCoefficient t*∑ i, (alpha i)^2/(t i : ℝ))
     (z : κ → ℕ) (i j : κ) : |secondDifference g i j z|≤entryFactor t i j := by
   apply le_min
-  · have h := entry_le_of_quadratic g z (fun _ => 1) (by simp) (K := 1)
-      (by intro a;simpa using hone z a) i j
-    simpa using h
+  · exact hone z i j
   · exact entry_le_of_quadratic g z (fun i => Real.sqrt (t i : ℝ))
       (fun i => Real.sqrt_pos.2 (ht i))
       (by intro a;simpa only [Real.sq_sqrt (NNReal.coe_nonneg _)] using hweight z a) i j

@@ -229,6 +229,7 @@ import PaperCV282.DirectionalHessian
 import PaperCV282.DirectionalMarkedCosts
 import PaperCV282.DirectionalPoissonComparison
 import PaperCV282.DirectionalSteinComparison
+import PaperCV282.DirectionalSteinCounterexample
 import PaperCV282.DirectionalSteinInput
 import PaperCV282.DirectionalSteinIntegration
 import PaperCV282.DivisorSubpolynomial

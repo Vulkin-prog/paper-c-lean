@@ -1,0 +1,67 @@
+\documentclass[11pt,a4paper]{article}
+\input{preamble.tex}
+\externaldocument[][nocite]{paper_C_version_3PREL_technical_companion_en}
+\title{\textbf{Long runs and rare patterns}\\[1mm]
+\large of a random completely multiplicative function}
+\author{Brice Pouly\\[1mm]\small Independent author\\
+\small ORCID: \href{https://orcid.org/0009-0008-8491-2467}{0009-0008-8491-2467}}
+\date{September 7, 2026 --- Preprint Version 3PREL\\[.3em]
+\small\href{https://doi.org/10.5281/zenodo.21736676}{doi:10.5281/zenodo.21736676}}
+\makeatletter
+\patchcmd{\@maketitle}{\vskip 2em}{\vskip 0pt}{}{}
+\makeatother
+\setlength{\cftbeforesecskip}{2pt}
+\begin{document}
+\maketitle
+\vspace{-0.6em}
+\noindent\begin{minipage}{\textwidth}\footnotesize
+This research received substantial assistance from language-model systems
+developed by Anthropic and OpenAI; see the
+\hyperref[sec:ai-assistance]{declaration at the end of the article}.
+\end{minipage}\medskip
+\begin{abstract}
+Let $f$ be a random completely multiplicative function with independent
+symmetric signs at the primes. At logarithmic run lengths, we approximate
+the full field of positions, excess lengths and signs by independent
+Poisson coordinates, despite exact long-range multiplicative identities.
+More generally, a deterministic dictionary of $m\le N^{1/2-\eta}$
+prescribed words at length $B=\log_2(Nm)+O(1)$ is asymptotically equivalent in total variation to the rare-word
+field of independent fair signs, when its weighted
+overlap tends to zero. Most dictionaries satisfy this condition; explicit
+marker families have no overlaps.
+
+The arithmetic input is a uniform two-window square-relation estimate
+with critical bound $O_\varepsilon(N^{5/3+\varepsilon})$. A capped form exploits the mutual exclusivity of distinct words at one site
+and allows the dictionary to grow.
+The proof uses rational relations, private prime coordinates and
+bounded-height Runge--Pell arguments. Conditioning on small primes then
+supplies an exact dependency graph.
+
+For the longest run in $[1,M]$, we obtain the lattice extreme law and
+asymmetric almost-sure envelopes. Exceptionally long runs arise either
+from a boundary event of exact mass $2^{-\pi(L)}$ or from a bulk field
+of intensity $M2^{-L}$. A relative marked comparison gives, conditional
+on existence, a lattice mixture for the first location, sign and
+overshoot with moving source weights. The two source branches have geometric overshoots
+in different clocks: prime rank at the boundary and integer distance
+in the bulk.
+\end{abstract}
+
+\medskip
+\noindent\textbf{Keywords.} Random multiplicative functions; long runs;
+rare patterns; Poisson approximation; square-product relations; boundary effects.
+\par\smallskip
+\noindent\textbf{MSC 2020.} 11N64; 60F05; 60C05; 11D45; 94B05.
+\tableofcontents
+\input{sections/01_introduction.tex}
+\input{sections/02_affine.tex}
+\input{sections/03_arithmetic.tex}
+\input{sections/04_poisson.tex}
+\input{sections/05_patterns_fields.tex}
+\input{sections/06_conditioning.tex}
+\input{sections/07_prefix_boundary.tex}
+\input{sections/08_discussion.tex}
+\clearpage
+\input{declarations.tex}
+\input{bibliography_main.tex}
+\end{document}

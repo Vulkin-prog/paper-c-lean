@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "version": "3PREL",
+  "date": "2026-09-07",
+  "title": "Long runs and rare patterns of a random completely multiplicative function",
+  "author": "Brice Pouly",
+  "role": "Author-supplied manuscript and companion, preserved byte for byte.",
+  "supersedes_mathematical_target": "2.8.2",
+  "lean_namespace_retained": "PaperC.V282",
+  "lean_source_manifest": "../../PaperCV282/source_manifest.json",
+  "coverage": "../../docs/FORMALIZATION_COVERAGE_V3PREL.md",
+  "archives": {
+    "release_zip_sha256": "c2dc635187bcdb77e917a6aff72d12b342c45eb7b44f3a7f9bc5ad9ee2379e45",
+    "source_zip_sha256": "6d880c0c03c5f2bcb85da30f327d62e6f7ee4e4e6a5c0039cb8debbf0e91afaf"
+  },
+  "author_build_report": {
+    "filename": "paper_C_version_3PREL_BUILD_REPORT.json",
+    "sha256": "695a7f855633a37aab58728ae71676c22ea4f38ae8a66cbc6107bffabb939a73",
+    "scope": "Author-reported TeX/PDF and finite diagnostic checks; not independent Lean or Palomar evidence.",
+    "external_input_filename": "paper_C_version_3PREL_BUILD_REPORT.json",
+    "user_supplied_separately": true,
+    "included_in_archived_pdf_and_source_payload": false,
+    "provenance_note": "A separate author-supplied local input, not a member of either delivered ZIP and not included among the 36 archived PDF/source files. Its SHA-256 was independently verified against that supplied input. The author report compares 2.9.1 to 3PREL; the independent source-to-Lean review instead compares the actual 2.8.2 baseline directly to 3PREL."
+  },
+  "files": [
+    {
+      "path": "paper_C_version_3PREL_en.pdf",
+      "size_bytes": 714653,
+      "sha256": "0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7"
+    },
+    {
+      "path": "paper_C_version_3PREL_technical_companion_en.pdf",
+      "size_bytes": 497588,
+      "sha256": "d64150c995f07ee39b016bb20a16b5fc3a01ce53b0ddcda893d1ceb41eefadee"
+    },
+    {
+      "path": "source/BUILD_ENVIRONMENT.json",
+      "size_bytes": 238,
+      "sha256": "abca6f5104c04d2893d606fd5e827403c1605bd6b70b38c3b5dce82e933cda1a"
+    },
+    {
+      "path": "source/README.md",
+      "size_bytes": 2244,
+      "sha256": "a2d66c19e5238b150ab5424314d3c1794bd75b7dfaefb22a7bbc775bbcea116c"
+    },
+    {
+      "path": "source/SHA256SUMS",
+      "size_bytes": 3044,
+      "sha256": "ec6dc5f3422ccae7ea87e3ab60ec7bf4236a3c13c30352e3c82171946ad2aaea"
+    },
+    {
+      "path": "source/bibliography/entries.json",
+      "size_bytes": 12905,
+      "sha256": "cc25cd4edb8e5b781e24dda87ebecdd0affbf36bee634a27fed983c979ec70b1"
+    },
+    {
+      "path": "source/bibliography_companion.tex",
+      "size_bytes": 3931,
+      "sha256": "0ebbd3e37e982d23f19b35ad7a43f8da219819c26eb0eec217f91afbd790b160"
+    },
+    {
+      "path": "source/bibliography_main.tex",
+      "size_bytes": 9512,
+      "sha256": "45e83c11f51560488d5b3f592c283f1725a81be4d74fa2af8495091014db4f9a"
+    },
+    {
+      "path": "source/build.sh",
+      "size_bytes": 2843,
+      "sha256": "e717d3f2a6105daceadcda707143cdc95d8e5c10553d6d4044154eab85f94606"
+    },
+    {
+      "path": "source/companion/00_external_inputs.tex",
+      "size_bytes": 3689,
+      "sha256": "78624c65def6c6fe4efd62440b2681818b93fb1722a171cdb61c64c8840f8321"
+    },
+    {
+      "path": "source/companion/00_reading_routes.tex",
+      "size_bytes": 2916,
+      "sha256": "831a5f7cca3be6480bf2bde663c1a19d01a455197474e77d38ffaa404167ed08"
+    },
+    {
+      "path": "source/companion/A_runge_diophantine.tex",
+      "size_bytes": 10284,
+      "sha256": "c8306ca4417dad63ff0f6fab1a8e200aa5f9919253060ee4066893b9ff5ce9a2"
+    },
+    {
+      "path": "source/companion/B_cutoffs.tex",
+      "size_bytes": 9431,
+      "sha256": "9e2f116fef0109353e802b87ef7c4602a20de8b0715358ae8825ce2e915d27dc"
+    },
+    {
+      "path": "source/companion/C_fields.tex",
+      "size_bytes": 18602,
+      "sha256": "c5708a55fc18f198f7287ecafbcbe9621729a7132612eb643384e7e66c7ca93b"
+    },
+    {
+      "path": "source/companion/D_conditioning.tex",
+      "size_bytes": 9567,
+      "sha256": "36659ed990e3aa7b4b00b624996bac7f17c4dc58e136b73221e83b09b59319bf"
+    },
+    {
+      "path": "source/companion/E_boundary.tex",
+      "size_bytes": 18389,
+      "sha256": "c7c705379edd9ee63d073b6310a43b78b1a3cf4ab57e14a4b6063bd0d00a0dd1"
+    },
+    {
+      "path": "source/declarations.tex",
+      "size_bytes": 2165,
+      "sha256": "f4a85ef855a61c352d8c4e9673dac916a24ddc33d0b50bc5e035e305b3c772e6"
+    },
+    {
+      "path": "source/paper_C_version_3PREL_en.tex",
+      "size_bytes": 3150,
+      "sha256": "c098e93543ce844cad211da52a5155b16209561922b5f5e974bd7780e2bd30f7"
+    },
+    {
+      "path": "source/paper_C_version_3PREL_technical_companion_en.tex",
+      "size_bytes": 2913,
+      "sha256": "7821b32f861e2dfb5af23458b58fc72f0ea691bfe9df92c805ac8e7cb35a628e"
+    },
+    {
+      "path": "source/preamble.tex",
+      "size_bytes": 6370,
+      "sha256": "ebee9b01b71f77d577dc793fe7c5bc04a05750a7f0e7ed5af21f8ec880d9b838"
+    },
+    {
+      "path": "source/sections/01_introduction.tex",
+      "size_bytes": 18486,
+      "sha256": "37905a44ebce257aa2f4abf0c5656030fc9b7dd0b30c9ae84a63034d00027854"
+    },
+    {
+      "path": "source/sections/02_affine.tex",
+      "size_bytes": 12153,
+      "sha256": "15f4fa2eb7ac743e5f455a59ecab1054043ac52c1a1de01bd205f5518a8a22b7"
+    },
+    {
+      "path": "source/sections/03_arithmetic.tex",
+      "size_bytes": 46601,
+      "sha256": "b08a55eca55227d79dd02b3329e8c421fe041bc5ccf209d6bb2da20e739b1e21"
+    },
+    {
+      "path": "source/sections/04_poisson.tex",
+      "size_bytes": 11257,
+      "sha256": "e7faf8ebd15176d8ef6f363fd8637956a97a8ff7f00a22610f89cb8070d901fa"
+    },
+    {
+      "path": "source/sections/05_patterns_fields.tex",
+      "size_bytes": 29381,
+      "sha256": "3c59e319376dc8132245073b598e67194c62b21cfc254bdd5f44151681919b0a"
+    },
+    {
+      "path": "source/sections/06_conditioning.tex",
+      "size_bytes": 9587,
+      "sha256": "c0928511de869da1e1b57a9ab9527b3b0e0f4351f10352f405c5b24f6caa368f"
+    },
+    {
+      "path": "source/sections/07_prefix_boundary.tex",
+      "size_bytes": 29202,
+      "sha256": "bbd1f0dba019b7d5183179e213a96ec92eadada432955615ef2aa80d75350998"
+    },
+    {
+      "path": "source/sections/08_discussion.tex",
+      "size_bytes": 5835,
+      "sha256": "3581155645e57dfdb5a675417e1a2693e9f28e4df7c55e13f2c18f04bcf4042e"
+    },
+    {
+      "path": "source/tools/bibliography.py",
+      "size_bytes": 1660,
+      "sha256": "d019ea486798316582db5c4a8c17522f082343984c338e7c5f48be2d78c925c6"
+    },
+    {
+      "path": "source/tools/boundary_filling_diagnostics.py",
+      "size_bytes": 3824,
+      "sha256": "abae30bec111f6415c219bfce26016029fd30ff385dd64cde7b26c7c34b97cba"
+    },
+    {
+      "path": "source/tools/finite_diagnostics.py",
+      "size_bytes": 16155,
+      "sha256": "f5dda2c75ff2db26d82a2d13e1375d46b549905c2107e97a21bd2b5142eb3044"
+    },
+    {
+      "path": "source/tools/pdf_audit.py",
+      "size_bytes": 5790,
+      "sha256": "1b50559d7e86e1130ffccd2463d9f77ebbd003cb897e963ac8d3bc308a0c24bf"
+    },
+    {
+      "path": "source/tools/probability_diagnostics.py",
+      "size_bytes": 8395,
+      "sha256": "9e3457e6bc8e63af5c3aee94fa4d2baab3453bb904f48b4e8a5ba33b59f979f5"
+    },
+    {
+      "path": "source/tools/profile_diagnostics.py",
+      "size_bytes": 4179,
+      "sha256": "bf707cc6328ab56df973f287f7fdab2ee0744598117b150616ee535dd521e4aa"
+    },
+    {
+      "path": "source/tools/source_audit.py",
+      "size_bytes": 6205,
+      "sha256": "8b43e9e885d998dcc2f398563f16b66ccb39648181da273cb12796afcf646336"
+    },
+    {
+      "path": "source/tools/stein_diagnostics.py",
+      "size_bytes": 2296,
+      "sha256": "e8b1652886c6f924f5f8eb7ea7d0976a74ce504fed0cc1c320b321010cb311a6"
+    }
+  ],
+  "qualification": {
+    "new_palomar_registration": false,
+    "historical_v09_records_apply_to_this_version": false
+  }
+}

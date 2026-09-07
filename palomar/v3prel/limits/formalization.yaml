@@ -1,0 +1,488 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: V3PREL threshold staircase, Poisson–Gaussian bridge and integer-level process
+  description: Twenty-nine independently selected results for the actual conditioned joint Poisson–Gaussian
+    limit, its Gaussian AR(1) target, quantitative central/local/moderate Poisson estimates and their
+    actual arithmetic transfers, and the complete integer-level process of D.4.
+  authors:
+  - Brice Pouly
+  responsible_maintainers:
+  - Brice Pouly
+  license: Apache-2.0
+classification:
+  arxiv:
+  - math.NT
+  - math.PR
+  msc2020:
+  - 11K65
+  - 60F05
+sources:
+- title: Long runs and rare patterns of a random completely multiplicative function, version 3PREL
+  authors:
+  - Brice Pouly
+  id: https://doi.org/10.33774/coe-2026-z3l74
+  type: paper
+  location: Section 5, Theorem 5.10; Section 6, central/local and moderate-deviation consequences.
+    Source snapshot manuscripts/v3prel/paper_C_version_3PREL_en.pdf, SHA-256 0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7.
+  relationship: adapts
+  license: CC-BY-4.0
+  author_endorsement: participated
+  note: Exactly the 29 declarations listed in comparator/v3prel_limits.json are selected; the repository
+    source mapping has a broader scope.
+- title: Technical companion to Long runs and rare patterns of a random completely multiplicative
+    function, version 3PREL
+  authors:
+  - Brice Pouly
+  type: paper
+  location: Sections D.1 and D.4; corrected directional Stein input C.3. Snapshot manuscripts/v3prel/paper_C_version_3PREL_technical_companion_en.pdf,
+    SHA-256 d64150c995f07ee39b016bb20a16b5fc3a01ce53b0ddcda893d1ceb41eefadee.
+  relationship: adapts
+  note: D.1 includes explicit Stirling bounds and effective Gaussian estimates; D.4 includes the whole
+    locally finite process, infinite total mass, complete upper-half laws, conditional marks, compact-test
+    Laplace functionals and extreme phases.
+- title: 'Two moments suffice for Poisson approximations: the Chen--Stein method'
+  authors:
+  - Richard Arratia
+  - Larry Goldstein
+  - Louis Gordon
+  id: https://doi.org/10.1214/aop/1176991491
+  type: paper
+  location: Theorem 2, printed page 11, exact dependency-graph specialization
+  relationship: background
+  note: Process.ProcessAGGStatement states the finite field comparison in half-l1 convention with
+    factor 2(b1+b2), exact outside-vector independence, and all target coordinates. It is a visible
+    theorem argument. The arithmetic dependency graph and its costs are proved internally, not supplied
+    as premises.
+- title: Newman's Short Proof of the Prime Number Theorem
+  authors:
+  - Don Zagier
+  id: https://doi.org/10.2307/2975232
+  type: paper
+  location: American Mathematical Monthly 104 (1997), pages 705-708
+  relationship: background
+  note: Analysis.PrimeNumberTheoremRemainder is the ordinary prime-counting remainder o(t/log t),
+    with Li(t)=Ei(log t). The normalization of Ei, saddle roots and weighted prime estimates are proved
+    in the local development. No desired arithmetic error is assumed.
+- title: Stein's Method and Poisson Process Convergence
+  authors:
+  - A. D. Barbour
+  id: https://doi.org/10.2307/3214155
+  type: paper
+  location: Journal of Applied Probability 25(A) (1988), page 179, Lemmas 2 and 3
+  relationship: background
+  note: Analysis.DirectionalSteinFactorsStatement requires one solution of the actual multivariate
+    Poisson Stein equation with constant entrywise bound and weighted quadratic-form bound. It contains
+    no unweighted Euclidean quadratic bound. The previous overlay's stronger Euclidean premise was
+    false and is refuted by DirectionalSteinCounterexample; this new candidate uses the corrected
+    source-faithful proposition. No final comparison or arithmetic conclusion is part of this analytic
+    input.
+- title: Poisson Approximation
+  authors:
+  - A. D. Barbour
+  - Lars Holst
+  - Svante Janson
+  type: book
+  location: Scalar Poisson Stein equation and its standard first-difference factor, as explicitly
+    stated by Analysis.ScalarPoissonSteinStatement.
+  relationship: background
+  note: The analytic solution bound is an ordinary visible theorem argument. No final approximation
+    or arithmetic error bound is assumed.
+related_formalizations: []
+status:
+  scope: New candidate v3prel_limits, with 29 selected declarations and a standalone Mathlib-only
+    challenge. The source snapshot has no claimed Palomar registration, Comparator pass or NanoDa
+    result; those outcomes require separate immutable-commit evidence. The solution has no intentional
+    proof holes; only the selected challenge declarations are placeholders.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: PaperCV3Audit.paper_c_v3_limits_joint_poisson_gaussian
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_gaussian_covariance
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_ar_covariance
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_ar_recursion
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_ar_independent_innovations
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_ar_normal_innovations
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_local_stirling_bounds
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_local_stirling_relative_error
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_poisson_local_limit
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_poisson_moderate_bound
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_poisson_moderate_limit
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_poisson_gaussian_cdf_bound
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_hard_central_local
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_soft_central_local
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_hard_moderate_tail
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_integer_process_moving_laplace
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_integer_process_phase_limit
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_integer_process_target_laplace
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_integer_process_locally_finite
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_integer_process_infinite_mass
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_integer_process_independent_counts
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_integer_process_poisson_counts
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_integer_process_finite_upper_tails
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_integer_process_conditioned_positions
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_extreme_phase_limit
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_d4_full_half_count_law
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_d4_entire_upper_point_law
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_d4_conditional_upper_point_law
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+  - declaration: PaperCV3Audit.paper_c_v3_limits_d4_half_line_is_whole_restriction
+    file: SolutionV3Limits.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_limits.json
+automation:
+  methods:
+  - method: agent
+    models:
+    - GPT-6 Codex agents
+    framework: Codex
+    tool_setup: Agent-assisted mathematical development, source checks, Lean builds, and independent
+      agent review, directed by the human maintainer.
+    prompting_notes: Preserve actual sources and targets, expose literature propositions, and use
+      standalone challenge modules with separately proved bridges.
+  notes: The repository contains the substantive proofs, so repository metadata is omitted and the
+    ordinary substantive-development classification applies. Proof development and comparison-interface
+    review are not human peer review.
+fidelity:
+  divergences: The joint limit is weak convergence of explicit probability laws, with equality to
+    the true conditioned source pushforward required in the conclusion. The Gaussian covariance, AR
+    recursion and independent normal innovations are explicit. The scalar quantitative estimates are
+    proved internally; the arithmetic hard and soft local transfers and hard moderate-tail transfer
+    expose their actual information budgets. D.4 is represented by the same whole integer-level point
+    measure, its complete compact-test Laplace functional and actual upper-half restrictions. A separate
+    vague-topology convergence declaration is not selected. The total upper-half count is Poisson;
+    conditioning on any count n yields n iid uniform positions and independent nonnegative geometric
+    marks. A constant sign is a dummy coordinate in this unmarked D.4 representation, not a claimed
+    random sign. The half-line construction is totalized on a null set, with its equality to the whole-process
+    restriction proved almost everywhere. The extreme endpoint is the actual source event. Saddle
+    roots and finite source configurations are selected by epsilon, with uniqueness bridges proved
+    in the solution. Only the explicit process AGG, scalar Stein, corrected directional Stein and
+    ordinary PNT propositions are used where required; none assumes the desired arithmetic or limit
+    conclusion. No new Lean axiom is introduced.
+review:
+  status: agent-reviewed
+  notes: Local compilation and independent interface review are recorded separately. Current immutable-commit
+    Comparator/NanoDa evidence must be supplied by the V3PREL qualification workflow; historical qualifications
+    do not bind these files.
+alignment:
+  namespace: PaperCV3Audit
+  statements:
+  - source: PaperC.V282.PoissonGaussianTheorem.theorem_five_ten
+    lean: PaperCV3Audit.paper_c_v3_limits_joint_poisson_gaussian
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.GaussianThresholdCovariance.gaussianThresholdLaw_covariance
+    lean: PaperCV3Audit.paper_c_v3_limits_gaussian_covariance
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.GaussianThresholdAR.standardizedProjection_covariance
+    lean: PaperCV3Audit.paper_c_v3_limits_ar_covariance
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.GaussianThresholdAR.standardized_ar_recursion
+    lean: PaperCV3Audit.paper_c_v3_limits_ar_recursion
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.GaussianThresholdAR.arNoises_independent
+    lean: PaperCV3Audit.paper_c_v3_limits_ar_independent_innovations
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.GaussianThresholdAR.hasLaw_arNoise
+    lean: PaperCV3Audit.paper_c_v3_limits_ar_normal_innovations
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.PoissonStirlingBounds.poisson_local_bounds
+    lean: PaperCV3Audit.paper_c_v3_limits_local_stirling_bounds
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.PoissonStirlingBounds.poisson_local_relative_error
+    lean: PaperCV3Audit.paper_c_v3_limits_local_stirling_relative_error
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.PoissonQuantitativeCentral.poisson_gaussian_local_ratio_tendsto_one
+    lean: PaperCV3Audit.paper_c_v3_limits_poisson_local_limit
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.PoissonQuantitativeModerate.poisson_moderate_relative_error
+    lean: PaperCV3Audit.paper_c_v3_limits_poisson_moderate_bound
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.PoissonQuantitativeModerateLimit.poisson_moderate_ratio_tendsto_one
+    lean: PaperCV3Audit.paper_c_v3_limits_poisson_moderate_limit
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.PoissonQuantitativeBerry.poisson_gaussian_CDF_error
+    lean: PaperCV3Audit.paper_c_v3_limits_poisson_gaussian_cdf_bound
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.HardLocalClosureCentral.hard_central_local_probabilities
+    lean: PaperCV3Audit.paper_c_v3_limits_hard_central_local
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.SoftLocalClosureCentral.soft_central_local_probabilities
+    lean: PaperCV3Audit.paper_c_v3_limits_soft_central_local
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.PoissonQuantitativeTailRates.hard_conditional_tail_normal_ratio_tendsto_one
+    lean: PaperCV3Audit.paper_c_v3_limits_hard_moderate_tail
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.D4ClosureLaplaceTheorem.companion_D4_laplace_moving
+    lean: PaperCV3Audit.paper_c_v3_limits_integer_process_moving_laplace
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.D4ClosureLaplaceTheorem.companion_D4_laplace_phase_limit
+    lean: PaperCV3Audit.paper_c_v3_limits_integer_process_phase_limit
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.D4ClosureLaplaceTarget.integer_target_laplace
+    lean: PaperCV3Audit.paper_c_v3_limits_integer_process_target_laplace
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.D4ClosurePointMeasure.integerPointMeasure_compact_finite
+    lean: PaperCV3Audit.paper_c_v3_limits_integer_process_locally_finite
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.D4ClosureInfiniteMass.ae_integerPointMeasure_univ_top
+    lean: PaperCV3Audit.paper_c_v3_limits_integer_process_infinite_mass
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.D4ClosureIntegerLevels.independent_integer_counts
+    lean: PaperCV3Audit.paper_c_v3_limits_integer_process_independent_counts
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.D4ClosureIntegerLevels.hasLaw_integer_coordinate
+    lean: PaperCV3Audit.paper_c_v3_limits_integer_process_poisson_counts
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.D4ClosurePointLaws.ae_spatial_upper_tails_finite
+    lean: PaperCV3Audit.paper_c_v3_limits_integer_process_finite_upper_tails
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.D4ClosurePointLaws.conditional_level_positions
+    lean: PaperCV3Audit.paper_c_v3_limits_integer_process_conditioned_positions
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperC.V282.D4ClosureExtremeTheorem.companion_D4_extreme
+    lean: PaperCV3Audit.paper_c_v3_limits_extreme_phase_limit
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperCV282/D4GridIdentificationTheorem.lean:hasLaw_spatialHalfCount
+    lean: PaperCV3Audit.paper_c_v3_limits_d4_full_half_count_law
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperCV282/D4ClosureSpatialIdentification.lean:halfLinePointLaw_eq_poisson
+    lean: PaperCV3Audit.paper_c_v3_limits_d4_entire_upper_point_law
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperCV282/D4ClosureSpatialIdentification.lean:conditional_halfLinePointConfiguration
+    lean: PaperCV3Audit.paper_c_v3_limits_d4_conditional_upper_point_law
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any
+  - source: PaperCV282/D4ClosureWholeRestriction.lean:ae_halfLinePointConfiguration_is_restriction
+    lean: PaperCV3Audit.paper_c_v3_limits_d4_half_line_is_whole_restriction
+    module: SolutionV3Limits
+    status: proved with the explicit literature premises shown in the theorem, if any

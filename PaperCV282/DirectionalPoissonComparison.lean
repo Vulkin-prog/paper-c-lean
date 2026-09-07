@@ -2,8 +2,8 @@ import PaperCV282.DirectionalSteinIntegration
 
 /-! # Directional Poisson comparison with genuine independent filling
 
-The only external input is the published Stein equation and its two quadratic
-Hessian bounds. Graph telescoping, entry extraction, growth, integrability,
+The only external input is the published Stein equation with its constant
+entrywise and weighted quadratic Hessian bounds for the same solution. Graph telescoping, entry extraction, growth, integrability,
 Poisson cancellation and the total-variation comparison are proved here.
 -/
 namespace PaperC.V282.DirectionalPoissonComparison

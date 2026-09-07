@@ -1,0 +1,234 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+project:
+  name: "V3PREL word dictionaries, exact marks, and geometric Poisson clusters"
+  description: >-
+    Nine source-facing results for growing word dictionaries, exact signed
+    and unsigned run fields, whole conditional threshold paths, and actual
+    geometric compound-Poisson configurations. The source is the infinite
+    independent prime-bit model of a random completely multiplicative sign
+    function; the independent-bit overlap statement uses an actual uniform
+    finite bit sample. Every selected literature premise is stated explicitly
+    as an ordinary proposition in the standalone Mathlib-only challenge.
+  authors: ["Brice Pouly"]
+  responsible_maintainers: ["Brice Pouly"]
+  license: "Apache-2.0"
+classification:
+  arxiv: ["math.NT", "math.PR"]
+  msc2020: ["11K65", "60F05"]
+sources:
+  - title: "Long runs and rare patterns of a random completely multiplicative function, version 3PREL"
+    authors: ["Brice Pouly"]
+    id: "https://doi.org/10.33774/coe-2026-z3l74"
+    type: "paper"
+    location: >-
+      Section 5: Theorem 5.1 and critical regime (5.3)-(5.4), word overlaps,
+      Theorem 5.6 and (5.14), Corollary 5.7, and the aggregate clause of
+      Theorem 5.8. Source snapshot manuscripts/v3prel/paper_C_version_3PREL_en.pdf,
+      SHA-256 0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7.
+    relationship: "adapts"
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+    note: >-
+      This candidate selects the nine declarations listed in its Comparator
+      configuration. It does not claim that these nine declarations alone
+      reverify every result of Section 5 or the entire article.
+  - title: "Technical companion to Long runs and rare patterns of a random completely multiplicative function, version 3PREL"
+    authors: ["Brice Pouly"]
+    type: "paper"
+    location: >-
+      Section C, especially Proposition C.3 with Barbour’s valid estimates and geometric-mark
+      summation. Snapshot manuscripts/v3prel/paper_C_version_3PREL_technical_companion_en.pdf,
+      SHA-256 d64150c995f07ee39b016bb20a16b5fc3a01ce53b0ddcda893d1ceb41eefadee.
+    relationship: "adapts"
+    note: >-
+      The aggregate hard-budget theorem exercises the proved directional
+      comparison and arithmetic normalization. The finite printed C.1 ledger
+      itself is not an independently selected declaration in this candidate.
+  - title: "Two moments suffice for Poisson approximations: the Chen--Stein method"
+    authors: ["Richard Arratia", "Larry Goldstein", "Louis Gordon"]
+    id: "https://doi.org/10.1214/aop/1176991491"
+    type: "paper"
+    location: "Theorem 2, printed page 11, exact dependency-graph specialization"
+    relationship: "background"
+    note: >-
+      Process.ProcessAGGStatement states the finite field comparison in
+      half-l1 convention with factor 2(b1+b2), exact outside-vector
+      independence, and all target coordinates. It is a visible theorem
+      argument. The arithmetic dependency graph and its costs are proved
+      internally, not supplied as premises.
+  - title: "Newman's Short Proof of the Prime Number Theorem"
+    authors: ["Don Zagier"]
+    id: "https://doi.org/10.2307/2975232"
+    type: "paper"
+    location: "American Mathematical Monthly 104 (1997), pages 705-708"
+    relationship: "background"
+    note: >-
+      Analysis.PrimeNumberTheoremRemainder is the ordinary prime-counting
+      remainder o(t/log t), with Li(t)=Ei(log t). The normalization of Ei,
+      saddle roots and weighted prime estimates are proved in the local
+      development. No desired arithmetic error is assumed.
+  - title: "Stein's Method and Poisson Process Convergence"
+    authors: ["A. D. Barbour"]
+    id: "https://doi.org/10.2307/3214155"
+    type: "paper"
+    location: "Journal of Applied Probability 25(A) (1988), page 179, Lemmas 2 and 3"
+    relationship: "background"
+    note: >-
+      Analysis.DirectionalSteinFactorsStatement requires one solution of the
+      actual multivariate Poisson Stein equation with constant entrywise bound
+      and weighted quadratic-form bound. It contains no unweighted Euclidean
+      quadratic bound. The previous overlay's stronger Euclidean premise was
+      false and is refuted by DirectionalSteinCounterexample; this new
+      candidate uses the corrected source-faithful proposition. No final
+      comparison or arithmetic conclusion is part of this analytic input.
+related_formalizations: []
+status:
+  scope: >-
+    New candidate v3prel_patterns, independent of the historical v0.9 IDs.
+    Its challenge imports only Mathlib, has 311 lines and 18911 bytes, and
+    contains exactly nine intentional proof placeholders, all selected by
+    comparator/v3prel_patterns.json. The solution has no proof holes. The
+    dictionary theorem retains every site and every word while the dictionary
+    grows. The exact-mark theorem retains every excess and both signs with a
+    threshold uniform before the excess cutoff. The aggregate theorem is a
+    quantitative comparison of the whole actual threshold path under a true
+    full-F_Y event, with one-intensity budget I+log(lambda). The geometric
+    target is generated from a genuine independent Poisson count and iid
+    positive geometric marks, and the final theorem compares the actual count
+    of all constant windows with its compound law. This source snapshot does
+    not by itself claim a Palomar outcome, Comparator pass, or NanoDa result.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "PaperCV3Audit.Patterns.word_overlap_probability"
+      file: "SolutionV3Patterns.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator/v3prel_patterns.json"
+    - declaration: "PaperCV3Audit.Patterns.dictionary_critical"
+      file: "SolutionV3Patterns.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator/v3prel_patterns.json"
+    - declaration: "PaperCV3Audit.Patterns.exact_marked_quantitative"
+      file: "SolutionV3Patterns.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator/v3prel_patterns.json"
+    - declaration: "PaperCV3Audit.Patterns.exact_sign_partition"
+      file: "SolutionV3Patterns.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator/v3prel_patterns.json"
+    - declaration: "PaperCV3Audit.Patterns.aggregate_hard_budget"
+      file: "SolutionV3Patterns.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator/v3prel_patterns.json"
+    - declaration: "PaperCV3Audit.Patterns.geometric_joint_configuration"
+      file: "SolutionV3Patterns.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator/v3prel_patterns.json"
+    - declaration: "PaperCV3Audit.Patterns.geometric_compound_weight"
+      file: "SolutionV3Patterns.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator/v3prel_patterns.json"
+    - declaration: "PaperCV3Audit.Patterns.geometric_compound_pgf"
+      file: "SolutionV3Patterns.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator/v3prel_patterns.json"
+    - declaration: "PaperCV3Audit.Patterns.constant_windows_compound"
+      file: "SolutionV3Patterns.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator/v3prel_patterns.json"
+automation:
+  methods:
+    - method: "agent"
+      models: ["GPT-6 Codex agents"]
+      framework: "Codex"
+      tool_setup: >-
+        Agent-assisted mathematical development, source checks, Lean builds,
+        and independent agent review, directed by the human maintainer.
+      prompting_notes: >-
+        Preserve actual sources and targets, expose literature propositions,
+        and use standalone challenge modules with separately proved bridges.
+  notes: >-
+    The repository contains the substantive proofs, so repository metadata is
+    omitted and the ordinary substantive-development classification applies.
+    Proof development and comparison-interface review are not human peer review.
+fidelity:
+  divergences: >-
+    The overlap declaration states the exact iid finite-bit probability; it
+    does not separately select the conditioned multiplicative overlap lemma.
+    The dictionary endpoint selects the unconditional full-field convergence
+    and the entire word-count vector in the growing critical regime. The
+    exact-mark endpoint selects the unconditional quantitative full signed
+    and unsigned fields; its separately proved averaged prime-atom form is
+    not a selected declaration. The aggregate endpoint selects the full
+    unsigned threshold path, with no threshold union bound, at rate at least
+    one and throughout a logarithmic band under the hard information budget.
+    The signed aggregate refinement and the literal finite C.1 ledger remain
+    proved in the substantive development but are not separate selected
+    endpoints. Full half-l1 distance on paths is used: the true laws are
+    supported on countably many finite decreasing paths, as proved internally.
+    Infinite excess counts and compound weights are not replaced by finitely
+    many coordinate marginals; the configuration and unbounded random sum are
+    explicitly constructed. The saddle parameter is defined by the unique
+    real root, selected by epsilon; the solution proves its identity with the
+    development's choice. Only AGG process and PNT are used by dictionary,
+    exact-field and constant-window asymptotics; the aggregate theorem uses
+    corrected Barbour and PNT. The remaining five selected declarations have
+    no literature premises. None of these propositions is promoted to a
+    Lean axiom or assumed arithmetic/TV conclusion.
+review:
+  status: "agent-reviewed"
+  notes: >-
+    Local solution compilation and autonomous challenge compilation are
+    complete. Independent review of this newly selected interface and the
+    current immutable-commit Comparator and NanoDa results must be supplied
+    separately. Historical qualifications do not bind these new bytes.
+alignment:
+  namespace: "PaperCV3Audit.Patterns"
+  statements:
+    - source: "Exact independent-bit overlap probability (directed compatibility)."
+      lean: "PaperCV3Audit.Patterns.word_overlap_probability"
+      module: "SolutionV3Patterns"
+      status: "proved with the explicit literature premises shown in the theorem, if any"
+    - source: "Growing dictionary critical convergence, full field and all word counts."
+      lean: "PaperCV3Audit.Patterns.dictionary_critical"
+      module: "SolutionV3Patterns"
+      status: "proved with the explicit literature premises shown in the theorem, if any"
+    - source: "Theorem 5.6, unconditional signed/unsigned quantitative field form (5.14)."
+      lean: "PaperCV3Audit.Patterns.exact_marked_quantitative"
+      module: "SolutionV3Patterns"
+      status: "proved with the explicit literature premises shown in the theorem, if any"
+    - source: "Exact mark partition and lossless sum over excess/sign labels."
+      lean: "PaperCV3Audit.Patterns.exact_sign_partition"
+      module: "SolutionV3Patterns"
+      status: "proved with the explicit literature premises shown in the theorem, if any"
+    - source: "Theorem 5.8 aggregate hard budget, quantitative whole threshold path."
+      lean: "PaperCV3Audit.Patterns.aggregate_hard_budget"
+      module: "SolutionV3Patterns"
+      status: "proved with the explicit literature premises shown in the theorem, if any"
+    - source: "Actual geometric configuration: all finite projections have independent Poisson law."
+      lean: "PaperCV3Audit.Patterns.geometric_joint_configuration"
+      module: "SolutionV3Patterns"
+      status: "proved with the explicit literature premises shown in the theorem, if any"
+    - source: "Actual unbounded configuration weight has the geometric compound law."
+      lean: "PaperCV3Audit.Patterns.geometric_compound_weight"
+      module: "SolutionV3Patterns"
+      status: "proved with the explicit literature premises shown in the theorem, if any"
+    - source: "Explicit PGF of the actual geometric compound law."
+      lean: "PaperCV3Audit.Patterns.geometric_compound_pgf"
+      module: "SolutionV3Patterns"
+      status: "proved with the explicit literature premises shown in the theorem, if any"
+    - source: "Corollary 5.7 for the actual count of all constant windows."
+      lean: "PaperCV3Audit.Patterns.constant_windows_compound"
+      module: "SolutionV3Patterns"
+      status: "proved with the explicit literature premises shown in the theorem, if any"

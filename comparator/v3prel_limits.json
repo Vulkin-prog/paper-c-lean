@@ -1,0 +1,41 @@
+{
+  "challenge_module": "ChallengeV3Limits",
+  "solution_module": "SolutionV3Limits",
+  "theorem_names": [
+    "PaperCV3Audit.paper_c_v3_limits_joint_poisson_gaussian",
+    "PaperCV3Audit.paper_c_v3_limits_gaussian_covariance",
+    "PaperCV3Audit.paper_c_v3_limits_ar_covariance",
+    "PaperCV3Audit.paper_c_v3_limits_ar_recursion",
+    "PaperCV3Audit.paper_c_v3_limits_ar_independent_innovations",
+    "PaperCV3Audit.paper_c_v3_limits_ar_normal_innovations",
+    "PaperCV3Audit.paper_c_v3_limits_local_stirling_bounds",
+    "PaperCV3Audit.paper_c_v3_limits_local_stirling_relative_error",
+    "PaperCV3Audit.paper_c_v3_limits_poisson_local_limit",
+    "PaperCV3Audit.paper_c_v3_limits_poisson_moderate_bound",
+    "PaperCV3Audit.paper_c_v3_limits_poisson_moderate_limit",
+    "PaperCV3Audit.paper_c_v3_limits_poisson_gaussian_cdf_bound",
+    "PaperCV3Audit.paper_c_v3_limits_hard_central_local",
+    "PaperCV3Audit.paper_c_v3_limits_soft_central_local",
+    "PaperCV3Audit.paper_c_v3_limits_hard_moderate_tail",
+    "PaperCV3Audit.paper_c_v3_limits_integer_process_moving_laplace",
+    "PaperCV3Audit.paper_c_v3_limits_integer_process_phase_limit",
+    "PaperCV3Audit.paper_c_v3_limits_integer_process_target_laplace",
+    "PaperCV3Audit.paper_c_v3_limits_integer_process_locally_finite",
+    "PaperCV3Audit.paper_c_v3_limits_integer_process_infinite_mass",
+    "PaperCV3Audit.paper_c_v3_limits_integer_process_independent_counts",
+    "PaperCV3Audit.paper_c_v3_limits_integer_process_poisson_counts",
+    "PaperCV3Audit.paper_c_v3_limits_integer_process_finite_upper_tails",
+    "PaperCV3Audit.paper_c_v3_limits_integer_process_conditioned_positions",
+    "PaperCV3Audit.paper_c_v3_limits_extreme_phase_limit",
+    "PaperCV3Audit.paper_c_v3_limits_d4_full_half_count_law",
+    "PaperCV3Audit.paper_c_v3_limits_d4_entire_upper_point_law",
+    "PaperCV3Audit.paper_c_v3_limits_d4_conditional_upper_point_law",
+    "PaperCV3Audit.paper_c_v3_limits_d4_half_line_is_whole_restriction"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

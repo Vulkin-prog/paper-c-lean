@@ -3139,5 +3139,10 @@
         ]
       }
     ]
+  },
+  "historical_assessment_notice": {
+    "superseded_by": "docs/FORMALIZATION_COVERAGE_V3PREL.json",
+    "batch25_correction": "Former directional Stein Euclidean premise is false; corrected to constant entrywise plus weighted quadratic bounds. Earlier unchanged-input completeness language below is historical.",
+    "new_lean_counterexample": "PaperC.V282.DirectionalSteinCounterexample.not_euclidean_solution_statement"
   }
 }

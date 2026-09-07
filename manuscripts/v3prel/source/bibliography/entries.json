@@ -1,0 +1,177 @@
+{
+  "entries": {
+    "ArratiaGoldsteinGordon1989": {
+      "tex": "R. Arratia, L. Goldstein and L. Gordon,\n\\emph{Two moments suffice for Poisson approximations: the Chen--Stein method},\nAnn. Probab. \\textbf{17} (1989), no.~1, 9--25.\n\\href{https://doi.org/10.1214/aop/1176991491}{doi:10.1214/aop/1176991491}."
+    },
+    "ArratiaGoldsteinGordon1990": {
+      "tex": "R. Arratia, L. Goldstein and L. Gordon,\n\\emph{Poisson approximation and the Chen--Stein method},\nStatist. Sci. \\textbf{5} (1990), no.~4, 403--424.\n\\href{https://doi.org/10.1214/ss/1177012015}{doi:10.1214/ss/1177012015}."
+    },
+    "ArratiaGordonWaterman1990": {
+      "tex": "R. Arratia, L. Gordon and M. S. Waterman,\n\\emph{The Erdős--Rényi law in distribution, for coin tossing and sequence matching},\nAnn. Statist. \\textbf{18} (1990), no.~2, 539--570.\n\\href{https://doi.org/10.1214/aos/1176347615}{doi:10.1214/aos/1176347615}."
+    },
+    "BalasubramanianShorey1993": {
+      "tex": "R. Balasubramanian and T. N. Shorey,\n\\emph{Squares in products from a block of consecutive integers},\nActa Arith. \\textbf{65} (1993), no.~3, 213--220.\n\\href{https://doi.org/10.4064/aa-65-3-213-220}{doi:10.4064/aa-65-3-213-220}."
+    },
+    "ButtkewitzElsholtz2011": {
+      "tex": "Y. Buttkewitz and C. Elsholtz,\n\\emph{Patterns and complexity of multiplicative functions},\nJ. Lond. Math. Soc. (2) \\textbf{84} (2011), no.~3, 578--594.\n\\href{https://doi.org/10.1112/jlms/jdr026}{doi:10.1112/jlms/jdr026}."
+    },
+    "ChatterjeeSoundararajan2012": {
+      "tex": "S. Chatterjee and K. Soundararajan,\n\\emph{Random multiplicative functions in short intervals},\nInt. Math. Res. Not. IMRN 2012, no.~3, 479--492.\n\\href{https://doi.org/10.1093/imrn/rnr023}{doi:10.1093/imrn/rnr023}."
+    },
+    "ChenRollin2013": {
+      "tex": "L. H. Y. Chen and A. Röllin,\n\\emph{Approximating dependent rare events},\nBernoulli \\textbf{19} (2013), no.~4, 1243--1267.\n\\href{https://doi.org/10.3150/12-BEJSP18}{doi:10.3150/12-BEJSP18}."
+    },
+    "ChinisShala2025": {
+      "tex": "J. Chinis and B. Shala,\n\\emph{Random Chowla's conjecture for Rademacher multiplicative functions},\nTrans. Amer. Math. Soc. \\textbf{378} (2025), no.~11, 8025--8053.\n\\href{https://doi.org/10.1090/tran/9457}{doi:10.1090/tran/9457}."
+    },
+    "deLaBretecheWangXu2026": {
+      "tex": "R. de la Bretèche, V. Y. Wang and M. W. Xu,\n\\emph{Random multiplicative functions and making squares from polynomial values},\n\\href{https://arxiv.org/abs/2607.06398v1}{arXiv:2607.06398v1 [math.NT]},\n7 July 2026."
+    },
+    "EvertseSilverman1986": {
+      "tex": "J.-H. Evertse and J. H. Silverman,\n\\emph{Uniform bounds for the number of solutions to $Y^n=f(X)$},\nMath. Proc. Cambridge Philos. Soc. \\textbf{100} (1986), no.~2, 237--248.\n\\href{https://doi.org/10.1017/S0305004100066068}{doi:10.1017/S0305004100066068}."
+    },
+    "Foldes1979": {
+      "tex": "A. Földes,\n\\emph{The limit distribution of the length of the longest head-run},\nPeriod. Math. Hungar. \\textbf{10} (1979), no.~4, 301--310.\n\\href{https://doi.org/10.1007/BF02020027}{doi:10.1007/BF02020027}."
+    },
+    "Godbole1991": {
+      "tex": "A. P. Godbole,\n\\emph{Poisson approximations for runs and patterns of rare events},\nAdv. in Appl. Probab. \\textbf{23} (1991), no.~4, 851--865.\n\\href{https://doi.org/10.2307/1427680}{doi:10.2307/1427680}."
+    },
+    "GodboleSchaffner1993": {
+      "tex": "A.~P. Godbole and A.~A. Schaffner,\n\\emph{Improved Poisson approximations for word patterns},\nAdv. in Appl. Probab. \\textbf{25} (1993), no.~2, 334--347.\n\\href{https://doi.org/10.2307/1427656}{doi:10.2307/1427656}."
+    },
+    "GordonSchillingWaterman1986": {
+      "tex": "L. Gordon, M. F. Schilling and M. S. Waterman,\n\\emph{An extreme value theory for long head runs},\nProbab. Theory Related Fields \\textbf{72} (1986), no.~2, 279--287.\n\\href{https://doi.org/10.1007/BF00699107}{doi:10.1007/BF00699107}."
+    },
+    "HarperSoundararajanXu2026": {
+      "tex": "A. J. Harper, K. Soundararajan and M. W. Xu,\n\\emph{Distribution of random multiplicative functions in short intervals,\nwith proper normalization},\n\\href{https://arxiv.org/abs/2606.29040v1}{arXiv:2606.29040v1}, 27 June 2026."
+    },
+    "KlurmanShkredovXu2023": {
+      "tex": "O. Klurman, I. D. Shkredov and M. W. Xu,\n\\emph{On the random Chowla conjecture},\nGeom. Funct. Anal. \\textbf{33} (2023), no.~3, 749--777.\n\\href{https://doi.org/10.1007/s00039-023-00641-y}{doi:10.1007/s00039-023-00641-y}."
+    },
+    "Krokowski2017": {
+      "tex": "K. Krokowski,\n\\emph{Poisson approximation of Rademacher functionals by the Chen--Stein\nmethod and Malliavin calculus},\nCommun. Stoch. Anal. \\textbf{11} (2017), no.~2, 195--222.\n\\href{https://doi.org/10.31390/cosa.11.2.05}{doi:10.31390/cosa.11.2.05};\n\\href{https://arxiv.org/abs/1505.01417v3}{arXiv:1505.01417v3}."
+    },
+    "LaishramShorey2004": {
+      "tex": "S. Laishram and T. N. Shorey,\n\\emph{Number of prime divisors in a product of consecutive integers},\nActa Arith. \\textbf{113} (2004), no.~4, 327--341.\n\\href{https://doi.org/10.4064/aa113-4-3}{doi:10.4064/aa113-4-3}."
+    },
+    "Mangerel2024": {
+      "tex": "A. P. Mangerel,\n\\emph{On equal consecutive values of multiplicative functions},\nDiscrete Anal. 2024, Paper No.~12, 20 pp.\n\\href{https://doi.org/10.19086/da.125450}{doi:10.19086/da.125450}."
+    },
+    "MatomakiRadziwillTao2016": {
+      "tex": "K. Matom\\\"aki, M. Radziwi{\\l}{\\l} and T. Tao,\n\\emph{Sign patterns of the Liouville and M\\\"obius functions},\nForum Math. Sigma \\textbf{4} (2016), e14, 44 pp.\n\\href{https://doi.org/10.1017/fms.2016.6}{doi:10.1017/fms.2016.6}."
+    },
+    "Najnudel2020": {
+      "tex": "J. Najnudel,\n\\emph{On consecutive values of random completely multiplicative functions},\nElectron. J. Probab. \\textbf{25} (2020), Paper No.~59, 28 pp.\n\\href{https://doi.org/10.1214/20-EJP456}{doi:10.1214/20-EJP456}."
+    },
+    "NicolasRobin1983": {
+      "tex": "J.-L. Nicolas and G.~Robin,\n\\emph{Majorations explicites pour le nombre de diviseurs de $N$},\nCanad. Math. Bull. \\textbf{26} (1983), no.~4, 485--492.\n\\href{https://doi.org/10.4153/CMB-1983-078-5}{doi:10.4153/CMB-1983-078-5}."
+    },
+    "PoulyLatticePoissonFlows2026": {
+      "tex": "B. Pouly,\n\\emph{Records, scale flows, and Gaussian limits from lattice Poisson fields},\nPreprint, 2026, with technical companion.\nConcept DOI \\href{https://doi.org/10.5281/zenodo.22286837}{\\nolinkurl{10.5281/zenodo.22286837}}."
+    },
+    "Rollin2012SteinFactors": {
+      "tex": "A. R\\\"ollin,\n\\emph{On the optimality of Stein factors},\nin \\emph{Probability Approximations and Beyond}, Lecture Notes in Statistics\n\\textbf{205}, Springer, 2012, 61--72.\n\\href{https://doi.org/10.1007/978-1-4614-1966-2_5}{doi:10.1007/978-1-4614-1966-2\\_5};\n\\href{https://arxiv.org/abs/0706.0879v3}{arXiv:0706.0879v3}."
+    },
+    "Runge1887": {
+      "tex": "C. Runge,\n\\emph{Ueber ganzzahlige Lösungen von Gleichungen zwischen zwei Veränderlichen},\nJ. Reine Angew. Math. \\textbf{100} (1887), 425--435.\n\\href{https://doi.org/10.1515/crll.1887.100.425}{doi:10.1515/crll.1887.100.425}."
+    },
+    "SoundararajanXu2023": {
+      "tex": "K. Soundararajan and M. W. Xu,\n\\emph{Central limit theorems for random multiplicative functions},\nJ. Anal. Math. \\textbf{151} (2023), no.~1, 343--374.\n\\href{https://doi.org/10.1007/s11854-023-0331-y}{doi:10.1007/s11854-023-0331-y}."
+    },
+    "Tao2026": {
+      "tex": "T. Tao,\n\\emph{Products of consecutive integers with unusual anatomy},\n\\href{https://arxiv.org/abs/2603.27990v2}{arXiv:2603.27990v2}, 22 April 2026."
+    },
+    "Tenenbaum2015": {
+      "tex": "G. Tenenbaum,\n\\emph{Introduction to Analytic and Probabilistic Number Theory},\n3rd ed., Graduate Studies in Mathematics 163, American Mathematical Society, 2015.\n\\href{https://doi.org/10.1090/gsm/163}{doi:10.1090/gsm/163}."
+    },
+    "Walsh1992": {
+      "tex": "P. G. Walsh,\n\\emph{A quantitative version of Runge's theorem on Diophantine equations},\nActa Arith. \\textbf{62} (1992), no.~2, 157--172.\n\\href{https://doi.org/10.4064/aa-62-2-157-172}{doi:10.4064/aa-62-2-157-172}.\n\\emph{Corrections to ``A quantitative version of Runge's theorem on Diophantine equations''},\nActa Arith. \\textbf{73} (1995), no.~4, 397--398.\n\\href{https://doi.org/10.4064/aa-73-4-397-398}{doi:10.4064/aa-73-4-397-398}."
+    },
+    "Barbour1988SteinProcess": {
+      "tex": "A. D. Barbour,\n\\emph{Stein's method and Poisson process convergence},\nJ. Appl. Probab. \\textbf{25A} (1988), 175--184.\n\\href{https://doi.org/10.2307/3214155}{doi:10.2307/3214155}."
+    },
+    "Berry1941": {
+      "tex": "A. C. Berry,\n\\emph{The accuracy of the Gaussian approximation to the sum of independent\nvariates},\nTrans. Amer. Math. Soc. \\textbf{49} (1941), no.~1, 122--136.\n\\href{https://doi.org/10.1090/S0002-9947-1941-0003498-3}\n{doi:10.1090/S0002-9947-1941-0003498-3}."
+    },
+    "HalterKoch2013": {
+      "tex": "F.~Halter-Koch,\n\\emph{Quadratic Irrationals: An Introduction to Classical Number Theory},\nMonographs and Textbooks in Pure and Applied Mathematics, vol.~306,\nCRC Press, Boca Raton, 2013.\n\\href{https://doi.org/10.1201/b14968}{doi:10.1201/b14968}."
+    },
+    "CheeKiahPurkayasthaWang2013": {
+      "tex": "Y. M. Chee, H. M. Kiah, P. Purkayastha and C. Wang,\n\\emph{Cross-bifix-free codes within a constant factor of optimality},\nIEEE Trans. Inform. Theory \\textbf{59} (2013), no.~7, 4668--4674.\n\\href{https://doi.org/10.1109/TIT.2013.2252952}{doi:10.1109/TIT.2013.2252952}."
+    },
+    "Shorey1994BakerApplications": {
+      "tex": "T. N. Shorey,\n\\emph{Applications of Baker's theory of linear forms in logarithms to\nexponential diophantine equations},\nRIMS K\\^oky\\^uroku \\textbf{886} (1994), 48--60.\n\\href{https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/0886-05.pdf}{RIMS archive}."
+    },
+    "ErdosRenyi1970": {
+      "tex": "P. Erdős and A. Rényi,\n\\emph{On a new law of large numbers},\nJ. Analyse Math. \\textbf{23} (1970), 103--111.\n\\href{https://doi.org/10.1007/BF02795493}{doi:10.1007/BF02795493}."
+    },
+    "Wintner1944": {
+      "tex": "A. Wintner,\n\\emph{Random factorizations and Riemann's hypothesis},\nDuke Math. J. \\textbf{11} (1944), no.~2, 267--275.\n\\href{https://doi.org/10.1215/S0012-7094-44-01122-1}{doi:10.1215/S0012-7094-44-01122-1}."
+    },
+    "ReinertSchbath1998": {
+      "tex": "G. Reinert and S. Schbath,\n\\emph{Compound Poisson and Poisson process approximations for occurrences of multiple words in Markov chains},\nJ. Comput. Biol. \\textbf{5} (1998), no.~2, 223--253.\n\\href{https://doi.org/10.1089/cmb.1998.5.223}{doi:10.1089/cmb.1998.5.223}."
+    },
+    "RoquainSchbath2007": {
+      "tex": "E. Roquain and S. Schbath,\n\\emph{Improved compound Poisson approximation for the number of occurrences of any rare word family in a stationary Markov chain},\nAdv. Appl. Probab. \\textbf{39} (2007), no.~1, 128--140.\n\\href{https://doi.org/10.1239/aap/1175266472}{doi:10.1239/aap/1175266472}."
+    },
+    "MunschShparlinskiSunXiao2026": {
+      "tex": "M. Munsch, I. E. Shparlinski, Y.-C. Sun and Y. Xiao,\n\\emph{A large sieve inequality for sums of Legendre symbols over short intervals},\n\\href{https://arxiv.org/abs/2604.23661v3}{arXiv:2604.23661v3}, 5 August 2026."
+    }
+  },
+  "document_order": {
+    "main": [
+      "ArratiaGoldsteinGordon1989",
+      "ArratiaGoldsteinGordon1990",
+      "ArratiaGordonWaterman1990",
+      "BalasubramanianShorey1993",
+      "Barbour1988SteinProcess",
+      "ButtkewitzElsholtz2011",
+      "ChatterjeeSoundararajan2012",
+      "CheeKiahPurkayasthaWang2013",
+      "ChenRollin2013",
+      "ChinisShala2025",
+      "deLaBretecheWangXu2026",
+      "ErdosRenyi1970",
+      "EvertseSilverman1986",
+      "Foldes1979",
+      "Godbole1991",
+      "GodboleSchaffner1993",
+      "GordonSchillingWaterman1986",
+      "HarperSoundararajanXu2026",
+      "KlurmanShkredovXu2023",
+      "Krokowski2017",
+      "LaishramShorey2004",
+      "Mangerel2024",
+      "MatomakiRadziwillTao2016",
+      "MunschShparlinskiSunXiao2026",
+      "Najnudel2020",
+      "NicolasRobin1983",
+      "PoulyLatticePoissonFlows2026",
+      "ReinertSchbath1998",
+      "Rollin2012SteinFactors",
+      "RoquainSchbath2007",
+      "Runge1887",
+      "SoundararajanXu2023",
+      "Tao2026",
+      "Tenenbaum2015",
+      "Walsh1992",
+      "Wintner1944"
+    ],
+    "companion": [
+      "ArratiaGoldsteinGordon1989",
+      "ArratiaGoldsteinGordon1990",
+      "BalasubramanianShorey1993",
+      "Barbour1988SteinProcess",
+      "Berry1941",
+      "CheeKiahPurkayasthaWang2013",
+      "HalterKoch2013",
+      "Krokowski2017",
+      "LaishramShorey2004",
+      "NicolasRobin1983",
+      "PoulyLatticePoissonFlows2026",
+      "Rollin2012SteinFactors",
+      "Shorey1994BakerApplications",
+      "Tenenbaum2015"
+    ]
+  }
+}

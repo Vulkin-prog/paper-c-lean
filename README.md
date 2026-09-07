@@ -1,11 +1,28 @@
 # Lean formalization of Paper C
 
-Development for the supplied v2.8.2 manuscript is documented in
-[`PaperCV282/README.md`](PaperCV282/README.md), with exact finite endpoints
-and remaining obligations in [`PaperCV282/ENDPOINTS.md`](PaperCV282/ENDPOINTS.md).
-It uses the same Lean/mathlib 4.32.0 pins and preserves the historical `PaperC`
-core. The historical manuscript and qualification statements below keep
-their original scope; the new overlay has no Palomar qualification yet.
+The current development follows the supplied **V3PREL** of *Long runs and
+rare patterns of a random completely multiplicative function* and its
+technical companion. The original PDFs and editable sources are preserved in
+[`manuscripts/v3prel/`](manuscripts/v3prel/README.md).
+
+The [V3PREL coverage review](docs/FORMALIZATION_COVERAGE_V3PREL.md) maps all
+59 numbered article results and, separately, all 8 companion results to the
+development, with the unnumbered conclusions reviewed as well. Proofs remain
+relative to seven explicit [literature propositions](PaperCV282/LITERATURE_INPUTS.md).
+The earlier directional Stein premise was false: batch25 corrects it to the
+constant entrywise and weighted quadratic estimates of V3PREL C.3 and proves
+a counterexample to the old premise. Earlier batch24 completion claims must
+be read with this correction.
+
+[Five new Palomar candidates](docs/PALOMAR_V3PREL.md) select distinct groups
+of results. Their exact statement lists, source boundaries and separate
+qualification workflow are provided; the historical registrations below do
+not certify these new files. Lean and mathlib remain at **4.32.0**.
+
+## Historical v0.9 development and registrations
+
+The remainder of this page describes the historical manuscript and its
+qualification interfaces. Current V3PREL scope is documented above.
 
 This repository accompanies the manuscript:
 

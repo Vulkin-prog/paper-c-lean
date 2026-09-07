@@ -3,14 +3,22 @@ import PaperCV282.PoissonFieldMeasure
 /-!
 # Explicit multivariate Poisson Stein solution input
 
-Primary source: A. Roellin, On the Optimality of Stein Factors,
-arXiv:0706.0879v3 (12 June 2013), printed page 5, equation (3.1),
-https://arxiv.org/pdf/0706.0879v3 . The equation and quadratic-form bounds
-are the published analytic input, reproducing Barbour (1988), Lemma 3.
+Primary source: A. D. Barbour, Stein's Method and Poisson Process
+Convergence, J. Appl. Probab. 25(A) (1988), printed page 179,
+Lemmas 2 and 3, https://doi.org/10.2307/3214155 . The same solution
+has the constant entrywise bound and the weighted quadratic-form bound.
+Lemma 3 states integer directions; homogeneity and continuity extend
+the weighted estimate to real directions.
+
+The unweighted Euclidean quadratic bound printed in Roellin,
+arXiv:0706.0879v3, equation (3.1), is not used: it is false.
+Barbour's unweighted quadratic alternative is the square of the
+l1 norm, not the sum of squares. The constant entrywise bound below
+is Barbour's Lemma 2 and includes equal coordinate indices.
 
 Writing t_i = lambda * mu_i gives the weighted coefficient below exactly.
 No dependency-graph estimate, Poisson filling identity, arithmetic result,
-or entrywise Hessian comparison is assumed here. The dimension assumption
+or final weighted entrywise comparison is assumed here. The dimension assumption
 is the one stated in that source; signed geometric categories have at least
 two coordinates even at zero excess cutoff. No new Lean axiom is introduced.
 -/
@@ -48,12 +56,12 @@ def hessianQuadratic {κ : Type*} [Fintype κ] [DecidableEq κ]
     (g : (κ → ℕ) → ℝ) (z : κ → ℕ) (alpha : κ → ℝ) : ℝ :=
   ∑ i, ∑ j, alpha i * alpha j * secondDifference g i j z
 
-/-- Genuine solution and the two quadratic-form estimates of the primary source. -/
+/-- One genuine solution with Barbour's constant entrywise and weighted quadratic estimates. -/
 def DirectionalSolutionBounds {κ : Type*} [Fintype κ] [DecidableEq κ]
     (t : κ → ℝ≥0) : Prop :=
   ∀ A : Set (κ → ℕ), ∃ g : (κ → ℕ) → ℝ,
     (∀ z, steinGenerator t g z = (if z ∈ A then 1 else 0) - poissonTestMass t A) ∧
-    (∀ z alpha, |hessianQuadratic g z alpha| ≤ ∑ i, (alpha i)^2) ∧
+    (∀ z i j, |secondDifference g i j z| ≤ 1) ∧
     (∀ z alpha, |hessianQuadratic g z alpha| ≤
       directionalCoefficient t * ∑ i, (alpha i)^2 / (t i : ℝ))
 

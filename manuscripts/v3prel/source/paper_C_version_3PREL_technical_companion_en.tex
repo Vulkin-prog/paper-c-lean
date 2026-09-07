@@ -1,0 +1,53 @@
+\documentclass[11pt,a4paper]{article}
+\input{preamble.tex}
+\fancyhead[L]{Technical companion: long runs and rare patterns}
+\hypersetup{pdftitle={Technical companion to Long runs and rare patterns of a random completely multiplicative function}}
+\externaldocument[][nocite]{paper_C_version_3PREL_en}
+\title{\textbf{Technical companion to}\\[2mm]
+\large\emph{Long runs and rare patterns of a random\\completely multiplicative function}}
+\author{Brice Pouly\\[1mm]\small Independent author; ORCID:
+\href{https://orcid.org/0009-0008-8491-2467}{0009-0008-8491-2467}}
+\date{September 7, 2026 --- Companion to Preprint Version 3PREL\\[.3em]
+\small\href{https://doi.org/10.5281/zenodo.21736676}{doi:10.5281/zenodo.21736676}}
+\begin{document}
+\maketitle
+\begin{abstract}
+This companion records the detailed inputs and verifications used in the
+article. The square-product argument is given once, in the article, in a
+macroscopic geometry that also contains the dyadic and bounded-ratio cases.
+Here we verify the growing-degree Runge calculation and the bounded-height
+Pell count, the prime-cutoff estimates, scalar smoothing, aggregated and labelled marked comparisons, and conditional-kernel consequences. The boundary verification uses a
+simple incidence graph and a global count of square divisibilities to obtain
+a rank surplus $28271/332640$ and the displayed relative exponent $1/12$.
+The signed marked-field comparison retains the sign of each run. The
+article's capped value-relation estimate yields joint laws for growing
+families of prescribed words; this companion records the marginal-ceiling
+calculation, local ranks and tail estimates used in those transfers. Appendix letters refer to this companion;
+numbered sections and unqualified numbered statements refer to the article.
+\end{abstract}
+\medskip
+\noindent\textbf{Reading convention.} The two documents form one proof package.
+Each appendix below is called from a specific step in the article. Bibliographic
+numbering is local; cross-document theorem numbers are generated from the two
+LaTeX auxiliary files. No formal certification of these texts is claimed. All logarithms without an indicated base are natural.
+\par\medskip
+\noindent\textbf{Artificial-intelligence assistance.} The drafting of this
+companion and work on the associated formalization received assistance
+from language-model systems developed by Anthropic and OpenAI. The
+\hyperref[sec:ai-assistance]{declaration at the end of the article}
+identifies the models, their roles and the author's responsibility.
+\tableofcontents
+\clearpage
+\input{companion/00_external_inputs.tex}
+\clearpage
+\input{companion/00_reading_routes.tex}
+\clearpage
+\appendix
+\input{companion/A_runge_diophantine.tex}
+\input{companion/B_cutoffs.tex}
+\input{companion/C_fields.tex}
+\input{companion/D_conditioning.tex}
+\input{companion/E_boundary.tex}
+\clearpage
+\input{bibliography_companion.tex}
+\end{document}

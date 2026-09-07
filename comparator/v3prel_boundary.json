@@ -1,0 +1,19 @@
+{
+  "challenge_module": "ChallengeV3Boundary",
+  "solution_module": "SolutionV3Boundary",
+  "theorem_names": [
+    "PaperCV3Audit.v3_boundary_exact",
+    "PaperCV3Audit.v3_boundary_microscopic",
+    "PaperCV3Audit.v3_boundary_mesoscopic",
+    "PaperCV3Audit.v3_boundary_prefix_quantitative",
+    "PaperCV3Audit.v3_boundary_prefix_critical",
+    "PaperCV3Audit.v3_boundary_asymmetric_envelopes",
+    "PaperCV3Audit.v3_boundary_longest_loglog"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

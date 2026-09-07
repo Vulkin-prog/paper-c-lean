@@ -1,5 +1,13 @@
 # Couverture finale du papier C v2.8.2 et du compagnon — lot24
 
+> **Historical batch24 assessment, corrected in batch25.** The former
+> directional Stein premise was false. Its replacement and a formal
+> counterexample are recorded in the [V3PREL assessment](FORMALIZATION_COVERAGE_V3PREL.md)
+> and [literature ledger](../PaperCV282/LITERATURE_INPUTS.md). The completion
+> claims below describe that earlier snapshot; they are not an assertion
+> that its seven premises were all faithful to the cited sources.
+
+
 **La formalisation mathématique est complète relativement aux sept
 propositions bibliographiques explicites.** La grille conserve 19 blocs et
 105 unités, tous clos : 100% du périmètre mathématique. Ce pourcentage

@@ -1,17 +1,25 @@
-# Literature inputs for the v2.8.2 transfer and cutoff proofs
+# Literature inputs: v2.8.2 history and the V3PREL correction
 
-The results through batch 24 separate published probability/prime-distribution inputs
+The results through batch 25 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
 There is no new Lean `axiom`, and no proof of these seven propositions is
 claimed. An axiom audit does not discharge a theorem's hypotheses.
+
+The seven proposition names are retained in batch25, but the directional
+proposition has been corrected: its former unweighted Euclidean quadratic
+bound was false. The current table describes the corrected input. The batch
+13–24 sections below record development history, not a claim that the old
+directional premise was a faithful consequence of its cited source. See
+[V3-C002](../docs/PAPER_V3_REVISION_LOG.md#v3-c002--corriger-la-prémisse-directionnelle-du-dépôt)
+for the repository correction; V3PREL companion C.3 already uses the valid bounds.
 
 | Explicit proposition | Mathematical content | What the overlay proves from it |
 |---|---|---|
 | `ScalarSteinInput.ScalarSteinFactorsStatement` | Existence, for every positive Poisson rate and every test set, of a solution of the actual Poisson Stein equation with supremum bound `min(1,lambda^(-1/2))` and first-difference bound `min(1,lambda^(-1))`. | Finite scalar dependency-graph estimates, the soft-exception lemma and their actual conditional arithmetic instances. |
 | `ProcessAGGInput.ProcessAGGStatement` | Finite indicator-to-independent-Poisson field comparison for an exact dependency graph, in half-L1 convention, bounded by `2(b1+b2)`. | Actual masked field transfer, including arithmetic costs, deletion of actual sites and of target coordinates. |
 | `PrimeEulerPNT.PrimeNumberTheoremRemainder` | For every `eta>0`, eventually `abs(pi(t)-Ei(log t)) <= eta*t/log t`, with the actual prime-counting function. | Weighted partial summation, its lower endpoint, the finite Rankin estimate and subsequent cutoff estimates to the extent recorded in the endpoint ledger. |
-| `DirectionalSteinInput.DirectionalSteinFactorsStatement` | Existence of a solution of the finite multivariate Poisson immigration–death equation, with the two published quadratic Hessian bounds; dimension at least two and positive target coordinates. | Entrywise bounds by polarization, typed dependency graph, true independent Poisson filling, the exact unsigned C.1 and its signed analogue, aggregate5.8–5.9, the proved target limit5.10, resolved paths and the mean bound for6.4. |
+| `DirectionalSteinInput.DirectionalSteinFactorsStatement` | Existence of one solution of the finite multivariate Poisson immigration–death equation with both the constant entrywise bound and the weighted quadratic Hessian bound of Barbour (1988), Lemmas 2–3; dimension at least two and positive target coordinates. Corrected in batch25. | Weighted entrywise bound by polarization combined with the supplied constant bound, typed dependency graph, true independent Poisson filling, the exact unsigned C.1 and its signed analogue, aggregate5.8–5.9, the proved target limit5.10, resolved paths and the mean bound for6.4. |
 | `LaishramUniformInput.UniformPrimeDivisorStatement` | For every epsilon>0, eventually in k uniformly for every n>k, omega(Delta(n,k)) >= (2-epsilon)*pi(k). | Actual large-prime species, private rows, quadratic rank surplus, microscopic first moment and localization. |
 | `PostQuadraticLiterature.ShoreySquareProductStatement` | Square-product specialization of Shorey equation (15), with arbitrary positive k-smooth coefficient and the stated height/density conditions; threshold uniform in all later data. | The k^2 threshold, shifts, true post-quadratic defects, gap/prime-count divergence, probabilities and sums. |
 | `PellInput.NicolasRobinDivisorLogBoundStatement` | Historical divisor bound log(tau(n))*log(log(n)) <= 2*log(2)*log(n), n>=64. | Historical ideals/orbits/divisor envelope and actual uniform intermediate two-defect counts exp(O(logM/loglogM)). |
@@ -105,22 +113,21 @@ does not discharge the explicit literature hypotheses of any batch.
 
 ## Batch 16: directional aggregation and the actual joint Gaussian limit
 
-The new input is exactly the analytic solution theorem and quadratic bounds in
-[A. Röllin, *On the Optimality of Stein Factors*, arXiv:0706.0879v3,
-printed page 5, equation (3.1)](https://arxiv.org/pdf/0706.0879v3), reproducing
-Barbour (1988), Lemma 3. The dimension condition d≥2 was checked visually
-against the primary PDF. Its SHA-256 is
-`cca9b417622e06ab0cf759f838fc75664d2d766b6032d8c4664685ec8090f440`.
-Writing the target coordinates as t_i=λμ_i gives the coefficient
-(1+2 log⁺(2Σt_i))/2 multiplying Σα_i²/t_i. The proposition states this
-bound and the unweighted bound at every natural configuration, together
-with the actual immigration–death Stein equation for every test set.
-
+**Historical source correction (batch25).** Batch16 introduced the directional
+input using [A. Röllin, *On the Optimality of Stein Factors*,
+arXiv:0706.0879v3, printed page 5, equation (3.1)](https://arxiv.org/pdf/0706.0879v3).
+That displayed equation does print the unweighted bound `Σα_i²`, but the
+bound is false. Checking the printed formula and compiling deductions from
+it did not establish the validity of this premise. The preserved PDF has
+SHA-256 `cca9b417622e06ab0cf759f838fc75664d2d766b6032d8c4664685ec8090f440`.
+The corrected input is sourced directly to Barbour's Lemmas 2–3, as detailed
+in the batch25 section below. The weighted coefficient
+`(1+2 log⁺(2Σt_i))/2` multiplying `Σα_i²/t_i` is unchanged.
 The signed analogue of C.1 is a deduction, never an input. In batch16, C.1
 remained partial because the unsigned cost and support condition were not
 yet reproduced. The exact unsigned proof in batch17 closes that obligation.
-The entrywise min bound is derived by
-polarization. The proof retains an arbitrary outside offset when telescoping
+After correction, the entrywise min bound combines the constant bound
+with the weighted bound derived by polarization. The proof retains an arbitrary outside offset when telescoping
 local dependence. An actual independent Poisson field fills missing target
 means, including when every retained indicator is zero. Every gradient
 integral and coordinate-times-gradient integral used for linearity is
@@ -278,9 +285,55 @@ and moderate-tail estimates, and point-measure law identification are proved
 internally. In particular, no Berry–Esseen, moderate-deviation, independence
 or desired process-convergence conclusion is postulated as a new input.
 
-The article and companion scope is complete relative to these seven arguments.
+At the end of batch24, the article and companion scope was recorded as complete
+relative to these seven arguments. Batch25 subsequently corrected the directional
+argument itself; this historical completeness record did not validate that premise.
 An endpoint only uses the arguments visible in its signature; importing a
 module does not assert all its hypotheses. Source-to-proof completeness,
 kernel correctness, proof of the literature propositions themselves, and
 Palomar qualification remain distinct claims. Only the first two are part
 of this completed development; validation evidence records the exact bytes.
+
+
+## Batch25: corrected directional premise, same seven names
+
+For the **same** solution `g` of the actual immigration–death Stein equation,
+[Barbour, *Stein’s Method and Poisson Process Convergence* (1988), printed
+page 179, Lemmas 2 and 3](https://doi.org/10.2307/3214155) give
+
+```text
+|Δ_i Δ_j g(z)| ≤ 1,
+|Σ_i Σ_j α_i α_j Δ_i Δ_j g(z)| ≤ c(t) Σ_i α_i²/t_i,
+c(t) = (1 + 2 log⁺(2Σ_i t_i))/2.
+```
+
+The first estimate includes equal coordinate indices. The weighted estimate
+is stated for integer directions in Lemma 3; homogeneity, rational
+approximation and continuity give the equivalent real-direction formulation
+used by Lean. Barbour's unweighted quadratic alternative is `(Σ_i |α_i|)²`,
+not `Σ_i α_i²`. The author-hosted primary PDF has SHA-256
+`b69cd92e74c78f1e0555eb3c05339ff2305d5d0cb71858d2e930a43097c65ae4`.
+This is also the input used by the supplied V3PREL companion C.3. The
+companion is not the object being corrected here.
+
+The contradiction to the former premise is itself proved in
+[DirectionalSteinCounterexample.lean](DirectionalSteinCounterexample.lean).
+With two means `t=(1/2,1/2)`, test set `A={e₁,e₂}` and direction `α=(1,1)`,
+its genuine product-Poisson mass is `exp(-1)`. The two Stein equations at
+`e₁,e₂` force the quadratic form at zero to equal
+`4(1-exp(-1)) > 2 = Σ_i α_i²`, for **every** possible solution.
+`no_euclidean_solution` and `not_euclidean_solution_statement` therefore
+refute the old existence clause without assuming a canonical solution,
+uniqueness or a growth condition.
+
+[DirectionalSteinInput.lean](DirectionalSteinInput.lean) replaces only that
+false clause by the constant entrywise estimate. The weighted clause is
+retained. [DirectionalHessian.lean](DirectionalHessian.lean) then derives
+exactly the same final factor `min(1,c(t)/sqrt(t_i*t_j))`, using the supplied
+constant estimate for one branch and polarization for the weighted branch.
+The signed and unsigned arithmetic costs do not change. The source-facing
+consumers retain their proved filling, graph, arithmetic and conditioning
+arguments; they now receive the corrected proposition. No final arithmetic
+TV bound is assumed and no Lean axiom is added. The unchanged count of seven
+named literature inputs must not be read as an unchanged directional
+proposition, or as an internal proof of that analytic literature result.
