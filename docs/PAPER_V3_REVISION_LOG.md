@@ -443,3 +443,44 @@ Elles doivent figurer dans la future description de la formalisation V3.
 Aucune nouvelle erreur du papier n'est identifiée. Le registre compte désormais
 **une correction confirmée et treize suggestions**, dont la simplification
 V3-S013. Les PDF et les preuves historiques restent inchangés.
+
+## V3-S014 — Simplifier la correction du préfixe contenu
+
+**Document et emplacement.** Papier p.43, équation(7.11) et preuve du théorème7.4.
+
+**Type.** Suggestion de simplification démontrée, sans erreur du texte actuel.
+
+Le premier moment masqué déjà obtenu dans la proposition7.3 s’applique aux
+vrais départs exclus à droite du préfixe. Leur somme est au plus
+`L·2^(-L)+2exp(-c logM/loglogM)`, uniformément dans la bande logarithmique.
+La comparaison pour `W=C_L+Σ_(2≤x≤M−L+1)J_x,L` peut donc ajouter seulement
+`2^(-π(L))+O(L·2^(-L))`, après augmentation de la constante du reste profond
+présent dans(7.10). Le terme `2^(-L)M^(1/2+o(1))` de(7.11) reste correct ;
+il n’est pas nécessaire avec ce premier moment global. Cette simplification
+préserve les entrées bibliographiques explicites des preuves précédentes.
+
+**Preuves.** [PrefixContainedBounds.lean](../PaperCV282/PrefixContainedBounds.lean),
+`overflow_mass_eventually` et `theorem_seven_four_contained_prefix`.
+
+**Formulation anglaise proposée.**
+
+> The masked prefix first-moment bound applies directly to the excluded rightmost starts. Their total mass is at most L·2^(−L)+O(exp(−c log M/log log M)). Thus the additional contained-prefix correction can be written as 2^(−π(L))+O(L·2^(−L)), after changing the constant in the existing deep-start remainder.
+
+**Statut.** Proposition à examiner par l’auteur ; les PDF restent inchangés.
+
+## Bilan du lot21 — Préfixe, enveloppes presque sûres et champ signé relatif
+
+Les résultats7.4,7.5 et7.7 sont formalisés. Les enveloppes presque sûres
+portent sur le vrai plus long run, pour tous les préfixes assez grands.
+La comparaison relative conserve toutes les marques, les signes, les
+positions x/M et la vraie loi conditionnelle pour F_Y. La factorisation
+avec l’enregistrement microscopique B_L est obtenue à erreur o(λ), donc
+o(q_L+λ), sans indépendance exacte à taille finie.
+
+Le décompte strict atteint48/61 dans l’article et reste7/8 dans le compagnon.
+Le transport macroscopique7.6 et les mélanges complets7.8–7.10 conservent
+leurs réserves. Les sept propositions bibliographiques actives restent
+inchangées. Aucune nouvelle erreur du papier n’est identifiée : le registre
+contient **une correction confirmée et quatorze suggestions**, dont V3-S014.
+Les fichiers source du papier et du compagnon pourront accompagner la future
+V3, avec son périmètre formalisé et le commit précisément indiqués.

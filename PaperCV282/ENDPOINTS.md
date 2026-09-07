@@ -1,6 +1,6 @@
 # Paper C v2.8.2 endpoint ledger
 
-The 455 mathematical modules contain **3901 named declarations: 3006 theorems, 649 definitions and 246 named instances**. Batch 20 adds 307 theorems in 52 new modules.
+The 511 mathematical modules contain **4382 named declarations: 3351 theorems, 726 definitions and 305 named instances**. Batch 21 adds 345 theorems in 56 new modules.
 
 This ledger records the mathematical scope of the supplied proof terms.
 Build and qualification outcomes belong in separate evidence. No entry is
@@ -1507,11 +1507,55 @@ defect counts, probability estimates or desired limits is assumed.
 
 Theorem7.1, Lemma7.2, Proposition7.3 and companion LemmasE.1–E.3 are complete
 under their stated literature arguments. Equation(7.7) belongs to
-Proposition7.3; the distinct signed-bulk Theorem7.7 remains unconnected.
+Proposition7.3. At the end of batch20 the distinct signed-bulk Theorem7.7
+was still unconnected; batch21 completes it below.
 The exact border, integer and affine clock identities do not establish the
 full two-source Theorems7.8–7.10. In particular, affine rare non-vacancy,
 affine localization and the bulk/border mixture remain open. No limiting
 statement for physical integer overshoots is inferred from the prime-rank law.
-The global prefix7.4, almost-sure envelopes7.5 and macroscopic7.6–7.7 remain
-separate. The precise intermediate count does not automatically close all
+Batch20 left the global prefix7.4, almost-sure envelopes7.5 and
+macroscopic7.6–7.7 separate. Batch21 completes7.4,7.5 and7.7;7.6 remains open. The precise intermediate count does not automatically close all
 source-shaped Pell/split-product statements3.13/3.14/A.2.
+
+## Batch21: global prefix, almost-sure envelopes and complete rare bulk
+
+Put lambda=M/2^L, S=log M/loglog M and let V,nu be the actual hard saddle
+scales. For each epsilon,eta>0 and fixed positive logarithmic band, the
+threshold precedes every M and L. The rate exp(-V+eta*nu) is the explicit
+arbitrary-eta form of exp(-V+o(nu)).
+
+| Declaration | Established result |
+|---|---|
+| `FiniteStartMaskTransfer.finite_scalar_tv_le` | Actual finite count on any adequate finite start mask; deletion, retained Poisson mean, support edges and base-length relation mass are proved from scalar Stein. |
+| `MacroscopicScalarLedger.finite_scalar_hard_rate_eventually` | The genuine macroscopic-mask comparison, with density at least M/2, arbitrary adequate cylinder and cost at most40lambda(exp(-V+eta*nu)+M^(-1/3+epsilon)). |
+| `PrefixScalarBounds.theorem_seven_four_open_prefix` | Actual sum over2<=x<M: TV<=43min(1,lambda(exp(-V+eta*nu)+M^(-1/3+epsilon)))+2exp(-cS), c=betaMin*log2/8. |
+| `PrefixContainedBounds.theorem_seven_four_contained_prefix` | Actual W=C_L+sum_(2<=x<=M-L+1)J_x,L: same main term+4exp(-cS)+2^(-pi(L))+L*2^(-L). This implies the printed, weaker correction(7.11). |
+| `PrefixCriticalVoid.critical_prefix_void_le_eventually` | For every fixed critical-window width C and tolerance delta>0, one threshold precedes every L with abs(L-log2M)<=C; the true longest-run void differs from exp(-lambda) by at most delta. |
+| `PrefixScalarConvergence.theorem_seven_four_critical` / `PrefixCriticalVoid.theorem_seven_four_critical_void` | Sequential true prefix TV and longest-run void convergence; a stronger bounded-intensity logarithmic-band formulation is also proved. |
+| `PrefixAlmostSureEnvelopes.theorem_seven_five` | Almost surely, for all sufficiently large M, both asymmetric envelopes(7.12–7.13) hold. Lower additive constant4 and explicit upper constant depending on epsilon; no independence between scales. |
+| `PrefixAlmostSureEnvelopes.theorem_seven_five_loglog` | Almost surely R_M=log2M+O(loglogM), on the same source. |
+| `BulkMarkedRates.theorem_seven_seven` | Mean full-FY conditional TV for all exact excesses and both signs<=67lambda(exp(-V+eta*nu)+M^(-1/3+epsilon)), with lambda<=1. |
+| `BulkMarkedConvergence.signed_relative_convergence` / `equation_seven_sixteen` | The complete signed field and its true mark/sign sum have mean conditional error o(lambda), assuming only the rare intensity limit and L<=beta logM eventually. |
+| `BulkMicroscopicRecord.equation_seven_seventeen` / `equation_seven_seventeen_total_scale` | Actual joint law of B_L and the bulk start field versus the product law: error o(lambda), hence o(q_L+lambda). The complete microscopic cylinder2L²+L lies below the hard cutoff eventually, and full-FY measurability is proved. |
+| `BulkPointProcess.equation_seven_fifteen_spatial` / `equation_seven_sixteen_spatial` / `equation_seven_seventeen_spatial_relative` / `equation_seven_seventeen_spatial` | The same comparisons for the actual sums of Dirac masses at x/M, retaining multiplicities and all labels where relevant. |
+
+The bulk mask is exactly Icc(ceil(M^delta),M-L+1), with0<delta<1 in the
+paper. The proved comparisons allow any delta>0 (possibly empty masks).
+The Poisson coordinate means are exactly2^(-L-e-2) per sign, and2^(-L)
+after summing all excesses and signs. The actual target intensity is
+card(mask)/2^L; lambda=M/2^L is the normalization in the error estimate.
+No exact finite-M independence with B_L is asserted.
+
+The conditional mean uses the actual positive atoms of the full F_Y,
+identified with the finite prime-coordinate sigma-algebra. This is an exact
+representation of conditional laws; no desired kernel or independence
+property is supplied as an assumption. The finite mark tail is removed
+using genuine source/target probability bounds, and signs and marks are
+summed before the separated-pair relation estimate at base length L.
+
+Results7.4–7.5 use scalar Stein, uniform LS, Shorey square-product, PNT and
+Nicolas–Robin. Result7.7 uses process AGG and PNT. All seven existing
+literature propositions retain their qualification boundary. This batch
+adds no proposition or Lean axiom. The base-contained all-intensity
+transport7.6, its movable and aggregate budgets, and the full crossover
+7.8–7.10 are not completed by these results.

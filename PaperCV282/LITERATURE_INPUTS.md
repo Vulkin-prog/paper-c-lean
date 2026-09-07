@@ -1,6 +1,6 @@
 # Literature inputs for the v2.8.2 transfer and cutoff proofs
 
-The results through batch 20 separate published probability/prime-distribution inputs
+The results through batch 21 separate published probability/prime-distribution inputs
 from the arithmetic and analytic deductions proved in this repository. Each
 input below is a named proposition passed as an explicit theorem argument.
 There is no new Lean `axiom`, and no proof of these seven propositions is
@@ -204,3 +204,24 @@ Shorey and PNT. Lemma7.2 uses PNT and Nicolas–Robin. Proposition7.3 uses all
 four arithmetic arguments; its deep/cutoff branches need only Shorey, PNT
 and Nicolas–Robin, while the prefix starting at2 adds LS. Exact border and
 affine identities and the unconditioned border prime clock are internal.
+
+## Batch21: prefix and relative bulk applications
+
+No new literature proposition is introduced. The seven active inputs from
+batch20 remain unchanged and explicit. The final prefix7.4 and almost-sure
+7.5 endpoints take scalar Stein solution/factors, uniform Laishram–Shorey,
+Shorey square-product, PNT and Nicolas–Robin as arguments. Actual dependency
+graphs, deletion, Poisson-mean restoration, contained-prefix coupling,
+summable dyadic errors, Borel–Cantelli and all-prefix interpolation are
+proved internally. No desired probability bound or summability result is
+postulated in the final almost-sure theorem.
+
+The signed bulk7.7 comparison and its full-FY stable factorization use only
+the existing process AGG and PNT arguments. The source and target with all
+excesses/signs, exact Poisson rates, tail bounds, arbitrary macroscopic masks,
+base-length relation estimate and actual microscopic-record measurability
+are proved. The lower logarithmic band follows from rare intensity itself.
+The spatial point processes at x/M are actual pushforwards of these laws.
+Neither their Poisson approximation nor their asymptotic independence is an
+additional literature premise. Kernel auditing still does not prove any
+of the seven explicit input propositions.

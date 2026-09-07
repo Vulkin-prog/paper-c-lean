@@ -1,24 +1,21 @@
-# Couverture du papier C v2.8.2 et du compagnon — lot 20
+# Couverture du papier C v2.8.2 et du compagnon — lot 21
 
-**Environ 87 % de l’effort total est acquis, avec une fourchette prudente de 80–93 %.** La grille conserve 19 blocs et 105 unités. Le comptage strict est **45/61 résultats complets dans l’article**, et séparément **7/8 dans le compagnon**. Les deux fractions ne s’additionnent pas ; les reprises introductives 1.1–1.3 restent exclues des 61.
+**Environ 90 % de l’effort total est acquis, avec une fourchette prudente de 84–96 %.** La grille conserve 19 blocs et 105 unités. Le comptage strict est **48/61 résultats complets dans l’article**, et séparément **7/8 dans le compagnon**. Les deux fractions ne s’additionnent pas ; les reprises introductives1.1–1.3 restent exclues des 61.
 
-Ce lot complète le théorème7.1, le lemme7.2, la proposition 7.3 et les lemmes E.1–E.3. Les preuves utilisent les vrais rangs, défauts et événements de départ. La stabilité des configurations conditionnées à coupure variable est incluse. Les acquis des lots précédents, notamment le §6 et le budget central avec coefficient3/2, sont conservés.
+Ce lot complète le théorème7.4, le corollaire7.5 et le théorème7.7. Les vrais objets du papier sont raccordés : compteur de préfixe contenu, plus long run, champ signé avec toutes ses marques, positions x/M et enregistrement microscopique B_L. Les résultats antérieurs sont conservés.
 
 ## Nouveaux acquis
 
 | Résultat | Portée démontrée |
 |---|---|
-| 7.1 | Masse intérieure≤2^−((1+δ)πL) pour tout 0<δ<28271/332640 ; q_L/2^−πL→1 et localisation conditionnelle au bord. Le choix δ=1/12 est explicite. |
-| 7.2 | Vrais deux-défauts, toute hauteur intermédiaire, taux exp(C logM/loglogM), seuil avant L et X. |
-| 7.3 | Somme de préfixe(7.7), départs profonds(7.8), coupure libre(7.9), négligeabilité relative et comparaison TV des vraies configurations prolongées par zéro. |
-| E.1 | Mineur identité dans les trois fenêtres de transition et perte de rang d’au plus un. |
-| E.2 | Vrai lemme de rang d’incidence, quotient des lignes privées, exception des carrés≤854 et optimum global K=11. |
-| E.3 | Borne uniforme des défauts postquadratiques, gap/π(B)→∞ et vraie probabilité de départ. |
-| Horloges et affine | Loi géométrique exacte sous le bord, limite TV sous non-vacance microscopique, queue du dépassement entier et non-tension ; masse affine et queues des prochains premiers. Le théorème 7.10 reste partiel. |
+| 7.4 | Taux quantitatif pour le préfixe ouvert dans toute bande logarithmique ; vrai préfixe contenu avec correction de bord et de dépassement ; approximation uniforme de la loi de vide aux longueurs critiques. |
+| 7.5 | Deux enveloppes asymétriques presque sûres pour tous les M assez grands ; sommabilité des vrais termes d’erreur, premier Borel–Cantelli et interpolation monotone. Aucune indépendance entre échelles. |
+| 7.7 | Vraie moyenne conditionnelle pour le champ premier complet, toutes marques et deux signes, taux relatif67λ(exp(-V+ην)+M^(-1/3+ε)). Agrégation puis factorisation avec B_L à erreur o(λ), donc o(q_L+λ). |
+| Positions | Vraies sommes de Dirac à x/M ; cibles de Poisson aux mêmes sites et mêmes moyennes. Le masque est exactement[ceil(M^δ),M−L+1]. |
 
-Les [déclarations précises](../PaperCV282/ENDPOINTS.md) détaillent les interfaces. L’équation(7.7) appartient à la proposition 7.3 ; elle ne désigne pas le théorème 7.7, encore non raccordé. Les sections non numérotées E.4–E.7 ne créent pas de résultats supplémentaires dans le dénominateur 8.
+Les [déclarations précises](../PaperCV282/ENDPOINTS.md) distinguent les masques, les moyennes et les hypothèses. L’équation(7.7) de la proposition7.3 et le théorème7.7 sont deux objets distincts ; tous deux sont désormais raccordés. Les sections non numérotées du compagnon ne créent pas de résultats supplémentaires dans le dénominateur8.
 
-Sept [propositions bibliographiques](../PaperCV282/LITERATURE_INPUTS.md) sont désormais actives : les quatre antérieures, LS uniforme, Shorey carré et Nicolas–Robin. Les nouvelles preuves de rang et de probabilité les prennent comme arguments explicites. Elles n’ajoutent aucun axiome Lean ; l’audit ne démontre pas ces propositions.
+Les sept [propositions bibliographiques explicites](../PaperCV282/LITERATURE_INPUTS.md) sont inchangées. Les résultats7.4–7.5 utilisent Stein scalaire, LS uniforme, Shorey carré, PNT et Nicolas–Robin ;7.7 utilise AGG de processus et PNT. L’audit Lean ne démontre pas ces propositions. Aucun nouvel axiome ou résultat probabiliste souhaité n’est supposé.
 
 ## Comptage strict
 
@@ -29,16 +26,16 @@ Sept [propositions bibliographiques](../PaperCV282/LITERATURE_INPUTS.md) sont d�
 | §4 | 4 | 4 | 0 | 0 | 0 |
 | §5 | 10 | 10 | 0 | 0 | 0 |
 | §6 | 4 | 4 | 0 | 0 | 0 |
-| §7 | 10 | 3 | 3 | 1 | 3 |
+| §7 | 10 | 6 | 2 | 0 | 2 |
 | Compagnon | 8 | 7 | 1 | 0 | 0 |
 
 La [matrice JSON](FORMALIZATION_COVERAGE_V282.json) conserve 69 lignes et les motifs de chaque statut.
 
 ## Estimation de l’effort
 
-Seuls les blocs microscopique, intermédiaire et crossover changent. Les 16 autres restent identiques au lot 19. Les bornes passent de 80,20–89,32 à **87,10–95,57 unités sur 105**, soit 82,95–91,02 %, milieu 86,99 %. La communication arrondit à 87 %, avec prudence 80–93 %. Le nombre de lignes et de déclarations ne détermine pas cette estimation.
+Seuls les blocs préfixe, transport macroscopique et crossover changent. Les 16 autres restent identiques au lot20. Les bornes passent de 87,10–95,57 à **90.95–98.52 unités sur 105**, soit 86.62–93.83 %, milieu 90.22 %. La communication arrondit à 90 %, avec prudence 84–96 %. Le nombre de lignes, de déclarations ou d’heures ne détermine pas cette estimation.
 
-| Bloc mathématique | Poids | Acquis après lot 19 | Acquis après lot 20 |
+| Bloc mathématique | Poids | Acquis après lot20 | Acquis après lot21 |
 |---|---:|---:|---:|
 | Modèle, Fourier, arbres et pivots | 6 | 90–98 % | 90–98 % |
 | Runge croissant et défauts | 8 | 95–100 % | 95–100 % |
@@ -54,22 +51,22 @@ Seuls les blocs microscopique, intermédiaire et crossover changent. Les 16 autr
 | Marques, signes, comparaison agrégée et clusters | 7 | 95–100 % | 95–100 % |
 | Niveaux croissants et limite Poisson–Gauss | 5 | 70–85 % | 70–85 % |
 | Conditionnement, chemins et contrôle presque sûr | 5 | 75–85 % | 75–85 % |
-| Frontière microscopique et rang d’incidence | 6 | 20–35 % | 95–100 % |
-| Départs intermédiaires et mésoscopiques | 3 | 35–55 % | 90–100 % |
-| Préfixe global et enveloppes presque sûres | 3 | 30–55 % | 30–55 % |
-| Transport macroscopique et noyau signé relatif | 3 | 20–40 % | 20–40 % |
-| Mélange des deux sources et horloges affines | 5 | 5–15 % | 20–35 % |
+| Frontière microscopique et rang d’incidence | 6 | 95–100 % | 95–100 % |
+| Départs intermédiaires et mésoscopiques | 3 | 90–100 % | 90–100 % |
+| Préfixe global et enveloppes presque sûres | 3 | 30–55 % | 100 % |
+| Transport macroscopique et noyau signé relatif | 3 | 20–40 % | 70–85 % |
+| Mélange des deux sources et horloges affines | 5 | 20–35 % | 25–40 % |
 
 ## Reste à établir
 
-La suite porte sur le préfixe global 7.4, les enveloppes presque sûres 7.5, les transports macroscopiques 7.6–7.7 et les mélanges 7.8–7.10. Les seules identités affines de bord et d’horloge ne suffisent pas au crossover complet.
+La suite porte sur le transport macroscopique complet7.6 : niveaux croissants, événements conditionnants, budgets dur et mobile, comparaison agrégée. Le champ rare7.7 et la nouvelle géométrie de masques en fournissent des composantes, sans établir ces clauses à toutes intensités. Les mélanges7.8–7.10 restent ouverts ; la factorisation microscopique/bulk et les identités affines de bord ne suffisent pas à leurs conclusions complètes.
 
-Restent aussi Berry–Esseen, les déviations modérées, le transfert local central pour le taux doux et les conséquences de processus ouvertes dans D.4. D.1 n’est pas complet. Le paragraphe suivant 6.4 conserve ses réserves : champ étiqueté, contrôle scalaire simultané sur O(logN) longueurs et couplages maximaux. Aucune trajectoire inverse infinie n’est revendiquée.
+Restent aussi Berry–Esseen, les déviations modérées, le transfert local central pour le taux doux et les conséquences de processus ouvertes dans D.4. D.1 n’est pas complet. Le paragraphe suivant6.4 conserve ses réserves : champ étiqueté, contrôle scalaire simultané sur O(logN) longueurs et couplages maximaux. Aucune trajectoire inverse infinie n’est revendiquée.
 
-Les réserves arithmétiques antérieures demeurent : tout α>0 en 3.19, énoncés précis complets 3.13/3.14/A.2, raffinements 3.17/3.18, Fourier arbitraire et rang cyclomatique. Le taux précis est maintenant raccordé aux deux-défauts intermédiaires ; cela ne clôt pas automatiquement toutes ces formulations.
+Les réserves arithmétiques antérieures demeurent : tout α>0 en3.19, énoncés précis complets3.13/3.14/A.2, raffinements3.17/3.18, Fourier arbitraire et rang cyclomatique. Le taux précis raccordé aux deux-défauts intermédiaires ne clôt pas automatiquement toutes ces formulations.
 
 ## Sources et validation
 
-Base publiée du lot 19 : `455f35f6c188da67fdef6994b2a7d6a1c3bf8a9a`. **Lean 4.32.0 et mathlib v4.32.0** restent ceux de la v0.9. Le cœur historique et les deux PDF conservent leurs identités dans le [manifeste](../PaperCV282/source_manifest.json).
+Base publiée du lot20 : `ecd19a340d74e4a892f899a23ccf3b2490c18e95`. **Lean 4.32.0 et mathlib v4.32.0** restent ceux de la v0.9. Les 455 modules mathématiques antérieurs, le cœur historique et les deux PDF conservent leurs identités. L’inventaire courant comprend 511 modules et 4382 déclarations.
 
-Le [journal V3](PAPER_V3_REVISION_LOG.md) contient **une correction confirmée et treize suggestions**. V3-S013 propose une simplification du comptage profond ; aucune nouvelle erreur du papier n’est identifiée. Compilation globale, audit exhaustif, relectures et contrôles du commit publié sont consignés séparément. Aucun nouvel enregistrement Palomar n’est annoncé.
+Le [journal V3](PAPER_V3_REVISION_LOG.md) contient **une correction confirmée et quatorze suggestions**. V3-S014 simplifie la correction des départs exclus à droite du préfixe ; aucune nouvelle erreur du papier n’est identifiée. Compilation globale, audit exhaustif, relectures et contrôles du commit publié sont consignés séparément. Aucun nouvel enregistrement Palomar n’est annoncé.

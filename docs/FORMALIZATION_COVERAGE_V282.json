@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
-  "assessment_date": "2026-09-06",
-  "baseline": "Batch20: complete microscopic non-vacancy/localization, intermediate and mesoscopic estimates7.1–7.3 and companion E.1–E.3; exact prime clocks and partial affine7.10. Earlier endpoints preserved.",
+  "assessment_date": "2026-09-07",
+  "baseline": "Batch21: finite-prefix quantitative and critical laws7.4, almost-sure asymmetric envelopes7.5, and complete relative signed bulk kernel7.7. Earlier results preserved;7.6 and the full two-source crossover remain.",
   "retained_core_commit": "b3cf107d2df629453a5da8e84f2bad29eea0bf94",
   "toolchain": {
     "lean": "leanprover/lean4:v4.32.0",
@@ -36,47 +36,47 @@
     "no_independent_69_denominator": "Companion A.1,A.2,B.1 duplicate/expand 2.3,3.13,4.2; other companion arguments also feed article endpoints.",
     "complete_rule": "All mathematical conclusions of a numbered result are covered by compiled explicit overlay representations or verified exact historical specialization. A building block or weaker quantitative rate gets no full credit. Equivalent epsilon/power forms of o(1) and finite positive F_Y-atom conditioning are accepted with their representations stated.",
     "workload_rule": "Exactly the same 19 blocks and 105 weighted units as batches 9 and 10; acquired proof and integration effort across the entire article and companion, not Lean declaration counts, line counts, hours or probability of correctness. Generic work is not credited twice in later chapters without a verified new endpoint.",
-    "literature_boundary": "Source-faithful explicit literature premises may support complete relative formalization. The three premises retained from batch10 are ordinary PNT, scalar Stein solution/factors, and process AGG. Batch16 adds the positive-rate multivariate Stein solution with two published quadratic-form Hessian bounds (Röllin/Barbour); entrywise factors, filling, dependency comparison and arithmetic conclusions are derived internally. None of these four premises is internally proved or a new Lean axiom; no CLT or desired Poisson–Gaussian conclusion is assumed.",
+    "literature_boundary": "Seven explicit source-faithful literature propositions support relative formalization: ordinary PNT, scalar Stein solution/factors, process AGG, directional Stein factors, uniform Laishram-Shorey, Shorey square-product and historical Nicolas-Robin. These are unproved theorem arguments, not Lean axioms. Batch21 adds none; no desired Poisson comparison, summable probability bound, CLT or independence conclusion is postulated.",
     "unverified_reuse": "Names found without a checked sufficient signature receive only component/presumed credit, not complete status.",
     "validation_scope": "Independent source/signature reviews, coordinated global build and exhaustive source/kernel audit; exact publication and remote check outcomes recorded separately."
   },
   "counts": {
     "article": {
-      "reuse_unconnected": 3,
-      "complete": 45,
-      "partial": 10,
-      "not_identified": 3
+      "reuse_unconnected": 2,
+      "complete": 48,
+      "partial": 9,
+      "not_identified": 2
     },
     "companion": {
       "complete": 7,
       "partial": 1
     }
   },
-  "statement_fraction_complete_article": 0.7377049180327869,
+  "statement_fraction_complete_article": 0.7868852459016393,
   "statement_fraction_complete_companion": 0.875,
   "effort": {
     "total_weight": 105,
-    "completed_weight_low": 87.1,
-    "completed_weight_high": 95.57,
-    "completed_fraction_low": 0.8295238095238094,
-    "completed_fraction_high": 0.9101904761904761,
+    "completed_weight_low": 90.95,
+    "completed_weight_high": 98.52,
+    "completed_fraction_low": 0.8661904761904762,
+    "completed_fraction_high": 0.9382857142857143,
     "communicable_completed_percent_range": [
-      80,
-      93
+      84,
+      96
     ],
     "communicable_remaining_percent_range": [
-      7,
-      20
+      4,
+      16
     ],
-    "rough_central_estimate_percent": 87,
-    "baseline_completed_weight_low": 80.2,
-    "baseline_completed_weight_high": 89.32,
-    "added_weight_low": 6.9,
-    "added_weight_high": 6.25,
-    "rounding_note": "Same19blocks105units; only microscopic, intermediate_deep and crossover advanced.87.10–95.57 units=82.95–91.02%, midpoint86.99%. Communicated about87%, cautious80–93%; no line-count bonus or duplicate numbered credit.",
+    "rough_central_estimate_percent": 90,
+    "baseline_completed_weight_low": 87.1,
+    "baseline_completed_weight_high": 95.57,
+    "added_weight_low": 3.85,
+    "added_weight_high": 2.95,
+    "rounding_note": "Same19blocks105units; only prefix_as, macro_bulk and crossover advanced. 90.95–98.52 units=86.62–93.83%, midpoint=90.22%. Communicated about90%, cautious84–96%; no line-count bonus or duplicate numbered credit.",
     "cautious_range_percent": [
-      80,
-      93
+      84,
+      96
     ]
   },
   "blocks": [
@@ -99,7 +99,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "runge_defects",
@@ -120,7 +121,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "one_window",
@@ -141,7 +143,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "canonical_core",
@@ -162,7 +165,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "hosts_rational",
@@ -183,7 +187,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "sectors",
@@ -204,7 +209,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "pell_precise",
@@ -225,7 +231,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "terminal_assembly",
@@ -246,7 +253,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "cutoffs",
@@ -267,7 +275,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "poisson_transfer",
@@ -288,7 +297,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "dictionaries",
@@ -309,7 +319,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "marked_fields",
@@ -330,7 +341,8 @@
       "batch_17_credit_reason": "The exact unsigned C.1 ledger with relative R2(N,Q), 2Q<Y and E=0 is now proved, including true full-FY averages and positive-event restriction. Subsequent macroscopic transports retain their own block.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "growing_gaussian",
@@ -351,7 +363,8 @@
       "batch_17_credit_reason": "Effective Poisson local estimate is proved uniformly in every positive intensity, with relative error at most1/(12n). Berry–Esseen, central entropy expansion and moderate deviations are not credited.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "conditioning_paths",
@@ -372,7 +385,8 @@
       "batch_17_credit_reason": "Closes all four numbered results6.1–6.4: actual general regular conditional kernels and recorded product, sharp epsilon/max(p,q), genuine full future and finite reverse law, and almost-sure environmental control. Also proves all-intensity6.5 and the actual future budget6.7. The central3/2 reduction, small-intensity relative scalar refinement, labelled/uniform-band quenched extensions and remainingD.4 consequences retain a reserve.",
       "batch_18_credit_reason": "Equation(6.3) relative small-intensity consequence now proved. The small addition is absorbed in the existing interval; no extra numerical credit, no recount of Theorem6.3.",
       "batch_19_credit_reason": "Central three-halves resolved-future budget now proved, including sixth-root range, bounded rounding and common-band derivation. Small addition absorbed in the existing effort interval; no numbered result recounted.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "microscopic",
@@ -381,8 +395,8 @@
       "completed_fraction_low": 0.95,
       "completed_fraction_high": 1.0,
       "locators": "7.1; compagnon E.1–E.5",
-      "baseline_completed_fraction_low": 0.2,
-      "baseline_completed_fraction_high": 0.35,
+      "baseline_completed_fraction_low": 0.95,
+      "baseline_completed_fraction_high": 1.0,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
@@ -393,7 +407,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Actual7.1 and E.1–E.3, incidence construction, private quotient and K=11 optimum."
+      "batch_20_credit_reason": "Actual7.1 and E.1–E.3, incidence construction, private quotient and K=11 optimum.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "intermediate_deep",
@@ -402,8 +417,8 @@
       "completed_fraction_low": 0.9,
       "completed_fraction_high": 1.0,
       "locators": "7.2,7.3; fin de E.5",
-      "baseline_completed_fraction_low": 0.35,
-      "baseline_completed_fraction_high": 0.55,
+      "baseline_completed_fraction_low": 0.9,
+      "baseline_completed_fraction_high": 1.0,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
@@ -414,14 +429,15 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Exact intermediate rate and7.3; first moments, rare relative bound and true conditional cutoff stability."
+      "batch_20_credit_reason": "Exact intermediate rate and7.3; first moments, rare relative bound and true conditional cutoff stability.",
+      "batch_21_credit_reason": "Unchanged from batch20; no duplicated credit for generic tools or presumed later applications."
     },
     {
       "id": "prefix_as",
       "title": "Préfixe global et enveloppes presque sûres",
       "weight": 3,
-      "completed_fraction_low": 0.3,
-      "completed_fraction_high": 0.55,
+      "completed_fraction_low": 1,
+      "completed_fraction_high": 1,
       "locators": "7.4,7.5",
       "baseline_completed_fraction_low": 0.3,
       "baseline_completed_fraction_high": 0.55,
@@ -435,14 +451,15 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Both complete numbered results7.4 and7.5, true count and longest run, full band, summable arithmetic errors and all-M almost-sure envelopes."
     },
     {
       "id": "macro_bulk",
       "title": "Transport macroscopique et noyau signé relatif",
       "weight": 3,
-      "completed_fraction_low": 0.2,
-      "completed_fraction_high": 0.4,
+      "completed_fraction_low": 0.7,
+      "completed_fraction_high": 0.85,
       "locators": "7.6,7.7; compagnon C.6–C.7",
       "baseline_completed_fraction_low": 0.2,
       "baseline_completed_fraction_high": 0.4,
@@ -456,17 +473,18 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications."
+      "batch_20_credit_reason": "Unchanged from batch19; no credit for presumed later applications.",
+      "batch_21_credit_reason": "Complete relative signed bulk7.7, arbitrary macroscopic-mask comparison and physical positions; the distinct all-intensity transport and budgets7.6 remain."
     },
     {
       "id": "crossover",
       "title": "Mélange des deux sources et horloges affines",
       "weight": 5,
-      "completed_fraction_low": 0.2,
-      "completed_fraction_high": 0.35,
+      "completed_fraction_low": 0.25,
+      "completed_fraction_high": 0.4,
       "locators": "7.8–7.10; compagnon E.6–E.7",
-      "baseline_completed_fraction_low": 0.05,
-      "baseline_completed_fraction_high": 0.15,
+      "baseline_completed_fraction_low": 0.2,
+      "baseline_completed_fraction_high": 0.35,
       "batch_10_credit_reason": "No extra credit: previous coverage is preserved; generic new tools do not automatically close later chapter statements.",
       "batch_11_credit_reason": "Unchanged from batch10; generic earlier tools are not credited twice in later chapters.",
       "batch_12_credit_reason": "Unchanged from batch11. No credit for presumed reuse in later chapters.",
@@ -477,7 +495,8 @@
       "batch_17_credit_reason": "Unchanged from batch16; no duplicated credit for generic tools or unproved later applications.",
       "batch_18_credit_reason": "Unchanged from batch17.",
       "batch_19_credit_reason": "Unchanged from batch18.",
-      "batch_20_credit_reason": "Exact two clocks, genuine microscopic geometric limit, affine border mass and next-prime tails; full crossover remains."
+      "batch_20_credit_reason": "Exact two clocks, genuine microscopic geometric limit, affine border mass and next-prime tails; full crossover remains.",
+      "batch_21_credit_reason": "Only the concrete microscopic-record cylinder, its proved full-FY measurability and actual joint-law specialization are credited here (0.25unit), separately from the bulk kernel, tails and spatial transport in macro_bulk. The generic stable lift is not credited again. Full rare-tail, location and affine two-source theorems remain."
     }
   ],
   "results": [
@@ -1687,7 +1706,7 @@
       ],
       "remaining": "",
       "reuse": "verified_overlay_and_core",
-      "note": "Equations(7.7–7.9), true rare deep mass negligible relative to border+lambda (hence q_L+lambda), and actual zero-padded configurations under free mesoscopic cutoffs. Theorem7.7 is a distinct result and remains unconnected.",
+      "note": "Equations(7.7–7.9), true rare deep mass negligible relative to border+lambda (hence q_L+lambda), and actual zero-padded configurations under free mesoscopic cutoffs. Theorem7.7 is a distinct numbered result, completed separately in batch21.",
       "source": "article",
       "id": "7.3",
       "kind": "Proposition",
@@ -1700,15 +1719,17 @@
       "new_full_credit_batch_20": true
     },
     {
-      "status": "partial",
+      "status": "complete",
       "effort_block": "prefix_as",
       "evidence": [
-        "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean: corollary_prefix_law_canonical",
-        "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean: infinitePrefixLongestStretchBelowProbability_uniformLittleOOne"
+        "PaperCV282/PrefixScalarBounds.lean: theorem_seven_four_open_prefix",
+        "PaperCV282/PrefixContainedBounds.lean: theorem_seven_four_contained_prefix",
+        "PaperCV282/PrefixCriticalVoid.lean: critical_prefix_void_le_eventually",
+        "PaperCV282/PrefixCriticalVoid.lean: theorem_seven_four_critical_void"
       ],
-      "remaining": "Actual infinite critical prefix/void o(1) theorem exists with six historical premises; full band and new quantitative rate are not yet migrated.",
-      "reuse": "verified",
-      "note": "",
+      "remaining": "",
+      "reuse": "verified_overlay_and_core",
+      "note": "True open-prefix count on Ico2M: 43 min(1,lambda*(exp(-V+eta*nu)+M^(-1/3+epsilon)))+2exp(-cS). The actual contained count includes the border and ends at M-L+1; its cost is the same main term+4exp(-cS)+2^(-pi(L))+L*2^(-L). Uniform critical TV and actual longest-run void follow. Five explicit literature arguments; no historical quantitative prefix premise.",
       "source": "article",
       "id": "7.4",
       "kind": "Theorem",
@@ -1716,18 +1737,20 @@
       "page_start": 42,
       "extracted_line": 2556,
       "statement_weight": 1,
-      "full_statement_credit": false,
-      "new_full_credit_batch_10": false
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false,
+      "new_full_credit_batch_21": true
     },
     {
-      "status": "not_identified",
+      "status": "complete",
       "effort_block": "prefix_as",
       "evidence": [
-        "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean"
+        "PaperCV282/PrefixAlmostSureEnvelopes.lean: theorem_seven_five",
+        "PaperCV282/PrefixAlmostSureEnvelopes.lean: theorem_seven_five_loglog"
       ],
-      "remaining": "Almost-sure asymmetric log-log envelopes require quantitative summable estimates and a Borel-Cantelli argument; old TheoremOneFour is a moment theorem, not this assertion.",
-      "reuse": "verified_components",
-      "note": "",
+      "remaining": "",
+      "reuse": "verified_overlay_and_core",
+      "note": "The literal dyadic thresholds have summable true void/hit probabilities; first Borel-Cantelli and monotonic interpolation prove both asymmetric envelopes for all sufficiently large M almost surely. The final theorem uses the five existing scalar/arithmetic literature arguments, not assumed probability bounds. No independence between scales or matching lower fluctuation is asserted.",
       "source": "article",
       "id": "7.5",
       "kind": "Corollary",
@@ -1735,8 +1758,9 @@
       "page_start": 43,
       "extracted_line": 2587,
       "statement_weight": 1,
-      "full_statement_credit": false,
-      "new_full_credit_batch_10": false
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false,
+      "new_full_credit_batch_21": true
     },
     {
       "status": "partial",
@@ -1744,11 +1768,13 @@
       "evidence": [
         "PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean",
         "PaperC/Probability/FullMarkedLaplaceTransfer.lean",
-        "PaperC/Probability/ExactLengthCountVectorTransfer.lean"
+        "PaperC/Probability/ExactLengthCountVectorTransfer.lean",
+        "PaperCV282/MacroscopicMarkedLedger.lean: marked_ledger_hard_rate_eventually",
+        "PaperCV282/BulkMarkedComparison.lean: complete_signed_field_le_ledger"
       ],
-      "remaining": "Historical global unsigned Laplace/count transfer reusable. Growing macro mark field, rates and explicit containment/censoring must be proved.",
+      "remaining": "Full base-contained growing-level transport, hard and movable labelled information budgets, and the aggregated one-factor macroscopic budget remain. The rare bulk kernel7.7 does not establish these all-intensity statements.",
       "reuse": "verified",
-      "note": "",
+      "note": "Batch21 supplies the actual arbitrary macroscopic-mask geometry and finite marked comparison; no complete credit for7.6.",
       "source": "article",
       "id": "7.6",
       "kind": "Theorem",
@@ -1760,15 +1786,21 @@
       "new_full_credit_batch_10": false
     },
     {
-      "status": "reuse_unconnected",
+      "status": "complete",
       "effort_block": "macro_bulk",
       "evidence": [
-        "PaperCV282/InfiniteConditionalWords.lean",
-        "PaperC/Probability/MarkedConditionalDependencyGraph.lean"
+        "PaperCV282/BulkMarkedRates.lean: theorem_seven_seven",
+        "PaperCV282/BulkMarkedConvergence.lean: equation_seven_sixteen",
+        "PaperCV282/BulkMicroscopicRecord.lean: equation_seven_seventeen",
+        "PaperCV282/BulkMicroscopicRecord.lean: equation_seven_seventeen_total_scale",
+        "PaperCV282/BulkPointProcess.lean: equation_seven_fifteen_spatial",
+        "PaperCV282/BulkPointProcess.lean: equation_seven_sixteen_spatial",
+        "PaperCV282/BulkPointProcess.lean: equation_seven_seventeen_spatial_relative",
+        "PaperCV282/BulkPointProcess.lean: equation_seven_seventeen_spatial"
       ],
-      "remaining": "Relative O(lambda_M * error) signed infinite field and joint boundary factorization at o(lambda_M) remain.",
-      "reuse": "verified",
-      "note": "",
+      "remaining": "",
+      "reuse": "verified_overlay_and_core",
+      "note": "Complete signed configuration over Iccceil(M^delta)(M-L+1), all exact excesses and independent Poisson means2^(-L-e-2). True full-FY atom mean error <=67lambda*(exp(-V+eta*nu)+M^(-1/3+epsilon)). Mark/sign aggregation gives o(lambda); true microscopic record B_L and bulk factorize at o(lambda), hence o(q_L+lambda). Actual sums of Dirac masses at x/M are also connected. Process AGG and PNT remain explicit; the lower band is deduced from lambda->0.",
       "source": "article",
       "id": "7.7",
       "kind": "Theorem",
@@ -1776,8 +1808,9 @@
       "page_start": 44,
       "extracted_line": 2681,
       "statement_weight": 1,
-      "full_statement_credit": false,
-      "new_full_credit_batch_10": false
+      "full_statement_credit": true,
+      "new_full_credit_batch_10": false,
+      "new_full_credit_batch_21": true
     },
     {
       "status": "not_identified",
@@ -2040,8 +2073,8 @@
       "detail": "Removed obsolete reservations about the free cutoff, implicit saddle existence, exact second-order constants and scalar full-F_Y conditioning after compiled closure; 3.19 and all prior stronger auxiliary-rate limitations remain unchanged."
     }
   ],
-  "comparison_baseline_git_commit": "455f35f6c188da67fdef6994b2a7d6a1c3bf8a9a",
-  "snapshot_kind": "Batch20 mathematical coverage; exact global validation and publication recorded separately.",
+  "comparison_baseline_git_commit": "ecd19a340d74e4a892f899a23ccf3b2490c18e95",
+  "snapshot_kind": "Batch21 mathematical coverage; exact global validation and publication recorded separately.",
   "validation_reported_by_main_task": {
     "global_build": "Recorded separately for the exact published tree.",
     "overlay_axiom_audit": "Recorded separately for the exact published tree.",
@@ -2565,5 +2598,30 @@
       "content": "Exact border mass2^-(πL−κ) and next-prime tails with compatibility and dual intersection dimension. Full7.10 remains partial.",
       "counted_as_new_numbered_result": false
     }
-  }
+  },
+  "new_complete_article_results_batch_21": [
+    "7.4",
+    "7.5",
+    "7.7"
+  ],
+  "new_complete_companion_results_batch_21": [],
+  "literature_premises_batch_21": [
+    "PrimeEulerPNT.PrimeNumberTheoremRemainder",
+    "ScalarSteinInput.ScalarSteinFactorsStatement",
+    "ProcessAGGInput.ProcessAGGStatement",
+    "DirectionalSteinInput.DirectionalSteinFactorsStatement",
+    "LaishramUniformInput.UniformPrimeDivisorStatement",
+    "PostQuadraticLiterature.ShoreySquareProductStatement",
+    "PellInput.NicolasRobinDivisorLogBoundStatement"
+  ],
+  "new_literature_premises_added_batch_21": [],
+  "priority_after_batch_21": [
+    "Complete macroscopic base-contained transport7.6 and its hard/movable/aggregate budgets.",
+    "Prove the two-source rare tail and sign/two-clock/affine crossover7.8–7.10.",
+    "Resolve documented quantitative Gaussian/local/moderate-deviation, quenched-extension and arithmetic reserves."
+  ],
+  "unnumbered_consequences_batch_21": [
+    "Spatial bulk comparisons at the actual x/M positions and the two relative factorization scales in(7.17).",
+    "Overflow first moment <=L*2^(-L)+2exp(-cS), yielding the stronger contained-prefix estimate and V3-S014."
+  ]
 }
