@@ -90,9 +90,11 @@ theorem hasLaw_forgetFiniteSpatialSigns (sites : Finset ℕ) (L E : ℕ) :
       BulkMarkedTransfer.allSignedRates sites L E sites ((signFirstEquiv sites E).symm (s,i)))=
       unsignedRates sites L E := by
     funext i
+    have hrate (s : F₂) : BulkMarkedTransfer.allSignedRates sites L E sites
+        ((signFirstEquiv sites E).symm (s,i))=signedMarkRate L i.2.val := if_pos i.1.property
+    simp_rw [hrate]
     apply NNReal.coe_injective
-    simp only [signFirstEquiv,Equiv.coe_fn_symm_mk,BulkMarkedTransfer.allSignedRates,if_pos i.1.property,
-      NNReal.coe_sum,unsignedRates]
+    simp only [NNReal.coe_sum,unsignedRates]
     exact sum_signedMarkRate L i.2.val
   rw [he] at hh
   exact hh

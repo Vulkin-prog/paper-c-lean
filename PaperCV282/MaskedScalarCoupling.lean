@@ -189,8 +189,11 @@ theorem average_conditionalMaskedLaw_eq_full (N L Y : ℕ) (mask : Finset ℕ) :
     unfold conditionalMaskedLaw finiteNatLaw eventProbability
     apply Finset.sum_congr rfl
     intro eta heta
-    by_cases hk : conditionalMaskedCount N L Y mask sigma eta = k <;>
-      simp [P,conditionalMaskedCount] at hk ⊢
+    by_cases hk : conditionalMaskedCount N L Y mask sigma eta = k
+    · have hP : P (assemble (dyadicCutoff N L) Y sigma eta) := hk
+      rw [if_pos hk, if_pos hP]
+    · have hP : ¬ P (assemble (dyadicCutoff N L) Y sigma eta) := hk
+      rw [if_neg hk, if_neg hP]
   have hfullLaw : fullMaskedDyadicStartLaw N L mask k =
       eventProbability (fullUniformPMF (dyadicCutoff N L)) P := by
     unfold fullMaskedDyadicStartLaw finiteNatLaw eventProbability

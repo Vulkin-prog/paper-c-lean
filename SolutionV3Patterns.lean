@@ -351,7 +351,9 @@ theorem constant_window_distance_eq (N L : ℕ) :
     apply Finset.sum_congr rfl
     intro x hx
     simp only [value_eq]
-    split_ifs <;> rfl
+    split_ifs with h
+    · exact if_pos h
+    · exact if_neg h
   have htarget : compoundMeasure (fullRate N L) geometricMeasurePositive=
       GeometricClusterTarget.geometricCompoundMeasure (AllStartSoftPoisson.fullRate N L) := rfl
   unfold constantWindowDistance ConstantWindowCompoundConvergence.constantWindowCompoundDistance

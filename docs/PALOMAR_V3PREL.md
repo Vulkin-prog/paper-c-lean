@@ -25,7 +25,11 @@ sign claim.
 
 ## Relation to the historical registrations
 
-The historical files, metadata and qualification workflow remain intact.
+The historical identifiers, source snapshots and qualification evidence
+retain their original meaning. The runners have been adapted for the new
+environment, and local builds and strict interface checks have passed.
+Official Comparator/NanoDa qualification still requires a separate replay;
+this work does not update old receipts.
 
 | Historical identifier | Earlier content | Relation to the new candidates |
 |---|---|---|
@@ -47,8 +51,13 @@ intentional proof placeholders are exactly the selected results. Solutions
 identify the independently defined objects with the actual source model by
 proved bridges and use the substantive repository proofs.
 
-All five retain Lean **4.32.0** and mathlib **v4.32.0**, revision
-`81a5d257c8e410db227a6665ed08f64fea08e997`. Literature propositions are
+All five build with Lean **4.33.1** and mathlib **v4.33.1**, revision
+`0df444a360eaa60ab8c11dca51a86af692955474`. The local strict comparison
+passes for their 69 selected declarations and reachable dependencies, as
+part of the 80-declaration check including the historical configurations.
+This does not run the official Comparator or NanoDa kernels. Their earlier
+results apply only to their recorded snapshots.
+Literature propositions are
 ordinary visible theorem arguments, never new Lean axioms. The
 [literature ledger](../PaperCV282/LITERATURE_INPUTS.md) documents seven such
 propositions across the development; an individual candidate uses only its
@@ -62,6 +71,15 @@ names remain in `PaperCV282`; the current source mapping records the changed
 numbering. No old Palomar evidence is presented as evidence for these files.
 
 ## Reproducible qualification
+
+The [migration guide](LEAN_4_33_1_MIGRATION.md) separates local validation
+from two external issues. At the assessment of 9 September 2026, Palomar
+[PR #128](https://github.com/PalomarRegistry/PalomarSubmission/pull/128),
+which admits canonical Mathlib tags outside the master ancestry, was still
+open; this affects Mathlib v4.33.1 provenance. The separate
+[rendering issue #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134)
+is not a demonstrated consequence or cure of the compiler migration.
+The successful local build does not resolve either issue.
 
 The dedicated [V3PREL workflow](../.github/workflows/v3prel-qualification.yml)
 checks the source archive and each metadata/configuration pair, then replays

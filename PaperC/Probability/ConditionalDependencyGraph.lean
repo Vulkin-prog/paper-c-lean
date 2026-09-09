@@ -414,8 +414,10 @@ def startCoordinateSplit
     apply Prod.ext
     · funext q
       simp [q.2]
+      rfl
     · funext q
       simp [q.2]
+      rfl
 
 /--
 Finite conditional independence in the exact form used in Lemma 13.5:
@@ -742,7 +744,8 @@ theorem card_jointConditionedStartSolutions_mul_two_pow
     rw [Fintype.card_subtype]
     apply congrArg Finset.card
     ext η
-    simp [solutionSet]
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and]
+    rfl
   have hfiber :
       (jointConditionedStartSolutions N L Y s σ).card =
         2 ^ Module.finrank F₂ (LinearMap.ker A) := by

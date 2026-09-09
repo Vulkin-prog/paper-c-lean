@@ -54,6 +54,7 @@ theorem retainedRates_allFieldRates_eq (N L Y : ℕ) (mask : Finset ℕ) :
   by_cases hx : x.val ∈ fullGoodMask N L Y mask
   · have hxm := fullGoodMask_subset_mask N L Y mask hx
     simp [retainedRates, retainedAllSites, allFieldRates, hx, hxm]
+    rfl
   · simp [retainedRates, retainedAllSites, allFieldRates, hx]
 
 theorem fieldRates_fullGood_allStart_eq {N L Y : ℕ} (mask : Finset ℕ)
@@ -71,8 +72,9 @@ theorem fieldRates_fullGood_allStart_eq {N L Y : ℕ} (mask : Finset ℕ)
   by_cases hx : x.val ∈ fullGoodMask N L Y mask
   · rw [if_pos hx, marginal_conditionedAllStartIndicator_of_not_fullBad hN hL hLY sigma x
       (mem_fullGoodMask.mp hx).2]
-    simp only [allFieldRates, if_pos hx]
-    rfl
+    have hrate : allFieldRates N L (fullGoodMask N L Y mask) x =
+        ⟨1 / (2 : ℝ) ^ L, by positivity⟩ := if_pos hx
+    exact congrArg (fun r : ℝ≥0 => (r : ℝ)) hrate.symm
   · simp [allFieldRates, hx]
 
 theorem badSite_marginal_sum_eq (N L Y : ℕ) (mask : Finset ℕ)

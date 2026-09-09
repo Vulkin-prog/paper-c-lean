@@ -116,7 +116,9 @@ private theorem valueBit_single
     ⟨⟨p, Nat.lt_succ_of_le hpM⟩, hp⟩
   rw [valueBit]
   rw [Fintype.sum_eq_single q]
-  · simp [q]
+  · simp [Pi.single, Function.update, q]
+    intro hne
+    exact (hne rfl).elim
   · intro r hrq
     have hqr : q ≠ r := Ne.symm hrq
     have hqr' :
@@ -125,7 +127,7 @@ private theorem valueBit_single
     have hrq' :
         r ≠ (⟨⟨p, Nat.lt_succ_of_le hpM⟩, hp⟩ : PrimeUpTo M) := by
       exact hrq
-    simp [Pi.single_apply, hrq']
+    simp [Pi.single, Function.update, hrq']
 
 /--
 Every relation between start rows gives, at each represented prime coordinate,

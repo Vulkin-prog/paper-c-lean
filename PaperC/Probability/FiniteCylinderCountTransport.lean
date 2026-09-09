@@ -109,6 +109,7 @@ theorem valueBit_extendSmall_eq_local
       apply Finset.sum_congr rfl
       intro p _hp
       simp [extendSmall, p.2]
+      exact Or.inl rfl
     _ =
         ∑ p : PrimeUpTo H,
           smallSampleEquiv hHG σ p * parityVec n p.1 :=

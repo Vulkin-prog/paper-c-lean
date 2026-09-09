@@ -364,9 +364,11 @@ private theorem two_mul_mem_order
       (2 * (z : QD D).im) w hw
   refine ⟨⟨a, b⟩, ?_⟩
   apply NumberField.RingOfIntegers.ext
+  change (a : QD D) + (b : QD D) * (⟨0, 1⟩ : QD D) =
+    (2 : QD D) * (z : QD D)
   apply QuadraticAlgebra.ext
-  · simpa [embedOrder, Zsqrtd.lift_apply_apply, sqrtDO, map_ofNat] using ha'
-  · simpa [embedOrder, Zsqrtd.lift_apply_apply, sqrtDO, map_ofNat] using hb
+  · simpa using ha'
+  · simpa using hb
 
 private def alphaO (s : ℤ × ℤ) : OK D :=
   embedOrder D (toZsqrtd D s)

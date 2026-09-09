@@ -17,8 +17,9 @@ import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
 ALLOWED_AXIOMS = frozenset({"propext", "Classical.choice", "Quot.sound"})
-LEAN_PIN = "leanprover/lean4:v4.32.0"
-MATHLIB_PIN = "81a5d257c8e410db227a6665ed08f64fea08e997"
+LEAN_PIN = "leanprover/lean4:v4.33.1"
+MATHLIB_TAG = "v4.33.1"
+MATHLIB_PIN = "0df444a360eaa60ab8c11dca51a86af692955474"
 FORBIDDEN = re.compile(
     r"\b(sorry|admit|axiom|native_decide|unsafe|partial|opaque|"
     r"macro|elab|syntax|run_elab|run_meta|initialize|inductive|structure|class|"
@@ -101,15 +102,15 @@ def inventory(root):
 
 def check_pins(root):
     if (root / "lean-toolchain").read_text().strip() != LEAN_PIN:
-        raise ValueError("Lean must remain at the historical Palomar version 4.32.0")
+        raise ValueError(f"Lean must match the pinned toolchain {LEAN_PIN}")
     manifest = json.loads((root / "lake-manifest.json").read_text())
     mathlib = [p for p in manifest["packages"] if p["name"] == "mathlib"]
-    if len(mathlib) != 1 or mathlib[0]["rev"] != MATHLIB_PIN or mathlib[0]["inputRev"] != "v4.32.0":
-        raise ValueError("Mathlib must retain the historical 4.32.0 revision")
+    if len(mathlib) != 1 or mathlib[0]["rev"] != MATHLIB_PIN or mathlib[0]["inputRev"] != MATHLIB_TAG:
+        raise ValueError(f"Mathlib must match {MATHLIB_TAG} at {MATHLIB_PIN}")
     lake = tomllib.loads((root / "lakefile.toml").read_text())
     requirements = [p for p in lake["require"] if p["name"] == "mathlib"]
-    if len(requirements) != 1 or requirements[0]["rev"] != "v4.32.0":
-        raise ValueError("Lake must request Mathlib v4.32.0")
+    if len(requirements) != 1 or requirements[0]["rev"] != MATHLIB_TAG:
+        raise ValueError(f"Lake must request Mathlib {MATHLIB_TAG}")
 
 
 RECORD = re.compile(

@@ -154,8 +154,13 @@ theorem conditionalMaskedLaw_eq_infinite_atom_ratio {N L Y : ℕ} (mask : Finset
     unfold conditionalMaskedLaw finiteNatLaw eventProbability
     apply Finset.sum_congr rfl
     intro eta heta
-    by_cases hk : conditionalMaskedCount N L Y mask sigma eta = k <;>
-      simp [conditionalMaskedCount] at hk ⊢
+    by_cases hk : conditionalMaskedCount N L Y mask sigma eta = k
+    · have hfull : fullMaskedDyadicCount N L mask
+          (assemble (dyadicCutoff N L) Y sigma eta) = k := hk
+      rw [if_pos hk, if_pos hfull]
+    · have hfull : ¬ fullMaskedDyadicCount N L mask
+          (assemble (dyadicCutoff N L) Y sigma eta) = k := hk
+      rw [if_neg hk, if_neg hfull]
   rw [heq]
   exact eventProbability_eq_infinite_atom_ratio (dyadicCutoff N L) Y
     (fun omega => fullMaskedDyadicCount N L mask omega = k) sigma

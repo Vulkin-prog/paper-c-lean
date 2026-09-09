@@ -249,6 +249,8 @@ theorem eventProbability_all_true_eq_prod
         (fun ξ ↦ ∀ i ∈ s, ξ i = true) =
       ∏ i ∈ s, q i := by
   classical
+  letI allTrueDecidable : (ξ : ι → Bool) → Decidable (∀ i ∈ s, ξ i = true) :=
+    fun _ ↦ Classical.propDecidable _
   unfold eventProbability
   simp only [bernoulliProductPMF]
   have hindicator :
@@ -327,6 +329,8 @@ theorem eventProbability_coordinateEvent_eq_prod
         ∑ b : Bool,
           if P i b then bernoulliWeight q i b else 0 := by
   classical
+  letI coordinateEventDecidable : (ξ : ι → Bool) → Decidable (∀ i ∈ s, P i (ξ i)) :=
+    fun _ ↦ Classical.propDecidable _
   unfold eventProbability CoordinateEvent
   simp only [bernoulliProductPMF]
   have hindicator :
@@ -561,9 +565,10 @@ theorem hasExactDependencyGraph_coordinateIndicator
       simpa [coordinateIndicator, Q, outsidePatternPredicate]
         using hv
     · intro h β
-      have hit : β.1 ∈ t :=
-        mem_outsideVertices.mpr β.2
-      have hv := h β.1 hit β.2
+      rcases β with ⟨β, hβ⟩
+      have hit : β ∈ t :=
+        mem_outsideVertices.mpr hβ
+      have hv := h β hit hβ
       simpa [coordinateIndicator, Q, outsidePatternPredicate]
         using hv
   have hjoint :

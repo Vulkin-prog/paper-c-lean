@@ -1,0 +1,253 @@
+{
+  "status": "technical_strict_boundary_passed",
+  "scope": "Strict selected types and reachable constant equality in two imported olean environments. No official Comparator export parser/kernel, NanoDa, provenance approval or Palomar qualification.",
+  "started_at_utc": "2026-09-09T19:07:59.115560+00:00",
+  "finished_at_utc": "2026-09-09T19:09:02.924994+00:00",
+  "toolchain": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "exit_code": 0,
+  "checker_sha256": "f062dbd2cf6202ca93a3044a063a774482a433614367ec3704f6c45b95072015",
+  "source_and_selected_olean_pre_post_equal": true,
+  "source_files_checked": 1171,
+  "modules": [
+    {
+      "module": "ChallengeTheoremOneFour",
+      "source_sha256": "7fff15c47a2b652f0ca2f061a49c3e7df6794b4b37d75278283640e6975e6050",
+      "olean_path": ".lake/build/lib/lean/ChallengeTheoremOneFour.olean",
+      "olean_sha256": "d1eb9792b884f845fde54e5122405a874ca1b0690595995505f13fe7ae2e6661"
+    },
+    {
+      "module": "SolutionTheoremOneFour",
+      "source_sha256": "4e87159ed2331b7fe3e56fcd6edde032b28ff6f3d9c1326eb940fc5ae70c12ca",
+      "olean_path": ".lake/build/lib/lean/SolutionTheoremOneFour.olean",
+      "olean_sha256": "0343bf5692ea10524e5240d9034488cd20b9eccc07b61c2d7d64673108944e72"
+    },
+    {
+      "module": "Challenge",
+      "source_sha256": "f0b8e9ec9ad09b8c1be326c19b7d2e1fad71113a210633624b7abe6e41083a1d",
+      "olean_path": ".lake/build/lib/lean/Challenge.olean",
+      "olean_sha256": "41f8a568ebfd37a92e5f9432ef79f5aa2e82df7680ee7153d8d9688c16dc328e"
+    },
+    {
+      "module": "Solution",
+      "source_sha256": "679115a9b4cd4c90a805deb99a77fafc26044b8ca12de10116c9ee8530707451",
+      "olean_path": ".lake/build/lib/lean/Solution.olean",
+      "olean_sha256": "39d52bad1954bb7fd57dfe2790bb5fdfe45e1e98ab1185deec7afb9af32b808b"
+    },
+    {
+      "module": "ChallengeTransfer",
+      "source_sha256": "7f86a169def2ef36984b25a5478be2d8ff09d2b5eea317fea4f192e5299e6ecd",
+      "olean_path": ".lake/build/lib/lean/ChallengeTransfer.olean",
+      "olean_sha256": "16f4fa14ec611a549863ba4437a59c9d33f24997261cb7c9a570267ec99df743"
+    },
+    {
+      "module": "SolutionTransfer",
+      "source_sha256": "0da18fe403f002ebfa66c95a3bba9086710d0e7237ecbab4b5317b0edb88624a",
+      "olean_path": ".lake/build/lib/lean/SolutionTransfer.olean",
+      "olean_sha256": "6cc2c0268037bc7675cfd27e02242903692def5fa2a6ca8062e23d4e1eda5c7e"
+    },
+    {
+      "module": "ChallengeTheoremOneTwo",
+      "source_sha256": "5617db8378bf3ecd3f6e654aea114f3e5302c9847c274a86686c3a7539c33666",
+      "olean_path": ".lake/build/lib/lean/ChallengeTheoremOneTwo.olean",
+      "olean_sha256": "f4a2b2d84c17abb68060a2d651f3caae12785b115e1c24be4ecfc87e9ceb174f"
+    },
+    {
+      "module": "SolutionTheoremOneTwo",
+      "source_sha256": "c9925ec98c7ff6901e8ce30da22264e3eacfb2eebd3df7c7319415e28d2c2aa2",
+      "olean_path": ".lake/build/lib/lean/SolutionTheoremOneTwo.olean",
+      "olean_sha256": "d63979c029584320c305d47449e31630f6afb6420517784590c62262f98e3d30"
+    },
+    {
+      "module": "ChallengeTheoremSixteenTwo",
+      "source_sha256": "9a82fd5e48fd60b0ca9626e0eda6922384e611190f77ae028c0e2728736e0799",
+      "olean_path": ".lake/build/lib/lean/ChallengeTheoremSixteenTwo.olean",
+      "olean_sha256": "61da6e32dbff15c21db3e5b4b267fc6d0b6b3c853501355ebddb215c2a344e42"
+    },
+    {
+      "module": "SolutionTheoremSixteenTwo",
+      "source_sha256": "14a79451f03b9ed6447c777521a07c53c235a0c0363737af543bc6738b56c87f",
+      "olean_path": ".lake/build/lib/lean/SolutionTheoremSixteenTwo.olean",
+      "olean_sha256": "0f0209290d240f953a0b0166c4af9365c155f4dae614d9cbe7e9ea5c188a5df4"
+    },
+    {
+      "module": "ChallengeV3Boundary",
+      "source_sha256": "70fb71d1d5cc92204f3192e69e24a606c11d48700964d5f1156455d677c9ee06",
+      "olean_path": ".lake/build/lib/lean/ChallengeV3Boundary.olean",
+      "olean_sha256": "fab7cb2e033f85e9a017538814df4daf3d4276bdb2231e45f1f5f468d691761e"
+    },
+    {
+      "module": "SolutionV3Boundary",
+      "source_sha256": "7fba5c1124fc6cadef49423a5fc5e76481a481ee58af9bc214863d455dc23ed2",
+      "olean_path": ".lake/build/lib/lean/SolutionV3Boundary.olean",
+      "olean_sha256": "1ae749d27c9dee13108b7bf3c3a0c33bd90b30d8e7c65f47060c0e809271bbf6"
+    },
+    {
+      "module": "ChallengeV3CriticalField",
+      "source_sha256": "91682763d648f0a7f71b37c7256c6e471ce162b3ee0f3decef2b46bb61f8cab8",
+      "olean_path": ".lake/build/lib/lean/ChallengeV3CriticalField.olean",
+      "olean_sha256": "d370c0aa9740e5eabaf14b9349dd56d376607cd3b139021475dd47fda3d82042"
+    },
+    {
+      "module": "SolutionV3CriticalField",
+      "source_sha256": "08e1cca695f9e7e318dce813d48425342a62dec5a47cec866110ee8c76058d30",
+      "olean_path": ".lake/build/lib/lean/SolutionV3CriticalField.olean",
+      "olean_sha256": "ed85f45c07628bcdceb842e9af9ae675eb21b2414c2f84bd827cd146f2a81ac9"
+    },
+    {
+      "module": "ChallengeV3Crossover",
+      "source_sha256": "57e95935368b954a6e880b018680509dfb9ed27f218dacc58a195bf603aab53d",
+      "olean_path": ".lake/build/lib/lean/ChallengeV3Crossover.olean",
+      "olean_sha256": "8ce03c484e2bf621f1ea60556f6f7e488a1f31ad046eba675fa433a85110460e"
+    },
+    {
+      "module": "SolutionV3Crossover",
+      "source_sha256": "06995d445be6babf75d7e2ab4535bae0635a4deae79cac62874353b331aa8b29",
+      "olean_path": ".lake/build/lib/lean/SolutionV3Crossover.olean",
+      "olean_sha256": "39c793cacb5378bfa96ad79a867a3e77a913017b02605bf1f38d8fa314195b55"
+    },
+    {
+      "module": "ChallengeV3Limits",
+      "source_sha256": "f14174abb3b8cf09d47424d6ca85dd635c4558b7a9d11dc02ea5350215104374",
+      "olean_path": ".lake/build/lib/lean/ChallengeV3Limits.olean",
+      "olean_sha256": "f532a19bb729e125c154697d668f13ecb15c20699d5271f9190463caaa3a5984"
+    },
+    {
+      "module": "SolutionV3Limits",
+      "source_sha256": "51c230bd088cd1e0da7b0bb617ca5f886000889bdde3181de507a19fad4f9285",
+      "olean_path": ".lake/build/lib/lean/SolutionV3Limits.olean",
+      "olean_sha256": "18f41062d1f97ab88a0d750bed46f992d0a6c02d0a7fb83d6c5909423a25728f"
+    },
+    {
+      "module": "ChallengeV3Patterns",
+      "source_sha256": "59b2804906fbcaa6c931c119a1d32916c56fdc62565c2931d2cb72422385b7b5",
+      "olean_path": ".lake/build/lib/lean/ChallengeV3Patterns.olean",
+      "olean_sha256": "68034f2f98fc3fedfa55f79318690433292301c9cce5d18af9ad0c3c16fe36f7"
+    },
+    {
+      "module": "SolutionV3Patterns",
+      "source_sha256": "a74c527d32b981c3cffa5e042b8f77ca7efb78c72431d000149fd7e128f0fe5a",
+      "olean_path": ".lake/build/lib/lean/SolutionV3Patterns.olean",
+      "olean_sha256": "476438192a7b5d950a018b9bb471f0d541a110643f5c1ff64b75bb6b1f792c5d"
+    }
+  ],
+  "results": [
+    {
+      "challenge": "ChallengeTheoremOneFour",
+      "checked_constants": 17974,
+      "config": "comparator/theorem_one_four_and_corollary_eleven_three.json",
+      "selected_differences": [],
+      "selected_theorems": 2,
+      "selected_type_mismatches": [],
+      "solution": "SolutionTheoremOneFour",
+      "status": "PASS"
+    },
+    {
+      "challenge": "Challenge",
+      "checked_constants": 16768,
+      "config": "comparator/theorem_one_one.json",
+      "selected_differences": [],
+      "selected_theorems": 1,
+      "selected_type_mismatches": [],
+      "solution": "Solution",
+      "status": "PASS"
+    },
+    {
+      "challenge": "ChallengeTransfer",
+      "checked_constants": 29189,
+      "config": "comparator/theorem_one_one_transfer.json",
+      "selected_differences": [],
+      "selected_theorems": 1,
+      "selected_type_mismatches": [],
+      "solution": "SolutionTransfer",
+      "status": "PASS"
+    },
+    {
+      "challenge": "ChallengeTheoremOneTwo",
+      "checked_constants": 36396,
+      "config": "comparator/theorem_one_two.json",
+      "selected_differences": [],
+      "selected_theorems": 3,
+      "selected_type_mismatches": [],
+      "solution": "SolutionTheoremOneTwo",
+      "status": "PASS"
+    },
+    {
+      "challenge": "ChallengeTheoremSixteenTwo",
+      "checked_constants": 29269,
+      "config": "comparator/theorem_sixteen_two_and_corollary_sixteen_four.json",
+      "selected_differences": [],
+      "selected_theorems": 4,
+      "selected_type_mismatches": [],
+      "solution": "SolutionTheoremSixteenTwo",
+      "status": "PASS"
+    },
+    {
+      "challenge": "ChallengeV3Boundary",
+      "checked_constants": 36322,
+      "config": "comparator/v3prel_boundary.json",
+      "selected_differences": [],
+      "selected_theorems": 7,
+      "selected_type_mismatches": [],
+      "solution": "SolutionV3Boundary",
+      "status": "PASS"
+    },
+    {
+      "challenge": "ChallengeV3CriticalField",
+      "checked_constants": 37141,
+      "config": "comparator/v3prel_critical_field.json",
+      "selected_differences": [],
+      "selected_theorems": 13,
+      "selected_type_mismatches": [],
+      "solution": "SolutionV3CriticalField",
+      "status": "PASS"
+    },
+    {
+      "challenge": "ChallengeV3Crossover",
+      "checked_constants": 36493,
+      "config": "comparator/v3prel_crossover.json",
+      "selected_differences": [],
+      "selected_theorems": 11,
+      "selected_type_mismatches": [],
+      "solution": "SolutionV3Crossover",
+      "status": "PASS"
+    },
+    {
+      "challenge": "ChallengeV3Limits",
+      "checked_constants": 57747,
+      "config": "comparator/v3prel_limits.json",
+      "selected_differences": [],
+      "selected_theorems": 29,
+      "selected_type_mismatches": [],
+      "solution": "SolutionV3Limits",
+      "status": "PASS"
+    },
+    {
+      "challenge": "ChallengeV3Patterns",
+      "checked_constants": 36452,
+      "config": "comparator/v3prel_patterns.json",
+      "selected_differences": [],
+      "selected_theorems": 9,
+      "selected_type_mismatches": [],
+      "solution": "SolutionV3Patterns",
+      "status": "PASS"
+    }
+  ],
+  "selected_theorems": 80,
+  "reachable_constants_per_config_sum": 333751,
+  "logs": [
+    {
+      "path": "work/lean4331-strict-boundary.log",
+      "sha256": "87d377d4e24e2822bb7e0d81f6fdfaf3023638cd22a6fc57ff25a5cf1cd6ba2d"
+    },
+    {
+      "path": "work/lean4331-strict-boundary-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "work/lean4331-strict-boundary-driver.log",
+      "sha256": "02e7a2cded8b8351748f2456c0b5074e87c64045dce749647d074a2635df2c91"
+    }
+  ],
+  "official_provenance_guard_bypassed": false,
+  "official_qualification_executed": false
+}

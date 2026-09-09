@@ -1,6 +1,12 @@
 # Palomar qualification entries
 
-This repository maintains four independent Palomar entries. Palomar accepts
+This table records four historical Palomar entries. The
+[five V3PREL families](../docs/PALOMAR_V3PREL.md) have separate statement
+boundaries. Their [Lean 4.33.1 migration](../docs/LEAN_4_33_1_MIGRATION.md)
+has passed local builds, audits and strict interface checks. Those checks
+do not qualify new versions of these records.
+
+Palomar accepts
 one Comparator configuration per submission, while one configuration may
 select several declarations. The related clauses of a paper theorem are
 therefore grouped together instead of being submitted one declaration at a
@@ -55,21 +61,31 @@ historical Theorem 1.1 configuration retains its recorded false value; Palomar
 does not trust this author-controlled switch and the replay script writes a
 protected copy with NanoDa enabled before running every configuration.
 
-`palomar/verify-comparator.sh` uses the trusted-tool revisions pinned by
+The historical replay used the trusted-tool revisions pinned by
 `PalomarRegistry/PalomarSubmission` at commit
-`0a2c287a924d2a7cb22e2b12f12b27321bb485a3` (2026-08-20). Pass the desired
-configuration explicitly, for example:
+`0a2c287a924d2a7cb22e2b12f12b27321bb485a3` (2026-08-20). The current
+runner's compiler and exporter checks are described in the
+[migration guide](../docs/LEAN_4_33_1_MIGRATION.md#candidate-verification-and-external-constraints).
+Pass the desired configuration explicitly; its provenance guard remains
+a separate gate for an actual replay:
 
 ```bash
 PALOMAR_COMPARATOR_CACHE=/path/to/disposable/cache \
   ./palomar/verify-comparator.sh comparator/theorem_one_two.json
 ```
 
-The candidates use Lean `v4.32.0`, Mathlib `v4.32.0` at commit
+The historical environment used Lean `v4.32.0`, Mathlib `v4.32.0` at commit
 `81a5d257c8e410db227a6665ed08f64fea08e997`, lean4export commit
 `4e7915201d3f9f04470d9eae002fa695f7cdc589`, Comparator commit
 `575674928e239f5bc452aab72d1dd7b0f1326494`, and NanoDa commit
 `68d5ca9db226849b41a6fff59d796ff19d0a8840`.
+The current pins are Lean `v4.33.1` and Mathlib `v4.33.1` at
+`0df444a360eaa60ab8c11dca51a86af692955474`. Exporter source
+`15f6055e299ad5b89345e533cc2192f4cc00f659`, declared for 4.33.0, was built
+with the exact project compiler, and a two-theorem export passed its metadata
+checks. The 80 selected project interfaces also passed the separate local
+strict comparison. Neither result establishes official Comparator/NanoDa
+acceptance or Palomar qualification for the migrated sources.
 
 `palomar/check-mathlib-canonical-ancestry.sh` mirrors Palomar's canonical
 Mathlib ancestry guard. The workflow

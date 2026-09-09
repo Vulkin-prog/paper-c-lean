@@ -87,6 +87,43 @@ try {
       'utf8',
     ),
   );
+  if (JSON.stringify(baselineManifest.core_source) !== JSON.stringify(config.core_source)) {
+    throw new Error('generated manifest omits the current/historical core distinction');
+  }
+  const provenanceConfigPath = path.join(temporaryRoot, 'audit_config.json');
+  const historicalMutations = {
+    source_commit: '0'.repeat(40),
+    same_core_merge_commit: '0'.repeat(40),
+    toolchain: 'leanprover/lean4:v4.33.1',
+    mathlib_revision: '0'.repeat(40),
+    fileset: ['PaperC.lean'],
+    file_count: 381,
+    digest_sha256: '0'.repeat(64),
+    qualification_transfers_to_current_source: true,
+  };
+  for (const [field, value] of Object.entries(historicalMutations)) {
+    const changed = structuredClone(config);
+    changed.core_source.historical_baseline[field] = value;
+    fs.writeFileSync(provenanceConfigPath, `${JSON.stringify(changed, null, 2)}\n`);
+    const result = runGenerator();
+    if (result.status === 0 ||
+        !`${result.stdout}${result.stderr}`.includes('immutable historical core baseline')) {
+      throw new Error(`changed historical core ${field} was not rejected`);
+    }
+  }
+  const missingHistorical = structuredClone(config);
+  delete missingHistorical.core_source.historical_baseline;
+  fs.writeFileSync(provenanceConfigPath, `${JSON.stringify(missingHistorical, null, 2)}\n`);
+  if (runGenerator().status === 0) {
+    throw new Error('missing historical core identity was not rejected');
+  }
+  const wrongCurrentToolchain = structuredClone(config);
+  wrongCurrentToolchain.core_source.toolchain = config.core_source.historical_baseline.toolchain;
+  fs.writeFileSync(provenanceConfigPath, `${JSON.stringify(wrongCurrentToolchain, null, 2)}\n`);
+  if (runGenerator().status === 0) {
+    throw new Error('current core using the historical toolchain was not rejected');
+  }
+  fs.writeFileSync(provenanceConfigPath, `${JSON.stringify(config, null, 2)}\n`);
   const baselineTimelessArtifacts = new Map(
     ['AuditCheck.lean', 'audit_manifest.json', 'formalization.yaml',
       'AXIOM_AUDIT.md']
@@ -445,6 +482,13 @@ try {
     );
   }
   const mutatedConfigPath = path.join(temporaryRoot, 'audit_config.json');
+  const historicalOnlyChange = structuredClone(config);
+  historicalOnlyChange.core_source.historical_baseline.digest_sha256 = mutatedDigest;
+  fs.writeFileSync(mutatedConfigPath, `${JSON.stringify(historicalOnlyChange, null, 2)}\n`);
+  if (runGenerator().status === 0) {
+    throw new Error('changing only the historical digest accepted changed current sources');
+  }
+  fs.writeFileSync(mutatedConfigPath, `${JSON.stringify(config, null, 2)}\n`);
   const mutatedConfig = JSON.parse(fs.readFileSync(mutatedConfigPath, 'utf8'));
   mutatedConfig.core_source.digest_sha256 = mutatedDigest;
   fs.writeFileSync(

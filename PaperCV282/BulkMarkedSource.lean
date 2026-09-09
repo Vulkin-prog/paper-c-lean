@@ -71,8 +71,9 @@ theorem project_spatialMarkedSource (sites : Finset ℕ) (L E : ℕ) (omega : In
     projectConfiguration sites E (spatialMarkedSource sites L omega)=
       infiniteSignedField sites L E (sites) omega := by
   funext i
-  simp only [projectConfiguration,spatialMarkedSource_apply,spatialMarkedValue,finiteMarkedEmbedding,
-    Function.Embedding.coeFn_mk,infiniteSignedField,i.1.property,true_and,signedMarkValue]
+  change signedMarkValue (infiniteValueBit omega) i.1.val L i.2.1.val i.2.2 =
+    infiniteSignedField sites L E sites omega i
+  simp only [infiniteSignedField,i.1.property,true_and,signedMarkValue]
 
 def spatialSourceLaw (sites : Finset ℕ) (L : ℕ) : SpatialMarkedConfig sites → ℝ :=
   observableLaw infiniteRademacherMeasure (spatialMarkedSource sites L)

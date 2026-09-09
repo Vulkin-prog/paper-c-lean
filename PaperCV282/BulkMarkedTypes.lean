@@ -51,7 +51,7 @@ theorem finiteMarkedEmbedding_range (sites : Finset ℕ) (E : ℕ) (j : SpatialM
     exact Nat.le_of_lt_succ i.2.1.isLt
   · intro hj
     refine ⟨(j.1,(⟨j.2.1,by omega⟩,j.2.2)),?_⟩
-    simp only [finiteMarkedEmbedding,Function.Embedding.coeFn_mk]
+    rfl
 
 theorem truncate_configuration_apply (sites : Finset ℕ) (E : ℕ) (config : SpatialMarkedConfig sites)
     (j : SpatialMarkedIndex sites) :

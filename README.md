@@ -6,6 +6,14 @@ and its technical companion, by **Brice Pouly**.
 The current development follows the author-supplied **V3PREL of 7 September
 2026**. The final V3 has not yet been deposited on the publication platforms.
 
+Local validation has passed with **Lean 4.33.1 and Mathlib v4.33.1**:
+all 23 libraries build, the three kernel audits pass, and all 80 selected
+interfaces pass the strict local comparison. Official Comparator/NanoDa
+qualification for this migrated snapshot is not established. See the
+[migration results and limits](docs/LEAN_4_33_1_MIGRATION.md) and the
+[validation receipt](migration_evidence/lean-4.33.1/validation.json).
+Earlier qualification records remain tied to their Lean 4.32.0 snapshots.
+
 | Paper and source material | Link |
 |---|---|
 | Article used for the formalization | [V3PREL PDF](manuscripts/v3prel/paper_C_version_3PREL_en.pdf) |
@@ -55,9 +63,10 @@ in the bulk.
 
 The [source-to-Lean correspondence](docs/FORMALIZATION_COVERAGE_V3PREL.md)
 maps all **59 numbered article results** and, separately, **8 companion
-results**, together with the unnumbered conclusions. The development contains
-753 mathematical modules and 6,094 named declarations; the separate Palomar
-interfaces select the results listed below.
+results**, together with the unnumbered conclusions. The development retains
+753 mathematical modules and 6,094 named declarations from the audited
+Lean 4.32.0 baseline; the migrated audit covers the same 6,094 declarations.
+The separate Palomar interfaces select the results listed below.
 
 The proofs remain relative to **seven explicit literature propositions**,
 used as ordinary theorem arguments. These propositions are not themselves
@@ -103,9 +112,9 @@ next versions of these five entries.
 
 ## Build and check
 
-Lean and mathlib remain pinned to **4.32.0**, the version used for the
-historical v0.9 registrations. With the pinned toolchain and dependencies
-available, run from the repository root:
+The pins are **Lean 4.33.1 and Mathlib v4.33.1**. The complete local build
+and audits have passed. With these exact dependencies installed, the
+following commands check the mathematical overlays from the repository root:
 
 ```sh
 lake build PaperCV11 PaperCV282
@@ -113,8 +122,9 @@ python3 scripts/check_v3prel_sources.py
 python3 scripts/check_v282_audit.py --check-source
 ```
 
-The [development guide](PaperCV282/README.md#sources-toolchain-and-verification)
-provides the exhaustive kernel-audit commands. The
+The [migration guide](docs/LEAN_4_33_1_MIGRATION.md#reproducing-local-validation) lists
+all 23 library targets and the three kernel audits: a default `lake build`
+covers only `PaperC`. The
 [Palomar guide](docs/PALOMAR_V3PREL.md#reproducible-qualification) describes
 the separate candidate replay. Source identity checks, proof builds,
 axiom audits and registry verification have distinct roles.

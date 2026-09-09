@@ -29,7 +29,8 @@ theorem finiteCategory_eq_some_iff (N E : ℕ) (j : SpatialMarkedIndex N)
   · rw [finiteCategory,dif_pos hj,Option.some.injEq]
     constructor
     · rintro rfl
-      simp [finiteMarkedEmbedding]
+      change j = ((dyadicSiteEquiv N).symm ((dyadicSiteEquiv N) j.1), j.2)
+      rw [Equiv.symm_apply_apply]
     · intro h
       subst j
       apply Prod.ext
