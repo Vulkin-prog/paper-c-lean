@@ -40,7 +40,6 @@ theorem microscopicRecord_restrict_eq {Y L : ℕ} (hcut : 2*L^2+L≤Y) (omega : 
       have hs := startAt_restrictToFinite_iff omega hc
       simp only [finiteMicroscopicRecord,microscopicRecord,hx,ite_false,hm,ite_true,
         max_eq_left (Nat.zero_le _),hs,infiniteStartEvent,Set.mem_setOf_eq]
-      split_ifs <;> rfl
     · simp only [finiteMicroscopicRecord,microscopicRecord,hx,ite_false,hm,
         max_eq_left (Nat.zero_le _)]
 

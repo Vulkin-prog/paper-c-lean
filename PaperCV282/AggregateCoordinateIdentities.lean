@@ -65,9 +65,9 @@ theorem project_aggregateSigned (N E : ℕ) (config : SpatialMarkedConfig N) :
   funext a
   change aggregateSigned N config (a.1.val,a.2)=_
   rw [aggregateSigned_apply]
-  simpa only [finiteSignedAggregate,projectConfiguration,finiteMarkedEmbedding,
-    Function.Embedding.coeFn_mk,Equiv.symm_apply_apply] using
-    (dyadicSiteEquiv N).sum_comp (fun x => projectConfiguration N E config (x,a))
+  change (∑ x : Fin N, config (x,(a.1.val,a.2))) =
+    ∑ x : {x : ℕ // x ∈ dyadicBlock N}, config ((dyadicSiteEquiv N).symm x,(a.1.val,a.2))
+  exact ((dyadicSiteEquiv N).symm.sum_comp (fun x => config (x,(a.1.val,a.2)))).symm
 
 def forgetFiniteSigns (E : ℕ) (k : (Fin (E+1) × F₂) → ℕ) (e : Fin (E+1)) : ℕ :=
   ∑ s : F₂, k (e,s)

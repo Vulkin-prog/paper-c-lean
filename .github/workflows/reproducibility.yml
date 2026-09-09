@@ -17,10 +17,10 @@ permissions:
   contents: read
 
 env:
-  LEAN_COMMIT: 8c9756b28d64dab099da31a4c09229a9e6a2ef35
-  MATHLIB_COMMIT: 81a5d257c8e410db227a6665ed08f64fea08e997
+  LEAN_COMMIT: 819816b2e0a3bf405af45ae5c7af2491d8f5bee6
+  MATHLIB_COMMIT: 0df444a360eaa60ab8c11dca51a86af692955474
   COMPARATOR_COMMIT: 575674928e239f5bc452aab72d1dd7b0f1326494
-  LEAN4EXPORT_COMMIT: 4e7915201d3f9f04470d9eae002fa695f7cdc589
+  LEAN4EXPORT_COMMIT: 15f6055e299ad5b89345e533cc2192f4cc00f659
   LANDRUN_COMMIT: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
 
 jobs:
@@ -82,6 +82,11 @@ jobs:
 
       - name: Test root-module audit guards
         run: node scripts/test_audit_root_guards.mjs
+
+      - name: Test exporter identity and pinned tool checkout guards
+        run: |
+          python3 -B scripts/test_lean4export_toolchain.py
+          python3 -B scripts/test_checkout_exact.py
 
       - name: Set up the pinned Lean toolchain (attempt 1)
         id: audit_lean_setup_1
@@ -322,7 +327,7 @@ jobs:
           echo 'preexisting_project_olean_count=0'
           echo 'olean_count=0' >> "$GITHUB_OUTPUT"
 
-      - name: Set up the Paper C Lean 4.32.0 toolchain and Mathlib cache (attempt 1)
+      - name: Set up the Paper C Lean 4.33.1 toolchain and Mathlib cache (attempt 1)
         id: comparator_lean_setup_1
         continue-on-error: true
         # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
@@ -338,7 +343,7 @@ jobs:
           # created by the ordinary build could contain Solution.olean.
           use-github-cache: false
 
-      - name: Set up the Paper C Lean 4.32.0 toolchain and Mathlib cache (retry)
+      - name: Set up the Paper C Lean 4.33.1 toolchain and Mathlib cache (retry)
         if: steps.comparator_lean_setup_1.outcome == 'failure'
         # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
         uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
@@ -364,6 +369,13 @@ jobs:
           set -euo pipefail
           project_toolchain="$(tr -d '\r\n' < project/lean-toolchain)"
           comparator_toolchain="$(tr -d '\r\n' < tools/comparator/lean-toolchain)"
+          exporter_source_toolchain="$(tr -d '\r\n' < tools/lean4export/lean-toolchain)"
+          exporter_compiler_version="$(
+            cd tools/lean4export
+            elan run "$project_toolchain" lake env lean --version
+          )"
+          python3 project/palomar/check_exporter_toolchain.py \
+            "$project_toolchain" "$exporter_source_toolchain" "$exporter_compiler_version"
 
           elan run --install "$comparator_toolchain" lean --version
 
@@ -400,6 +412,7 @@ jobs:
             exit 1
           fi
           config_sha="$(sha256sum "project/${{ matrix.config }}" | cut -d' ' -f1)"
+          project_toolchain="$(tr -d '\r\n' < project/lean-toolchain)"
           comparator_toolchain="$(tr -d '\r\n' < tools/comparator/lean-toolchain)"
           fileset_sha="$(
             node - project/audit_config.json project <<'NODE'
@@ -440,7 +453,8 @@ jobs:
             echo "project_toolchain=$(tr -d '\r\n' < project/lean-toolchain)"
             echo "comparator_source_toolchain=$comparator_toolchain"
             echo "comparator_build_toolchain=$comparator_toolchain"
-            echo 'lean4export_build_toolchain=Paper C project toolchain'
+            echo "lean4export_source_toolchain=$(tr -d '\r\n' < tools/lean4export/lean-toolchain)"
+            echo "lean4export_build_toolchain=$project_toolchain"
             echo 'ld_preload=unset'
             echo 'non_root=true'
             echo "execution_uid=$(id -u)"

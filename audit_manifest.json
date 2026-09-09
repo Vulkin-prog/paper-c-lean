@@ -1,5 +1,5 @@
 {
-  "schema_version": 10,
+  "schema_version": 11,
   "project": "paper_c_lean",
   "project_metadata": {
     "name": "paper_c_lean",
@@ -123,6 +123,30 @@
   ],
   "audit_file": "AuditCheck.lean",
   "import": "PaperC",
+  "core_source": {
+    "base_version": "0.48.1",
+    "fileset": [
+      "PaperC.lean",
+      "PaperC/**/*.lean"
+    ],
+    "file_count": 382,
+    "digest_sha256": "081fb4c78b76d0cfc5da9fd505ff8226b051269d6ebdc5e2bdc4ee207a8b4d69",
+    "snapshot_kind": "migrated_current_core",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "historical_baseline": {
+      "source_commit": "9286f4a954ac128ba3d5edd1c1d25203f45c099f",
+      "same_core_merge_commit": "ee2ac789764fe5d9fd19c96c6c0778a693b129a0",
+      "toolchain": "leanprover/lean4:v4.32.0",
+      "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+      "fileset": [
+        "PaperC.lean",
+        "PaperC/**/*.lean"
+      ],
+      "file_count": 382,
+      "digest_sha256": "3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137",
+      "qualification_transfers_to_current_source": false
+    }
+  },
   "core_source_base_version": "0.48.1",
   "core_source_fileset": [
     "PaperC.lean",
@@ -133,8 +157,8 @@
     "PaperC.lean",
     "PaperC/**/*.lean"
   ],
-  "core_source_digest_sha256": "3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137",
-  "source_digest_sha256": "3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137",
+  "core_source_digest_sha256": "081fb4c78b76d0cfc5da9fd505ff8226b051269d6ebdc5e2bdc4ee207a8b4d69",
+  "source_digest_sha256": "081fb4c78b76d0cfc5da9fd505ff8226b051269d6ebdc5e2bdc4ee207a8b4d69",
   "comparator_fileset": [
     "Challenge.lean",
     "ChallengeTheoremOneFour.lean",
@@ -157,7 +181,7 @@
   "release_evidence_state": "external_to_source_snapshot",
   "release_evidence_location": "release_evidence/v0.48.1/",
   "packaging_commit_required": true,
-  "comparator_state_note": "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. release_evidence/v0.48.1/ applies only to the two historical Theorem 1.1 configurations and only through its validated single-parent packaging protocol. The three new Palomar configurations require their own Lean-and-NanoDa verification at the submitted immutable commit; neither the v0.48.1 package nor the published v0.48.0 evidence qualifies those new targets.",
+  "comparator_state_note": "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. release_evidence/v0.48.1/ applies only to the two historical Theorem 1.1 configurations and only through its validated single-parent packaging protocol. The three new Palomar configurations require their own Lean-and-NanoDa verification at the submitted immutable commit; neither the v0.48.1 package nor the published v0.48.0 evidence qualifies those new targets. The Lean/Mathlib 4.33.1 migration requires new build, audit and strict dual-kernel evidence at its own immutable commit; the preserved historical compatibility probe and release records do not qualify this toolchain.",
   "comparator_tools": {
     "comparator": {
       "repository": "https://github.com/leanprover/comparator",
@@ -165,7 +189,9 @@
     },
     "lean4export": {
       "repository": "https://github.com/leanprover/lean4export",
-      "commit": "4e7915201d3f9f04470d9eae002fa695f7cdc589"
+      "commit": "15f6055e299ad5b89345e533cc2192f4cc00f659",
+      "source_toolchain": "leanprover/lean4:v4.33.0",
+      "build_toolchain": "leanprover/lean4:v4.33.1"
     },
     "landrun": {
       "repository": "https://github.com/Zouuup/landrun",
@@ -178,11 +204,12 @@
   },
   "comparator_compatibility_probe": {
     "status": "passed",
-    "scope": "upstream Comparator self-test only",
+    "scope": "Historical pre-migration upstream Comparator self-test only; does not attest compatibility of the Lean 4.33.1 toolchain or its project proofs.",
     "sandboxed": false,
     "counts_as_project_verification": false,
     "transcript": "comparator/transcripts/toolchain_compatibility_unsandboxed.txt",
-    "transcript_sha256": "2ee3dcde7fee2dc4a31b1cc4395ea9f5d31f2b2526741f6f18f6463991c25cd5"
+    "transcript_sha256": "2ee3dcde7fee2dc4a31b1cc4395ea9f5d31f2b2526741f6f18f6463991c25cd5",
+    "applies_to_current_toolchain": false
   },
   "comparator_historical_published_evidence": {
     "release_tag": "v0.48.0",
@@ -3880,7 +3907,7 @@
       "formalization_relation": "source-exact nonaligned statement for Lemma 9.10: when no canonical rational channel exists and the finite cylinder covers both complete boundaries, the residual quotient is the kernel of the fixed prime-and-block matrix",
       "declaration": {
         "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-        "line": 958,
+        "line": 961,
         "statement_sha256": "cf89f8ef3c76953317cec9d82c2b6d08ad28471734087481ead80f778e662e1f"
       }
     },
@@ -4473,7 +4500,7 @@
       "name": "PaperC.Affine.RelationalPrimeAssignment.dvd_of_parityVec_ne_zero",
       "kind": "theorem",
       "source": "PaperC/Affine/RelationalPrimeAssignment.lean",
-      "line": 155,
+      "line": 157,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4481,7 +4508,7 @@
       "name": "PaperC.Affine.RelationalPrimeAssignment.existsUnique_opposite_for_largeKernel_of_left",
       "kind": "theorem",
       "source": "PaperC/Affine/RelationalPrimeAssignment.lean",
-      "line": 336,
+      "line": 338,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4489,7 +4516,7 @@
       "name": "PaperC.Affine.RelationalPrimeAssignment.existsUnique_opposite_for_largeKernel_of_right",
       "kind": "theorem",
       "source": "PaperC/Affine/RelationalPrimeAssignment.lean",
-      "line": 370,
+      "line": 372,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4497,7 +4524,7 @@
       "name": "PaperC.Affine.RelationalPrimeAssignment.existsUnique_opposite_of_left",
       "kind": "theorem",
       "source": "PaperC/Affine/RelationalPrimeAssignment.lean",
-      "line": 210,
+      "line": 212,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4505,7 +4532,7 @@
       "name": "PaperC.Affine.RelationalPrimeAssignment.existsUnique_opposite_of_right",
       "kind": "theorem",
       "source": "PaperC/Affine/RelationalPrimeAssignment.lean",
-      "line": 270,
+      "line": 272,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4513,7 +4540,7 @@
       "name": "PaperC.Affine.RelationalPrimeAssignment.parityVec_ne_zero_unique_in_start",
       "kind": "theorem",
       "source": "PaperC/Affine/RelationalPrimeAssignment.lean",
-      "line": 167,
+      "line": 169,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4521,7 +4548,7 @@
       "name": "PaperC.Affine.RelationalPrimeAssignment.relation_boundary_prime_equation",
       "kind": "theorem",
       "source": "PaperC/Affine/RelationalPrimeAssignment.lean",
-      "line": 88,
+      "line": 90,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4529,7 +4556,7 @@
       "name": "PaperC.Affine.RelationalPrimeAssignment.relation_prime_equation",
       "kind": "theorem",
       "source": "PaperC/Affine/RelationalPrimeAssignment.lean",
-      "line": 52,
+      "line": 54,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4537,7 +4564,7 @@
       "name": "PaperC.Affine.RelationalPrimeAssignment.startCompleteVertexLabel_dist_lt",
       "kind": "theorem",
       "source": "PaperC/Affine/RelationalPrimeAssignment.lean",
-      "line": 123,
+      "line": 125,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4545,7 +4572,7 @@
       "name": "PaperC.Affine.RelationalPrimeAssignment.startCompleteVertexLabel_injective",
       "kind": "theorem",
       "source": "PaperC/Affine/RelationalPrimeAssignment.lean",
-      "line": 101,
+      "line": 103,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4553,7 +4580,7 @@
       "name": "PaperC.Affine.StartDefectRank.card_startDefectIndices_le",
       "kind": "theorem",
       "source": "PaperC/Affine/StartDefectRank.lean",
-      "line": 411,
+      "line": 413,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4561,7 +4588,7 @@
       "name": "PaperC.Affine.StartDefectRank.relationRho_startSystem_le_card_defectsInInterval",
       "kind": "theorem",
       "source": "PaperC/Affine/StartDefectRank.lean",
-      "line": 457,
+      "line": 459,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4569,7 +4596,7 @@
       "name": "PaperC.Affine.StartDefectRank.startDefectRestriction_injective",
       "kind": "theorem",
       "source": "PaperC/Affine/StartDefectRank.lean",
-      "line": 381,
+      "line": 383,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4593,7 +4620,7 @@
       "name": "PaperC.Affine.StartDefectRank.startInteriorBoundary_eq_zero_of_not_hDefective",
       "kind": "theorem",
       "source": "PaperC/Affine/StartDefectRank.lean",
-      "line": 223,
+      "line": 225,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4609,7 +4636,7 @@
       "name": "PaperC.Affine.TouchingDefectRank.card_touchingDefectIndices_le",
       "kind": "theorem",
       "source": "PaperC/Affine/TouchingDefectRank.lean",
-      "line": 867,
+      "line": 869,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4617,7 +4644,7 @@
       "name": "PaperC.Affine.TouchingDefectRank.relationRho_touchingSystem_le_card_defectsInInterval",
       "kind": "theorem",
       "source": "PaperC/Affine/TouchingDefectRank.lean",
-      "line": 942,
+      "line": 944,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4625,7 +4652,7 @@
       "name": "PaperC.Affine.TouchingDefectRank.touchingDefectRestriction_injective",
       "kind": "theorem",
       "source": "PaperC/Affine/TouchingDefectRank.lean",
-      "line": 833,
+      "line": 835,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4641,7 +4668,7 @@
       "name": "PaperC.Affine.TouchingDefectRank.touchingInteriorBoundary_eq_zero_of_not_hDefective",
       "kind": "theorem",
       "source": "PaperC/Affine/TouchingDefectRank.lean",
-      "line": 681,
+      "line": 683,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4665,7 +4692,7 @@
       "name": "PaperC.Affine.abs_eta_mul_two_pow_rho_sub_one_le",
       "kind": "theorem",
       "source": "PaperC/Affine/Normalization.lean",
-      "line": 267,
+      "line": 269,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4689,7 +4716,7 @@
       "name": "PaperC.Affine.affineFiber_normalized_card_identity",
       "kind": "theorem",
       "source": "PaperC/Affine/Normalization.lean",
-      "line": 227,
+      "line": 229,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4769,7 +4796,7 @@
       "name": "PaperC.Affine.card_pi_f2",
       "kind": "theorem",
       "source": "PaperC/Affine/Normalization.lean",
-      "line": 219,
+      "line": 221,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4833,7 +4860,7 @@
       "name": "PaperC.Affine.compatible_of_relationCharacter_eq_zero",
       "kind": "theorem",
       "source": "PaperC/Affine/Normalization.lean",
-      "line": 174,
+      "line": 176,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4953,7 +4980,7 @@
       "name": "PaperC.Affine.relationCharacter_eq_zero_iff_compatible",
       "kind": "theorem",
       "source": "PaperC/Affine/Normalization.lean",
-      "line": 198,
+      "line": 200,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4977,7 +5004,7 @@
       "name": "PaperC.Affine.relationEta_eq_one_iff_compatible",
       "kind": "theorem",
       "source": "PaperC/Affine/Normalization.lean",
-      "line": 205,
+      "line": 207,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -4993,7 +5020,7 @@
       "name": "PaperC.Affine.relationEta_eq_zero_iff_not_compatible",
       "kind": "theorem",
       "source": "PaperC/Affine/Normalization.lean",
-      "line": 212,
+      "line": 214,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -5025,7 +5052,7 @@
       "name": "PaperC.Affine.relationRho_pos_of_character_ne_zero",
       "kind": "theorem",
       "source": "PaperC/Affine/Normalization.lean",
-      "line": 254,
+      "line": 256,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -5033,7 +5060,7 @@
       "name": "PaperC.Affine.relationSignedSum_eq_eta_mul_two_pow_rho",
       "kind": "theorem",
       "source": "PaperC/Affine/Normalization.lean",
-      "line": 153,
+      "line": 155,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -5041,7 +5068,7 @@
       "name": "PaperC.Affine.relationSignedSum_eq_ite",
       "kind": "theorem",
       "source": "PaperC/Affine/Normalization.lean",
-      "line": 134,
+      "line": 136,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -5417,7 +5444,7 @@
       "name": "PaperC.AlignedComponentCode.componentCode_finrank_ge",
       "kind": "theorem",
       "source": "PaperC/Coding/AlignedComponentCode.lean",
-      "line": 113,
+      "line": 114,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -5433,7 +5460,7 @@
       "name": "PaperC.AlignedComponentCode.kernelWord_componentProducts_square",
       "kind": "theorem",
       "source": "PaperC/Coding/AlignedComponentCode.lean",
-      "line": 189,
+      "line": 190,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -5441,7 +5468,7 @@
       "name": "PaperC.AlignedComponentCode.kernelWord_leftCount_even",
       "kind": "theorem",
       "source": "PaperC/Coding/AlignedComponentCode.lean",
-      "line": 126,
+      "line": 127,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -5449,7 +5476,7 @@
       "name": "PaperC.AlignedComponentCode.kernelWord_parity_package",
       "kind": "theorem",
       "source": "PaperC/Coding/AlignedComponentCode.lean",
-      "line": 236,
+      "line": 237,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -5457,7 +5484,7 @@
       "name": "PaperC.AlignedComponentCode.kernelWord_rightCount_even",
       "kind": "theorem",
       "source": "PaperC/Coding/AlignedComponentCode.lean",
-      "line": 156,
+      "line": 157,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12234,7 +12261,7 @@
       "name": "PaperC.BoundedRatioTerminalClosure.card_firstStarts_le_twice_possibleKernelValues",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean",
-      "line": 335,
+      "line": 334,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12250,7 +12277,7 @@
       "name": "PaperC.BoundedRatioTerminalClosure.card_possibleKernelValues_fourth_power_le",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean",
-      "line": 396,
+      "line": 395,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12258,7 +12285,7 @@
       "name": "PaperC.BoundedRatioTerminalClosure.card_possibleKernelValues_uniformThreeQuarter",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean",
-      "line": 578,
+      "line": 577,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12282,7 +12309,7 @@
       "name": "PaperC.BoundedRatioTerminalClosure.exp_eight_sqrt_runLength_uniformSubpolynomial",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean",
-      "line": 513,
+      "line": 512,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12290,7 +12317,7 @@
       "name": "PaperC.BoundedRatioTerminalClosure.kernelThreshold_sq_le_four_mul_determinantBudget",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean",
-      "line": 368,
+      "line": 367,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12314,7 +12341,7 @@
       "name": "PaperC.BoundedRatioTerminalClosure.rankTerminalSector_uniformLittleO_of_card_envelope",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean",
-      "line": 601,
+      "line": 600,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12330,7 +12357,7 @@
       "name": "PaperC.BoundedRatioTerminalClosure.terminalKernelCountResidual_uniformSubpolynomial",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean",
-      "line": 548,
+      "line": 547,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -12338,7 +12365,7 @@
       "name": "PaperC.BoundedRatioTerminalClosure.uniformRationalPower_of_fourth_bound",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean",
-      "line": 479,
+      "line": 478,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14564,7 +14591,7 @@
       "name": "PaperC.CanonicalSmallRows.canonicalArithmeticKernelEquivalence_of_choice_none",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 1179,
+      "line": 1182,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14572,7 +14599,7 @@
       "name": "PaperC.CanonicalSmallRows.canonicalArithmeticKernelStatement",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 1204,
+      "line": 1207,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14580,7 +14607,7 @@
       "name": "PaperC.CanonicalSmallRows.canonicalArithmeticSmallRowMatrixRaw_mulVec",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 647,
+      "line": 650,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14596,7 +14623,7 @@
       "name": "PaperC.CanonicalSmallRows.canonicalArithmeticSmallRowMatrix_mulVec_block",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 702,
+      "line": 705,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14604,7 +14631,7 @@
       "name": "PaperC.CanonicalSmallRows.canonicalArithmeticSmallRowMatrix_mulVec_prime",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 672,
+      "line": 675,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14700,7 +14727,7 @@
       "name": "PaperC.CanonicalSmallRows.canonicalCoreBoundarySynthesis_relationToCoordinates_of_choice_none",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 1035,
+      "line": 1038,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14732,7 +14759,7 @@
       "name": "PaperC.CanonicalSmallRows.canonicalSmallRowPresentation_of_arithmeticKernel",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 1217,
+      "line": 1220,
       "conditionality": "conditionnel",
       "hypotheses": [
         "PCv07c-L9.10-arithmetic-kernel-equivalence"
@@ -14758,7 +14785,7 @@
       "name": "PaperC.CanonicalSmallRows.existsUnique_twoStartCompleteBoundary_eq_of_blockRows",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 736,
+      "line": 739,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14766,7 +14793,7 @@
       "name": "PaperC.CanonicalSmallRows.finrank_canonicalCoreCoordinates_eq_largePrimeSolution_of_choice_none",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 977,
+      "line": 980,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14782,7 +14809,7 @@
       "name": "PaperC.CanonicalSmallRows.mem_kernel_iff_existsUnique_relation_boundary",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 799,
+      "line": 802,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14798,7 +14825,7 @@
       "name": "PaperC.CanonicalSmallRows.primeBoundaryRow_eq_zero_of_mem_largePrimeSolution",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 775,
+      "line": 778,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14806,7 +14833,7 @@
       "name": "PaperC.CanonicalSmallRows.relationToCanonicalArithmeticKernel_of_choice_none_injective",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 1092,
+      "line": 1095,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14814,7 +14841,7 @@
       "name": "PaperC.CanonicalSmallRows.relationToCanonicalArithmeticKernel_of_choice_none_surjective",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 1123,
+      "line": 1126,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -14822,7 +14849,7 @@
       "name": "PaperC.CanonicalSmallRows.residualTau_eq_corrected_add_components_sub_arithmeticRank",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 1242,
+      "line": 1245,
       "conditionality": "conditionnel",
       "hypotheses": [
         "PCv07c-L9.10-arithmetic-kernel-equivalence"
@@ -14832,7 +14859,7 @@
       "name": "PaperC.CanonicalSmallRows.residualTau_eq_corrected_add_components_sub_arithmeticRank_of_choice_none",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
-      "line": 1272,
+      "line": 1275,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15582,7 +15609,7 @@
       "name": "PaperC.ConditionalDependencyGraph.card_jointConditionedStartSolutions_mul_two_pow",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalDependencyGraph.lean",
-      "line": 716,
+      "line": 718,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15598,7 +15625,7 @@
       "name": "PaperC.ConditionalDependencyGraph.conditionedStart_independent_of_nonNeighbors",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalDependencyGraph.lean",
-      "line": 426,
+      "line": 428,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15622,7 +15649,7 @@
       "name": "PaperC.ConditionalDependencyGraph.goodStart_independent_of_graph_nonNeighbors",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalDependencyGraph.lean",
-      "line": 526,
+      "line": 528,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15630,7 +15657,7 @@
       "name": "PaperC.ConditionalDependencyGraph.jointConditionedStartProbability_eq_baseline",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalDependencyGraph.lean",
-      "line": 789,
+      "line": 792,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15638,7 +15665,7 @@
       "name": "PaperC.ConditionalDependencyGraph.jointConditionedStartProbability_eq_product",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalDependencyGraph.lean",
-      "line": 834,
+      "line": 837,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15646,7 +15673,7 @@
       "name": "PaperC.ConditionalDependencyGraph.jointConditionedSystem_eq_iff_forall_startAt",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalDependencyGraph.lean",
-      "line": 594,
+      "line": 596,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15654,7 +15681,7 @@
       "name": "PaperC.ConditionalDependencyGraph.jointLargeStartSystem_apply",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalDependencyGraph.lean",
-      "line": 583,
+      "line": 585,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15662,7 +15689,7 @@
       "name": "PaperC.ConditionalDependencyGraph.jointLargeStartSystem_surjective",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalDependencyGraph.lean",
-      "line": 635,
+      "line": 637,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15694,7 +15721,7 @@
       "name": "PaperC.ConditionalDependencyGraph.largeStartSystem_surjective_of_mem_goodStarts",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalDependencyGraph.lean",
-      "line": 612,
+      "line": 614,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15734,7 +15761,7 @@
       "name": "PaperC.ConditionalStartProbability.assemble_restrictions",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 162,
+      "line": 164,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15742,7 +15769,7 @@
       "name": "PaperC.ConditionalStartProbability.assemble_solves_start_iff",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 206,
+      "line": 208,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15750,7 +15777,7 @@
       "name": "PaperC.ConditionalStartProbability.assemble_startAt_iff",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 219,
+      "line": 221,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15758,7 +15785,7 @@
       "name": "PaperC.ConditionalStartProbability.card_conditionedStartSolutions_mul_two_pow",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 532,
+      "line": 536,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15766,7 +15793,7 @@
       "name": "PaperC.ConditionalStartProbability.conditionedStartProbability_eq_baseline",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 581,
+      "line": 585,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15774,7 +15801,7 @@
       "name": "PaperC.ConditionalStartProbability.conditionedStartProbability_eq_baseline_of_not_terminalBad",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 623,
+      "line": 627,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15782,7 +15809,7 @@
       "name": "PaperC.ConditionalStartProbability.largeStartSystem_surjective",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 483,
+      "line": 487,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15790,7 +15817,7 @@
       "name": "PaperC.ConditionalStartProbability.relationSpace_largeStartSystem_eq_bot",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 361,
+      "line": 365,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15798,7 +15825,7 @@
       "name": "PaperC.ConditionalStartProbability.restrictLarge_assemble",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 156,
+      "line": 158,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15806,7 +15833,7 @@
       "name": "PaperC.ConditionalStartProbability.restrictLarge_extendLarge",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 143,
+      "line": 144,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15814,7 +15841,7 @@
       "name": "PaperC.ConditionalStartProbability.restrictLarge_extendSmall",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 136,
+      "line": 137,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15822,7 +15849,7 @@
       "name": "PaperC.ConditionalStartProbability.restrictSmall_assemble",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 150,
+      "line": 152,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -15830,7 +15857,7 @@
       "name": "PaperC.ConditionalStartProbability.restrictSmall_extendLarge",
       "kind": "theorem",
       "source": "PaperC/Probability/ConditionalStartProbability.lean",
-      "line": 129,
+      "line": 130,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -17549,7 +17576,7 @@
       "name": "PaperC.DefectFirstMoment.abs_dyadicExpectation_sub_baseline_le",
       "kind": "theorem",
       "source": "PaperC/Probability/DefectFirstMoment.lean",
-      "line": 121,
+      "line": 123,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -17557,7 +17584,7 @@
       "name": "PaperC.DefectFirstMoment.abs_dyadicExpectation_sub_baseline_le_globalDefectWeight",
       "kind": "theorem",
       "source": "PaperC/Probability/DefectFirstMoment.lean",
-      "line": 178,
+      "line": 180,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -17565,7 +17592,7 @@
       "name": "PaperC.DefectFirstMoment.abs_dyadicExpectation_sub_baseline_le_weight",
       "kind": "theorem",
       "source": "PaperC/Probability/DefectFirstMoment.lean",
-      "line": 147,
+      "line": 149,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -17573,7 +17600,7 @@
       "name": "PaperC.DefectFirstMoment.abs_startProbability_sub_baseline_le",
       "kind": "theorem",
       "source": "PaperC/Probability/DefectFirstMoment.lean",
-      "line": 88,
+      "line": 90,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19307,7 +19334,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.boundedBadStartProbabilityMass_le_two_cutoffs",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 684,
+      "line": 685,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19315,7 +19342,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.boundedFullStartMean_eq_goodParameter_add_badMass",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 638,
+      "line": 639,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19323,7 +19350,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.boundedStartProbability_eq_baseline_of_not_bad",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 606,
+      "line": 607,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19331,7 +19358,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.boundedStartProbability_eq_selfStartProbability",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 516,
+      "line": 517,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19339,7 +19366,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.boundedStartProbability_le_two_mul_defectWeight_div",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 577,
+      "line": 578,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19347,7 +19374,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.boundedTerminalBadStarts_mono",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 552,
+      "line": 553,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19355,7 +19382,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.disagreementProbability_boundedGood_full_le_badMass",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 800,
+      "line": 801,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19363,7 +19390,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.exists_bad_start_of_boundedGood_ne_full",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 778,
+      "line": 779,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19371,7 +19398,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.finiteNatLaw_startCountOn_cutoff_invariant",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 400,
+      "line": 401,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19379,7 +19406,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.natTotalVariation_boundedGood_full_le_badMass",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 883,
+      "line": 884,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19387,7 +19414,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.startAt_assemble_iff_local",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 182,
+      "line": 183,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19395,7 +19422,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.startAt_sampleSpaceEquivLocalProd_iff",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 228,
+      "line": 229,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19403,7 +19430,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.startCountOn_sampleSpaceEquivLocalProd",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 328,
+      "line": 329,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19411,7 +19438,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.uniformEventProbability_startAt_cutoff_invariant",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 244,
+      "line": 245,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19419,7 +19446,7 @@
       "name": "PaperC.FiniteCylinderCountTransport.valueBit_assemble_eq_local",
       "kind": "theorem",
       "source": "PaperC/Probability/FiniteCylinderCountTransport.lean",
-      "line": 147,
+      "line": 148,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19917,7 +19944,7 @@
       "name": "PaperC.IndependentThinning.bOne_thinnedIndicator_le",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 894,
+      "line": 899,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19925,7 +19952,7 @@
       "name": "PaperC.IndependentThinning.bTwo_thinnedIndicator_le",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 926,
+      "line": 931,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19941,7 +19968,7 @@
       "name": "PaperC.IndependentThinning.eventProbability_coordinateEvent_and_of_disjoint",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 394,
+      "line": 398,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19949,7 +19976,7 @@
       "name": "PaperC.IndependentThinning.eventProbability_coordinateEvent_eq_prod",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 317,
+      "line": 319,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19957,7 +19984,7 @@
       "name": "PaperC.IndependentThinning.eventProbability_coordinate_true",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 458,
+      "line": 462,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19965,7 +19992,7 @@
       "name": "PaperC.IndependentThinning.eventProbability_no_thinned_active_eq_exponentialFunctional",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 962,
+      "line": 967,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -19989,7 +20016,7 @@
       "name": "PaperC.IndependentThinning.eventProbability_two_coordinates_true",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 471,
+      "line": 475,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20021,7 +20048,7 @@
       "name": "PaperC.IndependentThinning.hasExactDependencyGraph_combineIndicator",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 596,
+      "line": 601,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20029,7 +20056,7 @@
       "name": "PaperC.IndependentThinning.hasExactDependencyGraph_coordinateIndicator",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 520,
+      "line": 524,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20037,7 +20064,7 @@
       "name": "PaperC.IndependentThinning.hasExactDependencyGraph_thinnedIndicator",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 790,
+      "line": 795,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20045,7 +20072,7 @@
       "name": "PaperC.IndependentThinning.jointMarginal_thinnedIndicator",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 852,
+      "line": 857,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20053,7 +20080,7 @@
       "name": "PaperC.IndependentThinning.marginal_thinnedIndicator",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 818,
+      "line": 823,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20061,7 +20088,7 @@
       "name": "PaperC.IndependentThinning.mem_outsideVertices",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 499,
+      "line": 503,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -20069,7 +20096,7 @@
       "name": "PaperC.IndependentThinning.thinnedIndicator_eq_true_iff",
       "kind": "theorem",
       "source": "PaperC/Probability/IndependentThinning.lean",
-      "line": 779,
+      "line": 784,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22301,7 +22328,7 @@
       "name": "PaperC.LowZonePrimePivots.card_intermediatePrimes_eq_primeCount_sub",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 567,
+      "line": 568,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22309,7 +22336,7 @@
       "name": "PaperC.LowZonePrimePivots.card_intermediatePrimes_eq_primeCount_sub_of_gap",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 602,
+      "line": 603,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22317,7 +22344,7 @@
       "name": "PaperC.LowZonePrimePivots.card_intermediatePrimes_le",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 508,
+      "line": 509,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22341,7 +22368,7 @@
       "name": "PaperC.LowZonePrimePivots.lowZoneConstraintMap_evenPrimeTestVector",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 447,
+      "line": 448,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22349,7 +22376,7 @@
       "name": "PaperC.LowZonePrimePivots.lowZoneConstraintMap_rightInverse",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 477,
+      "line": 478,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22357,7 +22384,7 @@
       "name": "PaperC.LowZonePrimePivots.lowZoneConstraintMap_surjective",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 499,
+      "line": 500,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22365,7 +22392,7 @@
       "name": "PaperC.LowZonePrimePivots.lowZoneSquareLabel_lt",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 279,
+      "line": 280,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22381,7 +22408,7 @@
       "name": "PaperC.LowZonePrimePivots.lowZoneSquareVertex_not_mem",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 289,
+      "line": 290,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22413,7 +22440,7 @@
       "name": "PaperC.LowZonePrimePivots.parityVec_eq_zero_of_not_mem_primeVertexSet",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 366,
+      "line": 367,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22421,7 +22448,7 @@
       "name": "PaperC.LowZonePrimePivots.parityVec_lowZoneSquareVertex",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 400,
+      "line": 401,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22429,7 +22456,7 @@
       "name": "PaperC.LowZonePrimePivots.parityVec_primePivot",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 379,
+      "line": 380,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22437,7 +22464,7 @@
       "name": "PaperC.LowZonePrimePivots.primePivot_mem",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 359,
+      "line": 360,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22461,7 +22488,7 @@
       "name": "PaperC.LowZonePrimePivots.relationRho_startSystem_le_sub_card_intermediatePrimes",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 678,
+      "line": 681,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22469,7 +22496,7 @@
       "name": "PaperC.LowZonePrimePivots.relation_boundary_constraint_eq_zero",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 636,
+      "line": 639,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22477,7 +22504,7 @@
       "name": "PaperC.LowZonePrimePivots.sqrt_window_le_of_gap",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 536,
+      "line": 537,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -22501,7 +22528,7 @@
       "name": "PaperC.LowZonePrimePivots.startProbability_le_inv_two_pow_card_intermediatePrimes",
       "kind": "theorem",
       "source": "PaperC/Arithmetic/LowZonePrimePivots.lean",
-      "line": 755,
+      "line": 758,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24763,7 +24790,7 @@
       "name": "PaperC.PellInput.quadraticOrderConductorFiberBound",
       "kind": "theorem",
       "source": "PaperC/Diophantine/HalterKochConductorDescent.lean",
-      "line": 646,
+      "line": 648,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -26486,7 +26513,7 @@
       "name": "PaperC.PrivatePivots.not_dvd_of_dvd_and_dist_lt",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/PrivatePivots.lean",
-      "line": 237,
+      "line": 236,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -26494,7 +26521,7 @@
       "name": "PaperC.PrivatePivots.parityVecAbove_apply",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/PrivatePivots.lean",
-      "line": 309,
+      "line": 308,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -26510,7 +26537,7 @@
       "name": "PaperC.PrivatePivots.tree_parityEdge_linearIndependent_of_large_odd_primes",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/PrivatePivots.lean",
-      "line": 261,
+      "line": 260,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -26518,7 +26545,7 @@
       "name": "PaperC.PrivatePivots.tree_projectedParityEdge_linearIndependent_of_large_odd_primes",
       "kind": "theorem",
       "source": "PaperC/LinearAlgebra/PrivatePivots.lean",
-      "line": 317,
+      "line": 316,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30077,7 +30104,7 @@
       "name": "PaperC.SectionElevenPartition.existsUnique_sector",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 268,
+      "line": 273,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30085,7 +30112,7 @@
       "name": "PaperC.SectionElevenPartition.lemma_eleven_one_existsUnique_sector",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 720,
+      "line": 725,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30093,7 +30120,7 @@
       "name": "PaperC.SectionElevenPartition.lemma_eleven_one_populations_cover",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 695,
+      "line": 700,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30101,7 +30128,7 @@
       "name": "PaperC.SectionElevenPartition.mem_sectionElevenSectorPairs",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 419,
+      "line": 424,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30109,7 +30136,7 @@
       "name": "PaperC.SectionElevenPartition.mem_sectorPopulation",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 220,
+      "line": 225,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30117,7 +30144,7 @@
       "name": "PaperC.SectionElevenPartition.not_atLeastThreeCorrectedDefects_iff_atMostTwo",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 368,
+      "line": 373,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30125,7 +30152,7 @@
       "name": "PaperC.SectionElevenPartition.not_isCanonicallyAligned_iff_nonaligned",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 336,
+      "line": 341,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30133,7 +30160,7 @@
       "name": "PaperC.SectionElevenPartition.not_isCanonicallyNonaligned_iff_aligned",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 347,
+      "line": 352,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30141,7 +30168,7 @@
       "name": "PaperC.SectionElevenPartition.not_smallCanonicalPrimeProduct_iff_large",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 310,
+      "line": 315,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30149,7 +30176,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorOf_eq_five_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 484,
+      "line": 489,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30157,7 +30184,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorOf_eq_four_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 468,
+      "line": 473,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30165,7 +30192,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorOf_eq_one_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 432,
+      "line": 437,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30173,7 +30200,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorOf_eq_seven_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 521,
+      "line": 526,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30181,7 +30208,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorOf_eq_six_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 502,
+      "line": 507,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30189,7 +30216,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorOf_eq_three_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 454,
+      "line": 459,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30197,7 +30224,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorOf_eq_two_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 442,
+      "line": 447,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30205,7 +30232,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorPairs_disjoint",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 681,
+      "line": 686,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30213,7 +30240,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorPairs_one_eq_smallProductPairs",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 545,
+      "line": 550,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30221,7 +30248,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorPairs_three_eq_shallowCorePairs",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 574,
+      "line": 579,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30229,7 +30256,7 @@
       "name": "PaperC.SectionElevenPartition.sectionElevenSectorPairs_two_eq_smallHeightLargeProductPairs",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 559,
+      "line": 564,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30237,7 +30264,7 @@
       "name": "PaperC.SectionElevenPartition.sectionEleven_lateSectors_eq_deepCorePairs",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 590,
+      "line": 595,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30245,7 +30272,7 @@
       "name": "PaperC.SectionElevenPartition.sectorOf_eq_alignedDeepCore_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 139,
+      "line": 144,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30253,7 +30280,7 @@
       "name": "PaperC.SectionElevenPartition.sectorOf_eq_manyDefects_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 156,
+      "line": 161,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30261,7 +30288,7 @@
       "name": "PaperC.SectionElevenPartition.sectorOf_eq_nonterminal_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 174,
+      "line": 179,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30269,7 +30296,7 @@
       "name": "PaperC.SectionElevenPartition.sectorOf_eq_shallowCore_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 123,
+      "line": 128,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30277,7 +30304,7 @@
       "name": "PaperC.SectionElevenPartition.sectorOf_eq_smallCanonicalHeight_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 108,
+      "line": 113,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30285,7 +30312,7 @@
       "name": "PaperC.SectionElevenPartition.sectorOf_eq_smallPrimeProduct_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 94,
+      "line": 99,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30293,7 +30320,7 @@
       "name": "PaperC.SectionElevenPartition.sectorOf_eq_terminal_iff",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 193,
+      "line": 198,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30301,7 +30328,7 @@
       "name": "PaperC.SectionElevenPartition.sectorPopulations_disjoint",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 230,
+      "line": 235,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -30309,7 +30336,7 @@
       "name": "PaperC.SectionElevenPartition.seven_sector_populations_cover",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/SectionElevenPartition.lean",
-      "line": 250,
+      "line": 255,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34197,7 +34224,7 @@
       "name": "PaperC.TheoremSixteenTwo.abs_globalMean_sub_retainedMean_eq_deepMass",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 792,
+      "line": 793,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34205,7 +34232,7 @@
       "name": "PaperC.TheoremSixteenTwo.abs_mass_zero_sub_le_two_mul_natTotalVariation",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 1167,
+      "line": 1168,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34213,7 +34240,7 @@
       "name": "PaperC.TheoremSixteenTwo.boundedFullStartLaw_eq_retainedStartLaw",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 862,
+      "line": 863,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34221,7 +34248,7 @@
       "name": "PaperC.TheoremSixteenTwo.boundedFullStartMean_eq_retainedStartMean",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 884,
+      "line": 885,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34229,7 +34256,7 @@
       "name": "PaperC.TheoremSixteenTwo.boundedFullStartRate_eq_retainedStartRate",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 907,
+      "line": 908,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34237,7 +34264,7 @@
       "name": "PaperC.TheoremSixteenTwo.boundedRatioBlock_div_eq_retainedStartIndices",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 828,
+      "line": 829,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34245,7 +34272,7 @@
       "name": "PaperC.TheoremSixteenTwo.boundedRatioCutoff_le_globalCylinderCutoff",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 836,
+      "line": 837,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34253,7 +34280,7 @@
       "name": "PaperC.TheoremSixteenTwo.commonCylinderStartProbability_eq_globalStartProbability",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 746,
+      "line": 747,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34261,7 +34288,7 @@
       "name": "PaperC.TheoremSixteenTwo.criticalScale_le_balanceConstant",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 1082,
+      "line": 1083,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34269,7 +34296,7 @@
       "name": "PaperC.TheoremSixteenTwo.criticalScale_nonneg",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 1157,
+      "line": 1158,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34285,7 +34312,7 @@
       "name": "PaperC.TheoremSixteenTwo.discardedStartMass_eq_deepStartProbabilityMass",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 769,
+      "line": 770,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34397,7 +34424,7 @@
       "name": "PaperC.TheoremSixteenTwo.lowerBalanceConstant_le_criticalScale",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 1103,
+      "line": 1104,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34405,7 +34432,7 @@
       "name": "PaperC.TheoremSixteenTwo.lowerBalanceConstant_pos",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 1097,
+      "line": 1098,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34429,7 +34456,7 @@
       "name": "PaperC.TheoremSixteenTwo.natTotalVariation_global_retained_le_deepMass",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 782,
+      "line": 783,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34445,7 +34472,7 @@
       "name": "PaperC.TheoremSixteenTwo.poissonPMFReal_zero_eq_exp_neg",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 1205,
+      "line": 1206,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34477,7 +34504,7 @@
       "name": "PaperC.TheoremSixteenTwo.retained_window_le_boundedRatioCutoff",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 851,
+      "line": 852,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34485,7 +34512,7 @@
       "name": "PaperC.TheoremSixteenTwo.startAt_assemble_iff_local",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 595,
+      "line": 596,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34493,7 +34520,7 @@
       "name": "PaperC.TheoremSixteenTwo.startAt_sampleSpaceEquivLocalProd_iff",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 644,
+      "line": 645,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34517,7 +34544,7 @@
       "name": "PaperC.TheoremSixteenTwo.theorem_sixteen_two",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 1617,
+      "line": 1618,
       "conditionality": "conditionnel",
       "hypotheses": [
         "ADGR07-PNT",
@@ -34535,7 +34562,7 @@
       "name": "PaperC.TheoremSixteenTwo.theorem_sixteen_two_canonical",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 1682,
+      "line": 1683,
       "conditionality": "conditionnel",
       "hypotheses": [
         "ADGR07-PNT",
@@ -34565,7 +34592,7 @@
       "name": "PaperC.TheoremSixteenTwo.two_le_of_mem_retainedStartIndices",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 842,
+      "line": 843,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34573,7 +34600,7 @@
       "name": "PaperC.TheoremSixteenTwo.two_pow_le_of_two_le_div",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 1071,
+      "line": 1072,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34581,7 +34608,7 @@
       "name": "PaperC.TheoremSixteenTwo.uniformEventProbability_startAt_cutoff_invariant",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 707,
+      "line": 708,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34589,7 +34616,7 @@
       "name": "PaperC.TheoremSixteenTwo.valueBit_assemble_eq_local",
       "kind": "theorem",
       "source": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
-      "line": 557,
+      "line": 558,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34852,7 +34879,7 @@
       "name": "PaperC.TreeBoundary.boundaryMap_bijective_of_isTree",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 404,
+      "line": 408,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34860,7 +34887,7 @@
       "name": "PaperC.TreeBoundary.boundaryMap_surjective_of_connected",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 302,
+      "line": 303,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34884,7 +34911,7 @@
       "name": "PaperC.TreeBoundary.boundary_trailEdges",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 147,
+      "line": 148,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34892,7 +34919,7 @@
       "name": "PaperC.TreeBoundary.card_edgeSubset_eq_evenVertexSubset",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 390,
+      "line": 394,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34900,7 +34927,7 @@
       "name": "PaperC.TreeBoundary.card_evenVertexSubset",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 382,
+      "line": 386,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34908,7 +34935,7 @@
       "name": "PaperC.TreeBoundary.deleteRoot_evenCompletion",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 349,
+      "line": 350,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34924,7 +34951,7 @@
       "name": "PaperC.TreeBoundary.edgeValueFinset_subset_edgeFinset",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 270,
+      "line": 271,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34932,7 +34959,7 @@
       "name": "PaperC.TreeBoundary.edgeValueFinset_toEdgeSubset",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 283,
+      "line": 284,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34940,7 +34967,7 @@
       "name": "PaperC.TreeBoundary.evenCompletion_deleteRoot",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 357,
+      "line": 361,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34964,7 +34991,7 @@
       "name": "PaperC.TreeBoundary.existsUnique_edgeSubset_boundary_eq",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 419,
+      "line": 423,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34972,7 +34999,7 @@
       "name": "PaperC.TreeBoundary.exists_edgeSubset_boundary_eq_of_connected",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 166,
+      "line": 167,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -34996,7 +35023,7 @@
       "name": "PaperC.TreeBoundary.mem_edgeValueFinset",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 256,
+      "line": 257,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -35004,7 +35031,7 @@
       "name": "PaperC.TreeBoundary.mem_nonRootValueFinset",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 323,
+      "line": 324,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -35012,7 +35039,7 @@
       "name": "PaperC.TreeBoundary.nonRootValueFinset_deleteRoot",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 333,
+      "line": 334,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -35028,7 +35055,7 @@
       "name": "PaperC.TreeBoundary.root_not_mem_nonRootValueFinset",
       "kind": "theorem",
       "source": "PaperC/Combinatorics/TreeBoundary.lean",
-      "line": 329,
+      "line": 330,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -35620,7 +35647,7 @@
       "name": "PaperC.abs_touchingProbability_sub_baseline_le",
       "kind": "theorem",
       "source": "PaperC/Probability/TouchingProbability.lean",
-      "line": 128,
+      "line": 130,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },

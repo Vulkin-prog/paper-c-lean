@@ -1,4 +1,4 @@
-# Generated deterministically from audit_config.json schema 5.
+# Generated deterministically from audit_config.json schema 6.
 # Schema v0.3: https://github.com/mathlib-initiative/formalization.yaml
 # Template commit: fab03cbbed1a5857de17af32de30421a734c77c6
 version: "v0.3"
@@ -2226,25 +2226,47 @@ verification:
     commit: "fab03cbbed1a5857de17af32de30421a734c77c6"
   toolchain:
     lean:
-      version: "4.32.0"
-      toolchain: "leanprover/lean4:v4.32.0"
-      commit: "8c9756b28d64dab099da31a4c09229a9e6a2ef35"
+      version: "4.33.1"
+      toolchain: "leanprover/lean4:v4.33.1"
+      commit: "819816b2e0a3bf405af45ae5c7af2491d8f5bee6"
     mathlib:
-      version: "v4.32.0"
-      commit: "81a5d257c8e410db227a6665ed08f64fea08e997"
+      version: "v4.33.1"
+      commit: "0df444a360eaa60ab8c11dca51a86af692955474"
+  core_source:
+    base_version: "0.48.1"
+    fileset:
+      - "PaperC.lean"
+      - "PaperC/**/*.lean"
+    file_count: 382
+    digest_sha256: "081fb4c78b76d0cfc5da9fd505ff8226b051269d6ebdc5e2bdc4ee207a8b4d69"
+    snapshot_kind: "migrated_current_core"
+    toolchain: "leanprover/lean4:v4.33.1"
+    historical_baseline:
+      source_commit: "9286f4a954ac128ba3d5edd1c1d25203f45c099f"
+      same_core_merge_commit: "ee2ac789764fe5d9fd19c96c6c0778a693b129a0"
+      toolchain: "leanprover/lean4:v4.32.0"
+      mathlib_revision: "81a5d257c8e410db227a6665ed08f64fea08e997"
+      fileset:
+        - "PaperC.lean"
+        - "PaperC/**/*.lean"
+      file_count: 382
+      digest_sha256: "3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137"
+      qualification_transfers_to_current_source: false
   comparator:
     source_snapshot_comparator_state: "definitions_and_digests_only"
     release_evidence_state: "external_to_source_snapshot"
     release_evidence_location: "release_evidence/v0.48.1/"
     packaging_commit_required: true
-    state_note: "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. release_evidence/v0.48.1/ applies only to the two historical Theorem 1.1 configurations and only through its validated single-parent packaging protocol. The three new Palomar configurations require their own Lean-and-NanoDa verification at the submitted immutable commit; neither the v0.48.1 package nor the published v0.48.0 evidence qualifies those new targets."
+    state_note: "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. release_evidence/v0.48.1/ applies only to the two historical Theorem 1.1 configurations and only through its validated single-parent packaging protocol. The three new Palomar configurations require their own Lean-and-NanoDa verification at the submitted immutable commit; neither the v0.48.1 package nor the published v0.48.0 evidence qualifies those new targets. The Lean/Mathlib 4.33.1 migration requires new build, audit and strict dual-kernel evidence at its own immutable commit; the preserved historical compatibility probe and release records do not qualify this toolchain."
     tools:
       comparator:
         repository: "https://github.com/leanprover/comparator"
         commit: "575674928e239f5bc452aab72d1dd7b0f1326494"
       lean4export:
         repository: "https://github.com/leanprover/lean4export"
-        commit: "4e7915201d3f9f04470d9eae002fa695f7cdc589"
+        commit: "15f6055e299ad5b89345e533cc2192f4cc00f659"
+        source_toolchain: "leanprover/lean4:v4.33.0"
+        build_toolchain: "leanprover/lean4:v4.33.1"
       landrun:
         repository: "https://github.com/Zouuup/landrun"
         commit: "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
@@ -2253,11 +2275,12 @@ verification:
         commit: "68d5ca9db226849b41a6fff59d796ff19d0a8840"
     compatibility_probe:
       status: "passed"
-      scope: "upstream Comparator self-test only"
+      scope: "Historical pre-migration upstream Comparator self-test only; does not attest compatibility of the Lean 4.33.1 toolchain or its project proofs."
       sandboxed: false
       counts_as_project_verification: false
       transcript: "comparator/transcripts/toolchain_compatibility_unsandboxed.txt"
       transcript_sha256: "2ee3dcde7fee2dc4a31b1cc4395ea9f5d31f2b2526741f6f18f6463991c25cd5"
+      applies_to_current_toolchain: false
     fileset:
       - "Challenge.lean"
       - "ChallengeTheoremOneFour.lean"

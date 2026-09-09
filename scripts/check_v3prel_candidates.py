@@ -20,8 +20,9 @@ import check_v3prel_sources
 ROOT = Path(__file__).resolve().parents[1]
 SUBMISSION_COMMIT = "c605f23466450a52999fcfb3c6d68ed8febc56bf"
 POLICY_COMMIT = "42cc43f70b1b019d20d4b64e9016396e666a6bc7"
-TOOLCHAIN = "leanprover/lean4:v4.32.0"
-MATHLIB_COMMIT = "81a5d257c8e410db227a6665ed08f64fea08e997"
+TOOLCHAIN = "leanprover/lean4:v4.33.1"
+MATHLIB_TAG = "v4.33.1"
+MATHLIB_COMMIT = "0df444a360eaa60ab8c11dca51a86af692955474"
 AXIOMS = ["propext", "Quot.sound", "Classical.choice"]
 PDF_HASHES = {
  "paper_C_version_3PREL_en.pdf": "0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7",
@@ -217,7 +218,7 @@ def pin_contract(root):
     require(len(mathlib) == 1, 'mathlib package missing/duplicated')
     m = mathlib[0]
     require(m.get('url') == 'https://github.com/leanprover-community/mathlib4.git'
-            and m.get('rev') == MATHLIB_COMMIT and m.get('inputRev') == 'v4.32.0'
+            and m.get('rev') == MATHLIB_COMMIT and m.get('inputRev') == MATHLIB_TAG
             and m.get('type') == 'git', 'mathlib pin/provenance changed')
     require(all(p.get('type') == 'git' and re.fullmatch('[0-9a-f]{40}',p.get('rev','')) for p in packages),
             'unpinned or non-git package')
@@ -315,6 +316,13 @@ def metadata_contract(path, config, family):
     return metadata
 
 
+def check_submission_checkout(contract_root):
+    require(git_output(contract_root,'rev-parse','HEAD') == SUBMISSION_COMMIT,
+            'submission contract HEAD mismatch')
+    require(not git_output(contract_root,'status','--porcelain','--untracked-files=no'),
+            'submission contract tracked files modified in worktree or index')
+
+
 def check_family(root, family, *, contract_root=None):
     expected = REGISTRY[family]
     config_path = contained(root,f'comparator/v3prel_{family}.json')
@@ -323,7 +331,7 @@ def check_family(root, family, *, contract_root=None):
     metadata_path = contained(root,f'palomar/v3prel/{family}/formalization.yaml')
     metadata = metadata_contract(metadata_path,config,family)
     if contract_root:
-        require(git_output(contract_root,'rev-parse','HEAD') == SUBMISSION_COMMIT, 'submission contract HEAD mismatch')
+        check_submission_checkout(contract_root)
         sys.path.insert(0,str(contract_root.resolve()))
         from scripts.submission_contract import load_formalization_metadata, normalized_provenance
         from scripts.verify_submission import load_comparator_config

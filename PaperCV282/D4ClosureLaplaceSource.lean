@@ -76,7 +76,8 @@ theorem centered_pairing_eq_shifted {N d : ℕ} (hd : d ≤ criticalBase N)
   congr 2
   apply Prod.ext
   · rfl
-  · dsimp [excessShift,movingLength]
+  · change (((criticalBase N - d + j.2.1 : ℕ) : ℤ) - (criticalBase N : ℤ)) =
+      (j.2.1 : ℤ) - (d : ℤ)
     omega
 
 /-- Finite projection evaluates the test exactly when all higher levels vanish. -/

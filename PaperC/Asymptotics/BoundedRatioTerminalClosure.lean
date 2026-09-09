@@ -303,8 +303,7 @@ theorem card_completeBoundaryLabelStarts_le
         (Finset.univ : Finset (Fin (L + 1))).biUnion fibre := by
     ext x
     simp only [completeBoundaryLabelStarts, Finset.mem_filter,
-      Finset.mem_biUnion, Finset.mem_univ, true_and, fibre,
-      IsCompleteBoundaryLabel]
+      Finset.mem_biUnion, Finset.mem_univ, true_and, fibre]
     constructor
     · rintro ⟨hx, i, hi⟩
       exact ⟨i, hx, hi⟩

@@ -125,7 +125,9 @@ theorem relationSignedSum_eq_sum_relationCharacter
     (F := relationSpaceFintype A)]
   · simp only [relationCharacter_apply]
   · intro u
-    simp [RelationSpace]
+    rw [Finset.mem_filter]
+    simp only [Finset.mem_univ, true_and]
+    rfl
 
 /--
 A relation-character sum is the full power of two for the trivial character

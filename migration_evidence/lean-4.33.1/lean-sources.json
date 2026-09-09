@@ -1,0 +1,4690 @@
+{
+  "captured_at_utc": "2026-09-09T19:10:23.676617+00:00",
+  "scope": "Final read-only snapshot after successful strict comparison",
+  "files": [
+    {
+      "path": "AuditCheck.lean",
+      "sha256": "06b0e98117320a6fb9fae4cd4ff67ace97619a82f64ced2ef617ee58df6b3d79"
+    },
+    {
+      "path": "Challenge.lean",
+      "sha256": "f0b8e9ec9ad09b8c1be326c19b7d2e1fad71113a210633624b7abe6e41083a1d"
+    },
+    {
+      "path": "ChallengeTheoremOneFour.lean",
+      "sha256": "7fff15c47a2b652f0ca2f061a49c3e7df6794b4b37d75278283640e6975e6050"
+    },
+    {
+      "path": "ChallengeTheoremOneTwo.lean",
+      "sha256": "5617db8378bf3ecd3f6e654aea114f3e5302c9847c274a86686c3a7539c33666"
+    },
+    {
+      "path": "ChallengeTheoremSixteenTwo.lean",
+      "sha256": "9a82fd5e48fd60b0ca9626e0eda6922384e611190f77ae028c0e2728736e0799"
+    },
+    {
+      "path": "ChallengeTransfer.lean",
+      "sha256": "7f86a169def2ef36984b25a5478be2d8ff09d2b5eea317fea4f192e5299e6ecd"
+    },
+    {
+      "path": "ChallengeV3Boundary.lean",
+      "sha256": "70fb71d1d5cc92204f3192e69e24a606c11d48700964d5f1156455d677c9ee06"
+    },
+    {
+      "path": "ChallengeV3CriticalField.lean",
+      "sha256": "91682763d648f0a7f71b37c7256c6e471ce162b3ee0f3decef2b46bb61f8cab8"
+    },
+    {
+      "path": "ChallengeV3Crossover.lean",
+      "sha256": "57e95935368b954a6e880b018680509dfb9ed27f218dacc58a195bf603aab53d"
+    },
+    {
+      "path": "ChallengeV3Limits.lean",
+      "sha256": "f14174abb3b8cf09d47424d6ca85dd635c4558b7a9d11dc02ea5350215104374"
+    },
+    {
+      "path": "ChallengeV3Patterns.lean",
+      "sha256": "59b2804906fbcaa6c931c119a1d32916c56fdc62565c2931d2cb72422385b7b5"
+    },
+    {
+      "path": "PaperC.lean",
+      "sha256": "b998ac07c0111517d2a08b4bdd12e2d7fa6eee7646c23d37efe31636a492cf60"
+    },
+    {
+      "path": "PaperC/Affine/CanonicalRationalCode.lean",
+      "sha256": "00dbf2d3858367f7dbfe2305fe1f194b06050d518ca5c50f9b278a72da521d2e"
+    },
+    {
+      "path": "PaperC/Affine/Fourier.lean",
+      "sha256": "ab6cce992c5510b967c4d1d09d5e76fa67af4087271c14909a5ea38b06344b5e"
+    },
+    {
+      "path": "PaperC/Affine/Normalization.lean",
+      "sha256": "5b683a784d3707474aeada5a297f089aa0f4159c4aa7eaa72f27a610a5537809"
+    },
+    {
+      "path": "PaperC/Affine/Probability.lean",
+      "sha256": "753967de44f958730debd3f9b2f39e681eb841946ac003b887f691be30e6f142"
+    },
+    {
+      "path": "PaperC/Affine/RationalChannelCode.lean",
+      "sha256": "1cae3715df238d42e348ee51d2c2657cd94f34ce1646b95a627be71491a7981e"
+    },
+    {
+      "path": "PaperC/Affine/RelationBoundaryIff.lean",
+      "sha256": "54e5e0cb5ad3bb143992c3756d27f967fc9706e406cd794850c45eecbd87598e"
+    },
+    {
+      "path": "PaperC/Affine/RelationalPrimeAssignment.lean",
+      "sha256": "7903cafbb75bed43225a95ddc91b80e12c687f961578f217463755c08bc23bfc"
+    },
+    {
+      "path": "PaperC/Affine/StartBoundaryRange.lean",
+      "sha256": "7fae2384daf03a46f65d6e54eafa4b44dd1b461436d42e33c064c377580d0d79"
+    },
+    {
+      "path": "PaperC/Affine/StartDefectRank.lean",
+      "sha256": "7afc64cf74f3c7ec9d7f51b212df1c18f3f71dbe5bbafc1c44bee0a3fefa0c10"
+    },
+    {
+      "path": "PaperC/Affine/StartSystem.lean",
+      "sha256": "4520eb7f3ca0f73bc9f482e61a5ae4dd4300309f7d38f74988b87d6ed459daac"
+    },
+    {
+      "path": "PaperC/Affine/System.lean",
+      "sha256": "a9894d01a4c0977d85a755d4bbc2d8ecdad5bd298e2d05445ea720d7049fe3e7"
+    },
+    {
+      "path": "PaperC/Affine/TouchingDefectRank.lean",
+      "sha256": "e8e65f3c380b2c69b6679c6851d8c499da04e8d65645c50b8ca6cb91bc7b4ded"
+    },
+    {
+      "path": "PaperC/Affine/TouchingSystem.lean",
+      "sha256": "c97e93a1956c3915e11f2ddd1eefdb78f69351bd26ea66dfa2c952c73818c43b"
+    },
+    {
+      "path": "PaperC/Affine/TwoStartSystem.lean",
+      "sha256": "b57844b89ede072ccfc621b958d8ea06b84784d35f04fee555fe09be36bfab24"
+    },
+    {
+      "path": "PaperC/Algebra/IntegerPolynomialRootBound.lean",
+      "sha256": "86d1056c0bb4cdd24cb5fcfe23e5d6b2fa363d163eaa11eb6261fae5e021d701"
+    },
+    {
+      "path": "PaperC/Algebra/PolynomialHeightOperations.lean",
+      "sha256": "351ed7eeb2bf7b60b566d11895f0ec4352757596dd79dfa4cd4b216ceb8c2abf"
+    },
+    {
+      "path": "PaperC/Algebra/RungeBound.lean",
+      "sha256": "3362a0f32d9d65e4b8a75c9e016b05ded5fbe02c85ae44d7c4a453d0b907218a"
+    },
+    {
+      "path": "PaperC/Algebra/RungeDichotomy.lean",
+      "sha256": "1ef294ce56a00b32e86fcbe97aa172157e07bb69d9c65f720ae027b8e66c478d"
+    },
+    {
+      "path": "PaperC/Algebra/RungeEquality.lean",
+      "sha256": "609b8731090fac3735b6e7067db32e63febbd4d79cc38978f8bb7703a1d3633c"
+    },
+    {
+      "path": "PaperC/Algebra/RungeNonEquality.lean",
+      "sha256": "2ce3abd7f4a894927bf851fa9f3271a7e1f8357fbcaed2f1dbbb0605b0635e40"
+    },
+    {
+      "path": "PaperC/Algebra/RungeQPolynomial.lean",
+      "sha256": "53d821c9d79d2a62b7e421d4b483630e1742826166ea691a5c2f3574e3055515"
+    },
+    {
+      "path": "PaperC/Algebra/RungeSplitProduct.lean",
+      "sha256": "51bcd3b277f07b507bded574fc880b000727c4d6b67c0b892dd56544ef95f636"
+    },
+    {
+      "path": "PaperC/Algebra/RungeTruncation.lean",
+      "sha256": "2b63779267dfd0ae284374ceb9f4481fa5fbd8123c8dfda7447fdb553ae4c67e"
+    },
+    {
+      "path": "PaperC/Algebra/RungeTruncationBounds.lean",
+      "sha256": "1cfe9493941746ec31c3b6d46da6f81f194bb4a930ca01d6dae8ba1c64f99e5d"
+    },
+    {
+      "path": "PaperC/Analysis/CriticalPointwiseIntervals.lean",
+      "sha256": "a21b9df8c7a687cddbad810914c2c3d2a636ac27ee824f3a753fe78ae1faab8e"
+    },
+    {
+      "path": "PaperC/Analysis/CriticalTouchingPairs.lean",
+      "sha256": "4001fd226f27b81b2fb1399011e52a0fbb1ae7ce1258341b2e6171d18dfbf83c"
+    },
+    {
+      "path": "PaperC/Analysis/CriticalWeightedDefect.lean",
+      "sha256": "902bcd245205df555d8302be2b74a4a51b44ea5e2862defb9a5413e6063f0a23"
+    },
+    {
+      "path": "PaperC/Analysis/CriticalWindowParameters.lean",
+      "sha256": "8ae856f79c3d23ba1af8e36170e2b41b17576d9eb5985764ab2a70fa8f3f6edf"
+    },
+    {
+      "path": "PaperC/Analysis/CriticalWindowScale.lean",
+      "sha256": "fb7eaf81a843a96c7fb689be554f3023b522e25f37ada11c2bd9bb31c7220d13"
+    },
+    {
+      "path": "PaperC/Analysis/DefectGlobalBound.lean",
+      "sha256": "b3982df28db61cb82f3bfe75e8d9d37ce0b42cd43c1ab26cf11011194acf8733"
+    },
+    {
+      "path": "PaperC/Analysis/DefectPointwiseRate.lean",
+      "sha256": "c1d5b797be1fd278a023d21831bd438495a0e71d225b907b3dc0c00e3f799f6d"
+    },
+    {
+      "path": "PaperC/Analysis/DependencyEdgeBound.lean",
+      "sha256": "9cddaf282c6b72288b823ecf368632ad1f801f2cc3ab7c3ce0647dbbc73c9abb"
+    },
+    {
+      "path": "PaperC/Analysis/ExponentialSeriesMajorant.lean",
+      "sha256": "c389d882c5e5ee0376c13087de9905413c7defa40e4d510148cc7805f071e6fa"
+    },
+    {
+      "path": "PaperC/Analysis/GeometricTail.lean",
+      "sha256": "b5545f7b032203f5c538d8e59d704ef1542aa45a48a7c5a49fcffda470c66865"
+    },
+    {
+      "path": "PaperC/Analysis/LargeEulerProduct.lean",
+      "sha256": "b90f98416b43f3ccd06aa583a488bd0ed60209d85a44857a1e291dcef8f68fdc"
+    },
+    {
+      "path": "PaperC/Analysis/PrimeReciprocalSqrtSum.lean",
+      "sha256": "52be06eb027f33e35eb7e75b16ca7275e1b683feb0b828ba63f5b755d635bb54"
+    },
+    {
+      "path": "PaperC/Analysis/ReciprocalSqrtSum.lean",
+      "sha256": "2efb2bc013319e4e6eb6690fe4cafba3d4e0a6929e02bd37770adfa50ea541ac"
+    },
+    {
+      "path": "PaperC/Analysis/ReciprocalThreeHalvesTail.lean",
+      "sha256": "63b2743f9d29083c5c75580f3a61b32c85a9f4cc53e6e3de14055c6ff9f934b7"
+    },
+    {
+      "path": "PaperC/Analysis/RelationalHostBound.lean",
+      "sha256": "9ef4f16f3be22c146fb7a6260036a11bf7eae4ac02e57c6e1d407bb28695739d"
+    },
+    {
+      "path": "PaperC/Analysis/RelationalInterpolation.lean",
+      "sha256": "bb6b424abddc4f8f5b7ec4b4d111ce01f4b98584d19ebd87823db0ad6da247a0"
+    },
+    {
+      "path": "PaperC/Analysis/RungeAnalyticProduct.lean",
+      "sha256": "c1a8cb24ee32b237d5c4c11a6e1b8ae77e10f8e6e96ed9c079328ea12bba3c5c"
+    },
+    {
+      "path": "PaperC/Analysis/RungeEstimate.lean",
+      "sha256": "8b0d7bb362bb5061bdd07119e5958be69a7a1d9aaec3e8adc121fdcd6a8c6367"
+    },
+    {
+      "path": "PaperC/Analysis/RungeLogarithmicGrowth.lean",
+      "sha256": "387fa1d12a80304e05b5ff83b3ea66145f86aed8b3c74e6bc236b0789a246e25"
+    },
+    {
+      "path": "PaperC/Analysis/RungePowerSeries.lean",
+      "sha256": "e151911e2b1755786ad308d2cc457735e876509e25fdd032f4f4235e0de2c617"
+    },
+    {
+      "path": "PaperC/Analysis/RungeScaling.lean",
+      "sha256": "f66b5ea0c9010af4955031ed4c03bfbccd7137ca6a3e21d4ceb8a6b8098e552b"
+    },
+    {
+      "path": "PaperC/Analysis/RungeTailEstimate.lean",
+      "sha256": "537610f516721f47a255b11fa88a10194ecb992afa424592edb0d47a8fd665e8"
+    },
+    {
+      "path": "PaperC/Analysis/SmoothEulerProduct.lean",
+      "sha256": "b5f3aa707a3be6ddf959304a3bca9b07a364a93e0823eb66f4997beb770a286b"
+    },
+    {
+      "path": "PaperC/Analysis/SpatialMarkedParameters.lean",
+      "sha256": "04846dadc7ec8fa47c2b6694be90b0333dc8aa1901181879d3633d34c2ff8e13"
+    },
+    {
+      "path": "PaperC/Analysis/SpatialRiemannSums.lean",
+      "sha256": "c38d1cc5f88d4be486ca146031eb92e50d0527db5ad8dece3f721008becea2db"
+    },
+    {
+      "path": "PaperC/Analysis/TerminalPrimeCutoff.lean",
+      "sha256": "7bc70c652182a6c1d39673442a26dbbd9f12338ea7d749825ff92f8825609f1a"
+    },
+    {
+      "path": "PaperC/Analysis/TouchingMass.lean",
+      "sha256": "5168b4e45d2d52ec770f359a7dbb71511603d855baaac29e5eb8a90d258a516c"
+    },
+    {
+      "path": "PaperC/Analysis/TouchingWindow.lean",
+      "sha256": "dc6a33257b0452bc9395817376d6ba00f15ef7ac95680bf22ab9f45b28d6ad48"
+    },
+    {
+      "path": "PaperC/Analysis/WeightedDefectMass.lean",
+      "sha256": "5bf96b2d9706e19bf536c764ad4af858ee1e24a4900fe34fbd8ad306c9a16c15"
+    },
+    {
+      "path": "PaperC/Arithmetic/BalasubramanianShoreyInput.lean",
+      "sha256": "f417bb668b5d6dc49bd4f606f165d5ef8e60b0c6a1441c7c914e6e2afe20ecad"
+    },
+    {
+      "path": "PaperC/Arithmetic/BalasubramanianShoreyMaximum.lean",
+      "sha256": "ec36d27d2b8b44309fd8adc27e738612c030d1e3b7ca0f9a33f10f6b6587167f"
+    },
+    {
+      "path": "PaperC/Arithmetic/CRT.lean",
+      "sha256": "acc269f13d9d32a3ffd528276258e8a45f7a30bea77acd230dcf27c6a40cf213"
+    },
+    {
+      "path": "PaperC/Arithmetic/CanonicalChannel.lean",
+      "sha256": "99e1aa9c42a46700b3d949a471db4dd74c5540627bbf52505083fcc50ba5349c"
+    },
+    {
+      "path": "PaperC/Arithmetic/CertificateCount.lean",
+      "sha256": "74b889b8b12867c145cca39a00b82a13a2c6096c03f0e042352a427f57677a93"
+    },
+    {
+      "path": "PaperC/Arithmetic/ChannelCount.lean",
+      "sha256": "c73e7f170ee0ffbca5cc578c585d29c8915a7d41d7b774881d0a544936a47abc"
+    },
+    {
+      "path": "PaperC/Arithmetic/ChannelEnumeration.lean",
+      "sha256": "796efb67273b29297299da92b393495d6147086df69e6f89053a53adeda269c8"
+    },
+    {
+      "path": "PaperC/Arithmetic/ChannelGeometry.lean",
+      "sha256": "5d2d75b61fc37117018dd190e9dfbee703d8383d23bbfe3e8100aba5e55642c5"
+    },
+    {
+      "path": "PaperC/Arithmetic/ChannelMultiplicityBounds.lean",
+      "sha256": "3bf9df510b4c518600a71d75761c6e537dadb3edaf273f10f1e219cfe4e53b41"
+    },
+    {
+      "path": "PaperC/Arithmetic/ChannelStartPairs.lean",
+      "sha256": "b54c163a908cdeb253033ca39d3fe011dc22e46e007746db9e3cd7c486af7749"
+    },
+    {
+      "path": "PaperC/Arithmetic/ChannelUniqueness.lean",
+      "sha256": "c3474e3ed88c7d3a00fa663deb832f3c6c634df2bf862b0a38a1ff58f5e0c050"
+    },
+    {
+      "path": "PaperC/Arithmetic/ChebyshevPrimeCount.lean",
+      "sha256": "49681dd1dee2464ed61f9f4bf5ea878daf55295f9070baf8c25a694b4d7ec730"
+    },
+    {
+      "path": "PaperC/Arithmetic/ComponentSquareClass.lean",
+      "sha256": "817f7af5ac310fd9f44f2b98d3b2887c221c045ecdaeacd03214a075c8a8b568"
+    },
+    {
+      "path": "PaperC/Arithmetic/DefectCounting.lean",
+      "sha256": "cfe09aa72e44ca1f13d275bd949bfbe0757ef2255399616ae80e2a81e34a1c1e"
+    },
+    {
+      "path": "PaperC/Arithmetic/DefectParitySupport.lean",
+      "sha256": "f350047ea06c847377bf3211932901a5b46f7c78fafddcf2de3a306193fd0e55"
+    },
+    {
+      "path": "PaperC/Arithmetic/DefectivePredicate.lean",
+      "sha256": "2a2e978fd8960e7531f73d2955cf3634d3fc97bd89a46bcb985fc0c0b64f93e0"
+    },
+    {
+      "path": "PaperC/Arithmetic/DyadicGap.lean",
+      "sha256": "442bf55a94f4509ea6a3adb5c9b468c19327e3a33921a652989c5a3ec46c2c4b"
+    },
+    {
+      "path": "PaperC/Arithmetic/DyadicPrimeReciprocalSums.lean",
+      "sha256": "67eb34cb03aa10dfebf935a389b56c3085a969807edcacedabdce7566e1ce8e3"
+    },
+    {
+      "path": "PaperC/Arithmetic/ExactUnitLargeKernel.lean",
+      "sha256": "2457f0a9f3a4b9be79e7000e44fb7ef508a331849fb1a58fdac80f9ac6275ab7"
+    },
+    {
+      "path": "PaperC/Arithmetic/HeightTwoPairCount.lean",
+      "sha256": "48feee291f231836784ae33cbcb8a3abce5d2e0aae983cc7fa7866efc980873d"
+    },
+    {
+      "path": "PaperC/Arithmetic/IntervalCongruence.lean",
+      "sha256": "6f5b2c795bcb3eea0fcdcbfa51ab73bfe31aafdeba9d42274410760ee1acda8d"
+    },
+    {
+      "path": "PaperC/Arithmetic/LaishramShoreyInput.lean",
+      "sha256": "4a0a23876b30493bc5288683d9014cc2cd6af87b5ee7e19c61b1ca872a36dc70"
+    },
+    {
+      "path": "PaperC/Arithmetic/LargeKernelWeightedCounting.lean",
+      "sha256": "bd8ab0564ad7f684c9ed9a05bdff4cf9c0676a180dd93ce4351934ce1abb8fcc"
+    },
+    {
+      "path": "PaperC/Arithmetic/LargeOddKernel.lean",
+      "sha256": "6f6f424bfd7399f207c3932e44cb55fe2407b1c13deb1aab083ee4eb51cb0a99"
+    },
+    {
+      "path": "PaperC/Arithmetic/LowZonePrimePivots.lean",
+      "sha256": "185ec4daae8f5ce696ceca7887df4068317fafb9b0f2f548e9d45e55b9483b28"
+    },
+    {
+      "path": "PaperC/Arithmetic/ParityVector.lean",
+      "sha256": "3d0b78a6b6e57ac0d1067d94ac3624184a08d9f011fd649de59d5e3c3ce5739e"
+    },
+    {
+      "path": "PaperC/Arithmetic/PolynomialZoneLargePrimes.lean",
+      "sha256": "644888b151ee9fc9cf079182d066d92f686d48da4140319d437135c2a8e66e73"
+    },
+    {
+      "path": "PaperC/Arithmetic/PrimeCountBridge.lean",
+      "sha256": "d48e4ad9c3d72e06bb696e6b6f333df1f0e8585da3457283fb6cbc03f8225b68"
+    },
+    {
+      "path": "PaperC/Arithmetic/PrimeFactorsFactorialBound.lean",
+      "sha256": "f08a06b8516de0aff4c9f7f90438ba3104612ec6639bf6f4eae0ea1a9f9d1aa0"
+    },
+    {
+      "path": "PaperC/Arithmetic/PrimeNumberTheoremInput.lean",
+      "sha256": "b3378691d96b4339c35343af538e772955ad58a3005538ae1786292d66ae4a6d"
+    },
+    {
+      "path": "PaperC/Arithmetic/PrimesUpTo.lean",
+      "sha256": "e57dd52255d4c9b2a4dcb9f4be67983f7beef41f0e9edc86e7cb51496863998a"
+    },
+    {
+      "path": "PaperC/Arithmetic/RationalMassFinite.lean",
+      "sha256": "78cff57b81d2549f072801fe9ac6fb77a7195f4bf48a4b77f896b0f49b3c0294"
+    },
+    {
+      "path": "PaperC/Arithmetic/ResidualChannelCells.lean",
+      "sha256": "f3074a7d404e67f8602131cf5ba3f7b99cad50e55036ac5f7688b0274f164bda"
+    },
+    {
+      "path": "PaperC/Arithmetic/ResidualChannelCount.lean",
+      "sha256": "4348f523e58d5333530a1dbdda648a3c251554580a6da00f97dc8c85a026a691"
+    },
+    {
+      "path": "PaperC/Arithmetic/ResidualChannelLemmaSevenTwo.lean",
+      "sha256": "7acf9e9d93fcbe1405e1d08a223de5fee093c3b7b6ae248effd4e204a78ab4f8"
+    },
+    {
+      "path": "PaperC/Arithmetic/ResidualChannelSupport.lean",
+      "sha256": "8bbba326e4b19bbe3a3e142a16a896b9f55f555d883fc05d72db02f76ed2d0a9"
+    },
+    {
+      "path": "PaperC/Arithmetic/ResidualPrimeMass.lean",
+      "sha256": "03a2639df5bee8a40d45565943ca98d847d8ed09bb06d235e52ec44e93bf9d60"
+    },
+    {
+      "path": "PaperC/Arithmetic/ResidualVertexPrimeCellCount.lean",
+      "sha256": "1d5e9dda94c32a1b818347034943355e788300d7219f644eecc4733504c7ea9d"
+    },
+    {
+      "path": "PaperC/Arithmetic/RungeNumerics.lean",
+      "sha256": "143b6ab5bef46cc6373045f3a3c9553283005db31145906750d7baa178f2bd79"
+    },
+    {
+      "path": "PaperC/Arithmetic/RungeTranslation.lean",
+      "sha256": "7b04e32387963689b64a58889fb2e66ff80307128e8d736d338d06a17940ee99"
+    },
+    {
+      "path": "PaperC/Arithmetic/SeparatedSmallChannels.lean",
+      "sha256": "36d809967f55c7db3f93c5ede5a77325b661dc87730f9b51a11f169bf2c31e7d"
+    },
+    {
+      "path": "PaperC/Arithmetic/SquarefreeSmoothCount.lean",
+      "sha256": "630a7ad71bf8944e9f49a08587442fffd64b41520ea39db3305905effc1a66b9"
+    },
+    {
+      "path": "PaperC/Arithmetic/StartResidue.lean",
+      "sha256": "fea17ad6d7c736c0dab8011a953f95cf054f5d437e74d5ba4fcbe4b9da7a963c"
+    },
+    {
+      "path": "PaperC/Arithmetic/TerminalKernelCount.lean",
+      "sha256": "5713e8668f8fe0933e66b295efaff4a267c4d21c1a73019bc06d0e674dbda7df"
+    },
+    {
+      "path": "PaperC/Arithmetic/TerminalMatching.lean",
+      "sha256": "c134792b8266d608a783ff26bfa7ec6d45319dec2b6ff44237a20644d883835c"
+    },
+    {
+      "path": "PaperC/Arithmetic/WeightedChannelMass.lean",
+      "sha256": "b78825cb86a7ddcfc2ad54f6890bf02373106772b96d85f851fbb8dcf0c2ea7f"
+    },
+    {
+      "path": "PaperC/Arithmetic/WeightedDefectCounting.lean",
+      "sha256": "3ddc3b11b56baf20b9bacddb9757caea20dcfa91016c1519090bfbaeb2dff61c"
+    },
+    {
+      "path": "PaperC/Arithmetic/WeightedResidualChannelMass.lean",
+      "sha256": "8590813eb2a1ffd45dc493ed1d52a89c4ac98065841aec001712108d4a311029"
+    },
+    {
+      "path": "PaperC/Asymptotics/AlignedRungeGrowth.lean",
+      "sha256": "bc21e5f4c60eb5e22a811ce14ebfaf3d8d0e5131af2e62d3a4a86dfd38ad5e00"
+    },
+    {
+      "path": "PaperC/Asymptotics/BadStartMassCritical.lean",
+      "sha256": "2d7f03e53dc1ca111acfaac8138d11652f09234d53e830f955591ad81ffaef3e"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioBadStarts.lean",
+      "sha256": "81b57769e27b408fda88d29c4c658813617cce02255ca7d8d88733372e5c4133"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioComponentHosts.lean",
+      "sha256": "b19acacea309c65896ca9f220bbf540bdb56f7fb20989de797193923deddce08"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioComponentNormalization.lean",
+      "sha256": "5382c470a486ae0750bd41b4273eeaed3e2ab80ae6bde5092f4efbcda7a56cfa"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioCorrectedDefectEnvelope.lean",
+      "sha256": "2f55943c97d8cdf0c88a0abb7a069ae50ac8b55df6f90640eebf5f0901f4124f"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioDenseQuantitative.lean",
+      "sha256": "a6d07f2b641123c2a687a91fb84af8b8dd92f783e3db5cdbd92f01584e541776"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioDistinctKernelTwoDefects.lean",
+      "sha256": "285034bbf26a874ac886a7c57ace8a1e442ee9f9b21637c6f3b55328403f07b5"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioElementaryQuantitative.lean",
+      "sha256": "b286da43b3fd84eaaf24e338a7de875704340b94e8b27742534275a8db12b973"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioFixedJBadStarts.lean",
+      "sha256": "9d5e6eb12380dde5691a51a8f4f369723e40541817595bda079144a551b34121"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioManyDefectsAssembly.lean",
+      "sha256": "fe3cf2b170de26b9ab218f44e5dd3819926a267a5390ee2d6b74d244db172868"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioManyDefectsDegreeAssembly.lean",
+      "sha256": "41e0d5a8d3a0dc9c2119f8f28b7ed65e38f376b197ce3123d1154cab15f68abd"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioManyDefectsDegreeTwoSum.lean",
+      "sha256": "f7d282c11af95b72daec7c73c068421fb6d00fdf67771f7a2f2ef575057b8e54"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioManyDefectsEvertseSum.lean",
+      "sha256": "740ad7fb6ed696afad5fa41d7dccdd7e34aebe902403794e326c827f47a68d88"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioManyDefectsFibers.lean",
+      "sha256": "8789de928bc5439b1c81a61f6f381ae106d0956b3a26697c1cdf7e7a3150ad51"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioManyDefectsFixedFibers.lean",
+      "sha256": "de51d675125ee72b0a4552e3cf287e02b324b0eb8e296ac6408d8a28cf5dadef"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioManyDefectsRealFibers.lean",
+      "sha256": "3b787f0e5e34e8669aa0d8da0143dd1b5b2bd88818c2f1e35fa6ce7745f5c1a1"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioManyDefectsReduction.lean",
+      "sha256": "69619e2a3c2fe15e0885e2102bd73d526e5940398f06288f78f4bf9a39cff345"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioNonterminalAssembly.lean",
+      "sha256": "ce941533e9ee5f299ac0b649b0a56eb889baa0a3da011832828f0c166b0fafea"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioNonterminalCardinality.lean",
+      "sha256": "a159bd1464d292da7858783858f397365b5225f4d202d59a9d177bf08ab90c19"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioNonterminalClosure.lean",
+      "sha256": "827d20aa980615de306606a3ed8eae89c7c7feb138214df038ec93e51c60827f"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioNonterminalHostCounts.lean",
+      "sha256": "71a45a65472be57bd49e6451d1cfd95a5e5575b63613d52329fed0966542db96"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioNonterminalMobileAssembly.lean",
+      "sha256": "4737a293430c59e82d0606ee10e6948639524c3b8a4f8e13d7ac7d81e695066d"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioNonterminalRealHosts.lean",
+      "sha256": "0b439be8f777220f8d1cf700f4f89080a1a9522322566de41fc65c64bdafe887"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioPoissonAssembly.lean",
+      "sha256": "5da072bef3d2651f088651669e750bc065f02cefd93fe2883b4982c28707899b"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioRationalMass.lean",
+      "sha256": "e4f577c1b189034b94a8474666b65bab121007ae7991376f8f848216d5e24d4d"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioRelationalHostsCritical.lean",
+      "sha256": "41d7ba61a2656921e31424773749e15794969686b4761c4d30e078c6f2167e08"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioSectorAligned.lean",
+      "sha256": "70af20a48a8d8f89021c84e9d6ca9dc028b6ddd9542e146d26554bbd148b72e9"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioSectorClosure.lean",
+      "sha256": "de182bf499f8eb5fb3b527ea610b95cf2f953c8b034c5c8fafa734fb57be0005"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioShallowCoreSector.lean",
+      "sha256": "fd09dcfca1ecc064f4c9ea9a80745a5f8a663a5822d13cc753c20a31784c8a29"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioShallowCoreSigmaCritical.lean",
+      "sha256": "e8a7bb4b9cbaed64228249381399119e34babc7e1305d9c3b1fb962d0dc338ce"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioSmallHeightSector.lean",
+      "sha256": "cfe8dd7f9d5cfd6135a1731702625143caa2faae70400b4b8d9eb8ec033ed0e7"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioSmallProductSector.lean",
+      "sha256": "8fa2551b6d0e738b364ea82703cbe9d21daff3d8b55a3846e2aa986c0197fbd2"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioSteinChen.lean",
+      "sha256": "1e449de7a6a0b6f95401d6b46955cdf4dfc3f911e4c16ac689b0ac04906941f2"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioSteinChenRates.lean",
+      "sha256": "84e76320209f8a2b5a0b8624bf119fb5f78d7a09b6b041aedbb1cfdaf1d16af2"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioSteinChenSecondTerm.lean",
+      "sha256": "f29b99cc30b4d286d0c16bb106192f32e6e6d551b08735675df1a914dbda4af9"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioSteinChenSecondTermCritical.lean",
+      "sha256": "51b804096880a4317f29e65964b7dc4061952493f66d3738fbaf89f0324fe23f"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean",
+      "sha256": "0352986718a191260fe5d86db10ca7ec65f961045f396c81de54c56474488533"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioTerminalFibers.lean",
+      "sha256": "c4d73ed4e06454e49e2f182c94ca31c3cfccdb7c2d80d4786890c4933e325784"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioTerminalPartnerClosure.lean",
+      "sha256": "6a644c5a541d256bd6a1febece80d177f2d59a3996ac561bac4741e413e1fc7a"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioTerminalSummation.lean",
+      "sha256": "1e1369bf0fc09df2a38d4d1eac0e402eaa2a85d16c255bdcca7529017b6a45b2"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioTwoDefectStarts.lean",
+      "sha256": "c002a049de1110be43e268c66638d5d4277579da05fd847cdeffa18ede63b875"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioTwoSingletonCritical.lean",
+      "sha256": "e15571b0fa3981664a1a9a41e77580087ae31f06ebb453851a629c2e8c77a47b"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioTwoSingletonHosts.lean",
+      "sha256": "691256a987b04b10015d73ea59187d4b9a5800cca8f73fff277d120edfaedaa7"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioWeightedDefect.lean",
+      "sha256": "a2b485166d997cb1b453c0547e2fa6cc238f46952b875714d839a3234993b880"
+    },
+    {
+      "path": "PaperC/Asymptotics/CanonicalChannelWindow.lean",
+      "sha256": "5424c92d2d4b0cc9cff4e325f15a2b651eee37f7dc910e191e954c744ecd87d3"
+    },
+    {
+      "path": "PaperC/Asymptotics/CanonicalRationalCodeWindow.lean",
+      "sha256": "65d7baebf1263d0ddc608babddbc106b7dd1df52d7ddfbe032f2fcf8570bb8d9"
+    },
+    {
+      "path": "PaperC/Asymptotics/CappedRadiusDyadic.lean",
+      "sha256": "0627038d85b0322793305f8454fc52bcdaa1bb99ae267df882b5c9a3a6a08360"
+    },
+    {
+      "path": "PaperC/Asymptotics/ConditionalAGGCritical.lean",
+      "sha256": "01a430486baa30d1415b761dfc04cf3348a665c554df33afbfe193751e005ef4"
+    },
+    {
+      "path": "PaperC/Asymptotics/CorollaryFourteenEightCounts.lean",
+      "sha256": "c59543bfcfa6d8721ee40cd7ffd09afd9089286bd7af315d1d5b05bf9a789659"
+    },
+    {
+      "path": "PaperC/Asymptotics/CorollaryFourteenEightMaximum.lean",
+      "sha256": "ce89fdfd21f4ee30180fb80e7a913d9e150135fb7cf8b2d296dccd69a8ff8c55"
+    },
+    {
+      "path": "PaperC/Asymptotics/CorollaryPrefixLaw.lean",
+      "sha256": "f976b90c44d193a1e883ce89d752cf36eabf8354ee4c885a58db526a0a13aff3"
+    },
+    {
+      "path": "PaperC/Asymptotics/CorollaryPrefixLawCanonical.lean",
+      "sha256": "779b5f2325fadabf493547f0d40d444120142df353254dea7c2ea3aa71eb57df"
+    },
+    {
+      "path": "PaperC/Asymptotics/CorollaryThirteenTen.lean",
+      "sha256": "3f55764146295e905ab9e5f60c47e605b53653cd601697c71621d619a52c69db"
+    },
+    {
+      "path": "PaperC/Asymptotics/CorrectedDefectEnvelope.lean",
+      "sha256": "943d2163823085c3eaa0136a01bb5804b50ad95a5c954014cbf54e2b6f0da70d"
+    },
+    {
+      "path": "PaperC/Asymptotics/CriticalChannelPowers.lean",
+      "sha256": "58ce8e9fd385b694b00c9a5fec5370b6cdc03bd28d6aa343c69e9cde13c6ffe1"
+    },
+    {
+      "path": "PaperC/Asymptotics/CriticalRationalMass.lean",
+      "sha256": "414ce20d9791f294c297cb08f59f0632d06bec39754b7e90e258a6eeaf1d06b8"
+    },
+    {
+      "path": "PaperC/Asymptotics/CriticalRationalMassEnvelopes.lean",
+      "sha256": "fd5dd625596a3f73a0aae01467ff82458f27e02b05e73758c20190bf46057832"
+    },
+    {
+      "path": "PaperC/Asymptotics/DependencyEdgesCritical.lean",
+      "sha256": "366fb85be2a98e6cb1a74d8c431bfdc6dd67499b336b4253c6e1c2376714c1d7"
+    },
+    {
+      "path": "PaperC/Asymptotics/DyadicKappaQuantitative.lean",
+      "sha256": "e7d5674af01b86ee65a99bf18b362713b873a0e6ee677be5e37f661b990f16ed"
+    },
+    {
+      "path": "PaperC/Asymptotics/DyadicKappaTransport.lean",
+      "sha256": "384d45e8415d2ced1e2d7d1c2c7a8a7d2db4d89f15ba9eb33fcaf63f5dfbce15"
+    },
+    {
+      "path": "PaperC/Asymptotics/ExactLengthBadStartMassCritical.lean",
+      "sha256": "95e40576adfaf725ddc3b81bd1c3178d9c3d2075654a7cccfb032c0af57968d7"
+    },
+    {
+      "path": "PaperC/Asymptotics/ExpLogDivLogLog.lean",
+      "sha256": "b077a0bdb8fa2c421a329edc2a4081165dd5d3f4607e3e603c054a2def1c6089"
+    },
+    {
+      "path": "PaperC/Asymptotics/ExpSqrtLog.lean",
+      "sha256": "9133179f1b08c4ba6583a7250e6d4c643769081c7ecbbc78806c941aefcb577b"
+    },
+    {
+      "path": "PaperC/Asymptotics/FourPowLittleOHeight.lean",
+      "sha256": "55a8f9d5a8a529a3647dc1d87325bf19ed336608c0644ac62945902e80967c75"
+    },
+    {
+      "path": "PaperC/Asymptotics/HalfPower.lean",
+      "sha256": "c438a12f92c2ce718f25aed94609f832224439c05fd3af2570ae019d5b78bb8e"
+    },
+    {
+      "path": "PaperC/Asymptotics/HighZoneTwoDefects.lean",
+      "sha256": "71e590479f23746903d634239c09c187c9026404080654f604fdd6fadb1c6dae"
+    },
+    {
+      "path": "PaperC/Asymptotics/LemmaFifteenThree.lean",
+      "sha256": "c9833ebb3d03875304781fcbb108c4579a2d2304ad05e75cac2bbe72c6753ed1"
+    },
+    {
+      "path": "PaperC/Asymptotics/LinearPower.lean",
+      "sha256": "471a3d95693423229d6463448a17db3e1c52b3fdf1871dd951dc2cb4f6d6f2bc"
+    },
+    {
+      "path": "PaperC/Asymptotics/LinearProduct.lean",
+      "sha256": "35bd068e64d0baf8133c6dc5e94cea7918c7eb99fe7d27a457d21e243ee2fa5b"
+    },
+    {
+      "path": "PaperC/Asymptotics/LogLogRunWindow.lean",
+      "sha256": "bd06b00c7cc7c787c64f3b73e701b7c4a9a5d956c7ab898c8e0effb38b6c0d9e"
+    },
+    {
+      "path": "PaperC/Asymptotics/LowZoneCritical.lean",
+      "sha256": "25221ab0a6b410879b3b5099904589226b9b9667da6c1d1312f594e82ef77b38"
+    },
+    {
+      "path": "PaperC/Asymptotics/MarkedDetruncationCritical.lean",
+      "sha256": "ee25e36bf2f2b499795b6da72dc0a1a07a876c4c1fdf8c2679c1a9dba0b64a59"
+    },
+    {
+      "path": "PaperC/Asymptotics/MarkedLaplaceCritical.lean",
+      "sha256": "ed5872cf69f7760f5c5b79e229b34c3141d93c38fd7072becc11c2fcbfe59e28"
+    },
+    {
+      "path": "PaperC/Asymptotics/MarkedSteinChenCritical.lean",
+      "sha256": "361ac6b24924838d3270f364051371bae1175653d6035fb07de9465e797ed0ad"
+    },
+    {
+      "path": "PaperC/Asymptotics/MaskedFirstMomentCritical.lean",
+      "sha256": "3fecfc396fcd70d9856ed3ea6abbe4bb9a76ce006486fbb1973706b94fd74ead"
+    },
+    {
+      "path": "PaperC/Asymptotics/MaskedPoissonCanonical.lean",
+      "sha256": "c5b78d83c5fce77d2266b105dc7e1a6f31b6329da770cb5674f9105eda220dfb"
+    },
+    {
+      "path": "PaperC/Asymptotics/MaskedPoissonCritical.lean",
+      "sha256": "01a78798a47f32a1adc12ef4e2b10ef3c980ae37b43fb44bf4f38767da069487"
+    },
+    {
+      "path": "PaperC/Asymptotics/MaskedPoissonRate.lean",
+      "sha256": "1382889935c4f0cf1b3c9bee7c2ec9c72c9d395647daab43905d373c8fdb6264"
+    },
+    {
+      "path": "PaperC/Asymptotics/NonterminalSectorSaving.lean",
+      "sha256": "6dbbaa93dad87f034c5d49320afc48a2b8aee19c580abc67a67836caa588e0c8"
+    },
+    {
+      "path": "PaperC/Asymptotics/PolynomialZoneCritical.lean",
+      "sha256": "8e5ed00bf4d2a6d483fd9ef7f50fa3ea3c2d9e092c7b0f31d1bd9a422e0e8b86"
+    },
+    {
+      "path": "PaperC/Asymptotics/PolynomialZoneSum.lean",
+      "sha256": "3e5bfa12bee04f4dcc3ba17fb26dfb6c425e5b1b2e1dac102e88158244615579"
+    },
+    {
+      "path": "PaperC/Asymptotics/PositiveSigmaQuadraticCritical.lean",
+      "sha256": "d38304e90ab70f9b9228f374c6909d0d806c9bca8095b9426b2b17f073b8dc2c"
+    },
+    {
+      "path": "PaperC/Asymptotics/PrefixBoundaryProbability.lean",
+      "sha256": "bf3d122b8e5d61cf886164bc122161f1d10f139363c5735f60bb29b0da7a1e7e"
+    },
+    {
+      "path": "PaperC/Asymptotics/PrefixOverflowCoupling.lean",
+      "sha256": "a6a965f21b7e2e3b1847441f2c23c6abb6ad5d97ec5a5f77baf7525f25be1a67"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionElevenThree.lean",
+      "sha256": "3c4bf9834c271a5d923ff22a82f6a41d04e93eb417e1baad25290ecd2aa8c7b8"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionElevenTwo.lean",
+      "sha256": "f4ab6d8a12a128ad7a014b42bc3d25ecf6eda2b027f7d2b5cbb2272d175c5b65"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionFifteenFive.lean",
+      "sha256": "7baeca0521e60bb9bab733426ce507c136004181c8c2cece65cd6cea0f30c434"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionFifteenFiveClosure.lean",
+      "sha256": "26a879f4e0ce65c7fb377130e2e33ca71a0898dab9b2bf9a48ceab57ea632f38"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionFifteenFiveDecay.lean",
+      "sha256": "be41aadfc3bc4d173c6e65863a735b61f41155103362f9e14c8b8d9e2404f8de"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionFifteenFivePartition.lean",
+      "sha256": "59337f1b5c4dd6a2e8a7115738d09b03f55676c7d8f93a6737b27c0dc3a42477"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionNineNine.lean",
+      "sha256": "ed29d75bcaf6f7f7a0047e82a8ff06fd498df91e31e41170ebf61c1607953d4c"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionNineNineHostGeometry.lean",
+      "sha256": "1f58e72282c8fdd5b55ba6536ca69a43575e7d77dcf9c9379271e59a96a81427"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionSevenFiveCritical.lean",
+      "sha256": "0e4e79f439bfad9dfb2cabd283bbb752e641d5ba48d660dde82a50487389175a"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionSevenFourCritical.lean",
+      "sha256": "6c3dd540db770ae9cf6d58a07cff2c4f1c9e4a3a6dfaf2d0b9045cc19cce4199"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionSevenThreeCritical.lean",
+      "sha256": "092817dc42007008b946323f4e5067d2865c86c2d7d59ca5226a1b5ae2f8743a"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionSixteenOne.lean",
+      "sha256": "2b876ebc654c9866e4104bda3acba8c0bc4c1a0bbbfa5ba2d2d31c724004a2dd"
+    },
+    {
+      "path": "PaperC/Asymptotics/PropositionSixteenOneCore.lean",
+      "sha256": "a7e65aec14e72cfeb6cdab0241b49ff0cb2ce75e00e2b066d104c9d4b1fc4b28"
+    },
+    {
+      "path": "PaperC/Asymptotics/QuadraticAndInterpolationClosure.lean",
+      "sha256": "dec56c078477d511f28f173bcf4a02fcb58dcc72a2f0d2bed578ec70996de0ad"
+    },
+    {
+      "path": "PaperC/Asymptotics/RationalPowerClosure.lean",
+      "sha256": "7dbe4cfa22f4629f1a8e82b03c68a5c91560332a34a6f42f3a39acf71523a4dd"
+    },
+    {
+      "path": "PaperC/Asymptotics/RationalPowerLittleO.lean",
+      "sha256": "69dbdffefed48e811d2ad9958dbcbbcca63fbb06625baf17b78be67d043c2dee"
+    },
+    {
+      "path": "PaperC/Asymptotics/RationalPowers.lean",
+      "sha256": "b5477ab0a0a94998433f86f1df1eaf7323b583c45517940dd6073dc3e4780ce7"
+    },
+    {
+      "path": "PaperC/Asymptotics/RelationalHostsThreeHalves.lean",
+      "sha256": "3222a3aa2dc514bc7066b89bde9d50678b75c42c57cbafbcba7228f17d9434f7"
+    },
+    {
+      "path": "PaperC/Asymptotics/ResidualCertificateMassCritical.lean",
+      "sha256": "43d512ce43e006b72a5596c27f85b0e14703274872250047dc14768860d79ce4"
+    },
+    {
+      "path": "PaperC/Asymptotics/SectionFourteenClosure.lean",
+      "sha256": "cfc3a2887d3b10a369bb8e497ac255def77c77f31923774654da580e02fbb7c5"
+    },
+    {
+      "path": "PaperC/Asymptotics/SectionThirteenCritical.lean",
+      "sha256": "c429fbeb24a85179d10c1e411ec386e8eecb8014bcad1c9940094b2b683ca59c"
+    },
+    {
+      "path": "PaperC/Asymptotics/SectionThirteenRate.lean",
+      "sha256": "7536169edbc1c065f99be998ac8d03d283616b5f2e230e6ad245c61c4ad9a30e"
+    },
+    {
+      "path": "PaperC/Asymptotics/ShallowCoreDensityCritical.lean",
+      "sha256": "599645bba76c07a2136f748a269fdba2dfe417e0b2a47929b326d7a6bdcd077d"
+    },
+    {
+      "path": "PaperC/Asymptotics/ShallowCoreRationalClosure.lean",
+      "sha256": "e7751ce532c04472490730416ef9d2ef75157d996e003fb2fcc6a0ecfd068ff3"
+    },
+    {
+      "path": "PaperC/Asymptotics/ShallowCoreSigmaCritical.lean",
+      "sha256": "37bf7dbc3425b17e9ead81fef99d9e8107a786890d49f53ce83653be8ac41ef3"
+    },
+    {
+      "path": "PaperC/Asymptotics/SigmaZeroQuadraticCritical.lean",
+      "sha256": "238513d78cb6761f78669d1204535136d6700a2d3e32d2dddd792629071d84f1"
+    },
+    {
+      "path": "PaperC/Asymptotics/SmallHeightComponentEnvelopeCritical.lean",
+      "sha256": "78589b57a4bc78147d3ce974cd2b740504ae9dabdf4f26927183c6d7e8e5dec8"
+    },
+    {
+      "path": "PaperC/Asymptotics/SmallHeightPositiveSigmaCritical.lean",
+      "sha256": "d7d12ba7d2b3bd2246e597ba5a732ea11ca724ae95943409ebbbb0f33ec00ad7"
+    },
+    {
+      "path": "PaperC/Asymptotics/SmallHeightSigmaZeroCritical.lean",
+      "sha256": "4d6f8df69ad30db6333a08c13564c0e642201ae03f80c48be899536b6ffc2e34"
+    },
+    {
+      "path": "PaperC/Asymptotics/SmallHeightTauEnvelopeCritical.lean",
+      "sha256": "541a40e5868fe7b6e368619a7d658ee7f10052ecc4ab0c7956b3d086a0818739"
+    },
+    {
+      "path": "PaperC/Asymptotics/SpatialLaplaceCritical.lean",
+      "sha256": "76e69694c4168e98dd24e7fdced29b923e98df6e2166a7641b28de9b7461867a"
+    },
+    {
+      "path": "PaperC/Asymptotics/SquarefreeSmoothCritical.lean",
+      "sha256": "98f4818fdb732d209050c45aebbbe416fd2d51da94715ba4a29181075e8b1305"
+    },
+    {
+      "path": "PaperC/Asymptotics/SteinChenCritical.lean",
+      "sha256": "d3bc63f6858d2052036aeb76af62ccc29498e8fb1510ebcede6fb3318a775469"
+    },
+    {
+      "path": "PaperC/Asymptotics/TerminalBadStartsCritical.lean",
+      "sha256": "c02e9d6e76526c6c3fc8b089e7443832f0727d3ad435b00f0634a7d3106bb978"
+    },
+    {
+      "path": "PaperC/Asymptotics/TheoremEightAlignedClosure.lean",
+      "sha256": "5679c1340af853bd6104ae2a02c24d64b2d8b107f0bf0b32820e0f4045482605"
+    },
+    {
+      "path": "PaperC/Asymptotics/TheoremOneFourCanonical.lean",
+      "sha256": "2cd8bd846bfaf16c68ca568adddef573ea99b6bbe930b511ae48043679dc0980"
+    },
+    {
+      "path": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
+      "sha256": "fb53620f3037181628706ef3a4bd008ceafdc3aed1121bc5a51159c76a9a68fe"
+    },
+    {
+      "path": "PaperC/Asymptotics/TheoremSixteenTwoInfiniteModel.lean",
+      "sha256": "15091eea977a01eea2195f85152dfc6e2cf52a72f82a02fb73f3dc947cc8f74e"
+    },
+    {
+      "path": "PaperC/Asymptotics/TheoremSixteenTwoRecentered.lean",
+      "sha256": "05e4c829adb3e42bcecb0d64feb65bbcb06e1d8d59b530b38267a388623cf497"
+    },
+    {
+      "path": "PaperC/Asymptotics/ThreeHalvesPower.lean",
+      "sha256": "dbd551f815b1d9b936044fffbe45ebb064af2afdcc784262c4b25d2d6caa7516"
+    },
+    {
+      "path": "PaperC/Asymptotics/Uniform.lean",
+      "sha256": "4b025235eef302709dc11ada1dde07d134ebadb24ab4e421159e83c4ef3cd742"
+    },
+    {
+      "path": "PaperC/Asymptotics/WeightedChannelMassCritical.lean",
+      "sha256": "1ff4603b9d8408a4eb185f7172ea9831ab1ba74286ff83fd1d60fc5e15365a85"
+    },
+    {
+      "path": "PaperC/Coding/AlignedComponentCode.lean",
+      "sha256": "8417fcc137ef96d9556308951c9047c7fdf89462bfc9c825678e9298537138d6"
+    },
+    {
+      "path": "PaperC/Coding/AlignedComponentHamming.lean",
+      "sha256": "f965ea7964d4d721b75a0548e131336d2fb03876f10bbd28b6aad4011689dec8"
+    },
+    {
+      "path": "PaperC/Coding/CanonicalDefectCode.lean",
+      "sha256": "fe455333918b3914a3cb3039e9732e16b06796395d241219183a123e69c2b96d"
+    },
+    {
+      "path": "PaperC/Coding/DefectCodeDistance.lean",
+      "sha256": "f4c0c61babec5412f6252f43df633da7f53be1b4d1f57dcfb6819403629fbb9c"
+    },
+    {
+      "path": "PaperC/Coding/DefectCodeHamming.lean",
+      "sha256": "cdca56fd98ff1cb93e89b39d7a9397460fc95b5e8b4a29208095292ab71787ca"
+    },
+    {
+      "path": "PaperC/Coding/DefectCodeProposition.lean",
+      "sha256": "0475d6acbd624882c33cc70622be2c468cfb88a9618ef8da29ec2df00ed856c6"
+    },
+    {
+      "path": "PaperC/Coding/DefectCodeRank.lean",
+      "sha256": "0096ca90e69b55b533416b327f0e1164877354d42eb74803bcb4f273b0d03da0"
+    },
+    {
+      "path": "PaperC/Coding/DefectCodeRepresentation.lean",
+      "sha256": "d960a1e97110c6a019f9ecc038357779b2d3274af41d917e7170776f542a3f51"
+    },
+    {
+      "path": "PaperC/Coding/DefectCodeRunge.lean",
+      "sha256": "2f2b7de5ebe0c35c3eb5cb24cfe5f8200b01fc24166149388ce389101846f31f"
+    },
+    {
+      "path": "PaperC/Coding/HammingBound.lean",
+      "sha256": "a7284a012d73f1c0eb1a0b474e9587059caa531ee7f0d3fc172da9b061f68d98"
+    },
+    {
+      "path": "PaperC/Coding/HammingDefectBound.lean",
+      "sha256": "7a3c749fd47e5444d1a270a564d86f182919ea0d0526c2585476f2e3c5268b90"
+    },
+    {
+      "path": "PaperC/Coding/IntervalDefectBound.lean",
+      "sha256": "c1581af0b10d09cff02a2d3f698a379f7aa1fc8ab7d462dfc6814f07ac08eabd"
+    },
+    {
+      "path": "PaperC/Coding/RungeDefectApplication.lean",
+      "sha256": "c097a80241c6b59f43ebd5eb1ac7f6d0df21b8df84dc27c779c042b2c958ada5"
+    },
+    {
+      "path": "PaperC/Coding/TheoremEightHammingBudget.lean",
+      "sha256": "0b009eef0656192bacb6abf1058474889d5419ff7c7b334ab718ded552999076"
+    },
+    {
+      "path": "PaperC/Coding/TwoParityColumnCode.lean",
+      "sha256": "ce2c51c5e8da8b20830241b21b0d793142b3377721c7c92fdba51b548554e5f5"
+    },
+    {
+      "path": "PaperC/Combinatorics/AlignedCoreExclusion.lean",
+      "sha256": "39686d5fe3a230f7ea8a1beed8c80243f228517cde9524c6e9ee165f4001c984"
+    },
+    {
+      "path": "PaperC/Combinatorics/AlignedDeepCoreExtraction.lean",
+      "sha256": "5fa8dc8bf2196edcd736f457a851cfb502bf383008868dc2226acfc49e076efa"
+    },
+    {
+      "path": "PaperC/Combinatorics/AlignedExactFreeComponents.lean",
+      "sha256": "2555a156db6ed73cea48bdb867988588dc97025a9586351cc71746f930c6cf06"
+    },
+    {
+      "path": "PaperC/Combinatorics/AlignedRungeBridge.lean",
+      "sha256": "1c0f72129cf53ffaa88d0194bba2b1126d7c0039ed3339d1ff18db9a3128bd35"
+    },
+    {
+      "path": "PaperC/Combinatorics/BoundedRatioCanonicalTerminalPopulation.lean",
+      "sha256": "a58c190922544ed4d6f3de33aa8ce7f0c629837c92d29f2cbf2c40a77dda3487"
+    },
+    {
+      "path": "PaperC/Combinatorics/BoundedRatioGeometry.lean",
+      "sha256": "06dcf9144d097ff7b54936db1785172c049cfcc7776c6f5bd5f6654109f4f37f"
+    },
+    {
+      "path": "PaperC/Combinatorics/BoundedRatioIntrinsicTerminalPopulation.lean",
+      "sha256": "1a0f059737d796aedbff1ea4d9f4e570fa9639aa4e4721b0e642e227175d852c"
+    },
+    {
+      "path": "PaperC/Combinatorics/BoundedRatioRelationalHosts.lean",
+      "sha256": "f2fab1ff216b00904fcc2595719ead352522914b9062b93f2c3db826cfc685f9"
+    },
+    {
+      "path": "PaperC/Combinatorics/BoundedRatioResidualMasses.lean",
+      "sha256": "9442cb7b45c4f58c364581179bf8cedf01ddbb7e2c8682fcd7943d9bde73aea1"
+    },
+    {
+      "path": "PaperC/Combinatorics/CanonicalResidualAmbientCertificate.lean",
+      "sha256": "5fb3f806a5f41fa2e153763a624cd1c91d7ca42248c810b6e9d565e484f350ca"
+    },
+    {
+      "path": "PaperC/Combinatorics/CanonicalResidualCRTCertificate.lean",
+      "sha256": "b86d3a12de23560213694b86633c4b4098e2126a62d63e707fb60e72167bc03c"
+    },
+    {
+      "path": "PaperC/Combinatorics/CanonicalResidualCellMembership.lean",
+      "sha256": "0a419dbb53de8d08ceeb0ce4755820243258514e14ae877b6642c8ebbee0e4dd"
+    },
+    {
+      "path": "PaperC/Combinatorics/CanonicalResidualCertificateMassBound.lean",
+      "sha256": "69b53900b5144d478e050eb14595d0b9a4147c118df59b861c2dd2f50333bcfa"
+    },
+    {
+      "path": "PaperC/Combinatorics/CanonicalResidualComponents.lean",
+      "sha256": "216b13c3bee085161427ac7c675ce640fbfb2d0fefe3eb8ef359390a01c9e76b"
+    },
+    {
+      "path": "PaperC/Combinatorics/CanonicalResidualPrimeProduct.lean",
+      "sha256": "64f1e617b02ff72e83e4799a1af637d930a54ed2cc23cbd91bbf476d4fe81ba5"
+    },
+    {
+      "path": "PaperC/Combinatorics/CanonicalSectionElevenPartition.lean",
+      "sha256": "fe127b0a275fd3e1973f763a11afcc66021ddd18d0523065b54a3b61a9867d0c"
+    },
+    {
+      "path": "PaperC/Combinatorics/CanonicalTerminalPopulation.lean",
+      "sha256": "42a1f14adcb4f907f3dc5997d1436c3333a8c5be8fe8e5e492f2fa1f41cc74dc"
+    },
+    {
+      "path": "PaperC/Combinatorics/CertificateCRTInstantiation.lean",
+      "sha256": "a7194b6581a93f47c28c145e1d71c6195ecce3b41a7fc1d4459d896a4a0d98e6"
+    },
+    {
+      "path": "PaperC/Combinatorics/CertificateCellFamilies.lean",
+      "sha256": "e56ec3b397d76831ba6f19e3e2b93e87b1c40160dc8dc5c98f21b5c2da412f84"
+    },
+    {
+      "path": "PaperC/Combinatorics/CertificateLemmaSevenOne.lean",
+      "sha256": "4b0d9e5968bb3627247ef3b98e6959dae57d858e67c13c911d8ff8eb0878d119"
+    },
+    {
+      "path": "PaperC/Combinatorics/CertificatePopulationCover.lean",
+      "sha256": "d1f68cb0f1e0fc46aeb992c5bfa90f2742bba09836b3273fa755d93426cdf08f"
+    },
+    {
+      "path": "PaperC/Combinatorics/CertificateSummation.lean",
+      "sha256": "ac934390d1e0f5d76f068917cae430fb37c2be3712076171740dc6756f645ca4"
+    },
+    {
+      "path": "PaperC/Combinatorics/ComponentProductParity.lean",
+      "sha256": "767407c597e06d6beb4219e99166440b7275bf4230fbb5cc330ebef9283d34ad"
+    },
+    {
+      "path": "PaperC/Combinatorics/CycleSpaceDimension.lean",
+      "sha256": "a85dd0d83c5ae53314fa88fc34ec27f082fd08d0222085f0f605440f9383b1e3"
+    },
+    {
+      "path": "PaperC/Combinatorics/DeepCoreSmallComponent.lean",
+      "sha256": "6cf0e29d6fb9038fd92983a6fb7a58b6a982be1fdf446b5e180edcc5ce9c5e8d"
+    },
+    {
+      "path": "PaperC/Combinatorics/DefectiveVertexIntervalBound.lean",
+      "sha256": "ef1a6fe195eaba583e59c7380f5a2269e4d2e54b77bd31b4493cead9c10e87f0"
+    },
+    {
+      "path": "PaperC/Combinatorics/ExactUnitIsolation.lean",
+      "sha256": "315664e01b444b563b006096c0f040593592d0d85a56b86f30529d5f5714b866"
+    },
+    {
+      "path": "PaperC/Combinatorics/GraphCycleRank.lean",
+      "sha256": "f4c3139a32859e70d4dbb12b53a7ab2ace9fce5caca2f7e513add3a028c0df7f"
+    },
+    {
+      "path": "PaperC/Combinatorics/IntervalDefectAggregation.lean",
+      "sha256": "6c1d0bd9abd78ffa583c0aec45af6e2887fb8b5f044b91af290f486d2b2e45f1"
+    },
+    {
+      "path": "PaperC/Combinatorics/LargeKernelAssignments.lean",
+      "sha256": "85a3ca8f387192c3f35aa09006be4c7925b61ae9d4780893f7f2567d99a2ae5e"
+    },
+    {
+      "path": "PaperC/Combinatorics/LargePrimeComponents.lean",
+      "sha256": "8c7749737c8bc30013137576f33f3459e00e2cf6d9ac780315afadd43aa5ce41"
+    },
+    {
+      "path": "PaperC/Combinatorics/LargePrimeGraph.lean",
+      "sha256": "2deb18c6c74e6a0e32843cdd7d60b84fabb66348eea60a0568bd4af385e688e4"
+    },
+    {
+      "path": "PaperC/Combinatorics/LargePrimeGraphResolution.lean",
+      "sha256": "cf2567819ca021a8eca50ba1a29c98379c38dde8509d295988cb72b00dbcb488"
+    },
+    {
+      "path": "PaperC/Combinatorics/LargePrimeOccurrences.lean",
+      "sha256": "a506963c08b702ea14d47fa423d0d0e611832f5f1859b00e653b1d38bfa4656e"
+    },
+    {
+      "path": "PaperC/Combinatorics/LargePrimeRelationBoundary.lean",
+      "sha256": "e47ba4766492c0084e87c317030a160e0c804ea7881ca707a3fe03d8fd1b4811"
+    },
+    {
+      "path": "PaperC/Combinatorics/OneUnitResidualExceptions.lean",
+      "sha256": "c85bea8f0023878490fb31d521e3bbd529d64a268205db85403890f6d42d5eb6"
+    },
+    {
+      "path": "PaperC/Combinatorics/PinnedGraphResolution.lean",
+      "sha256": "bbf71a8e6848e391e6e087b197fa2062978387a2f845344d115f1ad98285be5e"
+    },
+    {
+      "path": "PaperC/Combinatorics/PositiveSigmaFixedChannelBound.lean",
+      "sha256": "f987d65c48fc8ca55e7841f48815e997fb319e16b9ea08740131a8fb6634e68f"
+    },
+    {
+      "path": "PaperC/Combinatorics/PositiveSigmaFixedChannelCover.lean",
+      "sha256": "8471cd1387998c9c1b04f3d8f906cb21ed5e61b2e3e09a91acd2c32c3fb80611"
+    },
+    {
+      "path": "PaperC/Combinatorics/PositiveSigmaGlobalGrouping.lean",
+      "sha256": "425cfaa48fbcd5422ac56d404c3148404d721f493143ea4c0d97a8c1a91b8c63"
+    },
+    {
+      "path": "PaperC/Combinatorics/PositiveSigmaKeyMassBound.lean",
+      "sha256": "ca15cca62f1b571fa4b7b7e94b6510f023106fc1b46f1e843120ba85b6d50d27"
+    },
+    {
+      "path": "PaperC/Combinatorics/PropositionSevenThreeSigmaZeroCover.lean",
+      "sha256": "36543a8fe97035bfd5f401301601f559e91374f5874cfcf516cd37316bee9de1"
+    },
+    {
+      "path": "PaperC/Combinatorics/RelationalHosts.lean",
+      "sha256": "1e27ce55fd96324aafd722f7696c388b7465210800502942a28cb46ad4c5acf1"
+    },
+    {
+      "path": "PaperC/Combinatorics/ResidualCertificates.lean",
+      "sha256": "580df478a3f54fed8b07c446958444a754d081a4a9d4b46596a0bd62b711c908"
+    },
+    {
+      "path": "PaperC/Combinatorics/ResidualComponentCounts.lean",
+      "sha256": "898ed8645b20c3a19100b91fd3cfc5288853a685bb138aaf58de12541681dc93"
+    },
+    {
+      "path": "PaperC/Combinatorics/ResidualMasses.lean",
+      "sha256": "22359ca0882b6136ad9421716fd4731f5105c86f4bd226f023fa09e4e6cb632b"
+    },
+    {
+      "path": "PaperC/Combinatorics/RungeCoefficients.lean",
+      "sha256": "d91e4d9f8ac6ef6d7a67892316a8881e3585679cafb8b6953efb2e24a559e9f9"
+    },
+    {
+      "path": "PaperC/Combinatorics/SectionElevenPartition.lean",
+      "sha256": "cc6f5b54a06c21197b0fa3700a17530feaaf4bf08238459fda595e2d2bb48537"
+    },
+    {
+      "path": "PaperC/Combinatorics/SectionSevenPartition.lean",
+      "sha256": "e5e7ee0419afdf28b6226c655044490c7145e5edbfe06ae85ce8516232d41b0a"
+    },
+    {
+      "path": "PaperC/Combinatorics/ShallowCoreMassBound.lean",
+      "sha256": "5a40c55e2001d0786c03e6d882375a876e1df746e1ac1af9330950c1a9b70d5b"
+    },
+    {
+      "path": "PaperC/Combinatorics/ShallowCorePairs.lean",
+      "sha256": "411045e5dc5b5e963582cc997fc84331a27504dd5cd028539751e5e1e770f5ae"
+    },
+    {
+      "path": "PaperC/Combinatorics/SigmaZeroAmbientCertificate.lean",
+      "sha256": "ba6dc244ddfc84f2fbd5a5e657d3fef7ea396c9890a391537b5def66b2407deb"
+    },
+    {
+      "path": "PaperC/Combinatorics/SmallComponentExtraction.lean",
+      "sha256": "a64e49777bddc70cc565e56c1d96463bb2a44ead317aaf3390a8fb74dc8a99a3"
+    },
+    {
+      "path": "PaperC/Combinatorics/SmallHeightLargeProductMassBound.lean",
+      "sha256": "5d6402c6e8f7ef0870096bd84b507df2a709d349abaffd91bb31228ce1a95cd4"
+    },
+    {
+      "path": "PaperC/Combinatorics/SmallHeightLargeProductPairs.lean",
+      "sha256": "44808014008f3da543533fe135930591bb41591291c2a84b38fe18176fb50e39"
+    },
+    {
+      "path": "PaperC/Combinatorics/SmallHeightPositiveSigmaSystematicBound.lean",
+      "sha256": "8f14a4d4eabf03b0601993baadfe388476f554e261d5e5fbf9ef3f7bd10f73d1"
+    },
+    {
+      "path": "PaperC/Combinatorics/SmallHeightResidualComponentEnvelope.lean",
+      "sha256": "064417896e98108cf29053507e64b11bb6b5a2510fc8e7321ad7057784457bad"
+    },
+    {
+      "path": "PaperC/Combinatorics/SmallHeightResidualPrimeSupport.lean",
+      "sha256": "b5e0e6b1039514e8585ad8a971b20c5acd332b522edd74b6b80280ad098a2623"
+    },
+    {
+      "path": "PaperC/Combinatorics/SmallHeightTauEnvelope.lean",
+      "sha256": "de34f8cf6862e7cf95ed35cc78fe8fa69e9b414629e36cba0ee07500b4cbab78"
+    },
+    {
+      "path": "PaperC/Combinatorics/TerminalClosureCounting.lean",
+      "sha256": "77ee16c96db4cf4ecdaff5cdcda9d07e09265f4795e5aa02e62cbc207c3f7b2d"
+    },
+    {
+      "path": "PaperC/Combinatorics/TerminalComponentCount.lean",
+      "sha256": "ce5787de7443bbe86b9c03ae82dae2f0decc6abf1484929416d500065e3bc2d8"
+    },
+    {
+      "path": "PaperC/Combinatorics/TouchingPairs.lean",
+      "sha256": "add716436c912c007cf92e40dfe27a37b626f3ff4d2959656be8e78e93e54085"
+    },
+    {
+      "path": "PaperC/Combinatorics/TreeBoundary.lean",
+      "sha256": "b5f7f3c51665645836798f4fa1b8a389a341c275830e3361f08956466905136c"
+    },
+    {
+      "path": "PaperC/Diophantine/ComponentNormalization.lean",
+      "sha256": "a127f3aab765fdda8de03f51252ca03eb35ce0e6240777b219dea64af428539a"
+    },
+    {
+      "path": "PaperC/Diophantine/EvertseSilvermanInput.lean",
+      "sha256": "72dba36747493bd3ffd26530a07b009f8cfc0b2c3d4182960c741d002fa80c44"
+    },
+    {
+      "path": "PaperC/Diophantine/GeneralizedPell.lean",
+      "sha256": "0647c92360e84f86697fdb5465a3939b35aeadb804655d2926d7f8fa46300a6f"
+    },
+    {
+      "path": "PaperC/Diophantine/HalterKochConductorDescent.lean",
+      "sha256": "33fae640ea8437224a53b5d56b7544dad07ae174756fb2366312febcb564d2ed"
+    },
+    {
+      "path": "PaperC/Diophantine/MultipleDefects.lean",
+      "sha256": "bdf68297c080818e5043a9bdd69a7273db6af818f5cce219f657cadf0f264fc3"
+    },
+    {
+      "path": "PaperC/Diophantine/PellDivisorEnvelope.lean",
+      "sha256": "f2725c587a1d422d384ed22c9bac47fb4628bd2c64480ae7ff69e4458c45ce3f"
+    },
+    {
+      "path": "PaperC/Diophantine/PellInput.lean",
+      "sha256": "3d478c57fd8b6a917df058feddbcee12b0384aac06162977d7fb98d9388577aa"
+    },
+    {
+      "path": "PaperC/Diophantine/PellRealExponent.lean",
+      "sha256": "fa702054aa4fa6334203b81e15aa2456dcde1c51aba7f67e82dafbfbbe94ced8"
+    },
+    {
+      "path": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
+      "sha256": "b11d41f9a0e57a0c50174ce7c1339bd4ee5899f307cd4aedcc8f6822018fe9f8"
+    },
+    {
+      "path": "PaperC/Diophantine/SingletonProductParametrization.lean",
+      "sha256": "1daf083abccf56556477c577470d945de75a658f707d438c863cdc88958879b9"
+    },
+    {
+      "path": "PaperC/Diophantine/TerminalPartnerPell.lean",
+      "sha256": "eaf2d5950b59be7cd9e300005a613c54239704b20e50a0f50c84e2288d9c9c09"
+    },
+    {
+      "path": "PaperC/LinearAlgebra/CanonicalExactRank.lean",
+      "sha256": "50fd1022db85cc86880c2db71af6abb3caaa0111cb162ff7d10017a4d49e9e37"
+    },
+    {
+      "path": "PaperC/LinearAlgebra/CanonicalResidualQuotient.lean",
+      "sha256": "9a719e137a27e025453eef6542ba8fb42cecae75447456536b0859a3b83aeb04"
+    },
+    {
+      "path": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
+      "sha256": "9b02bf402224f723b21a474f1976c2904794e47d557027beb7104c3d2ca613a6"
+    },
+    {
+      "path": "PaperC/LinearAlgebra/NonalignedCoreRank.lean",
+      "sha256": "406c119b6dd238fcf094a67f763574cb8428c62eaf2373331d33c5110e26e485"
+    },
+    {
+      "path": "PaperC/LinearAlgebra/PrivatePivots.lean",
+      "sha256": "fd57fc26f40407d2f21a337ba8ab32cd2dc73d3a802b2d11d2edfb3be8306cc4"
+    },
+    {
+      "path": "PaperC/LinearAlgebra/QuotientParity.lean",
+      "sha256": "e8c687dfa7a415b9e7b3cd5073aadbbe6fd13ff7ba55a26a971f615bbba85321"
+    },
+    {
+      "path": "PaperC/Main.lean",
+      "sha256": "e0d54aa41c002b1acaa70ccab4b3b866f60a87a0e9f4768c0463ea75eb58cc2e"
+    },
+    {
+      "path": "PaperC/Model/FiniteRademacher.lean",
+      "sha256": "e312d23c7c6a87f75920fc622c391e31c233e34b663d33718413b94016e317de"
+    },
+    {
+      "path": "PaperC/Model/InfiniteRademacher.lean",
+      "sha256": "436792b149a8bd9a7c30e0f4eb4b8934a3169735fa454dd3abe07f199398d64e"
+    },
+    {
+      "path": "PaperC/Probability/ArratiaGoldsteinGordonInput.lean",
+      "sha256": "c977f1351bc3071ea23f69fe05de116a890886266019a1f6f522a9b4da965d7e"
+    },
+    {
+      "path": "PaperC/Probability/BadStartCount.lean",
+      "sha256": "3f28c3687ae29f8f0044999752e407719c01b35034576e9143e0d1f574a80c8d"
+    },
+    {
+      "path": "PaperC/Probability/BadStartMass.lean",
+      "sha256": "ae1c498b5188839a519057598ad2b45b5e9835e650f30ba62badaaa1e4f86337"
+    },
+    {
+      "path": "PaperC/Probability/BoundedRatioRetainedTransport.lean",
+      "sha256": "64b00ae94fdf94db81f3bd5b38495368fa7888b9c35d160e928c7d709067c72e"
+    },
+    {
+      "path": "PaperC/Probability/ConditionalAGGAverage.lean",
+      "sha256": "7cd50c06fe344c2eda181254088ee1a5e829cc005bd5c6f56b9832330a70283f"
+    },
+    {
+      "path": "PaperC/Probability/ConditionalAGGInstantiation.lean",
+      "sha256": "bcee37c8626ed93c3dba5aec6178722e366e9c1c8b019c052c89398ce0c8686c"
+    },
+    {
+      "path": "PaperC/Probability/ConditionalDependencyGraph.lean",
+      "sha256": "3cb47e22cc69ac4caa2bb65e39fb8972626c0558371f47a913fbdfe6349ebe20"
+    },
+    {
+      "path": "PaperC/Probability/ConditionalExpectationAverage.lean",
+      "sha256": "a71a54011d9338b848ad11b7b30bdd5a531df893d0735e5025c42ece3afde522"
+    },
+    {
+      "path": "PaperC/Probability/ConditionalStartProbability.lean",
+      "sha256": "3859d7fb15f3890ff09a6d1b06d5f06f610fa0b8d9b7bf876ef4a1fd2f776932"
+    },
+    {
+      "path": "PaperC/Probability/CriticalFirstMoment.lean",
+      "sha256": "850e6493135c470dd19614236705b5c306805ac11d61885be4bef1dce75b072b"
+    },
+    {
+      "path": "PaperC/Probability/CriticalRunWindow.lean",
+      "sha256": "c3692c87379efe173e53f644793628ff4d3d316faa3e20b84b0c87e0dc847cea"
+    },
+    {
+      "path": "PaperC/Probability/DefectFirstMoment.lean",
+      "sha256": "04b1cd0245b97f478168f1ff561292368b81142ce58293a080234413d2127355"
+    },
+    {
+      "path": "PaperC/Probability/DirichletAtomConvergence.lean",
+      "sha256": "bd6ee451716c4f3d6bfc2affb25c87dca5efacdbf8c48bc01b915dd53f418d5f"
+    },
+    {
+      "path": "PaperC/Probability/ExactLengthBadStartMass.lean",
+      "sha256": "28a9b130e621e09431908f527be78ed4d1089edcde34dfa97a3cb98dbf898824"
+    },
+    {
+      "path": "PaperC/Probability/ExactLengthConditionalRank.lean",
+      "sha256": "2526eb775ec5ca042ee6a3c6db889a05328c657c8aa464943821548c548d3e1b"
+    },
+    {
+      "path": "PaperC/Probability/ExactLengthCountVectorTransfer.lean",
+      "sha256": "96c9d0db7532372e73bd88b425b2e2ddf317c56bd8e8152d9d1f6e0917858abf"
+    },
+    {
+      "path": "PaperC/Probability/ExactLengthDecomposition.lean",
+      "sha256": "949f2f99eacd8695aaa50e729151653489a796b7fe5bf2814f26fe9b52579e22"
+    },
+    {
+      "path": "PaperC/Probability/FactorialMoment.lean",
+      "sha256": "30c22776b385dae7cc014c7d8221d42a3232f2e6c0cebf2f518135e104050e5c"
+    },
+    {
+      "path": "PaperC/Probability/FiniteCylinderCountTransport.lean",
+      "sha256": "622e530ef52ef4251d34961f57deb8ee59aba4c8a18554722c799a378266c0de"
+    },
+    {
+      "path": "PaperC/Probability/FiniteExpectation.lean",
+      "sha256": "44a7970d3631339603dbab77d077fb6371ef3f87806b8359a7fd31da6a2f2087"
+    },
+    {
+      "path": "PaperC/Probability/FinitePMF.lean",
+      "sha256": "8f2052d91baa4bf9e2d4e43f7802277375af92aa3f935aef2219c6e70df6f295"
+    },
+    {
+      "path": "PaperC/Probability/FullMarkedLaplaceTransfer.lean",
+      "sha256": "ae8d943d9ccb498557fa4232940b8eab28ab50e95fdaa943e22ee8950f3989a4"
+    },
+    {
+      "path": "PaperC/Probability/IndependentThinning.lean",
+      "sha256": "1a29f41871765bc273e0985a8ae685fe1350849937f7dc894076ebd2030c2757"
+    },
+    {
+      "path": "PaperC/Probability/InfiniteCylinderTransfer.lean",
+      "sha256": "adc28f77de9a23818bd15a178a45ab775f14f097058359eaa151773c508457c5"
+    },
+    {
+      "path": "PaperC/Probability/InfiniteExactLengthDecomposition.lean",
+      "sha256": "71f62df774cc71cfc2c0de1b621d560e24d8d3244577f3e23b5ccada40f7f792"
+    },
+    {
+      "path": "PaperC/Probability/InfiniteExactLengthProbabilityTransfer.lean",
+      "sha256": "7ff520ada13daa19930de1681203d63ed401afa3fb555baddb003b5b59cfde84"
+    },
+    {
+      "path": "PaperC/Probability/InfiniteLaplaceTransfer.lean",
+      "sha256": "fd187fedeff18bcccba0cf4b4aa0874e6d0a445dbfc9d3d64a3af2ba46f43e5f"
+    },
+    {
+      "path": "PaperC/Probability/InfiniteStartProbabilityTransfer.lean",
+      "sha256": "9f2f07185613fdc3a96263b2c2b5288697bfdba6fa2885a16df8c687b223e8a4"
+    },
+    {
+      "path": "PaperC/Probability/LaplaceVoidClosure.lean",
+      "sha256": "9a29ec3ac9ca75f29a534136c8da044329f9a8b8717ba631793913dd1d08096e"
+    },
+    {
+      "path": "PaperC/Probability/LargePrimeDependencyGraph.lean",
+      "sha256": "9a04ad7f176db7543c0fa35cca11d3e884d101bf9daca1ce2e65cdcad8bb2925"
+    },
+    {
+      "path": "PaperC/Probability/MarkedConditionalDependencyGraph.lean",
+      "sha256": "87722746d9ca40b8438dc1d1956242c04b71d5893ae9da2820f7a46fccc67083"
+    },
+    {
+      "path": "PaperC/Probability/MarkedCountVectorMixture.lean",
+      "sha256": "f06fdc2c6ad0101143590d7b5d979d1a02559aed7bb46d7e62ba3a3cbebe634e"
+    },
+    {
+      "path": "PaperC/Probability/MarkedDetruncation.lean",
+      "sha256": "17857bacb6f7163dbf85baefb6d928da7236c0643c4fcce33275fc76715bb4f1"
+    },
+    {
+      "path": "PaperC/Probability/MarkedLaplaceFiniteClosure.lean",
+      "sha256": "7168ec0a4258f9c78f9ecda1c9ee5fb825118d1d9fb7d5ac788a76f61393bcbe"
+    },
+    {
+      "path": "PaperC/Probability/MarkedLocalGeometry.lean",
+      "sha256": "a40008f5e4b33ff627f83021132fa3552c9e612d78ec61a9ada000122d20cfbf"
+    },
+    {
+      "path": "PaperC/Probability/MarkedSteinChenSplitBound.lean",
+      "sha256": "ad2350e8c23e1fecf5042c629de3a4890486592579465604fa7ee15f9e53af42"
+    },
+    {
+      "path": "PaperC/Probability/MarkedSteinChenTerms.lean",
+      "sha256": "aaa15749b52b1a201ae1f680d2d2dcb6b504a4f4b689547b75550732e2b1b9d7"
+    },
+    {
+      "path": "PaperC/Probability/MaskedFirstMoment.lean",
+      "sha256": "213a5fe8ecfb292cb1fb7fcdad326b34222aa4b633f3dcb415ddcf56a3084e04"
+    },
+    {
+      "path": "PaperC/Probability/MaskedSteinChen.lean",
+      "sha256": "65aa4dc4fe474cab0a358caae15d27356963a9d7f2f907371a5d23a585c702e7"
+    },
+    {
+      "path": "PaperC/Probability/MixedLengthAffine.lean",
+      "sha256": "f4418b2c5b2d85c93a045ba0e473f8f59ab6113473b5fe17af8aab6baa7b0dda"
+    },
+    {
+      "path": "PaperC/Probability/PoissonLaplaceFunctional.lean",
+      "sha256": "9b20f09e0dc1946c5883e694a3cc3de9c85e4374e97dc16db4ac1fdf684fe61d"
+    },
+    {
+      "path": "PaperC/Probability/PoissonVectorMass.lean",
+      "sha256": "ec89a56c1946e8227a60024eb7f4ee56a6efa79d2d5fa52ff6819f8ae37c4dfb"
+    },
+    {
+      "path": "PaperC/Probability/PoissonVoidApproximation.lean",
+      "sha256": "ab65e0375409499b3fcda83f0e5cde832fc7e75524da3b4d57838f53c0d86bdb"
+    },
+    {
+      "path": "PaperC/Probability/PrimeEncodedCountLaplace.lean",
+      "sha256": "7c28fb47c54904a8718967bca3377e4c72433cf6f71d3aa46441496cbc081274"
+    },
+    {
+      "path": "PaperC/Probability/PrimeEncodedCountVector.lean",
+      "sha256": "6bbb81fb9299de9162b1c7ba276aac56b1050969a360b70213aee0f263449c8c"
+    },
+    {
+      "path": "PaperC/Probability/SectionThirteenCouplings.lean",
+      "sha256": "55882270a2b7b528c7e9395fd49c65458f1c7b7a81e9698ce0bd74a14c0ea12c"
+    },
+    {
+      "path": "PaperC/Probability/SectionThirteenFiniteBound.lean",
+      "sha256": "373cb9270bc5e718475712e22e190657b75b830644a47b9048b70d82590f48a3"
+    },
+    {
+      "path": "PaperC/Probability/SectionTwelveMoments.lean",
+      "sha256": "bad8d22ef9332b2aac55cd11be8e6ac4d82d2783b423d901e43fd5be9d096580"
+    },
+    {
+      "path": "PaperC/Probability/SpatialThinningFinite.lean",
+      "sha256": "e95155acccd4e75f5e4c2a090780c64ed941620d1901bf7f24d1639e96f104c2"
+    },
+    {
+      "path": "PaperC/Probability/StartProbability.lean",
+      "sha256": "c995da14b2bc32f2e43ed1564c0e85b8ab1abeef90c676a74af4d9400414742c"
+    },
+    {
+      "path": "PaperC/Probability/SteinChenTerms.lean",
+      "sha256": "f91cc7bb5cddc31c8969c19063697a982f02fb72e8ba9d3401ede3d1cc0980ff"
+    },
+    {
+      "path": "PaperC/Probability/TerminalBadStartBound.lean",
+      "sha256": "81e66a2b4de913313b6a04ca9efe0c00ac4cf0ba612998a0cf8bb08cbf836d92"
+    },
+    {
+      "path": "PaperC/Probability/TouchingProbability.lean",
+      "sha256": "e02e1b510e0502add4a5010612c02ca16d0a0f0a74569a4010ff3d267569df5c"
+    },
+    {
+      "path": "PaperC/Probability/TwoStartLocalRank.lean",
+      "sha256": "9aeabdc43f3a3828c1cdfc794f9b174c30ab5d41279054969799b2f644c978ee"
+    },
+    {
+      "path": "PaperC/Runs/Starts.lean",
+      "sha256": "2f48e01478c1c0788543484abdba8fd1068d84fe3fe5b87e3cf401f44f6a3a56"
+    },
+    {
+      "path": "PaperCV11.lean",
+      "sha256": "b27f7b846808e2fe96c206618bee226dc68e11deca4373da0e4beddddb12d90e"
+    },
+    {
+      "path": "PaperCV11/Audit.lean",
+      "sha256": "b5ef4eb17dd3d6d30646d8cc1a1e2db25c539f04ebae1358b578c0c9b4001612"
+    },
+    {
+      "path": "PaperCV11/HardConditioningSaddle.lean",
+      "sha256": "c4aad8516e34071e3b98157d1bcaae76ef1fdbe0e29503cd3e12ef252e8000d2"
+    },
+    {
+      "path": "PaperCV11/Main.lean",
+      "sha256": "1fb2d184aa28b537b1e57f1864f85a06692e205f4bc03bc1f79d80da188744bd"
+    },
+    {
+      "path": "PaperCV11/PrimeHarmonic.lean",
+      "sha256": "d414367ccedd5bd29d16b9b7161fe89bbe7f3c128a069f29eb70cee74ab6a262"
+    },
+    {
+      "path": "PaperCV11/RankinEnvelope.lean",
+      "sha256": "4a8bf6cebe7896d9ab2caa56e83209bfca07fce07b49bbbc47bb13a42f5cce34"
+    },
+    {
+      "path": "PaperCV11/RankinTilt.lean",
+      "sha256": "756053df1ab4e1ff99202decafec446d86aadadead5998acadca1373ff83de21"
+    },
+    {
+      "path": "PaperCV11/SharpKernelDefect.lean",
+      "sha256": "8d64f4bab4508d4a9b77bb29351ad549d65653698a72783f3530f4a527daf57c"
+    },
+    {
+      "path": "PaperCV11/SharpPrimeCutoff.lean",
+      "sha256": "f5a532aca8ed53a8aca1164e848ac5801bbcc73b925a5733645dccb6eadc0dc3"
+    },
+    {
+      "path": "PaperCV11/SyndromeCollision.lean",
+      "sha256": "18d91d2904a1a6bf5b25d06efe4efa67840b9d856374eccd56cb7a1eebdeff19"
+    },
+    {
+      "path": "PaperCV11/TruncatedDefectCount.lean",
+      "sha256": "c83b5b4b0b74e9aa8ead0fb84f9a7f876da8b02acb50ca6da59fab71407cd7c4"
+    },
+    {
+      "path": "PaperCV282.lean",
+      "sha256": "423f8646a5ea726d5df4bb8a9900735f38f8ecc32aa3e69044fd483905cbb225"
+    },
+    {
+      "path": "PaperCV282/AffineBorderCylinders.lean",
+      "sha256": "524efbab50fd7b83f4a0a88ca41c83b4806820b5f9da306a5e7aebaa5c9d8b40"
+    },
+    {
+      "path": "PaperCV282/AffineBorderLinear.lean",
+      "sha256": "c178dd3b1de4ac664b5dc08c170e1b1390977c08774fa6200fbcaac4c501ea8a"
+    },
+    {
+      "path": "PaperCV282/AffineBorderPrimeClock.lean",
+      "sha256": "39c04327b209eca1f216c0d2028d0b9adab9d3ebc099ad4386eba25d41f8f891"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverBudget.lean",
+      "sha256": "7d940edfe12d2af16ca47d83d4cdee5405bda8504c19bfc837dfe6ec0d9cd9f1"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverCappedBudget.lean",
+      "sha256": "8c93c61c680de7b89fc9dc9c231047c26fb564467b2c8a5d63cae4dbd72f8484"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverCensored.lean",
+      "sha256": "71547bcfc9c597545c0902b46e341b7e5d47ff3c298f4db3a47f7cef5723cf76"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverCensoredTheorem.lean",
+      "sha256": "6c8766abb353d5b7de9c65c6fd989bb9cfb09385714e809defef9a32dde6d0e1"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverCylinder.lean",
+      "sha256": "d7708a257ec390a4238f1bcbda66eed822aba6f432c0dac5a0cedd6783d79e5a"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverCylinderInformation.lean",
+      "sha256": "fcdda4fe79d8324233471992c68c04683645f3a070ed6c254dd193ed271357ab"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverDeficit.lean",
+      "sha256": "eb2a15ba947cba185b8360037ba1964e9ab41c048154177f66c4be4db68a85d7"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverErrors.lean",
+      "sha256": "e4af8fcab45a8ecd0f0cee7b0bd4b1897d67592ee7eae1ae27dd2fac55f8053a"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverErrorsAffine.lean",
+      "sha256": "1163897846c3251986e820f2de0f413f73846c587dc51a6fb2bf722f59c4155c"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverErrorsInterior.lean",
+      "sha256": "5552d61c032add76daba3558bd7efc7c2090e4ff29483e3711a66651ad9dfc3d"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverErrorsMiddle.lean",
+      "sha256": "0e43492fda0589daf09b50fa8b115c87b9dc2d36fb89b7b4a90ce311a450ab42"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverErrorsNormalized.lean",
+      "sha256": "8834640f769d70ab5063377495cfacfa773b1c16c111c33f1fbea2b3884aaf13"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverErrorsScales.lean",
+      "sha256": "0a366eff8e67195731ce1ae846b3efc1c96b4edaadfc3299977f4981d65cb63c"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverFullScale.lean",
+      "sha256": "ba2f891947e4fbf3229f8bec1a9b29f6509c916c1989851eca84745a345ee03d"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverFuture.lean",
+      "sha256": "d5811ef0b2d24ce3b917bc349d08c1cc41f96dd6c1bf6e6498fb921a00e2160a"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverFutureCutoff.lean",
+      "sha256": "d4b96a1f135e1b7eb2ab068afb0c64d5fdf7735d768959bb654fe2cdb645ae79"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverLocationLimits.lean",
+      "sha256": "2bc6cbd36c9daaf8848d6a9307146c16f6796bae44f5eaf7a2af3aa699c4f3cb"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverLocationProjection.lean",
+      "sha256": "6fa812bb3249831022e00e3f3f4acb58cb8bdc0b582f747ab658ffd4f704b3de"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverLocationSource.lean",
+      "sha256": "9440d8867fe1c4cdf40bef73b62e3cac81d759cb7e99e5c0fafb7160df9f2e9d"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverLocationTarget.lean",
+      "sha256": "cf26191bdcd27dde9327cdf3b1a4be4575c9b994bbd997f297a6f70d895e26c9"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverLocationTheorem.lean",
+      "sha256": "487481899e8940e32265631818bf2db75be9510752cd85aa377a389f019b3c96"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverLocationTransfer.lean",
+      "sha256": "1f541ae9e757da2202180f922c049ff2bf21213d28755ad52e6d4e290bce069a"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverMarkedComparison.lean",
+      "sha256": "fc4f1e66ec058934c7ab065cea6905cd85fe00abaaa1f19d7ef4ba5c504a96e2"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverMarkedConvergence.lean",
+      "sha256": "0dc50cd0dd7e181e02063af54b97db948af68892e4b29de251fe65c2e37a684f"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverMicroscopic.lean",
+      "sha256": "a0469d241e673cccefaaead0e503ade7915fe12e261f1ba8c87b229b515f870f"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverModel.lean",
+      "sha256": "001999673956f8bd64a50637e3f69205b8fdf29c64a60a8560ede6fff0893cd7"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverNormalization.lean",
+      "sha256": "1e40c5f57203c894c98bc20d9388f9320ec635a8b75d511841f3e3eb45be2459"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverPhase.lean",
+      "sha256": "648b53c35ca6c12bca53ce9def7670b28d2f80338c44f9c018a15f0752d1d782"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverPrimeClock.lean",
+      "sha256": "6eb43cd30817132d5c6add8a2db8ac9979b2390ca0ffe9e6b654206fed6bcec5"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverRareMass.lean",
+      "sha256": "e5d552cf9599ec262676db8de43bf1426acbd333d057c32159e91bf47c6116d1"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverRareTheorem.lean",
+      "sha256": "e005163425d92192f28ce86f09934f1a963ba8a01946af993dc8ec90c6144fbf"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverRecordMass.lean",
+      "sha256": "988129eb076efac1c033105f88f9785372efc30ca37aed84d7852de4b1b46da6"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverSign.lean",
+      "sha256": "b9d477fcefe7ddb6021749fcc315f04b3570bf90b22126c92c94de4a9a5cd6af"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverSourceCoupling.lean",
+      "sha256": "602b1277c69481ea054d723b54f97f8861ef05605cc81a53bc6a747267b67210"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverSparseNormalization.lean",
+      "sha256": "77d7cf404040f25d4b5c262151acb2680cb574be904ae4dfa31e6930f59b5646"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverSparseTarget.lean",
+      "sha256": "2995afc2c81a3b59acd4096bf8a1c5fa4dc1eac8358b8bb2c42a33e449d2ff9b"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverStable.lean",
+      "sha256": "230095802b9ff2176c3887a266858d10e82cbdd9236a93d47bd57316b1334c30"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverStableClock.lean",
+      "sha256": "0b6137594ac83c273d0a3c73cab0fcfe7e8fceca22037858eaeabf3f2b0da9cf"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverTarget.lean",
+      "sha256": "ac34fcc86fdae0db7658b70764dd5bbae7995838b316e9f372ec0f5e1900bb5d"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverTheorem.lean",
+      "sha256": "b6417937790074ac6f1bc573608e7874b5b3ab079484d78a429b1432b4cd5fc6"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverUncapping.lean",
+      "sha256": "6627d690f66b24688be334a220d2fe90b0246f443d91637198e36bd4153ea444"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverUncappingLimit.lean",
+      "sha256": "a84ff2e98c1ead63194033912a8a36dfd3d92e6944a8cb41ad7838600cf51f28"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverUncappingTheorem.lean",
+      "sha256": "f16d83e58be0b47e4a031ed6a5639acbe7f117697088ed87f9be3c06fa7b5b8a"
+    },
+    {
+      "path": "PaperCV282/AggregateActualTail.lean",
+      "sha256": "bdf290a61045ddcbfa2aff81973db0283f2288bc60cb65310739af4e3d82133a"
+    },
+    {
+      "path": "PaperCV282/AggregateBudgetRates.lean",
+      "sha256": "037eeae9b53932c3438eadb1321cad2a45d5bfb9b34220556ac6db3d4a9aabc8"
+    },
+    {
+      "path": "PaperCV282/AggregateCoordinateIdentities.lean",
+      "sha256": "ca07d0e254b74a6daa19da7c4644f6a837189f484f3ded6729752259f2167363"
+    },
+    {
+      "path": "PaperCV282/AggregateCutoffRemainder.lean",
+      "sha256": "f5c73aa627ffdd763743071948fa908854b1ce52161e91d6db57aa46bafc7027"
+    },
+    {
+      "path": "PaperCV282/AggregateInformationBudget.lean",
+      "sha256": "3e573c275644cccd9ba73ef3cfd2460c4a6501cb91a1f52a2322e96c41281b88"
+    },
+    {
+      "path": "PaperCV282/AggregateMovingCoordinates.lean",
+      "sha256": "2303e256dfb39084e63595b1a2b2569ea967d3000da349b7f0021a3bfebbfd8d"
+    },
+    {
+      "path": "PaperCV282/AllStartConditionalDependency.lean",
+      "sha256": "6771124f0357d032ee1276a7b6b967b8fc65dfe8c9d140193a77ecd2c5791fa3"
+    },
+    {
+      "path": "PaperCV282/AllStartFieldCosts.lean",
+      "sha256": "97bd392bca267bc884865ef8b4cea104f54fbd4b786e799bea4a6288b585df04"
+    },
+    {
+      "path": "PaperCV282/AllStartFieldTransfer.lean",
+      "sha256": "b4279c616022e0a23a46b393ed7f501c7d4d32c6ca8c8308c2e18f4b6bef8b30"
+    },
+    {
+      "path": "PaperCV282/AllStartSoftPoisson.lean",
+      "sha256": "bcf7011eeab218c8c4b82d437ae3e56fcaf6fdc81cebc6cadca538bee7aec931"
+    },
+    {
+      "path": "PaperCV282/Audit.lean",
+      "sha256": "fe1de53d464c9e6985d89d0001a02d9c29d86e16052b24fb221408d7d4cb3c08"
+    },
+    {
+      "path": "PaperCV282/BadStartRankin.lean",
+      "sha256": "c44ffc00bd6f82b96d712a432fc6697a033ef72b16d437ea6998b6c2e0bf5bf0"
+    },
+    {
+      "path": "PaperCV282/BadStartRankinAsymptotics.lean",
+      "sha256": "88c9ad2f63d124a65ac2589c8fdfdd96e4b43287fb92f49153b6f110255877c6"
+    },
+    {
+      "path": "PaperCV282/BadStartRankinFreeCutoff.lean",
+      "sha256": "fdaa1f3da913db5395018c16fbfdfd254d27043b0b2522c584f785307cd3c044"
+    },
+    {
+      "path": "PaperCV282/BadStartRankinSaddle.lean",
+      "sha256": "ea4d700024a9dfaa8cd5de0a4bd62cc54f253cea379705361a05328e9f8e927e"
+    },
+    {
+      "path": "PaperCV282/BoundedRatioFullHosts.lean",
+      "sha256": "1b2b36146f5f8367dd65b299264ada359fb512ecb95b0d03f63d3437836b49d5"
+    },
+    {
+      "path": "PaperCV282/BoundedRatioRelationProfiles.lean",
+      "sha256": "d651315afa57aa5ee0ea6c45b2da6e09fb57514cdde7db0280c23a33b2bd9d8c"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedAggregation.lean",
+      "sha256": "bfde79e2221c25747c9e32e0e6a17a2f24ad26ab497ade0187dea8bb37a291d3"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedComparison.lean",
+      "sha256": "d53700b7a00f6a467ce7fddd2cf920cb4ebe716bca5bf27ad96bd043a1f8a70f"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedConvergence.lean",
+      "sha256": "c496b4f07dfa39d62d656d20c60f3606f3853108cededaac808485dbc36f2d37"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedDeletion.lean",
+      "sha256": "f600a85e7de13262a0c7be8f005a98286c547f4f9ecd15e507c0fb0e224c7bc2"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedDependency.lean",
+      "sha256": "b2c342a0f4f91dc79f927b44e74585ea6dcb88429ca632de59e445d2f0cf22d3"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedFieldBounds.lean",
+      "sha256": "5c067d243578f3bd1f760ad7dd3ca3cdac6e1b95df205f2dda0688232e35a2d2"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedFirstCost.lean",
+      "sha256": "ea5b1640d507cd2f92fffa9c88ea86b9f831b59465fe501dcc5e01fb973e14d4"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedGeometry.lean",
+      "sha256": "94840f4a9a62efccd4651a8372fb172854e5ec2ef39d5e92fb3e262be4399c50"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedInfinite.lean",
+      "sha256": "1bdbb0ec33c49a21250c8ce58a4c1a7d44bfefbadf8f07da3d9f3bc13564ace6"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedLocalCosts.lean",
+      "sha256": "a250a910d7b75360dda89170e85f6305c0355770a06e150325afe77e8b7ffd67"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedRates.lean",
+      "sha256": "59337543ff3b8a56a678d6a1de62b006f778536c090a754ef64d73f0a7c3e762"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedSeparatedCosts.lean",
+      "sha256": "9122ed7ca37f5bfe5521924c4cc412de6aa5a08c9e573c751c6abb7dc0f144c2"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedSource.lean",
+      "sha256": "18cc7a7f2ee115b87fc4dca888ff6d36982bd4697417da4d31f26ea55fa1a318"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedStable.lean",
+      "sha256": "42e70bfcf72cf0499fc86d4b1c35dc17d6b271222e2cd034a3f5a710bd927832"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedTarget.lean",
+      "sha256": "3746320fc9f0d2c04b465d3265a9c83a8da9ea93ed44c769e18c85bfbd6706d2"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedTargetProjection.lean",
+      "sha256": "4babb42b716ec8745b27408c51c983716f58e0149a94d6bcb47b01a88004b251"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedTargetTail.lean",
+      "sha256": "ae412b11feefbda422b58fd0f13c4b2e135f6fe71a93801b6009f5ceb19ed6dd"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedTransfer.lean",
+      "sha256": "94631beec1a0ef1889096dcc28b03610ab924ba787a9be13d7319de1e96cb2bb"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedTypes.lean",
+      "sha256": "f1f4436168800f2992db547751a24bfaee946988957692ea83c87bb1aabc4940"
+    },
+    {
+      "path": "PaperCV282/BulkMicroscopicRecord.lean",
+      "sha256": "79b0aa8d50f1dfcd868d73a59a347833f32a5a97355e396d54b71b5543f74a9b"
+    },
+    {
+      "path": "PaperCV282/BulkPointProcess.lean",
+      "sha256": "9ca3f10b02f11f04232a385b49246573b117eaa86d78468507107ca7e0e6d2a8"
+    },
+    {
+      "path": "PaperCV282/BulkPopulation.lean",
+      "sha256": "b2e6658f8c131dd77338af9182223a89f29e545038670347a778c0bbffb69755"
+    },
+    {
+      "path": "PaperCV282/BulkProcessCosts.lean",
+      "sha256": "d58fd30fff52cf0ed5f8c32d915b84b597968e2cc93ea705f1010dd6acf47ff2"
+    },
+    {
+      "path": "PaperCV282/BulkStartFieldComparison.lean",
+      "sha256": "95f24c8e1c6db4ff28809204dfaf0f076f7f95b00ed3cf03e058ba13e85e8f72"
+    },
+    {
+      "path": "PaperCV282/BulkSupportGraph.lean",
+      "sha256": "fd85689fceac727dc01c6940782c2f63b962f5bf26ff01a13da81e2efdc36726"
+    },
+    {
+      "path": "PaperCV282/CappedRelationMass.lean",
+      "sha256": "978ae6d7bcd004e293721e10f92c21ec33b1de82d0d7484c7f49cd0595262db4"
+    },
+    {
+      "path": "PaperCV282/CappedSectorMass.lean",
+      "sha256": "636cd354e1a4ac90179bf0c967a10cd3243e6831ec1b45f5a1772c02ae2039a4"
+    },
+    {
+      "path": "PaperCV282/CappedSectorSixProfile.lean",
+      "sha256": "d1b1acd5cc6b57573ad5ef82fef694cbc46993fb6dbbdb92593f407e619d0f48"
+    },
+    {
+      "path": "PaperCV282/CentralResolutionBudget.lean",
+      "sha256": "21f59f9f235c6d4247dcfe2a83ea4a6dcb29ca5ae185e4249c708c61fc4456d7"
+    },
+    {
+      "path": "PaperCV282/ClosureAlgebraFourier.lean",
+      "sha256": "b54312e9519fef3ffa342290eebe2441d4f3fe718c2e61996fd141dd34f112dc"
+    },
+    {
+      "path": "PaperCV282/ClosureAlgebraIncidence.lean",
+      "sha256": "7f410bc4bab9c6a2039486bf978d31a01bdfd8aae76d758e98369dfdcaca90bc"
+    },
+    {
+      "path": "PaperCV282/ClosureAlgebraPrivateGraph.lean",
+      "sha256": "36d03a2c35e161630c65330db5d73977a38da00b01f6b581aa368bf9d7792525"
+    },
+    {
+      "path": "PaperCV282/ClosureAlgebraSquareTuple.lean",
+      "sha256": "5bbb8f852d71c339a393adce85e543a2c429ccc4aafc758ee5f77443efc604ea"
+    },
+    {
+      "path": "PaperCV282/ClosureAlgebraStartTuple.lean",
+      "sha256": "32419a4534876e42ded0a4a4413602e8e9e6e0ab35aef561fcc7f14130e6914b"
+    },
+    {
+      "path": "PaperCV282/ClosureAlgebraTreeSquares.lean",
+      "sha256": "fab9d8bd566502174efa9e89b5b7c0bfedd240048924fd2b0e12e22f8cc06546"
+    },
+    {
+      "path": "PaperCV282/ClosureAlgebraTupleBoundary.lean",
+      "sha256": "20193740833b45857ff14d111d1326c5f7b7e594ea4b04f6b2c225e49b97ca45"
+    },
+    {
+      "path": "PaperCV282/ClosureAlgebraWindowSubsets.lean",
+      "sha256": "92f8c0c748830973b8ebf3f7ea52c48bd92992b435cbb694058216df963e8dd3"
+    },
+    {
+      "path": "PaperCV282/ClosureCRTCellSeries.lean",
+      "sha256": "9e69ce3be50673f23726231e6b75a64a928ccf0133b6100f7bce380ff4d98449"
+    },
+    {
+      "path": "PaperCV282/ClosureCRTIntervals.lean",
+      "sha256": "d1460a2d67a17206befde2e26e17192553dfc2e1c328a6c7f5c468250a1850fc"
+    },
+    {
+      "path": "PaperCV282/ClosureCRTMass.lean",
+      "sha256": "fc0b69e4bc7fa912f1667482e2946d19794324b60b7a33087628858bc77ec7ce"
+    },
+    {
+      "path": "PaperCV282/ClosureCRTSeries.lean",
+      "sha256": "40a5ea1d3adecb72c8c18cb4260dc7733c1bce7f3d4bb91a0105d5808555a8af"
+    },
+    {
+      "path": "PaperCV282/ClosureCRTSummation.lean",
+      "sha256": "1a52bb0fe1850b3747f344a4f2760faa80d52f6c8ae58131b5454e8d17185fe0"
+    },
+    {
+      "path": "PaperCV282/ClosureGeometricWeights.lean",
+      "sha256": "25ab1aff7917c264d194d9c8250c1a6576196fa767a289b84b5a775930ba3243"
+    },
+    {
+      "path": "PaperCV282/CompoundPoissonMarking.lean",
+      "sha256": "a05c776b4bcad2ebc667a75eb36b846b812247d8e897687d4a0c85c257c189b1"
+    },
+    {
+      "path": "PaperCV282/CompoundPoissonTail.lean",
+      "sha256": "e16a15d72bbab73466b811864ed192932b8350d680aadadbe23a5c43d1df2e66"
+    },
+    {
+      "path": "PaperCV282/CompoundPoissonTarget.lean",
+      "sha256": "5584c7ea812abb9489aec6e5bcf38ba1661120f19e9cf2819335580ea97c28ea"
+    },
+    {
+      "path": "PaperCV282/CompoundPoissonTransform.lean",
+      "sha256": "035458b2fb47242eb5cd86d25547a86d00ff5749c486906b247e55c361a694d3"
+    },
+    {
+      "path": "PaperCV282/ConditionalFieldTransfer.lean",
+      "sha256": "925e1eb78fc16cfc6d2d9063cc80039476496e27247bdba74a005816133bf91d"
+    },
+    {
+      "path": "PaperCV282/ConditionedCountableLaw.lean",
+      "sha256": "37b9a3b90a7fe1fe5bb3d9b9c8319aa186e0509da771357b2833db0fd88b31c6"
+    },
+    {
+      "path": "PaperCV282/ConstantWindowBoundary.lean",
+      "sha256": "f03e6cd5d94c850751d9d04ea4143bbf4f39c63d9840d369cd796274cf005a4e"
+    },
+    {
+      "path": "PaperCV282/ConstantWindowClusters.lean",
+      "sha256": "2b11405b080c84093d71b297f3524bd2eb97b35f0673a4dc7fdebe629701bc13"
+    },
+    {
+      "path": "PaperCV282/ConstantWindowCompoundConvergence.lean",
+      "sha256": "ca58ab693d1a8c03dffc48111b433c2dc2680351f7569f0f5c994d6b677a726a"
+    },
+    {
+      "path": "PaperCV282/ConstantWindowRates.lean",
+      "sha256": "f7c589ec95553a4b96f22bbbf9ef44d896d2db22113522eb0658907cf464a52c"
+    },
+    {
+      "path": "PaperCV282/CountableExpectationTransfer.lean",
+      "sha256": "38af837e29f63ea1d8434825058b487aa23a74a562a582ceb99edb3a8def5c76"
+    },
+    {
+      "path": "PaperCV282/CountableLawTransfer.lean",
+      "sha256": "f4ddb6c494d61fe9c0a76ef386c968539efb52d9720cef8bb324acab2be817e8"
+    },
+    {
+      "path": "PaperCV282/CountablePrimeEventTransfer.lean",
+      "sha256": "59d1f2121d1e9297fcc3b98851763a811e4c18c713caf9649dc4b36766da8885"
+    },
+    {
+      "path": "PaperCV282/CountableWeakTransfer.lean",
+      "sha256": "6e1d04030a0903bc298483ba7dc0fea1bbebcd8550e76e98596dd7c5c0274306"
+    },
+    {
+      "path": "PaperCV282/CriticalFactorialMoments.lean",
+      "sha256": "22f601dec3e964b9c18d1bc2823f662e0767d20cb684332de44b35c375e20d2e"
+    },
+    {
+      "path": "PaperCV282/CriticalFirstMomentRate.lean",
+      "sha256": "b4f0ba096767276392aeef7d76b306869aa955634d28c15c59c3ae32c4f9b7fa"
+    },
+    {
+      "path": "PaperCV282/CriticalProfileNormalization.lean",
+      "sha256": "1db0dd13090e942044e0d183969e24bc468b3abe88955f5b367b1f0a600f7493"
+    },
+    {
+      "path": "PaperCV282/CriticalVarianceMoments.lean",
+      "sha256": "b540efa56abd87133a440b7c290856df2860f7b6333b0f56069ae7fa04fcc646"
+    },
+    {
+      "path": "PaperCV282/CrossoverBulkAtoms.lean",
+      "sha256": "34664ca3695eaef2d10241051914c405eae2beefa2bbca517122c6236f512572"
+    },
+    {
+      "path": "PaperCV282/CrossoverBulkOnePoint.lean",
+      "sha256": "c0c9abba126dca8b3f099d9e62d94f6c8d1dcc1f265e86fafcf10692c7e28e77"
+    },
+    {
+      "path": "PaperCV282/CrossoverBulkTestMass.lean",
+      "sha256": "91ddbb72a63f665093bf5efe7e1224a2e85ddfcdecf21f0a01ec03ca5e87e20c"
+    },
+    {
+      "path": "PaperCV282/CrossoverCensored.lean",
+      "sha256": "4678cd00fc7d30ebf761970a770e74759ce49452e91e3a84acfa53bc69e773aa"
+    },
+    {
+      "path": "PaperCV282/CrossoverClockRecordMass.lean",
+      "sha256": "6285ddb92e0f6d4bc86a17798af8ebe158e89fb4d05b80a8b418871717bdde1d"
+    },
+    {
+      "path": "PaperCV282/CrossoverConditioningTools.lean",
+      "sha256": "cc366264ab83e5f4a371f6bfb70b87751aaa31e1057d44024055663660721479"
+    },
+    {
+      "path": "PaperCV282/CrossoverConfigurationAtoms.lean",
+      "sha256": "fc5b73cc5f04182dc7de7b4cf3c4159afb2cb21356a70e872f09cf7ce0c588ca"
+    },
+    {
+      "path": "PaperCV282/CrossoverLocationExtreme.lean",
+      "sha256": "4408912db4d2c3c26312dbd2e658e4377068c610a9bd257b4dbf126291585844"
+    },
+    {
+      "path": "PaperCV282/CrossoverLocationGrid.lean",
+      "sha256": "3c8d3cc70e7ba35ae4ab1b905f84d01706d1566298ee3c4b32bdff3a967b0b92"
+    },
+    {
+      "path": "PaperCV282/CrossoverLocationMixture.lean",
+      "sha256": "0e06837862888369443bf2f7e031c6b0168d894557a6ffaa576b03c06f64ac8a"
+    },
+    {
+      "path": "PaperCV282/CrossoverLocationPhase.lean",
+      "sha256": "efb21725fe820fe5bc46bf66cbee90f0f06d0b7f9ea676d490d71f1268285118"
+    },
+    {
+      "path": "PaperCV282/CrossoverLocationProjection.lean",
+      "sha256": "c017a1f27d067c483e38605ffb6cb2926a1e7caf1f1aed7f69cf3036095245d0"
+    },
+    {
+      "path": "PaperCV282/CrossoverLocationTheorem.lean",
+      "sha256": "b10dc48d25931f50f40c9744fe7ee4c4b53fabf742c0d14c12b34ea5af58be24"
+    },
+    {
+      "path": "PaperCV282/CrossoverLocationTransfer.lean",
+      "sha256": "cb579475675e10edb0190eb7963c6e7d0ec32bd8a1153378f5713528d22fff38"
+    },
+    {
+      "path": "PaperCV282/CrossoverMarkedCandidate.lean",
+      "sha256": "3c472611446a7c4866354eecf06d761492a0877695d2905352cc4bc1cb7107c3"
+    },
+    {
+      "path": "PaperCV282/CrossoverMarkedComparison.lean",
+      "sha256": "d8c372d40834b4f2f16d258da1a482f08d60f06111d83fb98d728046fc65a0d5"
+    },
+    {
+      "path": "PaperCV282/CrossoverMarkedConvergence.lean",
+      "sha256": "2c0fa60c0720bd2b3038daf25583c53ca00d28db0ce1c92d06a1dd424d76de6b"
+    },
+    {
+      "path": "PaperCV282/CrossoverMarkedModel.lean",
+      "sha256": "7352d0ced77f0d9120984b1896726f9b9a4942d8958848bf543ea1537fd08cd9"
+    },
+    {
+      "path": "PaperCV282/CrossoverMarkedTarget.lean",
+      "sha256": "50a0e42bcb409385b02577ad5b0a5ea019b6e4b88d161c3b651f049da94e9247"
+    },
+    {
+      "path": "PaperCV282/CrossoverMovingTarget.lean",
+      "sha256": "82c4aedb80c5d93765880f3af42486c8195b29dc35e2eec1d8ffd8e470e99090"
+    },
+    {
+      "path": "PaperCV282/CrossoverPrimeClockBase.lean",
+      "sha256": "8223dd6ab7bd850141bb475b2a6fb2ebf1ebffeb5dc05e0e64e31c436ede13e1"
+    },
+    {
+      "path": "PaperCV282/CrossoverPrimeClockCutoff.lean",
+      "sha256": "3d6466226b25f08c22f34d8b6ca2c139177395a2b4f118a8dc1ea9805e73b7a6"
+    },
+    {
+      "path": "PaperCV282/CrossoverPrimeClockCylinder.lean",
+      "sha256": "1127629b87297442b5e68c9a6c3b0cbd7da1e68cc3164e742adbc9e4ee873ac8"
+    },
+    {
+      "path": "PaperCV282/CrossoverPrimeClockLaw.lean",
+      "sha256": "4df21feb22d3bd18c4252c95a6ed2074ea3127a302592ba05a40a954a34a5b01"
+    },
+    {
+      "path": "PaperCV282/CrossoverPrimeClockStable.lean",
+      "sha256": "270e0928c41b1bfed0ff9f6f02853cfda7fefa7ce04b6e489820e2ad7d46cba1"
+    },
+    {
+      "path": "PaperCV282/CrossoverRareScale.lean",
+      "sha256": "2628ba9ff35fd2f57b86fde0823a82d697c16fc836f60a5680c6d9b70b3a7a4c"
+    },
+    {
+      "path": "PaperCV282/CrossoverRareScaleExceptions.lean",
+      "sha256": "253cac52402eecb76a9952a92324c80a62cfb7d9b409ee095dff9b85afb349cf"
+    },
+    {
+      "path": "PaperCV282/CrossoverRareScaleProbabilities.lean",
+      "sha256": "6139589791fefcc0c98bb7d718830e3d9a01bab547fca2c53c046880b3d8bd2c"
+    },
+    {
+      "path": "PaperCV282/CrossoverResolvedLocationSource.lean",
+      "sha256": "86eaebcca765c05372635c377d4a8cb75f1fca0e6e41782c84ffda0c438b78a3"
+    },
+    {
+      "path": "PaperCV282/CrossoverResolvedLocationTarget.lean",
+      "sha256": "82516fc61a4f5a5395bc0a4afc1623c594b7d9ece7bba583bb0eb32ccd48c53b"
+    },
+    {
+      "path": "PaperCV282/CrossoverResolvedLocationTheorem.lean",
+      "sha256": "d77385c8815c39738fd1ee226bd496cb1c4492634e946a7a5605b8870c173262"
+    },
+    {
+      "path": "PaperCV282/CrossoverRightCensor.lean",
+      "sha256": "cdbb07df508e9661c8b43ef5b39c5b5ad8228a380954cc68484d104de7caf0f2"
+    },
+    {
+      "path": "PaperCV282/CrossoverSignComparison.lean",
+      "sha256": "5567b2a101b27a56973f33102bd6a4a4460a29b80dd2a3e2805048a865cf9158"
+    },
+    {
+      "path": "PaperCV282/CrossoverSignTheorem.lean",
+      "sha256": "1c1dce67fb02f8836f88097144e2cd38f90fd4dd8c69463f499ccc9e776cfa91"
+    },
+    {
+      "path": "PaperCV282/CrossoverSourceCoupling.lean",
+      "sha256": "0999e4ca44c4dd283a93e2f71891df3fbc0f3946debf82e076a8cb61d7293b86"
+    },
+    {
+      "path": "PaperCV282/CrossoverSourceGeometry.lean",
+      "sha256": "71d8fe93ff586d7cceaa5de55f8d26ce491fb6a2b47b93650d6d62d644551b17"
+    },
+    {
+      "path": "PaperCV282/CrossoverSourceSigns.lean",
+      "sha256": "577a8000d82e35e125499ada367d6e25d6b278c69a5b2e5fca745d0a31633249"
+    },
+    {
+      "path": "PaperCV282/CrossoverSparseSource.lean",
+      "sha256": "7113c2131bad548234174ba036559f48710e1d104a4bbf8a89fa587e378b3870"
+    },
+    {
+      "path": "PaperCV282/CrossoverSparseTarget.lean",
+      "sha256": "2b84a3e45d33bf7cd453afefebefe5ca3b86abaf01ea31fd0fd2d746ac16eee4"
+    },
+    {
+      "path": "PaperCV282/CrossoverSparseWeights.lean",
+      "sha256": "ce6bd224714456ebae37f84eb292929c156fa9d489cbac9b0917514106fc2f32"
+    },
+    {
+      "path": "PaperCV282/CrossoverUncapping.lean",
+      "sha256": "4daeb00ac6e29ae1072a9e923330d2f753da51de1816c433806b68efbff673a6"
+    },
+    {
+      "path": "PaperCV282/CrossoverUncappingLimit.lean",
+      "sha256": "bee15b74207090d09ee05705800cce718684a874c9b3e26e50aad48f545a55d7"
+    },
+    {
+      "path": "PaperCV282/CutoffGraphCompatibility.lean",
+      "sha256": "9290c9ee9d442e5643c34c549cd4e78d2c5d0a15e7a6a7ee67b6fda433c70849"
+    },
+    {
+      "path": "PaperCV282/CutoffGraphDegree.lean",
+      "sha256": "95cb6182204dd1a42d30c49cccba2c578b42f0871b7c2a3108dd3e4d066b6f49"
+    },
+    {
+      "path": "PaperCV282/CutoffGraphFreeCutoff.lean",
+      "sha256": "8491760e4a81e43d942da799e6fa7a49c39d1c7606aea0a30e4de4342c73254c"
+    },
+    {
+      "path": "PaperCV282/CutoffGraphScale.lean",
+      "sha256": "94bca9d57df8fa7fbe2c1d7b9c1fc3b8224eb6fa1ed8c201c689699f35b0461b"
+    },
+    {
+      "path": "PaperCV282/D4ClosureCoherence.lean",
+      "sha256": "776ca7b54d04b80ddf7649b293fe8d8040dbd0dc1d5ab5dc2317083ef79671f4"
+    },
+    {
+      "path": "PaperCV282/D4ClosureCovariance.lean",
+      "sha256": "9dede916480e2b54527196200ae2e199a1f7af4a222bf6d8dd1219620a648702"
+    },
+    {
+      "path": "PaperCV282/D4ClosureExtremeParameters.lean",
+      "sha256": "c3d76b04fa14643ad5964626c6327c748d400ded6b21e2cc6d155845282689bd"
+    },
+    {
+      "path": "PaperCV282/D4ClosureExtremeScalar.lean",
+      "sha256": "21e51067e399ca4c61b19ff09c2179c87908e10b6e3adf54306affb78ef51e0b"
+    },
+    {
+      "path": "PaperCV282/D4ClosureExtremeTheorem.lean",
+      "sha256": "fd661fec4dae8caa683da858f4ca259720ad8a16605b6b88cf3dca3118e04c36"
+    },
+    {
+      "path": "PaperCV282/D4ClosureHalfLines.lean",
+      "sha256": "f1f8d7c92c0cf0e26dfc9bf8a69614dd8ce7ec7bca1be95f879ecebdeae6d6a3"
+    },
+    {
+      "path": "PaperCV282/D4ClosureInfiniteMass.lean",
+      "sha256": "fc2555456e16c0acc9b8ead409849c52c1acd2bb10a0a6200cefa2a2352c0c91"
+    },
+    {
+      "path": "PaperCV282/D4ClosureIntegerLevels.lean",
+      "sha256": "22bce60f06de6b638cbc1cf731e2feb0fe79b3f70bc185a13a64d60a73e194cb"
+    },
+    {
+      "path": "PaperCV282/D4ClosureIntegerMoments.lean",
+      "sha256": "27277bff3bbec964e614464c0569506fa54c50f3e87f2a1211ff116652ab58c8"
+    },
+    {
+      "path": "PaperCV282/D4ClosureLaplaceFunctional.lean",
+      "sha256": "9897d18a6dcb54838b708a71778741002ecb2a6634801b8d48d8d57224ed6ec1"
+    },
+    {
+      "path": "PaperCV282/D4ClosureLaplaceParameters.lean",
+      "sha256": "9aa364a1a1949f3769d308996b9a47e346fcc2b40d6d101eaadc81f51adda24d"
+    },
+    {
+      "path": "PaperCV282/D4ClosureLaplaceRows.lean",
+      "sha256": "ab69c0dc7c21630f1accc9094ab7ad411b31f600eef33337841c786c94a55914"
+    },
+    {
+      "path": "PaperCV282/D4ClosureLaplaceSource.lean",
+      "sha256": "06f3dc555f5daa817641822e1b76a830ee4efa5ba11655f6f56240ab63f52752"
+    },
+    {
+      "path": "PaperCV282/D4ClosureLaplaceTarget.lean",
+      "sha256": "81224ef50abc1369489304b97977ff6e8c652ea947c8ad032f1b17b21875f483"
+    },
+    {
+      "path": "PaperCV282/D4ClosureLaplaceTheorem.lean",
+      "sha256": "f84ee6e214075eb17d38f60b8e2653015370872adb553b743f488a59537b0f0e"
+    },
+    {
+      "path": "PaperCV282/D4ClosureLaplaceTransfer.lean",
+      "sha256": "f3f4a9beb626932903fba3afc45b97bb9202296f7828b47094c943d56826bbfb"
+    },
+    {
+      "path": "PaperCV282/D4ClosurePointLaws.lean",
+      "sha256": "191f50af03bd412fc91855c11cef0bcadd6c42b97dfb8eef037fde926597f9e0"
+    },
+    {
+      "path": "PaperCV282/D4ClosurePointMeasure.lean",
+      "sha256": "0b6a21f17327a863771a1d397568fb25fbcc66016464795d6e609471eed6db4b"
+    },
+    {
+      "path": "PaperCV282/D4ClosureResolutionTransfer.lean",
+      "sha256": "97052f5f340033de5e6160f585d1d0adf815e90050e3bd63efde5419fee47dac"
+    },
+    {
+      "path": "PaperCV282/D4ClosureResolvedArithmetic.lean",
+      "sha256": "72c863472fdd159792af38622a4c2731e5b1669adffc474c56edf5807349c5ff"
+    },
+    {
+      "path": "PaperCV282/D4ClosureResolvedGrid.lean",
+      "sha256": "e7b32d8d60bc909cc2c7484162b6b48c3072aff9ee2d6dbeaca9f2f66779c09c"
+    },
+    {
+      "path": "PaperCV282/D4ClosureSpatialHalfLines.lean",
+      "sha256": "8342a04ad012096ab4f83f8b406188feb5d1bb63308156923a81a81b07303e0c"
+    },
+    {
+      "path": "PaperCV282/D4ClosureSpatialIdentification.lean",
+      "sha256": "9e985702414befda9c3b17af592f17ca519c29acbdeb35346a62f34eb99b1f36"
+    },
+    {
+      "path": "PaperCV282/D4ClosureSpatialResolution.lean",
+      "sha256": "7991912a0ec669afaae0929c1a675c46829c6d29c0c5edfe4dd609d50656bb98"
+    },
+    {
+      "path": "PaperCV282/D4ClosureSpatialWeak.lean",
+      "sha256": "4632352ae53a29d4d4093ebeb80b47ce0a3f2155dee784b49d61755cdb2859c8"
+    },
+    {
+      "path": "PaperCV282/D4ClosureThreshold.lean",
+      "sha256": "537d525de0e6e571027bb23a430adaba540fabf130c2fd67b334642767ba85f5"
+    },
+    {
+      "path": "PaperCV282/D4ClosureWholeRestriction.lean",
+      "sha256": "be7f9982a439eeb06d3ec180a55539077cf60211a7d121c0d16e2fd17eecb0b9"
+    },
+    {
+      "path": "PaperCV282/D4GridIdentificationConfiguration.lean",
+      "sha256": "3f012fc343dde510ce8e1c952aabd18d9471b5e13f6af50baa3a21fa2052ba45"
+    },
+    {
+      "path": "PaperCV282/D4GridIdentificationRows.lean",
+      "sha256": "612fcb3371d6fe3bb3ca4b397be4ba6f7778a5de01f9608c4e7752b2eb5d113e"
+    },
+    {
+      "path": "PaperCV282/D4GridIdentificationTarget.lean",
+      "sha256": "344af5c5c402aa264fc49cc59131c00c6c057cc3b88bb530f2b741aa7a0af1cc"
+    },
+    {
+      "path": "PaperCV282/D4GridIdentificationTheorem.lean",
+      "sha256": "ed2c6c3d7e8f12eb874ae9d8bbfd14f3d593aad0b531b9a2c20de5433d46fff4"
+    },
+    {
+      "path": "PaperCV282/DeepStartEvents.lean",
+      "sha256": "cfbc7802ba8500e03e27506e787d1fffdff3f00a97c95d7e6770f4172bbe20e9"
+    },
+    {
+      "path": "PaperCV282/DeepStartMass.lean",
+      "sha256": "3a4319684c277b18ae80d4ac7b38622f5f9e249a3f3486c0b4deb111a640cd92"
+    },
+    {
+      "path": "PaperCV282/DefectiveRankinCount.lean",
+      "sha256": "8a361361467bcd36ec34d8cb97763e9207360bb8bad9a729ab182c470c1b88c4"
+    },
+    {
+      "path": "PaperCV282/DensityAlignedExclusion.lean",
+      "sha256": "0dabda43a3f83bdff7c57179891ba7e8719733a25a77ea34909ebf1048c32be9"
+    },
+    {
+      "path": "PaperCV282/DensityAlignedRunge.lean",
+      "sha256": "4e56cce0fa0a1e1c0a5027c4854236952637ce84311ccc2ba822d81ee252ea65"
+    },
+    {
+      "path": "PaperCV282/DensityHammingBudget.lean",
+      "sha256": "88f4eb9542e88f85a5095f6209d99d21c9f417e0d401d2e1039bdf93f7a25153"
+    },
+    {
+      "path": "PaperCV282/DictionaryArithmeticRates.lean",
+      "sha256": "836cb62613fa15166e4ce418bc0cc505891d71de1471a6de121d535937c6e345"
+    },
+    {
+      "path": "PaperCV282/DictionaryCountTargets.lean",
+      "sha256": "ac8e51e5d8667db3dbdae6be3d53a69cebb7ddf02599355b9ede92308e8dea33"
+    },
+    {
+      "path": "PaperCV282/DictionaryCriticalWindow.lean",
+      "sha256": "44c540e6fb32329f42b2293dea0d9030984b65944e15f7f42a1b77e55eb22917"
+    },
+    {
+      "path": "PaperCV282/DictionaryErrorLedger.lean",
+      "sha256": "1b6466168c9e9b03ec8184831f23a78da7187db685aa0ce1ad70d027e906d615"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldBounds.lean",
+      "sha256": "05bd1028022976871037cddd538396f368db8b25bfb302841e84fcdbb3d03eed"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldCritical.lean",
+      "sha256": "260c81758c07576895c3ad9a29f8c9ca00be1e043124b19ff824e2de2480065c"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldDeletion.lean",
+      "sha256": "50ff3b8f0432486ee0eec6153a75c6317716457eaeb769dec7362d0b4f989436"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldDependency.lean",
+      "sha256": "0f3f49490d6f21e6d9076f68205ca84fda0f880a4c819188309296b0bd6a3a18"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldFirstCost.lean",
+      "sha256": "88815fb48a37153f27978780bfaf1cbb9b585aed6360d5186f327ac5945be39c"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldInfinite.lean",
+      "sha256": "b7909178283bec6e520bef913ef2788491f411ad1fa6d735981c27fe5f7c9a2a"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldModel.lean",
+      "sha256": "5c454f8a3000a4c4d7dd681174d359be27a198ddea1a90fc5e3806e83dcb47d2"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldRates.lean",
+      "sha256": "0d2ba6a78076a11c9c9bbb14e23b2a03301e6740df135d9debb9f34f4a1c8a21"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldSecondCost.lean",
+      "sha256": "f90d87f6271a116a3b823b501a98f1b086689e92ce32bf7be06a0bf56f41ebff"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldStatistics.lean",
+      "sha256": "94798dbda51f37af598d51ff650f02f1ca6f0aaeb3da5867739b45ace3445ccd"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldTransfer.lean",
+      "sha256": "4494474d76b883e39f84d5372d0c9dfe4415c17c4b85e0798fa322214643f2a6"
+    },
+    {
+      "path": "PaperCV282/DictionaryMarginalCap.lean",
+      "sha256": "0c2088fecda0e296ebebafcf3225755b3e99b4bbfba4fcb3a87f91ccb5bae1a6"
+    },
+    {
+      "path": "PaperCV282/DictionaryPairCosts.lean",
+      "sha256": "c235ef4c62262de0079f714b3b92bb671741ee7ffef767b0ee10cf3152770000"
+    },
+    {
+      "path": "PaperCV282/DictionaryProfileNormalization.lean",
+      "sha256": "854388861a7d7b8cae69d3996c691be77c47f8fbed5485e9a09a5d3d75ebce08"
+    },
+    {
+      "path": "PaperCV282/DictionaryRateConvergence.lean",
+      "sha256": "41419750bf5b1598c3c1a484596697d07233dfadd6acbd0c423a2a2482fd72a5"
+    },
+    {
+      "path": "PaperCV282/DirectionalGeneratorIdentity.lean",
+      "sha256": "eec2658e8995044a8b9c87b6fba8a7a09c02a19bd0e1fb8adbf50e0674b577a4"
+    },
+    {
+      "path": "PaperCV282/DirectionalGradientGrowth.lean",
+      "sha256": "fd3d66fd060f5042d1500afedbe3fb858ce1a82bc98617b690b7df3f3161fbe6"
+    },
+    {
+      "path": "PaperCV282/DirectionalHessian.lean",
+      "sha256": "41d0c3e66dfc3e59ee96cfa864c18b86aff940278aca4cdaa39200d484031c3a"
+    },
+    {
+      "path": "PaperCV282/DirectionalMarkedCosts.lean",
+      "sha256": "f8644c018e4334bea116431f3dd969aae55e0fe8c39b2f5c8f2f84383fa67107"
+    },
+    {
+      "path": "PaperCV282/DirectionalPoissonComparison.lean",
+      "sha256": "10f3dc593d301003ac942cd559b466148f978eceb3a1d1c3bfac7e36ffb18d70"
+    },
+    {
+      "path": "PaperCV282/DirectionalSteinComparison.lean",
+      "sha256": "8e0f0391101b1b5e00e6e744da95ae87d0770ab0fe435f8cc7130667f6ddd626"
+    },
+    {
+      "path": "PaperCV282/DirectionalSteinCounterexample.lean",
+      "sha256": "8cf38e731f11b283ed92f2dc8146137f23808e262967931f1774deed69429922"
+    },
+    {
+      "path": "PaperCV282/DirectionalSteinInput.lean",
+      "sha256": "de2074972f9eda4aeea1e5624239c9eb869e34757052358f05b154fcfdc4710f"
+    },
+    {
+      "path": "PaperCV282/DirectionalSteinIntegration.lean",
+      "sha256": "fd3774e1b74a639e5498824a07e8abc958c13f62d45115fdac8e4b3e50a78764"
+    },
+    {
+      "path": "PaperCV282/DivisorSubpolynomial.lean",
+      "sha256": "4919a63aaefa8f60338188b2762a875055eb5ee0b4438be932a39ab1200e7c88"
+    },
+    {
+      "path": "PaperCV282/DyadicFullValueProfile.lean",
+      "sha256": "61ad2d5d598014efbdbad65f7acf37cd7583be674cecb699788379ab25f21920"
+    },
+    {
+      "path": "PaperCV282/DyadicPoissonDistance.lean",
+      "sha256": "135a83b7d5da0711c6700fdfb9a705e91c5a18e688556eb60b3ced09c34f0dd5"
+    },
+    {
+      "path": "PaperCV282/DyadicPrefixArithmeticErrors.lean",
+      "sha256": "084171127c1700c1acfd5366058b90b9d6db28a36d958e360721213d45843ae9"
+    },
+    {
+      "path": "PaperCV282/DyadicPrefixBudget.lean",
+      "sha256": "46a00ec2dd3bec7d6bee25cb7f236b5378c751ad3dd8c0b4988cd9c4e1580d7a"
+    },
+    {
+      "path": "PaperCV282/DyadicPrefixProbability.lean",
+      "sha256": "f6a7afc4078a8b1ba2de0c31699d33620614535cf01c1f1472808479a8045e89"
+    },
+    {
+      "path": "PaperCV282/DyadicPrefixRemainders.lean",
+      "sha256": "d898043d51a3f8fe4a5a8bad652ebca5dfde98ea74644dbc54a29cde8a8ae04e"
+    },
+    {
+      "path": "PaperCV282/DyadicPrefixThresholds.lean",
+      "sha256": "b885a662416d40bbc84646bc4dddb2581f68660f0ba700f13cf6568536b2ebb8"
+    },
+    {
+      "path": "PaperCV282/DyadicRelationProfile.lean",
+      "sha256": "1bdb8b4819624353ccd892578f959b001237279602aeb7beb2a8dd7d764c7098"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedAggregation.lean",
+      "sha256": "fb8c4992979cd2605650a53bf1547c64f04f1e9a3ec96cd6407157f95db99c37"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedArithmeticRates.lean",
+      "sha256": "e0d1b28434cad460ff6b3685656501693aed9dd1ddb9bf6d5a3fe23e9e896b2d"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedClusterTarget.lean",
+      "sha256": "0e763cc888e37a80e19b12c567e875c20656601e0a3f03008431855c331d9742"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedClusterTransfer.lean",
+      "sha256": "e3d87b92a7421a5e9de50ab7bdf98b09b8569ee2242fc06174eb2b53ade4a54e"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedCritical.lean",
+      "sha256": "14cb0572daecf2eeaef184fea53351036c41f351c8bfc856a8eb1fc27e1d8d65"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedDeletion.lean",
+      "sha256": "63251352b03e8e2fb4fe00d7f828f26da1fbddb527e0aa9525468abb145c407c"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedDependency.lean",
+      "sha256": "99f6fc0bcb8f1ada9990732314aa4e28bc502333c8e59e77b35e3c584d19a0e5"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedFieldBounds.lean",
+      "sha256": "433b7ee76d68b286dc563c5c5b7cb55afccedf96ceb4ba3e7d29d1755173cee4"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedFieldTransfer.lean",
+      "sha256": "1739d5b4f1e65686c5b824dc2063a3e3f0a95584003ae9cdc07e822cc29e3cc6"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedFiniteComparison.lean",
+      "sha256": "a387e53a5193b77bd4e677fa99bbc2e3ca61e73da1bd9c73d50367f2777dfe2c"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedFirstCost.lean",
+      "sha256": "5d4985d6766017a5cc9097a785a709c4da6d996a27b296b0f57f91c88410306f"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedInfinite.lean",
+      "sha256": "4d8f3b37dbc30bf729307159f4da9dbbb761b6ee74d1af03d22f4545525329a1"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedLedger.lean",
+      "sha256": "4da82616d6ed8e0fb0a89524b6bd69f724ab0589e0a3735a6898ab7ebc08a4b6"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedLocalGeometry.lean",
+      "sha256": "9b72f159955c3d6549c556519a583e2a22ae5826c3577aee8366aad818879d87"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedLocalProbability.lean",
+      "sha256": "053190a6f8d4ddc6b6b6e66e0e4bb8abd46d2271e2f29a260a579a654436a06b"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedModel.lean",
+      "sha256": "d3b5137f2417798d7b8639d15b0d2d7ca68ebd8061e2c99138ce835eb1e0e223"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedMovableRates.lean",
+      "sha256": "f736388ed86e6560409cbfd7454b2f3f58bddb31ffaa177e931b9d7a7eebcaba"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedPairCosts.lean",
+      "sha256": "6bae8dcae2b5bb51b1ee214f10376b78e228a034dba1ee88391bbd068c0f9b40"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedRates.lean",
+      "sha256": "206b73ec2b18ec02db79fef4499ea94482951c061803ab3661bfe4b5ea71ad33"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedSignProjection.lean",
+      "sha256": "3317c0bb6e77815f76b35be69e48965a6497bf1cd60e486e5f4d904778d194c3"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedSourceTail.lean",
+      "sha256": "b0c39338c9ad0ac225c0c2a27d85348853b62b554216eca1dd244c9f2fe45b1b"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedTailTarget.lean",
+      "sha256": "4e321700034a0a8bf1ba2a382acbaaab1a9b12edcf12061cdbfcf5e518e19b16"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedUnsignedProbability.lean",
+      "sha256": "f47a4983b2e01a8af3fe6eb59a228fa0b3d314637bd71890520a21b068c1227c"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedValueProbability.lean",
+      "sha256": "37d35be4d27ae1856152ca6c1baa4971e09dc77f30becf18db4237e64222d752"
+    },
+    {
+      "path": "PaperCV282/ExponentialIntegral.lean",
+      "sha256": "ec01bbaf54a80594f1231b721ff926d6e6cf85c713ccd8151af2f7983c18f880"
+    },
+    {
+      "path": "PaperCV282/ExponentialIntegralAsymptotics.lean",
+      "sha256": "cef1f4ac1f4b87ea86841debbf237934e6bdb07a45df15b7a10b0e2e585c282a"
+    },
+    {
+      "path": "PaperCV282/FiniteConditionalKernel.lean",
+      "sha256": "39a3413f587282e40062c3e3766f2b828193a2e4a941519287a81ffd32ad7918"
+    },
+    {
+      "path": "PaperCV282/FiniteFieldPoissonCoupling.lean",
+      "sha256": "cc1d05770284fbee77eafaa4ab501af5adb40e18d32ff344b58cbd35d97ae528"
+    },
+    {
+      "path": "PaperCV282/FiniteFieldTotalVariation.lean",
+      "sha256": "7ee464a9e79319571ed1585e40ed7c08f45bff329ef22c00035ab9d9fb8dec74"
+    },
+    {
+      "path": "PaperCV282/FinitePoissonCLT.lean",
+      "sha256": "a312e88d8c0e4d59880d380c034b6b27d64f2930b99f306f244222ccebf221e4"
+    },
+    {
+      "path": "PaperCV282/FinitePrimeEnvironment.lean",
+      "sha256": "3a45dde6f896e4c0a530223416ab0a52702d6a734d2c7284b603ba68543b4c80"
+    },
+    {
+      "path": "PaperCV282/FiniteStartMaskAverages.lean",
+      "sha256": "1e86aec789aca9e6f17c2744db40ff43025d6c9755c668e012c6fe84edfe7712"
+    },
+    {
+      "path": "PaperCV282/FiniteStartMaskDeletion.lean",
+      "sha256": "f756ada8ff24bacac492294d43a13be1b96ae7762f99cfdbc39a7603aab65ad3"
+    },
+    {
+      "path": "PaperCV282/FiniteStartMaskModel.lean",
+      "sha256": "3989aa79c6a6067f598b2575aefcf8a7060166576d4990c08db8f689d0a03f44"
+    },
+    {
+      "path": "PaperCV282/FiniteStartMaskPairBounds.lean",
+      "sha256": "7ce3e69073b0b7182310552388794822c06c0b17733a4a3df8c26d1ccf5d39af"
+    },
+    {
+      "path": "PaperCV282/FiniteStartMaskSource.lean",
+      "sha256": "c6636a7b0d1c5df585fa4313174a2d14a20863e1ffc881fcb46b38d43a5d83dd"
+    },
+    {
+      "path": "PaperCV282/FiniteStartMaskSteinCosts.lean",
+      "sha256": "bea3d74e83663d0a7b074e20111afdd93c295d81f34407278f7fd2d3cf330671"
+    },
+    {
+      "path": "PaperCV282/FiniteStartMaskTransfer.lean",
+      "sha256": "d6b7743c0647aa3c80d180aaed3c4a7e5b2f3c2cefd5f87464c13dff17846cd6"
+    },
+    {
+      "path": "PaperCV282/FixedMediumAsymptotics.lean",
+      "sha256": "d4db8250eb5e79be2db458f4be0ce68e11709515e414f217f9445ddf387dda02"
+    },
+    {
+      "path": "PaperCV282/FixedMediumGeometry.lean",
+      "sha256": "5d1e249b9e474270059928ff4bb1b8af91bb32c15bb060897d89e5e631dc62fc"
+    },
+    {
+      "path": "PaperCV282/FixedMediumIncidenceRank.lean",
+      "sha256": "3802c19a43186c90bc7cd48521c2f862044d577004f0238dd8133bf4b519e729"
+    },
+    {
+      "path": "PaperCV282/FixedMediumLayers.lean",
+      "sha256": "fa81ec96fa6f39723b8c5c6a6b001d0a56d63e1344a7ca8c35928dd868bd252e"
+    },
+    {
+      "path": "PaperCV282/FixedMediumRank.lean",
+      "sha256": "2ab3c0fbb867e7da81b8162eb95be41c750e70b8f141bee2421ca24943136368"
+    },
+    {
+      "path": "PaperCV282/FixedMediumSquares.lean",
+      "sha256": "c37ff2dc831e0d0f2e5bd62dfc17900e76c971447de597f0ef30be8a511e3fef"
+    },
+    {
+      "path": "PaperCV282/FreeCutoffAdmissibility.lean",
+      "sha256": "e49d75371294107bf1756bd4555f5837c698271ea376ed3ffaa0ac601ac95c3c"
+    },
+    {
+      "path": "PaperCV282/FreeCutoffClosureBand.lean",
+      "sha256": "4014df85d903473f7fb958851ea228b0b879f749eac1a8a4f8d22311e7cc6db4"
+    },
+    {
+      "path": "PaperCV282/FreeCutoffClosureScales.lean",
+      "sha256": "c98eea73cc59b3f5ca1efeb0339e3c65ae901c920dcef538e8dfc81106b7c1db"
+    },
+    {
+      "path": "PaperCV282/FreeCutoffSoftRates.lean",
+      "sha256": "c145d37f705dad5b838ff4e935bfd37b15d29e97ddc78f4b881f11833058d473"
+    },
+    {
+      "path": "PaperCV282/FullBandArithmetic.lean",
+      "sha256": "cbb8ab9751aaaf2cda8298e751a3c69d77fcfc8df36985b7e493eb4f115a3467"
+    },
+    {
+      "path": "PaperCV282/FullCylinderStartLaw.lean",
+      "sha256": "e5b02ffb2f9bc0d0871b9b6d99e7c083808b5c6063ef28c79edae324bcaf794d"
+    },
+    {
+      "path": "PaperCV282/FullHostAsymptotics.lean",
+      "sha256": "281e309826f4e1cbc2c552bf0434e0cff7fd874289bbe0d4e7c523ab505afd8c"
+    },
+    {
+      "path": "PaperCV282/FullHostComparison.lean",
+      "sha256": "386102796a593524522348100d7ecbd311d731505f561612129730796eec13ca"
+    },
+    {
+      "path": "PaperCV282/FullHostCounting.lean",
+      "sha256": "abb8df341778599500c524e059e777f6c407a0f368ba78e8fe8f69cec1fc8890"
+    },
+    {
+      "path": "PaperCV282/FullIntervalHostAsymptotics.lean",
+      "sha256": "e37a2193f426eb9c9bedb61633cae573baba0c8e6a52da764c8107ebbcbb98a4"
+    },
+    {
+      "path": "PaperCV282/FullIntervalHostCounting.lean",
+      "sha256": "d70acf28035619446c65677ccb45cde4002592bff603b33ed9cf7f61c8e88ad3"
+    },
+    {
+      "path": "PaperCV282/FullIntervalPrimeAssignment.lean",
+      "sha256": "19188312df1ad23b3f9973223e3312b1b02dfcfbadee55289421005e109ae0a7"
+    },
+    {
+      "path": "PaperCV282/FullPrimeAssignment.lean",
+      "sha256": "34247d19cead743811aa659e2e1477027971ab32772bbb1b008c7c5f3554b423"
+    },
+    {
+      "path": "PaperCV282/GaussianThresholdAR.lean",
+      "sha256": "98ac5dde09ca1445cd567379424ef28a34e42c4f9080a94a175fb721c02631ce"
+    },
+    {
+      "path": "PaperCV282/GaussianThresholdCovariance.lean",
+      "sha256": "695f81620da818983ced9af474c6a045fea3fad5310de71611a1bf4cd347c85f"
+    },
+    {
+      "path": "PaperCV282/GaussianThresholdIncrements.lean",
+      "sha256": "3564cbf48dc93cc94240ad0155e2d8e302ff5b1fa1b89009f5f0f6bda960feb1"
+    },
+    {
+      "path": "PaperCV282/GeneralPoissonMarking.lean",
+      "sha256": "297a6b6237ccfa8ad5e661f2f39d5294c3f4e799b232d97f18c4c9d1bc858dcb"
+    },
+    {
+      "path": "PaperCV282/GeometricClusterTarget.lean",
+      "sha256": "215a22bb7deb369d01e247f12628b090cd4921c6bcc696f9be2835f64df884fb"
+    },
+    {
+      "path": "PaperCV282/GeometricClusterTruncation.lean",
+      "sha256": "892638bb6df17c411daad43d5d9a2e709fd40f3655169b606e98b0d821bf41d8"
+    },
+    {
+      "path": "PaperCV282/GeometricConfigurationCounts.lean",
+      "sha256": "2311bd89b763ec6d6369dbba074b8593fe5cbade66b3074f5aba0b368423b78d"
+    },
+    {
+      "path": "PaperCV282/GeometricMarkedConfiguration.lean",
+      "sha256": "23bfa64e509b15dadcfe2a9c8d8d7593d987c222f35c2239bb0b5c93eeea434a"
+    },
+    {
+      "path": "PaperCV282/GeometricSaddleSummability.lean",
+      "sha256": "3c41ce0d90343914491c2e061474761a93a6ed4e0fc54934c5dc64bbcae16837"
+    },
+    {
+      "path": "PaperCV282/GeometricScaleInstances.lean",
+      "sha256": "4538f387d89efbb4ee07a974438d7d0c066e1fbf5f685ec99a35e05c5ad8bc3b"
+    },
+    {
+      "path": "PaperCV282/GoodTouchingProbability.lean",
+      "sha256": "086280456f7c4136965b0288e8e1c871141fe25091143c54a23cafe97c502242"
+    },
+    {
+      "path": "PaperCV282/GrowingLevelParameters.lean",
+      "sha256": "fb3ae42858f4d92aea10a0db0eb4d22e440de6e8d4a9f5ee426719da1b5e7ff9"
+    },
+    {
+      "path": "PaperCV282/GrowingMarkedTruncation.lean",
+      "sha256": "85242e409bbf202ec485a5cc78e42486a624dbf4f81232e29584b0b02d059772"
+    },
+    {
+      "path": "PaperCV282/HardLocalClosureBudget.lean",
+      "sha256": "4ce2e4e54a119e2a22eed89318cdea0d02cb68bbd976cbbba94933757dd3ff4d"
+    },
+    {
+      "path": "PaperCV282/HardLocalClosureCentral.lean",
+      "sha256": "cb9b27203821a312fccfa63fc15328605e61e604a1c0df5ceef732585e0f919d"
+    },
+    {
+      "path": "PaperCV282/HardLocalClosureRates.lean",
+      "sha256": "8c31c4406f90c04eecbba870d0e4a1a24d3f89e746d3ae71c98e55623a3f65f7"
+    },
+    {
+      "path": "PaperCV282/HardPoissonBounds.lean",
+      "sha256": "27eaf5f8d4cb3d752f4d7c252cdfc554b6b22a79eeeb7e8f8785b2cdd666d56a"
+    },
+    {
+      "path": "PaperCV282/HardPoissonRates.lean",
+      "sha256": "b340cb0e5505b83730253d4d194b45adefb9a1d815567e98ee097d56218cbc15"
+    },
+    {
+      "path": "PaperCV282/HardRelativeMargin.lean",
+      "sha256": "ab6dfa6fdd829933c851fc2eea034ff69ca458bee6609f438d2dd681e29ff114"
+    },
+    {
+      "path": "PaperCV282/HarmonicIncidenceSurplus.lean",
+      "sha256": "201bdc83f2b04383af6d2fd5e3852659ef1dfe65a6d44e9dc194f048abfc20af"
+    },
+    {
+      "path": "PaperCV282/HostRankMass.lean",
+      "sha256": "aa6beb7a9ceba469444b8502146dd0b9dc89fb7a2494a92322d91f9eb63322ce"
+    },
+    {
+      "path": "PaperCV282/HostRealPowers.lean",
+      "sha256": "d5dd1f0657bcff30f52b2845a086f10cb5a7f9004abe6e2f7ea18e71a4403dc0"
+    },
+    {
+      "path": "PaperCV282/IidWordComparison.lean",
+      "sha256": "a0126cda313023dd03ae60cb78999c898610d6c87c9ec7f259f569ed8c9a3bd9"
+    },
+    {
+      "path": "PaperCV282/IidWordCosts.lean",
+      "sha256": "2dfce02dfbb6776a2a79cac246085b07a2f499d3c2a7ff66783b345540e24d9f"
+    },
+    {
+      "path": "PaperCV282/IidWordDependency.lean",
+      "sha256": "f2e63acff0bb4b51b5fd6c4b35b23960fd70d080f78979e601789fcfa4d53c16"
+    },
+    {
+      "path": "PaperCV282/IidWordField.lean",
+      "sha256": "91a9a2aa43f44a59d1c2c2309c05b548d8d4ba0f7c9c6e3b394333d8bd06a153"
+    },
+    {
+      "path": "PaperCV282/IidWordInfinite.lean",
+      "sha256": "18a82a12044151661ac5c88b87f6f43ab626bc2149aafb1021dbb0b5b9d8322e"
+    },
+    {
+      "path": "PaperCV282/IidWordPoisson.lean",
+      "sha256": "0db5bbaef3f2c56fc40ca90d801d4e79b1f28ce90d198c6ebdacbec31a80b0c9"
+    },
+    {
+      "path": "PaperCV282/IndependentDefectParameters.lean",
+      "sha256": "a6c5f7924f8c5714eef46d1070ea2729dd8a5c56e65a3d6ab2c561180fc345b1"
+    },
+    {
+      "path": "PaperCV282/InfiniteConditionalWords.lean",
+      "sha256": "c5ef61483cedd2fe9334668d5f2f73df260b572e6592a8d1359668908c77033d"
+    },
+    {
+      "path": "PaperCV282/InfiniteCountMoments.lean",
+      "sha256": "2986bfd3e111d942840317db36324567771c340c882886ba9aaa7c07dd3a6ee6"
+    },
+    {
+      "path": "PaperCV282/InfiniteFieldTransfer.lean",
+      "sha256": "375ca7602c1afc944534b16ac0f98feb82b6a774f4493de53e3fc8c979ae1c9e"
+    },
+    {
+      "path": "PaperCV282/InfiniteMaskedScalarTransfer.lean",
+      "sha256": "7bcf059f338d0db6a26f390f880793e9dd003825982ca1add7bd507b3ababb70"
+    },
+    {
+      "path": "PaperCV282/InfiniteMassCoupling.lean",
+      "sha256": "ceb69494c61dfae238ee8b772320d92b135237b33b90c1c77b7c6b3e125bab7a"
+    },
+    {
+      "path": "PaperCV282/InfiniteSoftTransfer.lean",
+      "sha256": "29440a683c200d3daf15667ae81437d2fbbdd1cc4a4eedc3b9676a79537112c6"
+    },
+    {
+      "path": "PaperCV282/InfiniteWordFirstMoment.lean",
+      "sha256": "d4f37da15eba222352fc38f54a75144aee9714df8073a507defed9a8a7127720"
+    },
+    {
+      "path": "PaperCV282/InfiniteWordTransfer.lean",
+      "sha256": "7fc14472cb2cbdcfbff97cae7dd93eff6dac384ee6db10b312045041e7db3df0"
+    },
+    {
+      "path": "PaperCV282/IntermediateDefectCount.lean",
+      "sha256": "e94d177ed21f574af3518d93b75b1ef6f6eecd2062ae809658356cd01225bd1f"
+    },
+    {
+      "path": "PaperCV282/IntermediateDefectCover.lean",
+      "sha256": "665ab20fe01c70462b5750c7a063f50e00cd34b2dad676e71e526fa0e878ba20"
+    },
+    {
+      "path": "PaperCV282/IntermediateDefectScales.lean",
+      "sha256": "2e712d5bf59a53bc13295bb5934b4673d458c75bfb3bcbfcc6a74f45011b0878"
+    },
+    {
+      "path": "PaperCV282/IntervalRationalLowerBounds.lean",
+      "sha256": "8ce54e672c46876cc198a2a8707aad09d94bc7bb7211d8d85f2404e08d44b358"
+    },
+    {
+      "path": "PaperCV282/IntervalRationalMass.lean",
+      "sha256": "69231c8c6bd1cd03685934f195927043790e5aceda2a16e4f082e6ff394df73a"
+    },
+    {
+      "path": "PaperCV282/KernelEnergyCounting.lean",
+      "sha256": "75168aaf2a726e87067c3093dc68556e15153505c7cc67830eccc3206a2291f4"
+    },
+    {
+      "path": "PaperCV282/KernelProductVariation.lean",
+      "sha256": "1aa8f77581d6d57d24f7a0a23c609bdeda8bc7e44469aabc4c9550116baec03f"
+    },
+    {
+      "path": "PaperCV282/KernelTotalVariation.lean",
+      "sha256": "c2cfe9a791a6fe1149f63934b60b64031f8ac08efd0fad4dccdcbce8673abda5"
+    },
+    {
+      "path": "PaperCV282/KernelWindowEnergy.lean",
+      "sha256": "d1e9edcc6e9a8799838535ccb5d152a682b6eb9ab3f56fc36d6ebab5b88a2ed5"
+    },
+    {
+      "path": "PaperCV282/LabelledInformationBudget.lean",
+      "sha256": "9db866562d452a5174d2d2481c07d11d5c250f77c6e37c21b615842f2fc67cd5"
+    },
+    {
+      "path": "PaperCV282/LabelledProcessCosts.lean",
+      "sha256": "057c5eac1a34097b3b0356617411ae3bc8e581727106a993221d8b31f138c0ac"
+    },
+    {
+      "path": "PaperCV282/LabelledSupportGraph.lean",
+      "sha256": "88774160893e16cad0ec482a1ed2363850d5e8234e806b69aaa50b3f75708617"
+    },
+    {
+      "path": "PaperCV282/LaishramUniformInput.lean",
+      "sha256": "230b7678bb3d2731f5ca14a369b9153bfa9fdb1e2c09d0c5b891c5fa40aa76de"
+    },
+    {
+      "path": "PaperCV282/LogarithmicWordPowers.lean",
+      "sha256": "785ba77279015a49cd66e156231a37b43d629640c1706be50a29306068fa5edf"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateArithmetic.lean",
+      "sha256": "936410c39b900d9e20bcd1d4a850ccc996340ede3fecbe09aa75446cd5356739"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateBudget.lean",
+      "sha256": "dffce8e987ed3d6bdc286fe35425e3d8ef0aa525eb024d89ec23bf1ed0e0824e"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateComparison.lean",
+      "sha256": "be11ce420e88eed5e24e4ef54ec24c4f2b9af7ae0d86e5630f847f233a919292"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateCoordinates.lean",
+      "sha256": "cee9649cc0f8f050777b71b4002d8e5ea4b83a4c305e3f39693a944e41cf3cab"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateCosts.lean",
+      "sha256": "2c556c65028a0d97fa938facc70a63778549fecce9ac89c998b2ffc8d8b0c374"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateFilling.lean",
+      "sha256": "740dc7cf4555f5218435cbf7308adccc25280ab038a3effa784d62053cbeb794"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateGeometry.lean",
+      "sha256": "ae27b029935e06e6153509e6ddc808f28cb0b51058fc6d1c1eae957b28a91ff9"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateHard.lean",
+      "sha256": "a32bd91ccabf0693d6030caa9722921c7dcb0e4b7c902dfd445fc6774e128d9d"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateModel.lean",
+      "sha256": "253a722ad5a7ff1e0a4ffef41b2f6ec91aeb2af6450a8985be7046b462020da3"
+    },
+    {
+      "path": "PaperCV282/MacroAggregatePaths.lean",
+      "sha256": "8faeeedad375dab2f5452a735f05f23470f5d322e7b8731cce14c75696292a2f"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateRates.lean",
+      "sha256": "ec009a44dca3c8a76879560de08a983a06aa500a89a540d029287345689da421"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateRestoration.lean",
+      "sha256": "69e384af4b1b8a52f612813ef45be1ced84e547f234e0628fb3b7ef865c9e6cf"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateTheorem.lean",
+      "sha256": "77db2f9980119554687b9a6d06f795f8a67b369c5d338c408bee1f04bd55f867"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateTruncation.lean",
+      "sha256": "ea0bd4f5f7dd62655540fe4da0def9c36382e69ce48425ffd3a03585a218ac3b"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateUnsigned.lean",
+      "sha256": "1d4e3b9b52acc5e86627058b330b6ee121ee72b5934bd422e2ffa9915c8d1342"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateValueProfile.lean",
+      "sha256": "f58fbb873b0c16af2c12f6e6d0f537b15dfd5b554ec8fa9efd766d14efeb621c"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateWeightedCosts.lean",
+      "sha256": "ce0b23f271be2bd697090bc871c7fb362c3605ebde2e36cf15e5e69136e5ab4b"
+    },
+    {
+      "path": "PaperCV282/MacroTransportCoordinateRates.lean",
+      "sha256": "a2b95bf923ae9dfd5b2718ffa071bb934b51a4b2ea74801ad8d12c826da03b47"
+    },
+    {
+      "path": "PaperCV282/MacroTransportCoordinates.lean",
+      "sha256": "25aafc780c9973f5aa1dd55ee0b813bb1c475ccdc67ca282e0e92f1290e9fd17"
+    },
+    {
+      "path": "PaperCV282/MacroTransportFunctionals.lean",
+      "sha256": "dd87f70f51aade1239b68201b946a4919dccefcaa2eec1bb1856de2eec5ad04b"
+    },
+    {
+      "path": "PaperCV282/MacroTransportHardBudget.lean",
+      "sha256": "75b7af1dd353161b4e2b892be77a24833e61c05991ad678f63a96d3efb2ea785"
+    },
+    {
+      "path": "PaperCV282/MacroTransportHardComparison.lean",
+      "sha256": "75c98fefaaa94401f66a465f872459d0669f48efbdcabf463985011ec8ba6adf"
+    },
+    {
+      "path": "PaperCV282/MacroTransportHardRetained.lean",
+      "sha256": "5ea2ff68b1698a4ef618d5349f49c47e721cea9528b2349ec129a03bd019672e"
+    },
+    {
+      "path": "PaperCV282/MacroTransportInformation.lean",
+      "sha256": "35b16060b0de8d03c5e865b0b01607d4f0be6cd7fab017bdae67963098578395"
+    },
+    {
+      "path": "PaperCV282/MacroTransportModel.lean",
+      "sha256": "81043b5857433399bbf575ca6d57e10eda8c8f3199658251f8167481483a6fed"
+    },
+    {
+      "path": "PaperCV282/MacroTransportMovableBudget.lean",
+      "sha256": "1a8146607ed6a4eeb2e5f0cf38788d9a355e9bf0b22f76a64d1ca673a15af4b1"
+    },
+    {
+      "path": "PaperCV282/MacroTransportMovableComparison.lean",
+      "sha256": "4868a7d013fdc9a2fbb0c5a020616879f494f81786937c915bc8bf7725145e12"
+    },
+    {
+      "path": "PaperCV282/MacroTransportMovableInformation.lean",
+      "sha256": "b19b29c304d4bfff23e236f9b978e49c58acac8e42731e381b98a1e3073fede3"
+    },
+    {
+      "path": "PaperCV282/MacroTransportMovableLedger.lean",
+      "sha256": "b170b2e34e8ac43835cafadb49dcc4464ec4746d3c103d2222e5ac78f532fc36"
+    },
+    {
+      "path": "PaperCV282/MacroTransportMovableRetained.lean",
+      "sha256": "ff7b7f0879c9d9dbc019ebbe080e12fe4acc9ca40349b7758468b2d7d5a1fd86"
+    },
+    {
+      "path": "PaperCV282/MacroTransportQuantitative.lean",
+      "sha256": "2b558dc6bed433f41c82fb3b4e8945059a8e3475a0e15f10863d29e2dfa563fa"
+    },
+    {
+      "path": "PaperCV282/MacroTransportRestoration.lean",
+      "sha256": "e3bf249c06678aaafbcbba827d4f8bff003f8ce86bf0caa10fda3755c172fdac"
+    },
+    {
+      "path": "PaperCV282/MacroTransportRestriction.lean",
+      "sha256": "4978ec5beb98cd49a65c2d5f8336ed539f5b073e0f05342a60aa415429ab8427"
+    },
+    {
+      "path": "PaperCV282/MacroTransportStatistics.lean",
+      "sha256": "9f1776f28ea16e58c887ec2b0a6b4450e103980d53e30a0892383b8b16201f5b"
+    },
+    {
+      "path": "PaperCV282/MacroTransportUnsigned.lean",
+      "sha256": "bc1acd784de88c728231df50490502774a838257bdd3c665553de18e6f566e0d"
+    },
+    {
+      "path": "PaperCV282/MacroscopicAlignedExclusion.lean",
+      "sha256": "2065e7b0374a5d2069076788d3ad8b960605aa68b9d4e94d982acd895599cff9"
+    },
+    {
+      "path": "PaperCV282/MacroscopicAlignedRunge.lean",
+      "sha256": "1c586e833470a91120d24cf6faeed0de4c6bcd9cc31b2db91536a6a3f885a810"
+    },
+    {
+      "path": "PaperCV282/MacroscopicArithmeticBounds.lean",
+      "sha256": "6213f13d54eef96484868bd000a9f0ce4a39502067de37abc00ae4300fafca17"
+    },
+    {
+      "path": "PaperCV282/MacroscopicBadBounds.lean",
+      "sha256": "8094a4bd3f4bc64f95a076cc65aa72f37094876b59dd254db7f10c47c8121ff8"
+    },
+    {
+      "path": "PaperCV282/MacroscopicBaseFibers.lean",
+      "sha256": "021ca7504ad2046f775d513d2ffc0645274489ec639a539b6d06dedff943e5da"
+    },
+    {
+      "path": "PaperCV282/MacroscopicBoundedHosts.lean",
+      "sha256": "f9f9db86a082b143adef8c83270ab58ea0b2dd1067bc77e89afbecb67797a4ef"
+    },
+    {
+      "path": "PaperCV282/MacroscopicCanonicalCode.lean",
+      "sha256": "0d7126a16a02a8d5de2199a9431b91b5be340811389d319f3ed30ce64fe4ff57"
+    },
+    {
+      "path": "PaperCV282/MacroscopicComponentFibers.lean",
+      "sha256": "10406c1a6128feab88eb1bc6012262d3f34bfd224fb294abaa5620463b4ec05f"
+    },
+    {
+      "path": "PaperCV282/MacroscopicComponentNormalization.lean",
+      "sha256": "dc8f6e7ec6c385d63183409b10207b8489f69ff3b8ac35b678dc563504a6a6d0"
+    },
+    {
+      "path": "PaperCV282/MacroscopicCutoffBounds.lean",
+      "sha256": "2860e60f70aa55c49e68281b4bed7c04f30c2c425f7d53dac9b2db629174d347"
+    },
+    {
+      "path": "PaperCV282/MacroscopicDyadicSlices.lean",
+      "sha256": "661581291fc4499a309ce7310d8c02a094371f2951c3800611d6388a548c07e4"
+    },
+    {
+      "path": "PaperCV282/MacroscopicEarlyProfile.lean",
+      "sha256": "9c38132961f51bf98e098d2f2fde28527100710591ba2f1db9e2716e038e11dc"
+    },
+    {
+      "path": "PaperCV282/MacroscopicFirstMoment.lean",
+      "sha256": "a4ba452ba8eb45c127c82c5f75bbdd33fcc7db0ada1950061ebc6253ceec2f28"
+    },
+    {
+      "path": "PaperCV282/MacroscopicGeometry.lean",
+      "sha256": "4ef66e403738b51931945220e695f5f7ad6598d620390cecb401e9e53bfcac89"
+    },
+    {
+      "path": "PaperCV282/MacroscopicGraphBounds.lean",
+      "sha256": "4c455241e8896f66b20e67486084b28d37325f232cd5f4e2cfe1aac723e3dfb5"
+    },
+    {
+      "path": "PaperCV282/MacroscopicKernelEnergy.lean",
+      "sha256": "05c200832b7a0ee5b5304919cff3e6e6e25e4e2f6943cd9adaa72b3dd30565de"
+    },
+    {
+      "path": "PaperCV282/MacroscopicLogarithms.lean",
+      "sha256": "7f59baa4007b6350ca20bc463ae47ffda6c7ea74e8d00830d3ec7980c54062c5"
+    },
+    {
+      "path": "PaperCV282/MacroscopicMarkedLedger.lean",
+      "sha256": "2a3d6d420e5307fd19e0e724503b4092e08489752c991d28ce748ae3672e44cf"
+    },
+    {
+      "path": "PaperCV282/MacroscopicMaskGeometry.lean",
+      "sha256": "c2a18f148df1e786cec21a487f2a5f4cf432b9d708449a37ec1de0bcc314595e"
+    },
+    {
+      "path": "PaperCV282/MacroscopicOneSidedFibers.lean",
+      "sha256": "0e9175896f0ca7e4f30610a2115615118a92f236da2388c8fa984dee8d00b722"
+    },
+    {
+      "path": "PaperCV282/MacroscopicPointwiseDefects.lean",
+      "sha256": "38f479477ba18d38828f8e2f1fefe3b79cb8679aef9f5c42b1f52fa93f7f4a83"
+    },
+    {
+      "path": "PaperCV282/MacroscopicRelationProfile.lean",
+      "sha256": "93be8847377b71afcb43608700e89135240d125516df9736a976ccb105388263"
+    },
+    {
+      "path": "PaperCV282/MacroscopicRetentionBounds.lean",
+      "sha256": "70fe147886383af5bac1ba326b2e3dc744220c47930c7bfbc4d25bd89f57c17d"
+    },
+    {
+      "path": "PaperCV282/MacroscopicScalarLedger.lean",
+      "sha256": "9429b4e95a1b3e9eddb86986ca99634c75492619b056abb32abf6e21d3a35358"
+    },
+    {
+      "path": "PaperCV282/MacroscopicShallowProfile.lean",
+      "sha256": "6cae1905b3617a8200d475eac87908c3d15f96ec6e232edb4a06e0c08eab956f"
+    },
+    {
+      "path": "PaperCV282/MacroscopicShallowSectors.lean",
+      "sha256": "6d023fdc66f7feab10e13ca9e189b7d2b2ab441239f2a875ab6b790afc518b7b"
+    },
+    {
+      "path": "PaperCV282/MacroscopicShallowSigma.lean",
+      "sha256": "9971afcdd6425f218816b8626d75ea57b969cc5ff5e1ad13939b8dc6a156f4a3"
+    },
+    {
+      "path": "PaperCV282/MacroscopicSmallHeightComponents.lean",
+      "sha256": "65af2fccb9164ca9127cc4ba34801c1accf2f323e780b253b795811e4b283f06"
+    },
+    {
+      "path": "PaperCV282/MacroscopicSmallHeightSector.lean",
+      "sha256": "d17f133a07398a262e943c40fa15c1449abfc853b9badbad4daeb0e7b63100ad"
+    },
+    {
+      "path": "PaperCV282/MacroscopicSmallHeightTau.lean",
+      "sha256": "e768b23dd5f6da969d4f2f33becfc380c8e2fea67074f364d93d4b4f1935c254"
+    },
+    {
+      "path": "PaperCV282/MacroscopicSmallProductLoss.lean",
+      "sha256": "35e7dd3a3c6f4f2f855fb79c73b75063c3c626073a0e22506b9852bf096b2f36"
+    },
+    {
+      "path": "PaperCV282/MacroscopicSmallProductProfile.lean",
+      "sha256": "a3a1f218455c9b36931afdee0067cb5e278d69bdd49c8e3d8923151950fa723c"
+    },
+    {
+      "path": "PaperCV282/MacroscopicSmoothKernels.lean",
+      "sha256": "b60158b1624ca80f12877d885b283270516f932319b5b9ead7267f80bcc9f324"
+    },
+    {
+      "path": "PaperCV282/MacroscopicTwoDefectStarts.lean",
+      "sha256": "529c0004d12a7a11c82dbcdda803aeca0840603ab7f698bfcb684440bcd05afe"
+    },
+    {
+      "path": "PaperCV282/MacroscopicValueCorrection.lean",
+      "sha256": "30585a91d6ae71c79b431ea3fe9d32f8ac46629c993485d9219fbf84adf2734d"
+    },
+    {
+      "path": "PaperCV282/MacroscopicWordFirstMoment.lean",
+      "sha256": "944c41a4b486d042fcfacb78ba9cfbd9af51c1188c4a18aff38560935f72ef51"
+    },
+    {
+      "path": "PaperCV282/Main.lean",
+      "sha256": "4857c53886ae4a9876373e16585fd82d6d33cac610e178666d10d98b8f5dacbc"
+    },
+    {
+      "path": "PaperCV282/MarkerDictionary.lean",
+      "sha256": "9dc563a9a403778717fd8eac609bb2041473c5136c3a28ed46f045731bb0976d"
+    },
+    {
+      "path": "PaperCV282/MarkerDictionaryAsymptotics.lean",
+      "sha256": "74fc9a72b1311e12d35c7c4bcd5ba1b1cfd5ad34d793dca960be6744a6fad2ac"
+    },
+    {
+      "path": "PaperCV282/MarkerDictionaryCount.lean",
+      "sha256": "8d426256ed11af0d9bd7f48486b886eff463e4ef0ffce4e8693e2c042eadce3a"
+    },
+    {
+      "path": "PaperCV282/MarkerDictionaryCritical.lean",
+      "sha256": "2e525968171f22de782e4c32ef2d3b8c2dda326028ed7a5c5d7e88f50af94a58"
+    },
+    {
+      "path": "PaperCV282/MaskedArithmeticAverages.lean",
+      "sha256": "ff0d1be6b3cf6ac8db7fb69478474709fdd87557ddbb2695ae4d9dbda0f83807"
+    },
+    {
+      "path": "PaperCV282/MaskedArithmeticCosts.lean",
+      "sha256": "cf05f55231a4b29d0e341937f7cb7a81d89865ab26003d171f8f92d51e2433e8"
+    },
+    {
+      "path": "PaperCV282/MaskedArithmeticGeometry.lean",
+      "sha256": "0f618fdfe33de381deac33eabd875389993eec18d83b8c12695e3ae341e2c3f3"
+    },
+    {
+      "path": "PaperCV282/MaskedBadMass.lean",
+      "sha256": "e409c8e664ec6d6ba9ec8dd5a9cd7570c10b49833f014152001a85cc7d92b06d"
+    },
+    {
+      "path": "PaperCV282/MaskedPairBounds.lean",
+      "sha256": "96cd8c8cf28ddeb2ba738a340e83e7062afdfbb42957df5894446c41073b73b2"
+    },
+    {
+      "path": "PaperCV282/MaskedPairGeometry.lean",
+      "sha256": "10cbd24fcdfb872c0f34725941f993505f97c8863d7f187afd8ccf6b7bdbbc40"
+    },
+    {
+      "path": "PaperCV282/MaskedScalarCoupling.lean",
+      "sha256": "28a5d59c0f9bd54e84d4cf693507a7bcf47121a40e6e96ad2809adb6056b95c2"
+    },
+    {
+      "path": "PaperCV282/MaskedScalarFullConditioning.lean",
+      "sha256": "c97b2b23a8f46a7f53ca1dbf051648b6db73eade7f1e690310e3a0b1dff4195f"
+    },
+    {
+      "path": "PaperCV282/MaskedScalarRetained.lean",
+      "sha256": "0813cb7579521cb02b46048cf59b41c5c8acc5a08883e3d6db53c45845af8ca5"
+    },
+    {
+      "path": "PaperCV282/MaskedScalarTransfer.lean",
+      "sha256": "0c597dcbd43470b5789a3aca1a76220f0d154d8eedce9b443d0cda02ff0318f5"
+    },
+    {
+      "path": "PaperCV282/MassPushforward.lean",
+      "sha256": "898a7ee2e995b508492f2a296a0908be3daf39e8947a37afd7462c0e063f83f5"
+    },
+    {
+      "path": "PaperCV282/MatrixAffineRank.lean",
+      "sha256": "184be95e3e3eb3a4599d6b27da4019465b4756505e58fc0ee00e69003db5fb0e"
+    },
+    {
+      "path": "PaperCV282/MaximalCouplingMass.lean",
+      "sha256": "59a2fa10e87540f85753038a41fa49f425a8894a139ded0fe1979960ee5b0728"
+    },
+    {
+      "path": "PaperCV282/MaximalCouplingMeasure.lean",
+      "sha256": "e0d805c063502c235ec199157f04d06f280c2019fd588e38ab7338f26b75c9b0"
+    },
+    {
+      "path": "PaperCV282/MeanAggregateBudget.lean",
+      "sha256": "d9c348b084dcdfa217e37ef6781192123f635b2aeb07656a9f9f062eb1191f0d"
+    },
+    {
+      "path": "PaperCV282/MeanAggregateTruncation.lean",
+      "sha256": "ec0d047b45256e0031d63553f38713c2cf9f1a0ca41b8f6ec63857d536a81b48"
+    },
+    {
+      "path": "PaperCV282/MeanScalarBudget.lean",
+      "sha256": "d759074f30d36afd1c107b75a88031bc8676333ab4c785641d91afb796a65095"
+    },
+    {
+      "path": "PaperCV282/MeanSpatialBudget.lean",
+      "sha256": "d45bd4e9b0c860843e7cb5aa870ac190c4432593713f0c2b73167c1ce8bec230"
+    },
+    {
+      "path": "PaperCV282/MeanSpatialTruncation.lean",
+      "sha256": "79738b5978050245d43c3af636080ab00d4b8777fd745df46205f2c6a4febbea"
+    },
+    {
+      "path": "PaperCV282/MediumIncidenceAsymptotics.lean",
+      "sha256": "9d8013af093b3ecb0a989b89373c8401f93786003ca7d921687a1a2ff2a44bf0"
+    },
+    {
+      "path": "PaperCV282/MediumMultipleCounts.lean",
+      "sha256": "73806be1c4c028afbbe57832a09409a848cf97d19857be334ae2fdeea543835f"
+    },
+    {
+      "path": "PaperCV282/MediumPrimeGeometry.lean",
+      "sha256": "671ac1eb2f6c314d93c2f83bcd7a68706889d8d91cb57edd205b6c168d5d955b"
+    },
+    {
+      "path": "PaperCV282/MediumPrimeLayers.lean",
+      "sha256": "924948a9db1cc8be4ae819345c4223cfd835723f74944f3a7f673d281d744cb4"
+    },
+    {
+      "path": "PaperCV282/MediumPrimeScaling.lean",
+      "sha256": "7ace2e935a94405bc1b8fdaa8a525219b644e784595964d9b2f3d38c580fdc64"
+    },
+    {
+      "path": "PaperCV282/MediumSquareExceptions.lean",
+      "sha256": "4043caf5370b399a00bab1c2795305d32f0809e3645a61f09dfc44318b6df570"
+    },
+    {
+      "path": "PaperCV282/MediumSquarePacking.lean",
+      "sha256": "ed5e057bbee60a3e96470228783788720731119c8846b908005ec171280d630b"
+    },
+    {
+      "path": "PaperCV282/MesoscopicCutoff.lean",
+      "sha256": "fdb0607803d5c83d7cf00bcd7e91f6c8eb0601716465e5468697b5e88f6b60f4"
+    },
+    {
+      "path": "PaperCV282/MesoscopicPrefixMass.lean",
+      "sha256": "0e32ed1d32b5932d1ad8012e116610ab6b9f27469f4bf9802ee19eb541d15eb1"
+    },
+    {
+      "path": "PaperCV282/MesoscopicRareLimit.lean",
+      "sha256": "354fc27e430c959e17618fdb3f8e004af783f105eb8c8aaf18994292d03a493c"
+    },
+    {
+      "path": "PaperCV282/MesoscopicStability.lean",
+      "sha256": "b51ee32638eae1347a2b87bc6401afc4e4e5aac9b1c50780c36882d7f4caf182"
+    },
+    {
+      "path": "PaperCV282/MicroscopicBorderEvents.lean",
+      "sha256": "0e02de7632061523d69fe1bac5d7d838519fce62489dcc298d10cf20345231a2"
+    },
+    {
+      "path": "PaperCV282/MicroscopicBoundaryDominance.lean",
+      "sha256": "239a2950a9ad74cf09ca94ad252bd7dc671699dbc565cdc76c666158cae89f40"
+    },
+    {
+      "path": "PaperCV282/MicroscopicExponentialScale.lean",
+      "sha256": "5d00e1064ef5cfa609beff07328017af12ace86b326953d9a2f6163204d44c92"
+    },
+    {
+      "path": "PaperCV282/MicroscopicIncidenceRank.lean",
+      "sha256": "0e19e9fd44b7cbfac6a0aadb4456a8d1f2c690f8536af67f9942e21cb0b950b8"
+    },
+    {
+      "path": "PaperCV282/MicroscopicInteriorBounds.lean",
+      "sha256": "757a40a584670aaee50ea87add75e63c81afdaea773063c8d7a32b27aef3b567"
+    },
+    {
+      "path": "PaperCV282/MicroscopicNonvacancy.lean",
+      "sha256": "49cdf417124d6936970d517888646def78c896bfe6612782dff9bb841a6f497a"
+    },
+    {
+      "path": "PaperCV282/MicroscopicPrivatePrimes.lean",
+      "sha256": "5da8df12ccdc1013041ab06979d6b99375459854c5091002041b87cf2f5739d8"
+    },
+    {
+      "path": "PaperCV282/MicroscopicQuadraticAsymptotics.lean",
+      "sha256": "329602186014443b3845021ce8404f3140c6ddf4f448cd3b14b0260df9dcef4e"
+    },
+    {
+      "path": "PaperCV282/MicroscopicValuationMatrix.lean",
+      "sha256": "83b1bbd30fbf34f57e186a995951366c4a45dff67ce70ebc7b27170f95a262e7"
+    },
+    {
+      "path": "PaperCV282/MovableMarkedBudget.lean",
+      "sha256": "1f1caf8becc1d019b8fb4c431439b41edc62510b9bf8ee19bed9851da4dbebb6"
+    },
+    {
+      "path": "PaperCV282/MovingMarkedComparison.lean",
+      "sha256": "b43443e517442f07ee0b0fe372ab8be72993fe84433c6c9ce2e4ec0be0290ed3"
+    },
+    {
+      "path": "PaperCV282/MovingMarkedLevels.lean",
+      "sha256": "e1ab77d8c3f6f952197541738d6b45063cac792bc921c64893406001c8990858"
+    },
+    {
+      "path": "PaperCV282/MovingMarkedSource.lean",
+      "sha256": "acab14da9d3961ea0cd6c7ebfc096583aea96325cadb1b0c9c6ca4f4efd33f1a"
+    },
+    {
+      "path": "PaperCV282/NonterminalProfile.lean",
+      "sha256": "4ce1613f99f5bfa8a18cfd23dd8d862709780eefa4cbc15dc00c08717f2354bf"
+    },
+    {
+      "path": "PaperCV282/OrderedPairCounting.lean",
+      "sha256": "320d083ae89d098ca79acaec3e64b73e80e0afc5fb7f8bc675fc4018655b5f3d"
+    },
+    {
+      "path": "PaperCV282/PointMeasureSpace.lean",
+      "sha256": "b38f202f3d98434158e0b5523ab1d1abff6618ba55092bebceabe5e8179c8de9"
+    },
+    {
+      "path": "PaperCV282/PointMeasureWeakUniqueness.lean",
+      "sha256": "afdd05faf98918090ca85b2e3ccdaaae51d3b179883ec661b8e94e1e798d3cc8"
+    },
+    {
+      "path": "PaperCV282/PointwiseStartBounds.lean",
+      "sha256": "7c904f9cbe1574991b793129af6b454ed31262036e33120b97c4c8250214216a"
+    },
+    {
+      "path": "PaperCV282/PoissonCLT.lean",
+      "sha256": "eb0147390cef9673b8be7748643b148bdb17fc1c1bf424ab73a387b5973a3c8d"
+    },
+    {
+      "path": "PaperCV282/PoissonCentralAsymptotics.lean",
+      "sha256": "ce80ca387738c9e41d73a875bfb3afed569094ef01dc236c358faf02809a8fa9"
+    },
+    {
+      "path": "PaperCV282/PoissonConfigurationSplit.lean",
+      "sha256": "ab2dcc6f0f89c837b7058b6b72e0bb75ca7039318d2fa57c3b6f8fdbdddba5dc"
+    },
+    {
+      "path": "PaperCV282/PoissonConfigurationTransform.lean",
+      "sha256": "0b7f8f218b520171126b6f5d7ad50a6130a4bb52f8511cc4cf0a14271c556b7a"
+    },
+    {
+      "path": "PaperCV282/PoissonEntropyTaylor.lean",
+      "sha256": "5f42b73aa3feec0ae197833ed72c0263e32d1657b2fa0333a925b1ed4e1d4015"
+    },
+    {
+      "path": "PaperCV282/PoissonFieldAggregation.lean",
+      "sha256": "d285ea465a6d57792d7c3aa4aa335a5708deaf730261735730a2915ed0fb41a1"
+    },
+    {
+      "path": "PaperCV282/PoissonFieldMeasure.lean",
+      "sha256": "5f3c1c163fa8e142af5135736e82b59cdb326d449909277ebaabc364d2fe6536"
+    },
+    {
+      "path": "PaperCV282/PoissonFilling.lean",
+      "sha256": "1f8f1ae097e6264f4605b7c19e7faf5bcf0957a5bfdab4073d75985f0eabc3ea"
+    },
+    {
+      "path": "PaperCV282/PoissonFillingCoupling.lean",
+      "sha256": "348d6d0cbf869baef6e500740c1d4add637c28dcf37ff6a9fee842bca4b9c889"
+    },
+    {
+      "path": "PaperCV282/PoissonFillingIdentity.lean",
+      "sha256": "23a686c06e3124c52ce2f58feb2a7a5a5a207e02cd83d73b328c8b7225ad1b1c"
+    },
+    {
+      "path": "PaperCV282/PoissonGaussianCritical.lean",
+      "sha256": "37134cc00a5867fd497b505a1045d522dfa1a053d5e0de8485e07a6d2bce0a62"
+    },
+    {
+      "path": "PaperCV282/PoissonGaussianLimit.lean",
+      "sha256": "59edfad7b364027a552415b53c57fa80fd85cbe9af23adce7903450136c1107a"
+    },
+    {
+      "path": "PaperCV282/PoissonGaussianSource.lean",
+      "sha256": "458907eb67671ba3b5b7d3362b857011896dd3802fe3cc5eab484ae83da2d3ae"
+    },
+    {
+      "path": "PaperCV282/PoissonGaussianTarget.lean",
+      "sha256": "23b555a9bb61d7488fa55e9e444ccb03c19ae34738916287c4b25441780b3165"
+    },
+    {
+      "path": "PaperCV282/PoissonGaussianTheorem.lean",
+      "sha256": "9e42680178fef2d1fadafa5e050ac5211c5e36a5ebad7dfa8601f31668deabfc"
+    },
+    {
+      "path": "PaperCV282/PoissonGaussianTransform.lean",
+      "sha256": "428661e5921aa9b2c666094557a3607978fcce289623e8de2dd5d6ee8744d5a7"
+    },
+    {
+      "path": "PaperCV282/PoissonIntensityBounds.lean",
+      "sha256": "65d3f0920e224d1737663e41f5f6065c73b26d24176536ebad59a838b2adb3ad"
+    },
+    {
+      "path": "PaperCV282/PoissonPointProcess.lean",
+      "sha256": "b9a29069d975e7416044497dd4581bbda28af21dfa145dfdd1403951a4b821d8"
+    },
+    {
+      "path": "PaperCV282/PoissonPolynomialIntegrability.lean",
+      "sha256": "8ceff933150a3c98df2c7d80b41dcf1a39bfc551bd28a8efcaed0ca7e79c50a8"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeAbsolute.lean",
+      "sha256": "0d9d9a61325114df0770086e63fae2202f6773a7206c5221a0cd0a2e3d4f9523"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeBerry.lean",
+      "sha256": "a44f6a48550278294da95ff54e657044ccf486c686abc4d2a545e99e1094bc2a"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeCDFGeometry.lean",
+      "sha256": "e589394d304b30734899f509a89304cd96b3a670b77b5cee10bf5bb92484c035"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeCells.lean",
+      "sha256": "a28071bd4a3be79308910a0997133f844b7d1b79f5202f478caea208f0a8a198"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeCentral.lean",
+      "sha256": "6d78e7359746635485a42eebbf1f8b6d176fde250faa562de848bae098db677a"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeEntropy.lean",
+      "sha256": "5758c951f1d3b25c5581f5d7de028a11e9399abf4570621a4d60d12bfb2825c0"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeEnvelope.lean",
+      "sha256": "b6b89ca9d074c6c682165d9a83938631d3a3617c14896b763c892031fb1c4cf5"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeLattice.lean",
+      "sha256": "865e242e88426ead517637b8e7a48558bb2c385e570a6cf0c6ec3ff94e5005b7"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeLocal.lean",
+      "sha256": "a9a0dae5ad1fe9aa00a1caad2c0bbf889b43744c35a0bb0b5eed549163cee947"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeMills.lean",
+      "sha256": "4289251e7faa3b74484bc59ec813566f5eb74d48e28eb021809ed0920251926f"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeModerate.lean",
+      "sha256": "00cf5584e562c65f52c660c54dcb8c2320f4baf21e93219d15e09a9b16820e75"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeModerateLimit.lean",
+      "sha256": "7633cf16747f3a21d1561c9baffda3b892fe739300e593ea3fa6b629148e6566"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeMoments.lean",
+      "sha256": "c68d40c124bb72f5a65f0113adc9a72b71dd06907f495b6038f8eb83ffb2ed1c"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeSummation.lean",
+      "sha256": "3f1f93c10a892c8464de6335c40a6a3d7f6a859b85c187c832759ed43ed35db1"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeTailBudget.lean",
+      "sha256": "7bfb5b1cf13e74ebfa56e0496af3920b37ee072306856184b7df62fb651c3b23"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeTailCells.lean",
+      "sha256": "0db2a89a9cb02a87efbadf35f7ea1c100c35ab22eaafe4eb8213988ec38184fb"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeTailCutoff.lean",
+      "sha256": "27c984a7f7b4af7bf1e655bd533a87628b59dc73244b4006142199ec17bf7ca6"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeTailEntropy.lean",
+      "sha256": "cb9c65f8e63ed8bf00a4a3a17831db3eb8d15bd7278daee85d5469770b2abba9"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeTailExterior.lean",
+      "sha256": "70d53e088a1487fdea0534a2b45175b8cb02dfb25afe82c7ad422e4e8f2f280c"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeTailGeometric.lean",
+      "sha256": "54e10df6a7b12d866e9d586648516086daf4b90c79fce39e3059d4806ae2abf0"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeTailLocal.lean",
+      "sha256": "9767339d1600e2995f412325cff7fb65d9dca53937c1b8dc782c7a36cf654759"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeTailRates.lean",
+      "sha256": "d881c6fa0d6507dd2e09b0ca75f7d6f0f8c490492677583652029e51a5e47689"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeTailSum.lean",
+      "sha256": "f814f73f1569ccf39fecf6a3705eac5fbc60dbf827fd410eb4f4f1b864901d3a"
+    },
+    {
+      "path": "PaperCV282/PoissonQuantitativeTransfer.lean",
+      "sha256": "4a98535c38dd9e9f58e28b76b32e2ad801f7da68bc4cae4eea403b2a630dc665"
+    },
+    {
+      "path": "PaperCV282/PoissonRareProbabilities.lean",
+      "sha256": "2bec5c9bd9dfd56436452ebeed12c98863729c3b0ede90f2bfde0b5258b4435e"
+    },
+    {
+      "path": "PaperCV282/PoissonRateConvergence.lean",
+      "sha256": "5289ea5dffd4fe334278e20cb04ff93ffaef68e20294aba377e1bdf9df698c55"
+    },
+    {
+      "path": "PaperCV282/PoissonResolutionBudget.lean",
+      "sha256": "34bec6eac66df37e87ea7b8ec9be93c62d46d7035ce9eeea32719457ca305a6e"
+    },
+    {
+      "path": "PaperCV282/PoissonResolvedComparison.lean",
+      "sha256": "2e07d67c4a9934f545f91d9892cafd065c451de94a11f8b480f000790d8f2eab"
+    },
+    {
+      "path": "PaperCV282/PoissonResolvedLowerComparison.lean",
+      "sha256": "9b79238764f9590aa6d45bdef318b4558d812dfb64fe3802ae0e64b5de0f47be"
+    },
+    {
+      "path": "PaperCV282/PoissonResolvedPast.lean",
+      "sha256": "6156ae5743321cea5ddfdc12e8f77f224bc2f923e5d75ed766b2325ffbffbaba"
+    },
+    {
+      "path": "PaperCV282/PoissonResolvedTarget.lean",
+      "sha256": "cde48a1c11ed8df674e672e7b4c35f445e2edea27d2e11ba2fe4ef175d30892f"
+    },
+    {
+      "path": "PaperCV282/PoissonReverseImmigration.lean",
+      "sha256": "d4d7cf995684e7722db7bcf3d68d8acc45d3544f3f93d22cde5ee8f7cd645ee3"
+    },
+    {
+      "path": "PaperCV282/PoissonStirlingBounds.lean",
+      "sha256": "607e7fd6b22b1bdbbaa1fab72cd99ee66768d493ec45499d8617e511131f4f45"
+    },
+    {
+      "path": "PaperCV282/PoissonThresholdTarget.lean",
+      "sha256": "d6341fd6e49e7c0ac850071d6396e17e77c06d5af50dc3ff9bdc9ab3007269be"
+    },
+    {
+      "path": "PaperCV282/PolynomialPellCount.lean",
+      "sha256": "827455760e8a085325c29f62d02e28eb42397069dabfe962ef23e3a35ea2c228"
+    },
+    {
+      "path": "PaperCV282/PolynomialSplitProducts.lean",
+      "sha256": "3bbb544c435ac1beb1cbf3ae7b92a38abffe6f5be7c942dff2c835ea591d3112"
+    },
+    {
+      "path": "PaperCV282/PolynomialSplitSolutions.lean",
+      "sha256": "a3407ac597de10ba8390ee55c3e9f984886004cedec3e53de1fcbc2b6fb582a6"
+    },
+    {
+      "path": "PaperCV282/PositiveSquareclassPairs.lean",
+      "sha256": "03d031ca119b51bace8e4304fdd6e27cb793cff70c582e2986e5357ebad7a89a"
+    },
+    {
+      "path": "PaperCV282/PostQuadraticDecay.lean",
+      "sha256": "be092136a1367c88eb3b11f0968e0f6e33bf66d16440ba06c252871664ab045c"
+    },
+    {
+      "path": "PaperCV282/PostQuadraticGap.lean",
+      "sha256": "14aefe87c359a613c91a0ddd109a2df23d1d9f2d8f3c0498303ac54f553acec2"
+    },
+    {
+      "path": "PaperCV282/PostQuadraticLiterature.lean",
+      "sha256": "aa858b0243ce98200f4d59301085667dd2fb8faf1707f5cdc460a3a33cedf177"
+    },
+    {
+      "path": "PaperCV282/PostQuadraticPrimeBounds.lean",
+      "sha256": "975b9f7242e3fcacc1b94afb2722b7336374d3479c5c7d2fd4449e702d35533c"
+    },
+    {
+      "path": "PaperCV282/PostQuadraticStartBounds.lean",
+      "sha256": "a37e0c315a3892b209aa8b945d55871b4f9ebdd35870d11ee8c78d12058412a9"
+    },
+    {
+      "path": "PaperCV282/PrecisePellCount.lean",
+      "sha256": "8e71a44ba6bf9afeef7351d95d2c9060042b04eb71b71c6c570fdf99bef3631b"
+    },
+    {
+      "path": "PaperCV282/PrecisePellDivisors.lean",
+      "sha256": "db2a5ea52231dc52bdb7c1d4edbccc2318de4c7d859889c20fa98228cb13d825"
+    },
+    {
+      "path": "PaperCV282/PrecisePellSquareclasses.lean",
+      "sha256": "6fbfd5efd3a66e339ffa1afe4979813f58dfb87e64a88119867eca1656e413ce"
+    },
+    {
+      "path": "PaperCV282/PreciseSingletonEuler.lean",
+      "sha256": "dc42f9ae71cb1a720b23cfe46f8958c5c615764040b63f399f67e259218cbb5a"
+    },
+    {
+      "path": "PaperCV282/PreciseSingletonHosts.lean",
+      "sha256": "c09a0c90b03e7a02c2a384fc9c10145bb27e69a23947b92b1e736ec4382434ea"
+    },
+    {
+      "path": "PaperCV282/PreciseSingletonTriples.lean",
+      "sha256": "1e915bdd4817d60a7fdf3840a9c391f28bdd852727083dfa8126e8ac41cf22e9"
+    },
+    {
+      "path": "PaperCV282/PreciseSingletonTriplesOffsets.lean",
+      "sha256": "c4b6e7ba0bf26d6e2be0f7e5d3777f30f3bedb7a216076f87045477e411c33fe"
+    },
+    {
+      "path": "PaperCV282/PreciseSingletonTriplesParameters.lean",
+      "sha256": "683bf65686621adc36228afdaabe4125232ac5d9ff04251f04f3902a273ed912"
+    },
+    {
+      "path": "PaperCV282/PreciseSplitProducts.lean",
+      "sha256": "5c82ca7413eda6dbf0ca58e008741107dcbd7d5cf5bf74530fd1c361a9bbe60f"
+    },
+    {
+      "path": "PaperCV282/PreciseSplitSolutions.lean",
+      "sha256": "a05f779dcaec763644477efa8565423d6b7dca0015851957d4c9d4e959247a67"
+    },
+    {
+      "path": "PaperCV282/PrefixAlmostSureEnvelopes.lean",
+      "sha256": "2703ae0da20f5c296fa0c89eff4e4096937417aa7033cacb9a60c3f51ee74786"
+    },
+    {
+      "path": "PaperCV282/PrefixContainedBounds.lean",
+      "sha256": "fc739b76d9c45d416b630f5efa492b2e820f0b743aa071ba4d7adfc401d5765c"
+    },
+    {
+      "path": "PaperCV282/PrefixCriticalVoid.lean",
+      "sha256": "8c0dbda11b070f6da88146203a96a434ce7e4d88150f504c9acfe12940ed1782"
+    },
+    {
+      "path": "PaperCV282/PrefixEnvelopeConclusion.lean",
+      "sha256": "49f18bfd7d57b718e98b4b13531a65b0027180127e4d2bc2320173cd6cc9cc45"
+    },
+    {
+      "path": "PaperCV282/PrefixEnvelopeInterpolation.lean",
+      "sha256": "16ed6a7f28c723c8d8a7e3aa486945d1bfa1cd9a0211c3cebe37376058d80aa7"
+    },
+    {
+      "path": "PaperCV282/PrefixEnvelopeSummability.lean",
+      "sha256": "5fb1d639f61e2a469d688b1106d1e036af1f2c88ed0e8f5e5e0613a9eeda9208"
+    },
+    {
+      "path": "PaperCV282/PrefixLongestGeometry.lean",
+      "sha256": "f384ae35879d5456f4a978ba64953d488eff3b32a3e820b420683bc873e5647a"
+    },
+    {
+      "path": "PaperCV282/PrefixScalarBounds.lean",
+      "sha256": "1f71a1cd438ad34d27a5e1a863de2fe55fb33795204735d6e3a0f5277c5d8394"
+    },
+    {
+      "path": "PaperCV282/PrefixScalarConvergence.lean",
+      "sha256": "ea6942e6fb3c31b6b94223741cde8c06b649c178a0fa37ca38f7c8c06bf1fba3"
+    },
+    {
+      "path": "PaperCV282/PrefixScalarCouplings.lean",
+      "sha256": "ddcd45445022a3a539fd5b7f947755c367ce9f59c27d3d2dad79a261db3a3eb9"
+    },
+    {
+      "path": "PaperCV282/PrefixScalarGeometry.lean",
+      "sha256": "e11066b2fb1e69b7aa76cb9038fcf97dbb1d9e700ddc83b32a6c270657b40103"
+    },
+    {
+      "path": "PaperCV282/PrefixVoidBounds.lean",
+      "sha256": "ff75da0e58dc30ebe77092ef98bb8c31be4cad9f0a55c7102c7e00d55b055948"
+    },
+    {
+      "path": "PaperCV282/PrescribedValues.lean",
+      "sha256": "1a312d895dcc219fe2d65862cf49d0d5df6a98c2b3392b664337aca65a5f2e18"
+    },
+    {
+      "path": "PaperCV282/PrimeClockDistribution.lean",
+      "sha256": "10b682789b6515205c64f8f256edd446e8eca95f2d9a9967ba526f4d0fe3c597"
+    },
+    {
+      "path": "PaperCV282/PrimeClockEvents.lean",
+      "sha256": "4917a64cf86759507a0f8c8ce4a4c2b00c27da263606a8e6ed992d129e387af7"
+    },
+    {
+      "path": "PaperCV282/PrimeClockGaps.lean",
+      "sha256": "8d717c69b07dfa53a5b5900d0060bf213503d703205d9f372d8525fd0b38716d"
+    },
+    {
+      "path": "PaperCV282/PrimeClockIntegerOvershoot.lean",
+      "sha256": "383f3e27b80e8639e15f7172c479d24964dc8bf20810ade3ed20d3a0192a68e6"
+    },
+    {
+      "path": "PaperCV282/PrimeClockMicroscopicTransfer.lean",
+      "sha256": "d0fcbf856ce0bfb53f11f6d4efa12f84f715421271e3fca2d3a099af03f7db49"
+    },
+    {
+      "path": "PaperCV282/PrimeEnvironmentStableLift.lean",
+      "sha256": "404ad1739e54db2e75b5d3b059f340820f4f9bf90c89d02bde6ff60231c3469d"
+    },
+    {
+      "path": "PaperCV282/PrimeEulerAbel.lean",
+      "sha256": "599419773a0e1b7c8e15fa1c2f1fdb119c3ccd6d72222102dab2344fef612609"
+    },
+    {
+      "path": "PaperCV282/PrimeEulerCutoff.lean",
+      "sha256": "ad429209b43470c98de6eaf93f74dfabead9ecacdb34c58dfb01763523ae4fc3"
+    },
+    {
+      "path": "PaperCV282/PrimeEulerFreeCutoff.lean",
+      "sha256": "ffc52c51dec712b8816b1c41b719e5c6d1de6d7425e80df10de582c189666108"
+    },
+    {
+      "path": "PaperCV282/PrimeEulerFreeScales.lean",
+      "sha256": "c53222336a448b26b33dcf9ce5d410453588f23b3bbb161e4f94a9685bb00ea4"
+    },
+    {
+      "path": "PaperCV282/PrimeEulerLowerSplit.lean",
+      "sha256": "c1ab21e07c3dd087235559495591d340fb60888b00a8c973ac21e0fc8a591e54"
+    },
+    {
+      "path": "PaperCV282/PrimeEulerPNT.lean",
+      "sha256": "7c5c1b02ade18fef43b4cbcaa4a75646489dd99ab38f031ea3033a20e028a76b"
+    },
+    {
+      "path": "PaperCV282/PrimeEulerRankin.lean",
+      "sha256": "1baec341da28eda6640105672ad24f2de01cdb9acef83b80d208755d4c3493b6"
+    },
+    {
+      "path": "PaperCV282/PrimeEulerSaddle.lean",
+      "sha256": "074e667a9be4c16bfb4fd71a59581a6b2a5140ea5ea8a295e92275f2c57c799b"
+    },
+    {
+      "path": "PaperCV282/PrimeEulerUniform.lean",
+      "sha256": "efe43817107a88cd2a483110d0c9e33a12ae6eda4317827c943a3e1b473c5ac5"
+    },
+    {
+      "path": "PaperCV282/PrimeFieldEventConditioning.lean",
+      "sha256": "b60125b19a83977fda44f0961a453a907aaa5dec4d7d6ddc9240e90ba83310ca"
+    },
+    {
+      "path": "PaperCV282/PrivateIncidenceBudget.lean",
+      "sha256": "9421dd0f5e5a241c6cb9c252eb3c74e71ef951cbfa74e34e819c324c299c3c60"
+    },
+    {
+      "path": "PaperCV282/PrivateIncidenceCounting.lean",
+      "sha256": "293dff6bcd1f5e02c97322876a6680977e4d7c0625e238218525e8efc627e94b"
+    },
+    {
+      "path": "PaperCV282/PrivateIncidenceRank.lean",
+      "sha256": "fd9eb870802e80d43be9bd51a541ac983ee6eed7e89214fca60b05d1de82c122"
+    },
+    {
+      "path": "PaperCV282/ProcessAGGInput.lean",
+      "sha256": "b6210e653ee1f082f5b61c913718bf7f7ec6aca1fd1ae7d846bebc4783886c2b"
+    },
+    {
+      "path": "PaperCV282/ProfileAssembly.lean",
+      "sha256": "a9134d8fc8018690e8657aa2e05b2af20c26410eff1669c83c02584c598ae15b"
+    },
+    {
+      "path": "PaperCV282/ProfileMonomials.lean",
+      "sha256": "ab75bcffa0b20b8d1e8aa930ce9f71a0d1b33aff56d12911dceec3e9834af5ab"
+    },
+    {
+      "path": "PaperCV282/QuenchedAggregateTheorem.lean",
+      "sha256": "4768a78b68efd000541eef0b56c531e9d0152cbcbcd3911e6aea035c41281c9d"
+    },
+    {
+      "path": "PaperCV282/QuenchedBorelCantelli.lean",
+      "sha256": "9ef9e3678a5ad63d0f394e518271d4bb173cd3cca2371c64cd62e2f05f9dd19a"
+    },
+    {
+      "path": "PaperCV282/QuenchedBudgetDomain.lean",
+      "sha256": "1405bcce8bca56473346adc568d1e12271b0412721b2941905511048f93902ab"
+    },
+    {
+      "path": "PaperCV282/QuenchedConfigurationCouplings.lean",
+      "sha256": "fcfb9f23af1434d2f7da1144f9f0a514b61c00d9e7d51e85d3b0266c4d7a5db6"
+    },
+    {
+      "path": "PaperCV282/QuenchedFiniteFamilies.lean",
+      "sha256": "cfeb09cba583bc953526d9483d4abeb58d5f85113cbfa1d95468f246099218cb"
+    },
+    {
+      "path": "PaperCV282/QuenchedMaximalCouplings.lean",
+      "sha256": "404d734df890ce2eb267786ca46005eacedf861fd5fd756472b7daddaff8ddd1"
+    },
+    {
+      "path": "PaperCV282/QuenchedSaddleBudget.lean",
+      "sha256": "8c6bcd7ce988cceef742eeefd1921e214f7e891acd319f543926d3d45ed32259"
+    },
+    {
+      "path": "PaperCV282/QuenchedScalarBand.lean",
+      "sha256": "279ec237df69be8ee4037fda74d6c7c912d6f3f69976a411657e945c1b92c1b3"
+    },
+    {
+      "path": "PaperCV282/QuenchedSpatialClosure.lean",
+      "sha256": "86b17fe7fddc26742538fe322de0e609c171f9056fa3fd34023ed89619ec7e30"
+    },
+    {
+      "path": "PaperCV282/QuenchedSpatialDomain.lean",
+      "sha256": "709c17eef4d0434b1b8b8fc82059ee695a8714c1d1e0d3b07f278ff27e590c10"
+    },
+    {
+      "path": "PaperCV282/RandomDictionary.lean",
+      "sha256": "f41e3833a3aefe260d56a974eeae5743929e6ceb47cc26e0b4be9dc579390b61"
+    },
+    {
+      "path": "PaperCV282/RandomDictionaryCritical.lean",
+      "sha256": "3f79f4079052d16d1b9e20d6792c220aeafa6a89d3c39f5c83ff1caf3f20af44"
+    },
+    {
+      "path": "PaperCV282/RandomDictionaryIndependence.lean",
+      "sha256": "ec96b33f54685273c3c2461cb9b8352e2ed881448367cd9dacbafdab09994f30"
+    },
+    {
+      "path": "PaperCV282/RandomDictionaryOverlap.lean",
+      "sha256": "0cd36b7027f8e39068c20ac836ed304b9480033edc276e32daee61994ad64a8b"
+    },
+    {
+      "path": "PaperCV282/RandomDictionaryWordCount.lean",
+      "sha256": "f02606c9d0258eae9e19c4a6d791bd9adb2ae900d24405798569420de46864d0"
+    },
+    {
+      "path": "PaperCV282/RareConditioningRates.lean",
+      "sha256": "26ec4d5436d1c7abd6d042510e429c031b348ada65eae90217c818ad9956435b"
+    },
+    {
+      "path": "PaperCV282/RarePrefixEvents.lean",
+      "sha256": "c158c8fea3a9de92e27509586d5a222700cf4989957a0e68f9875d5390e933bc"
+    },
+    {
+      "path": "PaperCV282/RarePrefixGeometry.lean",
+      "sha256": "3073732dcd34e6aabf99035b5ce0319f741484414e156ac9fad5af3349490366"
+    },
+    {
+      "path": "PaperCV282/RarePrefixMass.lean",
+      "sha256": "a47129ed074e08dbb42afcf7b545cab22cd1ecff9e532cf89c7ae3a652f82493"
+    },
+    {
+      "path": "PaperCV282/RarePrefixMassBounds.lean",
+      "sha256": "4928dbf91b92aa96a3a7c994a0c661296f016d1a4c1a541047e3fd12b09aa9e0"
+    },
+    {
+      "path": "PaperCV282/RarePrefixPoisson.lean",
+      "sha256": "68b2a40f1a37e9b6fa0d5fd61761b2a5480462c2faccf91ed99954c107c5ffc8"
+    },
+    {
+      "path": "PaperCV282/RarePrefixSubsequence.lean",
+      "sha256": "b9b26ee5fc913d1e5618092411bd16b8d9aabcd4f62dea10d77e04bdfae23c3a"
+    },
+    {
+      "path": "PaperCV282/RationalFamilyMass.lean",
+      "sha256": "aad87fa4b5a43b01d132b16225956b2470b42940d7a1882018deb76f4d708180"
+    },
+    {
+      "path": "PaperCV282/RationalGeometryMass.lean",
+      "sha256": "f17808de597b76839ab309a2fd48160f977657c85bee2bea45b02ea0cc35df06"
+    },
+    {
+      "path": "PaperCV282/RationalHeightMass.lean",
+      "sha256": "e5d5508811d41c0c9d7ddecdd9213bc682667010103998a4b5c6a5175b113637"
+    },
+    {
+      "path": "PaperCV282/RationalLowerBounds.lean",
+      "sha256": "67294c7054130bdf46b21176eb19f36e53f8e10e7515c0a001837a51a19c7750"
+    },
+    {
+      "path": "PaperCV282/RationalMassAsymptotics.lean",
+      "sha256": "6f6e3f1d03245e6cd1f34bc955316fb091f88e5d1fae0d1fd2100fe97ca44a29"
+    },
+    {
+      "path": "PaperCV282/RationalProfile.lean",
+      "sha256": "bc51f4d5362ab52b1294881b9582eeb7712fd4bde2e46e0b018a6a048c2476f1"
+    },
+    {
+      "path": "PaperCV282/RelationProfileRestriction.lean",
+      "sha256": "e0d725d68244467f8e8a812283b0484497333f5606f26946cd4e29618d1164e4"
+    },
+    {
+      "path": "PaperCV282/RemainingDeepProfile.lean",
+      "sha256": "971efdce5eb05ddd1f1f590e68bfadecda5a1ac178f1630b512f5fa161dc958b"
+    },
+    {
+      "path": "PaperCV282/ResidualSectorMasks.lean",
+      "sha256": "f6727b9b10d43817cbc95b6301a3acfeb27b3b03d4d9dfe0ec1fb99ebd286ff9"
+    },
+    {
+      "path": "PaperCV282/ResidualSectorMass.lean",
+      "sha256": "1fdd7ac2e1f2ef2e54b2833fa7ef716760bfbcd7d40bac9875181c36121f5e14"
+    },
+    {
+      "path": "PaperCV282/ResidualSectorPartition.lean",
+      "sha256": "22cd86b7d2c1025678aa03652899455d9ee712e430f6cbb9ae85315ab0892f90"
+    },
+    {
+      "path": "PaperCV282/ResolvedInformationTheorem.lean",
+      "sha256": "48c438a5d2eb70fd72779d2500504701fcf9162858ef254da2ae2dd0a8f6ffde"
+    },
+    {
+      "path": "PaperCV282/RestrictedPoissonTransfer.lean",
+      "sha256": "be89d815369220f76ca1f76a51316ab9a70f8dfab6c674052ba869ca1f2a4dff"
+    },
+    {
+      "path": "PaperCV282/RunFiniteness.lean",
+      "sha256": "c8b2718ef00f4d7fbff6bf0f12efafc7a106343b025b543e86734f8bfa408630"
+    },
+    {
+      "path": "PaperCV282/SaddleArithmeticBounds.lean",
+      "sha256": "30a3d76613c4f8d4b8ad954b18acea67a1e5dcb9150db23f95a8b8cfa9c00de3"
+    },
+    {
+      "path": "PaperCV282/SaddleAsymptotics.lean",
+      "sha256": "e1af20529c8d4b9dd8c0a4dbb7a0cbf9bdc2b36c2afbd0d5cf190b612caad3c6"
+    },
+    {
+      "path": "PaperCV282/SaddleBranch.lean",
+      "sha256": "3d7f891d39773df0244e606e35a4bdddb0ef1b6f94acb1726f323914a3c94cbc"
+    },
+    {
+      "path": "PaperCV282/SaddleBranchAsymptotics.lean",
+      "sha256": "9890a4b1a0ae67606164f7b7c1bc3319e4ed1db6679844c602087e00e0e1a2ac"
+    },
+    {
+      "path": "PaperCV282/SaddleCutoffAdmissibility.lean",
+      "sha256": "fa4973d95ab0d5e46c6ba0685403349807607a442fea489ead8cc6978258b7e5"
+    },
+    {
+      "path": "PaperCV282/SaddleErrorExponent.lean",
+      "sha256": "487eaf19a922bb5d280b658e4c2f1d78e435e91d1bfce44d8b02fa9bf6f85757"
+    },
+    {
+      "path": "PaperCV282/SaddleExpansion.lean",
+      "sha256": "0011bfaf45f7afe1f53ce511fb61f47ef37090e92120b39f802103841dfe9fc2"
+    },
+    {
+      "path": "PaperCV282/SaddleMarkTruncation.lean",
+      "sha256": "1f34f6d0f9fea1da5ad9dc4a52d85ddc2439840e45a6021067f8cef2a136b0b7"
+    },
+    {
+      "path": "PaperCV282/SaddleParameters.lean",
+      "sha256": "6ef30e697f3586b2b142a369070916d25d8a84e466822cabd0d7d7b08c7db51b"
+    },
+    {
+      "path": "PaperCV282/SaddlePoissonScales.lean",
+      "sha256": "4a76887dbeed1b61961e2300caad05920008ad3f0be271722e0763840941aeff"
+    },
+    {
+      "path": "PaperCV282/SaddleRateConvergence.lean",
+      "sha256": "38c053d4f200648d5b454cbaa8acb3249e09a53e923a1330c2ff3b265326dfa4"
+    },
+    {
+      "path": "PaperCV282/SaddleScales.lean",
+      "sha256": "f895417040e375678a378a1136a2c6b03296ad570570a848ce994bb29bca1eb8"
+    },
+    {
+      "path": "PaperCV282/ScalarPoissonBounds.lean",
+      "sha256": "d45f6c13992719f0f91c4603ec4838da4a3082e32bbde389864754cd40fedd1d"
+    },
+    {
+      "path": "PaperCV282/ScalarSteinInput.lean",
+      "sha256": "a77c04ebf2b1e4ca7ecda9ab74ae82d139a1453875164a1358eaf74264206f9e"
+    },
+    {
+      "path": "PaperCV282/SectorEightGeometry.lean",
+      "sha256": "b0f25fcfc6a9cc614e25aa579153a3095b707b047b49a3d3840b7a1f03ba6abe"
+    },
+    {
+      "path": "PaperCV282/SectorEightProfile.lean",
+      "sha256": "47bc9e5a92b1ed3e95589e935c3101997ac2563355b5845513f20cbe34fa9164"
+    },
+    {
+      "path": "PaperCV282/SectorEightSliceMass.lean",
+      "sha256": "df2ae5533ec666563c8d44b9ece25efee298876cd2842072068d66ce2b203bd7"
+    },
+    {
+      "path": "PaperCV282/SectorEightWeights.lean",
+      "sha256": "072b8b90ea68190e9d2fb77ed24b41e95abc9e17961722138ac6b29149db179a"
+    },
+    {
+      "path": "PaperCV282/SectorFiveProfile.lean",
+      "sha256": "67dd152d41b4c5c9346531138aa446a35c3d03d462a81a29d4af0c34951d3e4e"
+    },
+    {
+      "path": "PaperCV282/SectorFiveRank.lean",
+      "sha256": "1a6fe729351071081402d70b9224744547edc1eabf15c75a8cd001b5f3affb91"
+    },
+    {
+      "path": "PaperCV282/SectorSevenRank.lean",
+      "sha256": "5e3494a8b82a37af038462c6f1483947bac3312672c81850bff4ac5fea9038ca"
+    },
+    {
+      "path": "PaperCV282/SectorSixHostCover.lean",
+      "sha256": "d425297bea056e9dbf67a929177615789c52955cc228b9ee33580d85d53b67b7"
+    },
+    {
+      "path": "PaperCV282/SectorSixProfile.lean",
+      "sha256": "0170f2acf89b8a6dc52cc2ffa54feeaf43e84f304e510fd437ae26c080a389b0"
+    },
+    {
+      "path": "PaperCV282/SharpConditioning.lean",
+      "sha256": "44d58db3b1983bf9bc42fafcb386ac6c3ddafc7bc9639043145ff1677d6cf527"
+    },
+    {
+      "path": "PaperCV282/SharpConditioningDiscrete.lean",
+      "sha256": "efecb2886bb7fe3ef94d9846949a0cef1b7acbf7baeae0cc99f6dc121ff9bec4"
+    },
+    {
+      "path": "PaperCV282/ShiftedKernelBoxAsymptotics.lean",
+      "sha256": "d8e3d37f904f7c576fe87597346a07e08b6cbb5413c1556eef29cee91c2dc9e1"
+    },
+    {
+      "path": "PaperCV282/ShiftedKernelBoxCount.lean",
+      "sha256": "8bd2818c6da77f58cd9892089b9ad338e655f82f75a6dc8b244ef6cff768c7e0"
+    },
+    {
+      "path": "PaperCV282/ShiftedKernelDyadicCover.lean",
+      "sha256": "ec4444fa8ffc2966db13efbde56683208bee2583a49711d005028f7195a5f0cb"
+    },
+    {
+      "path": "PaperCV282/ShiftedKernelPairCount.lean",
+      "sha256": "9a47710be9b501350f82c6cdde63fa6afcb7be6b9c71b3dbcfc2151d508d1e40"
+    },
+    {
+      "path": "PaperCV282/ShiftedKernelQuotients.lean",
+      "sha256": "358e1abb2d7b545809eb4af929cd1cdab6031c6ffbcf7523161606d88347ba0a"
+    },
+    {
+      "path": "PaperCV282/ShiftedKernelRangeCount.lean",
+      "sha256": "6a08a58a022fea8fe3683e32728e1c7a7f913366ebab3bbd7531058157d373c8"
+    },
+    {
+      "path": "PaperCV282/SignDictionary.lean",
+      "sha256": "0b665c3b4eafa6038cb7f33cfe47ab7311ef4eb3fe5724bd472a0a05fb539dd3"
+    },
+    {
+      "path": "PaperCV282/SignOverlap.lean",
+      "sha256": "0f182f76d5556c72ad6904477d9fb0d518ed06ffd2d5cefa146b014af3128e90"
+    },
+    {
+      "path": "PaperCV282/SignPatternCounts.lean",
+      "sha256": "8bab8b386ad62faa1891bb293293097d071b50d4b744e9f0e075b8b1fea867e2"
+    },
+    {
+      "path": "PaperCV282/SignPatternRates.lean",
+      "sha256": "4e1ca425156bc4c57008b3cfbd15e48cf2f1e0a1f51d8280436fcd0b914f640f"
+    },
+    {
+      "path": "PaperCV282/SignedAggregateArithmetic.lean",
+      "sha256": "95d80721ea0e5580f919b764538f6a6aecd08fe5627fa0a11b3a235fff95a585"
+    },
+    {
+      "path": "PaperCV282/SignedAggregateComparison.lean",
+      "sha256": "47f553effdc9cd372282b2f8812ebf3f728bf9d76e57a99ad960e1ca314042a2"
+    },
+    {
+      "path": "PaperCV282/SignedAggregateConfiguration.lean",
+      "sha256": "c76819eedbdc5f94ac0872af60b9e114d7f68d0aca524249533649ed4314ebb6"
+    },
+    {
+      "path": "PaperCV282/SignedAggregateFilling.lean",
+      "sha256": "1802bb35bb46125c09726c99b33f901243fa7120848be3b5f1e152db118aee72"
+    },
+    {
+      "path": "PaperCV282/SignedAggregateHardBudget.lean",
+      "sha256": "00bbdd61f2fac9d233df5a9d51bf92a9231edf27bb3e09dbc1640c96596ae35e"
+    },
+    {
+      "path": "PaperCV282/SignedAggregateRates.lean",
+      "sha256": "b29f358912979d6843b288418aabb62af51e834305bc095150af85da967b331f"
+    },
+    {
+      "path": "PaperCV282/SignedAggregateTruncation.lean",
+      "sha256": "126ea4e309882fe8f46d1dbdd51e91b81a1f1190f4500c9affe7d38dd3c3e4eb"
+    },
+    {
+      "path": "PaperCV282/SignedDirectionalFactors.lean",
+      "sha256": "7b25e2890699c960d560b8a98c032cf64e0807ec022a5ae621ae06476264807d"
+    },
+    {
+      "path": "PaperCV282/SignedExactMarks.lean",
+      "sha256": "a4c9265f134b026d9358c5bdf33a4d2054420a3a031d1cefc67b75098c1e88c4"
+    },
+    {
+      "path": "PaperCV282/SignedGeometricWeights.lean",
+      "sha256": "22efc12274a7e1c630c56bc0d389ba6f691ba39b2ac088d79fba1f6893833d79"
+    },
+    {
+      "path": "PaperCV282/SignedMarkedSeparatedRelations.lean",
+      "sha256": "de5cc54811b389b7bb0b1f3c074ef5c91abd7f3cb8a7be2c7277bad6a326d5b4"
+    },
+    {
+      "path": "PaperCV282/SimpleIncidenceCounting.lean",
+      "sha256": "b157e868f2cf1106369c63fbc7031146b97b5b2e0796f08b88f5c21cc899d2ef"
+    },
+    {
+      "path": "PaperCV282/SimpleIncidenceKernel.lean",
+      "sha256": "f994b009d705c6cdfeab7d92abb8a227edb357873fecab10535046d70377b8f4"
+    },
+    {
+      "path": "PaperCV282/SimpleIncidenceModel.lean",
+      "sha256": "c73d95b56a130f100d4254de3e37f729518093ea5b72ecafba6df8c5f375b8c3"
+    },
+    {
+      "path": "PaperCV282/SimpleIncidenceRank.lean",
+      "sha256": "6ead25f7962603d6e1bb31d9ff4217981b14c46bc4190cd37003333626e5c706"
+    },
+    {
+      "path": "PaperCV282/SizeTwoHostAsymptotics.lean",
+      "sha256": "9406087d31ef4053bd4cd17d55a8eda3f0866b52e3452580904ad18b15bd79ce"
+    },
+    {
+      "path": "PaperCV282/SizeTwoHostCounting.lean",
+      "sha256": "ba8cf20483368f1441cc39e162356b16aec87cc9b5ae09204c214869b8fcf63b"
+    },
+    {
+      "path": "PaperCV282/SmallIntensityConditioning.lean",
+      "sha256": "63bddf3eb1e2f01770a95d0ba8c8b713a864bfdf87176de783af5178a4520d2f"
+    },
+    {
+      "path": "PaperCV282/SmallKernelAnchors.lean",
+      "sha256": "82ae96ea13e032500d84a050af1768b65c867b999daa377be391e335985b8f5a"
+    },
+    {
+      "path": "PaperCV282/SmallProductComponentBound.lean",
+      "sha256": "517b041a25f113d0451efb59f84f11965f5fbb68897fbd3f9e6bc697c74170bb"
+    },
+    {
+      "path": "PaperCV282/SmallProductMass.lean",
+      "sha256": "cae397c75da221f55081841e1fbe42d1af87d813daab80d0e662cd3d4fa6fea8"
+    },
+    {
+      "path": "PaperCV282/SoftArithmeticCosts.lean",
+      "sha256": "a202d959fd7e1f4a17e47ff5a2ff061a1bd6f0f9e35183402105d39e5388350a"
+    },
+    {
+      "path": "PaperCV282/SoftArithmeticTransfer.lean",
+      "sha256": "7f519c59d34f21b5822e88d3b1994b023d83587641eb7c77cd69fedaa779d286"
+    },
+    {
+      "path": "PaperCV282/SoftConditionalPoisson.lean",
+      "sha256": "194707420c6c08ea83522d4d3339ec1fe7e04c507859d4f2179d5f30f75bc000"
+    },
+    {
+      "path": "PaperCV282/SoftGraphDegree.lean",
+      "sha256": "0f80062a993939ef2f47851113494fe9d9d0756c154a8a3ea2b0d266c77356da"
+    },
+    {
+      "path": "PaperCV282/SoftLocalClosureBudget.lean",
+      "sha256": "a57b89a581a37a55765a6e5079cf37d198b8f5c98289902506669c155eb43490"
+    },
+    {
+      "path": "PaperCV282/SoftLocalClosureCentral.lean",
+      "sha256": "ad6b974d88948ea69afd9bc71221b280c5f8efea664c234838f49646f6163e8b"
+    },
+    {
+      "path": "PaperCV282/SoftLocalClosureRates.lean",
+      "sha256": "b9677cca59c72533aa26b25d1bdfbe84572f2017a4a32ee124dd4eb4916384a6"
+    },
+    {
+      "path": "PaperCV282/SoftMeasureAverage.lean",
+      "sha256": "b14a9e3753022acfa7fde8516ff02e42692a2a898b399f9493bfe9642aba2554"
+    },
+    {
+      "path": "PaperCV282/SoftPoissonRates.lean",
+      "sha256": "8a07cc596c1526728a56deb4b7f524a2ffc04babf2926600641a59ffc00eb5d4"
+    },
+    {
+      "path": "PaperCV282/SoftRateAssembly.lean",
+      "sha256": "5e62f677f836ce1366382034a3fa1746b62c590977c63d16c043ec5dab98367f"
+    },
+    {
+      "path": "PaperCV282/SoftRateLedger.lean",
+      "sha256": "5595106ede156467b630b399899f036141a007b7b11e6a2ec96c4616e01cf45e"
+    },
+    {
+      "path": "PaperCV282/SpatialBoundedInformation.lean",
+      "sha256": "cee55bdcffe95040a1edae2e8d8f9188e4037942d3d81df13f2c4a55e7009964"
+    },
+    {
+      "path": "PaperCV282/SpatialDiffuseMarks.lean",
+      "sha256": "259ad76d405991fc3a306c407f134f24ed0fae2a73f0b557ab04da16e8f27d20"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedCritical.lean",
+      "sha256": "e932fe372085cbbcc3eec1e4560b69b7c24b79ebd92440d0e14b1ff484180177"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedDiffuse.lean",
+      "sha256": "38ac0a9bde15c608713fd709a66550311ce4bdce9ca45ff9bd91646751b7172d"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedEventComparison.lean",
+      "sha256": "f938d10fc840e10ef6e5c623d6bcbed6e1cd299aa9bd81053c76e148e538407f"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedFieldComparison.lean",
+      "sha256": "a8984d2bd8ae7efe446390b42ce8396870ccfc627acaa03476747d9c65f2106a"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedHardBudget.lean",
+      "sha256": "8ebe80e1cfe09d83158ff47fdc37baf4db17efddd1da9ce6e943a4e4c8e5f383"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedLawExt.lean",
+      "sha256": "fced0f79f625a06cacef9744b32d5a10adadcbcd05a08987a5c870ddc0fcf5ee"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedMovableBudget.lean",
+      "sha256": "783cc977d273a5ad00165d06af219256c3d5f8a095ebd60b29bd92d2719af269"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedPoissonIdentification.lean",
+      "sha256": "af6693a088578f52b4c550fdb7928bb88aa0f059879278faee6da3b16c84d082"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedSource.lean",
+      "sha256": "c27e6ff428d4d367a26edc5c4df680d430cb816384d6c4ff5e39a81fd9f94100"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedStatistics.lean",
+      "sha256": "bcca97c468fcb6f4949cab876421d6044b2a9bba9bd50fee8e9ebf2ad19f2c20"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedTarget.lean",
+      "sha256": "30a74b39088146339236feee6aa4a5a60e7ca0f5e8c15fbdd00b55c0cca5fc62"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedTargetAggregation.lean",
+      "sha256": "c7ec52b0e8fa8330e600dfbfafb4a5ebcf214390b1332284cf43aaafb60ea973"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedTargetCompound.lean",
+      "sha256": "e3565031b2f0d168f94182b32a6488f99487411c260c6751b754f845d9ca9551"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedTargetLaplace.lean",
+      "sha256": "0c5173134b8c7b8dfaf4845505ccad728b22ecdc3533d946e6c10cd029780708"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedTargetProjection.lean",
+      "sha256": "ac8f8ebca477f960fa01d25cc371389aead49bc6d7d2eda7ca7d2d54c0062ec4"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedTargetTail.lean",
+      "sha256": "8d37c438418c1e4403bd26f720c69623bf77d2a32dca7223b98502ee189317b4"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedTypes.lean",
+      "sha256": "b3aa4bdd84c8b957f1595e1bf277466d777cccd7be8de8f63ec2ee5ec99666fd"
+    },
+    {
+      "path": "PaperCV282/SpatialPointConvergence.lean",
+      "sha256": "db109627483fe34113d4f47793ff135de1951222067446817a9fdd4be988659e"
+    },
+    {
+      "path": "PaperCV282/SpatialPointEmbedding.lean",
+      "sha256": "cd6a5f11563c783de067c9965d1420bdc359e1a9cf5f641b4e664d7592509945"
+    },
+    {
+      "path": "PaperCV282/SpatialPointSupport.lean",
+      "sha256": "788149cb84679aac82e1e1ab35f0be141cdfab470c2779d463a265080071bd51"
+    },
+    {
+      "path": "PaperCV282/SplitProductLocalization.lean",
+      "sha256": "1731ad21eaba1c967b8b77f1e679b9306dc1bc4270995c1b163b94d0bd0ec9e7"
+    },
+    {
+      "path": "PaperCV282/StableConditionalKernel.lean",
+      "sha256": "d787be96415a64e8b1018a65dfa990c0b35edad8be3cb6c7882b75ef3107401c"
+    },
+    {
+      "path": "PaperCV282/StableProductLift.lean",
+      "sha256": "87759b0d4e258310dd1ec33dd593306b5aa473db733aca181ee6eac5fd84321f"
+    },
+    {
+      "path": "PaperCV282/SteinFiniteExpectation.lean",
+      "sha256": "c0c519c324e6b25d14f5d54fbb64811dac4e582c508d39ac4bb76edd831d56a3"
+    },
+    {
+      "path": "PaperCV282/SteinLocalTelescoping.lean",
+      "sha256": "e8aaf3ff64ee79c96631e3135a964c6129d32cc26d14951594377b313c3d0e39"
+    },
+    {
+      "path": "PaperCV282/SteinScalarTelescoping.lean",
+      "sha256": "1ce8e557a893300f8dc44581bbc61733d7a3fdf25f0c06dfc400b0896b978c7a"
+    },
+    {
+      "path": "PaperCV282/SteinSoftTelescoping.lean",
+      "sha256": "4a01426e525efe43cb26a571f51bf29431e3c94d17697b15e3d176cba0fe06b6"
+    },
+    {
+      "path": "PaperCV282/SteinTestTotalVariation.lean",
+      "sha256": "a6298f0425b0278e007cb2e8892c3f185239db4cdb6db585d1720917517a390e"
+    },
+    {
+      "path": "PaperCV282/TerminalContainerLowerBounds.lean",
+      "sha256": "c5d8813e10ae2198a846fbb80b9df9a4c9ca4839e9481a8dc24c71bc2c89b57a"
+    },
+    {
+      "path": "PaperCV282/TerminalContainerLowerFinite.lean",
+      "sha256": "b930830fddeadfff0e8b1b5ee88e162213503d83d76e67f69b75171071f87c17"
+    },
+    {
+      "path": "PaperCV282/TerminalContainerSharpness.lean",
+      "sha256": "ac58c6c6570c98f16d88fb31ac4d35e3ce0b5066c376847a2e305fb2408f3752"
+    },
+    {
+      "path": "PaperCV282/TerminalPartnerCount.lean",
+      "sha256": "6fbba86efc332826d04550459213d8e8ea2b8a9fcbb236b59521f408b437234d"
+    },
+    {
+      "path": "PaperCV282/TerminalSectorMasks.lean",
+      "sha256": "f76f3f8853482f6e525c0f6b84cb96c36c5bcdacadba83bd08bd4c09d4bdabd7"
+    },
+    {
+      "path": "PaperCV282/TerminalSliceContainer.lean",
+      "sha256": "33dba3520ad36732f22b6a7e7ee855e7409db71818325fe0b3b46809e7a55fbb"
+    },
+    {
+      "path": "PaperCV282/TerminalSliceCounting.lean",
+      "sha256": "7b538eb1b7086ea2dbcd8b0a74916845ec92d7bccdd8213d86c2000ae600a8d1"
+    },
+    {
+      "path": "PaperCV282/TerminalSliceGeometry.lean",
+      "sha256": "b5f20b3f81381505e1b0dec8ea5ca9198614554fba3aad3144170dcaa64779b4"
+    },
+    {
+      "path": "PaperCV282/ThresholdPathEquivalence.lean",
+      "sha256": "d102f00f8a70997aa72d0118b508522dad5019c358dbd252bc45e3a3452cabd6"
+    },
+    {
+      "path": "PaperCV282/TouchingPairGeometry.lean",
+      "sha256": "21d219bf3e84acbfc34a7ac671c528c83eeaa2cbc02f7163e89e1657a2627210"
+    },
+    {
+      "path": "PaperCV282/TouchingPairMass.lean",
+      "sha256": "3aafe2ea3730cd519bdfd16ea313a7634e7f36045b169a8b657e2288feb4b85a"
+    },
+    {
+      "path": "PaperCV282/TransitionPrimeAsymptotics.lean",
+      "sha256": "24c410826b66723439525f292e0349e3c12becf2899fdb3f83cf3040f0a838a1"
+    },
+    {
+      "path": "PaperCV282/TransitionPrimeMinor.lean",
+      "sha256": "01c8755024f24e7a9abad203c6d3f8cc903b1ec4b07dd7986bb861587de92b69"
+    },
+    {
+      "path": "PaperCV282/TransitionPrimeRows.lean",
+      "sha256": "4ca70102905ba547d75f0238fdf0930a7ba3e0b1f6f0ffbcd228373d270dc811"
+    },
+    {
+      "path": "PaperCV282/TransitionPrimeScales.lean",
+      "sha256": "35da249856a9b8797812f80fa4fcdc6dfefdfa6f0ccdb4dc5c1f9fb6f878d8d5"
+    },
+    {
+      "path": "PaperCV282/TwoWindowParity.lean",
+      "sha256": "a1aa4456b45795b4fd45c5de3294f2426cdc62b18403b4bfde31618f14abf39f"
+    },
+    {
+      "path": "PaperCV282/TwoWindowSquareHosts.lean",
+      "sha256": "0f42a5c2f2e784a99f94a621064278b6d20a8fe92bc82f7a075acc8991d7c336"
+    },
+    {
+      "path": "PaperCV282/UniformSpatialGrid.lean",
+      "sha256": "803a9e4fecab594f816f1964b20eef9b06643ace6bc6ac817302daf25e3622de"
+    },
+    {
+      "path": "PaperCV282/UnsignedAggregateC1.lean",
+      "sha256": "ee21fa61245e257b10c235ce67bd6242f0f5ba306506ed78a5da9bf28bb301f5"
+    },
+    {
+      "path": "PaperCV282/UnsignedAggregateComparison.lean",
+      "sha256": "1e1b61e4e5fc154e21fc5b37142f2782d4a02c4b49edf6bd68ba5cd8c246d5fd"
+    },
+    {
+      "path": "PaperCV282/UnsignedAggregateTarget.lean",
+      "sha256": "a3ebb3c8aeea7ef605153f5a0b693555621fb6e8397d8f1f0d89e5f35487bd66"
+    },
+    {
+      "path": "PaperCV282/UnsignedDirectionalCosts.lean",
+      "sha256": "31bd1617acbd6919c515e186608f0e8ae60839bbf3c1ae616f5712d13587687b"
+    },
+    {
+      "path": "PaperCV282/UnsignedLocalProbability.lean",
+      "sha256": "170a2dd913efa7e93e5263f6b39fb220e09dfe5d56c873bba8da88ea4fe7e0af"
+    },
+    {
+      "path": "PaperCV282/UnsignedLowIntensityRates.lean",
+      "sha256": "d8c50c47f319eec4f7ea6729e45ccf59e1ab8440c0770096bd6c2ab514c91068"
+    },
+    {
+      "path": "PaperCV282/UnsignedMarkedRelations.lean",
+      "sha256": "a75d3f7d3581ea439ba3b6458d6a8ee24586115091efb350df8f4903dd573e13"
+    },
+    {
+      "path": "PaperCV282/UnsignedResolvedPathRates.lean",
+      "sha256": "7b72b0a202b5769688cdbffef4a65cce4bb31fb6a7ca4f3b6f5cd9948476930a"
+    },
+    {
+      "path": "PaperCV282/UnsignedWeightedPairs.lean",
+      "sha256": "1a4c00b122869f7555d179be247d6396a96ab0f7fdc6e2f3c09b384e1227640e"
+    },
+    {
+      "path": "PaperCV282/ValueRelations.lean",
+      "sha256": "d3f564e6c622ab0379d3fcbb1533f42eae7e261b75d3e927f81245e2e264eb5e"
+    },
+    {
+      "path": "PaperCV282/ValueSquareRelations.lean",
+      "sha256": "74a96192d160e24effa0b9306dcc025faa55f73a5ee1dbb4de76c7a7ffe45961"
+    },
+    {
+      "path": "PaperCV282/VariableMeasureWeakTransfer.lean",
+      "sha256": "38b4adc576e7d25f3d443e2b8d000893112e2f2f9f7619335b440ce411602f95"
+    },
+    {
+      "path": "PaperCV282/WeightedLabelledCosts.lean",
+      "sha256": "7ce3aa706a993d8a4e7424e2ebdf3fa8e49617b7c6e19f8318ac7bec4d625975"
+    },
+    {
+      "path": "PaperCV282/WholeRelationProfile.lean",
+      "sha256": "6f13f965b29fdf50a36c313d51425f22aacfea715cf550afec46e35efa04c873"
+    },
+    {
+      "path": "PaperCV282/WindowValues.lean",
+      "sha256": "321df47724e1add529d9601c95377c1c50f47446c18474af7a51a11df7e541c7"
+    },
+    {
+      "path": "PaperCV282/WordDefectAsymptotics.lean",
+      "sha256": "c55b666c1eb2e8228880aadf95c04d58d5df5d8037df34b06e084fb197405865"
+    },
+    {
+      "path": "PaperCV282/WordDefectCounting.lean",
+      "sha256": "ce84edc7cce7c5c79de5a54abbd5b00edb267ef2c40398bb8cf43ca9fc06509e"
+    },
+    {
+      "path": "PaperCV282/WordFirstMomentAsymptotics.lean",
+      "sha256": "6313cc306d8ec06bc44b67e75b11f4fdaed4db9016825be2eccf76ef09d3197c"
+    },
+    {
+      "path": "PaperCV282/WordOverlap.lean",
+      "sha256": "2d84b7d248613011b3bbaec82589b4c8f869e5d378591394142396116e3f148b"
+    },
+    {
+      "path": "PaperCV282/WordOverlapProbability.lean",
+      "sha256": "6aec95a267fc4a1bb5b2c312471e800627e4001f675b1067c3cbb7dd368b8791"
+    },
+    {
+      "path": "PaperCV282/WordOverlapSum.lean",
+      "sha256": "e480e765948798e4eb1792d76208c1414d186339f99b476347947345316867a7"
+    },
+    {
+      "path": "ReviewAxioms.lean",
+      "sha256": "3a88825d812d76d3700fed0c30d8263ca6243b612aaf9a775cc619f79401304e"
+    },
+    {
+      "path": "Solution.lean",
+      "sha256": "679115a9b4cd4c90a805deb99a77fafc26044b8ca12de10116c9ee8530707451"
+    },
+    {
+      "path": "SolutionTheoremOneFour.lean",
+      "sha256": "4e87159ed2331b7fe3e56fcd6edde032b28ff6f3d9c1326eb940fc5ae70c12ca"
+    },
+    {
+      "path": "SolutionTheoremOneTwo.lean",
+      "sha256": "c9925ec98c7ff6901e8ce30da22264e3eacfb2eebd3df7c7319415e28d2c2aa2"
+    },
+    {
+      "path": "SolutionTheoremSixteenTwo.lean",
+      "sha256": "14a79451f03b9ed6447c777521a07c53c235a0c0363737af543bc6738b56c87f"
+    },
+    {
+      "path": "SolutionTransfer.lean",
+      "sha256": "0da18fe403f002ebfa66c95a3bba9086710d0e7237ecbab4b5317b0edb88624a"
+    },
+    {
+      "path": "SolutionV3Boundary.lean",
+      "sha256": "7fba5c1124fc6cadef49423a5fc5e76481a481ee58af9bc214863d455dc23ed2"
+    },
+    {
+      "path": "SolutionV3CriticalField.lean",
+      "sha256": "08e1cca695f9e7e318dce813d48425342a62dec5a47cec866110ee8c76058d30"
+    },
+    {
+      "path": "SolutionV3Crossover.lean",
+      "sha256": "06995d445be6babf75d7e2ab4535bae0635a4deae79cac62874353b331aa8b29"
+    },
+    {
+      "path": "SolutionV3Limits.lean",
+      "sha256": "51c230bd088cd1e0da7b0bb617ca5f886000889bdde3181de507a19fad4f9285"
+    },
+    {
+      "path": "SolutionV3Patterns.lean",
+      "sha256": "a74c527d32b981c3cffa5e042b8f77ca7efb78c72431d000149fd7e128f0fe5a"
+    }
+  ]
+}

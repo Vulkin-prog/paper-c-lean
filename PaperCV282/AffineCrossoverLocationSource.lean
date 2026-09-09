@@ -45,7 +45,13 @@ theorem firstStartLaw_eq {M L : ℕ} {A : Set InfiniteSample}
     (hpos : 0 < infiniteRademacherMeasure.real (A∩hitEvent M L)) :
     (firstStartLaw M L A : Measure ℕ)=
       (cond infiniteRademacherMeasure (A∩hitEvent M L)).map (firstStart M L) := by
-  simp only [firstStartLaw,dif_pos hpos,imageProbabilityLaw,ProbabilityMeasure.coe_mk]
+  letI instProbabilityConditional : IsProbabilityMeasure
+      (cond infiniteRademacherMeasure (A∩hitEvent M L)) :=
+    cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
+  have he : firstStartLaw M L A =
+      imageProbabilityLaw (cond infiniteRademacherMeasure (A∩hitEvent M L))
+        (firstStart M L) (measurable_firstStart M L) := dif_pos hpos
+  exact congrArg (fun nu : ProbabilityMeasure ℕ => (nu : Measure ℕ)) he
 
 theorem firstLocationLaw_eq {M L : ℕ} {A : Set InfiniteSample}
     (hpos : 0 < infiniteRademacherMeasure.real (A∩hitEvent M L)) :

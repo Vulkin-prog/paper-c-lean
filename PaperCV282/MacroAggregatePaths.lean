@@ -49,15 +49,19 @@ theorem shifted_source_embeds_as_filtered (sites : Finset ℕ) (L m : ℕ) (omeg
       change (j.1,(m+(j.2.1-m),j.2.2))=j
       exact congrArg (fun e => (j.1,(e,j.2.2))) (show m+(j.2.1-m)=j.2.1 by omega)
     rw [← hk,Finsupp.embDomain_apply_self,Finsupp.filter_apply]
-    have hkm : m ≤ (excessShift sites m k).2.1 := by dsimp [excessShift];omega
+    have hkm : m ≤ (excessShift sites m k).2.1 := by
+      change m ≤ m + k.2.1
+      omega
     rw [if_pos hkm]
-    simp [spatialMarkedSource_apply,spatialMarkedValue,excessShift,signedMarkValue,
+    change spatialMarkedSource sites (L+m) omega k =
+      spatialMarkedSource sites L omega (k.1,(m+k.2.1,k.2.2))
+    simp [spatialMarkedSource_apply,spatialMarkedValue,signedMarkValue,
       SignedExactMark,excessRowCount,Nat.add_assoc]
   · rw [Finsupp.filter_apply,if_neg hm]
     apply Finsupp.embDomain_notin_range
     rintro ⟨k,hk⟩
     have he := congrArg (fun z : SpatialMarkedIndex sites => z.2.1) hk
-    dsimp [excessShift] at he
+    change m + k.2.1 = j.2.1 at he
     omega
 
 /-- An exact finite identity holds before any almost-sure termination argument. -/

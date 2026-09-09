@@ -45,7 +45,13 @@ def firstStartLaw (M L : ℕ) : ProbabilityMeasure ℕ :=
 
 theorem firstStartLaw_eq {M L : ℕ} (hLM : L≤M) :
     (firstStartLaw M L : Measure ℕ)=(cond infiniteRademacherMeasure (hitEvent M L)).map (firstStart M L) := by
-  simp only [firstStartLaw,dif_pos hLM,imageProbabilityLaw,ProbabilityMeasure.coe_mk]
+  letI instProbabilityConditional : IsProbabilityMeasure
+      (cond infiniteRademacherMeasure (hitEvent M L)) :=
+    cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ (hit_probability_pos hLM))
+  have he : firstStartLaw M L =
+      imageProbabilityLaw (cond infiniteRademacherMeasure (hitEvent M L))
+        (firstStart M L) (measurable_firstStart M L) := dif_pos hLM
+  exact congrArg (fun nu : ProbabilityMeasure ℕ => (nu : Measure ℕ)) he
 
 def firstLocationLaw (M L : ℕ) : ProbabilityMeasure ℝ :=
   imageProbabilityLaw (firstStartLaw M L : Measure ℕ) (fun x : ℕ => (x : ℝ)/M) (measurable_of_countable _)

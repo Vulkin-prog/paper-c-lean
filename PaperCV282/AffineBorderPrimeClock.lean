@@ -53,7 +53,8 @@ theorem futurePrimeProjection_rank {M L K : ℕ}
 theorem futurePrimeProjection_restrict_apply {M L K : ℕ}
     (hcut : Nat.nth Nat.Prime (Nat.primeCounting L+K)≤M) (omega : InfiniteSample) (i : Fin K) :
     futurePrimeProjection hcut (restrictToFinite M omega) i=omega (Nat.primeCounting L+i.val) := by
-  simp [futurePrimeProjection,restrictToFinite,finitePrimeCoordinate,futurePrimeEmbedding]
+  change omega (Nat.primeCounting' (Nat.nth Nat.Prime (Nat.primeCounting L + i.val))) = _
+  rw [Nat.primeCounting'_nth_eq]
 
 /-- The homogeneous future system is exactly survival past those K prime signs. -/
 theorem future_zero_iff_first_index {M L K : ℕ}

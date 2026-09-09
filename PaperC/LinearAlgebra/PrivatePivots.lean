@@ -189,7 +189,6 @@ theorem tree_edgeSum_linearIndependent_of_private_nonroot
               (Function.Embedding.subtype G.edgeSet) := by
         exact Finset.filter_map
       rw [TreeBoundary.edgeValueFinset, hfilter, Finset.card_map]
-      rfl
     rw [hcard]
     exact ZMod.natCast_eq_zero_iff_even.mp hcast
   have hboundary :

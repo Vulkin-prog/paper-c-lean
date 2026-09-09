@@ -10,18 +10,24 @@
     "library": "PaperC",
     "authority_commit": "b3cf107d2df629453a5da8e84f2bad29eea0bf94",
     "historical_manuscript_target": "v0.9",
-    "policy": "Additive overlay; historical canonical declarations and qualification scope are preserved."
+    "policy": "The historical PaperC authority and qualifications are preserved at their immutable source commits. The current PaperC source is explicitly migrated for Lean/Mathlib 4.33.1; its final current digest is guarded separately from the historical baseline, and historical qualifications do not transfer.",
+    "current_source_contract": "audit_config.json#/core_source",
+    "historical_source_commit": "9286f4a954ac128ba3d5edd1c1d25203f45c099f",
+    "same_historical_core_merge_commit": "ee2ac789764fe5d9fd19c96c6c0778a693b129a0"
   },
   "earlier_overlay": {
     "library": "PaperCV11",
     "role": "Earlier reusable development; its name and original theorem numbering are retained."
   },
   "toolchain": {
-    "lean": "leanprover/lean4:v4.32.0",
-    "mathlib_tag": "v4.32.0",
-    "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+    "lean": "leanprover/lean4:v4.33.1",
+    "mathlib_tag": "v4.33.1",
+    "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
     "mathlib_repository": "https://github.com/leanprover-community/mathlib4.git",
-    "upgrade_required": false
+    "upgrade_required": false,
+    "migration_status": "in_progress_no_new_build_or_qualification_result_claimed",
+    "migration_base_commit": "9286f4a954ac128ba3d5edd1c1d25203f45c099f",
+    "historical_evidence_policy": "Preserved historical pins, source snapshots and receipts describe their original commits; they do not qualify the migrated toolchain."
   },
   "sources": [
     {

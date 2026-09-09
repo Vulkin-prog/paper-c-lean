@@ -45,6 +45,15 @@ theorem startProbability_eq_eta_mul_two_pow_rho_div
   let b := startRhs L
   have hnormalized :=
     affineFiber_normalized_card_identity A b
+  have hsolutionCard :
+      Fintype.card (Solution A b) =
+        (Finset.univ.filter fun ω : DyadicSample N L =>
+          A ω = b).card := by
+    rw [Fintype.card_subtype]
+    apply congrArg Finset.card
+    ext ω
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and]
+    rfl
   have hnormalizedQ :
       (2 : ℚ) ^ L *
           (Fintype.card (Solution A b) : ℚ) =
@@ -59,14 +68,6 @@ theorem startProbability_eq_eta_mul_two_pow_rho_div
             ((relationEta A b : ℚ) *
               (2 : ℚ) ^ relationRho A) := by
       exact_mod_cast hnormalized
-    have hsolutionCard :
-        Fintype.card (Solution A b) =
-          (Finset.univ.filter fun ω : DyadicSample N L =>
-            A ω = b).card := by
-      rw [Fintype.card_subtype]
-      apply congrArg Finset.card
-      ext ω
-      simp [solutionSet]
     rw [hsolutionCard]
     simpa using hnormalizedQ'
   have hcard :
@@ -74,9 +75,10 @@ theorem startProbability_eq_eta_mul_two_pow_rho_div
     exact_mod_cast (Fintype.card_ne_zero :
       Fintype.card (DyadicSample N L) ≠ 0)
   have hpow : (2 : ℚ) ^ L ≠ 0 := pow_ne_zero _ (by norm_num)
+  rw [hsolutionCard] at hnormalizedQ
   dsimp only [A, b] at hnormalizedQ ⊢
   apply (div_eq_div_iff hcard hpow).2
-  simpa [solutionSet, mul_assoc, mul_left_comm, mul_comm] using hnormalizedQ
+  simpa [mul_assoc, mul_left_comm, mul_comm] using hnormalizedQ
 
 /--
 Finite pointwise form of the estimate in Corollary 3.3.

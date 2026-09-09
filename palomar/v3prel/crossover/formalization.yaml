@@ -312,5 +312,7 @@ alignment:
     lean: PaperCV3Audit.v3_crossover_affine_sign
     module: SolutionV3Crossover
     status: proved modulo the explicit literature premises in its statement, if any
-acknowledgements: Built on Lean 4.32.0 and Mathlib. Source archives and the detailed manuscript migration
-  matrix are preserved separately.
+acknowledgements: The complete build, axiom audits and strict interface checks passed locally
+  with Lean 4.33.1 and Mathlib v4.33.1. These checks do not confer Palomar qualification.
+  The Lean 4.32.0 verification history, source archives and detailed manuscript migration
+  matrix remain preserved separately.

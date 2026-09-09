@@ -41,7 +41,6 @@ theorem fieldRates_maskedGood_eq {N L Y : ℕ} (mask : Finset ℕ)
     (maskedConditionedGoodIndicator N L Y (fullGoodMask N L Y mask) sigma) x = _
   rw [marginal_maskedConditionedGoodIndicator (fullGoodMask N L Y mask) hN hL hLY sigma]
   by_cases hx : x.val ∈ fullGoodMask N L Y mask <;> simp [retainedGoodFieldRates, hx]
-  rfl
 
 theorem retained_conditional_field_process_bound (hAGG : ProcessAGGStatement)
     {N L Y : ℕ} (mask : Finset ℕ)

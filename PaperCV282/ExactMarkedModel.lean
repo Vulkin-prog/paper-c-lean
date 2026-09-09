@@ -57,7 +57,8 @@ theorem signedMarkRate_coe (L e : ℕ) : (signedMarkRate L e : ℝ) = 1/(2 : ℝ
 theorem exactMarkedIndicator_eq_true (C N L E : ℕ) (i : ExactMarkIndex N E) (omega : SampleSpace C) :
     exactMarkedIndicator C N L E i omega = true ↔
       ExactLengthEvent (valueBit omega) i.1.val (excessRowCount L i.2.val) := by
-  simp [exactMarkedIndicator,exactLengthAt]
+  simp only [exactMarkedIndicator, decide_eq_true_eq]
+  rfl
 
 theorem signedMarkedIndicator_eq_true (C N L E : ℕ) (i : SignedMarkIndex N E) (omega : SampleSpace C) :
     signedMarkedIndicator C N L E i omega = true ↔
