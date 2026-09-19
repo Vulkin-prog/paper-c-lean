@@ -485,6 +485,17 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.RegularPlantPresence.word_iff
 #print axioms PaperC.Prel8.RegularPlantPresence.presence_small_event
 #print axioms PaperC.Prel8.RegularPlantPresence.presence_conditional
+#print axioms PaperC.Prel8.RoughKernelAllocation.uniform_finset_probability
+#print axioms PaperC.Prel8.RoughKernelAllocation.grid_card
+#print axioms PaperC.Prel8.RoughKernelAllocation.rough_allocation_probability
+#print axioms PaperC.Prel8.RoughKernelAllocation.rough_allocation_of_vertex_bound
+#print axioms PaperC.Prel8.RoughKernelCRT.mem_solutions
+#print axioms PaperC.Prel8.RoughKernelCRT.solutions_count
+#print axioms PaperC.Prel8.RoughKernelCRT.solutions_count_le
+#print axioms PaperC.Prel8.RoughKernelCRT.assigned_count_le
+#print axioms PaperC.Prel8.RoughKernelCRT.hosted_subset
+#print axioms PaperC.Prel8.RoughKernelCRT.hosted_count_le
+#print axioms PaperC.Prel8.RoughKernelCRT.hosted_fraction_le
 #print axioms PaperC.Prel8.RoughKernelDeletion.mem_strongGood
 #print axioms PaperC.Prel8.RoughKernelDeletion.mem_strongGood_floor
 #print axioms PaperC.Prel8.RoughKernelDeletion.strongGood_subset
@@ -498,6 +509,9 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.RoughKernelDeletionLimits.height_exponential_tendsto
 #print axioms PaperC.Prel8.RoughKernelDeletionLimits.shallow_density_tendsto
 #print axioms PaperC.Prel8.RoughKernelDeletionLimits.total_density_tendsto
+#print axioms PaperC.Prel8.RoughKernelExponent.card_log_le
+#print axioms PaperC.Prel8.RoughKernelExponent.kernel_weight_le
+#print axioms PaperC.Prel8.RoughKernelExponent.allocation_threshold_bound
 #print axioms PaperC.Prel8.RoughKernelGoodSet.pivot_of_kernel
 #print axioms PaperC.Prel8.RoughKernelGoodSet.paperGood_eq
 #print axioms PaperC.Prel8.RoughKernelGoodSet.total_card_le
@@ -520,6 +534,9 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.RoughKernelReciprocal.normalized_reciprocal_le_exp
 #print axioms PaperC.Prel8.RoughKernelReciprocal.literal_sum_eq
 #print axioms PaperC.Prel8.RoughKernelReciprocal.literal_normalized_reciprocal_le
+#print axioms PaperC.Prel8.RoughKernelRegularity.private_in_block
+#print axioms PaperC.Prel8.RoughKernelRegularity.single_regular
+#print axioms PaperC.Prel8.RoughKernelRegularity.failure_hosted
 #print axioms PaperC.Prel8.RoughKernelSaddle.enlarged_prefactor
 #print axioms PaperC.Prel8.RoughKernelSaddle.enlarged_count
 #print axioms PaperC.Prel8.RoughKernelSaddle.hard_count
@@ -568,6 +585,9 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.StrongerDeletionTheorem.replacement_rate_tendsto
 #print axioms PaperC.Prel8.StrongerDeletionTheorem.paper_added_mass_tendsto
 #print axioms PaperC.Prel8.StrongerDeletionTheorem.paper_density_tendsto
+#print axioms PaperC.Prel8.StrongerRestoration.full_restoration_eventually
+#print axioms PaperC.Prel8.StrongerRestoration.full_stronger_restoration_eventually
+#print axioms PaperC.Prel8.StrongerRestoration.completionRate_tendsto
 #print axioms PaperC.Prel8.TypicalDictionaryConsequences.uniform_exceptional_fraction
 #print axioms PaperC.Prel8.TypicalDictionaryConsequences.exceptional_fraction_tendsto_zero
 #print axioms PaperC.Prel8.TypicalDictionaryConsequences.statisticDistance_le

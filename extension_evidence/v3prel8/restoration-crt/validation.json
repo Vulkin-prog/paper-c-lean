@@ -1,0 +1,606 @@
+{
+  "date_utc": "2026-09-19T17:03:22.474203+00:00",
+  "status": "g1_restoration_and_g2_crt_components_validated_full_alignment_incomplete",
+  "parent_extension_commit": "dc55f15fe2c3202cc8e4fb1c8ad7d33fc8b0ae7b",
+  "base_commit": "a928497897a27e3dd3d7b601ee788336aca84780",
+  "lean": "4.34.0",
+  "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+  "build": {
+    "libraries": 24,
+    "lake_jobs": 10247,
+    "result": "passed"
+  },
+  "axiom_audit": {
+    "named_theorems": 629,
+    "added_in_this_batch": 20,
+    "result": "passed",
+    "allowlist": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_files": [
+    {
+      "path": "PaperCPrel8.lean",
+      "sha256": "6b960d52180a55db7629938ae453eea77d9eeb48d7d85805368e830b99be4d48"
+    },
+    {
+      "path": "PaperCPrel8/ActualSignedConditionalLaw.lean",
+      "sha256": "8760872773bd624e1d13939708b107a5a68d210a597aa1c4f30626a8cc8a8a2a"
+    },
+    {
+      "path": "PaperCPrel8/ActualSignedPairs.lean",
+      "sha256": "ba0f6862697ab11f59a048619f33a48beccbdbd3fb3f106f6bfc8c0ce1160a65"
+    },
+    {
+      "path": "PaperCPrel8/ActualSignedPalm.lean",
+      "sha256": "33741e99f8b9176ff45a65f1375b0edd3383840da569f2e3edd8f1552313427f"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryConsequences.lean",
+      "sha256": "24cd87c020b228c114a788a2ca775f860159e27dfeaa0da68dfb460ef58c4d86"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryConvergence.lean",
+      "sha256": "4f61a0063337b71ec4a45e175251069603544930b2b6e5cd6f1f1d7a5feef589"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryCosts.lean",
+      "sha256": "13fae79460f6d6a100a1c9a6acc44178654298687134b6ec59c89c5c66717a33"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryDescription.lean",
+      "sha256": "caaabdadc898238d3a77f981b7173f513567587514bcb802a3f3b20aee60a3c9"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryExceptional.lean",
+      "sha256": "2a9063e2a0d8774dce051b7285d9dd3e9fe22b71d887c7ff2bc2b9edd40fb8bb"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryFinite.lean",
+      "sha256": "9e3538816a9fac21deb8f5f5e9c3cf751f7102ddc84c3bf506a9decfd6526687"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryIid.lean",
+      "sha256": "cbe1216fa340ab362706224226a1e5b72b313839738e640c9eb58d5cc9867850"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryInclusion.lean",
+      "sha256": "2fe32f7f9e7602649970fd2ed69a2aaefbdeb690affd5232d75f75ece9f0a494"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryMatrix.lean",
+      "sha256": "2d91ab0fbe02fcdd91127c31f803ca8fb0300ef827cf4cc0af8b0551b74bdf74"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryMoments.lean",
+      "sha256": "c7d2ae67465ef6755f3fd79c5194a032308e6f918c606ac9bf227ef4a549886e"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryRates.lean",
+      "sha256": "0f159544ce47360c0b9a4767a8a8c2ed1d3892eb531b2df2d5e4dc5be0f89a36"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionarySample.lean",
+      "sha256": "12325124a3a0b8871c15a9475b7e81d9f5fd98dc78d4489702018b74b97e84be"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryTheorem.lean",
+      "sha256": "b16a167eb1b3b98d7d6cabcc82a38a30bf6f1be368670293145c631f07152cc3"
+    },
+    {
+      "path": "PaperCPrel8/AffineDictionaryUniform.lean",
+      "sha256": "951703225a65b70f48d1c806bca2cb3ffbec0d831550ab2b60d2ba9b05736327"
+    },
+    {
+      "path": "PaperCPrel8/Audit.lean",
+      "sha256": "fb07fb4be649a2fa7fb9a3515ff15f10cdda6c56ed13fb70c0d76510e98e1c3e"
+    },
+    {
+      "path": "PaperCPrel8/CategoricalPalm.lean",
+      "sha256": "e46c6371ee0b157a1ce0001150d6cb1beb7f9e7db96bacb3ecd5f7998c1f1789"
+    },
+    {
+      "path": "PaperCPrel8/CategoricalSummation.lean",
+      "sha256": "4cfd502aace0e68b3f9849ec0687f50fcad3326526091596eec6cebf70fa5547"
+    },
+    {
+      "path": "PaperCPrel8/DictionaryArithmeticCollision.lean",
+      "sha256": "bcd1b192f1bedb608512a466f09004ff69e3c7d86f681f9ae99cfaeb677acc92"
+    },
+    {
+      "path": "PaperCPrel8/DictionaryAverage.lean",
+      "sha256": "c0a94c939abdf8a2c88a4ddadd6acaad986dbd2859aba1d8619a664f4ebefa4e"
+    },
+    {
+      "path": "PaperCPrel8/DictionaryCollision.lean",
+      "sha256": "800be4c0a6590587791f043015a9c2036315997b8c0f41a80ca42f76a904bb60"
+    },
+    {
+      "path": "PaperCPrel8/DictionaryMaskedCosts.lean",
+      "sha256": "ba32935e0b17c980530e0368a1743fa427fea75559ffdefdb88a28f1adfa03d1"
+    },
+    {
+      "path": "PaperCPrel8/DictionarySamplingBounds.lean",
+      "sha256": "eaafe3d1fb7c809b84270c132b326b881fde0287dd04d82d27c22c60c50532d8"
+    },
+    {
+      "path": "PaperCPrel8/DictionarySelection.lean",
+      "sha256": "48cecfabe7bdcbd9b08e6883c27ae832826d8f7e739289315ea3c639613974e8"
+    },
+    {
+      "path": "PaperCPrel8/DirectedFootprint.lean",
+      "sha256": "134326bfe45f8c93592acfddc776e09a4e4d6b129b50c5aabce1482397f1bc25"
+    },
+    {
+      "path": "PaperCPrel8/DirectedFootprintAsymptotics.lean",
+      "sha256": "3a57aed88069091f4389f5a4a25bdd1648ec2bf74d777d60b87b1e2a6687307e"
+    },
+    {
+      "path": "PaperCPrel8/DyadicBudget.lean",
+      "sha256": "9391b882163edf3854bcaea6b84a05aca4c3c89954f44cdde1182753330109ee"
+    },
+    {
+      "path": "PaperCPrel8/DyadicMicroscopicTheorem.lean",
+      "sha256": "6966f33d739322015f9d39e6629ac7cc117a6d1c4f680736e71de3e6f61a553f"
+    },
+    {
+      "path": "PaperCPrel8/DyadicRestriction.lean",
+      "sha256": "73efb2ad211ee67f44153cc03cc3a19782f06303f2f9d1e030802d157de66790"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalFiniteSupport.lean",
+      "sha256": "20c2ab3f6408bdd641216e7408b32d1fa878181a66d16b038e7a6975956c26c1"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalPaperBudget.lean",
+      "sha256": "a662d56c4984d3289346cb877d39694a6a4b3289edc1188e5c29c89b18fe5c1a"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalPaperScales.lean",
+      "sha256": "53b2d93fc3a7956f6a1616cbf4c79a14878a4bd0f3e1e6c10f66040e017f011d"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalPaperTheorem.lean",
+      "sha256": "e6f67fb5931dd424b7e42be6bc727433a3227b636faf2284659e2dc4593747e2"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalScaleBounds.lean",
+      "sha256": "648526bbcd0774f7eb0b6e075f0e5b5d07638eb0bc683e1e425218b7cf869344"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalStartField.lean",
+      "sha256": "ce7a9907966946e7c55e8d96a685845ba30c2836c474986e45e8e560e1978805"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalSupportGrowth.lean",
+      "sha256": "19f8a561c7c1760c21758dc88eed48e31fadfa863e60a138d69cec72156d319e"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalSupportScales.lean",
+      "sha256": "78f65875334b7bf72f2346fbac2bd8313d0fd07d73e2b1cac122fc8e87fd6e3b"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalSupportTarget.lean",
+      "sha256": "5976b0b44ef1a1c62ade050bc6bbb207d7e200cfc74d0537df290db8a54029e5"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalSupportTheorem.lean",
+      "sha256": "7cafca973308afb22a91b304ca7dc4a4e2ccee695f848b740dc3ed183bcd156b"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalTransfer.lean",
+      "sha256": "057e324fd0fdeae505e52b998deb3525ea7367385c371bbd46a86d7c82b18294"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalWindowConvergence.lean",
+      "sha256": "fe3fa04aa60cd545c456ae9955885d5f7a95c25e374456830bfaa7b5af4b0b6b"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalWindowGrowth.lean",
+      "sha256": "c3de20e1e62add08531bb2976e0e2816ab52a12ea80ca626a4d35c3904b08ccc"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalWindowLaw.lean",
+      "sha256": "8157c89f4b07c24b8f97526a45a0cb2e550421dd813e6eed3fb7d25f5c179738"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalWindowVariance.lean",
+      "sha256": "66b267410f41b6a6f3d5a2ffe53d4be4cfe55385829d6f616e6bb86e1b7fcca5"
+    },
+    {
+      "path": "PaperCPrel8/FiniteConditioning.lean",
+      "sha256": "eeb5ea3de017d566cedab338fdec01705be5353a7096e2ac1a130f1c6410c042"
+    },
+    {
+      "path": "PaperCPrel8/FiniteFieldReplacement.lean",
+      "sha256": "57b6306f67158babe9327b0d212b26d7f570255031c00ca8b80813d637a2b607"
+    },
+    {
+      "path": "PaperCPrel8/HardConditionalForcing.lean",
+      "sha256": "8096acd2aeca29f8eb97ab4b4bf1fbc454f376beea6f83c288ba028965c90724"
+    },
+    {
+      "path": "PaperCPrel8/IndependentScalarTail.lean",
+      "sha256": "b321f92139a9e9985520e4d3d86bae4db6686f3e5b4edc6a46f35121bde3c55f"
+    },
+    {
+      "path": "PaperCPrel8/InformationBudget.lean",
+      "sha256": "e9705c0ce5f1b66ca70f31911e982a5fb1372caeb808d84e59336457d3c7ca75"
+    },
+    {
+      "path": "PaperCPrel8/InformationFieldBudget.lean",
+      "sha256": "8ab49996c288fc82019083b43b98099c7815e6f88e889c838874999993c1df64"
+    },
+    {
+      "path": "PaperCPrel8/InformationFieldPaper.lean",
+      "sha256": "1f0b2ace2dcf90a8574e2827e7646f87607fdfba7f7598413509305cd27f3f62"
+    },
+    {
+      "path": "PaperCPrel8/InformationFieldTheorem.lean",
+      "sha256": "efcd935575b52072a4ee658841b5202c62caa283ddc68670aba736a9caf55d07"
+    },
+    {
+      "path": "PaperCPrel8/InformationSaddle.lean",
+      "sha256": "55ac0421b082c51aa71ff1f92eef45dba30eb6f3f120f925b71fa60d90e30c9c"
+    },
+    {
+      "path": "PaperCPrel8/InformationSaddleBudget.lean",
+      "sha256": "23825515fb411359a4f7c1772b75790406c0f0086896d9c280b2f15e8ff8aee5"
+    },
+    {
+      "path": "PaperCPrel8/InformationSaddleLimit.lean",
+      "sha256": "d688b87b7333d4e91e651383a89258a1578e07fd7cf69fba71c1d0d9fac2373b"
+    },
+    {
+      "path": "PaperCPrel8/InformationSaddleScales.lean",
+      "sha256": "0a965b7406a21b5503f213296b38e6736ada17ece5788c42d3971d993f8c19cb"
+    },
+    {
+      "path": "PaperCPrel8/MarkovReadouts.lean",
+      "sha256": "d2b5d6678f72011619e163852cae00bf772f3dc60bea15de38937a73dde391f8"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicActualGeometry.lean",
+      "sha256": "547ad6ee04b1b2cc780f662359cc7116d0a6242547cfbc872b1135abc3d651c7"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicBadPivotCount.lean",
+      "sha256": "2252e5deded3e6ee05a83c41f1975a23d3017d1f5e03011d889c0ce5c715d3d2"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicConditionalSpatial.lean",
+      "sha256": "e27098d2d1da1aae982ea28e884895056ed11a2cb72622ca037c04a7266624e3"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicDeletedSites.lean",
+      "sha256": "85074004044343bacd1daa95aeec9ed20d143507822ab9a0c00807e69181c2ad"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicDeletedTarget.lean",
+      "sha256": "cae955903d934e4655eb2bf249b0f26ae3066a50441a26b2a8b4b321588e33d6"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicDiscardBounds.lean",
+      "sha256": "709c4380f21b88c58bd416df83d456cfe2b7292eee8d774b0b1bf806f30a02e5"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicDiscardRates.lean",
+      "sha256": "dad330cad1d52bcc71d5f5be5155790387386ae0ddfac68b898ae6782e19293a"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicDiscardTheorem.lean",
+      "sha256": "9f0ec3df662b75e1abdc29a8ca1d64960edc42b446afaa143c332ec314653f13"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicFiniteLedger.lean",
+      "sha256": "d0bdd1d705c18d8c7f15f5ac9f28b4e55bdf96e44776063e70b2c0c1adea8f61"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicFootprintLedger.lean",
+      "sha256": "d2c12b925213b5b28ceeaea80190392abcfebf8432fa11b90da6c9c7284edc5d"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicFullTheorem.lean",
+      "sha256": "2a88f412fc80d402d7d920f67f88cdcd4f42b5c2d466e7277d7902deefb55423"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicGoodField.lean",
+      "sha256": "b349d69c80054a15196b1c9f4d6bbd89936962512e0c29f40ef8a219d1f04473"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicInfiniteField.lean",
+      "sha256": "d9b010d2cf33fd24f1568c6adae6f291711d0c81d6a5c5dfb90a15f5f8de8463"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicInformationCutoff.lean",
+      "sha256": "3246e904ba3fb87137be2cc8142cc675848110e365d0ed26b892e1cb8a4c8c02"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicNormalization.lean",
+      "sha256": "acd85a51ed04ebda0ac35f3d2a41ef1769d1bf8a04866f551140024735a1fd00"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicPairLedger.lean",
+      "sha256": "0e83570d0c5322579460c6c87be01ec210c3226b6fde47d3b7ecfe8727d4980a"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicPaperBudget.lean",
+      "sha256": "53b95fdaa32ed836d67dbca1ff6681dc88a99dc29c8975d81c4c12161d22b578"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicProfileBudget.lean",
+      "sha256": "b9cd41170670ee2b1e9cc7710a56a93474dd3b3e2c5b8326885f81ca11d2987c"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicReadouts.lean",
+      "sha256": "ed7e604ecc230681e7a9427dc93d27c52e5fc87d6172adf62204c4d287f1da35"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicRelationExcess.lean",
+      "sha256": "434cb071c3d68ceb7eef3f9abcc92bc25888ed247237e5f33f2c365f021e3040"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicRetainedRates.lean",
+      "sha256": "80c43d037077a2997a56b43194cdb972011cdbaa099950733fdfc030388811b5"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicRetainedTheorem.lean",
+      "sha256": "68ae48a5c28b622361e1a4e84c664dd5a28522a8e1e6f310f5f7dab0be76c9c3"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicSiteRestoration.lean",
+      "sha256": "9d8d6811dc0c521af7e38773d5e08dba4a49589f02784d959fbb1a55180001ef"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicSourceRelabelling.lean",
+      "sha256": "dd3fb9b3442ec877e387be9f9b3fff778bd80f9d2b57e1a49be9be5fdbd0e284"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicSpatialRates.lean",
+      "sha256": "03f9faaebdbdf6d9029ba95667c634ee678b07d3fdc826a5619ad569359217de"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicValueProfile.lean",
+      "sha256": "cb7b3a25a94dbaa83d572064dad257c9b2565a8b4e84f55481d324d87f01ad05"
+    },
+    {
+      "path": "PaperCPrel8/OddPrimePivot.lean",
+      "sha256": "af671b4353b60a15d78aee67f2d2362a7b5a3b2484095b9cccc7b737b176bffa"
+    },
+    {
+      "path": "PaperCPrel8/PalmDeficit.lean",
+      "sha256": "c507cd4eeb004b17baf31de51b80bcf5c7b6807193107ff4e25053ae40990d93"
+    },
+    {
+      "path": "PaperCPrel8/PalmDeficitProbability.lean",
+      "sha256": "a3287d4e68eedb52ad769eb9ce302a4301c445e6d5925dc96ab64d0e2db95e04"
+    },
+    {
+      "path": "PaperCPrel8/PalmDeletionIdentity.lean",
+      "sha256": "5c6b8b203546c96f154184ac5e85d031d5d70c3d6dbd48b03e336ea6ba17b974"
+    },
+    {
+      "path": "PaperCPrel8/PalmStein.lean",
+      "sha256": "a3b738c8fcb31b255ed6fe9a75793f384ed00db06415c70b4faa922c49240e40"
+    },
+    {
+      "path": "PaperCPrel8/PalmTargetSignBound.lean",
+      "sha256": "c31b31558a9105d44ef2acae8dac20b5179dfbe3614f623a1701c720e0ffaa6f"
+    },
+    {
+      "path": "PaperCPrel8/PalmVoidAverage.lean",
+      "sha256": "fe4b7467a4e9c85c6a76f24234267ae9e96fe6879ae2ba2de684251fe64003ff"
+    },
+    {
+      "path": "PaperCPrel8/PalmVoidNormalization.lean",
+      "sha256": "03a1a4cdf2349bc1ae99fb250ffbc5b85bb810c2f96a16bded59c2242b931055"
+    },
+    {
+      "path": "PaperCPrel8/PalmVoidPolynomial.lean",
+      "sha256": "2857220f450972d7d421870b4ddf94742f76dda7ea3662581705d65d79fca2ef"
+    },
+    {
+      "path": "PaperCPrel8/PivotGeometry.lean",
+      "sha256": "8a6b21ff59d22f6893a39e47f2c14f7927f836aaf6d4e8cc21aa8650b5dd82dc"
+    },
+    {
+      "path": "PaperCPrel8/PivotRankinExpandedBand.lean",
+      "sha256": "59aa74e9153254ae4a8f5e59f8febe14f5ce88be95fb3c069ae5614102fa4944"
+    },
+    {
+      "path": "PaperCPrel8/PivotRankinUniform.lean",
+      "sha256": "a27b073c047f452a9b520da978c20a4652944845e615db82ff884f9d3abd8c4d"
+    },
+    {
+      "path": "PaperCPrel8/PrimeForcing.lean",
+      "sha256": "df725645fb74805d0c8d62671fdd61f40169f51675d9994e16b88d7116e4392b"
+    },
+    {
+      "path": "PaperCPrel8/PrivateForcing.lean",
+      "sha256": "9d2943a55e55277dc1904afaa07aae234b5a2119ba597f0a0e3b855c9f95aeb6"
+    },
+    {
+      "path": "PaperCPrel8/ReciprocalPivotAsymptotics.lean",
+      "sha256": "44cc415360ef649c9ebf912551f154bc778b672a446fa32979c8b22e14de83f1"
+    },
+    {
+      "path": "PaperCPrel8/ReciprocalPivotShells.lean",
+      "sha256": "439eeef2fab48208023c8990bd72da0b7d52cb9f49c53f27cecfc0e3fd3f6507"
+    },
+    {
+      "path": "PaperCPrel8/RegularPlantPresence.lean",
+      "sha256": "b2717c4dd6d71e5b30ae13566959be4e844dc9c10a523222236079c6708393c1"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelAllocation.lean",
+      "sha256": "5aeaff0bee4ed7b89a1bd2e65e7b8707cf9afc358060e9097968693a71221574"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelCRT.lean",
+      "sha256": "3c9039cfbb9812ba0191d2521adcd082e25938a39d745aae5b2dbe291654bd61"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelDeletion.lean",
+      "sha256": "6011a33f199242cd620d05ca3f3bd823215ffb67083e6f7a280093cf04ad94ef"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelDeletionLimits.lean",
+      "sha256": "8bcbd5d0656d7217c0350c540584468bb7604752a605400a2aed58898b2d3c80"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelExponent.lean",
+      "sha256": "5ed62057d26a1d1ade396f8f20b1aef5f94cd3d41a5f619a057396f58e324855"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelGoodSet.lean",
+      "sha256": "5544bc6a7f1222a6282c6a08da1bce33435dab5fa9821e3c2930f6575f3c2702"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelPowerSums.lean",
+      "sha256": "6fb283765c89568293e901fa57c50ba688f0ba7a2779ab38677d190838e84a6d"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelRankin.lean",
+      "sha256": "79939db7ae9d75dc63b5f4e49e771ec6ed8c8543f910f7a3c0ab5b39144e1bb8"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelReciprocal.lean",
+      "sha256": "1f824e805e394c97bed4b63a03c4292ab9a65402b7d0665a8f8d572c8813144d"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelRegularity.lean",
+      "sha256": "ef41aba8534aeab532da9884eadf1814b0aa243a7af3d621e2a56d6363c04e4d"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelSaddle.lean",
+      "sha256": "ddf52fd0b61bb3a1496f74edf57c1ceac42e9e15457295d78861fb10b34a0131"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelStrongCount.lean",
+      "sha256": "ebe571292660be26b7dcb4ed3b6c77516167af568ae2a4f07116eb36afb634a8"
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelThreshold.lean",
+      "sha256": "88c8951ed439adb2ad7eb7cbc8baee7d020e92ec60d7d6f4c66f0e2af3307153"
+    },
+    {
+      "path": "PaperCPrel8/SaddleEnvelope.lean",
+      "sha256": "51e3cae15dc7f5c32d1dd34d8c5421eeaf6760833f4bcb83a84f61fe9d92a730"
+    },
+    {
+      "path": "PaperCPrel8/SaddleScaleMonotonicity.lean",
+      "sha256": "29a3f378c6275c59ef0de83813e77bce4de8cb590eefbb2026ae13997902543d"
+    },
+    {
+      "path": "PaperCPrel8/SignedGoodReplacement.lean",
+      "sha256": "e2557918435975e48623cd8e4be101588106336e7ea7d0a2865d8ebb4952059a"
+    },
+    {
+      "path": "PaperCPrel8/SignedPalmForcing.lean",
+      "sha256": "754447e261c03bd170720cebdc636de313ea60620b6c7c5c1a8c1275dc0d857d"
+    },
+    {
+      "path": "PaperCPrel8/SmallPrimeMixture.lean",
+      "sha256": "6dee31a4bc43146b47943aeb9d0d9ea58e1dbc3190d049f6804701853d569edb"
+    },
+    {
+      "path": "PaperCPrel8/StrongerDeletionTheorem.lean",
+      "sha256": "2bd57626ad83d7c8e206238ec281a27dc468e642129347c4a39bd8d9b2e163ee"
+    },
+    {
+      "path": "PaperCPrel8/StrongerRestoration.lean",
+      "sha256": "114994f75c190062492ff70e6f86cc34a302be4341751f389b17ce02ebcd55e7"
+    },
+    {
+      "path": "PaperCPrel8/TypicalDictionaryConsequences.lean",
+      "sha256": "95c4e0efda637dc068c71203ec467d4d2a0987a92dca9b871dde010108c00313"
+    },
+    {
+      "path": "PaperCPrel8/TypicalDictionaryConvergence.lean",
+      "sha256": "f156691c13c0737840e642d55cd83525e6eebfeb4e0abd3a411387fb7e321580"
+    },
+    {
+      "path": "PaperCPrel8/TypicalDictionaryDeletion.lean",
+      "sha256": "91663fd81179d757e4a92bf1df7f0739d86a6e4981f4db373c97791e237a799d"
+    },
+    {
+      "path": "PaperCPrel8/TypicalDictionaryFinite.lean",
+      "sha256": "6d6bc9b95f344914bd0e8b6c21dca6fcb0489c4da3d067ee51c81c1636b2660b"
+    },
+    {
+      "path": "PaperCPrel8/TypicalDictionaryIid.lean",
+      "sha256": "1b8c6683d11f508495b5ac2b781adefdee4102f8c3f99e9624e07b0cb2ed2627"
+    },
+    {
+      "path": "PaperCPrel8/TypicalDictionaryPairs.lean",
+      "sha256": "1507f672f0469e8b44b9848835b8347c121ef982841e78766ad5a34920dfb83c"
+    },
+    {
+      "path": "PaperCPrel8/TypicalDictionaryRates.lean",
+      "sha256": "2e5bbd28b481e5ec37ed4540459a71fe6926b304217bf9fc25553fa65161c7b3"
+    },
+    {
+      "path": "PaperCPrel8/TypicalDictionaryTheorem.lean",
+      "sha256": "79215342071274bbc1369e614bf1d2cd828981b853ef91f164e4aa2621cbfd80"
+    },
+    {
+      "path": "PaperCPrel8/TypicalDictionaryTransfer.lean",
+      "sha256": "852d6ad0b34797a9f3be62b459068118c98e817ac6af7bf449cd6d80383d2d15"
+    },
+    {
+      "path": "PaperCPrel8/TypicalDictionaryUniform.lean",
+      "sha256": "498631c2d065b31e4b39b11219ad1023a8aa5d1ae5b028ec26571619b780ea8f"
+    },
+    {
+      "path": "PaperCPrel8/UniformExponentialEnvelope.lean",
+      "sha256": "475cce6b98f9445fbe72c388cfb35794edf6c26319c257d334e2bbdd0b75b51b"
+    },
+    {
+      "path": "PaperCPrel8/audit-names.json",
+      "sha256": "c1cdbaf77e907a70900f5195ae1b545cb536502e771b3ac6f2d99a9ccf198a6f"
+    }
+  ],
+  "unchanged_baseline_lean_files": 1171,
+  "checks": {
+    "new_payload_tests": 5,
+    "new_audit_tests": 5,
+    "source_inventory": "passed_28_files",
+    "coverage_inventory": "passed_96_blocks",
+    "root_audit_guards": "passed",
+    "generated_baseline_audit": "unchanged_and_passed",
+    "v282_audit_inventory": "passed_6094_declarations",
+    "diff_whitespace": "passed"
+  },
+  "completed_components": {
+    "G1_full_restoration": "Actual full infinite conditional spatial field reduced to the normalized independent low replacement, with original whole-field deletions and mark tails included. Exact error 8*exp(-cprime*nu)+2*M^(-1/3+epsilon)+2*p*added.card.",
+    "G1_paper_endpoint": "Literal paper regime gives completion error 8*exp(-cprime*nu)+2*M^(-1/3+epsilon)+2*exp(-(c-theta)*nu/2), proved to tend to zero. G.1 is proved with explicit baseline arithmetic inputs.",
+    "CRT_allocations": "Finite distinct-prime certificates, exact empty-block treatment, product/exponent partitions and union over every block/offset assignment give count <=n^h*(3*h*(Q+1))^omega(r)/r.",
+    "actual_kernel_probability": "The normalized count is identified with the genuine uniform Cartesian-grid probability. Actual rough-prime support and omega(r) are used; 0<m<=2*n discharges r<=2*n.",
+    "kernel_threshold_power": "Actual omega(r)*log(Y)<=log(r), then z^omega(r)/r<=T^(-1+log(z)/log(Y)) for positive T<=r and 1<=z<Y.",
+    "raw_occurrence_regularity": "Definition retains each raw occurrence. A good single support is regular for Y>Q. Failure of regularity forces all rough primes of some occurrence into other blocks."
+  },
+  "literature_inputs": "The G.1 restoration uses the existing Laishram-Shorey, Shorey square-product, PNT remainder and Nicolas-Robin premises. It needs no Stein solution assumption and assumes no comparison for the replaced field. The CRT, threshold-power and deterministic regularity proofs need no literature premise. The separately recorded F.2 analytic solution premise is unchanged. No proof hole or new axiom is added.",
+  "limits": [
+    "G.2 remains partial: the final multi-source probability union bound has not yet been assembled.",
+    "High-probability Poisson target regular clouds and full arithmetic G.4/G.5 instantiation remain open.",
+    "Signed affine Fourier/Walsh identities, pair activity, categorical cumulant inequality and arithmetic obstruction remain open.",
+    "Final unnumbered review and the separate prescribed-floor full-field specialization remain. F.2 retains the explicit baseline analytic solution premise.",
+    "No new NanoDa/Comparator qualification or Palomar submission for these 629 declarations."
+  ],
+  "manuscript_payload": "The 28 delivered TeX/compilation/PDF bytes remain unchanged; no local TeX rebuild.",
+  "free_disk_gib": 14.67,
+  "transcripts": [
+    {
+      "path": "prel8-phase18-all-libraries-build.log.gz",
+      "sha256": "22a57a869e1f77d0836317c2e6ea58e1dce7868730142d748faf529d4e466fa0",
+      "uncompressed_sha256": "13f5f0c18b4a68062bcc8a1c3fc4294673c9e29487b289a8652eec61d68edb20"
+    },
+    {
+      "path": "prel8-phase18-audit.log.gz",
+      "sha256": "23262826a2a5697b0c093c80129da2f200680bdef7f53d9faf9d1454699473c3",
+      "uncompressed_sha256": "477510349864749cb2e82b374b0052999b4522eb2d61fe433106053ebf2e63d4"
+    }
+  ]
+}

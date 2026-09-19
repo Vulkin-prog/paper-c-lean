@@ -99,12 +99,16 @@ import PaperCPrel8.PrivateForcing
 import PaperCPrel8.ReciprocalPivotAsymptotics
 import PaperCPrel8.ReciprocalPivotShells
 import PaperCPrel8.RegularPlantPresence
+import PaperCPrel8.RoughKernelAllocation
+import PaperCPrel8.RoughKernelCRT
 import PaperCPrel8.RoughKernelDeletion
 import PaperCPrel8.RoughKernelDeletionLimits
+import PaperCPrel8.RoughKernelExponent
 import PaperCPrel8.RoughKernelGoodSet
 import PaperCPrel8.RoughKernelPowerSums
 import PaperCPrel8.RoughKernelRankin
 import PaperCPrel8.RoughKernelReciprocal
+import PaperCPrel8.RoughKernelRegularity
 import PaperCPrel8.RoughKernelSaddle
 import PaperCPrel8.RoughKernelStrongCount
 import PaperCPrel8.RoughKernelThreshold
@@ -114,6 +118,7 @@ import PaperCPrel8.SignedGoodReplacement
 import PaperCPrel8.SignedPalmForcing
 import PaperCPrel8.SmallPrimeMixture
 import PaperCPrel8.StrongerDeletionTheorem
+import PaperCPrel8.StrongerRestoration
 import PaperCPrel8.TypicalDictionaryConsequences
 import PaperCPrel8.TypicalDictionaryConvergence
 import PaperCPrel8.TypicalDictionaryDeletion

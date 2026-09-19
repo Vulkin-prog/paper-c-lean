@@ -101,8 +101,8 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | companion | [F.5](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L231) | `supp:pivot:prop:reciprocal` | new statement proved |
 | companion | [F.6](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L316) | `supp:pivot:prop:footprint` | new statement proved |
 | companion | [F.7](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L333) | `supp:pivot:prop:forcing` | new statement proved |
-| companion | [G.1](../manuscripts/v3prel8/companion/G_palm_complements.tex#L44) | `supp:palm:prop:deletion` | new statement partial |
-| companion | [G.2](../manuscripts/v3prel8/companion/G_palm_complements.tex#L67) | `supp:palm:lem:crt` | new statement open |
+| companion | [G.1](../manuscripts/v3prel8/companion/G_palm_complements.tex#L44) | `supp:palm:prop:deletion` | new statement proved with explicit inputs |
+| companion | [G.2](../manuscripts/v3prel8/companion/G_palm_complements.tex#L67) | `supp:palm:lem:crt` | new statement partial |
 | companion | [G.3](../manuscripts/v3prel8/companion/G_palm_complements.tex#L83) | `supp:palm:thm:regular` | new statement partial |
 | companion | [G.4](../manuscripts/v3prel8/companion/G_palm_complements.tex#L137) | `supp:palm:prop:palm` | new statement partial |
 | companion | [G.5](../manuscripts/v3prel8/companion/G_palm_complements.tex#L183) | `supp:palm:cor:palm-completion` | new statement partial |
@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the seventeenth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the eighteenth checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -370,9 +370,28 @@ arithmetic, density and low-type replacement endpoints are proved; their
 composition with the original whole-field deletion and high-mark-tail
 procedure has not yet been recorded as a combined source-facing theorem.
 CRT allocations and regular-cloud probabilities remain open. The
-[current receipt](../extension_evidence/v3prel8/stronger-deletion/README.md)
+[seventeenth-batch receipt](../extension_evidence/v3prel8/stronger-deletion/README.md)
 records this scope and the unchanged baseline inputs. No new Palomar
 qualification is claimed.
+
+The eighteenth batch adds **20 theorems (629 total, 132 modules)**.
+**G.1 is now proved with its explicit baseline arithmetic inputs.** The actual
+full infinite conditioned spatial field is reduced to the constructed
+independently replaced low field, with completion error
+`8*exp(-cprime*nu)+2*M^(-1/3+epsilon)+2*exp(-(c-theta)*nu/2)`.
+This error tends to zero for theta<c, cprime>0 and epsilon<1/3.
+The restoration reduction uses no Stein solution assumption and assumes no
+comparison for the replaced field. The separate F.2 limitation is unchanged.
+
+**G.2 is partial.** Its all-prime CRT allocation inequality is proved for the
+actual rough kernel and the uniform Cartesian-grid law. The empty target
+blocks cost exactly one, so the factor three is charged per assigned prime,
+not per target block. The actual threshold-power estimate and single-support
+regularity are proved, as is the deterministic obstruction forcing all primes
+of a source occurrence into other blocks. The final multi-source probability
+union bound, and then the Poisson-size regular-cloud estimate G.3, remain.
+The [current receipt](../extension_evidence/v3prel8/restoration-crt/README.md)
+records exact sources and validation. No new Palomar qualification is claimed.
 
 ## Remaining dependency chains
 
@@ -380,7 +399,7 @@ qualification is claimed.
 - **Information-adapted cutoff**: Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.
-- **Palm complements**: G.1 actual threshold absorption, theta+epsilon counts, vanishing additional mass, o(M/log M) total complement, and the actual 2*p low-type replacement cost are proved at the paper parameters. Final composition with the original whole-field deletions and high-mark tails remains open. CRT allocation and high-probability target regular clouds, full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open.
+- **Palm complements**: G.1 is proved with explicit baseline arithmetic inputs, including the combined restoration of original deletions and high-mark tails. G.2 now has the actual uniform-grid CRT allocation bound, threshold-power bound, single-support regularity and deterministic hosting obstruction; the final multi-source probability union bound remains. High-probability Poisson target regular clouds, full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
 

@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **609 proved theorems in 127 modules**. It is an
+This library contains **629 proved theorems in 132 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -134,6 +134,11 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `FiniteFieldReplacement` | Normalized independent Poisson replacement and source-plus-target cost |
 | `SignedGoodReplacement` | Actual conditional signed-field replacement at cost 2*p per deleted site |
 | `StrongerDeletionTheorem` | Literal paper E_*, Y, geometry, information margin and replacement endpoints |
+| `StrongerRestoration` | Full original conditional field restored from the actual low replacement, with explicit vanishing error |
+| `RoughKernelCRT` | Distinct-prime CRT certificates, allocation partitions and exact empty-block costs |
+| `RoughKernelAllocation` | Actual rough-kernel hosting probabilities on the uniform Cartesian grid |
+| `RoughKernelExponent` | Actual omega/log bound and threshold-power conversion |
+| `RoughKernelRegularity` | Occurrence-level regularity, single support and deterministic hosting obstruction |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -172,7 +177,7 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/stronger-deletion/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/restoration-crt/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
@@ -189,5 +194,9 @@ Fourier/Walsh identifications remain open; G.3–G.6 are partial, not closed.
 The finite G.1 kernel estimates and stronger deletion counts are now proved,
 with the hard-cutoff prefactor under the existing PNT input. Threshold absorption
 and actual deletion limits are now proved at the paper parameters, together
-with the low-type replacement cost. G.1 remains partial at the final
-composition with original whole-field deletions and high-mark tails.
+with the low-type replacement cost. The final composition with original
+whole-field deletions and high-mark tails is now proved: G.1 is closed with
+its explicit arithmetic inputs, without a Stein premise for this reduction.
+G.2 has the actual CRT probability, threshold-power bound, single-support
+regularity and deterministic hosting obstruction. Its final multi-source
+probability union bound remains, before the Poisson-size cloud estimate.

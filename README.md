@@ -10,7 +10,7 @@ Its [minimal source package](manuscripts/v3prel8/README.md) is archived here.
 extended, and 24 numbered blocks are new. The
 [current coverage ledger](docs/FORMALIZATION_COVERAGE_V3PREL8.md) identifies
 proved components and remaining obligations. The [new library](PaperCPrel8/README.md)
-currently contains 609 audited theorems across 127 modules; all 24
+currently contains 629 audited theorems across 132 modules; all 24
 libraries build. The final V3 has not yet been
 deposited on the publication platforms.
 

@@ -3764,7 +3764,7 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 44,
       "statement_sha256": "0127e983a24efe8d3506b31c753f2ea3e0e1c6472553144b8732d2157c0c73e9",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved_with_explicit_inputs",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -3871,6 +3871,21 @@
           "path": "PaperCPrel8/StrongerDeletionTheorem.lean",
           "declaration": "paper_density_tendsto",
           "scope": "Actual paper G_theta complement is o(M/log M), with E_* derived from the given information budget."
+        },
+        {
+          "path": "PaperCPrel8/StrongerRestoration.lean",
+          "declaration": "full_restoration_eventually",
+          "scope": "Full original infinite conditioned spatial field, all sites and marks, reduced to the actual independently replaced low field. Cost is 8*exp(-cprime*nu)+2*M^(-1/3+epsilon)+2*p*added.card. Retains Laishram-Shorey, Shorey square-product, PNT and Nicolas-Robin premises; no Stein solution premise."
+        },
+        {
+          "path": "PaperCPrel8/StrongerRestoration.lean",
+          "declaration": "full_stronger_restoration_eventually",
+          "scope": "Literal paper regime, with all geometry discharged and actual independent replacement constructed. Uniform completion cost is 8*exp(-cprime*nu)+2*M^(-1/3+epsilon)+2*exp(-(c-theta)*nu/2). This is a reduction, not an assumed or newly asserted Poisson approximation for the replaced field."
+        },
+        {
+          "path": "PaperCPrel8/StrongerRestoration.lean",
+          "declaration": "completionRate_tendsto",
+          "scope": "The full explicit completion cost tends to zero for theta<c, cprime>0 and epsilon<1/3."
         }
       ]
     },
@@ -3884,9 +3899,55 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 67,
       "statement_sha256": "681cfeb53ae36abffa19b24f6b248cb9c3ac3432101ca5996b90c6eaf0c0ea12",
-      "status": "new_statement_open",
+      "status": "new_statement_partial",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/RoughKernelCRT.lean",
+          "declaration": "solutions_count_le",
+          "scope": "Finite CRT certificate count, with exact empty-block treatment and factor three charged per assigned prime, assuming the product <=2*n."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelCRT.lean",
+          "declaration": "assigned_count_le",
+          "scope": "A fixed allocation of distinct primes to target blocks and offsets has count at most n^h*3^omega(r)/r. Product and exponent partition identities are proved."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelCRT.lean",
+          "declaration": "hosted_fraction_le",
+          "scope": "Union over all block-and-offset assignments yields normalized count <=(3*h*(Q+1))^omega(r)/r on the independent Cartesian grid."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelAllocation.lean",
+          "declaration": "rough_allocation_probability",
+          "scope": "Actual normalized uniform probability on the Cartesian grid for all prime factors of the odd rough kernel at a fixed source vertex. The product-size condition r<=2*n remains explicit."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelAllocation.lean",
+          "declaration": "rough_allocation_of_vertex_bound",
+          "scope": "The actual kernel divides its source vertex; 0<m<=2*n discharges the product-size premise."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelExponent.lean",
+          "declaration": "kernel_weight_le",
+          "scope": "Literal z^omega(r)/r <=T^(-1+log(z)/log(Y)) for positive T<=r and 1<=z<Y, using actual rough-prime support."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelExponent.lean",
+          "declaration": "allocation_threshold_bound",
+          "scope": "Actual CRT hosting probability bounded by the threshold power for a fixed source occurrence."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelRegularity.lean",
+          "declaration": "single_regular",
+          "scope": "A single support with nonempty rough kernels is private-pivot regular when Y>Q. All raw occurrences are retained in the definition."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelRegularity.lean",
+          "declaration": "failure_hosted",
+          "scope": "A deterministic failure of regularity forces all rough primes at some source occurrence into other blocks. The final k*(Q+1) probabilistic union bound is not yet assembled."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -4128,7 +4189,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "G.1 actual threshold absorption, theta+epsilon counts, vanishing additional mass, o(M/log M) total complement, and the actual 2*p low-type replacement cost are proved at the paper parameters. Final composition with the original whole-field deletions and high-mark tails remains open. CRT allocation and high-probability target regular clouds, full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open."
+      "remaining": "G.1 is proved with explicit baseline arithmetic inputs, including the combined restoration of original deletions and high-mark tails. G.2 now has the actual uniform-grid CRT allocation bound, threshold-power bound, single-support regularity and deterministic hosting obstruction; the final multi-source probability union bound remains. High-probability Poisson target regular clouds, full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."

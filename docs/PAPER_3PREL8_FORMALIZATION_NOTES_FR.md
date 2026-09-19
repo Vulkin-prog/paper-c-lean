@@ -720,3 +720,45 @@ pour cette raison le statut partiel. Les allocations CRT et les probabilités
 de régularité ne sont pas encore établies. Les fichiers du manuscrit restent
 inchangés. Seules les estimations arithmétiques asymptotiques de ce lot
 emploient le reste PNT déjà explicite dans la formalisation.
+
+## Restauration complète et allocations CRT — dix-huitième lot
+
+**G.1 terminé avec ses entrées arithmétiques explicites.** Les anciennes
+suppressions, les queues de marques et le remplacement supplémentaire sont
+réunis dans un énoncé sur le champ spatial infini, sous l'événement original
+des petits premiers. Le coût supplémentaire est explicitement majoré par
+`8*exp(-cprime*nu)+2*M^(-1/3+epsilon)+2*exp(-(c-theta)*nu/2)`.
+Sa convergence vers zéro est prouvée pour theta<c, cprime>0 et epsilon<1/3.
+Cette réduction n'emploie pas l'hypothèse de solution de Stein et ne suppose
+pas que le champ remplacé est déjà proche de Poisson. Les entrées PNT,
+Laishram–Shorey, Shorey et Nicolas–Robin restent celles des estimations
+arithmétiques antérieures. La limitation séparée de F.2 reste inchangée.
+
+**Précision utile pour la preuve de G.2 : les blocs vides.** Pour une
+affectation des premiers du noyau aux blocs cibles, un bloc ne recevant
+aucun premier a probabilité exactement un. Il faut donc multiplier par trois
+seulement pour les blocs non vides. Leur nombre est au plus omega(r), ce
+qui donne le facteur `3^omega(r)` annoncé ; utiliser `3^(k-1)` sans cette
+précision ne donne pas la même borne. Lean traite uniformément ces deux
+cas en majorant le coût d'un bloc par `3^(nombre de premiers affectés)/r_h`.
+C'est une explicitation de la preuve du papier, pas un contre-exemple.
+
+**Hypothèses à rappeler dans un énoncé autonome.** La borne CRT utilise
+`r<=2n`, déduit ici de `r<=m<=2n`; le texte le déduit des échelles ambiantes.
+L'unicité d'un hôte dans son propre support utilise `Y>Q`. Il serait utile
+de rappeler ces deux conditions directement dans G.2 si le lemme doit se
+lire indépendamment du début de l'annexe. Sans contrôle du produit par n,
+le remplacement de `1/r_h+1/n` par `3/r_h` n'est pas justifié en général.
+
+Le comptage complet des affectations est maintenant une véritable borne de
+probabilité pour les indices uniformes indépendants, appliquée à tous les
+premiers du noyau impair réel du modèle. La conversion
+`z^omega(r)/r <= T^(-1+log(z)/log(Y))` est également prouvée. La définition
+de régularité conserve chaque occurrence (bloc, position), y compris quand
+deux occurrences ont la même valeur. Un support bon isolé est régulier ;
+un défaut de régularité force tous les premiers d'une occurrence à être
+hébergés dans les autres blocs.
+
+Il reste à assembler la borne de probabilité sur toutes les occurrences
+sources (facteur `k*(Q+1)`), puis à traiter le nombre poissonien de blocs
+pour G.3. G.2 demeure donc partiel. Les fichiers du manuscrit sont inchangés.
