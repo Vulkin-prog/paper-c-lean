@@ -1,0 +1,35 @@
+import PaperCPrel8
+
+#print axioms PaperC.Prel8.DictionarySelection.pair_selection
+#print axioms PaperC.Prel8.DictionarySelection.oneInclusion_eq
+#print axioms PaperC.Prel8.DictionarySelection.averaged_pair_probability
+#print axioms PaperC.Prel8.EmpiricalTransfer.variation_eq_one_sub_overlap
+#print axioms PaperC.Prel8.EmpiricalTransfer.variation_tendsto_zero
+#print axioms PaperC.Prel8.EmpiricalTransfer.ae_eventually_avoid
+#print axioms PaperC.Prel8.EmpiricalTransfer.ae_frequency_convergence
+#print axioms PaperC.Prel8.EmpiricalTransfer.ae_variation_convergence
+#print axioms PaperC.Prel8.InformationBudget.budget_at_crossing
+#print axioms PaperC.Prel8.InformationBudget.crossing_maximizes
+#print axioms PaperC.Prel8.InformationBudget.crossing_unique
+#print axioms PaperC.Prel8.InformationBudget.admissible_cutoff_maximizes
+#print axioms PaperC.Prel8.InformationBudget.two_error_margins
+#print axioms PaperC.Prel8.InformationBudget.absorb_remainder
+#print axioms PaperC.Prel8.OddPrimePivot.largestOddPrime_pos
+#print axioms PaperC.Prel8.OddPrimePivot.largestOddPrime_le_iff
+#print axioms PaperC.Prel8.OddPrimePivot.pivotValues_eq_defectiveValues
+#print axioms PaperC.Prel8.OddPrimePivot.pivot_count_rankin
+#print axioms PaperC.Prel8.OddPrimePivot.pivot_count_free_cutoff
+#print axioms PaperC.Prel8.PalmStein.difference_le_latticeDistance
+#print axioms PaperC.Prel8.PalmStein.gradient_lipschitz
+#print axioms PaperC.Prel8.PalmStein.generator_identity
+#print axioms PaperC.Prel8.PalmStein.palm_stein_bound
+#print axioms PaperC.Prel8.PalmStein.palm_stein_of_directional_input
+#print axioms PaperC.Prel8.PrivateForcing.force_preserves_nonpivots
+#print axioms PaperC.Prel8.PrivateForcing.force_hits
+#print axioms PaperC.Prel8.PrivateForcing.force_fixes_satisfied
+#print axioms PaperC.Prel8.PrivateForcing.force_idempotent
+#print axioms PaperC.Prel8.PrivateForcing.forced_expectation
+#print axioms PaperC.Prel8.PrivateForcing.restricted_expectation
+#print axioms PaperC.Prel8.PrivateForcing.exact_conditional_expectation
+#print axioms PaperC.Prel8.PrivateForcing.forcing_event_probability
+#print axioms PaperC.Prel8.PrivateForcing.affine_word_forced

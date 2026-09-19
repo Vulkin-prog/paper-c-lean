@@ -1,0 +1,15 @@
+# 3PREL8 component validation
+
+The [receipt](validation.json) identifies the exact new Lean sources, the
+successful 24-library build, the 33-name axiom audit, the curated manuscript
+payload and the PDF structural checks. Compressed logs preserve their exact
+bytes; both compressed and uncompressed hashes are recorded.
+
+This is **component validation while full paper alignment remains incomplete**.
+It does not extend the previous Palomar scope or qualify the new numbered
+results. See the [coverage ledger](../../docs/FORMALIZATION_COVERAGE_V3PREL8.md).
+
+The 1,171 baseline Lean files and historical evidence are unchanged. New source
+hashes are independent of the later packaging commit. The supplied PDFs and
+26 compilation inputs are preserved byte for byte; the TeX build was not rerun
+locally because Biber/BibLaTeX are absent.

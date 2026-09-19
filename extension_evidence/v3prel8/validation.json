@@ -1,0 +1,104 @@
+{
+  "date_utc": "2026-09-19T10:00:29.992503+00:00",
+  "status": "proved_components_validated_full_paper_alignment_incomplete",
+  "base_commit": "a928497897a27e3dd3d7b601ee788336aca84780",
+  "lean": "4.34.0",
+  "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+  "build": {
+    "libraries": 24,
+    "lake_jobs": 10121,
+    "result": "passed"
+  },
+  "axiom_audit": {
+    "named_theorems": 33,
+    "result": "passed",
+    "allowlist": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_files": [
+    {
+      "path": "PaperCPrel8.lean",
+      "sha256": "6669d6e802f6ab029bd7c10ddf0bfd188a5623cd76c5f69258d187fea4814e23"
+    },
+    {
+      "path": "PaperCPrel8/Audit.lean",
+      "sha256": "f0077d2eb78004277fea74136cc6c07801c54cab55ec6003d6389da038ec34fe"
+    },
+    {
+      "path": "PaperCPrel8/DictionarySelection.lean",
+      "sha256": "48cecfabe7bdcbd9b08e6883c27ae832826d8f7e739289315ea3c639613974e8"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalTransfer.lean",
+      "sha256": "057e324fd0fdeae505e52b998deb3525ea7367385c371bbd46a86d7c82b18294"
+    },
+    {
+      "path": "PaperCPrel8/InformationBudget.lean",
+      "sha256": "e9705c0ce5f1b66ca70f31911e982a5fb1372caeb808d84e59336457d3c7ca75"
+    },
+    {
+      "path": "PaperCPrel8/OddPrimePivot.lean",
+      "sha256": "af671b4353b60a15d78aee67f2d2362a7b5a3b2484095b9cccc7b737b176bffa"
+    },
+    {
+      "path": "PaperCPrel8/PalmStein.lean",
+      "sha256": "a3b738c8fcb31b255ed6fe9a75793f384ed00db06415c70b4faa922c49240e40"
+    },
+    {
+      "path": "PaperCPrel8/PrivateForcing.lean",
+      "sha256": "9d2943a55e55277dc1904afaa07aae234b5a2119ba597f0a0e3b855c9f95aeb6"
+    }
+  ],
+  "unchanged_baseline_lean_files": 1171,
+  "curated_payload": {
+    "files": 28,
+    "compilation_inputs": 26,
+    "pdfs": 2,
+    "manifest_sha256": "ef48563423d306304c67516d22b46aee039c829988d588bf9d8ec4886c51c9c2"
+  },
+  "pdf_structural_check": [
+    {
+      "file": "paper_c_version_3PREL8_en.pdf",
+      "pages": 66,
+      "internal_links": 319,
+      "cross_document_links": 30,
+      "invalid_destinations": []
+    },
+    {
+      "file": "paper_c_version_3PREL8_technical_companion_en.pdf",
+      "pages": 42,
+      "internal_links": 142,
+      "cross_document_links": 81,
+      "invalid_destinations": []
+    }
+  ],
+  "pdf_visual_review": "First page of each delivered PDF inspected. No PDF edited or regenerated.",
+  "tex_rebuild": "Not performed locally: Biber and BibLaTeX are not installed. Static input closure checked; delivered build script and all inputs retained unchanged.",
+  "regression_tests": {
+    "new_payload_tests": 5,
+    "new_audit_tests": 5,
+    "status": "passed",
+    "root_audit_guards": "passed",
+    "generated_baseline_audit": "unchanged_and_passed"
+  },
+  "transcripts": [
+    {
+      "path": "prel8-all-libraries-build.log.gz",
+      "sha256": "c4aac2ec9b738934fd6f9d211eac097e0db5b5386e1e640ddd8d19a382a6a755",
+      "uncompressed_sha256": "1719a877d1a5b074c289ffa381b78688827055ff10c412f01677eeccaab52f73"
+    },
+    {
+      "path": "prel8-audit.log.gz",
+      "sha256": "a7b53c759d4f64ed6832e29e3d532f6cfefa737ec101fa3885869b500236f36a",
+      "uncompressed_sha256": "0241aab9882df45162c53ea713d78eb1cce2019704de9e6de83ab4a96b1c5fa2"
+    }
+  ],
+  "limits": [
+    "The 24 added numbered blocks and extended introduction are not fully formalized.",
+    "New generic components still require source-model instantiation and asymptotic assembly.",
+    "No new Comparator/NanoDa qualification or Palomar submission was performed for this extension."
+  ]
+}

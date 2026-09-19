@@ -3,62 +3,71 @@
 *Long runs and rare patterns of a random completely multiplicative function*
 and its technical companion, by **Brice Pouly**.
 
-The current development follows the author-supplied **V3PREL of 7 September
-2026**. The final V3 has not yet been deposited on the publication platforms.
+The current manuscript is the author-supplied **3PREL8 of 16 September 2026**.
+Its [minimal source package](manuscripts/v3prel8/README.md) is archived here.
+**Alignment of the formalization with its new results is in progress:**
+71 prior numbered statements are preserved, one introductory statement is
+extended, and 24 numbered blocks are new. The
+[current coverage ledger](docs/FORMALIZATION_COVERAGE_V3PREL8.md) identifies
+proved components and remaining obligations. The [new library](PaperCPrel8/README.md)
+currently contains 33 audited auxiliary theorems across six modules; all 24
+libraries build. The final V3 has not yet been
+deposited on the publication platforms.
 
-The current toolchain is **Lean 4.34.0 and Mathlib v4.34.0**. All 23
-libraries build, the three axiom audits pass, and all 80 selected declarations
-pass local Lean and NanoDa checks across ten configurations. The
+The toolchain remains **Lean 4.34.0 and Mathlib v4.34.0**. At the validated
+pre-extension snapshot, all 23 libraries build, the three axiom audits pass,
+and all 80 selected declarations pass local Lean and NanoDa checks across
+ten configurations. Those checks do not certify the newly added 3PREL8 results. The
 [validation evidence](migration_evidence/lean-4.34.0/README.md) and
 [migration review](docs/LEAN_4_34_0_MIGRATION.md) describe the checks and limits.
 Earlier qualification records remain tied to their recorded source snapshots.
 
 | Paper and source material | Link |
 |---|---|
-| Article used for the formalization | [V3PREL PDF](manuscripts/v3prel/paper_C_version_3PREL_en.pdf) |
-| Technical companion used for the formalization | [V3PREL PDF](manuscripts/v3prel/paper_C_version_3PREL_technical_companion_en.pdf) |
-| Editable sources and exact file identities | [Manuscript archive](manuscripts/v3prel/README.md) |
+| Current article | [3PREL8 PDF](manuscripts/v3prel8/paper_c_version_3PREL8_en.pdf) |
+| Current technical companion | [3PREL8 PDF](manuscripts/v3prel8/paper_c_version_3PREL8_technical_companion_en.pdf) |
+| Editable sources and exact file identities | [Minimal manuscript archive](manuscripts/v3prel8/README.md) |
 | Zenodo paper record, all versions | [Concept DOI 10.5281/zenodo.21736676](https://doi.org/10.5281/zenodo.21736676) |
 | Cambridge Open Engage, published version 2 | [DOI 10.33774/coe-2026-z3l74-v2](https://doi.org/10.33774/coe-2026-z3l74-v2) |
 
 The publication records above concern earlier published versions. They do
-not identify the V3PREL snapshot archived here, for which no version-specific
+not identify the 3PREL8 snapshot archived here, for which no version-specific
 DOI is asserted. The Lean formalization has its own
 [Zenodo concept DOI 10.5281/zenodo.21735481](https://doi.org/10.5281/zenodo.21735481),
 distinct from the paper record.
 
-## Abstract of the V3PREL article
+## Abstract of the 3PREL8 article
 
-The following is the abstract of the [supplied manuscript](manuscripts/v3prel/source/paper_C_version_3PREL_en.tex).
-The formalization scope is described separately below.
+The following is the abstract of the [current manuscript](manuscripts/v3prel8/paper_c_version_3PREL8_en.tex); it describes the paper, not the completed Lean coverage.
 
 Let $f$ be a random completely multiplicative function with independent
-symmetric signs at the primes. At logarithmic run lengths, we approximate
-the full field of positions, excess lengths and signs by independent
-Poisson coordinates, despite exact long-range multiplicative identities.
-More generally, a deterministic dictionary of $m\le N^{1/2-\eta}$
-prescribed words at length $B=\log_2(Nm)+O(1)$ is asymptotically equivalent in total variation to the rare-word
-field of independent fair signs, when its weighted
-overlap tends to zero. Most dictionaries satisfy this condition; explicit
-marker families have no overlaps.
+symmetric signs at the primes. We study rare constant runs and prescribed
+words at logarithmic lengths, despite long-range multiplicative identities.
+A uniform weighted two-window square-relation estimate, with critical
+bound $O_\varepsilon(N^{5/3+\varepsilon})$, separates exact rational
+relations from residual components.
 
-The arithmetic input is a uniform two-window square-relation estimate
-with critical bound $O_\varepsilon(N^{5/3+\varepsilon})$. A capped form exploits the mutual exclusivity of distinct words at one site
-and allows the dictionary to grow.
-The proof uses rational relations, private prime coordinates and
-bounded-height Runge--Pell arguments. Conditioning on small primes then
-supplies an exact dependency graph.
+At critical intensity, this estimate gives Poisson comparisons retaining
+positions, exact excess lengths and signs. For dictionaries, uniform
+bounds under size and overlap conditions are complemented by typical
+bounds obtained by averaging the distance after fixing the dictionary.
+In a quantitatively controlled regime of diverging intensity, an exact
+one-word coupling by largest-odd-prime pivots compares the full signed
+run field under prescribed small-prime conditioning. For fixed
+admissible window parameters and almost every fixed realization of $f$,
+run-start counts in prescribed near-macroscopic windows satisfy an
+empirical Poisson law along dyadic scales.
 
-For the longest run in $[1,M]$, we obtain the lattice extreme law and
-asymmetric almost-sure envelopes. Exceptionally long runs arise either
-from a boundary event of exact mass $2^{-\pi(L)}$ or from a bulk field
-of intensity $M2^{-L}$. A relative marked comparison gives, conditional
-on existence, a lattice mixture for the first location, sign and
-overshoot with moving source weights. The two source branches have geometric overshoots
-in different clocks: prime rank at the boundary and integer distance
-in the bulk.
+In the exceptionally rare regime, a relative marked comparison separates
+the boundary event from bulk occurrences. Conditional on existence, the
+first location, sign and overshoot have a two-source lattice law with
+scale-dependent weights. The two overshoots use different clocks: prime
+rank at the boundary and integer distance in the bulk.
 
 ## Formalization scope
+
+The completed baseline below concerns **V3PREL of 7 September 2026**. The
+[3PREL8 extension](docs/FORMALIZATION_COVERAGE_V3PREL8.md) is tracked separately.
 
 The [source-to-Lean correspondence](docs/FORMALIZATION_COVERAGE_V3PREL.md)
 maps all **59 numbered article results** and, separately, **8 companion
@@ -82,7 +91,8 @@ limitations and corrections.
 
 ## Five Palomar submission families
 
-The five configurations select **69 declarations** in total. This selection
+The five existing configurations retain their first-V3PREL scope and select
+**69 declarations** in total. They do not cover all 3PREL8 additions. This selection
 is distinct from the full paper-to-Lean coverage ledger. Each family has its
 own statement boundary, sources and metadata.
 

@@ -75,3 +75,6 @@ name = "ChallengeV3Crossover"
 
 [[lean_lib]]
 name = "SolutionV3Crossover"
+
+[[lean_lib]]
+name = "PaperCPrel8"

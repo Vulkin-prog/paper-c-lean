@@ -1,0 +1,3226 @@
+{
+  "schema_version": 1,
+  "version": "3PREL8",
+  "baseline_commit": "a928497897a27e3dd3d7b601ee788336aca84780",
+  "status": "extension_in_progress_not_ready_for_new_palomar_claims",
+  "counts": {
+    "numbered_blocks": 96,
+    "preserved_statements": 71,
+    "extended_statements": 1,
+    "new_statements": 24
+  },
+  "comparison_scope": "Statement blocks with TeX comments removed and whitespace normalized. This does not compare every proof, unnumbered assertion or dependency. Prior source-to-Lean qualifications retain their original limits.",
+  "numbered": [
+    {
+      "document": "article",
+      "number": "1.1",
+      "label": "thm:poisson-main",
+      "title": "Critical sign-resolved run field",
+      "environment": "theorem",
+      "page": 3,
+      "source": "manuscripts/v3prel8/sections/01_introduction.tex",
+      "line": 62,
+      "statement_sha256": "b5ff3fc3ee196b17d252c32d67818a4677fb8c4b26dab3be25ccf8477f1cdc82",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/SpatialMarkedCritical.lean",
+          "declaration": "theorem_one_one_lattice"
+        },
+        {
+          "path": "PaperCV282/SpatialMarkedStatistics.lean",
+          "declaration": "theorem_one_one_start_count"
+        },
+        {
+          "path": "PaperCV282/SpatialMarkedDiffuse.lean",
+          "declaration": "theorem_one_one_diffuse"
+        },
+        {
+          "path": "PaperCV282/SpatialPointConvergence.lean",
+          "declaration": "spatialPointTargetLaw_tendsto"
+        },
+        {
+          "path": "PaperCV282/SpatialPointSupport.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "1.2",
+      "label": "thm:global-summary",
+      "title": "Longest run and competing rare-event sources",
+      "environment": "theorem",
+      "page": 4,
+      "source": "manuscripts/v3prel8/sections/01_introduction.tex",
+      "line": 122,
+      "statement_sha256": "77532769e4aed6e53df97d1cf2626b75900b84d0475e278122e2fe7a4eb79c5d",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PrefixScalarBounds.lean",
+          "declaration": "theorem_seven_four_open_prefix"
+        },
+        {
+          "path": "PaperCV282/PrefixContainedBounds.lean",
+          "declaration": "theorem_seven_four_contained_prefix"
+        },
+        {
+          "path": "PaperCV282/PrefixCriticalVoid.lean",
+          "declaration": "critical_prefix_void_le_eventually"
+        },
+        {
+          "path": "PaperCV282/PrefixCriticalVoid.lean",
+          "declaration": "theorem_seven_four_critical_void"
+        },
+        {
+          "path": "PaperCV282/RarePrefixMass.lean",
+          "declaration": "equation_seven_eighteen"
+        },
+        {
+          "path": "PaperCV282/CrossoverLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen"
+        },
+        {
+          "path": "PaperCV282/CrossoverLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen_phase_atTop"
+        },
+        {
+          "path": "PaperCV282/CrossoverLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen_phase_atBot"
+        },
+        {
+          "path": "PaperCV282/CrossoverResolvedLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen_resolved"
+        },
+        {
+          "path": "PaperCV282/CrossoverResolvedLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen_resolved_phase_atTop"
+        },
+        {
+          "path": "PaperCV282/CrossoverResolvedLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen_resolved_phase_atBot"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "1.3",
+      "label": "thm:patterns-summary",
+      "title": "Uniform and typical dictionaries of rare words",
+      "environment": "theorem",
+      "page": 5,
+      "source": "manuscripts/v3prel8/sections/01_introduction.tex",
+      "line": 171,
+      "statement_sha256": "780caba81ffec25437d5d5e89b7a9e9602d7e64d2377b102c40a5c3741e8174d",
+      "status": "extended_statement_open",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/DictionaryFieldBounds.lean",
+          "declaration": "equation_five_seven"
+        },
+        {
+          "path": "PaperCV282/DictionaryFieldRates.lean",
+          "declaration": "theorem_five_one_full_band"
+        },
+        {
+          "path": "PaperCV282/DictionaryFieldCritical.lean",
+          "declaration": "equation_five_four"
+        },
+        {
+          "path": "PaperCV282/DictionaryFieldCritical.lean",
+          "declaration": "dictionary_field_critical_convergence"
+        },
+        {
+          "path": "PaperCV282/DictionaryFieldStatistics.lean",
+          "declaration": null,
+          "evidence_note": "true composed laws and contractions"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "2.1",
+      "label": "lem:fourier",
+      "title": "Affine Fourier identity",
+      "environment": "lemma",
+      "page": 9,
+      "source": "manuscripts/v3prel8/sections/02_affine.tex",
+      "line": 38,
+      "statement_sha256": "289363302c8ff60bdb96d68158b24c3b4bae63b59eda675321dc938d0ebff742",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Affine/Fourier.lean",
+          "declaration": "affineFiber_fourier_identity"
+        },
+        {
+          "path": "PaperC/Probability/SectionTwelveMoments.lean",
+          "declaration": "uniformSolutionProbability_eq_eta_mul_two_pow_rho_div"
+        },
+        {
+          "path": "PaperCV282/ClosureAlgebraStartTuple.lean",
+          "declaration": "lemma_two_one"
+        },
+        {
+          "path": "PaperCV282/ClosureAlgebraFourier.lean",
+          "declaration": "affine_fourier_relation_sum"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "2.2",
+      "label": "lem:even-subsets",
+      "title": "Square-product interpretation",
+      "environment": "lemma",
+      "page": 9,
+      "source": "manuscripts/v3prel8/sections/02_affine.tex",
+      "line": 74,
+      "statement_sha256": "cb70a91fc8f4f81e5211fe7600803213bf09f2d7401406b1f01e5a969fddca81",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Combinatorics/TreeBoundary.lean",
+          "declaration": "boundaryMap_bijective_of_isTree"
+        },
+        {
+          "path": "PaperC/Affine/RationalChannelCode.lean",
+          "declaration": "dotProduct_twoStartRhs_eq_boundary_roots"
+        },
+        {
+          "path": "PaperCV282/TwoWindowParity.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/ClosureAlgebraSquareTuple.lean",
+          "declaration": "lemma_two_two_character"
+        },
+        {
+          "path": "PaperCV282/ClosureAlgebraWindowSubsets.lean",
+          "declaration": "integer_window_character"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "2.3",
+      "label": "lem:runge",
+      "title": "Split-product Runge bound",
+      "environment": "lemma",
+      "page": 10,
+      "source": "manuscripts/v3prel8/sections/02_affine.tex",
+      "line": 101,
+      "statement_sha256": "e59d4ed1222b9aad28a60964682c924db887e6372ce934d8080279f72021cc31",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Algebra/RungeBound.lean",
+          "declaration": "quantitative_runge_of_distinct"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "2.4",
+      "label": "prop:defects",
+      "title": "Few defects, with their exponential weight",
+      "environment": "proposition",
+      "page": 10,
+      "source": "manuscripts/v3prel8/sections/02_affine.tex",
+      "line": 125,
+      "statement_sha256": "9add69fe4a9ffc54cd077f3c8da0f6d9c700eada46691a6ad6e766c07b656c08",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Analysis/CriticalWeightedDefect.lean",
+          "declaration": "pointwise_uniformBigO_on_window"
+        },
+        {
+          "path": "PaperC/Analysis/CriticalWeightedDefect.lean",
+          "declaration": "dyadicDefectMass_uniformHalfPower_on_window"
+        },
+        {
+          "path": "PaperCV282/WordDefectAsymptotics.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/MacroscopicFirstMoment.lean",
+          "declaration": "sum_fullDefectWeight_le_half_power_eventually"
+        },
+        {
+          "path": "PaperCV282/IndependentDefectParameters.lean",
+          "declaration": "pointwise_defects_independent_eventually"
+        },
+        {
+          "path": "PaperCV282/IndependentDefectParameters.lean",
+          "declaration": "weighted_defects_independent_eventually"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "2.5",
+      "label": "cor:first-moment",
+      "title": "Uniform first moment and an affine bound",
+      "environment": "corollary",
+      "page": 11,
+      "source": "manuscripts/v3prel8/sections/02_affine.tex",
+      "line": 176,
+      "statement_sha256": "2e19acd107fb403e1e156ab6d26541538f3ef70f38d9367d8a9eb77b93a8ccfd",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Affine/StartDefectRank.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperC/Probability/SectionTwelveMoments.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperC/Probability/CriticalRunWindow.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/PointwiseStartBounds.lean",
+          "declaration": "corollary_two_five_pointwise_infinite"
+        },
+        {
+          "path": "PaperCV282/PointwiseStartBounds.lean",
+          "declaration": "corollary_two_five_upper_infinite"
+        },
+        {
+          "path": "PaperCV282/MacroscopicFirstMoment.lean",
+          "declaration": "corollary_two_five_dyadic_expectation"
+        },
+        {
+          "path": "PaperCV282/MacroscopicFirstMoment.lean",
+          "declaration": "corollary_two_five_macroscopic_affine_expectation"
+        },
+        {
+          "path": "PaperCV282/MacroscopicFirstMoment.lean",
+          "declaration": "corollary_two_five_macroscopic_expectation"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "2.6",
+      "label": "cor:absolute-marginal",
+      "title": "Prescribed values in one window",
+      "environment": "corollary",
+      "page": 11,
+      "source": "manuscripts/v3prel8/sections/02_affine.tex",
+      "line": 204,
+      "statement_sha256": "15fa2899867fe98fc60ebc991b3d9b5731a76508816511649640dc13a0e68810",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/InfiniteWordTransfer.lean",
+          "declaration": "corollary_two_six_pointwise_infinite"
+        },
+        {
+          "path": "PaperCV282/InfiniteConditionalWords.lean",
+          "declaration": "corollary_two_six_conditioned_infinite"
+        },
+        {
+          "path": "PaperCV282/WordFirstMomentAsymptotics.lean",
+          "declaration": "corollary_two_six_summed_expectation"
+        },
+        {
+          "path": "PaperCV282/MacroscopicWordFirstMoment.lean",
+          "declaration": "sum_abs_word_probability_error_le_eventually"
+        },
+        {
+          "path": "PaperCV282/MacroscopicWordFirstMoment.lean",
+          "declaration": "corollary_two_six_macroscopic_expectation"
+        },
+        {
+          "path": "PaperCV282/InfiniteConditionalWords.lean",
+          "declaration": "corollary_two_six_conditioned_infinite"
+        },
+        {
+          "path": "PaperCV282/MacroscopicWordFirstMoment.lean",
+          "declaration": "corollary_two_six_macroscopic_expectation"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "2.7",
+      "label": "lem:private-tree",
+      "title": "Private pivots on a graph",
+      "environment": "lemma",
+      "page": 12,
+      "source": "manuscripts/v3prel8/sections/02_affine.tex",
+      "line": 248,
+      "statement_sha256": "f80f55bfce51479bb6a5dc390cfed1f293b13fe5d3e70de3ca9204994ab34599",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Combinatorics/GraphCycleRank.lean",
+          "declaration": "ker_representedEdgeMap_le_cycleSpace"
+        },
+        {
+          "path": "PaperC/Combinatorics/GraphCycleRank.lean",
+          "declaration": "finrank_ker_representedEdgeMap_le_cyclomaticNumber"
+        },
+        {
+          "path": "PaperC/LinearAlgebra/PrivatePivots.lean",
+          "declaration": "tree_projectedParityEdge_linearIndependent_of_large_odd_primes"
+        },
+        {
+          "path": "PaperCV282/ClosureAlgebraIncidence.lean",
+          "declaration": "finrank_cycleSpace"
+        },
+        {
+          "path": "PaperCV282/ClosureAlgebraPrivateGraph.lean",
+          "declaration": "lemma_two_seven"
+        },
+        {
+          "path": "PaperCV282/ClosureAlgebraPrivateGraph.lean",
+          "declaration": "lemma_two_seven_tree"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "2.8",
+      "label": "lem:local-pairs",
+      "title": "Local run pairs",
+      "environment": "lemma",
+      "page": 12,
+      "source": "manuscripts/v3prel8/sections/02_affine.tex",
+      "line": 263,
+      "statement_sha256": "0c21b7966749d32f700fb25e6064c13cc6e65d2b90778f6be8ed1b89fbdcdd64",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Probability/SectionTwelveMoments.lean",
+          "declaration": "jointStartProbability_eq_zero_of_overlap"
+        },
+        {
+          "path": "PaperC/Affine/TouchingDefectRank.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperC/Probability/SectionTwelveMoments.lean",
+          "declaration": "touchingMass_uniformLittleOQuadratic"
+        },
+        {
+          "path": "PaperCV282/TouchingPairMass.lean",
+          "declaration": "lemma_two_eight_overlap"
+        },
+        {
+          "path": "PaperCV282/TouchingPairMass.lean",
+          "declaration": "lemma_two_eight_dyadic"
+        },
+        {
+          "path": "PaperCV282/TouchingPairMass.lean",
+          "declaration": "lemma_two_eight_macroscopic"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.1",
+      "label": "thm:master-profile",
+      "title": "Uniform weighted relation profile",
+      "environment": "theorem",
+      "page": 12,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 23,
+      "statement_sha256": "c6c3ef1786a7381ee66d7c3054862293bca297f1873448f17301612f6dff3f24",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/NonterminalProfile.lean",
+          "declaration": "macroscopicStartMass_le_rawProfile_add_terminal_eventually"
+        },
+        {
+          "path": "PaperCV282/IntervalRationalLowerBounds.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/WholeRelationProfile.lean",
+          "declaration": "theorem_three_one_raw_macroscopic"
+        },
+        {
+          "path": "PaperCV282/WholeRelationProfile.lean",
+          "declaration": "theorem_three_one_coarse_macroscopic"
+        },
+        {
+          "path": "PaperCV282/BoundedRatioRelationProfiles.lean",
+          "declaration": "raw_masses_le_profile_boundedRatio_eventually"
+        },
+        {
+          "path": "PaperCV282/BoundedRatioRelationProfiles.lean",
+          "declaration": "coarse_masses_le_profile_boundedRatio_eventually"
+        },
+        {
+          "path": "PaperCV282/BoundedRatioRelationProfiles.lean",
+          "declaration": "coarse_masses_le_profile_dyadic_eventually"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.2",
+      "label": "macro:lem:rational-code",
+      "title": "Rational code and height",
+      "environment": "lemma",
+      "page": 13,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 96,
+      "statement_sha256": "b8c27b202521389bb75f1d49cb6259f9a4316e3711fdfd1fe4109d15d58a9e03",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Affine/RationalChannelCode.lean",
+          "declaration": "finrank_rationalCode_eq_channelCells_card_sub_one"
+        },
+        {
+          "path": "PaperC/Affine/RationalChannelCode.lean",
+          "declaration": "max_channelCoefficients_le_length"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.3",
+      "label": "macro:lem:channel-unique",
+      "title": "Uniqueness of the macroscopic channel",
+      "environment": "lemma",
+      "page": 14,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 125,
+      "statement_sha256": "770d295208cafaea7e7c24c34c90026b13b609043c4ae70adb804531c5dc48c4",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MacroscopicCanonicalCode.lean",
+          "declaration": "card_reduced_candidates_le_one_eventually"
+        },
+        {
+          "path": "PaperCV282/MacroscopicCanonicalCode.lean",
+          "declaration": "canonical_rational_code_eq_of_nonzero_eventually"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.4",
+      "label": "macro:rem:disparate",
+      "title": "Disparate scales",
+      "environment": "remark",
+      "page": 14,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 155,
+      "statement_sha256": "76653318f7f3abbaf1a90ecb5f55610dabbf0f8b9c1aced67821bd454eb880f7",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.5",
+      "label": "macro:lem:graph-resolution",
+      "title": "Resolution and square class of components",
+      "environment": "lemma",
+      "page": 15,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 177,
+      "statement_sha256": "dba43c7b3df274f15bdeb1bbf335ea2e852f2067363a87eb614107fbb372daac",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Combinatorics/PinnedGraphResolution.lean",
+          "declaration": "componentRestriction_injective"
+        },
+        {
+          "path": "PaperC/Combinatorics/PinnedGraphResolution.lean",
+          "declaration": "componentRestriction_surjective"
+        },
+        {
+          "path": "PaperC/Combinatorics/LargePrimeGraphResolution.lean",
+          "declaration": "finrank_largePrimeSolution_eq_defective_add_components"
+        },
+        {
+          "path": "PaperC/Diophantine/ComponentNormalization.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.6",
+      "label": "macro:lem:quotient-core",
+      "title": "Quotient core",
+      "environment": "lemma",
+      "page": 15,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 224,
+      "statement_sha256": "d679bf80bcae5fffc6919ed720cadcbcaffae41679eb52bfd5e96e52e3300d31",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/LinearAlgebra/CanonicalExactRank.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperC/LinearAlgebra/NonalignedCoreRank.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/MacroscopicPointwiseDefects.lean",
+          "declaration": "correctedDefect_log_bound_eventually"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.7",
+      "label": "macro:prop:host",
+      "title": "Host bound",
+      "environment": "proposition",
+      "page": 16,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 301,
+      "statement_sha256": "37073b42b004138fcd8f24b82295fac8900f3be39deb199cc3df4119be297b55",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/FullIntervalHostAsymptotics.lean",
+          "declaration": "proposition_three_seven"
+        },
+        {
+          "path": "PaperCV282/FullHostComparison.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/FullIntervalHostAsymptotics.lean",
+          "declaration": "proposition_three_seven_full_hosts"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.8",
+      "label": "macro:prop:systematic",
+      "title": "Rational mass",
+      "environment": "proposition",
+      "page": 17,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 355,
+      "statement_sha256": "081f1147b70f14ee84697b8f049a4ada4c7eee4e783a02cbce695faef15a1a34",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/RationalProfile.lean",
+          "declaration": "proposition_three_eight"
+        },
+        {
+          "path": "PaperCV282/RationalHeightMass.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/RationalGeometryMass.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.9",
+      "label": "rem:dyadic-edge",
+      "title": "Why the dyadic interval helps, and what it does not remove",
+      "environment": "remark",
+      "page": 17,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 376,
+      "statement_sha256": "6f7e09a91e18e97248965c8613659acbad4a595ed8f5d0f919dd352dd98bb151",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.10",
+      "label": "prop:shallow-final",
+      "title": "Direct bounds in sectors 1--3",
+      "environment": "proposition",
+      "page": 18,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 424,
+      "statement_sha256": "71ec1af70715bff6073396617031e150c91442e67db5c86faa6b550b1f2ac456",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MacroscopicSmallProductProfile.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/MacroscopicSmallHeightSector.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/MacroscopicShallowSectors.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SmallProductComponentBound.lean",
+          "declaration": "base_pow_componentCount_le_primeProduct"
+        },
+        {
+          "path": "PaperCV282/MacroscopicSmallProductProfile.lean",
+          "declaration": "sector_one_mass_le_profile_eventually"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.11",
+      "label": "macro:lem:pell",
+      "title": "Uniform Pell count",
+      "environment": "lemma",
+      "page": 19,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 487,
+      "statement_sha256": "c49323f15a6e83952b4862b3f59007b8b30898ff531c582899a55d482c6e29bf",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PolynomialPellCount.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/DivisorSubpolynomial.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/PrecisePellCount.lean",
+          "declaration": "lemma_three_thirteen"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.12",
+      "label": "lem:split-bounded",
+      "title": "Split products in a polynomial range",
+      "environment": "lemma",
+      "page": 19,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 503,
+      "statement_sha256": "6d1f29b7ff093f84f3a8fdb82a9737ebf4c47de2ae1c692a6921d1e38abfb415",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PolynomialSplitProducts.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/PolynomialSplitSolutions.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SplitProductLocalization.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/PreciseSplitSolutions.lean",
+          "declaration": "lemma_three_fourteen"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.13",
+      "label": "lem:component-normalization",
+      "title": "Normalization of a component",
+      "environment": "lemma",
+      "page": 20,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 539,
+      "statement_sha256": "297edab9d54d12eb7b7471e6f1f4be80afb984d76b9b3dd98770436da20aa66c",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MacroscopicComponentNormalization.lean",
+          "declaration": "canonical_normalization_with_polynomial_height"
+        },
+        {
+          "path": "PaperCV282/MacroscopicComponentFibers.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.14",
+      "label": "lem:one-sided-component",
+      "title": "One-sided count of a component",
+      "environment": "lemma",
+      "page": 20,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 562,
+      "statement_sha256": "35ffda815ec56179fc449a02a1f9188fca2db86c7634fb7a7038b7787f3ccfa6",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MacroscopicOneSidedFibers.lean",
+          "declaration": "offsetProductNatFiber_atMost_rpow_eventually"
+        },
+        {
+          "path": "PaperCV282/MacroscopicBaseFibers.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperC/Diophantine/ComponentNormalization.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.15",
+      "label": "lem:singleton-pair",
+      "title": "Two singleton components",
+      "environment": "lemma",
+      "page": 20,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 583,
+      "statement_sha256": "c96d72cbff0dc4a0b3ed145fc7c91e71bec224e6598fb679d3c48b12b33ae3ad",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/SizeTwoHostCounting.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SizeTwoHostAsymptotics.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/PreciseSingletonTriplesOffsets.lean",
+          "declaration": "lemma_three_seventeen_integer_offsets"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.16",
+      "label": "lem:bounded-component",
+      "title": "Hosts of a bounded component",
+      "environment": "lemma",
+      "page": 21,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 631,
+      "statement_sha256": "5e4984e03eaa67e83f8f7d03b08b829035cbc6ec2d7a64a20c8ae8a1884be2f7",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MacroscopicBoundedHosts.lean",
+          "declaration": "card_boundedHosts_le_linear_profile_eventually"
+        },
+        {
+          "path": "PaperCV282/SizeTwoHostAsymptotics.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/PreciseSingletonHosts.lean",
+          "declaration": "lemma_three_eighteen_size_two"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.17",
+      "label": "macro:prop:aligned",
+      "title": "No aligned residual core of linear density",
+      "environment": "proposition",
+      "page": 22,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 676,
+      "statement_sha256": "c481387952f54e8b55d355ca20b92162df00a35429c6e2c2eade5e89512b2202",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MacroscopicAlignedRunge.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/MacroscopicAlignedExclusion.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/DensityAlignedExclusion.lean",
+          "declaration": "proposition_three_nineteen"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.18",
+      "label": "macro:lem:two-defects",
+      "title": "Two defects in one block",
+      "environment": "lemma",
+      "page": 23,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 765,
+      "statement_sha256": "e9c3de80f1c978551a23710e98150504586352a1a63a62c6b824e63d67fa09c1",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MacroscopicTwoDefectStarts.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.19",
+      "label": "macro:prop:sector6",
+      "title": "Sector 6",
+      "environment": "proposition",
+      "page": 23,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 786,
+      "statement_sha256": "b4fbca9c3e6f34eeb73f2a27343489f87286513c881b3cbb58124173e1130f1b",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/SectorSixProfile.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SectorSixHostCover.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.20",
+      "label": "macro:lem:determinant",
+      "title": "Terminal kernels and determinants",
+      "environment": "lemma",
+      "page": 24,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 834,
+      "statement_sha256": "8b3ce65cebda9a306e633ed9f547eb46c7ee96ee26cae08df80b5754714e2aa9",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Asymptotics/BoundedRatioNonterminalRealHosts.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperC/Arithmetic/ParityVector.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/ResidualSectorPartition.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperC/Asymptotics/BoundedRatioTerminalFibers.lean",
+          "declaration": "distinct_pairComponents_kernel_package"
+        },
+        {
+          "path": "PaperCV282/SectorEightGeometry.lean",
+          "declaration": "crossDeterminant_ne_zero"
+        },
+        {
+          "path": "PaperCV282/TerminalSliceGeometry.lean",
+          "declaration": "lemma_three_twenty_two"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.21",
+      "label": "lem:terminal-partners",
+      "title": "Partners and a one-dimensional container",
+      "environment": "lemma",
+      "page": 24,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 884,
+      "statement_sha256": "b384c4a575a276c0fe8274ec4f621ba41feaf76207a276f13c579581ddef78a2",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PolynomialPellCount.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SmallKernelAnchors.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/MacroscopicSmoothKernels.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/TerminalPartnerCount.lean",
+          "declaration": "card_twoKernelPartnerStarts_le_rpow_eventually"
+        },
+        {
+          "path": "PaperCV282/TerminalSliceContainer.lean",
+          "declaration": "card_determinantCapFirstStarts_le_three_quarters_eventually"
+        },
+        {
+          "path": "PaperCV282/TerminalSliceGeometry.lean",
+          "declaration": "mem_twoKernelPartnerStarts_both"
+        },
+        {
+          "path": "PaperCV282/TerminalSliceGeometry.lean",
+          "declaration": "smallKernelOffsets_nonempty_both"
+        },
+        {
+          "path": "PaperCV282/MacroscopicDyadicSlices.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/TerminalSliceGeometry.lean",
+          "declaration": "mem_twoKernelPartnerStarts_both"
+        },
+        {
+          "path": "PaperCV282/TerminalPartnerCount.lean",
+          "declaration": "card_twoKernelPartnerStarts_le_rpow_eventually"
+        },
+        {
+          "path": "PaperCV282/TerminalSliceContainer.lean",
+          "declaration": "card_determinantCapFirstStarts_le_three_quarters_eventually"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.22",
+      "label": "lem:kernel-energy",
+      "title": "Shifted small-kernel energy",
+      "environment": "lemma",
+      "page": 25,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 922,
+      "statement_sha256": "87ad4bfe1dd6dde88624db6de8975bd0735d15cc1cb0a0a85ba16de84d7bbbaf",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MacroscopicKernelEnergy.lean",
+          "declaration": "lemma_three_twenty_four"
+        },
+        {
+          "path": "PaperCV282/KernelWindowEnergy.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.23",
+      "label": "prop:terminal-final",
+      "title": "Terminal mass",
+      "environment": "proposition",
+      "page": 26,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 986,
+      "statement_sha256": "c802a67bedf7051c172376f54d3f37e3b226d0f6c09789cd3770798429830505",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MacroscopicKernelEnergy.lean",
+          "declaration": "lemma_three_twenty_four"
+        },
+        {
+          "path": "PaperCV282/NonterminalProfile.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SectorEightProfile.lean",
+          "declaration": "proposition_three_twenty_five"
+        },
+        {
+          "path": "PaperCV282/SectorEightProfile.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.24",
+      "label": "prop:absolute-profile",
+      "title": "Prescribing the global signs",
+      "environment": "proposition",
+      "page": 27,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 1089,
+      "statement_sha256": "d5996cf77aaefd84405ded57f3231581afab5b61026a6deacd665c9a1adb70b6",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/TwoWindowParity.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/TwoWindowSquareHosts.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/MacroscopicValueCorrection.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/MacroscopicRelationProfile.lean",
+          "declaration": "macroscopicValueMassNat_le_four_start_add_hosts"
+        },
+        {
+          "path": "PaperCV282/WholeRelationProfile.lean",
+          "declaration": "proposition_three_twenty_six_raw_macroscopic"
+        },
+        {
+          "path": "PaperCV282/WholeRelationProfile.lean",
+          "declaration": "proposition_three_twenty_six_coarse_macroscopic"
+        },
+        {
+          "path": "PaperCV282/BoundedRatioRelationProfiles.lean",
+          "declaration": "raw_masses_le_profile_boundedRatio_eventually"
+        },
+        {
+          "path": "PaperCV282/BoundedRatioRelationProfiles.lean",
+          "declaration": "coarse_masses_le_profile_dyadic_eventually"
+        },
+        {
+          "path": "PaperCV282/FullHostComparison.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "3.25",
+      "label": "prop:capped-profile",
+      "title": "Capped two-window profile",
+      "environment": "proposition",
+      "page": 28,
+      "source": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "line": 1145,
+      "statement_sha256": "195e9214868e459d6e599844f4b405346522a63f9556b37e17744c9cf314adb9",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/CappedRelationMass.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/CappedSectorMass.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/NonterminalProfile.lean",
+          "declaration": "cappedStartMass_le_profile_add_terminal_eventually"
+        },
+        {
+          "path": "PaperCV282/WholeRelationProfile.lean",
+          "declaration": "proposition_three_twenty_seven_start_macroscopic"
+        },
+        {
+          "path": "PaperCV282/WholeRelationProfile.lean",
+          "declaration": "proposition_three_twenty_seven_value_macroscopic"
+        },
+        {
+          "path": "PaperCV282/BoundedRatioRelationProfiles.lean",
+          "declaration": "capped_masses_le_profile_boundedRatio_eventually"
+        },
+        {
+          "path": "PaperCV282/BoundedRatioRelationProfiles.lean",
+          "declaration": "capped_masses_le_profile_dyadic_eventually"
+        },
+        {
+          "path": "PaperCV282/CappedSectorMass.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "4.1",
+      "label": "thm:transfer",
+      "title": "Masked arithmetic-to-Poisson transfer",
+      "environment": "theorem",
+      "page": 30,
+      "source": "manuscripts/v3prel8/sections/04_poisson.tex",
+      "line": 58,
+      "statement_sha256": "8cf57f5fae03463cce3f2114f9264e680a56a9aec454b73b9faee17a4b4bb061",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MaskedArithmeticCosts.lean",
+          "declaration": "average_stein_terms_le_twice"
+        },
+        {
+          "path": "PaperCV282/MaskedScalarTransfer.lean",
+          "declaration": "theorem_four_one_scalar_conditional"
+        },
+        {
+          "path": "PaperCV282/MaskedScalarTransfer.lean",
+          "declaration": "theorem_four_one_scalar"
+        },
+        {
+          "path": "PaperCV282/InfiniteMaskedScalarTransfer.lean",
+          "declaration": "theorem_four_one_scalar_infinite"
+        },
+        {
+          "path": "PaperCV282/MaskedScalarFullConditioning.lean",
+          "declaration": "conditioningAtoms_equiprobable"
+        },
+        {
+          "path": "PaperCV282/MaskedScalarFullConditioning.lean",
+          "declaration": "theorem_four_one_scalar_full_FY"
+        },
+        {
+          "path": "PaperCV282/ProcessAGGInput.lean",
+          "declaration": "ProcessAGGStatement"
+        },
+        {
+          "path": "PaperCV282/AllStartFieldCosts.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/AllStartFieldTransfer.lean",
+          "declaration": "average_allStart_field_le_arithmetic"
+        },
+        {
+          "path": "PaperCV282/AllStartFieldTransfer.lean",
+          "declaration": "mixed_allStart_field_le_arithmetic"
+        },
+        {
+          "path": "PaperCV282/InfiniteFieldTransfer.lean",
+          "declaration": "theorem_four_one_field_full_FY"
+        },
+        {
+          "path": "PaperCV282/InfiniteFieldTransfer.lean",
+          "declaration": "cylinderFieldLaw_eq_uniformMixture"
+        },
+        {
+          "path": "PaperCV282/InfiniteFieldTransfer.lean",
+          "declaration": "infiniteMaskedFieldLaw_eq_finiteFieldLaw"
+        },
+        {
+          "path": "PaperCV282/InfiniteFieldTransfer.lean",
+          "declaration": "hasSum_source_conditional_field"
+        },
+        {
+          "path": "PaperCV282/InfiniteFieldTransfer.lean",
+          "declaration": "theorem_four_one_field_unconditional"
+        },
+        {
+          "path": "PaperCV282/MaskedScalarTransfer.lean",
+          "declaration": "theorem_four_one_scalar_conditional"
+        },
+        {
+          "path": "PaperCV282/MaskedScalarFullConditioning.lean",
+          "declaration": "theorem_four_one_scalar_full_FY"
+        },
+        {
+          "path": "PaperCV282/InfiniteFieldTransfer.lean",
+          "declaration": "theorem_four_one_field_full_FY"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "4.2",
+      "label": "prop:cutoffs",
+      "title": "Uniform cutoff estimates",
+      "environment": "proposition",
+      "page": 31,
+      "source": "manuscripts/v3prel8/sections/04_poisson.tex",
+      "line": 118,
+      "statement_sha256": "fa0ce24d7c96332481f0b77fc47aa1ec525bbd738a4635873aac5b64983e7fa8",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/DefectiveRankinCount.lean",
+          "declaration": "exists_unique_square_smooth"
+        },
+        {
+          "path": "PaperCV282/DefectiveRankinCount.lean",
+          "declaration": "normalized_defectiveValues_le_rankin"
+        },
+        {
+          "path": "PaperCV282/PrimeEulerFreeCutoff.lean",
+          "declaration": "euler_errors_sqrt_log_band_of_pnt"
+        },
+        {
+          "path": "PaperCV282/BadStartRankinFreeCutoff.lean",
+          "declaration": "normalized_defectiveValues_free_cutoff_le_eventually"
+        },
+        {
+          "path": "PaperCV282/BadStartRankinFreeCutoff.lean",
+          "declaration": "normalized_fullBadMask_free_cutoff_le_eventually"
+        },
+        {
+          "path": "PaperCV282/CutoffGraphFreeCutoff.lean",
+          "declaration": "normalized_degree_and_edges_free_cutoff_le_eventually"
+        },
+        {
+          "path": "PaperCV282/SaddleParameters.lean",
+          "declaration": "existsUnique_saddleCutoff"
+        },
+        {
+          "path": "PaperCV282/SaddleParameters.lean",
+          "declaration": "hard_and_soft_saddles_exist"
+        },
+        {
+          "path": "PaperCV282/SaddleExpansion.lean",
+          "declaration": "hard_saddle_second_order"
+        },
+        {
+          "path": "PaperCV282/SaddleExpansion.lean",
+          "declaration": "soft_saddle_second_order"
+        },
+        {
+          "path": "PaperCV282/SaddleScales.lean",
+          "declaration": "tendsto_soft_div_hard_saddle"
+        },
+        {
+          "path": "PaperCV282/SaddleScales.lean",
+          "declaration": "log_log_small_against_hard_nu"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "4.3",
+      "label": "thm:scalar-rates",
+      "title": "Hard deletion and soft retention",
+      "environment": "theorem",
+      "page": 31,
+      "source": "manuscripts/v3prel8/sections/04_poisson.tex",
+      "line": 158,
+      "statement_sha256": "2b3d836c1925f37184943cbb3821126cffdaa1f75c3150066dad3bee31d3dbe4",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/HardPoissonRates.lean",
+          "declaration": "theorem_four_three_hard"
+        },
+        {
+          "path": "PaperCV282/SoftRateAssembly.lean",
+          "declaration": "theorem_four_three_soft"
+        },
+        {
+          "path": "PaperCV282/FreeCutoffSoftRates.lean",
+          "declaration": "equation_four_ten"
+        },
+        {
+          "path": "PaperCV282/PoissonRateConvergence.lean",
+          "declaration": "soft_convergence_of_margin"
+        },
+        {
+          "path": "PaperCV282/FreeCutoffSoftRates.lean",
+          "declaration": "equation_four_ten"
+        },
+        {
+          "path": "PaperCV282/SoftRateAssembly.lean",
+          "declaration": "theorem_four_three_soft"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "4.4",
+      "label": "cor:moments",
+      "title": "First two moments",
+      "environment": "corollary",
+      "page": 32,
+      "source": "manuscripts/v3prel8/sections/04_poisson.tex",
+      "line": 225,
+      "statement_sha256": "6469b2b00e63685f224d23855e49c120e8cee55f34eaeb6a1899463b96d2bafe",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Probability/SectionTwelveMoments.lean",
+          "declaration": "dyadicSecondFactorialMoment_eq_overlap_touching_separated"
+        },
+        {
+          "path": "PaperC/Probability/SectionTwelveMoments.lean",
+          "declaration": "abs_factorialMomentError_le"
+        },
+        {
+          "path": "PaperC/Asymptotics/TheoremOneFourCanonical.lean",
+          "declaration": "theorem_one_four_canonical"
+        },
+        {
+          "path": "PaperCV282/InfiniteCountMoments.lean",
+          "declaration": "infiniteCountMean_eq_finite"
+        },
+        {
+          "path": "PaperCV282/InfiniteCountMoments.lean",
+          "declaration": "infiniteCountFactorialMoment_eq_finite"
+        },
+        {
+          "path": "PaperCV282/InfiniteCountMoments.lean",
+          "declaration": "infiniteCountVariance_eq_finite"
+        },
+        {
+          "path": "PaperCV282/CriticalVarianceMoments.lean",
+          "declaration": "corollary_four_four"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.1",
+      "label": "thm:word-field",
+      "title": "Joint Poisson approximation for a word dictionary",
+      "environment": "theorem",
+      "page": 33,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 38,
+      "statement_sha256": "cfa1aaa3fb5a33cd854ebd171ca174496aeef484cfc001b8c0af38669c7d4f5a",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/DictionaryFieldBounds.lean",
+          "declaration": "equation_five_seven"
+        },
+        {
+          "path": "PaperCV282/DictionaryFieldRates.lean",
+          "declaration": "theorem_five_one_full_band"
+        },
+        {
+          "path": "PaperCV282/DictionaryFieldCritical.lean",
+          "declaration": "equation_five_four"
+        },
+        {
+          "path": "PaperCV282/DictionaryFieldCritical.lean",
+          "declaration": "dictionary_field_critical_convergence"
+        },
+        {
+          "path": "PaperCV282/DictionaryFieldStatistics.lean",
+          "declaration": null,
+          "evidence_note": "true composed laws and contractions"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.2",
+      "label": "cor:iid-word-replacement",
+      "title": "Replacement by independent signs",
+      "environment": "corollary",
+      "page": 34,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 156,
+      "statement_sha256": "12a3071f202e569198d865fa2afefe4f8fc6ac13a62f5718def449ee0f8aa5af",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/IidWordDependency.lean",
+          "declaration": "hasExactDependencyGraph_iidWordField"
+        },
+        {
+          "path": "PaperCV282/IidWordInfinite.lean",
+          "declaration": "infiniteIidFieldLaw_eq_iidFieldLaw"
+        },
+        {
+          "path": "PaperCV282/IidWordPoisson.lean",
+          "declaration": "infinite_iid_poisson_distance_le"
+        },
+        {
+          "path": "PaperCV282/IidWordComparison.lean",
+          "declaration": "corollary_five_two"
+        },
+        {
+          "path": "PaperCV282/IidWordComparison.lean",
+          "declaration": "corollary_five_two_word_counts"
+        },
+        {
+          "path": "PaperCV282/DictionaryCountTargets.lean",
+          "declaration": "pushforward_dictionary_word_counts_target"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.3",
+      "label": "thm:typical-dictionaries",
+      "title": "Typical word dictionaries",
+      "environment": "theorem",
+      "page": 35,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 196,
+      "statement_sha256": "1fa8f41060d1491f9d091f8503c1f82d407b446fd7f37548cf3675baaa95eda9",
+      "status": "new_statement_partial",
+      "prior_lean_declarations": [],
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/DictionarySelection.lean",
+          "declaration": "averaged_pair_probability",
+          "scope": "Exact dictionary-selection/collision identity for arbitrary finite source laws. The uniform arithmetic error estimate and asymptotic conclusion are still open."
+        }
+      ]
+    },
+    {
+      "document": "article",
+      "number": "5.4",
+      "label": "cor:affine-dictionaries",
+      "title": "Random affine dictionaries",
+      "environment": "corollary",
+      "page": 36,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 294,
+      "statement_sha256": "81ea200099af48a3a9ecd408a828925924ab59377141be84a24456b3ee902365",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.5",
+      "label": "cor:generic-dictionaries",
+      "title": "Most dictionaries have small overlap",
+      "environment": "corollary",
+      "page": 37,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 332,
+      "statement_sha256": "0ff2fbad8973fa99e87fb680bf7dc74e13039e801dfecc68f994d15c5de997f6",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/RandomDictionary.lean",
+          "declaration": "uniformDictionaryPMF"
+        },
+        {
+          "path": "PaperCV282/RandomDictionary.lean",
+          "declaration": "dictionaryAverage_eq_expectation"
+        },
+        {
+          "path": "PaperCV282/RandomDictionary.lean",
+          "declaration": "dictionaryFraction_eq_probability"
+        },
+        {
+          "path": "PaperCV282/RandomDictionaryOverlap.lean",
+          "declaration": "average_overlapWeight_eq"
+        },
+        {
+          "path": "PaperCV282/RandomDictionaryOverlap.lean",
+          "declaration": "equation_five_eight"
+        },
+        {
+          "path": "PaperCV282/RandomDictionaryCritical.lean",
+          "declaration": "corollary_five_three_exceptional_fraction"
+        },
+        {
+          "path": "PaperCV282/RandomDictionaryCritical.lean",
+          "declaration": "nonexceptional_dictionary_field_rate"
+        },
+        {
+          "path": "PaperCV282/RandomDictionaryIndependence.lean",
+          "declaration": "dictionary_event_independent_source"
+        },
+        {
+          "path": "PaperCV282/RandomDictionaryOverlap.lean",
+          "declaration": "average_overlapWeight_eq"
+        },
+        {
+          "path": "PaperCV282/RandomDictionaryOverlap.lean",
+          "declaration": "equation_five_eight"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.6",
+      "label": "cor:marker-dictionaries",
+      "title": "Explicit dictionaries with no overlaps",
+      "environment": "corollary",
+      "page": 37,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 365,
+      "statement_sha256": "064dc42ee61577b6793c5c6c772063edd4be4496068e9c2fc2a6c7ff585821a2",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MarkerDictionaryAsymptotics.lean",
+          "declaration": "corollary_five_four"
+        },
+        {
+          "path": "PaperCV282/MarkerDictionaryCritical.lean",
+          "declaration": "critical_subdictionary_exists_eventually"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.7",
+      "label": "thm:patterns",
+      "title": "Poisson law for low-overlap patterns",
+      "environment": "corollary",
+      "page": 38,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 411,
+      "statement_sha256": "f49949ec6fb9006db25c0fb864abe7c9e03ae21e627a9e2f13e609d339001e51",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/SignOverlap.lean",
+          "declaration": "overlapWeight_signDictionary"
+        },
+        {
+          "path": "PaperCV282/SignOverlap.lean",
+          "declaration": "theta_tendsto_zero_of_leastCompatibleShift"
+        },
+        {
+          "path": "PaperCV282/SignOverlap.lean",
+          "declaration": "runStartWord_compatible_iff"
+        },
+        {
+          "path": "PaperCV282/SignPatternRates.lean",
+          "declaration": "sign_field_rate_eventually"
+        },
+        {
+          "path": "PaperCV282/SignPatternCounts.lean",
+          "declaration": "maskedDictionaryCount_sign_eq"
+        },
+        {
+          "path": "PaperCV282/SignPatternCounts.lean",
+          "declaration": "corollary_five_five"
+        },
+        {
+          "path": "PaperCV282/SignPatternCounts.lean",
+          "declaration": "masked_sign_count_convergence"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.8",
+      "label": "thm:marked-field",
+      "title": "Finite exact-mark comparison",
+      "environment": "theorem",
+      "page": 38,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 458,
+      "statement_sha256": "448048b1e176167fa2c2c4ea665ed38a1490b5714769937d48b3f45f0c1cde27",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/ExactMarkedFiniteComparison.lean",
+          "declaration": "equation_five_thirteen"
+        },
+        {
+          "path": "PaperCV282/ExactMarkedFiniteComparison.lean",
+          "declaration": "theorem_five_six"
+        },
+        {
+          "path": "PaperCV282/ExactMarkedLocalProbability.lean",
+          "declaration": "conditioned_signed_pair_le_four"
+        },
+        {
+          "path": "PaperCV282/ExactMarkedPairCosts.lean",
+          "declaration": "average_bTwo_signed_le"
+        },
+        {
+          "path": "PaperCV282/ExactMarkedInfinite.lean",
+          "declaration": "signed_fullFY_identification"
+        },
+        {
+          "path": "PaperCV282/ExactMarkedSignProjection.lean",
+          "declaration": "pushforward_signed_target"
+        },
+        {
+          "path": "PaperCV282/ExactMarkedSignProjection.lean",
+          "declaration": "pushforward_signed_source"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.9",
+      "label": "cor:window-clusters",
+      "title": "An explicit compound-Poisson cluster law",
+      "environment": "corollary",
+      "page": 39,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 533,
+      "statement_sha256": "bb0137973e7ce2ce9cf67f4869f3d427a998ef91e016c91d16ff9d5d2f4fd95c",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/ConstantWindowCompoundConvergence.lean",
+          "declaration": "corollary_five_seven"
+        },
+        {
+          "path": "PaperCV282/ConstantWindowClusters.lean",
+          "declaration": "constantWindowCount_eq_exactClusterCount"
+        },
+        {
+          "path": "PaperCV282/ConstantWindowRates.lean",
+          "declaration": "boundary_probability_tendsto_zero"
+        },
+        {
+          "path": "PaperCV282/ExactMarkedSourceTail.lean",
+          "declaration": "source_mark_tail_le_eventually"
+        },
+        {
+          "path": "PaperCV282/ExactMarkedClusterTransfer.lean",
+          "declaration": "truncated_source_to_compound_tv_le"
+        },
+        {
+          "path": "PaperCV282/GeometricClusterTarget.lean",
+          "declaration": "geometricCompound_pgf"
+        },
+        {
+          "path": "PaperCV282/CompoundPoissonTarget.lean",
+          "declaration": "count_independent_mark_sequence"
+        },
+        {
+          "path": "PaperCV282/CompoundPoissonTarget.lean",
+          "declaration": "independent_marks"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.10",
+      "label": "thm:moving-comparison",
+      "title": "Two levels of joint approximation",
+      "environment": "theorem",
+      "page": 40,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 586,
+      "statement_sha256": "74ba3da4a5520e3e06293aa0cb5b5a7bf3bfc144ae18dc9b78c3a49ba83dcc11",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/SpatialMarkedHardBudget.lean",
+          "declaration": "theorem_five_eight_labelled_hard"
+        },
+        {
+          "path": "PaperCV282/SpatialMarkedMovableBudget.lean",
+          "declaration": "spatial_event_movable_rate"
+        },
+        {
+          "path": "PaperCV282/SpatialMarkedMovableBudget.lean",
+          "declaration": "theorem_five_eight_labelled_movable"
+        },
+        {
+          "path": "PaperCV282/MovingMarkedComparison.lean",
+          "declaration": "moving_labelled_hard_tendsto_zero"
+        },
+        {
+          "path": "PaperCV282/MovingMarkedComparison.lean",
+          "declaration": "moving_labelled_movable_tendsto_zero"
+        },
+        {
+          "path": "PaperCV282/MovingMarkedComparison.lean",
+          "declaration": "conditional_start_path_totalVariation_eq"
+        },
+        {
+          "path": "PaperCV282/GrowingLevelParameters.lean",
+          "declaration": "fullRate_eq_phase"
+        },
+        {
+          "path": "PaperCV282/GrowingLevelParameters.lean",
+          "declaration": "growing_length_band_eventually"
+        },
+        {
+          "path": "PaperCV282/SignedAggregateHardBudget.lean",
+          "declaration": "hard_aggregate_event_bound"
+        },
+        {
+          "path": "PaperCV282/SignedAggregateHardBudget.lean",
+          "declaration": "theorem_five_eight_aggregate_hard_sequences"
+        },
+        {
+          "path": "PaperCV282/SignedAggregateHardBudget.lean",
+          "declaration": "theorem_five_eight_aggregate_hard"
+        },
+        {
+          "path": "PaperCV282/UnsignedAggregateComparison.lean",
+          "declaration": "conditional_path_distance_eq"
+        },
+        {
+          "path": "PaperCV282/AggregateMovingCoordinates.lean",
+          "declaration": "unsignedMovingAggregateDistance_eq"
+        },
+        {
+          "path": "PaperCV282/AggregateMovingCoordinates.lean",
+          "declaration": "conditional_moving_path_distance_eq"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.11",
+      "label": "cor:signed-growing",
+      "title": "Sign-resolved growing fields",
+      "environment": "corollary",
+      "page": 41,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 675,
+      "statement_sha256": "a48d750d61b5540850c272996d94099b3074439e1007c5a2b1c20c5175b44ae6",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MovingMarkedComparison.lean",
+          "declaration": "conditional_moving_source_tv_eq"
+        },
+        {
+          "path": "PaperCV282/GrowingLevelParameters.lean",
+          "declaration": "signed_level_mean"
+        },
+        {
+          "path": "PaperCV282/GrowingLevelParameters.lean",
+          "declaration": "signed_site_mean"
+        },
+        {
+          "path": "PaperCV282/SpatialMarkedTargetProjection.lean",
+          "declaration": "hasLaw_projectConfiguration"
+        },
+        {
+          "path": "PaperCV282/ThresholdPathEquivalence.lean",
+          "declaration": "thresholdFunction_injective"
+        },
+        {
+          "path": "PaperCV282/MovingMarkedSource.lean",
+          "declaration": "actual_start_path_totalVariation_eq"
+        },
+        {
+          "path": "PaperCV282/SignedAggregateHardBudget.lean",
+          "declaration": "hard_aggregate_event_bound"
+        },
+        {
+          "path": "PaperCV282/SignedAggregateHardBudget.lean",
+          "declaration": "theorem_five_eight_aggregate_hard_sequences"
+        },
+        {
+          "path": "PaperCV282/SignedAggregateConfiguration.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SignedGeometricWeights.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/AggregateMovingCoordinates.lean",
+          "declaration": "signedMovingAggregateDistance_eq"
+        },
+        {
+          "path": "PaperCV282/AggregateMovingCoordinates.lean",
+          "declaration": "signed_target_level_mean"
+        },
+        {
+          "path": "PaperCV282/AggregateMovingCoordinates.lean",
+          "declaration": "corollary_five_nine_aggregate_sequences"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "5.12",
+      "label": "thm:bridge",
+      "title": "Joint Poisson--Gaussian limit",
+      "environment": "theorem",
+      "page": 42,
+      "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "line": 730,
+      "statement_sha256": "7ebdcbcb475e15af69e77c7de98dc8670d3c01c662a0769db7c6555ab2d3440f",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PoissonGaussianTheorem.lean",
+          "declaration": "criticalExactCount_eq_eventually"
+        },
+        {
+          "path": "PaperCV282/PoissonGaussianTheorem.lean",
+          "declaration": "theorem_five_ten"
+        },
+        {
+          "path": "PaperCV282/PoissonGaussianCritical.lean",
+          "declaration": "theorem_five_ten_target"
+        },
+        {
+          "path": "PaperCV282/PoissonGaussianLimit.lean",
+          "declaration": "jointThresholdLaw_tendsto"
+        },
+        {
+          "path": "PaperCV282/GaussianThresholdCovariance.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/GaussianThresholdAR.lean",
+          "declaration": "standardizedProjection_covariance"
+        },
+        {
+          "path": "PaperCV282/GaussianThresholdAR.lean",
+          "declaration": "standardized_ar_recursion"
+        },
+        {
+          "path": "PaperCV282/GaussianThresholdAR.lean",
+          "declaration": "arNoises_independent"
+        },
+        {
+          "path": "PaperCV282/PoissonGaussianSource.lean",
+          "declaration": "ae_actualJointVector_eq"
+        },
+        {
+          "path": "PaperCV282/PoissonGaussianSource.lean",
+          "declaration": "source_joint_limit_of_aggregate_tv"
+        },
+        {
+          "path": "PaperCV282/GaussianThresholdAR.lean",
+          "declaration": "arNoises_independent"
+        },
+        {
+          "path": "PaperCV282/GaussianThresholdAR.lean",
+          "declaration": "hasLaw_arNoise"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "6.1",
+      "label": "lem:stable-lift",
+      "title": "Stable product lift",
+      "environment": "lemma",
+      "page": 44,
+      "source": "manuscripts/v3prel8/sections/06_conditioning.tex",
+      "line": 62,
+      "statement_sha256": "56c7d383d23cf2fcf828bf89aba63023ec79a633ba062bbc82883b60f53440e6",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/StableProductLift.lean",
+          "declaration": "lemma_six_one"
+        },
+        {
+          "path": "PaperCV282/StableProductLift.lean",
+          "declaration": "lemma_six_one_conditioned"
+        },
+        {
+          "path": "PaperCV282/PrimeEnvironmentStableLift.lean",
+          "declaration": "fullFY_stable_product_lift"
+        },
+        {
+          "path": "PaperCV282/PrimeEnvironmentStableLift.lean",
+          "declaration": "fullFY_conditioned_stable_product_lift"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "6.2",
+      "label": "prop:information-labelled",
+      "title": "Information-adapted labelled comparison",
+      "environment": "proposition",
+      "page": 45,
+      "source": "manuscripts/v3prel8/sections/06_conditioning.tex",
+      "line": 149,
+      "statement_sha256": "ac9842b8c709be3cab0fcc8a7e1e8308112132202ab3b1c8c89344a6c69403cd",
+      "status": "new_statement_partial",
+      "prior_lean_declarations": [],
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/InformationBudget.lean",
+          "declaration": "admissible_cutoff_maximizes",
+          "scope": "Exact constrained optimization and exponent margins. Existence and asymptotics of the actual information-dependent saddle and the full field estimate remain open."
+        }
+      ]
+    },
+    {
+      "document": "article",
+      "number": "6.3",
+      "label": "lem:conditioning-floor",
+      "title": "Sharp conditioning inequality",
+      "environment": "lemma",
+      "page": 46,
+      "source": "manuscripts/v3prel8/sections/06_conditioning.tex",
+      "line": 221,
+      "statement_sha256": "ace50ff31b5ca3e76e59169470084fcaeb5c41917d896688d036c4eb79c1d615",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/SharpConditioning.lean",
+          "declaration": "lemma_six_two"
+        },
+        {
+          "path": "PaperCV282/SharpConditioning.lean",
+          "declaration": "measureTotalVariation_map_le"
+        },
+        {
+          "path": "PaperCV282/SharpConditioningDiscrete.lean",
+          "declaration": "measureTotalVariation_eq_mass"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "6.4",
+      "label": "thm:resolved-kernel",
+      "title": "Resolved thinning kernels",
+      "environment": "theorem",
+      "page": 46,
+      "source": "manuscripts/v3prel8/sections/06_conditioning.tex",
+      "line": 262,
+      "statement_sha256": "9fce7929e1a7f96192ce7fc9ef536dea55b3e87d498b4c3e316d52310c8297ce",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PoissonResolvedComparison.lean",
+          "declaration": "theorem_six_three_future"
+        },
+        {
+          "path": "PaperCV282/PoissonResolvedLowerComparison.lean",
+          "declaration": "theorem_six_three_lower_segment"
+        },
+        {
+          "path": "PaperCV282/PoissonResolvedTarget.lean",
+          "declaration": "conditional_future_path_eq"
+        },
+        {
+          "path": "PaperCV282/PoissonResolvedPast.lean",
+          "declaration": "conditional_retained_path_eq"
+        },
+        {
+          "path": "PaperCV282/PoissonReverseImmigration.lean",
+          "declaration": "reverse_increment_rate"
+        },
+        {
+          "path": "PaperCV282/UnsignedResolvedPathRates.lean",
+          "declaration": "resolved_aggregate_event_bound"
+        },
+        {
+          "path": "PaperCV282/ResolvedInformationTheorem.lean",
+          "declaration": "resolved_future_under_information_budget"
+        },
+        {
+          "path": "PaperCV282/CentralResolutionBudget.lean",
+          "declaration": "central_resolved_future"
+        },
+        {
+          "path": "PaperCV282/PoissonStirlingBounds.lean",
+          "declaration": "poisson_local_exact"
+        },
+        {
+          "path": "PaperCV282/PoissonStirlingBounds.lean",
+          "declaration": "poisson_local_relative_error"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "6.5",
+      "label": "cor:quenched",
+      "title": "Almost-sure environmental control",
+      "environment": "corollary",
+      "page": 47,
+      "source": "manuscripts/v3prel8/sections/06_conditioning.tex",
+      "line": 311,
+      "statement_sha256": "be3b541f011494a79fad0c02751e489095fef749a08808d088f5e1bdd9584472",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/QuenchedBudgetDomain.lean",
+          "declaration": "corollary_six_four_geometric"
+        },
+        {
+          "path": "PaperCV282/QuenchedAggregateTheorem.lean",
+          "declaration": "quenched_threshold_eq_unsigned"
+        },
+        {
+          "path": "PaperCV282/PrimeEnvironmentStableLift.lean",
+          "declaration": "conditionalTV_primeCylinder_ae_eq_environmentDistance"
+        },
+        {
+          "path": "PaperCV282/QuenchedBorelCantelli.lean",
+          "declaration": "ae_eventually_saddle_bound"
+        },
+        {
+          "path": "PaperCV282/MeanAggregateBudget.lean",
+          "declaration": "integral_environment_aggregate_hard_rate"
+        },
+        {
+          "path": "PaperCV282/QuenchedScalarBand.lean",
+          "declaration": "corollary_six_four_uniform_scalar"
+        },
+        {
+          "path": "PaperCV282/QuenchedSpatialDomain.lean",
+          "declaration": "corollary_six_four_labelled"
+        },
+        {
+          "path": "PaperCV282/QuenchedMaximalCouplings.lean",
+          "declaration": "corollary_six_four_scalar_couplings"
+        },
+        {
+          "path": "PaperCV282/QuenchedConfigurationCouplings.lean",
+          "declaration": "corollary_six_four_labelled_couplings"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.1",
+      "label": "thm:boundary",
+      "title": "Microscopic non-vacancy and localization",
+      "environment": "theorem",
+      "page": 48,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 37,
+      "statement_sha256": "f22ac33e9ff11d15a63b4ee2d073540c810e074b8629b097e2b23acefe297562",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MicroscopicBorderEvents.lean",
+          "declaration": "equation_seven_one"
+        },
+        {
+          "path": "PaperCV282/MicroscopicBoundaryDominance.lean",
+          "declaration": "theorem_seven_one"
+        },
+        {
+          "path": "PaperCV282/MicroscopicBoundaryDominance.lean",
+          "declaration": "theorem_seven_one_one_twelfth"
+        },
+        {
+          "path": "PaperCV282/MicroscopicBoundaryDominance.lean",
+          "declaration": "microscopic_probability_ratio_tendsto_one"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.2",
+      "label": "lem:meso-defects",
+      "title": "Two-defect windows at intermediate heights",
+      "environment": "lemma",
+      "page": 49,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 124,
+      "statement_sha256": "5a9c48738cf8587a0b6923b6495dc5f85b4adc94710abd093eca0e617be3508c",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/IntermediateDefectCount.lean",
+          "declaration": "lemma_seven_two_ambient_scale"
+        },
+        {
+          "path": "PaperCV282/IntermediateDefectCount.lean",
+          "declaration": "global_two_defect_count_eventually"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.3",
+      "label": "prop:deep-starts",
+      "title": "Deep-start and mesoscopic estimates",
+      "environment": "proposition",
+      "page": 50,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 142,
+      "statement_sha256": "4a3dee79baec287a3845c307949ab9338661216b3c1823053255ff373f760f64",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MesoscopicPrefixMass.lean",
+          "declaration": "equation_seven_seven"
+        },
+        {
+          "path": "PaperCV282/DeepStartEvents.lean",
+          "declaration": "equation_seven_eight"
+        },
+        {
+          "path": "PaperCV282/MesoscopicCutoff.lean",
+          "declaration": "equation_seven_nine"
+        },
+        {
+          "path": "PaperCV282/MesoscopicRareLimit.lean",
+          "declaration": "proposition_seven_three_rare_negligibility"
+        },
+        {
+          "path": "PaperCV282/MesoscopicStability.lean",
+          "declaration": "cutoff_conditioned_stability_of_littleO"
+        },
+        {
+          "path": "PaperCV282/DeepStartMass.lean",
+          "declaration": "deep_mass_bound_eventually"
+        },
+        {
+          "path": "PaperCV282/DeepStartEvents.lean",
+          "declaration": "equation_seven_eight"
+        },
+        {
+          "path": "PaperCV282/MesoscopicCutoff.lean",
+          "declaration": "equation_seven_nine"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.4",
+      "label": "thm:prefix-poisson",
+      "title": "Finite-prefix Poisson approximation",
+      "environment": "theorem",
+      "page": 50,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 189,
+      "statement_sha256": "a8ca8b750a06d13c127f42e4a27e338a6bb969e620eb57d0d5a393f02a733a39",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PrefixScalarBounds.lean",
+          "declaration": "theorem_seven_four_open_prefix"
+        },
+        {
+          "path": "PaperCV282/PrefixContainedBounds.lean",
+          "declaration": "theorem_seven_four_contained_prefix"
+        },
+        {
+          "path": "PaperCV282/PrefixCriticalVoid.lean",
+          "declaration": "critical_prefix_void_le_eventually"
+        },
+        {
+          "path": "PaperCV282/PrefixCriticalVoid.lean",
+          "declaration": "theorem_seven_four_critical_void"
+        },
+        {
+          "path": "PaperCV282/PrefixContainedBounds.lean",
+          "declaration": "overflow_mass_eventually"
+        },
+        {
+          "path": "PaperCV282/PrefixContainedBounds.lean",
+          "declaration": "theorem_seven_four_contained_prefix"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.5",
+      "label": "cor:as-longest",
+      "title": "Almost-sure asymmetric envelopes",
+      "environment": "corollary",
+      "page": 51,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 230,
+      "statement_sha256": "c3f638fc2aec5c6e43e38ed6c85a264b66e9c96e4432eb8402d35a5cdf24d35a",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PrefixAlmostSureEnvelopes.lean",
+          "declaration": "theorem_seven_five"
+        },
+        {
+          "path": "PaperCV282/PrefixAlmostSureEnvelopes.lean",
+          "declaration": "theorem_seven_five_loglog"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.6",
+      "label": "thm:macro-field",
+      "title": "Macroscopic exact-mark transport",
+      "environment": "theorem",
+      "page": 51,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 262,
+      "statement_sha256": "b10bf36e8cb2728e87d25320f6b98dcf4fd0e78d4cec0ef2b8d4ee645ea28b09",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/MacroTransportQuantitative.lean",
+          "declaration": "equation_seven_fourteen_eventually"
+        },
+        {
+          "path": "PaperCV282/MacroTransportHardBudget.lean",
+          "declaration": "theorem_seven_six_labelled_hard_sequences"
+        },
+        {
+          "path": "PaperCV282/MacroTransportMovableBudget.lean",
+          "declaration": "theorem_seven_six_labelled_movable_sequences"
+        },
+        {
+          "path": "PaperCV282/MacroTransportCoordinateRates.lean",
+          "declaration": "theorem_seven_six_positioned_hard_sequences"
+        },
+        {
+          "path": "PaperCV282/MacroTransportCoordinateRates.lean",
+          "declaration": "theorem_seven_six_positioned_movable_sequences"
+        },
+        {
+          "path": "PaperCV282/MacroTransportUnsigned.lean",
+          "declaration": "unsignedTarget_unique"
+        },
+        {
+          "path": "PaperCV282/MacroAggregateTheorem.lean",
+          "declaration": "theorem_seven_six_aggregate"
+        },
+        {
+          "path": "PaperCV282/MacroAggregateCoordinates.lean",
+          "declaration": "moving_aggregate_comparison_tendsto_zero"
+        },
+        {
+          "path": "PaperCV282/MacroAggregateCoordinates.lean",
+          "declaration": "moving_path_comparison_tendsto_zero"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.7",
+      "label": "thm:micro-run-tv",
+      "title": "The full same-grid signed comparison",
+      "environment": "theorem",
+      "page": 53,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 387,
+      "statement_sha256": "b08b2661b22ca89bf4770a8dfc950999ee34d3a9ccdb80219becf1446b76895f",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.8",
+      "label": "cor:micro-readout",
+      "title": "Every measurable readout of the retained field",
+      "environment": "corollary",
+      "page": 55,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 458,
+      "statement_sha256": "88c14cfe389cb1d8aaea9362d020d3d5607296d4a8416148b8097f2e99d550ca",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.9",
+      "label": "thm:relative-bulk",
+      "title": "Relative signed marked bulk kernel",
+      "environment": "theorem",
+      "page": 58,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 507,
+      "statement_sha256": "8d6f27598e108e2be5ecc13e0bcf7744bde2c3cee83a7458e66bd25de1e5876d",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/BulkMarkedRates.lean",
+          "declaration": "theorem_seven_seven"
+        },
+        {
+          "path": "PaperCV282/BulkMarkedConvergence.lean",
+          "declaration": "equation_seven_sixteen"
+        },
+        {
+          "path": "PaperCV282/BulkMicroscopicRecord.lean",
+          "declaration": "equation_seven_seventeen"
+        },
+        {
+          "path": "PaperCV282/BulkMicroscopicRecord.lean",
+          "declaration": "equation_seven_seventeen_total_scale"
+        },
+        {
+          "path": "PaperCV282/BulkPointProcess.lean",
+          "declaration": "equation_seven_fifteen_spatial"
+        },
+        {
+          "path": "PaperCV282/BulkPointProcess.lean",
+          "declaration": "equation_seven_sixteen_spatial"
+        },
+        {
+          "path": "PaperCV282/BulkPointProcess.lean",
+          "declaration": "equation_seven_seventeen_spatial_relative"
+        },
+        {
+          "path": "PaperCV282/BulkPointProcess.lean",
+          "declaration": "equation_seven_seventeen_spatial"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.10",
+      "label": "thm:crossover",
+      "title": "Two-source rare tail and conditional location",
+      "environment": "theorem",
+      "page": 59,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 562,
+      "statement_sha256": "20d1144ffb68ae2bec09f26515abe23e7176e63a1e167cc1f9ad8698511fb898",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/RarePrefixMass.lean",
+          "declaration": "equation_seven_eighteen"
+        },
+        {
+          "path": "PaperCV282/CrossoverLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen"
+        },
+        {
+          "path": "PaperCV282/CrossoverLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen_phase_atTop"
+        },
+        {
+          "path": "PaperCV282/CrossoverLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen_phase_atBot"
+        },
+        {
+          "path": "PaperCV282/CrossoverResolvedLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen_resolved"
+        },
+        {
+          "path": "PaperCV282/CrossoverResolvedLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen_resolved_phase_atTop"
+        },
+        {
+          "path": "PaperCV282/CrossoverResolvedLocationTheorem.lean",
+          "declaration": "equation_seven_nineteen_resolved_phase_atBot"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.11",
+      "label": "thm:two-clock",
+      "title": "Sign-resolved, two-clock crossover",
+      "environment": "theorem",
+      "page": 60,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 640,
+      "statement_sha256": "2d19c4a9ef9dea7b956a6677c722613fd4f21c72520f679d47e9bf92abe2b66f",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/CrossoverMarkedConvergence.lean",
+          "declaration": "theorem_seven_nine"
+        },
+        {
+          "path": "PaperCV282/CrossoverSignTheorem.lean",
+          "declaration": "theorem_seven_nine_sign"
+        },
+        {
+          "path": "PaperCV282/CrossoverCensored.lean",
+          "declaration": "theorem_seven_nine_censored"
+        },
+        {
+          "path": "PaperCV282/CrossoverCensored.lean",
+          "declaration": "censored_run_length"
+        },
+        {
+          "path": "PaperCV282/CrossoverMarkedTarget.lean",
+          "declaration": "mixedLaw"
+        },
+        {
+          "path": "PaperCV282/CrossoverUncapping.lean",
+          "declaration": "conditionalGamma_cap_tv_le"
+        },
+        {
+          "path": "PaperCV282/CrossoverUncapping.lean",
+          "declaration": "mixedLaw_cap_tv_le"
+        },
+        {
+          "path": "PaperCV282/CrossoverUncappingLimit.lean",
+          "declaration": "actualDistance_tendsto_of_capped"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.12",
+      "label": "thm:affine-crossover",
+      "title": "Affine-conditioned crossover",
+      "environment": "theorem",
+      "page": 61,
+      "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "line": 725,
+      "statement_sha256": "c480cc150ec064c5b6f9b95cc391ce68383d8fd7310d70f9059a3ca547f302be",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/AffineCrossoverCylinder.lean",
+          "declaration": "conditional_border_probability"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverCylinderInformation.lean",
+          "declaration": "eventInformation_eq_cylinderInformation"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverRareTheorem.lean",
+          "declaration": "theorem_seven_ten_rare_tail"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverRareTheorem.lean",
+          "declaration": "theorem_seven_ten_microscopic"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverLocationTheorem.lean",
+          "declaration": "theorem_seven_ten_location"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverLocationTheorem.lean",
+          "declaration": "theorem_seven_ten_location_phase_atTop"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverLocationTheorem.lean",
+          "declaration": "theorem_seven_ten_location_phase_atBot"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverUncappingTheorem.lean",
+          "declaration": "theorem_seven_ten_complete_clock_deficit"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverPrimeClock.lean",
+          "declaration": "nested_affine_prime_tail_probability"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverDeficit.lean",
+          "declaration": "conditionalBorderRate_eq_deficit"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverTheorem.lean",
+          "declaration": "theorem_seven_ten_zero_cap"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverTheorem.lean",
+          "declaration": "theorem_seven_ten_fixed_cap"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverUncappingTheorem.lean",
+          "declaration": "theorem_seven_ten_complete_clock_deficit"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.7a",
+      "label": "cor:dyadic-micro",
+      "title": "Dyadic signed field at the one-factor budget",
+      "environment": "dyadiccorollary",
+      "page": 54,
+      "source": "manuscripts/v3prel8/sections/07b_dyadic_restriction.tex",
+      "line": 6,
+      "statement_sha256": "f5fa24cad9fd373ea0147d7775a48fd2ec8e4ec7c26570a0b1a5bdc76e0e35db",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "article",
+      "number": "7.8a",
+      "label": "cor:empirical-poisson",
+      "title": "Spatial empirical law for a fixed realization",
+      "environment": "empiricalcorollary",
+      "page": 56,
+      "source": "manuscripts/v3prel8/sections/07a_empirical_poisson.tex",
+      "line": 12,
+      "statement_sha256": "4c249fb73bec5a0773684e20038dbf5437fe0e793f30d75aae08f013324017c6",
+      "status": "new_statement_partial",
+      "prior_lean_declarations": [],
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/EmpiricalTransfer.lean",
+          "declaration": "ae_variation_convergence",
+          "scope": "Countable almost-sure frequency-to-total-variation completion from summable tail probabilities. The actual moving-window variance, arithmetic microscopic error and dyadic scale summability remain open."
+        }
+      ]
+    },
+    {
+      "document": "article",
+      "number": "7.8b",
+      "label": "rem:empirical-field-obstruction",
+      "title": "A support obstruction for the fixed local field",
+      "environment": "empiricalobstruction",
+      "page": 58,
+      "source": "manuscripts/v3prel8/sections/07a_empirical_poisson.tex",
+      "line": 154,
+      "statement_sha256": "c0fba248fbca76830deb0f6c5afaa119d69218518fde41467f2fae94d187d490",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "A.1",
+      "label": "supp:lem:runge-calculation",
+      "title": "Coefficient-level Runge estimate",
+      "environment": "lemma",
+      "page": 4,
+      "source": "manuscripts/v3prel8/companion/A_runge_diophantine.tex",
+      "line": 9,
+      "statement_sha256": "8e17070e049f6049bdc1f298e0edace8c51215d0bb01305112c89e1e578fa0af",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperC/Algebra/RungeBound.lean",
+          "declaration": "quantitative_runge_of_distinct"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "A.2",
+      "label": "supp:lem:pell",
+      "title": "Uniform Pell count in a polynomial range",
+      "environment": "lemma",
+      "page": 6,
+      "source": "manuscripts/v3prel8/companion/A_runge_diophantine.tex",
+      "line": 112,
+      "statement_sha256": "d3a5387202981cf1dfdfdb4d974d2000d603954d1733a1db9a1c8368e19da5d0",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PolynomialPellCount.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/PrecisePellCount.lean",
+          "declaration": "lemma_a_two"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "B.1",
+      "label": "supp:prop:cutoff-calculation",
+      "title": "Free Rankin calculation and both saddles",
+      "environment": "proposition",
+      "page": 8,
+      "source": "manuscripts/v3prel8/companion/B_cutoffs.tex",
+      "line": 8,
+      "statement_sha256": "3bc97515dbcf937a57dbe93cf0ef73f002cf52a9f87f8aadcd2f5bda5108da4e",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PrimeEulerPNT.lean",
+          "declaration": "PrimeNumberTheoremRemainder"
+        },
+        {
+          "path": "PaperCV282/PrimeEulerPNT.lean",
+          "declaration": "weighted_prime_error_identity"
+        },
+        {
+          "path": "PaperCV282/PrimeEulerUniform.lean",
+          "declaration": "weighted_prime_sum_normalized_error_of_pnt"
+        },
+        {
+          "path": "PaperCV282/PrimeEulerUniform.lean",
+          "declaration": "log_euler_normalized_error_of_pnt"
+        },
+        {
+          "path": "PaperCV282/PrimeEulerFreeCutoff.lean",
+          "declaration": "euler_errors_sqrt_log_band_of_pnt"
+        },
+        {
+          "path": "PaperCV282/BadStartRankinFreeCutoff.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/CutoffGraphFreeCutoff.lean",
+          "declaration": "normalized_degree_and_edges_free_cutoff_le_eventually"
+        },
+        {
+          "path": "PaperCV282/SaddleExpansion.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SaddleScales.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/FreeCutoffClosureBand.lean",
+          "declaration": "companion_B1_auxiliary_scales"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "B.2",
+      "label": "supp:lem:soft-retention",
+      "title": "Retention of exceptional indicators",
+      "environment": "lemma",
+      "page": 9,
+      "source": "manuscripts/v3prel8/companion/B_cutoffs.tex",
+      "line": 95,
+      "statement_sha256": "b9d68d8370cfe17b4ce84a54818548a36be4cfc3944e795bd6cc9e9f7fafd28c",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/ScalarSteinInput.lean",
+          "declaration": "ScalarSteinFactorsStatement"
+        },
+        {
+          "path": "PaperCV282/SteinLocalTelescoping.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SteinScalarTelescoping.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SteinSoftTelescoping.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/ScalarPoissonBounds.lean",
+          "declaration": "lemma_b_two_finite"
+        },
+        {
+          "path": "PaperCV282/SoftConditionalPoisson.lean",
+          "declaration": "lemma_b_two_average"
+        },
+        {
+          "path": "PaperCV282/SoftMeasureAverage.lean",
+          "declaration": "lemma_b_two_integral"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "C.1",
+      "label": "supp:thm:aggregated",
+      "title": "Finite aggregated comparison",
+      "environment": "theorem",
+      "page": 14,
+      "source": "manuscripts/v3prel8/companion/C_fields.tex",
+      "line": 250,
+      "statement_sha256": "567e46105326148ac7619bab413f3a81279ef9a275dcc53bd196344106e89f8c",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/UnsignedAggregateC1.lean",
+          "declaration": "theorem_c_one"
+        },
+        {
+          "path": "PaperCV282/UnsignedAggregateC1.lean",
+          "declaration": "theorem_c_one_event"
+        },
+        {
+          "path": "PaperCV282/UnsignedMarkedRelations.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/UnsignedLocalProbability.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/UnsignedDirectionalCosts.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/UnsignedAggregateC1.lean",
+          "declaration": "theorem_c_one"
+        },
+        {
+          "path": "PaperCV282/UnsignedAggregateC1.lean",
+          "declaration": "theorem_c_one_event"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "E.1",
+      "label": "supp:lem:transition",
+      "title": "Transition identity minor",
+      "environment": "lemma",
+      "page": 22,
+      "source": "manuscripts/v3prel8/companion/E_boundary.tex",
+      "line": 23,
+      "statement_sha256": "34b3761df6602f44bf86fa67824f94c7a46924a13966e6c06ea101db0c4c089b",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/TransitionPrimeMinor.lean",
+          "declaration": "transition_value_rank_lower"
+        },
+        {
+          "path": "PaperCV282/MicroscopicValuationMatrix.lean",
+          "declaration": "valuation_rank_le_start_rank_add_one"
+        },
+        {
+          "path": "PaperCV282/TransitionPrimeAsymptotics.lean",
+          "declaration": "lemma_e_one"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "E.2",
+      "label": "supp:lem:simple-incidence",
+      "title": "Simple incidence rank",
+      "environment": "lemma",
+      "page": 23,
+      "source": "manuscripts/v3prel8/companion/E_boundary.tex",
+      "line": 97,
+      "statement_sha256": "c672e17f4c8b0595cbd97483e79c44ef97bc473ed0e211f254892f819b9084c4",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/SimpleIncidenceRank.lean",
+          "declaration": "lemma_e_two"
+        },
+        {
+          "path": "PaperCV282/PrivateIncidenceRank.lean",
+          "declaration": "rank_eq_private_add_deleted"
+        },
+        {
+          "path": "PaperCV282/MicroscopicIncidenceRank.lean",
+          "declaration": "microscopic_rank_medium_primes"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "E.3",
+      "label": "supp:lem:pointwise-maximum",
+      "title": "Post-quadratic defect maximum",
+      "environment": "lemma",
+      "page": 24,
+      "source": "manuscripts/v3prel8/companion/E_boundary.tex",
+      "line": 165,
+      "statement_sha256": "2678005cba52b40b6b787ec58526d143f6561a75f84f5a2ea1c47e61d976b85e",
+      "status": "preserved_statement",
+      "prior_lean_declarations": [
+        {
+          "path": "PaperCV282/PostQuadraticGap.lean",
+          "declaration": "lemma_e_three"
+        }
+      ],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "F.1",
+      "label": "supp:pivot:lem:inputs",
+      "title": "Signed inputs and an independent shifted scalar tail",
+      "environment": "lemma",
+      "page": 27,
+      "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
+      "line": 36,
+      "statement_sha256": "e8cf15c39450ab112d1f29248a76047febefc11c88bde742fdcfdbbc3ff9dae4",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "F.2",
+      "label": "supp:pivot:lem:palm",
+      "title": "Dimension-free Palm--Stein bound",
+      "environment": "lemma",
+      "page": 28,
+      "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
+      "line": 113,
+      "statement_sha256": "02c95ab972e0a2e06d3d30917fccdf6f4f5b9ebdd16b9fadb929e442eb90ad6b",
+      "status": "new_statement_partial",
+      "prior_lean_declarations": [],
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/PalmStein.lean",
+          "declaration": "palm_stein_bound",
+          "scope": "Finite coupling with exact size-biased conditional-law identity and the existing analytic solution bounds. The supplied arithmetic forcing and its infinite-source realization are not established here."
+        }
+      ]
+    },
+    {
+      "document": "companion",
+      "number": "F.3",
+      "label": "supp:pivot:lem:rankin",
+      "title": "Uniform Rankin estimate",
+      "environment": "lemma",
+      "page": 29,
+      "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
+      "line": 174,
+      "statement_sha256": "ea89f62e98ad5a347a88eea149a97d219be5e25955e5d0fff743c96441653671",
+      "status": "new_statement_partial",
+      "prior_lean_declarations": [],
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/OddPrimePivot.lean",
+          "declaration": "pivot_count_free_cutoff",
+          "scope": "Actual largest-odd-prime count identified with defective integers, with a uniform bound in every fixed positive sqrt(log X log log X) cutoff band. Translating to the exact M,V,nu formulation and later reciprocal summation remains open."
+        }
+      ]
+    },
+    {
+      "document": "companion",
+      "number": "F.4",
+      "label": "supp:pivot:lem:saddle",
+      "title": "Convex saddle envelope",
+      "environment": "lemma",
+      "page": 30,
+      "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
+      "line": 206,
+      "statement_sha256": "910a50fe55ed4039b75e113ec6d91e7348ea30805a0802cdcc185bf7627f0f04",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "F.5",
+      "label": "supp:pivot:prop:reciprocal",
+      "title": "Reciprocal-pivot sum",
+      "environment": "proposition",
+      "page": 30,
+      "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
+      "line": 231,
+      "statement_sha256": "35cdaeea518bcce8a8fbf61f1b69a04ec3c21dd79206ae81af7587ee0bb8b222",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "F.6",
+      "label": "supp:pivot:prop:footprint",
+      "title": "The total directed footprint",
+      "environment": "proposition",
+      "page": 32,
+      "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
+      "line": 316,
+      "statement_sha256": "ba237d42877d4a9ba1c9d2a0ecea97d53ad4e6a90221c76a59a0ed84788ed0a1",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "F.7",
+      "label": "supp:pivot:prop:forcing",
+      "title": "Exact one-word conditional law",
+      "environment": "proposition",
+      "page": 32,
+      "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
+      "line": 333,
+      "statement_sha256": "39c9b6d7de0232ff766ee3d3d4994cb559143e2b4c10404289e979ab5458aac9",
+      "status": "new_statement_partial",
+      "prior_lean_declarations": [],
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/PrivateForcing.lean",
+          "declaration": "exact_conditional_expectation",
+          "scope": "Constructed forcing on a uniform private block times an arbitrary nonpivot law; all-observable conditional identity, fixed points and preservation of nonpivots. Identification with actual arithmetic prime coordinates and their directed change sets remains open."
+        }
+      ]
+    },
+    {
+      "document": "companion",
+      "number": "G.1",
+      "label": "supp:palm:prop:deletion",
+      "title": "Cost of stronger deletion",
+      "environment": "proposition",
+      "page": 34,
+      "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "line": 44,
+      "statement_sha256": "0127e983a24efe8d3506b31c753f2ea3e0e1c6472553144b8732d2157c0c73e9",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "G.2",
+      "label": "supp:palm:lem:crt",
+      "title": "CRT allocation of all odd prime factors",
+      "environment": "lemma",
+      "page": 35,
+      "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "line": 67,
+      "statement_sha256": "681cfeb53ae36abffa19b24f6b248cb9c3ac3432101ca5996b90c6eaf0c0ea12",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "G.3",
+      "label": "supp:palm:thm:regular",
+      "title": "Private pivots for a Poisson-size target cloud",
+      "environment": "theorem",
+      "page": 35,
+      "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "line": 83,
+      "statement_sha256": "54500e8391aab931d2a61bc9710ef2703924f38bf65ed4e42e363cc88e3db7a6",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "G.4",
+      "label": "supp:palm:prop:palm",
+      "title": "Averaged deletion and the normalized void deficit",
+      "environment": "proposition",
+      "page": 36,
+      "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "line": 137,
+      "statement_sha256": "0e1338aabb5e215fb7b349fcfdc8e0541f2b662037db3f9ab4c5985c53258b2b",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "G.5",
+      "label": "supp:palm:cor:palm-completion",
+      "title": "Completion of the one-sided Palm deficit",
+      "environment": "corollary",
+      "page": 37,
+      "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "line": 183,
+      "statement_sha256": "a8cab45241d203f5dd024ff66fc1bcc822d1d6923b563df9432990db3275ef96",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "G.6",
+      "label": "supp:palm:prop:signed-void",
+      "title": "Signed avoidance and a target-sign bound",
+      "environment": "proposition",
+      "page": 37,
+      "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "line": 219,
+      "statement_sha256": "af1d375416e6aca4600141c1729c4215209da409fce4dd4797217282745addcf",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "G.7",
+      "label": "supp:palm:prop:pair-activity",
+      "title": "The full signed pair activity",
+      "environment": "proposition",
+      "page": 39,
+      "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "line": 311,
+      "statement_sha256": "ddc131b83618f724989a2d0c2adea40a87df16b5d16ccc426eb2fd219586d568",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "G.8",
+      "label": "supp:palm:lem:cumulant",
+      "title": "A finite categorical cumulant bound",
+      "environment": "lemma",
+      "page": 40,
+      "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "line": 338,
+      "statement_sha256": "8cd46fc171ca78d5bc8a6b430b92393220eee30f7be32a8b04bd879bc05d8d6a",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    },
+    {
+      "document": "companion",
+      "number": "G.9",
+      "label": "supp:palm:thm:cumulant-obstruction",
+      "title": "Small microscopic distance with divergent absolute activity",
+      "environment": "theorem",
+      "page": 40,
+      "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "line": 371,
+      "statement_sha256": "1252b5787cf6e3bf6b7b3dea57773d9ea9f5a5d97003d800c6e5a4390bdd6990",
+      "status": "new_statement_open",
+      "prior_lean_declarations": [],
+      "new_lean_components": []
+    }
+  ],
+  "open_workstreams": [
+    {
+      "name": "Typical and affine dictionaries",
+      "labels": [
+        "thm:patterns-summary",
+        "thm:typical-dictionaries",
+        "cor:affine-dictionaries"
+      ],
+      "remaining": "Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities."
+    },
+    {
+      "name": "Information-adapted cutoff",
+      "labels": [
+        "prop:information-labelled"
+      ],
+      "remaining": "Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain."
+    },
+    {
+      "name": "Microscopic signed prefix field",
+      "labels": [
+        "thm:micro-run-tv",
+        "cor:micro-readout",
+        "cor:dyadic-micro"
+      ],
+      "remaining": "Largest-odd-prime reciprocal estimate, directed footprint, exact arithmetic forcing, finite categorical ledger, independent tails, asymptotic completion and dyadic restriction."
+    },
+    {
+      "name": "Empirical Poisson and support obstruction",
+      "labels": [
+        "cor:empirical-poisson",
+        "rem:empirical-field-obstruction"
+      ],
+      "remaining": "Overlapping-window variance, summability, Borel–Cantelli transfer and fixed-realization support lower bound."
+    },
+    {
+      "name": "Palm complements",
+      "labels": [
+        "supp:palm:prop:deletion",
+        "supp:palm:lem:crt",
+        "supp:palm:thm:regular",
+        "supp:palm:prop:palm",
+        "supp:palm:cor:palm-completion",
+        "supp:palm:prop:signed-void",
+        "supp:palm:prop:pair-activity",
+        "supp:palm:lem:cumulant",
+        "supp:palm:thm:cumulant-obstruction"
+      ],
+      "remaining": "Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction."
+    }
+  ],
+  "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."
+}

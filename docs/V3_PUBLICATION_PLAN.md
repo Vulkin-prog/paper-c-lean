@@ -1,5 +1,11 @@
 # Final V3 publication and the next Palomar versions
 
+**3PREL8 update:** the current manuscript and its minimal sources are in
+[`manuscripts/v3prel8`](../manuscripts/v3prel8/README.md). The
+[new coverage ledger](FORMALIZATION_COVERAGE_V3PREL8.md) records the ongoing
+extension. Existing candidate metadata and qualification records retain their
+first-V3PREL scope; they are not qualifications of all 3PREL8 additions.
+
 This plan records the author's decisions of 7–8 September 2026. The current
 sources are the supplied V3PREL article and companion. The final V3 files and
 their published version identifiers are not yet available.

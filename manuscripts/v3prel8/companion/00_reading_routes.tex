@@ -1,0 +1,77 @@
+\section*{How to use this companion}
+\addcontentsline{toc}{section}{How to use this companion}
+This companion and the article form a single proof package. The article gives
+the objects, main arguments and conclusions; the entries below identify the
+calculation behind each excursion and the point at which the main argument
+resumes. Unqualified numbers refer to the article; lettered numbers refer
+to this companion.
+
+\begin{center}\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.24\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{.25\textwidth}@{}}
+\toprule
+Entry from the article & Calculation here & Return to the article\\\midrule
+\Cref{lem:runge} & Coefficients, integrality and the growing-degree remainder in \cref{supp:lem:runge-calculation}. & Weighted defects, \cref{prop:defects}.\\
+\Cref{macro:lem:pell,lem:split-bounded} & Uniform ideal and unit counts, then localization to two square classes in A.2--A.3. & Bounded components and the deep-core estimates.\\
+\Cref{prop:cutoffs,thm:scalar-rates} & Weighted prime sums, degree bounds and scalar retention in B.1--B.3. & Scalar laws or the fields of Section~5.\\
+\Cref{thm:word-field,thm:typical-dictionaries} & Marginal cap, selection probabilities and collision bounds in C.1. & Uniform, typical and affine dictionaries.\\
+\Cref{thm:moving-comparison}(ii) & The two Stein bounds, Poisson filling and the single tail event in C.3--C.4. & The staircase; information-adapted labels in C.5 and \cref{prop:information-labelled}.\\
+\Cref{thm:resolved-kernel} & Poisson atom estimates and the resolution cost in D.1--D.2. & Conditional laws in Section~6.\\
+\Cref{thm:boundary} & Prime incidences, quotient rank and the post-quadratic bound in E.1--E.5. & The microscopic mass and the prefix law.\\
+\Cref{thm:relative-bulk,thm:two-clock} & The normalized error table, finite-cylinder clock and affine conditioning in E.6--E.7. & The two-source comparison and its affine variant.\\\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{The prefix coupling and its optional complement.}
+\Cref{thm:micro-run-tv} enters Appendix F. The signed input register
+\cref{supp:pivot:lem:inputs} points to the one-window and two-window
+estimates, local signed ranks, deep-start bound and independently proved
+scalar tail. The argument then proceeds through the finite Palm--Stein
+inequality, uniform Rankin estimate, reciprocal pivots and exact forcing.
+It returns to the full same-grid field and
+\cref{cor:micro-readout}. The restriction to the dyadic field in
+\cref{cor:dyadic-micro} needs only the stability of the hard scales
+under $M=4N$ and projection of integer labels. No result of Appendix G
+is used along this route.
+Appendix G separately proves regular-cloud statements, finite signed
+Palm identities and the absolute-cumulant obstruction. Its vanishing
+Palm deficit is downstream of Appendix F.
+The empirical consequence \cref{cor:empirical-poisson} is proved in the
+article, immediately after \cref{cor:micro-readout}: it uses concentration
+of overlapping-window frequencies in the independent target and the
+summable microscopic error, with no additional arithmetic input.
+\Cref{rem:empirical-field-obstruction} then gives a finite-support
+obstruction to the analogous local-vector comparison after fixing $f$.
+
+\paragraph{Support and target conventions.}
+For interior starts, the following probabilities hold on good supports
+conditionally on the exposed prime signs.
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}Xccc@{}}\toprule
+Event & Values & Independent equations & Target probability\\\midrule
+Run of length at least $L$ & $L+1$ & $L$ & $2^{-L}$\\
+Absolute word of length $B$ & $B$ & $B$ & $2^{-B}$\\
+Exact run, excess $e$ & $L+e+2$ & $L+e+1$ & $2^{-L-e-1}$\\
+Exact run, excess $e$, sign $s$ & $L+e+2$ & $L+e+2$ & $2^{-L-e-2}$\\\bottomrule
+\end{tabularx}
+\end{center}
+Summing the last row over signs gives $2^{-L-e-1}$, and then summing
+over $e\ge0$ gives $2^{-L}$. With $e\le E$, the maximal support has
+$Q+1$ values, $Q=L+E+1$. This is distinct from the base support
+$B=L+1$ and from the exponential profile parameter $Q_B=2^B$.
+
+\paragraph{Two different summations.}
+For the graph-based spatially labelled comparison of Section~5, marks
+are summed without weights before the pair estimate, leaving the
+relation profile at the base length.
+For an aggregated vector, the directional Stein weights are inserted
+first, and the maximal-length profile is required. Section~C.3 keeps
+this distinction explicit before any asymptotic absorption. Its signed
+local factor can be four, not two. Full marks of base-contained starts
+are not right-censored run lengths.
+
+In the selected-pivot comparison of Appendix F the signed low types are
+instead controlled on maximal supports and summed with their exact
+weights. Its dimension-free bound has no inverse minimum type
+probability. This is a third ledger, not a use of an aggregated
+Stein factor on an unrecorded spatial field.

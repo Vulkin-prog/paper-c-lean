@@ -1,0 +1,65 @@
+\paragraph{Restriction to a dyadic block.}
+The one-factor hard-field budget is not confined to prefix geometry.
+Restricting a larger prefix retains the original integer start labels.
+
+\begin{dyadiccorollary}[Dyadic signed field at the one-factor budget]
+\label{cor:dyadic-micro}
+Let $L_N=\lfloor\log_2N\rfloor-d_N$, where $d_N\in\NN$ and
+$d_N=o(\log N)$, and put $\Lambda_N=N2^{-L_N}\to\infty$.
+Suppose $C_N\in\mathcal F_{Y_N^\sharp}$ has positive probability and,
+for a fixed $c>0$,
+\[
+ I_N^{\rm info}:=-\log\PP(C_N),\qquad
+ I_N^{\rm info}+\log\Lambda_N\le V_N-c\nu_N.
+\]
+For $0<c'<c$ and $0<\varepsilon<1/3$, with
+$I_N=[N,2N)\cap\Z$,
+\[
+ \dTV\!\left(
+  \Law((K^s_{x,e})_{x\in I_N,e\ge0,s=\pm1}\mid C_N),
+  \bigotimes_{x\in I_N,e\ge0,s=\pm1}\Pois(2^{-L_N-e-2})
+ \right)
+ \ll_{c,c',\varepsilon}e^{-c'\nu_N}+N^{-1/3+\varepsilon}.
+\]
+The coordinates retain the full exact excess and actual sign at every
+start; the target uses the same integer labels.
+\end{dyadiccorollary}
+\begin{proof}
+Take $M=4N$ and keep the same length $L_N$. Then
+\[
+ \lfloor\log_2M\rfloor-L_N=d_N+2=o(\log M),\qquad
+ (M-L_N)2^{-L_N}=(4-L_N/N)\Lambda_N.
+\]
+Every base starting in $I_N$ is contained in $[1,M]$ for large $N$;
+no restriction is imposed on its full rightward length.
+
+We record the stability of the hard scales, including the conditioning
+field. Write $H=\log t$ and $v(H)=V_t$, so
+$v=D(H/v)$. Since $D'(z)=u(z)>0$, implicit differentiation gives
+\[
+ v'(H)=\frac{u(H/v)}{v+(H/v)u(H/v)}>0,
+ \qquad v'(H)=O(1/\nu_t).
+\]
+The latter estimate follows from $v\sim\nu_tu(\nu_t)$ and
+$\nu_t=H/v$. Consequently
+\[
+ V_{4N}-V_N=O(1/\nu_N)=o(\nu_N),\qquad
+ \nu_{4N}\sim\nu_N,\qquad Y_{4N}^\sharp\ge Y_N^\sharp.
+\]
+In particular $C_N$ belongs to the hard field at $M=4N$. Choose
+$c'<b<a<c$. The bounded change in log intensity and the displayed
+scale estimates imply
+\[
+ I_N^{\rm info}+\log\big((4N-L_N)2^{-L_N}\big)
+       \le V_{4N}-a\nu_{4N}
+\]
+for all sufficiently large $N$. Apply \cref{thm:micro-run-tv} at $4N$
+with margin $a$ and rate $b$, then project onto $x\in I_N$.
+Total variation contracts under this projection, and eventually
+$e^{-b\nu_{4N}}\le e^{-c'\nu_N}$. The coordinate means are unchanged.
+\end{proof}
+The passage is a restriction of integer coordinates, not an approximate
+identification of two rescaled grids. It improves the available dyadic
+hard-field range at growing intensity. It neither enlarges the permitted
+prime sigma-field nor proves a comparison for arbitrary dictionaries;
+these require their own hypotheses and estimates.

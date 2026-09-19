@@ -1,0 +1,387 @@
+\section{The microscopic boundary and relative factorization}\label{supp:sec:boundary}
+The exact border cylinder and microscopic non-vacancy are different
+objects. The first has probability $2^{-\pi(L)}$ without an error term;
+the second also allows an interior start. This appendix proves that the
+entire interior first moment is exponentially smaller than the border
+probability. A union bound is then sufficient; no microscopic overlap
+expansion is needed.
+
+\subsection{Valuation matrices and the transition range}
+Put $B=L+1$, $V_x=\{x-1,\ldots,x+L-1\}$, and let $M_x$ have rows
+$v(n)=(v_p(n)\bmod2)_p$ for $n\in V_x$.
+The start matrix is $A_x=D_xM_x$, where $D_x$ is the edge-difference
+matrix of a tree on $V_x$. Its kernel consists exactly of the constant
+vectors. Consequently
+\begin{equation}\label{supp:eq:boundary-rank}
+ \rank A_x\ge\rank M_x-1,\qquad
+ \PP(J_{x,L}=1)\le2^{-\rank A_x}.
+\end{equation}
+For $2\le x\le L-1$ a start is impossible: both $2x$ and $2x-2$
+lie inside the putative constant run, and complete multiplicativity
+would force $f(2)=1$ and $f(2)=-1$ simultaneously.
+
+\begin{lemma}[Transition identity minor]\label{supp:lem:transition}
+Uniformly for $x\in\{B-1,B,B+1\}$,
+$\rank A_x\ge(2-o(1))\pi(B)$.
+\end{lemma}
+\begin{proof}
+Write $a=x-1\in\{B-2,B-1,B\}$ and $Y_0=2\sqrt B$.
+For each prime $Y_0<p\le B$ choose
+$m_p=p\lceil a/p\rceil\in[a,a+B-1]$.
+The cofactor satisfies
+$\lceil a/p\rceil\le B/p+1<\sqrt B/2+1<Y_0<p$ for large $B$.
+Thus $m_p$ has valuation one at $p$ and no other prime factor above
+$Y_0$. Each prime $B<q\le a+B-1$ occurs as its own vertex.
+On these rows and columns the valuation matrix has an identity minor
+of size $\pi(a+B-1)-\pi(Y_0)=(2-o(1))\pi(B)$.
+Apply \eqref{supp:eq:boundary-rank}.
+\end{proof}
+
+\subsection{The uniform prime-divisor input}
+The precise literature input is
+\begin{equation}\label{supp:eq:LS-uniform}
+ \forall\varepsilon>0\ \exists B_0(\varepsilon)\ \forall B\ge B_0(\varepsilon)
+ \ \forall n>B:\qquad
+ \omega\left(\prod_{j=0}^{B-1}(n+j)\right)\ge(2-\varepsilon)\pi(B).
+\end{equation}
+It is equation~(14) of Laishram--Shorey \cite{LaishramShorey2004}.
+Its uniformity is important. For $n>17B/12$, their Theorem~2 gives
+at least $\pi(2B)$ prime divisors, apart from a fixed exceptional pair.
+For $B<n\le17B/12$, every prime at most $B$ divides the block product,
+and each prime in $[n,n+B-1]$ is an additional divisor. Hence the number
+is at least
+\[
+ \pi(B)+\pi(n+B-1)-\pi(n-1)=(2-o(1))\pi(B),
+\]
+uniformly in that bounded ratio, by the prime number theorem.
+This verifies the quantifier order in \eqref{supp:eq:LS-uniform}.
+
+Suppose now that $B+2\le x\le B^2+2$. Every vertex is at most
+$B^2+B$. Equation~\eqref{supp:eq:LS-uniform} supplies
+$t_x\ge(1-o(1))\pi(B)$ primes $q>B$ in the block.
+Each has valuation one, since $q^2\ge(B+1)^2>B^2+B$; it occurs at
+one vertex only, since $q>B-1$; and two such primes cannot occupy the
+same vertex, since their product exceeds $B^2+B$.
+Their columns span a coordinate subspace $U_x$ of dimension $t_x$.
+Call its rows the private rows.
+
+\subsection{A global count of even valuations}
+Fix an integer $K\ge2$ and use the medium primes $B/K<p\le B$.
+Let $E_x$ be their total odd-valuation incidence mass in $V_x$.
+We claim
+\begin{equation}\label{supp:eq:medium-mass}
+ E_x\ge(H_K-1-o(1))\pi(B),\qquad H_K=\sum_{j=1}^K\frac1j.
+\end{equation}
+The block contains at least $\lfloor B/p\rfloor$ multiples of $p$.
+An incidence of positive even valuation is among those with
+$n=ap^2\le B^2+B$. Thus $a\le K^2+1$ for sufficiently large $B$.
+For fixed $a$, successive distinct primes $p,q>B/K$ give values
+$ap^2,aq^2$ separated by more than $2aB/K$; only
+$1+K/(2a)$ such values can lie in an interval of length $B$.
+Summing over the fixed number of possible $a$ shows that the total
+number of square divisibilities is $O_K(1)$, uniformly in $x$.
+Subtracting all of them is a permissible overcount of even valuations.
+
+The main incidence count can be evaluated without rounding every summand:
+\begin{align*}
+ \sum_{B/K<p\le B}\left\lfloor\frac Bp\right\rfloor
+ &=\sum_{j=1}^{K-1}\bigl(\pi(B/j)-\pi(B/K)\bigr)\\
+ &=(H_{K-1}-(K-1)/K+o(1))\pi(B)\\
+ &=(H_K-1+o(1))\pi(B).
+\end{align*}
+This proves \eqref{supp:eq:medium-mass}. The improvement over a
+prime-by-prime loss is essential: subtracting one for each prime would
+lose a positive proportion of $\pi(B)$.
+
+\subsection{Rank of a simple incidence matrix}
+\begin{lemma}[Simple incidence rank]\label{supp:lem:simple-incidence}
+Let $H$ be a finite binary matrix. Suppose every row has weight at most
+two, every column has weight at most $K$, and no pair of columns occurs
+as the support of two weight-two rows. If $E$ is the number of entries
+equal to one, then
+\[
+ \rank H\ge\frac{E}{K+1}.
+\]
+\end{lemma}
+\begin{proof}
+Remove zero columns and view a weight-two row as an edge between its
+columns, and a weight-one row as a pin. In a connected component with
+$r$ active columns, an unpinned component has rank $r-1$ and a pinned
+component has rank $r$. The first assertion follows because the edge
+vectors of a connected graph span the even-parity subspace; one pin
+then spans its missing direction.
+
+A pinned component has incidence mass at most $Kr$, which is at most
+$(K+1)$ times its rank. An unpinned component has $r\ge2$; simplicity
+and the degree bound give incidence mass at most
+$\min\{r(r-1),Kr\}$. If $r\le K+1$ use the first bound, and if
+$r\ge K+1$ use the second. In either case the mass is at most
+$(K+1)(r-1)$. Sum over the components.
+\end{proof}
+
+Delete the private rows from the medium-prime columns of $M_x$, and
+call the resulting matrix $H_x$. For fixed $K$ and sufficiently large
+$B$, a private row carries at most one medium prime: otherwise a vertex
+would exceed $B(B/K)^2>B^2+B$. Thus deletion removes at most $t_x$
+incidences. A remaining row carries at most two medium primes, since
+$(B/K)^3>B^2+B$. A column has weight at most $K$.
+Finally two weight-two rows with the same support $p,q$ would be two
+multiples of $pq>(B/K)^2>B$ inside one block, which is impossible.
+All hypotheses of \cref{supp:lem:simple-incidence} are therefore met.
+Modulo $U_x$, a medium column is represented by its restriction to the
+remaining rows, so
+\begin{align}\label{supp:eq:surplus-K}
+ \rank A_x
+ &\ge t_x+\frac{(E_x-t_x)_+}{K+1}-1\notag\\
+ &\ge \left(1+\frac{H_K-2}{K+1}-o(1)\right)\pi(B).
+\end{align}
+For the last step, if $E_x\le t_x$ use $t_x\ge E_x$; otherwise use
+$t_x\ge(1-o(1))\pi(B)$ and \eqref{supp:eq:medium-mass}.
+The parameter can be chosen exactly within this family. Set
+$\delta_K=(H_K-2)/(K+1)$. Then
+\[
+ \delta_{K+1}-\delta_K
+   =\frac{3-H_K}{(K+1)(K+2)}.
+\]
+Since $H_{10}<3<H_{11}$ and $H_K$ is strictly increasing, the unique
+maximizer over integers $K\ge2$ is $K=11$. Consequently we use
+\[
+ H_{11}=\frac{83711}{27720},\qquad
+ \delta_*:=\frac{H_{11}-2}{12}
+          =\frac{28271}{332640}>\frac1{12}.
+\]
+This optimizes only the displayed fixed-cutoff family of bounds,
+not the rank surplus among all possible methods.
+
+The local product comparisons hold for $B\ge11^3+1=1332$:
+$(B/11)^3>B^2+B$, $B^3/121>B^2+B$ and $(B/11)^2>B$.
+In the square-divisibility count one may then use $a\le122$ and at most
+seven values per $a$, giving the safe bound $854$. These elementary
+checks do \emph{not} make $1332$ a threshold for the complete asymptotic
+theorem: the prime-divisor and prime number theorem thresholds still
+depend on the desired error margin.
+
+\subsection{Post-quadratic starts and summation}
+\begin{lemma}[Post-quadratic defect maximum]\label{supp:lem:pointwise-maximum}
+There is an absolute constant $\theta_0$ such that, for all sufficiently
+large $B$ and every $x>B^2+2$, the number $m_x$ of $B$-defective
+vertices in $V_x$ is at most $B-g_L$, where
+\[
+ g_L=\frac B{\log B}
+       (\log\log B-\log\log\log B-\theta_0),
+ \qquad g_L/\pi(B)\longrightarrow\infty.
+\]
+In particular $\PP(J_{x,L}=1)\le2^{-g_L}$.
+\end{lemma}
+\begin{proof}
+We use the Balasubramanian--Shorey exclusion
+\cite{BalasubramanianShorey1993} in the form recorded by Shorey
+\cite[pp.~55--56, equation (15) with exponent $2$ and the subsequent
+square-case statement]{Shorey1994BakerApplications}.
+It has an absolute constant $\theta_0$ and, for every fixed $\varepsilon>0$,
+a threshold $k_0(\varepsilon)$ such that, for $k\ge k_0(\varepsilon)$,
+\[
+ \prod_{i=1}^t(z+d_i')=by^2,\quad
+ 0\le d_1'<\cdots<d_t'<k,\quad b>0,\quad P^+(b)\le k,
+ \quad z>e^{1-\theta_0+\varepsilon}\frac{k\log k}{\log\log k}
+\]
+forces $t<\mu_k(\theta_0)$, where
+\[
+ \mu_k(\theta)=k\left(1-\frac{\log\log k}{\log k}
+       +\frac{\log\log\log k}{\log k}+\frac\theta{\log k}\right).
+\]
+The smoothness condition on $b$ is part of (15); it is not a size
+bound on $b$. All thresholds are uniform in $z,b,y$ and the shifts.
+To obtain the form used here, first fix $\varepsilon=1$. Increase the
+absolute threshold until
+\[
+ k^2>e^{2-\theta_0}\frac{k\log k}{\log\log k}.
+\]
+For $m>k^2$ and $1\le d_1<\cdots<d_t\le k$, set
+$z=m+1$ and $d_i'=d_i-1$. These substitutions preserve every factor
+$m+d_i=z+d_i'$, put all shifts in $[0,k)$, and satisfy the required
+height bound. Hence the product equation forces $t<\mu_k(\theta_0)$.
+Write $V_x=\{m+1,\ldots,m+B\}$ with $m=x-2>B^2$.
+The product of its $B$-defective vertices is a square times a
+$B$-smooth integer. There is no extra upper bound on that smooth
+coefficient in the imported statement. Its contrapositive gives
+$m_x<\mu_B(\theta_0)=B-g_L$ beyond the fixed absolute threshold.
+The affine defect bound is
+$\PP(J_{x,L}=1)\le2^{-L}2^{\max(m_x-1,0)}$, which is at most
+$2^{-g_L}$ for large $B$.
+\end{proof}
+
+Partition the starts $2\le x\le2L^2$ into the forbidden early range,
+the three transition starts, $B+2\le x\le B^2+2$, and the remaining
+post-quadratic starts. Their total probabilities are respectively
+\[
+ 0,\qquad 3\,2^{-(2-o(1))\pi(B)},\qquad
+ O(B^2)2^{-(1+\delta_*-o(1))\pi(B)},\qquad
+ O(L^2)2^{-g_L}.
+\]
+Since $\log B=o(\pi(B))$ and $\pi(B)=\pi(L)+O(1)$, their sum is
+at most $2^{-(1+\delta_*-o(1))\pi(L)}$.
+Adding the exact border event proves
+\[
+ q_L=2^{-\pi(L)}\bigl(1+O_{\delta_0}(2^{-\delta_0\pi(L)})\bigr)
+ \quad(0<\delta_0<28271/332640),
+\]
+including the displayed choice $\delta_0=1/12$.
+The same interior sum divided by $q_L$ bounds the conditional
+probability that the exact border is not the unique microscopic start.
+
+The cutoff-invariance and mesoscopic estimates use one further
+observation. At heights above $2L^2$, two $B$-defective vertices at
+distance at most $L$ have distinct squarefree $B$-smooth parts; equal
+parts would place consecutive squares too far apart. The number of
+choices of these parts is $\exp(O(L/\log L))$, and the uniform Pell
+bound gives the same type of bound on the number of corresponding windows in the entire admissible population
+up to twice the ambient height. Multiplication by $2^{-g_L}$ remains
+$o(2^{-\pi(L)})$, without an exterior height-slice factor. Starts with at most one defect
+cost only their number times $2^{-L}$. This proves the bounds in the
+article with cutoff $K\le2^L$, using $2^L$ as an artificial upper
+ambient scale; it does not require a dyadic lower endpoint comparable
+to that artificial scale.
+
+\subsection{The prime clock}
+Section~\ref{sec:prime-clock} of the article proves the exact prime-clock
+law and explains why integer overshoots need not be tight. We record here
+the conventions needed for the conditional comparisons. Let
+$J_\partial=\min\{j:f(p_j)=-1\}$. On $C_L=1$ and the full-measure
+event $J_\partial<\infty$, put $G_L=J_\partial-\pi(L)-1$;
+assign $G_L=0$ elsewhere. Then
+\[
+ \PP(G_L=k\mid C_L=1)=2^{-k-1},\qquad
+ \PP(\ell_\partial-L\ge h\mid C_L=1)
+             =2^{-[\pi(L+h)-\pi(L)]}.
+\]
+Since $\{C_L=1\}\subseteq\{B_L^{\rm mic}>0\}$, the conditional
+law of $G_L$ given microscopic non-vacancy is a mixture whose
+$C_L=1$ component is exactly geometric. Its distance from that law is
+at most $\PP(C_L=0\mid B_L^{\rm mic}>0)=O(2^{-\delta_0\pi(L)})$.
+The next subsection constructs the finite-cylinder representative used
+to carry this mark through the stable product comparison.
+
+\subsection{Relative bulk estimates and affine conditioning}
+\label{supp:sec:boundary-conditioning}
+Let $\lambda=M2^{-L}\to0$, $L=O(\log M)$ and
+$U=[\lceil M^\delta\rceil,M-L+1]\cap\Z$. Fix $\delta$ and an
+upper bound for $L/\log M$. With $Y=Y_M^\sharp$, truncate the signed
+exact marks at $E$ and put $Q=L+E+1$. The averaged conditional
+process error is at most
+\[
+ C\left[p\mathcal M_B+p|D_Y(Q)|
+       +p^2\bigl(MQ+E_Y(Q)+R_{2,\delta}(M,L)\bigr)\right].
+\]
+The local ranks are those in Appendix C. Summing signs and exact marks
+before the separated-pair estimate leaves the relation sum at the base
+length $L$; only the bad supports and shared-prime graph use $Q$.
+After division by $Mp=\lambda$, the contributions are
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}lX@{}}\toprule
+Source & Normalized contribution\\\midrule
+One-window defects & $M^{-1/2+o(1)}$\\
+Bad maximal supports & $e^{-V_M+o(\nu_M)}$\\
+Diagonal and local pairs & $pQ$\\
+Shared-prime edges & $\lambda(e^{-V_M+o(\nu_M)}+M^{-1+o(1)})$\\
+Base-length relations & $M^{-1/3+\varepsilon}(1+\lambda)$\\
+Actual and target mark tails & $O(2^{-E-1})(1+M^{-1/2+o(1)})$\\\bottomrule
+\end{tabularx}
+\end{center}
+For the last row, the exact tail event is a start at length $L+E+1$;
+the masked first-moment estimate at that length gives the displayed
+bound after averaging the conditional tail probability. Choose
+$E=\lceil V_M/\log2\rceil$. Then $Q=O(\log M)$,
+$pQ=O(\log M/M)$ for large $M$, and every row tends to zero.
+This proves the signed, marked relative error in
+\eqref{eq:relative-bulk-rate}, not merely its unmarked projection.
+
+The microscopic vector is measurable at the same prime cutoff because
+$2L^2+L<Y$ for large $M$. For a fixed $K$, define $G_{L,K}$ from the
+first $K$ prime signs after $L$: count consecutive positive signs, capped
+at $K$, and put the value zero off $C_L=1$.
+This finite-cylinder variable agrees almost surely with $G_L\wedge K$;
+this makes measurability on the finite prime sigma-field explicit,
+independently of the convention on the null nonterminating event. Bertrand's postulate bounds the $K$th
+prime after $L$ by $2^K L<Y$ eventually, for fixed $K$.
+The stable lift retains $(\mathbf B_L,G_{L,K})$ jointly with the full
+signed marked bulk field, at cost $\Delta_M=o(\lambda)$.
+
+Write $\alpha=2^{-\pi(L)}$, $b=|U|p$, and let $u_M$ and $v_M$ denote
+the interior microscopic first moment and the mesoscopic hit probability.
+The source bounds give $u_M+v_M=o(\alpha+b)$.
+The one-hit calculation in the proof of \cref{thm:two-clock}
+gives sparse-target mass $e^{-b}[\alpha+(1-\alpha)b]$ and a change
+of mixture weights at most $b$ relative to \eqref{eq:two-clock-target}.
+The conditional bulk mark, sign and position retain their full laws;
+only the boundary clock is truncated.
+Simultaneous sources and multiple bulk points have probabilities at most
+$\alpha b$ and $b^2/2$. Since the sparse-event mass is asymptotic to
+$\alpha+b$, normalizing the source subprobability measures gives
+\[
+ \dTV\bigl(\Law(\Gamma_{M,L}^{[K]}\mid R_M\ge L),Q_{M,L}^{[K]}\bigr)
+ \ll\frac{\Delta_M+u_M+v_M+\alpha b+b^2}{\alpha+b}+b.
+\]
+The additional $b$ is already absorbed by the last two numerator terms.
+For the actual first-hit law the discarded boundary tail is at most
+$2^{-K-1}$: its unnormalized mass is at most $\alpha2^{-K-1}$ and the
+hit probability is at least $\alpha$. The target tail is also at most
+$2^{-K-1}$. First let $M\to\infty$, then let $K\to\infty$.
+No lower bound on either mixture weight, convergence of their ratio, or
+exact finite-size independence is required. The grid-to-Lebesgue passage
+is a separate weak limit.
+
+Now let $A=\{GX=b\}$ be a compatible affine cylinder on the exposed
+prime signs. Write $r=\rank G$, $I=r\log2$, and
+$U_L=\Span\{e_p:p\le L\}$. If the stack with $C_L$ is compatible,
+its rank is $r+\pi(L)-\kappa$, where
+$\kappa=\dim(\operatorname{row}(G)\cap U_L)$.
+Consequently
+\[
+ \PP(C_L=1\mid A)=2^{-(\pi(L)-\kappa)}
+\]
+exactly, whenever the exposed cutoff contains the border coordinates.
+This finite identity needs no rare-intensity regime. If the stack is
+incompatible, that probability is zero.
+The parameter $\kappa$ counts consequences entirely supported on the
+border coordinates, not input equations that merely mention them.
+
+For the asymptotic conclusions assume $M,L\to\infty$,
+$L\le A_0\log M$, $M2^{-L}\to0$, and eventually
+$I\le V_M-c\nu_M$ for fixed $c>0$.
+The matrices, their dimensions and right-hand sides may vary with $M$.
+Multiply the quantitative normalized bulk ledger by $e^I$ before taking
+limits. The cutoff term is at most $e^{-c\nu_M+o(\nu_M)}$; all polynomial
+terms still vanish because $I=O(V_M)=o(\log M)$.
+Thus the amplified bulk error is $o(\lambda)$; amplification of an
+unspecified little-oh alone would not justify this conclusion.
+Also $I=O(V_M)=o(\pi(L))$ and $\kappa\le r$. The conditioned
+microscopic interior mass, relative to $2^{-\pi(L)+\kappa}$, is at
+most
+\[
+ \exp(I)2^{-\delta_0\pi(L)-\kappa}=o(1).
+\]
+The mesoscopic first term is $\lambda M^{\delta-1}$ and remains
+$o(\lambda)$ after multiplication by $e^I$; its other term is dominated
+by $2^{-g_L}$ and remains negligible relative to the border mass.
+The same one-hit calculation, normalized by $2^{-\pi(L)+\kappa}+b$,
+therefore proves the affine-conditioned crossover with $\pi(L)$ replaced
+by $\pi(L)-\kappa$. No assumption on future prime coordinates is used
+for the rare tail, border concentration or location laws.
+
+Finally let $q_1<\cdots<q_K$ be the first primes after $L$, and put
+$Q_{L,K}=\Span\{e_{q_1},\ldots,e_{q_K}\}$ and
+$H_L=\operatorname{row}(G)+U_L$. If the extended stack is compatible,
+\[
+ \PP(G_L\ge K\mid A,C_L=1)
+                 =2^{-[K-\dim(H_L\cap Q_{L,K})]};
+\]
+otherwise this tail probability is zero. Thus the ordinary geometric
+mark is preserved when, for every fixed $K$, the condition
+$H_L\cap Q_{L,K}=\{0\}$ holds beyond a threshold that may depend on $K$.
+This is separate from the parameter $\kappa$ controlling the border mass.
+Fix $K$, use the finite-cylinder representative and joint stable lift,
+and take the size limit before $K\to\infty$. No common threshold in $K$
+and no neutrality for a growing truncation $K(M)$ is assumed.
+The exact rank formula remains the alternative when neutrality fails;
+no relative estimate for a disappearing mixture component is inferred.

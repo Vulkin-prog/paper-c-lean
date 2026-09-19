@@ -1,5 +1,11 @@
 # Five new Palomar candidates for V3PREL
 
+**3PREL8 update:** the current manuscript and its minimal sources are in
+[`manuscripts/v3prel8`](../manuscripts/v3prel8/README.md). The
+[new coverage ledger](FORMALIZATION_COVERAGE_V3PREL8.md) records the ongoing
+extension. Existing candidate metadata and qualification records retain their
+first-V3PREL scope; they are not qualifications of all 3PREL8 additions.
+
 The maintainer selected **five new registrations**. No existing Palomar
 identifier is reused or assigned to these files. The candidates select
 groups of declarations from the broader
