@@ -455,3 +455,40 @@ convergence à toutes les tailles, ni l'obstruction de support 7.8b.
 Aucune correction du manuscrit n'est imposée par ce lot ; les points ci-dessus
 sont des précisions ou des simplifications de preuve. Ses fichiers restent
 inchangés.
+
+
+## Obstruction du champ empirique complet — douzième lot
+
+La remarque 7.8b est maintenant démontrée, y compris la borne finie et
+l'assertion `N*p^2=M^(-1+o(1))`, sans prémisse analytique ou arithmétique.
+Aucune correction du texte n'est nécessaire. Les précisions suivantes
+peuvent simplifier sa présentation ou rendre sa portée plus explicite.
+
+- **Un argument déterministe général.** Pour toute loi empirique issue de
+  N observations et toute cible Q, si les atomes d'un événement E ont une
+  masse au plus b, alors `TV >= Q(E)-N*b`. Il suffit de tester E privé
+  du support empirique. Les observations peuvent être répétées et ne sont
+  soumises à aucune hypothèse d'indépendance. Cela explique directement
+  pourquoi la conclusion vaut pour chaque réalisation fixée.
+- **Le seuil de deux points.** Pour la cible de Poisson produit,
+  `Q{|z|>=2}=1-exp(-h*p)*(1+h*p)` et `Q{z}<=p^2` sur cet événement
+  lorsque p<=1. La borne individuelle résulte simplement de l'exponentielle
+  au plus un, des factorielles au moins un, puis de `p^|z|<=p^2`.
+- **La convergence du terme d'erreur suffit à l'obstruction.** On obtient
+  directement `N*p^2 <= 2*exp(2*alpha*V)/M` à partir d'un certain rang,
+  ce qui tend vers zéro puisque V=o(log M). L'égalité logarithmique plus
+  précise affichée dans le papier est également formalisée :
+  `log(N*p^2)/log M -> -1`. Elle suit de `M/4<=N<=2M` éventuellement
+  et de `L*log 2/log M -> 1`.
+- **Positions et normalisation exactes.** Avec des indices Lean commençant
+  à zéro, la coordonnée relative i correspond au départ entier `u+i+2`,
+  donc exactement à `J_{u+i+1,L}` pour l'indice i du papier commençant à un.
+  La mesure empirique est l'image de l'origine uniforme ; la masse de tout
+  événement est démontrée égale au nombre d'observations dans cet événement
+  divisé par N. La convention aux premiers indices ne change pas la limite,
+  et les fenêtres sont finalement toutes contenues, comme établi pour 7.8a.
+
+Le corollaire 7.8a et la remarque 7.8b sont donc tous deux formalisés.
+Seul le corollaire utilise les prémisses de comparaison microscopique déjà
+répertoriées ; la remarque repose sur la taille du support et les échelles.
+Les sources du manuscrit restent inchangées.

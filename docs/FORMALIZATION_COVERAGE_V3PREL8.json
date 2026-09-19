@@ -2947,9 +2947,55 @@
       "source": "manuscripts/v3prel8/sections/07a_empirical_poisson.tex",
       "line": 154,
       "statement_sha256": "c0fba248fbca76830deb0f6c5afaa119d69218518fde41467f2fae94d187d490",
-      "status": "new_statement_open",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/EmpiricalSupportTarget.lean",
+          "declaration": "multiple_point_mass_le",
+          "scope": "For the actual independent product-Poisson target and p<=1, every configuration of total count at least two has mass at most p^2."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalSupportTarget.lean",
+          "declaration": "field_multiple_probability",
+          "scope": "The total mass of configurations with at least two points is exactly 1-exp(-h*p)*(1+h*p)."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalFiniteSupport.lean",
+          "declaration": "empiricalMeasure_real_apply",
+          "scope": "The empirical pushforward of the uniform origin equals the exact observed frequency of each measurable event, including repeated observations."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalFiniteSupport.lean",
+          "declaration": "empirical_poisson_obstruction",
+          "scope": "For any deterministic N observations in N^h, TV from the actual product-Poisson law is at least 1-exp(-h*p)*(1+h*p)-N*p^2. No arithmetic or independence premise on the observations."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalSupportScales.lean",
+          "declaration": "support_penalty_tendsto",
+          "scope": "At the literal paper scales, N_k*p_k^2 tends to zero; all floor and origin-count operations are retained."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalSupportGrowth.lean",
+          "declaration": "support_penalty_log_ratio_tendsto",
+          "scope": "The displayed M_k^(-1+o(1)) assertion is proved as log(N_k*p_k^2)/log(M_k) -> -1, for alpha>0 and tau>0."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalSupportTheorem.lean",
+          "declaration": "actualLocalVector_eq_actualStarts",
+          "scope": "At contained origins, coordinate i is precisely the existing arithmetic start field at integer position u+i+2 with zero-based Fin coordinates."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalSupportTheorem.lean",
+          "declaration": "actual_empirical_vector_bound",
+          "scope": "The displayed finite lower bound holds for the actual arithmetic empirical local-vector law, not only an abstract supported measure."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalSupportTheorem.lean",
+          "declaration": "paper_empirical_vector_obstruction",
+          "scope": "Remark 7.8b: for every fixed realization, literal alpha in (0,1) and tau>0, the empirical full-vector TV liminf is at least 1-exp(-tau)*(1+tau)>0. No analytic/arithmetic literature input or assumed asymptotic premise."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -3681,7 +3727,7 @@
         "cor:empirical-poisson",
         "rem:empirical-field-obstruction"
       ],
-      "remaining": "Corollary 7.8a, including the literal length/window regime, exact Poisson mean and displayed window-size estimates, is proved with the same explicit baseline analytic/arithmetic inputs as the microscopic theorem. The fixed-realization full-field support obstruction (7.8b) remains open."
+      "remaining": "Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation."
     },
     {
       "name": "Palm complements",

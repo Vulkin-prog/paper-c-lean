@@ -1,0 +1,77 @@
+import PaperCPrel8.EmpiricalPaperBudget
+import PaperCPrel8.EmpiricalSupportTarget
+
+/-! # Vanishing support penalty at the exact paper scales
+
+The number of possible origins is at most 2M. The site probability is
+M^-1 exp(alpha*V+O(1)), so the finite-support penalty N*p^2 tends to zero.
+No arithmetic comparison or external analytic premise is used.
+-/
+namespace PaperC.Prel8.EmpiricalSupportScales
+open Filter Topology
+open PaperC.Prel8.EmpiricalPaperScales PaperC.Prel8.EmpiricalPaperBudget
+open PaperC.Prel8.EmpiricalScaleBounds
+open PaperC.V282.AggregateCutoffRemainder PaperC.V282.GeometricSaddleSummability
+open PaperC.V282.SaddleCutoffAdmissibility
+noncomputable section
+
+/-- Even the totalized initial origin count is at most twice the dyadic height. -/
+theorem origins_le_twice_size (alpha tau : ℝ) (k : ℕ) :
+    origins alpha tau k ≤ 2*size k := by
+  have hm : 0 < size k := by unfold size; positivity
+  unfold origins sites
+  omega
+
+/-- Explicit bound for the support penalty, with all floors retained. -/
+theorem support_penalty_bound (alpha tau : ℝ) (ha : 0 ≤ alpha) :
+    ∀ᶠ k in atTop,
+      (origins alpha tau k:ℝ)*((1:ℝ)/2^(length alpha k))^2 ≤
+        2*Real.exp ((2*alpha)*cutoff k)/(size k:ℝ) := by
+  filter_upwards [length_band alpha ha,
+    cutoff_tendsto.eventually (eventually_ge_atTop (0:ℝ))] with k hd hV
+  have hm : (0:ℝ) < size k := by unfold size; positivity
+  have hn : (origins alpha tau k:ℝ) ≤ 2*(size k:ℝ) := by
+    exact_mod_cast origins_le_twice_size alpha tau k
+  have hr := (rounded_intensity_bounds alpha (mul_nonneg ha hV)).2
+  rw [← dyadic_rate_identity alpha hd.1] at hr
+  have hp : (0:ℝ) ≤ (size k:ℝ)/(2:ℝ)^(length alpha k) := by positivity
+  calc
+    _ ≤ (2*(size k:ℝ))*((1:ℝ)/2^(length alpha k))^2 := mul_le_mul_of_nonneg_right hn (sq_nonneg _)
+    _ = 2*((size k:ℝ)/(2:ℝ)^(length alpha k))^2/(size k:ℝ) := by field_simp
+    _ ≤ 2*(Real.exp (alpha*cutoff k))^2/(size k:ℝ) := by gcongr
+    _ = _ := by simp only [← Real.exp_nat_mul,Nat.cast_ofNat,mul_assoc]
+
+/-- The exact N*p^2 penalty tends to zero, without a growth hypothesis left to assume. -/
+theorem support_penalty_tendsto (alpha tau : ℝ) (ha : 0 ≤ alpha) :
+    Tendsto (fun k => (origins alpha tau k:ℝ)*((1:ℝ)/2^(length alpha k))^2)
+      atTop (𝓝 0) := by
+  have hu := size_tendsto.eventually
+    (constant_exp_saddle_le_power_eventually 2 (2*alpha) (1/2) (by norm_num) (by norm_num))
+  have ht : Tendsto (fun k => (size k:ℝ)^(-(1/(2:ℝ)))) atTop (𝓝 0) :=
+    (tendsto_rpow_neg_atTop (by norm_num : (0:ℝ)<1/2)).comp
+      (tendsto_natCast_atTop_atTop.comp size_tendsto)
+  apply squeeze_zero' (Eventually.of_forall fun k => by positivity) ?_ ht
+  filter_upwards [support_penalty_bound alpha tau ha,hu] with k hb hu
+  have hm : (0:ℝ)<size k := by unfold size; positivity
+  change 2*Real.exp ((2*alpha)*cutoff k) ≤ (size k:ℝ)^(1/(2:ℝ)) at hu
+  calc
+    _ ≤ 2*Real.exp ((2*alpha)*cutoff k)/(size k:ℝ) := hb
+    _ ≤ (size k:ℝ)^(1/(2:ℝ))/(size k:ℝ) := div_le_div_of_nonneg_right hu hm.le
+    _ = _ := by
+      simpa only [Real.rpow_one, show (1/(2:ℝ))-1 = -(1/(2:ℝ)) by norm_num]
+        using (Real.rpow_sub hm (1/(2:ℝ)) 1).symm
+
+/-- The explicit finite-support lower bound converges to the paper's positive obstruction. -/
+theorem support_lower_bound_tendsto (alpha tau : ℝ) (ha : 0 ≤ alpha) (ht : 0 ≤ tau) :
+    Tendsto (fun k => 1-Real.exp (-(windowSize alpha tau k:ℝ)*((1:ℝ)/2^(length alpha k)))*
+      (1+(windowSize alpha tau k:ℝ)*((1:ℝ)/2^(length alpha k)))-
+      (origins alpha tau k:ℝ)*((1:ℝ)/2^(length alpha k))^2)
+      atTop (𝓝 (1-Real.exp (-tau)*(1+tau))) := by
+  have hm := window_mean_tendsto alpha tau ha ht
+  have he := (Real.continuous_exp.tendsto _).comp hm.neg
+  have hp := support_penalty_tendsto alpha tau ha
+  have hh := ((tendsto_const_nhds (x := (1:ℝ))).sub (he.mul (hm.const_add 1))).sub hp
+  simpa only [sub_zero,neg_mul,Function.comp_def] using hh
+
+end
+end PaperC.Prel8.EmpiricalSupportScales

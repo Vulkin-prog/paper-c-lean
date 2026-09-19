@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **321 proved theorems in 65 modules**. It is an
+This library contains **346 proved theorems in 70 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -72,6 +72,11 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `EmpiricalPaperBudget` | Actual intensity and information budget; summable h/n and h/N; eventual window containment |
 | `EmpiricalPaperTheorem` | Corollary 7.8a for the genuine arithmetic empirical law at the literal scales, with baseline microscopic inputs |
 | `EmpiricalWindowGrowth` | Explicit constants for h=M*exp(-alpha*V+O(1)) and log h/log M -> 1 |
+| `EmpiricalSupportTarget` | Actual product-Poisson atom and two-or-more event masses; strict positivity of the obstruction |
+| `EmpiricalFiniteSupport` | Exact uniform empirical frequencies and support-cardinality TV obstruction |
+| `EmpiricalSupportScales` | Vanishing literal N*p^2 penalty and convergence of the finite lower bound |
+| `EmpiricalSupportGrowth` | Actual origin count and proof of N*p^2=M^(-1+o(1)) |
+| `EmpiricalSupportTheorem` | Remark 7.8b for every realization, with exact arithmetic coordinates and positive liminf |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -97,7 +102,9 @@ sharp overlapping-window variance and normalized almost-sure completion.
 The literal length/window regime, summability and normalization are now
 instantiated: corollary 7.8a, including its window-size clauses, is proved with
 the same explicit analytic/arithmetic inputs as the microscopic comparison.
-The support obstruction 7.8b remains open.
+The support obstruction 7.8b is now proved for every fixed realization,
+including its finite bound, positive liminf and displayed logarithmic penalty
+exponent. That deterministic result needs no analytic/arithmetic inputs.
 No proof placeholder or new Lean axiom is used.
 
 ```sh
@@ -108,5 +115,5 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/empirical-paper/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/empirical-support/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
