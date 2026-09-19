@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **265 proved theorems in 56 modules**. It is an
+This library contains **296 proved theorems in 61 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -63,6 +63,11 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `DyadicRestriction` | Literal integer-site source/target restriction and inclusion of full prime sigma-algebras |
 | `DyadicBudget` | One-factor dyadic budget transported to 4N; fixed logarithmic bands and hard cutoff inclusion |
 | `DyadicMicroscopicTheorem` | Full signed dyadic comparison at the paper budget and exact moving-depth normalization |
+| `EmpiricalWindowVariance` | Actual disjoint-window independence and sharp (2h-1)/(4N) empirical variance |
+| `EmpiricalWindowLaw` | Exact Poisson window means, Chebyshev and one-event source-TV transfer |
+| `EmpiricalWindowConvergence` | Normalized frequencies and almost-sure TV completion from summable field errors and overlap ratios |
+| `EmpiricalScaleBounds` | Literal dyadic error summability, rounded-window mean control and Poisson mass continuity |
+| `EmpiricalStartField` | Exact ordered arithmetic starts, true empirical tail bound and almost-sure endpoint under explicit numerical conditions |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -83,6 +88,10 @@ are instantiated. All common Markov-kernel readouts, including auxiliary marking
 and a measurable output, obey the sharp constant-one bound. The dyadic proof
 uses monotonicity rather than implicit differentiation. Other new families
 remain open; the analytic solution construction in F.2 is still an explicit input.
+The empirical count-law probability argument now includes the actual source,
+sharp overlapping-window variance and normalized almost-sure completion.
+The literal length/window regime of 7.8a and the support obstruction 7.8b
+remain open; numerical hypotheses in the empirical endpoint are explicit.
 No proof placeholder or new Lean axiom is used.
 
 ```sh
@@ -93,5 +102,5 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/dyadic-readouts/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/empirical-windows/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.

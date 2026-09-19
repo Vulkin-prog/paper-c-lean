@@ -9,7 +9,12 @@ import PaperCPrel8.DirectedFootprintAsymptotics
 import PaperCPrel8.DyadicBudget
 import PaperCPrel8.DyadicMicroscopicTheorem
 import PaperCPrel8.DyadicRestriction
+import PaperCPrel8.EmpiricalScaleBounds
+import PaperCPrel8.EmpiricalStartField
 import PaperCPrel8.EmpiricalTransfer
+import PaperCPrel8.EmpiricalWindowConvergence
+import PaperCPrel8.EmpiricalWindowLaw
+import PaperCPrel8.EmpiricalWindowVariance
 import PaperCPrel8.FiniteConditioning
 import PaperCPrel8.HardConditionalForcing
 import PaperCPrel8.IndependentScalarTail

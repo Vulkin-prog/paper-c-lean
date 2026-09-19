@@ -2843,7 +2843,52 @@
         {
           "path": "PaperCPrel8/EmpiricalTransfer.lean",
           "declaration": "ae_variation_convergence",
-          "scope": "Countable almost-sure frequency-to-total-variation completion from summable tail probabilities. The actual moving-window variance, arithmetic microscopic error and dyadic scale summability remain open."
+          "scope": "Countable almost-sure frequency-to-total-variation completion from summable tail probabilities; instantiated for actual overlapping-window frequencies by the new components below."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalWindowVariance.lean",
+          "declaration": "hit_independent",
+          "scope": "Window indicators of the actual product Poisson field are independent when their coordinate windows are disjoint. Overlapping origins are not assumed independent."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalWindowVariance.lean",
+          "declaration": "frequency_variance_le",
+          "scope": "Exact variance bound (2h-1)/(4N) by counting at most 2h-1 overlapping origins and bounding each covariance by 1/4; valid even for truncated boundary windows and nonconstant site rates."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalWindowLaw.lean",
+          "declaration": "frequency_mean",
+          "scope": "For N contained windows, exact Poisson(h*p) mean of every empirical frequency under the genuine product measure."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalWindowLaw.lean",
+          "declaration": "source_frequency_tail_le",
+          "scope": "One source-field TV error plus (2h-1)/(4N*eta^2) bounds an entire empirical-frequency deviation event, without an N-factor on the comparison error."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalWindowConvergence.lean",
+          "declaration": "ae_empirical_variation_convergence",
+          "scope": "Normalized nonnegative actual window frequencies converge almost surely in TV from summable field errors and h/N ratios, and a normalized coordinate limit of target masses. No independence between scales or assumed source-tail summability."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalScaleBounds.lean",
+          "declaration": "summable_dyadic_full_error",
+          "scope": "The established quantitative full microscopic error is summable on literal sizes 2^k, derived from the actual saddle and geometric growth."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalScaleBounds.lean",
+          "declaration": "floor_window_mean_tendsto",
+          "scope": "The mean of a floor(tau/p) window tends to tau as positive p tends to zero; the rounding error is strictly less than p. Poisson singleton continuity is also proved."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalStartField.lean",
+          "declaration": "actual_frequency_tail_le",
+          "scope": "The genuine arithmetic starts at coordinates i+2 inherit the empirical Chebyshev bound from the signed microscopic comparison, using almost-sure run finiteness to sum all exact marks."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalStartField.lean",
+          "declaration": "ae_actual_empirical_poisson",
+          "scope": "Actual arithmetic empirical count laws converge almost surely in TV under explicit summable field-error bounds, h/N ratios and limiting means. The literal 7.8a length/window sequence, its eventual admissibility and overlap-ratio summability remain to be instantiated; this is not yet the full corollary."
         }
       ]
     },
@@ -3591,7 +3636,7 @@
         "cor:empirical-poisson",
         "rem:empirical-field-obstruction"
       ],
-      "remaining": "Overlapping-window variance, summability, Borel–Cantelli transfer and fixed-realization support lower bound."
+      "remaining": "The exact overlap variance, Poisson window means, one-event arithmetic transfer, normalized almost-sure completion and dyadic full-field error summability are proved. Still instantiate the literal 7.8a length/window sequence: eventual admissibility and information budget, h/N summability and vanishing site rate. The fixed-realization full-field support obstruction (7.8b) remains open."
     },
     {
       "name": "Palm complements",

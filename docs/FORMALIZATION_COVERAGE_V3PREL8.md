@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the ninth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the tenth checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -196,14 +196,33 @@ literal integer coordinates, signs and all excesses. The final theorem still
 conditions only on F_{Y_N}, at the one-factor budget, and uses the exact
 moving-depth normalization. No implicit derivative or final comparison premise
 is assumed. The stronger unnumbered derivative estimate in the paper is not
-newly proved. See the [current receipt](../extension_evidence/v3prel8/dyadic-readouts/README.md).
+newly proved. See the [ninth-batch receipt](../extension_evidence/v3prel8/dyadic-readouts/README.md).
+
+The tenth batch adds **31 theorems (296 total, 61 modules)** for the empirical
+count law. The actual product-Poisson windows have exact Poisson(h*p) laws
+and their empirical frequencies have variance at most `(2h-1)/(4N)`, with
+no independence assumption for overlapping origins. The covariance proof
+counts at most `2h-1` overlapping origins and uses the sharp `1/4` bound.
+
+A whole-frequency deviation event transfers with **one** full-field TV error,
+not N errors. The actual arithmetic starts are reindexed in their original
+order (`i+2`), and summing all signs/excesses agrees almost surely by run
+finiteness. The normalized empirical masses then converge almost surely in TV
+under explicit summable field errors and overlap ratios and convergence of
+the target means. The dyadic full-field error is now proved summable; window
+rounding changes the mean by less than one site rate.
+
+**7.8a remains partial:** its literal length/window sequence still needs the
+eventual microscopic regime and information budget, summability of h/N and
+vanishing site rate instantiated. The full-field support obstruction 7.8b is
+not yet proved. See the [current receipt](../extension_evidence/v3prel8/empirical-windows/README.md).
 
 ## Remaining dependency chains
 
 - **Typical and affine dictionaries**: Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities.
 - **Information-adapted cutoff**: Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
-- **Empirical Poisson and support obstruction**: Overlapping-window variance, summability, Borel–Cantelli transfer and fixed-realization support lower bound.
+- **Empirical Poisson and support obstruction**: The exact overlap variance, Poisson window means, one-event arithmetic transfer, normalized almost-sure completion and dyadic full-field error summability are proved. Still instantiate the literal 7.8a length/window sequence: eventual admissibility and information budget, h/N summability and vanishing site rate. The fixed-realization full-field support obstruction (7.8b) remains open.
 - **Palm complements**: Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.

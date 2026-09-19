@@ -362,3 +362,51 @@ budget à un seul facteur d'intensité. Les mêmes prémisses analytiques et
 arithmétiques explicites que pour le préfixe subsistent. Ces observations sont
 des simplifications possibles de rédaction, pas le signalement d'une nouvelle
 erreur. Les fichiers du manuscrit restent inchangés.
+
+
+## Fréquences empiriques et fenêtres recouvrantes — dixième lot
+
+- **Constante exacte de variance.** Pour une fenêtre de longueur `h>0`, au
+  plus `2h-1` origines ont une fenêtre qui la rencontre, diagonale comprise.
+  La covariance des autres indicatrices est nulle par indépendance des
+  coordonnées sous la cible produit. La borne `Cov(X,Y)<=1/4` suffit pour
+  sommer : on peut l'obtenir de `Var(X-Y)>=0` et des deux bornes
+  `Var(X),Var(Y)<=1/4`. Il n'est pas nécessaire de démontrer une borne sur
+  la valeur absolue de chaque covariance. Cela donne exactement
+  `Var(F_r)<=(2h-1)/(4N)`, y compris aux bords (où il y a moins de voisins).
+- **Centrage et fenêtres contenues.** La variance seule reste valide pour
+  des fenêtres tronquées. En revanche, le centrage commun par la masse
+  `Poisson(h*p){r}` utilise explicitement le fait que chaque fenêtre contient
+  exactement h sites, soit `N+h<=n+1` dans l'indexation finie. Pour le papier,
+  `N=n-h+1` et il faut se placer à un rang où `1<=h<=n`. Les premiers rangs
+  dégénérés peuvent être écartés dans un énoncé asymptotique ; ils ne doivent
+  pas être normalisés comme des probabilités si N=0.
+- **Un seul transfert de probabilité.** L'événement
+  `|F_r-Poisson(h*p){r}|>eta` est une seule partie mesurable de l'espace du
+  champ. Sa probabilité source est bornée par `Delta+(2h-1)/(4N*eta^2)`.
+  Aucun facteur N ne multiplie Delta, et aucune indépendance des fenêtres
+  recouvrantes n'est invoquée. Ce point de la preuve du papier est confirmé.
+- **Indexation et terminaison.** La coordonnée finie i est le départ entier
+  `i+2`. Une fenêtre d'origine u correspond donc exactement aux termes
+  `J_{j+1,L}` avec `j=u+1,...,u+h`. La somme de toutes les marques signées et
+  de tous les excès coïncide presque sûrement avec l'indicatrice de départ,
+  grâce à la terminaison des plages. Ce passage est une égalité presque
+  sûre, et non une identité requise pour chaque réalisation exceptionnelle.
+- **Arrondi et limite de Poisson.** Pour `p>0` et `tau>=0`, la fenêtre
+  `h=floor(tau/p)` satisfait `0<=tau-h*p<p`. Il suffit donc de montrer
+  `p_k->0` pour identifier la moyenne limite ; la continuité de chaque
+  masse de Poisson se lit directement dans sa formule explicite.
+- **Convergence presque sûre.** Les fréquences sont des masses positives
+  de somme un pour toute réalisation lorsque N>0. La sommabilité de Delta
+  et de h/N donne celle de tous les événements d'écart, pour chaque entier
+  r et chaque seuil `1/(m+1)`. Borel–Cantelli puis l'argument discret de
+  Scheffé suffisent ; aucun couplage des cibles entre échelles ni contrôle
+  uniforme supplémentaire des queues de la loi empirique n'est requis.
+
+La sommabilité de l'erreur microscopique explicite sur `M_k=2^k` est
+également démontrée. Il reste à appliquer les estimations de selle au choix
+exact de `L_k` du corollaire 7.8a : admissibilité, budget d'information,
+sommabilité de h/N et décroissance du taux par site. L'obstruction de support
+pour le champ complet (7.8b) reste distincte et ouverte. Ces observations
+confirment ou simplifient la preuve ; aucune nouvelle erreur du manuscrit n'a
+été établie dans ce lot. Les fichiers du manuscrit restent inchangés.
