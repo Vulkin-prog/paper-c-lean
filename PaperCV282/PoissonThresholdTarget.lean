@@ -171,12 +171,12 @@ theorem normalizedThresholdVector_eq_sum (rate : ℝ≥0) (J : ℕ) (c : ℕ →
 def normalizedThresholdLaw (rate : ℝ≥0) (J : ℕ) :
     ProbabilityMeasure (EuclideanSpace ℝ (Fin (J+1))) :=
   ⟨(configurationMeasure rate).map (normalizedThresholdVector rate J),
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)⟩
 
 theorem normalizedThresholdLaw_eq (rate : ℝ≥0) (J : ℕ) :
     normalizedThresholdLaw rate J =
       (euclideanProductLaw (fun i => centeredScaledPoissonLaw (rate * incrementVariance J i)
-        (Real.sqrt rate))).map (continuous_thresholdSum J).measurable.aemeasurable := by
+        (Real.sqrt rate))).map (thresholdSum J) := by
   apply Subtype.ext
   have h := (hasLaw_normalizedPoissonVector (fun i => rate * incrementVariance J i) rate).fun_comp
     (hasLaw_clippedCounts rate J)

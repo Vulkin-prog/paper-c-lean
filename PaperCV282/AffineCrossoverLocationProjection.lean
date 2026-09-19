@@ -65,7 +65,7 @@ theorem targetLaw_recordPosition (M L : ℕ) (delta : ℝ) (d : ℕ) :
         (physicalTargetLaw M L delta d : Measure ℝ) := by
   by_cases hs : (bulkStarts M L delta).Nonempty
   · rw [AffineCrossoverTarget.targetLaw_eq _ hs,AffineCrossoverTarget.mixedLaw,
-      Measure.map_add _ _ (measurable_of_countable _),Measure.map_smul,Measure.map_smul,
+      Measure.map_add _ _ (measurable_of_countable _),Measure.map_smul _ (measurable_of_countable _).aemeasurable,Measure.map_smul _ (measurable_of_countable _).aemeasurable,
       borderLaw_recordPosition,bulkLaw_recordPosition]
     change _=(AffineCrossoverLocationTarget.borderWeight M L delta d : ℝ≥0∞) • Measure.dirac (1/(M : ℝ))+
       (AffineCrossoverLocationTarget.bulkWeight M L delta d : ℝ≥0∞) • (bulkLocationLaw M L delta : Measure ℝ)
@@ -87,7 +87,7 @@ theorem targetLaw_twoClockPosition (M L : ℕ) (delta : ℝ) (d : ℕ) :
       (AffineCrossoverLocationTarget.resolvedTargetLaw M L delta d : Measure (Bool×ℝ)) := by
   by_cases hs : (bulkStarts M L delta).Nonempty
   · rw [AffineCrossoverTarget.targetLaw_eq _ hs,AffineCrossoverTarget.mixedLaw,
-      Measure.map_add _ _ (measurable_of_countable _),Measure.map_smul,Measure.map_smul,
+      Measure.map_add _ _ (measurable_of_countable _),Measure.map_smul _ (measurable_of_countable _).aemeasurable,Measure.map_smul _ (measurable_of_countable _).aemeasurable,
       borderLaw_twoClockPosition,bulkLaw_twoClockPosition M L delta hs,borderWeight_eq,bulkWeight_eq]
     rfl
   · have he : bulkStarts M L delta=∅ := Finset.not_nonempty_iff_eq_empty.mp hs

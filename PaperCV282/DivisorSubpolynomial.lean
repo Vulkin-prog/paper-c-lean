@@ -71,7 +71,7 @@ theorem card_divisors_pow_le_log_power_mul_self {n : ℕ} (hn : 0 < n) (k : ℕ)
   calc
     _ ≤ ∏ p ∈ n.primeFactors,
         ((if p < 2 ^ k then (Nat.log 2 n + 1) ^ k else 1) * p ^ n.factorization p) :=
-      Finset.prod_le_prod (fun _ _ => Nat.zero_le _) hlocal
+      Finset.prod_le_prod₀ (fun _ _ => Nat.zero_le _) hlocal
     _ = (∏ p ∈ n.primeFactors, if p < 2 ^ k then (Nat.log 2 n + 1) ^ k else 1) * n := by
       rw [Finset.prod_mul_distrib, ← Nat.prod_primeFactors_pow_factorization (by omega)]
     _ = ((Nat.log 2 n + 1) ^ k) ^ (n.primeFactors.filter fun p => p < 2 ^ k).card * n := by

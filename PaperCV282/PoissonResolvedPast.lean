@@ -115,7 +115,7 @@ def resolvedPastFutureMeasure (rate : ℝ≥0) (k n : ℕ) : Measure (ℕ → �
 
 instance instProbabilityResolvedPastFuture (rate : ℝ≥0) (k n : ℕ) :
     IsProbabilityMeasure (resolvedPastFutureMeasure rate k n) :=
-  Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 
 /-- The whole retained path, with a finite reverse part and an unlimited future, has the explicit product construction. -/
 theorem conditional_retained_path_eq (rate : ℝ≥0) (k n : ℕ)

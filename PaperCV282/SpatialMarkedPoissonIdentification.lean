@@ -61,7 +61,7 @@ theorem measurable_sampledConfiguration {X : Type*} [MeasurableSpace X] (N : ℕ
     exact (Fin.sum_univ_eq_sum_range (fun i => Finsupp.single (mark (marks i)) (1 : ℕ)) n).symm
   rw [heq]
   exact (measurable_of_countable _).comp
-    (measurable_pi_lambda _ (fun i => hm.comp (measurable_pi_apply i.val)))
+    (Measurable.of_eval (fun i => hm.comp (measurable_pi_apply i.val)))
 
 theorem project_sampledConfiguration {X : Type*} (N E : ℕ)
     (mark : X → SpatialMarkedIndex N) (sample : ℕ × (ℕ → X)) :

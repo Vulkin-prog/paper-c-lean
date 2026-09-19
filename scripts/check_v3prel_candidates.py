@@ -18,11 +18,11 @@ import yaml
 import check_v3prel_sources
 
 ROOT = Path(__file__).resolve().parents[1]
-SUBMISSION_COMMIT = "c605f23466450a52999fcfb3c6d68ed8febc56bf"
-POLICY_COMMIT = "42cc43f70b1b019d20d4b64e9016396e666a6bc7"
-TOOLCHAIN = "leanprover/lean4:v4.33.1"
-MATHLIB_TAG = "v4.33.1"
-MATHLIB_COMMIT = "0df444a360eaa60ab8c11dca51a86af692955474"
+SUBMISSION_COMMIT = "3561d237dcc4b28482558ad28a64d767d7cc8615"
+POLICY_COMMIT = "3561d237dcc4b28482558ad28a64d767d7cc8615"
+TOOLCHAIN = "leanprover/lean4:v4.34.0"
+MATHLIB_TAG = "v4.34.0"
+MATHLIB_COMMIT = "5ed2965256430c3649e86755f9576b54eca72435"
 AXIOMS = ["propext", "Quot.sound", "Classical.choice"]
 PDF_HASHES = {
  "paper_C_version_3PREL_en.pdf": "0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7",

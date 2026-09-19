@@ -28,10 +28,10 @@ theorem cappedDistance_nonneg (mu : Measure InfiniteSample) [IsProbabilityMeasur
   letI instProbabilitySource : IsProbabilityMeasure (sourceLaw mu M L delta) :=
     sourceLaw_probability mu M L delta hh
   letI instProbabilityCappedSource : IsProbabilityMeasure ((sourceLaw mu M L delta).map (capBorder K)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   letI instProbabilityCappedTarget : IsProbabilityMeasure
       ((AffineCrossoverTarget.targetLaw M L delta alpha).map (capBorder K)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   exact measureTotalVariation_nonneg _ _
 
 variable (mu : ℕ→Measure InfiniteSample) [∀ n, IsProbabilityMeasure (mu n)]

@@ -84,15 +84,13 @@ theorem marked_ledger_of_cutoff_bounds_eventually
   have hd' : (1/(2 : ℝ)^L)*((fullBadMask N (L+E+1) Y (dyadicBlock N)).card : ℝ)≤
       (fullRate N L : ℝ)*Hbad := by
     convert mul_le_mul_of_nonneg_left hD (show 0≤(fullRate N L : ℝ) by positivity) using 1
-    · rfl
-    · rw [fullRate_coe]
-      field_simp [ne_of_gt hn]
+    rw [fullRate_coe]
+    field_simp [ne_of_gt hn]
   have hg' : (1/(2 : ℝ)^L)^2*((maskedSupportEdges (L+E+1) Y (dyadicBlock N)).card : ℝ)≤
       (fullRate N L : ℝ)^2*Hedge := by
     convert mul_le_mul_of_nonneg_left hG (sq_nonneg (fullRate N L : ℝ)) using 1
-    · rfl
-    · rw [fullRate_coe]
-      field_simp [ne_of_gt hn]
+    rw [fullRate_coe]
+    field_simp [ne_of_gt hn]
   have ha' : (1/(2 : ℝ)^L)^2*((N : ℝ)*(L+E+2))≤
       (fullRate N L : ℝ)^2*(N : ℝ)^(-(1/(3 : ℝ))+epsilon) := by
     convert hdiag using 1 <;> push_cast <;> ring

@@ -20,8 +20,8 @@ theorem map_tv_le_of_ae_eq_off {Omega Alpha : Type*} [MeasurableSpace Omega] [Me
     {f g : Omega→Alpha} (hf : Measurable f) (hg : Measurable g)
     (h : ∀ᵐ omega ∂mu, omega∉E → f omega=g omega) :
     measureTotalVariation (mu.map f) (mu.map g) ≤ mu.real E := by
-  letI instProbabilityMapF : IsProbabilityMeasure (mu.map f) := Measure.isProbabilityMeasure_map hf.aemeasurable
-  letI instProbabilityMapG : IsProbabilityMeasure (mu.map g) := Measure.isProbabilityMeasure_map hg.aemeasurable
+  letI instProbabilityMapF : IsProbabilityMeasure (mu.map f) := ((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)
+  letI instProbabilityMapG : IsProbabilityMeasure (mu.map g) := ((Measure.isProbabilityMeasure_map_iff hg.aemeasurable).mpr inferInstance)
   apply (measureTotalVariation_le_iff _ _ _).mpr
   intro A hA
   simp only [Measure.real,Measure.map_apply hf hA,Measure.map_apply hg hA]

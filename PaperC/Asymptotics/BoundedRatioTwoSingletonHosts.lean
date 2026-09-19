@@ -1013,7 +1013,7 @@ theorem twoSingletonEulerProduct_le_square (B : ℕ) :
         (1 + (Real.sqrt p)⁻¹)) ^ 2 := by
   unfold twoSingletonEulerProduct
   rw [← Finset.prod_pow]
-  apply Finset.prod_le_prod
+  apply Finset.prod_le_prod₀
   · intro p hp
     positivity
   · intro p hp

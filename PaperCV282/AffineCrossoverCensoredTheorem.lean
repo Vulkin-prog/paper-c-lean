@@ -53,9 +53,7 @@ theorem theorem_seven_ten_censored
   · filter_upwards [hp] with n hpn
     letI _instProbabilitySource := AffineCrossoverLocationTransfer.sourceLaw_probability delta
       (measurableSet_affineCylinder (G n) (b n)) hpn
-    letI _instProbabilityCensored := Measure.isProbabilityMeasure_map
-      (μ := sourceLaw (conditionedMeasure (affineCylinder (G n) (b n))) (sizes n) (lengths n) delta)
-      (measurable_of_countable (censorRecord (sizes n) (lengths n))).aemeasurable
+    letI _instProbabilityCensored := ((Measure.isProbabilityMeasure_map_iff (μ := sourceLaw (conditionedMeasure (affineCylinder (G n) (b n))) (sizes n) (lengths n) delta) (measurable_of_countable (censorRecord (sizes n) (lengths n))).aemeasurable).mpr inferInstance)
     rw [AffineCrossoverCensored.censoredDistance,censoredSourceLaw_eq _ _ _ (measurableSet_affineCylinder (G n) (b n))]
     exact measureTotalVariation_nonneg _ _
   · filter_upwards [hp,bulk_nonempty_eventually sizes lengths hsizes beta delta hdelta hdeltaOne hupper

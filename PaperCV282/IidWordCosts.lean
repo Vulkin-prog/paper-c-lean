@@ -124,8 +124,7 @@ theorem bOne_iid_le (N L : ℕ) (W : Finset (Fin (L+1) → F₂)) :
     exact_mod_cast card_iid_near_pairs_le N L
   have h := mul_le_mul_of_nonneg_right hcard (sq_nonneg (dictionaryRate L W : ℝ))
   simp only [dictionaryRate_coe,wordRate_coe] at *
-  convert h using 1 <;> try ring
-  rfl
+  convert h using 1 <;> ring
 
 /-- Distinct words at one site have zero iid joint probability. -/
 theorem iid_joint_same_site_zero {N L : ℕ} (W : Finset (Fin (L+1) → F₂))

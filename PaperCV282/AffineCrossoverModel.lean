@@ -31,7 +31,7 @@ def recordMeasure (mu : Measure InfiniteSample) (L K : ℕ) : Measure (Bool×ℕ
 
 instance instProbabilityRecordMeasure (mu : Measure InfiniteSample) [IsProbabilityMeasure mu] (L K : ℕ) :
     IsProbabilityMeasure (recordMeasure mu L K) :=
-  Measure.isProbabilityMeasure_map (measurable_actualClockRecord L K).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_actualClockRecord L K).aemeasurable).mpr inferInstance)
 
 def sourceJoint (mu : Measure InfiniteSample) (M L K : ℕ) (delta : ℝ) :
     Measure (CandidateSample (bulkStarts M L delta)) :=
@@ -39,8 +39,8 @@ def sourceJoint (mu : Measure InfiniteSample) (M L K : ℕ) (delta : ℝ) :
 
 instance instProbabilitySourceJoint (mu : Measure InfiniteSample) [IsProbabilityMeasure mu]
     (M L K : ℕ) (delta : ℝ) : IsProbabilityMeasure (sourceJoint mu M L K delta) :=
-  Measure.isProbabilityMeasure_map ((measurable_actualClockRecord L K).prodMk
-    (measurable_spatialMarkedSource _ _)).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff ((measurable_actualClockRecord L K).prodMk
+    (measurable_spatialMarkedSource _ _)).aemeasurable).mpr inferInstance)
 
 def productJoint (mu : Measure InfiniteSample) (sites : Finset ℕ) (L K : ℕ) : Measure (CandidateSample sites) :=
   (recordMeasure mu L K).prod (spatialTargetMeasure sites L)
@@ -62,7 +62,7 @@ theorem sourceLaw_probability (mu : Measure InfiniteSample) [IsProbabilityMeasur
     (M L : ℕ) (delta : ℝ) (hh : 0<hitProbability mu M L) : IsProbabilityMeasure (sourceLaw mu M L delta) := by
   letI instProbabilityConditionalHit : IsProbabilityMeasure (cond mu (hitEvent M L)) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hh)
-  exact Measure.isProbabilityMeasure_map (measurable_gamma M L delta).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_gamma M L delta).aemeasurable).mpr inferInstance)
 
 theorem sourceLaw_conditioned (A : Set InfiniteSample) (hA : MeasurableSet A) (M L : ℕ) (delta : ℝ) :
     sourceLaw (conditionedMeasure A) M L delta=

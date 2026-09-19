@@ -106,8 +106,8 @@ theorem shiftDifferenceProduct_le_polynomial
         _ = M ^ (K + 1) := (pow_succ' _ _).symm
   calc
     shiftDifferenceProduct h ≤ ∏ i : Fin d, ∏ j : Fin d, M ^ (K + 1) := by
-      exact Finset.prod_le_prod (fun _ _ => Nat.zero_le _) (fun i _ =>
-        Finset.prod_le_prod (fun _ _ => Nat.zero_le _) (fun j _ => hfactor i j))
+      exact Finset.prod_le_prod₀ (fun _ _ => Nat.zero_le _) (fun i _ =>
+        Finset.prod_le_prod₀ (fun _ _ => Nat.zero_le _) (fun j _ => hfactor i j))
     _ = M ^ ((K + 1) * (d * d)) := by simp [← pow_mul, Nat.mul_assoc]
 
 /-- Every shift factor has its canonical squareclass in one fixed divisor set. -/

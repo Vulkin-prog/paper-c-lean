@@ -75,7 +75,7 @@ theorem conditionalPrimeClockLaw_probability (L : ℕ) :
     cond_isProbabilityMeasure (by
       rw [measure_borderEvent]
       exact pow_ne_zero _ (ENNReal.inv_ne_zero.mpr (by norm_num)))
-  exact Measure.isProbabilityMeasure_map (measurable_primeOvershoot L).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_primeOvershoot L).aemeasurable).mpr inferInstance)
 
 /-- Singleton masses identify the complete geometric law, not only its tail. -/
 theorem conditionalPrimeClockLaw_singleton (L k : ℕ) :

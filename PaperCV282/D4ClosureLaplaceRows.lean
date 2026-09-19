@@ -49,7 +49,7 @@ theorem real_stopped_product_transform {X : Type*} [MeasurableSpace X]
     apply HasFiniteIntegral.of_bounded (C := 1)
     exact Filter.Eventually.of_forall fun sample => by
       rw [norm_prod]
-      exact Finset.prod_le_one (fun i _ => norm_nonneg _) (fun i _ => by simpa using hb (sample.2 i))
+      exact Finset.prod_le_one₀ (fun i _ => norm_nonneg _) (fun i _ => by simpa using hb (sample.2 i))
   rw [markSampleMeasure,integral_prod _ hint]
   simp_rw [integral_real_mark_product mu f hf]
   exact integral_poisson_powers rate _

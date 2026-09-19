@@ -1,0 +1,194 @@
+import Lean
+
+/-
+Local preflight of the strict Comparator statement boundary.
+The comparison rules below adapt leanprover/comparator at
+575674928e239f5bc452aab72d1dd7b0f1326494, Comparator/Compare.lean and Util.lean
+(Copyright Lean FRO, LLC, Apache-2.0; author Henrik Böving).
+It reads two existing olean environments without changing either one.
+This is not an Export-parser, proof-kernel, axiom-policy or NanoDa replay.
+-/
+namespace Lot25ComparatorBoundary
+open Lean
+
+deriving instance BEq for Lean.QuotKind
+deriving instance BEq for Lean.QuotVal
+deriving instance BEq for Lean.InductiveVal
+deriving instance BEq for Lean.ConstantInfo
+
+structure Context where
+  challenge : Environment
+  solution : Environment
+  definitionTargets : Std.HashSet Name
+  theoremTargets : Std.HashSet Name
+structure State where
+  worklist : Array Name
+  checked : Std.HashSet Name
+abbrev CompareM := ReaderT Context (StateT State (Except String))
+
+def runForUsedConsts [Monad m] (info : ConstantInfo) (f : Name → m Unit) : m Unit := do
+  info.type.getUsedConstants.forM f
+  f info.name
+  if let some val := info.value? (allowOpaque := true) then
+    val.getUsedConstants.forM f
+  match info with
+  | .axiomInfo .. | .quotInfo .. | .defnInfo .. | .thmInfo .. | .opaqueInfo .. => return ()
+  | .inductInfo info => info.ctors.forM f; info.all.forM f
+  | .ctorInfo info => f info.induct
+  | .recInfo info => info.rules.forM fun rule => do
+      f rule.ctor
+      rule.rhs.getUsedConstants.forM f
+
+def addWorklist (n : Name) : CompareM Unit := do
+  if !(← get).checked.contains n then
+    modify fun s => {s with worklist := s.worklist.push n}
+
+partial def loop : CompareM Unit := do
+  if (← get).worklist.isEmpty then return ()
+  let target ← modifyGet fun s => (s.worklist.back!, {s with worklist := s.worklist.pop})
+  if (← get).checked.contains target then loop
+  else
+    let some cc := (← read).challenge.find? target
+      | throw s!"Const not found in challenge '{target}'"
+    let some sc := (← read).solution.find? target
+      | throw s!"Const not found in solution '{target}'"
+    if (← read).definitionTargets.contains sc.name || (← read).theoremTargets.contains sc.name then
+      sc.type.getUsedConstants.forM addWorklist
+    else
+      if cc != sc then throw s!"Const does not match between challenge and target '{target}'"
+      runForUsedConsts sc addWorklist
+    modify fun s => {s with checked := s.checked.insert target}
+    loop
+
+def definitionHoleMatches (cc sc : DefinitionVal) : Bool :=
+  cc.toConstantVal == sc.toConstantVal && cc.safety == sc.safety
+
+def compareAt (challenge solution : Environment) (theorems definitions primitives : Array Name) :
+    Except String Nat := do
+  let mut worklist := primitives
+  for target in theorems do
+    let some cc := challenge.find? target | throw s!"Const not found in challenge: '{target}'"
+    let some sc := solution.find? target | throw s!"Const not found in solution: '{target}'"
+    let (cc,sc) ← match cc,sc with
+      | .thmInfo cc,.thmInfo sc | .axiomInfo cc,.axiomInfo sc => pure (cc.toConstantVal,sc.toConstantVal)
+      | _,_ => throw s!"Challenge and solution constant kind don't match: '{target}'"
+    if cc != sc then throw s!"Challenge and solution theorem statement do not match: '{target}'"
+    worklist := worklist ++ cc.type.getUsedConstants
+  for target in definitions do
+    let some cc := challenge.find? target | throw s!"Const not found in challenge: '{target}'"
+    let some sc := solution.find? target | throw s!"Const not found in solution: '{target}'"
+    let .defnInfo cc := cc | throw s!"Challenge constant is not a definition: '{target}'"
+    let .defnInfo sc := sc | throw s!"Solution constant is not a definition: '{target}'"
+    if !definitionHoleMatches cc sc then
+      throw s!"Const does not match between challenge and target '{target}'"
+    worklist := worklist.push sc.name
+  let ctx := Context.mk challenge solution (Std.HashSet.ofArray definitions) (Std.HashSet.ofArray theorems)
+  let (_,s) ← (loop.run ctx).run { worklist := worklist, checked := {} }
+  return s.checked.size
+
+def shortExpr (e : Expr) : String := (reprStr e).take 2000 |>.toString
+
+partial def firstExprDifference (a b : Expr) (path : String := "type") : Json :=
+  if a == b then Json.mkObj [("path",toJson path),("equal",toJson true)]
+  else
+    match a,b with
+    | .app af aa,.app bf ba =>
+        if af != bf then firstExprDifference af bf (path++".fn")
+        else firstExprDifference aa ba (path++".arg")
+    | .forallE _ aty ab ai,.forallE _ bt bb bi
+    | .lam _ aty ab ai,.lam _ bt bb bi =>
+        if ai != bi then Json.mkObj [("path",toJson (path++".binderInfo")),
+          ("challenge",toJson (reprStr ai)),("solution",toJson (reprStr bi))]
+        else if aty != bt then firstExprDifference aty bt (path++".domain")
+        else firstExprDifference ab bb (path++".body")
+    | .letE _ aty av ab _,.letE _ bt bv bb _ =>
+        if aty != bt then firstExprDifference aty bt (path++".letType")
+        else if av != bv then firstExprDifference av bv (path++".letValue")
+        else firstExprDifference ab bb (path++".letBody")
+    | .proj an ai av,.proj bn bi bv =>
+        if an == bn && ai == bi then firstExprDifference av bv (path++".proj")
+        else Json.mkObj [("path",toJson path),("challenge",toJson (shortExpr a)),
+          ("solution",toJson (shortExpr b))]
+    | _,_ => Json.mkObj [("path",toJson path),("challenge",toJson (shortExpr a)),
+        ("solution",toJson (shortExpr b))]
+
+def constantDifference (challenge solution : Environment) (message : String) : Json := Id.run do
+  let parts := message.splitOn "'"
+  let name := (parts[1]?).getD ""
+  let some cc := challenge.find? name.toName | return Json.null
+  let some sc := solution.find? name.toName | return Json.null
+  let mut fields := [("constant",toJson name),
+    ("level_parameters_equal",toJson (cc.levelParams == sc.levelParams)),
+    ("types_equal",toJson (cc.type == sc.type))]
+  if cc.type != sc.type then fields := fields ++ [("first_type_difference",firstExprDifference cc.type sc.type)]
+  match cc.value? (allowOpaque := true),sc.value? (allowOpaque := true) with
+  | some a,some b =>
+      fields := fields ++ [("values_equal",toJson (a == b))]
+      if a != b then fields := fields ++ [("first_value_difference",firstExprDifference a b "value")]
+  | none,none => fields := fields ++ [("both_values_absent",toJson true)]
+  | _,_ => fields := fields ++ [("value_presence_mismatch",toJson true)]
+  return Json.mkObj fields
+
+def selectedDifferences (challenge solution : Environment) (names : Array Name) : Array Json := Id.run do
+  let mut bad := #[]
+  for n in names do
+    if let some cc := challenge.find? n then
+      if let some sc := solution.find? n then
+        if cc.toConstantVal != sc.toConstantVal then
+          bad := bad.push (Json.mkObj [("declaration",toJson n.toString),
+            ("level_parameters_equal",toJson (cc.levelParams == sc.levelParams)),
+            ("first_type_difference",firstExprDifference cc.type sc.type)])
+  return bad
+
+def selectedMismatches (challenge solution : Environment) (names : Array Name) : Array String := Id.run do
+  let mut bad := #[]
+  for n in names do
+    match challenge.find? n,solution.find? n with
+    | some cc,some sc => if cc.toConstantVal != sc.toConstantVal then bad := bad.push n.toString
+    | _,_ => bad := bad.push s!"missing:{n}"
+  return bad
+
+def unwrap {α : Type} (v : Except String α) : IO α :=
+  match v with
+  | .ok a => pure a
+  | .error e => throw (IO.userError e)
+
+def primitiveNames : Array Name := #[``Nat,``String,``String.mk,``Char,``Quot,``Quot.mk,
+  ``Quot.lift,``Quot.ind,``propext,``Quot.sound,``Classical.choice,``Nat.add,``Nat.sub,
+  ``Nat.mul,``Nat.pow,``Nat.gcd,``Nat.div,``Nat.mod,``Nat.beq,``Nat.ble,``Nat.land,
+  ``Nat.lor,``Nat.xor,``Nat.shiftLeft,``Nat.shiftRight,``String.ofList,``Char.ofNat,
+  ``List,``eagerReduce]
+
+def runConfig (file : String) : IO (Json × Bool) := do
+  let config ← unwrap (Json.parse (← IO.FS.readFile file))
+  let cm ← unwrap (config.getObjValAs? String "challenge_module")
+  let sm ← unwrap (config.getObjValAs? String "solution_module")
+  let thms ← unwrap (config.getObjValAs? (Array String) "theorem_names")
+  let defs := (config.getObjValAs? (Array String) "definition_names").toOption.getD #[]
+  let c ← importModules #[{module := cm.toName}] {}
+  let s ← importModules #[{module := sm.toName}] {}
+  let targets := thms.map String.toName
+  let mismatches := selectedMismatches c s targets
+  let result := compareAt c s targets (defs.map String.toName) primitiveNames
+  let fields := [("config",toJson file),("challenge",toJson cm),("solution",toJson sm),
+    ("selected_theorems",toJson targets.size),("selected_type_mismatches",toJson mismatches),
+    ("selected_differences",Json.arr (selectedDifferences c s targets))]
+  match result with
+  | .ok checked => return (Json.mkObj (fields ++ [("status",toJson "PASS"),
+      ("checked_constants",toJson checked)]),true)
+  | .error e => return (Json.mkObj (fields ++ [("status",toJson "FAIL"),("first_failure",toJson e),
+      ("first_constant_difference",constantDifference c s e)]),false)
+
+end Lot25ComparatorBoundary
+
+def main (args : List String) : IO UInt32 := do
+  Lean.initSearchPath (← Lean.findSysroot)
+  if args.isEmpty then
+    IO.eprintln "Pass comparator configuration JSON paths from the repository root."
+    return 2
+  let mut allOk := true
+  for file in args do
+    let (report,ok) ← Lot25ComparatorBoundary.runConfig file
+    IO.println report.compress
+    allOk := allOk && ok
+  return if allOk then 0 else 1

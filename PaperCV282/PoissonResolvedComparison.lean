@@ -23,7 +23,7 @@ def actualFuturePath (N L : ℕ) (omega : InfiniteSample) (j : ℕ) : ℕ :=
   infiniteDyadicStartCount N (L+j) omega
 
 theorem measurable_actualFuturePath (N L : ℕ) : Measurable (actualFuturePath N L) :=
-  measurable_pi_lambda _ (fun j => measurable_source_startCount N (L+j))
+  Measurable.of_eval (fun j => measurable_source_startCount N (L+j))
 
 theorem ae_future_eq_configuration {N L : ℕ} (hN : 2 ≤ N)
     {μ : Measure InfiniteSample} (hμ : μ ≪ infiniteRademacherMeasure) :
@@ -63,7 +63,7 @@ theorem conditioned_configuration_distance (N L : ℕ) (C : Set InfiniteSample)
   letI instProbabilityLocal1 : IsProbabilityMeasure (cond infiniteRademacherMeasure C) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hC)
   letI instProbabilityLocal2 : IsProbabilityMeasure ((cond infiniteRademacherMeasure C).map (unsignedAggregateSource N L)) :=
-    Measure.isProbabilityMeasure_map (measurable_unsignedAggregateSource N L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_unsignedAggregateSource N L).aemeasurable).mpr inferInstance)
   rw [measureTotalVariation_eq_mass]
   congr 1
   funext c
@@ -107,7 +107,7 @@ theorem theorem_six_three_future {N L : ℕ} (hN : 2 ≤ N)
   letI instProbabilityLocal3 : IsProbabilityMeasure (cond infiniteRademacherMeasure C) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI instProbabilityLocal4 : IsProbabilityMeasure μ :=
-    Measure.isProbabilityMeasure_map (measurable_unsignedAggregateSource N L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_unsignedAggregateSource N L).aemeasurable).mpr inferInstance)
   have hprob : ν.real B = resolutionProbability N L n := configuration_size_probability _ _
   have hε' : ε < ν.real B := by rwa [hprob]
   obtain ⟨hq, hb, hb'⟩ := lemma_six_two μ ν B ((Set.to_countable _).measurableSet)

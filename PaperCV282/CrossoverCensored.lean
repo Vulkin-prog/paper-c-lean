@@ -55,7 +55,7 @@ theorem bulkLaw_censor_tv_le (M L : ℕ) (sites : Finset ℕ) (hs : sites.Nonemp
       1/(sites.card : ℝ) := by
   letI instProbabilityCensoredLabel : IsProbabilityMeasure
       ((labelMeasure sites hs).map (censorLabel sites (M-L+1))) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   have hm : (bulkLaw sites hs).map (censorRecord M L)=
       ((labelMeasure sites hs).map (censorLabel sites (M-L+1))).map (bulkLabel sites) := by
     rw [bulkLaw,Measure.map_map (measurable_of_countable _) (measurable_of_countable _),
@@ -71,9 +71,9 @@ theorem mixedLaw_censor_tv_le (M L : ℕ) (sites : Finset ℕ) (hs : sites.Nonem
     measureTotalVariation ((mixedLaw sites hs L).map (censorRecord M L)) (mixedLaw sites hs L)≤
       1/(sites.card : ℝ) := by
   letI instProbabilityCensoredMixed : IsProbabilityMeasure ((mixedLaw sites hs L).map (censorRecord M L)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   letI instProbabilityCensoredBulk : IsProbabilityMeasure ((bulkLaw sites hs).map (censorRecord M L)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   apply (measureTotalVariation_le_iff _ _ _).mpr
   intro S hS
   have hb : borderLaw.real (censorRecord M L ⁻¹' S)=borderLaw.real S := by
@@ -106,9 +106,9 @@ theorem censoredDistance_le {M L : ℕ} (delta : ℝ) (hLM : L≤M)
     conditionalGammaLaw_probability delta hLM
   letI instProbabilityCensoredGamma : IsProbabilityMeasure
       ((conditionalGammaLaw M L delta).map (censorRecord M L)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   letI instProbabilityCensoredTarget : IsProbabilityMeasure ((targetLaw M L delta).map (censorRecord M L)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   have htri := variation_triangle ((conditionalGammaLaw M L delta).map (censorRecord M L))
     ((targetLaw M L delta).map (censorRecord M L)) (targetLaw M L delta)
   have hmap := measureTotalVariation_map_le (conditionalGammaLaw M L delta) (targetLaw M L delta)
@@ -161,7 +161,7 @@ theorem theorem_seven_nine_censored
       conditionalGammaLaw_probability delta hn
     letI instProbabilityCensoredGamma : IsProbabilityMeasure
         ((conditionalGammaLaw (sizes n) (lengths n) delta).map (censorRecord (sizes n) (lengths n))) :=
-      Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+      ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
     exact measureTotalVariation_nonneg _ _
   · filter_upwards [hc,bulk_nonempty_eventually sizes lengths hsizes beta delta hdelta hdeltaOne hupper
       (hlengths.eventually (eventually_ge_atTop 1))] with n hn hs

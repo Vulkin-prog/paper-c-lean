@@ -32,7 +32,7 @@ theorem offset_product_pos_le_cutoff_pow
     split_ifs <;> have := i.isLt <;> omega
   refine ⟨Finset.prod_pos (fun i _ => (hlabels i).1), ?_⟩
   calc
-    _ ≤ ∏ _i ∈ offsets, (M + L) := Finset.prod_le_prod
+    _ ≤ ∏ _i ∈ offsets, (M + L) := Finset.prod_le_prod₀
       (fun _ _ => Nat.zero_le _) (fun i _ => (hlabels i).2)
     _ = (M + L) ^ offsets.card := by simp
     _ ≤ _ := Nat.pow_le_pow_right (by omega) hcard

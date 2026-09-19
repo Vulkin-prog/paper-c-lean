@@ -22,7 +22,7 @@ theorem two_map_distance_eq_mass {Ω Ω' α : Type*} [MeasurableSpace Ω] [Measu
     {f : Ω → α} {g : Ω' → α} (hf : Measurable f) (hg : Measurable g) :
     measureTotalVariation (μ.map f) (ν.map g)=
       massTotalVariation (observableLaw μ f) (observableLaw ν g) := by
-  letI instProbabilityTarget : IsProbabilityMeasure (ν.map g) := Measure.isProbabilityMeasure_map hg.aemeasurable
+  letI instProbabilityTarget : IsProbabilityMeasure (ν.map g) := ((Measure.isProbabilityMeasure_map_iff hg.aemeasurable).mpr inferInstance)
   rw [map_distance_eq_mass _ _ hf]
   congr 1
   funext a

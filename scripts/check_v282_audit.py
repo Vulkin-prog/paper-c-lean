@@ -17,9 +17,9 @@ import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
 ALLOWED_AXIOMS = frozenset({"propext", "Classical.choice", "Quot.sound"})
-LEAN_PIN = "leanprover/lean4:v4.33.1"
-MATHLIB_TAG = "v4.33.1"
-MATHLIB_PIN = "0df444a360eaa60ab8c11dca51a86af692955474"
+LEAN_PIN = "leanprover/lean4:v4.34.0"
+MATHLIB_TAG = "v4.34.0"
+MATHLIB_PIN = "5ed2965256430c3649e86755f9576b54eca72435"
 FORBIDDEN = re.compile(
     r"\b(sorry|admit|axiom|native_decide|unsafe|partial|opaque|"
     r"macro|elab|syntax|run_elab|run_meta|initialize|inductive|structure|class|"

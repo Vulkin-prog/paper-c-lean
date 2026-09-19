@@ -77,18 +77,16 @@ snapshot; Palomar then performs its own verification of that commit.
 - Public links and exact version DOIs on Zenodo and Cambridge Open Engage.
 - The five issued Palomar identifiers and any findings from their reviews.
 
-## Compiler migration: local checks complete
+## Compiler migration
 
-On 9 September 2026 the maintainer authorized migration to Lean 4.33.1 and
-Mathlib v4.33.1 in a separate worktree. The
-[migration guide](LEAN_4_33_1_MIGRATION.md) records the exact pins and
-successful local build of all 23 libraries, three kernel audits and 80 strict
-interface checks. The [validation receipt](../migration_evidence/lean-4.33.1/validation.json)
-binds these results to the migrated sources. Official Comparator/NanoDa
-qualification and the separate Palomar provenance and rendering issues
-remain unresolved for this snapshot.
+The current migration uses Lean 4.34.0 and Mathlib v4.34.0. Its
+[migration guide](LEAN_4_34_0_MIGRATION.md) records the build, audits and
+qualification scope. The [4.33.1 receipt](../migration_evidence/lean-4.33.1/validation.json)
+remains a historical snapshot. Palomar merged the previously blocking
+provenance and printing fixes on 14 September 2026; submitting a new immutable
+commit still requires its own verification.
 
-Preserve all 4.32 source and qualification snapshots. A compiler update does
-not create a final-paper DOI, register an entry, or update a previously
+Preserve the previous source and qualification snapshots. A compiler update
+does not create a final-paper DOI, register an entry, or update a previously
 submitted commit. Local work remains on the Ubuntu partition, with available
 disk space checked before substantial builds.

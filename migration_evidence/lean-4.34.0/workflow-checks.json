@@ -1,0 +1,414 @@
+{
+  "status": "passed",
+  "steps": [
+    {
+      "workflow": "v3prel-qualification.yml",
+      "job": "preflight",
+      "step": "Load the exact current submission contract",
+      "returncode": 0
+    },
+    {
+      "workflow": "v3prel-qualification.yml",
+      "job": "dual-kernel",
+      "step": "Repeat full source preflight and replay both kernels",
+      "returncode": 0
+    },
+    {
+      "workflow": "post-publication-verification.yml",
+      "job": "verify-published-assets",
+      "step": "Validate immutable inputs and tag identity",
+      "returncode": 0
+    },
+    {
+      "workflow": "post-publication-verification.yml",
+      "job": "verify-published-assets",
+      "step": "Install the pinned public verification utility",
+      "returncode": 0
+    },
+    {
+      "workflow": "post-publication-verification.yml",
+      "job": "verify-published-assets",
+      "step": "Download the three exact assets from the GitHub release",
+      "returncode": 0
+    },
+    {
+      "workflow": "post-publication-verification.yml",
+      "job": "verify-published-assets",
+      "step": "Verify downloaded bytes against packaging R' and the archive verifier",
+      "returncode": 0
+    },
+    {
+      "workflow": "post-publication-verification.yml",
+      "job": "verify-published-assets",
+      "step": "Publish unambiguous qualification summary",
+      "returncode": 0
+    },
+    {
+      "workflow": "palomar-qualification.yml",
+      "job": "metadata",
+      "step": "Check Mathlib canonical provenance",
+      "returncode": 0
+    },
+    {
+      "workflow": "palomar-qualification.yml",
+      "job": "metadata",
+      "step": "Check against the pinned Palomar submission contract",
+      "returncode": 0
+    },
+    {
+      "workflow": "palomar-qualification.yml",
+      "job": "nanoda",
+      "step": "Run the pinned dual-kernel Comparator replay",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Verify certified PDF bytes",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Verify checked-in Lean source digest",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Verify literature-certificate bytes and mapping",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Install audit utilities",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Check replay tool identity and canonical release admission",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Run structural PDF QA",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Check Lean source hygiene",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Check Comparator trust-boundary source structure",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Check the hardened local runner",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Test root-module audit guards",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Test exporter identity and pinned tool checkout guards",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Build the project",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Compile Challenge separately",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Compile ChallengeTransfer separately",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Compile Solution separately",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Compile SolutionTransfer separately",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Compile Theorem 1.2 Challenge separately",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Compile Theorem 1.2 Solution separately",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Compile Theorem 1.4 Challenge separately",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Compile Theorem 1.4 Solution separately",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Compile Theorem 16.2 Challenge separately",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Compile Theorem 16.2 Solution separately",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Generate the exhaustive audit",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Run the generated kernel audit and capture its log",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Verify audit exhaustiveness and the axiom allowlist",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Verify the final manifest and generated artifacts",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "audit",
+      "step": "Publish the kernel-audit status",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Record the checked-out Paper C source identity",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Assert exact tool commits and an unprivileged runner",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Validate the non-nanoda Comparator configuration",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Verify the clean project checkout contains no .olean",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Build the pinned tools without building Paper C",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Record commits, versions, and executable fingerprints",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Probe the official hardened wrapper",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Refuse unavailable hardening in strict release mode",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Run sandboxed Comparator with landrun and systemd-run",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "UNSANDBOXED Comparator semantic smoke test (non-certifying fallback)",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Assemble and validate the atomic Comparator evidence",
+      "returncode": 0
+    },
+    {
+      "workflow": "reproducibility.yml",
+      "job": "comparator",
+      "step": "Publish the precise Comparator status",
+      "returncode": 0
+    },
+    {
+      "workflow": "release-qualification.yml",
+      "job": "qualify",
+      "step": "Require an exact packaging commit checkout",
+      "returncode": 0
+    },
+    {
+      "workflow": "release-qualification.yml",
+      "job": "qualify",
+      "step": "Require identity-preserving integration into the default branch",
+      "returncode": 0
+    },
+    {
+      "workflow": "release-qualification.yml",
+      "job": "qualify",
+      "step": "Install audit utilities",
+      "returncode": 0
+    },
+    {
+      "workflow": "release-qualification.yml",
+      "job": "qualify",
+      "step": "Verify PDFs and release binding",
+      "returncode": 0
+    },
+    {
+      "workflow": "release-qualification.yml",
+      "job": "qualify",
+      "step": "Build and regenerate the exhaustive audit",
+      "returncode": 0
+    },
+    {
+      "workflow": "release-qualification.yml",
+      "job": "qualify",
+      "step": "Publish unambiguous qualification summary",
+      "returncode": 0
+    },
+    {
+      "workflow": "v282-development.yml",
+      "job": "build-v282-development",
+      "step": "Verify that the retained core digest is unchanged",
+      "returncode": 0
+    },
+    {
+      "workflow": "v282-development.yml",
+      "job": "build-v282-development",
+      "step": "Test the v2.8.2 audit checker",
+      "returncode": 0
+    },
+    {
+      "workflow": "v282-development.yml",
+      "job": "build-v282-development",
+      "step": "Check the v2.8.2 proof sources",
+      "returncode": 0
+    },
+    {
+      "workflow": "v282-development.yml",
+      "job": "build-v282-development",
+      "step": "Build the retained v1.1 development surface",
+      "returncode": 0
+    },
+    {
+      "workflow": "v282-development.yml",
+      "job": "build-v282-development",
+      "step": "Build the assembled v2.8.2 development surface",
+      "returncode": 0
+    },
+    {
+      "workflow": "v282-development.yml",
+      "job": "build-v282-development",
+      "step": "Print the axioms of the v2.8.2 audit targets",
+      "returncode": 0
+    },
+    {
+      "workflow": "v282-development.yml",
+      "job": "build-v282-development",
+      "step": "Verify the v2.8.2 audit transcript",
+      "returncode": 0
+    },
+    {
+      "workflow": "v282-development.yml",
+      "job": "build-v282-development",
+      "step": "Record the development boundary",
+      "returncode": 0
+    },
+    {
+      "workflow": "v11-development.yml",
+      "job": "build-v11-development",
+      "step": "Verify that the retained v1.0 core digest is unchanged",
+      "returncode": 0
+    },
+    {
+      "workflow": "v11-development.yml",
+      "job": "build-v11-development",
+      "step": "Build the assembled v1.1 development surface",
+      "returncode": 0
+    },
+    {
+      "workflow": "v11-development.yml",
+      "job": "build-v11-development",
+      "step": "Reject forbidden proof placeholders and source features",
+      "returncode": 0
+    },
+    {
+      "workflow": "v11-development.yml",
+      "job": "build-v11-development",
+      "step": "Print the axioms of the first v1.1 endpoint",
+      "returncode": 0
+    },
+    {
+      "workflow": "v11-development.yml",
+      "job": "build-v11-development",
+      "step": "Record the development boundary",
+      "returncode": 0
+    }
+  ],
+  "runners_syntax": "passed"
+}

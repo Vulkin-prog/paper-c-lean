@@ -17,10 +17,10 @@ permissions:
   contents: read
 
 env:
-  LEAN_COMMIT: 819816b2e0a3bf405af45ae5c7af2491d8f5bee6
-  MATHLIB_COMMIT: 0df444a360eaa60ab8c11dca51a86af692955474
+  LEAN_COMMIT: 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b
+  MATHLIB_COMMIT: 5ed2965256430c3649e86755f9576b54eca72435
   COMPARATOR_COMMIT: 575674928e239f5bc452aab72d1dd7b0f1326494
-  LEAN4EXPORT_COMMIT: 15f6055e299ad5b89345e533cc2192f4cc00f659
+  LEAN4EXPORT_COMMIT: 076e8e57707e813375e8f9da8bf989799ace9680
   LANDRUN_COMMIT: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
 
 jobs:
@@ -49,6 +49,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --yes ripgrep qpdf poppler-utils
+
+      - name: Check replay tool identity and canonical release admission
+        run: |
+          python3 -m unittest discover -s scripts -p test_lean4export_toolchain.py
+          python3 -m unittest discover -s scripts -p test_checkout_exact.py
+          python3 -m unittest discover -s scripts -p test_canonical_mathlib_tag.py
 
       - name: Run structural PDF QA
         run: scripts/qa_pdfs.sh ci-logs/pdf-qa
@@ -327,7 +333,7 @@ jobs:
           echo 'preexisting_project_olean_count=0'
           echo 'olean_count=0' >> "$GITHUB_OUTPUT"
 
-      - name: Set up the Paper C Lean 4.33.1 toolchain and Mathlib cache (attempt 1)
+      - name: Set up the Paper C Lean 4.34.0 toolchain and Mathlib cache (attempt 1)
         id: comparator_lean_setup_1
         continue-on-error: true
         # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
@@ -343,7 +349,7 @@ jobs:
           # created by the ordinary build could contain Solution.olean.
           use-github-cache: false
 
-      - name: Set up the Paper C Lean 4.33.1 toolchain and Mathlib cache (retry)
+      - name: Set up the Paper C Lean 4.34.0 toolchain and Mathlib cache (retry)
         if: steps.comparator_lean_setup_1.outcome == 'failure'
         # leanprover/lean-action v1; full commit and GitHub signature verified 2026-08-13.
         uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9

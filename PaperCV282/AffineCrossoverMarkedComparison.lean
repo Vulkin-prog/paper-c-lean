@@ -84,15 +84,15 @@ theorem capped_comparison_bound (habs : mu ≪ infiniteRademacherMeasure) {M L K
     (candidate (bulkStarts M L delta))
   let Q := (AffineCrossoverTarget.mixedLaw (bulkStarts M L delta) hs L alpha).map (capBorder K)
   letI instProbabilityA : IsProbabilityMeasure A :=
-    Measure.isProbabilityMeasure_map (measurable_capGamma M L K delta).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_capGamma M L K delta).aemeasurable).mpr inferInstance)
   letI instProbabilityB : IsProbabilityMeasure B :=
-    Measure.isProbabilityMeasure_map (measurable_capGamma M L K delta).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_capGamma M L K delta).aemeasurable).mpr inferInstance)
   letI instProbabilityC : IsProbabilityMeasure C :=
-    Measure.isProbabilityMeasure_map (measurable_candidateSource M L K delta).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_candidateSource M L K delta).aemeasurable).mpr inferInstance)
   letI instProbabilityD : IsProbabilityMeasure D :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   letI instProbabilityQ : IsProbabilityMeasure Q :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   have hAB := nested_mapped_difference mu (sourceSparseEvent M L K delta) (hitEvent M L)
     (measurableSet_sourceSparseEvent M L K delta) (measurableSet_hitEvent M L) hsubset hp f
     (measurable_capGamma M L K delta)

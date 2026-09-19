@@ -1,19 +1,17 @@
 #!/usr/bin/env python3
-"""Check the pinned exporter source and its effective Lean compiler separately.
+"""Verify the exact 4.34.0 exporter source and effective compiler identity.
 
-PalomarSubmission PR 122 permits a stable patch release to rebuild the same
-release line's patch-zero exporter. This repository pins that one exact pair;
-it does not accept arbitrary compatible-looking exporter or compiler versions.
-The caller must also verify the exporter's exact Git commit before this check.
+The caller also checks the exporter Git commit. Historical compiler/exporter
+combinations remain recorded in their original migration receipts.
 """
 
 import json
 import re
 import sys
 
-PROJECT_TOOLCHAIN = "leanprover/lean4:v4.33.1"
-EXPORTER_SOURCE_TOOLCHAIN = "leanprover/lean4:v4.33.0"
-LEAN_COMMIT = "819816b2e0a3bf405af45ae5c7af2491d8f5bee6"
+PROJECT_TOOLCHAIN = "leanprover/lean4:v4.34.0"
+EXPORTER_SOURCE_TOOLCHAIN = "leanprover/lean4:v4.34.0"
+LEAN_COMMIT = "293d5d0c0c3f3dded4688b3ccd6a33939ac5102b"
 
 
 def validate(project: str, source: str, compiler_version: str) -> dict[str, str]:
@@ -30,8 +28,8 @@ def validate(project: str, source: str, compiler_version: str) -> dict[str, str]
     )
     if match is None:
         raise ValueError("could not identify the effective Lean release and full commit")
-    if match["version"] != "4.33.1" or match["commit"] != LEAN_COMMIT:
-        raise ValueError("exporter must be built with the exact pinned Lean 4.33.1 compiler")
+    if match["version"] != "4.34.0" or match["commit"] != LEAN_COMMIT:
+        raise ValueError("exporter must be built with the exact pinned Lean 4.34.0 compiler")
     return {
         "lean4export_source_toolchain": source.strip(),
         "lean4export_build_toolchain": project.strip(),

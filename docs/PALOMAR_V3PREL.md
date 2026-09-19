@@ -72,14 +72,14 @@ numbering. No old Palomar evidence is presented as evidence for these files.
 
 ## Reproducible qualification
 
-The [migration guide](LEAN_4_33_1_MIGRATION.md) separates local validation
-from two external issues. At the assessment of 9 September 2026, Palomar
-[PR #128](https://github.com/PalomarRegistry/PalomarSubmission/pull/128),
-which admits canonical Mathlib tags outside the master ancestry, was still
-open; this affects Mathlib v4.33.1 provenance. The separate
-[rendering issue #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134)
-is not a demonstrated consequence or cure of the compiler migration.
-The successful local build does not resolve either issue.
+The [4.34.0 migration guide](LEAN_4_34_0_MIGRATION.md) records the current
+validation and its limits. Palomar merged the canonical Mathlib release-tag
+fix in [PR #128](https://github.com/PalomarRegistry/PalomarSubmission/pull/128)
+and the printing fix in [PR #137](https://github.com/PalomarRegistry/PalomarSubmission/pull/137)
+on 14 September 2026, closing
+[issue #134](https://github.com/PalomarRegistry/PalomarSubmission/issues/134).
+The current local printing probe passes all 69 V3 signatures. This is a check
+of the corrected component, not a new Palomar registration.
 
 The dedicated [V3PREL workflow](../.github/workflows/v3prel-qualification.yml)
 checks the source archive and each metadata/configuration pair, then replays

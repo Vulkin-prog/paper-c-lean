@@ -70,6 +70,16 @@ ancestry_status=0
 secure_git merge-base --is-ancestor "$mathlib_revision" "$fetched_ref" || \
   ancestry_status=$?
 if [ "$ancestry_status" -eq 1 ]; then
+  # PalomarSubmission PR 128 admits exact semantic-version release tags from
+  # this canonical remote when Mathlib's release branch diverges from master.
+  # Neither repository-local tags nor a submitted alternate remote are trusted.
+  canonical_tags=$(secure_git ls-remote --tags palomar-official)
+  matching_tags=$(printf '%s\n' "$canonical_tags" |
+    python3 "$repository_root/palomar/canonical_mathlib_tag.py" "$mathlib_revision")
+  if [ -n "$matching_tags" ]; then
+    echo "PALOMAR_MATHLIB_CANONICAL_RELEASE_OK revision=$mathlib_revision tags=$matching_tags"
+    exit 0
+  fi
   echo "error: leanprover-community/mathlib4 revision $mathlib_revision is not an ancestor of canonical $official_ref" >&2
   exit 1
 fi

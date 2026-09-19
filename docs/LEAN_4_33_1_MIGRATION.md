@@ -1,5 +1,7 @@
 # Lean 4.33.1 migration
 
+This is the historical 9 September snapshot. See the [4.34.0 migration](LEAN_4_34_0_MIGRATION.md) for the current development.
+
 **Status: local validation complete, 9 September 2026.** The maintainer authorized this
 migration in a separate worktree based on commit
 [`9286f4a954ac128ba3d5edd1c1d25203f45c099f`](https://github.com/Vulkin-prog/paper-c-lean/commit/9286f4a954ac128ba3d5edd1c1d25203f45c099f).

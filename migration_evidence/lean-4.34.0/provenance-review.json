@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "base": "8b6e838f90632631575d37fafada95950d0a9051",
+  "current_core_digest": "545b5dfe5f972614c0e682065640c1c34a03c8819255436f2adf6032a9d0f056",
+  "historical_core_contract_unchanged": true,
+  "literature_certificates_unchanged": true,
+  "v3_metadata_only_acknowledgements_changed": [
+    "palomar/v3prel/crossover/formalization.yaml",
+    "palomar/v3prel/critical_field/formalization.yaml",
+    "palomar/v3prel/limits/formalization.yaml",
+    "palomar/v3prel/patterns/formalization.yaml",
+    "palomar/v3prel/boundary/formalization.yaml"
+  ],
+  "historical_migration_release_and_manuscripts_unchanged": true,
+  "lean_files_changed": 116
+}

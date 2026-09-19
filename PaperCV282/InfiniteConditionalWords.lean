@@ -36,7 +36,7 @@ def finiteSmallPrimeAtom (M Y : ℕ) (σ : SmallSample M Y) : Set (SampleSpace M
 /-- The small-prime restriction consists of measurable coordinate evaluations. -/
 theorem measurable_smallPrimeRestriction (M Y : ℕ) :
     Measurable (smallPrimeRestriction M Y) := by
-  exact measurable_pi_lambda _ fun p ↦ measurable_pi_apply (finitePrimeCoordinate M p.1)
+  exact Measurable.of_eval fun p ↦ measurable_pi_apply (finitePrimeCoordinate M p.1)
 
 /-- The source atom is exactly the preimage of the finite-cylinder atom. -/
 theorem infiniteSmallPrimeAtom_eq_preimage (M Y : ℕ) (σ : SmallSample M Y) :

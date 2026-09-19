@@ -60,7 +60,7 @@ def finiteExactLengthProbabilityAtCutoff (M x q : ℕ) : ℚ := by
 /-- Restriction to a finite set of prime coordinates is measurable. -/
 theorem measurable_restrictToFinite (M : ℕ) :
     Measurable (restrictToFinite M) := by
-  exact measurable_pi_lambda _ fun p ↦
+  exact Measurable.of_eval fun p ↦
     measurable_pi_apply (finitePrimeCoordinate M p)
 
 /-- Every exact-length event in a finite cylinder is measurable. -/

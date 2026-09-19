@@ -45,10 +45,10 @@ theorem truncatedJointDistance_nonneg (M L K : ℕ) (delta : ℝ) :
   letI instProbabilityJoint : IsProbabilityMeasure
       (infiniteRademacherMeasure.map (fun omega =>
         (actualClockRecord L K omega,spatialMarkedSource (bulkStarts M L delta) L omega))) :=
-    Measure.isProbabilityMeasure_map ((measurable_actualClockRecord L K).prodMk
-      (measurable_spatialMarkedSource _ _)).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff ((measurable_actualClockRecord L K).prodMk
+      (measurable_spatialMarkedSource _ _)).aemeasurable).mpr inferInstance)
   letI instProbabilityRecord : IsProbabilityMeasure (infiniteRademacherMeasure.map (actualClockRecord L K)) :=
-    Measure.isProbabilityMeasure_map (measurable_actualClockRecord L K).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_actualClockRecord L K).aemeasurable).mpr inferInstance)
   exact measureTotalVariation_nonneg _ _
 
 theorem truncated_joint_le_conditional {M L K : ℕ} (delta : ℝ)

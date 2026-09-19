@@ -932,7 +932,7 @@ private theorem offsetProductNatFiber_squarePart_le
           startCompleteVertexLabel solution.1 L i :=
       hsolution.2.2.symm
     _ ≤ ∏ _i ∈ offsets, (Y + L) :=
-      Finset.prod_le_prod
+      Finset.prod_le_prod₀
         (fun _i _hi => Nat.zero_le _)
         (fun i _hi =>
           startCompleteVertexLabel_le_mobileCutoff

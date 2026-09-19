@@ -68,7 +68,7 @@ theorem conditional_capped_prime_clock (G : SampleSpace Y →ₗ[F₂] W) (b : W
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _
       (affine_border_intersection_probability_pos G b hLY hstack))
   letI instProbabilityClock : IsProbabilityMeasure (mu.map (primeOvershoot L)) :=
-    Measure.isProbabilityMeasure_map (measurable_primeOvershoot L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_primeOvershoot L).aemeasurable).mpr inferInstance)
   have h := map_min_eq_of_survival (mu.map (primeOvershoot L)) (geometricMeasure halfSuccess) K
     (fun j hj => by
       rw [map_measureReal_apply (measurable_primeOvershoot L) measurableSet_Ici]

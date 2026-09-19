@@ -27,9 +27,9 @@ theorem actualDistance_le_capped_add_tail {M L : ℕ} (delta : ℝ) (hLM : L≤M
   letI instProbabilitySource : IsProbabilityMeasure (conditionalGammaLaw M L delta) :=
     conditionalGammaLaw_probability delta hLM
   letI instProbabilityCapSource : IsProbabilityMeasure ((conditionalGammaLaw M L delta).map (capBorder K)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   letI instProbabilityCapTarget : IsProbabilityMeasure ((targetLaw M L delta).map (capBorder K)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   have h1 := variation_triangle (conditionalGammaLaw M L delta)
     ((conditionalGammaLaw M L delta).map (capBorder K)) (targetLaw M L delta)
   have h2 := variation_triangle ((conditionalGammaLaw M L delta).map (capBorder K))

@@ -62,7 +62,7 @@ theorem source_local_relative_error_le {N L n : ℕ} (hN : 0<N)
   letI instProbabilityConditionalSource : IsProbabilityMeasure (cond infiniteRademacherMeasure C) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI instProbabilityConditionalCount : IsProbabilityMeasure (conditionalStartMeasure N L C) :=
-    Measure.isProbabilityMeasure_map (measurable_source_startCount N L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_source_startCount N L).aemeasurable).mpr inferInstance)
   have hr : 0<(fullRate N L : ℝ) := by rw [fullRate_coe]; positivity
   have hp : 0<(poissonMeasure (fullRate N L)).real {n} := by
     rw [poissonMeasure_real_singleton]; positivity

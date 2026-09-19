@@ -32,7 +32,7 @@ theorem targetLaw_macroPosition (M L : ℕ) (delta : ℝ) :
     (targetLaw M L delta).map (macroPosition M)=(locationMixtureLaw M L delta : Measure ℝ) := by
   by_cases hs : (bulkStarts M L delta).Nonempty
   · rw [targetLaw_eq hs,mixedLaw,Measure.map_add _ _ (measurable_of_countable _),
-      Measure.map_smul,Measure.map_smul,borderLaw_macroPosition,bulkLaw_macroPosition]
+      Measure.map_smul _ (measurable_of_countable _).aemeasurable,Measure.map_smul _ (measurable_of_countable _).aemeasurable,borderLaw_macroPosition,bulkLaw_macroPosition]
     change _=(borderWeight _ L : ℝ≥0∞) • Measure.dirac 0+
       (bulkWeight _ L : ℝ≥0∞) • (bulkLocationLaw M L delta : Measure ℝ)
     rw [bulkLocationLaw_eq_uniform_site M L delta hs]
@@ -94,7 +94,7 @@ theorem targetLaw_recordPosition (M L : ℕ) (delta : ℝ) :
       (physicalLocationMixtureLaw M L delta : Measure ℝ) := by
   by_cases hs : (bulkStarts M L delta).Nonempty
   · rw [targetLaw_eq hs,mixedLaw,Measure.map_add _ _ (measurable_of_countable _),
-      Measure.map_smul,Measure.map_smul,borderLaw_recordPosition,bulkLaw_recordPosition]
+      Measure.map_smul _ (measurable_of_countable _).aemeasurable,Measure.map_smul _ (measurable_of_countable _).aemeasurable,borderLaw_recordPosition,bulkLaw_recordPosition]
     change _=(borderWeight _ L : ℝ≥0∞) • Measure.dirac (1/(M : ℝ))+
       (bulkWeight _ L : ℝ≥0∞) • (bulkLocationLaw M L delta : Measure ℝ)
     rw [bulkLocationLaw_eq_uniform_site M L delta hs]

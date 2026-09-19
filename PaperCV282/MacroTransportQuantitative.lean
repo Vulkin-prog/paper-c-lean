@@ -47,7 +47,7 @@ theorem equation_seven_fourteen_eventually
   letI instProbabilityConditional : IsProbabilityMeasure (cond infiniteRademacherMeasure A) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI instProbabilitySource : IsProbabilityMeasure ((cond infiniteRademacherMeasure A).map (source M L)) :=
-    Measure.isProbabilityMeasure_map (measurable_source _ _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_source _ _).aemeasurable).mpr inferInstance)
   have hleOne : conditionalDistance M L A≤1 := measureTotalVariation_le_one _ _
   let R := Real.exp (-saddleCutoff 1 (Real.log M)+eta*saddleNu 1 (Real.log M))+
     (M : ℝ)^(-(1/(3 : ℝ))+epsilon)

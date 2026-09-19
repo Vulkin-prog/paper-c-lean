@@ -87,7 +87,7 @@ theorem theorem_six_three_lower_segment {N L : ℕ} (hN : 2≤N)
   letI instProbabilityLocal1 : IsProbabilityMeasure (cond infiniteRademacherMeasure C) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI instProbabilityLocal2 : IsProbabilityMeasure μ :=
-    Measure.isProbabilityMeasure_map (measurable_unsignedAggregateSource N L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_unsignedAggregateSource N L).aemeasurable).mpr inferInstance)
   have hprob : ν.real B = resolutionProbability N (L+k) n := target_resolution_probability _ _ _ _
   have hε' : ε < ν.real B := by rwa [hprob]
   obtain ⟨hq, hb, hb'⟩ := lemma_six_two μ ν B ((Set.to_countable _).measurableSet)

@@ -18,7 +18,7 @@ variable {I : Type*} [Fintype I]
 def euclideanProductLaw (laws : I → ProbabilityMeasure ℝ) :
     ProbabilityMeasure (EuclideanSpace ℝ I) :=
   ⟨(Measure.pi (fun i => (laws i : Measure ℝ))).map (toLp 2),
-    Measure.isProbabilityMeasure_map (by fun_prop)⟩
+    ((Measure.isProbabilityMeasure_map_iff (by fun_prop)).mpr inferInstance)⟩
 
 theorem charFun_euclideanProductLaw (laws : I → ProbabilityMeasure ℝ)
     (t : EuclideanSpace ℝ I) :
@@ -79,7 +79,7 @@ theorem hasLaw_normalizedPoissonVector (rates : I → ℝ≥0) (base : ℝ) :
       (Measure.pi (fun i => poissonMeasure (rates i))) := by
   letI (i : I) : IsProbabilityMeasure ((poissonMeasure (rates i)).map
       (fun k : ℕ => ((k : ℝ) - (rates i : ℝ)) / Real.sqrt base)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   refine ⟨(measurable_of_countable _).aemeasurable, ?_⟩
   change (Measure.pi (fun i => poissonMeasure (rates i))).map
     ((toLp 2) ∘ (fun k i => ((k i : ℝ) - (rates i : ℝ)) / Real.sqrt base)) = _

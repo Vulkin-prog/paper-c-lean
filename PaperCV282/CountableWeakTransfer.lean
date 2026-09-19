@@ -17,7 +17,7 @@ noncomputable section
 
 def imageProbabilityLaw {Ω X : Type*} [MeasurableSpace Ω] [MeasurableSpace X]
     (μ : Measure Ω) [IsProbabilityMeasure μ] (f : Ω → X) (hf : Measurable f) : ProbabilityMeasure X :=
-  ⟨μ.map f,Measure.isProbabilityMeasure_map hf.aemeasurable⟩
+  ⟨μ.map f,((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)⟩
 
 theorem integral_imageProbabilityLaw {Ω X : Type*} [MeasurableSpace Ω]
     [MeasurableSpace X] [TopologicalSpace X] [BorelSpace X]

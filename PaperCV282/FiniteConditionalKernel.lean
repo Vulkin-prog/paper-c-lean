@@ -47,7 +47,7 @@ theorem condDistrib_eq_conditional_map [MeasurableSingletonClass α]
     (W : Ω → β) (hW : Measurable W) (x : α) (hx : μ.map X {x} ≠ 0) :
     condDistrib W X μ x = (cond μ (X ⁻¹' {x})).map W := by
   ext s hs
-  rw [condDistrib_apply_of_ne_zero hW x hx s,
+  rw [condDistrib_apply_of_ne_zero hX hW x hx s,
     Measure.map_apply hX (measurableSet_singleton x),
     Measure.map_apply (hX.prodMk hW) ((measurableSet_singleton x).prod hs),
     Measure.map_apply hW hs, cond_apply (hX (measurableSet_singleton x))]
@@ -82,7 +82,7 @@ theorem conditionalTV_comap_ae_eq_atom_mass [Countable α] [MeasurableSingletonC
   letI instProbabilityAtom : IsProbabilityMeasure (cond μ (X ⁻¹' {X ω})) :=
     cond_isProbabilityMeasure hpos
   letI instProbabilityAtomMap : IsProbabilityMeasure ((cond μ (X ⁻¹' {X ω})).map W) :=
-    Measure.isProbabilityMeasure_map hW.aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff hW.aemeasurable).mpr inferInstance)
   unfold conditionalTV
   rw [hκ, measureTotalVariation_eq_mass]
   congr 1

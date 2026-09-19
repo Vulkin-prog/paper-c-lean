@@ -13,8 +13,8 @@ guard = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(guard)
 
 GOOD_VERSION = (
-    "Lean (version 4.33.1, x86_64-unknown-linux-gnu, "
-    "commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)"
+    "Lean (version 4.34.0, x86_64-unknown-linux-gnu, "
+    "commit 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b, Release)"
 )
 
 
@@ -23,9 +23,9 @@ class ExporterToolchainTests(unittest.TestCase):
               source=guard.EXPORTER_SOURCE_TOOLCHAIN, version=GOOD_VERSION):
         return guard.validate(project, source, version)
 
-    def test_patch_zero_source_uses_exact_patch_one_compiler(self):
+    def test_source_and_effective_compiler_use_exact_release(self):
         evidence = self.check()
-        self.assertNotEqual(evidence["lean4export_source_toolchain"],
+        self.assertEqual(evidence["lean4export_source_toolchain"],
                             evidence["lean4export_build_toolchain"])
         self.assertEqual(evidence["lean4export_compiler_commit"], guard.LEAN_COMMIT)
 
@@ -36,21 +36,21 @@ class ExporterToolchainTests(unittest.TestCase):
                 self.check(project=project)
 
     def test_other_exporter_sources_are_not_implicitly_allowed(self):
-        for source in ["leanprover/lean4:v4.32.0", "leanprover/lean4:v4.34.0",
+        for source in ["leanprover/lean4:v4.32.0", "leanprover/lean4:v4.34.0-rc1",
                        "leanprover/lean4:v4.33.1", "leanprover/lean4:v4.33.0-rc1"]:
             with self.subTest(source=source), self.assertRaises(ValueError):
                 self.check(source=source)
 
     def test_correct_declared_toolchains_do_not_hide_old_compiler(self):
         with self.assertRaises(ValueError):
-            self.check(version=GOOD_VERSION.replace("version 4.33.1", "version 4.33.0"))
+            self.check(version=GOOD_VERSION.replace("version 4.34.0", "version 4.33.0"))
 
     def test_same_version_with_wrong_commit_is_rejected(self):
         with self.assertRaises(ValueError):
             self.check(version=GOOD_VERSION.replace(guard.LEAN_COMMIT, "0" * 40))
 
     def test_missing_short_or_ambiguous_identity_is_rejected(self):
-        for version in ["", "Lean 4.33.1", GOOD_VERSION + "\n" + GOOD_VERSION,
+        for version in ["", "Lean 4.34.0", GOOD_VERSION + "\n" + GOOD_VERSION,
                         GOOD_VERSION.replace(guard.LEAN_COMMIT, guard.LEAN_COMMIT[:12]),
                         GOOD_VERSION.replace("Release", "Debug")]:
             with self.subTest(version=version), self.assertRaises(ValueError):

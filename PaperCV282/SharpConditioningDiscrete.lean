@@ -80,8 +80,8 @@ theorem measureTotalVariation_map_eq_mass [MeasurableSpace Ω]
     {f : Ω → α} (hf : Measurable f) :
     measureTotalVariation (μ.map f) (ν.map f) =
       massTotalVariation (observableLaw μ f) (observableLaw ν f) := by
-  letI instProbabilityLocal1 : IsProbabilityMeasure (μ.map f) := Measure.isProbabilityMeasure_map hf.aemeasurable
-  letI instProbabilityLocal2 : IsProbabilityMeasure (ν.map f) := Measure.isProbabilityMeasure_map hf.aemeasurable
+  letI instProbabilityLocal1 : IsProbabilityMeasure (μ.map f) := ((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)
+  letI instProbabilityLocal2 : IsProbabilityMeasure (ν.map f) := ((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)
   rw [measureTotalVariation_eq_mass]
   congr 1 <;> funext a
   · change (μ.map f).real {a} = observableLaw μ f a

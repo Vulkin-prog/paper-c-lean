@@ -19,25 +19,25 @@ noncomputable section
 def resolvedPointLaw (N : ℕ) (hN : 0 < N) (n : ℕ) :
     ProbabilityMeasure (PointMeasure (ℝ × (ℕ × F₂))) :=
   ⟨(resolvedSpatialMeasure N hN n).map (spatialPointEmbedding N),
-    Measure.isProbabilityMeasure_map (measurable_spatialPointEmbedding N).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_spatialPointEmbedding N).aemeasurable).mpr inferInstance)⟩
 
 theorem measurable_fixedContinuous (n : ℕ) :
     Measurable (fun marks : ℕ → unitInterval × (ℕ × F₂) =>
       fixedPointMeasure n (fun i => continuousMark (marks i))) :=
   (continuous_fixedPointMeasure n).measurable.comp
-    (measurable_pi_lambda _ (fun i => measurable_continuousMark.comp (measurable_pi_apply i)))
+    (Measurable.of_eval (fun i => measurable_continuousMark.comp (measurable_pi_apply i)))
 
 theorem measurable_fixedGrid (N : ℕ) (hN : 0<N) (n : ℕ) :
     Measurable (fun marks : ℕ → unitInterval × (ℕ × F₂) =>
       fixedPointMeasure n (fun i => gridPhysicalMark N hN (marks i))) :=
   (continuous_fixedPointMeasure n).measurable.comp
-    (measurable_pi_lambda _ (fun i => (measurable_gridPhysicalMark N hN).comp (measurable_pi_apply i)))
+    (Measurable.of_eval (fun i => (measurable_gridPhysicalMark N hN).comp (measurable_pi_apply i)))
 
 set_option maxHeartbeats 1000000 in
 def resolvedDiffuseLaw (n : ℕ) : ProbabilityMeasure (PointMeasure (ℝ × (ℕ × F₂))) :=
   ⟨(markSequenceMeasure spatialMarkMeasure).map
     (fun marks : ℕ → unitInterval × (ℕ × F₂) => fixedPointMeasure n (fun i => continuousMark (marks i))),
-    Measure.isProbabilityMeasure_map (measurable_fixedContinuous n).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_fixedContinuous n).aemeasurable).mpr inferInstance)⟩
 
 theorem resolvedPointLaw_eq (N : ℕ) (hN : 0 < N) (n : ℕ) :
     (resolvedPointLaw N hN n : Measure (PointMeasure (ℝ × (ℕ × F₂)))) =

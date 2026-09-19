@@ -61,7 +61,7 @@ theorem hasLaw_weighted_signed_target (N L E : ℕ) :
   refine ⟨(measurable_of_countable _).aemeasurable, ?_⟩
   letI : IsProbabilityMeasure ((fieldMeasure (allSignedRates N L E (dyadicBlock N))).map
       (weightedSignedCount N E)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   apply natural_law_eq_of_unit_transforms
   intro z hz
   rw [integral_map (measurable_of_countable _).aemeasurable

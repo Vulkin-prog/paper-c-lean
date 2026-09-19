@@ -54,7 +54,7 @@ theorem positionedConfiguration_injective {M : ℕ} (hM : 1≤M) (L d : ℕ) :
 theorem positionedConfiguration_apply {M : ℕ} (hM : 1≤M) (L d : ℕ)
     (c : SpatialMarkedConfig (containedStarts M L)) (j : SpatialMarkedIndex (containedStarts M L)) :
     positionedConfiguration M L d c (positionLevelMap M L d j)=c j :=
-  Finsupp.mapDomain_apply (positionLevelMap_injective hM L d) _ _
+  Finsupp.mapDomain_apply_of_injective (positionLevelMap_injective hM L d) _ _
 
 def positionedSource (M d : ℕ) : InfiniteSample → PositionedConfiguration :=
   positionedConfiguration M (movingLength M d) d ∘ source M (movingLength M d)
@@ -64,7 +64,7 @@ def positionedTargetMeasure (M d : ℕ) : Measure PositionedConfiguration :=
 
 instance instProbabilityPositionedTarget (M d : ℕ) : IsProbabilityMeasure (positionedTargetMeasure M d) := by
   unfold positionedTargetMeasure
-  exact Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 
 theorem measurable_positionedSource (M d : ℕ) : Measurable (positionedSource M d) :=
   (measurable_of_countable _).comp (measurable_source _ _)

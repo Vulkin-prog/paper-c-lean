@@ -36,7 +36,7 @@ theorem base_pow_componentCount_le_primeProduct
   change (L + 2) ^ primes.card ≤ ∏ p ∈ primes, p
   calc
     (L + 2) ^ primes.card = ∏ _p ∈ primes, (L + 2) := by simp
-    _ ≤ ∏ p ∈ primes, p := Finset.prod_le_prod (fun _ _ => Nat.zero_le _) hfactor
+    _ ≤ ∏ p ∈ primes, p := Finset.prod_le_prod₀ (fun _ _ => Nat.zero_le _) hfactor
 
 /-- Logarithmic form of the same finite small-product budget. -/
 theorem componentCount_mul_log_le_log_of_smallProduct

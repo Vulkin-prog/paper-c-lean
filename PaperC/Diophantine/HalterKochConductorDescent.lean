@@ -1,3 +1,4 @@
+import Mathlib.Algebra.CharZero.Infinite
 import PaperC.Diophantine.GeneralizedPell
 import Mathlib.Algebra.QuadraticAlgebra.Basic
 import Mathlib.Algebra.QuadraticAlgebra.NormDeterminant

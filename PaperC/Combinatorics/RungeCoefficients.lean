@@ -315,7 +315,7 @@ private theorem abs_rungeSummand_le
   calc
     (∏ ν, |halfChoose (j.1 ν) * (γ ν : ℚ) ^ (j.1 ν)|) ≤
         ∏ ν, R ^ (j.1 ν) := by
-      apply Finset.prod_le_prod
+      apply Finset.prod_le_prod₀
       · intro ν _
         exact abs_nonneg _
       · intro ν _

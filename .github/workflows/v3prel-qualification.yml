@@ -28,8 +28,8 @@ jobs:
           set -euo pipefail
           policy_root="$RUNNER_TEMP/PalomarSubmission"
           git clone --filter=blob:none https://github.com/PalomarRegistry/PalomarSubmission.git "$policy_root"
-          git -C "$policy_root" checkout --detach c605f23466450a52999fcfb3c6d68ed8febc56bf
-          test "$(git -C "$policy_root" rev-parse HEAD)" = c605f23466450a52999fcfb3c6d68ed8febc56bf
+          git -C "$policy_root" checkout --detach 3561d237dcc4b28482558ad28a64d767d7cc8615
+          test "$(git -C "$policy_root" rev-parse HEAD)" = 3561d237dcc4b28482558ad28a64d767d7cc8615
           python -m pip install --disable-pip-version-check --require-hashes --no-deps -r "$policy_root/requirements.txt"
           python -m unittest discover -s scripts -p 'test_check_v3prel_candidates.py' -v
           python -m unittest discover -s scripts -p 'test_v3prel_sources.py' -v

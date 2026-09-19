@@ -83,7 +83,7 @@ theorem firstStartLaw_tv_le {M L : ℕ} (delta : ℝ) (hLM : L≤M) :
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ (hit_probability_pos hLM))
   letI instProbabilityGamma := conditionalGammaLaw_probability delta hLM
   letI instProbabilityRecorded : IsProbabilityMeasure ((conditionalGammaLaw M L delta).map recordStart) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   have hc := map_tv_le_of_ae_eq_off mu {omega | gamma M L delta omega=none}
     (measurable_firstStart M L) ((measurable_of_countable recordStart).comp (measurable_gamma M L delta))
     (Eventually.of_forall fun omega ho => firstStart_eq_recordStart ho)

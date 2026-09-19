@@ -104,7 +104,7 @@ def unsignedTargetMeasure (sites : Finset ℕ) (L : ℕ) : Measure (UnsignedConf
 
 instance instProbabilityUnsignedTarget (sites : Finset ℕ) (L : ℕ) :
     IsProbabilityMeasure (unsignedTargetMeasure sites L) :=
-  Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 
 /-- Every joint finite projection of the complete target is the exact unsigned product. -/
 theorem hasLaw_unsignedProjection (sites : Finset ℕ) (L E : ℕ) :

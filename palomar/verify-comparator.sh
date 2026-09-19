@@ -29,14 +29,13 @@ submission_dir="$cache_root/palomar-submission"
 config_slug=$(basename "$configuration" .json)
 protected_config="$cache_root/protected-$config_slug.json"
 
-# Comparator, NanoDa, Landrun and the adapter retain their recorded pins.
-# Canonical lean4export v4.33.0 is rebuilt under exact Lean v4.33.1,
-# following PalomarSubmission PR 122 (current policy read on 2026-09-09).
+# Official tool revisions reviewed on 2026-09-19. The exporter source and
+# build compiler both use exact Lean 4.34.0; historical receipts remain unchanged.
 comparator_commit=575674928e239f5bc452aab72d1dd7b0f1326494
-lean4export_commit=15f6055e299ad5b89345e533cc2192f4cc00f659
+lean4export_commit=076e8e57707e813375e8f9da8bf989799ace9680
 landrun_commit=811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
 nanoda_commit=68d5ca9db226849b41a6fff59d796ff19d0a8840
-submission_commit=0a2c287a924d2a7cb22e2b12f12b27321bb485a3
+submission_commit=3561d237dcc4b28482558ad28a64d767d7cc8615
 
 for required_command in cargo elan git go lake python3; do
   if ! command -v "$required_command" >/dev/null 2>&1; then

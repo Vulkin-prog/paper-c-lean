@@ -72,7 +72,7 @@ theorem source_tail_relative_error_le {N L : ℕ} (C : Set InfiniteSample)
   letI instProbabilityConditionalSource : IsProbabilityMeasure (cond infiniteRademacherMeasure C) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI instProbabilityConditionalCount : IsProbabilityMeasure (conditionalStartMeasure N L C) :=
-    Measure.isProbabilityMeasure_map (measurable_source_startCount N L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_source_startCount N L).aemeasurable).mpr inferInstance)
   have h := relative_event_error_le (conditionalStartMeasure N L C)
     (poissonMeasure (fullRate N L)) (Ici ⌈(fullRate N L : ℝ)+sqrt (fullRate N L)*t⌉₊)
     (normalTail_pos t ht) (poisson_moderate_relative_error (fullRate N L) hr t ht hcubic)

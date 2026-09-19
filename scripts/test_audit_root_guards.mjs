@@ -94,7 +94,7 @@ try {
   const historicalMutations = {
     source_commit: '0'.repeat(40),
     same_core_merge_commit: '0'.repeat(40),
-    toolchain: 'leanprover/lean4:v4.33.1',
+    toolchain: 'leanprover/lean4:v4.34.0',
     mathlib_revision: '0'.repeat(40),
     fileset: ['PaperC.lean'],
     file_count: 381,

@@ -91,7 +91,7 @@ def configurationMeasure (rate : ℝ≥0) : Measure (ℕ →₀ ℕ) :=
   (compoundSampleMeasure rate geometricClusterMeasure).map clusterConfiguration
 
 instance instProbabilityConfiguration (rate : ℝ≥0) : IsProbabilityMeasure (configurationMeasure rate) :=
-  Measure.isProbabilityMeasure_map measurable_clusterConfiguration.aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff measurable_clusterConfiguration.aemeasurable).mpr inferInstance)
 
 theorem hasLaw_configuration (rate : ℝ≥0) :
     HasLaw clusterConfiguration (configurationMeasure rate)

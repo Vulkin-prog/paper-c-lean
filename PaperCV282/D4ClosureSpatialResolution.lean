@@ -40,7 +40,7 @@ theorem measurable_fixedSpatialConfiguration (N : ℕ) (hN : 0 < N) (n : ℕ) :
 
 instance instProbabilityResolvedSpatial (N : ℕ) (hN : 0 < N) (n : ℕ) :
     IsProbabilityMeasure (resolvedSpatialMeasure N hN n) :=
-  Measure.isProbabilityMeasure_map (measurable_fixedSpatialConfiguration N hN n).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_fixedSpatialConfiguration N hN n).aemeasurable).mpr inferInstance)
 
 /-- Spatial resolution, with iid marks proved by the actual product construction. -/
 theorem conditional_spatial_eq_resolved (N L : ℕ) (hN : 0 < N) (n : ℕ)

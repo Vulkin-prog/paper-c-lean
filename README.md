@@ -6,13 +6,12 @@ and its technical companion, by **Brice Pouly**.
 The current development follows the author-supplied **V3PREL of 7 September
 2026**. The final V3 has not yet been deposited on the publication platforms.
 
-Local validation has passed with **Lean 4.33.1 and Mathlib v4.33.1**:
-all 23 libraries build, the three kernel audits pass, and all 80 selected
-interfaces pass the strict local comparison. Official Comparator/NanoDa
-qualification for this migrated snapshot is not established. See the
-[migration results and limits](docs/LEAN_4_33_1_MIGRATION.md) and the
-[validation receipt](migration_evidence/lean-4.33.1/validation.json).
-Earlier qualification records remain tied to their Lean 4.32.0 snapshots.
+The current toolchain is **Lean 4.34.0 and Mathlib v4.34.0**. All 23
+libraries build, the three axiom audits pass, and all 80 selected declarations
+pass local Lean and NanoDa checks across ten configurations. The
+[validation evidence](migration_evidence/lean-4.34.0/README.md) and
+[migration review](docs/LEAN_4_34_0_MIGRATION.md) describe the checks and limits.
+Earlier qualification records remain tied to their recorded source snapshots.
 
 | Paper and source material | Link |
 |---|---|
@@ -112,7 +111,7 @@ next versions of these five entries.
 
 ## Build and check
 
-The pins are **Lean 4.33.1 and Mathlib v4.33.1**. The complete local build
+The pins are **Lean 4.34.0 and Mathlib v4.34.0**. The complete local build
 and audits have passed. With these exact dependencies installed, the
 following commands check the mathematical overlays from the repository root:
 
@@ -122,7 +121,7 @@ python3 scripts/check_v3prel_sources.py
 python3 scripts/check_v282_audit.py --check-source
 ```
 
-The [migration guide](docs/LEAN_4_33_1_MIGRATION.md#reproducing-local-validation) lists
+The [migration guide](docs/LEAN_4_34_0_MIGRATION.md#reproducing-local-validation) lists
 all 23 library targets and the three kernel audits: a default `lake build`
 covers only `PaperC`. The
 [Palomar guide](docs/PALOMAR_V3PREL.md#reproducible-qualification) describes

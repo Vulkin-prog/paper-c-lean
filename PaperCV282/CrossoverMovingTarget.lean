@@ -40,9 +40,9 @@ theorem cappedDistance_nonneg {M L : ℕ} (K : ℕ) (delta : ℝ) (hLM : L≤M) 
   letI instProbabilityGamma : IsProbabilityMeasure (conditionalGammaLaw M L delta) :=
     conditionalGammaLaw_probability delta hLM
   letI instProbabilityCappedGamma : IsProbabilityMeasure ((conditionalGammaLaw M L delta).map (capBorder K)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   letI instProbabilityCappedTarget : IsProbabilityMeasure ((targetLaw M L delta).map (capBorder K)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   exact measureTotalVariation_nonneg _ _
 
 end

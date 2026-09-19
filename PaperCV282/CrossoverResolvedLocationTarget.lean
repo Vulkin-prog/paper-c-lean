@@ -87,7 +87,7 @@ theorem resolvedTargetLaw_eq {M L : ℕ} {delta : ℝ} (hs : (bulkStarts M L del
   apply Subtype.ext
   change (targetLaw M L delta).map (twoClockPosition M L)=_
   rw [targetLaw_eq hs,mixedLaw,Measure.map_add _ _ (measurable_of_countable _),
-    Measure.map_smul,Measure.map_smul,borderLaw_twoClockPosition,bulkLaw_twoClockPosition M L delta hs]
+    Measure.map_smul _ (measurable_of_countable _).aemeasurable,Measure.map_smul _ (measurable_of_countable _).aemeasurable,borderLaw_twoClockPosition,bulkLaw_twoClockPosition M L delta hs]
   rfl
 
 theorem microscopicLocationLaw_tendsto (lengths : ℕ→ℕ) (hlengths : Tendsto lengths atTop atTop) :

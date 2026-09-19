@@ -2,7 +2,7 @@
 
 This table records four historical Palomar entries. The
 [five V3PREL families](../docs/PALOMAR_V3PREL.md) have separate statement
-boundaries. Their [Lean 4.33.1 migration](../docs/LEAN_4_33_1_MIGRATION.md)
+boundaries. Their [Lean 4.34.0 migration](../docs/LEAN_4_34_0_MIGRATION.md)
 has passed local builds, audits and strict interface checks. Those checks
 do not qualify new versions of these records.
 
@@ -65,7 +65,7 @@ The historical replay used the trusted-tool revisions pinned by
 `PalomarRegistry/PalomarSubmission` at commit
 `0a2c287a924d2a7cb22e2b12f12b27321bb485a3` (2026-08-20). The current
 runner's compiler and exporter checks are described in the
-[migration guide](../docs/LEAN_4_33_1_MIGRATION.md#candidate-verification-and-external-constraints).
+[migration guide](../docs/LEAN_4_34_0_MIGRATION.md#provenance-and-preserved-evidence).
 Pass the desired configuration explicitly; its provenance guard remains
 a separate gate for an actual replay:
 
@@ -79,16 +79,15 @@ The historical environment used Lean `v4.32.0`, Mathlib `v4.32.0` at commit
 `4e7915201d3f9f04470d9eae002fa695f7cdc589`, Comparator commit
 `575674928e239f5bc452aab72d1dd7b0f1326494`, and NanoDa commit
 `68d5ca9db226849b41a6fff59d796ff19d0a8840`.
-The current pins are Lean `v4.33.1` and Mathlib `v4.33.1` at
-`0df444a360eaa60ab8c11dca51a86af692955474`. Exporter source
-`15f6055e299ad5b89345e533cc2192f4cc00f659`, declared for 4.33.0, was built
-with the exact project compiler, and a two-theorem export passed its metadata
-checks. The 80 selected project interfaces also passed the separate local
-strict comparison. Neither result establishes official Comparator/NanoDa
-acceptance or Palomar qualification for the migrated sources.
+The current pins are Lean `v4.34.0` and Mathlib `v4.34.0` at
+`5ed2965256430c3649e86755f9576b54eca72435`. Exporter source
+`076e8e57707e813375e8f9da8bf989799ace9680` and its build compiler both use
+4.34.0. Current verification results are recorded in the migration guide.
 
 `palomar/check-mathlib-canonical-ancestry.sh` mirrors Palomar's canonical
-Mathlib ancestry guard. The workflow
+Mathlib provenance guard, including exact official release tags outside
+master ancestry after upstream PR 128.
+The workflow
 `.github/workflows/palomar-qualification.yml` validates every metadata/config
 pair and runs each protected Lean+NanoDa replay in a separate matrix job. A
 green workflow is a pre-submission compatibility result; Palomar's verification

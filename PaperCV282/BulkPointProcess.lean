@@ -74,7 +74,7 @@ theorem mappedConditionalMean_le {α β : Type*} [MeasurableSpace α] [Measurabl
   letI instProbabilityConditionalAtom : IsProbabilityMeasure mu :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _
       (ExactMarkedInfinite.signed_conditioning_atom_real_pos C Y sigma))
-  letI instProbabilityImage : IsProbabilityMeasure (mu.map f) := Measure.isProbabilityMeasure_map hf.aemeasurable
+  letI instProbabilityImage : IsProbabilityMeasure (mu.map f) := ((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)
   have h := measureTotalVariation_map_le (mu.map f) nu he
   rw [Measure.map_map he hf,measureTotalVariation_eq_mass (mu.map f) nu] at h
   have hs : observableLaw (mu.map f) id = conditionalObservableLaw infiniteRademacherMeasure
@@ -95,9 +95,9 @@ theorem mappedConditionalMean_nonneg {α β : Type*} [MeasurableSpace α] [Measu
       cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _
         (ExactMarkedInfinite.signed_conditioning_atom_real_pos C Y sigma))
     letI instProbabilitySourceImage : IsProbabilityMeasure (mu.map (embed ∘ f)) :=
-      Measure.isProbabilityMeasure_map (he.comp hf).aemeasurable
+      ((Measure.isProbabilityMeasure_map_iff (he.comp hf).aemeasurable).mpr inferInstance)
     letI instProbabilityTargetImage : IsProbabilityMeasure (nu.map embed) :=
-      Measure.isProbabilityMeasure_map he.aemeasurable
+      ((Measure.isProbabilityMeasure_map_iff he.aemeasurable).mpr inferInstance)
     exact SharpConditioning.measureTotalVariation_nonneg _ _
   unfold mappedConditionalMean uniformAverage
   exact div_nonneg (Finset.sum_nonneg (fun sigma _ => hp sigma)) (by positivity)
@@ -177,9 +177,9 @@ theorem microscopicPointJointDistance_le (M L : ℕ) (delta : ℝ) :
   have hf : Measurable f := measurable_startField _ _
   have he : Measurable embed := measurable_of_countable _
   letI instProbabilityRecord : IsProbabilityMeasure (infiniteRademacherMeasure.map record) :=
-    Measure.isProbabilityMeasure_map hr.aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff hr.aemeasurable).mpr inferInstance)
   letI instProbabilityJoint : IsProbabilityMeasure (infiniteRademacherMeasure.map (fun omega => (record omega,f omega))) :=
-    Measure.isProbabilityMeasure_map (hr.prodMk hf).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (hr.prodMk hf).aemeasurable).mpr inferInstance)
   have h := measureTotalVariation_map_le
     (infiniteRademacherMeasure.map (fun omega => (record omega,f omega)))
     ((infiniteRademacherMeasure.map record).prod nu) (measurable_id.prodMap he)
@@ -193,12 +193,12 @@ theorem microscopicPointJointDistance_nonneg (M L : ℕ) (delta : ℝ) :
   have hf : Measurable (startPointSource M L delta) :=
     (measurable_of_countable _).comp (measurable_startField _ _)
   letI instProbabilityRecord : IsProbabilityMeasure (infiniteRademacherMeasure.map (MesoscopicStability.microscopicRecord L 0)) :=
-    Measure.isProbabilityMeasure_map hr.aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff hr.aemeasurable).mpr inferInstance)
   letI instProbabilityJoint : IsProbabilityMeasure (infiniteRademacherMeasure.map (fun omega =>
       (MesoscopicStability.microscopicRecord L 0 omega,startPointSource M L delta omega))) :=
-    Measure.isProbabilityMeasure_map (hr.prodMk hf).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (hr.prodMk hf).aemeasurable).mpr inferInstance)
   letI instProbabilityPointTarget : IsProbabilityMeasure (startPointTarget M L delta) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   exact SharpConditioning.measureTotalVariation_nonneg _ _
 
 /-- The stronger first equality in (7.17), for the true joint spatial law. -/

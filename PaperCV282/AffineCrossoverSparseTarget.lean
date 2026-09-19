@@ -103,10 +103,10 @@ theorem conditional_candidate_tv_le (sites : Finset ℕ) (hs : sites.Nonempty) (
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ (sparse_mass_pos mu sites L K alpha halpha hpos))
   letI instProbabilityCandidate : IsProbabilityMeasure
       ((cond (AffineCrossoverModel.productJoint mu sites L K) (sparseEvent sites)).map (candidate sites)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   letI instProbabilityCappedMixed : IsProbabilityMeasure
       ((AffineCrossoverTarget.mixedLaw sites hs L alpha).map (capBorder K)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   apply (measureTotalVariation_le_iff _ _ _).mpr
   intro S _
   rw [conditional_candidate_test mu sites hs L K alpha halpha hpos hclock,

@@ -46,7 +46,7 @@ theorem firstStart_le_cutoff (M L : ℕ) (omega : InfiniteSample) : firstStart M
 theorem measurable_positiveSource (M L : ℕ) : Measurable (positiveSource M L) := by
   let f : SampleSpace (M+1) × ℕ → Bool := fun z => if valueBit z.1 z.2=0 then true else false
   have hr : Measurable (restrictToFinite (M+1)) :=
-    measurable_pi_lambda _ fun p => measurable_pi_apply (finitePrimeCoordinate (M+1) p)
+    Measurable.of_eval fun p => measurable_pi_apply (finitePrimeCoordinate (M+1) p)
   have hm := (measurable_of_countable f).comp (hr.prodMk (measurable_firstStart M L))
   have he : f ∘ (fun omega : InfiniteSample => (restrictToFinite (M+1) omega,firstStart M L omega))=
       positiveSource M L := by

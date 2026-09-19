@@ -25,13 +25,13 @@ def mappedPointMeasure (f : X → Y) (sample : ℕ × (ℕ → X)) : PointMeasur
 theorem measurable_mappedPointMeasure {f : X → Y} (hf : Measurable f) :
     Measurable (mappedPointMeasure f) := by
   apply measurable_samplePointMeasure.comp
-  exact measurable_fst.prodMk (measurable_pi_lambda _ (fun i =>
+  exact measurable_fst.prodMk (Measurable.of_eval (fun i =>
     hf.comp ((measurable_pi_apply i).comp measurable_snd)))
 
 def poissonPointLaw (rate : ℝ≥0) (mu : Measure X) [IsProbabilityMeasure mu]
     (f : X → Y) (hf : Measurable f) : ProbabilityMeasure (PointMeasure Y) :=
   ⟨(markSampleMeasure rate mu).map (mappedPointMeasure f),
-    Measure.isProbabilityMeasure_map (measurable_mappedPointMeasure hf).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_mappedPointMeasure hf).aemeasurable).mpr inferInstance)⟩
 
 theorem hasLaw_mappedPointMeasure (rate : ℝ≥0) (mu : Measure X) [IsProbabilityMeasure mu]
     (f : X → Y) (hf : Measurable f) :
@@ -66,7 +66,7 @@ theorem fixed_point_integral_tendsto (mu : Measure X) [IsProbabilityMeasure mu]
   apply tendsto_integral_of_dominated_convergence (fun _ => ‖F‖)
   · intro n
     exact (F.continuous.measurable.comp ((continuous_fixedPointMeasure k).measurable.comp
-      (measurable_pi_lambda _ (fun i => (hf n).comp (measurable_pi_apply i))))).aestronglyMeasurable
+      (Measurable.of_eval (fun i => (hf n).comp (measurable_pi_apply i))))).aestronglyMeasurable
   · exact integrable_const _
   · intro n
     exact Filter.Eventually.of_forall (fun marks => F.norm_coe_le_norm _)

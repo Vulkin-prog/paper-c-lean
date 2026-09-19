@@ -130,9 +130,9 @@
       "PaperC/**/*.lean"
     ],
     "file_count": 382,
-    "digest_sha256": "081fb4c78b76d0cfc5da9fd505ff8226b051269d6ebdc5e2bdc4ee207a8b4d69",
+    "digest_sha256": "545b5dfe5f972614c0e682065640c1c34a03c8819255436f2adf6032a9d0f056",
     "snapshot_kind": "migrated_current_core",
-    "toolchain": "leanprover/lean4:v4.33.1",
+    "toolchain": "leanprover/lean4:v4.34.0",
     "historical_baseline": {
       "source_commit": "9286f4a954ac128ba3d5edd1c1d25203f45c099f",
       "same_core_merge_commit": "ee2ac789764fe5d9fd19c96c6c0778a693b129a0",
@@ -157,8 +157,8 @@
     "PaperC.lean",
     "PaperC/**/*.lean"
   ],
-  "core_source_digest_sha256": "081fb4c78b76d0cfc5da9fd505ff8226b051269d6ebdc5e2bdc4ee207a8b4d69",
-  "source_digest_sha256": "081fb4c78b76d0cfc5da9fd505ff8226b051269d6ebdc5e2bdc4ee207a8b4d69",
+  "core_source_digest_sha256": "545b5dfe5f972614c0e682065640c1c34a03c8819255436f2adf6032a9d0f056",
+  "source_digest_sha256": "545b5dfe5f972614c0e682065640c1c34a03c8819255436f2adf6032a9d0f056",
   "comparator_fileset": [
     "Challenge.lean",
     "ChallengeTheoremOneFour.lean",
@@ -181,7 +181,7 @@
   "release_evidence_state": "external_to_source_snapshot",
   "release_evidence_location": "release_evidence/v0.48.1/",
   "packaging_commit_required": true,
-  "comparator_state_note": "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. release_evidence/v0.48.1/ applies only to the two historical Theorem 1.1 configurations and only through its validated single-parent packaging protocol. The three new Palomar configurations require their own Lean-and-NanoDa verification at the submitted immutable commit; neither the v0.48.1 package nor the published v0.48.0 evidence qualifies those new targets. The Lean/Mathlib 4.33.1 migration requires new build, audit and strict dual-kernel evidence at its own immutable commit; the preserved historical compatibility probe and release records do not qualify this toolchain.",
+  "comparator_state_note": "This source-snapshot metadata fixes the Comparator configurations, interfaces, and byte digests, but deliberately does not encode a post-freeze execution outcome. release_evidence/v0.48.1/ applies only to the two historical Theorem 1.1 configurations and only through its validated single-parent packaging protocol. The three new Palomar configurations require their own Lean-and-NanoDa verification at the submitted immutable commit; neither the v0.48.1 package nor the published v0.48.0 evidence qualifies those new targets. The Lean/Mathlib 4.34.0 migration requires new build, audit and strict dual-kernel evidence at its own immutable commit; the preserved historical compatibility probe and release records do not qualify this toolchain.",
   "comparator_tools": {
     "comparator": {
       "repository": "https://github.com/leanprover/comparator",
@@ -189,9 +189,9 @@
     },
     "lean4export": {
       "repository": "https://github.com/leanprover/lean4export",
-      "commit": "15f6055e299ad5b89345e533cc2192f4cc00f659",
-      "source_toolchain": "leanprover/lean4:v4.33.0",
-      "build_toolchain": "leanprover/lean4:v4.33.1"
+      "commit": "076e8e57707e813375e8f9da8bf989799ace9680",
+      "source_toolchain": "leanprover/lean4:v4.34.0",
+      "build_toolchain": "leanprover/lean4:v4.34.0"
     },
     "landrun": {
       "repository": "https://github.com/Zouuup/landrun",
@@ -204,7 +204,7 @@
   },
   "comparator_compatibility_probe": {
     "status": "passed",
-    "scope": "Historical pre-migration upstream Comparator self-test only; does not attest compatibility of the Lean 4.33.1 toolchain or its project proofs.",
+    "scope": "Historical pre-migration upstream Comparator self-test only; does not attest compatibility of the Lean 4.34.0 toolchain or its project proofs.",
     "sandboxed": false,
     "counts_as_project_verification": false,
     "transcript": "comparator/transcripts/toolchain_compatibility_unsandboxed.txt",
@@ -24790,7 +24790,7 @@
       "name": "PaperC.PellInput.quadraticOrderConductorFiberBound",
       "kind": "theorem",
       "source": "PaperC/Diophantine/HalterKochConductorDescent.lean",
-      "line": 648,
+      "line": 649,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -24798,7 +24798,7 @@
       "name": "PaperC.PellInput.quadraticOrderConductorFiberBound_of_halterKochConductorDescent",
       "kind": "theorem",
       "source": "PaperC/Diophantine/HalterKochConductorDescent.lean",
-      "line": 189,
+      "line": 190,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27888,7 +27888,7 @@
       "name": "PaperC.QuadraticIdealDivisors.disjoint_normalizedFactors_of_isCoprime",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 188,
+      "line": 163,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27896,7 +27896,7 @@
       "name": "PaperC.QuadraticIdealDivisors.factorCountProduct_finset_prod_of_pairwise",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 235,
+      "line": 210,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27904,7 +27904,7 @@
       "name": "PaperC.QuadraticIdealDivisors.factorCountProduct_mappedPrimePower_le",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 289,
+      "line": 264,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27912,7 +27912,7 @@
       "name": "PaperC.QuadraticIdealDivisors.factorCountProduct_mul_of_isCoprime",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 203,
+      "line": 178,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27920,7 +27920,7 @@
       "name": "PaperC.QuadraticIdealDivisors.factorCountProduct_primeFactors_assembly",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 421,
+      "line": 396,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27928,7 +27928,7 @@
       "name": "PaperC.QuadraticIdealDivisors.factorCountProduct_rationalPrimePowerIdeal_le",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 444,
+      "line": 419,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27936,7 +27936,7 @@
       "name": "PaperC.QuadraticIdealDivisors.factorCountProduct_span_natCast_le_tauSq",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 470,
+      "line": 445,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27944,7 +27944,7 @@
       "name": "PaperC.QuadraticIdealDivisors.factorCountProduct_span_natPrime_pow_le",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 362,
+      "line": 337,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27952,7 +27952,7 @@
       "name": "PaperC.QuadraticIdealDivisors.factorization_ne_zero_of_mem_primeFactors",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 388,
+      "line": 363,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27960,7 +27960,7 @@
       "name": "PaperC.QuadraticIdealDivisors.local_quadratic_factor_bound",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 271,
+      "line": 246,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27984,7 +27984,7 @@
       "name": "PaperC.QuadraticIdealDivisors.natCard_idealDivisors_span_natCast_le_tauSq",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 497,
+      "line": 472,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -27992,7 +27992,7 @@
       "name": "PaperC.QuadraticIdealDivisors.prod_factorCountProduct_rationalPrimePowerIdeal_le",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 455,
+      "line": 430,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -28000,7 +28000,7 @@
       "name": "PaperC.QuadraticIdealDivisors.quadraticIdealDivisorTauSq",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 523,
+      "line": 498,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -28008,7 +28008,7 @@
       "name": "PaperC.QuadraticIdealDivisors.rationalPrimePowerIdeal_isCoprime",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 404,
+      "line": 379,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -28016,7 +28016,7 @@
       "name": "PaperC.QuadraticIdealDivisors.rationalPrimePowerIdeal_ne_bot",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 395,
+      "line": 370,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
@@ -28040,7 +28040,7 @@
       "name": "PaperC.QuadraticIdealDivisors.span_natCast_eq_prod_rationalPrimePowerIdeal",
       "kind": "theorem",
       "source": "PaperC/Diophantine/QuadraticIdealDivisors.lean",
-      "line": 436,
+      "line": 411,
       "conditionality": "inconditionnel",
       "hypotheses": []
     },
