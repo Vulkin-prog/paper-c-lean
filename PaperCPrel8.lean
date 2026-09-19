@@ -1,4 +1,10 @@
+import PaperCPrel8.AbsolutePairConvergence
+import PaperCPrel8.AbsolutePairGeometry
+import PaperCPrel8.AbsolutePairLedger
+import PaperCPrel8.AbsolutePairRates
+import PaperCPrel8.AbsolutePairTheorem
 import PaperCPrel8.ActualSignedConditionalLaw
+import PaperCPrel8.ActualSignedCovariance
 import PaperCPrel8.ActualSignedPairs
 import PaperCPrel8.ActualSignedPalm
 import PaperCPrel8.AffineDictionaryConsequences
@@ -36,6 +42,7 @@ import PaperCPrel8.CategoricalActivityWitness
 import PaperCPrel8.CategoricalCumulantBound
 import PaperCPrel8.CategoricalMomentExpansion
 import PaperCPrel8.CategoricalOccupancyEnvelope
+import PaperCPrel8.CategoricalPairBridge
 import PaperCPrel8.CategoricalPalm
 import PaperCPrel8.CategoricalSummation
 import PaperCPrel8.CategoricalTransversals
@@ -140,7 +147,9 @@ import PaperCPrel8.PrimeActivityDivergence
 import PaperCPrel8.PrimeActivityLower
 import PaperCPrel8.PrimeCumulantObstruction
 import PaperCPrel8.PrimeForcing
+import PaperCPrel8.PrimeHigherDivergence
 import PaperCPrel8.PrimeMicroscopicComparison
+import PaperCPrel8.PrimePairVanishing
 import PaperCPrel8.PrimeRetainedDensity
 import PaperCPrel8.PrimeRunWitness
 import PaperCPrel8.PrimeWindowBudget
@@ -178,7 +187,10 @@ import PaperCPrel8.RoughKernelRegularity
 import PaperCPrel8.RoughKernelSaddle
 import PaperCPrel8.RoughKernelStrongCount
 import PaperCPrel8.RoughKernelThreshold
+import PaperCPrel8.RoughPairHostSaddle
 import PaperCPrel8.RoughPairHosts
+import PaperCPrel8.RoughPairReciprocalSaddle
+import PaperCPrel8.RoughPairTailParameter
 import PaperCPrel8.SaddleEnvelope
 import PaperCPrel8.SaddleScaleMonotonicity
 import PaperCPrel8.ShiftedCylinderPNT
@@ -187,6 +199,7 @@ import PaperCPrel8.SignedPalmForcing
 import PaperCPrel8.SmallPrimeMixture
 import PaperCPrel8.StrongerDeletionTheorem
 import PaperCPrel8.StrongerRestoration
+import PaperCPrel8.TwoBlockRegularity
 import PaperCPrel8.TwoRankPair
 import PaperCPrel8.TypicalDictionaryConsequences
 import PaperCPrel8.TypicalDictionaryConvergence

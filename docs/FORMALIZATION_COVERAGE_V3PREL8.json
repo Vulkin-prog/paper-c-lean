@@ -4391,6 +4391,41 @@
           "path": "PaperCPrel8/RoughPairHosts.lean",
           "declaration": "hosted_pairs_count",
           "scope": "Single-target CRT count bounded by 2*(Q+1)*X times the literal rough-kernel reciprocal sum. The constant two is paid once, not per prime. Full activity summation and saddle asymptotics remain."
+        },
+        {
+          "path": "PaperCPrel8/RoughPairHostSaddle.lean",
+          "declaration": "hosted_pairs_saddle",
+          "scope": "Actual one-target rough-host count, uniformly bounded by M^2 exp(-2V+eta*nu) for each eta>0."
+        },
+        {
+          "path": "PaperCPrel8/ActualSignedCovariance.lean",
+          "declaration": "regular_covariance_zero",
+          "scope": "Exact conditional covariance zero for regular pairs; only the exceptional pairs incur inverse event mass."
+        },
+        {
+          "path": "PaperCPrel8/AbsolutePairGeometry.lean",
+          "declaration": "activity_le_counts",
+          "scope": "Actual ordered signed/excess covariance activity bounded by local counts, maximal full-value relation excess and rough-host count; sum categories first."
+        },
+        {
+          "path": "PaperCPrel8/AbsolutePairTheorem.lean",
+          "declaration": "pair_bound_eventually",
+          "scope": "Uniform paper-cutoff bound for every deterministic subset of G0 and every cylinder C>=M+Q; eta>0 is arbitrary, with no assumed pair decay."
+        },
+        {
+          "path": "PaperCPrel8/AbsolutePairTheorem.lean",
+          "declaration": "pair_margin_eventually",
+          "scope": "The exact information gain remains: 4 exp(-I-d*nu)+2 M^(-1/3+epsilon) for every 0<d<2c."
+        },
+        {
+          "path": "PaperCPrel8/AbsolutePairConvergence.lean",
+          "declaration": "pair_tendsto_zero",
+          "scope": "Actual conditional pair activity tends to zero for all varying source parameters satisfying the stated regime. Only existing PNT input is required."
+        },
+        {
+          "path": "PaperCPrel8/CategoricalPairBridge.lean",
+          "declaration": "arithmetic_pair_activity",
+          "scope": "Exact double-counting bridge from two-element categorical cumulants to the ordered covariance activity, with the correct factor two."
         }
       ]
     },
@@ -4546,6 +4581,21 @@
           "path": "PaperCPrel8/PrimeMicroscopicComparison.lean",
           "declaration": "distance_tendsto",
           "scope": "Independent full microscopic distance tends to zero on the same windows, retaining the existing directional Stein and arithmetic inputs of F.2. No cumulant smallness premise is used."
+        },
+        {
+          "path": "PaperCPrel8/PrimePairVanishing.lean",
+          "declaration": "good_subsets_tendsto",
+          "scope": "On the exact prime windows, the true two-site categorical layer tends to zero for every deterministic subset of G0."
+        },
+        {
+          "path": "PaperCPrel8/PrimeHigherDivergence.lean",
+          "declaration": "original_higher_diverges",
+          "scope": "Actual activity of orders >=3 diverges along every prime sequence tending to infinity for G0."
+        },
+        {
+          "path": "PaperCPrel8/PrimeHigherDivergence.lean",
+          "declaration": "retained_higher_diverges",
+          "scope": "The higher-order divergence is discharged for every fixed nonnegative theta and actual G_theta; G.9 no longer depends on an unproved pair estimate."
         }
       ]
     }
@@ -4597,7 +4647,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "G.1–G.6 numbered conclusions and G.8 finite bounds are recorded, with explicit baseline inputs where required. G.6 also has the finite Palm cumulant criterion retaining singleton corrections. G.9 now has its actual positive normalized lower limit and total-activity divergence for G0 and every fixed G_theta, with the exact prime windows, minimal M+Q cylinder, original marginals and omission estimates discharged; the independent microscopic distance tends to zero with the existing F.2 inputs. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic rough-host bound. The remaining G.9 assertion about divergence at orders >=3 depends on that vanishing pair estimate; its exact layer decomposition is proved. Final unnumbered review (named outside-deletion convergence, cumulant conventions, tilted-void identities, the pair example and witness threshold) and the separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise."
+      "remaining": "G.1–G.9 numbered conclusions are recorded, with explicit baseline inputs where required. G.7 now has its actual uniform absolute pair bound and vanishing conclusion for every deterministic G subset of G0, at the paper cutoffs and any adequate cylinder. G.9 has the positive normalized lower limit, total divergence, vanishing pair layer and divergence at orders >=3 for G0 and every fixed G_theta, independently of the full microscopic comparison. Final unnumbered review (named outside-deletion convergence, cumulant conventions, tilted-void identities, the pair example and witness threshold) and the separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."

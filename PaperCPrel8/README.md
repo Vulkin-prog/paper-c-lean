@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **1,005 proved theorems in 202 modules**. It is an
+This library contains **1,048 proved theorems in 215 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -209,6 +209,19 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `PrimeWindowScales` | The literal q-1+floor(log₂ q) window in G.9 |
 | `PrimeWitnessCountBounds` | Uniform explicit errors in the certified-prime-site count |
 | `ShiftedCylinderPNT` | PNT normalization on a sublinearly enlarged sampling cylinder |
+| `AbsolutePairConvergence` | G.7's uniform vanishing conclusion for actual varying conditional fields |
+| `AbsolutePairGeometry` | Geometric counts for the absolute conditional pair activity |
+| `AbsolutePairLedger` | The absolute pair ledger after summing all low marks first |
+| `AbsolutePairRates` | Numerical assembly of the three absolute-pair costs |
+| `AbsolutePairTheorem` | The full conditional pair activity, uniformly on deterministic good subsets |
+| `ActualSignedCovariance` | Absolute conditional covariance, with exact zero for regular two-block plants |
+| `CategoricalPairBridge` | Identification of the categorical two-site layer with ordered actual covariances |
+| `PrimeHigherDivergence` | G.9: the divergence is carried by orders at least three |
+| `PrimePairVanishing` | Vanishing of the actual pair layer on the prime obstruction windows |
+| `RoughPairHostSaddle` | Uniform hard-saddle count for the actual single-target rough hosts |
+| `RoughPairReciprocalSaddle` | The doubled hard-saddle exponent in the rough pair reciprocal sum |
+| `RoughPairTailParameter` | Exact rounding and small-argument bounds for the rough pair reciprocal sum |
+| `TwoBlockRegularity` | Failure of private pivots for two good supports forces a one-target rough host |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -247,7 +260,7 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/prime-obstruction/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/absolute-pair-completion/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
@@ -256,4 +269,4 @@ The affine corollary 5.4 and extended introduction 1.3 are also proved.
 Palm/cumulant complements and remaining unnumbered assertions still prevent
 a claim of complete realignment.
 
-G.1–G.6 numbered conclusions and G.8 finite bounds are recorded, with explicit baseline inputs where required. G.6 also has the finite Palm cumulant criterion retaining singleton corrections. G.9 now has its actual positive normalized lower limit and total-activity divergence for G0 and every fixed G_theta, with the exact prime windows, minimal M+Q cylinder, original marginals and omission estimates discharged; the independent microscopic distance tends to zero with the existing F.2 inputs. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic rough-host bound. The remaining G.9 assertion about divergence at orders >=3 depends on that vanishing pair estimate; its exact layer decomposition is proved. Final unnumbered review (named outside-deletion convergence, cumulant conventions, tilted-void identities, the pair example and witness threshold) and the separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise.
+G.1–G.9 numbered conclusions are recorded, with explicit baseline inputs where required. G.7 now has its actual uniform absolute pair bound and vanishing conclusion for every deterministic G subset of G0, at the paper cutoffs and any adequate cylinder. G.9 has the positive normalized lower limit, total divergence, vanishing pair layer and divergence at orders >=3 for G0 and every fixed G_theta, independently of the full microscopic comparison. Final unnumbered review (named outside-deletion convergence, cumulant conventions, tilted-void identities, the pair example and witness threshold) and the separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise.

@@ -987,3 +987,31 @@ La convention entre cumulants centrés d'ordre supérieur et cumulants bruts
 reste à expliciter dans la revue finale.
 
 Les 28 fichiers du manuscrit livrés par l'auteur restent inchangés.
+
+## Paires absolues et divergence supérieure — vingt-quatrième point
+
+**G.7 : simplification facultative de la preuve finale.** Une paire régulière
+au sens des pivots privés a exactement sa loi produit, même après un événement
+sur les petits premiers : sa covariance conditionnelle est donc nulle. Pour
+les autres paires, la majoration positive du joint donne directement
+`|Cov_A| <= rate_i*rate_k*(2^rho_full+1)/P(A)`. Elle se décompose en l'excès
+`2^rho_full-1` et deux unités réservées aux paires non régulières. Toute paire
+non régulière de bons supports force un hébergement de noyau impair rugueux
+dans l'autre support. Le comptage CRT à une cible puis le point selle donnent
+la même borne `M^2 exp(-2V+o(nu))`. Cette voie évite d'utiliser la formule à
+deux rangs dans l'assemblage final de G.7 ; cette formule reste formalisée
+séparément et garde son intérêt explicatif. Aucun changement d'énoncé requis.
+
+**Conditionnement.** La borne conserve un seul facteur `1/P(A)` et, après
+usage du budget, le gain supplémentaire `exp(-I)` : pour tout `0<d<2c`,
+l'activité des paires est au plus `4 exp(-I-d*nu)+2 M^(-1/3+epsilon)`.
+Les catégories de signes et d'excès sont sommées avant les coûts géométriques.
+Il n'apparaît donc aucun facteur artificiel égal au nombre de catégories.
+
+**G.9 : facteur deux et ordres supérieurs.** Le double comptage des ensembles
+transversaux de cardinal deux identifie exactement la convention de l'activité
+cumulante avec la somme des covariances sur les paires ordonnées. Le facteur
+deux de l'énoncé est ainsi vérifié. Avec la disparition de cette couche et la
+divergence totale déjà obtenue, la divergence des ordres au moins trois est
+maintenant prouvée pour G0 et chaque G_theta fixé. La comparaison microscopique
+reste indépendante de ce calcul d'activité, avec les entrées analytiques de F.2.
