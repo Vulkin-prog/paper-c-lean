@@ -121,28 +121,38 @@ The third batch added 30 theorems (98 total) proving the saddle envelope,
 reciprocal-pivot sum and full directed-footprint estimates in F.4–F.6. Its
 source-bound receipt is preserved as historical evidence.
 
-The fourth batch adds **55 theorems (153 total, 29 modules)**. F.3 now has the
+The fourth batch added **55 theorems (153 total, 29 modules)**. F.3 now has the
 literal expanded-band endpoint. F.7 has the actual maximal-support field,
 complete mark-conditioned law, fixed small trace and directed preservation;
 the infinite-source conditional mass function is exactly the finite source
 law. The categorical Palm ledger, local and full-value-rank pair estimates,
 and the actual product-of-means footprint bound are also proved. The
-[current receipt](../extension_evidence/v3prel8/microscopic-field/README.md)
+[fourth-batch receipt](../extension_evidence/v3prel8/microscopic-field/README.md)
 records validation. F.2 still uses the explicit analytic Stein solution input.
 
 The new infinite-field comparison has the explicit finite cost
-`p^2*(#G + edgeCount + weightedEdges)`. It is not yet theorem 7.7: tails,
-deleted-site costs, relation-excess summation and final uniform limits remain
-open. The progress counts are an inventory, not a completion percentage.
+`p^2*(#G + edgeCount + weightedEdges)`. It is not yet theorem 7.7: relation-excess summation, completion of the
+discard estimates in the information regime and final uniform limits remain open. The progress counts are an inventory, not a completion percentage.
+
+The fifth batch adds **21 theorems (174 total, 32 modules)**. An independent
+scalar hit estimate is available, together with a stronger first-moment bound
+for arbitrary masks that needs no scalar Stein input. This yields the actual
+excess-tail probability and the probability of a hit in the literal complement
+of G0, under any positive conditioning event. The latter is bounded using the
+integer square-root cutoff and the number of sites with a bad pivot. The
+[current receipt](../extension_evidence/v3prel8/discard-bounds/README.md) records
+the full build and exact axiom audit. The information-dependent excess cutoff
+still needs to be placed in the shifted logarithmic band, and the remaining
+arithmetic cardinality and error terms must be controlled asymptotically.
 
 ## Remaining dependency chains
 
 - **Typical and affine dictionaries**: Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities.
 - **Information-adapted cutoff**: Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain.
-- **Microscopic signed prefix field**: Independent tails and deleted-site costs, full-value relation-excess summation, final uniform asymptotics and dyadic restriction. The complete retained-field forcing law, infinite conditional source law, categorical ledger and actual arithmetic pair/product costs are now proved.
+- **Microscopic signed prefix field**: Full-value relation-excess summation, bad-pivot cardinality and information-cutoff admissibility in the proved discard bounds, final uniform asymptotics and dyadic restriction. The complete retained-field forcing law, infinite conditional source law, categorical ledger and actual arithmetic pair/product costs are now proved.
 - **Empirical Poisson and support obstruction**: Overlapping-window variance, summability, Borel–Cantelli transfer and fixed-realization support lower bound.
 - **Palm complements**: Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
 
-The signed microscopic comparison must be proved before the Palm-deficit and empirical consequences. The shifted scalar tail must be available independently of that comparison to avoid circular reasoning.
+The signed microscopic comparison must be proved before the Palm-deficit and empirical consequences. The shifted scalar tail is now proved independently of that comparison, avoiding circular reasoning.

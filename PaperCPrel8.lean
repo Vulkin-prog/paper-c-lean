@@ -3,30 +3,33 @@ import PaperCPrel8.ActualSignedPairs
 import PaperCPrel8.ActualSignedPalm
 import PaperCPrel8.CategoricalPalm
 import PaperCPrel8.CategoricalSummation
+import PaperCPrel8.DictionarySelection
+import PaperCPrel8.DirectedFootprint
+import PaperCPrel8.DirectedFootprintAsymptotics
+import PaperCPrel8.EmpiricalTransfer
 import PaperCPrel8.FiniteConditioning
+import PaperCPrel8.HardConditionalForcing
+import PaperCPrel8.IndependentScalarTail
+import PaperCPrel8.InformationBudget
+import PaperCPrel8.MicroscopicDeletedSites
+import PaperCPrel8.MicroscopicDiscardBounds
 import PaperCPrel8.MicroscopicFiniteLedger
 import PaperCPrel8.MicroscopicFootprintLedger
 import PaperCPrel8.MicroscopicGoodField
 import PaperCPrel8.MicroscopicInfiniteField
 import PaperCPrel8.MicroscopicPairLedger
-import PaperCPrel8.PivotRankinExpandedBand
-import PaperCPrel8.SmallPrimeMixture
-import PaperCPrel8.PalmStein
-import PaperCPrel8.DictionarySelection
-import PaperCPrel8.InformationBudget
-import PaperCPrel8.PrivateForcing
 import PaperCPrel8.OddPrimePivot
-import PaperCPrel8.EmpiricalTransfer
+import PaperCPrel8.PalmStein
 import PaperCPrel8.PivotGeometry
-import PaperCPrel8.PrimeForcing
-import PaperCPrel8.HardConditionalForcing
-import PaperCPrel8.DirectedFootprint
-import PaperCPrel8.SignedPalmForcing
-import PaperCPrel8.SaddleEnvelope
-import PaperCPrel8.ReciprocalPivotShells
+import PaperCPrel8.PivotRankinExpandedBand
 import PaperCPrel8.PivotRankinUniform
+import PaperCPrel8.PrimeForcing
+import PaperCPrel8.PrivateForcing
 import PaperCPrel8.ReciprocalPivotAsymptotics
-import PaperCPrel8.DirectedFootprintAsymptotics
+import PaperCPrel8.ReciprocalPivotShells
+import PaperCPrel8.SaddleEnvelope
+import PaperCPrel8.SignedPalmForcing
+import PaperCPrel8.SmallPrimeMixture
 
 /-! Proved components of the 3PREL8 extension. The coverage ledger records
 which source-facing arithmetic and asymptotic conclusions remain open. -/

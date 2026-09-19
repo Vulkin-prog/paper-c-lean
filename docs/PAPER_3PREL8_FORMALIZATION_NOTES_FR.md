@@ -178,3 +178,40 @@ Les points ci-dessus sont des clarifications ou des simplifications ; les
 sources et PDF livrés restent inchangés. F.3 et F.7 sont désormais renseignés
 comme prouvés avec leurs périmètres précis dans la correspondance. L'ensemble
 du réalignement 3PREL8 n'est toujours pas terminé.
+
+
+## Queues indépendantes et positions écartées — cinquième lot
+
+- **Simplification de la queue indépendante de F.1.** La borne du premier
+  moment déjà établie pour un masque arbitraire suffit : l'existence d'une
+  marque d'excès strictement supérieur à `E` implique un départ ordinaire de
+  longueur `L+E+1`. Une borne d'union donne directement `card(mask)/2^(L+E+1)`
+  plus le reste microscopique, sans recourir à la comparaison scalaire de
+  Stein. La voie par cette comparaison est également formalisée, mais donne
+  des constantes moins bonnes. Les deux preuves sont indépendantes du nouveau
+  théorème microscopique ; il n'y a pas de dépendance circulaire.
+- **Conserver la marge d'une unité.** La bande logarithmique porte sur le
+  nombre de lignes augmenté de un. Pour la queue, c'est donc `L+E+2`, alors
+  que le taux de départ est `2^-(L+E+1)`. Les deux signes sont déjà réunis
+  dans l'événement de longueur exacte et ne coûtent aucun facteur deux.
+- **Uniformité avant le conditionnement.** Le seuil commun précède le masque
+  et l'événement de conditionnement. Pour tout événement de probabilité
+  positive, l'intersection coûte au plus l'inverse de cette probabilité.
+  Cette étape ne requiert même pas que l'événement dépende des petits premiers.
+- **Coordonnées des positions écartées.** Le complément de `G0` est un ensemble
+  de frontières gauches `j`, tandis que la borne de départ s'applique à `j+1`.
+  La translation est injective. Le nombre supprimé est au plus
+  `ceil(sqrt M) + card(badPivotSites)`, d'où une borne directe de sa probabilité
+  conditionnelle. Ce mauvais ensemble inclut aussi les sites peu profonds :
+  il majore donc celui du papier, restreint aux sites profonds. Le plafond
+  est conservé exactement, sans approximation.
+- **Ne pas confondre la borne intermédiaire avec la limite.** Il reste à montrer
+  que le choix informationnel de `E` appartient à la bande décalée, à majorer
+  le nombre de mauvais pivots et à absorber tous les restes. L'inégalité
+  algébrique donnant une queue de masse au plus `exp(-V)` est démontrée sous
+  sa condition explicite ; la satisfaction de cette condition par le choix
+  final du papier ne doit pas être présumée.
+
+Ces points sont des simplifications et des précisions de preuve, pas des
+corrections d'erreurs établies. Les fichiers sources et PDF du manuscrit restent
+inchangés. Le théorème 7.7 et l'ensemble du réalignement ne sont pas encore clos.

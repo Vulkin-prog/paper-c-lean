@@ -1,7 +1,5 @@
 import PaperCPrel8
 
-/-! Exact axiom inventory for the current 3PREL8 proved extension. -/
-
 #print axioms PaperC.Prel8.ActualSignedConditionalLaw.mark_probability
 #print axioms PaperC.Prel8.ActualSignedConditionalLaw.mark_probability_pos
 #print axioms PaperC.Prel8.ActualSignedConditionalLaw.whole_field_conditional_law
@@ -52,12 +50,33 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.HardConditionalForcing.word_small_event_probability
 #print axioms PaperC.Prel8.HardConditionalForcing.hard_conditional_expectation
 #print axioms PaperC.Prel8.HardConditionalForcing.actual_window_hard_conditional
+#print axioms PaperC.Prel8.IndependentScalarTail.hitEvent_iff
+#print axioms PaperC.Prel8.IndependentScalarTail.measurableSet_hitEvent
+#print axioms PaperC.Prel8.IndependentScalarTail.hit_probability_eq
+#print axioms PaperC.Prel8.IndependentScalarTail.hit_probability_le
+#print axioms PaperC.Prel8.IndependentScalarTail.hardRate_le_twice_intensity
+#print axioms PaperC.Prel8.IndependentScalarTail.prefix_hit_bound_eventually
+#print axioms PaperC.Prel8.IndependentScalarTail.hit_probability_mono
 #print axioms PaperC.Prel8.InformationBudget.budget_at_crossing
 #print axioms PaperC.Prel8.InformationBudget.crossing_maximizes
 #print axioms PaperC.Prel8.InformationBudget.crossing_unique
 #print axioms PaperC.Prel8.InformationBudget.admissible_cutoff_maximizes
 #print axioms PaperC.Prel8.InformationBudget.two_error_margins
 #print axioms PaperC.Prel8.InformationBudget.absorb_remainder
+#print axioms PaperC.Prel8.MicroscopicDeletedSites.mem_deletedSites
+#print axioms PaperC.Prel8.MicroscopicDeletedSites.shallow_card_le
+#print axioms PaperC.Prel8.MicroscopicDeletedSites.deleted_card_le
+#print axioms PaperC.Prel8.MicroscopicDeletedSites.deletedStarts_card
+#print axioms PaperC.Prel8.MicroscopicDeletedSites.deletedStarts_ambient
+#print axioms PaperC.Prel8.MicroscopicDeletedSites.actual_deleted_bound_eventually
+#print axioms PaperC.Prel8.MicroscopicDiscardBounds.hit_probability_le_first_moment
+#print axioms PaperC.Prel8.MicroscopicDiscardBounds.conditional_event_bound
+#print axioms PaperC.Prel8.MicroscopicDiscardBounds.masked_hit_bound_eventually
+#print axioms PaperC.Prel8.MicroscopicDiscardBounds.measurableSet_excessTail
+#print axioms PaperC.Prel8.MicroscopicDiscardBounds.excessTail_subset_hit
+#print axioms PaperC.Prel8.MicroscopicDiscardBounds.conditional_tail_bound_eventually
+#print axioms PaperC.Prel8.MicroscopicDiscardBounds.conditional_deleted_bound_eventually
+#print axioms PaperC.Prel8.MicroscopicDiscardBounds.cutoff_bulk_tail_bound
 #print axioms PaperC.Prel8.MicroscopicFiniteLedger.retainedRate_le_base
 #print axioms PaperC.Prel8.MicroscopicFiniteLedger.grouped_comparison
 #print axioms PaperC.Prel8.MicroscopicFiniteLedger.base_rate_comparison

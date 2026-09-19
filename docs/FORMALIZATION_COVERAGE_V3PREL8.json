@@ -2405,6 +2405,26 @@
           "path": "PaperCPrel8/MicroscopicFootprintLedger.lean",
           "declaration": "actual_edgeCount_bound",
           "scope": "The actual field's product-of-means edge count obeys the previously proved uniform odd-pivot footprint estimate. Does not alone complete the microscopic total-variation limit."
+        },
+        {
+          "path": "PaperCPrel8/IndependentScalarTail.lean",
+          "declaration": "prefix_hit_bound_eventually",
+          "scope": "Independent scalar-law hit bound, uniform for every shifted length in a fixed logarithmic band; uses the existing scalar Stein input."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicDiscardBounds.lean",
+          "declaration": "conditional_tail_bound_eventually",
+          "scope": "Stronger actual excess-tail bound for arbitrary finite start masks and positive conditioning events, using the pre-existing masked first moment and no scalar Stein input. The shifted length must lie in the stated fixed logarithmic band; the actual information cutoff still needs to be shown admissible."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicDeletedSites.lean",
+          "declaration": "actual_deleted_bound_eventually",
+          "scope": "Actual complement of G0, shifted from left boundaries j to starts j+1. Conditional deletion probability is bounded by (ceil(sqrt M)+card(badPivotSites))*2^-L plus the independent microscopic remainder, all divided by the event mass. The bad-pivot count and resulting final asymptotics are not discharged here."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicDiscardBounds.lean",
+          "declaration": "cutoff_bulk_tail_bound",
+          "scope": "Algebraic exponential bound on the conditional bulk tail once the explicit multiplicative cutoff inequality is supplied; no assertion that the paper cutoff or all remainders already satisfy the final regime."
         }
       ]
     },
@@ -2962,6 +2982,26 @@
           "path": "PaperCPrel8/ActualSignedPairs.lean",
           "declaration": "conditional_relation_bound",
           "scope": "Actual full-value relation-rank pair bound after conditioning, with precisely one inverse event-mass factor. Does not assume the unconditional rank bound holds on individual small-prime atoms."
+        },
+        {
+          "path": "PaperCPrel8/IndependentScalarTail.lean",
+          "declaration": "prefix_hit_bound_eventually",
+          "scope": "Independent scalar-law hit bound, uniform for every shifted length in a fixed logarithmic band; uses the existing scalar Stein input."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicDiscardBounds.lean",
+          "declaration": "conditional_tail_bound_eventually",
+          "scope": "Stronger actual excess-tail bound for arbitrary finite start masks and positive conditioning events, using the pre-existing masked first moment and no scalar Stein input. The shifted length must lie in the stated fixed logarithmic band; the actual information cutoff still needs to be shown admissible."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicDeletedSites.lean",
+          "declaration": "actual_deleted_bound_eventually",
+          "scope": "Actual complement of G0, shifted from left boundaries j to starts j+1. Conditional deletion probability is bounded by (ceil(sqrt M)+card(badPivotSites))*2^-L plus the independent microscopic remainder, all divided by the event mass. The bad-pivot count and resulting final asymptotics are not discharged here."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicDiscardBounds.lean",
+          "declaration": "cutoff_bulk_tail_bound",
+          "scope": "Algebraic exponential bound on the conditional bulk tail once the explicit multiplicative cutoff inequality is supplied; no assertion that the paper cutoff or all remainders already satisfy the final regime."
         }
       ]
     },
@@ -3341,7 +3381,7 @@
         "cor:micro-readout",
         "cor:dyadic-micro"
       ],
-      "remaining": "Independent tail and deleted-site costs, summation of the full-value relation excess, final uniform asymptotics and dyadic restriction. Actual maximal-support field, complete conditional forcing law, infinite-cylinder transfer, categorical ledger, local/relation pair bounds and actual directed product-cost estimate are now proved."
+      "remaining": "Full-value relation-excess summation, bad-pivot count and information-cutoff admissibility in the discard bounds, final uniform asymptotics and dyadic restriction. Independent shifted tails, actual deleted-site probability bounds, retained-field forcing, infinite conditional law and arithmetic pair/product costs are proved."
     },
     {
       "name": "Empirical Poisson and support obstruction",
