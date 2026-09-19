@@ -2,7 +2,8 @@
 
 This is the initial snapshot at commit `6656221b244925bd56b2bb02b53b303d4b396567`.
 Its source hashes are historical and are not a receipt for later modifications.
-The [prime-forcing batch](prime-forcing/README.md) records the subsequent validation.
+The [prime-forcing batch](prime-forcing/README.md) records the second validation;
+the [reciprocal-pivot batch](reciprocal-pivots/README.md) is the current receipt.
 
 The [receipt](validation.json) identifies the exact new Lean sources, the
 successful 24-library build, the 33-name axiom audit, the curated manuscript

@@ -97,9 +97,9 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | companion | [F.1](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L36) | `supp:pivot:lem:inputs` | new statement open |
 | companion | [F.2](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L113) | `supp:pivot:lem:palm` | new statement partial |
 | companion | [F.3](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L174) | `supp:pivot:lem:rankin` | new statement partial |
-| companion | [F.4](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L206) | `supp:pivot:lem:saddle` | new statement open |
-| companion | [F.5](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L231) | `supp:pivot:prop:reciprocal` | new statement open |
-| companion | [F.6](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L316) | `supp:pivot:prop:footprint` | new statement partial |
+| companion | [F.4](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L206) | `supp:pivot:lem:saddle` | new statement proved |
+| companion | [F.5](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L231) | `supp:pivot:prop:reciprocal` | new statement proved |
+| companion | [F.6](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L316) | `supp:pivot:prop:footprint` | new statement proved |
 | companion | [F.7](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L333) | `supp:pivot:prop:forcing` | new statement partial |
 | companion | [G.1](../manuscripts/v3prel8/companion/G_palm_complements.tex#L44) | `supp:palm:prop:deletion` | new statement open |
 | companion | [G.2](../manuscripts/v3prel8/companion/G_palm_complements.tex#L67) | `supp:palm:lem:crt` | new statement open |
@@ -115,15 +115,15 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The second component batch proves 35 additional theorems (68 total). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
+The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
-The two finite inequalities in F.6 are proved with the actual reciprocal-pivot population. Its asymptotic estimate F.5 remains open. F.7 remains partial at the complete source-field level: assembly of the maximal-support `G0` marked vector and the infinite-source conditional measure has not yet been recorded as one endpoint. These finite proofs do not establish the microscopic Poisson theorem 7.7.
+The third batch proves 30 further theorems (98 total). F.4, F.5 and F.6 now have their finite and asymptotic bounds: the actual saddle has a uniform loss at most `2*nu/u`, hence `epsilon*nu` eventually; the reciprocal sum is bounded uniformly for every natural ceiling `X` with `2X >= M`; and the directed-footprint polynomial factor is absorbed for logarithmic supports. The exact hypotheses and the unchanged ordinary-PNT premise are listed in the JSON correspondence. These are proved estimates, independently of the still-incomplete stochastic field assembly. F.7 remains partial at the complete source-field level: assembly of the maximal-support `G0` marked vector and the infinite-source conditional measure has not yet been recorded as one endpoint. These finite proofs do not establish the microscopic Poisson theorem 7.7.
 
 ## Remaining dependency chains
 
 - **Typical and affine dictionaries**: Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities.
 - **Information-adapted cutoff**: Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain.
-- **Microscopic signed prefix field**: Largest-odd-prime reciprocal asymptotics, assembly of the maximal-support marked field and its infinite-source conditional law, finite categorical ledger, independent tails, asymptotic completion and dyadic restriction. Both finite footprint bounds and the exact finite-cylinder signed-run forcing law are now proved.
+- **Microscopic signed prefix field**: Assembly of the maximal-support marked field and its infinite-source conditional law, finite categorical ledger, independent tails, asymptotic completion and dyadic restriction. The reciprocal-pivot and full directed-footprint estimates, and the exact finite-cylinder signed-run forcing law, are now proved.
 - **Empirical Poisson and support obstruction**: Overlapping-window variance, summability, Borel–Cantelli transfer and fixed-realization support lower bound.
 - **Palm complements**: Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction.
 

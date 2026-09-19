@@ -87,3 +87,48 @@ existant, et ne reposent plus seulement sur une construction abstraite par blocs
 Ces observations sont des précisions et simplifications de preuve. Aucune
 nouvelle erreur mathématique du manuscrit n'a été démontrée dans ce lot.
 Les sources et PDF livrés par l'auteur restent inchangés.
+
+## Enveloppe, somme réciproque et borne dirigée — troisième lot
+
+Les estimations F.4, F.5 et F.6 sont maintenant démontrées sous forme de bornes
+uniformes avec un paramètre d'erreur positif arbitraire. Le théorème des nombres
+premiers reste l'entrée de littérature explicite déjà utilisée auparavant.
+Aucune estimation de somme réciproque n'est ajoutée comme hypothèse.
+
+- **Simplification de F.4.** On peut prouver l'inégalité de tangente directement
+  dans le paramètre `u`. La dérivée de `D_param(t)-u*nu(t)` est
+  `exp(t)*(t-1)*(t-u)/t²` : elle change de signe au bon endroit. Cette preuve
+  évite de dériver la fonction inverse et traite aussi l'extrémité de la branche.
+  Elle ne remet pas en cause la preuve par convexité du texte.
+- **Précision de l'erreur.** La perte de l'enveloppe est majorée explicitement
+  par `nu*r(u)`, où `r(u)` tend vers zéro et est finalement au plus `2/u`.
+  Cela vérifie la précision `O(nu/u)` du papier, et pas seulement une erreur
+  négligeable devant `V`. Le seuil est choisi avant la largeur libre `w`.
+  Il ne faut pas remplacer cette étape par une équivalence au premier ordre.
+- **Arrondi et décalage des tranches de F.5.** Pour un pivot entier,
+  `kappa > floor(exp(w))` équivaut exactement à `kappa > exp(w)`.
+  La tranche suivante utilise le comptage à `exp(w+1)` : ce décalage produit
+  un facteur `exp(1)`, conservé dans la borne finie avant absorption. Le nombre
+  de tranches et la queue résiduelle sont également conservés explicitement.
+- **Simplification pour les supports élargis.** À hauteur de référence `log M`,
+  le paramètre de Rankin positif permet de majorer le comptage jusqu'à tout
+  `X >= M` sans remplacer `log X` par `log M` dans un reste asymptotique.
+  L'augmentation de `X` améliore directement le terme exponentiel normalisé.
+  Le support effectif `X=M+E_*+1` est dans ce cas.
+- **Renforcement uniforme de la borne réciproque.** Par monotonie de la somme
+  et absorption d'un facteur au plus 2, la borne finale est démontrée pour
+  tous les entiers `X` tels que `2X >= M`, avec le même seuil en `M`.
+  Cela couvre notamment `X=M+O(log M)`, y compris les décalages négatifs.
+  C'est une possibilité de simplification de la formulation de F.5, sans
+  nécessité de modifier les applications du papier.
+- **Uniformité de F.6.** Pour un coefficient fixe `beta > 0`, le facteur lié
+  à `Q <= beta*log M` est absorbé à l'échelle `nu`. La borne obtenue est
+  `n²*exp(-2V+epsilon*nu)+n*(Q+1)²`, uniformément avant le choix du bon ensemble
+  et des pivots. Les conditions géométriques `Q <= n` et `M <= 2(n+Q)` restent
+  explicites ; elles correspondent au régime asymptotique utilisé par le texte.
+
+Aucune nouvelle erreur mathématique du manuscrit n'a été identifiée. Ces
+résultats ferment le bloc d'estimations analytiques et arithmétiques nécessaire
+au voisinage dirigé ; ils ne constituent pas encore la comparaison de Poisson
+microscopique. Le bilan de Palm, les queues indépendantes et le raccord complet
+au champ conditionné restent à assembler. Les fichiers du manuscrit sont inchangés.

@@ -1,6 +1,10 @@
 # Arithmetic prime forcing and finite directed footprint
 
-This [receipt](validation.json) binds the current eleven-module `PaperCPrel8`
+Historical snapshot at commit `eebd5f2cd815d48a49a93c6fb9157768a0124ddb`.
+The [reciprocal-pivot batch](../reciprocal-pivots/README.md) records the newer
+source validation; the hashes below continue to identify this earlier snapshot.
+
+This [receipt](validation.json) binds that eleven-module `PaperCPrel8`
 extension to exact source hashes, a successful **24-library build (10,126 Lake
 jobs)**, and the **68-name axiom audit**. This batch adds **35 proved theorems**.
 Only `propext`, `Classical.choice` and `Quot.sound` occur in that audit.

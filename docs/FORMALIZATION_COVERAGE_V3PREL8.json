@@ -2979,7 +2979,17 @@
         {
           "path": "PaperCPrel8/OddPrimePivot.lean",
           "declaration": "pivot_count_free_cutoff",
-          "scope": "Actual largest-odd-prime count identified with defective integers, with a uniform bound in every fixed positive sqrt(log X log log X) cutoff band. Translating to the exact M,V,nu formulation and later reciprocal summation remains open."
+          "scope": "Actual largest-odd-prime count identified with defective integers, with a uniform bound in every fixed positive square-root band. The new enlarged-population result preserves the reference height while allowing any X≥M."
+        },
+        {
+          "path": "PaperCPrel8/PivotRankinUniform.lean",
+          "declaration": "enlarged_population_rankin",
+          "scope": "Ordinary-PNT Rankin bound uniform over arbitrary X≥M and each fixed positive sqrt(log M log log M) band. No shifted-height asymptotic substitution."
+        },
+        {
+          "path": "PaperCPrel8/PivotRankinUniform.lean",
+          "declaration": "hard_band_count",
+          "scope": "Uniform bound on [V,4V] with error epsilon*nu, sufficient for all reciprocal shells. The literal [V-2,3V+2] and general signed O(log M) ceiling formulation of F.3 are not separately packaged as one endpoint."
         }
       ]
     },
@@ -2993,9 +3003,25 @@
       "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
       "line": 206,
       "statement_sha256": "910a50fe55ed4039b75e113ec6d91e7348ea30805a0802cdcc185bf7627f0f04",
-      "status": "new_statement_open",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/SaddleEnvelope.lean",
+          "declaration": "finite_envelope",
+          "scope": "Exact tangent/square-root envelope for the actual saddle cost, over every positive width in the upper-branch domain. The supporting tangent is internally proved, without an inverse-branch derivative premise."
+        },
+        {
+          "path": "PaperCPrel8/SaddleEnvelope.lean",
+          "declaration": "hard_envelope_order_eventually",
+          "scope": "Uniform eventual loss at most 2*nu/u at the actual hard saddle, giving the stated O(nu/u) precision."
+        },
+        {
+          "path": "PaperCPrel8/SaddleEnvelope.lean",
+          "declaration": "hard_envelope_eventually",
+          "scope": "For every epsilon>0, one height threshold precedes every admissible width; the loss is at most epsilon*nu. This is the deterministic uniform little-o(nu) formulation of F.4."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -3007,9 +3033,20 @@
       "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
       "line": 231,
       "statement_sha256": "35cdaeea518bcce8a8fbf61f1b69a04ec3c21dd79206ae81af7587ee0bb8b222",
-      "status": "new_statement_open",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/ReciprocalPivotShells.lean",
+          "declaration": "reciprocalTail_shells_and_tail",
+          "scope": "Exact rounded cutoff, finite logarithmic shell sum, and explicit large-pivot tail for the actual reciprocal population."
+        },
+        {
+          "path": "PaperCPrel8/ReciprocalPivotAsymptotics.lean",
+          "declaration": "reciprocal_pivots_nearby_bound",
+          "scope": "For every epsilon>0, uniformly after one M threshold over all natural X with 2X≥M, the actual truncated reciprocal sum is at most X*exp(-2V_M+epsilon*nu_M). This broader ceiling range includes X=M+O(log M) eventually. The only literature premise is the already recorded ordinary PNT remainder; no reciprocal estimate is assumed."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -3021,7 +3058,7 @@
       "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
       "line": 316,
       "statement_sha256": "ba237d42877d4a9ba1c9d2a0ecea97d53ad4e6a90221c76a59a0ed84788ed0a1",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -3032,7 +3069,12 @@
         {
           "path": "PaperCPrel8/DirectedFootprint.lean",
           "declaration": "total_footprint_le",
-          "scope": "Both finite bounds in F.6 are proved using the actual truncated reciprocal-pivot sum. The asymptotic reciprocal estimate F.5 and its substitution remain open."
+          "scope": "Both finite bounds in F.6 using the actual truncated reciprocal-pivot population; the asymptotic estimate is now supplied by the component below."
+        },
+        {
+          "path": "PaperCPrel8/DirectedFootprintAsymptotics.lean",
+          "declaration": "directed_footprint_final_bound",
+          "scope": "Full bound n^2*exp(-2V_M+epsilon*nu_M)+n*(Q+1)^2 for every actual pivot family and good subset, uniformly before C,n,Q,G,q. Explicit geometric hypotheses are 2(n+Q)≥M, Q≤n and Q≤beta*log M, with fixed beta>0; these express the eventual logarithmic-support regime in F.6. No independence assertion or microscopic comparison is assumed."
         }
       ]
     },
