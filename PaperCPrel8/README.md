@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **204 proved theorems in 37 modules**. It is an
+This library contains **245 proved theorems in 51 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -44,18 +44,38 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `MicroscopicRelationExcess` | Sparse baseline separated from full-value excess; local count and infinite comparison |
 | `MicroscopicDeletedSites` | Literal deleted set, boundary-to-start conversion and conditional source deletion cost |
 | `PivotRankinExpandedBand` | F.3 on V-2..3V+2, uniformly for M <= 2X |
+| `MicroscopicPaperBudget` | Paper-to-ambient information budget with the strict margin retained |
+| `MicroscopicActualGeometry` | Every actual good-field geometric condition derived from the paper regime |
+| `MicroscopicRetainedRates` | Uniform graph and local-term rates with a finite numerical assembly |
+| `MicroscopicRetainedTheorem` | Full retained finite field with exponential-plus-power rate |
+| `MicroscopicDiscardRates` | Uniform shallow and deep conditional remainder rates |
+| `MicroscopicDiscardTheorem` | Actual conditional deleted-start and excess-tail rates |
+| `MicroscopicSourceRelabelling` | Exact boundary/start source-vector and Poisson product equivalences |
+| `MicroscopicConditionalSpatial` | Actual event normalization, TV equivalence and countable excess restoration |
+| `MicroscopicSpatialRates` | Unbounded exact marks on retained sites with a uniform rate |
+| `MicroscopicSiteRestoration` | Interior-site geometry and restoration by the actual conditional hit event |
+| `MicroscopicDeletedTarget` | Independent target deletion intensity at the paper rate |
+| `MicroscopicFullTheorem` | Full interior spatial comparison for every positive full-F_Y event |
+| `MicroscopicNormalization` | Literal moving-depth normalization and quantitative full-field endpoint of 7.7 |
+| `MicroscopicReadouts` | Arbitrary measurable readouts and convergence under the explicit source regime |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
 its infinite-source conditional masses and its finite categorical comparison
 are now constructed. The local pair bounds hold on every small-prime fibre;
 the full-value relation bound pays the actual conditioning mass.
-Independent tails, deleted-site bounds and the full-value profile are proved.
-The literal information cutoff preserves the shifted band under the explicit
-ambient-intensity budget, and the conditioned relation contribution has a
-uniform power saving. The paper's (M-L)-based intensity budget still needs
-conversion; remaining geometry, error assembly and uniform limits are open,
-as are the other new families in the ledger.
+The literal paper information budget now implies the ambient budget and all
+actual geometric conditions. All source and target deletions and tails are
+assembled. The full interior field, with all positions, signs and unbounded
+excesses, obeys `10*exp(-c′*nu)+4*M^(-1/3+epsilon)`, uniformly under the fixed
+logarithmic band, Lambda>=1 and paper budget, for every positive event of the
+full small-prime sigma-algebra. The existing directional Stein and arithmetic
+inputs remain explicit. The error tends to zero and so do the actual varying
+field distances under the eventual source regime. Every measurable statistic
+contracts the actual distance.
+The literal moving-depth normalization of 7.7 is also instantiated. The dyadic
+endpoint, common Markov-kernel readouts and other new families remain open;
+the analytic solution construction in F.2 remains an explicit input.
 No proof placeholder or new Lean axiom is used.
 
 ```sh
@@ -66,5 +86,5 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/value-profile/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/full-microscopic/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.

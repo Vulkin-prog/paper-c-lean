@@ -284,3 +284,46 @@ hypothèses indiquées. Ils ne ferment pas encore l'ensemble de 7.7 : restent
 notamment le raccord des budgets, les conditions géométriques et l'assemblage
 uniforme des autres restes. Aucune erreur nouvelle du manuscrit n'est affirmée ;
 les sources et PDF livrés sont inchangés.
+
+
+## Assemblage uniforme du champ microscopique — huitième lot
+
+- **Deux intensités, une marge stricte.** Lorsque `L=O(log M)`, on a
+  `(M-L)*2^-L <= M*2^-L <= 2*(M-L)*2^-L` pour M assez grand.
+  Le coût logarithmique est donc au plus `log 2`. Pour `c' < c`, la divergence
+  de `nu` absorbe ce coût dans `(c-c')*nu`. Le budget du manuscrit donne bien
+  le budget ambiant nécessaire au cutoff. Il n'est pas nécessaire de remplacer
+  le budget du papier par une hypothèse plus forte.
+- **Géométrie dérivée.** Un cylindre `C=2M+(L+E+2)` couvre à la fois les
+  valeurs observées et tous les petits premiers. Le budget assure la bande
+  logarithmique allongée, le support court et `2*(L+E+2) <= Y`. Ces propriétés
+  sont désormais des conclusions, avec un seuil commun avant L et I.
+- **Restes réellement conditionnés.** La suppression des sites coûte au plus
+  `3*exp(-c'*nu)+M^(-1/3+epsilon)` pour la source ; sa cible coûte au plus
+  `exp(-c'*nu)+M^(-1/3+epsilon)`. La queue des excès de la source est au plus
+  `3*exp(-c'*nu)`. Les probabilités sont celles des événements réels divisées
+  par la vraie masse de conditionnement. Aucun argument d'indépendance avec
+  cet événement n'est introduit.
+- **Décalage sans perte.** Le passage des bords gauches j aux départs j+1
+  est une bijection conservant les marques. Les lois conditionnelles et les
+  produits de Poisson correspondent exactement ; leur variation totale est
+  identique. Les queues sont ensuite retirées sur les espaces probabilisés
+  effectifs, puis tous les sites intérieurs sont restaurés.
+- **Constante explicite facultative.** L'assemblage donne
+  `10*exp(-c'*nu)+4*M^(-1/3+epsilon)`. Ces constantes n'ont pas été optimisées ;
+  elles suffisent à la notation asymptotique de 7.7. Il n'est pas nécessaire
+  de les ajouter au manuscrit. La convergence est prouvée pour les suites
+  satisfaisant la bande et le budget explicites, sans supposer la comparaison
+  finale. Toute lecture mesurable conserve la borne.
+
+Le raccord spécifique avec `floor(log_2 M)-a_M` est désormais prouvé :
+`a_M/log M -> 0` implique une bande logarithmique fixe et rend la soustraction
+naturelle légitime pour M assez grand. La divergence de Lambda donne aussi
+Lambda >= 1 à partir d’un certain rang.
+
+Ces preuves gardent les entrées analytiques et arithmétiques déjà déclarées
+par le dépôt, notamment la solution analytique de Stein de F.2. La restriction
+dyadique et la clause de noyau de Markov restent à expliciter, ainsi que les
+familles encore ouvertes dans le registre. Les remarques de ce lot sont des
+clarifications et simplifications ; elles ne signalent pas une nouvelle erreur
+dans le papier. Les sources et PDF de l'auteur restent inchangés.

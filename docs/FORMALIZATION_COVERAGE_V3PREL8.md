@@ -6,7 +6,7 @@ The curated [manuscripts](../manuscripts/v3prel8/README.md) contain 96 numbered 
 
 Preserved statements retain the [earlier correspondence](FORMALIZATION_COVERAGE_V3PREL.md), including its explicit literature premises and fidelity limits. Textual preservation does not independently certify every proof or unnumbered assertion in the new paper. The old Lean 4.34 validation receipt remains bound to its original source snapshot.
 
-New finite components are proved in `PaperCPrel8`; they are not substitutes for the missing arithmetic/asymptotic conclusions. No additional literature premise, axiom, `sorry`, or assumption of a final comparison theorem is used to close those gaps.
+New finite and asymptotic components are proved in `PaperCPrel8`; they are not substitutes for the missing arithmetic/asymptotic conclusions. No additional literature premise, axiom, `sorry`, or assumption of a final comparison theorem is used to close those gaps.
 
 The five existing Palomar configurations still describe their recorded V3PREL scope. They must not be presented as qualification of all 3PREL8 additions.
 
@@ -77,8 +77,8 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | article | [7.4](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L189) | `thm:prefix-poisson` | preserved statement |
 | article | [7.5](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L230) | `cor:as-longest` | preserved statement |
 | article | [7.6](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L262) | `thm:macro-field` | preserved statement |
-| article | [7.7](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L387) | `thm:micro-run-tv` | new statement partial |
-| article | [7.8](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L458) | `cor:micro-readout` | new statement open |
+| article | [7.7](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L387) | `thm:micro-run-tv` | proved with explicit inputs |
+| article | [7.8](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L458) | `cor:micro-readout` | new statement partial |
 | article | [7.9](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L507) | `thm:relative-bulk` | preserved statement |
 | article | [7.10](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L562) | `thm:crossover` | preserved statement |
 | article | [7.11](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L640) | `thm:two-clock` | preserved statement |
@@ -114,6 +114,8 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains titles, page/source locators, comment-stripped statement hashes, prior proof references and the limits of new components.
 
 ## Arithmetic forcing and finite footprint
+
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the eighth checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -164,16 +166,31 @@ admissibility and subpolynomial inflation proved uniformly under the ambient
 budget. The full conditioned relation contribution is at most
 `M^(-1/3+epsilon)`. The paper's budget uses `(M-L)*2^-L`, while the cutoff uses
 `M*2^-L`; the conversion and remaining error assembly are still explicit open
-obligations. See the [current receipt](../extension_evidence/v3prel8/value-profile/README.md).
+obligations. See the [seventh-batch receipt](../extension_evidence/v3prel8/value-profile/README.md).
+
+The eighth batch adds **41 theorems (245 total, 51 modules)**. The paper-to-ambient
+budget conversion and every geometry condition are now derived. The retained
+field, actual conditional deletion, actual excess tail and independent target
+costs assemble into the **full interior spatial field**, retaining all signs
+and all excesses. For every positive event of the full small-prime sigma-algebra,
+the bound is `10*exp(-c′*nu)+4*M^(-1/3+epsilon)`, uniformly in lengths in a
+fixed logarithmic band and events satisfying the literal paper budget.
+The old analytic and arithmetic inputs remain explicit. Convergence follows
+for varying fields satisfying this eventual source regime; no final convergence
+premise is used. Arbitrary measurable readouts contract the actual distance.
+The [current receipt](../extension_evidence/v3prel8/full-microscopic/README.md)
+records the validation. The literal moving-depth normalization of 7.7 is now instantiated, including
+validity of natural subtraction. The dyadic restriction and general Markov-kernel
+readout clause still need their endpoints. F.2 retains its analytic solution input.
 
 ## Remaining dependency chains
 
 - **Typical and affine dictionaries**: Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities.
 - **Information-adapted cutoff**: Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain.
-- **Microscopic signed prefix field**: Convert the paper intensity budget to the ambient one, verify the remaining good-geometry conditions, assemble deletion/target-tail/graph errors and final uniform limits, then dyadic restriction. The actual full-value profile and conditioned relation-term power saving at the literal cutoff are proved under the explicit ambient budget. The complete retained-field forcing law, infinite conditional source law, categorical ledger and actual arithmetic pair/product costs are now proved.
+- **Microscopic signed prefix field**: Dyadic restriction and the arbitrary Markov-kernel readout clause; the analytic directional Stein solution construction in F.2 remains an explicit premise. The literal moving-depth normalization, information budget, good geometry, full field restoration, uniform rate and convergence in the explicit source regime are proved with the baseline analytic/arithmetic inputs.
 - **Empirical Poisson and support obstruction**: Overlapping-window variance, summability, Borel–Cantelli transfer and fixed-realization support lower bound.
 - **Palm complements**: Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
 
-The signed microscopic comparison must be proved before the Palm-deficit and empirical consequences. The shifted scalar tail is now proved independently of that comparison, avoiding circular reasoning.
+The proved microscopic comparison can now feed the remaining Palm-deficit and empirical consequences. The shifted scalar tail is now proved independently of that comparison, avoiding circular reasoning.
