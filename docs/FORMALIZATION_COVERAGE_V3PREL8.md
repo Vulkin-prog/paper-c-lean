@@ -103,9 +103,9 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | companion | [F.7](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L333) | `supp:pivot:prop:forcing` | new statement proved |
 | companion | [G.1](../manuscripts/v3prel8/companion/G_palm_complements.tex#L44) | `supp:palm:prop:deletion` | new statement proved with explicit inputs |
 | companion | [G.2](../manuscripts/v3prel8/companion/G_palm_complements.tex#L67) | `supp:palm:lem:crt` | new statement proved |
-| companion | [G.3](../manuscripts/v3prel8/companion/G_palm_complements.tex#L83) | `supp:palm:thm:regular` | new statement partial |
+| companion | [G.3](../manuscripts/v3prel8/companion/G_palm_complements.tex#L83) | `supp:palm:thm:regular` | new statement proved with explicit inputs |
 | companion | [G.4](../manuscripts/v3prel8/companion/G_palm_complements.tex#L137) | `supp:palm:prop:palm` | new statement partial |
-| companion | [G.5](../manuscripts/v3prel8/companion/G_palm_complements.tex#L183) | `supp:palm:cor:palm-completion` | new statement partial |
+| companion | [G.5](../manuscripts/v3prel8/companion/G_palm_complements.tex#L183) | `supp:palm:cor:palm-completion` | new statement proved with explicit inputs |
 | companion | [G.6](../manuscripts/v3prel8/companion/G_palm_complements.tex#L219) | `supp:palm:prop:signed-void` | new statement partial |
 | companion | [G.7](../manuscripts/v3prel8/companion/G_palm_complements.tex#L311) | `supp:palm:prop:pair-activity` | new statement open |
 | companion | [G.8](../manuscripts/v3prel8/companion/G_palm_complements.tex#L338) | `supp:palm:lem:cumulant` | new statement open |
@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the twentieth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the twenty-first checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -434,8 +434,33 @@ paper length/information regime; no CRT side condition remains assumed there.
 and high-mark costs, together with `Lambda->infinity`, still need to be combined
 into its displayed complete bound and o(1). The presence identity was proved
 in an earlier batch. Subsequent Palm/Fourier/cumulant obligations remain open.
-The [current receipt](../extension_evidence/v3prel8/regular-target/README.md)
+The [twentieth-batch receipt](../extension_evidence/v3prel8/regular-target/README.md)
 records the validation; no new Palomar qualification is claimed.
+
+The twenty-first checkpoint adds **93 theorems (794 total, 161 modules)**.
+**G.3 is complete** with baseline PNT: the displayed five-term bound and its
+literal-regime convergence, including Lambda->infinity, are now assembled.
+Private-prime regularity constructs the actual pivots and the infinite-source
+conditional presence identity.
+
+The arithmetic Palm mass, full Poisson atom, ordinary infinite-source deletion
+and absence-of-additional-base-start identities are proved on their actual
+probability spaces. Run termination survives both conditionings. The full
+finite G.4 normalized comparison is instantiated, with an explicit penalty
+<=M^(-1/2). Its remaining named-set obligation is the transfer of the exact G.3
+regular configuration set through relabelling and retention.
+
+**G.5 is proved under the explicit inputs of 7.7.** The actual normalized
+one-sided deficit on any retained mask is at most the proved microscopic error
+plus M^(-1/2). This implication does not need a target-exception estimate. Mean
+and target-probability completions, on varying countable spaces, are recorded.
+
+G.6 now has exact Walsh inversion, nonconstant coefficient energy and its sharp
+deficit bound. Actual uniform affine fibre characters and the arbitrary
+conditioned environment Fourier transform are proved; full row rank preserves
+the environment law. The full arithmetic centered-coefficient assembly remains.
+The [current receipt](../extension_evidence/v3prel8/arithmetic-palm/README.md)
+records this checkpoint, without extending Palomar qualification.
 
 ## Remaining dependency chains
 
@@ -443,7 +468,7 @@ records the validation; no new Palomar qualification is claimed.
 - **Information-adapted cutoff**: Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.
-- **Palm complements**: G.1 and G.2 are proved. G.3 now identifies the complete signed/excess same-grid target with the actual iid-marked Poisson sample, transfers its ordered positions to the CRT cloud law, includes all high marks, and proves the literal rounded-cutoff gap and saddle absorption. The full target bound is instantiated uniformly at the paper length/information regime. Final assembly of the excluded-site and high-mark asymptotics, with Lambda->infinity, into the displayed complete o(1) remains. Full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open.
+- **Palm complements**: G.1–G.3 are proved. G.5 now has the actual arithmetic normalized Palm deficit bound on every retained mask, with the same explicit inputs as 7.7, and its mean/probability completion. G.4 has actual infinite-source mass, avoidance, deletion and finite normalized comparison identities; the exact transfer of the intrinsic G.3 regular set through boundary/start relabelling and restriction still needs to be recorded for its named exceptional probability. G.6 has exact Walsh inversion/energy and the signed affine character formula with an arbitrary environment law; the joint centered-coefficient formula and its complete arithmetic instantiation remain. G.7–G.9 (pair activity, categorical cumulant inequality and arithmetic obstruction), final unnumbered review and separate prescribed-floor full-field specialization remain open. F.2 retains its explicit baseline analytic solution premise.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
 

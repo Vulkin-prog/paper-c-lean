@@ -3979,7 +3979,7 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 83,
       "statement_sha256": "54500e8391aab931d2a61bc9710ef2703924f38bf65ed4e42e363cc88e3db7a6",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved_with_explicit_inputs",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -4086,6 +4086,26 @@
           "path": "PaperCPrel8/RegularTargetSaddle.lean",
           "declaration": "paper_target_bound",
           "scope": "Full existing same-grid target at the paper cutoffs, stronger good set and length/information regime. All CRT/geometric conditions are discharged. The resulting bound is Lambda*omitted/(M-L)+exp(-c*theta*nu^2/(4*u))+exp(-(2*log 2-1)*Lambda)+Lambda/2^(E_*+1). Final excluded-site/high-mark asymptotic assembly into the displayed complete o(1) remains."
+        },
+        {
+          "path": "PaperCPrel8/RegularTargetCompletion.lean",
+          "declaration": "target_error_eventually",
+          "scope": "Complete displayed G.3 target bound, uniformly with arbitrary eta>0 in the theta+eta exponent, including actual excluded sites and unbounded high marks; baseline PNT only."
+        },
+        {
+          "path": "PaperCPrel8/RegularTargetCompletion.lean",
+          "declaration": "target_failure_tendsto",
+          "scope": "All five terms vanish at the literal paper regime with 0<theta<c and Lambda->infinity; no final target-convergence premise."
+        },
+        {
+          "path": "PaperCPrel8/RegularTargetPresence.lean",
+          "declaration": "regular_presence",
+          "scope": "Occurrence-level private-prime regularity constructs the actual pivot coordinates and proves conditional signed exact-mark presence."
+        },
+        {
+          "path": "PaperCPrel8/InfinitePlantPresence.lean",
+          "declaration": "conditional_presence",
+          "scope": "The same presence factorization holds for the original infinite arithmetic measure under the actual small-prime trace event."
         }
       ]
     },
@@ -4141,6 +4161,36 @@
           "path": "PaperCPrel8/PalmVoidAverage.lean",
           "declaration": "normalization_penalty",
           "scope": "Explicit uniform penalty K*p+g*p^2/(1-p), sufficient for the printed big-O remainder; the sharper printed factor 1/2 is not claimed."
+        },
+        {
+          "path": "PaperCPrel8/EnumeratedTargetAtoms.lean",
+          "declaration": "enumerated_target_mass",
+          "scope": "Complete signed/excess target atom equals exp(-rate) times the product of mark rates, for enumerated distinct-site configurations."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmMass.lean",
+          "declaration": "source_target_palm_mass",
+          "scope": "Actual infinite conditional source mass equals actual target mass times exp(rate) times the actual Palm void; private-prime geometry discharges presence and target atom identities."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmAvoidance.lean",
+          "declaration": "palmVoid_eq_avoidance",
+          "scope": "The actual Palm void equals no additional base start outside the planted sites, using almost-sure run termination preserved under both conditionings."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmDeficit.lean",
+          "declaration": "ordinary_deletion",
+          "scope": "Actual infinite-source ordinary deletion identity, after exponential cancellation before summing over countably many configurations."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmCompletion.lean",
+          "declaration": "full_retained_normalized_comparison",
+          "scope": "Actual full-versus-retained G.4 comparison pays the conditional outside-start probability, target deletion rate, intrinsic bounded-regular exceptional mass and explicit normalization penalty. Transfer of the named G.3 exceptional set through shifts/restriction remains."
+        },
+        {
+          "path": "PaperCPrel8/PalmNormalizationRate.lean",
+          "declaration": "penalty_eventually",
+          "scope": "The literal K=ceil(2*Lambda) normalization penalty is <=M^(-1/2), uniformly for every retained mask at the source budget."
         }
       ]
     },
@@ -4154,7 +4204,7 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 183,
       "statement_sha256": "a8cab45241d203f5dd024ff66fc1bcc822d1d6923b563df9432990db3275ef96",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved_with_explicit_inputs",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -4166,6 +4216,26 @@
           "path": "PaperCPrel8/PalmDeficitProbability.lean",
           "declaration": "mean_tendsto_zero_iff",
           "scope": "A bounded nonnegative defect has vanishing target mean iff it vanishes in target probability, even on varying state spaces. Deriving the arithmetic mean limit still requires the regular-cloud and deletion bounds."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmCompletion.lean",
+          "declaration": "normalized_deficit_eventually",
+          "scope": "Actual arithmetic normalized deficit on any retained mask is <= the proved 7.7 error plus M^(-1/2), at the literal paper regime, with baseline arithmetic and directional Stein inputs. No regular-target mass convergence premise is needed for this one-sided upper bound."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmCompletion.lean",
+          "declaration": "completion_error_tendsto",
+          "scope": "The explicit quantitative arithmetic deficit majorant tends to zero."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmProbability.lean",
+          "declaration": "normalized_average_tendsto",
+          "scope": "Mean completion for actual normalized arithmetic Palm ratios on varying countable spaces; the TV premise is precisely the independently proved 7.7 conclusion, and the normalization premise has the literal-budget proof."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmProbability.lean",
+          "declaration": "target_probability_tendsto",
+          "scope": "Actual target probability of a fixed positive lower-void defect vanishes under those same hypotheses; explicit Markov bound also proved."
         }
       ]
     },
@@ -4201,6 +4271,36 @@
           "path": "PaperCPrel8/PalmTargetSignBound.lean",
           "declaration": "deficit_mean_variance_bound",
           "scope": "Sharp deficit <=min(1,(1-mean)_++sqrt(variance)/2) for an actual finite nonnegative observable. Identification of its variance with Walsh coefficient energy remains open."
+        },
+        {
+          "path": "PaperCPrel8/PalmWalsh.lean",
+          "declaration": "inversion",
+          "scope": "Every actual sign-dependent observable has the exact finite Walsh expansion with coefficients computed from the independent fair-sign law."
+        },
+        {
+          "path": "PaperCPrel8/PalmWalsh.lean",
+          "declaration": "expansion_variance",
+          "scope": "Variance is exactly the nonconstant Walsh coefficient energy, with no variance identification premise."
+        },
+        {
+          "path": "PaperCPrel8/PalmWalsh.lean",
+          "declaration": "observable_target_sign_bound",
+          "scope": "The displayed sharp target-sign deficit bound holds for every nonnegative observable, using its actual Fourier coefficients."
+        },
+        {
+          "path": "PaperCPrel8/AffinePalmCharacters.lean",
+          "declaration": "conditional_character",
+          "scope": "Signed row-space character sum on the actual uniform affine Palm fibre; full row rank proves uniqueness of the multiplier."
+        },
+        {
+          "path": "PaperCPrel8/AffinePalmEnvironment.lean",
+          "declaration": "environment_unchanged",
+          "scope": "A full-row-rank affine plant preserves every statistic of an arbitrary environment law, including a previously conditioned one."
+        },
+        {
+          "path": "PaperCPrel8/AffinePalmEnvironment.lean",
+          "declaration": "conditional_fourier",
+          "scope": "The exact conditional signed character retains the Fourier transform of the arbitrary environment distribution. Joint centered-coefficient expansion and full arithmetic matrix instantiation remain."
         }
       ]
     },
@@ -4294,7 +4394,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "G.1 and G.2 are proved. G.3 now identifies the complete signed/excess same-grid target with the actual iid-marked Poisson sample, transfers its ordered positions to the CRT cloud law, includes all high marks, and proves the literal rounded-cutoff gap and saddle absorption. The full target bound is instantiated uniformly at the paper length/information regime. Final assembly of the excluded-site and high-mark asymptotics, with Lambda->infinity, into the displayed complete o(1) remains. Full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open."
+      "remaining": "G.1–G.3 are proved. G.5 now has the actual arithmetic normalized Palm deficit bound on every retained mask, with the same explicit inputs as 7.7, and its mean/probability completion. G.4 has actual infinite-source mass, avoidance, deletion and finite normalized comparison identities; the exact transfer of the intrinsic G.3 regular set through boundary/start relabelling and restriction still needs to be recorded for its named exceptional probability. G.6 has exact Walsh inversion/energy and the signed affine character formula with an arbitrary environment law; the joint centered-coefficient formula and its complete arithmetic instantiation remain. G.7–G.9 (pair activity, categorical cumulant inequality and arithmetic obstruction), final unnumbered review and separate prescribed-floor full-field specialization remain open. F.2 retains its explicit baseline analytic solution premise."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."

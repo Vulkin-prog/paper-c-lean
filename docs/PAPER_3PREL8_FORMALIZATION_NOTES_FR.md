@@ -850,3 +850,55 @@ pour enregistrer la borne asymptotique complète et son o(1). Les identités
 de présence sont déjà établies ; les étapes ultérieures G.4/G.5 et les
 compléments de Fourier/cumulants restent ouverts. Les sources du papier
 sont conservées à l'identique.
+
+## Masses et vides de Palm arithmétiques — vingt-et-unième point de validation
+
+**G.3 terminé.** La borne complète rassemble les cinq termes affichés et leur
+convergence aux paramètres du papier. Pour le comptage des indices exclus,
+le terme o(nu) est formalisé par une marge arbitraire eta>0. Avec theta<c,
+prendre eta=(c-theta)/2 suffit. La queue poissonienne requiert bien
+Lambda->infinity ; cette hypothèse est conservée explicitement.
+
+**Passage présence / masse exacte.** Sur une configuration régulière, les sites
+sont distincts. Le calcul de la masse de la cible complète (signes et excès non
+tronqués) donne exp(-mu) fois le même produit que la présence arithmétique. La
+source est la mesure infinie originale, conditionnée par l'événement réel sur
+les petits premiers. Aucune hypothèse de factorisation des masses exactes
+n'est ajoutée : la masse exacte est la présence multipliée par le vrai vide de Palm.
+
+**Précision utile dans la preuve de G.4.** L'équivalence entre « aucun atome
+supplémentaire » et « aucun départ supplémentaire » est presque sûre. Un départ
+pourrait, sur une réalisation exceptionnelle, être suivi d'une plage infinie et
+ne produire aucune marque exacte finie. Le théorème de terminaison simultanée
+des plages exclut cet événement. L'absolue continuité des deux conditionnements
+préserve cette propriété. Il serait utile d'ajouter « presque sûrement, par
+finitude des plages » à la phrase correspondante de la preuve.
+
+**Normalisation et simplification de G.5.** L'erreur logarithmique est bornée
+par K*p+g*p^2/(1-p), version légèrement moins fine mais suffisante du papier.
+Avec K=ceil(2*Lambda), g<=n et Lambda>=1, elle est <=5*Lambda*p. Le budget
+la rend <=M^(-1/2) uniformément. Pour déduire seulement la disparition du
+déficit unilatéral, l'inégalité « moyenne normalisée <= TV + erreur de
+normalisation » suffit : il n'est pas nécessaire de faire intervenir la masse
+des configurations irrégulières. Celle-ci reste requise pour l'approximation
+bilatérale de G.4. Le raccord exact de l'ensemble régulier nommé dans G.3,
+après changement de coordonnées et restriction, doit encore être enregistré.
+
+**Convention à expliciter pour le logarithme du vide.** Dans la phrase qui
+définit L_z=(-log v(z)-Lambda)_+, il faut entendre L_z=+infinity si v(z)=0,
+puis exp(-infinity)=0. Le logarithme réel totalisé de Lean vérifie log(0)=0 ;
+il ne peut pas être utilisé directement pour cette phrase. La preuve du
+déficit borné évite complètement cette convention. Le passage sur l'intégrale
+impropre plus loin dans G précise déjà +infinity ; harmoniser les deux passages.
+
+**Signes et environnement.** L'inversion de Walsh et l'identité de Parseval
+sont établies pour les coefficients calculés sur la vraie loi uniforme des
+signes. La moyenne du caractère d'une fibre affine conserve exactement sa
+phase. Un plant de plein rang préserve toute la loi d'environnement, y compris
+après conditionnement. Sa transformée de Fourier reste donc dans la formule,
+et ne se remplace par un indicateur de fréquence nulle que sous la loi uniforme
+non conditionnée. L'assemblage des moments centrés et l'instanciation complète
+avec les matrices arithmétiques de G.6 restent à finir.
+
+Les fichiers livrés par l'auteur restent inchangés ; ces points sont des
+suggestions pour une révision ultérieure du texte, pas des modifications tacites.

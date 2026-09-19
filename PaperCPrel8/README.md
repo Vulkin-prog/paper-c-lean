@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **701 proved theorems in 144 modules**. It is an
+This library contains **794 proved theorems in 161 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -151,6 +151,23 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `RegularCloudSaddle` | Divergence of nu^2/(u*V), uniform prefactor absorption and error convergence |
 | `RegularCloudCutoff` | Exact rounded K and Y, information-margin CRT gap and absorbed cloud cost |
 | `RegularTargetSaddle` | Full same-grid target bound at the literal paper length/information regime |
+| `AffinePalmCharacters` | Signed characters on an actual finite affine Palm fibre -/ |
+| `AffinePalmEnvironment` | The small-prime environment survives planting and remains in Fourier coefficients -/ |
+| `ArithmeticPalmAvoidance` | Exact Palm voids are absence of all additional base starts -/ |
+| `ArithmeticPalmCompletion` | Completion of the arithmetic one-sided Palm deficit |
+| `ArithmeticPalmDeficit` | Countable Palm deficit and deletion for the actual arithmetic field -/ |
+| `ArithmeticPalmMass` | The Palm mass identity on the actual conditional arithmetic field |
+| `ArithmeticPalmNormalization` | The normalized arithmetic Palm void and its exact comparison error -/ |
+| `ArithmeticPalmProbability` | Actual Palm completion in mean and target-configuration probability -/ |
+| `EnumeratedTargetAtoms` | Complete Poisson atom formula for the same enumerated regular plants -/ |
+| `InfinitePalmDeletion` | Ordinary Palm deletion on the genuine infinite probability space |
+| `InfinitePlantMass` | Exact arithmetic configuration masses for enumerated regular plants -/ |
+| `InfinitePlantPresence` | Exact regular-plant presence in the original infinite arithmetic law -/ |
+| `PalmNormalizationRate` | Vanishing normalized-void penalty at the literal paper budget -/ |
+| `PalmWalsh` | Exact Walsh energy under the independent fair target signs |
+| `RegularConfigurationAtoms` | Exact masses of simple marked plants under the complete target law |
+| `RegularTargetCompletion` | Complete regular-target error and its vanishing under the paper regime -/ |
+| `RegularTargetPresence` | From the intrinsic regular target geometry to exact arithmetic presence -/ |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -189,7 +206,7 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/regular-target/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/arithmetic-palm/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
@@ -198,22 +215,4 @@ The affine corollary 5.4 and extended introduction 1.3 are also proved.
 Palm/cumulant complements and remaining unnumbered assertions still prevent
 a claim of complete realignment.
 
-The Palm identities now include actual regular-plant presence and ordinary
-finite-source deletion, as well as countable normalized comparison algebra.
-The final regular-cloud asymptotic assembly, full arithmetic G.4/G.5 instantiation
-and signed Fourier/Walsh identifications remain open; G.3–G.6 are partial, not closed.
-
-The finite G.1 kernel estimates and stronger deletion counts are now proved,
-with the hard-cutoff prefactor under the existing PNT input. Threshold absorption
-and actual deletion limits are now proved at the paper parameters, together
-with the low-type replacement cost. The final composition with original
-whole-field deletions and high-mark tails is now proved: G.1 is closed with
-its explicit arithmetic inputs, without a Stein premise for this reduction.
-G.2 is now proved: the actual CRT probability, threshold-power bound, single-support
-regularity and multi-source probability union bound are all included. The actual
-Poisson-size ordered spatial cloud is now identified with the complete signed/excess
-target. Its full failure bound includes the high-mark cost, and the literal rounded
-cutoffs and information margin absorb the CRT prefactor into
-`exp(-c*theta*nu^2/(4*u))`. The bound is instantiated uniformly at the paper's
-length/information regime. Final excluded-site and high-mark asymptotic assembly,
-together with Lambda->infinity, remains before the complete G.3 o(1) claim.
+G.1–G.3 are proved. G.5 now has the actual arithmetic normalized Palm deficit bound on every retained mask, with the same explicit inputs as 7.7, and its mean/probability completion. G.4 has actual infinite-source mass, avoidance, deletion and finite normalized comparison identities; the exact transfer of the intrinsic G.3 regular set through boundary/start relabelling and restriction still needs to be recorded for its named exceptional probability. G.6 has exact Walsh inversion/energy and the signed affine character formula with an arbitrary environment law; the joint centered-coefficient formula and its complete arithmetic instantiation remain. G.7–G.9 (pair activity, categorical cumulant inequality and arithmetic obstruction), final unnumbered review and separate prescribed-floor full-field specialization remain open. F.2 retains its explicit baseline analytic solution premise.
