@@ -948,3 +948,42 @@ l'activité du champ arithmétique lui-même. Les limites le long de la sous-sui
 de premiers, puis la divergence des ordres >=3, restent à assembler.
 
 Les 28 fichiers du manuscrit livrés par l'auteur ne sont pas modifiés.
+
+## Obstruction le long des premiers — vingt-troisième point
+
+**G.9 : simplification des logarithmes.** Pour 0<=r<=1/4, on a directement
+log(1-2r)>=-4r et log((3-2r)/(1-2r))>=log 3. On peut donc remplacer le
+développement log 3+O(r) par une minoration exacte, dans le sens utile à la
+preuve. La borne finie sur l'activité est
+(N_ret*log 3-pi(C)*log 2-4*g*r)/2. C'est une simplification facultative,
+qui conserve la constante finale du papier.
+
+**Arrondis et cylindre.** Le comptage peut être minoré uniformément par
+M/q-3-2*M/q^2 avant les suppressions. La preuve formelle utilise exactement
+M=2^(q-1+floor(log_2 q)), le cutoff E_* du papier et C=M+Q. Ce dernier point
+compte : remplacer C par un cylindre commode de taille environ 2M doublerait
+inutilement le coût entropique du témoin et ferait perdre la constante annoncée.
+Le cylindre M+Q suffit aux vraies coordonnées, et Q=o(M) est démontré.
+
+**Bords de l'ensemble retenu.** G0 et G_theta sont contenus dans [1,M-L].
+La quantité d'omissions du témoin est comptée dans [1,M] : elle comporte aussi
+les L sites terminaux. L'identité exacte entre ces deux nombres de suppressions
+est désormais prouvée ; leur coût normalisé tend bien vers zéro.
+
+**Portée désormais raccordée.** La constante log(2)*(log(3)-1)/2 est strictement
+positive et minore la limite inférieure normalisée pour G0 et tout G_theta fixe.
+Les moyennes exactes sont déduites des pivots privés, et la seule hypothèse
+arithmétique de cette minoration est le PNT déjà déclaré. La divergence de
+l'activité totale suit sur toute suite de premiers tendant vers l'infini.
+La convergence microscopique indépendante est spécialisée aux mêmes fenêtres,
+avec les hypothèses analytiques et arithmétiques existantes de F.2. Le passage
+à la divergence des seuls ordres >=3 reste suspendu à l'estimation de paires G.7,
+et non à une nouvelle hypothèse d'obstruction.
+
+**Cumulants de Palm.** L'inégalité non numérotée |R-1|<=exp(A)-1 est maintenant
+prouvée par la même majoration finie en produits. Le terme singleton est
+exactement E_Palm[J]-p ; aucune égalité de cette moyenne avec p n'est supposée.
+La convention entre cumulants centrés d'ordre supérieur et cumulants bruts
+reste à expliciter dans la revue finale.
+
+Les 28 fichiers du manuscrit livrés par l'auteur restent inchangés.

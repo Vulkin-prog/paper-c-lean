@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the twenty-second checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the twenty-third checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -479,8 +479,21 @@ G.7 has the exact two-rank formula, its one-event absolute deviation bound and
 the single-target rough-host CRT count. G.9 has the actual prime witness,
 certified signed marks, exact count, retention, probability and finite activity
 lower bound. Their remaining arithmetic/asymptotic assemblies are still open.
-The [current receipt](../extension_evidence/v3prel8/cumulant-witness/README.md)
+The [twenty-second checkpoint](../extension_evidence/v3prel8/cumulant-witness/README.md)
 records this checkpoint; full realignment and new Palomar qualification are not claimed.
+
+The twenty-third checkpoint adds **78 theorems (1,005 total, 202 modules)**.
+The positive normalized lower limit in G.9 is now connected to the actual G0 and
+all fixed G_theta, with the literal prime windows and exact paper cutoff. The
+common marginals, omission estimates and minimal M+Q sampling cylinder are
+proved. Total activity diverges along every prime sequence tending to infinity.
+The independent full microscopic distance tends to zero, retaining the existing
+F.2 directional Stein and arithmetic inputs. The remaining higher-order claim
+still requires G.7's vanishing pair estimate; its exact layer decomposition is
+recorded. G.6's finite Palm cumulant criterion now retains all singleton terms.
+
+The [current receipt](../extension_evidence/v3prel8/prime-obstruction/README.md)
+records this checkpoint. Full realignment and Palomar qualification remain open.
 
 ## Remaining dependency chains
 
@@ -488,7 +501,7 @@ records this checkpoint; full realignment and new Palomar qualification are not 
 - **Information-adapted cutoff**: Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.
-- **Palm complements**: G.1–G.6 numbered conclusions are recorded, with the explicit baseline inputs where required. G.4 now includes the exact named regular-target restriction, literal ordinary full deletion and the 5*Lambda^2/n normalized comparison. G.6 includes centered signed coefficients and actual arithmetic valuation matrices. G.8 finite categorical TV, polynomial and occupancy-log inequalities are proved using finite recursive cumulants and distinct-site subsets. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic host bound. G.9 has the actual prime witness, exact count, retention, probability and finite activity lower bound; its prime-subsequence asymptotics and higher-order divergence remain. Final unnumbered review (including named outside-deletion convergence, cumulant conventions, tilted-void identities and the pair example) and separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise.
+- **Palm complements**: G.1–G.6 numbered conclusions and G.8 finite bounds are recorded, with explicit baseline inputs where required. G.6 also has the finite Palm cumulant criterion retaining singleton corrections. G.9 now has its actual positive normalized lower limit and total-activity divergence for G0 and every fixed G_theta, with the exact prime windows, minimal M+Q cylinder, original marginals and omission estimates discharged; the independent microscopic distance tends to zero with the existing F.2 inputs. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic rough-host bound. The remaining G.9 assertion about divergence at orders >=3 depends on that vanishing pair estimate; its exact layer decomposition is proved. Final unnumbered review (named outside-deletion convergence, cumulant conventions, tilted-void identities, the pair example and witness threshold) and the separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
 

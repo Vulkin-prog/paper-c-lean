@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **927 proved theorems in 185 modules**. It is an
+This library contains **1,005 proved theorems in 202 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -192,6 +192,23 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `RetainedRegularTarget` | Exact boundary/start and retained-mask transfer of regular target configurations |
 | `RoughPairHosts` | Single-target CRT hosting count for the rough pair layer |
 | `TwoRankPair` | The exact two-rank absolute conditional deviation in G.7 |
+| `ArithmeticLowMarginals` | Exact unconditioned low-type marginals from the actual private-prime geometry |
+| `CumulantActivityLayers` | The exact pair and higher-order layers of the categorical activity |
+| `LogarithmicSaddleBudget` | Every logarithmic cost fits every fixed second-order saddle margin |
+| `PalmCumulantEnvelope` | The finite Palm cumulant criterion, with its singleton corrections |
+| `PrimeActivityAsymptotics` | The normalized G.9 obstruction on the literal prime windows |
+| `PrimeActivityDivergence` | Divergence on every sequence of primes tending to infinity |
+| `PrimeActivityLower` | A simpler finite lower bound for the prime witness |
+| `PrimeCumulantObstruction` | G.9's arithmetic obstruction for the named original and stronger good sets |
+| `PrimeMicroscopicComparison` | Vanishing full microscopic distance on the explicit obstruction windows |
+| `PrimeRetainedDensity` | The G.9 omission hypothesis for both named retained sets |
+| `PrimeWindowBudget` | All fixed saddle margins hold along the literal G.9 windows |
+| `PrimeWindowErrors` | Vanishing errors and the exact positive obstruction constant |
+| `PrimeWindowGeometry` | The literal low-mark cutoff and sampling cylinder on the prime windows |
+| `PrimeWindowIntensity` | Intensity and small marginal errors on the explicit prime windows |
+| `PrimeWindowScales` | The literal q-1+floor(log₂ q) window in G.9 |
+| `PrimeWitnessCountBounds` | Uniform explicit errors in the certified-prime-site count |
+| `ShiftedCylinderPNT` | PNT normalization on a sublinearly enlarged sampling cylinder |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -230,7 +247,7 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/cumulant-witness/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/prime-obstruction/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
@@ -239,4 +256,4 @@ The affine corollary 5.4 and extended introduction 1.3 are also proved.
 Palm/cumulant complements and remaining unnumbered assertions still prevent
 a claim of complete realignment.
 
-G.1–G.6 numbered conclusions are recorded, with the explicit baseline inputs where required. G.4 now includes the exact named regular-target restriction, literal ordinary full deletion and the 5*Lambda^2/n normalized comparison. G.6 includes centered signed coefficients and actual arithmetic valuation matrices. G.8 finite categorical TV, polynomial and occupancy-log inequalities are proved using finite recursive cumulants and distinct-site subsets. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic host bound. G.9 has the actual prime witness, exact count, retention, probability and finite activity lower bound; its prime-subsequence asymptotics and higher-order divergence remain. Final unnumbered review (including named outside-deletion convergence, cumulant conventions, tilted-void identities and the pair example) and separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise.
+G.1–G.6 numbered conclusions and G.8 finite bounds are recorded, with explicit baseline inputs where required. G.6 also has the finite Palm cumulant criterion retaining singleton corrections. G.9 now has its actual positive normalized lower limit and total-activity divergence for G0 and every fixed G_theta, with the exact prime windows, minimal M+Q cylinder, original marginals and omission estimates discharged; the independent microscopic distance tends to zero with the existing F.2 inputs. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic rough-host bound. The remaining G.9 assertion about divergence at orders >=3 depends on that vanishing pair estimate; its exact layer decomposition is proved. Final unnumbered review (named outside-deletion convergence, cumulant conventions, tilted-void identities, the pair example and witness threshold) and the separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise.

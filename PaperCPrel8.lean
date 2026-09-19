@@ -19,6 +19,7 @@ import PaperCPrel8.AffinePalmCharacters
 import PaperCPrel8.AffinePalmEnvironment
 import PaperCPrel8.ArithmeticEnvironmentLaw
 import PaperCPrel8.ArithmeticLowCategory
+import PaperCPrel8.ArithmeticLowMarginals
 import PaperCPrel8.ArithmeticPalmAvoidance
 import PaperCPrel8.ArithmeticPalmCompletion
 import PaperCPrel8.ArithmeticPalmDeficit
@@ -41,6 +42,7 @@ import PaperCPrel8.CategoricalTransversals
 import PaperCPrel8.CenteredAffineBlocks
 import PaperCPrel8.CenteredPalmFourier
 import PaperCPrel8.ConditionalPairDeviation
+import PaperCPrel8.CumulantActivityLayers
 import PaperCPrel8.CumulantFamilyEnvelope
 import PaperCPrel8.DictionaryArithmeticCollision
 import PaperCPrel8.DictionaryAverage
@@ -86,6 +88,7 @@ import PaperCPrel8.InformationSaddle
 import PaperCPrel8.InformationSaddleBudget
 import PaperCPrel8.InformationSaddleLimit
 import PaperCPrel8.InformationSaddleScales
+import PaperCPrel8.LogarithmicSaddleBudget
 import PaperCPrel8.MarkovReadouts
 import PaperCPrel8.MicroscopicActualGeometry
 import PaperCPrel8.MicroscopicBadPivotCount
@@ -115,6 +118,7 @@ import PaperCPrel8.MicroscopicSpatialRates
 import PaperCPrel8.MicroscopicValueProfile
 import PaperCPrel8.OddPrimePivot
 import PaperCPrel8.OrderedLabelCloud
+import PaperCPrel8.PalmCumulantEnvelope
 import PaperCPrel8.PalmDeficit
 import PaperCPrel8.PalmDeficitProbability
 import PaperCPrel8.PalmDeletionIdentity
@@ -131,8 +135,20 @@ import PaperCPrel8.PivotRankinUniform
 import PaperCPrel8.PoissonCloudMixture
 import PaperCPrel8.PoissonCloudTail
 import PaperCPrel8.PoissonRegularCloud
+import PaperCPrel8.PrimeActivityAsymptotics
+import PaperCPrel8.PrimeActivityDivergence
+import PaperCPrel8.PrimeActivityLower
+import PaperCPrel8.PrimeCumulantObstruction
 import PaperCPrel8.PrimeForcing
+import PaperCPrel8.PrimeMicroscopicComparison
+import PaperCPrel8.PrimeRetainedDensity
 import PaperCPrel8.PrimeRunWitness
+import PaperCPrel8.PrimeWindowBudget
+import PaperCPrel8.PrimeWindowErrors
+import PaperCPrel8.PrimeWindowGeometry
+import PaperCPrel8.PrimeWindowIntensity
+import PaperCPrel8.PrimeWindowScales
+import PaperCPrel8.PrimeWitnessCountBounds
 import PaperCPrel8.PrimeWitnessRetention
 import PaperCPrel8.PrivateForcing
 import PaperCPrel8.PullSiteTarget
@@ -165,6 +181,7 @@ import PaperCPrel8.RoughKernelThreshold
 import PaperCPrel8.RoughPairHosts
 import PaperCPrel8.SaddleEnvelope
 import PaperCPrel8.SaddleScaleMonotonicity
+import PaperCPrel8.ShiftedCylinderPNT
 import PaperCPrel8.SignedGoodReplacement
 import PaperCPrel8.SignedPalmForcing
 import PaperCPrel8.SmallPrimeMixture

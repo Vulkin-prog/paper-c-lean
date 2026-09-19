@@ -4351,6 +4351,16 @@
           "path": "PaperCPrel8/ArithmeticPalmSigns.lean",
           "declaration": "arithmetic_target_sign_bound",
           "scope": "The actual arithmetic normalized Palm avoidance ratio is nonnegative and has the displayed sharp bound under independent fair target signs."
+        },
+        {
+          "path": "PaperCPrel8/PalmCumulantEnvelope.lean",
+          "declaration": "normalized_avoidance_bound",
+          "scope": "Unnumbered finite Palm cumulant criterion |R-1|<=exp(A)-1, retaining reference-mean singleton corrections. No claim of smallness of A."
+        },
+        {
+          "path": "PaperCPrel8/PalmCumulantEnvelope.lean",
+          "declaration": "singleton_correction",
+          "scope": "The singleton cumulant is exactly the actual Palm marginal minus the reference p."
         }
       ]
     },
@@ -4426,6 +4436,16 @@
           "path": "PaperCPrel8/CategoricalOccupancyEnvelope.lean",
           "declaration": "activity_ge_half_log_polynomial",
           "scope": "If all twice-occupancy means are below one, the actual positive F_2 polynomial gives K>=log(F_2)/2. Uses a finite categorical expansion without introducing within-site cumulants."
+        },
+        {
+          "path": "PaperCPrel8/CumulantActivityLayers.lean",
+          "declaration": "activity_split",
+          "scope": "Exact decomposition into pair activity and activity of orders >=3."
+        },
+        {
+          "path": "PaperCPrel8/CumulantActivityLayers.lean",
+          "declaration": "centered_pair_moment",
+          "scope": "The pair cumulant from the centered recursive convention is the actual covariance; the transfer of divergence to higher orders remains conditional on the pair estimate."
         }
       ]
     },
@@ -4466,6 +4486,66 @@
           "path": "PaperCPrel8/ArithmeticLowCategory.lean",
           "declaration": "arithmetic_activity_lower",
           "scope": "Actual arithmetic low categories, original signed indicators, retained witness count and exact prime-cylinder probability give the finite logarithmic lower bound. Common exact occupancy means are explicit, as in G.9; subsequence asymptotics remain."
+        },
+        {
+          "path": "PaperCPrel8/PrimeActivityLower.lean",
+          "declaration": "arithmetic_linear_lower",
+          "scope": "Finite arithmetic activity lower bound with N*log(3), exact prime entropy and linear error 4*g*r; the occupied logarithm needs no asymptotic error."
+        },
+        {
+          "path": "PaperCPrel8/PrimeWitnessCountBounds.lean",
+          "declaration": "retained_count_lower",
+          "scope": "Uniform explicit certified-count lower bound M/q-3-2*M/q^2 minus the actual omissions."
+        },
+        {
+          "path": "PaperCPrel8/PrimeWindowScales.lean",
+          "declaration": "log_ratio",
+          "scope": "Literal M=2^(q-1+floor(log_2 q)) has log(M)/q->log(2), and every fixed polynomial in q is negligible compared with M."
+        },
+        {
+          "path": "PaperCPrel8/ShiftedCylinderPNT.lean",
+          "declaration": "prime_count_shifted",
+          "scope": "The already declared PNT yields pi(M+Q)*log(M)/M->1 when Q=o(M)."
+        },
+        {
+          "path": "PaperCPrel8/PrimeWindowBudget.lean",
+          "declaration": "labelled_budget",
+          "scope": "The explicit prime windows satisfy the stronger labelled budget for every fixed saddle margin."
+        },
+        {
+          "path": "PaperCPrel8/PrimeWindowGeometry.lean",
+          "declaration": "support_ratio",
+          "scope": "The actual paper excess cutoff gives Q=o(M); private-prime geometry holds already on the minimal M+Q sampling cylinder."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticLowMarginals.lean",
+          "declaration": "occupancy_expectation",
+          "scope": "The exact common low-type mean is proved from actual signed marginals and good geometry, rather than supplied as a new hypothesis."
+        },
+        {
+          "path": "PaperCPrel8/PrimeRetainedDensity.lean",
+          "declaration": "retained_density",
+          "scope": "Every fixed G_theta omits o(M/log M) sites, including the final L sites outside the physical interior; the same holds for G0."
+        },
+        {
+          "path": "PaperCPrel8/PrimeCumulantObstruction.lean",
+          "declaration": "original_obstruction",
+          "scope": "Actual G0 arithmetic activity has the displayed positive normalized lower limit, expressed by eventual epsilon lower bounds along primes; only the already declared PNT remains."
+        },
+        {
+          "path": "PaperCPrel8/PrimeCumulantObstruction.lean",
+          "declaration": "retained_obstruction",
+          "scope": "The same exact positive constant applies to every fixed nonnegative theta and its actual G_theta."
+        },
+        {
+          "path": "PaperCPrel8/PrimeActivityDivergence.lean",
+          "declaration": "retained_diverges",
+          "scope": "Actual total activity diverges along every sequence of primes tending to infinity, for G0 and G_theta. The orders >=3 conclusion still needs G.7."
+        },
+        {
+          "path": "PaperCPrel8/PrimeMicroscopicComparison.lean",
+          "declaration": "distance_tendsto",
+          "scope": "Independent full microscopic distance tends to zero on the same windows, retaining the existing directional Stein and arithmetic inputs of F.2. No cumulant smallness premise is used."
         }
       ]
     }
@@ -4517,7 +4597,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "G.1–G.6 numbered conclusions are recorded, with the explicit baseline inputs where required. G.4 now includes the exact named regular-target restriction, literal ordinary full deletion and the 5*Lambda^2/n normalized comparison. G.6 includes centered signed coefficients and actual arithmetic valuation matrices. G.8 finite categorical TV, polynomial and occupancy-log inequalities are proved using finite recursive cumulants and distinct-site subsets. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic host bound. G.9 has the actual prime witness, exact count, retention, probability and finite activity lower bound; its prime-subsequence asymptotics and higher-order divergence remain. Final unnumbered review (including named outside-deletion convergence, cumulant conventions, tilted-void identities and the pair example) and separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise."
+      "remaining": "G.1–G.6 numbered conclusions and G.8 finite bounds are recorded, with explicit baseline inputs where required. G.6 also has the finite Palm cumulant criterion retaining singleton corrections. G.9 now has its actual positive normalized lower limit and total-activity divergence for G0 and every fixed G_theta, with the exact prime windows, minimal M+Q cylinder, original marginals and omission estimates discharged; the independent microscopic distance tends to zero with the existing F.2 inputs. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic rough-host bound. The remaining G.9 assertion about divergence at orders >=3 depends on that vanishing pair estimate; its exact layer decomposition is proved. Final unnumbered review (named outside-deletion convergence, cumulant conventions, tilted-void identities, the pair example and witness threshold) and the separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."
