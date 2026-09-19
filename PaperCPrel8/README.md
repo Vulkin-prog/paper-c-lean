@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **296 proved theorems in 61 modules**. It is an
+This library contains **321 proved theorems in 65 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -68,6 +68,10 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `EmpiricalWindowConvergence` | Normalized frequencies and almost-sure TV completion from summable field errors and overlap ratios |
 | `EmpiricalScaleBounds` | Literal dyadic error summability, rounded-window mean control and Poisson mass continuity |
 | `EmpiricalStartField` | Exact ordered arithmetic starts, true empirical tail bound and almost-sure endpoint under explicit numerical conditions |
+| `EmpiricalPaperScales` | Literal dyadic heights, rounded base lengths, vanishing site rates and exact rounded-window mean |
+| `EmpiricalPaperBudget` | Actual intensity and information budget; summable h/n and h/N; eventual window containment |
+| `EmpiricalPaperTheorem` | Corollary 7.8a for the genuine arithmetic empirical law at the literal scales, with baseline microscopic inputs |
+| `EmpiricalWindowGrowth` | Explicit constants for h=M*exp(-alpha*V+O(1)) and log h/log M -> 1 |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -90,8 +94,10 @@ uses monotonicity rather than implicit differentiation. Other new families
 remain open; the analytic solution construction in F.2 is still an explicit input.
 The empirical count-law probability argument now includes the actual source,
 sharp overlapping-window variance and normalized almost-sure completion.
-The literal length/window regime of 7.8a and the support obstruction 7.8b
-remain open; numerical hypotheses in the empirical endpoint are explicit.
+The literal length/window regime, summability and normalization are now
+instantiated: corollary 7.8a, including its window-size clauses, is proved with
+the same explicit analytic/arithmetic inputs as the microscopic comparison.
+The support obstruction 7.8b remains open.
 No proof placeholder or new Lean axiom is used.
 
 ```sh
@@ -102,5 +108,5 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/empirical-windows/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/empirical-paper/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.

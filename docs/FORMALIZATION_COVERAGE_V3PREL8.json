@@ -2837,7 +2837,7 @@
       "source": "manuscripts/v3prel8/sections/07a_empirical_poisson.tex",
       "line": 12,
       "statement_sha256": "4c249fb73bec5a0773684e20038dbf5437fe0e793f30d75aae08f013324017c6",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved_with_explicit_inputs",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -2888,7 +2888,52 @@
         {
           "path": "PaperCPrel8/EmpiricalStartField.lean",
           "declaration": "ae_actual_empirical_poisson",
-          "scope": "Actual arithmetic empirical count laws converge almost surely in TV under explicit summable field-error bounds, h/N ratios and limiting means. The literal 7.8a length/window sequence, its eventual admissibility and overlap-ratio summability remain to be instantiated; this is not yet the full corollary."
+          "scope": "Actual arithmetic empirical count laws converge almost surely in TV under explicit summable field-error bounds, h/N ratios and limiting means. These numerical premises are now discharged for the literal 7.8a scales by EmpiricalPaperBudget and EmpiricalPaperTheorem."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalPaperScales.lean",
+          "declaration": "length_band",
+          "scope": "For literal M_k=2^k and L_k=k-floor(alpha*V_M/log 2), natural subtraction eventually agrees with integer subtraction, and L_k lies in the established fixed logarithmic band."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalPaperScales.lean",
+          "declaration": "window_mean_tendsto",
+          "scope": "The literal h_k=floor(tau*2^L_k) has h_k*2^-L_k -> tau, from proved L_k -> infinity and site-rate decay."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalPaperBudget.lean",
+          "declaration": "intensity_bounds",
+          "scope": "The actual Lambda_k=(M_k-L_k)*2^-L_k lies between exp(alpha*V_M)/4 and exp(alpha*V_M), and diverges for alpha>0."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalPaperBudget.lean",
+          "declaration": "information_budget",
+          "scope": "For 0<alpha<1 the literal empirical lengths satisfy log Lambda_k <= V_M-c*nu_M eventually, for every fixed c. No information-budget premise is assumed in the final theorem."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalPaperBudget.lean",
+          "declaration": "summable_window_origins_ratio",
+          "scope": "The actual h_k/n_k and h_k/N_k ratios are summable; windows are eventually positive and fit in half the available sites. The exact natural origin count then equals n_k-h_k+1."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalPaperTheorem.lean",
+          "declaration": "paper_field_comparison",
+          "scope": "Actual full-field comparison on the literal empirical lengths with summable error 10*exp(-nu_M)+4*M^(-1/6), obtained from the proved microscopic theorem. Retains only the baseline directional Stein, ordinary PNT, Laishram-Shorey and Nicolas-Robin inputs."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalPaperTheorem.lean",
+          "declaration": "paper_empirical_poisson",
+          "scope": "Corollary 7.8a: for each fixed 0<alpha<1 and tau>0, the genuine arithmetic empirical count law converges almost surely in total variation to Poisson(tau), at the exact dyadic heights, rounded lengths and rounded windows. All numerical regime, summability and mean hypotheses are proved. No independence between scales or simultaneous all-parameter claim. Existing analytic/arithmetic inputs remain explicit."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalWindowGrowth.lean",
+          "declaration": "window_size_bounds",
+          "scope": "The additional displayed size assertion has explicit constants: eventually (tau/2)*M*exp(-alpha*V) <= h <= 2*tau*M*exp(-alpha*V)."
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalWindowGrowth.lean",
+          "declaration": "window_log_ratio_tendsto",
+          "scope": "The logarithmic equivalent log h/log M -> 1 proves the displayed M^(1-o(1)) window scale, in addition to the exact mean normalization."
         }
       ]
     },
@@ -3636,7 +3681,7 @@
         "cor:empirical-poisson",
         "rem:empirical-field-obstruction"
       ],
-      "remaining": "The exact overlap variance, Poisson window means, one-event arithmetic transfer, normalized almost-sure completion and dyadic full-field error summability are proved. Still instantiate the literal 7.8a length/window sequence: eventual admissibility and information budget, h/N summability and vanishing site rate. The fixed-realization full-field support obstruction (7.8b) remains open."
+      "remaining": "Corollary 7.8a, including the literal length/window regime, exact Poisson mean and displayed window-size estimates, is proved with the same explicit baseline analytic/arithmetic inputs as the microscopic theorem. The fixed-realization full-field support obstruction (7.8b) remains open."
     },
     {
       "name": "Palm complements",

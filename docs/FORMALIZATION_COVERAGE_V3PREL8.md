@@ -84,7 +84,7 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | article | [7.11](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L640) | `thm:two-clock` | preserved statement |
 | article | [7.12](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L725) | `thm:affine-crossover` | preserved statement |
 | article | [7.7a](../manuscripts/v3prel8/sections/07b_dyadic_restriction.tex#L6) | `cor:dyadic-micro` | proved with explicit inputs |
-| article | [7.8a](../manuscripts/v3prel8/sections/07a_empirical_poisson.tex#L12) | `cor:empirical-poisson` | new statement partial |
+| article | [7.8a](../manuscripts/v3prel8/sections/07a_empirical_poisson.tex#L12) | `cor:empirical-poisson` | proved with explicit inputs |
 | article | [7.8b](../manuscripts/v3prel8/sections/07a_empirical_poisson.tex#L154) | `rem:empirical-field-obstruction` | new statement open |
 | companion | [A.1](../manuscripts/v3prel8/companion/A_runge_diophantine.tex#L9) | `supp:lem:runge-calculation` | preserved statement |
 | companion | [A.2](../manuscripts/v3prel8/companion/A_runge_diophantine.tex#L112) | `supp:lem:pell` | preserved statement |
@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the tenth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the eleventh checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -215,14 +215,33 @@ rounding changes the mean by less than one site rate.
 **7.8a remains partial:** its literal length/window sequence still needs the
 eventual microscopic regime and information budget, summability of h/N and
 vanishing site rate instantiated. The full-field support obstruction 7.8b is
-not yet proved. See the [current receipt](../extension_evidence/v3prel8/empirical-windows/README.md).
+not yet proved. See the [tenth-batch receipt](../extension_evidence/v3prel8/empirical-windows/README.md).
+
+The eleventh batch adds **25 theorems (321 total, 65 modules)** and proves
+**corollary 7.8a at its literal scales**, with the baseline microscopic inputs.
+For M_k=2^k and L_k=k-floor(alpha*V_M/log 2), the actual intensity satisfies
+`exp(alpha*V_M)/4 <= Lambda_k <= exp(alpha*V_M)`. Thus it diverges and the
+strict alpha<1 margin supplies every fixed microscopic information budget.
+The h/n ratio is bounded by `4*tau*exp(-alpha*V_M)` and is summable. Windows
+are eventually positive and fit within half the sites, so h/N is summable too.
+
+The final theorem proves almost-sure TV convergence of the genuine arithmetic
+empirical count law to Poisson(tau), for each fixed alpha and tau, with no
+numerical asymptotic premise left to assume. It uses the actual field bound
+`10*exp(-nu_M)+4*M^(-1/6)`. Exact mean normalization and the additional
+window-size clauses are included: h lies between `(tau/2)*M*exp(-alpha*V_M)`
+and `2*tau*M*exp(-alpha*V_M)`, and log h/log M tends to one.
+
+The same explicit directional Stein, PNT, Laishram-Shorey and Nicolas-Robin
+inputs remain. The support obstruction 7.8b is distinct and still open.
+See the [current receipt](../extension_evidence/v3prel8/empirical-paper/README.md).
 
 ## Remaining dependency chains
 
 - **Typical and affine dictionaries**: Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities.
 - **Information-adapted cutoff**: Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
-- **Empirical Poisson and support obstruction**: The exact overlap variance, Poisson window means, one-event arithmetic transfer, normalized almost-sure completion and dyadic full-field error summability are proved. Still instantiate the literal 7.8a length/window sequence: eventual admissibility and information budget, h/N summability and vanishing site rate. The fixed-realization full-field support obstruction (7.8b) remains open.
+- **Empirical Poisson and support obstruction**: Corollary 7.8a, including the literal length/window regime, exact Poisson mean and displayed window-size estimates, is proved with the same explicit baseline analytic/arithmetic inputs as the microscopic theorem. The fixed-realization full-field support obstruction (7.8b) remains open.
 - **Palm complements**: Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.

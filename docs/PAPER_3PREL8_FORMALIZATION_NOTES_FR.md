@@ -410,3 +410,48 @@ sommabilité de h/N et décroissance du taux par site. L'obstruction de support
 pour le champ complet (7.8b) reste distincte et ouverte. Ces observations
 confirment ou simplifient la preuve ; aucune nouvelle erreur du manuscrit n'a
 été établie dans ce lot. Les fichiers du manuscrit restent inchangés.
+
+
+## Corollaire empirique aux échelles exactes — onzième lot
+
+- **Budget explicite sans développements plus fins.** Pour
+  `M=2^k`, `d=floor(alpha*V/log 2)` et `L=k-d`, on obtient directement
+  `exp(alpha*V)/2 <= 2^d <= exp(alpha*V)`. Dès que `L<=M/2`, l'intensité
+  réelle satisfait donc `exp(alpha*V)/4 <= Lambda <= exp(alpha*V)`.
+  Cela donne la divergence de Lambda pour alpha>0. Pour alpha<1, la seule
+  propriété `nu/V -> 0` suffit à absorber tout terme fixe `c*nu` dans
+  `(1-alpha)*V`. Les développements détaillés des deux selles, bien que
+  corrects et informatifs, ne sont pas nécessaires à ce corollaire.
+- **Rapports à distinguer.** Avec `n=M-L`, on a explicitement
+  `h/n <= 4*tau*exp(-alpha*V)`. La sommabilité suit de `V>=nu` à partir
+  d'un certain rang et de la sommabilité dyadique déjà établie de
+  `exp(-alpha*nu)`. Puis `h/n -> 0` donne `2h<=n` éventuellement, d'où
+  `n<=2N` et la sommabilité du véritable rapport h/N utilisé par Chebyshev.
+  Cette transition justifie la comparaison implicite des deux dénominateurs
+  dans la preuve du papier.
+- **Arrondis et premiers indices.** La profondeur entière est o(log M),
+  donc la soustraction `k-d` est légitime à partir d'un certain rang.
+  La définition totale en entiers naturels adopte une extension arbitraire
+  aux premiers indices ; `N=(n-h)+1` y reste positif. Lorsque la fenêtre
+  tient dans les sites, elle coïncide exactement avec la définition du papier.
+  Cette convention évite toute normalisation par zéro sans changer la limite.
+- **Constantes pour la taille de la fenêtre.** La formalisation donne
+  `(tau/2)*M*exp(-alpha*V) <= h <= 2*tau*M*exp(-alpha*V)` éventuellement.
+  Avec `V/log M -> 0`, cela donne `log h/log M -> 1`. Ces deux conclusions
+  justifient les deux formes de croissance affichées dans l'énoncé.
+  L'identification de la moyenne limite utilise séparément l'arrondi exact,
+  comme demandé par le paragraphe « Scope and comparison ».
+- **Choix fixe de l'erreur sommable.** Dans l'application du théorème
+  microscopique, on peut fixer c=2, c'=1 et epsilon=1/6, pour obtenir
+  `10*exp(-nu_M)+4*M^(-1/6)`. Il n'est pas nécessaire de conserver ces
+  paramètres auxiliaires dans l'énoncé final du corollaire empirique.
+
+Le corollaire 7.8a est maintenant démontré pour chaque couple fixe
+`0<alpha<1`, `tau>0`, sur les hauteurs dyadiques exactes. Ses conditions
+numériques sont déduites des définitions ; les mêmes prémisses analytiques
+et arithmétiques explicites que pour la comparaison microscopique subsistent.
+Cela ne démontre ni un ensemble simultané pour tous les paramètres, ni une
+convergence à toutes les tailles, ni l'obstruction de support 7.8b.
+Aucune correction du manuscrit n'est imposée par ce lot ; les points ci-dessus
+sont des précisions ou des simplifications de preuve. Ses fichiers restent
+inchangés.
