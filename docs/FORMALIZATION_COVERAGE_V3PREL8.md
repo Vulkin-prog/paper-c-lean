@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the sixteenth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the seventeenth checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -345,8 +345,34 @@ factor. No other literature premise is used in this batch.
 **G.1 is partial:** absorption for the literal `T_M`, final little-oh deletion
 limits and the actual deletion coupling remain to be assembled. CRT allocation
 and high-probability regular clouds are not claimed. The
-[current receipt](../extension_evidence/v3prel8/rough-kernels/README.md) records
+[sixteenth-batch receipt](../extension_evidence/v3prel8/rough-kernels/README.md) records
 this scope; it is not a new Palomar qualification.
+
+The seventeenth batch adds **35 theorems (609 total, 127 modules)** for the
+literal stronger-deletion regime. The threshold `T_M=exp(theta*H/u)` has the
+exact tilted exponent, is subpolynomial and eventually exceeds `exp(V)`.
+The reciprocal-tilt and support factors are absorbed at scale nu, giving
+actual extra counts `n*exp(-V+(theta+epsilon)*nu)` for every positive epsilon.
+The complete omitted grid has the rounded shallow-prefix bound without
+counting the original bad-pivot exclusions twice.
+
+At the literal paper `E_*`, `Y` and information budget, the actual additionally
+deleted mass tends to zero and the total complement is `o(M/log M)`.
+All auxiliary geometric conditions are discharged. An actual independent
+Poisson mixture on the original finite coordinate space replaces the deleted
+low signed types. Its half-L1 distance from the genuine arithmetic conditional
+field is at most `2*p` per deleted site, hence at most
+`2*exp(-(c-theta)*nu/2)` under the paper regime, uniformly in the original
+positive small-prime event. No factor from its inverse probability occurs.
+
+**G.1 remains partial only at the final restoration assembly:** the new
+arithmetic, density and low-type replacement endpoints are proved; their
+composition with the original whole-field deletion and high-mark-tail
+procedure has not yet been recorded as a combined source-facing theorem.
+CRT allocations and regular-cloud probabilities remain open. The
+[current receipt](../extension_evidence/v3prel8/stronger-deletion/README.md)
+records this scope and the unchanged baseline inputs. No new Palomar
+qualification is claimed.
 
 ## Remaining dependency chains
 
@@ -354,7 +380,7 @@ this scope; it is not a new Palomar qualification.
 - **Information-adapted cutoff**: Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.
-- **Palm complements**: Finite actual rough-kernel counts, nontrivial weighted reciprocal sums, stronger-good-set deletion counts and the uniform hard-cutoff prefactor are proved. Private-prime regular plants have exact presence probabilities. Still open: absorption of the literal T_M threshold and final G.1 deletion limits/coupling; CRT allocation and high-probability target regular clouds; full arithmetic G.4/G.5 instantiation; signed Fourier/Walsh identifications; pair activity and the cumulant inequality/arithmetic obstruction. Existing countable Palm and normalization components remain available.
+- **Palm complements**: G.1 actual threshold absorption, theta+epsilon counts, vanishing additional mass, o(M/log M) total complement, and the actual 2*p low-type replacement cost are proved at the paper parameters. Final composition with the original whole-field deletions and high-mark tails remains open. CRT allocation and high-probability target regular clouds, full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
 

@@ -679,3 +679,44 @@ Le facteur explicite `1+T^sigma/sigma`, avec `sigma=1-s`, reste visible.
 littéral, terminer les limites et le couplage de suppression de G.1,
 puis les allocations CRT et la régularité probabiliste des nuages.
 Ce lot ne ferme donc pas G.1 ni les résultats suivants de l'annexe G.
+
+## Seuil exact et suppressions renforcées — dix-septième lot
+
+Le seuil `T_M=exp(theta H/u)` est traité littéralement, y compris son arrondi
+pour comparer des noyaux entiers. Son élévation à la puissance `sigma=u/V`
+donne exactement `exp(theta nu)`. La majoration élémentaire `1/sigma<=H`
+suffit : avec `Q=O(H)`, tous les facteurs restants sont polynomiaux en H,
+et leur logarithme est négligeable devant nu. Aucun développement plus fin
+de `log(1/sigma)` n'est nécessaire. Les propriétés `T_M>exp(V)` à terme
+(pour theta>0) et `log(T_M)/H -> 0` sont également prouvées.
+
+**Simplification du comptage total.** Dès que `T>=1`, la condition
+`r_Y(m)>T` implique que le plus grand premier de valuation impaire dépasse Y.
+Ainsi G_theta est exactement l'intersection de la condition de profondeur
+avec le bon ensemble défini par les seuls noyaux. Les anciens mauvais pivots
+sont déjà exclus par cette dernière condition. On peut donc borner le
+complément par la partie peu profonde et une seule population de petits
+noyaux, sans additionner une seconde fois la suppression des mauvais pivots.
+Il s'agit d'une simplification de preuve, pas d'une erreur du papier.
+
+**Résultats obtenus aux paramètres du papier.** Pour tout epsilon>0, le
+nombre de suppressions supplémentaires est au plus
+`n*exp(-V+(theta+epsilon)*nu)`. Les contraintes auxiliaires de géométrie
+sont déduites du régime du papier avec son E_* et son Y. Si theta<c,
+la masse supplémentaire est au plus `exp(-(c-theta)*nu/2)` et tend vers zéro.
+Le complément total vérifie `card(complement)*log(M)/M -> 0`.
+
+**Remplacement conditionnel.** La loi de remplacement est construite comme
+un mélange réellement normalisé avec un champ indépendant de Poisson sur
+les coordonnées supprimées. Les coordonnées sont celles du champ signé sur
+G0, et tous les types bas sont conservés à un site retenu. Les probabilités
+marginales conditionnelles exactes donnent un coût d'au plus `2*p` par site
+supprimé, pour tout événement positif du champ original des petits premiers.
+Il n'apparaît aucun facteur `exp(I)` dans cette étape.
+
+La dernière composition avec les suppressions initiales du champ complet
+et les queues de marques reste à assembler en un énoncé commun ; G.1 garde
+pour cette raison le statut partiel. Les allocations CRT et les probabilités
+de régularité ne sont pas encore établies. Les fichiers du manuscrit restent
+inchangés. Seules les estimations arithmétiques asymptotiques de ce lot
+emploient le reste PNT déjà explicite dans la formalisation.

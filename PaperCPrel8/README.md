@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **574 proved theorems in 120 modules**. It is an
+This library contains **609 proved theorems in 127 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -127,6 +127,13 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `RoughKernelReciprocal` | Actual nontrivial omega-weighted reciprocal sums and Euler tail |
 | `RoughKernelDeletion` | Stronger good set, exact threshold floor and finite deletion counts |
 | `RoughKernelSaddle` | Uniform PNT Euler prefactor and hard-cutoff kernel counts |
+| `RoughKernelThreshold` | Literal T_M, exact tilted power, floor, subpolynomial scale and cutoff separation |
+| `RoughKernelStrongCount` | Uniform absorbed stronger-deletion count with arbitrary theta+epsilon exponent |
+| `RoughKernelGoodSet` | Exact G_theta and total-complement count without double charging bad pivots |
+| `RoughKernelDeletionLimits` | Actual extra mass and complete omitted-density limits |
+| `FiniteFieldReplacement` | Normalized independent Poisson replacement and source-plus-target cost |
+| `SignedGoodReplacement` | Actual conditional signed-field replacement at cost 2*p per deleted site |
+| `StrongerDeletionTheorem` | Literal paper E_*, Y, geometry, information margin and replacement endpoints |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -165,7 +172,7 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/rough-kernels/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/stronger-deletion/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
@@ -181,4 +188,6 @@ Fourier/Walsh identifications remain open; G.3–G.6 are partial, not closed.
 
 The finite G.1 kernel estimates and stronger deletion counts are now proved,
 with the hard-cutoff prefactor under the existing PNT input. Threshold absorption
-and the final deletion limits remain open, so G.1 is partial.
+and actual deletion limits are now proved at the paper parameters, together
+with the low-type replacement cost. G.1 remains partial at the final
+composition with original whole-field deletions and high-mark tails.

@@ -20,6 +20,6 @@ hashes are independent of the later packaging commit. The supplied PDFs and
 26 compilation inputs are preserved byte for byte; the TeX build was not rerun
 locally because Biber/BibLaTeX are absent.
 
-The current receipt is the [rough-kernel batch](rough-kernels/README.md),
-with 574 audited theorems across 120 modules. Earlier receipts retain their
+The current receipt is the [stronger-deletion batch](stronger-deletion/README.md),
+with 609 audited theorems across 127 modules. Earlier receipts retain their
 original source hashes and historical scope.

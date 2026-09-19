@@ -3806,6 +3806,71 @@
           "path": "PaperCPrel8/RoughKernelSaddle.lean",
           "declaration": "hard_count",
           "scope": "At the actual hard cutoff, small-kernel counts have the prefactor exp(-V+epsilon*nu), with the numerical threshold factor explicit. Its absorption for T_M and final deletion/probability limits remain open."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelThreshold.lean",
+          "declaration": "threshold_factor",
+          "scope": "Exact T_M=exp(theta H/u), with its natural floor; the tilted threshold is bounded by (1+H)*exp(theta*nu). The real threshold is subpolynomial and eventually exceeds exp(V) for theta>0."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelStrongCount.lean",
+          "declaration": "added_count",
+          "scope": "All support and reciprocal-tilt polynomial factors are absorbed. Actual extra deletion count <=n*exp(-V+(theta+epsilon)*nu), uniformly in nearby ceilings and the original grid subset."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelGoodSet.lean",
+          "declaration": "paperGood_eq",
+          "scope": "Actual G_theta equals the deep portion of the all-grid strong-kernel set: old bad-pivot exclusions are already included when T>=1."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelGoodSet.lean",
+          "declaration": "total_count",
+          "scope": "Literal total complement bound with rounded square-root prefix and the small-kernel population, without double charging old bad pivots."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelDeletionLimits.lean",
+          "declaration": "added_mass_tendsto",
+          "scope": "Actual additionally deleted mass tends to zero under the numerical information margin; no convergence conclusion is assumed."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelDeletionLimits.lean",
+          "declaration": "total_density_tendsto",
+          "scope": "Actual total omitted population is o(M/log M), including the rounded shallow prefix."
+        },
+        {
+          "path": "PaperCPrel8/FiniteFieldReplacement.lean",
+          "declaration": "replacement_bound",
+          "scope": "Normalized actual independent Poisson mixture on a countable vector space; distance is bounded by deleted-source activity plus filling intensity."
+        },
+        {
+          "path": "PaperCPrel8/SignedGoodReplacement.lean",
+          "declaration": "replacement_cost",
+          "scope": "Actual arithmetic conditional field under any positive original small-prime event: replacing low signed coordinates costs at most 2*p times the deleted-site count, with no information multiplier."
+        },
+        {
+          "path": "PaperCPrel8/StrongerDeletionTheorem.lean",
+          "declaration": "paper_added_count",
+          "scope": "Discharges the geometry at the literal paper E_* and Y under its length and information regime; arbitrary epsilon gives the theta+epsilon exponent."
+        },
+        {
+          "path": "PaperCPrel8/StrongerDeletionTheorem.lean",
+          "declaration": "paper_counts",
+          "scope": "Uniform actual extra mass bound exp(-(c-theta)*nu/2) and total cardinality bound at the literal paper parameters."
+        },
+        {
+          "path": "PaperCPrel8/StrongerDeletionTheorem.lean",
+          "declaration": "paper_replacement",
+          "scope": "Actual arithmetic-to-independent-replacement comparison on the original G0 coordinate space, using the literal paper E_*, Y and finite source cylinder; bound 2*exp(-(c-theta)*nu/2)."
+        },
+        {
+          "path": "PaperCPrel8/StrongerDeletionTheorem.lean",
+          "declaration": "paper_added_mass_tendsto",
+          "scope": "Actual additionally deleted mass converges to zero under only the paper regime."
+        },
+        {
+          "path": "PaperCPrel8/StrongerDeletionTheorem.lean",
+          "declaration": "paper_density_tendsto",
+          "scope": "Actual paper G_theta complement is o(M/log M), with E_* derived from the given information budget."
         }
       ]
     },
@@ -4063,7 +4128,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "Finite actual rough-kernel counts, nontrivial weighted reciprocal sums, stronger-good-set deletion counts and the uniform hard-cutoff prefactor are proved. Private-prime regular plants have exact presence probabilities. Still open: absorption of the literal T_M threshold and final G.1 deletion limits/coupling; CRT allocation and high-probability target regular clouds; full arithmetic G.4/G.5 instantiation; signed Fourier/Walsh identifications; pair activity and the cumulant inequality/arithmetic obstruction. Existing countable Palm and normalization components remain available."
+      "remaining": "G.1 actual threshold absorption, theta+epsilon counts, vanishing additional mass, o(M/log M) total complement, and the actual 2*p low-type replacement cost are proved at the paper parameters. Final composition with the original whole-field deletions and high-mark tails remains open. CRT allocation and high-probability target regular clouds, full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."
