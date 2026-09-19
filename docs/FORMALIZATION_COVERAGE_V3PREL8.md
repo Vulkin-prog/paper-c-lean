@@ -78,12 +78,12 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | article | [7.5](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L230) | `cor:as-longest` | preserved statement |
 | article | [7.6](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L262) | `thm:macro-field` | preserved statement |
 | article | [7.7](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L387) | `thm:micro-run-tv` | proved with explicit inputs |
-| article | [7.8](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L458) | `cor:micro-readout` | new statement partial |
+| article | [7.8](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L458) | `cor:micro-readout` | new statement proved |
 | article | [7.9](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L507) | `thm:relative-bulk` | preserved statement |
 | article | [7.10](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L562) | `thm:crossover` | preserved statement |
 | article | [7.11](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L640) | `thm:two-clock` | preserved statement |
 | article | [7.12](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L725) | `thm:affine-crossover` | preserved statement |
-| article | [7.7a](../manuscripts/v3prel8/sections/07b_dyadic_restriction.tex#L6) | `cor:dyadic-micro` | new statement open |
+| article | [7.7a](../manuscripts/v3prel8/sections/07b_dyadic_restriction.tex#L6) | `cor:dyadic-micro` | proved with explicit inputs |
 | article | [7.8a](../manuscripts/v3prel8/sections/07a_empirical_poisson.tex#L12) | `cor:empirical-poisson` | new statement partial |
 | article | [7.8b](../manuscripts/v3prel8/sections/07a_empirical_poisson.tex#L154) | `rem:empirical-field-obstruction` | new statement open |
 | companion | [A.1](../manuscripts/v3prel8/companion/A_runge_diophantine.tex#L9) | `supp:lem:runge-calculation` | preserved statement |
@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the eighth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the ninth checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -178,16 +178,31 @@ fixed logarithmic band and events satisfying the literal paper budget.
 The old analytic and arithmetic inputs remain explicit. Convergence follows
 for varying fields satisfying this eventual source regime; no final convergence
 premise is used. Arbitrary measurable readouts contract the actual distance.
-The [current receipt](../extension_evidence/v3prel8/full-microscopic/README.md)
+The [eighth-batch receipt](../extension_evidence/v3prel8/full-microscopic/README.md)
 records the validation. The literal moving-depth normalization of 7.7 is now instantiated, including
 validity of natural subtraction. The dyadic restriction and general Markov-kernel
 readout clause still need their endpoints. F.2 retains its analytic solution input.
+
+The ninth batch adds **20 theorems (265 total, 56 modules)** and completes the
+common Markov-kernel clause of 7.8 and the dyadic endpoint 7.7a (with the same
+explicit baseline inputs as 7.7). The kernel proof uses the sharp constant-one
+bound for [0,1]-valued tests on the actual countable configuration space.
+Auxiliary marking followed by any measurable readout is included.
+
+The dyadic proof uses `nu(H)<=nu(K)<=(K/H)*nu(H)` and cutoff monotonicity.
+This absorbs the bounded intensity factor when passing from N to 4N and
+embeds the original prime sigma-algebra in the larger one. Restriction retains
+literal integer coordinates, signs and all excesses. The final theorem still
+conditions only on F_{Y_N}, at the one-factor budget, and uses the exact
+moving-depth normalization. No implicit derivative or final comparison premise
+is assumed. The stronger unnumbered derivative estimate in the paper is not
+newly proved. See the [current receipt](../extension_evidence/v3prel8/dyadic-readouts/README.md).
 
 ## Remaining dependency chains
 
 - **Typical and affine dictionaries**: Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities.
 - **Information-adapted cutoff**: Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain.
-- **Microscopic signed prefix field**: Dyadic restriction and the arbitrary Markov-kernel readout clause; the analytic directional Stein solution construction in F.2 remains an explicit premise. The literal moving-depth normalization, information budget, good geometry, full field restoration, uniform rate and convergence in the explicit source regime are proved with the baseline analytic/arithmetic inputs.
+- **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Overlapping-window variance, summability, Borel–Cantelli transfer and fixed-realization support lower bound.
 - **Palm complements**: Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction.
 

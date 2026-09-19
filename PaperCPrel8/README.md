@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **245 proved theorems in 51 modules**. It is an
+This library contains **265 proved theorems in 56 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -58,6 +58,11 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `MicroscopicFullTheorem` | Full interior spatial comparison for every positive full-F_Y event |
 | `MicroscopicNormalization` | Literal moving-depth normalization and quantitative full-field endpoint of 7.7 |
 | `MicroscopicReadouts` | Arbitrary measurable readouts and convergence under the explicit source regime |
+| `MarkovReadouts` | Sharp common-kernel TV contraction and auxiliary marking/readouts for actual microscopic laws |
+| `SaddleScaleMonotonicity` | Monotonicity of actual cutoffs and secondary scales; bounded-height information-margin transfer |
+| `DyadicRestriction` | Literal integer-site source/target restriction and inclusion of full prime sigma-algebras |
+| `DyadicBudget` | One-factor dyadic budget transported to 4N; fixed logarithmic bands and hard cutoff inclusion |
+| `DyadicMicroscopicTheorem` | Full signed dyadic comparison at the paper budget and exact moving-depth normalization |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -73,9 +78,11 @@ full small-prime sigma-algebra. The existing directional Stein and arithmetic
 inputs remain explicit. The error tends to zero and so do the actual varying
 field distances under the eventual source regime. Every measurable statistic
 contracts the actual distance.
-The literal moving-depth normalization of 7.7 is also instantiated. The dyadic
-endpoint, common Markov-kernel readouts and other new families remain open;
-the analytic solution construction in F.2 remains an explicit input.
+The literal moving-depth normalization of 7.7 and the dyadic endpoint 7.7a
+are instantiated. All common Markov-kernel readouts, including auxiliary marking
+and a measurable output, obey the sharp constant-one bound. The dyadic proof
+uses monotonicity rather than implicit differentiation. Other new families
+remain open; the analytic solution construction in F.2 is still an explicit input.
 No proof placeholder or new Lean axiom is used.
 
 ```sh
@@ -86,5 +93,5 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/full-microscopic/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/dyadic-readouts/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.

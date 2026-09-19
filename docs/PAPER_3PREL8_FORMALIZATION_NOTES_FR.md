@@ -327,3 +327,38 @@ dyadique et la clause de noyau de Markov restent à expliciter, ainsi que les
 familles encore ouvertes dans le registre. Les remarques de ce lot sont des
 clarifications et simplifications ; elles ne signalent pas une nouvelle erreur
 dans le papier. Les sources et PDF de l'auteur restent inchangés.
+
+
+## Restriction dyadique et noyaux de Markov — neuvième lot
+
+- **Simplification de la preuve dyadique.** Pour deux hauteurs logarithmiques
+  admissibles `H <= K`, l'équation de selle croissante donne directement
+  `V(H) <= V(K)` et `nu(H) <= nu(K)`. Puis `nu=H/V` donne
+  `nu(K) <= (K/H)*nu(H)`. À `K=H+log 4`, cela suffit à obtenir
+  `nu(K) <= (1+delta)*nu(H)` pour tout delta positif à partir d'un certain rang.
+  La différentiation implicite et l'estimation `V'(H)=O(1/nu)` ne sont donc pas
+  nécessaires au corollaire dyadique. Cette preuve de remplacement ne prétend
+  pas démontrer cette estimation de dérivée, plus forte.
+- **Marge d'information.** Si `0<a<c`, la monotonie et la borne précédente
+  absorbent tout coût logarithmique constant B dans la différence entre
+  `V(H)-c*nu(H)+B` et `V(H+log 4)-a*nu(H+log 4)`. Le rapport des intensités
+  dyadique et préfixe est compris entre 1 et 4 lorsque L<=N. Prendre B=log 4
+  suffit. La décroissance de l'erreur exponentielle suit directement de la
+  monotonie de nu ; aucun paramètre intermédiaire supplémentaire n'est requis.
+- **Même conditionnement, mêmes positions.** La monotonie du cutoff implique
+  `F_{Y_N} <= F_{Y_{4N}}`. L'événement de départ reste cependant soumis à
+  `F_{Y_N}` dans l'énoncé final. Les positions `[N,2N)` sont exactement des
+  positions du préfixe à 4N. La restriction du champ source et de la cible est
+  exacte, sans translation de grille ni restriction de la longueur complète.
+- **Constante unitaire pour les noyaux.** Centrer une fonction à valeurs dans
+  `[0,1]` en lui soustrayant `1/2` transforme la borne signée `2*||f||∞*TV`
+  en la borne `TV` du corollaire 7.8. Cette méthode évite ici l'intégration des
+  ensembles de niveau. La normalisation des deux probabilités est utilisée
+  explicitement. Tout noyau de Markov commun, suivi éventuellement d'une
+  application mesurable, conserve donc la borne, sans hypothèse de continuité.
+
+Le corollaire dyadique est maintenant relié à sa normalisation exacte et à son
+budget à un seul facteur d'intensité. Les mêmes prémisses analytiques et
+arithmétiques explicites que pour le préfixe subsistent. Ces observations sont
+des simplifications possibles de rédaction, pas le signalement d'une nouvelle
+erreur. Les fichiers du manuscrit restent inchangés.

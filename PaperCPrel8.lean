@@ -6,11 +6,15 @@ import PaperCPrel8.CategoricalSummation
 import PaperCPrel8.DictionarySelection
 import PaperCPrel8.DirectedFootprint
 import PaperCPrel8.DirectedFootprintAsymptotics
+import PaperCPrel8.DyadicBudget
+import PaperCPrel8.DyadicMicroscopicTheorem
+import PaperCPrel8.DyadicRestriction
 import PaperCPrel8.EmpiricalTransfer
 import PaperCPrel8.FiniteConditioning
 import PaperCPrel8.HardConditionalForcing
 import PaperCPrel8.IndependentScalarTail
 import PaperCPrel8.InformationBudget
+import PaperCPrel8.MarkovReadouts
 import PaperCPrel8.MicroscopicActualGeometry
 import PaperCPrel8.MicroscopicBadPivotCount
 import PaperCPrel8.MicroscopicConditionalSpatial
@@ -47,6 +51,7 @@ import PaperCPrel8.PrivateForcing
 import PaperCPrel8.ReciprocalPivotAsymptotics
 import PaperCPrel8.ReciprocalPivotShells
 import PaperCPrel8.SaddleEnvelope
+import PaperCPrel8.SaddleScaleMonotonicity
 import PaperCPrel8.SignedPalmForcing
 import PaperCPrel8.SmallPrimeMixture
 
