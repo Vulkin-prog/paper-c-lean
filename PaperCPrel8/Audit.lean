@@ -63,6 +63,12 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.InformationBudget.admissible_cutoff_maximizes
 #print axioms PaperC.Prel8.InformationBudget.two_error_margins
 #print axioms PaperC.Prel8.InformationBudget.absorb_remainder
+#print axioms PaperC.Prel8.MicroscopicBadPivotCount.bad_displacement_card_le
+#print axioms PaperC.Prel8.MicroscopicBadPivotCount.badPivotSites_card_le
+#print axioms PaperC.Prel8.MicroscopicBadPivotCount.hard_pivot_count_eventually
+#print axioms PaperC.Prel8.MicroscopicBadPivotCount.badPivotSites_hard_bound
+#print axioms PaperC.Prel8.MicroscopicBadPivotCount.information_budget_absorption
+#print axioms PaperC.Prel8.MicroscopicBadPivotCount.conditional_deletion_hard_bound
 #print axioms PaperC.Prel8.MicroscopicDeletedSites.mem_deletedSites
 #print axioms PaperC.Prel8.MicroscopicDeletedSites.shallow_card_le
 #print axioms PaperC.Prel8.MicroscopicDeletedSites.deleted_card_le
@@ -99,6 +105,13 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.MicroscopicPairLedger.summed_pair_bound
 #print axioms PaperC.Prel8.MicroscopicPairLedger.joint_cost_bound
 #print axioms PaperC.Prel8.MicroscopicPairLedger.finite_arithmetic_comparison
+#print axioms PaperC.Prel8.MicroscopicRelationExcess.valueExcess_nonneg
+#print axioms PaperC.Prel8.MicroscopicRelationExcess.pair_weight_split
+#print axioms PaperC.Prel8.MicroscopicRelationExcess.weightedEdges_le_close_and_excess
+#print axioms PaperC.Prel8.MicroscopicRelationExcess.distance_filter_card_le
+#print axioms PaperC.Prel8.MicroscopicRelationExcess.closeEdgeCount_le
+#print axioms PaperC.Prel8.MicroscopicRelationExcess.weightedEdges_arithmetic_split
+#print axioms PaperC.Prel8.MicroscopicRelationExcess.infinite_relation_comparison
 #print axioms PaperC.Prel8.OddPrimePivot.largestOddPrime_pos
 #print axioms PaperC.Prel8.OddPrimePivot.largestOddPrime_le_iff
 #print axioms PaperC.Prel8.OddPrimePivot.pivotValues_eq_defectiveValues

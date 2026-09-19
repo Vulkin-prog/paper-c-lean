@@ -215,3 +215,33 @@ du réalignement 3PREL8 n'est toujours pas terminé.
 Ces points sont des simplifications et des précisions de preuve, pas des
 corrections d'erreurs établies. Les fichiers sources et PDF du manuscrit restent
 inchangés. Le théorème 7.7 et l'ensemble du réalignement ne sont pas encore clos.
+
+
+## Mauvais supports et séparation des relations — sixième lot
+
+- **Compter les décalages, puis absorber leur nombre.** À décalage fixé, la
+  translation du bord gauche vers le sommet est injective. Le nombre de
+  mauvais supports est donc au plus `(Q+1)*card(pivotValues(n+Q,Y))`.
+  La borne de population au point selle et l'absorption du facteur logarithmique
+  donnent `n*exp(-V+epsilon*nu)`, uniformément sous les conditions explicites
+  `M <= 2(n+Q)`, `Q <= n` et `Q <= beta*log M`. Cela reste valable pour notre
+  ensemble incluant les sites peu profonds, donc aussi pour celui du papier.
+- **Budget d'information.** L'inégalité `log(lambda)-log(a) <= V-c*nu`
+  entraîne directement `lambda*exp(-V+epsilon*nu)/a <= exp(-(c-epsilon)*nu)`.
+  Cette absorption est désormais prouvée séparément ; la positivité de
+  l'intensité et de la masse conditionnante y reste explicite.
+- **N'étendre aux paires éloignées que l'excès de relations.** Écrire
+  `2^rho = 1+(2^rho-1)` avant de sommer permet de garder le terme `1` sur
+  le graphe dirigé. Seul l'excès, non négatif, s'étend à toutes les paires
+  séparées. Étendre également le terme constant ferait perdre la borne
+  recherchée en introduisant un coût quadratique inutile.
+- **Coût local sans facteur de catégories.** Un voisinage entier de rayon
+  `Q` contient au plus `2Q+1` sites. La contribution locale obtenue est au
+  plus `4*card(G)*(2Q+1)`, sans facteur lié au nombre de marques ou de signes.
+  Cette borne légèrement large suffit pour le régime asymptotique ; elle
+  conserve l'exclusion de la diagonale dans le graphe effectif.
+
+Le bilan ainsi obtenu porte sur le champ conditionné de la source infinie.
+Il reste à y substituer le profil arithmétique de l'excès de relations et à
+vérifier toutes les conditions du choix informationnel des paramètres.
+Aucune erreur nouvelle du manuscrit n'est affirmée et ses fichiers sont inchangés.

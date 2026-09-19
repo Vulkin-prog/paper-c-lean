@@ -1,3 +1,5 @@
+import PaperCPrel8.MicroscopicBadPivotCount
+import PaperCPrel8.MicroscopicRelationExcess
 import PaperCPrel8.ActualSignedConditionalLaw
 import PaperCPrel8.ActualSignedPairs
 import PaperCPrel8.ActualSignedPalm

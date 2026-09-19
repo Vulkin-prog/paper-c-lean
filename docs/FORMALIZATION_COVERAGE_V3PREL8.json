@@ -2425,6 +2425,21 @@
           "path": "PaperCPrel8/MicroscopicDiscardBounds.lean",
           "declaration": "cutoff_bulk_tail_bound",
           "scope": "Algebraic exponential bound on the conditional bulk tail once the explicit multiplicative cutoff inequality is supplied; no assertion that the paper cutoff or all remainders already satisfy the final regime."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicBadPivotCount.lean",
+          "declaration": "badPivotSites_hard_bound",
+          "scope": "Actual bad-support count at the hard saddle, bounded by n*exp(-V+epsilon*nu), uniformly before n,L,E under explicit population and logarithmic-support conditions. Uses the existing ordinary PNT input."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicBadPivotCount.lean",
+          "declaration": "conditional_deletion_hard_bound",
+          "scope": "Actual conditional deleted-site probability with the bad-pivot cardinality eliminated in favour of the proved exponential bound. Final cutoff admissibility and all-error convergence remain open."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicRelationExcess.lean",
+          "declaration": "infinite_relation_comparison",
+          "scope": "Actual infinite conditional retained-field comparison after separating close directed pairs, the sparse graph baseline and the sum of full-value excess 2^rho-1 over all separated retained sites. Local count bounded linearly in support size; the global arithmetic profile of the remaining excess sum is not yet instantiated."
         }
       ]
     },
@@ -3002,6 +3017,11 @@
           "path": "PaperCPrel8/MicroscopicDiscardBounds.lean",
           "declaration": "cutoff_bulk_tail_bound",
           "scope": "Algebraic exponential bound on the conditional bulk tail once the explicit multiplicative cutoff inequality is supplied; no assertion that the paper cutoff or all remainders already satisfy the final regime."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicBadPivotCount.lean",
+          "declaration": "badPivotSites_hard_bound",
+          "scope": "Actual bad-support count at the hard saddle, bounded by n*exp(-V+epsilon*nu), uniformly before n,L,E under explicit population and logarithmic-support conditions. Uses the existing ordinary PNT input."
         }
       ]
     },
@@ -3381,7 +3401,7 @@
         "cor:micro-readout",
         "cor:dyadic-micro"
       ],
-      "remaining": "Full-value relation-excess summation, bad-pivot count and information-cutoff admissibility in the discard bounds, final uniform asymptotics and dyadic restriction. Independent shifted tails, actual deleted-site probability bounds, retained-field forcing, infinite conditional law and arithmetic pair/product costs are proved."
+      "remaining": "Arithmetic profile bound for the separated full-value relation-excess sum, information-cutoff admissibility, final uniform asymptotics and dyadic restriction. Actual bad-support exponential count and its conditional deletion bound are proved. The infinite comparison now separates local costs, the sparse directed baseline and nonnegative separated excess."
     },
     {
       "name": "Empirical Poisson and support obstruction",

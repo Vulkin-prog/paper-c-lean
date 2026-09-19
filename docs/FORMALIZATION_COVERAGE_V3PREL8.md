@@ -134,22 +134,32 @@ The new infinite-field comparison has the explicit finite cost
 `p^2*(#G + edgeCount + weightedEdges)`. It is not yet theorem 7.7: relation-excess summation, completion of the
 discard estimates in the information regime and final uniform limits remain open. The progress counts are an inventory, not a completion percentage.
 
-The fifth batch adds **21 theorems (174 total, 32 modules)**. An independent
+The fifth batch added **21 theorems (174 total, 32 modules)**. An independent
 scalar hit estimate is available, together with a stronger first-moment bound
 for arbitrary masks that needs no scalar Stein input. This yields the actual
 excess-tail probability and the probability of a hit in the literal complement
 of G0, under any positive conditioning event. The latter is bounded using the
 integer square-root cutoff and the number of sites with a bad pivot. The
-[current receipt](../extension_evidence/v3prel8/discard-bounds/README.md) records
+[fifth-batch receipt](../extension_evidence/v3prel8/discard-bounds/README.md) records
 the full build and exact axiom audit. The information-dependent excess cutoff
 still needs to be placed in the shifted logarithmic band, and the remaining
 arithmetic cardinality and error terms must be controlled asymptotically.
+
+The sixth batch adds **13 theorems (187 total, 34 modules)**. Actual bad
+supports satisfy `card <= n*exp(-V+epsilon*nu)`, uniformly under the stated
+population and logarithmic-support conditions. This estimate is substituted
+in the conditional deletion probability. The actual infinite-field comparison
+now separates a linear local-pair count, the sparse directed baseline and the
+nonnegative full-value excess sum over all separated retained sites. Only the
+excess is enlarged to all pairs. The [current receipt](../extension_evidence/v3prel8/arithmetic-ledger/README.md)
+records the validation. The arithmetic profile of the remaining excess sum
+and the final cutoff/asymptotic assembly are still open.
 
 ## Remaining dependency chains
 
 - **Typical and affine dictionaries**: Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities.
 - **Information-adapted cutoff**: Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain.
-- **Microscopic signed prefix field**: Full-value relation-excess summation, bad-pivot cardinality and information-cutoff admissibility in the proved discard bounds, final uniform asymptotics and dyadic restriction. The complete retained-field forcing law, infinite conditional source law, categorical ledger and actual arithmetic pair/product costs are now proved.
+- **Microscopic signed prefix field**: Arithmetic profile for the separated full-value relation-excess sum, information-cutoff admissibility, final uniform asymptotics and dyadic restriction. Actual bad-support counting and the sparse-baseline/excess decomposition are now proved. The complete retained-field forcing law, infinite conditional source law, categorical ledger and actual arithmetic pair/product costs are now proved.
 - **Empirical Poisson and support obstruction**: Overlapping-window variance, summability, Borel–Cantelli transfer and fixed-realization support lower bound.
 - **Palm complements**: Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction.
 

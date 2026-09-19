@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **174 proved theorems in 32 modules**. It is an
+This library contains **187 proved theorems in 34 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -37,6 +37,8 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `MicroscopicFootprintLedger` | Actual product-of-means edges bounded by the asymptotic pivot footprint |
 | `IndependentScalarTail` | Independent scalar vacancy/hit estimate for a shifted length |
 | `MicroscopicDiscardBounds` | Stronger masked first-moment hit/tail/deletion bounds under any positive event |
+| `MicroscopicBadPivotCount` | Actual bad-support exponential count and conditional deletion bound |
+| `MicroscopicRelationExcess` | Sparse baseline separated from full-value excess; local count and infinite comparison |
 | `MicroscopicDeletedSites` | Literal deleted set, boundary-to-start conversion and conditional source deletion cost |
 | `PivotRankinExpandedBand` | F.3 on V-2..3V+2, uniformly for M <= 2X |
 
@@ -47,8 +49,9 @@ are now constructed. The local pair bounds hold on every small-prime fibre;
 the full-value relation bound pays the actual conditioning mass.
 Independent tail and actual deleted-site probability bounds are now proved.
 The information cutoff must still be shown admissible in the shifted band,
-and the bad-pivot cardinality must be bounded in the final regime. Relation-excess
-summation, final uniform asymptotics and the other new families remain open.
+and the separated relation-excess sum still needs its arithmetic profile bound.
+The bad-pivot cardinality and its conditional deletion bound are now proved.
+Final uniform asymptotics and the other new families remain open.
 No proof placeholder or new Lean axiom is used.
 
 ```sh
@@ -59,5 +62,5 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/discard-bounds/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/arithmetic-ledger/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
