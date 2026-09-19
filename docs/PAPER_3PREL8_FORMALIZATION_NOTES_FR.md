@@ -132,3 +132,49 @@ résultats ferment le bloc d'estimations analytiques et arithmétiques nécessai
 au voisinage dirigé ; ils ne constituent pas encore la comparaison de Poisson
 microscopique. Le bilan de Palm, les queues indépendantes et le raccord complet
 au champ conditionné restent à assembler. Les fichiers du manuscrit sont inchangés.
+
+## Champ complet, coûts de Palm et source infinie — quatrième lot
+
+Le raccord du modèle est désormais explicite : le bon ensemble `G0` conserve
+les frontières gauches de `1` à `n`, avec `j+1 >= ceil(sqrt M)`, puis toutes les
+marques de longueur autorisée et les deux signes. Le forçage fournit exactement
+la loi de ce vecteur conditionnée par la marque, sous tout événement de petits
+premiers de probabilité positive. L'égalité avec les masses conditionnelles de
+la source infinie est démontrée par restriction au cylindre commun.
+
+- **Préciser la taille du cylindre.** Le dernier sommet observé peut dépasser
+  l'extrémité de la plage des départs. Il faut couvrir tous les sommets marqués,
+  ainsi que tous les premiers jusqu'à `Y` pour représenter l'intégralité de
+  l'environnement conditionnant. La notation du cylindre ne doit pas être
+  confondue avec l'extrémité `M` de l'observation.
+- **Regrouper avant de majorer.** La contribution du même site est exactement
+  le carré de la somme des taux de ses catégories. Les produits entre sites
+  ont la même structure. La somme des taux géométriques est au plus `2^-L` ;
+  aucun facteur égal au nombre de catégories n'est nécessaire. La simplification
+  est démontrée sans supposer d'indépendance extérieure au voisinage dirigé.
+- **Renforcement du traitement local.** La majoration locale par quatre fois
+  le produit des taux est vraie sur chaque fibre des petits premiers. Une
+  identité de mélange permet de la conserver sous tout événement de ces
+  premiers, sans payer un facteur `exp(I)` à cette étape. Le facteur global
+  du bilan du papier reste une majoration valide, mais moins précise localement.
+- **Garder le rang de toutes les valeurs pour les paires éloignées.** La borne
+  par rang est inconditionnelle. Sa version conditionnelle paie une seule
+  fois l'inverse de la masse de l'événement. Il serait incorrect de la lire
+  comme une estimation uniforme sur chaque affectation des petits premiers.
+  Les preuves Lean rendent cette différence visible dans les hypothèses.
+- **Simplification et renforcement de F.3.** La bande exacte `V-2..3V+2` est
+  incluse dans une bande multiplicative fixe pour `V` assez grand. Le passage
+  du plafond `X` à `max(M,X)` coûte au plus deux si `M <= 2X`, puis `log 2`
+  s'absorbe à l'échelle `nu`. Cela donne l'énoncé pour tous ces plafonds avec
+  un même seuil, sans devoir développer `log X = log M + o(1)`.
+- **Distinguer comparaison finie et limite finale.** La comparaison du champ
+  conservé de la source infinie est établie avec des coûts arithmétiques explicites.
+  Pour revendiquer 7.7, il reste les queues indépendantes, les sites supprimés,
+  la somme de l'excès de relations et la conclusion asymptotique uniforme.
+  Ces obligations ne sont pas remplacées par des hypothèses de convergence.
+
+Aucune nouvelle erreur mathématique du manuscrit n'a été démontrée dans ce lot.
+Les points ci-dessus sont des clarifications ou des simplifications ; les
+sources et PDF livrés restent inchangés. F.3 et F.7 sont désormais renseignés
+comme prouvés avec leurs périmètres précis dans la correspondance. L'ensemble
+du réalignement 3PREL8 n'est toujours pas terminé.

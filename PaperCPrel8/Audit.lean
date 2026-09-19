@@ -1,7 +1,33 @@
 import PaperCPrel8
 
-/-! Exact public theorem inventory for the 3PREL8 extension. -/
+/-! Exact axiom inventory for the current 3PREL8 proved extension. -/
 
+#print axioms PaperC.Prel8.ActualSignedConditionalLaw.mark_probability
+#print axioms PaperC.Prel8.ActualSignedConditionalLaw.mark_probability_pos
+#print axioms PaperC.Prel8.ActualSignedConditionalLaw.whole_field_conditional_law
+#print axioms PaperC.Prel8.ActualSignedConditionalLaw.force_fixes
+#print axioms PaperC.Prel8.ActualSignedConditionalLaw.force_preserves_small_trace
+#print axioms PaperC.Prel8.ActualSignedPairs.indicator_pair_expectation
+#print axioms PaperC.Prel8.ActualSignedPairs.maximal_nondefective
+#print axioms PaperC.Prel8.ActualSignedPairs.local_pair_bound
+#print axioms PaperC.Prel8.ActualSignedPairs.local_pair_bound_dist
+#print axioms PaperC.Prel8.ActualSignedPairs.unconditional_pair_bound
+#print axioms PaperC.Prel8.ActualSignedPairs.conditional_relation_bound
+#print axioms PaperC.Prel8.ActualSignedPalm.mark_good
+#print axioms PaperC.Prel8.ActualSignedPalm.mark_cylinder
+#print axioms PaperC.Prel8.ActualSignedPalm.planted
+#print axioms PaperC.Prel8.ActualSignedPalm.exclusive
+#print axioms PaperC.Prel8.ActualSignedPalm.actual_palm_law
+#print axioms PaperC.Prel8.ActualSignedPalm.unchanged_outside
+#print axioms PaperC.Prel8.ActualSignedPalm.actual_categorical_comparison
+#print axioms PaperC.Prel8.CategoricalPalm.mean_of_palm
+#print axioms PaperC.Prel8.CategoricalPalm.removed_same_site
+#print axioms PaperC.Prel8.CategoricalPalm.palm_cost_le
+#print axioms PaperC.Prel8.CategoricalPalm.categorical_stein_bound
+#print axioms PaperC.Prel8.CategoricalSummation.sum_labelled_pairs
+#print axioms PaperC.Prel8.CategoricalSummation.same_site_sum
+#print axioms PaperC.Prel8.CategoricalSummation.directed_product_sum
+#print axioms PaperC.Prel8.CategoricalSummation.ledger_decomposition
 #print axioms PaperC.Prel8.DictionarySelection.pair_selection
 #print axioms PaperC.Prel8.DictionarySelection.oneInclusion_eq
 #print axioms PaperC.Prel8.DictionarySelection.averaged_pair_probability
@@ -18,6 +44,9 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.EmpiricalTransfer.ae_eventually_avoid
 #print axioms PaperC.Prel8.EmpiricalTransfer.ae_frequency_convergence
 #print axioms PaperC.Prel8.EmpiricalTransfer.ae_variation_convergence
+#print axioms PaperC.Prel8.FiniteConditioning.expectation_conditional
+#print axioms PaperC.Prel8.FiniteConditioning.probability_conditional
+#print axioms PaperC.Prel8.FiniteConditioning.expectation_conditional_le
 #print axioms PaperC.Prel8.HardConditionalForcing.smallTrace_unchanged
 #print axioms PaperC.Prel8.HardConditionalForcing.weighted_conditional_identity
 #print axioms PaperC.Prel8.HardConditionalForcing.word_small_event_probability
@@ -29,6 +58,28 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.InformationBudget.admissible_cutoff_maximizes
 #print axioms PaperC.Prel8.InformationBudget.two_error_margins
 #print axioms PaperC.Prel8.InformationBudget.absorb_remainder
+#print axioms PaperC.Prel8.MicroscopicFiniteLedger.retainedRate_le_base
+#print axioms PaperC.Prel8.MicroscopicFiniteLedger.grouped_comparison
+#print axioms PaperC.Prel8.MicroscopicFiniteLedger.base_rate_comparison
+#print axioms PaperC.Prel8.MicroscopicFootprintLedger.count_subtype_members
+#print axioms PaperC.Prel8.MicroscopicFootprintLedger.edgeCount_le_footprints
+#print axioms PaperC.Prel8.MicroscopicFootprintLedger.actual_footprint_bound
+#print axioms PaperC.Prel8.MicroscopicFootprintLedger.actual_edgeCount_bound
+#print axioms PaperC.Prel8.MicroscopicGoodField.goodSites_subset
+#print axioms PaperC.Prel8.MicroscopicGoodField.goodSites_geometry
+#print axioms PaperC.Prel8.MicroscopicGoodField.mark_footprint_subset
+#print axioms PaperC.Prel8.MicroscopicGoodField.field_unchanged_outside_maximal
+#print axioms PaperC.Prel8.MicroscopicGoodField.maximal_categorical_comparison
+#print axioms PaperC.Prel8.MicroscopicInfiniteField.cylinder_probability
+#print axioms PaperC.Prel8.MicroscopicInfiniteField.field_restrict
+#print axioms PaperC.Prel8.MicroscopicInfiniteField.conditionalLaw_eq_finite
+#print axioms PaperC.Prel8.MicroscopicInfiniteField.conditionalLaw_hasSum
+#print axioms PaperC.Prel8.MicroscopicInfiniteField.infinite_arithmetic_comparison
+#print axioms PaperC.Prel8.MicroscopicPairLedger.pairFactor_nonneg
+#print axioms PaperC.Prel8.MicroscopicPairLedger.pair_bound
+#print axioms PaperC.Prel8.MicroscopicPairLedger.summed_pair_bound
+#print axioms PaperC.Prel8.MicroscopicPairLedger.joint_cost_bound
+#print axioms PaperC.Prel8.MicroscopicPairLedger.finite_arithmetic_comparison
 #print axioms PaperC.Prel8.OddPrimePivot.largestOddPrime_pos
 #print axioms PaperC.Prel8.OddPrimePivot.largestOddPrime_le_iff
 #print axioms PaperC.Prel8.OddPrimePivot.pivotValues_eq_defectiveValues
@@ -45,6 +96,8 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.PivotGeometry.pivot_off_diagonal
 #print axioms PaperC.Prel8.PivotGeometry.pivot_injective
 #print axioms PaperC.Prel8.PivotGeometry.cylinderPivot_basis
+#print axioms PaperC.Prel8.PivotRankinExpandedBand.pivotValues_mono_population
+#print axioms PaperC.Prel8.PivotRankinExpandedBand.expanded_band_count
 #print axioms PaperC.Prel8.PivotRankinUniform.enlarged_population_rankin
 #print axioms PaperC.Prel8.PivotRankinUniform.hard_band_count
 #print axioms PaperC.Prel8.PrimeForcing.value_liftBlock
@@ -100,3 +153,5 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.SignedPalmForcing.signedForcing_hits
 #print axioms PaperC.Prel8.SignedPalmForcing.actual_signed_small_probability
 #print axioms PaperC.Prel8.SignedPalmForcing.actual_signed_hard_conditional
+#print axioms PaperC.Prel8.SmallPrimeMixture.expectation_split
+#print axioms PaperC.Prel8.SmallPrimeMixture.conditional_fiber_bound

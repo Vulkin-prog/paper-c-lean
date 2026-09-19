@@ -1,0 +1,191 @@
+{
+  "date_utc": "2026-09-19T11:27:30.690471+00:00",
+  "status": "actual_retained_field_comparison_validated_full_paper_alignment_incomplete",
+  "parent_extension_commit": "9ee02d9b0aa23a0ef7ab7b42f6a4f2c373c3f1b5",
+  "base_commit": "a928497897a27e3dd3d7b601ee788336aca84780",
+  "lean": "4.34.0",
+  "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+  "build": {
+    "libraries": 24,
+    "lake_jobs": 10144,
+    "result": "passed"
+  },
+  "axiom_audit": {
+    "named_theorems": 153,
+    "added_in_this_batch": 55,
+    "result": "passed",
+    "allowlist": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_files": [
+    {
+      "path": "PaperCPrel8.lean",
+      "sha256": "782b48eb66205906c1e6fed9e95ef9b53a255ee6cdca587736ac369a94429c6f"
+    },
+    {
+      "path": "PaperCPrel8/ActualSignedConditionalLaw.lean",
+      "sha256": "8760872773bd624e1d13939708b107a5a68d210a597aa1c4f30626a8cc8a8a2a"
+    },
+    {
+      "path": "PaperCPrel8/ActualSignedPairs.lean",
+      "sha256": "ba0f6862697ab11f59a048619f33a48beccbdbd3fb3f106f6bfc8c0ce1160a65"
+    },
+    {
+      "path": "PaperCPrel8/ActualSignedPalm.lean",
+      "sha256": "33741e99f8b9176ff45a65f1375b0edd3383840da569f2e3edd8f1552313427f"
+    },
+    {
+      "path": "PaperCPrel8/Audit.lean",
+      "sha256": "9b32e26b209975911ecdc26c6046f45a007e98fa827b4ccc3b786f15407b053a"
+    },
+    {
+      "path": "PaperCPrel8/CategoricalPalm.lean",
+      "sha256": "e46c6371ee0b157a1ce0001150d6cb1beb7f9e7db96bacb3ecd5f7998c1f1789"
+    },
+    {
+      "path": "PaperCPrel8/CategoricalSummation.lean",
+      "sha256": "4cfd502aace0e68b3f9849ec0687f50fcad3326526091596eec6cebf70fa5547"
+    },
+    {
+      "path": "PaperCPrel8/DictionarySelection.lean",
+      "sha256": "48cecfabe7bdcbd9b08e6883c27ae832826d8f7e739289315ea3c639613974e8"
+    },
+    {
+      "path": "PaperCPrel8/DirectedFootprint.lean",
+      "sha256": "134326bfe45f8c93592acfddc776e09a4e4d6b129b50c5aabce1482397f1bc25"
+    },
+    {
+      "path": "PaperCPrel8/DirectedFootprintAsymptotics.lean",
+      "sha256": "3a57aed88069091f4389f5a4a25bdd1648ec2bf74d777d60b87b1e2a6687307e"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalTransfer.lean",
+      "sha256": "057e324fd0fdeae505e52b998deb3525ea7367385c371bbd46a86d7c82b18294"
+    },
+    {
+      "path": "PaperCPrel8/FiniteConditioning.lean",
+      "sha256": "eeb5ea3de017d566cedab338fdec01705be5353a7096e2ac1a130f1c6410c042"
+    },
+    {
+      "path": "PaperCPrel8/HardConditionalForcing.lean",
+      "sha256": "8096acd2aeca29f8eb97ab4b4bf1fbc454f376beea6f83c288ba028965c90724"
+    },
+    {
+      "path": "PaperCPrel8/InformationBudget.lean",
+      "sha256": "e9705c0ce5f1b66ca70f31911e982a5fb1372caeb808d84e59336457d3c7ca75"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicFiniteLedger.lean",
+      "sha256": "d0bdd1d705c18d8c7f15f5ac9f28b4e55bdf96e44776063e70b2c0c1adea8f61"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicFootprintLedger.lean",
+      "sha256": "d2c12b925213b5b28ceeaea80190392abcfebf8432fa11b90da6c9c7284edc5d"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicGoodField.lean",
+      "sha256": "b349d69c80054a15196b1c9f4d6bbd89936962512e0c29f40ef8a219d1f04473"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicInfiniteField.lean",
+      "sha256": "d9b010d2cf33fd24f1568c6adae6f291711d0c81d6a5c5dfb90a15f5f8de8463"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicPairLedger.lean",
+      "sha256": "0e83570d0c5322579460c6c87be01ec210c3226b6fde47d3b7ecfe8727d4980a"
+    },
+    {
+      "path": "PaperCPrel8/OddPrimePivot.lean",
+      "sha256": "af671b4353b60a15d78aee67f2d2362a7b5a3b2484095b9cccc7b737b176bffa"
+    },
+    {
+      "path": "PaperCPrel8/PalmStein.lean",
+      "sha256": "a3b738c8fcb31b255ed6fe9a75793f384ed00db06415c70b4faa922c49240e40"
+    },
+    {
+      "path": "PaperCPrel8/PivotGeometry.lean",
+      "sha256": "8a6b21ff59d22f6893a39e47f2c14f7927f836aaf6d4e8cc21aa8650b5dd82dc"
+    },
+    {
+      "path": "PaperCPrel8/PivotRankinExpandedBand.lean",
+      "sha256": "59aa74e9153254ae4a8f5e59f8febe14f5ce88be95fb3c069ae5614102fa4944"
+    },
+    {
+      "path": "PaperCPrel8/PivotRankinUniform.lean",
+      "sha256": "a27b073c047f452a9b520da978c20a4652944845e615db82ff884f9d3abd8c4d"
+    },
+    {
+      "path": "PaperCPrel8/PrimeForcing.lean",
+      "sha256": "df725645fb74805d0c8d62671fdd61f40169f51675d9994e16b88d7116e4392b"
+    },
+    {
+      "path": "PaperCPrel8/PrivateForcing.lean",
+      "sha256": "9d2943a55e55277dc1904afaa07aae234b5a2119ba597f0a0e3b855c9f95aeb6"
+    },
+    {
+      "path": "PaperCPrel8/ReciprocalPivotAsymptotics.lean",
+      "sha256": "44cc415360ef649c9ebf912551f154bc778b672a446fa32979c8b22e14de83f1"
+    },
+    {
+      "path": "PaperCPrel8/ReciprocalPivotShells.lean",
+      "sha256": "439eeef2fab48208023c8990bd72da0b7d52cb9f49c53f27cecfc0e3fd3f6507"
+    },
+    {
+      "path": "PaperCPrel8/SaddleEnvelope.lean",
+      "sha256": "51e3cae15dc7f5c32d1dd34d8c5421eeaf6760833f4bcb83a84f61fe9d92a730"
+    },
+    {
+      "path": "PaperCPrel8/SignedPalmForcing.lean",
+      "sha256": "754447e261c03bd170720cebdc636de313ea60620b6c7c5c1a8c1275dc0d857d"
+    },
+    {
+      "path": "PaperCPrel8/SmallPrimeMixture.lean",
+      "sha256": "6dee31a4bc43146b47943aeb9d0d9ea58e1dbc3190d049f6804701853d569edb"
+    },
+    {
+      "path": "PaperCPrel8/audit-names.json",
+      "sha256": "8b92798c5b74c406ff3d720d493f858790504f537e32866eafcfc9f5a9c7cbdb"
+    }
+  ],
+  "unchanged_baseline_lean_files": 1171,
+  "checks": {
+    "new_payload_tests": 5,
+    "new_audit_tests": 5,
+    "source_inventory": "passed_28_files",
+    "coverage_inventory": "passed_96_blocks",
+    "root_audit_guards": "passed",
+    "generated_baseline_audit": "unchanged_and_passed",
+    "v282_audit_inventory": "passed_6094_declarations",
+    "diff_whitespace": "passed"
+  },
+  "completed_components": {
+    "F.3": "Actual odd-pivot count on the literal expanded band V-2..3V+2, uniform for all X with M<=2X, under ordinary PNT.",
+    "F.7": "Actual G0 geometry, complete retained signed field, mark-conditioned whole-field law, fixed small trace, fixed satisfied words and maximal directed preservation. Exact infinite-source conditional mass transfer.",
+    "finite_ledger": "Categorical grouping, local and full-value relation pair bounds, and p^2*(#G+edgeCount+weightedEdges) comparison for the actual infinite conditional retained field.",
+    "product_cost": "The actual directed product-of-means edge count obeys n^2 exp(-2V+epsilon nu)+n(Q+1)^2."
+  },
+  "literature_inputs": "Existing DirectionalSolutionBounds / directional Stein solution input remains explicit for Poisson comparisons; ordinary PrimeNumberTheoremRemainder remains explicit for arithmetic asymptotics. No final convergence or reciprocal conclusion is assumed.",
+  "limits": [
+    "Independent tail and deleted-site bounds, relation-excess summation and final uniform microscopic asymptotics remain open.",
+    "Typical/affine dictionary conclusions, information-adapted saddle, empirical window results and Palm/cumulant complements remain incomplete.",
+    "F.2 semigroup construction remains an explicit existing analytic input.",
+    "No new NanoDa/Comparator qualification or Palomar submission for these 153 declarations."
+  ],
+  "manuscript_payload": "The 28 delivered TeX/compilation/PDF bytes remain unchanged; no local TeX rebuild.",
+  "free_disk_gib": 15.13,
+  "transcripts": [
+    {
+      "path": "prel8-phase4-all-libraries-build.log.gz",
+      "sha256": "ea12bfbcd36fce5380f731d55c52c01a7315480f1eedd92aa65735eabbbaa351",
+      "uncompressed_sha256": "9635e6435e643141ec909e3b04c64427a3794926c927283152aa21fd43a06b45"
+    },
+    {
+      "path": "prel8-phase4-audit.log.gz",
+      "sha256": "354ab02e1263fc2bcb333587585e241b1e7b89cf6b357a32d984b0384558fe0d",
+      "uncompressed_sha256": "aaf3262ef1ddaf7d07a46d4ced5a33627f10968f553502d75b58d55c3137e171"
+    }
+  ]
+}

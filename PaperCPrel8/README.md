@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **98 proved theorems in sixteen modules**. It is an
+This library contains **153 proved theorems in 29 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -23,13 +23,28 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `ReciprocalPivotAsymptotics` | F.5 reciprocal bound uniform for 2X >= M, from ordinary PNT |
 | `DirectedFootprintAsymptotics` | Full F.6 bound with logarithmic support factors absorbed |
 | `EmpiricalTransfer` | Discrete overlap identity, Scheffe convergence and countable almost-sure completion |
+| `FiniteConditioning` | Actual normalized finite conditional laws and domination of nonnegative expectations |
+| `CategoricalPalm` | Directed categorical comparison without reciprocal mark rates |
+| `CategoricalSummation` | Exact grouping by site before bounding excess-sign categories |
+| `ActualSignedPalm` | Actual retained marked field, arithmetic coupling and exact Palm law |
+| `MicroscopicGoodField` | Literal G0, maximal pivots and whole-field directed preservation |
+| `SmallPrimeMixture` | Exact prime-block disintegration and bounds under arbitrary small-prime events |
+| `MicroscopicFiniteLedger` | Same-site, product and joint costs with geometric rates summed first |
+| `ActualSignedPairs` | Local fibrewise pair bounds and conditional full-value relation bounds |
+| `MicroscopicPairLedger` | Finite source comparison with explicit actual arithmetic pair weights |
+| `MicroscopicInfiniteField` | Exact conditional infinite-field law and its arithmetic comparison |
+| `ActualSignedConditionalLaw` | F.7 as an equality of complete conditional field distributions |
+| `MicroscopicFootprintLedger` | Actual product-of-means edges bounded by the asymptotic pivot footprint |
+| `PivotRankinExpandedBand` | F.3 on V-2..3V+2, uniformly for M <= 2X |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
-baseline. The actual finite-cylinder forcing is now proved; assembly of the maximal-support
-marked field and its infinite-source conditional law remains open, along with
-the final Palm–Stein ledger and summable frequency
-bounds for the specified moving windows. These assumptions are not presented as discharged
-source-facing conclusions. No proof placeholder or new Lean axiom is used.
+baseline. The maximal-support marked field, its complete arithmetic Palm law,
+its infinite-source conditional masses and its finite categorical comparison
+are now constructed. The local pair bounds hold on every small-prime fibre;
+the full-value relation bound pays the actual conditioning mass.
+Independent tails, deleted-site costs, relation-excess summation and final
+uniform asymptotics remain open, as do the other new families in the ledger.
+No proof placeholder or new Lean axiom is used.
 
 ```sh
 lake build PaperCPrel8
@@ -39,5 +54,5 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/reciprocal-pivots/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/microscopic-field/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.

@@ -2393,9 +2393,20 @@
       "source": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
       "line": 387,
       "statement_sha256": "b08b2661b22ca89bf4770a8dfc950999ee34d3a9ccdb80219becf1446b76895f",
-      "status": "new_statement_open",
+      "status": "new_statement_partial",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/MicroscopicInfiniteField.lean",
+          "declaration": "infinite_arithmetic_comparison",
+          "scope": "Poisson comparison for the actual retained infinite signed field under a positive represented small-prime event. The explicit right side is p^2*(#G + directed edge count + weighted pair edges), with actual full-value ranks and exact conditioning mass. The analytic Stein solution input remains explicit. Deleted sites, independent mark tails, relation-excess summation and final uniform asymptotics are NOT discharged by this endpoint."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicFootprintLedger.lean",
+          "declaration": "actual_edgeCount_bound",
+          "scope": "The actual field's product-of-means edge count obeys the previously proved uniform odd-pivot footprint estimate. Does not alone complete the microscopic total-variation limit."
+        }
+      ]
     },
     {
       "document": "article",
@@ -2939,9 +2950,20 @@
       "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
       "line": 36,
       "statement_sha256": "e8cf15c39450ab112d1f29248a76047febefc11c88bde742fdcfdbbc3ff9dae4",
-      "status": "new_statement_open",
+      "status": "new_statement_partial",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/ActualSignedPairs.lean",
+          "declaration": "local_pair_bound_dist",
+          "scope": "Actual signed local pair estimate, symmetric in the sites and uniform under every positive small-prime event, with strong cutoff 2*(L+E+2) <= Y. Other independent input bounds in F.1 remain to assemble."
+        },
+        {
+          "path": "PaperCPrel8/ActualSignedPairs.lean",
+          "declaration": "conditional_relation_bound",
+          "scope": "Actual full-value relation-rank pair bound after conditioning, with precisely one inverse event-mass factor. Does not assume the unconditional rank bound holds on individual small-prime atoms."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -2960,6 +2982,16 @@
           "path": "PaperCPrel8/PalmStein.lean",
           "declaration": "palm_stein_bound",
           "scope": "Finite coupling with exact size-biased conditional-law identity and the existing analytic solution bounds. The supplied arithmetic forcing and its infinite-source realization are not established here."
+        },
+        {
+          "path": "PaperCPrel8/CategoricalPalm.lean",
+          "declaration": "categorical_stein_bound",
+          "scope": "Finite categorical Palm comparison, with exact Palm law and analytic DirectionalSolutionBounds as explicit hypotheses. Uses only directed changes, categorical exclusivity and the actual lattice distance. No dependency-graph or reciprocal-rate assumption. The analytic semigroup solution construction remains the existing explicit literature input."
+        },
+        {
+          "path": "PaperCPrel8/CategoricalSummation.lean",
+          "declaration": "ledger_decomposition",
+          "scope": "Exact regrouping into squared total site rates, directed product terms and summed joint masses. This proves the categorical ledger following F.2 without a category-count multiplier."
         }
       ]
     },
@@ -2973,7 +3005,7 @@
       "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
       "line": 174,
       "statement_sha256": "ea89f62e98ad5a347a88eea149a97d219be5e25955e5d0fff743c96441653671",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -2989,7 +3021,12 @@
         {
           "path": "PaperCPrel8/PivotRankinUniform.lean",
           "declaration": "hard_band_count",
-          "scope": "Uniform bound on [V,4V] with error epsilon*nu, sufficient for all reciprocal shells. The literal [V-2,3V+2] and general signed O(log M) ceiling formulation of F.3 are not separately packaged as one endpoint."
+          "scope": "Uniform bound on [V,4V] with error epsilon*nu, sufficient for all reciprocal shells. The later expanded_band_count endpoint below supplies the literal [V-2,3V+2] band and the more general M<=2X population condition."
+        },
+        {
+          "path": "PaperCPrel8/PivotRankinExpandedBand.lean",
+          "declaration": "expanded_band_count",
+          "scope": "Literal expanded band V_M-2 <= w <= 3V_M+2, uniformly for every natural ceiling X with M <= 2X; actual pivot count <= X exp(-D(log M/w)+epsilon*nu_M). The existing ordinary PNT remainder is explicit. This strengthens the nearby-ceiling formulation and discharges the former band-packaging gap."
         }
       ]
     },
@@ -3088,7 +3125,7 @@
       "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
       "line": 333,
       "statement_sha256": "39c9b6d7de0232ff766ee3d3d4994cb559143e2b4c10404289e979ab5458aac9",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -3119,7 +3156,37 @@
         {
           "path": "PaperCPrel8/SignedPalmForcing.lean",
           "declaration": "actual_signed_hard_conditional",
-          "scope": "Constructed forcing of the actual signed exact-run event, tested against arbitrary observables of the entire finite prime sample, after any positive-mass small-prime event. The full maximal-support G0 field and its infinite-source conditional measure have not yet been assembled as a single endpoint."
+          "scope": "Constructed forcing of the actual signed exact-run event, tested against arbitrary observables of the entire finite prime sample, after any positive-mass small-prime event. The complete field assembly and infinite-cylinder transfer are now supplied by the later components below."
+        },
+        {
+          "path": "PaperCPrel8/ActualSignedConditionalLaw.lean",
+          "declaration": "whole_field_conditional_law",
+          "scope": "Equality of the complete finite marked-field law after deterministic actual-pivot forcing and its actual mark-conditioned law under any positive small-prime event. The field indexes all retained sites, excesses and signs; no assumed Palm identity remains."
+        },
+        {
+          "path": "PaperCPrel8/ActualSignedConditionalLaw.lean",
+          "declaration": "force_fixes",
+          "scope": "The arithmetic forcing fixes the complete prime assignment whenever the requested mark already holds."
+        },
+        {
+          "path": "PaperCPrel8/ActualSignedConditionalLaw.lean",
+          "declaration": "force_preserves_small_trace",
+          "scope": "The entire small-prime environment is fixed pointwise."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicGoodField.lean",
+          "declaration": "goodSites_geometry",
+          "scope": "Instantiates the arithmetic source geometry for the literal maximal-support G0, including j+1 >= ceil(sqrt M). Uses a cylinder covering all marked values."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicGoodField.lean",
+          "declaration": "field_unchanged_outside_maximal",
+          "scope": "Every coordinate of the complete retained field is fixed outside the site-specific maximal directed footprint; the forced word itself still uses only L+e+2 values."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicInfiniteField.lean",
+          "declaration": "conditionalLaw_eq_finite",
+          "scope": "The entire infinite-source conditional field mass function equals the constructed finite conditional law. The event is any predicate of the represented small-prime trace; covering Y with the cylinder represents every prime <= Y. This is an exact cylinder transfer, without Poisson assumptions."
         }
       ]
     },
@@ -3274,7 +3341,7 @@
         "cor:micro-readout",
         "cor:dyadic-micro"
       ],
-      "remaining": "Largest-odd-prime reciprocal estimate, directed footprint, exact arithmetic forcing, finite categorical ledger, independent tails, asymptotic completion and dyadic restriction."
+      "remaining": "Independent tail and deleted-site costs, summation of the full-value relation excess, final uniform asymptotics and dyadic restriction. Actual maximal-support field, complete conditional forcing law, infinite-cylinder transfer, categorical ledger, local/relation pair bounds and actual directed product-cost estimate are now proved."
     },
     {
       "name": "Empirical Poisson and support obstruction",

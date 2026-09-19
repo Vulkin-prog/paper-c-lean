@@ -77,7 +77,7 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | article | [7.4](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L189) | `thm:prefix-poisson` | preserved statement |
 | article | [7.5](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L230) | `cor:as-longest` | preserved statement |
 | article | [7.6](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L262) | `thm:macro-field` | preserved statement |
-| article | [7.7](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L387) | `thm:micro-run-tv` | new statement open |
+| article | [7.7](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L387) | `thm:micro-run-tv` | new statement partial |
 | article | [7.8](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L458) | `cor:micro-readout` | new statement open |
 | article | [7.9](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L507) | `thm:relative-bulk` | preserved statement |
 | article | [7.10](../manuscripts/v3prel8/sections/07_prefix_boundary.tex#L562) | `thm:crossover` | preserved statement |
@@ -94,13 +94,13 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | companion | [E.1](../manuscripts/v3prel8/companion/E_boundary.tex#L23) | `supp:lem:transition` | preserved statement |
 | companion | [E.2](../manuscripts/v3prel8/companion/E_boundary.tex#L97) | `supp:lem:simple-incidence` | preserved statement |
 | companion | [E.3](../manuscripts/v3prel8/companion/E_boundary.tex#L165) | `supp:lem:pointwise-maximum` | preserved statement |
-| companion | [F.1](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L36) | `supp:pivot:lem:inputs` | new statement open |
+| companion | [F.1](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L36) | `supp:pivot:lem:inputs` | new statement partial |
 | companion | [F.2](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L113) | `supp:pivot:lem:palm` | new statement partial |
-| companion | [F.3](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L174) | `supp:pivot:lem:rankin` | new statement partial |
+| companion | [F.3](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L174) | `supp:pivot:lem:rankin` | new statement proved |
 | companion | [F.4](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L206) | `supp:pivot:lem:saddle` | new statement proved |
 | companion | [F.5](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L231) | `supp:pivot:prop:reciprocal` | new statement proved |
 | companion | [F.6](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L316) | `supp:pivot:prop:footprint` | new statement proved |
-| companion | [F.7](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L333) | `supp:pivot:prop:forcing` | new statement partial |
+| companion | [F.7](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L333) | `supp:pivot:prop:forcing` | new statement proved |
 | companion | [G.1](../manuscripts/v3prel8/companion/G_palm_complements.tex#L44) | `supp:palm:prop:deletion` | new statement open |
 | companion | [G.2](../manuscripts/v3prel8/companion/G_palm_complements.tex#L67) | `supp:palm:lem:crt` | new statement open |
 | companion | [G.3](../manuscripts/v3prel8/companion/G_palm_complements.tex#L83) | `supp:palm:thm:regular` | new statement open |
@@ -117,13 +117,29 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
-The third batch proves 30 further theorems (98 total). F.4, F.5 and F.6 now have their finite and asymptotic bounds: the actual saddle has a uniform loss at most `2*nu/u`, hence `epsilon*nu` eventually; the reciprocal sum is bounded uniformly for every natural ceiling `X` with `2X >= M`; and the directed-footprint polynomial factor is absorbed for logarithmic supports. The exact hypotheses and the unchanged ordinary-PNT premise are listed in the JSON correspondence. These are proved estimates, independently of the still-incomplete stochastic field assembly. F.7 remains partial at the complete source-field level: assembly of the maximal-support `G0` marked vector and the infinite-source conditional measure has not yet been recorded as one endpoint. These finite proofs do not establish the microscopic Poisson theorem 7.7.
+The third batch added 30 theorems (98 total) proving the saddle envelope,
+reciprocal-pivot sum and full directed-footprint estimates in F.4–F.6. Its
+source-bound receipt is preserved as historical evidence.
+
+The fourth batch adds **55 theorems (153 total, 29 modules)**. F.3 now has the
+literal expanded-band endpoint. F.7 has the actual maximal-support field,
+complete mark-conditioned law, fixed small trace and directed preservation;
+the infinite-source conditional mass function is exactly the finite source
+law. The categorical Palm ledger, local and full-value-rank pair estimates,
+and the actual product-of-means footprint bound are also proved. The
+[current receipt](../extension_evidence/v3prel8/microscopic-field/README.md)
+records validation. F.2 still uses the explicit analytic Stein solution input.
+
+The new infinite-field comparison has the explicit finite cost
+`p^2*(#G + edgeCount + weightedEdges)`. It is not yet theorem 7.7: tails,
+deleted-site costs, relation-excess summation and final uniform limits remain
+open. The progress counts are an inventory, not a completion percentage.
 
 ## Remaining dependency chains
 
 - **Typical and affine dictionaries**: Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities.
 - **Information-adapted cutoff**: Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain.
-- **Microscopic signed prefix field**: Assembly of the maximal-support marked field and its infinite-source conditional law, finite categorical ledger, independent tails, asymptotic completion and dyadic restriction. The reciprocal-pivot and full directed-footprint estimates, and the exact finite-cylinder signed-run forcing law, are now proved.
+- **Microscopic signed prefix field**: Independent tails and deleted-site costs, full-value relation-excess summation, final uniform asymptotics and dyadic restriction. The complete retained-field forcing law, infinite conditional source law, categorical ledger and actual arithmetic pair/product costs are now proved.
 - **Empirical Poisson and support obstruction**: Overlapping-window variance, summability, Borel–Cantelli transfer and fixed-realization support lower bound.
 - **Palm complements**: Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction.
 
