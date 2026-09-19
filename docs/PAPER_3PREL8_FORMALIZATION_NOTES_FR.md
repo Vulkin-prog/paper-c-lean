@@ -643,3 +643,39 @@ Aucune correction nouvelle des énoncés n'a été identifiée. Les points ci-de
 précisent les étapes prouvées et leurs dépendances. Les bornes de noyaux, les
 comptages CRT, l'activité des paires et les cumulants demeurent des travaux
 mathématiques effectifs, non des tâches de simple documentation.
+
+## Noyaux impairs rugueux — seizième lot
+
+Les deux estimations finies précédant G.1 sont désormais établies sur les
+entiers et leurs véritables noyaux `r_Y(m)`. Le paramètre de poids `z` est
+indépendant du seuil `Y`. Pour la somme réciproque, le noyau égal à 1 est
+retiré avant le produit eulérien, ce qui justifie exactement le terme « −1 ».
+La somme utilise bien le nombre de facteurs premiers distincts du noyau.
+
+**Simplification possible du papier, sans correction nécessaire.** Le facteur
+`zeta(2s)` peut être omis dans ces deux bornes, pour `1/2 <= s < 1`.
+La décomposition canonique `m=a²vr` donne au plus `floor(sqrt(X/(vr)))`
+valeurs de `a`. Si `vr<=X`, ce nombre est au plus `(X/(vr))^s`; sinon
+il est nul. La sommation sur les supports de `v` donne directement
+`prod_{q<=Y}(1+q^(-s))`. Il n'est donc pas nécessaire d'élargir séparément
+la somme sur `a` en une série zêta. Cette variante renforce la borne existante
+et conserve sa précision asymptotique. Les fichiers du manuscrit ne sont pas
+modifiés automatiquement.
+
+**Seuil réel et domaine.** La définition formalisée utilise `floor(T)` pour
+la borne entière; l'équivalence exacte avec `r_Y(m)>T` est prouvée pour
+`T>=0`. La queue intégrale nécessite `Y>=1` et `s>0`; ces conditions sont
+satisfaites dans le régime du papier. Le comptage traite aussi le seuil
+entier nul et les intervalles vides.
+
+**Portée obtenue.** Les suppressions supplémentaires sont comptées avec
+multiplicité au plus `Q+1`, dans la population jusqu'à `n+Q`. La partition
+entre suppressions initiales et supplémentaires est exacte. Le préfacteur
+au seuil critique est borné par `exp(-V+epsilon*nu)`, uniformément pour
+les populations agrandies `X>=M`, à partir du seul reste PNT déjà utilisé.
+Le facteur explicite `1+T^sigma/sigma`, avec `sigma=1-s`, reste visible.
+
+**Ce qui reste ouvert.** Il faut encore absorber ce facteur pour le `T_M`
+littéral, terminer les limites et le couplage de suppression de G.1,
+puis les allocations CRT et la régularité probabiliste des nuages.
+Ce lot ne ferme donc pas G.1 ni les résultats suivants de l'annexe G.

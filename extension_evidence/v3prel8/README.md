@@ -3,7 +3,7 @@
 This is the initial snapshot at commit `6656221b244925bd56b2bb02b53b303d4b396567`.
 Its source hashes are historical and are not a receipt for later modifications.
 The [prime-forcing batch](prime-forcing/README.md) records the second validation;
-the [microscopic-field batch](microscopic-field/README.md) is the current receipt;
+the [microscopic-field batch](microscopic-field/README.md) is retained as historical evidence;
 the [reciprocal-pivot batch](reciprocal-pivots/README.md) is also retained as historical evidence.
 
 The [receipt](validation.json) identifies the exact new Lean sources, the
@@ -19,3 +19,7 @@ The 1,171 baseline Lean files and historical evidence are unchanged. New source
 hashes are independent of the later packaging commit. The supplied PDFs and
 26 compilation inputs are preserved byte for byte; the TeX build was not rerun
 locally because Biber/BibLaTeX are absent.
+
+The current receipt is the [rough-kernel batch](rough-kernels/README.md),
+with 574 audited theorems across 120 modules. Earlier receipts retain their
+original source hashes and historical scope.

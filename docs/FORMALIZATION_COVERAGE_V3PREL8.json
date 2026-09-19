@@ -3764,9 +3764,50 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 44,
       "statement_sha256": "0127e983a24efe8d3506b31c753f2ea3e0e1c6472553144b8732d2157c0c73e9",
-      "status": "new_statement_open",
+      "status": "new_statement_partial",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/RoughKernelPowerSums.lean",
+          "declaration": "sum_Icc_rankin_le",
+          "scope": "Finite tilted integer sum including the empty interval; the complementary convergent integer tail is proved by integral comparison."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelRankin.lean",
+          "declaration": "normalized_count_le",
+          "scope": "Actual bounded odd rough-kernel population, with variable tilt: X^(-sigma) times the finite small-prime Euler product times (1+T^sigma/sigma). Stronger than the paper by removal of zeta(2s); sigma=1-s."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelReciprocal.lean",
+          "declaration": "literal_normalized_reciprocal_le",
+          "scope": "Actual omega-weighted reciprocal sum restricted to kernels >1, with z independent of Y and the empty support removed before the finite Euler product. Its exponential tail bound is proved, without a zeta factor."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelDeletion.lean",
+          "declaration": "mem_strongGood_floor",
+          "scope": "The natural floor of the real threshold gives exactly the paper's strict kernel condition at every raw vertex."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelDeletion.lean",
+          "declaration": "added_deletion_rankin",
+          "scope": "Finite actual stronger-good-set deletion bound with multiplicity Q+1 and enlarged ceiling n+Q, from the proved kernel count."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelDeletion.lean",
+          "declaration": "total_deleted_card",
+          "scope": "Exact partition of the total deleted grid into original and additional losses."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelSaddle.lean",
+          "declaration": "enlarged_prefactor",
+          "scope": "Uniform Rankin Euler prefactor and admissible tilt, using the original PNT remainder, at every enlarged ceiling X>=M."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelSaddle.lean",
+          "declaration": "hard_count",
+          "scope": "At the actual hard cutoff, small-kernel counts have the prefactor exp(-V+epsilon*nu), with the numerical threshold factor explicit. Its absorption for T_M and final deletion/probability limits remain open."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -4022,7 +4063,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "Private-prime regular plants have exact arithmetic presence probabilities, including hard small-prime conditioning. Countable mass-deficit and ordinary-deletion identities, log normalization, bounded-defect probability equivalence, finite avoidance polynomial and mean/variance deficit bound are proved. Still open: rough-kernel/CRT counts and high-probability regular clouds, full arithmetic instantiation of G.4/G.5, signed Fourier/Walsh coefficient identifications, signed pair activity and the cumulant inequality/arithmetic obstruction."
+      "remaining": "Finite actual rough-kernel counts, nontrivial weighted reciprocal sums, stronger-good-set deletion counts and the uniform hard-cutoff prefactor are proved. Private-prime regular plants have exact presence probabilities. Still open: absorption of the literal T_M threshold and final G.1 deletion limits/coupling; CRT allocation and high-probability target regular clouds; full arithmetic G.4/G.5 instantiation; signed Fourier/Walsh identifications; pair activity and the cumulant inequality/arithmetic obstruction. Existing countable Palm and normalization components remain available."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."

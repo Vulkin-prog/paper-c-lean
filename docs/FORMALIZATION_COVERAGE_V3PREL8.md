@@ -101,7 +101,7 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | companion | [F.5](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L231) | `supp:pivot:prop:reciprocal` | new statement proved |
 | companion | [F.6](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L316) | `supp:pivot:prop:footprint` | new statement proved |
 | companion | [F.7](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L333) | `supp:pivot:prop:forcing` | new statement proved |
-| companion | [G.1](../manuscripts/v3prel8/companion/G_palm_complements.tex#L44) | `supp:palm:prop:deletion` | new statement open |
+| companion | [G.1](../manuscripts/v3prel8/companion/G_palm_complements.tex#L44) | `supp:palm:prop:deletion` | new statement partial |
 | companion | [G.2](../manuscripts/v3prel8/companion/G_palm_complements.tex#L67) | `supp:palm:lem:crt` | new statement open |
 | companion | [G.3](../manuscripts/v3prel8/companion/G_palm_complements.tex#L83) | `supp:palm:thm:regular` | new statement partial |
 | companion | [G.4](../manuscripts/v3prel8/companion/G_palm_complements.tex#L137) | `supp:palm:prop:palm` | new statement partial |
@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the fifteenth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the sixteenth checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -324,9 +324,29 @@ These results do not yet identify the signed affine Fourier coefficients or
 the Walsh energy, and do not assert regular-cloud probability estimates.
 No analytic or arithmetic literature premise is needed for this batch.
 
-**G.3–G.6 remain partial.** The current receipt is
+**G.3–G.6 remain partial at this checkpoint.** Its receipt is
 [here](../extension_evidence/v3prel8/palm-identities/README.md). This is not a
 completion claim for the Palm/cumulant family or a new Palomar qualification.
+
+The sixteenth batch adds **28 theorems (574 total, 120 modules)** for the
+rough-kernel estimates of Appendix G. The actual small-kernel count and the
+nontrivial omega-weighted reciprocal sum are proved by the canonical support
+injection. Both bounds dispense with the paper's zeta factor. The reciprocal
+weight parameter is independent of the cutoff, and the empty support is removed
+before forming the finite Euler product. All power tails are proved over integers.
+
+The actual stronger good set has an exact real-threshold/floor equivalence.
+Its additional deletion count has the literal multiplicity `Q+1` and ceiling
+`n+Q`; original and additional deletions partition the full deleted grid.
+The original PNT remainder gives the uniform Euler prefactor for every `X>=M`
+and the hard-cutoff bound `exp(-V+epsilon*nu)`, retaining the explicit threshold
+factor. No other literature premise is used in this batch.
+
+**G.1 is partial:** absorption for the literal `T_M`, final little-oh deletion
+limits and the actual deletion coupling remain to be assembled. CRT allocation
+and high-probability regular clouds are not claimed. The
+[current receipt](../extension_evidence/v3prel8/rough-kernels/README.md) records
+this scope; it is not a new Palomar qualification.
 
 ## Remaining dependency chains
 
@@ -334,7 +354,7 @@ completion claim for the Palm/cumulant family or a new Palomar qualification.
 - **Information-adapted cutoff**: Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.
-- **Palm complements**: Private-prime regular plants have exact arithmetic presence probabilities, including hard small-prime conditioning. Countable mass-deficit and ordinary-deletion identities, log normalization, bounded-defect probability equivalence, finite avoidance polynomial and mean/variance deficit bound are proved. Still open: rough-kernel/CRT counts and high-probability regular clouds, full arithmetic instantiation of G.4/G.5, signed Fourier/Walsh coefficient identifications, signed pair activity and the cumulant inequality/arithmetic obstruction.
+- **Palm complements**: Finite actual rough-kernel counts, nontrivial weighted reciprocal sums, stronger-good-set deletion counts and the uniform hard-cutoff prefactor are proved. Private-prime regular plants have exact presence probabilities. Still open: absorption of the literal T_M threshold and final G.1 deletion limits/coupling; CRT allocation and high-probability target regular clouds; full arithmetic G.4/G.5 instantiation; signed Fourier/Walsh identifications; pair activity and the cumulant inequality/arithmetic obstruction. Existing countable Palm and normalization components remain available.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
 
