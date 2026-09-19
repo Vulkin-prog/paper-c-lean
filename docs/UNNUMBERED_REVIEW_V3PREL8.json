@@ -1,0 +1,2458 @@
+{
+  "schema_version": 1,
+  "scope": "Full changed-source review, including unnumbered assertions and alternative proofs; completion is relative to the explicit baseline inputs, not elimination of literature premises.",
+  "groups": [
+    {
+      "id": "R01",
+      "topic": "arithmetic exposition and cofactor counting",
+      "sources": [
+        "manuscripts/v3prel8/sections/03_arithmetic.tex"
+      ],
+      "verdict": "existing proofs; revised exposition",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/ShiftedKernelQuotients.lean",
+          "declaration": "card_kernelQuotients_le_sqrt_ratio"
+        },
+        {
+          "path": "PaperCV282/ShiftedKernelBoxCount.lean",
+          "declaration": "card_dyadic_boxSolutions_le"
+        },
+        {
+          "path": "PaperCV282/ShiftedKernelPairCount.lean",
+          "declaration": "card_shiftedKernelValues_le_two_thirds_eventually"
+        }
+      ],
+      "assessment": "The added cofactor decomposition and lattice-step count expose the existing proof of the two-thirds energy bound. The partition and terminal-container paragraphs explain existing branches; they do not strengthen the numbered conclusions."
+    },
+    {
+      "id": "R02",
+      "topic": "typical and affine dictionaries",
+      "sources": [
+        "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+        "manuscripts/v3prel8/companion/C_fields.tex"
+      ],
+      "verdict": "proved with baseline AGG/PNT inputs",
+      "lean_declarations": [
+        {
+          "path": "PaperCPrel8/TypicalDictionaryTheorem.lean",
+          "declaration": "mean_rate_eventually"
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryConvergence.lean",
+          "declaration": "iid_in_selection_probability"
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryConsequences.lean",
+          "declaration": "averaged_statistic_le"
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryMatrix.lean",
+          "declaration": "matrix_average_eq"
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryMatrix.lean",
+          "declaration": "description_bits_le"
+        }
+      ],
+      "assessment": "Dictionary selection remains independent of prime signs. Local collisions, full-value separated rank, both deletion costs, the order of supremum and averaging, deterministic masks, mean and in-selection-probability limits are represented in the linked numbered components. No almost-sure selection across scales is claimed."
+    },
+    {
+      "id": "R03",
+      "topic": "information crossing and prescribed floor",
+      "sources": [
+        "manuscripts/v3prel8/sections/06_conditioning.tex",
+        "manuscripts/v3prel8/companion/C_fields.tex"
+      ],
+      "verdict": "conclusions proved; derivative proof replaced",
+      "lean_declarations": [
+        {
+          "path": "PaperCPrel8/InformationSaddle.lean",
+          "declaration": "existsUnique_crossing"
+        },
+        {
+          "path": "PaperCPrel8/InformationSaddleBudget.lean",
+          "declaration": "budget_strict_improvement"
+        },
+        {
+          "path": "PaperCPrel8/InformationSaddleBudget.lean",
+          "declaration": "constrained_maximum"
+        },
+        {
+          "path": "PaperCPrel8/InformationSaddleLimit.lean",
+          "declaration": "information_budget_limit"
+        },
+        {
+          "path": "PaperCPrel8/PrescribedInformationPaper.lean",
+          "declaration": "optimized_floor_field"
+        }
+      ],
+      "assessment": "Strict monotonicity proves the unique crossing, strict improvement and constrained maximum. The displayed implicit derivative of w_N(I) is not separately formalized and is not used by the Lean argument. A larger certified auxiliary truncation is used where appropriate; source and target tails are both controlled. The final source-facing field, measurability condition and exponent are preserved."
+    },
+    {
+      "id": "R04",
+      "topic": "microscopic source and independent inputs",
+      "sources": [
+        "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+        "manuscripts/v3prel8/companion/F_microscopic_pivots.tex"
+      ],
+      "verdict": "proved relative to explicit baseline analytic/arithmetic inputs",
+      "lean_declarations": [
+        {
+          "path": "PaperCPrel8/MicroscopicNormalization.lean",
+          "declaration": "paper_comparison_eventually"
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicActualGeometry.lean",
+          "declaration": "actual_geometry_eventually"
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicInformationCutoff.lean",
+          "declaration": "cutoff_tail_bound"
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicDiscardTheorem.lean",
+          "declaration": "tail_probability_eventually"
+        },
+        {
+          "path": "PaperCPrel8/PalmStein.lean",
+          "declaration": "palm_stein_bound"
+        }
+      ],
+      "assessment": "The actual signed field and full small-prime event are retained. The shifted scalar tail is independent of this comparison. F.2 uses the baseline DirectionalSolutionBounds premise; the semigroup construction printed in the companion has not been reconstructed. This is a declared literature boundary, not an unconditional Lean proof of that analytic input."
+    },
+    {
+      "id": "R05",
+      "topic": "dyadic and empirical readouts",
+      "sources": [
+        "manuscripts/v3prel8/sections/07b_dyadic_restriction.tex",
+        "manuscripts/v3prel8/sections/07a_empirical_poisson.tex"
+      ],
+      "verdict": "proved with explicit inputs where recorded",
+      "lean_declarations": [
+        {
+          "path": "PaperCPrel8/SaddleScaleMonotonicity.lean",
+          "declaration": "shifted_information_margin"
+        },
+        {
+          "path": "PaperCPrel8/DyadicRestriction.lean",
+          "declaration": "prime_sigma_mono"
+        },
+        {
+          "path": "PaperCPrel8/EmpiricalPaperScales.lean",
+          "declaration": "rounded_intensity_bounds"
+        }
+      ],
+      "assessment": "The stronger intermediate derivative estimate in the dyadic proof is replaced by monotonicity and a height-ratio bound. Same-grid field contraction, literal empirical scales, common-kernel readouts and the support obstruction are covered by the numbered ledger. Neither process limits nor arbitrary changes of conditioning follow from contraction alone."
+    },
+    {
+      "id": "R06",
+      "topic": "ordinary deletion and actual Palm laws",
+      "sources": [
+        "manuscripts/v3prel8/companion/G_palm_complements.tex"
+      ],
+      "verdict": "proved with stated baseline inputs",
+      "lean_declarations": [
+        {
+          "path": "PaperCPrel8/OutsideDeletion.lean",
+          "declaration": "outside_union"
+        },
+        {
+          "path": "PaperCPrel8/OutsideDeletionLimits.lean",
+          "declaration": "source_tendsto"
+        },
+        {
+          "path": "PaperCPrel8/OutsideDeletionLimits.lean",
+          "declaration": "target_tendsto"
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmOutside.lean",
+          "declaration": "ordinary_full_deletion"
+        }
+      ],
+      "assessment": "The costs d_A and delta_G are the actual original-conditioning outside-start probability and Poisson intensity. Additional deletions are bounded by a constant-word union, with harmless factor two, and vanish without exponential Palm amplification."
+    },
+    {
+      "id": "R07",
+      "topic": "tilted void and cumulant conventions",
+      "sources": [
+        "manuscripts/v3prel8/companion/G_palm_complements.tex"
+      ],
+      "verdict": "proved finite identities",
+      "lean_declarations": [
+        {
+          "path": "PaperCPrel8/TiltedVoidIntegral.lean",
+          "declaration": "integral_limit_positive"
+        },
+        {
+          "path": "PaperCPrel8/TiltedVoidIntegral.lean",
+          "declaration": "integral_limit_zero"
+        },
+        {
+          "path": "PaperCPrel8/CumulantConventions.lean",
+          "declaration": "jointCumulant_eq_raw"
+        },
+        {
+          "path": "PaperCPrel8/CumulantConventions.lean",
+          "declaration": "reference_singleton"
+        },
+        {
+          "path": "PaperCPrel8/CumulantConventions.lean",
+          "declaration": "reference_higher"
+        }
+      ],
+      "assessment": "Higher cumulants are unchanged by deterministic translations and therefore agree with the raw convention. Reference-centered singletons remain EX-p. The improper logarithmic integral tends to +infinity at zero void probability; Real.log(0) is not an endpoint value."
+    },
+    {
+      "id": "R08",
+      "topic": "two-rank numerical example",
+      "sources": [
+        "manuscripts/v3prel8/companion/G_palm_complements.tex"
+      ],
+      "verdict": "proved concrete finite example",
+      "lean_declarations": [
+        {
+          "path": "PaperCPrel8/PairRankExample.lean",
+          "declaration": "individual_ranks"
+        },
+        {
+          "path": "PaperCPrel8/PairRankExample.lean",
+          "declaration": "rough_rank"
+        },
+        {
+          "path": "PaperCPrel8/PairRankExample.lean",
+          "declaration": "full_rank"
+        },
+        {
+          "path": "PaperCPrel8/PairRankExampleSource.lean",
+          "declaration": "actual_values"
+        },
+        {
+          "path": "PaperCPrel8/PairRankExampleLaw.lean",
+          "declaration": "compatibility_probability"
+        },
+        {
+          "path": "PaperCPrel8/PairRankExampleLaw.lean",
+          "declaration": "mean_absolute_covariance"
+        }
+      ],
+      "assessment": "The factorization and odd-valuation matrix of 91..95 and 113..117 are certified. The original arithmetic values agree with that matrix. The active independent prime coordinates give ranks 5,5,7,10, masses 2^-5,2^-7,2^-10, compatibility fraction 1/8, and mean absolute covariance 7/4096. The unused small prime 11 is a zero column."
+    },
+    {
+      "id": "R09",
+      "topic": "fixed-weight prime obstruction",
+      "sources": [
+        "manuscripts/v3prel8/companion/G_palm_complements.tex"
+      ],
+      "verdict": "proved under baseline PNT",
+      "lean_declarations": [
+        {
+          "path": "PaperCPrel8/PrimeWeightedLimit.lean",
+          "declaration": "retained_log_diverges"
+        },
+        {
+          "path": "PaperCPrel8/PrimeWeightedLimit.lean",
+          "declaration": "original_log_diverges"
+        },
+        {
+          "path": "PaperCPrel8/PrimeHigherDivergence.lean",
+          "declaration": "retained_higher_diverges"
+        }
+      ],
+      "assessment": "The same explicit witness works at every fixed t>exp(1)-1. This is a sufficient witness threshold, not a proved optimal phase boundary. Both original and stronger retained fields have a vanishing pair layer and divergent higher activity."
+    },
+    {
+      "id": "R10",
+      "topic": "inherited unnumbered results including D.1/D.4",
+      "sources": [
+        "manuscripts/v3prel8/companion/D_conditioning.tex"
+      ],
+      "verdict": "retained baseline correspondence",
+      "lean_declarations": [],
+      "assessment": "All 32 prior unnumbered groups and their precise proof references are retained below. D.1/D.4 assertions are unchanged; the added final paragraph clarifies the existing split proving joint Gaussian/Poisson independence. The prior declared fidelity and literature limits are retained."
+    },
+    {
+      "id": "R11",
+      "topic": "reading routes, introduction and discussion",
+      "sources": [
+        "manuscripts/v3prel8/sections/01_introduction.tex",
+        "manuscripts/v3prel8/sections/08_discussion.tex",
+        "manuscripts/v3prel8/companion/00_reading_routes.tex",
+        "manuscripts/v3prel8/companion/00_external_inputs.tex",
+        "manuscripts/v3prel8/companion/A_runge_diophantine.tex"
+      ],
+      "verdict": "cross-references and interpretation",
+      "lean_declarations": [],
+      "assessment": "The extended introduction is linked to the actual typical/affine dictionary theorem. Other changes explain proof routes, existing arithmetic inputs, scope and non-optimality; they are not additional independent probabilistic claims. Runge/Diophantine premises retain their baseline status. Bibliographic, layout and author-declaration edits are outside theorem coverage."
+    }
+  ],
+  "inherited_unnumbered": [
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "(3.15), growing-moment proof"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "(3.15), canonical product bound"
+      },
+      "id": "U01",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Replacement: (B+1)^c#≤P#≤M; pointwise2^tau=M^o1.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/SmallProductComponentBound.lean",
+          "declaration": "base_pow_componentCount_le_primeProduct"
+        },
+        {
+          "path": "PaperCV282/SmallProductComponentBound.lean",
+          "declaration": "componentCount_mul_log_le_log_of_smallProduct"
+        },
+        {
+          "path": "PaperCV282/MacroscopicSmallProductLoss.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SmallProductMass.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "(3.20), container sharpness after(3.23)"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "(3.20), same sharpness paragraph"
+      },
+      "id": "U02",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged: true container X^(3/4+o1), including lower bound.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/TerminalContainerSharpness.lean",
+          "declaration": "terminal_container_three_quarters_sharp"
+        },
+        {
+          "path": "PaperCV282/TerminalContainerSharpness.lean",
+          "declaration": "smaller_power_lt_container_eventually"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "(3.22)–(3.23)"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "(3.22)–(3.23)"
+      },
+      "id": "U03",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged rational lower bounds and critical exponents4/3,3/2.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/IntervalRationalLowerBounds.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/RationalLowerBounds.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "4.1 deletion paragraph"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "4.1 deletion paragraph"
+      },
+      "id": "U04",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Removal and target deletion now separately account for p(M_B(A)+2|D_Y(A)|).",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/MaskedArithmeticCosts.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/MaskedBadMass.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "(4.10) / companion B.3"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "(4.10) / companion B.3"
+      },
+      "id": "U05",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unified all-intensity soft free-cutoff ledger; K=max(1,lambda) polynomial term, same full F_Ysoft.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/FreeCutoffSoftRates.lean",
+          "declaration": "equation_four_ten"
+        },
+        {
+          "path": "PaperCV282/SoftRateAssembly.lean",
+          "declaration": "theorem_four_three_soft"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "(5.17)"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "(5.17)"
+      },
+      "id": "U06",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged exact moving coordinates, target means and measurable bijection to whole threshold path.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/MovingMarkedLevels.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/ThresholdPathEquivalence.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/MovingMarkedSource.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/AggregateMovingCoordinates.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "(5.23)–(5.26)"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "(5.23)–(5.26)"
+      },
+      "id": "U07",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged independent Poisson levels, thinning kernels, finite-dimensional PGF and lattice extreme law.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/D4ClosureCoherence.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/D4ClosureThreshold.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/D4ClosureExtremeTheorem.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "after Theorem5.10 / companionD.4"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "same"
+      },
+      "id": "U08",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged whole integer point measure on compact sets, phase-mobile Laplace approximation, actual half-line restrictions and locally finite but globally infinite mass.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/D4ClosurePointMeasure.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/D4ClosureWholeRestriction.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/D4ClosureInfiniteMass.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/D4ClosureLaplaceTheorem.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "8.2 budget summary"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "§6 opening budget table"
+      },
+      "id": "U09",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Table moved and hard-labelled I+logLambda+log(1+Lambda) row added explicitly; no new threshold theorem.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/RareConditioningRates.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SpatialMarkedHardBudget.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SpatialMarkedMovableBudget.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SignedAggregateHardBudget.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_with_corrected_directional_input; whole_build_validation_separate",
+      "counts_as_named_result": false,
+      "directional_input_correction": "Uses the corrected same-solution entrywise and weighted quadratic bounds; the historical Euclidean premise is refuted in Lean."
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "(6.1)–(6.2)"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "(6.1)–(6.2)"
+      },
+      "id": "U10",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged true event conditioning with min after one division by P(C).",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/RareConditioningRates.lean",
+          "declaration": "hard_event_rate_min_eventually"
+        },
+        {
+          "path": "PaperCV282/RareConditioningRates.lean",
+          "declaration": "soft_event_information_min_eventually"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "(6.3)"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "(6.3)"
+      },
+      "id": "U11",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged small-intensity relative nonvacancy and exactly-one probabilities.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/SmallIntensityConditioning.lean",
+          "declaration": "equation_six_three"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "(6.5)"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "(6.5)"
+      },
+      "id": "U12",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged all-positive-intensity whole-path error with information cost and logarithmic factor.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/UnsignedResolvedPathRates.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_with_corrected_directional_input; whole_build_validation_separate",
+      "counts_as_named_result": false,
+      "directional_input_correction": "Uses the corrected same-solution entrywise and weighted quadratic bounds; the historical Euclidean premise is refuted in Lean."
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "before (6.7) / companion(D.1)"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "same"
+      },
+      "id": "U13",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Effective exact Stirling correction, alln≥1/alllambda>0,0≤δn≤1/(12n), and n=0 exact mass.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/PoissonStirlingBounds.lean",
+          "declaration": "poisson_local_exact"
+        },
+        {
+          "path": "PaperCV282/PoissonStirlingBounds.lean",
+          "declaration": "poisson_local_bounds"
+        },
+        {
+          "path": "PaperCV282/PoissonStirlingBounds.lean",
+          "declaration": "poisson_local_relative_error"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "after(6.7)"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "after(6.7)"
+      },
+      "id": "U14",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged rounded central regime and coefficient3/2 budget with fixed negative margin.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/PoissonCentralAsymptotics.lean",
+          "declaration": "bounded_rounding_central_errors"
+        },
+        {
+          "path": "PaperCV282/CentralResolutionBudget.lean",
+          "declaration": "central_resolved_future"
+        }
+      ],
+      "verdict": "covered_with_corrected_directional_input; whole_build_validation_separate",
+      "counts_as_named_result": false,
+      "directional_input_correction": "Uses the corrected same-solution entrywise and weighted quadratic bounds; the historical Euclidean premise is refuted in Lean."
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "D.1 Gaussian CDF"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "D.1 Gaussian CDF"
+      },
+      "id": "U15",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged quantitative Berry–Esseen and true conditional CDF transfer; no moment convergence inferred fromTV.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/PoissonQuantitativeBerry.lean",
+          "declaration": "poisson_gaussian_CDF_error"
+        },
+        {
+          "path": "PaperCV282/PoissonQuantitativeTransfer.lean",
+          "declaration": "conditional_observation_CDF_mass_error"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "D.1 local hard/soft budgets"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "D.1 local hard/soft budgets"
+      },
+      "id": "U16",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged relative present-atom transfer under hard and soft budgets and corresponding central forms.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/HardLocalClosureRates.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/HardLocalClosureCentral.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SoftLocalClosureRates.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SoftLocalClosureCentral.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "D.1 moderate tails"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "D.1 moderate tails"
+      },
+      "id": "U17",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged true Poisson normal-tail relative approximation, range t=o(lambda^(1/6)), and conditional hard tail budget.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/PoissonQuantitativeModerate.lean",
+          "declaration": "poisson_moderate_relative_error"
+        },
+        {
+          "path": "PaperCV282/PoissonQuantitativeModerateLimit.lean",
+          "declaration": "poisson_moderate_ratio_tendsto_one"
+        },
+        {
+          "path": "PaperCV282/PoissonQuantitativeTailRates.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "D.2 resolved future and past"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "D.2 resolved future and past"
+      },
+      "id": "U18",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged whole future thinning path and each finite past segment; no single finite-intensity entire reverse-path comparison.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/PoissonResolvedTarget.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/PoissonResolvedComparison.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_with_corrected_directional_input; whole_build_validation_separate",
+      "counts_as_named_result": false,
+      "directional_input_correction": "Uses the corrected same-solution entrywise and weighted quadratic bounds; the historical Euclidean premise is refuted in Lean."
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "D.3"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "D.3"
+      },
+      "id": "U19",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Same Markov/Borel–Cantelli argument reorganized around union over all O(logN) lengths; no scale independence/canonical coupling.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/QuenchedAggregateTheorem.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/QuenchedScalarBand.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_with_corrected_directional_input; whole_build_validation_separate",
+      "counts_as_named_result": false,
+      "directional_input_correction": "Uses the corrected same-solution entrywise and weighted quadratic bounds; the historical Euclidean premise is refuted in Lean."
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "D.4 spatial resolution"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "D.4 spatial resolution"
+      },
+      "id": "U20",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged genuine whole half-line Poisson geometric field and, conditioned on S_m=n, n iid uniform positions and geometric excesses.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/D4ClosureSpatialIdentification.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/D4ClosureSpatialResolution.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/D4ClosureResolvedArithmetic.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_with_corrected_directional_input; whole_build_validation_separate",
+      "counts_as_named_result": false,
+      "directional_input_correction": "Uses the corrected same-solution entrywise and weighted quadratic bounds; the historical Euclidean premise is refuted in Lean."
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "E.3 and(E.4)"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "E.3 and(E.4)"
+      },
+      "id": "U21",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged all fixed K≥2 incidence count and private-rank positive-part inequality, unique optimumK11; local1332 not full asymptotic threshold.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/FixedMediumAsymptotics.lean",
+          "declaration": "equation_E_three"
+        },
+        {
+          "path": "PaperCV282/FixedMediumIncidenceRank.lean",
+          "declaration": "equation_E_four_intermediate_start"
+        },
+        {
+          "path": "PaperCV282/FixedMediumRank.lean",
+          "declaration": "equation_E_four_start"
+        },
+        {
+          "path": "PaperCV282/HarmonicIncidenceSurplus.lean",
+          "declaration": "surplus_eq_eleven_iff"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "(7.20) / companionE.6"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "same"
+      },
+      "id": "U22",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Clock convention is now explicit also on null nonterminating samples; exact conditional geometric law and integer overshoot unchanged.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/PrimeClockDistribution.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/PrimeClockMicroscopicTransfer.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "E.7 measurability of capped clock"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "E.7 first K signs representative"
+      },
+      "id": "U23",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Explicit finite-cylinder representative equal almost surely to capped actual clock, Bertrand bound, fixedK before size.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/CrossoverPrimeClockCylinder.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "7.9 one-hit proof / companionE.7"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "same"
+      },
+      "id": "U24",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Exact sparse-event mass and mixture correction≤b inserted; true geometric-mark/site/sign product preserved before normalization.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/CrossoverBulkOnePoint.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/CrossoverSparseWeights.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "7.9 tail restoration / companionE.7"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "same"
+      },
+      "id": "U25",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Exact source and target discarded clock tails≤2^(-K−1); size limit beforeK→∞.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/CrossoverUncapping.lean",
+          "declaration": "conditionalGamma_cap_tv_le"
+        },
+        {
+          "path": "PaperCV282/CrossoverUncapping.lean",
+          "declaration": "mixedLaw_cap_tv_le"
+        },
+        {
+          "path": "PaperCV282/CrossoverUncappingLimit.lean",
+          "declaration": "actualDistance_tendsto_of_capped"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "7.9 final censorship clause"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "same"
+      },
+      "id": "U26",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged right-censored excess, same full target; error≤1/cardbulk.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/CrossoverCensored.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "7.10 finite border identity / companionE.7"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "same"
+      },
+      "id": "U27",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Cutoff contains border explicitly; exact alpha=2^-(piL−kappa), incompatible stack gives0, no rare-regime hypothesis for finite identity.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/AffineCrossoverDeficit.lean",
+          "declaration": "conditionalBorderRate_eq_deficit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "7.10/E.7 amplification"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "same"
+      },
+      "id": "U28",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Budget multiplies explicit ledger before limiting; variable matrices/RHS, true A∩hit. No future neutrality for rare tail or source-resolved localization.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/AffineCrossoverTheorem.lean",
+          "declaration": "theorem_seven_ten_zero_cap"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverRareTheorem.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverLocationTheorem.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "article",
+        "version": "2.8.2",
+        "result": "7.10/E.7 geometric future"
+      },
+      "new_locator": {
+        "document": "article",
+        "version": "3PREL",
+        "result": "same"
+      },
+      "id": "U29",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Neutrality only eventually for each fixedK; exact alternative rank formula if neutrality fails. No uniform/growingK requirement.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/AffineCrossoverFutureCutoff.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/AffineCrossoverUncappingTheorem.lean",
+          "declaration": "theorem_seven_ten_complete_clock_deficit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "C.3"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "C.3"
+      },
+      "id": "U30",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Critical correction: delete Euclidean quadratic-form bound |aᵀHa|≤Σa_i²; keep weighted bound and assume actual entrywise |Delta_ijg|≤1 for the SAME Stein solution. Semigroup explanation and dimension≥2/positive rates explicit.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/DirectionalSteinInput.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/DirectionalHessian.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_with_corrected_directional_input; whole_build_validation_separate",
+      "counts_as_named_result": false,
+      "directional_input_correction": "Uses the corrected same-solution entrywise and weighted quadratic bounds; the historical Euclidean premise is refuted in Lean."
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "C.2 local/sign probabilities and(C.1)/(C.2)"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "same"
+      },
+      "id": "U31",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged relative profile at Q for unsigned; signed profile at Q+1 values, localfactor4 versus2; support conventions now spelled out.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/UnsignedMarkedRelations.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/UnsignedLocalProbability.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/SignedMarkedSeparatedRelations.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_by_existing_proofs",
+      "counts_as_named_result": false
+    },
+    {
+      "old_locator": {
+        "document": "companion",
+        "version": "2.8.2",
+        "result": "C.4 infinite marks"
+      },
+      "new_locator": {
+        "document": "companion",
+        "version": "3PREL",
+        "result": "C.4 infinite marks"
+      },
+      "id": "U32",
+      "kind": "Unnumbered or displayed consequence",
+      "change": "Unchanged single tail event and true whole configuration/path comparison, no dimension factor.",
+      "lean_declarations": [
+        {
+          "path": "PaperCV282/SignedAggregateTruncation.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        },
+        {
+          "path": "PaperCV282/AggregateActualTail.lean",
+          "declaration": null,
+          "evidence_note": "module-level evidence in the frozen v2.8.2 audit"
+        }
+      ],
+      "verdict": "covered_with_corrected_directional_input; whole_build_validation_separate",
+      "counts_as_named_result": false,
+      "directional_input_correction": "Uses the corrected same-solution entrywise and weighted quadratic bounds; the historical Euclidean premise is refuted in Lean."
+    }
+  ],
+  "files": [
+    {
+      "path": "manuscripts/v3prel8/companion/00_external_inputs.tex",
+      "sha256": "d46bb227e43c6a29949f1e1b641a7b8d0ab90e4eabc5bff8f2edef7731570301",
+      "baseline": "manuscripts/v3prel/source/companion/00_external_inputs.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "insert",
+          "old_lines": [
+            8,
+            7
+          ],
+          "new_lines": [
+            8,
+            9
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            12,
+            12
+          ],
+          "new_lines": [
+            14,
+            14
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            15,
+            14
+          ],
+          "new_lines": [
+            17,
+            21
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            17,
+            17
+          ],
+          "new_lines": [
+            24,
+            24
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            27,
+            26
+          ],
+          "new_lines": [
+            34,
+            36
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            29,
+            29
+          ],
+          "new_lines": [
+            39,
+            45
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            42,
+            43
+          ],
+          "new_lines": [
+            58,
+            58
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            50,
+            52
+          ],
+          "new_lines": [
+            65,
+            68
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/companion/00_reading_routes.tex",
+      "sha256": "dd1a47be190fcbb1ed6b2f67c6cacfb399e2f4913cd39fa1fcfb7cb0c2e84824",
+      "baseline": "manuscripts/v3prel/source/companion/00_reading_routes.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            17,
+            18
+          ],
+          "new_lines": [
+            17,
+            18
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            25,
+            33
+          ],
+          "new_lines": [
+            25,
+            61
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            36,
+            37
+          ],
+          "new_lines": [
+            64,
+            66
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            40,
+            40
+          ],
+          "new_lines": [
+            69,
+            77
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/companion/A_runge_diophantine.tex",
+      "sha256": "96c7aa97ef4bdb81ce271b3a6a8283d112eb12d1fe71c10eb6d81aec51253b04",
+      "baseline": "manuscripts/v3prel/source/companion/A_runge_diophantine.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "insert",
+          "old_lines": [
+            105,
+            104
+          ],
+          "new_lines": [
+            105,
+            111
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/companion/B_cutoffs.tex",
+      "sha256": "9e2f116fef0109353e802b87ef7c4602a20de8b0715358ae8825ce2e915d27dc",
+      "baseline": "manuscripts/v3prel/source/companion/B_cutoffs.tex",
+      "changed_comment_stripped_spans": []
+    },
+    {
+      "path": "manuscripts/v3prel8/companion/C_fields.tex",
+      "sha256": "ffd8b5d2b06c45c93da06f210eb3309b730e6d7621772e8e8b29a07efaddcfe2",
+      "baseline": "manuscripts/v3prel/source/companion/C_fields.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            6,
+            6
+          ],
+          "new_lines": [
+            6,
+            6
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            46,
+            45
+          ],
+          "new_lines": [
+            46,
+            132
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            302,
+            334
+          ],
+          "new_lines": [
+            389,
+            496
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/companion/D_conditioning.tex",
+      "sha256": "79b895ab9c3320ad998e855cf69bcfcd1e89ce308badce47c362100f83128deb",
+      "baseline": "manuscripts/v3prel/source/companion/D_conditioning.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            208,
+            211
+          ],
+          "new_lines": [
+            208,
+            210
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/companion/E_boundary.tex",
+      "sha256": "c7c705379edd9ee63d073b6310a43b78b1a3cf4ab57e14a4b6063bd0d00a0dd1",
+      "baseline": "manuscripts/v3prel/source/companion/E_boundary.tex",
+      "changed_comment_stripped_spans": []
+    },
+    {
+      "path": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
+      "sha256": "1ef0d46ca06d18c9bc682dfebc07c1f091b3dad3362fcd82ed7d73bb65eeadd3",
+      "baseline": null,
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "new_file",
+          "new_lines": [
+            1,
+            409
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "sha256": "6ffe20733024ae9151bc00ffefc46924f3044939ba06aacb6168442809ff2762",
+      "baseline": null,
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "new_file",
+          "new_lines": [
+            1,
+            426
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/declarations.tex",
+      "sha256": "e716ee52213847a719ff2974580c1b5c72a987a930977006403e3311beb24915",
+      "baseline": "manuscripts/v3prel/source/declarations.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            3,
+            10
+          ],
+          "new_lines": [
+            3,
+            7
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            12,
+            20
+          ],
+          "new_lines": [
+            9,
+            16
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            32,
+            36
+          ],
+          "new_lines": [
+            28,
+            36
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/paper_c_version_3PREL8_en.tex",
+      "sha256": "92368c622fe068fb6b99b3795e678eeba363a8538b1b37738aaad5df9658c162",
+      "baseline": "manuscripts/v3prel/source/paper_C_version_3PREL_en.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            3,
+            3
+          ],
+          "new_lines": [
+            3,
+            3
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            6,
+            9
+          ],
+          "new_lines": [
+            6,
+            7
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            18,
+            19
+          ],
+          "new_lines": [
+            16,
+            16
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            24,
+            31
+          ],
+          "new_lines": [
+            21,
+            25
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            33,
+            38
+          ],
+          "new_lines": [
+            27,
+            36
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            40,
+            47
+          ],
+          "new_lines": [
+            38,
+            42
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            55,
+            54
+          ],
+          "new_lines": [
+            50,
+            50
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            64,
+            64
+          ],
+          "new_lines": [
+            60,
+            60
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            66,
+            66
+          ],
+          "new_lines": [
+            62,
+            62
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/paper_c_version_3PREL8_technical_companion_en.tex",
+      "sha256": "229b42d26674c1dd789239297e1d7080c5839b1b9a8caface3ede0c9a7f1c0cb",
+      "baseline": "manuscripts/v3prel/source/paper_C_version_3PREL_technical_companion_en.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            5,
+            5
+          ],
+          "new_lines": [
+            5,
+            5
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            8,
+            11
+          ],
+          "new_lines": [
+            8,
+            12
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            14,
+            13
+          ],
+          "new_lines": [
+            15,
+            19
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            15,
+            26
+          ],
+          "new_lines": [
+            21,
+            35
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            30,
+            38
+          ],
+          "new_lines": [
+            39,
+            42
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            42,
+            42
+          ],
+          "new_lines": [
+            46,
+            46
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            44,
+            44
+          ],
+          "new_lines": [
+            48,
+            48
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            51,
+            52
+          ],
+          "new_lines": [
+            55,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/preamble.tex",
+      "sha256": "b24c6dc3f68ae8525d73dd41c47b5c2299f04e0977e0fe875e7f03913df0aa20",
+      "baseline": "manuscripts/v3prel/source/preamble.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            10,
+            10
+          ],
+          "new_lines": [
+            10,
+            10
+          ]
+        },
+        {
+          "kind": "delete",
+          "old_lines": [
+            18,
+            18
+          ],
+          "new_lines": [
+            18,
+            17
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            22,
+            22
+          ],
+          "new_lines": [
+            21,
+            21
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            58,
+            57
+          ],
+          "new_lines": [
+            57,
+            69
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            71,
+            71
+          ],
+          "new_lines": [
+            83,
+            83
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            85,
+            84
+          ],
+          "new_lines": [
+            97,
+            101
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            101,
+            100
+          ],
+          "new_lines": [
+            118,
+            119
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            109,
+            108
+          ],
+          "new_lines": [
+            128,
+            140
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            120,
+            119
+          ],
+          "new_lines": [
+            152,
+            157
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            184,
+            183
+          ],
+          "new_lines": [
+            222,
+            230
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/sections/01_introduction.tex",
+      "sha256": "29c546f6d8fa5a9e84103dbb45d1fd8484ff92c797eb2d9dbc6987d71b93f775",
+      "baseline": "manuscripts/v3prel/source/sections/01_introduction.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "insert",
+          "old_lines": [
+            90,
+            89
+          ],
+          "new_lines": [
+            90,
+            118
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            129,
+            130
+          ],
+          "new_lines": [
+            158,
+            159
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            142,
+            143
+          ],
+          "new_lines": [
+            171,
+            173
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            158,
+            157
+          ],
+          "new_lines": [
+            188,
+            196
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            160,
+            171
+          ],
+          "new_lines": [
+            199,
+            214
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            175,
+            175
+          ],
+          "new_lines": [
+            218,
+            219
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            181,
+            184
+          ],
+          "new_lines": [
+            225,
+            233
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            187,
+            186
+          ],
+          "new_lines": [
+            236,
+            259
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            232,
+            254
+          ],
+          "new_lines": [
+            305,
+            319
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            275,
+            277
+          ],
+          "new_lines": [
+            340,
+            352
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            279,
+            282
+          ],
+          "new_lines": [
+            354,
+            377
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            304,
+            305
+          ],
+          "new_lines": [
+            399,
+            404
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            322,
+            322
+          ],
+          "new_lines": [
+            421,
+            422
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            333,
+            333
+          ],
+          "new_lines": [
+            433,
+            434
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            336,
+            340
+          ],
+          "new_lines": [
+            437,
+            442
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/sections/02_affine.tex",
+      "sha256": "fd9fe5fbefac2ffc570fb41d813a17c3333422539659ed1572663b1564581df6",
+      "baseline": "manuscripts/v3prel/source/sections/02_affine.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            121,
+            121
+          ],
+          "new_lines": [
+            121,
+            121
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "sha256": "3fd7d0d558f7ae075d4b042cc78c4ff85922c129fb3b73eb620d3d83c4f57f5c",
+      "baseline": "manuscripts/v3prel/source/sections/03_arithmetic.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "insert",
+          "old_lines": [
+            386,
+            385
+          ],
+          "new_lines": [
+            386,
+            397
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            470,
+            469
+          ],
+          "new_lines": [
+            482,
+            486
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            796,
+            795
+          ],
+          "new_lines": [
+            813,
+            827
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            910,
+            913
+          ],
+          "new_lines": [
+            942,
+            960
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            917,
+            919
+          ],
+          "new_lines": [
+            964,
+            974
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            924,
+            923
+          ],
+          "new_lines": [
+            979,
+            980
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            963,
+            963
+          ],
+          "new_lines": [
+            1020,
+            1021
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/sections/04_poisson.tex",
+      "sha256": "e7faf8ebd15176d8ef6f363fd8637956a97a8ff7f00a22610f89cb8070d901fa",
+      "baseline": "manuscripts/v3prel/source/sections/04_poisson.tex",
+      "changed_comment_stripped_spans": []
+    },
+    {
+      "path": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "sha256": "845c8e2c3a7ea3fc0589de40de719e85b40f8f8e0afa92e63ac3663a0ba79603",
+      "baseline": "manuscripts/v3prel/source/sections/05_patterns_fields.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            148,
+            148
+          ],
+          "new_lines": [
+            148,
+            148
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            176,
+            175
+          ],
+          "new_lines": [
+            176,
+            330
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            277,
+            277
+          ],
+          "new_lines": [
+            432,
+            432
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            515,
+            514
+          ],
+          "new_lines": [
+            670,
+            674
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/sections/06_conditioning.tex",
+      "sha256": "6763f66611bc3b5d6121dd26e5041e75517c507fe00dbe0df56504d0b9848c55",
+      "baseline": "manuscripts/v3prel/source/sections/06_conditioning.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            10,
+            10
+          ],
+          "new_lines": [
+            10,
+            12
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            13,
+            13
+          ],
+          "new_lines": [
+            15,
+            17
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            15,
+            15
+          ],
+          "new_lines": [
+            19,
+            19
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            20,
+            21
+          ],
+          "new_lines": [
+            24,
+            26
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            24,
+            24
+          ],
+          "new_lines": [
+            29,
+            29
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            28,
+            27
+          ],
+          "new_lines": [
+            33,
+            59
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            89,
+            88
+          ],
+          "new_lines": [
+            121,
+            218
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            196,
+            197
+          ],
+          "new_lines": [
+            326,
+            327
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "sha256": "9fe91b223adaacf78c7d76cf21fc9c14d741072c94b0ecdaf2d27949a8096a39",
+      "baseline": "manuscripts/v3prel/source/sections/07_prefix_boundary.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            306,
+            307
+          ],
+          "new_lines": [
+            306,
+            310
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_lines": [
+            327,
+            326
+          ],
+          "new_lines": [
+            330,
+            492
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/sections/07a_empirical_poisson.tex",
+      "sha256": "f477210df72c733be624aa46e5536d5f4bf0fb2996389accd53a7df7c55ec92d",
+      "baseline": null,
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "new_file",
+          "new_lines": [
+            1,
+            182
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/sections/07b_dyadic_restriction.tex",
+      "sha256": "54509aaa3b39c4af39c3b855bb67e9e3709dee3499a3607e31e5b154dff50759",
+      "baseline": null,
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "new_file",
+          "new_lines": [
+            1,
+            65
+          ]
+        }
+      ]
+    },
+    {
+      "path": "manuscripts/v3prel8/sections/08_discussion.tex",
+      "sha256": "60d6bad2b2c10366b91a2501a7b3dfda1ff8e6cdb1df20a51b53182c75d7ac9a",
+      "baseline": "manuscripts/v3prel/source/sections/08_discussion.tex",
+      "changed_comment_stripped_spans": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            4,
+            5
+          ],
+          "new_lines": [
+            4,
+            7
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            17,
+            19
+          ],
+          "new_lines": [
+            19,
+            23
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            56,
+            58
+          ],
+          "new_lines": [
+            60,
+            65
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            60,
+            65
+          ],
+          "new_lines": [
+            67,
+            72
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            67,
+            71
+          ],
+          "new_lines": [
+            74,
+            98
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            74,
+            86
+          ],
+          "new_lines": [
+            101,
+            109
+          ]
+        },
+        {
+          "kind": "replace",
+          "old_lines": [
+            88,
+            94
+          ],
+          "new_lines": [
+            111,
+            119
+          ]
+        }
+      ]
+    }
+  ]
+}

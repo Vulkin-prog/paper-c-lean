@@ -2,7 +2,7 @@
   "schema_version": 1,
   "version": "3PREL8",
   "baseline_commit": "a928497897a27e3dd3d7b601ee788336aca84780",
-  "status": "extension_in_progress_not_ready_for_new_palomar_claims",
+  "status": "realigned_with_explicit_baseline_inputs_new_palomar_qualification_pending",
   "counts": {
     "numbered_blocks": 96,
     "preserved_statements": 71,
@@ -3474,7 +3474,7 @@
       "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
       "line": 36,
       "statement_sha256": "e8cf15c39450ab112d1f29248a76047febefc11c88bde742fdcfdbbc3ff9dae4",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved_with_explicit_inputs",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -3541,6 +3541,16 @@
           "path": "PaperCPrel8/MicroscopicDiscardTheorem.lean",
           "declaration": "tail_probability_eventually",
           "scope": "True conditional excess-tail probability on every interior mask is at most 3*exp(-c′*nu), uniformly at the literal cutoff."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicProfileBudget.lean",
+          "declaration": "actual_cutoff_profile_bound",
+          "scope": "The complete normalized full-value profile at the actual information cutoff, after its shifted support band and exponential cost are discharged."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicActualGeometry.lean",
+          "declaration": "actual_geometry_eventually",
+          "scope": "The literal source budget implies every support, cylinder and strong-pivot side condition used by the retained field and independent deletion bounds."
         }
       ]
     },
@@ -3554,7 +3564,7 @@
       "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
       "line": 113,
       "statement_sha256": "02c95ab972e0a2e06d3d30917fccdf6f4f5b9ebdd16b9fadb929e442eb90ad6b",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved_with_explicit_analytic_input",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -4231,6 +4241,16 @@
           "path": "PaperCPrel8/ArithmeticPalmOutside.lean",
           "declaration": "ordinary_full_deletion",
           "scope": "The full and retained genuine infinite Palm voids satisfy the exact ordinary-deletion identity; no surrogate outside event or mass identity premise."
+        },
+        {
+          "path": "PaperCPrel8/OutsideDeletionLimits.lean",
+          "declaration": "source_tendsto",
+          "scope": "The literal d_A tends to zero for the original small-prime conditioning event and stronger retained set; baseline arithmetic inputs only."
+        },
+        {
+          "path": "PaperCPrel8/OutsideDeletionLimits.lean",
+          "declaration": "target_tendsto",
+          "scope": "The literal delta_G tends to zero under the paper regime; baseline PNT only."
         }
       ]
     },
@@ -4406,6 +4426,16 @@
           "path": "PaperCPrel8/TiltedVoidLaw.lean",
           "declaration": "normalized_avoidance",
           "scope": "The occurrence-count generating polynomial is exactly the finite product over the original Boolean indicators."
+        },
+        {
+          "path": "PaperCPrel8/CumulantConventions.lean",
+          "declaration": "reference_singleton",
+          "scope": "For reference centering, the singleton equals EX-p and need not vanish."
+        },
+        {
+          "path": "PaperCPrel8/CumulantConventions.lean",
+          "declaration": "reference_higher",
+          "scope": "Reference centering leaves all cumulants of order >=2 unchanged."
         }
       ]
     },
@@ -4419,7 +4449,7 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 311,
       "statement_sha256": "ddc131b83618f724989a2d0c2adea40a87df16b5d16ccc426eb2fd219586d568",
-      "status": "new_statement_open",
+      "status": "new_statement_proved_with_explicit_inputs",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -4471,6 +4501,26 @@
           "path": "PaperCPrel8/CategoricalPairBridge.lean",
           "declaration": "arithmetic_pair_activity",
           "scope": "Exact double-counting bridge from two-element categorical cumulants to the ordered covariance activity, with the correct factor two."
+        },
+        {
+          "path": "PaperCPrel8/PairRankExample.lean",
+          "declaration": "rough_rank",
+          "scope": "The combined rough rank in the numerical example is seven."
+        },
+        {
+          "path": "PaperCPrel8/PairRankExample.lean",
+          "declaration": "full_rank",
+          "scope": "The combined full rank is ten."
+        },
+        {
+          "path": "PaperCPrel8/PairRankExampleSource.lean",
+          "declaration": "actual_values",
+          "scope": "The example matrix is exactly the original arithmetic values at 91..95 and 113..117, with inactive coordinates retained."
+        },
+        {
+          "path": "PaperCPrel8/PairRankExampleLaw.lean",
+          "declaration": "mean_absolute_covariance",
+          "scope": "For every raw word, active independent prime coordinates have absolute covariance mean 7/4096, compatibility fraction 1/8 and masses 2^-7 or zero."
         }
       ]
     },
@@ -4484,7 +4534,7 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 338,
       "statement_sha256": "8cd46fc171ca78d5bc8a6b430b92393220eee30f7be32a8b04bd879bc05d8d6a",
-      "status": "new_statement_proved_with_explicit_inputs",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -4526,6 +4576,11 @@
           "path": "PaperCPrel8/CumulantActivityLayers.lean",
           "declaration": "centered_pair_moment",
           "scope": "The pair cumulant from the centered recursive convention is the actual covariance; the transfer of divergence to higher orders remains conditional on the pair estimate."
+        },
+        {
+          "path": "PaperCPrel8/CumulantConventions.lean",
+          "declaration": "jointCumulant_eq_raw",
+          "scope": "All cumulants of order >=2 coincide with the raw cumulants, by proved translation invariance."
         }
       ]
     },
@@ -4539,7 +4594,7 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 371,
       "statement_sha256": "1252b5787cf6e3bf6b7b3dea57773d9ea9f5a5d97003d800c6e5a4390bdd6990",
-      "status": "new_statement_open",
+      "status": "new_statement_proved_with_explicit_inputs",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -4665,7 +4720,15 @@
       ]
     }
   ],
-  "open_workstreams": [
+  "unnumbered_review": {
+    "path": "docs/UNNUMBERED_REVIEW_V3PREL8.json",
+    "human_readable": "docs/UNNUMBERED_REVIEW_V3PREL8.md",
+    "groups": 11,
+    "inherited_groups": 32,
+    "tex_files": 23,
+    "status": "review_complete_with_explicit_proof_substitutions"
+  },
+  "workstreams": [
     {
       "name": "Typical and affine dictionaries",
       "labels": [
@@ -4673,14 +4736,16 @@
         "thm:typical-dictionaries",
         "cor:affine-dictionaries"
       ],
-      "remaining": "The full typical theorem 5.3, affine corollary 5.4 and extended introduction 1.3 are proved under baseline AGG/PNT inputs. Actual matrix/offset sampling, uniform little-oh rates, exceptional fractions, readouts, both source comparisons in selection probability, and the short-description example are covered."
+      "assessment": "The full typical theorem 5.3, affine corollary 5.4 and extended introduction 1.3 are proved under baseline AGG/PNT inputs. Actual matrix/offset sampling, uniform little-oh rates, exceptional fractions, readouts, both source comparisons in selection probability, and the short-description example are covered.",
+      "status": "realigned_with_explicit_inputs"
     },
     {
       "name": "Information-adapted cutoff",
       "labels": [
         "prop:information-labelled"
       ],
-      "remaining": "Proposition 6.2 and the separately prescribed-floor full-field specialization are proved at the literal source regime under baseline AGG/PNT inputs. The event sigma-field is transported only upwards to max(w0,w_N(I)). Actual root existence, uniqueness, endpoints, constrained maximum, strict improvement and displayed leading limit are proved. Unnumbered proof-intermediate derivative formulas have been replaced by monotonicity and a larger certified truncation; final review must classify that replacement explicitly."
+      "assessment": "Proposition 6.2 and the separately prescribed-floor full-field specialization are proved at the literal source regime under baseline AGG/PNT inputs. The event sigma-field is transported only upwards to max(w0,w_N(I)). Actual root existence, uniqueness, endpoints, constrained maximum, strict improvement and displayed leading limit are proved. Unnumbered proof-intermediate derivative formulas have been replaced by monotonicity and a larger certified truncation; this proof substitution is explicitly classified in UNNUMBERED_REVIEW_V3PREL8.md.",
+      "status": "realigned_with_explicit_inputs"
     },
     {
       "name": "Microscopic signed prefix field",
@@ -4689,7 +4754,8 @@
         "cor:micro-readout",
         "cor:dyadic-micro"
       ],
-      "remaining": "The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it."
+      "assessment": "The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.",
+      "status": "realigned_with_explicit_inputs"
     },
     {
       "name": "Empirical Poisson and support obstruction",
@@ -4697,7 +4763,8 @@
         "cor:empirical-poisson",
         "rem:empirical-field-obstruction"
       ],
-      "remaining": "Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation."
+      "assessment": "Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.",
+      "status": "realigned_with_explicit_inputs"
     },
     {
       "name": "Palm complements",
@@ -4712,8 +4779,14 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "G.1–G.9 numbered conclusions, the independently prescribed-floor full-field specialization, the finite tilted-void derivative and improper endpoint identity, and the fixed-t prime witness threshold are recorded. Final unnumbered review still includes named outside-deletion convergence, the raw-versus-centered higher-cumulant convention, and the concrete pair-rank example. Previously replaced proof-intermediate derivative estimates must be explicitly classified in the final review. F.2 retains its explicit baseline analytic solution premise."
+      "assessment": "G.1–G.9 and the unnumbered tilted identities, reference-centering convention, named outside-deletion limits, numerical two-rank example and fixed-t prime witness are proved with the explicit inputs documented in each theorem. No new final-comparison premise is introduced.",
+      "status": "realigned_with_explicit_inputs"
     }
   ],
-  "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."
+  "boundaries": [
+    "F.2 retains the baseline analytic DirectionalSolutionBounds input; the printed semigroup construction is not newly formalized.",
+    "Implicit cutoff derivative and dyadic derivative estimates are replaced by monotonicity in Lean, not claimed as separately proved identities.",
+    "The 71 preserved statements and 32 inherited unnumbered groups retain baseline literature and fidelity limits.",
+    "New Comparator/NanoDa/Palomar qualification remains release work."
+  ]
 }

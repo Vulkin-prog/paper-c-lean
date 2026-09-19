@@ -50,7 +50,10 @@ import PaperCPrel8.CenteredAffineBlocks
 import PaperCPrel8.CenteredPalmFourier
 import PaperCPrel8.ConditionalPairDeviation
 import PaperCPrel8.CumulantActivityLayers
+import PaperCPrel8.CumulantConventions
 import PaperCPrel8.CumulantFamilyEnvelope
+import PaperCPrel8.CumulantSingletonPartitions
+import PaperCPrel8.CumulantTranslationTable
 import PaperCPrel8.DictionaryArithmeticCollision
 import PaperCPrel8.DictionaryAverage
 import PaperCPrel8.DictionaryCollision
@@ -82,6 +85,7 @@ import PaperCPrel8.FiniteConditioning
 import PaperCPrel8.FiniteCumulantEnvelope
 import PaperCPrel8.FiniteCumulantPartitions
 import PaperCPrel8.FiniteFieldReplacement
+import PaperCPrel8.GoodStartDeletion
 import PaperCPrel8.HardConditionalForcing
 import PaperCPrel8.IndependentScalarTail
 import PaperCPrel8.InfinitePalmDeletion
@@ -125,6 +129,11 @@ import PaperCPrel8.MicroscopicSpatialRates
 import PaperCPrel8.MicroscopicValueProfile
 import PaperCPrel8.OddPrimePivot
 import PaperCPrel8.OrderedLabelCloud
+import PaperCPrel8.OutsideDeletion
+import PaperCPrel8.OutsideDeletionLimits
+import PaperCPrel8.PairRankExample
+import PaperCPrel8.PairRankExampleLaw
+import PaperCPrel8.PairRankExampleSource
 import PaperCPrel8.PalmCumulantEnvelope
 import PaperCPrel8.PalmDeficit
 import PaperCPrel8.PalmDeficitProbability
@@ -223,5 +232,5 @@ import PaperCPrel8.UniformExponentialEnvelope
 import PaperCPrel8.UniformGridFibres
 import PaperCPrel8.WeightedActivityWitness
 
-/-! Proved components of the 3PREL8 extension. The coverage ledger records
-which source-facing arithmetic and asymptotic conclusions remain open. -/
+/-! 3PREL8 correspondence, with explicit baseline literature inputs.
+See the coverage ledger for proof substitutions and qualification boundaries. -/

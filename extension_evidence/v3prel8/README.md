@@ -20,6 +20,6 @@ hashes are independent of the later packaging commit. The supplied PDFs and
 26 compilation inputs are preserved byte for byte; the TeX build was not rerun
 locally because Biber/BibLaTeX are absent.
 
-The current receipt is the [unnumbered analysis checkpoint](unnumbered-analysis/README.md),
-with 1,087 audited theorems across 224 modules. Earlier receipts retain their
+The current receipt is the [final realignment checkpoint](realignment-final/README.md),
+with 1,128 audited theorems across 233 modules. Earlier receipts retain their
 original source hashes and historical scope.

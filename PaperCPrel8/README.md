@@ -1,9 +1,9 @@
 # 3PREL8 proof components
 
-This library contains **1,087 proved theorems in 224 modules**. It is an
-extension of the previously validated development, not a formalization of every
-new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
-records the remaining arithmetic, probability and asymptotic obligations.
+This library contains **1,128 proved theorems in 233 modules**. It is an
+extension of the previously validated development. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
+records the completed source-facing realignment, its explicit baseline inputs
+and alternative proofs. The analytic Stein solution in F.2 remains an input.
 
 | Module | Proved component |
 |---|---|
@@ -231,6 +231,15 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `TiltedVoidIntegral` | The tilted identity integrated to the void endpoint, including a zero void |
 | `TiltedVoidLaw` | The tilted law and occurrence count behind the Palm logarithmic identity |
 | `WeightedActivityWitness` | The same arithmetic occupancy witness at every fixed nonnegative weight |
+| `CumulantSingletonPartitions` | Removing a singleton block from a finite cumulant partition |
+| `CumulantTranslationTable` | Translation of one variable changes only the singleton cumulant |
+| `CumulantConventions` | Raw and centered higher cumulants agree for the actual finite probability law |
+| `GoodStartDeletion` | Ordinary deletion of base starts on good sites, without an exponential Palm penalty |
+| `OutsideDeletion` | Literal ordinary outside-deletion costs for the stronger retained set |
+| `OutsideDeletionLimits` | Both named ordinary deletion costs vanish under the original paper budget |
+| `PairRankExample` | The two raw windows 91..95 and 113..117 at Y=11 |
+| `PairRankExampleLaw` | Exact probabilities of the concrete two-rank example, for every prescribed raw word |
+| `PairRankExampleSource` | Identification of the example matrix with the original multiplicative sample |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -269,13 +278,14 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/unnumbered-analysis/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/realignment-final/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
 labelled comparison) are proved under the explicit baseline AGG/PNT inputs.
 The affine corollary 5.4 and extended introduction 1.3 are also proved.
-Palm/cumulant complements and remaining unnumbered assertions still prevent
-a claim of complete realignment.
-
-G.1–G.9 numbered conclusions, the independently prescribed-floor full-field specialization, the finite tilted-void derivative and improper endpoint identity, and the fixed-t prime witness threshold are recorded. Final unnumbered review still includes named outside-deletion convergence, the raw-versus-centered higher-cumulant convention, and the concrete pair-rank example. Previously replaced proof-intermediate derivative estimates must be explicitly classified in the final review. F.2 retains its explicit baseline analytic solution premise.
+G.1–G.9 and the reviewed unnumbered consequences are now connected to the
+actual source and target objects. See the [full correspondence](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
+and [proof-substitution review](../docs/UNNUMBERED_REVIEW_V3PREL8.md).
+The baseline analytic Stein solution in F.2 remains an explicit premise;
+no new Comparator/NanoDa or Palomar qualification is claimed.

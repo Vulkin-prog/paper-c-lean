@@ -5,12 +5,14 @@ and its technical companion, by **Brice Pouly**.
 
 The current manuscript is the author-supplied **3PREL8 of 16 September 2026**.
 Its [minimal source package](manuscripts/v3prel8/README.md) is archived here.
-**Alignment of the formalization with its new results is in progress:**
+**Mathematical realignment is complete within the documented formalization scope:**
 71 prior numbered statements are preserved, one introductory statement is
 extended, and 24 numbered blocks are new. The
 [current coverage ledger](docs/FORMALIZATION_COVERAGE_V3PREL8.md) identifies
-proved components and remaining obligations. The [new library](PaperCPrel8/README.md)
-currently contains 1,087 audited theorems across 224 modules; all 24
+proved conclusions, explicit literature inputs and proof substitutions. F.2 still
+uses the baseline analytic Stein solution input; see the
+[unnumbered review](docs/UNNUMBERED_REVIEW_V3PREL8.md). The [new library](PaperCPrel8/README.md)
+currently contains 1,128 audited theorems across 233 modules; all 24
 libraries build. The final V3 has not yet been
 deposited on the publication platforms.
 

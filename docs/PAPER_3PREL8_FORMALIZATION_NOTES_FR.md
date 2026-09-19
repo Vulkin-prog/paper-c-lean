@@ -2,8 +2,10 @@
 
 Cette note concerne l'édition du 16 septembre 2026. Elle distingue les points
 vérifiés, les précisions utiles pour une prochaine rédaction et les obligations
-Lean encore ouvertes. Elle ne constitue pas une certification de l'ensemble
-des nouveaux résultats.
+de périmètre de preuve. Le recollement est terminé relativement aux entrées
+de littérature déclarées ; la construction analytique de la solution de Stein
+en F.2 reste une entrée, et la qualification Palomar reste distincte. Les lots
+ci-dessous sont historiques ; la conclusion actuelle figure au dernier point.
 
 ## Points confirmés lors de l'extension
 
@@ -1040,3 +1042,32 @@ La vraie moyenne retenue satisfait finalement cette condition. Cela donne
 le coefficient log(2)*(log(1+t)-1), puis la divergence pour t>exp(1)-1
 sur G0 et tout G_theta fixé. C'est un seuil suffisant pour ce témoin ; la
 formalisation ne le transforme pas en frontière optimale du modèle.
+
+## Raccords finaux et revue complète
+
+Les coûts ordinaires d_A et delta_G sont maintenant les quantités littérales du
+papier, avec leur convergence déduite du budget. Pour les suppressions ajoutées,
+une union des deux mots constants donne une majoration simple avec facteur 2,
+suffisante pour o(1), sans facteur exponentiel issu du conditionnement de Palm.
+
+La convention des cumulants est vérifiée : tout recentrage déterministe laisse
+les ordres supérieurs ou égaux à deux inchangés. Le terme d'ordre un centré par
+une référence p est EX-p ; il ne doit pas être supprimé si p n'est pas la moyenne.
+L'exemple L=3, Y=11, départs 92 et 114 est confirmé : rangs 5,5,7,10, proportion
+d'environnements compatibles 1/8 et moyenne absolue 7/4096. Le premier 11 a une
+colonne nulle ; les premiers actifs sont 2,3,5,7,13,19,23,29,31,47,113.
+
+Pour une prochaine rédaction, on peut remplacer les dérivations implicites du
+cutoff par l'argument de monotonie utilisé en Lean. De même, la restriction
+dyadique n'a besoin que de la monotonie et du contrôle du rapport des hauteurs.
+Ces substitutions prouvent les conclusions annoncées ; elles ne constituent
+pas une validation séparée des formules de dérivée imprimées. La troncature
+auxiliaire plus grande, lorsqu'elle est utilisée, contrôle les deux queues et
+préserve le champ final et le taux annoncés.
+
+La [revue des passages non numérotés](UNNUMBERED_REVIEW_V3PREL8.md) clôt le
+recollement au périmètre déclaré, avec les 32 groupes hérités, dont D.1/D.4.
+Les sources de l'auteur restent inchangées. Les hypothèses de littérature et
+les limites de fidélité antérieures restent visibles, notamment la construction
+analytique de Stein en F.2. Aucune nouvelle erreur mathématique du manuscrit
+n'a été démontrée dans cette dernière revue.

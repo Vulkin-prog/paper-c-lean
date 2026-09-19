@@ -1,12 +1,14 @@
 # Paper C 3PREL8 — formalization correspondence
 
-**Status: extension in progress. The complete 3PREL8 paper is not yet formalized.**
+**Status: mathematical realignment complete relative to the explicit baseline inputs and recorded proof substitutions. New Palomar qualification is pending.**
+
+F.2 still uses the previously declared analytic Stein solution input. The printed semigroup construction is not reconstructed here; this is not a claim that every cited analytic result has a self-contained Lean proof. The [unnumbered review](UNNUMBERED_REVIEW_V3PREL8.md) records this boundary and the alternative proofs.
 
 The curated [manuscripts](../manuscripts/v3prel8/README.md) contain 96 numbered statement blocks. Relative to the first V3PREL, 71 retain the same statement text (ignoring comments and whitespace), one introductory statement is extended, and 24 are new. These counts include introductory restatements and remarks and are not a percentage of the mathematical work.
 
 Preserved statements retain the [earlier correspondence](FORMALIZATION_COVERAGE_V3PREL.md), including its explicit literature premises and fidelity limits. Textual preservation does not independently certify every proof or unnumbered assertion in the new paper. The old Lean 4.34 validation receipt remains bound to its original source snapshot.
 
-New finite and asymptotic components are proved in `PaperCPrel8`; they are not substitutes for the missing arithmetic/asymptotic conclusions. No additional literature premise, axiom, `sorry`, or assumption of a final comparison theorem is used to close those gaps.
+New finite and asymptotic conclusions are proved in `PaperCPrel8`. No new axiom, `sorry`, or assumption of a final comparison theorem closes a gap. Literature premises remain explicit. Component descriptions below describe each local lemma; older checkpoint paragraphs retain their historical scope.
 
 The five existing Palomar configurations still describe their recorded V3PREL scope. They must not be presented as qualification of all 3PREL8 additions.
 
@@ -94,8 +96,8 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | companion | [E.1](../manuscripts/v3prel8/companion/E_boundary.tex#L23) | `supp:lem:transition` | preserved statement |
 | companion | [E.2](../manuscripts/v3prel8/companion/E_boundary.tex#L97) | `supp:lem:simple-incidence` | preserved statement |
 | companion | [E.3](../manuscripts/v3prel8/companion/E_boundary.tex#L165) | `supp:lem:pointwise-maximum` | preserved statement |
-| companion | [F.1](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L36) | `supp:pivot:lem:inputs` | new statement partial |
-| companion | [F.2](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L113) | `supp:pivot:lem:palm` | new statement partial |
+| companion | [F.1](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L36) | `supp:pivot:lem:inputs` | new statement proved with explicit inputs |
+| companion | [F.2](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L113) | `supp:pivot:lem:palm` | new statement proved with explicit analytic input |
 | companion | [F.3](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L174) | `supp:pivot:lem:rankin` | new statement proved |
 | companion | [F.4](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L206) | `supp:pivot:lem:saddle` | new statement proved |
 | companion | [F.5](../manuscripts/v3prel8/companion/F_microscopic_pivots.tex#L231) | `supp:pivot:prop:reciprocal` | new statement proved |
@@ -107,15 +109,15 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | companion | [G.4](../manuscripts/v3prel8/companion/G_palm_complements.tex#L137) | `supp:palm:prop:palm` | new statement proved with explicit inputs |
 | companion | [G.5](../manuscripts/v3prel8/companion/G_palm_complements.tex#L183) | `supp:palm:cor:palm-completion` | new statement proved with explicit inputs |
 | companion | [G.6](../manuscripts/v3prel8/companion/G_palm_complements.tex#L219) | `supp:palm:prop:signed-void` | new statement proved with explicit inputs |
-| companion | [G.7](../manuscripts/v3prel8/companion/G_palm_complements.tex#L311) | `supp:palm:prop:pair-activity` | new statement open |
-| companion | [G.8](../manuscripts/v3prel8/companion/G_palm_complements.tex#L338) | `supp:palm:lem:cumulant` | new statement open |
-| companion | [G.9](../manuscripts/v3prel8/companion/G_palm_complements.tex#L371) | `supp:palm:thm:cumulant-obstruction` | new statement open |
+| companion | [G.7](../manuscripts/v3prel8/companion/G_palm_complements.tex#L311) | `supp:palm:prop:pair-activity` | new statement proved with explicit inputs |
+| companion | [G.8](../manuscripts/v3prel8/companion/G_palm_complements.tex#L338) | `supp:palm:lem:cumulant` | new statement proved |
+| companion | [G.9](../manuscripts/v3prel8/companion/G_palm_complements.tex#L371) | `supp:palm:thm:cumulant-obstruction` | new statement proved with explicit inputs |
 
 The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains titles, page/source locators, comment-stripped statement hashes, prior proof references and the limits of new components.
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the twenty-fifth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the final checkpoint and the reviewed workstreams below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -517,18 +519,31 @@ endpoint limit and +infinity limit at a zero void are proved for the actual fini
 polynomial and its normalized tilted law. The fixed-t prime witness has leading
 lower exponent log(2)*(log(1+t)-1) and diverges for t>e-1 on G0 and fixed G_theta.
 
-The [current receipt](../extension_evidence/v3prel8/unnumbered-analysis/README.md)
+The [twenty-fifth checkpoint](../extension_evidence/v3prel8/unnumbered-analysis/README.md)
 records this checkpoint. The final unnumbered inventory and convention bridges
 still prevent a claim of complete realignment.
 
-## Remaining dependency chains
+## Final checkpoint
+
+The final checkpoint adds **41 theorems (1,128 total, 233 modules)**.
+The literal ordinary source and target deletion costs tend to zero; deterministic
+translations leave all higher cumulants unchanged while preserving EX-p at order
+one. The concrete two-window example has certified arithmetic rows, ranks and
+probabilities, including the exact mean absolute covariance 7/4096.
+
+The [final validation receipt](../extension_evidence/v3prel8/realignment-final/README.md)
+binds the complete 24-library build and 1,128-name axiom audit to the source
+snapshot. The [unnumbered review](UNNUMBERED_REVIEW_V3PREL8.md) records all changed
+TeX files, 11 review groups and the 32 inherited unnumbered groups, including
+D.1/D.4. Two proof-intermediate derivative estimates are replaced by proved
+monotonicity arguments. F.2 retains its explicit analytic solution premise.
+
+## Reviewed workstreams
 
 - **Typical and affine dictionaries**: The full typical theorem 5.3, affine corollary 5.4 and extended introduction 1.3 are proved under baseline AGG/PNT inputs. Actual matrix/offset sampling, uniform little-oh rates, exceptional fractions, readouts, both source comparisons in selection probability, and the short-description example are covered.
-- **Information-adapted cutoff**: Proposition 6.2 and the separately prescribed-floor full-field specialization are proved at the literal source regime under baseline AGG/PNT inputs. The event sigma-field is transported only upwards to max(w0,w_N(I)). Actual root existence, uniqueness, endpoints, constrained maximum, strict improvement and displayed leading limit are proved. Unnumbered proof-intermediate derivative formulas have been replaced by monotonicity and a larger certified truncation; final review must classify that replacement explicitly.
+- **Information-adapted cutoff**: Proposition 6.2 and the separately prescribed-floor full-field specialization are proved at the literal source regime under baseline AGG/PNT inputs. The event sigma-field is transported only upwards to max(w0,w_N(I)). Actual root existence, uniqueness, endpoints, constrained maximum, strict improvement and displayed leading limit are proved. Unnumbered proof-intermediate derivative formulas have been replaced by monotonicity and a larger certified truncation; this proof substitution is explicitly classified in UNNUMBERED_REVIEW_V3PREL8.md.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.
-- **Palm complements**: G.1–G.9 numbered conclusions, the independently prescribed-floor full-field specialization, the finite tilted-void derivative and improper endpoint identity, and the fixed-t prime witness threshold are recorded. Final unnumbered review still includes named outside-deletion convergence, the raw-versus-centered higher-cumulant convention, and the concrete pair-rank example. Previously replaced proof-intermediate derivative estimates must be explicitly classified in the final review. F.2 retains its explicit baseline analytic solution premise.
+- **Palm complements**: G.1–G.9 and the unnumbered tilted identities, reference-centering convention, named outside-deletion limits, numerical two-rank example and fixed-t prime witness are proved with the explicit inputs documented in each theorem. No new final-comparison premise is introduced.
 
-Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
-
-The proved microscopic comparison can now feed the remaining Palm-deficit and empirical consequences. The shifted scalar tail is now proved independently of that comparison, avoiding circular reasoning.
+Release qualification remains separate: these proofs do not extend the scope of the five previously recorded Palomar configurations.
