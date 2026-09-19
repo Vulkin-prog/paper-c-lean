@@ -82,7 +82,14 @@ import PaperCPrel8.MicroscopicSourceRelabelling
 import PaperCPrel8.MicroscopicSpatialRates
 import PaperCPrel8.MicroscopicValueProfile
 import PaperCPrel8.OddPrimePivot
+import PaperCPrel8.PalmDeficit
+import PaperCPrel8.PalmDeficitProbability
+import PaperCPrel8.PalmDeletionIdentity
 import PaperCPrel8.PalmStein
+import PaperCPrel8.PalmTargetSignBound
+import PaperCPrel8.PalmVoidAverage
+import PaperCPrel8.PalmVoidNormalization
+import PaperCPrel8.PalmVoidPolynomial
 import PaperCPrel8.PivotGeometry
 import PaperCPrel8.PivotRankinExpandedBand
 import PaperCPrel8.PivotRankinUniform
@@ -90,6 +97,7 @@ import PaperCPrel8.PrimeForcing
 import PaperCPrel8.PrivateForcing
 import PaperCPrel8.ReciprocalPivotAsymptotics
 import PaperCPrel8.ReciprocalPivotShells
+import PaperCPrel8.RegularPlantPresence
 import PaperCPrel8.SaddleEnvelope
 import PaperCPrel8.SaddleScaleMonotonicity
 import PaperCPrel8.SignedPalmForcing

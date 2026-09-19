@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **503 proved theorems in 107 modules**. It is an
+This library contains **546 proved theorems in 115 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -114,6 +114,14 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `AffineDictionaryDescription` | Explicit inclusion formulas, linear-size dictionaries and log-squared bits |
 | `TypicalDictionaryConvergence` | Both actual field distances converge in uniform-subset selection probability |
 | `AffineDictionaryConvergence` | Both actual field distances converge in affine selection probability |
+| `RegularPlantPresence` | Actual joint signed-mark presence under private-prime geometry and small-prime conditioning |
+| `PalmDeficit` | Countable target-side positive mass deficit and regular-class restriction |
+| `PalmDeletionIdentity` | Actual finite conditional Palm mass cancellation and ordinary deletion cost |
+| `PalmVoidNormalization` | Logarithmic normalization bound without an upper bound on the void ratio |
+| `PalmVoidAverage` | Target-averaged normalized comparison with explicit configuration/projection hypotheses |
+| `PalmDeficitProbability` | Target-weighted bounded-defect expectation/probability equivalence on varying spaces |
+| `PalmVoidPolynomial` | Exact finite avoidance expansion, singleton corrections and actual void event |
+| `PalmTargetSignBound` | Finite-law mean/variance bound with sharp factor one half |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -152,7 +160,7 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/affine-dictionaries/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/palm-identities/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
@@ -160,3 +168,8 @@ labelled comparison) are proved under the explicit baseline AGG/PNT inputs.
 The affine corollary 5.4 and extended introduction 1.3 are also proved.
 Palm/cumulant complements and remaining unnumbered assertions still prevent
 a claim of complete realignment.
+
+The Palm identities now include actual regular-plant presence and ordinary
+finite-source deletion, as well as countable normalized comparison algebra.
+The regular-cloud estimates, full arithmetic G.4/G.5 instantiation and signed
+Fourier/Walsh identifications remain open; G.3–G.6 are partial, not closed.

@@ -3792,9 +3792,30 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 83,
       "statement_sha256": "54500e8391aab931d2a61bc9710ef2703924f38bf65ed4e42e363cc88e3db7a6",
-      "status": "new_statement_open",
+      "status": "new_statement_partial",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/RegularPlantPresence.lean",
+          "declaration": "private_basis",
+          "scope": "Actual private odd-valuation prime coordinates form an identity minor on raw vertex occurrences, including occurrences from different supports."
+        },
+        {
+          "path": "PaperCPrel8/RegularPlantPresence.lean",
+          "declaration": "word_iff",
+          "scope": "The combined raw equations are exactly simultaneous actual signed exact marks."
+        },
+        {
+          "path": "PaperCPrel8/RegularPlantPresence.lean",
+          "declaration": "presence_small_event",
+          "scope": "Exact product of signed mark rates on every small-prime event, given literal private-prime geometry. Target high-probability regularity and the CRT counting bound are still open."
+        },
+        {
+          "path": "PaperCPrel8/RegularPlantPresence.lean",
+          "declaration": "presence_conditional",
+          "scope": "The same exact presence factorization under any positive small-prime conditioning event; it does not assert absence of further occurrences."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -3806,9 +3827,50 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 137,
       "statement_sha256": "0e1338aabb5e215fb7b349fcfdc8e0541f2b662037db3f9ab4c5985c53258b2b",
-      "status": "new_statement_open",
+      "status": "new_statement_partial",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/PalmDeficit.lean",
+          "declaration": "massTotalVariation_eq_deficit",
+          "scope": "Countable half-L1 distance equals the target-side positive mass deficit, with summability and mass-one hypotheses."
+        },
+        {
+          "path": "PaperCPrel8/PalmDeficit.lean",
+          "declaration": "deficit_restriction",
+          "scope": "Restricting to any regular class loses at most its target exceptional mass."
+        },
+        {
+          "path": "PaperCPrel8/PalmDeletionIdentity.lean",
+          "declaration": "palm_deleted_mass",
+          "scope": "Exact ordinary deleted-event mass from actual finite conditional Palm probabilities, without exponential amplification."
+        },
+        {
+          "path": "PaperCPrel8/PalmDeletionIdentity.lean",
+          "declaration": "sum_deleted_configurations",
+          "scope": "Disjoint retained configurations sum exactly to the probability of a regular retained configuration and an outside occurrence."
+        },
+        {
+          "path": "PaperCPrel8/PalmDeletionIdentity.lean",
+          "declaration": "sum_deleted_le",
+          "scope": "The summed mass is at most the ordinary outside-event probability."
+        },
+        {
+          "path": "PaperCPrel8/PalmVoidNormalization.lean",
+          "declaration": "deficit_log_bound",
+          "scope": "Uniform logarithmic rescaling bound for any nonnegative normalized void, without an upper bound on that void."
+        },
+        {
+          "path": "PaperCPrel8/PalmVoidAverage.lean",
+          "declaration": "normalized_void_deficit",
+          "scope": "Abstract countable G.4 comparison with explicit configuration-mass, projection and log-error premises. These are not yet instantiated for the full arithmetic regular class."
+        },
+        {
+          "path": "PaperCPrel8/PalmVoidAverage.lean",
+          "declaration": "normalization_penalty",
+          "scope": "Explicit uniform penalty K*p+g*p^2/(1-p), sufficient for the printed big-O remainder; the sharper printed factor 1/2 is not claimed."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -3820,9 +3882,20 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 183,
       "statement_sha256": "a8cab45241d203f5dd024ff66fc1bcc822d1d6923b563df9432990db3275ef96",
-      "status": "new_statement_open",
+      "status": "new_statement_partial",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/PalmDeficitProbability.lean",
+          "declaration": "exceedance_le",
+          "scope": "Markov bound for target-weighted bounded defects on a countable state space."
+        },
+        {
+          "path": "PaperCPrel8/PalmDeficitProbability.lean",
+          "declaration": "mean_tendsto_zero_iff",
+          "scope": "A bounded nonnegative defect has vanishing target mean iff it vanishes in target probability, even on varying state spaces. Deriving the arithmetic mean limit still requires the regular-cloud and deletion bounds."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -3834,9 +3907,30 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 219,
       "statement_sha256": "af1d375416e6aca4600141c1729c4215209da409fce4dd4797217282745addcf",
-      "status": "new_statement_open",
+      "status": "new_statement_partial",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/PalmVoidPolynomial.lean",
+          "declaration": "normalized_expectation",
+          "scope": "Exact finite normalized avoidance polynomial for any actual finite law, including a planted law; retains singleton corrections. Its centered moments are not yet identified with the paper's signed affine Fourier coefficients."
+        },
+        {
+          "path": "PaperCPrel8/PalmVoidPolynomial.lean",
+          "declaration": "avoidance_probability",
+          "scope": "At t=1 the polynomial numerator is the exact probability of no remaining Boolean occurrence."
+        },
+        {
+          "path": "PaperCPrel8/PalmVoidPolynomial.lean",
+          "declaration": "singleton_centered_moment",
+          "scope": "The singleton correction is the actual planted mean minus p, without assuming it vanishes."
+        },
+        {
+          "path": "PaperCPrel8/PalmTargetSignBound.lean",
+          "declaration": "deficit_mean_variance_bound",
+          "scope": "Sharp deficit <=min(1,(1-mean)_++sqrt(variance)/2) for an actual finite nonnegative observable. Identification of its variance with Walsh coefficient energy remains open."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -3928,7 +4022,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction."
+      "remaining": "Private-prime regular plants have exact arithmetic presence probabilities, including hard small-prime conditioning. Countable mass-deficit and ordinary-deletion identities, log normalization, bounded-defect probability equivalence, finite avoidance polynomial and mean/variance deficit bound are proved. Still open: rough-kernel/CRT counts and high-probability regular clouds, full arithmetic instantiation of G.4/G.5, signed Fourier/Walsh coefficient identifications, signed pair activity and the cumulant inequality/arithmetic obstruction."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."

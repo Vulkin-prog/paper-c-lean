@@ -592,3 +592,54 @@ Aucune erreur nouvelle n'a été identifiée dans ces énoncés. Les remarques
 ci-dessus précisent la portée du transfert et proposent une preuve plus
 directe de l'échantillonnage. Les compléments de Palm/cumulants et la revue
 finale des assertions non numérotées restent à traiter.
+
+
+## Identités de Palm et normalisation — quinzième lot
+
+Ce lot apporte 43 théorèmes dans huit modules. Il avance les résultats G.3
+à G.6 sans les présenter comme entièrement terminés. Aucune prémisse de
+littérature supplémentaire n'intervient et les sources du papier ne changent pas.
+
+- **Présence et régularité sont deux preuves distinctes.** Pour une géométrie
+  munie de premiers privés, la probabilité arithmétique de présence simultanée
+  des mots signés est maintenant calculée exactement, sur chaque événement
+  des petits premiers. La grande probabilité de cette régularité sous la cible
+  reste à établir par les comptes de noyaux et de classes CRT. Une factorisation
+  de présence seule ne donne pas une probabilité de configuration exacte.
+- **Occurrences brutes indexées séparément.** Le système affine rassemble les
+  couples (mot, position interne). Deux occurrences de la même valeur entière
+  ne sont donc pas identifiées artificiellement ; leur répétition interdit
+  bien la propriété de premier privé du papier.
+- **Suppression ordinaire après sommation.** La probabilité conditionnelle de
+  configuration, multipliée par celle de présence, redonne sa masse réelle.
+  Les événements de configurations retenues distinctes sont disjoints. Leur
+  somme paie exactement l'événement « configuration retenue régulière et départ
+  à l'extérieur », majoré par le coût ordinaire de suppression. Aucun facteur
+  exponentiel en l'intensité n'apparaît dans ce calcul.
+- **Normalisation sans contrôle supérieur du rapport.** Pour b>0 et x>=0,
+  la différence des parties positives de 1-bx et 1-x est au plus |log b|.
+  La preuve est uniforme même lorsque x est grand. Pour le facteur
+  exp(g*p)*(1-p)^(g-k), nous obtenons la pénalité explicite
+  `k*p+g*p^2/(1-p)`. Cette borne, légèrement moins fine que le facteur 1/2
+  affiché dans le papier, suffit à la même conclusion en grand O.
+- **Ce qui reste à instancier dans G.4/G.5.** Le lemme dénombrable de comparaison
+  conserve explicitement les identités de masses de configurations et le coût
+  de projection. Il ne les remplace pas par une hypothèse finale de convergence.
+  Leur raccord au champ arithmétique complet et les erreurs de régularité restent
+  ouverts. L'équivalence moyenne/probabilité est prouvée pour tout déficit
+  borné entre zéro et un, y compris sur des espaces variant avec l'échelle.
+- **Polynôme signé : conserver les singletons.** L'expansion finie exacte vaut
+  pour toute vraie loi plantée. Le coefficient à un site est sa moyenne plantée
+  moins p ; il n'est pas supposé nul. À t=1, le numérateur est exactement la
+  probabilité d'absence de départs restants. L'identification des coefficients
+  avec les caractères affines et l'environnement conditionné reste à formaliser.
+- **Borne selon les signes.** Pour une loi finie réelle, le déficit moyen est
+  majoré par `(1-moyenne)_+ + sqrt(variance)/2`, et par un si R>=0. Le facteur
+  un demi vient de l'égalité entre la partie négative centrée moyenne et la
+  moitié de l'écart absolu moyen. Aucun petit-o séparé de ces deux termes n'est
+  nécessaire. Le raccord de la variance à l'énergie de Walsh reste ouvert.
+
+Aucune correction nouvelle des énoncés n'a été identifiée. Les points ci-dessus
+précisent les étapes prouvées et leurs dépendances. Les bornes de noyaux, les
+comptages CRT, l'activité des paires et les cumulants demeurent des travaux
+mathématiques effectifs, non des tâches de simple documentation.
