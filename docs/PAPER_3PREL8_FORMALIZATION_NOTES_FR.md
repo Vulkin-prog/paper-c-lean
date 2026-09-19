@@ -492,3 +492,58 @@ Le corollaire 7.8a et la remarque 7.8b sont donc tous deux formalisés.
 Seul le corollaire utilise les prémisses de comparaison microscopique déjà
 répertoriées ; la remarque repose sur la taille du support et les échelles.
 Les sources du manuscrit restent inchangées.
+
+
+## Dictionnaires typiques et cutoff adapté à l'information — treizième lot
+
+Le théorème 5.3 et la proposition 6.2 sont maintenant démontrés, sous les
+prémisses AGG et PNT déjà déclarées dans le dépôt. Aucun résultat final de
+comparaison ni aucune limite supplémentaire n'est supposé. Les sources du
+manuscrit restent inchangées. Les observations suivantes peuvent simplifier
+la rédaction ; elles ne constituent pas des erreurs dans ces énoncés.
+
+- **Moyenner après la distance.** La sélection du dictionnaire doit rester
+  extérieure à la distance conditionnelle. On majore la distance pour chaque
+  dictionnaire fixé, puis on moyenne les coûts positifs. La suppression réelle
+  moyenne vaut exactement `a*#bad` sur chaque fibre de petits premiers, quelle
+  que soit sa loi arithmétique. C'est la justification précise de la disparition
+  du défaut pondéré dans ce seul théorème.
+- **Collisions et paires locales.** L'injection des relations des différences
+  dans celles du système empilé est construite par `t -> (t,-t)` ; en
+  caractéristique deux, c'est bien `(t,t)`. Le coût local peut être obtenu avec
+  l'identité d'espérance du poids de recouvrement déjà démontrée, sans refaire
+  le calcul des chaînes du graphe d'égalité. La borne finie obtenue est
+  `2*a*D+8*a^2*#mask*B+6*a^2*edges+2*a*p*R`.
+- **Un seul petit-o uniforme.** Prendre le supremum des véritables distances
+  moyennes admissibles, augmenté de zéro si le régime est vide, définit un
+  taux déterministe entre zéro et un. Les estimations pour toute marge fixe
+  se convertissent en `C*(exp(-V+delta)+N^(-1/3+epsilon))` avec `delta/nu->0`
+  au moyen d'une enveloppe logarithmique explicite. Cela évite de choisir un
+  petit-o séparément pour chaque longueur ou taille. Une borne inférieure
+  positive sur l'intensité n'est pas nécessaire pour cette comparaison.
+- **Existence sans dérivation implicite.** Le cutoff adapté est construit
+  sur l'intervalle des paramètres des selles dure et élargie, où la fonction
+  est continue. La décroissance du coût de suppression donne ensuite unicité,
+  optimum et amélioration stricte. Les formules de dérivées du compagnon ne
+  sont donc pas nécessaires à ces conclusions et ne sont pas nouvellement
+  formalisées dans ce lot.
+- **Limite quadratique exacte.** Avec `u` le paramètre de la selle adaptée,
+  `w^2+I*w=2*H*(u-normalizedEi(u))`. Encadrer `u` par les deux paramètres déjà
+  étudiés suffit à obtenir la limite `(sqrt(theta^2+8)-3*theta)/4` du budget
+  divisé par V. Aucune asymptotique de la nouvelle racine n'est postulée.
+- **Troncature auxiliaire simplifiée.** Pour prouver la proposition 6.2,
+  on peut réutiliser `E=3*ceil(Vhat/log 2)`, déjà certifié dans le dépôt.
+  Le budget implique `I+log Lambda<=w<=Vhat`, d'où un coût de queue au plus
+  `exp(-2*Vhat)` après conditionnement. Cette troncature reste `O(V)` et
+  disparaît des lois finales. Le choix plus précis affiché dans le papier
+  est valable mais n'est pas nécessaire à cette preuve.
+- **Régime littéral.** La marge d'information et `Lambda>=1` impliquent la
+  bande logarithmique utilisée par les estimations finies ; ce n'est pas une
+  nouvelle hypothèse de la proposition. La comparaison finale conserve le
+  même événement dans la sigma-algèbre complète à son cutoff adapté et donne
+  la borne explicite `67*exp(-cprime*nu)+64*N^(-1/3+epsilon)`.
+
+Le maximum algébrique sous une borne inférieure de cutoff prescrite est
+également démontré pour la vraie selle. L'extension non numérotée de la
+comparaison complète à ce cutoff contraint reste à assembler. Le corollaire
+des dictionnaires affines et les compléments de Palm/cumulants restent ouverts.

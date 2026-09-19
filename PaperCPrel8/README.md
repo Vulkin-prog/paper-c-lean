@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **346 proved theorems in 70 modules**. It is an
+This library contains **436 proved theorems in 92 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -77,6 +77,28 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `EmpiricalSupportScales` | Vanishing literal N*p^2 penalty and convergence of the finite lower bound |
 | `EmpiricalSupportGrowth` | Actual origin count and proof of N*p^2=M^(-1+o(1)) |
 | `EmpiricalSupportTheorem` | Remark 7.8b for every realization, with exact arithmetic coordinates and positive liminf |
+| `DictionarySamplingBounds` | Exact selection coefficients, inequalities and average one-word costs |
+| `DictionaryCollision` | Injective collision-to-stacked relation map and nullity comparison |
+| `DictionaryArithmeticCollision` | Actual arithmetic word collision and selected pair bounds |
+| `DictionaryAverage` | Finite selection/environment averaging and exact exceptional fractions |
+| `DictionaryMaskedCosts` | Local graph and overlap costs proportional to the actual mask size |
+| `TypicalDictionaryPairs` | Averaged actual pair mass with the full-value excess profile |
+| `TypicalDictionaryDeletion` | Exact mean deletion cost on every prime fibre |
+| `TypicalDictionaryTransfer` | Actual fixed-dictionary conditional field transfer followed by selection averaging |
+| `TypicalDictionaryFinite` | Literal finite masked estimate with explicit numerical constants |
+| `TypicalDictionaryRates` | Uniform arithmetic bounds at the actual hard cutoff |
+| `TypicalDictionaryTheorem` | Uniform fixed-slack mean rate, exceptional fraction and unconditional contraction |
+| `TypicalDictionaryIid` | Actual independent-sign comparison and normalized Lambda-squared remainder |
+| `UniformExponentialEnvelope` | Constructive logarithmic envelope converting arbitrary fixed slack to a little-oh term |
+| `TypicalDictionaryUniform` | One deterministic actual-mean supremum and its literal uniform little-oh rate |
+| `TypicalDictionaryConsequences` | Typical classes, arbitrary readouts and full infinite iid comparison |
+| `InformationSaddle` | Existence and uniqueness of the actual information-dependent root |
+| `InformationSaddleBudget` | Root endpoints, strict monotonicity, improvement, actual and constrained maxima |
+| `InformationSaddleScales` | Uniform parameter asymptotics and exact quadratic identity |
+| `InformationSaddleLimit` | The displayed leading information-budget formula |
+| `InformationFieldBudget` | Separate linear/quadratic error margins and uniform tail/polynomial absorption |
+| `InformationFieldTheorem` | Actual full signed field at the information cutoff, with explicit uniform rate |
+| `InformationFieldPaper` | Proposition 6.2 without extra band assumptions, and arbitrary deterministic readouts |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -115,5 +137,10 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/empirical-support/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/typical-and-information/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
+
+Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
+labelled comparison) are proved under the explicit baseline AGG/PNT inputs.
+The actual affine sampling ensemble, Palm/cumulant complements and remaining
+unnumbered assertions still prevent a claim of complete realignment.

@@ -1546,13 +1546,58 @@
       "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
       "line": 196,
       "statement_sha256": "1fa8f41060d1491f9d091f8503c1f82d407b446fd7f37548cf3675baaa95eda9",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
-          "path": "PaperCPrel8/DictionarySelection.lean",
-          "declaration": "averaged_pair_probability",
-          "scope": "Exact dictionary-selection/collision identity for arbitrary finite source laws. The uniform arithmetic error estimate and asymptotic conclusion are still open."
+          "path": "PaperCPrel8/DictionarySamplingBounds.lean",
+          "declaration": "averaged_pair_le",
+          "scope": "Actual uniform m-subset sampling: averaged pairs are bounded by a^2 plus a times the collision probability."
+        },
+        {
+          "path": "PaperCPrel8/DictionaryArithmeticCollision.lean",
+          "declaration": "averaged_dictionary_joint_le",
+          "scope": "Actual arithmetic words; the collision relation space injects into the full two-window relation space. No final collision estimate is assumed."
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryDeletion.lean",
+          "declaration": "averaged_deletedMass",
+          "scope": "Actual deleted source mass is exactly a times the number of deleted sites, on every fixed prime fibre."
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryFinite.lean",
+          "declaration": "finite_masked_typical_bound",
+          "scope": "The literal finite masked bound, with explicit constants 2,8,6,2 and local cost proportional to mask.card; baseline process AGG input explicit."
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryUniform.lean",
+          "declaration": "uniform_littleOh_rate",
+          "scope": "A single deterministic supremum of actual admissible means obeys C*(exp(-V+delta)+N^(-1/3+epsilon)), with delta>=0 and delta/nu->0. Uniform in length and size; baseline AGG and PNT inputs explicit."
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryUniform.lean",
+          "declaration": "uniformRate_tendsto_zero",
+          "scope": "The deterministic uniform rate tends to zero without a final convergence premise."
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryConsequences.lean",
+          "declaration": "uniform_exceptional_fraction",
+          "scope": "Actual exceptional dictionary proportion <= min(1,r_N/t). Each dictionary remains fixed inside the conditional distance."
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryConsequences.lean",
+          "declaration": "exceptional_fraction_tendsto_zero",
+          "scope": "Every admissible sequence with r_N/t_N->0 has vanishing exceptional proportion."
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryConsequences.lean",
+          "declaration": "nonexceptional_readout",
+          "scope": "Every deterministic readout contracts for each fixed dictionary before selection averaging."
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryConsequences.lean",
+          "declaration": "uniform_arithmetic_iid_bound",
+          "scope": "The two actual infinite word fields have averaged TV <= r_N+8*Lambda^2*B/N, using the baseline process AGG input."
         }
       ]
     },
@@ -2026,13 +2071,38 @@
       "source": "manuscripts/v3prel8/sections/06_conditioning.tex",
       "line": 149,
       "statement_sha256": "ac9842b8c709be3cab0fcc8a7e1e8308112132202ab3b1c8c89344a6c69403cd",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
-          "path": "PaperCPrel8/InformationBudget.lean",
-          "declaration": "admissible_cutoff_maximizes",
-          "scope": "Exact constrained optimization and exponent margins. Existence and asymptotics of the actual information-dependent saddle and the full field estimate remain open."
+          "path": "PaperCPrel8/InformationSaddle.lean",
+          "declaration": "existsUnique_crossing",
+          "scope": "Constructs the unique root of the actual saddle equation in [V,Vhat], without any assumed existence or continuity input."
+        },
+        {
+          "path": "PaperCPrel8/InformationSaddleBudget.lean",
+          "declaration": "constrained_maximum",
+          "scope": "The actual optimized leading budget over cutoffs above a required floor is attained at max(floor,w(I))."
+        },
+        {
+          "path": "PaperCPrel8/InformationSaddleBudget.lean",
+          "declaration": "budget_strict_improvement",
+          "scope": "The optimized budget is strictly greater than Vhat/2-I at positive admissible information costs, without implicit differentiation."
+        },
+        {
+          "path": "PaperCPrel8/InformationSaddleLimit.lean",
+          "declaration": "information_budget_limit",
+          "scope": "The actual leading budget divided by V tends to (sqrt(theta^2+8)-3*theta)/4 whenever I/V->theta, deriving the quadratic limit from the existing saddle asymptotics."
+        },
+        {
+          "path": "PaperCPrel8/InformationFieldPaper.lean",
+          "declaration": "paper_information_field",
+          "scope": "Literal proposition 6.2 for every positive full-F_Y event: all sites, signs and unbounded excesses; quantitative bound 67*exp(-cprime*nu)+64*N^(-1/3+epsilon). The support band is derived from the information margin. Only baseline AGG and PNT inputs."
+        },
+        {
+          "path": "PaperCPrel8/InformationFieldPaper.lean",
+          "declaration": "statistic_distance_le",
+          "scope": "Every deterministic image or restriction contracts the actual conditional spatial law and target."
         }
       ]
     },
@@ -3703,14 +3773,14 @@
         "thm:typical-dictionaries",
         "cor:affine-dictionaries"
       ],
-      "remaining": "Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities."
+      "remaining": "The complete typical-dictionary theorem 5.3 is proved, including the literal masked finite bound, uniform little-oh rate, exceptional proportion and iid comparison. The actual affine-ensemble sampling identities and their transfer (5.4), and the extended introductory restatement, remain open."
     },
     {
       "name": "Information-adapted cutoff",
       "labels": [
         "prop:information-labelled"
       ],
-      "remaining": "Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain."
+      "remaining": "Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation."
     },
     {
       "name": "Microscopic signed prefix field",

@@ -3,6 +3,11 @@ import PaperCPrel8.ActualSignedPairs
 import PaperCPrel8.ActualSignedPalm
 import PaperCPrel8.CategoricalPalm
 import PaperCPrel8.CategoricalSummation
+import PaperCPrel8.DictionaryArithmeticCollision
+import PaperCPrel8.DictionaryAverage
+import PaperCPrel8.DictionaryCollision
+import PaperCPrel8.DictionaryMaskedCosts
+import PaperCPrel8.DictionarySamplingBounds
 import PaperCPrel8.DictionarySelection
 import PaperCPrel8.DirectedFootprint
 import PaperCPrel8.DirectedFootprintAsymptotics
@@ -28,6 +33,13 @@ import PaperCPrel8.FiniteConditioning
 import PaperCPrel8.HardConditionalForcing
 import PaperCPrel8.IndependentScalarTail
 import PaperCPrel8.InformationBudget
+import PaperCPrel8.InformationFieldBudget
+import PaperCPrel8.InformationFieldPaper
+import PaperCPrel8.InformationFieldTheorem
+import PaperCPrel8.InformationSaddle
+import PaperCPrel8.InformationSaddleBudget
+import PaperCPrel8.InformationSaddleLimit
+import PaperCPrel8.InformationSaddleScales
 import PaperCPrel8.MarkovReadouts
 import PaperCPrel8.MicroscopicActualGeometry
 import PaperCPrel8.MicroscopicBadPivotCount
@@ -68,6 +80,16 @@ import PaperCPrel8.SaddleEnvelope
 import PaperCPrel8.SaddleScaleMonotonicity
 import PaperCPrel8.SignedPalmForcing
 import PaperCPrel8.SmallPrimeMixture
+import PaperCPrel8.TypicalDictionaryConsequences
+import PaperCPrel8.TypicalDictionaryDeletion
+import PaperCPrel8.TypicalDictionaryFinite
+import PaperCPrel8.TypicalDictionaryIid
+import PaperCPrel8.TypicalDictionaryPairs
+import PaperCPrel8.TypicalDictionaryRates
+import PaperCPrel8.TypicalDictionaryTheorem
+import PaperCPrel8.TypicalDictionaryTransfer
+import PaperCPrel8.TypicalDictionaryUniform
+import PaperCPrel8.UniformExponentialEnvelope
 
 /-! Proved components of the 3PREL8 extension. The coverage ledger records
 which source-facing arithmetic and asymptotic conclusions remain open. -/
