@@ -2219,6 +2219,21 @@
           "path": "PaperCPrel8/InformationFieldPaper.lean",
           "declaration": "statistic_distance_le",
           "scope": "Every deterministic image or restriction contracts the actual conditional spatial law and target."
+        },
+        {
+          "path": "PaperCPrel8/PrescribedInformationField.lean",
+          "declaration": "prescribed_field_in_band",
+          "scope": "Full signed field at every independently admissible w between the hard and enlarged cutoffs, using the actual minimum budget."
+        },
+        {
+          "path": "PaperCPrel8/PrescribedInformationPaper.lean",
+          "declaration": "paper_prescribed_field",
+          "scope": "The literal regime implies the support band, without an extra band assumption."
+        },
+        {
+          "path": "PaperCPrel8/PrescribedInformationPaper.lean",
+          "declaration": "optimized_floor_field",
+          "scope": "Full field at max(w0,w_N(I)) with event measurability supplied only at the prescribed floor w0, transported monotonically to the larger sigma-field."
         }
       ]
     },
@@ -4361,6 +4376,36 @@
           "path": "PaperCPrel8/PalmCumulantEnvelope.lean",
           "declaration": "singleton_correction",
           "scope": "The singleton cumulant is exactly the actual Palm marginal minus the reference p."
+        },
+        {
+          "path": "PaperCPrel8/TiltedVoidDerivative.lean",
+          "declaration": "log_normalized_derivative",
+          "scope": "Exact log derivative for every finite law, count N, 0<=p<1 and t<1."
+        },
+        {
+          "path": "PaperCPrel8/TiltedVoidIntegral.lean",
+          "declaration": "integral_identity",
+          "scope": "The exact finite interval integral equals minus log of the normalized void."
+        },
+        {
+          "path": "PaperCPrel8/TiltedVoidIntegral.lean",
+          "declaration": "integral_limit_positive",
+          "scope": "The improper identity converges to the finite negative log endpoint when the void probability is positive."
+        },
+        {
+          "path": "PaperCPrel8/TiltedVoidIntegral.lean",
+          "declaration": "integral_limit_zero",
+          "scope": "When the void probability is zero the improper integral tends to +infinity; Lean Real.log(0) is not used as its endpoint value."
+        },
+        {
+          "path": "PaperCPrel8/TiltedVoidLaw.lean",
+          "declaration": "tilted_mean_eq",
+          "scope": "The tilted mean is the expectation under the explicitly normalized finite tilted probability law."
+        },
+        {
+          "path": "PaperCPrel8/TiltedVoidLaw.lean",
+          "declaration": "normalized_avoidance",
+          "scope": "The occurrence-count generating polynomial is exactly the finite product over the original Boolean indicators."
         }
       ]
     },
@@ -4596,6 +4641,26 @@
           "path": "PaperCPrel8/PrimeHigherDivergence.lean",
           "declaration": "retained_higher_diverges",
           "scope": "The higher-order divergence is discharged for every fixed nonnegative theta and actual G_theta; G.9 no longer depends on an unproved pair estimate."
+        },
+        {
+          "path": "PaperCPrel8/WeightedActivityWitness.lean",
+          "declaration": "witness_log_lower",
+          "scope": "The same positive witness gives a finite polynomial lower bound at every fixed nonnegative t."
+        },
+        {
+          "path": "PaperCPrel8/PrimeWeightedLimit.lean",
+          "declaration": "retained_lower",
+          "scope": "The actual G_theta law has the lower leading exponent log(2)*(log(1+t)-1), with all mean, omission and cutoff conditions discharged."
+        },
+        {
+          "path": "PaperCPrel8/PrimeWeightedLimit.lean",
+          "declaration": "original_log_diverges",
+          "scope": "For t>exp(1)-1 the log polynomial diverges on the actual G0 prime sequence; this is a witness threshold, not an optimal phase boundary."
+        },
+        {
+          "path": "PaperCPrel8/PrimeWeightedLimit.lean",
+          "declaration": "retained_log_diverges",
+          "scope": "The same fixed-t divergence holds for each fixed nonnegative theta."
         }
       ]
     }
@@ -4615,7 +4680,7 @@
       "labels": [
         "prop:information-labelled"
       ],
-      "remaining": "Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation."
+      "remaining": "Proposition 6.2 and the separately prescribed-floor full-field specialization are proved at the literal source regime under baseline AGG/PNT inputs. The event sigma-field is transported only upwards to max(w0,w_N(I)). Actual root existence, uniqueness, endpoints, constrained maximum, strict improvement and displayed leading limit are proved. Unnumbered proof-intermediate derivative formulas have been replaced by monotonicity and a larger certified truncation; final review must classify that replacement explicitly."
     },
     {
       "name": "Microscopic signed prefix field",
@@ -4647,7 +4712,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "G.1–G.9 numbered conclusions are recorded, with explicit baseline inputs where required. G.7 now has its actual uniform absolute pair bound and vanishing conclusion for every deterministic G subset of G0, at the paper cutoffs and any adequate cylinder. G.9 has the positive normalized lower limit, total divergence, vanishing pair layer and divergence at orders >=3 for G0 and every fixed G_theta, independently of the full microscopic comparison. Final unnumbered review (named outside-deletion convergence, cumulant conventions, tilted-void identities, the pair example and witness threshold) and the separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise."
+      "remaining": "G.1–G.9 numbered conclusions, the independently prescribed-floor full-field specialization, the finite tilted-void derivative and improper endpoint identity, and the fixed-t prime witness threshold are recorded. Final unnumbered review still includes named outside-deletion convergence, the raw-versus-centered higher-cumulant convention, and the concrete pair-rank example. Previously replaced proof-intermediate derivative estimates must be explicitly classified in the final review. F.2 retains its explicit baseline analytic solution premise."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."

@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the twenty-fourth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the twenty-fifth checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -505,17 +505,29 @@ categorical two-site layer. G.9's orders >=3 now diverge for both G0 and G_theta
 These conclusions require only the already declared PNT remainder, independently
 of F.2's directional Stein solution premise.
 
-The [current receipt](../extension_evidence/v3prel8/absolute-pair-completion/README.md)
+The [twenty-fourth checkpoint](../extension_evidence/v3prel8/absolute-pair-completion/README.md)
 records this checkpoint. Unnumbered assertions and the prescribed-floor field
 specialization still prevent a claim of complete realignment.
+
+The twenty-fifth checkpoint adds **39 theorems (1,087 total, 224 modules)**.
+The independently prescribed floor now has its full field theorem at the literal
+source regime: max(w0,w_N(I)) preserves measurability by upward sigma-field
+inclusion. The exact tilted-void derivative, finite interval integral, positive
+endpoint limit and +infinity limit at a zero void are proved for the actual finite
+polynomial and its normalized tilted law. The fixed-t prime witness has leading
+lower exponent log(2)*(log(1+t)-1) and diverges for t>e-1 on G0 and fixed G_theta.
+
+The [current receipt](../extension_evidence/v3prel8/unnumbered-analysis/README.md)
+records this checkpoint. The final unnumbered inventory and convention bridges
+still prevent a claim of complete realignment.
 
 ## Remaining dependency chains
 
 - **Typical and affine dictionaries**: The full typical theorem 5.3, affine corollary 5.4 and extended introduction 1.3 are proved under baseline AGG/PNT inputs. Actual matrix/offset sampling, uniform little-oh rates, exceptional fractions, readouts, both source comparisons in selection probability, and the short-description example are covered.
-- **Information-adapted cutoff**: Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation.
+- **Information-adapted cutoff**: Proposition 6.2 and the separately prescribed-floor full-field specialization are proved at the literal source regime under baseline AGG/PNT inputs. The event sigma-field is transported only upwards to max(w0,w_N(I)). Actual root existence, uniqueness, endpoints, constrained maximum, strict improvement and displayed leading limit are proved. Unnumbered proof-intermediate derivative formulas have been replaced by monotonicity and a larger certified truncation; final review must classify that replacement explicitly.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.
-- **Palm complements**: G.1–G.9 numbered conclusions are recorded, with explicit baseline inputs where required. G.7 now has its actual uniform absolute pair bound and vanishing conclusion for every deterministic G subset of G0, at the paper cutoffs and any adequate cylinder. G.9 has the positive normalized lower limit, total divergence, vanishing pair layer and divergence at orders >=3 for G0 and every fixed G_theta, independently of the full microscopic comparison. Final unnumbered review (named outside-deletion convergence, cumulant conventions, tilted-void identities, the pair example and witness threshold) and the separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise.
+- **Palm complements**: G.1–G.9 numbered conclusions, the independently prescribed-floor full-field specialization, the finite tilted-void derivative and improper endpoint identity, and the fixed-t prime witness threshold are recorded. Final unnumbered review still includes named outside-deletion convergence, the raw-versus-centered higher-cumulant convention, and the concrete pair-rank example. Previously replaced proof-intermediate derivative estimates must be explicitly classified in the final review. F.2 retains its explicit baseline analytic solution premise.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
 

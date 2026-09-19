@@ -142,6 +142,9 @@ import PaperCPrel8.PivotRankinUniform
 import PaperCPrel8.PoissonCloudMixture
 import PaperCPrel8.PoissonCloudTail
 import PaperCPrel8.PoissonRegularCloud
+import PaperCPrel8.PrescribedInformationBudget
+import PaperCPrel8.PrescribedInformationField
+import PaperCPrel8.PrescribedInformationPaper
 import PaperCPrel8.PrimeActivityAsymptotics
 import PaperCPrel8.PrimeActivityDivergence
 import PaperCPrel8.PrimeActivityLower
@@ -152,6 +155,8 @@ import PaperCPrel8.PrimeMicroscopicComparison
 import PaperCPrel8.PrimePairVanishing
 import PaperCPrel8.PrimeRetainedDensity
 import PaperCPrel8.PrimeRunWitness
+import PaperCPrel8.PrimeWeightedLimit
+import PaperCPrel8.PrimeWeightedWitness
 import PaperCPrel8.PrimeWindowBudget
 import PaperCPrel8.PrimeWindowErrors
 import PaperCPrel8.PrimeWindowGeometry
@@ -199,6 +204,9 @@ import PaperCPrel8.SignedPalmForcing
 import PaperCPrel8.SmallPrimeMixture
 import PaperCPrel8.StrongerDeletionTheorem
 import PaperCPrel8.StrongerRestoration
+import PaperCPrel8.TiltedVoidDerivative
+import PaperCPrel8.TiltedVoidIntegral
+import PaperCPrel8.TiltedVoidLaw
 import PaperCPrel8.TwoBlockRegularity
 import PaperCPrel8.TwoRankPair
 import PaperCPrel8.TypicalDictionaryConsequences
@@ -213,6 +221,7 @@ import PaperCPrel8.TypicalDictionaryTransfer
 import PaperCPrel8.TypicalDictionaryUniform
 import PaperCPrel8.UniformExponentialEnvelope
 import PaperCPrel8.UniformGridFibres
+import PaperCPrel8.WeightedActivityWitness
 
 /-! Proved components of the 3PREL8 extension. The coverage ledger records
 which source-facing arithmetic and asymptotic conclusions remain open. -/

@@ -1015,3 +1015,28 @@ deux de l'énoncé est ainsi vérifié. Avec la disparition de cette couche et l
 divergence totale déjà obtenue, la divergence des ordres au moins trois est
 maintenant prouvée pour G0 et chaque G_theta fixé. La comparaison microscopique
 reste indépendante de ce calcul d'activité, avec les entrées analytiques de F.2.
+
+## Plancher prescrit, vide incliné et témoin pondéré — vingt-cinquième point
+
+**Plancher d'information.** Le champ signé complet est maintenant comparé à
+chaque cutoff admissible, avec le minimum des deux budgets. Le choix contraint
+max(w0,w_N(I)) fournit le corollaire annoncé : l'événement est initialement
+mesurable à w0 et devient mesurable au cutoff supérieur par inclusion des
+sigma-algèbres. Aucune hypothèse de mesurabilité à un cutoff plus petit n'est
+introduite. La bande logarithmique du support découle du budget, comme dans
+le résultat au croisement. Les entrées AGG/PNT existantes restent explicites.
+
+**Identité inclinée.** La dérivée logarithmique et son intégrale sont prouvées
+pour la loi finie explicitement inclinée par (1-t)^N. Le produit fini des
+indicatrices est exactement (1-t)^N. Pour un vide positif, l'intégrale tend
+vers le logarithme négatif normalisé ; pour un vide nul elle tend vers
++infini. Il convient donc de garder la qualification « identité impropre »
+dans le texte, sans assimiler ce cas à la convention réelle log(0) de Lean.
+Aucune borne de petitesse n'est déduite de cette seule identité.
+
+**Seuil du témoin.** La même minoration fonctionne pour tout t fixe positif,
+avec log((1+t-tr)/(1-tr))>=log(1+t) et log(1-tr)>=-2tr lorsque tr<=1/2.
+La vraie moyenne retenue satisfait finalement cette condition. Cela donne
+le coefficient log(2)*(log(1+t)-1), puis la divergence pour t>exp(1)-1
+sur G0 et tout G_theta fixé. C'est un seuil suffisant pour ce témoin ; la
+formalisation ne le transforme pas en frontière optimale du modèle.
