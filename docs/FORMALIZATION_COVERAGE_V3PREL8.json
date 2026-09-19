@@ -4041,6 +4041,51 @@
           "path": "PaperCPrel8/PoissonRegularCloud.lean",
           "declaration": "stronger_poisson_failure_le",
           "scope": "Instantiates the preceding finite bound with the actual stronger good set and K=ceil(2*Lambda). Conditions Q<=n, Q<Y and 3*K*(Q+1)<Y remain explicit; literal paper-scale absorption and the full signed/excess target bridge remain open."
+        },
+        {
+          "path": "PaperCPrel8/BulkCloudLawExt.lean",
+          "declaration": "hasLaw_of_matching_projection_laws",
+          "scope": "On arbitrary finite sites, exact finite mark projections determine the entire finite measure on complete signed/excess configurations, with no extra tail premise."
+        },
+        {
+          "path": "PaperCPrel8/BulkCloudIdentification.lean",
+          "declaration": "hasLaw_label_configuration",
+          "scope": "The actual Poisson sample with independent uniform sites, fair signs and unbounded geometric excesses has the existing full BulkMarkedTarget law. Elementary label atom rates are proved, not assumed."
+        },
+        {
+          "path": "PaperCPrel8/OrderedLabelCloud.lean",
+          "declaration": "positions_event",
+          "scope": "Every event of the actual ordered positions has exactly the normalized finite-grid Poisson mixture probability previously bounded by CRT; iid finite prefixes and each count/grid atom are proved."
+        },
+        {
+          "path": "PaperCPrel8/RegularTargetCloud.lean",
+          "declaration": "target_failure_le",
+          "scope": "Intrinsic regular target configurations admit an enumeration of size <=K with good sites, low marks and private primes at every maximal raw occurrence. The actual full target failure probability includes bad sites, CRT regularity, the Poisson tail and Lambda/2^(E+1). The empty configuration and actual total multiplicity are checked."
+        },
+        {
+          "path": "PaperCPrel8/RegularCloudSaddle.lean",
+          "declaration": "squared_nu_ratio_tendsto",
+          "scope": "The literal hard-saddle ratio nu^2/(u*V) tends to infinity. The entire prefactor exp(V+C*log H) is absorbed uniformly into the private-pivot exponent."
+        },
+        {
+          "path": "PaperCPrel8/RegularCloudSaddle.lean",
+          "declaration": "regularity_error_tendsto",
+          "scope": "The displayed exp(-c*theta*nu^2/(4*u)) tends to zero for c,theta>0, at the exact hard saddle."
+        },
+        {
+          "path": "PaperCPrel8/RegularCloudCutoff.lean",
+          "declaration": "cutoff_gap_eventually",
+          "scope": "With Lambda>=1, Q+1<=B*H and log Lambda<=V-c*nu, the exact K=ceil(2*Lambda), Y=floor(exp V) satisfy 3*K*(Q+1)<Y and 1-log(3*K*(Q+1))/log Y>=c*nu/(2*V), uniformly before Lambda and Q are selected."
+        },
+        {
+          "path": "PaperCPrel8/RegularCloudCutoff.lean",
+          "declaration": "cloud_cost_eventually",
+          "scope": "The literal threshold exp(theta*H/u), exact rounded K and Y and the information margin imply K*(Q+1)*T^(-1+log(3*K*(Q+1))/log Y)<=exp(-c*theta*nu^2/(4*u))."
+        },
+        {
+          "path": "PaperCPrel8/RegularTargetSaddle.lean",
+          "declaration": "paper_target_bound",
+          "scope": "Full existing same-grid target at the paper cutoffs, stronger good set and length/information regime. All CRT/geometric conditions are discharged. The resulting bound is Lambda*omitted/(M-L)+exp(-c*theta*nu^2/(4*u))+exp(-(2*log 2-1)*Lambda)+Lambda/2^(E_*+1). Final excluded-site/high-mark asymptotic assembly into the displayed complete o(1) remains."
         }
       ]
     },
@@ -4249,7 +4294,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "G.1 and G.2 are proved (G.1 retains baseline arithmetic inputs; G.2 uses the explicit ambient size/cutoff conditions). G.3 now has a normalized actual Poisson-size ordered grid cloud, exact Poisson tail, expected bad-site cost and uniform regularity bound up to the count cutoff. Identification with the full signed/excess target, high marks and the literal saddle-scale absorption/convergence remain. Full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open."
+      "remaining": "G.1 and G.2 are proved. G.3 now identifies the complete signed/excess same-grid target with the actual iid-marked Poisson sample, transfers its ordered positions to the CRT cloud law, includes all high marks, and proves the literal rounded-cutoff gap and saddle absorption. The full target bound is instantiated uniformly at the paper length/information regime. Final assembly of the excluded-site and high-mark asymptotics, with Lambda->infinity, into the displayed complete o(1) remains. Full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."

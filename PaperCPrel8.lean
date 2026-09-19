@@ -15,6 +15,8 @@ import PaperCPrel8.AffineDictionaryRates
 import PaperCPrel8.AffineDictionarySample
 import PaperCPrel8.AffineDictionaryTheorem
 import PaperCPrel8.AffineDictionaryUniform
+import PaperCPrel8.BulkCloudIdentification
+import PaperCPrel8.BulkCloudLawExt
 import PaperCPrel8.CategoricalPalm
 import PaperCPrel8.CategoricalSummation
 import PaperCPrel8.DictionaryArithmeticCollision
@@ -83,6 +85,7 @@ import PaperCPrel8.MicroscopicSourceRelabelling
 import PaperCPrel8.MicroscopicSpatialRates
 import PaperCPrel8.MicroscopicValueProfile
 import PaperCPrel8.OddPrimePivot
+import PaperCPrel8.OrderedLabelCloud
 import PaperCPrel8.PalmDeficit
 import PaperCPrel8.PalmDeficitProbability
 import PaperCPrel8.PalmDeletionIdentity
@@ -101,7 +104,11 @@ import PaperCPrel8.PrimeForcing
 import PaperCPrel8.PrivateForcing
 import PaperCPrel8.ReciprocalPivotAsymptotics
 import PaperCPrel8.ReciprocalPivotShells
+import PaperCPrel8.RegularCloudCutoff
+import PaperCPrel8.RegularCloudSaddle
 import PaperCPrel8.RegularPlantPresence
+import PaperCPrel8.RegularTargetCloud
+import PaperCPrel8.RegularTargetSaddle
 import PaperCPrel8.RoughKernelAllocation
 import PaperCPrel8.RoughKernelCRT
 import PaperCPrel8.RoughKernelCloudBound

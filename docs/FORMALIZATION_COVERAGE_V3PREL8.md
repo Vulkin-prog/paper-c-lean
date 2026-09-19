@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the nineteenth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the twentieth checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -411,8 +411,31 @@ when Lambda tends to infinity, as assumed in Appendix F/G.
 The identification with the full signed/excess same-grid target, high-mark
 cost and literal saddle-scale absorption/convergence remain open. The finite
 bound is not presented as the complete conclusion of G.3. The
-[current receipt](../extension_evidence/v3prel8/poisson-cloud/README.md)
+[nineteenth-batch receipt](../extension_evidence/v3prel8/poisson-cloud/README.md)
 records exact sources and validation. No new Palomar qualification is claimed.
+
+The twentieth batch adds **43 theorems (701 total, 144 modules)**.
+**G.3 now has its actual complete signed/excess target bound.** The independent
+Poisson sample is identified with the existing full target on arbitrary finite
+sites. Its finite position prefixes and count/grid atoms recover exactly the
+ordered CRT mixture. The intrinsic regular set includes the empty configuration,
+bounds actual total multiplicity and excludes every high excess. Its complement
+is bounded by the expected omitted-site cost, CRT failures, the genuine Poisson
+tail and `Lambda/2^(E+1)`.
+
+The literal hard-saddle ratio `nu^2/(u*V)` diverges. The rounded cutoffs
+`K=ceil(2*Lambda)` and `Y=floor(exp V)` satisfy the required CRT logarithmic gap
+uniformly under `log Lambda<=V-c*nu` and `Q+1<=B*H`. The full prefactor is
+absorbed into `exp(-c*theta*nu^2/(4*u))`, which tends to zero. The final full-target
+bound is instantiated at `H=log M`, the actual `E_*`, stronger good set and
+paper length/information regime; no CRT side condition remains assumed there.
+
+**G.3 remains partial only at the final asymptotic assembly:** the excluded-site
+and high-mark costs, together with `Lambda->infinity`, still need to be combined
+into its displayed complete bound and o(1). The presence identity was proved
+in an earlier batch. Subsequent Palm/Fourier/cumulant obligations remain open.
+The [current receipt](../extension_evidence/v3prel8/regular-target/README.md)
+records the validation; no new Palomar qualification is claimed.
 
 ## Remaining dependency chains
 
@@ -420,7 +443,7 @@ records exact sources and validation. No new Palomar qualification is claimed.
 - **Information-adapted cutoff**: Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.
-- **Palm complements**: G.1 and G.2 are proved (G.1 retains baseline arithmetic inputs; G.2 uses the explicit ambient size/cutoff conditions). G.3 now has a normalized actual Poisson-size ordered grid cloud, exact Poisson tail, expected bad-site cost and uniform regularity bound up to the count cutoff. Identification with the full signed/excess target, high marks and the literal saddle-scale absorption/convergence remain. Full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open.
+- **Palm complements**: G.1 and G.2 are proved. G.3 now identifies the complete signed/excess same-grid target with the actual iid-marked Poisson sample, transfers its ordered positions to the CRT cloud law, includes all high marks, and proves the literal rounded-cutoff gap and saddle absorption. The full target bound is instantiated uniformly at the paper length/information regime. Final assembly of the excluded-site and high-mark asymptotics, with Lambda->infinity, into the displayed complete o(1) remains. Full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
 

@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **658 proved theorems in 137 modules**. It is an
+This library contains **701 proved theorems in 144 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -144,6 +144,13 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `PoissonCloudTail` | Exact generating series and exponential tail at ceil(2*Lambda) |
 | `PoissonCloudMixture` | Normalized countable Poisson mixture and expected affine loss before truncation |
 | `PoissonRegularCloud` | Actual ordered spatial cloud: omitted sites, private pivots and count tail |
+| `BulkCloudLawExt` | Full marked target law determined by finite projections on arbitrary finite sites |
+| `BulkCloudIdentification` | Actual Poisson sample with uniform sites, fair signs and all geometric excesses |
+| `OrderedLabelCloud` | Exact recovery of every finite-grid Poisson-mixture event from sampled positions |
+| `RegularTargetCloud` | Intrinsic regular configurations and full target probability bound including high marks |
+| `RegularCloudSaddle` | Divergence of nu^2/(u*V), uniform prefactor absorption and error convergence |
+| `RegularCloudCutoff` | Exact rounded K and Y, information-margin CRT gap and absorbed cloud cost |
+| `RegularTargetSaddle` | Full same-grid target bound at the literal paper length/information regime |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -182,7 +189,7 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/poisson-cloud/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/regular-target/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
@@ -193,8 +200,8 @@ a claim of complete realignment.
 
 The Palm identities now include actual regular-plant presence and ordinary
 finite-source deletion, as well as countable normalized comparison algebra.
-The regular-cloud estimates, full arithmetic G.4/G.5 instantiation and signed
-Fourier/Walsh identifications remain open; G.3–G.6 are partial, not closed.
+The final regular-cloud asymptotic assembly, full arithmetic G.4/G.5 instantiation
+and signed Fourier/Walsh identifications remain open; G.3–G.6 are partial, not closed.
 
 The finite G.1 kernel estimates and stronger deletion counts are now proved,
 with the hard-cutoff prefactor under the existing PNT input. Threshold absorption
@@ -204,7 +211,9 @@ whole-field deletions and high-mark tails is now proved: G.1 is closed with
 its explicit arithmetic inputs, without a Stein premise for this reduction.
 G.2 is now proved: the actual CRT probability, threshold-power bound, single-support
 regularity and multi-source probability union bound are all included. The actual
-Poisson-size ordered spatial cloud has a normalized law and a finite bound for
-omitted sites, irregularity and the count tail. G.3 remains partial until the
-full signed/excess target identification, high marks and literal saddle-scale
-absorption/convergence are established.
+Poisson-size ordered spatial cloud is now identified with the complete signed/excess
+target. Its full failure bound includes the high-mark cost, and the literal rounded
+cutoffs and information margin absorb the CRT prefactor into
+`exp(-c*theta*nu^2/(4*u))`. The bound is instantiated uniformly at the paper's
+length/information regime. Final excluded-site and high-mark asymptotic assembly,
+together with Lambda->infinity, remains before the complete G.3 o(1) claim.

@@ -801,3 +801,52 @@ avec les signes et tous les excès, n'est pas encore enregistré. Les queues
 de marques et l'absorption aux échelles exactes du papier restent aussi à
 assembler pour obtenir la dernière borne et le o(1) de G.3. Cette dernière
 reste donc partielle. Les sources du manuscrit ne sont pas modifiées.
+
+## Cible marquée complète et absorption de G.3 — vingtième lot
+
+**Raccord à la vraie cible.** La loi des rangées de Poisson géométriques déjà
+utilisée dans le dépôt coïncide avec la somme d'un nombre poissonien de points,
+chacun portant une position uniforme, un excès géométrique et un signe équitable
+indépendants. L'identification vaut sur tout ensemble fini non vide de sites,
+sans tronquer les excès. Les projections finies déterminent la loi complète ;
+aucune hypothèse supplémentaire sur les queues n'est requise pour cette identité.
+Les préfixes de positions et les masses de chaque paire (nombre, grille) donnent
+exactement la loi ordonnée utilisée dans la preuve CRT du lot précédent.
+
+**Clarification utile pour le papier.** Définir la régularité comme une propriété
+d'une configuration admettant une énumération finie rend explicite son passage
+entre le nuage ordonné et la mesure ponctuelle. La masse totale est celle de
+la configuration, avec ses multiplicités, et chaque occurrence brute doit avoir
+son premier privé. Le vide satisfait la définition. Les répétitions ne peuvent
+pas être perdues lors de ce passage : elles sont conservées dans la somme des
+masses de Dirac et dans les occurrences des supports. La borne établie porte
+sur la cible complète, et ne fournit toujours pas un contrôle de masse exacte
+ou d'absence d'occurrences supplémentaires pour le champ arithmétique.
+
+**Arrondis exacts.** Pour exp(V)>=2, `V-log 2 <= log(floor(exp V)) <= V`.
+Pour Lambda>=1, `ceil(2*Lambda)<=3*Lambda`. Le coût logarithmique restant est
+au plus `log(18*B)+log H` lorsque Q+1<=B*H ; il est o(nu). Cela justifie le
+facteur 1/2 dans la marge CRT du papier sans remplacer les arrondis par des
+équivalents non quantifiés.
+
+L'identité exacte
+`nu^2/(u*V)=(exp(u)/u^3)/(1-Ei(u)/exp(u))`
+au saddle dur prouve sa divergence. Elle absorbe uniformément tout facteur
+dont le logarithme est <=V+C*log H, et en particulier K*(Q+1), dans
+`exp(-c*theta*nu^2/(4*u))`. Ce dernier terme tend vers zéro pour c,theta>0.
+Il n'y a pas de correction mathématique du manuscrit identifiée ici ; ces
+calculs peuvent simplement détailler les deux phrases d'absorption de G.3.
+
+La borne complète obtenue aux paramètres exacts du papier est
+`Lambda*card(indices exclus)/(M-L) + exp(-c*theta*nu^2/(4*u))
++ exp(-(2*log 2-1)*Lambda) + Lambda/2^(E_*+1)`.
+Toutes les conditions géométriques et CRT proviennent de la bande de longueurs
+et du budget d'information, après un seuil uniforme. Cette étape probabiliste
+n'utilise pas d'entrée analytique ou arithmétique bibliographique.
+
+**Reste de G.3.** Il faut encore composer les estimations des indices exclus
+et de la queue des marques avec ce résultat, puis utiliser Lambda->infinity
+pour enregistrer la borne asymptotique complète et son o(1). Les identités
+de présence sont déjà établies ; les étapes ultérieures G.4/G.5 et les
+compléments de Fourier/cumulants restent ouverts. Les sources du papier
+sont conservées à l'identique.
