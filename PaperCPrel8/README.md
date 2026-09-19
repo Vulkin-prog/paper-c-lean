@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **436 proved theorems in 92 modules**. It is an
+This library contains **503 proved theorems in 107 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -99,6 +99,21 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `InformationFieldBudget` | Separate linear/quadratic error margins and uniform tail/polynomial absorption |
 | `InformationFieldTheorem` | Actual full signed field at the information cutoff, with explicit uniform rate |
 | `InformationFieldPaper` | Proposition 6.2 without extra band assumptions, and arbitrary deterministic readouts |
+| `AffineDictionarySample` | Actual uniform surjections/offsets, fibre cardinality and nonzero-vector transitivity |
+| `AffineDictionaryInclusion` | Kernel double counting and exact two-word probabilities |
+| `AffineDictionaryMoments` | Exact matching of degree-two selection costs with uniform subsets |
+| `AffineDictionaryCosts` | Actual fibrewise deletion, arithmetic pair mass and overlap averages |
+| `AffineDictionaryFinite` | Finite masked process bound with constants 2,8,6,2 |
+| `AffineDictionaryRates` | Actual hard-cutoff arithmetic rates under affine sampling |
+| `AffineDictionaryTheorem` | Uniform intensity-capped mean field bound |
+| `AffineDictionaryUniform` | Affine-specific supremum rate and literal uniform little-oh remainder |
+| `AffineDictionaryExceptional` | Actual matrix/offset sample fraction and Markov bound |
+| `AffineDictionaryIid` | Genuine infinite arithmetic and independent-sign comparison |
+| `AffineDictionaryConsequences` | Uniform exceptional classes, readouts and normalized iid error |
+| `AffineDictionaryMatrix` | Literal full-row-rank matrix bijection and uniform expectation equality |
+| `AffineDictionaryDescription` | Explicit inclusion formulas, linear-size dictionaries and log-squared bits |
+| `TypicalDictionaryConvergence` | Both actual field distances converge in uniform-subset selection probability |
+| `AffineDictionaryConvergence` | Both actual field distances converge in affine selection probability |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -137,10 +152,11 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/typical-and-information/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/affine-dictionaries/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
 labelled comparison) are proved under the explicit baseline AGG/PNT inputs.
-The actual affine sampling ensemble, Palm/cumulant complements and remaining
-unnumbered assertions still prevent a claim of complete realignment.
+The affine corollary 5.4 and extended introduction 1.3 are also proved.
+Palm/cumulant complements and remaining unnumbered assertions still prevent
+a claim of complete realignment.

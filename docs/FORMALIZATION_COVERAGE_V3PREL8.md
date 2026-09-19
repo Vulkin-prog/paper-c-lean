@@ -16,7 +16,7 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 |---|---|---|---|
 | article | [1.1](../manuscripts/v3prel8/sections/01_introduction.tex#L62) | `thm:poisson-main` | preserved statement |
 | article | [1.2](../manuscripts/v3prel8/sections/01_introduction.tex#L122) | `thm:global-summary` | preserved statement |
-| article | [1.3](../manuscripts/v3prel8/sections/01_introduction.tex#L171) | `thm:patterns-summary` | extended statement open |
+| article | [1.3](../manuscripts/v3prel8/sections/01_introduction.tex#L171) | `thm:patterns-summary` | extended statement proved |
 | article | [2.1](../manuscripts/v3prel8/sections/02_affine.tex#L38) | `lem:fourier` | preserved statement |
 | article | [2.2](../manuscripts/v3prel8/sections/02_affine.tex#L74) | `lem:even-subsets` | preserved statement |
 | article | [2.3](../manuscripts/v3prel8/sections/02_affine.tex#L101) | `lem:runge` | preserved statement |
@@ -57,7 +57,7 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | article | [5.1](../manuscripts/v3prel8/sections/05_patterns_fields.tex#L38) | `thm:word-field` | preserved statement |
 | article | [5.2](../manuscripts/v3prel8/sections/05_patterns_fields.tex#L156) | `cor:iid-word-replacement` | preserved statement |
 | article | [5.3](../manuscripts/v3prel8/sections/05_patterns_fields.tex#L196) | `thm:typical-dictionaries` | proved |
-| article | [5.4](../manuscripts/v3prel8/sections/05_patterns_fields.tex#L294) | `cor:affine-dictionaries` | new statement open |
+| article | [5.4](../manuscripts/v3prel8/sections/05_patterns_fields.tex#L294) | `cor:affine-dictionaries` | proved |
 | article | [5.5](../manuscripts/v3prel8/sections/05_patterns_fields.tex#L332) | `cor:generic-dictionaries` | preserved statement |
 | article | [5.6](../manuscripts/v3prel8/sections/05_patterns_fields.tex#L365) | `cor:marker-dictionaries` | preserved statement |
 | article | [5.7](../manuscripts/v3prel8/sections/05_patterns_fields.tex#L411) | `thm:patterns` | preserved statement |
@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the thirteenth checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the fourteenth checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -276,13 +276,35 @@ truncation. The derivative formulas in the proof are unnecessary and are
 not newly formalized. The prescribed-floor leading optimization is proved;
 its separate unnumbered full field specialization remains to be assembled.
 
-See the [current receipt](../extension_evidence/v3prel8/typical-and-information/README.md).
-Affine sampling and the Palm/cumulant complements remain open; this checkpoint
-is not completion of all 3PREL8 claims or a new Palomar qualification.
+See the [thirteenth-batch receipt](../extension_evidence/v3prel8/typical-and-information/README.md).
+At that checkpoint affine sampling and Palm/cumulant complements remained open.
+That receipt does not claim complete alignment or a new Palomar qualification.
+
+The fourteenth batch adds **67 theorems (503 total, 107 modules)** and proves
+**corollary 5.4 and the extended part (ii) of introduction theorem 1.3**.
+Uniform full-row-rank matrices and independent offsets are explicitly
+identified with the actual sampled surjections. Kernel transitivity and
+fibre counting prove the one/two inclusion identities, including endpoint
+ranks. Only the degree-two selection costs are transferred from uniform
+subsets: each conditional field distance is bounded with its dictionary
+fixed before averaging. The finite masked bound has the same constants.
+
+An affine-specific supremum rate supplies one uniform little-oh remainder,
+the actual exceptional sample fraction, arbitrary deterministic readouts and
+an infinite iid comparison with remainder `8*Lambda^2*B/N`. Both genuine
+source distances converge in selection probability for each ensemble.
+The logarithmic example has explicit positive lower and upper multiples of
+N for its dictionary size, and an explicit log-squared description bound.
+The baseline process AGG/PNT inputs are retained throughout the asymptotic
+field comparisons; the sampling and description algebra needs neither.
+
+See the [current receipt](../extension_evidence/v3prel8/affine-dictionaries/README.md).
+Palm/cumulant complements and the unnumbered review still prevent a claim
+of complete 3PREL8 alignment or a new Palomar qualification.
 
 ## Remaining dependency chains
 
-- **Typical and affine dictionaries**: The complete typical-dictionary theorem 5.3 is proved, including the literal masked finite bound, uniform little-oh rate, exceptional proportion and iid comparison. The actual affine-ensemble sampling identities and their transfer (5.4), and the extended introductory restatement, remain open.
+- **Typical and affine dictionaries**: The full typical theorem 5.3, affine corollary 5.4 and extended introduction 1.3 are proved under baseline AGG/PNT inputs. Actual matrix/offset sampling, uniform little-oh rates, exceptional fractions, readouts, both source comparisons in selection probability, and the short-description example are covered.
 - **Information-adapted cutoff**: Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.

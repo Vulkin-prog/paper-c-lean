@@ -547,3 +547,48 @@ Le maximum algébrique sous une borne inférieure de cutoff prescrite est
 également démontré pour la vraie selle. L'extension non numérotée de la
 comparaison complète à ce cutoff contraint reste à assembler. Le corollaire
 des dictionnaires affines et les compléments de Palm/cumulants restent ouverts.
+
+
+## Dictionnaires affines et énoncé introductif — quatorzième lot
+
+Le corollaire 5.4 et la partie nouvelle du théorème introductif 1.3 sont
+maintenant démontrés, avec les prémisses AGG/PNT déjà déclarées. Le lot ajoute
+67 théorèmes dans 15 modules. Les fichiers du papier restent inchangés.
+
+- **Échantillonnage exact.** Le modèle formel tire uniformément une application
+  linéaire surjective et un décalage indépendant. Une bijection explicite avec
+  les matrices de rang plein du papier prouve l'égalité exacte des moyennes.
+  On ne remplace donc pas ce modèle par un sous-ensemble uniforme de même taille.
+- **Preuve des inclusions simplifiée.** L'action des changements de coordonnées
+  est transitive sur les vecteurs non nuls. Le double comptage des noyaux de
+  cardinal `2^(B-r)` donne directement la probabilité d'annuler un vecteur non
+  nul. La moyenne sur le décalage donne ensuite les formules à un et deux mots.
+  Il n'est pas nécessaire de compter les bases ordonnées des noyaux. Les cas
+  `r=0` et `r=B` sont inclus ; la formule à deux mots distincts suppose `B>=1`.
+- **Portée exacte de l'argument à deux moments.** L'égalité des probabilités
+  d'inclusion transfère les coûts de suppression, de paires arithmétiques et
+  de recouvrement. Elle ne prouve pas une égalité des distances moyennes des
+  deux ensembles. La preuve borne d'abord chaque distance conditionnelle à
+  dictionnaire fixé, puis moyenne sa borne positive. Cette distinction mérite
+  de rester explicite dans la preuve du corollaire.
+- **Un taux uniforme pour l'ensemble affine.** On construit son propre
+  supremum des distances admissibles. Les estimations communes donnent ensuite
+  le même type de petit-o uniforme. La proportion exceptionnelle est calculée
+  sur les couples matrice/décalage effectivement tirés.
+- **Deux distances dans l'introduction.** La convergence en probabilité est
+  établie pour toute tolérance positive, tant vers le produit de Poisson
+  qu'entre les deux champs réellement issus des modèles arithmétique et iid.
+  Le terme supplémentaire est borné par `8*K^2*betaMax*log(N)/N`, ce qui rend
+  son annulation uniforme explicite. Les restrictions déterministes contractent
+  point par point, avant toute moyenne.
+- **Exemple de description courte.** Si les écarts de B et r à leurs valeurs
+  logarithmiques sont bornés par `CB` et `Cr`, le quotient `m/N` est compris
+  entre `exp(-(CB+Cr)*log 2)` et `exp((CB+Cr)*log 2)`. Le coût exact est
+  `r*B+r=r*(B+1)` bits, avec une borne explicite en `log(N)^2`. Ce sont des
+  bornes sur les candidats aléatoires ; elles ne certifient pas une matrice
+  particulière sans contrôler son erreur.
+
+Aucune erreur nouvelle n'a été identifiée dans ces énoncés. Les remarques
+ci-dessus précisent la portée du transfert et proposent une preuve plus
+directe de l'échantillonnage. Les compléments de Palm/cumulants et la revue
+finale des assertions non numérotées restent à traiter.

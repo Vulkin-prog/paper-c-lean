@@ -116,7 +116,7 @@
       "source": "manuscripts/v3prel8/sections/01_introduction.tex",
       "line": 171,
       "statement_sha256": "780caba81ffec25437d5d5e89b7a9e9602d7e64d2377b102c40a5c3741e8174d",
-      "status": "extended_statement_open",
+      "status": "extended_statement_proved",
       "prior_lean_declarations": [
         {
           "path": "PaperCV282/DictionaryFieldBounds.lean",
@@ -138,9 +138,29 @@
           "path": "PaperCV282/DictionaryFieldStatistics.lean",
           "declaration": null,
           "evidence_note": "true composed laws and contractions"
+        },
+        {
+          "path": "PaperCV282/IidWordComparison.lean",
+          "declaration": "corollary_five_two"
         }
       ],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/TypicalDictionaryConvergence.lean",
+          "declaration": "poisson_in_selection_probability",
+          "scope": "New part (ii): for every positive fixed tolerance, the fraction of actual unconditional Poisson distances above it tends to zero in the band and intensity cap. Baseline AGG/PNT explicit."
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryConvergence.lean",
+          "declaration": "iid_in_selection_probability",
+          "scope": "New part (ii): the same probability statement for the distance between actual infinite arithmetic and independent-sign fields. The dictionary is fixed inside both laws."
+        },
+        {
+          "path": "PaperCPrel8/TypicalDictionaryConsequences.lean",
+          "declaration": "nonexceptional_readout",
+          "scope": "Every deterministic restriction contracts pointwise, before dictionary averaging. Part (i) retains its recorded baseline proofs."
+        }
+      ]
     },
     {
       "document": "article",
@@ -1611,9 +1631,105 @@
       "source": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
       "line": 294,
       "statement_sha256": "81ea200099af48a3a9ecd408a828925924ab59377141be84a24456b3ee902365",
-      "status": "new_statement_open",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/AffineDictionaryMatrix.lean",
+          "declaration": "matrix_average_eq",
+          "scope": "Literal uniform full-row-rank matrices and independent uniform offsets are bijective with the sampled surjective linear maps. Finite uniform expectations agree exactly."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionarySample.lean",
+          "declaration": "card_dictionary",
+          "scope": "Every actual affine fibre has cardinality 2^(B-r), including endpoint ranks."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryDescription.lean",
+          "declaration": "single_probability",
+          "scope": "Actual single-word inclusion probability 2^(-r)."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryDescription.lean",
+          "declaration": "distinct_pair_probability",
+          "scope": "Actual distinct-pair inclusion probability 2^(-r)*(2^(B-r)-1)/(2^B-1)."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryMoments.lean",
+          "declaration": "pair_probability_matches",
+          "scope": "One/two inclusion moments coincide with the uniform subset ensemble; no equality of nonlinear field distances is assumed."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryCosts.lean",
+          "declaration": "deletion_matches",
+          "scope": "On every actual prime fibre, selected deleted-source mass matches uniform size-m selection."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryCosts.lean",
+          "declaration": "pairMass_matches",
+          "scope": "Every actual arithmetic pair cost has the same selection mean."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryCosts.lean",
+          "declaration": "affine_overlap",
+          "scope": "Exact affine mean overlap m*(B-1)/2^B."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryFinite.lean",
+          "declaration": "finite_masked_typical_bound",
+          "scope": "Fixed-dictionary process AGG comparison followed by actual affine averaging; same finite constants 2,8,6,2, preserving mask size. Baseline AGG premise explicit."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryUniform.lean",
+          "declaration": "uniform_littleOh_rate",
+          "scope": "Single affine-specific supremum rate and constructed uniform o(nu) remainder; baseline AGG/PNT inputs."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryUniform.lean",
+          "declaration": "uniformRate_tendsto_zero",
+          "scope": "The actual affine uniform rate tends to zero."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryExceptional.lean",
+          "declaration": "fraction_eq_card",
+          "scope": "Exceptional fraction is the literal proportion of matrix/map and offset samples."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryConsequences.lean",
+          "declaration": "uniform_exceptional_fraction",
+          "scope": "Each fixed conditional distance has exceptional fraction at most min(1,r_N/t)."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryConsequences.lean",
+          "declaration": "averaged_statistic_le",
+          "scope": "Arbitrary deterministic site-word restrictions/readouts contract before averaging."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryConsequences.lean",
+          "declaration": "uniform_arithmetic_iid_bound",
+          "scope": "Actual infinite arithmetic/iid comparison has mean <=r_N+8*Lambda^2*B/N."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryConvergence.lean",
+          "declaration": "poisson_in_selection_probability",
+          "scope": "Fixed-dictionary Poisson distance converges in affine-selection probability."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryConvergence.lean",
+          "declaration": "iid_in_selection_probability",
+          "scope": "Distance of the two actual infinite sources converges in affine-selection probability."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryDescription.lean",
+          "declaration": "size_ratio_bounds",
+          "scope": "Explicit upper and positive lower multiples of N when B=2*log_2 N+O(1) and r=log_2 N+O(1)."
+        },
+        {
+          "path": "PaperCPrel8/AffineDictionaryDescription.lean",
+          "declaration": "bits_le_log_squared",
+          "scope": "Explicit O(log(N)^2) bound for r*(B+1) bits throughout a logarithmic band."
+        }
+      ]
     },
     {
       "document": "article",
@@ -3773,7 +3889,7 @@
         "thm:typical-dictionaries",
         "cor:affine-dictionaries"
       ],
-      "remaining": "The complete typical-dictionary theorem 5.3 is proved, including the literal masked finite bound, uniform little-oh rate, exceptional proportion and iid comparison. The actual affine-ensemble sampling identities and their transfer (5.4), and the extended introductory restatement, remain open."
+      "remaining": "The full typical theorem 5.3, affine corollary 5.4 and extended introduction 1.3 are proved under baseline AGG/PNT inputs. Actual matrix/offset sampling, uniform little-oh rates, exceptional fractions, readouts, both source comparisons in selection probability, and the short-description example are covered."
     },
     {
       "name": "Information-adapted cutoff",
