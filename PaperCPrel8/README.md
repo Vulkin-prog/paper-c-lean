@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **794 proved theorems in 161 modules**. It is an
+This library contains **927 proved theorems in 185 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -168,6 +168,30 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `RegularConfigurationAtoms` | Exact masses of simple marked plants under the complete target law |
 | `RegularTargetCompletion` | Complete regular-target error and its vanishing under the paper regime -/ |
 | `RegularTargetPresence` | From the intrinsic regular target geometry to exact arithmetic presence -/ |
+| `ArithmeticEnvironmentLaw` | Actual conditioned arithmetic law as its small/large prime product |
+| `ArithmeticLowCategory` | The original arithmetic low-type categorical field in G.8 and G.9 |
+| `ArithmeticPalmFourier` | The arithmetic signed centered coefficient and normalized Palm polynomial |
+| `ArithmeticPalmMatrices` | Actual valuation matrices in the signed Palm Fourier formula |
+| `ArithmeticPalmOutside` | The full arithmetic Palm void in the ordinary outside-start identity |
+| `ArithmeticPalmSigns` | The actual arithmetic normalized void under independent fair target signs |
+| `CategoricalActivityWitness` | A rare-event lower bound for the actual categorical cumulant activity |
+| `CategoricalCumulantBound` | The finite categorical total-variation bound of G.8 |
+| `CategoricalMomentExpansion` | Exact signed tensor expansion of an actual categorical law |
+| `CategoricalOccupancyEnvelope` | The positive occupancy polynomial and the lower bound on categorical activity |
+| `CategoricalTransversals` | Categorical choices as distinct-site finite subsets |
+| `CenteredAffineBlocks` | Exact centered character expansion for overlapping affine blocks |
+| `CenteredPalmFourier` | The exact signed centered Palm coefficient, including its environment |
+| `ConditionalPairDeviation` | The absolute conditional pair layer pays only one conditioning mass |
+| `CumulantFamilyEnvelope` | Cumulant envelopes restricted to a downward-closed family of subsets |
+| `FiniteCumulantEnvelope` | Finite product envelope for cumulant partitions |
+| `FiniteCumulantPartitions` | Finite moment/cumulant partitions, with no analytic series |
+| `PrimeRunWitness` | The arithmetic one-negative-prime run witness used in G.9 |
+| `PrimeWitnessRetention` | Retention and the exact probability of the G.9 prime witness |
+| `PullSiteTarget` | Exact target law under an arbitrary injective relabelling of sites |
+| `RetainedRegularSaddle` | The retained regular target exception at the literal paper parameters |
+| `RetainedRegularTarget` | Exact boundary/start and retained-mask transfer of regular target configurations |
+| `RoughPairHosts` | Single-target CRT hosting count for the rough pair layer |
+| `TwoRankPair` | The exact two-rank absolute conditional deviation in G.7 |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -206,7 +230,7 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/arithmetic-palm/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/cumulant-witness/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
@@ -215,4 +239,4 @@ The affine corollary 5.4 and extended introduction 1.3 are also proved.
 Palm/cumulant complements and remaining unnumbered assertions still prevent
 a claim of complete realignment.
 
-G.1–G.3 are proved. G.5 now has the actual arithmetic normalized Palm deficit bound on every retained mask, with the same explicit inputs as 7.7, and its mean/probability completion. G.4 has actual infinite-source mass, avoidance, deletion and finite normalized comparison identities; the exact transfer of the intrinsic G.3 regular set through boundary/start relabelling and restriction still needs to be recorded for its named exceptional probability. G.6 has exact Walsh inversion/energy and the signed affine character formula with an arbitrary environment law; the joint centered-coefficient formula and its complete arithmetic instantiation remain. G.7–G.9 (pair activity, categorical cumulant inequality and arithmetic obstruction), final unnumbered review and separate prescribed-floor full-field specialization remain open. F.2 retains its explicit baseline analytic solution premise.
+G.1–G.6 numbered conclusions are recorded, with the explicit baseline inputs where required. G.4 now includes the exact named regular-target restriction, literal ordinary full deletion and the 5*Lambda^2/n normalized comparison. G.6 includes centered signed coefficients and actual arithmetic valuation matrices. G.8 finite categorical TV, polynomial and occupancy-log inequalities are proved using finite recursive cumulants and distinct-site subsets. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic host bound. G.9 has the actual prime witness, exact count, retention, probability and finite activity lower bound; its prime-subsequence asymptotics and higher-order divergence remain. Final unnumbered review (including named outside-deletion convergence, cumulant conventions, tilted-void identities and the pair example) and separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise.

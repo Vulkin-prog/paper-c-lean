@@ -902,3 +902,49 @@ avec les matrices arithmétiques de G.6 restent à finir.
 
 Les fichiers livrés par l'auteur restent inchangés ; ces points sont des
 suggestions pour une révision ultérieure du texte, pas des modifications tacites.
+
+## Raccords de Palm, cumulants finis et témoin arithmétique — vingt-deuxième point
+
+**G.4 : coordonnées et suppression.** Le passage j -> j+1 est désormais exact
+pour la cible marquée complète, avec ses multiplicités. La restriction de
+l'ensemble régulier de G.3 donne bien l'exception nommée dans G.4. La suppression
+relie les véritables vides de Palm du champ complet et du champ retenu, avec le
+coût ordinaire de départs extérieurs. La pénalité peut être donnée explicitement
+par 5*Lambda^2/n. Le raccord asymptotique séparé des coûts extérieurs reste à
+consigner dans la revue des assertions non numérotées.
+
+**G.6 : matrices effectives.** Les coefficients centrés portent sur les matrices
+de valuations et les vrais indicateurs arithmétiques. La régularité construit les
+pivots et prouve le plein rang du plant. Les termes singletons, les recouvrements
+et la transformée de Fourier de l'environnement conditionné restent présents.
+L'inégalité de Walsh est appliquée au véritable polynôme normalisé non négatif.
+
+**Simplification possible de la preuve de G.8.** Après l'expansion en partitions,
+on peut majorer la somme des collections disjointes de blocs par le produit fini
+prod_B(1+w_B), puis utiliser 1+w_B<=exp(w_B). Avec w_B=2*b_B, cela donne la
+constante (exp(2*K)-1)/2, sans passer par une somme indexée par le nombre de blocs
+et ses factorielles. La même preuve donne l'enveloppe polynomiale. Pour F_2,
+on peut développer directement les indicatrices de catégories et utiliser la
+même famille de sous-ensembles à sites distincts ; aucune contribution interne
+à un même site n'est ajoutée. C'est une simplification facultative du texte.
+
+**Convention de cumulants.** La définition formelle est récursive et finie.
+Pour les ordres >=2 de G.8, elle est appliquée à la table des moments centrés ;
+les singletons s'annulent. La revue finale devra garder explicite cette
+convention lorsqu'elle traitera les cumulants de Palm, dont les singletons
+centrés au paramètre de référence p ne s'annulent pas nécessairement.
+
+**G.7 : deux rangs réellement différents.** La formule de déviation absolue est
+prouvée avec les nullités complète et au-dessus du seuil distinctes. Une moyenne
+conditionnelle n'est donc pas remplacée par la seule covariance non conditionnée.
+Le comptage CRT avec un seul bloc cible donne une constante deux extérieure,
+pas une perte par facteur premier. L'assemblage de l'activité reste ouvert.
+
+**G.9 : témoin dans la loi d'origine.** La réalisation où seul le premier q est
+négatif produit réellement la marque (0,+) aux frontières tq certifiées. Le
+comptage exact, sa survie à des suppressions arbitraires et la probabilité
+2^(-pi(C)) sont démontrés. On obtient une borne logarithmique finie sur
+l'activité du champ arithmétique lui-même. Les limites le long de la sous-suite
+de premiers, puis la divergence des ordres >=3, restent à assembler.
+
+Les 28 fichiers du manuscrit livrés par l'auteur ne sont pas modifiés.

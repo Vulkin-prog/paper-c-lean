@@ -4119,7 +4119,7 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 137,
       "statement_sha256": "0e1338aabb5e215fb7b349fcfdc8e0541f2b662037db3f9ab4c5985c53258b2b",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved_with_explicit_inputs",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -4191,6 +4191,31 @@
           "path": "PaperCPrel8/PalmNormalizationRate.lean",
           "declaration": "penalty_eventually",
           "scope": "The literal K=ceil(2*Lambda) normalization penalty is <=M^(-1/2), uniformly for every retained mask at the source budget."
+        },
+        {
+          "path": "PaperCPrel8/PullSiteTarget.lean",
+          "declaration": "hasLaw_pull",
+          "scope": "The full signed/excess Poisson target is preserved by any injective site relabelling and restriction."
+        },
+        {
+          "path": "PaperCPrel8/RetainedRegularTarget.lean",
+          "declaration": "exceptional_probability_le",
+          "scope": "Intrinsic bounded regularity is transferred from left boundaries to actual starts, including multiplicities, excess bounds and prime-cylinder geometry."
+        },
+        {
+          "path": "PaperCPrel8/RetainedRegularSaddle.lean",
+          "declaration": "paper_exception_tendsto",
+          "scope": "The named retained target exceptional probability tends to zero at the literal G.3 regime, including Lambda->infinity and baseline PNT."
+        },
+        {
+          "path": "PaperCPrel8/RetainedRegularSaddle.lean",
+          "declaration": "paper_normalized_comparison",
+          "scope": "Literal G.4 comparison, with the actual named target exception and explicit 5*Lambda^2/n penalty. Outside-source and target deletion costs are the actual quantities."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmOutside.lean",
+          "declaration": "ordinary_full_deletion",
+          "scope": "The full and retained genuine infinite Palm voids satisfy the exact ordinary-deletion identity; no surrogate outside event or mass identity premise."
         }
       ]
     },
@@ -4249,7 +4274,7 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 219,
       "statement_sha256": "af1d375416e6aca4600141c1729c4215209da409fce4dd4797217282745addcf",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved_with_explicit_inputs",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -4301,6 +4326,31 @@
           "path": "PaperCPrel8/AffinePalmEnvironment.lean",
           "declaration": "conditional_fourier",
           "scope": "The exact conditional signed character retains the Fourier transform of the arbitrary environment distribution. Joint centered-coefficient expansion and full arithmetic matrix instantiation remain."
+        },
+        {
+          "path": "PaperCPrel8/CenteredPalmFourier.lean",
+          "declaration": "centered_moment",
+          "scope": "Exact joint centered coefficient, with all nonzero block frequencies, the planted multiplier and the arbitrary environment Fourier transform; all overlaps retained."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticEnvironmentLaw.lean",
+          "declaration": "conditional_plant_expectation",
+          "scope": "The actual conditioned finite arithmetic source, with an additional plant, equals its genuine small/large prime product representation for every observable."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmMatrices.lean",
+          "declaration": "regular_largeRaw_surjective",
+          "scope": "Actual large-prime valuation matrix has full row rank, proved from regular private-prime geometry."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmFourier.lean",
+          "declaration": "arithmetic_normalized_polynomial",
+          "scope": "Finite signed normalized avoidance polynomial using the actual arithmetic start indicators and actual valuation-matrix coefficients, including empty and singleton terms."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticPalmSigns.lean",
+          "declaration": "arithmetic_target_sign_bound",
+          "scope": "The actual arithmetic normalized Palm avoidance ratio is nonnegative and has the displayed sharp bound under independent fair target signs."
         }
       ]
     },
@@ -4316,7 +4366,23 @@
       "statement_sha256": "ddc131b83618f724989a2d0c2adea40a87df16b5d16ccc426eb2fd219586d568",
       "status": "new_statement_open",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/TwoRankPair.lean",
+          "declaration": "compatible_absolute_mean",
+          "scope": "Exact two-rank mean absolute conditional deviation. Full nullity and rough nullity remain distinct; the incompatible case and its positive full nullity are also proved."
+        },
+        {
+          "path": "PaperCPrel8/ConditionalPairDeviation.lean",
+          "declaration": "conditional_pair_host_bound",
+          "scope": "A positive environment event pays only one inverse conditioning mass for the absolute centered pair deviation. Full-rank rough systems give exact zero."
+        },
+        {
+          "path": "PaperCPrel8/RoughPairHosts.lean",
+          "declaration": "hosted_pairs_count",
+          "scope": "Single-target CRT count bounded by 2*(Q+1)*X times the literal rough-kernel reciprocal sum. The constant two is paid once, not per prime. Full activity summation and saddle asymptotics remain."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -4328,9 +4394,40 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 338,
       "statement_sha256": "8cd46fc171ca78d5bc8a6b430b92393220eee30f7be32a8b04bd879bc05d8d6a",
-      "status": "new_statement_open",
+      "status": "new_statement_proved_with_explicit_inputs",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/FiniteCumulantPartitions.lean",
+          "declaration": "moment_partition_expansion",
+          "scope": "Finite recursive cumulants and exact moment-partition expansion, including the empty and singleton cases; no analytic cumulant series."
+        },
+        {
+          "path": "PaperCPrel8/FiniteCumulantEnvelope.lean",
+          "declaration": "polynomial_envelope",
+          "scope": "G.8 polynomial envelope for the actual finite source law, with cumulants defined through centered moments for orders >=2."
+        },
+        {
+          "path": "PaperCPrel8/CumulantFamilyEnvelope.lean",
+          "declaration": "nonempty_exponential_bound",
+          "scope": "Exponential bound restricted to any downward-closed subset family. This keeps only distinct-site blocks in the categorical activity."
+        },
+        {
+          "path": "PaperCPrel8/CategoricalMomentExpansion.lean",
+          "declaration": "source_expansion",
+          "scope": "Exact signed tensor expansion of the original categorical joint law, including the cemetery category and actual marginals."
+        },
+        {
+          "path": "PaperCPrel8/CategoricalCumulantBound.lean",
+          "declaration": "categorical_cumulant_tv",
+          "scope": "TV to the product of actual categorical marginals is <=min(1,(exp(2*K)-1)/2). K is the sum over distinct-site labelled subsets, with exact weights 2^(card-1)."
+        },
+        {
+          "path": "PaperCPrel8/CategoricalOccupancyEnvelope.lean",
+          "declaration": "activity_ge_half_log_polynomial",
+          "scope": "If all twice-occupancy means are below one, the actual positive F_2 polynomial gives K>=log(F_2)/2. Uses a finite categorical expansion without introducing within-site cumulants."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -4344,7 +4441,33 @@
       "statement_sha256": "1252b5787cf6e3bf6b7b3dea57773d9ea9f5a5d97003d800c6e5a4390bdd6990",
       "status": "new_statement_open",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/PrimeRunWitness.lean",
+          "declaration": "certified_mark",
+          "scope": "The actual one-negative-prime sample has zero-excess positive signed runs of length q-1 at every certified boundary tq."
+        },
+        {
+          "path": "PaperCPrel8/PrimeRunWitness.lean",
+          "declaration": "certified_count",
+          "scope": "Exact count T-floor(T/q)-floor((T+1)/q), with no asymptotic count assumption."
+        },
+        {
+          "path": "PaperCPrel8/PrimeWitnessRetention.lean",
+          "declaration": "retained_count",
+          "scope": "An arbitrary retained set loses at most its number of omitted sites from the exact certified count."
+        },
+        {
+          "path": "PaperCPrel8/PrimeWitnessRetention.lean",
+          "declaration": "witness_probability",
+          "scope": "The original uniform arithmetic cylinder witness has exact mass 2^(-pi(C)); it is not a new conditioning law."
+        },
+        {
+          "path": "PaperCPrel8/ArithmeticLowCategory.lean",
+          "declaration": "arithmetic_activity_lower",
+          "scope": "Actual arithmetic low categories, original signed indicators, retained witness count and exact prime-cylinder probability give the finite logarithmic lower bound. Common exact occupancy means are explicit, as in G.9; subsequence asymptotics remain."
+        }
+      ]
     }
   ],
   "open_workstreams": [
@@ -4394,7 +4517,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "G.1–G.3 are proved. G.5 now has the actual arithmetic normalized Palm deficit bound on every retained mask, with the same explicit inputs as 7.7, and its mean/probability completion. G.4 has actual infinite-source mass, avoidance, deletion and finite normalized comparison identities; the exact transfer of the intrinsic G.3 regular set through boundary/start relabelling and restriction still needs to be recorded for its named exceptional probability. G.6 has exact Walsh inversion/energy and the signed affine character formula with an arbitrary environment law; the joint centered-coefficient formula and its complete arithmetic instantiation remain. G.7–G.9 (pair activity, categorical cumulant inequality and arithmetic obstruction), final unnumbered review and separate prescribed-floor full-field specialization remain open. F.2 retains its explicit baseline analytic solution premise."
+      "remaining": "G.1–G.6 numbered conclusions are recorded, with the explicit baseline inputs where required. G.4 now includes the exact named regular-target restriction, literal ordinary full deletion and the 5*Lambda^2/n normalized comparison. G.6 includes centered signed coefficients and actual arithmetic valuation matrices. G.8 finite categorical TV, polynomial and occupancy-log inequalities are proved using finite recursive cumulants and distinct-site subsets. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic host bound. G.9 has the actual prime witness, exact count, retention, probability and finite activity lower bound; its prime-subsequence asymptotics and higher-order divergence remain. Final unnumbered review (including named outside-deletion convergence, cumulant conventions, tilted-void identities and the pair example) and separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."

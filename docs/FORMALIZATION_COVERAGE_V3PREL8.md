@@ -104,9 +104,9 @@ The five existing Palomar configurations still describe their recorded V3PREL sc
 | companion | [G.1](../manuscripts/v3prel8/companion/G_palm_complements.tex#L44) | `supp:palm:prop:deletion` | new statement proved with explicit inputs |
 | companion | [G.2](../manuscripts/v3prel8/companion/G_palm_complements.tex#L67) | `supp:palm:lem:crt` | new statement proved |
 | companion | [G.3](../manuscripts/v3prel8/companion/G_palm_complements.tex#L83) | `supp:palm:thm:regular` | new statement proved with explicit inputs |
-| companion | [G.4](../manuscripts/v3prel8/companion/G_palm_complements.tex#L137) | `supp:palm:prop:palm` | new statement partial |
+| companion | [G.4](../manuscripts/v3prel8/companion/G_palm_complements.tex#L137) | `supp:palm:prop:palm` | new statement proved with explicit inputs |
 | companion | [G.5](../manuscripts/v3prel8/companion/G_palm_complements.tex#L183) | `supp:palm:cor:palm-completion` | new statement proved with explicit inputs |
-| companion | [G.6](../manuscripts/v3prel8/companion/G_palm_complements.tex#L219) | `supp:palm:prop:signed-void` | new statement partial |
+| companion | [G.6](../manuscripts/v3prel8/companion/G_palm_complements.tex#L219) | `supp:palm:prop:signed-void` | new statement proved with explicit inputs |
 | companion | [G.7](../manuscripts/v3prel8/companion/G_palm_complements.tex#L311) | `supp:palm:prop:pair-activity` | new statement open |
 | companion | [G.8](../manuscripts/v3prel8/companion/G_palm_complements.tex#L338) | `supp:palm:lem:cumulant` | new statement open |
 | companion | [G.9](../manuscripts/v3prel8/companion/G_palm_complements.tex#L371) | `supp:palm:thm:cumulant-obstruction` | new statement open |
@@ -115,7 +115,7 @@ The machine-readable [inventory](FORMALIZATION_COVERAGE_V3PREL8.json) contains t
 
 ## Arithmetic forcing and finite footprint
 
-The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the twenty-first checkpoint and the remaining dependency chains below.
+The checkpoints below describe the scope and open obligations at each historical snapshot. The current state is in the twenty-second checkpoint and the remaining dependency chains below.
 
 The second component batch proved 35 additional theorems (68 at that snapshot). Actual largest-odd-prime pivots are identified in the existing cylinder; deterministic forcing preserves nonpivot and small-prime coordinates and raw windows outside its directed footprint. Its law is the complete conditional arithmetic-sample law under any positive-mass event of the small-prime trace. The signed-run specialization retains both boundary equations, the exact excess and the sign, with mass `2^(-L-e-2)`. A weighted version also covers small-prime tilts.
 
@@ -459,8 +459,28 @@ G.6 now has exact Walsh inversion, nonconstant coefficient energy and its sharp
 deficit bound. Actual uniform affine fibre characters and the arbitrary
 conditioned environment Fourier transform are proved; full row rank preserves
 the environment law. The full arithmetic centered-coefficient assembly remains.
-The [current receipt](../extension_evidence/v3prel8/arithmetic-palm/README.md)
+The [twenty-first checkpoint](../extension_evidence/v3prel8/arithmetic-palm/README.md)
 records this checkpoint, without extending Palomar qualification.
+
+The twenty-second checkpoint adds **133 theorems (927 total, 185 modules)**.
+G.4 now has the literal retained regular set, its target exceptional probability,
+ordinary deletion between the actual full and retained Palm voids, and the
+explicit **5*Lambda^2/n** normalized-comparison penalty. G.6's centered signed
+coefficient and polynomial are instantiated with the actual arithmetic valuation
+matrices; private-prime regularity proves the needed row rank.
+
+G.8's finite categorical total-variation bound, polynomial envelope and positive
+occupancy-log lower bound are proved. Cumulants are defined by finite recursion;
+orders >=2 use centered moments. The categorical activity includes only
+labelled subsets with distinct sites. The proof drops disjointness into a finite
+product rather than invoking an infinite analytic cumulant series.
+
+G.7 has the exact two-rank formula, its one-event absolute deviation bound and
+the single-target rough-host CRT count. G.9 has the actual prime witness,
+certified signed marks, exact count, retention, probability and finite activity
+lower bound. Their remaining arithmetic/asymptotic assemblies are still open.
+The [current receipt](../extension_evidence/v3prel8/cumulant-witness/README.md)
+records this checkpoint; full realignment and new Palomar qualification are not claimed.
 
 ## Remaining dependency chains
 
@@ -468,7 +488,7 @@ records this checkpoint, without extending Palomar qualification.
 - **Information-adapted cutoff**: Proposition 6.2 is proved at the literal source regime under baseline AGG/PNT inputs. Actual root existence, uniqueness, endpoints, constrained leading-budget maximum, strict improvement and displayed leading limit are proved. The unnumbered derivative formulas and the full field bound for a separately prescribed admissible floor are not newly proved; the endpoint proof uses monotonicity and a larger existing deterministic truncation.
 - **Microscopic signed prefix field**: The prefix, literal dyadic one-factor comparison and all measurable/common-Markov-kernel readouts are proved. The analytic directional Stein solution construction in F.2 remains an explicit premise. The stronger unnumbered derivative estimate in the dyadic proof was not needed or newly proved; a monotonicity argument replaces it.
 - **Empirical Poisson and support obstruction**: Corollary 7.8a is proved at its literal scales with the baseline analytic/arithmetic inputs. Remark 7.8b, including the finite bound, positive liminf for every realization and N*p^2=M^(-1+o(1)), is proved without those inputs. This pair has no additional numerical or support obligation; the analytic solution premise in 7.8a remains the baseline F.2 limitation.
-- **Palm complements**: G.1–G.3 are proved. G.5 now has the actual arithmetic normalized Palm deficit bound on every retained mask, with the same explicit inputs as 7.7, and its mean/probability completion. G.4 has actual infinite-source mass, avoidance, deletion and finite normalized comparison identities; the exact transfer of the intrinsic G.3 regular set through boundary/start relabelling and restriction still needs to be recorded for its named exceptional probability. G.6 has exact Walsh inversion/energy and the signed affine character formula with an arbitrary environment law; the joint centered-coefficient formula and its complete arithmetic instantiation remain. G.7–G.9 (pair activity, categorical cumulant inequality and arithmetic obstruction), final unnumbered review and separate prescribed-floor full-field specialization remain open. F.2 retains its explicit baseline analytic solution premise.
+- **Palm complements**: G.1–G.6 numbered conclusions are recorded, with the explicit baseline inputs where required. G.4 now includes the exact named regular-target restriction, literal ordinary full deletion and the 5*Lambda^2/n normalized comparison. G.6 includes centered signed coefficients and actual arithmetic valuation matrices. G.8 finite categorical TV, polynomial and occupancy-log inequalities are proved using finite recursive cumulants and distinct-site subsets. G.7 still needs the full arithmetic pair-activity summation and uniform asymptotic host bound. G.9 has the actual prime witness, exact count, retention, probability and finite activity lower bound; its prime-subsequence asymptotics and higher-order divergence remain. Final unnumbered review (including named outside-deletion convergence, cumulant conventions, tilted-void identities and the pair example) and separate prescribed-floor full-field specialization remain. F.2 retains its explicit baseline analytic solution premise.
 
 Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count.
 

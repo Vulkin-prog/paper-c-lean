@@ -20,6 +20,6 @@ hashes are independent of the later packaging commit. The supplied PDFs and
 26 compilation inputs are preserved byte for byte; the TeX build was not rerun
 locally because Biber/BibLaTeX are absent.
 
-The current receipt is the [arithmetic Palm checkpoint](arithmetic-palm/README.md),
-with 794 audited theorems across 161 modules. Earlier receipts retain their
+The current receipt is the [finite cumulants and arithmetic witness checkpoint](cumulant-witness/README.md),
+with 927 audited theorems across 185 modules. Earlier receipts retain their
 original source hashes and historical scope.
