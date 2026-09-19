@@ -1,4 +1,8 @@
-# 3PREL8 component validation
+# Initial 3PREL8 component validation
+
+This is the initial snapshot at commit `6656221b244925bd56b2bb02b53b303d4b396567`.
+Its source hashes are historical and are not a receipt for later modifications.
+The [prime-forcing batch](prime-forcing/README.md) records the subsequent validation.
 
 The [receipt](validation.json) identifies the exact new Lean sources, the
 successful 24-library build, the 33-name axiom audit, the curated manuscript

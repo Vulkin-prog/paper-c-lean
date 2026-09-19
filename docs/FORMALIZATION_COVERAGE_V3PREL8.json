@@ -3021,9 +3021,20 @@
       "source": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
       "line": 316,
       "statement_sha256": "ba237d42877d4a9ba1c9d2a0ecea97d53ad4e6a90221c76a59a0ed84788ed0a1",
-      "status": "new_statement_open",
+      "status": "new_statement_partial",
       "prior_lean_declarations": [],
-      "new_lean_components": []
+      "new_lean_components": [
+        {
+          "path": "PaperCPrel8/DirectedFootprint.lean",
+          "declaration": "card_footprint_le",
+          "scope": "Actual directed divisibility change-set cardinality, with the exact finite (Q+1) sum_a(n/q_a+1) bound. No dependency-graph assertion."
+        },
+        {
+          "path": "PaperCPrel8/DirectedFootprint.lean",
+          "declaration": "total_footprint_le",
+          "scope": "Both finite bounds in F.6 are proved using the actual truncated reciprocal-pivot sum. The asymptotic reciprocal estimate F.5 and its substitution remain open."
+        }
+      ]
     },
     {
       "document": "companion",
@@ -3041,7 +3052,32 @@
         {
           "path": "PaperCPrel8/PrivateForcing.lean",
           "declaration": "exact_conditional_expectation",
-          "scope": "Constructed forcing on a uniform private block times an arbitrary nonpivot law; all-observable conditional identity, fixed points and preservation of nonpivots. Identification with actual arithmetic prime coordinates and their directed change sets remains open."
+          "scope": "Generic complete-law forcing on an independent uniform block; instantiated with actual arithmetic prime coordinates by the components below."
+        },
+        {
+          "path": "PaperCPrel8/PivotGeometry.lean",
+          "declaration": "cylinderPivot_basis",
+          "scope": "Actual largest odd-valuation primes give a private right inverse in the existing finite prime cylinder. No exponent-one or quadratic-cap hypothesis."
+        },
+        {
+          "path": "PaperCPrel8/PrimeForcing.lean",
+          "declaration": "forceWord_outside_footprint",
+          "scope": "The full raw window is fixed outside the directed divisibility footprint of the selected pivots; all small-prime coordinates are preserved as well. The source maximal-support footprint and full marked vector still need assembly."
+        },
+        {
+          "path": "PaperCPrel8/HardConditionalForcing.lean",
+          "declaration": "weighted_conditional_identity",
+          "scope": "Complete arithmetic-sample conditional identity for any weight of the small-prime trace, including hard events and soft tilts."
+        },
+        {
+          "path": "PaperCPrel8/SignedPalmForcing.lean",
+          "declaration": "actual_signed_small_probability",
+          "scope": "Exact signed-run event in the retained model, with probability of intersection with any small-prime event equal to its mass times 2^(-L-e-2)."
+        },
+        {
+          "path": "PaperCPrel8/SignedPalmForcing.lean",
+          "declaration": "actual_signed_hard_conditional",
+          "scope": "Constructed forcing of the actual signed exact-run event, tested against arbitrary observables of the entire finite prime sample, after any positive-mass small-prime event. The full maximal-support G0 field and its infinite-source conditional measure have not yet been assembled as a single endpoint."
         }
       ]
     },

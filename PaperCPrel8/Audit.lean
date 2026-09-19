@@ -1,13 +1,26 @@
 import PaperCPrel8
 
+/-! Exact public theorem inventory for the 3PREL8 extension. -/
+
 #print axioms PaperC.Prel8.DictionarySelection.pair_selection
 #print axioms PaperC.Prel8.DictionarySelection.oneInclusion_eq
 #print axioms PaperC.Prel8.DictionarySelection.averaged_pair_probability
+#print axioms PaperC.Prel8.DirectedFootprint.card_divisible_offset
+#print axioms PaperC.Prel8.DirectedFootprint.footprint_subset_cover
+#print axioms PaperC.Prel8.DirectedFootprint.card_footprint_le
+#print axioms PaperC.Prel8.DirectedFootprint.reciprocal_at_offset_le
+#print axioms PaperC.Prel8.DirectedFootprint.reciprocal_double_sum_le
+#print axioms PaperC.Prel8.DirectedFootprint.total_footprint_le
 #print axioms PaperC.Prel8.EmpiricalTransfer.variation_eq_one_sub_overlap
 #print axioms PaperC.Prel8.EmpiricalTransfer.variation_tendsto_zero
 #print axioms PaperC.Prel8.EmpiricalTransfer.ae_eventually_avoid
 #print axioms PaperC.Prel8.EmpiricalTransfer.ae_frequency_convergence
 #print axioms PaperC.Prel8.EmpiricalTransfer.ae_variation_convergence
+#print axioms PaperC.Prel8.HardConditionalForcing.smallTrace_unchanged
+#print axioms PaperC.Prel8.HardConditionalForcing.weighted_conditional_identity
+#print axioms PaperC.Prel8.HardConditionalForcing.word_small_event_probability
+#print axioms PaperC.Prel8.HardConditionalForcing.hard_conditional_expectation
+#print axioms PaperC.Prel8.HardConditionalForcing.actual_window_hard_conditional
 #print axioms PaperC.Prel8.InformationBudget.budget_at_crossing
 #print axioms PaperC.Prel8.InformationBudget.crossing_maximizes
 #print axioms PaperC.Prel8.InformationBudget.crossing_unique
@@ -24,6 +37,26 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.PalmStein.generator_identity
 #print axioms PaperC.Prel8.PalmStein.palm_stein_bound
 #print axioms PaperC.Prel8.PalmStein.palm_stein_of_directional_input
+#print axioms PaperC.Prel8.PivotGeometry.pivot_mem_support
+#print axioms PaperC.Prel8.PivotGeometry.pivot_spec
+#print axioms PaperC.Prel8.PivotGeometry.private_divisor
+#print axioms PaperC.Prel8.PivotGeometry.pivot_off_diagonal
+#print axioms PaperC.Prel8.PivotGeometry.pivot_injective
+#print axioms PaperC.Prel8.PivotGeometry.cylinderPivot_basis
+#print axioms PaperC.Prel8.PrimeForcing.value_liftBlock
+#print axioms PaperC.Prel8.PrimeForcing.liftBlock_add
+#print axioms PaperC.Prel8.PrimeForcing.forceWord_hits
+#print axioms PaperC.Prel8.PrimeForcing.forceWord_fixes
+#print axioms PaperC.Prel8.PrimeForcing.forceWord_preserves_nonpivot
+#print axioms PaperC.Prel8.PrimeForcing.forceWord_preserves_small
+#print axioms PaperC.Prel8.PrimeForcing.forceWord_preserves_value
+#print axioms PaperC.Prel8.PrimeForcing.forceWord_outside_footprint
+#print axioms PaperC.Prel8.PrimeForcing.assemble_word_iff
+#print axioms PaperC.Prel8.PrimeForcing.forceWord_assemble
+#print axioms PaperC.Prel8.PrimeForcing.exact_prime_conditional_expectation
+#print axioms PaperC.Prel8.PrimeForcing.uniform_assemble_expectation
+#print axioms PaperC.Prel8.PrimeForcing.uniform_conditional_expectation
+#print axioms PaperC.Prel8.PrimeForcing.actual_window_forced
 #print axioms PaperC.Prel8.PrivateForcing.force_preserves_nonpivots
 #print axioms PaperC.Prel8.PrivateForcing.force_hits
 #print axioms PaperC.Prel8.PrivateForcing.force_fixes_satisfied
@@ -33,3 +66,7 @@ import PaperCPrel8
 #print axioms PaperC.Prel8.PrivateForcing.exact_conditional_expectation
 #print axioms PaperC.Prel8.PrivateForcing.forcing_event_probability
 #print axioms PaperC.Prel8.PrivateForcing.affine_word_forced
+#print axioms PaperC.Prel8.SignedPalmForcing.signedWord_iff
+#print axioms PaperC.Prel8.SignedPalmForcing.signedForcing_hits
+#print axioms PaperC.Prel8.SignedPalmForcing.actual_signed_small_probability
+#print axioms PaperC.Prel8.SignedPalmForcing.actual_signed_hard_conditional
