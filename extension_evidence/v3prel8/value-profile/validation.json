@@ -1,0 +1,223 @@
+{
+  "date_utc": "2026-09-19T12:06:49.985409+00:00",
+  "status": "actual_value_profile_and_information_cutoff_validated_full_alignment_incomplete",
+  "parent_extension_commit": "53f26eccce5c872f471f1a7deb9351880a8e1f5b",
+  "base_commit": "a928497897a27e3dd3d7b601ee788336aca84780",
+  "lean": "4.34.0",
+  "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+  "build": {
+    "libraries": 24,
+    "lake_jobs": 10152,
+    "result": "passed"
+  },
+  "axiom_audit": {
+    "named_theorems": 204,
+    "added_in_this_batch": 17,
+    "result": "passed",
+    "allowlist": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_files": [
+    {
+      "path": "PaperCPrel8.lean",
+      "sha256": "50038193c52a140c4c6f386855e50cff2e8992bd258ed551ae141fa3f160d9f2"
+    },
+    {
+      "path": "PaperCPrel8/ActualSignedConditionalLaw.lean",
+      "sha256": "8760872773bd624e1d13939708b107a5a68d210a597aa1c4f30626a8cc8a8a2a"
+    },
+    {
+      "path": "PaperCPrel8/ActualSignedPairs.lean",
+      "sha256": "ba0f6862697ab11f59a048619f33a48beccbdbd3fb3f106f6bfc8c0ce1160a65"
+    },
+    {
+      "path": "PaperCPrel8/ActualSignedPalm.lean",
+      "sha256": "33741e99f8b9176ff45a65f1375b0edd3383840da569f2e3edd8f1552313427f"
+    },
+    {
+      "path": "PaperCPrel8/Audit.lean",
+      "sha256": "9dd2b18a45a33bbde27832434d58097fda0ad520f62ae42f84d8f4567aab124a"
+    },
+    {
+      "path": "PaperCPrel8/CategoricalPalm.lean",
+      "sha256": "e46c6371ee0b157a1ce0001150d6cb1beb7f9e7db96bacb3ecd5f7998c1f1789"
+    },
+    {
+      "path": "PaperCPrel8/CategoricalSummation.lean",
+      "sha256": "4cfd502aace0e68b3f9849ec0687f50fcad3326526091596eec6cebf70fa5547"
+    },
+    {
+      "path": "PaperCPrel8/DictionarySelection.lean",
+      "sha256": "48cecfabe7bdcbd9b08e6883c27ae832826d8f7e739289315ea3c639613974e8"
+    },
+    {
+      "path": "PaperCPrel8/DirectedFootprint.lean",
+      "sha256": "134326bfe45f8c93592acfddc776e09a4e4d6b129b50c5aabce1482397f1bc25"
+    },
+    {
+      "path": "PaperCPrel8/DirectedFootprintAsymptotics.lean",
+      "sha256": "3a57aed88069091f4389f5a4a25bdd1648ec2bf74d777d60b87b1e2a6687307e"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalTransfer.lean",
+      "sha256": "057e324fd0fdeae505e52b998deb3525ea7367385c371bbd46a86d7c82b18294"
+    },
+    {
+      "path": "PaperCPrel8/FiniteConditioning.lean",
+      "sha256": "eeb5ea3de017d566cedab338fdec01705be5353a7096e2ac1a130f1c6410c042"
+    },
+    {
+      "path": "PaperCPrel8/HardConditionalForcing.lean",
+      "sha256": "8096acd2aeca29f8eb97ab4b4bf1fbc454f376beea6f83c288ba028965c90724"
+    },
+    {
+      "path": "PaperCPrel8/IndependentScalarTail.lean",
+      "sha256": "b321f92139a9e9985520e4d3d86bae4db6686f3e5b4edc6a46f35121bde3c55f"
+    },
+    {
+      "path": "PaperCPrel8/InformationBudget.lean",
+      "sha256": "e9705c0ce5f1b66ca70f31911e982a5fb1372caeb808d84e59336457d3c7ca75"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicBadPivotCount.lean",
+      "sha256": "2252e5deded3e6ee05a83c41f1975a23d3017d1f5e03011d889c0ce5c715d3d2"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicDeletedSites.lean",
+      "sha256": "85074004044343bacd1daa95aeec9ed20d143507822ab9a0c00807e69181c2ad"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicDiscardBounds.lean",
+      "sha256": "709c4380f21b88c58bd416df83d456cfe2b7292eee8d774b0b1bf806f30a02e5"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicFiniteLedger.lean",
+      "sha256": "d0bdd1d705c18d8c7f15f5ac9f28b4e55bdf96e44776063e70b2c0c1adea8f61"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicFootprintLedger.lean",
+      "sha256": "d2c12b925213b5b28ceeaea80190392abcfebf8432fa11b90da6c9c7284edc5d"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicGoodField.lean",
+      "sha256": "b349d69c80054a15196b1c9f4d6bbd89936962512e0c29f40ef8a219d1f04473"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicInfiniteField.lean",
+      "sha256": "d9b010d2cf33fd24f1568c6adae6f291711d0c81d6a5c5dfb90a15f5f8de8463"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicInformationCutoff.lean",
+      "sha256": "3246e904ba3fb87137be2cc8142cc675848110e365d0ed26b892e1cb8a4c8c02"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicPairLedger.lean",
+      "sha256": "0e83570d0c5322579460c6c87be01ec210c3226b6fde47d3b7ecfe8727d4980a"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicProfileBudget.lean",
+      "sha256": "b9cd41170670ee2b1e9cc7710a56a93474dd3b3e2c5b8326885f81ca11d2987c"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicRelationExcess.lean",
+      "sha256": "434cb071c3d68ceb7eef3f9abcc92bc25888ed247237e5f33f2c365f021e3040"
+    },
+    {
+      "path": "PaperCPrel8/MicroscopicValueProfile.lean",
+      "sha256": "cb7b3a25a94dbaa83d572064dad257c9b2565a8b4e84f55481d324d87f01ad05"
+    },
+    {
+      "path": "PaperCPrel8/OddPrimePivot.lean",
+      "sha256": "af671b4353b60a15d78aee67f2d2362a7b5a3b2484095b9cccc7b737b176bffa"
+    },
+    {
+      "path": "PaperCPrel8/PalmStein.lean",
+      "sha256": "a3b738c8fcb31b255ed6fe9a75793f384ed00db06415c70b4faa922c49240e40"
+    },
+    {
+      "path": "PaperCPrel8/PivotGeometry.lean",
+      "sha256": "8a6b21ff59d22f6893a39e47f2c14f7927f836aaf6d4e8cc21aa8650b5dd82dc"
+    },
+    {
+      "path": "PaperCPrel8/PivotRankinExpandedBand.lean",
+      "sha256": "59aa74e9153254ae4a8f5e59f8febe14f5ce88be95fb3c069ae5614102fa4944"
+    },
+    {
+      "path": "PaperCPrel8/PivotRankinUniform.lean",
+      "sha256": "a27b073c047f452a9b520da978c20a4652944845e615db82ff884f9d3abd8c4d"
+    },
+    {
+      "path": "PaperCPrel8/PrimeForcing.lean",
+      "sha256": "df725645fb74805d0c8d62671fdd61f40169f51675d9994e16b88d7116e4392b"
+    },
+    {
+      "path": "PaperCPrel8/PrivateForcing.lean",
+      "sha256": "9d2943a55e55277dc1904afaa07aae234b5a2119ba597f0a0e3b855c9f95aeb6"
+    },
+    {
+      "path": "PaperCPrel8/ReciprocalPivotAsymptotics.lean",
+      "sha256": "44cc415360ef649c9ebf912551f154bc778b672a446fa32979c8b22e14de83f1"
+    },
+    {
+      "path": "PaperCPrel8/ReciprocalPivotShells.lean",
+      "sha256": "439eeef2fab48208023c8990bd72da0b7d52cb9f49c53f27cecfc0e3fd3f6507"
+    },
+    {
+      "path": "PaperCPrel8/SaddleEnvelope.lean",
+      "sha256": "51e3cae15dc7f5c32d1dd34d8c5421eeaf6760833f4bcb83a84f61fe9d92a730"
+    },
+    {
+      "path": "PaperCPrel8/SignedPalmForcing.lean",
+      "sha256": "754447e261c03bd170720cebdc636de313ea60620b6c7c5c1a8c1275dc0d857d"
+    },
+    {
+      "path": "PaperCPrel8/SmallPrimeMixture.lean",
+      "sha256": "6dee31a4bc43146b47943aeb9d0d9ea58e1dbc3190d049f6804701853d569edb"
+    },
+    {
+      "path": "PaperCPrel8/audit-names.json",
+      "sha256": "8d8089f43c92a8724502b140fd5f8e3b0c7f4fd93eb31bc6b1c4959361f486be"
+    }
+  ],
+  "unchanged_baseline_lean_files": 1171,
+  "checks": {
+    "new_payload_tests": 5,
+    "new_audit_tests": 5,
+    "source_inventory": "passed_28_files",
+    "coverage_inventory": "passed_96_blocks",
+    "root_audit_guards": "passed",
+    "generated_baseline_audit": "unchanged_and_passed",
+    "v282_audit_inventory": "passed_6094_declarations",
+    "diff_whitespace": "passed"
+  },
+  "completed_components": {
+    "source_identity": "Actual separated full-value excess equals the pre-existing arithmetic mass on the shifted retained-start mask.",
+    "profile": "Coarse and normalized profiles for the actual good set; infinite conditional comparison with the coarse profile substituted.",
+    "literal_cutoff": "Exact information-dependent ceiling, exponential tail budget, explicit 144*exp(4V) profile inflation, uniform subpolynomial inflation and shifted-band admissibility.",
+    "conditional_power_saving": "At the actual ambient-intensity cutoff, exp(I)*2^(-2L)*R is at most M^(-1/3+epsilon), uniformly under the explicit base band, geometry and ambient information budget."
+  },
+  "literature_inputs": "Uses the previously proved full-value arithmetic profile and saddle estimates. The infinite-field comparison retains its existing explicit directional Stein solution input. No new axiom, literature certificate or final convergence premise.",
+  "limits": [
+    "The paper information budget uses Lambda=(M-L)*2^-L; conversion to the ambient lambda=M*2^-L budget remains open.",
+    "Remaining good-geometry conditions, deletion/target-tail/graph error assembly, final uniform microscopic limits and dyadic restriction remain open.",
+    "Other dictionary, information-adapted saddle, empirical and Palm/cumulant families remain incomplete.",
+    "No new NanoDa/Comparator qualification or Palomar submission for these 204 declarations."
+  ],
+  "manuscript_payload": "The 28 delivered TeX/compilation/PDF bytes remain unchanged; no local TeX rebuild.",
+  "free_disk_gib": 15.09,
+  "transcripts": [
+    {
+      "path": "prel8-phase7-all-libraries-build.log.gz",
+      "sha256": "a240e873120ae6763516b3c5cadb3d878e9d8fca5e9a39433e8cdf45ccf4d9c2",
+      "uncompressed_sha256": "c493c1bd126164ff004624f95a5da0468621fa9b88f25ba2457af3a0a72cbb0d"
+    },
+    {
+      "path": "prel8-phase7-audit.log.gz",
+      "sha256": "f7e9021cafadb92da308726e4b06908fa1f17ca049acbb1aedbe59fb57607d72",
+      "uncompressed_sha256": "d47f581b10042175e2f4df4db0127ce16021d1d3d4eee8d8c5a1192324f780cc"
+    }
+  ]
+}

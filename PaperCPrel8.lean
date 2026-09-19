@@ -1,3 +1,6 @@
+import PaperCPrel8.MicroscopicValueProfile
+import PaperCPrel8.MicroscopicInformationCutoff
+import PaperCPrel8.MicroscopicProfileBudget
 import PaperCPrel8.MicroscopicBadPivotCount
 import PaperCPrel8.MicroscopicRelationExcess
 import PaperCPrel8.ActualSignedConditionalLaw

@@ -245,3 +245,42 @@ Le bilan ainsi obtenu porte sur le champ conditionné de la source infinie.
 Il reste à y substituer le profil arithmétique de l'excès de relations et à
 vérifier toutes les conditions du choix informationnel des paramètres.
 Aucune erreur nouvelle du manuscrit n'est affirmée et ses fichiers sont inchangés.
+
+
+## Profil complet et cutoff informationnel exact — septième lot
+
+- **Identification du profil, sans changement de noyau.** Le rang du système
+  joint à `L+E+2` valeurs est exactement celui du profil préexistant à hauteur
+  `Q=L+E+1`. La translation `j -> j+1` conserve les distances et les paires
+  ordonnées. L'excès réel est aussi exactement la conversion du poids naturel
+  `2^rho-1`, car ce dernier ne subit aucune troncature à zéro.
+- **Intervalle fermé et cylindre.** Les départs conservés appartiennent à
+  `[ceil(sqrt M),M]` lorsque `n+1 <= M`. La borne de profil est appliquée sur
+  cet intervalle fermé, dans un cylindre contenant tous les sommets requis.
+  Agrandir ce cylindre ne change pas le rang ; aucune restriction de parité
+  n'est introduite.
+- **Cutoff exact.** Pour `E=ceil((I+V+log(2+lambda))/log 2)`, on a
+  `2^E >= exp(I+V)*(2+lambda)` et donc
+  `exp(I)*lambda/2^(E+1) <= exp(-V)/2`. Le facteur `1/2` améliore la borne
+  affichée sans être nécessaire à son application.
+- **Contrôle explicite de l'arrondi.** Sous `I >= 0`, `lambda >= 1` et
+  `I+log(lambda) <= V`, l'inégalité `log(2+lambda) <= log(lambda)+log 3`
+  donne `E*log 2 <= 2V+log 3+log 2`. Ainsi
+  `2^(2E+2) <= 144*exp(4V)`. Cette borne suffit à absorber l'allongement du
+  profil dans toute puissance positive de `M`, uniformément avant `I` et
+  `lambda`, et à conserver une bande logarithmique fixe.
+- **Le conditionnement reste absorbable.** Le même budget donne
+  `exp(I)*(lambda^2+2lambda) <= 3*exp(2V)`. Le terme total de relations,
+  après multiplication par `exp(I)`, est donc au plus `M^(-1/3+epsilon)`
+  pour tout `epsilon > 0`, avec un seuil uniforme dans les paramètres admis.
+- **Distinguer les deux intensités.** Le cutoff utilise `lambda=M*2^-L`,
+  tandis que le budget du papier utilise `Lambda=(M-L)*2^-L`. Leur proximité
+  dans le régime considéré est attendue, mais le passage d'un budget à l'autre
+  doit être prouvé en utilisant la marge d'information. La présente borne
+  du profil conserve explicitement le budget ambiant comme hypothèse.
+
+Ces résultats ferment la contribution arithmétique des relations sous les
+hypothèses indiquées. Ils ne ferment pas encore l'ensemble de 7.7 : restent
+notamment le raccord des budgets, les conditions géométriques et l'assemblage
+uniforme des autres restes. Aucune erreur nouvelle du manuscrit n'est affirmée ;
+les sources et PDF livrés sont inchangés.

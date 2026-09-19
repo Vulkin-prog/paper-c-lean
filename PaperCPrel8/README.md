@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **187 proved theorems in 34 modules**. It is an
+This library contains **204 proved theorems in 37 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -38,6 +38,9 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `IndependentScalarTail` | Independent scalar vacancy/hit estimate for a shifted length |
 | `MicroscopicDiscardBounds` | Stronger masked first-moment hit/tail/deletion bounds under any positive event |
 | `MicroscopicBadPivotCount` | Actual bad-support exponential count and conditional deletion bound |
+| `MicroscopicValueProfile` | Actual retained full-value excess equals the established arithmetic mass; coarse and normalized bounds |
+| `MicroscopicInformationCutoff` | Literal information cutoff, exact tail budget, shifted band and subpolynomial inflation |
+| `MicroscopicProfileBudget` | Uniform conditioned relation-term power saving at the actual cutoff |
 | `MicroscopicRelationExcess` | Sparse baseline separated from full-value excess; local count and infinite comparison |
 | `MicroscopicDeletedSites` | Literal deleted set, boundary-to-start conversion and conditional source deletion cost |
 | `PivotRankinExpandedBand` | F.3 on V-2..3V+2, uniformly for M <= 2X |
@@ -47,11 +50,12 @@ baseline. The maximal-support marked field, its complete arithmetic Palm law,
 its infinite-source conditional masses and its finite categorical comparison
 are now constructed. The local pair bounds hold on every small-prime fibre;
 the full-value relation bound pays the actual conditioning mass.
-Independent tail and actual deleted-site probability bounds are now proved.
-The information cutoff must still be shown admissible in the shifted band,
-and the separated relation-excess sum still needs its arithmetic profile bound.
-The bad-pivot cardinality and its conditional deletion bound are now proved.
-Final uniform asymptotics and the other new families remain open.
+Independent tails, deleted-site bounds and the full-value profile are proved.
+The literal information cutoff preserves the shifted band under the explicit
+ambient-intensity budget, and the conditioned relation contribution has a
+uniform power saving. The paper's (M-L)-based intensity budget still needs
+conversion; remaining geometry, error assembly and uniform limits are open,
+as are the other new families in the ledger.
 No proof placeholder or new Lean axiom is used.
 
 ```sh
@@ -62,5 +66,5 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/arithmetic-ledger/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/value-profile/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.

@@ -145,21 +145,32 @@ the full build and exact axiom audit. The information-dependent excess cutoff
 still needs to be placed in the shifted logarithmic band, and the remaining
 arithmetic cardinality and error terms must be controlled asymptotically.
 
-The sixth batch adds **13 theorems (187 total, 34 modules)**. Actual bad
+The sixth batch added **13 theorems (187 total, 34 modules)**. Actual bad
 supports satisfy `card <= n*exp(-V+epsilon*nu)`, uniformly under the stated
 population and logarithmic-support conditions. This estimate is substituted
 in the conditional deletion probability. The actual infinite-field comparison
 now separates a linear local-pair count, the sparse directed baseline and the
 nonnegative full-value excess sum over all separated retained sites. Only the
-excess is enlarged to all pairs. The [current receipt](../extension_evidence/v3prel8/arithmetic-ledger/README.md)
+excess is enlarged to all pairs. The [sixth-batch receipt](../extension_evidence/v3prel8/arithmetic-ledger/README.md)
 records the validation. The arithmetic profile of the remaining excess sum
 and the final cutoff/asymptotic assembly are still open.
+
+The seventh batch adds **17 theorems (204 total, 37 modules)**. The actual
+separated full-value excess equals the established arithmetic mass on the
+shifted retained-start mask. Its coarse and normalized profiles are proved,
+and substituted in the actual infinite-field comparison. The literal cutoff
+`ceil((I+V+log(2+lambda))/log 2)` has its exact tail budget, shifted-band
+admissibility and subpolynomial inflation proved uniformly under the ambient
+budget. The full conditioned relation contribution is at most
+`M^(-1/3+epsilon)`. The paper's budget uses `(M-L)*2^-L`, while the cutoff uses
+`M*2^-L`; the conversion and remaining error assembly are still explicit open
+obligations. See the [current receipt](../extension_evidence/v3prel8/value-profile/README.md).
 
 ## Remaining dependency chains
 
 - **Typical and affine dictionaries**: Collision rank, averaged finite transfer, asymptotic rates and affine-ensemble inclusion identities.
 - **Information-adapted cutoff**: Existence and uniform asymptotics of the information-dependent saddle, free-cutoff transfer and optimized admissible-information domain.
-- **Microscopic signed prefix field**: Arithmetic profile for the separated full-value relation-excess sum, information-cutoff admissibility, final uniform asymptotics and dyadic restriction. Actual bad-support counting and the sparse-baseline/excess decomposition are now proved. The complete retained-field forcing law, infinite conditional source law, categorical ledger and actual arithmetic pair/product costs are now proved.
+- **Microscopic signed prefix field**: Convert the paper intensity budget to the ambient one, verify the remaining good-geometry conditions, assemble deletion/target-tail/graph errors and final uniform limits, then dyadic restriction. The actual full-value profile and conditioned relation-term power saving at the literal cutoff are proved under the explicit ambient budget. The complete retained-field forcing law, infinite conditional source law, categorical ledger and actual arithmetic pair/product costs are now proved.
 - **Empirical Poisson and support obstruction**: Overlapping-window variance, summability, Borel–Cantelli transfer and fixed-realization support lower bound.
 - **Palm complements**: Rough-kernel Rankin bounds, CRT cloud regularity, normalized void identities, signed pair activity, cumulant bound and arithmetic obstruction.
 

@@ -2440,6 +2440,26 @@
           "path": "PaperCPrel8/MicroscopicRelationExcess.lean",
           "declaration": "infinite_relation_comparison",
           "scope": "Actual infinite conditional retained-field comparison after separating close directed pairs, the sparse graph baseline and the sum of full-value excess 2^rho-1 over all separated retained sites. Local count bounded linearly in support size; the global arithmetic profile of the remaining excess sum is not yet instantiated."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicValueProfile.lean",
+          "declaration": "separatedExcess_eq_valueWeightMass",
+          "scope": "Exact equality between the retained-site full-value excess and the established arithmetic mass on the shifted start mask; ordered pairs, cylinder and full-value rows are preserved."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicValueProfile.lean",
+          "declaration": "infinite_profile_comparison_eventually",
+          "scope": "Actual infinite conditional field comparison with the coarse full-value profile substituted, uniformly over retained geometry in the shifted logarithmic band."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicInformationCutoff.lean",
+          "declaration": "shifted_band_eventually",
+          "scope": "The literal information-dependent ceiling preserves a fixed logarithmic band with any positive upper margin under I>=0, ambient lambda>=1 and I+log(lambda)<=V. The stronger paper budget stated using Lambda=(M-L)*2^-L still needs conversion to the ambient intensity."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicProfileBudget.lean",
+          "declaration": "conditional_actual_profile_bound",
+          "scope": "At the actual ambient-intensity cutoff, exp(I)*2^(-2L) times the retained full-value excess is at most M^(-1/3+epsilon), uniformly under the explicit base band, cylinder, geometry and ambient information-budget hypotheses. This discharges the relation term, not all remaining microscopic errors."
         }
       ]
     },
@@ -3022,6 +3042,21 @@
           "path": "PaperCPrel8/MicroscopicBadPivotCount.lean",
           "declaration": "badPivotSites_hard_bound",
           "scope": "Actual bad-support count at the hard saddle, bounded by n*exp(-V+epsilon*nu), uniformly before n,L,E under explicit population and logarithmic-support conditions. Uses the existing ordinary PNT input."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicValueProfile.lean",
+          "declaration": "separatedExcess_eq_valueWeightMass",
+          "scope": "Exact equality between the retained-site full-value excess and the established arithmetic mass on the shifted start mask; ordered pairs, cylinder and full-value rows are preserved."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicInformationCutoff.lean",
+          "declaration": "shifted_band_eventually",
+          "scope": "The literal information-dependent ceiling preserves a fixed logarithmic band with any positive upper margin under I>=0, ambient lambda>=1 and I+log(lambda)<=V. The stronger paper budget stated using Lambda=(M-L)*2^-L still needs conversion to the ambient intensity."
+        },
+        {
+          "path": "PaperCPrel8/MicroscopicProfileBudget.lean",
+          "declaration": "conditional_actual_profile_bound",
+          "scope": "At the actual ambient-intensity cutoff, exp(I)*2^(-2L) times the retained full-value excess is at most M^(-1/3+epsilon), uniformly under the explicit base band, cylinder, geometry and ambient information-budget hypotheses. This discharges the relation term, not all remaining microscopic errors."
         }
       ]
     },
@@ -3401,7 +3436,7 @@
         "cor:micro-readout",
         "cor:dyadic-micro"
       ],
-      "remaining": "Arithmetic profile bound for the separated full-value relation-excess sum, information-cutoff admissibility, final uniform asymptotics and dyadic restriction. Actual bad-support exponential count and its conditional deletion bound are proved. The infinite comparison now separates local costs, the sparse directed baseline and nonnegative separated excess."
+      "remaining": "Convert the paper intensity budget Lambda=(M-L)*2^-L to the ambient budget, discharge the remaining good-geometry conditions at the literal cutoff, assemble all deletion/target-tail/graph terms and final uniform limits, then dyadic restriction. The actual full-value profile, shifted-band admissibility and conditioned relation-term power saving are now proved under explicit ambient-budget hypotheses."
     },
     {
       "name": "Empirical Poisson and support obstruction",
