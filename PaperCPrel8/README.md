@@ -1,6 +1,6 @@
 # 3PREL8 proof components
 
-This library contains **629 proved theorems in 132 modules**. It is an
+This library contains **658 proved theorems in 137 modules**. It is an
 extension of the previously validated development, not a formalization of every
 new 3PREL8 conclusion. The [coverage ledger](../docs/FORMALIZATION_COVERAGE_V3PREL8.md)
 records the remaining arithmetic, probability and asymptotic obligations.
@@ -139,6 +139,11 @@ records the remaining arithmetic, probability and asymptotic obligations.
 | `RoughKernelAllocation` | Actual rough-kernel hosting probabilities on the uniform Cartesian grid |
 | `RoughKernelExponent` | Actual omega/log bound and threshold-power conversion |
 | `RoughKernelRegularity` | Occurrence-level regularity, single support and deterministic hosting obstruction |
+| `UniformGridFibres` | Actual uniform coordinate fibres, averaging and omitted-grid fractions |
+| `RoughKernelCloudBound` | G.2 full multi-source probability union bound at the real kernel threshold |
+| `PoissonCloudTail` | Exact generating series and exponential tail at ceil(2*Lambda) |
+| `PoissonCloudMixture` | Normalized countable Poisson mixture and expected affine loss before truncation |
+| `PoissonRegularCloud` | Actual ordered spatial cloud: omitted sites, private pivots and count tail |
 
 The analytic Stein and PNT inputs remain explicit theorem arguments, as in the
 baseline. The maximal-support marked field, its complete arithmetic Palm law,
@@ -177,7 +182,7 @@ python3 scripts/check_prel8_audit.py --log prel8-audit.log
 
 The audit requires all names in `audit-names.json`, in order, and rejects any
 foundational axiom outside `propext`, `Classical.choice` and `Quot.sound`.
-[Current validation evidence](../extension_evidence/v3prel8/restoration-crt/README.md) binds the build and
+[Current validation evidence](../extension_evidence/v3prel8/poisson-cloud/README.md) binds the build and
 audit results to exact source hashes. No new Palomar qualification is claimed.
 
 Theorem 5.3 (typical dictionaries) and proposition 6.2 (information-adapted
@@ -197,6 +202,9 @@ and actual deletion limits are now proved at the paper parameters, together
 with the low-type replacement cost. The final composition with original
 whole-field deletions and high-mark tails is now proved: G.1 is closed with
 its explicit arithmetic inputs, without a Stein premise for this reduction.
-G.2 has the actual CRT probability, threshold-power bound, single-support
-regularity and deterministic hosting obstruction. Its final multi-source
-probability union bound remains, before the Poisson-size cloud estimate.
+G.2 is now proved: the actual CRT probability, threshold-power bound, single-support
+regularity and multi-source probability union bound are all included. The actual
+Poisson-size ordered spatial cloud has a normalized law and a finite bound for
+omitted sites, irregularity and the count tail. G.3 remains partial until the
+full signed/excess target identification, high marks and literal saddle-scale
+absorption/convergence are established.

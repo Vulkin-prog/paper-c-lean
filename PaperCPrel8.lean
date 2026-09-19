@@ -94,6 +94,9 @@ import PaperCPrel8.PalmVoidPolynomial
 import PaperCPrel8.PivotGeometry
 import PaperCPrel8.PivotRankinExpandedBand
 import PaperCPrel8.PivotRankinUniform
+import PaperCPrel8.PoissonCloudMixture
+import PaperCPrel8.PoissonCloudTail
+import PaperCPrel8.PoissonRegularCloud
 import PaperCPrel8.PrimeForcing
 import PaperCPrel8.PrivateForcing
 import PaperCPrel8.ReciprocalPivotAsymptotics
@@ -101,6 +104,7 @@ import PaperCPrel8.ReciprocalPivotShells
 import PaperCPrel8.RegularPlantPresence
 import PaperCPrel8.RoughKernelAllocation
 import PaperCPrel8.RoughKernelCRT
+import PaperCPrel8.RoughKernelCloudBound
 import PaperCPrel8.RoughKernelDeletion
 import PaperCPrel8.RoughKernelDeletionLimits
 import PaperCPrel8.RoughKernelExponent
@@ -130,6 +134,7 @@ import PaperCPrel8.TypicalDictionaryTheorem
 import PaperCPrel8.TypicalDictionaryTransfer
 import PaperCPrel8.TypicalDictionaryUniform
 import PaperCPrel8.UniformExponentialEnvelope
+import PaperCPrel8.UniformGridFibres
 
 /-! Proved components of the 3PREL8 extension. The coverage ledger records
 which source-facing arithmetic and asymptotic conclusions remain open. -/

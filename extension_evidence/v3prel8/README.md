@@ -20,6 +20,6 @@ hashes are independent of the later packaging commit. The supplied PDFs and
 26 compilation inputs are preserved byte for byte; the TeX build was not rerun
 locally because Biber/BibLaTeX are absent.
 
-The current receipt is the [restoration and CRT batch](restoration-crt/README.md),
-with 629 audited theorems across 132 modules. Earlier receipts retain their
+The current receipt is the [Poisson-cloud batch](poisson-cloud/README.md),
+with 658 audited theorems across 137 modules. Earlier receipts retain their
 original source hashes and historical scope.

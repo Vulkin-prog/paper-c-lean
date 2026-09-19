@@ -762,3 +762,42 @@ hébergés dans les autres blocs.
 Il reste à assembler la borne de probabilité sur toutes les occurrences
 sources (facteur `k*(Q+1)`), puis à traiter le nombre poissonien de blocs
 pour G.3. G.2 demeure donc partiel. Les fichiers du manuscrit sont inchangés.
+
+## Borne globale de G.2 et nuage de taille poissonienne — dix-neuvième lot
+
+**G.2 terminé.** On expose un indice source et on le retire du vecteur des
+indices. Cette restriction est injective sur chaque fibre à indice fixé.
+La borne CRT s'applique alors aux autres indices indépendants ; on moyenne
+sur la valeur de l'indice source, puis on somme sur les `k*(Q+1)` occurrences.
+La preuve est directement appliquée à la loi uniforme de la grille, avec le
+seuil réel T et son arrondi exact pour le bon ensemble renforcé. Les conditions
+ambiantes `Q<=n`, `Q<Y` et `3*k*(Q+1)<Y` restent explicites. Elles sont celles
+utilisées dans la preuve du papier ; aucune nouvelle entrée bibliographique
+n'est nécessaire.
+
+**G.3 : moyenne avant troncature.** Le nuage spatial ordonné est construit
+sur la réunion disjointe des espaces de k indices, avec masse égale à la masse
+de Poisson en k multipliée par la vraie loi uniforme des k indices. Sa masse
+totale vaut un. Les séries d'événements sont sommables avant leur regroupement.
+Une perte `a*k+B` pour k<=K donne donc `a*Lambda+B` plus la queue de Poisson.
+Cela garde le coût des sites exclus à `Lambda*card(complement)/n`, sans le
+remplacer inutilement par `ceil(2*Lambda)*card(complement)/n`.
+
+La série génératrice exacte et Markov en base deux donnent, sans constante
+supplémentaire, `P(N>ceil(2*Lambda))<=exp(-(2*log(2)-1)*Lambda)`. Sa convergence
+vers zéro conserve expressément `Lambda->infinity`, déjà imposé par le budget
+microscopique au début de l'annexe F et repris dans G. Il n'y a donc pas ici
+d'hypothèse manquante dans le papier ; ce point doit simplement rester visible
+quand on cite la borne de queue séparément.
+
+La borne finie pour le nuage spatial est maintenant
+`Lambda*card(complement)/n + K*(Q+1)*T^(-1+log(3*K*(Q+1))/log(Y))
++ exp(-(2*log(2)-1)*Lambda)`, avec K=ceil(2*Lambda). Elle inclut les indices
+répétés et toutes les occurrences brutes : la régularité impose toujours un
+premier privé à chaque occurrence.
+
+**Limite actuelle.** Le raccord de ce nuage ordonné au champ cible complet,
+avec les signes et tous les excès, n'est pas encore enregistré. Les queues
+de marques et l'absorption aux échelles exactes du papier restent aussi à
+assembler pour obtenir la dernière borne et le o(1) de G.3. Cette dernière
+reste donc partielle. Les sources du manuscrit ne sont pas modifiées.

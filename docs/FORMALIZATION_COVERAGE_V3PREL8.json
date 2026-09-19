@@ -3899,7 +3899,7 @@
       "source": "manuscripts/v3prel8/companion/G_palm_complements.tex",
       "line": 67,
       "statement_sha256": "681cfeb53ae36abffa19b24f6b248cb9c3ac3432101ca5996b90c6eaf0c0ea12",
-      "status": "new_statement_partial",
+      "status": "new_statement_proved",
       "prior_lean_declarations": [],
       "new_lean_components": [
         {
@@ -3945,7 +3945,27 @@
         {
           "path": "PaperCPrel8/RoughKernelRegularity.lean",
           "declaration": "failure_hosted",
-          "scope": "A deterministic failure of regularity forces all rough primes at some source occurrence into other blocks. The final k*(Q+1) probabilistic union bound is not yet assembled."
+          "scope": "A deterministic failure of regularity forces all rough primes at some source occurrence into other blocks. The final k*(Q+1) probabilistic union bound is supplied by RoughKernelCloudBound.regularity_probability_le."
+        },
+        {
+          "path": "PaperCPrel8/UniformGridFibres.lean",
+          "declaration": "probability_le_of_fibres",
+          "scope": "Exposing any one uniform index and deleting that coordinate gives an injective finite-fibre bound, then exact averaging under the actual Cartesian-grid law."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelCloudBound.lean",
+          "declaration": "occurrence_probability_le",
+          "scope": "Averaged all-prime CRT hosting estimate for a genuine source occurrence, with any larger weight z and no assumed conditional comparison."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelCloudBound.lean",
+          "declaration": "regularity_probability_le",
+          "scope": "Full multi-source probability bound (k*(Q+1))*T^(-1+log(3*k*(Q+1))/log(Y)) for all kernels >=T but failure of private-pivot regularity. Uses 0<n, Q<=n, Q<Y, T>0 and 3*k*(Q+1)<Y, as explicit ambient hypotheses."
+        },
+        {
+          "path": "PaperCPrel8/RoughKernelCloudBound.lean",
+          "declaration": "strong_good_probability_le",
+          "scope": "Literal membership in the stronger good set, with the natural floor of the real threshold, discharges all individual kernel predicates. Together with the previous CRT allocation and single-support proofs, this closes G.2."
         }
       ]
     },
@@ -3981,6 +4001,46 @@
           "path": "PaperCPrel8/RegularPlantPresence.lean",
           "declaration": "presence_conditional",
           "scope": "The same exact presence factorization under any positive small-prime conditioning event; it does not assert absence of further occurrences."
+        },
+        {
+          "path": "PaperCPrel8/PoissonCloudTail.lean",
+          "declaration": "ceil_doubled_tail_le",
+          "scope": "Actual Poisson mass tail at K=ceil(2*Lambda) <=exp(-(2*log(2)-1)*Lambda), derived from the exact generating series and Markov, including zero rate."
+        },
+        {
+          "path": "PaperCPrel8/PoissonCloudTail.lean",
+          "declaration": "doubled_rate_tendsto",
+          "scope": "The displayed tail rate tends to zero for Lambda->infinity, retaining the growing-intensity assumption inherited from Appendix F."
+        },
+        {
+          "path": "PaperCPrel8/PoissonCloudMixture.lean",
+          "declaration": "mass_hasSum",
+          "scope": "An actual countable mass function on the disjoint union of finite cloud spaces: Poisson count times the specified finite conditional law. Positivity and normalization are proved."
+        },
+        {
+          "path": "PaperCPrel8/PoissonCloudMixture.lean",
+          "declaration": "probability_eq",
+          "scope": "Exact event probability equals the Poisson average of finite event probabilities; summability is proved before regrouping the series."
+        },
+        {
+          "path": "PaperCPrel8/PoissonCloudMixture.lean",
+          "declaration": "probability_le_affine_cutoff",
+          "scope": "A finite-size loss a*k+B up to K averages to a*Lambda+B plus the genuine Poisson upper tail. No probabilistic or summability conclusion is assumed."
+        },
+        {
+          "path": "PaperCPrel8/PoissonRegularCloud.lean",
+          "declaration": "fixed_cloud_failure_le",
+          "scope": "Complete spatial failure at fixed size: expected bad-grid-site cost plus the all-source regularity error, with a common weight for all k<=K."
+        },
+        {
+          "path": "PaperCPrel8/PoissonRegularCloud.lean",
+          "declaration": "poisson_failure_le",
+          "scope": "Actual normalized ordered spatial cloud: probability of exceeding K or failing good-site/private-pivot regularity <=Lambda*omitted/n+K*(Q+1)*T^(-1+log(3*K*(Q+1))/log(Y))+exp(-(2*log(2)-1)*Lambda). Marks and identification with the existing full target are not yet included."
+        },
+        {
+          "path": "PaperCPrel8/PoissonRegularCloud.lean",
+          "declaration": "stronger_poisson_failure_le",
+          "scope": "Instantiates the preceding finite bound with the actual stronger good set and K=ceil(2*Lambda). Conditions Q<=n, Q<Y and 3*K*(Q+1)<Y remain explicit; literal paper-scale absorption and the full signed/excess target bridge remain open."
         }
       ]
     },
@@ -4189,7 +4249,7 @@
         "supp:palm:lem:cumulant",
         "supp:palm:thm:cumulant-obstruction"
       ],
-      "remaining": "G.1 is proved with explicit baseline arithmetic inputs, including the combined restoration of original deletions and high-mark tails. G.2 now has the actual uniform-grid CRT allocation bound, threshold-power bound, single-support regularity and deterministic hosting obstruction; the final multi-source probability union bound remains. High-probability Poisson target regular clouds, full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open."
+      "remaining": "G.1 and G.2 are proved (G.1 retains baseline arithmetic inputs; G.2 uses the explicit ambient size/cutoff conditions). G.3 now has a normalized actual Poisson-size ordered grid cloud, exact Poisson tail, expected bad-site cost and uniform regularity bound up to the count cutoff. Identification with the full signed/excess target, high marks and the literal saddle-scale absorption/convergence remain. Full arithmetic G.4/G.5 instantiation, signed Fourier/Walsh identities, pair activity and the cumulant inequality/arithmetic obstruction remain open."
     }
   ],
   "unnumbered_review": "Additional unnumbered content in article Sections 1, 3, 5–7 and companion C, F, G requires review beyond the numbered-block inventory. In particular D.1/D.4 remain unnumbered and their prior coverage is not inferred from the 71-count."
