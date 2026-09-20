@@ -128,6 +128,11 @@ renderer, editorial review or registration. A changed statement, solution or
 configuration requires a new qualification; an existing receipt must not be
 silently relabelled with the new commit.
 
+The [local qualification record](../palomar/v3prel/qualification/2026-09-20/README.md)
+contains the seven-family receipt, file identities and transcript excerpts.
+After merging, the candidate workflow automatically repeats qualification on
+`main`; use the full SHA of that successful merged commit for all seven entries.
+
 ## Relation to earlier registrations
 
 | Issued identifier | Relationship |
