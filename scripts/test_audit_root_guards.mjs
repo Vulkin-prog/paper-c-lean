@@ -529,7 +529,7 @@ try {
   process.stdout.write(
     'root and literature audit guards passed: PaperC.lean changes invalidate ' +
     'the digest; root public theorems enter the inventory and AuditCheck.lean; ' +
-    'a short current README is allowed but missing history links and altered ' +
+    'a publication README without history links is allowed but altered ' +
     'original/readable historical README archives are rejected; ' +
     'historical Comparator evidence mutations, legacy mutable current-run ' +
     'statuses, invalid timeless-protocol fields, undeclared evidence, ' +

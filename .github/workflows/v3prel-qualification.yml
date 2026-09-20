@@ -1,6 +1,8 @@
 name: V3PREL candidate qualification
 
 on:
+  push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
