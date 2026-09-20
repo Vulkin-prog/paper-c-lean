@@ -1,0 +1,39 @@
+name: Paper C 3PREL8 extension
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check the curated sources and exact coverage inventory
+        run: |
+          python3 scripts/check_v3prel8_sources.py
+          python3 scripts/check_v3prel8_coverage.py
+          python3 scripts/check_current_manuscript.py
+          python3 -m unittest discover -s scripts -p 'test_v3prel8_sources.py'
+          python3 -m unittest discover -s scripts -p 'test_prel8_audit.py'
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          build: false
+      - name: Build the proved extension components and audit their axioms
+        run: |
+          lake build PaperCPrel8
+          lake env lean PaperCPrel8/Audit.lean > prel8-audit.log 2>&1
+          python3 scripts/check_prel8_audit.py --log prel8-audit.log
+      - name: Preserve the exact axiom transcript
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: prel8-axiom-audit
+          path: prel8-audit.log
+          if-no-files-found: warn

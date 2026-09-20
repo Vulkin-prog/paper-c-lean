@@ -1,0 +1,63 @@
+\documentclass[11pt,a4paper]{article}
+\input{preamble.tex}
+\externaldocument[][nocite]{paper_c_version_3PREL9_technical_companion_en}
+\title{\textbf{Long runs and rare patterns}\\[1mm]
+\large of a random completely multiplicative function}
+\author{Brice Pouly}
+\date{Version 3PREL9}
+\makeatletter
+\patchcmd{\@maketitle}{\vskip 2em}{\vskip 0pt}{}{}
+\makeatother
+\setlength{\cftbeforesecskip}{2pt}
+\begin{document}
+\maketitle
+\vspace{-0.6em}
+\noindent\begin{minipage}{\textwidth}\footnotesize
+This research received substantial assistance from AI systems; see the
+\hyperref[sec:ai-assistance]{declaration at the end of the article}.
+\end{minipage}\medskip
+\begin{abstract}
+Let $f$ be a random completely multiplicative function with independent
+symmetric signs at the primes. We study rare constant runs and prescribed
+words at logarithmic lengths, despite long-range multiplicative identities.
+A uniform weighted two-window square-relation estimate, with critical
+bound $O_\varepsilon(N^{5/3+\varepsilon})$, separates exact rational
+relations from residual components.
+
+At critical intensity, this estimate gives Poisson comparisons retaining
+positions, exact excess lengths and signs. For dictionaries, uniform
+bounds under size and overlap conditions are complemented by typical
+bounds obtained by averaging the distance after fixing the dictionary.
+In a quantitatively controlled regime of diverging intensity, an exact
+one-word coupling by largest-odd-prime pivots compares the full signed
+run field under prescribed small-prime conditioning. For fixed
+admissible window parameters and almost every fixed realization of $f$,
+run-start counts in prescribed near-macroscopic windows satisfy an
+empirical Poisson law along dyadic scales.
+
+In the exceptionally rare regime, a relative marked comparison separates
+the boundary event from bulk occurrences. Conditional on existence, the
+first location, sign and overshoot have a two-source lattice law with
+scale-dependent weights. The two overshoots use different clocks: prime
+rank at the boundary and integer distance in the bulk.
+\end{abstract}
+
+\medskip
+\noindent\textbf{Keywords.} Random multiplicative functions; long runs;
+rare patterns; Poisson approximation; square-product relations; boundary effects.
+\par\smallskip
+\noindent\textbf{MSC 2020.} 11N64; 60F05; 60C05; 11D45; 94B05.
+\clearpage
+\tableofcontents
+\input{sections/01_introduction.tex}
+\input{sections/02_affine.tex}
+\input{sections/03_arithmetic.tex}
+\input{sections/04_poisson.tex}
+\input{sections/05_patterns_fields.tex}
+\input{sections/06_conditioning.tex}
+\input{sections/07_prefix_boundary.tex}
+\input{sections/08_discussion.tex}
+\Needspace{12\baselineskip}
+\input{declarations.tex}
+\printbibliography[heading=bibintoc,title={References}]
+\end{document}

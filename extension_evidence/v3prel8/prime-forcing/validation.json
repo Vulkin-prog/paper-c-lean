@@ -1,0 +1,111 @@
+{
+  "date_utc": "2026-09-19T10:26:08.389515+00:00",
+  "status": "finite_arithmetic_forcing_validated_full_paper_alignment_incomplete",
+  "parent_extension_commit": "6656221b244925bd56b2bb02b53b303d4b396567",
+  "base_commit": "a928497897a27e3dd3d7b601ee788336aca84780",
+  "lean": "4.34.0",
+  "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+  "build": {
+    "libraries": 24,
+    "lake_jobs": 10126,
+    "result": "passed"
+  },
+  "axiom_audit": {
+    "named_theorems": 68,
+    "added_in_this_batch": 35,
+    "result": "passed",
+    "allowlist": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_files": [
+    {
+      "path": "PaperCPrel8.lean",
+      "sha256": "4c306658f597ba30b53611ffc119959e97b920e45443cf144dd73c1b2b0cc5e7"
+    },
+    {
+      "path": "PaperCPrel8/Audit.lean",
+      "sha256": "6f0de873071f5fc4f3b2cfc1a51918521b71c900431fc1676d14dbfc5a759d0b"
+    },
+    {
+      "path": "PaperCPrel8/DictionarySelection.lean",
+      "sha256": "48cecfabe7bdcbd9b08e6883c27ae832826d8f7e739289315ea3c639613974e8"
+    },
+    {
+      "path": "PaperCPrel8/DirectedFootprint.lean",
+      "sha256": "134326bfe45f8c93592acfddc776e09a4e4d6b129b50c5aabce1482397f1bc25"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalTransfer.lean",
+      "sha256": "057e324fd0fdeae505e52b998deb3525ea7367385c371bbd46a86d7c82b18294"
+    },
+    {
+      "path": "PaperCPrel8/HardConditionalForcing.lean",
+      "sha256": "8096acd2aeca29f8eb97ab4b4bf1fbc454f376beea6f83c288ba028965c90724"
+    },
+    {
+      "path": "PaperCPrel8/InformationBudget.lean",
+      "sha256": "e9705c0ce5f1b66ca70f31911e982a5fb1372caeb808d84e59336457d3c7ca75"
+    },
+    {
+      "path": "PaperCPrel8/OddPrimePivot.lean",
+      "sha256": "af671b4353b60a15d78aee67f2d2362a7b5a3b2484095b9cccc7b737b176bffa"
+    },
+    {
+      "path": "PaperCPrel8/PalmStein.lean",
+      "sha256": "a3b738c8fcb31b255ed6fe9a75793f384ed00db06415c70b4faa922c49240e40"
+    },
+    {
+      "path": "PaperCPrel8/PivotGeometry.lean",
+      "sha256": "8a6b21ff59d22f6893a39e47f2c14f7927f836aaf6d4e8cc21aa8650b5dd82dc"
+    },
+    {
+      "path": "PaperCPrel8/PrimeForcing.lean",
+      "sha256": "df725645fb74805d0c8d62671fdd61f40169f51675d9994e16b88d7116e4392b"
+    },
+    {
+      "path": "PaperCPrel8/PrivateForcing.lean",
+      "sha256": "9d2943a55e55277dc1904afaa07aae234b5a2119ba597f0a0e3b855c9f95aeb6"
+    },
+    {
+      "path": "PaperCPrel8/SignedPalmForcing.lean",
+      "sha256": "754447e261c03bd170720cebdc636de313ea60620b6c7c5c1a8c1275dc0d857d"
+    },
+    {
+      "path": "PaperCPrel8/audit-names.json",
+      "sha256": "1945968436dee2890e9b363c7c1ead7eb3f0e434458c1f626f543ec42f32294c"
+    }
+  ],
+  "unchanged_baseline_lean_files": 1171,
+  "checks": {
+    "new_payload_tests": 5,
+    "new_audit_tests": 5,
+    "source_inventory": "passed_28_files",
+    "coverage_inventory": "passed_96_blocks",
+    "root_audit_guards": "passed",
+    "generated_baseline_audit": "unchanged_and_passed",
+    "v282_audit_inventory": "passed_6094_declarations",
+    "diff_whitespace": "passed"
+  },
+  "transcripts": [
+    {
+      "path": "prel8-phase2-all-libraries-build.log.gz",
+      "sha256": "8e4fc4b952db417dce6cf3c3929aee5fe16a18f41c099457db3d905203f37fe5",
+      "uncompressed_sha256": "b73f734cee0472aca44bd278c9aa15a9c179186f2f279fd96ba5e51ad4b1ebbb"
+    },
+    {
+      "path": "prel8-phase2-audit.log.gz",
+      "sha256": "da78fdc9ce49415c8f2283a7fa1fc26ccc1520e8305674af8e97e4c5727b3c17",
+      "uncompressed_sha256": "87e04db3d8affeaf9c069e2f1ea8de6c326f9590d5fb21fb10dca8ecbfe66bf6"
+    }
+  ],
+  "limits": [
+    "The two finite F.6 inequalities are proved; F.5 reciprocal asymptotics remain open.",
+    "F.7 has an actual finite-cylinder signed exact-run conditional-law theorem. Assembly of the maximal-support G0 marked field and its infinite-source conditional measure remains open.",
+    "The final microscopic comparison and the other new 3PREL8 families are not yet complete.",
+    "No new NanoDa/Comparator qualification or Palomar submission was performed for these 68 declarations."
+  ],
+  "manuscript_payload": "Unchanged from the initial 3PREL8 manifest; no TeX/PDF files modified or rebuilt."
+}

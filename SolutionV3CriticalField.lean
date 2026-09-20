@@ -1,3 +1,4 @@
+import PaperCPrel8.PrescribedInformationPaper
 import Mathlib.Algebra.Order.Floor.Div
 import Mathlib.Algebra.Order.Ring.Finset
 import Mathlib.Algebra.QuadraticAlgebra.NormDeterminant
@@ -711,6 +712,91 @@ theorem spatial_conditional_mean (hAGG : ProcessAGGStatement) (hPNT : PrimeNumbe
   simpa only [spatialMeanDistance,environmentDistance_eq,spatialSource_eq,spatialTargetMass_eq,
     source_measure_eq,hardCutoff_eq,saddleCutoff_eq,saddleNu_eq,fullRate_eq,
     PaperC.V282.LabelledInformationBudget.labelledLogCost,zero_add] using h
+end CriticalField
+
+namespace CriticalField
+open Analysis Process
+/-- The larger inverse branch of exp(u)/u; totalized to 1 below e. -/
+def upperBranch (nu : ℝ) : ℝ :=
+  if Real.exp 1≤nu then Classical.epsilon (fun u : ℝ => 1≤u ∧ saddleRatio u=nu) else 1
+def deletionCost (nu : ℝ) : ℝ := nu*upperBranch nu-exponentialIntegral (upperBranch nu)
+/-- The unique crossing between hard and soft cutoffs, with a stated fallback. -/
+def informationCutoff (H I : ℝ) : ℝ :=
+  if max (saddleThreshold 1) (saddleThreshold 2)≤H ∧ 0≤I ∧ I≤saddleCutoff 1 H then
+    Classical.epsilon (fun w => w∈Set.Icc (saddleCutoff 1 H) (saddleCutoff 2 H) ∧
+      2*deletionCost (H/w)=w+I)
+  else saddleCutoff 1 H
+def informationBudget (H I w : ℝ) : ℝ := min (deletionCost (H/w)-I) ((w-I)/2)
+def eventDistance (N L : ℕ) (A : Set InfiniteSample) : ℝ :=
+  massTV (conditionalLaw infiniteRademacherMeasure A (spatialSource N L)) (spatialTargetMass N L)
+end CriticalField
+
+namespace CriticalField
+open Analysis Process
+theorem upperBranch_eq (nu : ℝ) : upperBranch nu = PaperC.V282.SaddleBranch.upperSaddleBranch nu := by
+  unfold upperBranch PaperC.V282.SaddleBranch.upperSaddleBranch
+  split_ifs with h
+  · have he := PaperC.V282.SaddleBranch.existsUnique_saddleRatio h
+    exact (Classical.choose_spec he).2 _ (Classical.epsilon_spec he.exists)
+  · rfl
+theorem deletionCost_eq (nu : ℝ) : deletionCost nu = PaperC.V282.SaddleParameters.saddleCost nu := by
+  unfold deletionCost PaperC.V282.SaddleParameters.saddleCost; rw [upperBranch_eq]; rfl
+theorem informationCutoff_eq (H I : ℝ) :
+    informationCutoff H I = PaperC.Prel8.InformationSaddleBudget.informationCutoff H I := by
+  unfold informationCutoff
+  simp only [saddleCutoff_eq,deletionCost_eq]
+  change (if max (PaperC.V282.SaddleParameters.saddleThreshold 1)
+    (PaperC.V282.SaddleParameters.saddleThreshold 2)≤H ∧ 0≤I ∧
+    I≤PaperC.V282.SaddleParameters.saddleCutoff 1 H then _ else _) = _
+  unfold PaperC.Prel8.InformationSaddleBudget.informationCutoff
+  split_ifs with h
+  · have he := PaperC.Prel8.InformationSaddle.existsUnique_crossing h.1 h.2.1 h.2.2
+    exact (Classical.choose_spec he).2 _ (Classical.epsilon_spec he.exists)
+  · rfl
+theorem informationBudget_eq (H I w : ℝ) : informationBudget H I w =
+    PaperC.Prel8.InformationBudget.budget (fun v => PaperC.V282.SaddleParameters.saddleCost (H/v)) I w := by
+  unfold informationBudget PaperC.Prel8.InformationBudget.budget; rw [deletionCost_eq]
+theorem eventDistance_eq (N L : ℕ) (A : Set InfiniteSample) : eventDistance N L A =
+    PaperC.V282.SpatialMarkedEventComparison.spatialEventDistance N L A := by
+  unfold eventDistance; rw [spatialSource_eq,spatialTargetMass_eq]; rfl
+end CriticalField
+
+namespace CriticalField
+open Analysis Process
+/-- The selected cutoff is the crossing stated in the paper. -/
+theorem information_cutoff_spec {H I : ℝ}
+    (hH : max (saddleThreshold 1) (saddleThreshold 2)≤H)
+    (hI : 0≤I) (hIV : I≤saddleCutoff 1 H) :
+    informationCutoff H I∈Set.Icc (saddleCutoff 1 H) (saddleCutoff 2 H) ∧
+      2*deletionCost (H/informationCutoff H I)=informationCutoff H I+I := by
+  rw [saddleCutoff_eq] at hIV
+  simp only [informationCutoff_eq,saddleCutoff_eq,deletionCost_eq]
+  exact PaperC.Prel8.InformationSaddleBudget.cutoff_spec hH hI hIV
+/-- The maximum respects the prescribed lower conditioning cutoff. -/
+theorem constrained_information_maximum {H I floor w : ℝ}
+    (hH : max (saddleThreshold 1) (saddleThreshold 2)≤H)
+    (hI : 0≤I) (hIV : I≤saddleCutoff 1 H)
+    (hf : floor∈Set.Icc (saddleCutoff 1 H) (saddleCutoff 2 H))
+    (hw : w∈Set.Icc (saddleCutoff 1 H) (saddleCutoff 2 H)) (hfw : floor≤w) :
+    informationBudget H I w ≤ informationBudget H I (max floor (informationCutoff H I)) := by
+  simp only [saddleCutoff_eq] at hIV hf hw
+  simp only [informationBudget_eq,informationCutoff_eq]
+  exact PaperC.Prel8.InformationSaddleBudget.constrained_maximum hH hI hIV hf hw hfw
+/-- Article 6.2: the actual full-field comparison at the information-adapted constrained cutoff. -/
+theorem information_adapted_field (hAGG : ProcessAGGStatement) (hPNT : PrimeNumberTheoremRemainder)
+    (c c' epsilon : ℝ) (hc' : 0<c') (hcc : c'<c)
+    (hepsilon : 0<epsilon) (heps : epsilon<1/3) :
+    ∃ N0 : ℕ, ∀ N≥N0, ∀ L : ℕ, ∀ w0 : ℝ,
+      saddleCutoff 1 (Real.log N)≤w0 → w0≤saddleCutoff 2 (Real.log N) →
+      1≤(fullRate N L:ℝ) → ∀ A : Set InfiniteSample,
+      0 < infiniteRademacherMeasure.real A → eventInformation A≤saddleCutoff 1 (Real.log N) →
+      MeasurableSet[primeSigma ⌊Real.exp w0⌋₊] A →
+      let w := max w0 (informationCutoff (Real.log N) (eventInformation A))
+      Real.log (fullRate N L:ℝ)≤ informationBudget (Real.log N) (eventInformation A) w-c*(Real.log N/w) →
+      eventDistance N L A≤67*Real.exp (-c'*(Real.log N/w))+64*(N:ℝ)^(-(1/(3:ℝ))+epsilon) := by
+  simp only [saddleCutoff_eq,informationBudget_eq,informationCutoff_eq,eventDistance_eq]
+  exact PaperC.Prel8.PrescribedInformationPaper.optimized_floor_field
+    (process_input_to_core hAGG) hPNT c c' epsilon hc' hcc hepsilon heps
 end CriticalField
 
 end PaperCV3Audit

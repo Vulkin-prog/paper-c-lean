@@ -1,0 +1,86 @@
+\section*{External inputs and internal deductions}
+\addcontentsline{toc}{section}{External inputs and internal deductions}
+This register identifies the non-elementary inputs, their precise role,
+and the calculations proved in this package. References are local to this
+companion; statement links lead to the relevant document. Classical
+finite-dimensional linear algebra, conditioning and elementary inequalities
+are not separate imported hypotheses.
+The equation numbers (2.14)--(2.15) cited for Krokowski refer to arXiv version 3;
+the cited Lemma~4 of Cilleruelo--Garaev refers to their arXiv text.
+
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}L{.205\textwidth}L{.30\textwidth}L{.435\textwidth}@{}}
+\toprule
+Input and source & Form consumed & Use and internal deduction\\\midrule
+\endfirsthead
+\toprule Input and source & Form consumed & Use and internal deduction\\\midrule
+\endhead
+\bottomrule\endfoot
+
+Prime number theorem; standard prime sums \cite{Tenenbaum2015}
+& $\pi(t)\sim t/\log t$; elementary weighted consequences
+& \Cref{supp:prop:cutoff-calculation} proves both cutoff balances; \cref{supp:pivot:lem:rankin,supp:pivot:prop:reciprocal} prove the uniform reciprocal-pivot estimate.\\
+Finite-dependency Poisson approximation \cite{ArratiaGoldsteinGordon1989,ArratiaGoldsteinGordon1990}
+& Scalar and process theorems; $b_3=0$ for an exact graph
+& \Cref{thm:transfer,thm:word-field,thm:marked-field}; the supremum convention for variation is half the sources' norm.\\
+Scalar Stein factors \cite[(2.14)--(2.15)]{Krokowski2017}
+& Zeroth and first differences, of orders $\lambda^{-1/2}$ and $\lambda^{-1}$
+& \Cref{supp:lem:soft-retention} proves the exceptional-set decomposition; no Malliavin input is used.\\
+Directional Poisson factor \cite[p.~179, Lemmas~2--3]{Barbour1988SteinProcess}
+& Weighted quadratic Hessian bound and $|\Delta_{ij}g|\le1$, for the same solution
+& \Cref{supp:eq:directional-factor,supp:thm:aggregated}; Hessian conjugation, independent Poisson filling and geometric mark summation are explicit.\\
+Palm--Stein method \cite{Barbour1988SteinProcess,ChenXia2004}
+& Immigration--death generator and conditional-law identity
+& \Cref{supp:pivot:lem:palm} proves the finite total-variation bound with no graph assumption; the exact arithmetic forcing is proved in \cref{supp:pivot:prop:forcing}.\\
+Quadratic ideals and units \cite{HalterKoch2013}; divisors \cite{NicolasRobin1983}
+& Ideal factorization, unit orbits and $\tau(n)=\exp(O(\log n/\log\log n))$
+& \Cref{supp:lem:pell} gives a self-contained proof of the classical uniform count; split-product localization is internal.\\
+Uniform polynomial-height Pell count \cite[arXiv text, Lemma~4]{CillerueloGaraev2011}; \cite[Lemma~2.10, Remark~2.12]{Tao2026}
+& $\exp(O_K(\log M/\log\log M))$ solutions in polynomial-height boxes
+& The estimate itself has these antecedents; Appendix A.2 fixes the normalization and height dependence needed here.\\
+Largest-prime reciprocal asymptotics \cite[eq.~(1.3)]{ErdosIvicPomerance1986}
+& $S_+(x)=x\exp\{-2V_x+o(\nu_x)\}$ at the precision used here
+& Appendix F.3 deduces the odd-pivot bound by $n=a^2v$. The direct Rankin proof is retained; no separate analytic priority is claimed.\\
+Laishram--Shorey \cite[eq.~(14), p.~331]{LaishramShorey2004}
+& $\omega(\prod_{j<B}(n+j))\ge(2-\varepsilon)\pi(B)$, uniformly for $n>B$
+& Appendix E.2 records the quantifiers; the private-coordinate and medium-prime rank arguments are internal.\\
+Balasubramanian--Shorey \cite{BalasubramanianShorey1993}, as recorded in \cite[pp.~55--56]{Shorey1994BakerApplications}
+& Square-product exclusion with $P^+(b)\le k$ and the stated height/density conditions
+& \Cref{supp:lem:pointwise-maximum} gives the substitutions and contrapositive. No size bound on the smooth coefficient is added.\\
+Berry's normal approximation bound \cite{Berry1941}
+& Third-absolute-moment normal approximation
+& Appendix D uses the explicit Poisson specialization; the marked comparison and joint limiting independence are proved here.\\
+Binary marker construction \cite{CheeKiahPurkayasthaWang2013}
+& A classical cross-bifix-free family
+& \Cref{cor:marker-dictionaries} proves the particular binary construction and its size bound. This illustrative application is not an input to the arithmetic theorem.\\
+\end{longtable}
+\endgroup
+
+\medskip
+Runge's split-product estimate, the Hamming-ball argument, the raw and
+capped two-window profiles, the simple-incidence rank lemma and the
+relative bulk normalization are proved in the article--companion pair.
+Evertse--Silverman is contextual only. The selected-pivot comparison and
+Palm complements are proved in Appendices F--G, with the latter using,
+not establishing, the microscopic comparison. The table concerns the
+mathematical inputs to the written arguments. In particular the directional estimate is obtained
+directly from Barbour's two lemmas, while the arithmetic comparison and
+Poisson filling are proved here.
+
+
+\paragraph{Boundary of the formal correspondence.}
+This table describes the written proof, not a list of assumptions all
+proved inside Lean. The separate literature register supplies seven
+explicit propositions to the formal development, as listed in the
+article's formalization statement. In particular, the directional input
+supplies the entrywise bound and the weighted quadratic bound for the
+\emph{same} Stein solution. An entrywise bound by one is not an
+unweighted Euclidean operator-norm bound. The derivation in
+\cref{supp:eq:directional-factor} uses precisely the valid weighted and
+entrywise estimates; no arithmetic bound changes. The finite Palm
+argument in \cref{supp:pivot:lem:palm} is formalized relative to the
+analytic solution input, rather than by reconstructing its printed
+semigroup. The correspondence distinguishes this boundary from the
+proved arithmetic deductions, proof substitutions and release qualification.

@@ -1,0 +1,148 @@
+{
+  "version": "3PREL8",
+  "archive_sha256": "e69f94e6ed1b294e5c15cd0da99ce23081f3124330e2503eb0ef75f5d5cb07a3",
+  "source_archive_name": "paper_c_version_3PREL8_release.zip",
+  "files": [
+    {
+      "path": "paper_c_version_3PREL8_en.pdf",
+      "size_bytes": 831215,
+      "sha256": "9b8d41830b3ecff5c1a1bc9873d5f637b09301e046ebefe71d2e80573614c1f8"
+    },
+    {
+      "path": "paper_c_version_3PREL8_technical_companion_en.pdf",
+      "size_bytes": 703350,
+      "sha256": "2c917b24c862eb46c68ba23cc91c43b2590b3cdfe9c05feaec85ede9f11b7ed1"
+    },
+    {
+      "path": "paper_c_version_3PREL8_en.tex",
+      "size_bytes": 2777,
+      "sha256": "92368c622fe068fb6b99b3795e678eeba363a8538b1b37738aaad5df9658c162"
+    },
+    {
+      "path": "paper_c_version_3PREL8_technical_companion_en.tex",
+      "size_bytes": 2964,
+      "sha256": "229b42d26674c1dd789239297e1d7080c5839b1b9a8caface3ede0c9a7f1c0cb"
+    },
+    {
+      "path": "preamble.tex",
+      "size_bytes": 8396,
+      "sha256": "b24c6dc3f68ae8525d73dd41c47b5c2299f04e0977e0fe875e7f03913df0aa20"
+    },
+    {
+      "path": "declarations.tex",
+      "size_bytes": 2302,
+      "sha256": "e716ee52213847a719ff2974580c1b5c72a987a930977006403e3311beb24915"
+    },
+    {
+      "path": "references.bib",
+      "size_bytes": 14959,
+      "sha256": "0a5dab02d5a3118caf7030cda9bd165d808c1a07cc5d4d1e82e02b27f794121d"
+    },
+    {
+      "path": "corpus.dbx",
+      "size_bytes": 142,
+      "sha256": "c6163625ca9ff97a43459ef15763eb3d727eb0e1035bcd357a905b64fa114674"
+    },
+    {
+      "path": "build.sh",
+      "size_bytes": 1886,
+      "sha256": "8516fb181bbb2e706ea7da483088a8bad5287bb98b0682ac91a3c34c192a1630"
+    },
+    {
+      "path": "companion/00_external_inputs.tex",
+      "size_bytes": 4960,
+      "sha256": "d46bb227e43c6a29949f1e1b641a7b8d0ab90e4eabc5bff8f2edef7731570301"
+    },
+    {
+      "path": "companion/00_reading_routes.tex",
+      "size_bytes": 5020,
+      "sha256": "dd1a47be190fcbb1ed6b2f67c6cacfb399e2f4913cd39fa1fcfb7cb0c2e84824"
+    },
+    {
+      "path": "companion/A_runge_diophantine.tex",
+      "size_bytes": 10718,
+      "sha256": "96c7aa97ef4bdb81ce271b3a6a8283d112eb12d1fe71c10eb6d81aec51253b04"
+    },
+    {
+      "path": "companion/B_cutoffs.tex",
+      "size_bytes": 9431,
+      "sha256": "9e2f116fef0109353e802b87ef7c4602a20de8b0715358ae8825ce2e915d27dc"
+    },
+    {
+      "path": "companion/C_fields.tex",
+      "size_bytes": 26274,
+      "sha256": "ffd8b5d2b06c45c93da06f210eb3309b730e6d7621772e8e8b29a07efaddcfe2"
+    },
+    {
+      "path": "companion/D_conditioning.tex",
+      "size_bytes": 9469,
+      "sha256": "79b895ab9c3320ad998e855cf69bcfcd1e89ce308badce47c362100f83128deb"
+    },
+    {
+      "path": "companion/E_boundary.tex",
+      "size_bytes": 18389,
+      "sha256": "c7c705379edd9ee63d073b6310a43b78b1a3cf4ab57e14a4b6063bd0d00a0dd1"
+    },
+    {
+      "path": "companion/F_microscopic_pivots.tex",
+      "size_bytes": 21093,
+      "sha256": "1ef0d46ca06d18c9bc682dfebc07c1f091b3dad3362fcd82ed7d73bb65eeadd3"
+    },
+    {
+      "path": "companion/G_palm_complements.tex",
+      "size_bytes": 27228,
+      "sha256": "6ffe20733024ae9151bc00ffefc46924f3044939ba06aacb6168442809ff2762"
+    },
+    {
+      "path": "sections/01_introduction.tex",
+      "size_bytes": 24378,
+      "sha256": "29c546f6d8fa5a9e84103dbb45d1fd8484ff92c797eb2d9dbc6987d71b93f775"
+    },
+    {
+      "path": "sections/02_affine.tex",
+      "size_bytes": 12174,
+      "sha256": "fd9fe5fbefac2ffc570fb41d813a17c3333422539659ed1572663b1564581df6"
+    },
+    {
+      "path": "sections/03_arithmetic.tex",
+      "size_bytes": 49187,
+      "sha256": "3fd7d0d558f7ae075d4b042cc78c4ff85922c129fb3b73eb620d3d83c4f57f5c"
+    },
+    {
+      "path": "sections/04_poisson.tex",
+      "size_bytes": 11257,
+      "sha256": "e7faf8ebd15176d8ef6f363fd8637956a97a8ff7f00a22610f89cb8070d901fa"
+    },
+    {
+      "path": "sections/05_patterns_fields.tex",
+      "size_bytes": 37356,
+      "sha256": "845c8e2c3a7ea3fc0589de40de719e85b40f8f8e0afa92e63ac3663a0ba79603"
+    },
+    {
+      "path": "sections/06_conditioning.tex",
+      "size_bytes": 16367,
+      "sha256": "6763f66611bc3b5d6121dd26e5041e75517c507fe00dbe0df56504d0b9848c55"
+    },
+    {
+      "path": "sections/07_prefix_boundary.tex",
+      "size_bytes": 37216,
+      "sha256": "9fe91b223adaacf78c7d76cf21fc9c14d741072c94b0ecdaf2d27949a8096a39"
+    },
+    {
+      "path": "sections/07a_empirical_poisson.tex",
+      "size_bytes": 7789,
+      "sha256": "f477210df72c733be624aa46e5536d5f4bf0fb2996389accd53a7df7c55ec92d"
+    },
+    {
+      "path": "sections/07b_dyadic_restriction.tex",
+      "size_bytes": 2532,
+      "sha256": "54509aaa3b39c4af39c3b855bb67e9e3709dee3499a3607e31e5b154dff50759"
+    },
+    {
+      "path": "sections/08_discussion.tex",
+      "size_bytes": 7474,
+      "sha256": "60d6bad2b2c10366b91a2501a7b3dfda1ff8e6cdb1df20a51b53182c75d7ac9a"
+    }
+  ],
+  "selection": "Two delivered PDFs and the 26 autonomous compilation inputs, preserved byte for byte. Internal reports, prior archives, diagnostics and editorial working files excluded."
+}

@@ -14,7 +14,10 @@
     "PaperCV3Audit.CriticalField.critical_diffuse",
     "PaperCV3Audit.CriticalField.stable_small_prime_record",
     "PaperCV3Audit.CriticalField.masked_conditional_kernel",
-    "PaperCV3Audit.CriticalField.spatial_conditional_mean"
+    "PaperCV3Audit.CriticalField.spatial_conditional_mean",
+    "PaperCV3Audit.CriticalField.information_cutoff_spec",
+    "PaperCV3Audit.CriticalField.constrained_information_maximum",
+    "PaperCV3Audit.CriticalField.information_adapted_field"
   ],
   "permitted_axioms": [
     "propext",

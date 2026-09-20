@@ -15,7 +15,7 @@ import re
 import subprocess
 import sys
 import yaml
-import check_v3prel_sources
+import check_current_manuscript
 
 ROOT = Path(__file__).resolve().parents[1]
 SUBMISSION_COMMIT = "3561d237dcc4b28482558ad28a64d767d7cc8615"
@@ -24,11 +24,125 @@ TOOLCHAIN = "leanprover/lean4:v4.34.0"
 MATHLIB_TAG = "v4.34.0"
 MATHLIB_COMMIT = "5ed2965256430c3649e86755f9576b54eca72435"
 AXIOMS = ["propext", "Quot.sound", "Classical.choice"]
-PDF_HASHES = {
- "paper_C_version_3PREL_en.pdf": "0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7",
- "paper_C_version_3PREL_technical_companion_en.pdf": "d64150c995f07ee39b016bb20a16b5fc3a01ce53b0ddcda893d1ceb41eefadee",
-}
-REGISTRY = {'critical_field': {'challenge_module': 'ChallengeV3CriticalField', 'solution_module': 'SolutionV3CriticalField', 'theorem_names': ['PaperCV3Audit.CriticalField.exact_source_coefficients', 'PaperCV3Audit.CriticalField.critical_lattice', 'PaperCV3Audit.CriticalField.critical_start_count', 'PaperCV3Audit.CriticalField.deterministic_statistic', 'PaperCV3Audit.CriticalField.hard_conditional', 'PaperCV3Audit.CriticalField.soft_conditional', 'PaperCV3Audit.CriticalField.spatial_hard_conditioning', 'PaperCV3Audit.CriticalField.spatial_soft_conditioning', 'PaperCV3Audit.CriticalField.uniform_quenched_scalar', 'PaperCV3Audit.CriticalField.critical_diffuse', 'PaperCV3Audit.CriticalField.stable_small_prime_record', 'PaperCV3Audit.CriticalField.masked_conditional_kernel', 'PaperCV3Audit.CriticalField.spatial_conditional_mean'], 'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'], 'enable_nanoda': True}, 'patterns': {'challenge_module': 'ChallengeV3Patterns', 'solution_module': 'SolutionV3Patterns', 'theorem_names': ['PaperCV3Audit.Patterns.word_overlap_probability', 'PaperCV3Audit.Patterns.dictionary_critical', 'PaperCV3Audit.Patterns.exact_marked_quantitative', 'PaperCV3Audit.Patterns.exact_sign_partition', 'PaperCV3Audit.Patterns.aggregate_hard_budget', 'PaperCV3Audit.Patterns.geometric_joint_configuration', 'PaperCV3Audit.Patterns.geometric_compound_weight', 'PaperCV3Audit.Patterns.geometric_compound_pgf', 'PaperCV3Audit.Patterns.constant_windows_compound'], 'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'], 'enable_nanoda': True}, 'limits': {'challenge_module': 'ChallengeV3Limits', 'solution_module': 'SolutionV3Limits', 'theorem_names': ['PaperCV3Audit.paper_c_v3_limits_joint_poisson_gaussian', 'PaperCV3Audit.paper_c_v3_limits_gaussian_covariance', 'PaperCV3Audit.paper_c_v3_limits_ar_covariance', 'PaperCV3Audit.paper_c_v3_limits_ar_recursion', 'PaperCV3Audit.paper_c_v3_limits_ar_independent_innovations', 'PaperCV3Audit.paper_c_v3_limits_ar_normal_innovations', 'PaperCV3Audit.paper_c_v3_limits_local_stirling_bounds', 'PaperCV3Audit.paper_c_v3_limits_local_stirling_relative_error', 'PaperCV3Audit.paper_c_v3_limits_poisson_local_limit', 'PaperCV3Audit.paper_c_v3_limits_poisson_moderate_bound', 'PaperCV3Audit.paper_c_v3_limits_poisson_moderate_limit', 'PaperCV3Audit.paper_c_v3_limits_poisson_gaussian_cdf_bound', 'PaperCV3Audit.paper_c_v3_limits_hard_central_local', 'PaperCV3Audit.paper_c_v3_limits_soft_central_local', 'PaperCV3Audit.paper_c_v3_limits_hard_moderate_tail', 'PaperCV3Audit.paper_c_v3_limits_integer_process_moving_laplace', 'PaperCV3Audit.paper_c_v3_limits_integer_process_phase_limit', 'PaperCV3Audit.paper_c_v3_limits_integer_process_target_laplace', 'PaperCV3Audit.paper_c_v3_limits_integer_process_locally_finite', 'PaperCV3Audit.paper_c_v3_limits_integer_process_infinite_mass', 'PaperCV3Audit.paper_c_v3_limits_integer_process_independent_counts', 'PaperCV3Audit.paper_c_v3_limits_integer_process_poisson_counts', 'PaperCV3Audit.paper_c_v3_limits_integer_process_finite_upper_tails', 'PaperCV3Audit.paper_c_v3_limits_integer_process_conditioned_positions', 'PaperCV3Audit.paper_c_v3_limits_extreme_phase_limit', 'PaperCV3Audit.paper_c_v3_limits_d4_full_half_count_law', 'PaperCV3Audit.paper_c_v3_limits_d4_entire_upper_point_law', 'PaperCV3Audit.paper_c_v3_limits_d4_conditional_upper_point_law', 'PaperCV3Audit.paper_c_v3_limits_d4_half_line_is_whole_restriction'], 'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'], 'enable_nanoda': True}, 'boundary': {'challenge_module': 'ChallengeV3Boundary', 'solution_module': 'SolutionV3Boundary', 'theorem_names': ['PaperCV3Audit.v3_boundary_exact', 'PaperCV3Audit.v3_boundary_microscopic', 'PaperCV3Audit.v3_boundary_mesoscopic', 'PaperCV3Audit.v3_boundary_prefix_quantitative', 'PaperCV3Audit.v3_boundary_prefix_critical', 'PaperCV3Audit.v3_boundary_asymmetric_envelopes', 'PaperCV3Audit.v3_boundary_longest_loglog'], 'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'], 'enable_nanoda': True}, 'crossover': {'challenge_module': 'ChallengeV3Crossover', 'solution_module': 'SolutionV3Crossover', 'theorem_names': ['PaperCV3Audit.v3_crossover_affine_border_mass', 'PaperCV3Audit.v3_crossover_complete_moving_mixture', 'PaperCV3Audit.v3_crossover_locations', 'PaperCV3Audit.v3_crossover_locations_atTop', 'PaperCV3Audit.v3_crossover_locations_atBot', 'PaperCV3Audit.v3_crossover_sign', 'PaperCV3Audit.v3_crossover_affine_complete_clock', 'PaperCV3Audit.v3_crossover_affine_locations', 'PaperCV3Audit.v3_crossover_affine_locations_atTop', 'PaperCV3Audit.v3_crossover_affine_locations_atBot', 'PaperCV3Audit.v3_crossover_affine_sign'], 'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'], 'enable_nanoda': True}}
+PDF_HASHES = {'paper_c_version_3PREL9_en.pdf': '74bd843886f2038865dc97a6d09f6b58be0898d5571b10de86faa26372524370',
+ 'paper_c_version_3PREL9_technical_companion_en.pdf': '6162f9d9f2cc0b0e8d72c7ad93471a0d307334c4a775d80b503b9478bb32cc39'}
+REGISTRY = {'critical_field': {'challenge_module': 'ChallengeV3CriticalField',
+                    'solution_module': 'SolutionV3CriticalField',
+                    'theorem_names': ['PaperCV3Audit.CriticalField.exact_source_coefficients',
+                                      'PaperCV3Audit.CriticalField.critical_lattice',
+                                      'PaperCV3Audit.CriticalField.critical_start_count',
+                                      'PaperCV3Audit.CriticalField.deterministic_statistic',
+                                      'PaperCV3Audit.CriticalField.hard_conditional',
+                                      'PaperCV3Audit.CriticalField.soft_conditional',
+                                      'PaperCV3Audit.CriticalField.spatial_hard_conditioning',
+                                      'PaperCV3Audit.CriticalField.spatial_soft_conditioning',
+                                      'PaperCV3Audit.CriticalField.uniform_quenched_scalar',
+                                      'PaperCV3Audit.CriticalField.critical_diffuse',
+                                      'PaperCV3Audit.CriticalField.stable_small_prime_record',
+                                      'PaperCV3Audit.CriticalField.masked_conditional_kernel',
+                                      'PaperCV3Audit.CriticalField.spatial_conditional_mean',
+                                      'PaperCV3Audit.CriticalField.information_cutoff_spec',
+                                      'PaperCV3Audit.CriticalField.constrained_information_maximum',
+                                      'PaperCV3Audit.CriticalField.information_adapted_field'],
+                    'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+                    'enable_nanoda': True},
+ 'patterns': {'challenge_module': 'ChallengeV3Patterns',
+              'solution_module': 'SolutionV3Patterns',
+              'theorem_names': ['PaperCV3Audit.Patterns.word_overlap_probability',
+                                'PaperCV3Audit.Patterns.dictionary_critical',
+                                'PaperCV3Audit.Patterns.exact_marked_quantitative',
+                                'PaperCV3Audit.Patterns.exact_sign_partition',
+                                'PaperCV3Audit.Patterns.aggregate_hard_budget',
+                                'PaperCV3Audit.Patterns.geometric_joint_configuration',
+                                'PaperCV3Audit.Patterns.geometric_compound_weight',
+                                'PaperCV3Audit.Patterns.geometric_compound_pgf',
+                                'PaperCV3Audit.Patterns.constant_windows_compound',
+                                'PaperCV3Audit.Patterns.typical_dictionary_mean',
+                                'PaperCV3Audit.Patterns.affine_dictionary_mean'],
+              'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+              'enable_nanoda': True},
+ 'limits': {'challenge_module': 'ChallengeV3Limits',
+            'solution_module': 'SolutionV3Limits',
+            'theorem_names': ['PaperCV3Audit.paper_c_v3_limits_joint_poisson_gaussian',
+                              'PaperCV3Audit.paper_c_v3_limits_gaussian_covariance',
+                              'PaperCV3Audit.paper_c_v3_limits_ar_covariance',
+                              'PaperCV3Audit.paper_c_v3_limits_ar_recursion',
+                              'PaperCV3Audit.paper_c_v3_limits_ar_independent_innovations',
+                              'PaperCV3Audit.paper_c_v3_limits_ar_normal_innovations',
+                              'PaperCV3Audit.paper_c_v3_limits_local_stirling_bounds',
+                              'PaperCV3Audit.paper_c_v3_limits_local_stirling_relative_error',
+                              'PaperCV3Audit.paper_c_v3_limits_poisson_local_limit',
+                              'PaperCV3Audit.paper_c_v3_limits_poisson_moderate_bound',
+                              'PaperCV3Audit.paper_c_v3_limits_poisson_moderate_limit',
+                              'PaperCV3Audit.paper_c_v3_limits_poisson_gaussian_cdf_bound',
+                              'PaperCV3Audit.paper_c_v3_limits_hard_central_local',
+                              'PaperCV3Audit.paper_c_v3_limits_soft_central_local',
+                              'PaperCV3Audit.paper_c_v3_limits_hard_moderate_tail',
+                              'PaperCV3Audit.paper_c_v3_limits_integer_process_moving_laplace',
+                              'PaperCV3Audit.paper_c_v3_limits_integer_process_phase_limit',
+                              'PaperCV3Audit.paper_c_v3_limits_integer_process_target_laplace',
+                              'PaperCV3Audit.paper_c_v3_limits_integer_process_locally_finite',
+                              'PaperCV3Audit.paper_c_v3_limits_integer_process_infinite_mass',
+                              'PaperCV3Audit.paper_c_v3_limits_integer_process_independent_counts',
+                              'PaperCV3Audit.paper_c_v3_limits_integer_process_poisson_counts',
+                              'PaperCV3Audit.paper_c_v3_limits_integer_process_finite_upper_tails',
+                              'PaperCV3Audit.paper_c_v3_limits_integer_process_conditioned_positions',
+                              'PaperCV3Audit.paper_c_v3_limits_extreme_phase_limit',
+                              'PaperCV3Audit.paper_c_v3_limits_d4_full_half_count_law',
+                              'PaperCV3Audit.paper_c_v3_limits_d4_entire_upper_point_law',
+                              'PaperCV3Audit.paper_c_v3_limits_d4_conditional_upper_point_law',
+                              'PaperCV3Audit.paper_c_v3_limits_d4_half_line_is_whole_restriction'],
+            'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+            'enable_nanoda': True},
+ 'boundary': {'challenge_module': 'ChallengeV3Boundary',
+              'solution_module': 'SolutionV3Boundary',
+              'theorem_names': ['PaperCV3Audit.v3_boundary_exact',
+                                'PaperCV3Audit.v3_boundary_microscopic',
+                                'PaperCV3Audit.v3_boundary_mesoscopic',
+                                'PaperCV3Audit.v3_boundary_prefix_quantitative',
+                                'PaperCV3Audit.v3_boundary_prefix_critical',
+                                'PaperCV3Audit.v3_boundary_asymmetric_envelopes',
+                                'PaperCV3Audit.v3_boundary_longest_loglog'],
+              'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+              'enable_nanoda': True},
+ 'crossover': {'challenge_module': 'ChallengeV3Crossover',
+               'solution_module': 'SolutionV3Crossover',
+               'theorem_names': ['PaperCV3Audit.v3_crossover_affine_border_mass',
+                                 'PaperCV3Audit.v3_crossover_complete_moving_mixture',
+                                 'PaperCV3Audit.v3_crossover_locations',
+                                 'PaperCV3Audit.v3_crossover_locations_atTop',
+                                 'PaperCV3Audit.v3_crossover_locations_atBot',
+                                 'PaperCV3Audit.v3_crossover_sign',
+                                 'PaperCV3Audit.v3_crossover_affine_complete_clock',
+                                 'PaperCV3Audit.v3_crossover_affine_locations',
+                                 'PaperCV3Audit.v3_crossover_affine_locations_atTop',
+                                 'PaperCV3Audit.v3_crossover_affine_locations_atBot',
+                                 'PaperCV3Audit.v3_crossover_affine_sign'],
+               'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+               'enable_nanoda': True},
+ 'microscopic': {'challenge_module': 'ChallengeV3Microscopic',
+                 'solution_module': 'SolutionV3Microscopic',
+                 'theorem_names': ['PaperCV3Audit.Microscopic.exact_source_coefficients',
+                                   'PaperCV3Audit.Microscopic.full_field_comparison',
+                                   'PaperCV3Audit.Microscopic.dyadic_field_comparison',
+                                   'PaperCV3Audit.Microscopic.empirical_poisson',
+                                   'PaperCV3Audit.Microscopic.common_readout',
+                                   'PaperCV3Audit.Microscopic.empirical_vector_obstruction'],
+                 'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+                 'enable_nanoda': True},
+ 'palm': {'challenge_module': 'ChallengeV3Palm',
+          'solution_module': 'SolutionV3Palm',
+          'theorem_names': ['PaperCV3Audit.Palm.source_target_palm_mass',
+                            'PaperCV3Audit.Palm.full_deficit_comparison',
+                            'PaperCV3Audit.Palm.ordinary_deletion',
+                            'PaperCV3Audit.Palm.full_retained_normalized_comparison',
+                            'PaperCV3Audit.Palm.normalized_deficit_eventually',
+                            'PaperCV3Audit.Palm.original_cumulant_obstruction',
+                            'PaperCV3Audit.Palm.retained_cumulant_obstruction',
+                            'PaperCV3Audit.Palm.stronger_retention_counts',
+                            'PaperCV3Audit.Palm.regular_target_probability'],
+          'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+          'enable_nanoda': True}}
 
 class InvalidCandidate(ValueError):
     pass
@@ -226,17 +340,17 @@ def pin_contract(root):
 
 
 def source_snapshot(root):
-    check_v3prel_sources.check(root)
-    base = root/'manuscripts/v3prel'
+    check_current_manuscript.check(root)
+    base = root/'manuscripts/paper-c'
     manifest = read_json(contained(base,'manifest.json'))
-    require(manifest.get('version') == '3PREL', 'wrong manuscript version')
+    require(manifest.get('version') == '3PREL9', 'wrong manuscript version')
     seen, rows = set(), []
     for entry in manifest['files']:
         name = entry['path']; require(name not in seen, f'duplicate source file: {name}'); seen.add(name)
         path = contained(base,name)
         require(sha256(path) == entry['sha256'] and path.stat().st_size == entry['size_bytes'],
                 f'manuscript snapshot mismatch: {name}')
-        rows.append({'path':'manuscripts/v3prel/'+name,'sha256':entry['sha256']})
+        rows.append({'path':'manuscripts/paper-c/'+name,'sha256':entry['sha256']})
     for name, expected in PDF_HASHES.items():
         require(name in seen and sha256(contained(base,name)) == expected, f'wrong source PDF: {name}')
     return {'manifest_sha256':sha256(base/'manifest.json'),'files':rows}
@@ -293,6 +407,9 @@ def metadata_contract(path, config, family):
     for key in ['name','description','authors','responsible_maintainers','license']:
         require(project.get(key), f'{family}: missing project.{key}')
     require('Brice Pouly' in project['responsible_maintainers'], f'{family}: human maintainer missing')
+    require(project['authors'] == [{'name': 'Brice Pouly', 'github': 'Vulkin-prog',
+                                    'orcid': '0009-0008-8491-2467'}],
+            f'{family}: author identity/ORCID changed')
     require(project['license'] == 'Apache-2.0', f'{family}: project license')
     require(metadata.get('classification',{}).get('arxiv'), f'{family}: classification missing')
     require(metadata.get('review',{}).get('status'), f'{family}: review status missing')

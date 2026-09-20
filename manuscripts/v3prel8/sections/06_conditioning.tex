@@ -1,0 +1,330 @@
+\section{Arithmetic information and resolved conditional laws}
+\label{sec:conditional-laws}
+There are two different conditioning operations. An arithmetic event fixes
+information about prime signs before the Poisson comparison. Conditioning
+on a count or another observable then divides by the probability of that
+observable. Keeping the two costs separate avoids treating a rare state as
+though an absolute error resolved it automatically.
+
+
+The first table records the sufficient budgets obtained directly by the
+scalar and dependency-graph methods; it is not a list of the strongest
+available hard-field conclusions. Here $I=-\log\PP(C)$,
+$c>0$ is fixed, $Y^\sharp=\lfloor e^V\rfloor$ and
+$\widehat Y=\lfloor e^{\widehat V}\rfloor$; $\nu$ and $\widehat\nu$ belong
+to those cutoffs. The following rows concern the dyadic domain
+$I_N=[N,2N)\cap\Z$ and the scalar or dependency-graph comparisons of
+Sections~4--6. Their moving-field intensities $\Lambda$ are at least one.
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}L{.25\textwidth}Xl@{}}\toprule
+Observable & Sufficient budget & Prime field\\\midrule
+Scalar, hard & $I+\log^+\lambda\le V-c\nu$ & $\mathcal F_{Y^\sharp}$\\
+Scalar, soft & $2I+\log^+\lambda\le\widehat V-c\widehat\nu$ & $\mathcal F_{\widehat Y}$\\
+All exact-level counts & $I+\log\Lambda\le V-c\nu$ & $\mathcal F_{Y^\sharp}$\\
+All sites, graph / hard & $I+\log\Lambda+\log(1+\Lambda)\le V-c\nu$ & $\mathcal F_{Y^\sharp}$\\
+All sites, graph / enlarged & $I+\log\Lambda\le\widehat V/2-c\widehat\nu$ & $\mathcal F_{\widehat Y}$\\
+All sites, graph / adapted & $\log\Lambda\le\ell_{\rm lab,N}(I)-c\nu_N(I)$ & $\mathcal F_{Y_N(I)}$\\\bottomrule
+\end{tabularx}
+\end{center}
+The last row uses \eqref{eq:information-saddle}--\eqref{eq:information-budget}, with $0\le I\le V_N$. Exact marks and signs can be retained in all site-labelled rows. The inequalities
+have fixed negative margins; equality at the boundary and optimality for
+the model are not asserted. A further conditioning on an observed count
+has the separate probability cost analysed below.
+
+\paragraph{The one-factor hard-field conclusion.}
+The selected-pivot theorem improves the available site-labelled range
+both on prefixes and, by restriction, on dyadic blocks:
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}L{.29\textwidth}Xl@{}}\toprule
+Observable and domain & Sufficient budget & Prime field\\\midrule
+All prefix sites, exact excesses and signs &
+$I_M+\log\Lambda\le V_M-c\nu_M$ & $\mathcal F_{Y_M^\sharp}$\\
+All dyadic sites, exact excesses and signs &
+$I_N^{\rm info}+\log\Lambda_N\le V_N-c\nu_N$ & $\mathcal F_{Y_N^\sharp}$\\\bottomrule
+\end{tabularx}
+\end{center}
+The first row is \cref{thm:micro-run-tv}, with
+$\Lambda=(M-L)2^{-L}\to\infty$ and
+$L=\lfloor\log_2M\rfloor-a_M$, $0\le a_M=o(\log M)$.
+The second is \cref{cor:dyadic-micro}, with
+$\Lambda_N=N2^{-L_N}\to\infty$ and
+$L_N=\lfloor\log_2N\rfloor-d_N$, $0\le d_N=o(\log N)$.
+Both use the exact means $2^{-L-e-2}$ on their respective integer
+index sets. The dyadic conclusion is obtained by restricting a prefix
+of size $4N$ without changing $L_N$ or the integer start labels.
+Thus, in this growing-intensity corridor, keeping the sites does not
+require the extra intensity factor of the direct hard graph bound.
+This does not enlarge the prime field. The direct routes remain useful
+for their critical or relative rates and for events measurable only at
+a larger or adapted cutoff; no dictionary extension is implicit.
+
+\subsection{Stable kernels and information cost}
+\begin{lemma}[Stable product lift]\label{lem:stable-lift}
+Let $W$ take values in a standard Borel space, let $\mathcal F$ be a
+sigma-field, and let $\nu$ be a deterministic target law. If
+\[
+ \EE\,\dTV(\Law(W\mid\mathcal F),\nu)\le\varepsilon,
+\]
+then for every $\mathcal F$-measurable random element $V$,
+\[
+ \dTV(\Law(V,W),\Law(V)\otimes\nu)\le\varepsilon.
+\]
+For $C\in\mathcal F$ with $\PP(C)>0$, the conditional bound is at most
+$\varepsilon/\PP(C)$, both for $W$ and for the joint product lift with $V$.
+\end{lemma}
+\begin{proof}
+Disintegrate the actual and product laws over $\mathcal F$. For a test set,
+the difference of its conditional sections is bounded by the conditional
+total-variation distance. Integrate, or integrate over $C$ and divide by
+$\PP(C)$. Countable configuration spaces used here have measurable kernels;
+the standard-Borel formulation permits the additional recorded variables.
+\end{proof}
+
+For $C_N\in\mathcal F_{Y_N^\sharp}$ write
+$I_N^{\rm info}=-\log\PP(C_N)$. The hard scalar estimate becomes
+\begin{equation}\label{eq:hard-conditioned}
+ \dTV(\Law(Z_{N,L}\mid C_N),\Pois(\lambda_N))
+ \ll \min\{1,e^{I_N^{\rm info}}\lambda_N
+           (e^{-V_N+o(\nu_N)}+N^{-1/3+\varepsilon})\}.
+\end{equation}
+For $C_N\in\mathcal F_{\widehat Y_N}$ the soft proof gives instead
+\begin{equation}\label{eq:soft-conditioned}
+ \dTV(\Law(Z_{N,L}\mid C_N),\Pois(\lambda_N))
+ \ll\min\{1,e^{I_N^{\rm info}-(\widehat V_N-\log^+\lambda_N)/2
+                         +o(\widehat\nu_N)}
+              +e^{I_N^{\rm info}}N^{-1/3+\varepsilon+o(1)}\}.
+\end{equation}
+Thus the sufficient scalar budgets are
+\[
+ I_N^{\rm info}+\log^+\lambda_N\le V_N-c\nu_N,
+ \qquad
+ 2I_N^{\rm info}+\log^+\lambda_N\le\widehat V_N-c\widehat\nu_N.
+\]
+The hard route can be preferable at a larger information cost, but it
+requires measurability with respect to its smaller prime field. These
+budgets measure probabilities of events, not the number of primes exposed.
+For instance, specifying $k$ independent prime signs costs $k\log2$;
+a rank-$k$ compatible affine cylinder has the same cost.
+
+At small intensity the hard estimate is relative: under
+$I_N^{\rm info}\le V_N-c\nu_N$ and $\lambda_N\to0$,
+\begin{equation}\label{eq:conditional-one-hit}
+ \PP(Z_{N,L}>0\mid C_N)=\lambda_N(1+o(1)),\qquad
+ \PP(Z_{N,L}=1\mid C_N)=\lambda_N(1+o(1)).
+\end{equation}
+The polynomial terms are negligible since $I_N^{\rm info}=o(\log N)$.
+At large intensity, either valid scalar budget gives a conditional Gaussian
+limit after centering by $\lambda_N$ and dividing by $\sqrt{\lambda_N}$.
+The target Poisson normal-approximation error must still be added to the
+arithmetic error; the quantitative and relative forms are in
+\cref{supp:sec:conditional-details}.
+
+\subsection{Choosing the labelled cutoff after the information cost}
+\label{sec:information-cutoff}
+In the dependency-graph proof, retaining all sites makes two errors
+compete. Increasing the prime cutoff
+removes shared-prime edges, but deletes more supports. After conditioning
+on an event of cost $I$, the leading admissible logarithmic intensity is
+\[
+ g_{N,I}(w)=\min\{D(H_N/w)-I,\ (w-I)/2\}.
+\]
+The information cost enters the two constraints with different slopes.
+For $0\le I\le V_N$, define
+\begin{equation}\label{eq:information-saddle}
+ 2D(H_N/w_N(I))=w_N(I)+I,\qquad V_N\le w_N(I)\le\widehat V_N,
+\end{equation}
+and put
+\begin{equation}\label{eq:information-budget}
+ \nu_N(I)=\frac{H_N}{w_N(I)},\qquad
+ Y_N(I)=\lfloor e^{w_N(I)}\rfloor,\qquad
+ \ell_{\rm lab,N}(I)=\frac{w_N(I)-I}{2}.
+\end{equation}
+The root is unique: $2D(H_N/w)-w-I$ is strictly decreasing, with
+endpoint values $V_N-I$ and $-I$. It is the crossing of a decreasing
+and an increasing constraint, so $\ell_{\rm lab,N}(I)$ is the maximum
+of $g_{N,I}$ on this cutoff interval.
+
+\Needspace{15\baselineskip}
+\begin{proposition}[Information-adapted labelled comparison]
+\label{prop:information-labelled}
+Let $C_N$ be events of positive probability, put
+$I_N^{\rm info}=-\log\PP(C_N)$, and assume $0\le I_N^{\rm info}\le V_N$. For integer
+$L_N\ge1$ put $\Lambda_N=N2^{-L_N}\ge1$. Suppose, for fixed $c>0$,
+\begin{equation}\label{eq:information-labelled-condition}
+ C_N\in\mathcal F_{Y_N(I_N^{\rm info})},\qquad
+ \log\Lambda_N\le\ell_{\rm lab,N}(I_N^{\rm info})-c\nu_N(I_N^{\rm info}).
+\end{equation}
+For every $0<c'<c$ and $0<\varepsilon<1/3$,
+\begin{equation}\label{eq:information-labelled-rate}
+ \dTV\left(\Law((K^s_{x,e})_{x\in I_N,e\ge0,s\in\{\pm1\}}\mid C_N),
+       \bigotimes_{x,e,s}\Pois(2^{-L_N-e-2})\right)
+ \ll_{c,c',\varepsilon} e^{-c'\nu_N(I_N^{\rm info})}+N^{-1/3+\varepsilon}.
+\end{equation}
+All site labels, signs and exact excesses are retained. The estimate
+also holds after any deterministic restriction or measurable contraction
+of this field.
+\end{proposition}
+\begin{proof}
+Write $w=w_N(I_N^{\rm info})$, $\nu=H_N/w$ and $\ell=\log\Lambda_N$.
+The finite signed comparison at this cutoff has leading errors
+$\exp(I_N^{\rm info}+\ell-D(H_N/w)+o(\nu))$ and
+$\exp(I_N^{\rm info}+2\ell-w+o(\nu))$.
+By \eqref{eq:information-saddle} and
+\eqref{eq:information-labelled-condition}, their exponents are at most
+$-c\nu+o(\nu)$ and $-2c\nu+o(\nu)$.
+Take $E=\lceil(I_N^{\rm info}+\ell+w)/\log2\rceil$. The enlarged support is
+$\log_2N+O(V_N)$, uniformly in the parameters; the real conditional and
+target tails are $O(e^{-w})$. The polynomial remainder is at most
+$e^{I_N^{\rm info}}\Lambda_N(1+\Lambda_N)N^{-1/3+\varepsilon/2+o(1)}$.
+Since $I_N^{\rm info}+2\ell\le w=O(V_N)=o(\log N)$, it is absorbed by the
+stated remainder. The free-cutoff estimates are uniform on
+$[V_N,\widehat V_N]$; the detailed calculation, including the support
+and tail checks, is in \cref{supp:sec:information-cutoff}.
+\end{proof}
+At zero information cost, $w_N(0)=\widehat V_N$ and
+$\ell_{\rm lab,N}(0)=\widehat V_N/2$, recovering the enlarged-cutoff
+labelled range. For $0<I<V_N$, the allowed leading value is strictly
+larger than $\widehat V_N/2-I$. This is a comparison of proof budgets
+for events measurable at the required cutoff, not a transfer of events
+from a larger sigma-field into a smaller one. If $I_N^{\rm info}/V_N\to\theta\in[0,1]$,
+then
+\begin{equation}\label{eq:information-leading}
+ \frac{\ell_{\rm lab,N}(I_N^{\rm info})}{V_N}
+       \longrightarrow\frac{\sqrt{\theta^2+8}-3\theta}{4}.
+\end{equation}
+The exact saddle, rather than this first-order limit, is used in
+\eqref{eq:information-labelled-condition} to retain its $\nu_N(I_N^{\rm info})$
+margin.
+
+\paragraph{Admissible information matters.}
+For a fixed event known only to belong to
+$\mathcal F_{\lfloor e^{w_0}\rfloor}$, with
+$w_0\in[V_N,\widehat V_N]$, optimize over $w\ge w_0$, not over all
+cutoffs. The best leading budget on this interval is attained at
+$w=\max\{w_0,w_N(I)\}$. The sufficient condition there is
+$\log\Lambda_N\le g_{N,I}(w)-cH_N/w$ with that event measurable in
+$\mathcal F_{\lfloor e^w\rfloor}$. The proof is the same finite
+comparison. These optimized upper bounds do not identify an intrinsic
+phase boundary of the multiplicative model, nor do they use the scalar
+soft-exception estimate as a field theorem.
+
+The exact prefix comparison of \cref{thm:micro-run-tv}, and its dyadic
+restriction \cref{cor:dyadic-micro}, use the hard field. Deep starts and
+signed tails are checked independently in
+\cref{supp:pivot:lem:inputs}. Its partition readouts require no mesh
+hypothesis. Process limits still require their own target, ordering and
+censoring estimates. Neither that contraction
+nor this information-adapted graph calculation silently changes the
+admissible prime field of the other route.
+
+\subsection{The exact resolution cost}
+\begin{lemma}[Sharp conditioning inequality]\label{lem:conditioning-floor}
+Let $\mu,\nu$ be probability laws on $E\times F$ with
+$\dTV(\mu,\nu)\le\varepsilon$. Let $B\subset E$ have
+$p=\nu_E(B)>\varepsilon$ and write $q=\mu_E(B)$. Then $q>0$ and
+\begin{equation}\label{eq:sharp-conditioning}
+ \dTV(\mu_F(\cdot\mid B),\nu_F(\cdot\mid B))
+ \le\frac{\varepsilon}{\max(p,q)}\le\frac{\varepsilon}{p}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The bound $|p-q|\le\varepsilon$ gives positivity. First suppose $q\le p$.
+For any measurable $D\subset F$ put $A=B\times D$. Since $\mu(A)\le q$,
+\[
+ \frac{\mu(A)}q-\frac{\nu(A)}p
+ \le\frac{\mu(A)-\nu(A)+p-q}{p}
+ =\frac{\nu(B\times D^c)-\mu(B\times D^c)}p
+ \le\frac\varepsilon p.
+\]
+The supremum of the positive differences equals total variation for
+probability laws. If $q\ge p$, interchange the two laws.
+\end{proof}
+The denominator expresses the correct scale: convergence after conditioning
+requires $\varepsilon/p\to0$, not merely $p>\varepsilon$.
+This lemma applies to an entire future path at once.
+
+Let $\lambda_{N,m}=2^{\vartheta_N-m}$ and
+$p_{N,m}(n)=e^{-\lambda_{N,m}}\lambda_{N,m}^n/n!$.
+Write $\varepsilon_{N,m,C}^{\rm path}$ for the total-variation error between
+the actual complete future threshold path, under $C_N$, and the target
+staircase based at $m$. The aggregated proof works equally for an arbitrary
+base threshold in a fixed logarithmic band (including $\lambda_{N,m}<1$).
+In its nontrivial information range it gives
+\begin{equation}\label{eq:path-error}
+ \varepsilon_{N,m,C}^{\rm path}
+ \ll e^{I_N^{\rm info}}\lambda_{N,m}
+       (1+\log^+(2\lambda_{N,m}))e^{-V_N+o(\nu_N)}
+       +N^{-1/3+\varepsilon},
+\end{equation}
+with an arbitrarily small fixed exponent slack absorbing the enlarged
+length and the subpolynomial information factor.
+
+\begin{theorem}[Resolved thinning kernels]\label{thm:resolved-kernel}
+If $p_{N,m}(n)>\varepsilon_{N,m,C}^{\rm path}$, then
+\begin{equation}\label{eq:resolved-kernel}
+ \dTV\left(\Law((Z_{N,b_N+m+j})_{j\ge0}\mid C_N,Z_{N,b_N+m}=n),
+                     \operatorname{Thin}_n\right)
+ \le\frac{\varepsilon_{N,m,C}^{\rm path}}{p_{N,m}(n)},
+\end{equation}
+where $\operatorname{Thin}_n$ is the path of $n$ independent geometric
+lifetimes from \eqref{eq:target-forward}. If a fixed lower segment is also
+retained, the same inequality uses the comparison error based at its
+lowest level and gives the reverse immigration kernel
+\eqref{eq:target-reverse} jointly with the future.
+\end{theorem}
+\begin{proof}
+Apply \cref{lem:conditioning-floor} to the present count and the entire
+retained path. The conditional target is exactly the geometric-lifetime
+path by independent Poisson splitting. For lower levels, the increments
+below the present level are independent Poisson variables. A finite
+intensity half-line comparison cannot control the whole infinite reverse
+path, whose total target mass diverges.
+\end{proof}
+For every integer $n\ge1$ and every $\lambda>0$, the local formula is
+\[
+ p_\lambda(n)=\frac{e^{-\delta_n}}{\sqrt{2\pi n}}
+                 e^{-\lambda h(n/\lambda)},\qquad
+ 0\le\delta_n\le\frac1{12n},\qquad h(v)=v\log v-v+1.
+\]
+The correction is independent of $\lambda$; its relative error is at most
+$1/(12n)$. For $n=0$ use the exact mass $e^{-\lambda}$ instead.
+The telescoping proof is in \cref{supp:sec:conditional-details}.
+For $n_N\to\infty$, a sufficient condition for the right side of
+\eqref{eq:resolved-kernel} to vanish is
+\begin{equation}\label{eq:resolved-budget}
+ I_N^{\rm info}+\log^+\lambda_{N,m}
+ +\log(1+\log^+(2\lambda_{N,m}))
+ +\tfrac12\log n_N+\lambda_{N,m}h(n_N/\lambda_{N,m})
+ \le V_N-c\nu_N.
+\end{equation}
+In the central regime $n_N=\lambda_{N,m}+t_N\sqrt{\lambda_{N,m}}+O(1)$,
+$|t_N|=o(\lambda_{N,m}^{1/6})$, this reduces, with a fixed margin, to
+\[
+ I_N^{\rm info}+\tfrac32\log\lambda_{N,m}+\tfrac12t_N^2
+ \le V_N-c\nu_N.
+\]
+The coefficient $3/2$ is a sufficient error budget, not a threshold of the
+model. Its derivation, including the common-band check, is in
+\cref{supp:sec:conditional-details}.
+
+\subsection{Quenched comparison on geometric scales}
+\begin{corollary}[Almost-sure environmental control]\label{cor:quenched}
+Let $N_k\asymp q^k$, $q>1$, and suppose
+$\log\Lambda_{N_k}\le V_{N_k}-c\nu_{N_k}$.
+For each $0<\beta<c$, the conditional total-variation distance, given
+$\mathcal F_{Y_{N_k}^\sharp}$, between the complete aggregated staircase
+and its deterministic target is at most $e^{-\beta\nu_{N_k}}$ for all
+sufficiently large $k$, almost surely.
+\end{corollary}
+\begin{proof}
+The fibrewise proof of \cref{thm:moving-comparison}(ii) gives mean distance
+$e^{-c\nu_N+o(\nu_N)}+N^{-1/3+o(1)}$.
+Markov's inequality at $e^{-\beta\nu_N}$ gives a summable series along
+$N_k\asymp q^k$, since $\nu_{N_k}\asymp\sqrt{k/\log k}$.
+Borel--Cantelli concludes; no independence between scales is used.
+\end{proof}
+The same argument applies to the dyadic graph-based labelled field in
+the sufficient range of that estimate, and to scalar kernels uniformly over the $O(\log N)$
+lengths of any fixed logarithmic band with a fixed error margin.
+A maximal coupling exists separately in each qualified environment and
+scale. This does not furnish a canonical coupling over all scales.

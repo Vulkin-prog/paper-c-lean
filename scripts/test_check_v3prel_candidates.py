@@ -93,6 +93,16 @@ class CandidateGuardTests(unittest.TestCase):
         p.write_text(yaml.safe_dump(metadata).replace(next(iter(guard.PDF_HASHES.values())),'0'*64))
         with self.assertRaises(guard.InvalidCandidate): guard.metadata_contract(p,config,'critical_field')
 
+    def test_author_orcid_cannot_silently_disappear(self):
+        config = guard.REGISTRY['microscopic']
+        path = guard.ROOT/'palomar/v3prel/microscopic/formalization.yaml'
+        metadata = yaml.safe_load(path.read_text())
+        metadata['project']['authors'][0].pop('orcid')
+        altered = self.root/'formalization.yaml'
+        altered.write_text(yaml.safe_dump(metadata))
+        with self.assertRaisesRegex(guard.InvalidCandidate, 'author identity/ORCID'):
+            guard.metadata_contract(altered, config, 'microscopic')
+
     def test_fixed_registry_rejects_changed_config(self):
         p=self.root/'comparator/v3prel_critical_field.json';p.parent.mkdir();d=copy.deepcopy(guard.REGISTRY['critical_field']);d['enable_nanoda']=False;p.write_text(json.dumps(d))
         with self.assertRaises(guard.InvalidCandidate): guard.check_family(self.root,'critical_field')

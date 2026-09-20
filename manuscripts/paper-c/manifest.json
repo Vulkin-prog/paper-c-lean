@@ -1,0 +1,147 @@
+{
+  "version": "3PREL9",
+  "source_archive_name": "paper_c_version_3PREL9_release.zip",
+  "archive_sha256": "c9e93b77ab8e8d113bfb94d536fac4fd40411bb68a4ae9293a1984cc8e01aab0",
+  "files": [
+    {
+      "path": "paper_c_version_3PREL9_en.pdf",
+      "size_bytes": 835853,
+      "sha256": "74bd843886f2038865dc97a6d09f6b58be0898d5571b10de86faa26372524370"
+    },
+    {
+      "path": "paper_c_version_3PREL9_technical_companion_en.pdf",
+      "size_bytes": 712791,
+      "sha256": "6162f9d9f2cc0b0e8d72c7ad93471a0d307334c4a775d80b503b9478bb32cc39"
+    },
+    {
+      "path": "paper_c_version_3PREL9_en.tex",
+      "size_bytes": 2777,
+      "sha256": "69ff9716d4b6dd6467a8046c0bf8e5691dca18b577fc25ef496ed59507d1e9b0"
+    },
+    {
+      "path": "paper_c_version_3PREL9_technical_companion_en.tex",
+      "size_bytes": 3325,
+      "sha256": "6c62c39fa8e823a850b4c69987236843fe8550f7826add63123798a1f4302587"
+    },
+    {
+      "path": "preamble.tex",
+      "size_bytes": 8396,
+      "sha256": "b2a46bab6ae7e84054d3a1bd4bc0892fedfbf7e61e5433e30da19094dbf43e57"
+    },
+    {
+      "path": "declarations.tex",
+      "size_bytes": 3758,
+      "sha256": "8b624d470f1a9811249ea772bf940be1323cf6214e431c62e2387d200425fbf0"
+    },
+    {
+      "path": "references.bib",
+      "size_bytes": 14959,
+      "sha256": "0a5dab02d5a3118caf7030cda9bd165d808c1a07cc5d4d1e82e02b27f794121d"
+    },
+    {
+      "path": "corpus.dbx",
+      "size_bytes": 142,
+      "sha256": "c6163625ca9ff97a43459ef15763eb3d727eb0e1035bcd357a905b64fa114674"
+    },
+    {
+      "path": "build.sh",
+      "size_bytes": 1886,
+      "sha256": "87c72859618db1586ed63e54c3fd594c1bbe64d835d190a0306a8d7f77b0111b"
+    },
+    {
+      "path": "companion/00_external_inputs.tex",
+      "size_bytes": 5917,
+      "sha256": "05348dd8cb3645411c49fc56309be949e921f6f9ac448becbe1941b7e78ceefe"
+    },
+    {
+      "path": "companion/00_reading_routes.tex",
+      "size_bytes": 5020,
+      "sha256": "dd1a47be190fcbb1ed6b2f67c6cacfb399e2f4913cd39fa1fcfb7cb0c2e84824"
+    },
+    {
+      "path": "companion/A_runge_diophantine.tex",
+      "size_bytes": 10718,
+      "sha256": "96c7aa97ef4bdb81ce271b3a6a8283d112eb12d1fe71c10eb6d81aec51253b04"
+    },
+    {
+      "path": "companion/B_cutoffs.tex",
+      "size_bytes": 9431,
+      "sha256": "9e2f116fef0109353e802b87ef7c4602a20de8b0715358ae8825ce2e915d27dc"
+    },
+    {
+      "path": "companion/C_fields.tex",
+      "size_bytes": 26941,
+      "sha256": "d1cb9e9cf7fd834f209ab2c945d463425cd39eecb958851af4f8cd21108a203d"
+    },
+    {
+      "path": "companion/D_conditioning.tex",
+      "size_bytes": 9469,
+      "sha256": "79b895ab9c3320ad998e855cf69bcfcd1e89ce308badce47c362100f83128deb"
+    },
+    {
+      "path": "companion/E_boundary.tex",
+      "size_bytes": 18389,
+      "sha256": "c7c705379edd9ee63d073b6310a43b78b1a3cf4ab57e14a4b6063bd0d00a0dd1"
+    },
+    {
+      "path": "companion/F_microscopic_pivots.tex",
+      "size_bytes": 24053,
+      "sha256": "4869e67fcb56dbd660c117ed5b214669e28fedecd9edac2c950ce62f7d784002"
+    },
+    {
+      "path": "companion/G_palm_complements.tex",
+      "size_bytes": 28738,
+      "sha256": "226591e5bf109dab1139c25686da1e40ef9228ed980873ab91f420640e37dd6d"
+    },
+    {
+      "path": "sections/01_introduction.tex",
+      "size_bytes": 24378,
+      "sha256": "29c546f6d8fa5a9e84103dbb45d1fd8484ff92c797eb2d9dbc6987d71b93f775"
+    },
+    {
+      "path": "sections/02_affine.tex",
+      "size_bytes": 12174,
+      "sha256": "fd9fe5fbefac2ffc570fb41d813a17c3333422539659ed1572663b1564581df6"
+    },
+    {
+      "path": "sections/03_arithmetic.tex",
+      "size_bytes": 49187,
+      "sha256": "3fd7d0d558f7ae075d4b042cc78c4ff85922c129fb3b73eb620d3d83c4f57f5c"
+    },
+    {
+      "path": "sections/04_poisson.tex",
+      "size_bytes": 11257,
+      "sha256": "e7faf8ebd15176d8ef6f363fd8637956a97a8ff7f00a22610f89cb8070d901fa"
+    },
+    {
+      "path": "sections/05_patterns_fields.tex",
+      "size_bytes": 37624,
+      "sha256": "50d9f2d71d5e450a1a339a3d7978839d7976f578dca8a3eb561784b281030fb0"
+    },
+    {
+      "path": "sections/06_conditioning.tex",
+      "size_bytes": 16662,
+      "sha256": "cb58208a8eedca88c0e162890e302b1d95a7fa50e5b46b186ba463e2368c4629"
+    },
+    {
+      "path": "sections/07_prefix_boundary.tex",
+      "size_bytes": 37336,
+      "sha256": "479f7958528476caf496735c11220da3e0b4219af58e23c97443dd4130838614"
+    },
+    {
+      "path": "sections/07a_empirical_poisson.tex",
+      "size_bytes": 8003,
+      "sha256": "4699ee87413e5e7e3cc4bf3233a8710e8a7ec75882ff21e75d6967d272346ac5"
+    },
+    {
+      "path": "sections/07b_dyadic_restriction.tex",
+      "size_bytes": 2840,
+      "sha256": "b501d760d3ae3f8be54419c6fad178325806001239e1855a9040a056e483ced4"
+    },
+    {
+      "path": "sections/08_discussion.tex",
+      "size_bytes": 7474,
+      "sha256": "60d6bad2b2c10366b91a2501a7b3dfda1ff8e6cdb1df20a51b53182c75d7ac9a"
+    }
+  ]
+}

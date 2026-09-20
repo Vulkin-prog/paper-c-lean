@@ -1,0 +1,137 @@
+{
+  "date_utc": "2026-09-19T10:51:05.348583+00:00",
+  "status": "saddle_reciprocal_and_directed_estimates_validated_full_paper_alignment_incomplete",
+  "parent_extension_commit": "eebd5f2cd815d48a49a93c6fb9157768a0124ddb",
+  "base_commit": "a928497897a27e3dd3d7b601ee788336aca84780",
+  "lean": "4.34.0",
+  "mathlib": "5ed2965256430c3649e86755f9576b54eca72435",
+  "build": {
+    "libraries": 24,
+    "lake_jobs": 10131,
+    "result": "passed"
+  },
+  "axiom_audit": {
+    "named_theorems": 98,
+    "added_in_this_batch": 30,
+    "result": "passed",
+    "allowlist": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_files": [
+    {
+      "path": "PaperCPrel8.lean",
+      "sha256": "c63d5a44bce5531056426957cbe36b1a88880f4e189ed583568b7add288849ea"
+    },
+    {
+      "path": "PaperCPrel8/Audit.lean",
+      "sha256": "5178d3c635f7b036ba2fd7bdc540fb2df6a1d21a815b960a0cd76abbbec50f60"
+    },
+    {
+      "path": "PaperCPrel8/DictionarySelection.lean",
+      "sha256": "48cecfabe7bdcbd9b08e6883c27ae832826d8f7e739289315ea3c639613974e8"
+    },
+    {
+      "path": "PaperCPrel8/DirectedFootprint.lean",
+      "sha256": "134326bfe45f8c93592acfddc776e09a4e4d6b129b50c5aabce1482397f1bc25"
+    },
+    {
+      "path": "PaperCPrel8/DirectedFootprintAsymptotics.lean",
+      "sha256": "3a57aed88069091f4389f5a4a25bdd1648ec2bf74d777d60b87b1e2a6687307e"
+    },
+    {
+      "path": "PaperCPrel8/EmpiricalTransfer.lean",
+      "sha256": "057e324fd0fdeae505e52b998deb3525ea7367385c371bbd46a86d7c82b18294"
+    },
+    {
+      "path": "PaperCPrel8/HardConditionalForcing.lean",
+      "sha256": "8096acd2aeca29f8eb97ab4b4bf1fbc454f376beea6f83c288ba028965c90724"
+    },
+    {
+      "path": "PaperCPrel8/InformationBudget.lean",
+      "sha256": "e9705c0ce5f1b66ca70f31911e982a5fb1372caeb808d84e59336457d3c7ca75"
+    },
+    {
+      "path": "PaperCPrel8/OddPrimePivot.lean",
+      "sha256": "af671b4353b60a15d78aee67f2d2362a7b5a3b2484095b9cccc7b737b176bffa"
+    },
+    {
+      "path": "PaperCPrel8/PalmStein.lean",
+      "sha256": "a3b738c8fcb31b255ed6fe9a75793f384ed00db06415c70b4faa922c49240e40"
+    },
+    {
+      "path": "PaperCPrel8/PivotGeometry.lean",
+      "sha256": "8a6b21ff59d22f6893a39e47f2c14f7927f836aaf6d4e8cc21aa8650b5dd82dc"
+    },
+    {
+      "path": "PaperCPrel8/PivotRankinUniform.lean",
+      "sha256": "a27b073c047f452a9b520da978c20a4652944845e615db82ff884f9d3abd8c4d"
+    },
+    {
+      "path": "PaperCPrel8/PrimeForcing.lean",
+      "sha256": "df725645fb74805d0c8d62671fdd61f40169f51675d9994e16b88d7116e4392b"
+    },
+    {
+      "path": "PaperCPrel8/PrivateForcing.lean",
+      "sha256": "9d2943a55e55277dc1904afaa07aae234b5a2119ba597f0a0e3b855c9f95aeb6"
+    },
+    {
+      "path": "PaperCPrel8/ReciprocalPivotAsymptotics.lean",
+      "sha256": "44cc415360ef649c9ebf912551f154bc778b672a446fa32979c8b22e14de83f1"
+    },
+    {
+      "path": "PaperCPrel8/ReciprocalPivotShells.lean",
+      "sha256": "439eeef2fab48208023c8990bd72da0b7d52cb9f49c53f27cecfc0e3fd3f6507"
+    },
+    {
+      "path": "PaperCPrel8/SaddleEnvelope.lean",
+      "sha256": "51e3cae15dc7f5c32d1dd34d8c5421eeaf6760833f4bcb83a84f61fe9d92a730"
+    },
+    {
+      "path": "PaperCPrel8/SignedPalmForcing.lean",
+      "sha256": "754447e261c03bd170720cebdc636de313ea60620b6c7c5c1a8c1275dc0d857d"
+    },
+    {
+      "path": "PaperCPrel8/audit-names.json",
+      "sha256": "fe8b65544914791e591c657fe82535fff25ce6aca1a541a38a843126e3834730"
+    }
+  ],
+  "unchanged_baseline_lean_files": 1171,
+  "checks": {
+    "new_payload_tests": 5,
+    "new_audit_tests": 5,
+    "source_inventory": "passed_28_files",
+    "coverage_inventory": "passed_96_blocks",
+    "root_audit_guards": "passed",
+    "generated_baseline_audit": "unchanged_and_passed",
+    "v282_audit_inventory": "passed_6094_declarations",
+    "diff_whitespace": "passed"
+  },
+  "completed_estimates": {
+    "F.4": "Exact upper-branch tangent envelope; actual hard-saddle loss at most 2*nu/u eventually and epsilon*nu uniformly over every admissible width.",
+    "F.5": "Actual truncated reciprocal-pivot sum ≤ X*exp(-2V_M+epsilon*nu_M), uniformly for every natural X satisfying 2X≥M after one M threshold; includes all nearby ceilings.",
+    "F.6": "Both finite bounds and the final n^2*exp(-2V_M+epsilon*nu_M)+n*(Q+1)^2 estimate for logarithmic supports, with explicit support geometry and actual pivot-family hypotheses."
+  },
+  "literature_input": "The existing ordinary PrimeNumberTheoremRemainder is an explicit argument of the Rankin, reciprocal and final footprint bounds. No new analytic input or assumed reciprocal conclusion is introduced.",
+  "transcripts": [
+    {
+      "path": "prel8-phase3-all-libraries-build.log.gz",
+      "sha256": "b3bb3681a7f726b43e212b336e4edb51c5845e63e04735c897fb0af47f97c7a4",
+      "uncompressed_sha256": "05fc126203e9fe39c771e1c237f07a0c5d408e7694120debdd78fdecf1b7b2bf"
+    },
+    {
+      "path": "prel8-phase3-audit.log.gz",
+      "sha256": "68ebabcfdca9270b86de7f961ee48bd317123917de98676583d7e4db76bab7e4",
+      "uncompressed_sha256": "8d1a01790193db8a63d12b5e2935c22747b6ab20c384be09814330c9fc7adc8a"
+    }
+  ],
+  "limits": [
+    "Full maximal-support G0 marked field, infinite-source conditional law, Palm ledger and independent tails remain to be assembled into the microscopic Poisson endpoint.",
+    "The literal enlarged F.3 band/ceiling statement is not separately packaged as one endpoint; the proved uniform forms suffice for the full reciprocal estimate.",
+    "Other new 3PREL8 families remain incomplete; proved estimates are not full-paper qualification.",
+    "No new NanoDa/Comparator qualification or Palomar submission was performed for these 98 declarations."
+  ],
+  "manuscript_payload": "Unchanged from the initial 3PREL8 manifest; no TeX/PDF files modified or rebuilt."
+}

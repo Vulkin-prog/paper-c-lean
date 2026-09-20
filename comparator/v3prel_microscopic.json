@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ChallengeV3Microscopic",
+  "solution_module": "SolutionV3Microscopic",
+  "theorem_names": [
+    "PaperCV3Audit.Microscopic.exact_source_coefficients",
+    "PaperCV3Audit.Microscopic.full_field_comparison",
+    "PaperCV3Audit.Microscopic.dyadic_field_comparison",
+    "PaperCV3Audit.Microscopic.empirical_poisson",
+    "PaperCV3Audit.Microscopic.common_readout",
+    "PaperCV3Audit.Microscopic.empirical_vector_obstruction"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

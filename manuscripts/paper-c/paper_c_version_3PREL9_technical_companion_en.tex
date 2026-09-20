@@ -1,0 +1,70 @@
+\documentclass[11pt,a4paper]{article}
+\input{preamble.tex}
+\fancyhead[L]{Technical companion: long runs and rare patterns}
+\hypersetup{pdftitle={Technical companion to Long runs and rare patterns of a random completely multiplicative function}}
+\externaldocument[][nocite]{paper_c_version_3PREL9_en}
+\title{\textbf{Technical companion to}\\[2mm]
+\large\emph{Long runs and rare patterns of a random\\completely multiplicative function}}
+\author{Brice Pouly}
+\date{Version 3PREL9}
+\makeatletter
+\patchcmd{\@maketitle}{\vskip 2em}{\vskip 0pt}{}{}
+\makeatother
+\begin{document}
+\maketitle
+\vspace{-0.6em}
+\noindent\begin{minipage}{\textwidth}\footnotesize
+This research received substantial assistance from AI systems; see the
+\hyperref[sec:ai-assistance]{declaration at the end of the article}.
+\end{minipage}\medskip
+\begin{abstract}
+This companion completes the proof package for the article, Version 3PREL9.
+Appendices A--E give the growing-degree Runge and bounded-height Pell
+calculations, prime cutoffs, scalar smoothing, marked and dictionary
+comparisons, conditional kernels, and the boundary and relative-bulk
+estimates. The common macroscopic square-product argument remains in
+the article.
+
+Appendix F proves the full same-grid signed prefix comparison. It
+assembles the existing arithmetic inputs and an independently proved
+scalar tail, then gives the finite Palm--Stein inequality, the uniform
+reciprocal-pivot estimate and the exact one-word conditional coupling.
+Appendix G is a separate methodological complement: regular target
+configurations, signed Palm-void identities and an arithmetic obstruction
+to global absolute-cumulant smallness. Its vanishing Palm deficit is a
+consequence of Appendix F, never an input to its proof.
+\end{abstract}
+\medskip
+\noindent\textbf{Reading convention.} The two documents form one proof package.
+Appendix letters and bibliographic numbers are local; unqualified
+numbered statements refer to the article. All unlabelled logarithms are
+natural. The article's formalization statement records the completed
+relative correspondence and its analytic-input boundary; it is not a
+claim that all external results have been proved in Lean.
+
+\tableofcontents
+\clearpage
+\input{companion/00_external_inputs.tex}
+\Needspace{16\baselineskip}
+\input{companion/00_reading_routes.tex}
+\medskip
+\appendix
+\input{companion/A_runge_diophantine.tex}
+\input{companion/B_cutoffs.tex}
+\input{companion/C_fields.tex}
+\input{companion/D_conditioning.tex}
+\input{companion/E_boundary.tex}
+\input{companion/F_microscopic_pivots.tex}
+\input{companion/G_palm_complements.tex}
+\section*{Availability and declaration}
+This companion belongs to Version 3PREL9 of \emph{Long runs and rare
+patterns of a random completely multiplicative function}. Its sources
+and bibliography accompany the article in the same package. The
+\hyperref[sec:ai-assistance]{declaration in the article} records the AI
+assistance and the author's responsibility. The supplied formalization
+correspondence records mathematical realignment of 3PREL8 relative to its
+explicit inputs. In particular the analytic Stein solution in
+\cref{supp:pivot:lem:palm} remains a formal input. No new Lean build or
+Palomar qualification is reported for this editorial edition.
+\printbibliography[heading=bibintoc,title={References}]
+\end{document}

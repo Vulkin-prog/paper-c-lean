@@ -1,0 +1,1311 @@
+{
+  "version": "3PREL9",
+  "status": "source_alignment_reviewed_relative_to_existing_explicit_inputs",
+  "lean_changes_required": false,
+  "new_lean_build": false,
+  "new_palomar_qualification": false,
+  "baseline_commit": "1c15cfc848a7808d563a796cc4e4c17eed235982",
+  "baseline_evidence": [
+    {
+      "path": "extension_evidence/v3prel8/realignment-final/validation.json",
+      "sha256": "2fee852da3cf5847c2d706eaaf38bf1ba8b71814401a13c633089f75e3bb3490"
+    },
+    {
+      "path": "docs/FORMALIZATION_COVERAGE_V3PREL8.json",
+      "sha256": "206cee4b10f9781519d2d39624e932a5dcdeba99f14948c7abd7f303151a6c6d"
+    },
+    {
+      "path": "docs/UNNUMBERED_REVIEW_V3PREL8.json",
+      "sha256": "d83a90b2eb0a33c2a498173210bdde1e71c4af3d286495c630e6d029fea7a2ab"
+    },
+    {
+      "path": "PaperCV282/LITERATURE_INPUTS.md",
+      "sha256": "7e33ece466be766311905b77764859d4b26844a5129318f0abbec8204b400e74"
+    }
+  ],
+  "counts": {
+    "statements": 96,
+    "unchanged_statements": 95,
+    "clarified_statements": 1,
+    "proof_blocks": 90,
+    "unchanged_proof_blocks": 76
+  },
+  "files": [
+    {
+      "source": "manuscripts/paper-c/paper_c_version_3PREL9_en.tex",
+      "sha256": "69ff9716d4b6dd6467a8046c0bf8e5691dca18b577fc25ef496ed59507d1e9b0",
+      "baseline": "manuscripts/v3prel8/paper_c_version_3PREL8_en.tex",
+      "baseline_sha256": "92368c622fe068fb6b99b3795e678eeba363a8538b1b37738aaad5df9658c162",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.tex",
+      "sha256": "6c62c39fa8e823a850b4c69987236843fe8550f7826add63123798a1f4302587",
+      "baseline": "manuscripts/v3prel8/paper_c_version_3PREL8_technical_companion_en.tex",
+      "baseline_sha256": "229b42d26674c1dd789239297e1d7080c5839b1b9a8caface3ede0c9a7f1c0cb",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/preamble.tex",
+      "sha256": "b2a46bab6ae7e84054d3a1bd4bc0892fedfbf7e61e5433e30da19094dbf43e57",
+      "baseline": "manuscripts/v3prel8/preamble.tex",
+      "baseline_sha256": "b24c6dc3f68ae8525d73dd41c47b5c2299f04e0977e0fe875e7f03913df0aa20",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/declarations.tex",
+      "sha256": "8b624d470f1a9811249ea772bf940be1323cf6214e431c62e2387d200425fbf0",
+      "baseline": "manuscripts/v3prel8/declarations.tex",
+      "baseline_sha256": "e716ee52213847a719ff2974580c1b5c72a987a930977006403e3311beb24915",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/companion/00_external_inputs.tex",
+      "sha256": "05348dd8cb3645411c49fc56309be949e921f6f9ac448becbe1941b7e78ceefe",
+      "baseline": "manuscripts/v3prel8/companion/00_external_inputs.tex",
+      "baseline_sha256": "d46bb227e43c6a29949f1e1b641a7b8d0ab90e4eabc5bff8f2edef7731570301",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/companion/00_reading_routes.tex",
+      "sha256": "dd1a47be190fcbb1ed6b2f67c6cacfb399e2f4913cd39fa1fcfb7cb0c2e84824",
+      "baseline": "manuscripts/v3prel8/companion/00_reading_routes.tex",
+      "baseline_sha256": "dd1a47be190fcbb1ed6b2f67c6cacfb399e2f4913cd39fa1fcfb7cb0c2e84824",
+      "changed": false
+    },
+    {
+      "source": "manuscripts/paper-c/companion/A_runge_diophantine.tex",
+      "sha256": "96c7aa97ef4bdb81ce271b3a6a8283d112eb12d1fe71c10eb6d81aec51253b04",
+      "baseline": "manuscripts/v3prel8/companion/A_runge_diophantine.tex",
+      "baseline_sha256": "96c7aa97ef4bdb81ce271b3a6a8283d112eb12d1fe71c10eb6d81aec51253b04",
+      "changed": false
+    },
+    {
+      "source": "manuscripts/paper-c/companion/B_cutoffs.tex",
+      "sha256": "9e2f116fef0109353e802b87ef7c4602a20de8b0715358ae8825ce2e915d27dc",
+      "baseline": "manuscripts/v3prel8/companion/B_cutoffs.tex",
+      "baseline_sha256": "9e2f116fef0109353e802b87ef7c4602a20de8b0715358ae8825ce2e915d27dc",
+      "changed": false
+    },
+    {
+      "source": "manuscripts/paper-c/companion/C_fields.tex",
+      "sha256": "d1cb9e9cf7fd834f209ab2c945d463425cd39eecb958851af4f8cd21108a203d",
+      "baseline": "manuscripts/v3prel8/companion/C_fields.tex",
+      "baseline_sha256": "ffd8b5d2b06c45c93da06f210eb3309b730e6d7621772e8e8b29a07efaddcfe2",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/companion/D_conditioning.tex",
+      "sha256": "79b895ab9c3320ad998e855cf69bcfcd1e89ce308badce47c362100f83128deb",
+      "baseline": "manuscripts/v3prel8/companion/D_conditioning.tex",
+      "baseline_sha256": "79b895ab9c3320ad998e855cf69bcfcd1e89ce308badce47c362100f83128deb",
+      "changed": false
+    },
+    {
+      "source": "manuscripts/paper-c/companion/E_boundary.tex",
+      "sha256": "c7c705379edd9ee63d073b6310a43b78b1a3cf4ab57e14a4b6063bd0d00a0dd1",
+      "baseline": "manuscripts/v3prel8/companion/E_boundary.tex",
+      "baseline_sha256": "c7c705379edd9ee63d073b6310a43b78b1a3cf4ab57e14a4b6063bd0d00a0dd1",
+      "changed": false
+    },
+    {
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "sha256": "4869e67fcb56dbd660c117ed5b214669e28fedecd9edac2c950ce62f7d784002",
+      "baseline": "manuscripts/v3prel8/companion/F_microscopic_pivots.tex",
+      "baseline_sha256": "1ef0d46ca06d18c9bc682dfebc07c1f091b3dad3362fcd82ed7d73bb65eeadd3",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "sha256": "226591e5bf109dab1139c25686da1e40ef9228ed980873ab91f420640e37dd6d",
+      "baseline": "manuscripts/v3prel8/companion/G_palm_complements.tex",
+      "baseline_sha256": "6ffe20733024ae9151bc00ffefc46924f3044939ba06aacb6168442809ff2762",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/sections/01_introduction.tex",
+      "sha256": "29c546f6d8fa5a9e84103dbb45d1fd8484ff92c797eb2d9dbc6987d71b93f775",
+      "baseline": "manuscripts/v3prel8/sections/01_introduction.tex",
+      "baseline_sha256": "29c546f6d8fa5a9e84103dbb45d1fd8484ff92c797eb2d9dbc6987d71b93f775",
+      "changed": false
+    },
+    {
+      "source": "manuscripts/paper-c/sections/02_affine.tex",
+      "sha256": "fd9fe5fbefac2ffc570fb41d813a17c3333422539659ed1572663b1564581df6",
+      "baseline": "manuscripts/v3prel8/sections/02_affine.tex",
+      "baseline_sha256": "fd9fe5fbefac2ffc570fb41d813a17c3333422539659ed1572663b1564581df6",
+      "changed": false
+    },
+    {
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "sha256": "3fd7d0d558f7ae075d4b042cc78c4ff85922c129fb3b73eb620d3d83c4f57f5c",
+      "baseline": "manuscripts/v3prel8/sections/03_arithmetic.tex",
+      "baseline_sha256": "3fd7d0d558f7ae075d4b042cc78c4ff85922c129fb3b73eb620d3d83c4f57f5c",
+      "changed": false
+    },
+    {
+      "source": "manuscripts/paper-c/sections/04_poisson.tex",
+      "sha256": "e7faf8ebd15176d8ef6f363fd8637956a97a8ff7f00a22610f89cb8070d901fa",
+      "baseline": "manuscripts/v3prel8/sections/04_poisson.tex",
+      "baseline_sha256": "e7faf8ebd15176d8ef6f363fd8637956a97a8ff7f00a22610f89cb8070d901fa",
+      "changed": false
+    },
+    {
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "sha256": "50d9f2d71d5e450a1a339a3d7978839d7976f578dca8a3eb561784b281030fb0",
+      "baseline": "manuscripts/v3prel8/sections/05_patterns_fields.tex",
+      "baseline_sha256": "845c8e2c3a7ea3fc0589de40de719e85b40f8f8e0afa92e63ac3663a0ba79603",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/sections/06_conditioning.tex",
+      "sha256": "cb58208a8eedca88c0e162890e302b1d95a7fa50e5b46b186ba463e2368c4629",
+      "baseline": "manuscripts/v3prel8/sections/06_conditioning.tex",
+      "baseline_sha256": "6763f66611bc3b5d6121dd26e5041e75517c507fe00dbe0df56504d0b9848c55",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "sha256": "479f7958528476caf496735c11220da3e0b4219af58e23c97443dd4130838614",
+      "baseline": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
+      "baseline_sha256": "9fe91b223adaacf78c7d76cf21fc9c14d741072c94b0ecdaf2d27949a8096a39",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/sections/07a_empirical_poisson.tex",
+      "sha256": "4699ee87413e5e7e3cc4bf3233a8710e8a7ec75882ff21e75d6967d272346ac5",
+      "baseline": "manuscripts/v3prel8/sections/07a_empirical_poisson.tex",
+      "baseline_sha256": "f477210df72c733be624aa46e5536d5f4bf0fb2996389accd53a7df7c55ec92d",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/sections/07b_dyadic_restriction.tex",
+      "sha256": "b501d760d3ae3f8be54419c6fad178325806001239e1855a9040a056e483ced4",
+      "baseline": "manuscripts/v3prel8/sections/07b_dyadic_restriction.tex",
+      "baseline_sha256": "54509aaa3b39c4af39c3b855bb67e9e3709dee3499a3607e31e5b154dff50759",
+      "changed": true
+    },
+    {
+      "source": "manuscripts/paper-c/sections/08_discussion.tex",
+      "sha256": "60d6bad2b2c10366b91a2501a7b3dfda1ff8e6cdb1df20a51b53182c75d7ac9a",
+      "baseline": "manuscripts/v3prel8/sections/08_discussion.tex",
+      "baseline_sha256": "60d6bad2b2c10366b91a2501a7b3dfda1ff8e6cdb1df20a51b53182c75d7ac9a",
+      "changed": false
+    }
+  ],
+  "numbered": [
+    {
+      "label": "thm:poisson-main",
+      "number": "1.1",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/01_introduction.tex",
+      "line": 62,
+      "statement_sha256": "b5ff3fc3ee196b17d252c32d67818a4677fb8c4b26dab3be25ccf8477f1cdc82",
+      "relation": "unchanged",
+      "baseline_label": "thm:poisson-main"
+    },
+    {
+      "label": "thm:global-summary",
+      "number": "1.2",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/01_introduction.tex",
+      "line": 122,
+      "statement_sha256": "77532769e4aed6e53df97d1cf2626b75900b84d0475e278122e2fe7a4eb79c5d",
+      "relation": "unchanged",
+      "baseline_label": "thm:global-summary"
+    },
+    {
+      "label": "thm:patterns-summary",
+      "number": "1.3",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/01_introduction.tex",
+      "line": 171,
+      "statement_sha256": "780caba81ffec25437d5d5e89b7a9e9602d7e64d2377b102c40a5c3741e8174d",
+      "relation": "unchanged",
+      "baseline_label": "thm:patterns-summary"
+    },
+    {
+      "label": "lem:fourier",
+      "number": "2.1",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/02_affine.tex",
+      "line": 38,
+      "statement_sha256": "289363302c8ff60bdb96d68158b24c3b4bae63b59eda675321dc938d0ebff742",
+      "relation": "unchanged",
+      "baseline_label": "lem:fourier"
+    },
+    {
+      "label": "lem:even-subsets",
+      "number": "2.2",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/02_affine.tex",
+      "line": 74,
+      "statement_sha256": "cb70a91fc8f4f81e5211fe7600803213bf09f2d7401406b1f01e5a969fddca81",
+      "relation": "unchanged",
+      "baseline_label": "lem:even-subsets"
+    },
+    {
+      "label": "lem:runge",
+      "number": "2.3",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/02_affine.tex",
+      "line": 101,
+      "statement_sha256": "e59d4ed1222b9aad28a60964682c924db887e6372ce934d8080279f72021cc31",
+      "relation": "unchanged",
+      "baseline_label": "lem:runge"
+    },
+    {
+      "label": "prop:defects",
+      "number": "2.4",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/02_affine.tex",
+      "line": 125,
+      "statement_sha256": "9add69fe4a9ffc54cd077f3c8da0f6d9c700eada46691a6ad6e766c07b656c08",
+      "relation": "unchanged",
+      "baseline_label": "prop:defects"
+    },
+    {
+      "label": "cor:first-moment",
+      "number": "2.5",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/02_affine.tex",
+      "line": 176,
+      "statement_sha256": "2e19acd107fb403e1e156ab6d26541538f3ef70f38d9367d8a9eb77b93a8ccfd",
+      "relation": "unchanged",
+      "baseline_label": "cor:first-moment"
+    },
+    {
+      "label": "cor:absolute-marginal",
+      "number": "2.6",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/02_affine.tex",
+      "line": 204,
+      "statement_sha256": "15fa2899867fe98fc60ebc991b3d9b5731a76508816511649640dc13a0e68810",
+      "relation": "unchanged",
+      "baseline_label": "cor:absolute-marginal"
+    },
+    {
+      "label": "lem:private-tree",
+      "number": "2.7",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/02_affine.tex",
+      "line": 248,
+      "statement_sha256": "f80f55bfce51479bb6a5dc390cfed1f293b13fe5d3e70de3ca9204994ab34599",
+      "relation": "unchanged",
+      "baseline_label": "lem:private-tree"
+    },
+    {
+      "label": "lem:local-pairs",
+      "number": "2.8",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/02_affine.tex",
+      "line": 263,
+      "statement_sha256": "0c21b7966749d32f700fb25e6064c13cc6e65d2b90778f6be8ed1b89fbdcdd64",
+      "relation": "unchanged",
+      "baseline_label": "lem:local-pairs"
+    },
+    {
+      "label": "thm:master-profile",
+      "number": "3.1",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 23,
+      "statement_sha256": "c6c3ef1786a7381ee66d7c3054862293bca297f1873448f17301612f6dff3f24",
+      "relation": "unchanged",
+      "baseline_label": "thm:master-profile"
+    },
+    {
+      "label": "macro:lem:rational-code",
+      "number": "3.2",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 96,
+      "statement_sha256": "b8c27b202521389bb75f1d49cb6259f9a4316e3711fdfd1fe4109d15d58a9e03",
+      "relation": "unchanged",
+      "baseline_label": "macro:lem:rational-code"
+    },
+    {
+      "label": "macro:lem:channel-unique",
+      "number": "3.3",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 125,
+      "statement_sha256": "770d295208cafaea7e7c24c34c90026b13b609043c4ae70adb804531c5dc48c4",
+      "relation": "unchanged",
+      "baseline_label": "macro:lem:channel-unique"
+    },
+    {
+      "label": "macro:rem:disparate",
+      "number": "3.4",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 155,
+      "statement_sha256": "76653318f7f3abbaf1a90ecb5f55610dabbf0f8b9c1aced67821bd454eb880f7",
+      "relation": "unchanged",
+      "baseline_label": "macro:rem:disparate"
+    },
+    {
+      "label": "macro:lem:graph-resolution",
+      "number": "3.5",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 177,
+      "statement_sha256": "dba43c7b3df274f15bdeb1bbf335ea2e852f2067363a87eb614107fbb372daac",
+      "relation": "unchanged",
+      "baseline_label": "macro:lem:graph-resolution"
+    },
+    {
+      "label": "macro:lem:quotient-core",
+      "number": "3.6",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 224,
+      "statement_sha256": "d679bf80bcae5fffc6919ed720cadcbcaffae41679eb52bfd5e96e52e3300d31",
+      "relation": "unchanged",
+      "baseline_label": "macro:lem:quotient-core"
+    },
+    {
+      "label": "macro:prop:host",
+      "number": "3.7",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 301,
+      "statement_sha256": "37073b42b004138fcd8f24b82295fac8900f3be39deb199cc3df4119be297b55",
+      "relation": "unchanged",
+      "baseline_label": "macro:prop:host"
+    },
+    {
+      "label": "macro:prop:systematic",
+      "number": "3.8",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 355,
+      "statement_sha256": "081f1147b70f14ee84697b8f049a4ada4c7eee4e783a02cbce695faef15a1a34",
+      "relation": "unchanged",
+      "baseline_label": "macro:prop:systematic"
+    },
+    {
+      "label": "rem:dyadic-edge",
+      "number": "3.9",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 376,
+      "statement_sha256": "6f7e09a91e18e97248965c8613659acbad4a595ed8f5d0f919dd352dd98bb151",
+      "relation": "unchanged",
+      "baseline_label": "rem:dyadic-edge"
+    },
+    {
+      "label": "prop:shallow-final",
+      "number": "3.10",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 424,
+      "statement_sha256": "71ec1af70715bff6073396617031e150c91442e67db5c86faa6b550b1f2ac456",
+      "relation": "unchanged",
+      "baseline_label": "prop:shallow-final"
+    },
+    {
+      "label": "macro:lem:pell",
+      "number": "3.11",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 487,
+      "statement_sha256": "c49323f15a6e83952b4862b3f59007b8b30898ff531c582899a55d482c6e29bf",
+      "relation": "unchanged",
+      "baseline_label": "macro:lem:pell"
+    },
+    {
+      "label": "lem:split-bounded",
+      "number": "3.12",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 503,
+      "statement_sha256": "6d1f29b7ff093f84f3a8fdb82a9737ebf4c47de2ae1c692a6921d1e38abfb415",
+      "relation": "unchanged",
+      "baseline_label": "lem:split-bounded"
+    },
+    {
+      "label": "lem:component-normalization",
+      "number": "3.13",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 539,
+      "statement_sha256": "297edab9d54d12eb7b7471e6f1f4be80afb984d76b9b3dd98770436da20aa66c",
+      "relation": "unchanged",
+      "baseline_label": "lem:component-normalization"
+    },
+    {
+      "label": "lem:one-sided-component",
+      "number": "3.14",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 562,
+      "statement_sha256": "35ffda815ec56179fc449a02a1f9188fca2db86c7634fb7a7038b7787f3ccfa6",
+      "relation": "unchanged",
+      "baseline_label": "lem:one-sided-component"
+    },
+    {
+      "label": "lem:singleton-pair",
+      "number": "3.15",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 583,
+      "statement_sha256": "c96d72cbff0dc4a0b3ed145fc7c91e71bec224e6598fb679d3c48b12b33ae3ad",
+      "relation": "unchanged",
+      "baseline_label": "lem:singleton-pair"
+    },
+    {
+      "label": "lem:bounded-component",
+      "number": "3.16",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 631,
+      "statement_sha256": "5e4984e03eaa67e83f8f7d03b08b829035cbc6ec2d7a64a20c8ae8a1884be2f7",
+      "relation": "unchanged",
+      "baseline_label": "lem:bounded-component"
+    },
+    {
+      "label": "macro:prop:aligned",
+      "number": "3.17",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 676,
+      "statement_sha256": "c481387952f54e8b55d355ca20b92162df00a35429c6e2c2eade5e89512b2202",
+      "relation": "unchanged",
+      "baseline_label": "macro:prop:aligned"
+    },
+    {
+      "label": "macro:lem:two-defects",
+      "number": "3.18",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 765,
+      "statement_sha256": "e9c3de80f1c978551a23710e98150504586352a1a63a62c6b824e63d67fa09c1",
+      "relation": "unchanged",
+      "baseline_label": "macro:lem:two-defects"
+    },
+    {
+      "label": "macro:prop:sector6",
+      "number": "3.19",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 786,
+      "statement_sha256": "b4fbca9c3e6f34eeb73f2a27343489f87286513c881b3cbb58124173e1130f1b",
+      "relation": "unchanged",
+      "baseline_label": "macro:prop:sector6"
+    },
+    {
+      "label": "macro:lem:determinant",
+      "number": "3.20",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 834,
+      "statement_sha256": "8b3ce65cebda9a306e633ed9f547eb46c7ee96ee26cae08df80b5754714e2aa9",
+      "relation": "unchanged",
+      "baseline_label": "macro:lem:determinant"
+    },
+    {
+      "label": "lem:terminal-partners",
+      "number": "3.21",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 884,
+      "statement_sha256": "b384c4a575a276c0fe8274ec4f621ba41feaf76207a276f13c579581ddef78a2",
+      "relation": "unchanged",
+      "baseline_label": "lem:terminal-partners"
+    },
+    {
+      "label": "lem:kernel-energy",
+      "number": "3.22",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 922,
+      "statement_sha256": "87ad4bfe1dd6dde88624db6de8975bd0735d15cc1cb0a0a85ba16de84d7bbbaf",
+      "relation": "unchanged",
+      "baseline_label": "lem:kernel-energy"
+    },
+    {
+      "label": "prop:terminal-final",
+      "number": "3.23",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 986,
+      "statement_sha256": "c802a67bedf7051c172376f54d3f37e3b226d0f6c09789cd3770798429830505",
+      "relation": "unchanged",
+      "baseline_label": "prop:terminal-final"
+    },
+    {
+      "label": "prop:absolute-profile",
+      "number": "3.24",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 1089,
+      "statement_sha256": "d5996cf77aaefd84405ded57f3231581afab5b61026a6deacd665c9a1adb70b6",
+      "relation": "unchanged",
+      "baseline_label": "prop:absolute-profile"
+    },
+    {
+      "label": "prop:capped-profile",
+      "number": "3.25",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/03_arithmetic.tex",
+      "line": 1145,
+      "statement_sha256": "195e9214868e459d6e599844f4b405346522a63f9556b37e17744c9cf314adb9",
+      "relation": "unchanged",
+      "baseline_label": "prop:capped-profile"
+    },
+    {
+      "label": "thm:transfer",
+      "number": "4.1",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/04_poisson.tex",
+      "line": 58,
+      "statement_sha256": "8cf57f5fae03463cce3f2114f9264e680a56a9aec454b73b9faee17a4b4bb061",
+      "relation": "unchanged",
+      "baseline_label": "thm:transfer"
+    },
+    {
+      "label": "prop:cutoffs",
+      "number": "4.2",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/04_poisson.tex",
+      "line": 118,
+      "statement_sha256": "fa0ce24d7c96332481f0b77fc47aa1ec525bbd738a4635873aac5b64983e7fa8",
+      "relation": "unchanged",
+      "baseline_label": "prop:cutoffs"
+    },
+    {
+      "label": "thm:scalar-rates",
+      "number": "4.3",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/04_poisson.tex",
+      "line": 158,
+      "statement_sha256": "2b3d836c1925f37184943cbb3821126cffdaa1f75c3150066dad3bee31d3dbe4",
+      "relation": "unchanged",
+      "baseline_label": "thm:scalar-rates"
+    },
+    {
+      "label": "cor:moments",
+      "number": "4.4",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/04_poisson.tex",
+      "line": 225,
+      "statement_sha256": "6469b2b00e63685f224d23855e49c120e8cee55f34eaeb6a1899463b96d2bafe",
+      "relation": "unchanged",
+      "baseline_label": "cor:moments"
+    },
+    {
+      "label": "thm:word-field",
+      "number": "5.1",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 38,
+      "statement_sha256": "cfa1aaa3fb5a33cd854ebd171ca174496aeef484cfc001b8c0af38669c7d4f5a",
+      "relation": "unchanged",
+      "baseline_label": "thm:word-field"
+    },
+    {
+      "label": "cor:iid-word-replacement",
+      "number": "5.2",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 156,
+      "statement_sha256": "12a3071f202e569198d865fa2afefe4f8fc6ac13a62f5718def449ee0f8aa5af",
+      "relation": "unchanged",
+      "baseline_label": "cor:iid-word-replacement"
+    },
+    {
+      "label": "thm:typical-dictionaries",
+      "number": "5.3",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 196,
+      "statement_sha256": "1fa8f41060d1491f9d091f8503c1f82d407b446fd7f37548cf3675baaa95eda9",
+      "relation": "unchanged",
+      "baseline_label": "thm:typical-dictionaries"
+    },
+    {
+      "label": "cor:affine-dictionaries",
+      "number": "5.4",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 294,
+      "statement_sha256": "81ea200099af48a3a9ecd408a828925924ab59377141be84a24456b3ee902365",
+      "relation": "unchanged",
+      "baseline_label": "cor:affine-dictionaries"
+    },
+    {
+      "label": "cor:generic-dictionaries",
+      "number": "5.5",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 336,
+      "statement_sha256": "0ff2fbad8973fa99e87fb680bf7dc74e13039e801dfecc68f994d15c5de997f6",
+      "relation": "unchanged",
+      "baseline_label": "cor:generic-dictionaries"
+    },
+    {
+      "label": "cor:marker-dictionaries",
+      "number": "5.6",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 369,
+      "statement_sha256": "064dc42ee61577b6793c5c6c772063edd4be4496068e9c2fc2a6c7ff585821a2",
+      "relation": "unchanged",
+      "baseline_label": "cor:marker-dictionaries"
+    },
+    {
+      "label": "thm:patterns",
+      "number": "5.7",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 415,
+      "statement_sha256": "f49949ec6fb9006db25c0fb864abe7c9e03ae21e627a9e2f13e609d339001e51",
+      "relation": "unchanged",
+      "baseline_label": "thm:patterns"
+    },
+    {
+      "label": "thm:marked-field",
+      "number": "5.8",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 462,
+      "statement_sha256": "448048b1e176167fa2c2c4ea665ed38a1490b5714769937d48b3f45f0c1cde27",
+      "relation": "unchanged",
+      "baseline_label": "thm:marked-field"
+    },
+    {
+      "label": "cor:window-clusters",
+      "number": "5.9",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 537,
+      "statement_sha256": "bb0137973e7ce2ce9cf67f4869f3d427a998ef91e016c91d16ff9d5d2f4fd95c",
+      "relation": "unchanged",
+      "baseline_label": "cor:window-clusters"
+    },
+    {
+      "label": "thm:moving-comparison",
+      "number": "5.10",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 590,
+      "statement_sha256": "74ba3da4a5520e3e06293aa0cb5b5a7bf3bfc144ae18dc9b78c3a49ba83dcc11",
+      "relation": "unchanged",
+      "baseline_label": "thm:moving-comparison"
+    },
+    {
+      "label": "cor:signed-growing",
+      "number": "5.11",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 679,
+      "statement_sha256": "a48d750d61b5540850c272996d94099b3074439e1007c5a2b1c20c5175b44ae6",
+      "relation": "unchanged",
+      "baseline_label": "cor:signed-growing"
+    },
+    {
+      "label": "thm:bridge",
+      "number": "5.12",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "line": 734,
+      "statement_sha256": "7ebdcbcb475e15af69e77c7de98dc8670d3c01c662a0769db7c6555ab2d3440f",
+      "relation": "unchanged",
+      "baseline_label": "thm:bridge"
+    },
+    {
+      "label": "lem:stable-lift",
+      "number": "6.1",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/06_conditioning.tex",
+      "line": 62,
+      "statement_sha256": "56c7d383d23cf2fcf828bf89aba63023ec79a633ba062bbc82883b60f53440e6",
+      "relation": "unchanged",
+      "baseline_label": "lem:stable-lift"
+    },
+    {
+      "label": "prop:information-labelled",
+      "number": "6.2",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/06_conditioning.tex",
+      "line": 149,
+      "statement_sha256": "ac9842b8c709be3cab0fcc8a7e1e8308112132202ab3b1c8c89344a6c69403cd",
+      "relation": "unchanged",
+      "baseline_label": "prop:information-labelled"
+    },
+    {
+      "label": "lem:conditioning-floor",
+      "number": "6.3",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/06_conditioning.tex",
+      "line": 226,
+      "statement_sha256": "ace50ff31b5ca3e76e59169470084fcaeb5c41917d896688d036c4eb79c1d615",
+      "relation": "unchanged",
+      "baseline_label": "lem:conditioning-floor"
+    },
+    {
+      "label": "thm:resolved-kernel",
+      "number": "6.4",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/06_conditioning.tex",
+      "line": 267,
+      "statement_sha256": "9fce7929e1a7f96192ce7fc9ef536dea55b3e87d498b4c3e316d52310c8297ce",
+      "relation": "unchanged",
+      "baseline_label": "thm:resolved-kernel"
+    },
+    {
+      "label": "cor:quenched",
+      "number": "6.5",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/06_conditioning.tex",
+      "line": 316,
+      "statement_sha256": "be3b541f011494a79fad0c02751e489095fef749a08808d088f5e1bdd9584472",
+      "relation": "unchanged",
+      "baseline_label": "cor:quenched"
+    },
+    {
+      "label": "thm:boundary",
+      "number": "7.1",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 37,
+      "statement_sha256": "f22ac33e9ff11d15a63b4ee2d073540c810e074b8629b097e2b23acefe297562",
+      "relation": "unchanged",
+      "baseline_label": "thm:boundary"
+    },
+    {
+      "label": "lem:meso-defects",
+      "number": "7.2",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 124,
+      "statement_sha256": "5a9c48738cf8587a0b6923b6495dc5f85b4adc94710abd093eca0e617be3508c",
+      "relation": "unchanged",
+      "baseline_label": "lem:meso-defects"
+    },
+    {
+      "label": "prop:deep-starts",
+      "number": "7.3",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 142,
+      "statement_sha256": "4a3dee79baec287a3845c307949ab9338661216b3c1823053255ff373f760f64",
+      "relation": "unchanged",
+      "baseline_label": "prop:deep-starts"
+    },
+    {
+      "label": "thm:prefix-poisson",
+      "number": "7.4",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 189,
+      "statement_sha256": "a8ca8b750a06d13c127f42e4a27e338a6bb969e620eb57d0d5a393f02a733a39",
+      "relation": "unchanged",
+      "baseline_label": "thm:prefix-poisson"
+    },
+    {
+      "label": "cor:as-longest",
+      "number": "7.5",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 230,
+      "statement_sha256": "c3f638fc2aec5c6e43e38ed6c85a264b66e9c96e4432eb8402d35a5cdf24d35a",
+      "relation": "unchanged",
+      "baseline_label": "cor:as-longest"
+    },
+    {
+      "label": "thm:macro-field",
+      "number": "7.6",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 262,
+      "statement_sha256": "b10bf36e8cb2728e87d25320f6b98dcf4fd0e78d4cec0ef2b8d4ee645ea28b09",
+      "relation": "unchanged",
+      "baseline_label": "thm:macro-field"
+    },
+    {
+      "label": "thm:micro-run-tv",
+      "number": "7.7",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 387,
+      "statement_sha256": "b08b2661b22ca89bf4770a8dfc950999ee34d3a9ccdb80219becf1446b76895f",
+      "relation": "unchanged",
+      "baseline_label": "thm:micro-run-tv"
+    },
+    {
+      "label": "cor:micro-readout",
+      "number": "7.8",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 459,
+      "statement_sha256": "88c14cfe389cb1d8aaea9362d020d3d5607296d4a8416148b8097f2e99d550ca",
+      "relation": "unchanged",
+      "baseline_label": "cor:micro-readout"
+    },
+    {
+      "label": "thm:relative-bulk",
+      "number": "7.9",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 508,
+      "statement_sha256": "8d6f27598e108e2be5ecc13e0bcf7744bde2c3cee83a7458e66bd25de1e5876d",
+      "relation": "unchanged",
+      "baseline_label": "thm:relative-bulk"
+    },
+    {
+      "label": "thm:crossover",
+      "number": "7.10",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 563,
+      "statement_sha256": "20d1144ffb68ae2bec09f26515abe23e7176e63a1e167cc1f9ad8698511fb898",
+      "relation": "unchanged",
+      "baseline_label": "thm:crossover"
+    },
+    {
+      "label": "thm:two-clock",
+      "number": "7.11",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 641,
+      "statement_sha256": "2d19c4a9ef9dea7b956a6677c722613fd4f21c72520f679d47e9bf92abe2b66f",
+      "relation": "unchanged",
+      "baseline_label": "thm:two-clock"
+    },
+    {
+      "label": "thm:affine-crossover",
+      "number": "7.12",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "line": 726,
+      "statement_sha256": "c480cc150ec064c5b6f9b95cc391ce68383d8fd7310d70f9059a3ca547f302be",
+      "relation": "unchanged",
+      "baseline_label": "thm:affine-crossover"
+    },
+    {
+      "label": "cor:dyadic-micro",
+      "number": "7.7a",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07b_dyadic_restriction.tex",
+      "line": 6,
+      "statement_sha256": "f5fa24cad9fd373ea0147d7775a48fd2ec8e4ec7c26570a0b1a5bdc76e0e35db",
+      "relation": "unchanged",
+      "baseline_label": "cor:dyadic-micro"
+    },
+    {
+      "label": "cor:empirical-poisson",
+      "number": "7.8a",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07a_empirical_poisson.tex",
+      "line": 12,
+      "statement_sha256": "4c249fb73bec5a0773684e20038dbf5437fe0e793f30d75aae08f013324017c6",
+      "relation": "unchanged",
+      "baseline_label": "cor:empirical-poisson"
+    },
+    {
+      "label": "rem:empirical-field-obstruction",
+      "number": "7.8b",
+      "document": "article",
+      "source": "manuscripts/paper-c/sections/07a_empirical_poisson.tex",
+      "line": 157,
+      "statement_sha256": "c0fba248fbca76830deb0f6c5afaa119d69218518fde41467f2fae94d187d490",
+      "relation": "unchanged",
+      "baseline_label": "rem:empirical-field-obstruction"
+    },
+    {
+      "label": "supp:lem:runge-calculation",
+      "number": "A.1",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/A_runge_diophantine.tex",
+      "line": 9,
+      "statement_sha256": "8e17070e049f6049bdc1f298e0edace8c51215d0bb01305112c89e1e578fa0af",
+      "relation": "unchanged",
+      "baseline_label": "supp:lem:runge-calculation"
+    },
+    {
+      "label": "supp:lem:pell",
+      "number": "A.2",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/A_runge_diophantine.tex",
+      "line": 112,
+      "statement_sha256": "d3a5387202981cf1dfdfdb4d974d2000d603954d1733a1db9a1c8368e19da5d0",
+      "relation": "unchanged",
+      "baseline_label": "supp:lem:pell"
+    },
+    {
+      "label": "supp:prop:cutoff-calculation",
+      "number": "B.1",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/B_cutoffs.tex",
+      "line": 8,
+      "statement_sha256": "3bc97515dbcf937a57dbe93cf0ef73f002cf52a9f87f8aadcd2f5bda5108da4e",
+      "relation": "unchanged",
+      "baseline_label": "supp:prop:cutoff-calculation"
+    },
+    {
+      "label": "supp:lem:soft-retention",
+      "number": "B.2",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/B_cutoffs.tex",
+      "line": 95,
+      "statement_sha256": "b9d68d8370cfe17b4ce84a54818548a36be4cfc3944e795bd6cc9e9f7fafd28c",
+      "relation": "unchanged",
+      "baseline_label": "supp:lem:soft-retention"
+    },
+    {
+      "label": "supp:thm:aggregated",
+      "number": "C.1",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/C_fields.tex",
+      "line": 250,
+      "statement_sha256": "567e46105326148ac7619bab413f3a81279ef9a275dcc53bd196344106e89f8c",
+      "relation": "unchanged",
+      "baseline_label": "supp:thm:aggregated"
+    },
+    {
+      "label": "supp:lem:transition",
+      "number": "E.1",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/E_boundary.tex",
+      "line": 23,
+      "statement_sha256": "34b3761df6602f44bf86fa67824f94c7a46924a13966e6c06ea101db0c4c089b",
+      "relation": "unchanged",
+      "baseline_label": "supp:lem:transition"
+    },
+    {
+      "label": "supp:lem:simple-incidence",
+      "number": "E.2",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/E_boundary.tex",
+      "line": 97,
+      "statement_sha256": "c672e17f4c8b0595cbd97483e79c44ef97bc473ed0e211f254892f819b9084c4",
+      "relation": "unchanged",
+      "baseline_label": "supp:lem:simple-incidence"
+    },
+    {
+      "label": "supp:lem:pointwise-maximum",
+      "number": "E.3",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/E_boundary.tex",
+      "line": 165,
+      "statement_sha256": "2678005cba52b40b6b787ec58526d143f6561a75f84f5a2ea1c47e61d976b85e",
+      "relation": "unchanged",
+      "baseline_label": "supp:lem:pointwise-maximum"
+    },
+    {
+      "label": "supp:pivot:lem:inputs",
+      "number": "F.1",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "line": 36,
+      "statement_sha256": "e8cf15c39450ab112d1f29248a76047febefc11c88bde742fdcfdbbc3ff9dae4",
+      "relation": "unchanged",
+      "baseline_label": "supp:pivot:lem:inputs"
+    },
+    {
+      "label": "supp:pivot:lem:palm",
+      "number": "F.2",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "line": 124,
+      "statement_sha256": "02c95ab972e0a2e06d3d30917fccdf6f4f5b9ebdd16b9fadb929e442eb90ad6b",
+      "relation": "unchanged",
+      "baseline_label": "supp:pivot:lem:palm"
+    },
+    {
+      "label": "supp:pivot:lem:rankin",
+      "number": "F.3",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "line": 198,
+      "statement_sha256": "ea89f62e98ad5a347a88eea149a97d219be5e25955e5d0fff743c96441653671",
+      "relation": "unchanged",
+      "baseline_label": "supp:pivot:lem:rankin"
+    },
+    {
+      "label": "supp:pivot:lem:saddle",
+      "number": "F.4",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "line": 230,
+      "statement_sha256": "910a50fe55ed4039b75e113ec6d91e7348ea30805a0802cdcc185bf7627f0f04",
+      "relation": "unchanged",
+      "baseline_label": "supp:pivot:lem:saddle"
+    },
+    {
+      "label": "supp:pivot:prop:reciprocal",
+      "number": "F.5",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "line": 264,
+      "statement_sha256": "35cdaeea518bcce8a8fbf61f1b69a04ec3c21dd79206ae81af7587ee0bb8b222",
+      "relation": "unchanged",
+      "baseline_label": "supp:pivot:prop:reciprocal"
+    },
+    {
+      "label": "supp:pivot:prop:footprint",
+      "number": "F.6",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "line": 363,
+      "statement_sha256": "ba237d42877d4a9ba1c9d2a0ecea97d53ad4e6a90221c76a59a0ed84788ed0a1",
+      "relation": "unchanged",
+      "baseline_label": "supp:pivot:prop:footprint"
+    },
+    {
+      "label": "supp:pivot:prop:forcing",
+      "number": "F.7",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "line": 380,
+      "statement_sha256": "39c9b6d7de0232ff766ee3d3d4994cb559143e2b4c10404289e979ab5458aac9",
+      "relation": "unchanged",
+      "baseline_label": "supp:pivot:prop:forcing"
+    },
+    {
+      "label": "supp:palm:prop:deletion",
+      "number": "G.1",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "line": 44,
+      "statement_sha256": "0127e983a24efe8d3506b31c753f2ea3e0e1c6472553144b8732d2157c0c73e9",
+      "relation": "unchanged",
+      "baseline_label": "supp:palm:prop:deletion"
+    },
+    {
+      "label": "supp:palm:lem:crt",
+      "number": "G.2",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "line": 67,
+      "statement_sha256": "c0cb9168e2ddb4725a8b7c4141cc970ab876e5f3681f601c570f54f1bb5b72a8",
+      "relation": "ambient_hypotheses_made_explicit",
+      "baseline_label": "supp:palm:lem:crt"
+    },
+    {
+      "label": "supp:palm:thm:regular",
+      "number": "G.3",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "line": 97,
+      "statement_sha256": "54500e8391aab931d2a61bc9710ef2703924f38bf65ed4e42e363cc88e3db7a6",
+      "relation": "unchanged",
+      "baseline_label": "supp:palm:thm:regular"
+    },
+    {
+      "label": "supp:palm:prop:palm",
+      "number": "G.4",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "line": 151,
+      "statement_sha256": "0e1338aabb5e215fb7b349fcfdc8e0541f2b662037db3f9ab4c5985c53258b2b",
+      "relation": "unchanged",
+      "baseline_label": "supp:palm:prop:palm"
+    },
+    {
+      "label": "supp:palm:cor:palm-completion",
+      "number": "G.5",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "line": 202,
+      "statement_sha256": "a8cab45241d203f5dd024ff66fc1bcc822d1d6923b563df9432990db3275ef96",
+      "relation": "unchanged",
+      "baseline_label": "supp:palm:cor:palm-completion"
+    },
+    {
+      "label": "supp:palm:prop:signed-void",
+      "number": "G.6",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "line": 238,
+      "statement_sha256": "af1d375416e6aca4600141c1729c4215209da409fce4dd4797217282745addcf",
+      "relation": "unchanged",
+      "baseline_label": "supp:palm:prop:signed-void"
+    },
+    {
+      "label": "supp:palm:prop:pair-activity",
+      "number": "G.7",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "line": 335,
+      "statement_sha256": "ddc131b83618f724989a2d0c2adea40a87df16b5d16ccc426eb2fd219586d568",
+      "relation": "unchanged",
+      "baseline_label": "supp:palm:prop:pair-activity"
+    },
+    {
+      "label": "supp:palm:lem:cumulant",
+      "number": "G.8",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "line": 362,
+      "statement_sha256": "8cd46fc171ca78d5bc8a6b430b92393220eee30f7be32a8b04bd879bc05d8d6a",
+      "relation": "unchanged",
+      "baseline_label": "supp:palm:lem:cumulant"
+    },
+    {
+      "label": "supp:palm:thm:cumulant-obstruction",
+      "number": "G.9",
+      "document": "companion",
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "line": 395,
+      "statement_sha256": "1252b5787cf6e3bf6b7b3dea57773d9ea9f5a5d97003d800c6e5a4390bdd6990",
+      "relation": "unchanged",
+      "baseline_label": "supp:palm:thm:cumulant-obstruction"
+    }
+  ],
+  "changed_proof_blocks": [
+    {
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "proof_index": 1,
+      "old_sha256": "8a9919d0270993c4acff0ba1c873d9f9a7914dc11104a34bf7bb61928e5e27c7",
+      "new_sha256": "8f46de1d6a32e5c3b57c5ebb562a8f0666317f2bb9a0a58b904d5b9b76a8e657"
+    },
+    {
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "proof_index": 2,
+      "old_sha256": "fea6d35efd1338821ea7611671aa67192d8a032dbcada03736c75d32d778a0b9",
+      "new_sha256": "3e610d534373956cded65c041289740dcf8156d6f54c0c56e023168157e5969c"
+    },
+    {
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "proof_index": 4,
+      "old_sha256": "21c86c5372b2a50a759c38b5e8771a057675aa10034920654ef0e88487b820b3",
+      "new_sha256": "b13576d4229a9439c5d871a18d5177722dec2b12e0cd01a47ceee0d2528d5d7a"
+    },
+    {
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "proof_index": 5,
+      "old_sha256": "8359debf3cb21d2cc5ee3d55dcd8baff3b083eb5672156ded0cf941d6fc6cffd",
+      "new_sha256": "98f1d6b0a8b7d96eed126227ff996cfa0a7b52397a70686b85f9f97c0330668d"
+    },
+    {
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "proof_index": 6,
+      "old_sha256": "165aa1a434efb0ebf92e6d8aba9d6372bac7c29d2bda6fcbb79318b192919f68",
+      "new_sha256": "155914dc321fac60a96b4e071fcb974ffcd012465a62a8ce02d5270be51a7213"
+    },
+    {
+      "source": "manuscripts/paper-c/companion/F_microscopic_pivots.tex",
+      "proof_index": 7,
+      "old_sha256": "3ec218d737a91a4ff4bc30888a9969a69db633eb8f197fb69e5a992f0d8384e6",
+      "new_sha256": "34d326dfd0085945c7d4a100930a6ff1a263294b278cbfdf0c3a80d8958f46ea"
+    },
+    {
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "proof_index": 2,
+      "old_sha256": "ad48e12b09b69401fd8f22ec7c676475bc4fdea587ba02384e6f5963856a5a9d",
+      "new_sha256": "baae6bd03ceae99522d2950db69390b6ef224a1c828591564e433e81b5b568bb"
+    },
+    {
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "proof_index": 4,
+      "old_sha256": "0edbf30ff6072cc1dbd3b37b2aa4183de0e6add3fea313aeafd435ee6a699f47",
+      "new_sha256": "4052c15f73e739dcd0e300ba77c1a5403f317f7a0287fdd9fd15c667da18ad9a"
+    },
+    {
+      "source": "manuscripts/paper-c/companion/G_palm_complements.tex",
+      "proof_index": 9,
+      "old_sha256": "98b325fcf0172aebf878f31ef93498eebd79738b6ebb883fc211c9174895e521",
+      "new_sha256": "bd999f7aac01fd06a4ec8664ede790a41054b63ab88b645dd0ba299dded19396"
+    },
+    {
+      "source": "manuscripts/paper-c/sections/05_patterns_fields.tex",
+      "proof_index": 4,
+      "old_sha256": "5e013296f0d644f2c0923725511928f9112fdd80055fe14bd534acf6fe387e86",
+      "new_sha256": "2b408ad305f2be60f5722b72a70f1f521055372f0593181dc3117b3b35124a8b"
+    },
+    {
+      "source": "manuscripts/paper-c/sections/06_conditioning.tex",
+      "proof_index": 2,
+      "old_sha256": "029608ca1701133c61d55c10c05cf4fcb0d2f530b26a0e84a87e4a6060750dd0",
+      "new_sha256": "309cd302e8c9c972d738b43ad56ae778a1eb8f902c590c2fb3811a9c44f3dcd2"
+    },
+    {
+      "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+      "proof_index": 7,
+      "old_sha256": "73b3c4dc4f6ad48bbb9c2553cd53ab8a71c6f50b6f6bbb020203d6019c46caa1",
+      "new_sha256": "6e9dff8c6e14b2f8df2bb3fcfda73d9f8256eaa6383f329a61526f674396795b"
+    },
+    {
+      "source": "manuscripts/paper-c/sections/07a_empirical_poisson.tex",
+      "proof_index": 1,
+      "old_sha256": "0b18faa46754380fb6ea3c3e44090dd6874f5f115f1fc8327aa8e7a58b8ca6f3",
+      "new_sha256": "a6c58960a7aa3915f4f5df1669d9204421367a63aeddfa15d92284805f201aa0"
+    },
+    {
+      "source": "manuscripts/paper-c/sections/07b_dyadic_restriction.tex",
+      "proof_index": 1,
+      "old_sha256": "4469d6017e4d0b20a4244c423255fefcf03fead8aa208763ec71eb9475f3fdcd",
+      "new_sha256": "517b0d0852a34476528f93748bc18120d5fa8830a94c3c8066363cb50df8ed58"
+    }
+  ],
+  "clarified_statement_proofs": [
+    {
+      "path": "PaperCPrel8/RoughKernelCRT.lean",
+      "declaration": "solutions_count_le",
+      "scope": "Finite CRT certificate count, with exact empty-block treatment and factor three charged per assigned prime, assuming the product <=2*n."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelCRT.lean",
+      "declaration": "assigned_count_le",
+      "scope": "A fixed allocation of distinct primes to target blocks and offsets has count at most n^h*3^omega(r)/r. Product and exponent partition identities are proved."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelCRT.lean",
+      "declaration": "hosted_fraction_le",
+      "scope": "Union over all block-and-offset assignments yields normalized count <=(3*h*(Q+1))^omega(r)/r on the independent Cartesian grid."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelAllocation.lean",
+      "declaration": "rough_allocation_probability",
+      "scope": "Actual normalized uniform probability on the Cartesian grid for all prime factors of the odd rough kernel at a fixed source vertex. The product-size condition r<=2*n remains explicit."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelAllocation.lean",
+      "declaration": "rough_allocation_of_vertex_bound",
+      "scope": "The actual kernel divides its source vertex; 0<m<=2*n discharges the product-size premise."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelExponent.lean",
+      "declaration": "kernel_weight_le",
+      "scope": "Literal z^omega(r)/r <=T^(-1+log(z)/log(Y)) for positive T<=r and 1<=z<Y, using actual rough-prime support."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelExponent.lean",
+      "declaration": "allocation_threshold_bound",
+      "scope": "Actual CRT hosting probability bounded by the threshold power for a fixed source occurrence."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelRegularity.lean",
+      "declaration": "single_regular",
+      "scope": "A single support with nonempty rough kernels is private-pivot regular when Y>Q. All raw occurrences are retained in the definition."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelRegularity.lean",
+      "declaration": "failure_hosted",
+      "scope": "A deterministic failure of regularity forces all rough primes at some source occurrence into other blocks. The final k*(Q+1) probabilistic union bound is supplied by RoughKernelCloudBound.regularity_probability_le."
+    },
+    {
+      "path": "PaperCPrel8/UniformGridFibres.lean",
+      "declaration": "probability_le_of_fibres",
+      "scope": "Exposing any one uniform index and deleting that coordinate gives an injective finite-fibre bound, then exact averaging under the actual Cartesian-grid law."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelCloudBound.lean",
+      "declaration": "occurrence_probability_le",
+      "scope": "Averaged all-prime CRT hosting estimate for a genuine source occurrence, with any larger weight z and no assumed conditional comparison."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelCloudBound.lean",
+      "declaration": "regularity_probability_le",
+      "scope": "Full multi-source probability bound (k*(Q+1))*T^(-1+log(3*k*(Q+1))/log(Y)) for all kernels >=T but failure of private-pivot regularity. Uses 0<n, Q<=n, Q<Y, T>0 and 3*k*(Q+1)<Y, as explicit ambient hypotheses."
+    },
+    {
+      "path": "PaperCPrel8/RoughKernelCloudBound.lean",
+      "declaration": "strong_good_probability_le",
+      "scope": "Literal membership in the stronger good set, with the natural floor of the real threshold, discharges all individual kernel predicates. Together with the previous CRT allocation and single-support proofs, this closes G.2."
+    }
+  ]
+}

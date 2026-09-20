@@ -36,7 +36,6 @@ const manifestPath = path.join(projectRoot, 'audit_manifest.json');
 const formalizationPath = path.join(projectRoot, 'formalization.yaml');
 const auditMarkdownPath = path.join(projectRoot, 'AXIOM_AUDIT.md');
 const auditConfigPath = path.join(projectRoot, 'audit_config.json');
-const readmePath = path.join(projectRoot, 'README.md');
 
 const binaryCompare = (left, right) =>
   left < right ? -1 : left > right ? 1 : 0;
@@ -794,9 +793,10 @@ if (checkPdfsOnly) {
   process.exit(0);
 }
 
-const readme = fs.readFileSync(readmePath, 'utf8');
 // The current homepage describes V3. Keep the v0.9 documentary check bound
 // to the exact pre-refresh text, rather than requiring old PDF claims there.
+// The archive is checked directly; its placement in the publication homepage
+// is an editorial choice, not an integrity condition for the retained core.
 const historicalReadmeCommit = 'ee2ac789764fe5d9fd19c96c6c0778a693b129a0';
 const historicalReadmeViewer = 'docs/history/README_before_v3_refresh.md';
 const historicalReadmeOriginal =
@@ -807,9 +807,6 @@ const historicalReadmeBytes = fs.readFileSync(
 if (crypto.createHash('sha256').update(historicalReadmeBytes).digest('hex') !==
     'b07370fb1189117a85cd22e1b92f4bbd1f59d612803906c05536847fc50f5785') {
   throw new Error('historical README original SHA-256 mismatch');
-}
-if (!readme.includes(`](${historicalReadmeViewer})`)) {
-  throw new Error('README.md must link to the historical README archive');
 }
 const historicalReadme = historicalReadmeBytes.toString('utf8');
 const historicalReadmeBanner =

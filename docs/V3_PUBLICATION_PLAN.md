@@ -1,92 +1,77 @@
-# Final V3 publication and the next Palomar versions
+# Publication and Palomar release plan
 
-This plan records the author's decisions of 7–8 September 2026. The current
-sources are the supplied V3PREL article and companion. The final V3 files and
-their published version identifiers are not yet available.
+This plan records the author's publication sequence of 20 September 2026.
+The [current manuscript package](../manuscripts/paper-c/README.md) and
+[source alignment](MANUSCRIPT_ALIGNMENT.md) are integrated. The seven explicit
+literature propositions remain assumptions for this release.
 
-The documentation preparation presents the current sources and existing
-publication records accurately. It does not turn V3PREL into the final V3,
-issue a Palomar identifier, or qualify a new proof snapshot.
+## 1. Prepare the public repository and submission dossiers
 
-## Final article and companion
+Prepare the expanded Palomar selection around the five existing mathematical
+families and the two recommended additional families:
 
-When the final sources and published PDFs are available:
+1. Critical Poisson field and small-prime conditioning, including the
+   information-adapted cutoff.
+2. Dictionaries, exact marks and clusters, including typical and affine dictionaries.
+3. Threshold staircase and Poisson–Gaussian limits.
+4. Boundary, prefix laws and longest runs.
+5. Microscopic–bulk crossover.
+6. Microscopic signed field, dyadic restrictions and empirical count laws.
+7. Regular configurations, Palm laws and the absolute-cumulant obstruction.
 
-- archive them separately from the preserved V3PREL payload, recording exact
-  file identities and the public links to both documents;
-- compare the final statements with V3PREL and update the source-to-Lean
-  correspondence, numbering and any affected proofs;
-- replace the README's explicitly labelled V3PREL abstract with the final
-  article's abstract, reproduced faithfully;
-- verify the DOI of each published version on Zenodo and Cambridge Open
-  Engage, distinguishing those identifiers from the paper's concept DOI and
-  the separate formalization DOI.
+The [submission guide](PALOMAR_SUBMISSIONS.md) now records the exact 89-declaration
+selection, its seven Challenge/Solution interfaces and metadata. Verify the
+immutable commit to be submitted; the prepared grouping is not an issued registry entry. Keep established
+configuration paths stable where they already identify a registered family.
+Record actual identifiers and registration status rather than assuming a failed
+or pending attempt produced an entry.
 
-## Five metadata files
+Present the paper, its abstract, mathematical scope, explicit hypotheses, build
+instructions and registration links in the README. Remove the working-version
+narrative from that front page. Keep immutable evidence and provenance available
+in supporting documentation; do not rewrite their original scope.
 
-Update the existing `formalization.yaml` in each of
-`palomar/v3prel/critical_field/`, `patterns/`, `limits/`, `boundary/` and
-`crossover/` when the final sources are available.
+Use structured person records for the author's metadata:
 
-The public description should explain the mathematical content, scope and
-required literature assumptions. Do not duplicate the author, bibliographic
-title or DOI already displayed in the structured fields. Keep the author in
-`project.authors` and the publication details in `sources`; inspect the
-registry preview for unnecessary repetition.
+```yaml
+authors:
+  - name: "Brice Pouly"
+    github: "Vulkin-prog"
+    orcid: "0009-0008-8491-2467"
+```
 
-Use the final article title and version in the relevant project/source
-fields, update source paths, hashes and theorem locations, and retain the
-precise limits of each selected family. New verification and review outcomes
-must identify their actual commit; historical evidence is not a result for a
-changed snapshot.
+The ORCID is recorded in the author's supplied manuscript sources. The current
+[Palomar validator](https://github.com/PalomarRegistry/PalomarSubmission/blob/3561d237dcc4b28482558ad28a64d767d7cc8615/scripts/submission_contract.py#L458)
+accepts this format. Put bibliographic identifiers in `sources`, not in the
+public mathematical abstract; do not repeat authorship and DOI information
+already represented by structured metadata.
 
-## README and historical material
+## 2. Author submits to Palomar
 
-The README introduces the paper, its abstract, the current formalization
-scope, the five Palomar families and a short reproduction path. It links to
-the detailed development and the archived historical README.
+When the dossiers and repository are ready, the author performs the submissions.
+The repository then records the actual issued identifiers and versions.
+Local qualification is distinct from Palomar's own verification and review.
 
-Keep the historical source files, proof interfaces, registry identifiers,
-hashes and qualification evidence in place. Moving their narrative out of the
-front page does not erase or update their original claims. In particular,
-old release documentation must not be presented as a guide to the final V3
-without checking and updating its scope.
+## 3. Author publishes the paper
 
-## Version updates in Palomar
+The author adds the Palomar references to the article and companion, then
+publishes the paper on Zenodo. No future version DOI is inferred from a concept
+DOI. Publication on another platform is recorded only when confirmed.
 
-Once the first five entries have actually been registered, submit each
-updated family using **its existing identifier**, its Comparator path and
-the new immutable commit. This requests the next version of each of the
-five entries. A failed attempt that never produced a registered identifier
-remains a new submission with the existing-ID field blank. See the
-[Palomar form](https://submit.palomar-registry.org/).
+## 4. Integrate the published edition
 
-Keep the repository, project directory and configuration paths stable for
-these updates. The `v3prel` path names may remain as stable identifiers even
-after the source metadata describes the final paper; renaming them merely
-for appearance can disrupt the correspondence with the existing entries.
+The author supplies the published article, companion, editable sources and the
+Zenodo DOI of paper V3. Verify the files, compare them against the current
+manuscript, and update the public package, formal correspondence, README and
+submission metadata. Review any mathematical edits before retaining a coverage
+claim. Keep the article DOI distinct from the formalization DOI.
 
-The final paper can cite the stable registry identifiers. Record the exact
-registered versions and commits in the repository once issued. Run the
-appropriate source, metadata and proof checks before publishing the new
-snapshot; Palomar then performs its own verification of that commit.
+## 5. Author submits the Palomar version updates
 
-## Information needed to complete this plan
+After validation at the new immutable commit, the author makes the planned v2
+submissions with the published paper references. Use the actual existing entry
+identifiers and appropriate next version for any already-versioned record;
+an unregistered attempt does not become a version update.
 
-- Final article and companion sources, PDFs and accompanying files.
-- Public links and exact version DOIs on Zenodo and Cambridge Open Engage.
-- The five issued Palomar identifiers and any findings from their reviews.
-
-## Compiler migration
-
-The current migration uses Lean 4.34.0 and Mathlib v4.34.0. Its
-[migration guide](LEAN_4_34_0_MIGRATION.md) records the build, audits and
-qualification scope. The [4.33.1 receipt](../migration_evidence/lean-4.33.1/validation.json)
-remains a historical snapshot. Palomar merged the previously blocking
-provenance and printing fixes on 14 September 2026; submitting a new immutable
-commit still requires its own verification.
-
-Preserve the previous source and qualification snapshots. A compiler update
-does not create a final-paper DOI, register an entry, or update a previously
-submitted commit. Local work remains on the Ubuntu partition, with available
-disk space checked before substantial builds.
+No submission, merge, publication or external identifier is created by this
+plan. Work stays on the Ubuntu partition, with disk checks before large builds.
