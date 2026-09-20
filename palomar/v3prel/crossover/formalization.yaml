@@ -262,11 +262,17 @@ fidelity:
     6 are not selected by this candidate. The paper states its results without theorem-level premises,
     whereas the Lean endpoints explicitly consume the displayed literature propositions. Those hypotheses
     are not proved by kernel checking the conditional results.
+    Every selected asymptotic endpoint additionally proves eventual positive conditioning mass,
+    measurability of the record and first-start maps, and probability normalization of the record,
+    target and both location laws. Weakly explicitly includes eventual source normalization and target
+    normalization in addition to all bounded continuous test integrals. These conclusions require no
+    extra assumptions, including no future-neutrality assumption for location or sign endpoints.
 review:
   status: agent-reviewed
   notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
     checks are recorded separately in qualification evidence. There is no independent human peer review
-    or claimed Palomar decision.
+    or claimed Palomar decision. The probability and measurability guarantees were audited and exposed
+    in the standalone interface after the Limits review; this is not a prediction of registration.
 alignment:
   namespace: PaperCV3Audit
   statements:

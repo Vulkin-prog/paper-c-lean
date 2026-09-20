@@ -249,6 +249,12 @@ def flattenRows (sites : Finset ℕ) (rows : ({x : ℕ // x ∈ sites} × F₂) 
 /-- Independent Poisson atoms with rates 2^(-L-e-2), for every excess e and sign. -/
 def target (sites : Finset ℕ) (L : ℕ) : Measure (Config sites) :=
   (Measure.pi (fun _ : {x : ℕ // x ∈ sites} × F₂ => configurationMeasure (1/2^(L+1)))).map (flattenRows sites)
+/-- The complete target is a genuine probability law on the discrete configuration space. -/
+theorem measurable_flattenRows (sites : Finset ℕ) : Measurable (flattenRows sites) :=
+  measurable_of_countable _
+instance instProbabilityTarget (sites : Finset ℕ) (L : ℕ) : IsProbabilityMeasure (target sites L) := by
+  unfold target
+  exact (Measure.isProbabilityMeasure_map_iff (measurable_flattenRows sites).aemeasurable).mpr inferInstance
 /-- Actual start positions 2,...,M-L+1; the exceptional left border is excluded. -/
 def interior (M L : ℕ) : Finset ℕ := (Finset.Icc 1 (M-L)).image (fun j => j+1)
 def distance (M L : ℕ) (A : Set InfiniteSample) : ℝ :=
@@ -490,18 +496,50 @@ open Analysis Boundary Microscopic
 theorem source_target_palm_mass {C L E Y : ℕ} (sites : Finset ℕ) (hL : 1≤L)
     (A : SmallSample C Y → Prop) (hA : 0 < infiniteRademacherMeasure.real (traceEvent C Y A))
     (z : Config sites) (hz : RegularPlant sites C L E Y z) :
+    (∀ omega : InfiniteSample, ∀ j : MarkIndex sites, source sites L omega j =
+      if ExactLengthEvent (infiniteValueBit omega) j.1.val (L+j.2.1+1) ∧
+        infiniteValueBit omega j.1.val=j.2.2 then 1 else 0) ∧
+    MeasurableSet (presence sites L z) ∧ Measurable (source sites L) ∧
+    IsProbabilityMeasure (target sites L) ∧
+    IsProbabilityMeasure (cond infiniteRademacherMeasure (traceEvent C Y A)) ∧
+    0 < (cond infiniteRademacherMeasure (traceEvent C Y A)).real (presence sites L z) ∧
+    IsProbabilityMeasure (cond (cond infiniteRademacherMeasure (traceEvent C Y A)) (presence sites L z)) ∧
     (cond infiniteRademacherMeasure (traceEvent C Y A)).real {w | source sites L w=z} =
     (target sites L).real {z} * (Real.exp (totalRate sites L:ℝ)*
       (cond (cond infiniteRademacherMeasure (traceEvent C Y A)) (presence sites L z)).real
         {w | source sites L w=z}) := by
-  rw [source_eq,target_eq]
-  exact PaperC.Prel8.ArithmeticPalmMass.source_target_palm_mass sites hL A hA z hz
+  refine ⟨?_, PaperC.Prel8.ArithmeticPalmMass.measurableSet_presence sites L z, ?_⟩
+  · intro omega j
+    rw [source_eq]
+    simp only [PaperC.V282.BulkMarkedSource.spatialMarkedSource_apply,
+      PaperC.V282.BulkMarkedSource.spatialMarkedValue, PaperC.V282.ExactMarkedModel.signedMarkValue]
+    split_ifs <;> first | rfl | contradiction
+  ·
+    have hm : Measurable (source sites L) := by
+      rw [source_eq]
+      exact PaperC.V282.BulkMarkedSource.measurable_spatialMarkedSource _ _
+    letI : IsProbabilityMeasure (cond infiniteRademacherMeasure (traceEvent C Y A)) :=
+      cond_isProbabilityMeasure (PaperC.V282.ConditionedCountableLaw.measure_ne_zero_of_real_pos _ hA)
+    have hp : 0 < (cond infiniteRademacherMeasure (traceEvent C Y A)).real (presence sites L z) :=
+      PaperC.Prel8.ArithmeticPalmMass.presence_pos sites hL A hA z hz
+    refine ⟨hm, inferInstance, inferInstance, hp,
+      cond_isProbabilityMeasure (PaperC.V282.ConditionedCountableLaw.measure_ne_zero_of_real_pos _ hp), ?_⟩
+    rw [source_eq,target_eq]
+    exact PaperC.Prel8.ArithmeticPalmMass.source_target_palm_mass sites hL A hA z hz
 
 theorem full_deficit_comparison {C L E Y : ℕ} (sites : Finset ℕ) (hL : 1≤L)
     (A : SmallSample C Y → Prop) (hA : 0 < infiniteRademacherMeasure.real (traceEvent C Y A)) :
+    HasSum (sourceMass sites L A) 1 ∧ HasSum (targetMass sites L) 1 ∧
     0 ≤ massTV (sourceMass sites L A) (targetMass sites L)-fullDeficit sites L E A ∧
     massTV (sourceMass sites L A) (targetMass sites L)-fullDeficit sites L E A ≤
       (target sites L).real {z | ¬RegularPlant sites C L E Y z} := by
+  have hm : Measurable (source sites L) := by
+    rw [source_eq]
+    exact PaperC.V282.BulkMarkedSource.measurable_spatialMarkedSource _ _
+  letI : IsProbabilityMeasure (cond infiniteRademacherMeasure (traceEvent C Y A)) :=
+    cond_isProbabilityMeasure (PaperC.V282.ConditionedCountableLaw.measure_ne_zero_of_real_pos _ hA)
+  refine ⟨PaperC.V282.InfiniteMassCoupling.hasSum_observableLaw _ hm,
+    PaperC.V282.InfiniteMassCoupling.hasSum_observableLaw (target sites L) measurable_id, ?_⟩
   rw [sourceMass_eq,targetMass_eq,fullDeficit_eq,target_eq]
   exact PaperC.Prel8.ArithmeticPalmDeficit.fullDeficit_comparison sites hL A hA
 

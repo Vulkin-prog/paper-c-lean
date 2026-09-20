@@ -74,7 +74,9 @@ statements with proved measurability and probability normalization, and proves
 positive conditioning mass. After merging and qualification, submit Limits as
 a **new submission with the existing Palomar ID field left blank**. The rejected
 attempt did not issue an identifier. See the [review follow-up](PALOMAR_REVIEW_FOLLOWUP.md)
-for the correction and the separate Mathlib-cache warning.
+for the correction and the separate Mathlib-cache warning. The subsequent
+[audit of the four remaining dossiers](PALOMAR_REMAINING_DOSSIERS_AUDIT.md) exposes
+the corresponding probability and measurability guarantees before submission.
 
 ## Exact mathematical selection
 
@@ -156,7 +158,9 @@ The [local qualification record](../palomar/v3prel/qualification/2026-09-20/READ
 contains the initial seven-family receipt, file identities and transcript excerpts.
 It predates the strengthened Limits interface and is not evidence for the changed
 statements. The [Limits correction record](../palomar/v3prel/qualification/2026-09-20-limits-probability/README.md)
-records its separate replay. After merging, the candidate workflow automatically
+records its separate replay. The [remaining-dossier qualification](../palomar/v3prel/qualification/2026-09-20-remaining-probability/README.md)
+records the 33 declarations in Boundary, Crossover, Microscopic and Palm after
+their interface audit. After merging, the candidate workflow automatically
 repeats qualification on `main`; use the full SHA of that successful merged commit
 for the remaining submissions.
 

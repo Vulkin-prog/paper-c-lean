@@ -300,7 +300,16 @@ def resolvedLimitLaw (s : ℝ) : Measure (Bool×ℝ) :=
   (phaseBorderWeight s : ℝ≥0∞) • labelledLaw false zeroLaw+
     (phaseBulkWeight s : ℝ≥0∞) • labelledLaw true uniformLaw
 def Weakly {α : Type*} [MeasurableSpace α] [TopologicalSpace α] (mu : ℕ→Measure α) (nu : Measure α) : Prop :=
+  (∀ᶠ n in atTop, IsProbabilityMeasure (mu n)) ∧ IsProbabilityMeasure nu ∧
   ∀ F : α→ᵇℝ, Tendsto (fun n => ∫ x,F x ∂mu n) atTop (𝓝 (∫ x,F x ∂nu))
+/-- The true conditioning event has positive mass, and all transported laws are probabilities. -/
+def ProbabilityLaws (M L : ℕ) (delta : ℝ) (A : Set InfiniteSample) (alpha : ℝ≥0) : Prop :=
+  MeasurableSet (A ∩ hitEvent M L) ∧
+  0 < infiniteRademacherMeasure.real (A ∩ hitEvent M L) ∧
+  Measurable (gamma M L delta) ∧ Measurable (firstStart M L) ∧
+  IsProbabilityMeasure (sourceLaw M L delta A) ∧
+  IsProbabilityMeasure (targetLaw M L delta alpha) ∧
+  IsProbabilityMeasure (locationLaw M L A) ∧ IsProbabilityMeasure (resolvedLaw M L A)
 def phase (M L d : ℕ) : ℝ := (L : ℝ)-Real.log M/Real.log 2-d
 /- The affine system is literal on the first pi(Y) prime bits. -/
 variable {Y : ℕ} {W : Type*} [AddCommGroup W] [Module F₂ W]
@@ -365,25 +374,30 @@ variable (hAGG : ProcessAGGStatement) (hPNT : PrimeNumberTheoremRemainder)
 include hAGG hPNT hLS hShorey hNR hsizes hlengths hbeta hdelta hdeltaOne hupper hrare
 
 theorem v3_crossover_complete_moving_mixture  :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) ∧
     Tendsto (fun n => distance (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) atTop (𝓝 0) := by
   sorry
 
 theorem v3_crossover_locations (s : ℝ) (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (Nat.primeCounting (lengths n))) atTop (𝓝 s)) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) Set.univ) (limitLaw s) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) Set.univ) (resolvedLimitLaw s) := by
   sorry
 
 theorem v3_crossover_locations_atTop (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (Nat.primeCounting (lengths n))) atTop atTop) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) Set.univ) (zeroLaw) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) Set.univ) (labelledLaw false zeroLaw) := by
   sorry
 
 theorem v3_crossover_locations_atBot (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (Nat.primeCounting (lengths n))) atTop atBot) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) Set.univ) (uniformLaw) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) Set.univ) (labelledLaw true uniformLaw) := by
   sorry
 
 theorem v3_crossover_sign  :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) ∧
     Tendsto (fun n => positiveProbability (sizes n) (lengths n) Set.univ-
       ((borderRate (lengths n) : ℝ)+(totalRate (bulkStarts (sizes n) (lengths n) delta) (lengths n) : ℝ)/2)/
         ((borderRate (lengths n) : ℝ)+(totalRate (bulkStarts (sizes n) (lengths n) delta) (lengths n) : ℝ)))
@@ -409,26 +423,36 @@ variable (hAGG : ProcessAGGStatement) (hLS : UniformPrimeDivisorStatement)
 include hAGG hLS hShorey hPNT hNR hsizes hlengths hbeta hdelta hdeltaOne hc hupper hrare hstack hbudget
 
 theorem v3_crossover_affine_complete_clock (hneutral : ∀ K,∀ᶠ n in atTop,FutureNeutralAt (G n) (lengths n) K) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) ∧
     Tendsto (fun n => distance (sizes n) (lengths n) delta (affineCylinder (G n) (b n))
       (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) atTop (𝓝 0) := by
   sorry
 
 theorem v3_crossover_affine_locations (s : ℝ) (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (borderDeficitAt (G n) (lengths n))) atTop (𝓝 s)) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (limitLaw s) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (resolvedLimitLaw s) := by
   sorry
 
 theorem v3_crossover_affine_locations_atTop (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (borderDeficitAt (G n) (lengths n))) atTop atTop) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (zeroLaw) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (labelledLaw false zeroLaw) := by
   sorry
 
 theorem v3_crossover_affine_locations_atBot (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (borderDeficitAt (G n) (lengths n))) atTop atBot) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (uniformLaw) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (labelledLaw true uniformLaw) := by
   sorry
 
 theorem v3_crossover_affine_sign  :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) ∧
     Tendsto (fun n => positiveProbability (sizes n) (lengths n) (affineCylinder (G n) (b n))-
       ((((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n) : ℝ)+
           (totalRate (bulkStarts (sizes n) (lengths n) delta) (lengths n) : ℝ)/2)/

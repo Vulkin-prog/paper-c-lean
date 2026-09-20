@@ -267,7 +267,16 @@ def resolvedLimitLaw (s : ℝ) : Measure (Bool×ℝ) :=
   (phaseBorderWeight s : ℝ≥0∞) • labelledLaw false zeroLaw+
     (phaseBulkWeight s : ℝ≥0∞) • labelledLaw true uniformLaw
 def Weakly {α : Type*} [MeasurableSpace α] [TopologicalSpace α] (mu : ℕ→Measure α) (nu : Measure α) : Prop :=
+  (∀ᶠ n in atTop, IsProbabilityMeasure (mu n)) ∧ IsProbabilityMeasure nu ∧
   ∀ F : α→ᵇℝ, Tendsto (fun n => ∫ x,F x ∂mu n) atTop (𝓝 (∫ x,F x ∂nu))
+/-- The true conditioning event has positive mass, and all transported laws are probabilities. -/
+def ProbabilityLaws (M L : ℕ) (delta : ℝ) (A : Set InfiniteSample) (alpha : ℝ≥0) : Prop :=
+  MeasurableSet (A ∩ hitEvent M L) ∧
+  0 < infiniteRademacherMeasure.real (A ∩ hitEvent M L) ∧
+  Measurable (gamma M L delta) ∧ Measurable (firstStart M L) ∧
+  IsProbabilityMeasure (sourceLaw M L delta A) ∧
+  IsProbabilityMeasure (targetLaw M L delta alpha) ∧
+  IsProbabilityMeasure (locationLaw M L A) ∧ IsProbabilityMeasure (resolvedLaw M L A)
 def phase (M L d : ℕ) : ℝ := (L : ℝ)-Real.log M/Real.log 2-d
 /- The affine system is literal on the first pi(Y) prime bits. -/
 variable {Y : ℕ} {W : Type*} [AddCommGroup W] [Module F₂ W]
@@ -433,12 +442,15 @@ private theorem weakly_of_probability {α : Type*} [MeasurableSpace α] [Topolog
     (p : ℕ→ProbabilityMeasure α) (q : ProbabilityMeasure α)
     (mu : ℕ→Measure α) (nu : Measure α) (ht : Tendsto p atTop (𝓝 q))
     (he : ∀ᶠ n in atTop,(p n : Measure α)=mu n) (hq : (q : Measure α)=nu) : Weakly mu nu := by
-  intro F
-  have h := (ProbabilityMeasure.tendsto_iff_forall_integral_tendsto.mp ht) F
-  rw [hq] at h
-  apply h.congr'
-  filter_upwards [he] with n hn
-  rw [hn]
+  refine ⟨?_, hq ▸ q.property, ?_⟩
+  · filter_upwards [he] with n hn
+    exact hn ▸ (p n).property
+  · intro F
+    have h := (ProbabilityMeasure.tendsto_iff_forall_integral_tendsto.mp ht) F
+    rw [hq] at h
+    apply h.congr'
+    filter_upwards [he] with n hn
+    rw [hn]
 private theorem ordinary_location_eq {M L : ℕ} (hLM : L≤M) :
     locationLaw M L Set.univ=(PaperC.V282.CrossoverLocationTransfer.firstLocationLaw M L : Measure ℝ) := by
   unfold locationLaw
@@ -476,6 +488,57 @@ private theorem totalRate_eq_core (sites : Finset ℕ) (L : ℕ) : totalRate sit
 private theorem bulkStarts_eq_core (M L : ℕ) (delta : ℝ) : bulkStarts M L delta =
     PaperC.V282.BulkMarkedGeometry.bulkStarts M L delta := rfl
 
+private theorem probability_laws (M L : ℕ) (delta : ℝ) (A : Set InfiniteSample) (alpha : ℝ≥0)
+    (hA : MeasurableSet A) (hp : 0 < infiniteRademacherMeasure.real (A ∩ hitEvent M L)) :
+    Crossover.ProbabilityLaws M L delta A alpha := by
+  have hg : Measurable (Crossover.gamma M L delta) := by
+    rw [gamma_eq]
+    exact PaperC.V282.CrossoverMarkedModel.measurable_gamma M L delta
+  have hf : Measurable (firstStart M L) := PaperC.V282.RarePrefixGeometry.measurable_firstStart M L
+  letI : IsProbabilityMeasure (cond infiniteRademacherMeasure (A ∩ hitEvent M L)) :=
+    cond_isProbabilityMeasure (PaperC.V282.ConditionedCountableLaw.measure_ne_zero_of_real_pos _ hp)
+  refine ⟨hA.inter (PaperC.V282.RarePrefixGeometry.measurableSet_hitEvent M L), hp, hg, hf, ?_, ?_, ?_, ?_⟩
+  · exact (Measure.isProbabilityMeasure_map_iff hg.aemeasurable).mpr inferInstance
+  · rw [target_eq]
+    infer_instance
+  · rw [affine_location_eq hp]
+    exact (PaperC.V282.AffineCrossoverLocationSource.firstLocationLaw M L A).property
+  · rw [affine_resolved_eq hp]
+    exact (PaperC.V282.AffineCrossoverLocationSource.resolvedSourceLaw M L A).property
+
+private theorem probability_laws_unconditioned (sizes lengths : ℕ → ℕ)
+    (hsizes : Tendsto sizes atTop atTop) (beta delta : ℝ)
+    (hupper : ∀ᶠ n in atTop, (lengths n : ℝ) ≤ beta * Real.log (sizes n)) :
+    ∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n)) := by
+  filter_upwards [PaperC.V282.RarePrefixMass.logarithmic_lengths_eventually_contained
+    sizes lengths hsizes beta hupper] with n hn
+  apply probability_laws _ _ _ _ _ MeasurableSet.univ
+  rw [Set.univ_inter, source_measure_eq]
+  exact PaperC.V282.CrossoverUncapping.hit_probability_pos hn
+
+private theorem probability_laws_affine (sizes lengths cutoffs : ℕ → ℕ)
+    (hsizes : Tendsto sizes atTop atTop) (beta delta : ℝ)
+    (hupper : ∀ᶠ n in atTop, (lengths n : ℝ) ≤ beta * Real.log (sizes n))
+    (W : ℕ → Type*) [∀ n, AddCommGroup (W n)] [∀ n, Module F₂ (W n)]
+    (G : ∀ n, SampleSpace (cutoffs n) →ₗ[F₂] W n) (b : ∀ n, W n)
+    (hstack : ∀ᶠ n in atTop, ∃ hLY : lengths n ≤ cutoffs n,
+      Compatible ((G n).prod (borderProjection hLY)) (b n, 0)) :
+    ∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n)) := by
+  filter_upwards [hstack, PaperC.V282.RarePrefixMass.logarithmic_lengths_eventually_contained
+    sizes lengths hsizes beta hupper] with n hn hLM
+  obtain ⟨hLY, hs⟩ := hn
+  letI : IsProbabilityMeasure PaperC.InfiniteRademacher.infiniteRademacherMeasure := by
+    rw [← source_measure_eq]
+    infer_instance
+  apply probability_laws _ _ _ _ _ (PaperC.V282.AffineBorderCylinders.measurableSet_affineCylinder _ _)
+  apply (PaperC.V282.AffineCrossoverCylinder.affine_border_intersection_probability_pos (G n) (b n) hLY hs).trans_le
+  apply measureReal_mono (h₂ := measure_ne_top _ _)
+  apply Set.inter_subset_inter_right
+  change PaperC.V282.MicroscopicBorderEvents.borderEvent _ ⊆ PaperC.V282.RarePrefixGeometry.hitEvent _ _
+  rw [PaperC.V282.RarePrefixGeometry.hitEvent_eq_union hLM]
+  exact Set.subset_union_left
+
 theorem v3_crossover_affine_border_mass {Y L : ℕ} (hLY : L≤Y)
     {W : Type*} [AddCommGroup W] [Module F₂ W] (G : SampleSpace Y→ₗ[F₂]W) (b : W)
     (hstack : Compatible (G.prod (borderProjection hLY)) (b,0)) :
@@ -495,13 +558,17 @@ variable (hAGG : ProcessAGGStatement) (hPNT : PrimeNumberTheoremRemainder)
 include hAGG hPNT hLS hShorey hNR hsizes hlengths hbeta hdelta hdeltaOne hupper hrare
 
 theorem v3_crossover_complete_moving_mixture  :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) ∧
     Tendsto (fun n => distance (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) atTop (𝓝 0) := by
+  refine ⟨probability_laws_unconditioned sizes lengths hsizes beta delta hupper, ?_⟩
   simpa only [unconditioned_distance_eq] using
     PaperC.V282.CrossoverMarkedConvergence.theorem_seven_nine (process_input_to_core hAGG) hPNT hLS hShorey hNR sizes lengths hsizes hlengths beta delta hbeta hdelta hdeltaOne hupper hrare
 
 theorem v3_crossover_locations (s : ℝ) (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (Nat.primeCounting (lengths n))) atTop (𝓝 s)) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) Set.univ) (limitLaw s) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) Set.univ) (resolvedLimitLaw s) := by
+  refine ⟨probability_laws_unconditioned sizes lengths hsizes beta delta hupper, ?_⟩
   have h1 := PaperC.V282.CrossoverLocationTheorem.equation_seven_nineteen (process_input_to_core hAGG) hPNT hLS hShorey hNR sizes lengths hsizes hlengths beta delta hbeta hdelta hdeltaOne hupper hrare s hphase
   have h2 := PaperC.V282.CrossoverResolvedLocationTheorem.equation_seven_nineteen_resolved (process_input_to_core hAGG) hPNT hLS hShorey hNR sizes lengths hsizes hlengths beta delta hbeta hdelta hdeltaOne hupper hrare s hphase
   have hc := PaperC.V282.RarePrefixMass.logarithmic_lengths_eventually_contained sizes lengths hsizes beta hupper
@@ -512,8 +579,10 @@ theorem v3_crossover_locations (s : ℝ) (hphase : Tendsto (fun n => phase (size
       (hc.mono fun n hn => (ordinary_resolved_eq hn).symm) ((resolvedLimitLaw_eq s).symm)
 
 theorem v3_crossover_locations_atTop (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (Nat.primeCounting (lengths n))) atTop atTop) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) Set.univ) (zeroLaw) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) Set.univ) (labelledLaw false zeroLaw) := by
+  refine ⟨probability_laws_unconditioned sizes lengths hsizes beta delta hupper, ?_⟩
   have h1 := PaperC.V282.CrossoverLocationTheorem.equation_seven_nineteen_phase_atTop (process_input_to_core hAGG) hPNT hLS hShorey hNR sizes lengths hsizes hlengths beta delta hbeta hdelta hdeltaOne hupper hrare hphase
   have h2 := PaperC.V282.CrossoverResolvedLocationTheorem.equation_seven_nineteen_resolved_phase_atTop (process_input_to_core hAGG) hPNT hLS hShorey hNR sizes lengths hsizes hlengths beta delta hbeta hdelta hdeltaOne hupper hrare hphase
   have hc := PaperC.V282.RarePrefixMass.logarithmic_lengths_eventually_contained sizes lengths hsizes beta hupper
@@ -524,8 +593,10 @@ theorem v3_crossover_locations_atTop (hphase : Tendsto (fun n => phase (sizes n)
       (hc.mono fun n hn => (ordinary_resolved_eq hn).symm) (rfl)
 
 theorem v3_crossover_locations_atBot (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (Nat.primeCounting (lengths n))) atTop atBot) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) Set.univ) (uniformLaw) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) Set.univ) (labelledLaw true uniformLaw) := by
+  refine ⟨probability_laws_unconditioned sizes lengths hsizes beta delta hupper, ?_⟩
   have h1 := PaperC.V282.CrossoverLocationTheorem.equation_seven_nineteen_phase_atBot (process_input_to_core hAGG) hPNT hLS hShorey hNR sizes lengths hsizes hlengths beta delta hbeta hdelta hdeltaOne hupper hrare hphase
   have h2 := PaperC.V282.CrossoverResolvedLocationTheorem.equation_seven_nineteen_resolved_phase_atBot (process_input_to_core hAGG) hPNT hLS hShorey hNR sizes lengths hsizes hlengths beta delta hbeta hdelta hdeltaOne hupper hrare hphase
   have hc := PaperC.V282.RarePrefixMass.logarithmic_lengths_eventually_contained sizes lengths hsizes beta hupper
@@ -536,10 +607,12 @@ theorem v3_crossover_locations_atBot (hphase : Tendsto (fun n => phase (sizes n)
       (hc.mono fun n hn => (ordinary_resolved_eq hn).symm) (by change (PaperC.V282.CrossoverLocationGrid.unitIntervalLaw : Measure ℝ).map _ = _; rw [PaperC.V282.CrossoverLocationGrid.unitIntervalLaw_eq_volume_restrict]; rfl)
 
 theorem v3_crossover_sign  :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta Set.univ (borderRate (lengths n))) ∧
     Tendsto (fun n => positiveProbability (sizes n) (lengths n) Set.univ-
       ((borderRate (lengths n) : ℝ)+(totalRate (bulkStarts (sizes n) (lengths n) delta) (lengths n) : ℝ)/2)/
         ((borderRate (lengths n) : ℝ)+(totalRate (bulkStarts (sizes n) (lengths n) delta) (lengths n) : ℝ)))
       atTop (𝓝 0) := by
+  refine ⟨probability_laws_unconditioned sizes lengths hsizes beta delta hupper, ?_⟩
   have ht := PaperC.V282.CrossoverSignTheorem.theorem_seven_nine_sign (process_input_to_core hAGG) hPNT hLS hShorey hNR sizes lengths hsizes hlengths beta delta hbeta hdelta hdeltaOne hupper hrare
   simpa only [positiveProbability_eq_core,borderRate_eq_core,totalRate_eq_core,bulkStarts_eq_core] using ht
 
@@ -562,8 +635,12 @@ variable (hAGG : ProcessAGGStatement) (hLS : UniformPrimeDivisorStatement)
 include hAGG hLS hShorey hPNT hNR hsizes hlengths hbeta hdelta hdeltaOne hc hupper hrare hstack hbudget
 
 theorem v3_crossover_affine_complete_clock (hneutral : ∀ K,∀ᶠ n in atTop,FutureNeutralAt (G n) (lengths n) K) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) ∧
     Tendsto (fun n => distance (sizes n) (lengths n) delta (affineCylinder (G n) (b n))
       (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) atTop (𝓝 0) := by
+  refine ⟨probability_laws_affine sizes lengths (fun n => hardCutoff (sizes n))
+    hsizes beta delta hupper W G b hstack, ?_⟩
   revert hneutral hbudget hstack b G
   rw [show Analysis.hardCutoff=PaperC.V282.HardPoissonRates.hardCutoff from funext Analysis.hardCutoff_eq]
   simp_rw [Analysis.saddleCutoff_eq,Analysis.saddleNu_eq]
@@ -572,8 +649,12 @@ theorem v3_crossover_affine_complete_clock (hneutral : ∀ K,∀ᶠ n in atTop,F
     PaperC.V282.AffineCrossoverUncappingTheorem.theorem_seven_ten_complete_clock_deficit (process_input_to_core hAGG) hLS hShorey hPNT hNR sizes lengths hsizes hlengths beta delta c hbeta hdelta hdeltaOne hc hupper hrare W G b hstack hbudget hneutral
 
 theorem v3_crossover_affine_locations (s : ℝ) (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (borderDeficitAt (G n) (lengths n))) atTop (𝓝 s)) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (limitLaw s) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (resolvedLimitLaw s) := by
+  refine ⟨probability_laws_affine sizes lengths (fun n => hardCutoff (sizes n))
+    hsizes beta delta hupper W G b hstack, ?_⟩
   revert hphase hbudget hstack b G
   rw [show Analysis.hardCutoff=PaperC.V282.HardPoissonRates.hardCutoff from funext Analysis.hardCutoff_eq]
   simp_rw [Analysis.saddleCutoff_eq,Analysis.saddleNu_eq]
@@ -588,8 +669,12 @@ theorem v3_crossover_affine_locations (s : ℝ) (hphase : Tendsto (fun n => phas
       (hp.mono fun n hn => (affine_resolved_eq hn).symm) ((resolvedLimitLaw_eq s).symm)
 
 theorem v3_crossover_affine_locations_atTop (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (borderDeficitAt (G n) (lengths n))) atTop atTop) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (zeroLaw) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (labelledLaw false zeroLaw) := by
+  refine ⟨probability_laws_affine sizes lengths (fun n => hardCutoff (sizes n))
+    hsizes beta delta hupper W G b hstack, ?_⟩
   revert hphase hbudget hstack b G
   rw [show Analysis.hardCutoff=PaperC.V282.HardPoissonRates.hardCutoff from funext Analysis.hardCutoff_eq]
   simp_rw [Analysis.saddleCutoff_eq,Analysis.saddleNu_eq]
@@ -604,8 +689,12 @@ theorem v3_crossover_affine_locations_atTop (hphase : Tendsto (fun n => phase (s
       (hp.mono fun n hn => (affine_resolved_eq hn).symm) (rfl)
 
 theorem v3_crossover_affine_locations_atBot (hphase : Tendsto (fun n => phase (sizes n) (lengths n) (borderDeficitAt (G n) (lengths n))) atTop atBot) :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) ∧
     Weakly (fun n => locationLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (uniformLaw) ∧
     Weakly (fun n => resolvedLaw (sizes n) (lengths n) (affineCylinder (G n) (b n))) (labelledLaw true uniformLaw) := by
+  refine ⟨probability_laws_affine sizes lengths (fun n => hardCutoff (sizes n))
+    hsizes beta delta hupper W G b hstack, ?_⟩
   revert hphase hbudget hstack b G
   rw [show Analysis.hardCutoff=PaperC.V282.HardPoissonRates.hardCutoff from funext Analysis.hardCutoff_eq]
   simp_rw [Analysis.saddleCutoff_eq,Analysis.saddleNu_eq]
@@ -620,12 +709,16 @@ theorem v3_crossover_affine_locations_atBot (hphase : Tendsto (fun n => phase (s
       (hp.mono fun n hn => (affine_resolved_eq hn).symm) (by change (PaperC.V282.CrossoverLocationGrid.unitIntervalLaw : Measure ℝ).map _ = _; rw [PaperC.V282.CrossoverLocationGrid.unitIntervalLaw_eq_volume_restrict]; rfl)
 
 theorem v3_crossover_affine_sign  :
+    (∀ᶠ n in atTop, Crossover.ProbabilityLaws (sizes n) (lengths n) delta
+      (affineCylinder (G n) (b n)) (((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n))) ∧
     Tendsto (fun n => positiveProbability (sizes n) (lengths n) (affineCylinder (G n) (b n))-
       ((((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n) : ℝ)+
           (totalRate (bulkStarts (sizes n) (lengths n) delta) (lengths n) : ℝ)/2)/
         ((((2 : ℝ≥0)⁻¹)^borderDeficitAt (G n) (lengths n) : ℝ)+
           (totalRate (bulkStarts (sizes n) (lengths n) delta) (lengths n) : ℝ)))
       atTop (𝓝 0) := by
+  refine ⟨probability_laws_affine sizes lengths (fun n => hardCutoff (sizes n))
+    hsizes beta delta hupper W G b hstack, ?_⟩
   revert hbudget hstack b G
   rw [show Analysis.hardCutoff=PaperC.V282.HardPoissonRates.hardCutoff from funext Analysis.hardCutoff_eq]
   simp_rw [Analysis.saddleCutoff_eq,Analysis.saddleNu_eq]
