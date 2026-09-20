@@ -52,6 +52,8 @@ try {
   const fixtureFiles = new Set([
     'PaperC.lean',
     'README.md',
+    'docs/history/README_before_v3_refresh.md',
+    'docs/history/README_before_v3_refresh.original.txt',
     'AXIOM_AUDIT.md',
     'AuditCheck.lean',
     'audit_config.json',
@@ -75,13 +77,6 @@ try {
   for (const relativePath of fixtureFiles) {
     copyProjectFile(relativePath);
   }
-  fs.appendFileSync(
-    path.join(temporaryRoot, 'README.md'),
-    `\n<!-- Root-audit test fixture: ${config.target_pdf.filename} ` +
-    `${config.target_pdf.sha256}; ${config.source_pdf_fr.filename} ` +
-    `${config.source_pdf_fr.sha256}. -->\n`,
-  );
-
   const rootPath = path.join(temporaryRoot, 'PaperC.lean');
   const originalRootSource = fs.readFileSync(rootPath, 'utf8');
   const baselineResult = runGenerator();
@@ -100,6 +95,37 @@ try {
         fs.readFileSync(path.join(temporaryRoot, relativePath)),
       ]),
   );
+
+  // A concise V3 homepage needs no old v0.9 filenames or fingerprints. The
+  // immutable historical text and its readable view remain independently guarded.
+  const currentReadmePath = path.join(temporaryRoot, 'README.md');
+  const currentReadme = fs.readFileSync(currentReadmePath, 'utf8');
+  fs.writeFileSync(currentReadmePath,
+    '# Current V3 development\n\n' +
+    '[Historical README](docs/history/README_before_v3_refresh.md)\n');
+  requireSuccess(runGenerator(['--check']), 'current README without old PDF claims');
+  fs.writeFileSync(currentReadmePath, '# Current V3 development\n');
+  const missingHistoryLink = runGenerator(['--check']);
+  if (missingHistoryLink.status === 0 ||
+      !missingHistoryLink.stderr.includes('README.md must link to the historical README archive')) {
+    throw new Error('removing the historical README link was not rejected');
+  }
+  fs.writeFileSync(currentReadmePath, currentReadme);
+  for (const [relativePath, expectedError] of [
+    ['docs/history/README_before_v3_refresh.original.txt',
+      'historical README original SHA-256 mismatch'],
+    ['docs/history/README_before_v3_refresh.md',
+      'historical README readable archive differs from its original'],
+  ]) {
+    const archivePath = path.join(temporaryRoot, relativePath);
+    const original = fs.readFileSync(archivePath);
+    fs.appendFileSync(archivePath, '\nAltered historical record.\n');
+    const alteredHistory = runGenerator(['--check']);
+    if (alteredHistory.status === 0 || !alteredHistory.stderr.includes(expectedError)) {
+      throw new Error(`altering ${relativePath} was not rejected`);
+    }
+    fs.writeFileSync(archivePath, original);
+  }
   if (
     JSON.stringify(baselineManifest.source_fileset) !==
     JSON.stringify(['PaperC.lean', 'PaperC/**/*.lean'])
@@ -463,6 +489,8 @@ try {
   process.stdout.write(
     'root and literature audit guards passed: PaperC.lean changes invalidate ' +
     'the digest; root public theorems enter the inventory and AuditCheck.lean; ' +
+    'a short current README is allowed but missing history links and altered ' +
+    'original/readable historical README archives are rejected; ' +
     'historical Comparator evidence mutations, legacy mutable current-run ' +
     'statuses, invalid timeless-protocol fields, undeclared evidence, ' +
     'undeclared certificates, historical closure-note mutations, and ' +

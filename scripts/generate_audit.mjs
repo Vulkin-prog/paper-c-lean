@@ -765,13 +765,51 @@ if (checkPdfsOnly) {
 }
 
 const readme = fs.readFileSync(readmePath, 'utf8');
+// The current homepage describes V3. Keep the v0.9 documentary check bound
+// to the exact pre-refresh text, rather than requiring old PDF claims there.
+const historicalReadmeCommit = 'ee2ac789764fe5d9fd19c96c6c0778a693b129a0';
+const historicalReadmeViewer = 'docs/history/README_before_v3_refresh.md';
+const historicalReadmeOriginal =
+  'docs/history/README_before_v3_refresh.original.txt';
+const historicalReadmeBytes = fs.readFileSync(
+  path.join(projectRoot, historicalReadmeOriginal),
+);
+if (crypto.createHash('sha256').update(historicalReadmeBytes).digest('hex') !==
+    'b07370fb1189117a85cd22e1b92f4bbd1f59d612803906c05536847fc50f5785') {
+  throw new Error('historical README original SHA-256 mismatch');
+}
+if (!readme.includes(`](${historicalReadmeViewer})`)) {
+  throw new Error('README.md must link to the historical README archive');
+}
+const historicalReadme = historicalReadmeBytes.toString('utf8');
+const historicalReadmeBanner =
+  '> **Historical snapshot — not current project status.**\n' +
+  `> This is the README at commit \`${historicalReadmeCommit}\`, before the V3 homepage refresh.\n` +
+  '> Only relative Markdown links have been redirected to that immutable commit.\n' +
+  '> [Provenance and original bytes](README.md) · [Current project homepage](../../README.md).\n\n';
+const historicalReadmeView = historicalReadmeBanner + historicalReadme.replace(
+  /(\[[^\]]*\]\()([^\s)]+)(\))/g,
+  (match, before, destination, after) => {
+    if (/^[A-Za-z][A-Za-z0-9+.-]*:/.test(destination) ||
+        destination.startsWith('#')) {
+      return match;
+    }
+    const kind = destination.endsWith('/') ? 'tree' : 'blob';
+    return before + 'https://github.com/Vulkin-prog/paper-c-lean/' +
+      `${kind}/${historicalReadmeCommit}/${destination}` + after;
+  },
+);
+if (fs.readFileSync(path.join(projectRoot, historicalReadmeViewer), 'utf8') !==
+    historicalReadmeView) {
+  throw new Error('historical README readable archive differs from its original');
+}
 for (const field of ['target_pdf', 'source_pdf_fr']) {
   for (const key of ['filename', 'sha256', 'page_count', 'byte_length']) {
-    if (readme.includes(auditConfig[field][key])) {
+    if (historicalReadme.includes(auditConfig[field][key])) {
       continue;
     }
     throw new Error(
-      `README.md does not contain the configured ${field} ${key}`,
+      `historical README does not contain the configured ${field} ${key}`,
     );
   }
 }

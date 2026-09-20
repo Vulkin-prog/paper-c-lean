@@ -45,7 +45,8 @@ Options:
 
 Run this script from an interactive Ubuntu 24.04 or 26.04 terminal as an
 ordinary user, through the clean PATH and setpriv invocation documented in
-README.md. Do not use sudo, nohup, a pipe, an IDE task runner, or a container.
+docs/history/README_before_v3_refresh.md (Hardened local Comparator procedure).
+Do not use sudo, nohup, a pipe, an IDE task runner, or a container.
 EOF
 }
 

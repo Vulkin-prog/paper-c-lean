@@ -1,10 +1,14 @@
 version: v0.4
 project:
   name: V3PREL critical field and stable small-prime conditioning
-  description: Thirteen source-facing declarations for the actual critical run field, scalar and spatial
-    Poisson laws, hard and soft small-prime conditional means, arbitrary deterministic statistics
-    and masks, stable recorded variables, and uniform quenched convergence. Source and targets are
-    explicitly constructed in a standalone Mathlib-only challenge.
+  description: >-
+    Poisson approximation for long constant runs, retaining their positions, exact excess
+    lengths and both signs. The results cover critical lattice and diffuse limits, deterministic
+    masks and statistics, conditioning on small primes under hard and soft information budgets,
+    joint laws with recorded small-prime variables, and uniform almost-sure convergence of
+    conditional scalar laws. Depending on the result, the external hypotheses are the prime
+    number theorem, the finite dependency-graph Poisson process estimate of Arratia, Goldstein
+    and Gordon, and scalar Poisson Stein solution bounds.
   authors:
   - Brice Pouly
   responsible_maintainers:
@@ -21,7 +25,7 @@ sources:
 - title: Long runs and rare patterns of a random completely multiplicative function, version 3PREL
   authors:
   - Brice Pouly
-  id: https://doi.org/10.33774/coe-2026-z3l74
+  id: https://github.com/Vulkin-prog/paper-c-lean/blob/ee2ac789764fe5d9fd19c96c6c0778a693b129a0/manuscripts/v3prel/paper_C_version_3PREL_en.pdf
   type: paper
   location: 'Introduction and Sections 4 and 6: critical lattice and diffuse field, start counts,
     equations (4.1), (4.8), (4.9), stable product lift and uniform quenched bands. Source snapshot
@@ -74,6 +78,26 @@ sources:
   relationship: background
   note: Only the existence and analytic factors of the actual scalar Stein solution are external.
     No comparison or arithmetic conclusion is assumed.
+- title: Paper C and technical companion — Zenodo publication record
+  authors:
+  - Brice Pouly
+  id: https://doi.org/10.5281/zenodo.21736676
+  type: paper
+  relationship: background
+  note: Concept DOI for the paper and companion across published versions. This earlier publication
+    record is distinct from the archived V3PREL source above; it does not supply a version-specific
+    DOI for that snapshot or a literature hypothesis for the proofs.
+- title: Critical Poisson fields for long constant stretches of a random completely multiplicative
+    function, Cambridge Open Engage version 2
+  authors:
+  - Brice Pouly
+  id: https://doi.org/10.33774/coe-2026-z3l74-v2
+  type: paper
+  location: Published 4 September 2026, version 2.
+  relationship: background
+  note: Earlier public version, cited for publication history. Its title and DOI identify Cambridge
+    version 2, not the archived V3PREL source used by this formalization; it is not an additional
+    mathematical premise.
 related_formalizations: []
 status:
   scope: New candidate v3prel_critical_field; it does not reuse any historical v0.9 identifier. The

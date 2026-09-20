@@ -2,9 +2,16 @@
 version: v0.4
 project:
   name: V3PREL threshold staircase, Poisson–Gaussian bridge and integer-level process
-  description: Twenty-nine independently selected results for the actual conditioned joint Poisson–Gaussian
-    limit, its Gaussian AR(1) target, quantitative central/local/moderate Poisson estimates and their
-    actual arithmetic transfers, and the complete integer-level process of D.4.
+  description: >-
+    Joint Poisson–Gaussian limits for conditioned run counts, with an autoregressive Gaussian
+    target and independent normal innovations. Quantitative results give local Poisson
+    probabilities, a Gaussian distribution-function bound, moderate deviations, and relative
+    local or tail estimates for the multiplicative source under the stated information budgets.
+    The whole integer-level point process has locally finite but infinite total mass; its
+    complete upper-half laws, conditioning on a fixed count and extreme phases are included. The
+    intrinsic probability estimates are proved internally. Their arithmetic applications use, as
+    applicable, the prime number theorem, scalar Stein bounds, the Poisson process estimate of
+    Arratia, Goldstein and Gordon, and Barbour's corrected multivariate Stein bounds.
   authors:
   - Brice Pouly
   responsible_maintainers:
@@ -21,7 +28,7 @@ sources:
 - title: Long runs and rare patterns of a random completely multiplicative function, version 3PREL
   authors:
   - Brice Pouly
-  id: https://doi.org/10.33774/coe-2026-z3l74
+  id: https://github.com/Vulkin-prog/paper-c-lean/blob/ee2ac789764fe5d9fd19c96c6c0778a693b129a0/manuscripts/v3prel/paper_C_version_3PREL_en.pdf
   type: paper
   location: Section 5, Theorem 5.10; Section 6, central/local and moderate-deviation consequences.
     Source snapshot manuscripts/v3prel/paper_C_version_3PREL_en.pdf, SHA-256 0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7.
@@ -88,6 +95,26 @@ sources:
   relationship: background
   note: The analytic solution bound is an ordinary visible theorem argument. No final approximation
     or arithmetic error bound is assumed.
+- title: Paper C and technical companion — Zenodo publication record
+  authors:
+  - Brice Pouly
+  id: https://doi.org/10.5281/zenodo.21736676
+  type: paper
+  relationship: background
+  note: Concept DOI for the paper and companion across published versions. This earlier publication
+    record is distinct from the archived V3PREL source above; it does not supply a version-specific
+    DOI for that snapshot or a literature hypothesis for the proofs.
+- title: Critical Poisson fields for long constant stretches of a random completely multiplicative
+    function, Cambridge Open Engage version 2
+  authors:
+  - Brice Pouly
+  id: https://doi.org/10.33774/coe-2026-z3l74-v2
+  type: paper
+  location: Published 4 September 2026, version 2.
+  relationship: background
+  note: Earlier public version, cited for publication history. Its title and DOI identify Cambridge
+    version 2, not the archived V3PREL source used by this formalization; it is not an additional
+    mathematical premise.
 related_formalizations: []
 status:
   scope: New candidate v3prel_limits, with 29 selected declarations and a standalone Mathlib-only
