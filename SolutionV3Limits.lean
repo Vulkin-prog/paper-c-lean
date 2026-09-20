@@ -528,6 +528,20 @@ theorem fixedHalfPointLaw_eq (n : ℕ) : fixedHalfPointLaw n=
       D4ClosureSpatialIdentification.measurable_halfContinuousMark).val := rfl
 end Limits
 
+namespace Limits
+/-- Measurability in the public interface's Borel space of finite point measures. -/
+theorem measurable_fixedHalfPoints (n : ℕ) : Measurable (fixedHalfPoints n) := by
+  have hc : Continuous (fixedPointMeasure (X := ℝ × (ℕ × F₂)) n) :=
+    PaperC.V282.PointMeasureSpace.continuous_fixedPointMeasure n
+  have hm : Measurable halfContinuousMark :=
+    PaperC.V282.D4ClosureSpatialIdentification.measurable_halfContinuousMark
+  exact hc.measurable.comp
+    (Measurable.of_eval (fun i => hm.comp (measurable_pi_apply i)))
+
+theorem measurable_poissonHalfPoints : Measurable poissonHalfPoints := by
+  exact measurable_from_prod_countable_right measurable_fixedHalfPoints
+end Limits
+
 open Analysis Limits Process Set Real MeasureTheory ProbabilityTheory Filter WithLp
 open scoped Topology NNReal ENNReal BigOperators
 
@@ -801,27 +815,76 @@ theorem paper_c_v3_limits_d4_full_half_count_law (theta : ℝ) (m : ℤ) :
       (Limits.integerSpatialSampleMeasure theta) := by
   exact PaperC.V282.D4GridIdentificationTheorem.hasLaw_spatialHalfCount theta m
 
-/-- PaperCV282/D4ClosureSpatialIdentification.lean:halfLinePointLaw_eq_poisson. -/
+/-- D.4 complete upper law, including measurability and probability normalization. -/
 theorem paper_c_v3_limits_d4_entire_upper_point_law (theta : ℝ) (m : ℤ) :
+    Measurable (Limits.halfLinePointConfiguration m) ∧
+    Measurable Limits.poissonHalfPoints ∧
+    IsProbabilityMeasure (Limits.upperPointLaw theta m) ∧
+    IsProbabilityMeasure (Limits.poissonHalfPointLaw theta m) ∧
     Limits.upperPointLaw theta m=Limits.poissonHalfPointLaw theta m := by
+  have hmap : Measurable (Limits.halfLinePointConfiguration m) :=
+    PaperC.V282.D4ClosureSpatialHalfLines.measurable_halfLinePointConfiguration m
+  have htarget : Measurable Limits.poissonHalfPoints := Limits.measurable_poissonHalfPoints
+  have hp : IsProbabilityMeasure (Limits.upperPointLaw theta m) := by
+    rw [Limits.upperPointLaw_eq]
+    exact (PaperC.V282.D4ClosureSpatialHalfLines.halfLinePointLaw theta m).property
+  have hq : IsProbabilityMeasure (Limits.poissonHalfPointLaw theta m) := by
+    rw [Limits.poissonHalfPointLaw_eq]
+    exact (PaperC.V282.PoissonPointProcess.poissonPointLaw
+      (PaperC.V282.D4ClosureIntegerLevels.integerHalfRate theta m)
+      PaperC.V282.D4GridIdentificationTarget.halfMarkMeasure
+      PaperC.V282.D4ClosureSpatialIdentification.halfContinuousMark
+      PaperC.V282.D4ClosureSpatialIdentification.measurable_halfContinuousMark).property
+  refine ⟨hmap, htarget, hp, hq, ?_⟩
   rw [Limits.upperPointLaw_eq,Limits.poissonHalfPointLaw_eq]
   exact congrArg Subtype.val
     (PaperC.V282.D4ClosureSpatialIdentification.halfLinePointLaw_eq_poisson theta m)
 
-/-- PaperCV282/D4ClosureSpatialIdentification.lean:conditional_halfLinePointConfiguration. -/
+/-- D.4 conditional upper law, with positive conditioning mass and genuine probability laws. -/
 theorem paper_c_v3_limits_d4_conditional_upper_point_law (theta : ℝ) (m : ℤ) (n : ℕ) :
+    0 < (Limits.integerSpatialSampleMeasure theta)
+      {sample | Limits.fullHalfCount m sample=n} ∧
+    Measurable (Limits.fixedHalfPoints n) ∧
+    AEMeasurable (Limits.halfLinePointConfiguration m)
+      (cond (Limits.integerSpatialSampleMeasure theta)
+        {sample | Limits.fullHalfCount m sample=n}) ∧
+    IsProbabilityMeasure ((cond (Limits.integerSpatialSampleMeasure theta)
+      {sample | Limits.fullHalfCount m sample=n}).map (Limits.halfLinePointConfiguration m)) ∧
+    IsProbabilityMeasure (Limits.fixedHalfPointLaw n) ∧
     (cond (Limits.integerSpatialSampleMeasure theta)
       {sample | Limits.fullHalfCount m sample=n}).map (Limits.halfLinePointConfiguration m)=
       Limits.fixedHalfPointLaw n := by
-  rw [Limits.halfLinePointConfiguration_eq,Limits.fixedHalfPointLaw_eq]
-  apply PaperC.V282.D4ClosureSpatialIdentification.conditional_halfLinePointConfiguration
-  intro hz
-  have hr : 0<PaperC.V282.D4ClosureIntegerLevels.integerHalfRate theta m := by
-    change (0 : ℝ)<(2 : ℝ)^(theta-(m : ℝ))
+  have hr : 0 < Limits.integerHalfRate theta m := by
+    change (0 : ℝ) < (2 : ℝ)^(theta-(m : ℝ))
     positivity
-  have hp := ProbabilityTheory.poissonMeasure_real_singleton_pos n hr
-  rw [Measure.real,hz,ENNReal.toReal_zero] at hp
-  exact (lt_irrefl 0) hp
+  have hn : (poissonMeasure (Limits.integerHalfRate theta m)) {n} ≠ 0 := by
+    intro hz
+    have hp := ProbabilityTheory.poissonMeasure_real_singleton_pos n hr
+    rw [Measure.real,hz,ENNReal.toReal_zero] at hp
+    exact (lt_irrefl 0) hp
+  have hcount := paper_c_v3_limits_d4_full_half_count_law theta m
+  have hpositive : 0 < (Limits.integerSpatialSampleMeasure theta)
+      {sample | Limits.fullHalfCount m sample=n} := by
+    apply pos_iff_ne_zero.mpr
+    rw [← hcount.map_eq] at hn
+    rwa [Measure.map_apply_of_aemeasurable hcount.aemeasurable (measurableSet_singleton n)] at hn
+  have hfixed : Measurable (Limits.fixedHalfPoints n) := Limits.measurable_fixedHalfPoints n
+  have hmap : Measurable (Limits.halfLinePointConfiguration m) :=
+    PaperC.V282.D4ClosureSpatialHalfLines.measurable_halfLinePointConfiguration m
+  have hq : IsProbabilityMeasure (Limits.fixedHalfPointLaw n) := by
+    rw [Limits.fixedHalfPointLaw_eq]
+    exact (PaperC.V282.D4ClosureSpatialIdentification.fixedHalfPointLaw n
+      PaperC.V282.D4ClosureSpatialIdentification.halfContinuousMark
+      PaperC.V282.D4ClosureSpatialIdentification.measurable_halfContinuousMark).property
+  have heq : (cond (Limits.integerSpatialSampleMeasure theta)
+      {sample | Limits.fullHalfCount m sample=n}).map (Limits.halfLinePointConfiguration m)=
+      Limits.fixedHalfPointLaw n := by
+    rw [Limits.halfLinePointConfiguration_eq,Limits.fixedHalfPointLaw_eq]
+    exact PaperC.V282.D4ClosureSpatialIdentification.conditional_halfLinePointConfiguration theta m n hn
+  have hp : IsProbabilityMeasure ((cond (Limits.integerSpatialSampleMeasure theta)
+      {sample | Limits.fullHalfCount m sample=n}).map (Limits.halfLinePointConfiguration m)) :=
+    heq.symm ▸ hq
+  exact ⟨hpositive, hfixed, hmap.aemeasurable, hp, hq, heq⟩
 
 /-- PaperCV282/D4ClosureWholeRestriction.lean:ae_halfLinePointConfiguration_is_restriction. -/
 theorem paper_c_v3_limits_d4_half_line_is_whole_restriction (theta : ℝ) (m : ℤ) :

@@ -9,10 +9,10 @@ SHA-256, and include the author's structured ORCID.
 ## Fields for the submissions
 
 For each submission use repository **`https://github.com/Vulkin-prog/paper-c-lean`**,
-the same validated **full 40-character commit SHA**, and the configuration below.
-After merging the prepared PRs, take the resulting commit from the repository
-and wait for its qualification jobs to succeed before submitting it. Do not
-reuse a previously submitted commit: it does not contain this selection.
+a validated **full 40-character commit SHA**, and the configuration below.
+For the remaining submissions, use the merged correction commit after its
+qualification jobs succeed. In particular, the rejected Limits snapshot must
+be replaced by the corrected one. Existing registered snapshots stay immutable.
 
 | Entry | Comparator configuration | Selected results |
 |---|---|---:|
@@ -54,6 +54,28 @@ without an issued identifier is not an existing registration. The two additional
 families are prepared as new registrations. Record the identifiers actually
 issued by Palomar; none is inferred or invented here.
 
+## Current registration status
+
+The author confirmed the following issued identifiers on 20 September 2026,
+in submission order. Their public-index visibility was still pending when
+reported; this table does not assert an independent public-registry check.
+
+| Family | Issued identifier | Version |
+|---|---|---:|
+| Critical field | `PALOMAR-2026-09-20-000003` | 1 |
+| Patterns | `PALOMAR-2026-09-20-000004` | 1 |
+
+Keep these registrations. Their future publication updates should use these
+identifiers and the next version, rather than creating duplicates.
+
+The Limits attempt passed mechanical verification but was rejected by automated
+review on 20 September 2026. The correction strengthens the two D.4 upper-point-law
+statements with proved measurability and probability normalization, and proves
+positive conditioning mass. After merging and qualification, submit Limits as
+a **new submission with the existing Palomar ID field left blank**. The rejected
+attempt did not issue an identifier. See the [review follow-up](PALOMAR_REVIEW_FOLLOWUP.md)
+for the correction and the separate Mathlib-cache warning.
+
 ## Exact mathematical selection
 
 Each Challenge imports Mathlib only, constructs the source and target objects,
@@ -74,7 +96,9 @@ and `Classical.choice`.
 - **Limits:** staircase joint limits, Gaussian covariance and AR(1) structure,
   local/central/moderate bounds and conditional transfers; companion D.1 and D.4
   through the actual whole integer process, restrictions and compact-test Laplace
-  functional. A separate vague-topology convergence declaration is not selected.
+  functional. Both upper-point-law assertions include proved measurability and
+  probability normalization; every finite conditioning count has positive mass.
+  A separate vague-topology convergence declaration is not selected.
 - **Boundary:** exact border probability, microscopic relative error, localization,
   mesoscopic exclusion, contained-prefix law, almost-sure envelopes and longest runs.
 - **Crossover:** the moving two-source marked mixture, locations and signs in the
@@ -129,9 +153,12 @@ configuration requires a new qualification; an existing receipt must not be
 silently relabelled with the new commit.
 
 The [local qualification record](../palomar/v3prel/qualification/2026-09-20/README.md)
-contains the seven-family receipt, file identities and transcript excerpts.
-After merging, the candidate workflow automatically repeats qualification on
-`main`; use the full SHA of that successful merged commit for all seven entries.
+contains the initial seven-family receipt, file identities and transcript excerpts.
+It predates the strengthened Limits interface and is not evidence for the changed
+statements. The [Limits correction record](../palomar/v3prel/qualification/2026-09-20-limits-probability/README.md)
+records its separate replay. After merging, the candidate workflow automatically
+repeats qualification on `main`; use the full SHA of that successful merged commit
+for the remaining submissions.
 
 ## Relation to earlier registrations
 
@@ -144,8 +171,7 @@ After merging, the candidate workflow automatically repeats qualification on
 
 These identifiers retain their original scope and do not automatically identify
 any of the seven prepared submissions. Palomar determines novelty and editorial
-acceptance. Its issued current-family identifiers should be added after the
-author supplies the outcomes.
+acceptance. Current-family identifiers confirmed by the author are recorded above.
 
 ## Publication sequence
 
