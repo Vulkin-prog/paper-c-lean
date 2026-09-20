@@ -3,18 +3,13 @@
 *Long runs and rare patterns of a random completely multiplicative function*
 and its technical companion, by **Brice Pouly**.
 
-The current manuscript is the author-supplied **3PREL8 of 16 September 2026**.
-Its [minimal source package](manuscripts/v3prel8/README.md) is archived here.
-**Mathematical realignment is complete within the documented formalization scope:**
-71 prior numbered statements are preserved, one introductory statement is
-extended, and 24 numbered blocks are new. The
-[current coverage ledger](docs/FORMALIZATION_COVERAGE_V3PREL8.md) identifies
-proved conclusions, explicit literature inputs and proof substitutions. F.2 still
-uses the baseline analytic Stein solution input; see the
-[unnumbered review](docs/UNNUMBERED_REVIEW_V3PREL8.md). The [new library](PaperCPrel8/README.md)
-currently contains 1,128 audited theorems across 233 modules; all 24
-libraries build. The final V3 has not yet been
-deposited on the publication platforms.
+The [current article, technical companion and editable sources](manuscripts/paper-c/README.md)
+are the author's manuscript of **20 September 2026**.
+The [current source-to-Lean correspondence](docs/MANUSCRIPT_ALIGNMENT.md)
+records alignment with the existing development, relative to seven explicit
+literature inputs and the documented proof substitutions. In particular, F.2
+uses the analytic Stein solution input. The final published files and their
+version-specific DOI will be added after publication.
 
 The toolchain remains **Lean 4.34.0 and Mathlib v4.34.0**. At the validated
 pre-extension snapshot, all 23 libraries build, the three axiom audits pass,
@@ -26,21 +21,21 @@ Earlier qualification records remain tied to their recorded source snapshots.
 
 | Paper and source material | Link |
 |---|---|
-| Current article | [3PREL8 PDF](manuscripts/v3prel8/paper_c_version_3PREL8_en.pdf) |
-| Current technical companion | [3PREL8 PDF](manuscripts/v3prel8/paper_c_version_3PREL8_technical_companion_en.pdf) |
-| Editable sources and exact file identities | [Minimal manuscript archive](manuscripts/v3prel8/README.md) |
+| Current article | [Article PDF](manuscripts/paper-c/paper_c_version_3PREL9_en.pdf) |
+| Current technical companion | [Companion PDF](manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf) |
+| Editable sources and exact file identities | [Editable manuscript package](manuscripts/paper-c/README.md) |
 | Zenodo paper record, all versions | [Concept DOI 10.5281/zenodo.21736676](https://doi.org/10.5281/zenodo.21736676) |
 | Cambridge Open Engage, published version 2 | [DOI 10.33774/coe-2026-z3l74-v2](https://doi.org/10.33774/coe-2026-z3l74-v2) |
 
 The publication records above concern earlier published versions. They do
-not identify the 3PREL8 snapshot archived here, for which no version-specific
+not identify the current manuscript snapshot, for which no version-specific
 DOI is asserted. The Lean formalization has its own
 [Zenodo concept DOI 10.5281/zenodo.21735481](https://doi.org/10.5281/zenodo.21735481),
 distinct from the paper record.
 
-## Abstract of the 3PREL8 article
+## Abstract
 
-The following is the abstract of the [current manuscript](manuscripts/v3prel8/paper_c_version_3PREL8_en.tex); it describes the paper, not the completed Lean coverage.
+The following is the abstract of the [current manuscript](manuscripts/paper-c/paper_c_version_3PREL9_en.tex); it describes the paper, not the completed Lean coverage.
 
 Let $f$ be a random completely multiplicative function with independent
 symmetric signs at the primes. We study rare constant runs and prescribed
@@ -147,7 +142,7 @@ commit or registered Palomar version where relevant. The concept DOIs above
 identify the respective paper and software version series.
 
 The Lean project is released under the [Apache-2.0 licence](LICENSE).
-The manuscript sources retain their [own licence and production declarations](manuscripts/v3prel/source/declarations.tex).
+The manuscript sources retain their [own licence and production declarations](manuscripts/paper-c/declarations.tex).
 Human authorship and responsibility, agent-assisted development and the
 completed review are recorded in the formalization metadata. Agent review
 is not human peer review.

@@ -1,0 +1,455 @@
+\section{Private kernels, signed Palm voids, and the absolute-cumulant obstruction}\label{supp:sec:palm-complements}
+This appendix is a methodological complement for the same binary model.
+It retains three distinct conclusions: regular configurations drawn from
+the target, finite signed Palm identities, and a counterexample to a
+global absolute-cumulant smallness condition. All arguments are given
+below. The one-sided Palm deficit follows \emph{from}
+\cref{thm:micro-run-tv}, never the reverse. None of these constructions
+is an input to \cref{supp:sec:microscopic-pivots}.
+Keep the hard scales, cutoff $E_*$, maximal support diameter $Q$, original
+good set $G_0$ and conditional law $\PA$ used there, and put $\beta=\log2$.
+
+\subsection{Odd rough kernels and a stronger good set}\label{supp:palm:subsec:regular}
+Define
+\[
+ r_Y(m)=\prod_{\substack{q>Y\\v_q(m)\text{ odd}}}q,
+ \quad Z_Y(s)=\zeta(2s)\prod_{q\le Y}(1+q^{-s}),
+ \quad B(X,Y;s)=X^{s-1}Z_Y(s),\quad\tfrac12<s<1.
+\]
+The product $r_Y(m)$ and the single pivot $\kappa_{\rm odd}(m)$ have different roles. Every integer has a unique form $m=a^2vr$, with $v$ squarefree and $Y$-smooth and $r=r_Y(m)$ squarefree with primes above $Y$. If
+$D_Y(x)=\#\{m\le x:r_Y(m)=1\}$, Rankin gives $D_Y(x)\le x^sZ_Y(s)$.
+The exact convolutions over squarefree rough $r$ imply
+\begin{align}
+ \frac1X\#\{m\le X:r_Y(m)\le T\}
+ &\le B(X,Y;s)\left(1+\frac{T^{1-s}}{1-s}\right),\label{supp:palm:eq:kernel-count}\\
+ \frac1X\sum_{\substack{m\le X\\r_Y(m)>1}}
+       \frac{z^{\omega(r_Y(m))}}{r_Y(m)}
+ &\le B(X,Y;s)\left\{\prod_{q>Y}(1+zq^{-1-s})-1\right\}\notag\\
+ &\le B(X,Y;s)\{\exp(z/(sY^s))-1\},\qquad z\ge1.\label{supp:palm:eq:kernel-reciprocal}
+\end{align}
+For the first inequality sum $D_Y(X/r)$ over rough $r\le T$ and enlarge to all positive integers. For the second sum $z^{\omega(r)}D_Y(X/r)/r$; the empty kernel is removed before forming the Euler product. Finally
+$\sum_{q>Y}q^{-1-s}\le\sum_{m>Y}m^{-1-s}\le Y^{-s}/s$.
+
+At $s=1-u/V$ and $X=M+O(Q)$, the calculation of Lemma~\ref{supp:pivot:lem:rankin} at $w=V$ gives
+\begin{equation}\label{supp:palm:eq:hard-kernel}
+ B(X,Y;s)\le e^{-V+o(\nu)},\qquad
+ Y^{-s}=e^{-V+u+o(1)}.
+\end{equation}
+Fix $0<\vartheta<c$, and put
+\begin{equation}\label{supp:palm:eq:strong-good}
+ T_M=\exp(\vartheta H/u),\qquad
+ G_\vartheta=\{j\in G_0:r_Y(j+a)>T_M\ (0\le a\le Q)\}.
+\end{equation}
+This is a threshold on a product of primes, not a change of the conditioning cutoff $Y$. Eventually $T_M>Y$ and $T_M=M^{o(1)}$.
+\begin{proposition}[Cost of stronger deletion]\label{supp:palm:prop:deletion}
+One has
+\begin{equation}\label{supp:palm:eq:added-deletion}
+ p|G_0\setminus G_\vartheta|
+ \le \exp\{\log\Lambda-V+\vartheta\nu+o(\nu)\}=o(1),
+\end{equation}
+and replacing these extra deleted low-type coordinates by independent target coordinates costs at most $2p|G_0\setminus G_\vartheta|$ under $\PA$. Moreover
+\begin{equation}\label{supp:palm:eq:cardinality}
+ |G_\vartheta^c|\le O(\sqrt M)+M e^{-V+\vartheta\nu+o(\nu)}
+                       =o(M/H).
+\end{equation}
+Completing the original deletions and mark tails has cost
+$O(d_{0,M}+p|G_0\setminus G_\vartheta|)=o(1)$.
+\end{proposition}
+\begin{proof}
+Each integer is used in at most $Q+1$ maximal supports.
+Use \eqref{supp:palm:eq:kernel-count}--\eqref{supp:palm:eq:hard-kernel} and
+$(1-s)\log T_M=\vartheta\nu$; the logarithms of $Q+1$ and $1/(1-s)$ are $O(\log H)=o(\nu)$. This proves the count and the first bound, whose exponent is at most $-I-(c-\vartheta)\nu+o(\nu)$.
+At a site of $G_0$, each low-type mean is exactly $p\gamma_\alpha$ on every environment. Thus the added real and target masses are each at most $p$ per site without an extra factor $e^I$.
+The original deletion and high marks are covered by \eqref{supp:pivot:eq:deletion}. The last equality in \eqref{supp:palm:eq:cardinality} follows from $V/\nu\sim u\to\infty$ and $\log H=o(\nu)$.
+\end{proof}
+
+Call a collection of maximal supports \emph{private-pivot regular} if each raw vertex occurrence has a prime above $Y$, occurring there to an odd exponent, that divides no other vertex occurrence of the collection. Repeated vertices preclude regularity.
+\begin{lemma}[CRT allocation of all odd prime factors]\label{supp:palm:lem:crt}
+Assume $n\ge1$, $Q\le n$ and $Y>Q$, as holds eventually in the ambient regime.
+Let $J_1,\ldots,J_k$ be independent uniform indices in $\{1,\ldots,n\}$. Conditional on $J_i=j$ and on a source vertex $m=j+a$ with $r=r_Y(m)>1$, the probability that every prime of $r$ is hosted in one of the other $k-1$ supports is at most
+\begin{equation}\label{supp:palm:eq:crt}
+ \frac{\{3(k-1)(Q+1)\}^{\omega(r)}}r.
+\end{equation}
+For $k\ge2$ and $z=3k(Q+1)<Y$, the probability that all indices lie in $G_\vartheta$ but their supports are not regular is at most
+$k(Q+1)T_M^{-1+\log z/\log Y}$. A single good support is regular.
+\end{lemma}
+\begin{proof}
+Assign each prime of $r$ to a target block and offset where it is hosted. There are at most $((k-1)(Q+1))^{\omega(r)}$ assignments. For a fixed assignment, CRT fixes each target index modulo the product
+$r_h$ of its assigned primes. A target block receiving no prime has
+probability exactly one. For a nonempty block,
+$r_h\le r\le m\le n+Q\le2n$, so that residue has probability at most
+$1/r_h+1/n\le3/r_h$. There are at most $\omega(r)$ nonempty blocks;
+their nontrivial moduli have product $r$. Independence therefore bounds
+the assignment probability by $3^{\omega(r)}/r$, not by a factor
+three for every empty block as well. Summing assignments gives
+\eqref{supp:palm:eq:crt}.
+If $r>T_M$, then $\omega(r)\le\log r/\log Y$ and
+$z^{\omega(r)}/r\le T_M^{-1+\log z/\log Y}$.
+Union-bound over the $k(Q+1)$ source occurrences. A prime above $Y>Q$ cannot be hosted elsewhere inside its own support.
+\end{proof}
+
+Let $\mathscr R_M$ be the target configurations of mass at most $K_M=\lceil2\Lambda\rceil$, with low types $e\le E_*$, sites in $G_\vartheta$, and regular maximal supports. Equivalently, enumerate all its atoms,
+with their multiplicities, and impose regularity on every raw vertex
+occurrence of that enumeration. This definition is invariant under
+permutation, so it passes from the ordered sample to the point
+configuration without losing repeated occurrences. The empty
+configuration is included.
+\begin{theorem}[Private pivots for a Poisson-size target cloud]\label{supp:palm:thm:regular}
+For the full same-grid target law $\mathsf Q_M$,
+\begin{align}\label{supp:palm:eq:regular-error}
+ \mathsf Q_M(\mathscr R_M^c)\le\varepsilon_{\rm reg,M}
+ \ll{}&\Lambda M^{-1/2}+e^{\log\Lambda-V+\vartheta\nu+o(\nu)}
+           +\Lambda2^{-E_*-1}\notag\\
+ &+e^{-(2\log2-1)\Lambda}+e^{-c\vartheta\nu^2/(4u)}=o(1).
+\end{align}
+For every regular $z=\{(j_i,\alpha_i):1\le i\le k\}$,
+\begin{equation}\label{supp:palm:eq:presence}
+ \PP(\operatorname{Occ}(z)\mid\mathcal F_Y)
+       =\prod_{i=1}^k p\gamma_{\alpha_i}
+\end{equation}
+on every small-prime environment, and therefore under $\PA$.
+\end{theorem}
+\begin{proof}
+Conditional on target mass $N=k$, sites are independent uniform grid indices and types have law $\gamma$. Exponential Markov bounds give
+$\PP(N>K_M)\le e^{-(2\log2-1)\Lambda}$.
+The bad-site and high-mark expected counts give the first three terms of
+\eqref{supp:palm:eq:regular-error}.
+For $k\le K_M$, eventually
+\[
+ 1-\frac{\log(3K_M(Q+1))}{\log Y}\ge\frac{c\nu}{2V}.
+\]
+Apply Lemma~\ref{supp:palm:lem:crt}, obtaining a remaining bound
+$K_M(Q+1)e^{-c\vartheta\nu^2/(2u)}$.
+Since $\nu^2/(uV)\to\infty$ and $\log(K_M(Q+1))\le V+O(\log H)$, this is at most the final term of \eqref{supp:palm:eq:regular-error}.
+For a regular configuration choose one private odd prime per raw vertex. The selected columns of the valuation matrix form an identity minor over $\mathbb F_2$ even conditional on all unchosen signs. The raw values are therefore independent and fair. Each exact signed word fixes $L+e_i+2$ of them; integrating unused maximal-support vertices proves \eqref{supp:palm:eq:presence}.
+\end{proof}
+The first assertion is about configurations drawn from the target. The second prescribes presence, not absence of further occurrences. For instance, if $X_{2i-1}=X_{2i}=B_i$ with independent Bernoulli-$p$ variables, then target configurations using at most one site per pair have asymptotic probability one when $np^2\to0$ and their prescribed probabilities equal $p^k$. Yet when $np\to\infty$, the actual field lies in that regular set only when empty, of probability $(1-p)^{n/2}\to0$. Its microscopic distance to the Poisson target tends to one. This surrogate is not the arithmetic model.
+
+\subsection{Exact configuration masses and ordinary Palm deletion}\label{supp:palm:subsec:palm}
+Put $G=G_\vartheta$, $g=|G|$, $\mu=gp$, and restrict the full arithmetic and target fields to $G$, without truncating exact lengths or filling. Denote their laws by $\mathsf P_M^G,\mathsf Q_M^G$, and their distance by $\Delta_M^G$.
+Let $d_A=\PA(\text{a base start occurs outside }G)$ and $\delta_G=p(n-g)$; both tend to zero by Proposition~\ref{supp:palm:prop:deletion} and the original tail estimates. Projection and the deletion coupling give
+\begin{equation}\label{supp:palm:eq:projection}
+ 0\le\Delta_M^{\rm mic}-\Delta_M^G\le d_A+\delta_G.
+\end{equation}
+Let $\mathscr R_M^G$ be the same regularity conditions inside $G$, with mass bounded by $K_M$. Its target exceptional probability $\varepsilon_{\rm reg,G}=o(1)$ follows by restriction from Theorem~\ref{supp:palm:thm:regular}.
+For regular $z$ put $\lambda_z=\prod_{(j,\alpha)\in z}p\gamma_\alpha$ and
+\[
+ v(z)=\PA(\mathbf I_M=z\mid\operatorname{Occ}(z)),\qquad
+ v_G(z)=\PA(\mathbf I_M|_G=z\mid\operatorname{Occ}(z)).
+\]
+The regular configurations have distinct sites, so
+$\mathsf Q_M^G(\{z\})=e^{-\mu}\lambda_z$ and
+$\mathsf P_M^G(\{z\})=\lambda_zv_G(z)$.
+The normalized retained void is
+\begin{equation}\label{supp:palm:eq:normalized-void-definition}
+ R_z(t)=\frac{\EA\!\left[
+       \prod_{j\in G\setminus\supp z}(1-tJ_{j+1,L})
+                       \mid\operatorname{Occ}(z)\right]}
+                    {(1-tp)^{g-|z|}},\qquad0\le t\le1.
+\end{equation}
+It is nonnegative and finite; $p<1$ and the plant is regular.
+\begin{proposition}[Averaged deletion and the normalized void deficit]\label{supp:palm:prop:palm}
+One has
+\begin{align}\label{supp:palm:eq:averaged-deletion}
+ &\EE_{\mathsf Q_M^G}\ind_{\mathscr R_M^G}(z)e^\mu(v_G(z)-v(z))\notag\\
+ &\hspace{8mm}=\PA(\mathbf I_M|_G\in\mathscr R_M^G,
+                     \text{a start occurs outside }G)\le d_A.
+\end{align}
+For the normalized void $R_z$ in \eqref{supp:palm:eq:normalized-void-definition},
+\begin{equation}\label{supp:palm:eq:normalized-deficit}
+ \left|\Delta_M^{\rm mic}
+ -\EE_{\mathsf Q_M^G}\ind_{\mathscr R_M^G}(z)(1-R_z(1))_+\right|
+ \le d_A+\delta_G+\varepsilon_{\rm reg,G}+O(\Lambda^2/n).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Presence factorization implies
+$\lambda_z(v_G-v)=\PA(\mathbf I_M|_G=z,\mathbf I_M\ne z)$.
+Multiplication by the target mass and summation over disjoint events proves
+\eqref{supp:palm:eq:averaged-deletion}. For any countable laws,
+$\TV(\mathsf P,\mathsf Q)=\sum_z(\mathsf Q(z)-\mathsf P(z))_+$.
+Thus, with
+$D_G=\EE_{\mathsf Q_M^G}\ind_{\mathscr R_M^G}(1-e^\mu v_G)_+$,
+\[
+ 0\le\Delta_M^{\rm mic}-D_G\le d_A+\delta_G+\varepsilon_{\rm reg,G}.
+\]
+Once the exact planted words are fixed, no further retained atom is,
+almost surely, the event that every remaining base-start indicator is
+zero. Simultaneous finiteness of the runs gives this equivalence, and
+both positive-probability conditionings preserve that full-measure event. Hence
+$v_G(z)=(1-p)^{g-k}R_z(1)$, where $k=|z|\le K_M$.
+Uniformly on regular configurations,
+\[
+ |\mu+(g-k)\log(1-p)|
+     \le kp+\frac{gp^2}{2(1-p)}=O(\Lambda^2/n).
+\]
+For $b>0,x\ge0$,
+$|(1-bx)_+-(1-x)_+|\le1-e^{-|\log b|}\le|\log b|$;
+no bound on $x=R_z(1)$ is needed. This proves \eqref{supp:palm:eq:normalized-deficit}.
+\end{proof}
+The argument pays $d_A$, not $e^\Lambda d_A$. For the full target, the same mass identity gives directly
+\[
+ 0\le\Delta_M^{\rm mic}
+   -\EE_{\mathsf Q_M}\ind_{\mathscr R_M}(z)(1-e^\Lambda v(z))_+
+   \le\varepsilon_{\rm reg,M}.
+\]
+Consequently Theorem~\ref{thm:micro-run-tv} makes both one-sided deficits vanish. In the full-target form, setting
+$L_z=(-\log v(z)-\Lambda)_+$ on regular configurations when $v(z)>0$,
+$L_z=+\infty$ there when $v(z)=0$, and $L_z=0$ otherwise, gives
+$(1-e^\Lambda v(z))_+=1-e^{-L_z}$ on the regular set, with
+$e^{-\infty}=0$. The extended convention is essential at a zero void. Its expectation vanishes exactly when $L_z\to0$ in target probability. This is not uniform control of every Palm void, and it does not result from dividing an absolute approximation by $e^{-\Lambda}$.
+
+\begin{corollary}[Completion of the one-sided Palm deficit]\label{supp:palm:cor:palm-completion}
+Under Theorem~\ref{thm:micro-run-tv},
+\begin{equation}\label{supp:palm:eq:palm-completion}
+ \EE_{\mathsf Q^G_M}\left[
+        \ind_{\mathscr R^G_M}(z)(1-R_z(1))_+\right]\longrightarrow0.
+\end{equation}
+Equivalently the lower relative-void defect tends to zero in target-configuration probability. This is an averaged, one-sided statement, not a uniform relative estimate over every plant.
+\end{corollary}
+\begin{proof}
+\Cref{supp:palm:prop:palm} identifies the left side with
+$\Delta_M^{\rm mic}+o(1)$, using exact configuration masses and ordinary deletion costs. Apply Theorem~\ref{thm:micro-run-tv}, whose proof does not use that identity.
+\end{proof}
+
+\subsection{The finite signed polynomial, including the environment}\label{supp:palm:subsec:signed-void}
+Fix a regular plant $z$ and write $\mathcal B_z=G\setminus\operatorname{supp}z$, $m=g-|z|$.
+Let $\epsilon$ be the bits of primes at most $Y$, and $\xi$ those above $Y$ among the finitely many queried integers. Successive relative signs give matrices
+\[
+ J_{j+1,L}=\ind_{\{A_j\epsilon+B_j\xi=b\}},\quad
+ b=(1,0,\ldots,0)^{\mathsf T}\in\mathbb F_2^L,
+ \qquad A_z\epsilon+B_z\xi=b_z
+\]
+for the base event and the planted raw equations, respectively. Regularity makes $B_z$ full row rank
+$q_z=\sum_{(j,e,\sigma)\in z}(L+e+2)$.
+Planting has conditional probability $2^{-q_z}$ on every environment, and so leaves the law of $\epsilon\mid\mathcal A_M$ unchanged. Given that environment, $\xi$ is uniform on the displayed affine solution space.
+Put
+$\widehat\mu_A(s)=\EE[(-1)^{s\cdot\epsilon}\mid\mathcal A_M]$.
+For $S\subseteq\mathcal B_z$, $S\ne\varnothing$, define
+\begin{equation}\label{supp:palm:eq:signed-coefficient}
+ C_z(S)=
+ \sum_{\substack{u_j\in\mathbb F_2^L\setminus\{0\},\ j\in S\\
+                  v\in\mathbb F_2^{q_z},\ \sum_j u_jB_j=vB_z}}
+ (-1)^{\sum_j u_j\cdot b+v\cdot b_z}
+ \widehat\mu_A\left(\sum_j u_jA_j+vA_z\right),
+ \qquad C_z(\varnothing)=1.
+\end{equation}
+For a given collection $(u_j)$ there is at most one $v$, by row independence of $B_z$.
+\begin{proposition}[Signed avoidance and a target-sign bound]\label{supp:palm:prop:signed-void}
+Writing $\EE_z$ for the planted conditional expectation, for $0\le t\le1$,
+\begin{align}
+ \EE_z\prod_{j\in S}(J_{j+1,L}-p)&=p^{|S|}C_z(S),\label{supp:palm:eq:centered-plant}\\
+ R_z(t)&=1+\sum_{\varnothing\ne S\subseteq\mathcal B_z}
+           \left(-\frac{tp}{1-tp}\right)^{|S|}C_z(S).\label{supp:palm:eq:signed-polynomial}
+\end{align}
+These finite identities include singleton corrections and all overlaps. For fixed unsigned regular geometry $\zeta$, expand the sign dependence as
+\[
+ R_{\zeta,\boldsymbol\sigma}(1)=\sum_{D\subseteq[k]}a_D(\zeta)
+                          \prod_{i\in D}\sigma_i,
+ \qquad\mathcal V(\zeta)=\sum_{D\ne\varnothing}a_D(\zeta)^2.
+\]
+Under the independent fair target signs,
+\begin{equation}\label{supp:palm:eq:walsh}
+ \EE_{\boldsymbol\sigma}(1-R_{\zeta,\boldsymbol\sigma}(1))_+
+ \le\min\left\{1,(1-a_\varnothing(\zeta))_+
+                             +\tfrac12\sqrt{\mathcal V(\zeta)}\right\}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The character expansion is
+$J_{j+1,L}-p=p\sum_{u_j\ne0}(-1)^{u_j\cdot b}
+ (-1)^{(u_jA_j)\cdot\epsilon+(u_jB_j)\cdot\xi}$.
+On the planted affine space a character $w\cdot\xi$ has zero mean unless
+$w=vB_z$, in which case its mean is
+$(-1)^{v\cdot b_z+(vA_z)\cdot\epsilon}$.
+Multiplication and environment averaging prove \eqref{supp:palm:eq:centered-plant}.
+Expand
+$\prod_j(1-tJ_{j+1,L})/(1-tp)^m
+ =\prod_j\{1-t(J_{j+1,L}-p)/(1-tp)\}$ to obtain
+\eqref{supp:palm:eq:signed-polynomial}.
+
+In planted block $i$, $b_{z,i}=c_i+\tau_i\mathbf1$ with
+$\sigma_i=(-1)^{\tau_i}$, where $c_i$ is one at the two borders and zero inside. Thus grouping terms by the block parities of $v$ gives the Walsh expansion. Orthogonality gives mean $a_\varnothing$ and variance $\mathcal V$.
+For any integrable $R$ of mean $a$,
+\[
+ \EE(1-R)_+\le(1-a)_++\EE(a-R)_+
+       =(1-a)_++\tfrac12\EE|R-a|
+       \le(1-a)_++\tfrac12\sqrt{\Var R}.
+\]
+Here $R\ge0$, so the left side is also at most one. This proves \eqref{supp:palm:eq:walsh}.
+\end{proof}
+For the unconditioned model $\widehat\mu_A(s)=\ind_{\{s=0\}}$; for a general admissible event it is not that indicator. Nor are the planted marginal means assumed to equal $p$. The coefficients and their signs must be retained before any norm is taken. Theorem~\ref{thm:micro-run-tv} controls the deficit in \eqref{supp:palm:eq:normalized-deficit}, but does not establish that
+$(1-a_\varnothing)_+$ or $\mathcal V$ vanish separately. No such stronger assertion is needed.
+
+Two other exact formulations are useful for separating sufficient conditions from the concluded deficit.
+Cumulants below are defined by finite moment--partition identities.
+Deterministic recentering leaves orders at least two unchanged, but
+$\operatorname{cum}_z(J_{j+1,L}-p)=\EE_zJ_{j+1,L}-p$ at order one.
+Since $p$ is a reference rate, not necessarily the planted mean, these
+singleton terms must be kept. If $W_j=J_{j+1,L}-p$ and
+\[
+ A_z(t)=\sum_{\varnothing\ne S\subseteq\mathcal B_z}
+       \left(\frac{t}{1-tp}\right)^{|S|}
+         |\operatorname{cum}_z(W_j:j\in S)|,
+\]
+then the finite moment-partition expansion gives
+$|R_z(t)-1|\le e^{A_z(t)}-1$, including singleton Palm corrections.
+Its per-site weight at $t=1$ is $(1-p)^{-1}$, not the global weight $2$ discussed below.
+Also, with $N_z=\sum_{j\in\mathcal B_z}J_{j+1,L}$ and the planted law tilted by
+$(1-t)^{N_z}/\EE_z(1-t)^{N_z}$ for $t<1$,
+\[
+ -\frac{d}{dt}\log R_z(t)
+     =\frac{\EE_{z,t}N_z}{1-t}-\frac{mp}{1-tp}.
+\]
+Integration to one is an improper identity, with value $+\infty$ when the void is zero. We assert no smallness estimate for either right-hand side.
+
+\subsection{The absolute conditional pair layer}\label{supp:palm:subsec:pairs}
+There is a useful pair estimate independent of the microscopic proof. For two good disjoint prescribed raw words of total length $q_1+q_2=q$, write
+$A\epsilon+B\xi=b$, $r_0=2^{-q}$,
+$\rho_>=q-\operatorname{rank}B$ and
+$\rho_{\rm all}=q-\operatorname{rank}[A\ B]$.
+If the full system is compatible, a fraction
+$a=2^{\rho_{\rm all}-\rho_>}$ of environments is admissible, and on those environments its conditional probability is $r_02^{\rho_>}$, otherwise zero. Thus
+\begin{equation}\label{supp:palm:eq:two-ranks}
+ \EE_\epsilon|\PP(B\xi=b-A\epsilon\mid\epsilon)-r_0|
+ =r_0\{2^{\rho_{\rm all}}-1+2(1-2^{\rho_{\rm all}-\rho_>})\}.
+\end{equation}
+If the full system is incompatible the left side is $r_0$, and in both cases it is at most
+$r_0\{(2^{\rho_{\rm all}}-1)+2\ind_{\{\rho_> >\rho_{\rm all}\}}\}$.
+In the incompatible case $\rho_{\rm all}\ge1$.
+
+For a concrete distinction, take $L=3$, $e=f=0$, both signs positive, $Y=11$, and starts $x=92,y=114$. The ten raw vertices are $91,\ldots,95$ and $113,\ldots,117$. Each individual rough row rank is five, their combined rough rank is seven, and their full rank is ten. Thus the unconditioned joint mass is $2^{-10}$, but its conditional value is $2^{-7}$ on one eighth of environments and zero elsewhere. The mean absolute conditional covariance is $7/4096$.
+
+Let $H_2^>(M,Q;Y)$ count ordered separated good maximal-support pairs with nonzero rough nullity. Such a relation uses a vertex $m$ in one support, and every prime of $r_Y(m)$ must be hosted by the other support. Assign those primes to target offsets and use CRT. With $X=M+Q+1$ this gives
+\[
+ H_2^>(M,Q;Y)\ll(Q+1)X
+  \sum_{\substack{m\le X\\r_Y(m)>1}}
+              \frac{(Q+1)^{\omega(r_Y(m))}}{r_Y(m)}.
+\]
+There is only one target block, whose residue count is $O(X/r_Y(m))$ since $r_Y(m)\le X$.
+Equations \eqref{supp:palm:eq:kernel-reciprocal}--\eqref{supp:palm:eq:hard-kernel} at $z=Q+1$ imply
+\begin{equation}\label{supp:palm:eq:rough-host}
+ H_2^>(M,Q;Y)\le M^2e^{-2V+o(\nu)}.
+\end{equation}
+Indeed $(Q+1)Y^{-s}\to0$ and $u+\log Q=o(\nu)$.
+\begin{proposition}[The full signed pair activity]\label{supp:palm:prop:pair-activity}
+Uniformly for deterministic $G\subseteq G_0$, the low-type pair activity obeys
+\begin{align}\label{supp:palm:eq:pair-activity}
+ \mathcal K_{2,M}
+ &:=2\sum_{\substack{j<k\\j,k\in G}}\sum_{\alpha,\alpha'\in\mathcal T_*}
+          |\Cov_{\mathcal A}(I_{j,\alpha},I_{k,\alpha'})|\notag\\
+ &\ll e^Ip^2\{nQ+R^{\rm val}_{2,U}(M,Q+1)+H_2^>(M,Q;Y)\}\notag\\
+ &\ll_\varepsilon e^{I+2\log\Lambda-2V+o(\nu)}+M^{-1/3+\varepsilon}=o(1).
+\end{align}
+\end{proposition}
+\begin{proof}
+Good-word marginal means are constant on environments. Hence absolute covariance under $\mathcal A_M$ is at most $e^I$ times mean absolute covariance over the unconditioned small-prime environments. Apply \eqref{supp:palm:eq:two-ranks}. Zero extension bounds the full-kernel excess by the maximal full-value profile; the second term requires a rough relation host. Local pairs cost $O(e^Ip^2nQ)$ with signed factor at most four. Sum $\gamma_\alpha\gamma_{\alpha'}$ before applying \eqref{supp:palm:eq:rough-host} and the profile. The budget bounds the first exponential by $e^{-I-2c\nu+o(\nu)}$.
+\end{proof}
+This is an absolute conditional covariance result, not a graph theorem: zero pair covariance does not imply independence from families of other sites. In particular it cannot replace the exact one-word coupling in Appendix~\ref{supp:sec:microscopic-pivots}.
+
+\subsection{The finite cumulant bound and its arithmetic obstruction}\label{supp:palm:subsec:cumulants}
+Let $G\subseteq G_0$ be a deterministic retained set and let $\mathcal T_*=\{0,\ldots,E_M^*\}\times\sgnset$. Define the global distinct-site activity
+\begin{equation}\label{supp:palm:eq:absolute-activity}
+ \mathcal K_{\rm abs,M}
+ =\sum_{\substack{S\subseteq G\\|S|\ge2}}2^{|S|-1}
+   \sum_{\boldsymbol\alpha\in\mathcal T_*^S}
+       \left|\operatorname{cum}(I_{j,\alpha_j}:j\in S)\right|.
+\end{equation}
+Here the cumulants are under the stated arithmetic law, not under a product target.
+
+
+For a finite family of categories $Y_j\in\{\partial\}\cup\mathcal T_j$ with marginals $\nu_j$, let $I_{j,a}=\ind_{\{Y_j=a\}}$ and let $\mathcal K$ be the activity \eqref{supp:palm:eq:absolute-activity} with these types and their actual law.
+\begin{lemma}[A finite categorical cumulant bound]\label{supp:palm:lem:cumulant}
+One has
+\begin{equation}\label{supp:palm:eq:cumulant-tv}
+ \TV\left(\Law((Y_j)_j),\bigotimes_j\nu_j\right)
+             \le\min\{1,(e^{2\mathcal K}-1)/2\}.
+\end{equation}
+For $t\ge0$, if $B_j$ are Bernoulli variables of means $r_j$, and
+$F_t=\EE\prod_j\{1+t(B_j-r_j)\}$, then
+\begin{equation}\label{supp:palm:eq:polynomial-envelope}
+ |F_t|\le\exp\!\left\{
+   \sum_{\substack{S\\|S|\ge2}}t^{|S|}
+                |\operatorname{cum}(B_j:j\in S)|\right\}.
+\end{equation}
+For categorical occupancies $B_j=\sum_a I_{j,a}$ with $2\max_jr_j<1$,
+$\mathcal K\ge\tfrac12\log F_2$.
+\end{lemma}
+\begin{proof}
+The exact identity
+$\delta_{Y_j}=\nu_j+\sum_a(I_{j,a}-\EE I_{j,a})(\delta_a-\delta_\partial)$
+gives, after tensor expansion, centered moment coefficients on subsets $S$.
+The signed tensor has zero-mass supremum norm $2^{|S|-1}$. Singletons vanish.
+Expand each centered moment into cumulant partitions, with blocks of size at least two. If
+$b_B=2^{|B|-1}\sum_{\boldsymbol a}|\operatorname{cum}(I_{j,a_j}:j\in B)|$,
+a partition into $m$ blocks contributes at most
+$2^{m-1}\prod_B b_B$. Sum disjoint block collections, then drop disjointness to obtain
+$\frac12\sum_{m\ge1}(2\sum_B b_B)^m/m!=(e^{2\mathcal K}-1)/2$.
+The identical finite partition expansion with weights $t^{|B|}$ proves
+\eqref{supp:palm:eq:polynomial-envelope}. Multilinearity gives
+$2\mathcal K\ge\sum_{|S|\ge2}2^{|S|}|\operatorname{cum}(B_j:j\in S)|$.
+When $2\max r_j<1$, all factors in $F_2$ are positive, so taking logarithms proves the last assertion. No analytic infinite cumulant series is assumed.
+\end{proof}
+The law on the right of \eqref{supp:palm:eq:cumulant-tv} is the product of categorical marginals, not yet independent Poisson coordinates. Poissonizing occupied mass $s_j\le p$ costs at most $\sum_js_j^2\le np^2$ by coupling the total count and using the same type kernel. The finite inequality remains true, but its global-smallness hypothesis fails as follows.
+
+\begin{theorem}[Small microscopic distance with divergent absolute activity]\label{supp:palm:thm:cumulant-obstruction}
+Let $q$ tend to infinity through odd primes and set
+\[
+ a_q=\lfloor\log_2q\rfloor,\qquad M_q=2^{q-1+a_q},\qquad L_q=q-1.
+\]
+Take $\mathcal A_{M_q}$ to be the whole space. If the retained sets have the exact low-type marginals and omit $o(M_q/\log M_q)$ sites, then
+\begin{equation}\label{supp:palm:eq:cumulant-obstruction}
+ \liminf_{q\to\infty}\frac{\log M_q}{M_q}\mathcal K_{\rm abs,M_q}
+ \ge\frac{\log2}{2}(\log3-1)>0.
+\end{equation}
+This applies to $G_0$ of Appendix~\ref{supp:sec:microscopic-pivots} and to the stronger retained sets in Appendix~\ref{supp:sec:palm-complements}. The two-site contribution tends to zero, so the activity of orders at least three diverges. Nevertheless $\Delta_{M_q}^{\rm mic}\to0$, already within the earlier sufficient labelled range.
+\end{theorem}
+\begin{proof}[Proof of Theorem~\ref{supp:palm:thm:cumulant-obstruction}]
+For $M=M_q$, $L=q-1$, $a_q=\lfloor\log_2q\rfloor$,
+\[
+ H\sim\beta q,\qquad
+ \Lambda=2^{a_q}-(q-1)2^{-(q-1)}\asymp q.
+\]
+Thus $a_q=o(\log M)$ and both $\log\Lambda$ and
+$\log\Lambda+\log(1+\Lambda)$ are $O(\log H)=o(V-c\nu)$ for every fixed $c$.
+Let $g=|G|$, $S_*=1-2^{-E_*-1}$ and
+$B_j=\sum_{\alpha\in\mathcal T_*}I_{j,\alpha}$.
+Their common exact mean is $r=pS_*\le p$, and $gr\le\Lambda$.
+
+Consider the event
+\[
+ \mathcal E_q=\{f(q)=-1,\ f(\ell)=1
+              \text{ for every prime }\ell\le M+Q,\ \ell\ne q\}.
+\]
+Its probability is $2^{-\pi(M+Q)}$ in the original unconditioned model;
+it is not a new admissible conditioning event. The cutoff $M+Q$ covers
+the queried vertices and has $Q=o(M)$. A cylinder enlarged to $2M$
+would change the witness cost and cannot be substituted here. On this event every queried value is $(-1)^{v_q(m)}$.
+For $(t+1)q\le M$ and $q\nmid t(t+1)$, the endpoints $tq,(t+1)q$ are negative and the $q-1$ interior values are positive. Therefore the site $j=tq$ carries the low type $(0,+1)$.
+With $T=\lfloor M/q\rfloor-1$, the number of certified indices is exactly
+\[
+ T-\lfloor T/q\rfloor-\lfloor(T+1)/q\rfloor
+       =(1-2/q)M/q+O(1).
+\]
+The omissions are counted in $[1,M]$, including the $L$ terminal
+indices outside $G\subseteq\{1,\ldots,M-L\}$. Their additional cost
+$L=O(\log M)$ is negligible. Omitting $o(M/H)=o(M/q)$ sites leaves at least
+$N_0=(1-o(1))M/q$ retained low-type atoms.
+For $N=\sum_{j\in G}B_j$ and sufficiently large $q$,
+\[
+ F_2=(1-2r)^g\EE\left(\frac{3-2r}{1-2r}\right)^N
+ \ge 2^{-\pi(M+Q)}(1-2r)^g
+                   \left(\frac{3-2r}{1-2r}\right)^{N_0}.
+\]
+The prime number theorem gives $\pi(M+Q)=(1+o(1))M/H$;
+$g\log(1-2r)\ge-O(\Lambda)$; and
+$\log((3-2r)/(1-2r))=\log3+O(r)$.
+Since $\Lambda\asymp H=o(M/H)$, it follows that
+\[
+ \log F_2\ge\{\beta(\log3-1)+o(1)\}M/H.
+\]
+Lemma~\ref{supp:palm:lem:cumulant} proves \eqref{supp:palm:eq:cumulant-obstruction}.
+The omission condition holds for $G_\vartheta$ by \eqref{supp:palm:eq:cardinality} and for $G_0$ by its smaller deletion. Proposition~\ref{supp:palm:prop:pair-activity} gives the vanishing pair layer, and hence divergence of the remaining orders. These parameters lie even in the graph-based labelled budget. In particular \cref{thm:micro-run-tv} gives the asserted vanishing microscopic distance, independently of the activity calculation.
+\end{proof}
+For a fixed $t>0$, the same witness has leading lower exponent
+$\beta\{\log(1+t)-1\}M/H$. It diverges when $t>e-1$; this is a threshold for the witness, not an optimal boundary of the model. Restricting the occupancy to $N\le b\Lambda$, $b>1$, can have vanishing ordinary total-variation cost, but it changes its means, cumulants, and conditional forcing identities. No such nonlocal truncation is used to retain an invalid absolute-smallness claim.

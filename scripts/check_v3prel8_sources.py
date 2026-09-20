@@ -20,10 +20,11 @@ def safe_path(value):
     return p
 
 
-def check(root=ROOT):
-    base = root / 'manuscripts/v3prel8'
+def check(root=ROOT, *, directory='manuscripts/v3prel8', version='3PREL8'):
+    base = root / directory
+    top = {name.replace('3PREL8', version) for name in TOP}
     manifest = json.loads((base / 'manifest.json').read_text())
-    if manifest['version'] != '3PREL8':
+    if manifest['version'] != version:
         raise ValueError('Wrong manuscript version')
     entries = manifest['files']
     names = [str(safe_path(x['path'])) for x in entries]
@@ -32,12 +33,12 @@ def check(root=ROOT):
     actual = {p.relative_to(base).as_posix() for p in base.rglob('*') if p.is_file()}
     if actual != set(names) | {'README.md', 'manifest.json'}:
         raise ValueError('Unexpected or missing public payload file')
-    if not TOP <= set(names):
+    if not top <= set(names):
         raise ValueError('Missing top-level compilation input or PDF')
     for item in entries:
         name = item['path']
         parts = safe_path(name).parts
-        if name not in TOP and not (len(parts) == 2 and parts[0] in {'sections', 'companion'}
+        if name not in top and not (len(parts) == 2 and parts[0] in {'sections', 'companion'}
                                     and name.endswith('.tex')):
             raise ValueError(f'Nonessential payload file: {name}')
         p = base / name

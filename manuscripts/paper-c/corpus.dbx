@@ -1,0 +1,2 @@
+% Literal journal volumes: 25A and 21(41) are source designations, not integers.
+\DeclareDatamodelFields[type=field,datatype=literal]{volume}

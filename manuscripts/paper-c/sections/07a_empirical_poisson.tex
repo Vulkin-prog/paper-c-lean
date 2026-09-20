@@ -1,0 +1,185 @@
+\Needspace{34\baselineskip}
+\subsubsection*{Empirical Poisson laws for almost every realization}
+\phantomsection\label{sec:empirical-poisson}
+\pdfbookmark[2]{Empirical Poisson laws for almost every realization}{bookmark:empirical-poisson}
+The comparison above averages over the prime signs. A summable error
+also permits a different order of quantifiers: first sample the entire
+function $f$, then fix it and randomize only the spatial origin. The
+following consequence concerns a count, not a comparison of the whole
+local field after $f$ has been fixed.
+
+\begin{empiricalcorollary}[Spatial empirical law for a fixed realization]
+\label{cor:empirical-poisson}
+Fix $0<\alpha<1$ and $\tau>0$. With $V_M$ as in
+\eqref{eq:saddle-definitions}, for all sufficiently large $k$ set
+\[
+ M_k=2^k,\qquad
+ L_k=k-\left\lfloor\frac{\alpha V_{M_k}}{\log2}\right\rfloor,
+ \qquad p_k=2^{-L_k},
+\]
+\[
+ n_k=M_k-L_k,\qquad h_k=\lfloor\tau 2^{L_k}\rfloor,
+ \qquad N_k=n_k-h_k+1.
+\]
+Let $U_k$ be uniform on $\{0,\ldots,n_k-h_k\}$, independently of $f$, and put
+\[
+ Z_k(f,u)=\sum_{j=u+1}^{u+h_k}J_{j+1,L_k}(f),\qquad
+ \mu_k^f=\frac1{N_k}\sum_{u=0}^{n_k-h_k}\delta_{Z_k(f,u)}.
+\]
+Then, for almost every $f$ in the model \eqref{eq:model},
+\[
+ \dTV\!\left(\mu_k^f,\Pois(\tau)\right)
+ =\dTV\!\left(\Law_{U_k}(Z_k(f,U_k)),\Pois(\tau)\right)
+ \longrightarrow0.
+\]
+Here $h_k$ counts potential start sites, the two signs are aggregated,
+and a run is counted only at its left-maximal start. In particular,
+\[
+ h_kp_k\longrightarrow\tau,\qquad
+ h_k=M_k\exp\{-\alpha V_{M_k}+O(1)\}=M_k^{1-o(1)}.
+\]
+The full-probability set is asserted for the fixed pair $(\alpha,\tau)$;
+the conclusion is along the specified dyadic scales.
+\end{empiricalcorollary}
+
+The starts read by $Z_k$ range from $u+2$ to $u+h_k+1$. Thus every
+base of length $L_k$ is contained in the global prefix $[1,M_k]$, and
+the initial run from $1$ is excluded. A full run is not censored at
+$M_k$, although its excess is not used by this count. In
+$\Law_{U_k}$ only the origin is random; no independence between the
+origins at different scales is required.
+
+\begin{proof}
+We first check the arithmetic budget and then do the frequency
+calculation solely in the independent target. The hard-scale
+expansions in \cref{prop:cutoffs} give
+\[
+ V_{M_k}\asymp\sqrt{k\log k},\qquad
+ \nu_{M_k}\asymp\sqrt{k/\log k},\qquad
+ V_{M_k}/\nu_{M_k}\longrightarrow\infty.
+\]
+Writing $\Lambda_k=n_kp_k$, the definitions imply
+\[
+ \log\Lambda_k=\alpha V_{M_k}+O(1),\qquad
+ h_k/n_k=\exp\{-\alpha V_{M_k}+O(1)\}.
+\]
+Hence $\Lambda_k\to\infty$, $1\le h_k\le n_k$ eventually, and
+\eqref{eq:micro-budget} holds with $\mathcal A_{M_k}$ equal to the whole
+probability space and any fixed $c>0$, for all sufficiently large $k$.
+\Cref{thm:micro-run-tv} consequently gives a sequence $\Delta_k$ with
+\[
+ \dTV\bigl(\Law(\mathbf I_{M_k}),\Law(\mathbf P_{M_k})\bigr)
+ \le\Delta_k,\qquad
+ \sum_k\Delta_k<\infty,\qquad
+ \sum_k h_k/n_k<\infty.
+\]
+Indeed, for fixed admissible $c'$ and $\varepsilon$, the bound is
+$O(e^{-c'\nu_{M_k}}+2^{-k(1/3-\varepsilon)})$, and both terms are
+summable.
+
+Sum the target over the signs and excesses at a site. Since
+$\sum_{e,\sigma}\gamma_{e,\sigma}=1$, the resulting variables
+\[
+ X_{k,j}=\sum_{e\ge0,\,\sigma=\pm1}P_{k,j,e,\sigma}
+ \sim\Pois(p_k),\qquad 1\le j\le n_k,
+\]
+are independent. For $0\le u<N_k$ and $r\in\NN$, define
+\[
+ S_{k,u}=\sum_{j=u+1}^{u+h_k}X_{k,j},\qquad
+ F_{k,r}=\frac1{N_k}\sum_{u=0}^{N_k-1}\1_{\{S_{k,u}=r\}},
+ \qquad q_{k,r}=\Pois(h_kp_k)\{r\}.
+\]
+Every $S_{k,u}$ has exactly the displayed Poisson law, so
+$\EE F_{k,r}=q_{k,r}$. The indicators at origins $u,v$ are independent
+if $|u-v|\ge h_k$. For the other pairs the upper bound on their covariance is $1/4$:
+$\operatorname{Var}(A-B)\ge0$ and
+$\operatorname{Var}(A),\operatorname{Var}(B)\le1/4$ give this directly
+for indicators $A,B$. Counting at most $N_k(2h_k-1)$ ordered pairs gives
+\[
+ \Var(F_{k,r})\le\frac{2h_k-1}{4N_k}\ll\frac{h_k}{n_k},
+\]
+uniformly in $r$. Indeed $h_k/n_k\to0$ gives
+$N_k=n_k-h_k+1\ge n_k/2$ eventually, so $\sum_k h_k/N_k<\infty$.
+In particular, overlapping windows have not been treated as independent.
+
+Almost surely all runs are finite, so summing
+$I_{j,e,\sigma}$ over $(e,\sigma)$ gives $J_{j+1,L_k}$.
+The empirical frequency is therefore the same measurable function of
+the source field as $F_{k,r}$ is of the target field. For each fixed
+$r\in\NN$ and $\eta>0$, \cref{cor:micro-readout} and Chebyshev's
+inequality in the target yield
+\[
+ \PP_f\!\left(\left|\mu_k^f\{r\}-q_{k,r}\right|>\eta\right)
+ \le\Delta_k+\frac{2h_k-1}{4N_k\eta^2}.
+\]
+This is one application to the event defined by the entire empirical
+frequency: the error $\Delta_k$ is not multiplied by the number of
+origins. The bound is summable. Borel--Cantelli and a countable
+intersection over $r\in\NN$ and $\eta=1/m$, $m\ge1$, show that, almost
+surely, $\mu_k^f\{r\}-q_{k,r}\to0$ for every $r$.
+
+Finally, $0\le\tau-h_kp_k<p_k\to0$, so
+$q_{k,r}\to q_r:=\Pois(\tau)\{r\}$. For any probability $\mu$ on
+$\NN$ and any $R\in\NN$, normalization of the masses gives
+\[
+ \dTV(\mu,q)
+ \le\sum_{r=0}^{R}|\mu\{r\}-q_r|+\sum_{r>R}q_r.
+\]
+First let $k\to\infty$ with $R$ fixed, and then let $R\to\infty$.
+This proves the asserted total-variation convergence. Neither an
+unbounded source moment nor a joint coupling of the targets at all
+scales is used, and Borel--Cantelli requires no independence between
+the source events at different scales.
+\end{proof}
+
+\paragraph{Scope and comparison.}
+The normalization $h_k2^{-L_k}\to\tau$ is essential: the window-size
+estimate with an unspecified $O(1)$ alone does not fix the limiting
+mean. The inequality $\alpha<1$ leaves room in the arithmetic budget,
+whereas $\alpha>0$ makes the target variance summable. This statement
+fixes the entire $f$, unlike \cref{cor:quenched}. Najnudel's empirical
+block laws \cite{Najnudel2020} use fixed block length.
+Pandey--Wang--Xu \cite[arXiv version 4, Theorem~1.2 and footnote~1]{PandeyWangXu2024}
+already study a typical multiplicative function from a uniform spatial
+origin: their normalized Steinhaus sums have a complex Gaussian limit,
+on sets of functions of measure $1-o(1)$ at each size. The present
+statement instead counts rare left-maximal binary runs, converges in
+total variation to a finite-mean Poisson law, and has a single
+full-probability set for each fixed $(\alpha,\tau)$ along the specified
+dyadic scales. Poisson genericity samples long words in a fixed sequence
+\cite{AlvarezBecherMereb2023,AlvarezEtAlPoissonGenericity}; it is a different empirical
+observable. No all-scale or simultaneous all-parameter assertion, and no
+assertion about Liouville, follows here. No result about records,
+occupation or scale flows is an input. The next observation shows why
+the restriction to a count is substantive.
+
+\begin{empiricalobstruction}[A support obstruction for the fixed local field]
+\label{rem:empirical-field-obstruction}
+Keep the scales of \cref{cor:empirical-poisson}. For any fixed $f$, let
+\[
+ \mathbf Z_k(f,u)=(J_{u+i+1,L_k}(f))_{1\le i\le h_k},\qquad
+ \widehat\mu_k^f=\frac1{N_k}\sum_{u=0}^{N_k-1}\delta_{\mathbf Z_k(f,u)},
+ \qquad Q_k=\bigotimes_{i=1}^{h_k}\Pois(p_k).
+\]
+Then
+\[
+ \liminf_{k\to\infty}\dTV(\widehat\mu_k^f,Q_k)
+       \ge 1-e^{-\tau}(1+\tau)>0.
+\]
+Indeed, the support $\mathscr S_k(f)$ of $\widehat\mu_k^f$ contains at
+most $N_k$ configurations. For large $k$, $p_k\le1$ and every
+$z\in\NN^{h_k}$ with $|z|=\sum_i z_i\ge2$ satisfies
+\[
+ Q_k\{z\}=e^{-h_kp_k}\frac{p_k^{|z|}}{\prod_i z_i!}\le p_k^2.
+\]
+Testing the complement of $\mathscr S_k(f)$ within $\{|z|\ge2\}$ gives
+\[
+ \dTV(\widehat\mu_k^f,Q_k)
+ \ge 1-e^{-h_kp_k}(1+h_kp_k)-N_kp_k^2.
+\]
+Now $h_kp_k\to\tau$ and $N_kp_k^2=M_k^{-1+o(1)}\to0$.
+This holds for every fixed realization, not merely almost every one.
+Thus the count law can converge even though the full local vector,
+expressed relative to its sampled origin, cannot have the analogous
+product-Poisson approximation in total variation.
+\end{empiricalobstruction}

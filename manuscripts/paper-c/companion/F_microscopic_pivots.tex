@@ -1,0 +1,462 @@
+\section{Microscopic comparison by largest-odd-prime pivots}\label{supp:sec:microscopic-pivots}
+We prove Theorem~\ref{thm:micro-run-tv}. Throughout this appendix the hypotheses are
+\eqref{eq:micro-normalization} and \eqref{eq:micro-budget}, with $\Lambda\to\infty$.
+Suppress the index $M$ on $I,V,\nu,Y$, and put $H=\log M$, $u=u(\nu)$.
+Write $\PA,\EA$ for conditioning on $\mathcal A_M$.
+
+All arithmetic inputs in this proof are established in the present
+article--companion pair and are identified in the local register below.
+The final reciprocal bound also follows from the classical
+largest-prime-factor asymptotics of \cite{ErdosIvicPomerance1986}.
+We retain a direct uniform Rankin proof using the prime number theorem
+\cite{Tenenbaum2015}, then spell out the alternative deduction.
+Neither the reciprocal bound nor the general Palm--Stein principle
+is claimed as a new analytic tool. Palm--Stein comparison is classical
+\cite{Barbour1988SteinProcess,ChenXia2004}; the finite total-variation
+inequality is included explicitly.
+
+\subsection{The local signed input register}\label{supp:pivot:sec:inputs}
+Put $E_*=E_M^*$ from \eqref{eq:micro-cutoff}, $Q=L+E_*+1$, and
+$U=\{x\in\Z:\lceil\sqrt M\rceil\le x\le n+1\}$.
+A maximal support at $x=j+1$ is $\{j,\ldots,j+Q\}$, with $Q+1$
+raw vertices. Its base support has $L+1$ vertices; these two lengths
+are not interchanged.
+Let $\mathcal D_Y(Q)$ be the indices $j$ with $j+1\in U$ whose maximal
+support contains a $Y$-defective integer. Put
+\[
+ \mathcal M_{L+1}=\sum_{x\in U}(2^{m_{L+1}(x)}-1),\qquad
+ R^{\rm val}_{2,U}(M,Q+1)=
+ \sum_{\substack{x,y\in U\\|x-y|>Q}}
+           (2^{\rho^{\rm val}_{Q+1}(x,y)}-1).
+\]
+The full-value kernel is the one defined in
+\cref{sec:absolute-relations}, with no block-parity restriction.
+
+\begin{lemma}[Signed inputs and an independent shifted scalar tail]
+\label{supp:pivot:lem:inputs}
+Under \eqref{eq:micro-normalization} and \eqref{eq:micro-budget},
+$Q=\log_2M+O(V)$ and $Y>2(Q+1)$ eventually. Uniformly in this band,
+\begin{align}
+ \mathcal M_{L+1}&\le M^{1/2+o(1)},&
+ |\mathcal D_Y(Q)|/M&\le e^{-V+o(\nu)},
+                                  \label{supp:pivot:eq:input-deletion}\\
+ R^{\rm val}_{2,U}(M,Q+1)&\ll_\varepsilon
+   M^\varepsilon\bigl(M^{5/3}+M^{2/3}2^{Q+1}\bigr).
+                                  \label{supp:pivot:eq:input-profile}
+\end{align}
+On every retained support the signed low-type marginal is exactly
+$p\gamma_{e,\sigma}$, on every environment in $\mathcal F_Y$.
+For two retained sites with $0<|j-k|\le Q$, the conditional joint mass
+is at most $4p^2\gamma_{e,\sigma}\gamma_{f,\tau}$.
+For separated sites its unconditional counterpart is at most
+\begin{equation}\label{supp:pivot:eq:input-pairs}
+ p^2\gamma_{e,\sigma}\gamma_{f,\tau}
+                2^{\rho^{\rm val}_{Q+1}(j+1,k+1)}.
+\end{equation}
+Finally, for $L'=L+E_*+1$ and $\lambda'=M2^{-L'}$,
+\begin{equation}\label{supp:pivot:eq:scalar-tail}
+ \PP\!\left(\exists\,2\le x\le n+1:J_{x,L'}=1\right)
+ \ll\lambda'+e^{-c_0\log M/\log\log M},\qquad
+ e^I\lambda'\le e^{-V}.
+\end{equation}
+This scalar tail is established without the microscopic comparison.
+\end{lemma}
+\begin{proof}
+Write $\lambda=Mp$ for the ambient intensity in the cutoff, whereas
+$\Lambda=np$ is the exact target intensity in the hypothesis. Since
+$L=O(\log M)$, eventually $\Lambda\le\lambda\le2\Lambda$.
+For any fixed $0<c_1<c$, the cost $\log2$ is absorbed by
+$(c-c_1)\nu$, giving $I+\log\lambda\le V-c_1\nu$ eventually.
+Thus no stronger conditioning hypothesis is introduced. The cutoff gives
+$2^{E_*}\ge e^{I+V}(2+\lambda)$ and, in particular,
+$e^I\lambda2^{-E_*-1}\le e^{-V}/2$.
+The budget also gives $I,\log\Lambda,a_M,E_*=O(V)=o(\log M)$.
+\Cref{prop:defects,cor:first-moment}, including the macroscopic form
+\eqref{eq:macro-defects}, give the weighted mass and, for a deterministic
+mask $A\subset U$, the bound
+\[
+ \sum_{x\in A}\PP(J_{x,L}=1)
+ \le p|A|+p\mathcal M_{L+1}.
+\]
+\Cref{prop:cutoffs,supp:prop:cutoff-calculation} apply to raw heights
+$M+O(\log M)$ and give the bad-support count. The factor $Q+1$ and
+changes of this size in the ambient height have logarithm $o(\nu)$.
+\Cref{prop:absolute-profile} restricted to $U$ gives the displayed
+full-value envelope. It is specialized to $M^{5/3+o(1)}$ only after
+$Q=\log_2M+O(V)$ has been checked.
+
+For the signed marginals and local pairs, apply
+\cref{supp:sec:local-marks}. A prime above $Y>2(Q+1)$ occurring oddly at
+one vertex is private throughout a local union. Its raw values are thus
+independent fair signs conditionally on the small-prime environment.
+For $j<k$, $a=L+e$ and $d=k-j$, the ratios to
+$p^2\gamma_{e,\sigma}\gamma_{f,\tau}$ are
+\[
+ 0\ (d<a),\quad4\1_{\{\tau=-\sigma\}}\ (d=a),\quad
+ 2\1_{\{\tau=\sigma\}}\ (d=a+1),\quad1\ (a+1<d\le Q).
+\]
+Zero extension to the maximal supports gives
+\eqref{supp:pivot:eq:input-pairs}; it is an unconditional, not a
+fibrewise, profile bound. For a general $\mathcal A_M$, nonnegative
+averaged errors may be multiplied by $e^I$ as in
+\cref{lem:stable-lift}. The local bound by four times the rate product
+already holds on every small-prime fibre and therefore also after mixing
+under $\mathcal A_M$, without that factor. The later common factor
+$e^I$ is a valid, coarser way of writing the combined ledger.
+
+\Cref{prop:deep-starts} gives the independent deletion of
+$x<\lceil\sqrt M\rceil$, of mass
+$O(\Lambda M^{-1/2}+e^{-c_0\log M/\log\log M})$.
+For the shifted tail, $L'$ remains in a fixed logarithmic band.
+Apply \cref{thm:prefix-poisson} to its count over $2\le x<M$ and then
+test non-vacancy. Since $1-e^{-\lambda'}\le\lambda'$, this gives
+\eqref{supp:pivot:eq:scalar-tail}; the retained indices are a subset of
+that range. Its proof uses the scalar graph estimate, the two-window
+profile and \cref{prop:deep-starts}, not the theorem being proved here.
+Lastly \eqref{eq:micro-cutoff} gives
+$e^IMp2^{-E_*-1}\le e^{-V}$ directly. Summing signs does not enlarge
+the tail event.
+\end{proof}
+
+\subsection{A finite conditional coupling inequality}
+Let $\mathcal J$ be finite, let $W=(W_a)_{a\in\mathcal J}$ be indicators with positive means $\lambda_a$, and for each $a$ couple $W^a$ to $W$ with
+$\Law(W^a)=\Law(W\mid W_a=1)$. Denote a coordinate unit vector by $e_a$.
+\begin{lemma}[Dimension-free Palm--Stein bound]\label{supp:pivot:lem:palm}
+With the supremum convention for total variation,
+\begin{equation}\label{supp:pivot:eq:palm}
+ \TV\left(\Law(W),\bigotimes_a\Pois(\lambda_a)\right)
+ \le\sum_a\lambda_a\EE\|W-(W^a-e_a)\|_1.
+\end{equation}
+No dependency graph is assumed.
+\end{lemma}
+\begin{proof}
+The immigration--death generator with invariant product-Poisson law $\mathsf Q$ is
+\[
+ \mathcal A g(w)=\sum_a\lambda_a\Delta_a g(w)
+                +\sum_a w_a\{g(w-e_a)-g(w)\}.
+\]
+For $0\le h\le1$, its semigroup solution
+$g_h(w)=-\int_0^\infty(\EE h(Z_t^w)-\mathsf Qh)\,dt$
+satisfies $\mathcal A g_h=h-\mathsf Qh$.
+The integral is finite by coupling the initial particles to a stationary initial configuration; the expected number of unmatched survivors is at most
+$(|w|+\sum_a\lambda_a)e^{-t}$.
+Couple two extra initial particles independently, each with death rate one. Their simultaneous survival probability is $e^{-2t}$ and the absolute second difference of an indicator is at most two. Hence
+\[
+ |\Delta_a\Delta_b g_h(w)|\le\int_0^\infty2e^{-2t}\,dt=1,
+ \qquad
+ |\Delta_a g_h(w)-\Delta_a g_h(v)|\le\|w-v\|_1.
+\]
+The first inequality includes $a=b$. For the second, put
+$u=w\wedge v$, the coordinatewise minimum. Telescope from $u$ to $w$
+and from $u$ to $v$ along coordinate steps. Both paths stay in the
+nonnegative lattice and their total length is
+$\|w-u\|_1+\|v-u\|_1=\|w-v\|_1$.
+Thus comparability of $w$ and $v$ is not required. The conditional-law identity gives
+\[
+ \EE\mathcal A g_h(W)=\sum_a\lambda_a
+       \EE\{\Delta_a g_h(W)-\Delta_a g_h(W^a-e_a)\}.
+\]
+Here $W^a-e_a\ge0$. Bound the differences and take the supremum over indicator tests. All sums are finite.
+\end{proof}
+
+For categorical indicators $W_{j,\alpha}$, suppose forcing $(j,\alpha)$ makes it the unique occupied type at $j$ and leaves every site outside a deterministic set $\mathscr D_j$ unchanged. Put $s_j=\sum_\alpha\lambda_{j,\alpha}$. The same-site part of \eqref{supp:pivot:eq:palm} is $\sum_j s_j^2$. The off-site part is at most
+\begin{equation}\label{supp:pivot:eq:categorical}
+ \sum_j\sum_{k\in\mathscr D_j\setminus\{j\}}
+ \left\{s_js_k+\sum_{\alpha,\alpha'}
+           \PP(W_{j,\alpha}=W_{k,\alpha'}=1)\right\}.
+\end{equation}
+Indeed $|W_{k,\alpha'}-W^{j,\alpha}_{k,\alpha'}|
+\le W_{k,\alpha'}+W^{j,\alpha}_{k,\alpha'}$, and
+$\lambda_{j,\alpha}\EE W^{j,\alpha}_{k,\alpha'}
+=\PP(W_{j,\alpha}=W_{k,\alpha'}=1)$.
+Thus a very small type probability cancels, rather than appearing as an inverse minimum probability.
+The analytic solution and its Hessian bound are the explicit input used
+by the associated Lean proof of \cref{supp:pivot:lem:palm}; the semigroup
+construction printed above is not reconstructed by that formal proof.
+This distinction concerns formal coverage, not an extra hypothesis in
+the written coupling argument.
+
+\subsection{A uniform reciprocal-pivot estimate}
+For $m\ge1$ define $\kappa_{\rm odd}(m)$ as in the article and put
+$C(X,z)=\#\{1\le m\le X:\kappa_{\rm odd}(m)\le z\}$.
+For $z\ge1$, the condition is exactly that every valuation at a prime
+above $z$ is even, namely the earlier defective-integer predicate.
+The integer zero is never included.
+The pivot is not the ordinary largest prime factor: for instance
+$\kappa_{\rm odd}(2\cdot13^2)=2$.
+Equivalently $\kappa_{\rm odd}(m)=P^+(\operatorname{core}(m))$,
+with $P^+(1)=1$; this is $P^*(m)$ in
+\cite[eq.~(5)]{deLaBretecheWangXu2026}.
+Writing $m=a^2v$ with $v$ squarefree gives, for $s>1/2$,
+\begin{equation}\label{supp:pivot:eq:rankin-finite}
+ \sum_{\kappa_{\rm odd}(m)\le z}m^{-s}
+   =\zeta(2s)\prod_{q\le z}(1+q^{-s}),\qquad
+ C(X,z)\le X^s\zeta(2s)\prod_{q\le z}(1+q^{-s}).
+\end{equation}
+The square part includes primes larger than $z$ with even exponent and cannot be omitted.
+
+\begin{lemma}[Uniform Rankin estimate]\label{supp:pivot:lem:rankin}
+For $X=M+O(\log M)$, uniformly for $V-2\le w\le3V+2$,
+\begin{equation}\label{supp:pivot:eq:rankin}
+ C(X,e^w)\le X\exp\{-D(H/w)+o(\nu)\}.
+\end{equation}
+The remainder is deterministic and uniform in this band.
+\end{lemma}
+\begin{proof}
+Put $v=u(H/w)$ and $s=1-v/w$. Throughout the band,
+$H/w\asymp\nu$, $v=u+O(1)$, and $s\to1$, so eventually $s\ge3/4$.
+Therefore
+\[
+ \log\left\{\zeta(2s)\prod_{q\le e^w}(1+q^{-s})\right\}
+    =\sum_{q\le e^w}q^{-s}+O(1).
+\]
+The sum is $\operatorname{Ei}(v)+o(\nu)$ uniformly. To check the required precision, split at $e^{w/2}$. Chebyshev's bound and partial summation bound the lower part by $O(\log w+e^{v/2})=o(\nu)$.
+On the upper part the relative error in $\pi(t)\sim t/\log t$ is uniform for $t\ge e^{(V-2)/2}$ and tends to zero. Partial summation compares the sum to
+\[
+ \int_{e^{w/2}}^{e^w}\frac{t^{-s}}{\log t}\,dt
+       =\operatorname{Ei}(v)-\operatorname{Ei}(v/2).
+\]
+This integral is $O(\nu)$. The boundary terms
+$O(e^v/w+e^{v/2}/w)$, the replacement of a partial-summation factor $s$ by one, and $\operatorname{Ei}(v/2)$ are all $o(\nu)$.
+Since $\log X=H+o(1)$, the logarithm of the normalized bound in
+\eqref{supp:pivot:eq:rankin-finite} is
+\[
+ (s-1)\log X+\operatorname{Ei}(v)+o(\nu)
+   =-(H/w)v+\operatorname{Ei}(v)+o(\nu)
+   =-D(H/w)+o(\nu).
+\]
+\end{proof}
+
+\begin{lemma}[Convex saddle envelope]\label{supp:pivot:lem:saddle}
+In the preceding band,
+\begin{equation}\label{supp:pivot:eq:saddle}
+ w+D(H/w)\ge2V-V\left(\sqrt{\nu u/V}-1\right)^2
+              =2V-O(\nu/u)=2V-o(\nu).
+\end{equation}
+\end{lemma}
+\begin{proof}
+A parameter calculation gives the tangent inequality directly.
+Put $\nu(t)=e^t/t$ and $D_{\rm par}(t)=e^t-\operatorname{Ei}(t)$
+for $t>1$. At the fixed saddle parameter $u$,
+\[
+ \frac{d}{dt}\{D_{\rm par}(t)-u\nu(t)\}
+       =\frac{e^t(t-1)(t-u)}{t^2}.
+\]
+This expression is nonpositive up to $u$ and nonnegative afterwards,
+so the bracket has its minimum at $u$. Since
+$D_{\rm par}(u)=V$ and $\nu(u)=\nu$, evaluation at the parameter
+corresponding to $H/w$ gives
+$D(H/w)\ge V+u(H/w-\nu)$, without differentiating an inverse function.
+With $a=\nu u/V$ and $t=w/V$, add $w$ and minimize $t+a/t$:
+\[
+ w+D(H/w)\ge V(t+1-a+a/t)
+                 \ge V(1-a+2\sqrt a)=2V-V(\sqrt a-1)^2.
+\]
+Now $\nu u-V=\operatorname{Ei}(u)=\nu(1+O(1/u))$ and $V\sim\nu u$, so
+\[
+ V(\sqrt a-1)^2
+ =\frac{\operatorname{Ei}(u)^2}{(\sqrt{\nu u}+\sqrt V)^2}
+ =O(\nu/u).
+\]
+The minimizer need not be exactly $w=V$; the displayed precision, not exact optimality of that choice, preserves the fixed margin $c\nu$.
+\end{proof}
+
+\begin{proposition}[Reciprocal-pivot sum]\label{supp:pivot:prop:reciprocal}\label{C-PIVOT-RECIP}
+For $X=M+O(\log M)$ and $Y=\lfloor e^V\rfloor$,
+\begin{equation}\label{supp:pivot:eq:reciprocal}
+ S_M(X):=\sum_{\substack{m\le X\\\kappa_{\rm odd}(m)>Y}}
+                 \frac1{\kappa_{\rm odd}(m)}
+       \le X\exp\{-2V+o(\nu)\}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Terms with $\kappa_{\rm odd}(m)>e^{3V}$ contribute at most $Xe^{-3V}$.
+Divide the remaining logarithmic range into intervals $[b,b+1)$, starting at
+$\log Y=V+o(1)$. Each contributes at most
+\[
+ e^{-b}C(X,e^{b+1})
+ \le X\exp\{-b-D(H/(b+1))+o(\nu)\}
+ \le X\exp\{-2V+o(\nu)\},
+\]
+by Lemmas~\ref{supp:pivot:lem:rankin} and \ref{supp:pivot:lem:saddle}.
+Indeed $-b-D(H/(b+1))=1-\{b+1+D(H/(b+1))\}$: the next-slice
+shift costs the fixed factor $e$ before absorption in $o(\nu)$.
+For an integer pivot, $\kappa_{\rm odd}>\lfloor e^V\rfloor$ is
+exactly $\kappa_{\rm odd}>e^V$; no threshold mass is lost. There are $O(V)$ intervals, with $\log V=o(\nu)$. Their uniform remainders can be summed. The omitted tail is smaller since $V/\nu\to\infty$.
+\end{proof}
+
+\paragraph{Classical antecedent and square-part reduction.}
+The bound in \cref{supp:pivot:prop:reciprocal} is not an autonomous
+analytic novelty. With $P^+(1)=1$, write
+$S_+(x)=\sum_{n\le x}1/P^+(n)$.
+Equation~(1.3) of \cite{ErdosIvicPomerance1986}, at $r=1$, gives
+\[
+ S_+(x)=x\exp\{-G(\log x)+o(\nu_x)\},\qquad
+ G(H)=\sqrt{2H(\log H+\log\log H-\log2-2)}.
+\]
+The expansion of $V_x$ in \cref{prop:cutoffs} gives
+$G(\log x)=2V_x+o(\nu_x)$. In the classical formula, the omitted
+terms after the first correction have size
+$O(\sqrt{H\log H}(\log\log H)^2/(\log H)^2)=o(\nu_x)$.
+This identifies the required second-scale precision, not just the
+leading square-root exponent.
+
+Here is the deduction for odd-prime pivots. Uniquely write $n=a^2v$
+with $v$ squarefree. Positivity gives
+\[
+ \sum_{n\le x}\frac1{\kappa_{\rm odd}(n)}
+ =\sum_{a\le\sqrt x}\ \sum_{\substack{v\le x/a^2\\v\text{ squarefree}}}
+                           \frac1{P^+(v)}
+ \le\sum_{a\le\sqrt x} S_+(x/a^2).
+\]
+The terms $a>\exp(3V_x)$ are $O(xe^{-3V_x})$ by $S_+(t)\le t$.
+For the other terms, put $H=\log x$ and $t=x/a^2$. Uniformly here,
+$\log t=H-O(V_x)$, $\nu_t\sim\nu_x$, and the remainder in the
+classical asymptotic is $o(\nu_x)$. The explicit smooth function $G$
+satisfies $G'(H)=O(\sqrt{\log H/H})=o(1)$ throughout this range.
+The mean-value theorem therefore yields
+\[
+ S_+(x/a^2)
+ \le x\exp\{-2V_x+o(\nu_x)\}\,a^{-2+o(1)}.
+\]
+Only the explicit function $G$ has been differentiated, not an
+unspecified asymptotic remainder. The weights sum to $O(1)$, so
+\[
+ \sum_{n\le x}\frac1{\kappa_{\rm odd}(n)}
+       \le x\exp\{-2V_x+o(\nu_x)\}.
+\]
+Restricting to $\kappa_{\rm odd}(n)>Y$ only decreases this sum.
+At $x=M+O(\log M)$, the hard scales agree at the stated precision,
+recovering \cref{supp:pivot:prop:reciprocal}.
+This is a deduction from the cited asymptotic, not an assertion that
+its statement uses the present pivot notation. The direct Rankin
+argument above remains a complete proof of the estimate used below.
+
+\subsection{Directed change sets and exact forcing}\label{supp:pivot:sec:forcing}
+Take $E_*=E_M^*$ from \eqref{eq:micro-cutoff}, $Q=L+E_*+1$, and
+$\mathcal T_* =\{0,\ldots,E_*\}\times\sgnset$.
+Use the original deterministic good set
+\begin{equation}\label{supp:pivot:eq:good}
+ G_0=\{j:1\le j\le n,\ j+1\ge\lceil\sqrt M\rceil,
+                    \ \kappa_{\rm odd}(j+a)>Y\ (0\le a\le Q)\}.
+\end{equation}
+For $j\in G_0$, put $q_{j,a}=\kappa_{\rm odd}(j+a)$.
+These primes are distinct and greater than $Y>2(Q+1)$: a selected prime divides its own vertex to an odd exponent and no other vertex of that maximal support.
+For this privacy assertion alone, exceeding $Q$ suffices: a common
+prime divisor of two distinct vertices would divide their nonzero
+difference of size at most $Q$. Odd valuation, not valuation exactly
+one, supplies the parity coordinate. The stronger $Y>2(Q+1)$ is
+retained for the separate local-pair argument.
+
+The finite cylinder must include every prime up to an integer
+$R\ge\max\{Y,n+Q\}$. This covers all marked vertices and the entire
+conditioning event, not only the terminal prefix $M$. Restricting the
+infinite prime-sign source to this cylinder preserves the conditional
+laws of all the finite events below. Define
+\begin{equation}\label{supp:pivot:eq:change-sets}
+ \mathscr D_j=\{k\in G_0:q_{j,a}\mid k+b
+                   \text{ for some }0\le a,b\le Q\},
+ \qquad \mathscr B_M=\sum_{j\in G_0}|\mathscr D_j|.
+\end{equation}
+These are the possible changes for a specified forcing, not neighbourhoods asserted to be a new dependency graph. Divisibility, including even exponents, is a harmless overestimate of possible change.
+
+\begin{proposition}[The total directed footprint]\label{supp:pivot:prop:footprint}
+With $X=n+Q=M+O(\log M)$,
+\begin{align}
+ |\mathscr D_j|&\le(Q+1)\sum_{a=0}^Q(n/q_{j,a}+1),\label{supp:pivot:eq:footprint-point}\\
+ \mathscr B_M&\le n(Q+1)^2(1+S_M(X))
+          \ll n^2e^{-2V+o(\nu)}+n(Q+1)^2.\label{supp:pivot:eq:footprint}
+\end{align}
+\end{proposition}
+\begin{proof}
+For a fixed prime and target offset $b$, at most $n/q+1$ grid indices satisfy the divisibility; no bound on $b/q$ is required. Sum over offsets and selected primes. When summing reciprocals over $j,a$, each raw integer $m=j+a$ occurs at most $Q+1$ times. Apply Proposition~\ref{supp:pivot:prop:reciprocal}, use $X\asymp n$, and absorb $\log(Q+1)=O(\log H)=o(\nu)$.
+\end{proof}
+
+For example, let $Q=3$, $Y=11$, $j=246$ and $k=101$. The source vertices
+$246,247,248,249$ have pivots $41,19,31,83$.
+The all-large-prime graph connects them to $101,102,103,104$ through $13$, since
+$247=13\cdot19$ and $104=8\cdot13$. None of the four source pivots divides a target vertex, so $k\notin\mathscr D_j$. Conversely the pivot $13$ of $104$ divides $247$; the direction matters.
+
+\begin{proposition}[Exact one-word conditional law]\label{supp:pivot:prop:forcing}\label{C-PALM-FORCING}
+Let $W=(I_{j,\alpha})_{j\in G_0,\alpha\in\mathcal T_*}$.
+For every $a=(j,e,\sigma)$, there is a deterministic modification of prime signs under $\PA$ whose resulting vector $W^a$ has law
+\[
+ \Law_{\mathcal A}(W^a)=\Law_{\mathcal A}(W\mid I_{j,e,\sigma}=1).
+\]
+Only $q_{j,0},\ldots,q_{j,L+e+1}$ are modified. The small-prime environment and every coordinate at a site outside $\mathscr D_j$ remain unchanged. If the word already holds, the modification is the identity.
+\end{proposition}
+\begin{proof}
+Write $f(q)=(-1)^{\eta_q}$ and $\sigma=(-1)^\tau$.
+The required raw word has bits
+$b_0=b_{L+e+1}=1-\tau$ and $b_a=\tau$ for $1\le a\le L+e$.
+By privacy, the raw bit at $j+a$ is
+$\eta_{q_{j,a}}+\ell_{j,a}(\eta_{\rm nonpivots})$, where $\ell_{j,a}$ uses none of the pivot bits being forced. Keep the other bits fixed and set
+\begin{equation}\label{supp:pivot:eq:forcing}
+ \eta'_{q_{j,a}}=b_a+\ell_{j,a}(\eta_{\rm nonpivots})\pmod2,
+ \qquad 0\le a\le L+e+1.
+\end{equation}
+Every other bit is left unchanged, including the pivots with
+$L+e+2\le a\le Q$ in the maximal support. Conditional on all the
+nonpivot bits and on $\mathcal A_M$, the distinct pivot bits are
+independent and fair. Thus the event has probability
+$2^{-(L+e+2)}=p\gamma_{e,\sigma}$ for every nonpivot configuration. Conditioning on it leaves the complete nonpivot law unchanged and fixes exactly the values in \eqref{supp:pivot:eq:forcing}. This proves the joint conditional law of the entire finite vector.
+All forced primes exceed $Y$. Outside $\mathscr D_j$, none divides any of the raw vertices of a low-type event, so that event is unchanged. Categorical exclusivity gives the unique forced atom at the source site.
+\end{proof}
+
+This is the step that deals with higher-order dependence: a complete conditional law is constructed, not inferred from pair covariances. The estimates below use pairs only after that law and its possible changes have been established.
+
+\subsection{Finite signed ledger and completion}
+At each $j\in G_0$, every low-type conditional mean is $p\gamma_\alpha$ on every small-prime environment and hence under $\PA$.
+Apply Lemma~\ref{supp:pivot:lem:palm} and \eqref{supp:pivot:eq:categorical} to the preceding forcing.
+The same-site sum is at most $np^2$ and the product-of-means sum is at most $p^2\mathscr B_M$.
+For $0<|j-k|\le Q$, the signed local calculation in \cref{supp:pivot:lem:inputs} bounds the joint mass by $4p^2\gamma_\alpha\gamma_{\alpha'}$, already uniformly over environments. There are $O(nQ)$ such pairs.
+For separated sites the unconditional bound is
+\[
+ \PP(I_{j,\alpha}=I_{k,\alpha'}=1)
+ \le p^2\gamma_\alpha\gamma_{\alpha'}
+       2^{\rho^{\rm val}_{Q+1}(j+1,k+1)}.
+\]
+Bound its conditional version by $e^I$ times this nonnegative quantity, split $2^\rho=1+(2^\rho-1)$, and enlarge only the excess to all separated pairs. The constant term
+stays on the directed change sets; extending it to all pairs would add
+an unnecessary quadratic baseline. Since $\sum_{\alpha\in\mathcal T_*}\gamma_\alpha\le1$, this proves
+\begin{equation}\label{supp:pivot:eq:finite-ledger}
+ \TV\left(\Law_{\mathcal A}(W),
+             \bigotimes_{j\in G_0,\alpha\in\mathcal T_*}\Pois(p\gamma_\alpha)\right)
+ \ll np^2+e^Ip^2\{nQ+\mathscr B_M+R^{\rm val}_{2,U}(M,Q+1)\}.
+\end{equation}
+Neither the number of exact types nor their smallest probability appears.
+
+Embed the finite field by zero elsewhere. The total actual and target deletion-and-tail cost is bounded by a fixed multiple of
+\begin{equation}\label{supp:pivot:eq:deletion}
+ d_{0,M}=e^I\left[
+ p\mathcal M_{L+1}+p|\mathcal D_Y(Q)|+\Lambda M^{-1/2}
+ +e^{-c_0H/\log H}+Mp\,2^{-E_*-1}\right].
+\end{equation}
+This follows from the masked first moment, independent deep-start bound and shifted scalar tail in \cref{supp:pivot:lem:inputs}. The actual upper-tail event is a base hit at $L+E_*+1$; signs do not enlarge it. The independent target cost is its omitted intensity. Filling is unnecessary for \eqref{supp:pivot:eq:finite-ledger}, because the Stein bound is dimension free for the reduced deterministic target. Thus
+\begin{equation}\label{supp:pivot:eq:complete-ledger}
+ \Delta_M^{\rm mic}\ll d_{0,M}+np^2+
+        e^Ip^2\{nQ+\mathscr B_M+R^{\rm val}_{2,U}(M,Q+1)\}.
+\end{equation}
+
+By \eqref{supp:pivot:eq:footprint}, the footprint term is at most
+\[
+ e^{I+2\log\Lambda-2V+o(\nu)}+M^{-1+o(1)}
+ \le e^{-I-2c\nu+o(\nu)}+M^{-1+o(1)}.
+\]
+The deletion term is bounded by
+\[
+ e^{I+\log\Lambda-V+o(\nu)}+M^{-1/2+o(1)}
+             +e^{I-c_0H/\log H}+O(e^{-V}).
+\]
+Here $H/\log H\gg V$ makes the deep-start term negligible. Since
+$I,\log\Lambda,E_*=O(V)=o(H)$ and $Q=\log_2 M+O(V)$, the full-value input gives
+\[
+ e^Ip^2R^{\rm val}_{2,U}(M,Q+1)
+       \ll_{\varepsilon_0}M^{-1/3+\varepsilon_0+o(1)}.
+\]
+The local and same-site terms are $M^{-1+o(1)}$. Choose
+$\varepsilon_0<\varepsilon$ and absorb the uniform $o(\nu)$ terms with
+$c'<c$. This proves \eqref{eq:micro-tv}.
+
+\paragraph{Dependency boundary.}
+This proof uses a single forced word at a time. It does not condition on a Poisson-size plant, estimate an exponentially small planted void, or bound a global absolute cumulant activity. The constructions in Appendix~\ref{supp:sec:palm-complements} are separate consequences and comparisons. The selected-pivot footprint replaces the all-large-prime baseline $e^{I+2\log\Lambda-V+o(\nu)}$; there is no additional inverse-intensity Stein factor.
