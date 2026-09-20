@@ -1,19 +1,19 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
 version: v0.4
 project:
-  name: V3PREL threshold staircase, Poisson–Gaussian bridge and integer-level process
-  description: >-
-    Joint Poisson–Gaussian limits for conditioned run counts, with an autoregressive Gaussian
-    target and independent normal innovations. Quantitative results give local Poisson
-    probabilities, a Gaussian distribution-function bound, moderate deviations, and relative
-    local or tail estimates for the multiplicative source under the stated information budgets.
-    The whole integer-level point process has locally finite but infinite total mass; its
-    complete upper-half laws, conditioning on a fixed count and extreme phases are included. The
-    intrinsic probability estimates are proved internally. Their arithmetic applications use, as
-    applicable, the prime number theorem, scalar Stein bounds, the Poisson process estimate of
-    Arratia, Goldstein and Gordon, and Barbour's corrected multivariate Stein bounds.
+  name: Threshold staircases and the Poisson–Gaussian bridge
+  description: Joint Poisson–Gaussian limits for conditioned run counts, with an autoregressive Gaussian
+    target and independent normal innovations. Quantitative results give local Poisson probabilities,
+    a Gaussian distribution-function bound, moderate deviations, and relative local or tail estimates
+    for the multiplicative source under the stated information budgets. The whole integer-level point
+    process has locally finite but infinite total mass; its complete upper-half laws, conditioning on
+    a fixed count and extreme phases are included. The intrinsic probability estimates are proved internally.
+    Their arithmetic applications use, as applicable, the prime number theorem, scalar Stein bounds, the
+    Poisson process estimate of Arratia, Goldstein and Gordon, and Barbour's corrected multivariate Stein
+    bounds.
   authors:
-  - Brice Pouly
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
   responsible_maintainers:
   - Brice Pouly
   license: Apache-2.0
@@ -25,29 +25,34 @@ classification:
   - 11K65
   - 60F05
 sources:
-- title: Long runs and rare patterns of a random completely multiplicative function, version 3PREL
+- title: Long runs and rare patterns of a random completely multiplicative function
   authors:
-  - Brice Pouly
-  id: https://github.com/Vulkin-prog/paper-c-lean/blob/ee2ac789764fe5d9fd19c96c6c0778a693b129a0/manuscripts/v3prel/paper_C_version_3PREL_en.pdf
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
+  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_en.pdf
   type: paper
-  location: Section 5, Theorem 5.10; Section 6, central/local and moderate-deviation consequences.
-    Source snapshot manuscripts/v3prel/paper_C_version_3PREL_en.pdf, SHA-256 0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7.
+  location: 'Sections 4–6; threshold staircase and Poisson–Gaussian consequences. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_en.pdf;
+    SHA-256 74bd843886f2038865dc97a6d09f6b58be0898d5571b10de86faa26372524370.'
   relationship: adapts
   license: CC-BY-4.0
   author_endorsement: participated
-  note: Exactly the 29 declarations listed in comparator/v3prel_limits.json are selected; the repository
-    source mapping has a broader scope.
-- title: Technical companion to Long runs and rare patterns of a random completely multiplicative
-    function, version 3PREL
+  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
+    be incorporated after the author supplies them.
+- title: Technical companion to Long runs and rare patterns of a random completely multiplicative function
   authors:
-  - Brice Pouly
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
+  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf
   type: paper
-  location: Sections D.1 and D.4; corrected directional Stein input C.3. Snapshot manuscripts/v3prel/paper_C_version_3PREL_technical_companion_en.pdf,
-    SHA-256 d64150c995f07ee39b016bb20a16b5fc3a01ce53b0ddcda893d1ceb41eefadee.
+  location: 'Appendix D, including D.1 and D.4. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf;
+    SHA-256 6162f9d9f2cc0b0e8d72c7ad93471a0d307334c4a775d80b503b9478bb32cc39.'
   relationship: adapts
-  note: D.1 includes explicit Stirling bounds and effective Gaussian estimates; D.4 includes the whole
-    locally finite process, infinite total mass, complete upper-half laws, conditional marks, compact-test
-    Laplace functionals and extreme phases.
+  license: CC-BY-4.0
+  author_endorsement: participated
+  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
+    be incorporated after the author supplies them.
 - title: 'Two moments suffice for Poisson approximations: the Chen--Stein method'
   authors:
   - Richard Arratia
@@ -57,10 +62,9 @@ sources:
   type: paper
   location: Theorem 2, printed page 11, exact dependency-graph specialization
   relationship: background
-  note: Process.ProcessAGGStatement states the finite field comparison in half-l1 convention with
-    factor 2(b1+b2), exact outside-vector independence, and all target coordinates. It is a visible
-    theorem argument. The arithmetic dependency graph and its costs are proved internally, not supplied
-    as premises.
+  note: Process.ProcessAGGStatement states the finite field comparison in half-l1 convention with factor
+    2(b1+b2), exact outside-vector independence, and all target coordinates. It is a visible theorem argument.
+    The arithmetic dependency graph and its costs are proved internally, not supplied as premises.
 - title: Newman's Short Proof of the Prime Number Theorem
   authors:
   - Don Zagier
@@ -68,9 +72,9 @@ sources:
   type: paper
   location: American Mathematical Monthly 104 (1997), pages 705-708
   relationship: background
-  note: Analysis.PrimeNumberTheoremRemainder is the ordinary prime-counting remainder o(t/log t),
-    with Li(t)=Ei(log t). The normalization of Ei, saddle roots and weighted prime estimates are proved
-    in the local development. No desired arithmetic error is assumed.
+  note: Analysis.PrimeNumberTheoremRemainder is the ordinary prime-counting remainder o(t/log t), with
+    Li(t)=Ei(log t). The normalization of Ei, saddle roots and weighted prime estimates are proved in
+    the local development. No desired arithmetic error is assumed.
 - title: Stein's Method and Poisson Process Convergence
   authors:
   - A. D. Barbour
@@ -78,49 +82,54 @@ sources:
   type: paper
   location: Journal of Applied Probability 25(A) (1988), page 179, Lemmas 2 and 3
   relationship: background
-  note: Analysis.DirectionalSteinFactorsStatement requires one solution of the actual multivariate
-    Poisson Stein equation with constant entrywise bound and weighted quadratic-form bound. It contains
-    no unweighted Euclidean quadratic bound. The previous overlay's stronger Euclidean premise was
-    false and is refuted by DirectionalSteinCounterexample; this new candidate uses the corrected
-    source-faithful proposition. No final comparison or arithmetic conclusion is part of this analytic
-    input.
+  note: Analysis.DirectionalSteinFactorsStatement requires one solution of the actual multivariate Poisson
+    Stein equation with constant entrywise bound and weighted quadratic-form bound. It contains no unweighted
+    Euclidean quadratic bound. The previous overlay's stronger Euclidean premise was false and is refuted
+    by DirectionalSteinCounterexample; this new candidate uses the corrected source-faithful proposition.
+    No final comparison or arithmetic conclusion is part of this analytic input.
 - title: Poisson Approximation
   authors:
   - A. D. Barbour
   - Lars Holst
   - Svante Janson
   type: book
-  location: Scalar Poisson Stein equation and its standard first-difference factor, as explicitly
-    stated by Analysis.ScalarPoissonSteinStatement.
+  location: Scalar Poisson Stein equation and its standard first-difference factor, as explicitly stated
+    by Analysis.ScalarPoissonSteinStatement.
   relationship: background
-  note: The analytic solution bound is an ordinary visible theorem argument. No final approximation
-    or arithmetic error bound is assumed.
+  note: The analytic solution bound is an ordinary visible theorem argument. No final approximation or
+    arithmetic error bound is assumed.
 - title: Paper C and technical companion — Zenodo publication record
   authors:
   - Brice Pouly
   id: https://doi.org/10.5281/zenodo.21736676
   type: paper
   relationship: background
-  note: Concept DOI for the paper and companion across published versions. This earlier publication
-    record is distinct from the archived V3PREL source above; it does not supply a version-specific
-    DOI for that snapshot or a literature hypothesis for the proofs.
-- title: Critical Poisson fields for long constant stretches of a random completely multiplicative
-    function, Cambridge Open Engage version 2
+  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
+    author manuscript; the final paper DOI will be added after publication.
+- title: Critical Poisson fields for long constant stretches of a random completely multiplicative function,
+    Cambridge Open Engage version 2
   authors:
   - Brice Pouly
   id: https://doi.org/10.33774/coe-2026-z3l74-v2
   type: paper
   location: Published 4 September 2026, version 2.
   relationship: background
-  note: Earlier public version, cited for publication history. Its title and DOI identify Cambridge
-    version 2, not the archived V3PREL source used by this formalization; it is not an additional
-    mathematical premise.
+  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
+    author manuscript; the final paper DOI will be added after publication.
 related_formalizations: []
 status:
-  scope: New candidate v3prel_limits, with 29 selected declarations and a standalone Mathlib-only
-    challenge. The source snapshot has no claimed Palomar registration, Comparator pass or NanoDa
-    result; those outcomes require separate immutable-commit evidence. The solution has no intentional
-    proof holes; only the selected challenge declarations are placeholders.
+  scope: 29 selected declarations in ChallengeV3Limits, an autonomous Mathlib-only Challenge, with proofs
+    in SolutionV3Limits. Joint Poisson–Gaussian limits for conditioned run counts, with an autoregressive
+    Gaussian target and independent normal innovations. Quantitative results give local Poisson probabilities,
+    a Gaussian distribution-function bound, moderate deviations, and relative local or tail estimates
+    for the multiplicative source under the stated information budgets. The whole integer-level point
+    process has locally finite but infinite total mass; its complete upper-half laws, conditioning on
+    a fixed count and extreme phases are included. The intrinsic probability estimates are proved internally.
+    Their arithmetic applications use, as applicable, the prime number theorem, scalar Stein bounds, the
+    Poisson process estimate of Arratia, Goldstein and Gordon, and Barbour's corrected multivariate Stein
+    bounds. Intentional proof placeholders occur only in the Challenge. Literature inputs remain explicit
+    theorem arguments and are not discharged by kernel validation. No Palomar editorial approval or registration
+    is asserted.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -366,34 +375,33 @@ automation:
     models:
     - GPT-6 Codex agents
     framework: Codex
-    tool_setup: Agent-assisted mathematical development, source checks, Lean builds, and independent
-      agent review, directed by the human maintainer.
-    prompting_notes: Preserve actual sources and targets, expose literature propositions, and use
-      standalone challenge modules with separately proved bridges.
-  notes: The repository contains the substantive proofs, so repository metadata is omitted and the
-    ordinary substantive-development classification applies. Proof development and comparison-interface
-    review are not human peer review.
+    tool_setup: Agent-assisted mathematical development, source checks, Lean builds, and independent agent
+      review, directed by the human maintainer.
+    prompting_notes: Preserve actual sources and targets, expose literature propositions, and use standalone
+      challenge modules with separately proved bridges.
+  notes: The repository contains the substantive proofs, so repository metadata is omitted and the ordinary
+    substantive-development classification applies. Proof development and comparison-interface review
+    are not human peer review.
 fidelity:
-  divergences: The joint limit is weak convergence of explicit probability laws, with equality to
-    the true conditioned source pushforward required in the conclusion. The Gaussian covariance, AR
-    recursion and independent normal innovations are explicit. The scalar quantitative estimates are
-    proved internally; the arithmetic hard and soft local transfers and hard moderate-tail transfer
-    expose their actual information budgets. D.4 is represented by the same whole integer-level point
-    measure, its complete compact-test Laplace functional and actual upper-half restrictions. A separate
-    vague-topology convergence declaration is not selected. The total upper-half count is Poisson;
-    conditioning on any count n yields n iid uniform positions and independent nonnegative geometric
-    marks. A constant sign is a dummy coordinate in this unmarked D.4 representation, not a claimed
-    random sign. The half-line construction is totalized on a null set, with its equality to the whole-process
-    restriction proved almost everywhere. The extreme endpoint is the actual source event. Saddle
-    roots and finite source configurations are selected by epsilon, with uniqueness bridges proved
-    in the solution. Only the explicit process AGG, scalar Stein, corrected directional Stein and
-    ordinary PNT propositions are used where required; none assumes the desired arithmetic or limit
-    conclusion. No new Lean axiom is introduced.
+  divergences: The joint limit is weak convergence of explicit probability laws, with equality to the
+    true conditioned source pushforward required in the conclusion. The Gaussian covariance, AR recursion
+    and independent normal innovations are explicit. The scalar quantitative estimates are proved internally;
+    the arithmetic hard and soft local transfers and hard moderate-tail transfer expose their actual information
+    budgets. D.4 is represented by the same whole integer-level point measure, its complete compact-test
+    Laplace functional and actual upper-half restrictions. A separate vague-topology convergence declaration
+    is not selected. The total upper-half count is Poisson; conditioning on any count n yields n iid uniform
+    positions and independent nonnegative geometric marks. A constant sign is a dummy coordinate in this
+    unmarked D.4 representation, not a claimed random sign. The half-line construction is totalized on
+    a null set, with its equality to the whole-process restriction proved almost everywhere. The extreme
+    endpoint is the actual source event. Saddle roots and finite source configurations are selected by
+    epsilon, with uniqueness bridges proved in the solution. Only the explicit process AGG, scalar Stein,
+    corrected directional Stein and ordinary PNT propositions are used where required; none assumes the
+    desired arithmetic or limit conclusion. No new Lean axiom is introduced.
 review:
   status: agent-reviewed
-  notes: Local compilation and independent interface review are recorded separately. Current immutable-commit
-    Comparator/NanoDa evidence must be supplied by the V3PREL qualification workflow; historical qualifications
-    do not bind these files.
+  notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
+    checks are recorded separately in qualification evidence. There is no independent human peer review
+    or claimed Palomar decision.
 alignment:
   namespace: PaperCV3Audit
   statements:

@@ -1,3 +1,8 @@
+# Earlier Palomar candidate preparation record
+
+For the current seven-family selection, use the [submission guide](PALOMAR_SUBMISSIONS.md).
+The dated material below records an earlier selection and is not current submission advice.
+
 # Five new Palomar candidates for V3PREL
 
 **3PREL8 update:** the current manuscript and its minimal sources are in

@@ -78,3 +78,15 @@ name = "SolutionV3Crossover"
 
 [[lean_lib]]
 name = "PaperCPrel8"
+
+[[lean_lib]]
+name = "ChallengeV3Microscopic"
+
+[[lean_lib]]
+name = "SolutionV3Microscopic"
+
+[[lean_lib]]
+name = "ChallengeV3Palm"
+
+[[lean_lib]]
+name = "SolutionV3Palm"

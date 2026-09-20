@@ -1,21 +1,20 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
 version: v0.4
 project:
-  name: V3PREL moving crossover mixtures and affine first-departure localization
-  description: >-
-    Conditioned on the presence of a run contained in a finite prefix, the first such run has a
-    mixture law combining a microscopic border contribution with a uniform bulk location,
-    geometric excess and fair sign. The results retain the marked record, describe both location
-    scales in finite and infinite phase regimes, and determine the sign bias. Under compatible
-    affine conditions on small primes, the border probability is exactly 2^(-d), where d is the
-    row-space deficit. Affine localization and sign bias use the rank information budget without
-    future neutrality; the full marked-clock limit also requires eventual neutrality for each
-    fixed finite future prefix. Approximation uses the prime number theorem, the Poisson process
-    estimate of Arratia, Goldstein and Gordon, and the stated Laishram–Shorey, Shorey and
-    Nicolas–Robin estimates. The exact affine border identity needs none of these literature
+  name: Microscopic–bulk crossover and conditional affine laws
+  description: Conditioned on the presence of a run contained in a finite prefix, the first such run has
+    a mixture law combining a microscopic border contribution with a uniform bulk location, geometric
+    excess and fair sign. The results retain the marked record, describe both location scales in finite
+    and infinite phase regimes, and determine the sign bias. Under compatible affine conditions on small
+    primes, the border probability is exactly 2^(-d), where d is the row-space deficit. Affine localization
+    and sign bias use the rank information budget without future neutrality; the full marked-clock limit
+    also requires eventual neutrality for each fixed finite future prefix. Approximation uses the prime
+    number theorem, the Poisson process estimate of Arratia, Goldstein and Gordon, and the stated Laishram–Shorey,
+    Shorey and Nicolas–Robin estimates. The exact affine border identity needs none of these literature
     hypotheses.
   authors:
-  - Brice Pouly
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
   responsible_maintainers:
   - Brice Pouly
   license: Apache-2.0
@@ -27,29 +26,34 @@ classification:
   - 11K65
   - 60F05
 sources:
-- title: Long runs and rare patterns of a random completely multiplicative function, version 3PREL
+- title: Long runs and rare patterns of a random completely multiplicative function
   authors:
-  - Brice Pouly
-  id: https://github.com/Vulkin-prog/paper-c-lean/blob/ee2ac789764fe5d9fd19c96c6c0778a693b129a0/manuscripts/v3prel/paper_C_version_3PREL_en.pdf
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
+  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_en.pdf
   type: paper
-  location: Theorems 7.8-7.10, equation (7.19), exact affine border deficit and sign bias. Snapshot manuscripts/v3prel/paper_C_version_3PREL_en.pdf,
-    SHA-256 0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7.
+  location: 'Section 8; first contained exceedance, two-source mixture and conditional affine theorem.
+    Exact source: manuscripts/paper-c/paper_c_version_3PREL9_en.pdf; SHA-256 74bd843886f2038865dc97a6d09f6b58be0898d5571b10de86faa26372524370.'
   relationship: adapts
   license: CC-BY-4.0
   author_endorsement: participated
-  note: This is a new candidate, independent of the four historical v0.9 IDs. Its scope is exactly the
-    listed declarations; no previous qualification is reused.
-- title: Technical companion to Long runs and rare patterns of a random completely multiplicative function,
-    version 3PREL
+  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
+    be incorporated after the author supplies them.
+- title: Technical companion to Long runs and rare patterns of a random completely multiplicative function
   authors:
-  - Brice Pouly
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
+  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf
   type: paper
-  location: Appendix E and the explicitly cited probability inputs. Snapshot manuscripts/v3prel/paper_C_version_3PREL_technical_companion_en.pdf,
-    SHA-256 d64150c995f07ee39b016bb20a16b5fc3a01ce53b0ddcda893d1ceb41eefadee.
+  location: 'Crossover estimates and marked conditional laws. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf;
+    SHA-256 6162f9d9f2cc0b0e8d72c7ad93471a0d307334c4a775d80b503b9478bb32cc39.'
   relationship: adapts
-  note: All source-shaped literature arguments are visible in the standalone challenge. This family does
-    not consume the corrected multivariate directional Stein premise; the correction C002 is exercised
-    by other V3PREL candidates.
+  license: CC-BY-4.0
+  author_endorsement: participated
+  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
+    be incorporated after the author supplies them.
 - title: 'Two moments suffice for Poisson approximations: the Chen-Stein method'
   authors:
   - Richard Arratia
@@ -106,33 +110,33 @@ sources:
   id: https://doi.org/10.5281/zenodo.21736676
   type: paper
   relationship: background
-  note: Concept DOI for the paper and companion across published versions. This earlier publication
-    record is distinct from the archived V3PREL source above; it does not supply a version-specific
-    DOI for that snapshot or a literature hypothesis for the proofs.
-- title: Critical Poisson fields for long constant stretches of a random completely multiplicative
-    function, Cambridge Open Engage version 2
+  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
+    author manuscript; the final paper DOI will be added after publication.
+- title: Critical Poisson fields for long constant stretches of a random completely multiplicative function,
+    Cambridge Open Engage version 2
   authors:
   - Brice Pouly
   id: https://doi.org/10.33774/coe-2026-z3l74-v2
   type: paper
   location: Published 4 September 2026, version 2.
   relationship: background
-  note: Earlier public version, cited for publication history. Its title and DOI identify Cambridge
-    version 2, not the archived V3PREL source used by this formalization; it is not an additional
-    mathematical premise.
+  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
+    author manuscript; the final paper DOI will be added after publication.
 related_formalizations: []
 status:
-  scope: New candidate v3prel_crossover. One standalone Mathlib-only Challenge (442 lines, 27446 bytes)
-    and one independently defined Solution, with 11 selected theorem declarations. Intentional placeholders
-    occur only in the Challenge; the Solution has no proof holes. The selected declarations use the least
-    genuinely contained departure, the full signed excess record and an independent geometric/uniform-site/fair-sign
-    mixture with moving weights. They give the full marked TV limit, the ordinary and source-resolved
-    positions in all three real/infinite phase regimes, and the actual sign bias. The affine family uses
-    varying linear maps and right-hand sides on the true hard prime cylinder, compatibility only eventually,
-    and the actual rank information budget. Its exact conditional border mass is 2^(-d), with d the true
-    row-space deficit. Affine localization and sign bias require no future neutrality; the full affine
-    marked clock assumes neutrality only eventually for each fixed finite future prefix. No Palomar outcome,
-    Comparator pass or NanoDa result is asserted by this metadata.
+  scope: 11 selected declarations in ChallengeV3Crossover, an autonomous Mathlib-only Challenge, with
+    proofs in SolutionV3Crossover. Conditioned on the presence of a run contained in a finite prefix,
+    the first such run has a mixture law combining a microscopic border contribution with a uniform bulk
+    location, geometric excess and fair sign. The results retain the marked record, describe both location
+    scales in finite and infinite phase regimes, and determine the sign bias. Under compatible affine
+    conditions on small primes, the border probability is exactly 2^(-d), where d is the row-space deficit.
+    Affine localization and sign bias use the rank information budget without future neutrality; the full
+    marked-clock limit also requires eventual neutrality for each fixed finite future prefix. Approximation
+    uses the prime number theorem, the Poisson process estimate of Arratia, Goldstein and Gordon, and
+    the stated Laishram–Shorey, Shorey and Nicolas–Robin estimates. The exact affine border identity needs
+    none of these literature hypotheses. Intentional proof placeholders occur only in the Challenge. Literature
+    inputs remain explicit theorem arguments and are not discharged by kernel validation. No Palomar editorial
+    approval or registration is asserted.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -260,11 +264,9 @@ fidelity:
     are not proved by kernel checking the conditional results.
 review:
   status: agent-reviewed
-  reviewers:
-  - Independent Codex agent instances
-  notes: The underlying development has independent agent reviews at frozen source hashes. Final new-candidate
-    mechanical validation and review are recorded separately; this metadata alone does not certify a Palomar
-    outcome or human peer review.
+  notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
+    checks are recorded separately in qualification evidence. There is no independent human peer review
+    or claimed Palomar decision.
 alignment:
   namespace: PaperCV3Audit
   statements:
@@ -312,7 +314,3 @@ alignment:
     lean: PaperCV3Audit.v3_crossover_affine_sign
     module: SolutionV3Crossover
     status: proved modulo the explicit literature premises in its statement, if any
-acknowledgements: The complete build and axiom audits passed with Lean 4.34.0 and Mathlib
-  v4.34.0. The migration guide records the separate interface and kernel checks.
-  Local validation does not confer Palomar registration. Previous verification
-  snapshots, source archives and the manuscript migration matrix remain preserved.

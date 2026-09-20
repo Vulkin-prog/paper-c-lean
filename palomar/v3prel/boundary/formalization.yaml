@@ -1,19 +1,18 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
 version: v0.4
 project:
-  name: V3PREL microscopic boundary, contained prefix laws and almost-sure longest runs
-  description: >-
-    The exact left-border probability is 2^(-pi(L)), and the microscopic non-vacancy probability
-    satisfies 0 <= q_L/2^(-pi(L)) - 1 <= 2^(-pi(L)/256) for sufficiently large L. The results
-    give conditional localization and uniqueness, stability under changes of mesoscopic cutoff,
-    and a quantitative Poisson law for runs contained in a finite prefix. They yield the
-    critical longest-run distribution and asymmetric almost-sure envelopes for all integer
-    prefix lengths. The exact border identity needs no literature hypothesis. The asymptotic
-    results use, as applicable, scalar Stein bounds, the prime number theorem, the uniform
-    prime-divisor estimate of Laishram and Shorey, Shorey's square-product exclusion, and the
-    divisor bound of Nicolas and Robin.
+  name: Microscopic boundary, prefixes and longest runs
+  description: The exact left-border probability is 2^(-pi(L)), and the microscopic non-vacancy probability
+    satisfies 0 <= q_L/2^(-pi(L)) - 1 <= 2^(-pi(L)/256) for sufficiently large L. The results give conditional
+    localization and uniqueness, stability under changes of mesoscopic cutoff, and a quantitative Poisson
+    law for runs contained in a finite prefix. They yield the critical longest-run distribution and asymmetric
+    almost-sure envelopes for all integer prefix lengths. The exact border identity needs no literature
+    hypothesis. The asymptotic results use, as applicable, scalar Stein bounds, the prime number theorem,
+    the uniform prime-divisor estimate of Laishram and Shorey, Shorey's square-product exclusion, and
+    the divisor bound of Nicolas and Robin.
   authors:
-  - Brice Pouly
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
   responsible_maintainers:
   - Brice Pouly
   license: Apache-2.0
@@ -25,29 +24,34 @@ classification:
   - 11K65
   - 60F05
 sources:
-- title: Long runs and rare patterns of a random completely multiplicative function, version 3PREL
+- title: Long runs and rare patterns of a random completely multiplicative function
   authors:
-  - Brice Pouly
-  id: https://github.com/Vulkin-prog/paper-c-lean/blob/ee2ac789764fe5d9fd19c96c6c0778a693b129a0/manuscripts/v3prel/paper_C_version_3PREL_en.pdf
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
+  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_en.pdf
   type: paper
-  location: Theorem 7.1, Proposition 7.3 (mesoscopic stability), Theorem 7.4, Corollary 7.5; equations
-    (7.1), (7.11)-(7.13). Snapshot manuscripts/v3prel/paper_C_version_3PREL_en.pdf, SHA-256 0ec4144dc81c4ee9930a8e4e4815ae274da36e3c1ebeae4a5c0ffa411853a9d7.
+  location: 'Section 7, results 7.1–7.5; microscopic border, prefix counts and longest runs. Exact source:
+    manuscripts/paper-c/paper_c_version_3PREL9_en.pdf; SHA-256 74bd843886f2038865dc97a6d09f6b58be0898d5571b10de86faa26372524370.'
   relationship: adapts
   license: CC-BY-4.0
   author_endorsement: participated
-  note: This is a new candidate, independent of the four historical v0.9 IDs. Its scope is exactly the
-    listed declarations; no previous qualification is reused.
-- title: Technical companion to Long runs and rare patterns of a random completely multiplicative function,
-    version 3PREL
+  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
+    be incorporated after the author supplies them.
+- title: Technical companion to Long runs and rare patterns of a random completely multiplicative function
   authors:
-  - Brice Pouly
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
+  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf
   type: paper
-  location: Appendix E and the explicitly cited probability inputs. Snapshot manuscripts/v3prel/paper_C_version_3PREL_technical_companion_en.pdf,
-    SHA-256 d64150c995f07ee39b016bb20a16b5fc3a01ce53b0ddcda893d1ceb41eefadee.
+  location: 'Boundary arithmetic and almost-sure prefix consequences. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf;
+    SHA-256 6162f9d9f2cc0b0e8d72c7ad93471a0d307334c4a775d80b503b9478bb32cc39.'
   relationship: adapts
-  note: All source-shaped literature arguments are visible in the standalone challenge. This family does
-    not consume the corrected multivariate directional Stein premise; the correction C002 is exercised
-    by other V3PREL candidates.
+  license: CC-BY-4.0
+  author_endorsement: participated
+  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
+    be incorporated after the author supplies them.
 - title: Poisson approximation of Rademacher functionals by the Chen-Stein method and Malliavin calculus
   authors:
   - Kai Krokowski
@@ -101,32 +105,31 @@ sources:
   id: https://doi.org/10.5281/zenodo.21736676
   type: paper
   relationship: background
-  note: Concept DOI for the paper and companion across published versions. This earlier publication
-    record is distinct from the archived V3PREL source above; it does not supply a version-specific
-    DOI for that snapshot or a literature hypothesis for the proofs.
-- title: Critical Poisson fields for long constant stretches of a random completely multiplicative
-    function, Cambridge Open Engage version 2
+  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
+    author manuscript; the final paper DOI will be added after publication.
+- title: Critical Poisson fields for long constant stretches of a random completely multiplicative function,
+    Cambridge Open Engage version 2
   authors:
   - Brice Pouly
   id: https://doi.org/10.33774/coe-2026-z3l74-v2
   type: paper
   location: Published 4 September 2026, version 2.
   relationship: background
-  note: Earlier public version, cited for publication history. Its title and DOI identify Cambridge
-    version 2, not the archived V3PREL source used by this formalization; it is not an additional
-    mathematical premise.
+  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
+    author manuscript; the final paper DOI will be added after publication.
 related_formalizations: []
 status:
-  scope: New candidate v3prel_boundary. One standalone Mathlib-only Challenge (264 lines, 15181 bytes)
-    and one independently defined Solution, with 7 selected theorem declarations. Intentional placeholders
-    occur only in the Challenge; the Solution has no proof holes. The actual infinite multiplicative source
-    is used throughout. The selected declarations prove the exact border probability, q_L/2^(-pi(L))-1
-    between zero and 2^(-pi(L)/256), conditional uniqueness and TV localization, and stability of true
-    zero-padded mesoscopic records. They also prove a quantitative Poisson bound for the contained-prefix
-    count, a uniform critical-window TV and longest-run void law, the asymmetric almost-sure envelopes,
-    and the O(loglog M) consequence. The thresholds precede the run length. Borel-Cantelli and interpolation
-    to all integer prefixes are internal. No Palomar outcome, Comparator pass or NanoDa result is asserted
-    by this metadata.
+  scope: 7 selected declarations in ChallengeV3Boundary, an autonomous Mathlib-only Challenge, with proofs
+    in SolutionV3Boundary. The exact left-border probability is 2^(-pi(L)), and the microscopic non-vacancy
+    probability satisfies 0 <= q_L/2^(-pi(L)) - 1 <= 2^(-pi(L)/256) for sufficiently large L. The results
+    give conditional localization and uniqueness, stability under changes of mesoscopic cutoff, and a
+    quantitative Poisson law for runs contained in a finite prefix. They yield the critical longest-run
+    distribution and asymmetric almost-sure envelopes for all integer prefix lengths. The exact border
+    identity needs no literature hypothesis. The asymptotic results use, as applicable, scalar Stein bounds,
+    the prime number theorem, the uniform prime-divisor estimate of Laishram and Shorey, Shorey's square-product
+    exclusion, and the divisor bound of Nicolas and Robin. Intentional proof placeholders occur only in
+    the Challenge. Literature inputs remain explicit theorem arguments and are not discharged by kernel
+    validation. No Palomar editorial approval or registration is asserted.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -220,11 +223,9 @@ fidelity:
     the conditional results.
 review:
   status: agent-reviewed
-  reviewers:
-  - Independent Codex agent instances
-  notes: The underlying development has independent agent reviews at frozen source hashes. Final new-candidate
-    mechanical validation and review are recorded separately; this metadata alone does not certify a Palomar
-    outcome or human peer review.
+  notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
+    checks are recorded separately in qualification evidence. There is no independent human peer review
+    or claimed Palomar decision.
 alignment:
   namespace: PaperCV3Audit
   statements:
@@ -263,7 +264,3 @@ alignment:
     lean: PaperCV3Audit.v3_boundary_longest_loglog
     module: SolutionV3Boundary
     status: proved modulo the explicit literature premises in its statement, if any
-acknowledgements: The complete build and axiom audits passed with Lean 4.34.0 and Mathlib
-  v4.34.0. The migration guide records the separate interface and kernel checks.
-  Local validation does not confer Palomar registration. Previous verification
-  snapshots, source archives and the manuscript migration matrix remain preserved.

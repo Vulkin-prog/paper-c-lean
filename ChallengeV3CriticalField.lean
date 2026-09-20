@@ -465,5 +465,57 @@ theorem spatial_conditional_mean (hAGG : ProcessAGGStatement) (hPNT : PrimeNumbe
 
 end CriticalField
 
+namespace CriticalField
+open Analysis Process
+/-- The larger inverse branch of exp(u)/u; totalized to 1 below e. -/
+def upperBranch (nu : ℝ) : ℝ :=
+  if Real.exp 1≤nu then Classical.epsilon (fun u : ℝ => 1≤u ∧ saddleRatio u=nu) else 1
+def deletionCost (nu : ℝ) : ℝ := nu*upperBranch nu-exponentialIntegral (upperBranch nu)
+/-- The unique crossing between hard and soft cutoffs, with a stated fallback. -/
+def informationCutoff (H I : ℝ) : ℝ :=
+  if max (saddleThreshold 1) (saddleThreshold 2)≤H ∧ 0≤I ∧ I≤saddleCutoff 1 H then
+    Classical.epsilon (fun w => w∈Set.Icc (saddleCutoff 1 H) (saddleCutoff 2 H) ∧
+      2*deletionCost (H/w)=w+I)
+  else saddleCutoff 1 H
+def informationBudget (H I w : ℝ) : ℝ := min (deletionCost (H/w)-I) ((w-I)/2)
+def eventDistance (N L : ℕ) (A : Set InfiniteSample) : ℝ :=
+  massTV (conditionalLaw infiniteRademacherMeasure A (spatialSource N L)) (spatialTargetMass N L)
+end CriticalField
+
+namespace CriticalField
+open Analysis Process
+/-- The selected cutoff is the crossing stated in the paper. -/
+theorem information_cutoff_spec {H I : ℝ}
+    (hH : max (saddleThreshold 1) (saddleThreshold 2)≤H)
+    (hI : 0≤I) (hIV : I≤saddleCutoff 1 H) :
+    informationCutoff H I∈Set.Icc (saddleCutoff 1 H) (saddleCutoff 2 H) ∧
+      2*deletionCost (H/informationCutoff H I)=informationCutoff H I+I := by
+  sorry
+
+/-- The maximum respects the prescribed lower conditioning cutoff. -/
+theorem constrained_information_maximum {H I floor w : ℝ}
+    (hH : max (saddleThreshold 1) (saddleThreshold 2)≤H)
+    (hI : 0≤I) (hIV : I≤saddleCutoff 1 H)
+    (hf : floor∈Set.Icc (saddleCutoff 1 H) (saddleCutoff 2 H))
+    (hw : w∈Set.Icc (saddleCutoff 1 H) (saddleCutoff 2 H)) (hfw : floor≤w) :
+    informationBudget H I w ≤ informationBudget H I (max floor (informationCutoff H I)) := by
+  sorry
+
+/-- Article 6.2: the actual full-field comparison at the information-adapted constrained cutoff. -/
+theorem information_adapted_field (hAGG : ProcessAGGStatement) (hPNT : PrimeNumberTheoremRemainder)
+    (c c' epsilon : ℝ) (hc' : 0<c') (hcc : c'<c)
+    (hepsilon : 0<epsilon) (heps : epsilon<1/3) :
+    ∃ N0 : ℕ, ∀ N≥N0, ∀ L : ℕ, ∀ w0 : ℝ,
+      saddleCutoff 1 (Real.log N)≤w0 → w0≤saddleCutoff 2 (Real.log N) →
+      1≤(fullRate N L:ℝ) → ∀ A : Set InfiniteSample,
+      0 < infiniteRademacherMeasure.real A → eventInformation A≤saddleCutoff 1 (Real.log N) →
+      MeasurableSet[primeSigma ⌊Real.exp w0⌋₊] A →
+      let w := max w0 (informationCutoff (Real.log N) (eventInformation A))
+      Real.log (fullRate N L:ℝ)≤ informationBudget (Real.log N) (eventInformation A) w-c*(Real.log N/w) →
+      eventDistance N L A≤67*Real.exp (-c'*(Real.log N/w))+64*(N:ℝ)^(-(1/(3:ℝ))+epsilon) := by
+  sorry
+
+end CriticalField
+
 end PaperCV3Audit
 end

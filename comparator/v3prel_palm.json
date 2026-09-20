@@ -1,0 +1,21 @@
+{
+  "challenge_module": "ChallengeV3Palm",
+  "solution_module": "SolutionV3Palm",
+  "theorem_names": [
+    "PaperCV3Audit.Palm.source_target_palm_mass",
+    "PaperCV3Audit.Palm.full_deficit_comparison",
+    "PaperCV3Audit.Palm.ordinary_deletion",
+    "PaperCV3Audit.Palm.full_retained_normalized_comparison",
+    "PaperCV3Audit.Palm.normalized_deficit_eventually",
+    "PaperCV3Audit.Palm.original_cumulant_obstruction",
+    "PaperCV3Audit.Palm.retained_cumulant_obstruction",
+    "PaperCV3Audit.Palm.stronger_retention_counts",
+    "PaperCV3Audit.Palm.regular_target_probability"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

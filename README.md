@@ -1,41 +1,28 @@
 # Paper C — Lean formalization
 
 *Long runs and rare patterns of a random completely multiplicative function*
-and its technical companion, by **Brice Pouly**.
+and its technical companion, by [Brice Pouly](https://orcid.org/0009-0008-8491-2467).
 
-The [current article, technical companion and editable sources](manuscripts/paper-c/README.md)
-are the author's manuscript of **20 September 2026**.
-The [current source-to-Lean correspondence](docs/MANUSCRIPT_ALIGNMENT.md)
-records alignment with the existing development, relative to seven explicit
-literature inputs and the documented proof substitutions. In particular, F.2
-uses the analytic Stein solution input. The final published files and their
-version-specific DOI will be added after publication.
-
-The toolchain remains **Lean 4.34.0 and Mathlib v4.34.0**. At the validated
-pre-extension snapshot, all 23 libraries build, the three axiom audits pass,
-and all 80 selected declarations pass local Lean and NanoDa checks across
-ten configurations. Those checks do not certify the newly added 3PREL8 results. The
-[validation evidence](migration_evidence/lean-4.34.0/README.md) and
-[migration review](docs/LEAN_4_34_0_MIGRATION.md) describe the checks and limits.
-Earlier qualification records remain tied to their recorded source snapshots.
+This repository contains the mathematical development, the article and companion
+with their editable sources, and seven Palomar submission interfaces. The
+[source-to-Lean correspondence](docs/MANUSCRIPT_ALIGNMENT.md) records the current
+manuscript's results and the precise scope of their formalization.
 
 | Paper and source material | Link |
 |---|---|
-| Current article | [Article PDF](manuscripts/paper-c/paper_c_version_3PREL9_en.pdf) |
-| Current technical companion | [Companion PDF](manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf) |
-| Editable sources and exact file identities | [Editable manuscript package](manuscripts/paper-c/README.md) |
-| Zenodo paper record, all versions | [Concept DOI 10.5281/zenodo.21736676](https://doi.org/10.5281/zenodo.21736676) |
-| Cambridge Open Engage, published version 2 | [DOI 10.33774/coe-2026-z3l74-v2](https://doi.org/10.33774/coe-2026-z3l74-v2) |
+| Article | [PDF](manuscripts/paper-c/paper_c_version_3PREL9_en.pdf) |
+| Technical companion | [PDF](manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf) |
+| Editable sources and file identities | [Manuscript package](manuscripts/paper-c/README.md) |
+| Zenodo paper record, all versions | [10.5281/zenodo.21736676](https://doi.org/10.5281/zenodo.21736676) |
+| Cambridge Open Engage paper record | [10.33774/coe-2026-z3l74-v2](https://doi.org/10.33774/coe-2026-z3l74-v2) |
+| Formalization record, all versions | [10.5281/zenodo.21735481](https://doi.org/10.5281/zenodo.21735481) |
 
-The publication records above concern earlier published versions. They do
-not identify the current manuscript snapshot, for which no version-specific
-DOI is asserted. The Lean formalization has its own
-[Zenodo concept DOI 10.5281/zenodo.21735481](https://doi.org/10.5281/zenodo.21735481),
-distinct from the paper record.
+The repository currently includes the author's manuscript of 20 September 2026.
+The publication links identify the available paper records; they do not identify
+this manuscript as the published V3. The published files, version-specific paper
+DOI and issued Palomar references will be added when available.
 
 ## Abstract
-
-The following is the abstract of the [current manuscript](manuscripts/paper-c/paper_c_version_3PREL9_en.tex); it describes the paper, not the completed Lean coverage.
 
 Let $f$ be a random completely multiplicative function with independent
 symmetric signs at the primes. We study rare constant runs and prescribed
@@ -61,96 +48,77 @@ first location, sign and overshoot have a two-source lattice law with
 scale-dependent weights. The two overshoots use different clocks: prime
 rank at the boundary and integer distance in the bulk.
 
-## Formalization scope
 
-The completed baseline below concerns **V3PREL of 7 September 2026**. The
-[3PREL8 extension](docs/FORMALIZATION_COVERAGE_V3PREL8.md) is tracked separately.
+## Mathematical scope
 
-The [source-to-Lean correspondence](docs/FORMALIZATION_COVERAGE_V3PREL.md)
-maps all **59 numbered article results** and, separately, **8 companion
-results**, together with the unnumbered conclusions. The development retains
-753 mathematical modules and 6,094 named declarations from the audited
-Lean 4.32.0 baseline; the migrated audit covers the same 6,094 declarations.
-The separate Palomar interfaces select the results listed below.
+The development covers critical Poisson fields and conditional transfers;
+word dictionaries, exact marks and compound clusters; threshold staircases
+and Gaussian limits; boundary and prefix laws; the microscopic–bulk crossover;
+and the microscopic, empirical and Palm refinements. The
+[coverage correspondence](docs/MANUSCRIPT_ALIGNMENT.md) links the numbered
+statements to Lean and records proof substitutions and qualifications.
 
-The proofs remain relative to **seven explicit literature propositions**,
-used as ordinary theorem arguments. These propositions are not themselves
-proved in Lean, and an axiom audit does not discharge them. The
-[literature ledger](PaperCV282/LITERATURE_INPUTS.md) states their content and
-use, including the corrected directional Stein input. The Solution files
-contain no proof holes; the kernel axiom audit permits only `propext`,
-`Classical.choice` and `Quot.sound`.
+The proofs are relative to **seven explicit literature propositions**: scalar
+and multivariate Poisson Stein bounds, the finite AGG process bound, the prime
+number theorem remainder, and the arithmetic inputs of Laishram–Shorey,
+Shorey, and Nicolas–Robin. They are ordinary theorem arguments, not proved
+literature results. In particular, the analytic solution premise of **F.2**
+remains explicit. The [input ledger](PaperCV282/LITERATURE_INPUTS.md) gives the
+statements and references. Kernel axiom checks do not discharge these hypotheses.
 
-The [mathematical development guide](PaperCV282/README.md),
-[endpoint inventory](PaperCV282/ENDPOINTS.md) and
-[revision log](docs/PAPER_V3_REVISION_LOG.md) give the detailed coverage,
-limitations and corrections.
+Solution proofs contain no placeholders. The permitted kernel axioms are
+`propext`, `Classical.choice` and `Quot.sound`. Intentional placeholders in the
+standalone Challenges specify the obligations checked by Comparator.
 
-## Five Palomar submission families
+## Palomar submission families
 
-The five existing configurations retain their first-V3PREL scope and select
-**69 declarations** in total. They do not cover all 3PREL8 additions. This selection
-is distinct from the full paper-to-Lean coverage ledger. Each family has its
-own statement boundary, sources and metadata.
+The seven configurations select **89 declarations**. This is the registration
+selection, not a count of all results proved in the repository.
 
-| Family | Selected declarations | Comparator configuration | Metadata |
+| Family | Declarations | Configuration | Metadata |
 |---|---:|---|---|
-| Critical Poisson field and small-prime conditioning | 13 | [critical_field](comparator/v3prel_critical_field.json) | [formalization.yaml](palomar/v3prel/critical_field/formalization.yaml) |
-| Word dictionaries, exact marks and compound clusters | 9 | [patterns](comparator/v3prel_patterns.json) | [formalization.yaml](palomar/v3prel/patterns/formalization.yaml) |
-| Threshold staircase and Poisson–Gaussian limits | 29 | [limits](comparator/v3prel_limits.json) | [formalization.yaml](palomar/v3prel/limits/formalization.yaml) |
-| Microscopic boundary, prefixes and longest runs | 7 | [boundary](comparator/v3prel_boundary.json) | [formalization.yaml](palomar/v3prel/boundary/formalization.yaml) |
-| Microscopic–bulk crossover | 11 | [crossover](comparator/v3prel_crossover.json) | [formalization.yaml](palomar/v3prel/crossover/formalization.yaml) |
+| Critical fields and information-adapted conditioning | 16 | [critical_field](comparator/v3prel_critical_field.json) | [metadata](palomar/v3prel/critical_field/formalization.yaml) |
+| Typical dictionaries, exact marks and compound clusters | 11 | [patterns](comparator/v3prel_patterns.json) | [metadata](palomar/v3prel/patterns/formalization.yaml) |
+| Threshold staircase and Poisson–Gaussian bridge | 29 | [limits](comparator/v3prel_limits.json) | [metadata](palomar/v3prel/limits/formalization.yaml) |
+| Boundary, prefixes and longest runs | 7 | [boundary](comparator/v3prel_boundary.json) | [metadata](palomar/v3prel/boundary/formalization.yaml) |
+| Microscopic–bulk crossover | 11 | [crossover](comparator/v3prel_crossover.json) | [metadata](palomar/v3prel/crossover/formalization.yaml) |
+| Microscopic signed fields and empirical laws | 6 | [microscopic](comparator/v3prel_microscopic.json) | [metadata](palomar/v3prel/microscopic/formalization.yaml) |
+| Regular configurations, Palm deficits and cumulants | 9 | [palm](comparator/v3prel_palm.json) | [metadata](palomar/v3prel/palm/formalization.yaml) |
 
-The [submission guide](docs/PALOMAR_V3PREL.md) explains the exact selection
-and its relationship to the four historical registrations. Links to issued
-V3PREL registry records will be added when available.
+The [submission guide](docs/PALOMAR_SUBMISSIONS.md) records the exact scope,
+submission fields and validation procedure. Each selected configuration has its
+own metadata, including structured author and ORCID fields. Local verification
+is distinct from Palomar's verification, rendering and editorial decision.
 
-[Candidate-side replays](https://github.com/Vulkin-prog/paper-c-lean/actions/runs/34157635210)
-accepted all 69 selected declarations with Comparator, Lean and NanoDa for
-source commit [`32ecdbc0`](https://github.com/Vulkin-prog/paper-c-lean/commit/32ecdbc0eace9cd1d47dccbbd7ccaaaf8f6d459e),
-preserved by the merge into `main`. Those results concern that source
-snapshot. Palomar performs its own verification and editorial review for
-each submitted commit; a repository replay is not a registry entry.
+## Build and verification
 
-The [V3 publication plan](docs/V3_PUBLICATION_PLAN.md) records the remaining
-source, bibliography and registration updates for the final paper and the
-next versions of these five entries.
-
-## Build and check
-
-The pins are **Lean 4.34.0 and Mathlib v4.34.0**. The complete local build
-and audits have passed. With these exact dependencies installed, the
-following commands check the mathematical overlays from the repository root:
+Use the pinned **Lean 4.34.0 and Mathlib v4.34.0** dependencies:
 
 ```sh
-lake build PaperCV11 PaperCV282
-python3 scripts/check_v3prel_sources.py
-python3 scripts/check_v282_audit.py --check-source
+lake build PaperCV11 PaperCV282 PaperCPrel8
+python3 scripts/check_current_manuscript.py
+python3 scripts/check_v3prel_candidates.py
 ```
 
-The [migration guide](docs/LEAN_4_34_0_MIGRATION.md#reproducing-local-validation) lists
-all 23 library targets and the three kernel audits: a default `lake build`
-covers only `PaperC`. The
-[Palomar guide](docs/PALOMAR_V3PREL.md#reproducible-qualification) describes
-the separate candidate replay. Source identity checks, proof builds,
-axiom audits and registry verification have distinct roles.
+A default `lake build` builds only `PaperC`. To validate a submission, build its
+Challenge and Solution and replay the selected declarations through both kernels:
+
+```sh
+lake build ChallengeV3Microscopic SolutionV3Microscopic
+./palomar/v3prel/verify-comparator.sh comparator/v3prel_microscopic.json
+```
+
+Repeat the replay for each configuration in the table. The
+[submission guide](docs/PALOMAR_SUBMISSIONS.md) distinguishes source checks,
+compilation, statement comparison and the Lean/NanoDa checks.
 
 ## Citation, licence and credits
 
-Cite the exact published paper version used, together with the formalization
-commit or registered Palomar version where relevant. The concept DOIs above
-identify the respective paper and software version series.
+Cite the published paper version together with the exact formalization commit
+or Palomar record used. Paper and software DOIs are distinct. The
+[publication plan](docs/V3_PUBLICATION_PLAN.md) describes the pending updates.
 
-The Lean project is released under the [Apache-2.0 licence](LICENSE).
-The manuscript sources retain their [own licence and production declarations](manuscripts/paper-c/declarations.tex).
-Human authorship and responsibility, agent-assisted development and the
-completed review are recorded in the formalization metadata. Agent review
-is not human peer review.
-
-## Historical development
-
-The [archived README](docs/history/README_before_v3_refresh.md) preserves the
-v0.9 development, earlier qualification procedures and their dated claims.
-The [historical Palomar table](palomar/README.md) and
-[current relationship table](docs/PALOMAR_V3PREL.md#relation-to-the-historical-registrations)
-retain the four earlier identifiers and their relation to the new families.
+The Lean project uses the [Apache-2.0 licence](LICENSE). The manuscript retains
+its [own licence and declarations](manuscripts/paper-c/declarations.tex).
+The submission metadata records human authorship and responsibility and
+agent-assisted development. Agent review is not human peer review.

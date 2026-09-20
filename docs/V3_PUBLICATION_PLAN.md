@@ -19,9 +19,9 @@ families and the two recommended additional families:
 6. Microscopic signed field, dyadic restrictions and empirical count laws.
 7. Regular configurations, Palm laws and the absolute-cumulant obstruction.
 
-This is a proposed mathematical grouping, not seven already qualified entries.
-Select the exact declarations, prepare Challenge/Solution interfaces and metadata,
-and verify them on the immutable commit to be submitted. Keep established
+The [submission guide](PALOMAR_SUBMISSIONS.md) now records the exact 89-declaration
+selection, its seven Challenge/Solution interfaces and metadata. Verify the
+immutable commit to be submitted; the prepared grouping is not an issued registry entry. Keep established
 configuration paths stable where they already identify a registered family.
 Record actual identifiers and registration status rather than assuming a failed
 or pending attempt produced an entry.

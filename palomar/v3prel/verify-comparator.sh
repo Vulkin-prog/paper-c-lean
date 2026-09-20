@@ -8,7 +8,9 @@ case "$configuration" in
   comparator/v3prel_patterns.json | \
   comparator/v3prel_limits.json | \
   comparator/v3prel_boundary.json | \
-  comparator/v3prel_crossover.json) ;;
+  comparator/v3prel_crossover.json | \
+  comparator/v3prel_microscopic.json | \
+  comparator/v3prel_palm.json) ;;
   *) echo "error: unsupported new V3PREL configuration: $configuration" >&2; exit 2 ;;
 esac
 source_config="$repository_root/$configuration"

@@ -1,0 +1,245 @@
+version: v0.4
+project:
+  authors:
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
+  description: Quantitative comparison of the actual position/excess/sign field at growing intensity,
+    retaining the original small-prime conditioning; same-grid dyadic restriction and common measurable
+    readouts. Along literal dyadic scales, empirical window counts converge almost surely to Poisson,
+    while empirical full vectors have a positive total-variation obstruction.
+  license: Apache-2.0
+  name: Microscopic signed fields and empirical Poisson laws
+  responsible_maintainers:
+  - Brice Pouly
+classification:
+  arxiv:
+  - math.NT
+  - math.PR
+  msc2020:
+  - 11K65
+  - 60F05
+sources:
+- title: Long runs and rare patterns of a random completely multiplicative function
+  authors:
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
+  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_en.pdf
+  type: paper
+  location: 'Theorem 7.7, Corollary 7.8a and Remark 7.8b. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_en.pdf;
+    SHA-256 74bd843886f2038865dc97a6d09f6b58be0898d5571b10de86faa26372524370.'
+  relationship: adapts
+  license: CC-BY-4.0
+  author_endorsement: participated
+  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
+    be incorporated after the author supplies them.
+- title: Technical companion to Long runs and rare patterns of a random completely multiplicative function
+  authors:
+  - name: Brice Pouly
+    github: Vulkin-prog
+    orcid: 0009-0008-8491-2467
+  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf
+  type: paper
+  location: 'Appendix F; full signed field, dyadic restriction and common readouts. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf;
+    SHA-256 6162f9d9f2cc0b0e8d72c7ad93471a0d307334c4a775d80b503b9478bb32cc39.'
+  relationship: adapts
+  license: CC-BY-4.0
+  author_endorsement: participated
+  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
+    be incorporated after the author supplies them.
+- title: Newman's Short Proof of the Prime Number Theorem
+  authors:
+  - Don Zagier
+  id: https://doi.org/10.2307/2975232
+  type: paper
+  location: American Mathematical Monthly 104 (1997), pages 705-708
+  relationship: background
+  note: Analysis.PrimeNumberTheoremRemainder is the ordinary prime-counting remainder o(t/log t), with
+    Li(t)=Ei(log t). The normalization of Ei, saddle roots and weighted prime estimates are proved in
+    the local development. No desired arithmetic error is assumed.
+- title: Applications of Baker's theory of linear forms in logarithms to exponential diophantine equations
+  authors:
+  - T. N. Shorey
+  type: paper
+  location: RIMS Kokyuroku 886 (1994), pages 55-56, equation (15) and the square case
+  relationship: background
+  note: Boundary.ShoreySquareProductStatement displays the square-product exclusion with arbitrary positive
+    smooth coefficient, true height and density thresholds, and uniform quantifier order. The arithmetic/probability
+    consequences are proved internally.
+- title: Number of prime divisors in a product of consecutive integers
+  authors:
+  - Shanta Laishram
+  - T. N. Shorey
+  id: https://doi.org/10.4064/aa113-4-3
+  type: paper
+  location: Acta Arithmetica 113 (2004), equation (14), printed page 331
+  relationship: background
+  note: Boundary.UniformPrimeDivisorStatement is the published eventual bound uniform in n>k, with the
+    threshold before n. It is an ordinary theorem hypothesis, not an axiom or an assumed probability estimate.
+- title: Majorations explicites pour le nombre de diviseurs de N
+  authors:
+  - J.-L. Nicolas
+  - G. Robin
+  id: https://doi.org/10.4153/CMB-1983-078-5
+  type: paper
+  location: Theorem 1, printed page 485 (1983)
+  relationship: background
+  note: Boundary.DivisorLogBoundStatement displays log(tau(n))*log(log n) <= 2*log(2)*log n for n>=64,
+    a safe source specialization. It supplies no Poisson or crossover conclusion.
+- title: Stein's Method and Poisson Process Convergence
+  authors:
+  - A. D. Barbour
+  id: https://doi.org/10.2307/3214155
+  type: paper
+  location: Journal of Applied Probability 25(A) (1988), page 179, Lemmas 2 and 3
+  relationship: background
+  note: The weighted quadratic and entrywise analytic Stein solution bounds are explicit in Analysis.DirectionalSolutionBounds.
+    Appendix F.2 uses this as a theorem-level premise on the actual finite carrier. The arithmetic conditional
+    comparison is proved internally.
+- title: Paper C and technical companion — Zenodo publication record
+  authors:
+  - Brice Pouly
+  id: https://doi.org/10.5281/zenodo.21736676
+  type: paper
+  relationship: background
+  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
+    author manuscript; the final paper DOI will be added after publication.
+- title: Critical Poisson fields for long constant stretches of a random completely multiplicative function,
+    Cambridge Open Engage version 2
+  authors:
+  - Brice Pouly
+  id: https://doi.org/10.33774/coe-2026-z3l74-v2
+  type: paper
+  location: Published 4 September 2026, version 2.
+  relationship: background
+  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
+    author manuscript; the final paper DOI will be added after publication.
+related_formalizations: []
+status:
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: PaperCV3Audit.Microscopic.exact_source_coefficients
+    file: SolutionV3Microscopic.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_microscopic.json
+  - declaration: PaperCV3Audit.Microscopic.full_field_comparison
+    file: SolutionV3Microscopic.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_microscopic.json
+  - declaration: PaperCV3Audit.Microscopic.dyadic_field_comparison
+    file: SolutionV3Microscopic.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_microscopic.json
+  - declaration: PaperCV3Audit.Microscopic.empirical_poisson
+    file: SolutionV3Microscopic.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_microscopic.json
+  - declaration: PaperCV3Audit.Microscopic.common_readout
+    file: SolutionV3Microscopic.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_microscopic.json
+  - declaration: PaperCV3Audit.Microscopic.empirical_vector_obstruction
+    file: SolutionV3Microscopic.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Quot.sound
+    - Classical.choice
+    comparator_config: comparator/v3prel_microscopic.json
+  scope: 6 selected declarations in ChallengeV3Microscopic, an autonomous Mathlib-only Challenge, with
+    proofs in SolutionV3Microscopic. Quantitative comparison of the actual position/excess/sign field
+    at growing intensity, retaining the original small-prime conditioning; same-grid dyadic restriction
+    and common measurable readouts. Along literal dyadic scales, empirical window counts converge almost
+    surely to Poisson, while empirical full vectors have a positive total-variation obstruction. Intentional
+    proof placeholders occur only in the Challenge. Literature inputs remain explicit theorem arguments
+    and are not discharged by kernel validation. No Palomar editorial approval or registration is asserted.
+  sorry_count: 0
+  sorry_in_definitions: 0
+automation:
+  methods:
+  - framework: n/a
+    method: manual
+    models: []
+    prompting_notes: n/a
+    tool_setup: The human maintainer selected the mathematical scope, candidate families and publication
+      requirements.
+  - framework: Codex
+    method: agent
+    models:
+    - OpenAI Codex agents
+    prompting_notes: Bounded proof and review subtasks, with source-to-interface bridges and explicit
+      literature boundaries.
+    tool_setup: Agent-assisted Lean construction, independent mathematical reviews and mechanical source/statement
+      checks.
+  notes: The workflow is disclosed and is not represented as independent human peer review.
+  spend_usd: subscription-based usage; not separately tracked
+fidelity:
+  divergences: The source is defined by the actual signed exact-run coefficients and is proved to have
+    that interpretation for every realization. The target is a genuine independent geometric–Poisson configuration.
+    Interior run starts are shifted by one from left-boundary indices. The analytic directional Stein
+    solution bounds are explicit only on the finite carrier used in the theorem; no arithmetic comparison
+    is assumed. The empirical count theorem is almost sure for each fixed alpha and tau. The full-vector
+    obstruction holds for every realization on changing finite vector spaces. Arbitrary measurable common
+    deterministic readouts are selected; no claim of registering every ancillary Appendix F lemma is made.
+review:
+  status: agent-reviewed
+  notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
+    checks are recorded separately in qualification evidence. There is no independent human peer review
+    or claimed Palomar decision.
+alignment:
+  namespace: PaperCV3Audit.Microscopic
+  statements:
+  - source: Theorem 7.7, Corollary 7.8a and Remark 7.8b. Appendix F; full signed field, dyadic restriction
+      and common readouts.
+    lean: PaperCV3Audit.Microscopic.exact_source_coefficients
+    module: SolutionV3Microscopic
+    status: proved with the explicit literature premises in the statement, if any
+  - source: Theorem 7.7, Corollary 7.8a and Remark 7.8b. Appendix F; full signed field, dyadic restriction
+      and common readouts.
+    lean: PaperCV3Audit.Microscopic.full_field_comparison
+    module: SolutionV3Microscopic
+    status: proved with the explicit literature premises in the statement, if any
+  - source: Theorem 7.7, Corollary 7.8a and Remark 7.8b. Appendix F; full signed field, dyadic restriction
+      and common readouts.
+    lean: PaperCV3Audit.Microscopic.dyadic_field_comparison
+    module: SolutionV3Microscopic
+    status: proved with the explicit literature premises in the statement, if any
+  - source: Theorem 7.7, Corollary 7.8a and Remark 7.8b. Appendix F; full signed field, dyadic restriction
+      and common readouts.
+    lean: PaperCV3Audit.Microscopic.empirical_poisson
+    module: SolutionV3Microscopic
+    status: proved with the explicit literature premises in the statement, if any
+  - source: Theorem 7.7, Corollary 7.8a and Remark 7.8b. Appendix F; full signed field, dyadic restriction
+      and common readouts.
+    lean: PaperCV3Audit.Microscopic.common_readout
+    module: SolutionV3Microscopic
+    status: proved with the explicit literature premises in the statement, if any
+  - source: Theorem 7.7, Corollary 7.8a and Remark 7.8b. Appendix F; full signed field, dyadic restriction
+      and common readouts.
+    lean: PaperCV3Audit.Microscopic.empirical_vector_obstruction
+    module: SolutionV3Microscopic
+    status: proved with the explicit literature premises in the statement, if any

@@ -307,5 +307,79 @@ theorem constant_windows_compound (hAGG : Process.ProcessAGGStatement)
     Tendsto (fun N => constantWindowDistance N (L N)) atTop (𝓝 0)  := by sorry
 
 end Patterns
+namespace Patterns
+open Analysis
+local instance : MeasurableSpace Bit := ⊤
+instance primeFintype (C : ℕ) : Fintype (PrimeUpTo C) :=
+  @Subtype.fintype (Fin (C+1)) (fun p => Nat.Prime p.val) (fun p => Nat.decidablePrime p.val) inferInstance
+instance primeDecEq (C : ℕ) : DecidableEq (PrimeUpTo C) := Classical.decEq _
+instance smallFintype (C Y : ℕ) : Fintype {p : PrimeUpTo C // p.1.1≤Y} :=
+  @Subtype.fintype (PrimeUpTo C) (fun p => p.1.1≤Y) (fun p => Nat.decLe p.1.1 Y) inferInstance
+instance largeFintype (C Y : ℕ) : Fintype {p : PrimeUpTo C // Y<p.1.1} :=
+  @Subtype.fintype (PrimeUpTo C) (fun p => Y<p.1.1) (fun p => Nat.decLt Y p.1.1) inferInstance
+instance smallDecEq (C Y : ℕ) : DecidableEq {p : PrimeUpTo C // p.1.1≤Y} := Classical.decEq _
+instance largeDecEq (C Y : ℕ) : DecidableEq {p : PrimeUpTo C // Y<p.1.1} := Classical.decEq _
+abbrev FiniteSample (C : ℕ) := PrimeUpTo C → Bit
+abbrev SmallSample (C Y : ℕ) := {p : PrimeUpTo C // p.1.1≤Y} → Bit
+abbrev LargeSample (C Y : ℕ) := {p : PrimeUpTo C // Y<p.1.1} → Bit
+/-- Two disjoint sets of prime signs, under the two finite uniform laws. -/
+def assemble (C Y : ℕ) (sigma : SmallSample C Y) (eta : LargeSample C Y) : FiniteSample C :=
+  (fun p => if h : p.1.1≤Y then sigma ⟨p,h⟩ else 0)+
+  (fun p => if h : Y<p.1.1 then eta ⟨p,h⟩ else 0)
+def finiteValue {C : ℕ} (omega : FiniteSample C) (n : ℕ) : Bit :=
+  ∑ p : PrimeUpTo C, omega p*parity n p.1
+/-- Actual masked word occurrences with the dictionary fixed before conditioning. -/
+def maskedField (N L Y : ℕ) (mask : Finset ℕ) (W : Finset (Fin (L+1) → Bit))
+    (sigma : SmallSample (2*N+L) Y) (eta : LargeSample (2*N+L) Y) (i : DictionaryIndex N L W) : ℕ :=
+  if i.1.val∈mask ∧ occurs (finiteValue (assemble (2*N+L) Y sigma eta)) i.1.val i.2.val then 1 else 0
+def maskedRates (N L : ℕ) (mask : Finset ℕ) (W : Finset (Fin (L+1) → Bit))
+    (i : DictionaryIndex N L W) : ℝ≥0 := if i.1.val∈mask then wordRate L else 0
+def finiteLaw {Ω α : Type*} [Fintype Ω] (f : Ω → α) (z : α) : ℝ :=
+  ∑ omega, if f omega=z then (Fintype.card Ω:ℝ)⁻¹ else 0
+def average {Ω : Type*} [Fintype Ω] (f : Ω → ℝ) : ℝ := (∑ omega, f omega)/(Fintype.card Ω:ℝ)
+def maskedMeanDistance (N L Y : ℕ) (mask : Finset ℕ) (W : Finset (Fin (L+1) → Bit)) : ℝ :=
+  average (fun sigma : SmallSample (2*N+L) Y => massTV
+    (finiteLaw (maskedField N L Y mask W sigma)) (poissonFieldMass (maskedRates N L mask W)))
+/-- Uniform m-element dictionaries, sampled without replacement. -/
+def dictionaryAverage (B m : ℕ) (f : Finset (Fin B → Bit) → ℝ) : ℝ :=
+  (∑ W ∈ (Finset.univ : Finset (Fin B → Bit)).powersetCard m, f W)/
+    ((Finset.univ : Finset (Fin B → Bit)).powersetCard m).card
+abbrev Surjection (B r : ℕ) := {A : (Fin B → Bit) →ₗ[Bit] (Fin r → Bit) // Function.Surjective A}
+instance finiteLinear (B r : ℕ) : Finite ((Fin B → Bit) →ₗ[Bit] (Fin r → Bit)) :=
+  Finite.of_injective (fun A : (Fin B → Bit) →ₗ[Bit] (Fin r → Bit) => (A : (Fin B → Bit) → (Fin r → Bit))) DFunLike.coe_injective
+instance surjectionFintype (B r : ℕ) : Fintype (Surjection B r) := Fintype.ofFinite _
+/-- Uniform surjective linear maps and uniform offsets specify the affine ensemble. -/
+def affineAverage (B r : ℕ) (f : Finset (Fin B → Bit) → ℝ) : ℝ :=
+  average (fun s : Surjection B r × (Fin r → Bit) => f (Finset.univ.filter (fun u => s.1.val u=s.2)))
+def typicalRate (K epsilon eta : ℝ) (N : ℕ) : ℝ :=
+  (2*K+6*K^2)*Real.exp (-saddleCutoff 1 (Real.log N)+eta*saddleNu 1 (Real.log N))+
+  (10*K^2+2*K)*(N:ℝ)^(-(1/(3:ℝ))+epsilon)
+end Patterns
+
+
+namespace Patterns
+open Analysis Process
+theorem typical_dictionary_mean (hAGG : ProcessAGGStatement) (hPNT : PrimeNumberTheoremRemainder)
+    (betaMin betaMax K epsilon eta : ℝ) (hbetaMin : 0 < betaMin) (hbeta : betaMin < betaMax)
+    (hK : 0 ≤ K) (hepsilon : 0 < epsilon) (heta : 0 < eta) :
+    ∃ Nzero : ℕ, ∀ N ≥ Nzero, ∀ L m : ℕ,
+      betaMin*Real.log N ≤ (L+1:ℝ) → (L+1:ℝ) ≤ betaMax*Real.log N →
+      1 ≤ m → m ≤ 2^(L+1) → (N:ℝ)*((m:ℝ)/(2:ℝ)^(L+1)) ≤ K →
+      ∀ mask : Finset ℕ, mask ⊆ block N →
+      dictionaryAverage (L+1) m (maskedMeanDistance N L (hardCutoff N) mask) ≤ typicalRate K epsilon eta N := by
+  sorry
+
+theorem affine_dictionary_mean (hAGG : ProcessAGGStatement) (hPNT : PrimeNumberTheoremRemainder)
+    (betaMin betaMax K epsilon eta : ℝ) (hbetaMin : 0 < betaMin) (hbeta : betaMin < betaMax)
+    (hK : 0 ≤ K) (hepsilon : 0 < epsilon) (heta : 0 < eta) :
+    ∃ Nzero : ℕ, ∀ N ≥ Nzero, ∀ L m r : ℕ,
+      betaMin*Real.log N ≤ (L+1:ℝ) → (L+1:ℝ) ≤ betaMax*Real.log N →
+      1 ≤ m → m ≤ 2^(L+1) → r ≤ L+1 → m=2^(L+1-r) → (N:ℝ)*((m:ℝ)/(2:ℝ)^(L+1)) ≤ K →
+      ∀ mask : Finset ℕ, mask ⊆ block N →
+      affineAverage (L+1) r (maskedMeanDistance N L (hardCutoff N) mask) ≤ typicalRate K epsilon eta N := by
+  sorry
+
+end Patterns
+
 end PaperCV3Audit
 end
