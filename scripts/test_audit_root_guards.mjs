@@ -142,11 +142,7 @@ try {
     '[Historical README](docs/history/README_before_v3_refresh.md)\n');
   requireSuccess(runGenerator(['--check']), 'current README without old PDF claims');
   fs.writeFileSync(currentReadmePath, '# Current V3 development\n');
-  const missingHistoryLink = runGenerator(['--check']);
-  if (missingHistoryLink.status === 0 ||
-      !missingHistoryLink.stderr.includes('README.md must link to the historical README archive')) {
-    throw new Error('removing the historical README link was not rejected');
-  }
+  requireSuccess(runGenerator(['--check']), 'publication README without history links');
   fs.writeFileSync(currentReadmePath, currentReadme);
   for (const [relativePath, expectedError] of [
     ['docs/history/README_before_v3_refresh.original.txt',

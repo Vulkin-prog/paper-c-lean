@@ -24,7 +24,23 @@ reuse a previously submitted commit: it does not contain this selection.
 | Microscopic signed fields and empirical Poisson laws | `comparator/v3prel_microscopic.json` | 6 |
 | Regular configurations, Palm deficits and the cumulant obstruction | `comparator/v3prel_palm.json` | 9 |
 
-The corresponding metadata is `palomar/v3prel/<entry>/formalization.yaml`.
+Leave **Project path** empty: the Lean project is at the repository root.
+Set **Formalization metadata path** explicitly for each entry; leaving it empty
+would select the generated root audit file, which describes a different scope.
+
+| Configuration suffix | Formalization metadata path |
+|---|---|
+| `critical_field` | `palomar/v3prel/critical_field/formalization.yaml` |
+| `patterns` | `palomar/v3prel/patterns/formalization.yaml` |
+| `limits` | `palomar/v3prel/limits/formalization.yaml` |
+| `boundary` | `palomar/v3prel/boundary/formalization.yaml` |
+| `crossover` | `palomar/v3prel/crossover/formalization.yaml` |
+| `microscopic` | `palomar/v3prel/microscopic/formalization.yaml` |
+| `palm` | `palomar/v3prel/palm/formalization.yaml` |
+
+The source licence for the Lean project is **Apache-2.0**; the manuscript's
+licence is recorded separately. The repository owner is **Vulkin-prog**.
+
 Use `project.name` and `project.description` there for a title or description
 field if the submission form requests them. Bibliographic references belong in
 `sources`; author identity and ORCID belong in `project.authors`. They need not
