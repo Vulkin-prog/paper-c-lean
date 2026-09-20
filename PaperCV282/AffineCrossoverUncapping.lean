@@ -122,10 +122,10 @@ theorem actualDistance_le_capped_add_tail (mu : Measure InfiniteSample) [IsProba
       AffineCrossoverModel.cappedDistance mu M L K delta alpha+2/(2 : ℝ)^(K+1) := by
   letI _instProbabilitySource := AffineCrossoverModel.sourceLaw_probability mu M L delta
     (hit_probability_pos mu hLM hb)
-  letI _instProbabilityCappedSource := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverModel.sourceLaw mu M L delta) (measurable_of_countable (capBorder K)).aemeasurable
-  letI _instProbabilityCappedTarget := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverTarget.targetLaw M L delta alpha) (measurable_of_countable (capBorder K)).aemeasurable
+  letI _instProbabilityCappedSource := (Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverModel.sourceLaw mu M L delta)
+      (measurable_of_countable (capBorder K)).aemeasurable).mpr inferInstance
+  letI _instProbabilityCappedTarget := (Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverTarget.targetLaw M L delta alpha)
+      (measurable_of_countable (capBorder K)).aemeasurable).mpr inferInstance
   have h1 := variation_triangle (AffineCrossoverModel.sourceLaw mu M L delta)
     ((AffineCrossoverModel.sourceLaw mu M L delta).map (capBorder K)) (AffineCrossoverTarget.targetLaw M L delta alpha)
   have h2 := variation_triangle ((AffineCrossoverModel.sourceLaw mu M L delta).map (capBorder K))

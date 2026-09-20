@@ -1,0 +1,421 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-09-19T09:28:06.872632+00:00",
+  "status": "local_migration_validation_passed",
+  "base_commit": "8b6e838f90632631575d37fafada95950d0a9051",
+  "source_identity": "lean-sources.json",
+  "source_manifest_sha256": "c709c6531357caf365dabd84095a47852b9e7ae570cad76eaa3bbc598b016728",
+  "lean_source_count": 1171,
+  "changed_lean_files": [
+    "AuditCheck.lean",
+    "ChallengeV3CriticalField.lean",
+    "ChallengeV3Limits.lean",
+    "ChallengeV3Patterns.lean",
+    "PaperC/Algebra/RungeQPolynomial.lean",
+    "PaperC/Arithmetic/PrimeFactorsFactorialBound.lean",
+    "PaperC/Asymptotics/BoundedRatioComponentNormalization.lean",
+    "PaperC/Asymptotics/BoundedRatioManyDefectsEvertseSum.lean",
+    "PaperC/Asymptotics/BoundedRatioManyDefectsFixedFibers.lean",
+    "PaperC/Asymptotics/BoundedRatioSmallProductSector.lean",
+    "PaperC/Asymptotics/BoundedRatioTwoSingletonHosts.lean",
+    "PaperC/Combinatorics/RungeCoefficients.lean",
+    "PaperC/Diophantine/HalterKochConductorDescent.lean",
+    "PaperC/Diophantine/QuadraticIdealDivisors.lean",
+    "PaperC/Probability/InfiniteExactLengthProbabilityTransfer.lean",
+    "PaperCV282/AffineCrossoverCappedBudget.lean",
+    "PaperCV282/AffineCrossoverCensored.lean",
+    "PaperCV282/AffineCrossoverCensoredTheorem.lean",
+    "PaperCV282/AffineCrossoverLocationProjection.lean",
+    "PaperCV282/AffineCrossoverLocationTransfer.lean",
+    "PaperCV282/AffineCrossoverMarkedComparison.lean",
+    "PaperCV282/AffineCrossoverModel.lean",
+    "PaperCV282/AffineCrossoverPrimeClock.lean",
+    "PaperCV282/AffineCrossoverSign.lean",
+    "PaperCV282/AffineCrossoverSparseTarget.lean",
+    "PaperCV282/AffineCrossoverStable.lean",
+    "PaperCV282/AffineCrossoverUncapping.lean",
+    "PaperCV282/BulkMarkedTarget.lean",
+    "PaperCV282/BulkMicroscopicRecord.lean",
+    "PaperCV282/BulkPointProcess.lean",
+    "PaperCV282/CentralResolutionBudget.lean",
+    "PaperCV282/CompoundPoissonMarking.lean",
+    "PaperCV282/CompoundPoissonTarget.lean",
+    "PaperCV282/CountableExpectationTransfer.lean",
+    "PaperCV282/CountableWeakTransfer.lean",
+    "PaperCV282/CrossoverCensored.lean",
+    "PaperCV282/CrossoverClockRecordMass.lean",
+    "PaperCV282/CrossoverLocationProjection.lean",
+    "PaperCV282/CrossoverLocationTransfer.lean",
+    "PaperCV282/CrossoverMarkedComparison.lean",
+    "PaperCV282/CrossoverMarkedTarget.lean",
+    "PaperCV282/CrossoverMovingTarget.lean",
+    "PaperCV282/CrossoverPrimeClockCylinder.lean",
+    "PaperCV282/CrossoverPrimeClockStable.lean",
+    "PaperCV282/CrossoverResolvedLocationSource.lean",
+    "PaperCV282/CrossoverResolvedLocationTarget.lean",
+    "PaperCV282/CrossoverRightCensor.lean",
+    "PaperCV282/CrossoverSourceCoupling.lean",
+    "PaperCV282/CrossoverSourceSigns.lean",
+    "PaperCV282/CrossoverSparseSource.lean",
+    "PaperCV282/CrossoverSparseWeights.lean",
+    "PaperCV282/CrossoverUncappingLimit.lean",
+    "PaperCV282/D4ClosureIntegerLevels.lean",
+    "PaperCV282/D4ClosureLaplaceRows.lean",
+    "PaperCV282/D4ClosurePointLaws.lean",
+    "PaperCV282/D4ClosurePointMeasure.lean",
+    "PaperCV282/D4ClosureResolutionTransfer.lean",
+    "PaperCV282/D4ClosureResolvedArithmetic.lean",
+    "PaperCV282/D4ClosureResolvedGrid.lean",
+    "PaperCV282/D4ClosureSpatialHalfLines.lean",
+    "PaperCV282/D4ClosureSpatialIdentification.lean",
+    "PaperCV282/D4ClosureSpatialResolution.lean",
+    "PaperCV282/D4ClosureSpatialWeak.lean",
+    "PaperCV282/D4GridIdentificationConfiguration.lean",
+    "PaperCV282/D4GridIdentificationTarget.lean",
+    "PaperCV282/D4GridIdentificationTheorem.lean",
+    "PaperCV282/DivisorSubpolynomial.lean",
+    "PaperCV282/ExactMarkedClusterTarget.lean",
+    "PaperCV282/ExactMarkedMovableRates.lean",
+    "PaperCV282/FiniteConditionalKernel.lean",
+    "PaperCV282/FiniteFieldPoissonCoupling.lean",
+    "PaperCV282/FinitePoissonCLT.lean",
+    "PaperCV282/GaussianThresholdIncrements.lean",
+    "PaperCV282/GeneralPoissonMarking.lean",
+    "PaperCV282/GeometricClusterTarget.lean",
+    "PaperCV282/GeometricClusterTruncation.lean",
+    "PaperCV282/GeometricMarkedConfiguration.lean",
+    "PaperCV282/IidWordCosts.lean",
+    "PaperCV282/InfiniteConditionalWords.lean",
+    "PaperCV282/InfiniteMassCoupling.lean",
+    "PaperCV282/MacroTransportCoordinates.lean",
+    "PaperCV282/MacroTransportModel.lean",
+    "PaperCV282/MacroTransportQuantitative.lean",
+    "PaperCV282/MacroTransportRestoration.lean",
+    "PaperCV282/MacroTransportStatistics.lean",
+    "PaperCV282/MacroTransportUnsigned.lean",
+    "PaperCV282/MacroscopicComponentFibers.lean",
+    "PaperCV282/MesoscopicStability.lean",
+    "PaperCV282/PoissonCLT.lean",
+    "PaperCV282/PoissonGaussianTarget.lean",
+    "PaperCV282/PoissonPointProcess.lean",
+    "PaperCV282/PoissonQuantitativeTailRates.lean",
+    "PaperCV282/PoissonQuantitativeTransfer.lean",
+    "PaperCV282/PoissonResolvedComparison.lean",
+    "PaperCV282/PoissonResolvedLowerComparison.lean",
+    "PaperCV282/PoissonResolvedPast.lean",
+    "PaperCV282/PoissonResolvedTarget.lean",
+    "PaperCV282/PoissonThresholdTarget.lean",
+    "PaperCV282/PrimeClockDistribution.lean",
+    "PaperCV282/PrimeClockMicroscopicTransfer.lean",
+    "PaperCV282/RarePrefixPoisson.lean",
+    "PaperCV282/SharpConditioning.lean",
+    "PaperCV282/SharpConditioningDiscrete.lean",
+    "PaperCV282/SmallIntensityConditioning.lean",
+    "PaperCV282/SmallProductComponentBound.lean",
+    "PaperCV282/SoftLocalClosureRates.lean",
+    "PaperCV282/SpatialMarkedPoissonIdentification.lean",
+    "PaperCV282/SpatialMarkedTarget.lean",
+    "PaperCV282/SpatialMarkedTargetCompound.lean",
+    "PaperCV282/SpatialPointEmbedding.lean",
+    "PaperCV282/SplitProductLocalization.lean",
+    "PaperCV282/StableConditionalKernel.lean",
+    "PaperCV282/StableProductLift.lean",
+    "SolutionV3CriticalField.lean",
+    "SolutionV3Limits.lean",
+    "SolutionV3Patterns.lean"
+  ],
+  "current_core": {
+    "base_version": "0.48.1",
+    "fileset": [
+      "PaperC.lean",
+      "PaperC/**/*.lean"
+    ],
+    "file_count": 382,
+    "digest_sha256": "545b5dfe5f972614c0e682065640c1c34a03c8819255436f2adf6032a9d0f056",
+    "snapshot_kind": "migrated_current_core",
+    "toolchain": "leanprover/lean4:v4.34.0",
+    "historical_baseline": {
+      "source_commit": "9286f4a954ac128ba3d5edd1c1d25203f45c099f",
+      "same_core_merge_commit": "ee2ac789764fe5d9fd19c96c6c0778a693b129a0",
+      "toolchain": "leanprover/lean4:v4.32.0",
+      "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+      "fileset": [
+        "PaperC.lean",
+        "PaperC/**/*.lean"
+      ],
+      "file_count": 382,
+      "digest_sha256": "3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137",
+      "qualification_transfers_to_current_source": false
+    }
+  },
+  "dependency_lock_sha256": "59b98df8bbf813d8b9232c21bfbb376fa572b17ebbe6bfe1a73f756d448f8672",
+  "dependencies": [
+    {
+      "name": "mathlib",
+      "repository": "https://github.com/leanprover-community/mathlib4.git",
+      "revision": "5ed2965256430c3649e86755f9576b54eca72435"
+    },
+    {
+      "name": "plausible",
+      "repository": "https://github.com/leanprover-community/plausible",
+      "revision": "118aa17ee84656b8bd727fef7c458ee8c833385c"
+    },
+    {
+      "name": "LeanSearchClient",
+      "repository": "https://github.com/leanprover-community/LeanSearchClient",
+      "revision": "ddf04cf3949fa556442341e87d47f9f6e6074707"
+    },
+    {
+      "name": "importGraph",
+      "repository": "https://github.com/leanprover-community/import-graph",
+      "revision": "e928b72544873815af278d38681b31c0293588e3"
+    },
+    {
+      "name": "proofwidgets",
+      "repository": "https://github.com/leanprover-community/ProofWidgets4",
+      "revision": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5"
+    },
+    {
+      "name": "aesop",
+      "repository": "https://github.com/leanprover-community/aesop",
+      "revision": "355695d523e41d0554926416cba2a2b3544fbbc9"
+    },
+    {
+      "name": "Qq",
+      "repository": "https://github.com/leanprover-community/quote4",
+      "revision": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259"
+    },
+    {
+      "name": "batteries",
+      "repository": "https://github.com/leanprover-community/batteries",
+      "revision": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2"
+    },
+    {
+      "name": "Cli",
+      "repository": "https://github.com/leanprover/lean4-cli",
+      "revision": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"
+    }
+  ],
+  "build": {
+    "status": "passed",
+    "library_count": 23,
+    "lake_jobs_including_dependencies_and_replays": 10113
+  },
+  "axiom_audits": {
+    "status": "passed",
+    "expected_exact_counts": {
+      "PaperC": 4074,
+      "V11": 7,
+      "V282": 6094
+    },
+    "counts_are_not_deduplicated": true,
+    "allowlist": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "strict_interfaces": {
+    "status": "passed",
+    "declarations": 80,
+    "configurations": 10,
+    "receipt": "strict-boundary.json"
+  },
+  "dual_kernel": {
+    "status": "passed_locally",
+    "declarations": 80,
+    "configurations": 10,
+    "receipt": "dual-kernel.json"
+  },
+  "core_notation_render": {
+    "status": "passed_locally",
+    "declarations": 69,
+    "configurations": 5,
+    "receipt": "core-notation-render.json",
+    "not_full_server_render": true
+  },
+  "static_tests": {
+    "python_unittests": 48,
+    "python_status": "passed",
+    "root_audit_guards": "passed",
+    "checks": [
+      {
+        "command": [
+          "node",
+          "scripts/generate_audit.mjs",
+          "--check-source-digest"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "node",
+          "scripts/generate_audit.mjs",
+          "--check-pdfs"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "node",
+          "scripts/generate_audit.mjs",
+          "--check-literature-certificates"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "node",
+          "scripts/generate_audit.mjs",
+          "--check"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "node",
+          "scripts/check_comparator_sources.mjs"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python3",
+          "scripts/check_v282_audit.py",
+          "--check-source"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python3",
+          "scripts/check_v3prel_sources.py"
+        ],
+        "exit_code": 0
+      }
+    ]
+  },
+  "transcripts": [
+    {
+      "path": "logs/lean4340-migration-full-build.log.gz",
+      "sha256": "8e70923c8478e0a4b7cf4b23157ec1ce642ecddeb8f80bd47a74bb21802529d4",
+      "uncompressed_sha256": "51535eea290b3bdc1c4e1a1c6bcd8b197d0bbaaa5e06f57e5f227179c975b720",
+      "uncompressed_bytes": 431697
+    },
+    {
+      "path": "logs/lean4340-core-audit.log.gz",
+      "sha256": "bebbe251ac89f6a4b8b0ea33ab74add5305d94fb3ffac305f8bbade237ad5a53",
+      "uncompressed_sha256": "0c827583d25f14198aa585c76a37d6112adfc77190a2056d8a6425dfe1ae030f",
+      "uncompressed_bytes": 528708
+    },
+    {
+      "path": "logs/lean4340-v11-audit.log.gz",
+      "sha256": "a168c3dd8fae6d0c857dd82660026cd959c12ef7d125c5fc89ab441d0458db99",
+      "uncompressed_sha256": "615cb8d01c58cd474e975c41c18d37c665999a89132aa9da4fc2c76ca2468713",
+      "uncompressed_bytes": 853
+    },
+    {
+      "path": "logs/lean4340-v282-audit.log.gz",
+      "sha256": "06b8c5023b6edeb46dc4f35c6bdcda9daac3b50ce114137c044bd11cfe25e8e2",
+      "uncompressed_sha256": "110b5d7852d4999348053c93a214b18b2eb3d2115228cd046ba0314a57358d32",
+      "uncompressed_bytes": 755224
+    },
+    {
+      "path": "logs/lean4340-canonical-mathlib.log.gz",
+      "sha256": "916fb309fb9e4c8055d7653d0fc92394fed259e0cf8b08e545b2a4d64533ad11",
+      "uncompressed_sha256": "ef47aa9dbc4f7158c71d5448cd83cbe42335e2d3e93eb068faae3a495bddbc06",
+      "uncompressed_bytes": 176
+    },
+    {
+      "path": "logs/lean4340-canonical-4331-fallback.log.gz",
+      "sha256": "17b3d4d1f6a833d5d598806cc88885bc597cad8af5ab0cfe37e8ad8efe74ffa3",
+      "uncompressed_sha256": "72c0b13af70e3080cb10e81fb7d749ffe564521769bbd4b93189bc786649ef25",
+      "uncompressed_bytes": 100
+    },
+    {
+      "path": "logs/lean4340-python-tests.log.gz",
+      "sha256": "5eeb993ad7f77d8afd10db9da3de6cca8279a3ccffbdf4b7c108b7c589ad8f87",
+      "uncompressed_sha256": "54c8f2f63df1417ffb5e9b6d24d3f678b8df527fd4ed20e06fb6337239a1072d",
+      "uncompressed_bytes": 147
+    },
+    {
+      "path": "logs/lean4340-static-checks.log.gz",
+      "sha256": "3de7aa8ea8cc0c8505f6e439f7fb38fc0bc3d978b0ef2e3b88a80bded767790f",
+      "uncompressed_sha256": "3039c1f424d4909f99efd801167b864253e706382e6035d385447f32a2e1dd2b",
+      "uncompressed_bytes": 1055
+    },
+    {
+      "path": "logs/lean4340-dual-theorem_one_four_and_corollary_eleven_three.log.gz",
+      "sha256": "7b2667234b429d94d83e7a2db1aab747b874adc9a719803e0afd72f0dea04f99",
+      "uncompressed_sha256": "a59c3cd8c490bf75bee23672118612fbbace30e01e517b763940d05553262418",
+      "uncompressed_bytes": 195154
+    },
+    {
+      "path": "logs/lean4340-dual-theorem_one_one.log.gz",
+      "sha256": "b51fb826d4fc74f78a007ff61edcdefe0508040962a848fcbfe3054587040d2f",
+      "uncompressed_sha256": "386d2534953a4787b1066635d0ceb63ca08228478694c0cc4eec620285b3459b",
+      "uncompressed_bytes": 195142
+    },
+    {
+      "path": "logs/lean4340-dual-theorem_one_one_transfer.log.gz",
+      "sha256": "d6412940a5f4d515e14770145273368768f351c078515f8e50c938814ae33ca1",
+      "uncompressed_sha256": "151df5020dd5c442eabe156ceff6282127153b742dbcfaa46cd100c21558e346",
+      "uncompressed_bytes": 195344
+    },
+    {
+      "path": "logs/lean4340-dual-theorem_one_two.log.gz",
+      "sha256": "43d32a0ff356d8c51085e843df2405d7772beb567abbbad2ac646c7f615f8460",
+      "uncompressed_sha256": "2893795dbfe2eeb141341ea3112f950049e1e3538c9d855a2faabb9ef1862dfe",
+      "uncompressed_bytes": 196686
+    },
+    {
+      "path": "logs/lean4340-dual-theorem_sixteen_two_and_corollary_sixteen_four.log.gz",
+      "sha256": "4105bf23056e85d5b2321472992d63bb5fbeb65d7d2f6c1b25d369d8dc1dbe5d",
+      "uncompressed_sha256": "1d89ac095e4f33357ff6f923b112e6573345382bfb69eec8077fb9cbd1902235",
+      "uncompressed_bytes": 198636
+    },
+    {
+      "path": "logs/lean4340-dual-v3prel_boundary.log.gz",
+      "sha256": "5fa2318b83d7f0798c2e5086ef5a608646b6009971a3fe1d1dec702d2508f144",
+      "uncompressed_sha256": "ee5bdaa6e971c3ba1c6f92d218c405a20be80b9769cf1f4a581f4b2c8bf9573e",
+      "uncompressed_bytes": 230084
+    },
+    {
+      "path": "logs/lean4340-dual-v3prel_critical_field.log.gz",
+      "sha256": "80e1a6425f7074cbd23171d2ac24386cd08154670cad47f67b5269ce668c5ac4",
+      "uncompressed_sha256": "711b074975ee5d1026e861f83e1589c2ecc61c21d414b95519e315b23c408ee4",
+      "uncompressed_bytes": 203917
+    },
+    {
+      "path": "logs/lean4340-dual-v3prel_crossover.log.gz",
+      "sha256": "d2803df704e81a00f4ef1758aee3afb41d8e30d16632e01f6fd2a49f8957c27d",
+      "uncompressed_sha256": "e40dd34e98462e394ea4a495b6f1b7b9b5501d1d499a251f47467d8a853fd1e7",
+      "uncompressed_bytes": 309473
+    },
+    {
+      "path": "logs/lean4340-dual-v3prel_limits.log.gz",
+      "sha256": "6d1f2a3f57bd86872e63b810dc4273faa665a373ee54c3ca0e376f8b20fe918e",
+      "uncompressed_sha256": "66722d116f3de67374d9eca71907a58b6ba6d68541c749f86b3eeccc1683e023",
+      "uncompressed_bytes": 388644
+    },
+    {
+      "path": "logs/lean4340-dual-v3prel_patterns.log.gz",
+      "sha256": "113572e3b309d7c35243c5e9cc6fe99245f142a2e8bdbb737a5c965a7d2935d4",
+      "uncompressed_sha256": "0035a332bb0c27ccf1f6942339c8b737856ac86e64533051c0498d22fdcc7aa0",
+      "uncompressed_bytes": 204751
+    }
+  ],
+  "limitations": [
+    "No Palomar submission, registration or editorial review was performed.",
+    "Local checks used existing compiled outputs with exact source hashes; they are not a protected cold server-side build.",
+    "The seven explicit mathematical literature premises remain hypotheses.",
+    "Old qualification records are not transferred to the new source snapshot.",
+    "Existing deprecation and linter warnings remain."
+  ],
+  "v3_preflight": {
+    "status": "static_preflight_passed",
+    "path": "v3-preflight.json.gz",
+    "sha256": "24b69ae47566ed1a3d2f727f443ad0984b95c2be418fc2a80d8f77b55aac436b",
+    "uncompressed_sha256": "793d087cfd921b783bde015bb7fd9ebca8edcdcd2a3bc756d59068ed8ba254e5"
+  }
+}

@@ -29,7 +29,8 @@ theorem finiteCategory_eq_some_iff (N E : ℕ) (j : SpatialMarkedIndex N)
   · rw [finiteCategory,dif_pos hj,Option.some.injEq]
     constructor
     · rintro rfl
-      simp [finiteMarkedEmbedding]
+      change j = ((dyadicSiteEquiv N).symm ((dyadicSiteEquiv N) j.1), j.2)
+      rw [Equiv.symm_apply_apply]
     · intro h
       subst j
       apply Prod.ext
@@ -60,7 +61,7 @@ theorem measurable_sampledConfiguration {X : Type*} [MeasurableSpace X] (N : ℕ
     exact (Fin.sum_univ_eq_sum_range (fun i => Finsupp.single (mark (marks i)) (1 : ℕ)) n).symm
   rw [heq]
   exact (measurable_of_countable _).comp
-    (measurable_pi_lambda _ (fun i => hm.comp (measurable_pi_apply i.val)))
+    (Measurable.of_eval (fun i => hm.comp (measurable_pi_apply i.val)))
 
 theorem project_sampledConfiguration {X : Type*} (N E : ℕ)
     (mark : X → SpatialMarkedIndex N) (sample : ℕ × (ℕ → X)) :

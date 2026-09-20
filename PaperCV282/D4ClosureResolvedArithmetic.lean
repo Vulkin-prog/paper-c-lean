@@ -37,7 +37,7 @@ theorem resolved_integral_error_le (N L n : ℕ) (hN : 0 < N) (A : Set InfiniteS
   letI instProbabilityConditional : IsProbabilityMeasure (cond infiniteRademacherMeasure A) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hA)
   letI instProbabilitySpatial : IsProbabilityMeasure (arithmeticSpatialMeasure N L A) :=
-    Measure.isProbabilityMeasure_map (measurable_spatialMarkedSource _ _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_spatialMarkedSource _ _).aemeasurable).mpr inferInstance)
   letI instProbabilityResolved : IsProbabilityMeasure (resolvedArithmeticSpatialMeasure N L n A) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hp)
   have hn : (poissonMeasure (fullRate N L)) {n}≠0 := by

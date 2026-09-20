@@ -219,7 +219,7 @@ def exactError (N L : ℕ) (epsilon eta : ℝ) : ℝ :=
 def halfSuccess : unitInterval := ⟨1/2, by norm_num, by norm_num⟩
 def geometricMeasurePositive : Measure ℕ := (geometricMeasure halfSuccess).map Nat.succ
 instance instProbabilityGeometric : IsProbabilityMeasure geometricMeasurePositive :=
-  Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 def markSequenceMeasure (mu : Measure ℕ) [IsProbabilityMeasure mu] : Measure (ℕ → ℕ) :=
   Measure.infinitePi (fun _ : ℕ => mu)
 def compoundSample (rate : ℝ≥0) (mu : Measure ℕ) [IsProbabilityMeasure mu] :
@@ -351,7 +351,9 @@ theorem constant_window_distance_eq (N L : ℕ) :
     apply Finset.sum_congr rfl
     intro x hx
     simp only [value_eq]
-    split_ifs <;> rfl
+    split_ifs with h
+    · exact if_pos h
+    · exact if_neg h
   have htarget : compoundMeasure (fullRate N L) geometricMeasurePositive=
       GeometricClusterTarget.geometricCompoundMeasure (AllStartSoftPoisson.fullRate N L) := rfl
   unfold constantWindowDistance ConstantWindowCompoundConvergence.constantWindowCompoundDistance

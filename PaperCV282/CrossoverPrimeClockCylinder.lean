@@ -59,7 +59,7 @@ theorem measurable_cappedPrimeClock (L K : ℕ) : Measurable (cappedPrimeClock L
   have he : finiteClock Y L K ∘ restrictToFinite Y = cappedPrimeClock L K :=
     funext (finiteClock_restrict (le_max_left _ _) hp)
   rw [← he]
-  exact (measurable_of_countable _).comp (measurable_pi_lambda _ fun p => measurable_pi_apply _)
+  exact (measurable_of_countable _).comp (Measurable.of_eval fun p => measurable_pi_apply _)
 
 /-- The border and the finite prime clock are retained together. -/
 def borderClockRecord (L K : ℕ) (omega : InfiniteSample) : Bool × ℕ :=

@@ -263,5 +263,7 @@ alignment:
     lean: PaperCV3Audit.v3_boundary_longest_loglog
     module: SolutionV3Boundary
     status: proved modulo the explicit literature premises in its statement, if any
-acknowledgements: Built on Lean 4.32.0 and Mathlib. Source archives and the detailed manuscript migration
-  matrix are preserved separately.
+acknowledgements: The complete build and axiom audits passed with Lean 4.34.0 and Mathlib
+  v4.34.0. The migration guide records the separate interface and kernel checks.
+  Local validation does not confer Palomar registration. Previous verification
+  snapshots, source archives and the manuscript migration matrix remain preserved.

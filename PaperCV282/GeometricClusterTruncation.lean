@@ -25,7 +25,7 @@ def truncatedGeometricMeasure (E : ℕ) : Measure ℕ :=
 instance instProbabilityTruncatedGeometric (E : ℕ) :
     IsProbabilityMeasure (truncatedGeometricMeasure E) := by
   unfold truncatedGeometricMeasure
-  exact Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 
 theorem truncated_power_identity (E h : ℕ) (z : ℂ) :
     z ^ truncateMark E h = 1 + ∑ e ∈ Finset.range (E + 1),
@@ -107,7 +107,7 @@ def weightedGeometricPoissonMeasure (rate : ℝ≥0) (E : ℕ) : Measure ℕ :=
 instance instProbabilityWeightedGeometric (rate : ℝ≥0) (E : ℕ) :
     IsProbabilityMeasure (weightedGeometricPoissonMeasure rate E) := by
   unfold weightedGeometricPoissonMeasure
-  exact Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 
 /-- The full finite-coordinate target equals a genuine truncated compound law. -/
 theorem weightedGeometricPoisson_eq_compound (rate : ℝ≥0) (E : ℕ) :

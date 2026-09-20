@@ -21,9 +21,12 @@ theorem shifted_embeds_as_filtered (k : ℕ) (c : ℕ →₀ ℕ) :
   classical
   ext e
   by_cases he : k≤e
-  · have hid : shiftEmbedding k (e-k)=e := by dsimp [shiftEmbedding]; omega
+  · have hid : shiftEmbedding k (e-k)=e := by
+      change k+(e-k)=e
+      omega
     rw [← hid, Finsupp.embDomain_apply_self, shiftedConfiguration_apply, Finsupp.filter_apply]
-    simp [shiftEmbedding, show k≤k+(e-k) by omega]
+    change c (k+(e-k)) = if k≤k+(e-k) then c (k+(e-k)) else 0
+    rw [if_pos (by omega : k≤k+(e-k))]
   · rw [Finsupp.filter_apply, if_neg he]
     apply Finsupp.embDomain_notin_range
     rintro ⟨i,hi⟩
@@ -112,7 +115,7 @@ def resolvedPastFutureMeasure (rate : ℝ≥0) (k n : ℕ) : Measure (ℕ → �
 
 instance instProbabilityResolvedPastFuture (rate : ℝ≥0) (k n : ℕ) :
     IsProbabilityMeasure (resolvedPastFutureMeasure rate k n) :=
-  Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 
 /-- The whole retained path, with a finite reverse part and an unlimited future, has the explicit product construction. -/
 theorem conditional_retained_path_eq (rate : ℝ≥0) (k n : ℕ)

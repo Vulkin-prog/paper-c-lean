@@ -84,8 +84,8 @@ theorem map_tv_le_of_eq_off {Omega Alpha : Type*} [MeasurableSpace Omega] [Measu
     {f g : Omega → Alpha} (hf : Measurable f) (hg : Measurable g)
     (h : ∀ omega, omega∉E → f omega=g omega) :
     measureTotalVariation (mu.map f) (mu.map g) ≤ mu.real E := by
-  letI instProbabilityMapF : IsProbabilityMeasure (mu.map f) := Measure.isProbabilityMeasure_map hf.aemeasurable
-  letI instProbabilityMapG : IsProbabilityMeasure (mu.map g) := Measure.isProbabilityMeasure_map hg.aemeasurable
+  letI instProbabilityMapF : IsProbabilityMeasure (mu.map f) := ((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)
+  letI instProbabilityMapG : IsProbabilityMeasure (mu.map g) := ((Measure.isProbabilityMeasure_map_iff hg.aemeasurable).mpr inferInstance)
   apply (measureTotalVariation_le_iff _ _ _).mpr
   intro A hA
   simp only [Measure.real,Measure.map_apply hf hA,Measure.map_apply hg hA]
@@ -128,11 +128,11 @@ theorem conditional_record_tv_le (L T : ℕ) :
   letI instProbabilityMicro : IsProbabilityMeasure nu := cond_isProbabilityMeasure
     (ConditionedCountableLaw.measure_ne_zero_of_real_pos _ (microscopicProbability_pos L))
   letI instProbabilityRecordT : IsProbabilityMeasure (mu.map (microscopicRecord L T)) :=
-    Measure.isProbabilityMeasure_map (measurable_microscopicRecord L T).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_microscopicRecord L T).aemeasurable).mpr inferInstance)
   letI instProbabilityRecordZeroMu : IsProbabilityMeasure (mu.map (microscopicRecord L 0)) :=
-    Measure.isProbabilityMeasure_map (measurable_microscopicRecord L 0).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_microscopicRecord L 0).aemeasurable).mpr inferInstance)
   letI instProbabilityRecordZeroNu : IsProbabilityMeasure (nu.map (microscopicRecord L 0)) :=
-    Measure.isProbabilityMeasure_map (measurable_microscopicRecord L 0).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_microscopicRecord L 0).aemeasurable).mpr inferInstance)
   have hc := map_tv_le_of_eq_off mu (extraEvent L T) (measurable_microscopicRecord L T)
     (measurable_microscopicRecord L 0) (fun _ h => records_eq_off_extra L T h)
   have hmass : mu.real (extraEvent L T) ≤
@@ -170,10 +170,10 @@ theorem cutoff_conditioned_stability (hShorey : ShoreySquareProductStatement)
       cond_isProbabilityMeasure (ConditionedCountableLaw.measure_ne_zero_of_real_pos _ (microscopicProbability_pos L))
     letI instProbabilityRecordT : IsProbabilityMeasure
         ((cond infiniteRademacherMeasure (enlargedEvent L (cutoffs L))).map (microscopicRecord L (cutoffs L))) :=
-      Measure.isProbabilityMeasure_map (measurable_microscopicRecord L _).aemeasurable
+      ((Measure.isProbabilityMeasure_map_iff (measurable_microscopicRecord L _).aemeasurable).mpr inferInstance)
     letI instProbabilityRecordZero : IsProbabilityMeasure
         ((cond infiniteRademacherMeasure (microscopicEvent L)).map (microscopicRecord L 0)) :=
-      Measure.isProbabilityMeasure_map (measurable_microscopicRecord L 0).aemeasurable
+      ((Measure.isProbabilityMeasure_map_iff (measurable_microscopicRecord L 0).aemeasurable).mpr inferInstance)
     exact measureTotalVariation_nonneg _ _
   · intro L
     exact conditional_record_tv_le L (cutoffs L)

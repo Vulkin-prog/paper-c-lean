@@ -107,7 +107,7 @@ theorem map_distance_eq_mass {Ω α : Type*} [MeasurableSpace Ω]
     (μ : Measure Ω) (ν : Measure α) [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]
     {f : Ω → α} (hf : Measurable f) :
     measureTotalVariation (μ.map f) ν=massTotalVariation (observableLaw μ f) (observableLaw ν id) := by
-  letI instProbabilityMapped : IsProbabilityMeasure (μ.map f) := Measure.isProbabilityMeasure_map hf.aemeasurable
+  letI instProbabilityMapped : IsProbabilityMeasure (μ.map f) := ((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)
   rw [measureTotalVariation_eq_mass]
   congr 1
   funext a

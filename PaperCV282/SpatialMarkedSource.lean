@@ -116,8 +116,11 @@ theorem project_spatialMarkedSource (N L E : ℕ) (omega : InfiniteSample) :
   funext i
   have hx : N+((dyadicSiteEquiv N).symm i.1).val=i.1.val :=
     congrArg Subtype.val ((dyadicSiteEquiv N).apply_symm_apply i.1)
-  simp only [projectConfiguration,spatialMarkedSource_apply,spatialMarkedValue,finiteMarkedEmbedding,
-    Function.Embedding.coeFn_mk,hx,infiniteSignedField,i.1.property,true_and,signedMarkValue]
+  change signedMarkValue (infiniteValueBit omega)
+    (N+((dyadicSiteEquiv N).symm i.1).val) L i.2.1.val i.2.2 =
+      infiniteSignedField N L E (dyadicBlock N) omega i
+  rw [hx]
+  simp only [infiniteSignedField,i.1.property,true_and,signedMarkValue]
 
 def spatialSourceLaw (N L : ℕ) : SpatialMarkedConfig N → ℝ :=
   observableLaw infiniteRademacherMeasure (spatialMarkedSource N L)

@@ -29,7 +29,7 @@ def halfGridTarget (N : ℕ) (hN : 0<N) (rate : ℝ≥0) : Measure (SpatialMarke
 
 instance instProbabilityHalfGridTarget (N : ℕ) (hN : 0<N) (rate : ℝ≥0) :
     IsProbabilityMeasure (halfGridTarget N hN rate) :=
-  Measure.isProbabilityMeasure_map (measurable_sampledConfiguration N _ (measurable_halfGridMark N hN)).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_sampledConfiguration N _ (measurable_halfGridMark N hN)).aemeasurable).mpr inferInstance)
 
 theorem halfGridMark_atom_real (N : ℕ) (hN : 0<N) (j : SpatialMarkedIndex N) :
     halfMarkMeasure.real {x | halfGridMark N hN x=j}=

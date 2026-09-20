@@ -89,14 +89,16 @@ theorem private_column_pure {M lo B : ℕ} (hlo : 0 < lo)
     (valuationMatrix M (lo + 1) B).col (privateColumn M lo B hlo hcut p) =
       Pi.single (privateIndex lo B p) (1 : F₂) := by
   funext i
+  change parityVec (vertex (lo + 1) B i) p.val =
+    (Pi.single (privateIndex lo B p) (1 : F₂) : Fin B → F₂) i
   have hp := prime_and_large_of_mem_largePrimeFactors p.property
   by_cases hi : i = privateIndex lo B p
   · subst i
     have he := large_factorization_eq_one hlo htop hp.1 hp.2 _ (privateIndex_dvd lo B p)
-    simp [valuationMatrix,vertex,privateColumn,parityVec_apply,he]
+    simp [vertex,parityVec_apply,he]
   · have hnd : ¬p.val ∣ lo + i.val := fun hd => hi (privateIndex_unique lo B p i hd)
     have hz := Nat.factorization_eq_zero_of_not_dvd hnd
-    simp [valuationMatrix,vertex,privateColumn,parityVec_apply,hz,hi]
+    simp [vertex,parityVec_apply,hz,hi]
 
 theorem private_coordinate_mem_range {M lo B : ℕ} (hlo : 0 < lo)
     (htop : lo + B ≤ B ^ 2 + B + 1) (hcut : lo + B ≤ M + 1)

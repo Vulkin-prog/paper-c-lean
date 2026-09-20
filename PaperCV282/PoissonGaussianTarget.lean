@@ -32,13 +32,13 @@ def jointThresholdVector (rate : ℝ≥0) (J : ℕ) (excess : R → ℕ) (c : �
 def jointThresholdLaw (rate : ℝ≥0) (J : ℕ) (excess : R → ℕ) :
     ProbabilityMeasure (WithLp 2 ((EuclideanSpace ℝ (Fin (J+1))) × EuclideanSpace ℝ R)) :=
   ⟨(configurationMeasure rate).map (jointThresholdVector rate J excess),
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)⟩
 
 def poissonGaussianTarget (J : ℕ) (criticalRates : R → ℝ≥0) :
     ProbabilityMeasure (WithLp 2 ((EuclideanSpace ℝ (Fin (J+1))) × EuclideanSpace ℝ R)) :=
   ⟨(((gaussianThresholdLaw J : Measure (EuclideanSpace ℝ (Fin (J+1))))).prod
       (euclideanProductLaw (fun r => realPoissonLaw (criticalRates r)) : Measure (EuclideanSpace ℝ R))).map
-      (toLp 2), Measure.isProbabilityMeasure_map (by fun_prop)⟩
+      (toLp 2), ((Measure.isProbabilityMeasure_map_iff (by fun_prop)).mpr inferInstance)⟩
 
 omit [DecidableEq R] in
 theorem charFun_poissonGaussianTarget (J : ℕ) (criticalRates : R → ℝ≥0)

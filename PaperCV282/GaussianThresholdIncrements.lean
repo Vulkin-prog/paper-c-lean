@@ -120,7 +120,7 @@ theorem charFun_map_thresholdSum (J : ℕ)
 /-- The independent-increment representation has exactly the target Gaussian law. -/
 theorem map_gaussian_increments (J : ℕ) :
     (euclideanProductLaw (fun i => PoissonCLT.centeredGaussianLaw (incrementVariance J i))).map
-      (continuous_thresholdSum J).measurable.aemeasurable = gaussianThresholdLaw J := by
+      (thresholdSum J) = gaussianThresholdLaw J := by
   apply Subtype.ext
   change ((euclideanProductLaw (fun i => PoissonCLT.centeredGaussianLaw (incrementVariance J i)) :
       Measure _).map (thresholdSum J)) = multivariateGaussian 0 (thresholdCovariance J)

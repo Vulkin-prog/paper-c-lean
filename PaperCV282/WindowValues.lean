@@ -97,10 +97,14 @@ theorem extendLarge_prime_basis (M Y : ℕ) (p : PrimeUpTo M)
   by_cases hqp : q = p
   · subst q
     simp [extendLarge, hp]
+    exact Pi.single_eq_same _ _
   · by_cases hq : Y < q.val.val
-    · simp [extendLarge, Pi.single_apply, hq, hqp]
-      intro heq
-      exact hqp (congrArg Subtype.val heq)
+    · simp [extendLarge, hq, hqp]
+      have hne : (⟨q, hq⟩ : LargePrimeCoordinate M Y) ≠ ⟨p, hp⟩ :=
+        fun heq => hqp (congrArg Subtype.val heq)
+      exact @Pi.single_eq_of_ne (LargePrimeCoordinate M Y) (fun _ => F₂)
+        (fun _ => inferInstance) (instDecidableEqLargePrimeCoordinate M Y)
+        ⟨p, hp⟩ ⟨q, hq⟩ hne 1
     · simp [extendLarge, hq, hqp]
 
 /-- The conditional clause of Corollary 2.6, for every fixed small-prime assignment. -/

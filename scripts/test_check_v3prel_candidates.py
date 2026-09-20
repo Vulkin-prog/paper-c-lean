@@ -2,6 +2,7 @@
 import copy
 import json
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -70,11 +71,16 @@ class CandidateGuardTests(unittest.TestCase):
 
     def test_toolchain_and_mathlib_pin_cannot_drift(self):
         (self.root/'lean-toolchain').write_text(guard.TOOLCHAIN+'\n')
-        data={'packages':[{'name':'mathlib','type':'git','url':'https://github.com/leanprover-community/mathlib4.git','rev':guard.MATHLIB_COMMIT,'inputRev':'v4.32.0'}]}
+        data={'packages':[{'name':'mathlib','type':'git','url':'https://github.com/leanprover-community/mathlib4.git','rev':guard.MATHLIB_COMMIT,'inputRev':guard.MATHLIB_TAG}]}
         p=self.root/'lake-manifest.json';p.write_text(json.dumps(data));self.assertEqual(len(guard.pin_contract(self.root)),1)
-        (self.root/'lean-toolchain').write_text('leanprover/lean4:v4.33.0\n')
+        bad_toolchain='leanprover/lean4:v0.0.0-unpinned'
+        self.assertNotEqual(guard.TOOLCHAIN,bad_toolchain)
+        (self.root/'lean-toolchain').write_text(bad_toolchain+'\n')
         with self.assertRaises(guard.InvalidCandidate): guard.pin_contract(self.root)
-        (self.root/'lean-toolchain').write_text(guard.TOOLCHAIN+'\n');data['packages'][0]['rev']='0'*40;p.write_text(json.dumps(data))
+        (self.root/'lean-toolchain').write_text(guard.TOOLCHAIN+'\n')
+        data['packages'][0]['inputRev']='v0.0.0-unpinned';p.write_text(json.dumps(data))
+        with self.assertRaises(guard.InvalidCandidate): guard.pin_contract(self.root)
+        data['packages'][0]['inputRev']=guard.MATHLIB_TAG;data['packages'][0]['rev']='0'*40;p.write_text(json.dumps(data))
         with self.assertRaises(guard.InvalidCandidate): guard.pin_contract(self.root)
 
     def test_metadata_selected_names_and_source_hashes_are_exact(self):
@@ -90,6 +96,39 @@ class CandidateGuardTests(unittest.TestCase):
     def test_fixed_registry_rejects_changed_config(self):
         p=self.root/'comparator/v3prel_critical_field.json';p.parent.mkdir();d=copy.deepcopy(guard.REGISTRY['critical_field']);d['enable_nanoda']=False;p.write_text(json.dumps(d))
         with self.assertRaises(guard.InvalidCandidate): guard.check_family(self.root,'critical_field')
+
+    def contract_checkout(self, name):
+        root=self.root/name;root.mkdir()
+        def git(*args):
+            return subprocess.check_output(['git','-C',str(root),*args],text=True).strip()
+        git('init','--quiet')
+        loader=root/'submission_contract.py';loader.write_text('# original loader\n')
+        git('add','submission_contract.py')
+        tree=git('write-tree')
+        commit=git('-c','user.name=Guard test','-c','user.email=guard-test@example.invalid',
+                   'commit-tree',tree,'-m','Guard fixture')
+        git('update-ref','refs/heads/guard-fixture',commit)
+        git('symbolic-ref','HEAD','refs/heads/guard-fixture')
+        return root,loader,commit,git
+
+    def test_clean_exact_submission_checkout_is_accepted(self):
+        root,loader,commit,_=self.contract_checkout('clean-contract')
+        with patch.object(guard,'SUBMISSION_COMMIT',commit):
+            guard.check_submission_checkout(root)
+        self.assertEqual(loader.read_text(),'# original loader\n')
+
+    def test_modified_submission_loader_is_rejected_even_with_exact_head(self):
+        for staged in [False,True]:
+            with self.subTest(staged=staged):
+                root,loader,commit,git=self.contract_checkout(f'dirty-contract-{staged}')
+                loader.write_text('# modified loader\n')
+                if staged: git('add','submission_contract.py')
+                self.assertEqual(git('rev-parse','HEAD'),commit)
+                with patch.object(guard,'SUBMISSION_COMMIT',commit):
+                    with self.assertRaisesRegex(guard.InvalidCandidate,'tracked files modified'):
+                        guard.check_submission_checkout(root)
+                self.assertEqual(loader.read_text(),'# modified loader\n')
+                self.assertTrue(git('status','--porcelain','--untracked-files=no'))
 
     def test_anonymous_section_does_not_consume_next_namespace(self):
         self.assertEqual(self.check('noncomputable section\n'+self.good)['intentional_placeholders'],1)

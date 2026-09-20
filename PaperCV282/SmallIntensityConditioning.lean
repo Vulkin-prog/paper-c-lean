@@ -42,7 +42,7 @@ theorem conditionalStartMeasure_tv_eq (N L : ℕ) (C : Set InfiniteSample)
   letI instProbabilityConditionalSource : IsProbabilityMeasure (cond infiniteRademacherMeasure C) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI instProbabilityConditionalCount : IsProbabilityMeasure (conditionalStartMeasure N L C) :=
-    Measure.isProbabilityMeasure_map (measurable_source_startCount N L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_source_startCount N L).aemeasurable).mpr inferInstance)
   rw [measureTotalVariation_eq_mass]
   change massTotalVariation (fun k => (conditionalStartMeasure N L C).real {k})
     (poissonMass (fullRate N L)) = _
@@ -80,7 +80,7 @@ theorem small_intensity_relative_bound (hStein : ScalarSteinFactorsStatement)
   letI instProbabilityConditionalSource : IsProbabilityMeasure (cond infiniteRademacherMeasure C) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI instProbabilityConditionalCount : IsProbabilityMeasure (conditionalStartMeasure N L C) :=
-    Measure.isProbabilityMeasure_map (measurable_source_startCount N L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_source_startCount N L).aemeasurable).mpr inferInstance)
   have hrpos : 0 < fullRate N L := by
     change (0 : ℝ) < (N : ℝ)/2^L
     have hn : 0 < N := by omega

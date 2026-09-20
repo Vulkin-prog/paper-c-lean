@@ -49,7 +49,7 @@ theorem integral_observable_eq_tsum {Ω α : Type*} [MeasurableSpace Ω]
     (μ : Measure Ω) [IsProbabilityMeasure μ] {f : Ω → α} (hf : Measurable f)
     (stat : α → ℝ) (M : ℝ) (hstat : ∀ a, |stat a| ≤ M) :
     (∫ ω, stat (f ω) ∂μ) = ∑' a, observableLaw μ f a*stat a := by
-  letI : IsProbabilityMeasure (μ.map f) := Measure.isProbabilityMeasure_map hf.aemeasurable
+  letI : IsProbabilityMeasure (μ.map f) := ((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)
   have hmeas : StronglyMeasurable stat := (measurable_of_countable stat).stronglyMeasurable
   have hint : Integrable stat (μ.map f) := (integrable_const M).mono' hmeas.aestronglyMeasurable
     (Filter.Eventually.of_forall (fun a => by simpa only [Real.norm_eq_abs] using hstat a))

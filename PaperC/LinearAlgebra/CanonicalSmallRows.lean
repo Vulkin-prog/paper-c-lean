@@ -618,7 +618,10 @@ theorem canonicalArithmeticSmallRowMatrix_prime_inr
   classical
   rw [canonicalArithmeticSmallRowMatrix_prime_apply]
   rw [canonicalCoreBoundaryColumn_eq_indicator]
-  simp only [canonicalCoreComponent, primeBoundaryRow_apply]
+  change (∑ v : Occurrence L,
+    (if v ∈ componentVertices x y L C.1 then (1 : F₂) else 0) *
+      parityVec (twoStartCompleteVertexLabel x y L v)
+        (PrimesUpTo.smallPrime (L + 1) j)) = _
   simp only [ite_mul, one_mul, zero_mul]
   rw [← Finset.sum_filter]
   simp only [Finset.filter_mem_eq_inter, Finset.univ_inter]

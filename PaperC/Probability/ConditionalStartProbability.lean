@@ -81,10 +81,10 @@ def extendSmall (M Y : ℕ) :
     if hp : p.1.1 ≤ Y then σ ⟨p, hp⟩ else 0
   map_add' σ τ := by
     funext p
-    by_cases hp : p.1.1 ≤ Y <;> simp [hp]
+    by_cases hp : p.1.1 ≤ Y <;> simp [hp] <;> rfl
   map_smul' c σ := by
     funext p
-    by_cases hp : p.1.1 ≤ Y <;> simp [hp]
+    by_cases hp : p.1.1 ≤ Y <;> simp [hp] <;> rfl
 
 /-- Extend a large-prime assignment by zero on all coordinates at most `Y`. -/
 def extendLarge (M Y : ℕ) :
@@ -93,10 +93,10 @@ def extendLarge (M Y : ℕ) :
     if hp : Y < p.1.1 then η ⟨p, hp⟩ else 0
   map_add' η θ := by
     funext p
-    by_cases hp : Y < p.1.1 <;> simp [hp]
+    by_cases hp : Y < p.1.1 <;> simp [hp] <;> rfl
   map_smul' c η := by
     funext p
-    by_cases hp : Y < p.1.1 <;> simp [hp]
+    by_cases hp : Y < p.1.1 <;> simp [hp] <;> rfl
 
 /-- Restrict a full cylinder assignment to the small coordinates. -/
 def restrictSmall (M Y : ℕ) :
@@ -124,6 +124,7 @@ theorem restrictSmall_extendSmall
     restrictSmall M Y (extendSmall M Y σ) = σ := by
   funext p
   simp [restrictSmall, extendSmall, p.2]
+  rfl
 
 @[simp]
 theorem restrictSmall_extendLarge
@@ -145,6 +146,7 @@ theorem restrictLarge_extendLarge
     restrictLarge M Y (extendLarge M Y η) = η := by
   funext p
   simp [restrictLarge, extendLarge, p.2]
+  rfl
 
 @[simp]
 theorem restrictSmall_assemble
@@ -244,7 +246,9 @@ private theorem valueBit_extendLarge_single
   let qLarge : LargePrimeCoordinate M Y := ⟨q, hpY⟩
   rw [valueBit]
   rw [Fintype.sum_eq_single q]
-  · simp [extendLarge, q, qLarge, hpY]
+  · simp [extendLarge, Pi.single, Function.update, q, hpY]
+    intro hne
+    exact (hne rfl).elim
   · intro r hrq
     have hrq' : r ≠ q := hrq
     by_cases hrY : Y < r.1.1
@@ -261,8 +265,8 @@ private theorem valueBit_extendLarge_single
               ((Pi.single qLarge (1 : F₂) : LargeSample M Y) ⟨r, h⟩)
             else 0) = 0
         rw [dif_pos hrY]
-        simp only [Pi.single_apply]
-        exact if_neg hlarge
+        simp only [Pi.single, Function.update]
+        exact dif_neg hlarge
       rw [hvalue, zero_mul]
     · simp [extendLarge, hrY]
 

@@ -252,16 +252,16 @@ def gaussianThresholdLaw (J : ℕ) : ProbabilityMeasure (EuclideanSpace ℝ (Fin
   ⟨multivariateGaussian 0 (thresholdCovariance J), inferInstance⟩
 def realPoissonLaw (rate : ℝ≥0) : ProbabilityMeasure ℝ :=
   ⟨(poissonMeasure rate).map (fun n : ℕ => (n : ℝ)),
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)⟩
 def euclideanProductLaw {I : Type*} [Fintype I] (laws : I → ProbabilityMeasure ℝ) :
     ProbabilityMeasure (EuclideanSpace ℝ I) :=
   ⟨(Measure.pi (fun i => (laws i : Measure ℝ))).map (toLp 2),
-    Measure.isProbabilityMeasure_map (by fun_prop)⟩
+    ((Measure.isProbabilityMeasure_map_iff (by fun_prop)).mpr inferInstance)⟩
 def poissonGaussianTarget {R : Type*} [Fintype R] (J : ℕ) (rates : R → ℝ≥0) :
     ProbabilityMeasure (WithLp 2 (EuclideanSpace ℝ (Fin (J+1)) × EuclideanSpace ℝ R)) :=
   ⟨((gaussianThresholdLaw J : Measure _).prod
       (euclideanProductLaw (fun r => realPoissonLaw (rates r)) : Measure _)).map (toLp 2),
-    Measure.isProbabilityMeasure_map (by fun_prop)⟩
+    ((Measure.isProbabilityMeasure_map_iff (by fun_prop)).mpr inferInstance)⟩
 def standardizedProjection (J : ℕ) (j : Fin (J+1)) : EuclideanSpace ℝ (Fin (J+1)) →L[ℝ] ℝ :=
   (2 : ℝ)^((j.val : ℝ)/2) • EuclideanSpace.proj j
 def innovationProjection (J : ℕ) (j : Fin J) : EuclideanSpace ℝ (Fin (J+1)) →L[ℝ] ℝ :=

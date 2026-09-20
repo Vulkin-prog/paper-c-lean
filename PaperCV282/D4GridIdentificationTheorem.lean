@@ -46,7 +46,7 @@ theorem measurable_fixedHalfGrid (N : ℕ) (hN : 0<N) (n : ℕ) :
 
 instance instProbabilityFixedHalfGrid (N : ℕ) (hN : 0<N) (n : ℕ) :
     IsProbabilityMeasure (fixedHalfGridTarget N hN n) :=
-  Measure.isProbabilityMeasure_map (measurable_fixedHalfGrid N hN n).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_fixedHalfGrid N hN n).aemeasurable).mpr inferInstance)
 
 theorem conditional_halfGridTarget (N : ℕ) (hN : 0<N) (rate : ℝ≥0) (n : ℕ)
     (hn : (poissonMeasure rate) {n}≠0) :

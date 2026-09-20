@@ -42,10 +42,8 @@ theorem positive_probability_error_le {M L : ℕ} (delta : ℝ) (alpha : ℝ≥0
       2*cappedDistance (conditionedMeasure A) M L 0 delta alpha := by
   letI _instProbabilityConditional : IsProbabilityMeasure (cond infiniteRademacherMeasure (A∩hitEvent M L)) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
-  letI _instProbabilitySourceObserved := Measure.isProbabilityMeasure_map
-    (μ := cond infiniteRademacherMeasure (A∩hitEvent M L)) (measurable_positiveSource M L).aemeasurable
-  letI _instProbabilityTargetObserved := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverTarget.targetLaw M L delta alpha) (measurable_of_countable positiveSign).aemeasurable
+  letI _instProbabilitySourceObserved := ((Measure.isProbabilityMeasure_map_iff (μ := cond infiniteRademacherMeasure (A∩hitEvent M L)) (measurable_positiveSource M L).aemeasurable).mpr inferInstance)
+  letI _instProbabilityTargetObserved := ((Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverTarget.targetLaw M L delta alpha) (measurable_of_countable positiveSign).aemeasurable).mpr inferInstance)
   have h := statistic_tv_le delta alpha hA hpos ∅ (positiveSource M L) (measurable_positiveSource M L)
     positiveSign (capBorder_positiveSign 0) (fun _ _ _ hn => (positiveSign_eq_source_off_cemetery hn).symm)
   simp only [measureReal_empty,add_zero] at h

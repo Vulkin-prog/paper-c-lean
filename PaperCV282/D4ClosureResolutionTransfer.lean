@@ -45,7 +45,7 @@ theorem arithmetic_spatial_tv_eq (N L : ℕ) (A : Set InfiniteSample)
   letI instProbabilityConditioned : IsProbabilityMeasure (cond infiniteRademacherMeasure A) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI instProbabilitySpatial : IsProbabilityMeasure (arithmeticSpatialMeasure N L A) :=
-    Measure.isProbabilityMeasure_map (measurable_spatialMarkedSource N L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_spatialMarkedSource N L).aemeasurable).mpr inferInstance)
   rw [measureTotalVariation_eq_mass]
   unfold spatialEventDistance spatialTargetLaw
   congr 1
@@ -64,7 +64,7 @@ theorem resolved_spatial_bound (N L n : ℕ) (A : Set InfiniteSample)
   letI instProbabilityConditioned : IsProbabilityMeasure (cond infiniteRademacherMeasure A) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI instProbabilitySpatial : IsProbabilityMeasure (arithmeticSpatialMeasure N L A) :=
-    Measure.isProbabilityMeasure_map (measurable_spatialMarkedSource N L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_spatialMarkedSource N L).aemeasurable).mpr inferInstance)
   have hprob : (spatialTargetMeasure N L).real {v | totalSpatialCount N v = n} =
       (poissonMeasure (fullRate N L)).real {n} :=
     (hasLaw_totalSpatialCount N L).measureReal_eq (measurableSet_singleton n)
@@ -122,12 +122,12 @@ theorem arithmetic_spatial_resolution_tendsto_zero
     (by
       have hquot := htv.div hprob hp.ne'
       simp only [zero_div] at hquot
-      convert hquot using 1; congr! 3)
+      exact hquot)
   filter_upwards [hb, hpos, herr] with k hb ha he
   letI instProbabilityConditioned : IsProbabilityMeasure (cond infiniteRademacherMeasure (A k)) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ ha)
   letI instProbabilitySpatial : IsProbabilityMeasure (arithmeticSpatialMeasure (sizes k) (lengths k) (A k)) :=
-    Measure.isProbabilityMeasure_map (measurable_spatialMarkedSource _ _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_spatialMarkedSource _ _).aemeasurable).mpr inferInstance)
   letI instProbabilityResolved : IsProbabilityMeasure (resolvedArithmeticSpatialMeasure (sizes k) (lengths k) n (A k)) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hb.1)
   have hp' : 0 < (spatialTargetMeasure (sizes k) (lengths k)).real

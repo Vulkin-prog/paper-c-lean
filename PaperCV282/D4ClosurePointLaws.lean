@@ -26,7 +26,7 @@ theorem independent_spatialLevelSamples (theta : ℝ) :
 theorem hasLaw_integerSpatialCounts (theta : ℝ) :
     HasLaw (fun sample : IntegerSpatialSample => fun r => (sample r).1)
       (integerCountMeasure theta) (integerSpatialSampleMeasure theta) := by
-  refine ⟨(measurable_pi_lambda _ (fun r => measurable_fst.comp
+  refine ⟨(Measurable.of_eval (fun r => measurable_fst.comp
     (measurable_pi_apply r))).aemeasurable, ?_⟩
   rw [integerSpatialSampleMeasure, Measure.infinitePi_map_pi _ (fun _ => measurable_fst)]
   simp only [markSampleMeasure, Measure.map_fst_prod, measure_univ, one_smul]

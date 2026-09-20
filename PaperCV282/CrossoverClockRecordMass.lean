@@ -16,7 +16,7 @@ local instance instProbabilityInfinite : IsProbabilityMeasure infiniteRademacher
 def recordMeasure (L K : ℕ) : Measure (Bool × ℕ) := infiniteRademacherMeasure.map (actualClockRecord L K)
 
 instance instProbabilityRecordMeasure (L K : ℕ) : IsProbabilityMeasure (recordMeasure L K) :=
-  Measure.isProbabilityMeasure_map (measurable_actualClockRecord L K).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_actualClockRecord L K).aemeasurable).mpr inferInstance)
 
 theorem border_probability (L : ℕ) : infiniteRademacherMeasure.real (borderEvent L)=(borderRate L : ℝ) := by
   rw [equation_seven_one]
@@ -25,7 +25,7 @@ theorem border_probability (L : ℕ) : infiniteRademacherMeasure.real (borderEve
 def cappedBorderLaw (K : ℕ) : Measure Record := borderLaw.map (capBorder K)
 
 instance instProbabilityCappedBorderLaw (K : ℕ) : IsProbabilityMeasure (cappedBorderLaw K) :=
-  Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 
 theorem true_test_mass (L K : ℕ) (S : Set Record) :
     (recordMeasure L K).real {v | v.1=true ∧ borderLabel v.2∈S}=

@@ -36,9 +36,12 @@ theorem sum_site_rates_eq_signedAggregateRates (sites : Finset ℕ) (L E : ℕ) 
   have hrate (x : {x : ℕ // x ∈ sites}) :
       allSignedRates sites L E sites (x,a)=signedMarkRate L a.1.val := if_pos x.property
   simp_rw [hrate]
+  simp only [Finset.sum_const,Finset.card_univ,Fintype.card_coe,nsmul_eq_mul,
+    signedAggregateRates]
   apply NNReal.coe_injective
-  simp only [Finset.sum_const,Finset.card_univ,Fintype.card_coe,nsmul_eq_mul,NNReal.coe_mul,NNReal.coe_natCast,
-    signedAggregateRates,signedMarkRate_coe,maskRate,Nat.zero_add]
+  rw [NNReal.coe_mul,NNReal.coe_mul,NNReal.coe_natCast,
+    signedMarkRate_coe,signedMarkRate_coe]
+  simp only [Nat.zero_add]
   change (sites.card : ℝ)*(1/(2 : ℝ)^(L+a.1.val+2))=
     ((sites.card : ℝ)/(2 : ℝ)^L)*(1/(2 : ℝ)^(a.1.val+2))
   rw [show L+a.1.val+2=L+(a.1.val+2) by omega,pow_add]

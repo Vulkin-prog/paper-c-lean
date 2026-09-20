@@ -69,7 +69,7 @@ instance instProbabilityIntegerCounts (theta : ℝ) :
 def halfLineCounts (m : ℤ) (counts : ℤ → ℕ) (e : ℕ) : ℕ := counts (m + e)
 
 theorem measurable_halfLineCounts (m : ℤ) : Measurable (halfLineCounts m) := by
-  exact measurable_pi_lambda _ (fun e => measurable_pi_apply (m+e))
+  exact Measurable.of_eval (fun e => measurable_pi_apply (m+e))
 
 theorem integerLevelRate_shift (theta : ℝ) (m : ℤ) (e : ℕ) :
     integerLevelRate theta (m + e) = integerHalfRate theta m / 2^(e+1) := by

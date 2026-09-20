@@ -25,7 +25,7 @@ theorem card_defects_mono {H B K x : ℕ} (hH : H ≤ K) (hB : B ≤ K) :
     have hd : DefectivePredicate.HDefective H (vertex x B i) := by
       simpa [defectIndices] using hi
     have ht := BadStartMass.hDefective_mono hH hd
-    simpa [defectIndices, vertex] using ht
+    exact Finset.mem_filter.mpr ⟨Finset.mem_univ _, ht⟩
   · intro i _ j _ hij
     apply Fin.ext
     exact congrArg (fun k : Fin K => k.val) hij

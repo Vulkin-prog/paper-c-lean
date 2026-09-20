@@ -228,7 +228,7 @@ def halfSuccess : unitInterval := ⟨1/2, by norm_num, by norm_num⟩
 def geometricClusterMeasure : Measure ℕ := (geometricMeasure halfSuccess).map Nat.succ
 instance instProbabilityGeometric : IsProbabilityMeasure geometricClusterMeasure := by
   unfold geometricClusterMeasure
-  exact Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 def clusterConfiguration (sample : ℕ × (ℕ → ℕ)) : ℕ →₀ ℕ :=
   ∑ i∈Finset.range sample.1, if 0<sample.2 i then Finsupp.single (sample.2 i-1) 1 else 0
 theorem measurable_clusterConfiguration : Measurable clusterConfiguration := by
@@ -244,7 +244,7 @@ def configurationMeasure (rate : ℝ≥0) : Measure (ℕ →₀ ℕ) :=
     clusterConfiguration
 instance instProbabilityConfiguration (rate : ℝ≥0) : IsProbabilityMeasure (configurationMeasure rate) := by
   unfold configurationMeasure
-  exact Measure.isProbabilityMeasure_map measurable_clusterConfiguration.aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff measurable_clusterConfiguration.aemeasurable).mpr inferInstance)
 def flattenRows (N : ℕ) (rows : (Fin N × F₂) → (ℕ →₀ ℕ)) : SpatialConfig N :=
   Finsupp.onFinset
     (Finset.univ.biUnion (fun i : Fin N × F₂ =>

@@ -305,7 +305,7 @@ theorem pairDifferenceProduct_offsetShift_le
         else 1) ≤
         ∏ _r : Fin offsets.card,
           (2 * (L + 1)) ^ offsets.card := by
-      apply Finset.prod_le_prod
+      apply Finset.prod_le_prod₀
       · intro r hr
         positivity
       · intro r hr
@@ -317,7 +317,7 @@ theorem pairDifferenceProduct_offsetShift_le
               else 1) ≤
               ∏ _s : Fin offsets.card,
                 (2 * (L + 1)) := by
-            apply Finset.prod_le_prod
+            apply Finset.prod_le_prod₀
             · intro s hs
               positivity
             · intro s hs

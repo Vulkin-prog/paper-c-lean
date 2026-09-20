@@ -78,8 +78,8 @@ theorem measureTotalVariation_map_le (μ ν : Measure α)
     [IsProbabilityMeasure μ] [IsProbabilityMeasure ν]
     {f : α → β} (hf : Measurable f) :
     measureTotalVariation (μ.map f) (ν.map f) ≤ measureTotalVariation μ ν := by
-  letI instProbabilityLocal1 : IsProbabilityMeasure (μ.map f) := Measure.isProbabilityMeasure_map hf.aemeasurable
-  letI instProbabilityLocal2 : IsProbabilityMeasure (ν.map f) := Measure.isProbabilityMeasure_map hf.aemeasurable
+  letI instProbabilityLocal1 : IsProbabilityMeasure (μ.map f) := ((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)
+  letI instProbabilityLocal2 : IsProbabilityMeasure (ν.map f) := ((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)
   apply (measureTotalVariation_le_iff _ _ _).mpr
   intro A hA
   simp only [Measure.real, Measure.map_apply hf hA]

@@ -53,12 +53,15 @@ theorem firstNegativeEvent_eq_pi (j : ℕ) :
 theorem measurableSet_firstNegativeEvent (j : ℕ) : MeasurableSet (firstNegativeEvent j) := by
   change MeasurableSet {omega : InfiniteSample | omega j=1 ∧ ∀ k<j, omega k=0}
   apply ((measurable_pi_apply j) (measurableSet_singleton 1)).inter
-  convert (MeasurableSet.iInter fun k => MeasurableSet.iInter fun (_ : k<j) =>
+  change MeasurableSet {omega : InfiniteSample | ∀ k<j, omega k=0}
+  have he : {omega : InfiniteSample | ∀ k<j, omega k=0} =
+      ⋂ k, ⋂ (_ : k<j), {omega : InfiniteSample | omega k=0} := by
+    ext omega
+    simp only [Set.mem_iInter,Set.mem_setOf_eq]
+  rw [he]
+  exact (MeasurableSet.iInter fun k => MeasurableSet.iInter fun (_ : k<j) =>
     (show MeasurableSet {omega : InfiniteSample | omega k=0} from
-      (measurable_pi_apply k) (measurableSet_singleton 0))) using 1
-  ext omega
-  simp only [Set.mem_iInter,Set.mem_setOf_eq]
-  rfl
+      (measurable_pi_apply k) (measurableSet_singleton 0)))
 
 /-- Exact law of the first exposed negative prime bit. -/
 theorem measure_firstNegativeEvent (j : ℕ) :

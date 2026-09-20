@@ -37,7 +37,7 @@ theorem hasSum_observableLaw {Ω α : Type*} [MeasurableSpace Ω]
     [Countable α] [MeasurableSpace α] [MeasurableSingletonClass α]
     (μ : Measure Ω) [IsProbabilityMeasure μ] {f : Ω → α} (hf : Measurable f) :
     HasSum (observableLaw μ f) 1 := by
-  letI : IsProbabilityMeasure (μ.map f) := Measure.isProbabilityMeasure_map hf.aemeasurable
+  letI : IsProbabilityMeasure (μ.map f) := ((Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance)
   have hsum : (∑' a : α, (μ.map f) {a})=1 := by
     simpa using (μ.map f).tsum_indicator_apply_singleton Set.univ MeasurableSet.univ
   have h := ENNReal.hasSum_toReal (f := fun a : α => (μ.map f) {a}) (by rw [hsum]; simp)

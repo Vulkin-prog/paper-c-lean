@@ -1,0 +1,52 @@
+{
+  "lean4export_build_toolchain": "leanprover/lean4:v4.34.0",
+  "lean4export_compiler_commit": "293d5d0c0c3f3dded4688b3ccd6a33939ac5102b",
+  "lean4export_compiler_version": "Lean (version 4.34.0, x86_64-unknown-linux-gnu, commit 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b, Release)",
+  "lean4export_source_toolchain": "leanprover/lean4:v4.34.0",
+  "tools": [
+    {
+      "name": "lean4export",
+      "commit": "076e8e57707e813375e8f9da8bf989799ace9680",
+      "tracked_source_clean": true,
+      "source_toolchain": "leanprover/lean4:v4.34.0"
+    },
+    {
+      "name": "comparator",
+      "commit": "575674928e239f5bc452aab72d1dd7b0f1326494",
+      "tracked_source_clean": true,
+      "source_toolchain": "leanprover/lean4:v4.34.0-rc1"
+    },
+    {
+      "name": "nanoda",
+      "commit": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+      "tracked_source_clean": true
+    },
+    {
+      "name": "palomar-submission",
+      "commit": "3561d237dcc4b28482558ad28a64d767d7cc8615",
+      "tracked_source_clean": true
+    }
+  ],
+  "binaries": {
+    "lean": {
+      "sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "bytes": 9024
+    },
+    "comparator": {
+      "sha256": "f25185592ce22b0d12c5801553c7caa5a5f7731a30a14226de2be68b27382430",
+      "bytes": 121176328
+    },
+    "lean4export": {
+      "sha256": "cbf95bb18e3fc19bbe39ad2a250d9cfce4ca01315b2acf8f630d1e315498bf60",
+      "bytes": 233900328
+    },
+    "nanoda": {
+      "sha256": "41935bb169a4687ec67681032d79b59a73f12fb0f0910d84df9d808e7cf00141",
+      "bytes": 1312032
+    },
+    "landrun": {
+      "sha256": "b6b87015d03af3227747613b44ee881a8cd4a446019de743844216cbbdc73e63",
+      "bytes": 7375528
+    }
+  }
+}

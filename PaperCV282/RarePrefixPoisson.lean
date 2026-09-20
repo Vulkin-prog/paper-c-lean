@@ -62,9 +62,9 @@ theorem border_bulk_probability_error_le (M L : ℕ) (delta : ℝ) :
   have hr : Measurable record := measurable_microscopicRecord L 0
   have hm : Measurable (fun omega => (record omega, startField sites L omega)) :=
     hr.prodMk (measurable_startField sites L)
-  letI instProbabilityMu : IsProbabilityMeasure mu := Measure.isProbabilityMeasure_map hm.aemeasurable
+  letI instProbabilityMu : IsProbabilityMeasure mu := ((Measure.isProbabilityMeasure_map_iff hm.aemeasurable).mpr inferInstance)
   letI instProbabilityRecord : IsProbabilityMeasure (infiniteRademacherMeasure.map record) :=
-    Measure.isProbabilityMeasure_map hr.aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff hr.aemeasurable).mpr inferInstance)
   letI instProbabilityNu : IsProbabilityMeasure nu := by dsimp [nu]; infer_instance
   have hrecord : MeasurableSet {r : ℕ→Bool | r 1=false} :=
     (measurable_pi_apply (1 : ℕ) : Measurable (fun r : ℕ→Bool => r 1)) (measurableSet_singleton false)

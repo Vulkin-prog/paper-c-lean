@@ -5,7 +5,7 @@ import shutil
 import tempfile
 import unittest
 
-from check_v282_audit import ROOT, check_log, check_pins, declarations, inventory
+from check_v282_audit import MATHLIB_PIN, MATHLIB_TAG, ROOT, check_log, check_pins, declarations, inventory
 
 
 class AuditTests(unittest.TestCase):
@@ -78,10 +78,19 @@ class AuditTests(unittest.TestCase):
             for file in files:
                 path = root / file
                 original = path.read_text()
-                path.write_text(original.replace("v4.32.0", "v4.32.2"))
+                mutated = original.replace(MATHLIB_TAG, "v0.0.0-unpinned")
+                self.assertNotEqual(original, mutated, f"No version pin mutated in {file}")
+                path.write_text(mutated)
                 with self.subTest(file=file), self.assertRaises(ValueError):
                     check_pins(root)
                 path.write_text(original)
+            path = root / "lake-manifest.json"
+            original = path.read_text()
+            mutated = original.replace(MATHLIB_PIN, "0" * 40)
+            self.assertNotEqual(original, mutated, "No Mathlib commit pin mutated")
+            path.write_text(mutated)
+            with self.assertRaises(ValueError):
+                check_pins(root)
 
 
 if __name__ == "__main__":

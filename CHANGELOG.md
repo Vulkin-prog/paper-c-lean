@@ -1,5 +1,27 @@
 # Changelog
 
+## Lean 4.33.1 migration (local validation complete; not released)
+
+- Opened a separate migration worktree from commit
+  `9286f4a954ac128ba3d5edd1c1d25203f45c099f`, targeting Lean 4.33.1 and
+  the official Mathlib v4.33.1 tag. All 23 libraries build (9,895 jobs), and
+  all three kernel audits pass: PaperC 4,074, V11 seven, V282 6,094.
+- Preserved mathematical statements and the seven literature premises while
+  adapting proofs in 51 modules (20 PaperC and 31 PaperCV282), plus one
+  SolutionV3Patterns helper. Updated the generated core digest comment.
+  One compatibility option is confined to the ResidualSector Fintype
+  derivation; the project has no global compatibility flag.
+- Passed the strict local comparison of 80 selected declarations across ten
+  configurations, including their reachable constant dependencies. The
+  1,171 Lean sources and 20 selected compiled modules were unchanged across
+  the check. This is not official Comparator/NanoDa qualification.
+- Added [a migration and validation guide](docs/LEAN_4_33_1_MIGRATION.md).
+  Preserved the 4.32 source, manuscript and qualification history; no old
+  receipt is treated as evidence for the new compiler.
+- Distinguished local proof validation from the Mathlib ancestry rule
+  discussed in Palomar PR #128 and the rendering problem in issue #134.
+  No fix or new registration is asserted.
+
 ## 0.48.1 (candidate; not released)
 
 - Returned jointly to Lean and Mathlib `v4.32.0`. Mathlib commit

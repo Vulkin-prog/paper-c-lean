@@ -20,7 +20,7 @@ def spatialHalfCounts (m : ℤ) (sample : IntegerSpatialSample) : ℕ →₀ ℕ
 
 theorem measurable_spatialHalfCounts (m : ℤ) : Measurable (spatialHalfCounts m) :=
   (measurable_halfLineConfiguration m).comp
-    (measurable_pi_lambda _ (fun r => measurable_fst.comp (measurable_pi_apply r)))
+    (Measurable.of_eval (fun r => measurable_fst.comp (measurable_pi_apply r)))
 
 def pointsFromCounts (m : ℤ) (c : ℕ →₀ ℕ) (sample : IntegerSpatialSample) :
     PointMeasure (ℝ × (ℕ × F₂)) :=
@@ -64,7 +64,7 @@ theorem measurable_halfLinePointConfiguration (m : ℤ) : Measurable (halfLinePo
 
 def halfLinePointLaw (theta : ℝ) (m : ℤ) : ProbabilityMeasure (PointMeasure (ℝ × (ℕ × F₂))) :=
   ⟨(integerSpatialSampleMeasure theta).map (halfLinePointConfiguration m),
-    Measure.isProbabilityMeasure_map (measurable_halfLinePointConfiguration m).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_halfLinePointConfiguration m).aemeasurable).mpr inferInstance)⟩
 
 def gridPointsFromCounts (N : ℕ) (hN : 0<N) (m : ℤ) (c : ℕ →₀ ℕ)
     (sample : IntegerSpatialSample) : PointMeasure (ℝ × (ℕ × F₂)) :=

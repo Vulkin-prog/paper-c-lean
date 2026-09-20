@@ -60,7 +60,8 @@ theorem finiteMarkedEmbedding_range (N E : ℕ) (j : SpatialMarkedIndex N) :
     exact Nat.le_of_lt_succ i.2.1.isLt
   · intro hj
     refine ⟨(dyadicSiteEquiv N j.1,(⟨j.2.1,by omega⟩,j.2.2)),?_⟩
-    simp only [finiteMarkedEmbedding,Function.Embedding.coeFn_mk,Equiv.symm_apply_apply]
+    change ((dyadicSiteEquiv N).symm (dyadicSiteEquiv N j.1), j.2) = j
+    rw [Equiv.symm_apply_apply]
 
 theorem truncate_configuration_apply (N E : ℕ) (config : SpatialMarkedConfig N)
     (j : SpatialMarkedIndex N) :

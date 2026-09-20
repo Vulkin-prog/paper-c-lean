@@ -95,7 +95,7 @@ theorem scaled_poissonFieldMass_le_of_le {rate target : ι → ℝ≥0}
       poissonFieldMass target k := by
   classical
   rw [Real.exp_sum, poissonFieldMass, ← Finset.prod_mul_distrib]
-  exact Finset.prod_le_prod
+  exact Finset.prod_le_prod₀
     (fun i _ => mul_nonneg (Real.exp_pos _).le (poissonMass_nonneg _ _))
     (fun i _ => scaled_poissonMass_le_of_le (h i) (k i))
 

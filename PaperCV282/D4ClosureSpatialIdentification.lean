@@ -95,9 +95,8 @@ def fixedHalfPointLaw (n : ℕ) (f : unitInterval × ℕ → ℝ × (ℕ × F₂
     ProbabilityMeasure (PointMeasure (ℝ × (ℕ × F₂))) :=
   ⟨(markSequenceMeasure halfMarkMeasure).map
     (fun marks : ℕ → unitInterval × ℕ => fixedPointMeasure n (fun i => f (marks i))),
-    Measure.isProbabilityMeasure_map
-      ((continuous_fixedPointMeasure n).measurable.comp
-        (measurable_pi_lambda _ (fun i => hf.comp (measurable_pi_apply i)))).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff ((continuous_fixedPointMeasure n).measurable.comp
+        (Measurable.of_eval (fun i => hf.comp (measurable_pi_apply i)))).aemeasurable).mpr inferInstance)⟩
 
 theorem fixedHalfPointLaw_tendsto (sizes : ℕ → ℕ) (hN : ∀ k, 0<sizes k)
     (hsizes : Tendsto sizes atTop atTop) (n : ℕ) :
@@ -110,7 +109,7 @@ theorem fixedHalfPointLaw_tendsto (sizes : ℕ → ℕ) (hN : ∀ k, 0<sizes k)
       (∫ x, f x ∂(fixedHalfPointLaw n g hg : Measure _))=
       ∫ marks, f (fixedPointMeasure n (fun i => g (marks i))) ∂markSequenceMeasure halfMarkMeasure :=
     integral_map ((continuous_fixedPointMeasure n).measurable.comp
-      (measurable_pi_lambda _ (fun i => hg.comp (measurable_pi_apply i)))).aemeasurable
+      (Measurable.of_eval (fun i => hg.comp (measurable_pi_apply i)))).aemeasurable
       f.continuous.measurable.aestronglyMeasurable
   simp_rw [hi]
   exact fixed_point_integral_tendsto halfMarkMeasure _ _

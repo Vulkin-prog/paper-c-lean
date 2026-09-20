@@ -53,7 +53,7 @@ def spatialHalfCounts (m : ℤ) (sample : IntegerSpatialSample) : ℕ→₀ℕ :
 
 theorem measurable_spatialHalfCounts (m : ℤ) : Measurable (spatialHalfCounts m) :=
   (measurable_halfLineConfiguration m).comp
-    (measurable_pi_lambda _ (fun r => measurable_fst.comp (measurable_pi_apply r)))
+    (Measurable.of_eval (fun r => measurable_fst.comp (measurable_pi_apply r)))
 
 def gridHalfConfiguration (N : ℕ) (hN : 0<N) (m : ℤ) (sample : IntegerSpatialSample) :
     SpatialMarkedConfig N :=
@@ -62,7 +62,7 @@ def gridHalfConfiguration (N : ℕ) (hN : 0<N) (m : ℤ) (sample : IntegerSpatia
 theorem measurable_gridHalfConfiguration (N : ℕ) (hN : 0<N) (m : ℤ) :
     Measurable (gridHalfConfiguration N hN m) := by
   have hm : Measurable (fun sample : IntegerSpatialSample => fun e : ℕ => (sample (m+e)).2) :=
-    measurable_pi_lambda _ (fun e => measurable_snd.comp (measurable_pi_apply (m+e)))
+    Measurable.of_eval (fun e => measurable_snd.comp (measurable_pi_apply (m+e)))
   have hp := (measurable_spatialHalfCounts m).prodMk hm
   have hh := (measurable_gridRowsConfiguration N hN).comp hp
   change Measurable (gridHalfConfiguration N hN m) at hh

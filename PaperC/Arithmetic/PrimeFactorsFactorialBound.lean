@@ -68,7 +68,7 @@ theorem factorial_card_le_prod
       (Fin.prod_univ_eq_prod_range
         (fun j : ℕ ↦ j + 1) s.card).symm
     _ ≤ ∏ i : Fin s.card, e i :=
-      Finset.prod_le_prod
+      Finset.prod_le_prod₀
         (fun _ _ ↦ Nat.zero_le _)
         (fun i _ ↦ he i)
     _ = ∏ a ∈ s, a := by

@@ -49,7 +49,7 @@ def compoundMeasure (rate : ℝ≥0) (mu : Measure ℕ) [IsProbabilityMeasure mu
 instance instProbabilityCompound (rate : ℝ≥0) (mu : Measure ℕ)
     [IsProbabilityMeasure mu] : IsProbabilityMeasure (compoundMeasure rate mu) := by
   unfold compoundMeasure
-  exact Measure.isProbabilityMeasure_map measurable_stoppedMarkSum.aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff measurable_stoppedMarkSum.aemeasurable).mpr inferInstance)
 
 def compoundPMF (rate : ℝ≥0) (mu : Measure ℕ) [IsProbabilityMeasure mu] : PMF ℕ :=
   (compoundMeasure rate mu).toPMF
@@ -77,7 +77,7 @@ def mappedMarkMeasure (mu : Measure ℕ) (f : ℕ → ℕ) : Measure ℕ := mu.m
 instance instProbabilityMappedMark (mu : Measure ℕ) [IsProbabilityMeasure mu] (f : ℕ → ℕ) :
     IsProbabilityMeasure (mappedMarkMeasure mu f) := by
   unfold mappedMarkMeasure
-  exact Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 
 /-- Applying the same measurable map to every mark preserves the independent construction. -/
 theorem hasLaw_mapped_mark_sum (rate : ℝ≥0) (mu : Measure ℕ) [IsProbabilityMeasure mu]
@@ -88,7 +88,7 @@ theorem hasLaw_mapped_mark_sum (rate : ℝ≥0) (mu : Measure ℕ) [IsProbabilit
   have hmap : HasLaw (fun sample : ℕ × (ℕ → ℕ) =>
       (sample.1, fun i : ℕ => f (sample.2 i)))
       (compoundSampleMeasure rate (mappedMarkMeasure mu f)) (compoundSampleMeasure rate mu) := by
-    refine ⟨(measurable_fst.prodMk (measurable_pi_lambda _ (fun i =>
+    refine ⟨(measurable_fst.prodMk (Measurable.of_eval (fun i =>
       hf.comp ((measurable_pi_apply i).comp measurable_snd)))).aemeasurable, ?_⟩
     change ((poissonMeasure rate).prod (markSequenceMeasure mu)).map
       (Prod.map id (fun marks : ℕ → ℕ => fun i => f (marks i))) = _

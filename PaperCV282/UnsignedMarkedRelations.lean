@@ -43,7 +43,7 @@ theorem sum_signed_joint_eq_exact {Ω : Type*} [Fintype Ω]
     simp only [SignedExactMark]
     split_ifs with h
     · exact (hn ⟨h.1.2,h.2.2⟩).elim
-    · rfl
+    · exact if_neg h
   · simp
 
 theorem exact_joint_probability_le_relative_weight {C x y L E e f : ℕ}

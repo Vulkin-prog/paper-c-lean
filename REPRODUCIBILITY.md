@@ -1,6 +1,24 @@
 # Reproductibilité
 
-## Versions fixées
+## Migration actuelle vers Lean 4.33.1
+
+La migration autorisée le 9 septembre 2026 a passé les validations locales
+dans un worktree séparé : construction des 23 bibliothèques (9 895 tâches),
+trois audits de noyau portant respectivement sur 4 074, 7 et 6 094 déclarations,
+et comparaison stricte locale des 80 interfaces sélectionnées. Ces trois
+comptes d’audit ne forment pas un total dédupliqué. Le
+[guide de migration](docs/LEAN_4_33_1_MIGRATION.md) et le
+[reçu de validation](migration_evidence/lean-4.33.1/validation.json)
+précisent les sources et les contrôles. La qualification officielle par
+Comparator/NanoDa et Palomar n’est pas établie pour cette version migrée.
+
+La suite de ce document conserve la procédure et les preuves historiques
+du jalon 0.48.1 et de ses antécédents. Ses commandes, pins et verdicts 4.32
+ne constituent pas des résultats pour la migration. Les archives et reçus
+d’origine restent inchangés ; les nouveaux contrôles ont leurs propres
+sources, toolchains, journaux et empreintes.
+
+## Versions fixées du jalon historique 0.48.1
 
 - paper_c_lean : `0.48.1` candidate (no tag/release yet)
 - Lean : `v4.32.0`, commit

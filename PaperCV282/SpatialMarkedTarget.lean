@@ -44,7 +44,7 @@ def spatialTargetMeasure (N L : ℕ) : Measure (SpatialMarkedConfig N) :=
 
 instance instProbabilitySpatialTarget (N L : ℕ) : IsProbabilityMeasure (spatialTargetMeasure N L) := by
   unfold spatialTargetMeasure
-  exact Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 
 theorem hasLaw_flattenRows (N L : ℕ) :
     HasLaw (flattenRows N) (spatialTargetMeasure N L) (spatialRowsMeasure N L) :=

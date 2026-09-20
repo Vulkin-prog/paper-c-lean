@@ -82,7 +82,7 @@ theorem conditionalDistance_nonneg (M L : ℕ) (A : Set InfiniteSample)
   letI instProbabilityConditional : IsProbabilityMeasure (cond infiniteRademacherMeasure A) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI instProbabilitySource : IsProbabilityMeasure ((cond infiniteRademacherMeasure A).map (source M L)) :=
-    Measure.isProbabilityMeasure_map (measurable_source M L).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_source M L).aemeasurable).mpr inferInstance)
   exact measureTotalVariation_nonneg _ _
 
 end

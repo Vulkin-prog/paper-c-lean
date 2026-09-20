@@ -59,10 +59,11 @@ theorem signed_filling_balance {C L E Y : ℕ} {sites : Finset ℕ}
           (goodMask (L+E+1) Y (sites))) Prod.snd a := by
   rw [categoryRate_signed_good_eq hsite hL hC hY sigma]
   apply NNReal.eq
+  rw [signedAggregateRates_coe]
   have hc := card_good_add_bad (L+E+1) Y (sites)
   have hcard : ((goodMask (L+E+1) Y sites).card : ℝ)+
       (badMask (L+E+1) Y sites).card = (sites.card : ℝ) := by exact_mod_cast hc
-  simp only [signedAggregateRates_coe,NNReal.coe_add,NNReal.coe_mul,NNReal.coe_natCast,
+  simp only [NNReal.coe_add,NNReal.coe_mul,NNReal.coe_natCast,
     badSignedFillRates,signedMarkRate_eq_base_mul_weight,maskRate]
   change (sites.card : ℝ)/2^L*signedGeometricWeight a.1.val = _
   rw [← hcard]

@@ -49,7 +49,12 @@ inductive ResidualSector
   | manyDefects
   | nonterminal
   | terminal
-  deriving DecidableEq, Fintype, Repr
+  deriving DecidableEq, Repr
+
+-- Mathlib's enum derivation unfolds the List-to-Multiset coercion in its
+-- generated completeness proof. Limit compatibility elaboration to this Fintype derivation.
+set_option backward.isDefEq.respectTransparency.types false in
+deriving instance Fintype for ResidualSector
 
 /--
 The six yes/no tests needed for the seven-sector partition.

@@ -17,12 +17,12 @@ noncomputable section
 def gridPointLaw (mu : Measure IntegerSpatialSample) [IsProbabilityMeasure mu]
     (N : ℕ) (hN : 0<N) (m : ℤ) : ProbabilityMeasure (PointMeasure (ℝ × (ℕ × F₂))) :=
   ⟨mu.map (halfLineGridPoints N hN m),
-    Measure.isProbabilityMeasure_map (measurable_halfLineGridPoints N hN m).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_halfLineGridPoints N hN m).aemeasurable).mpr inferInstance)⟩
 
 def upperPointLaw (mu : Measure IntegerSpatialSample) [IsProbabilityMeasure mu]
     (m : ℤ) : ProbabilityMeasure (PointMeasure (ℝ × (ℕ × F₂))) :=
   ⟨mu.map (halfLinePointConfiguration m),
-    Measure.isProbabilityMeasure_map (measurable_halfLinePointConfiguration m).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_halfLinePointConfiguration m).aemeasurable).mpr inferInstance)⟩
 
 /-- This applies in particular to conditioning the actual integer-level process
 on any positive-probability count event. -/

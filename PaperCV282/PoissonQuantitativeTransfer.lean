@@ -29,7 +29,7 @@ theorem conditional_observation_CDF_error {Ω : Type*} [MeasurableSpace Ω]
   letI instConditionedProbability : IsProbabilityMeasure (cond μ E) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos μ hpos)
   letI instObservedProbability : IsProbabilityMeasure ((cond μ E).map X) :=
-    Measure.isProbabilityMeasure_map hX.aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff hX.aemeasurable).mpr inferInstance)
   have h := law_CDF_error_le ((cond μ E).map X) rate hr t
   rw [Measure.real,Measure.map_apply hX ((Set.to_countable _).measurableSet)] at h
   change |(cond μ E).real {ω | ((X ω : ℝ)-(rate : ℝ))/sqrt rate≤t}-_|≤_ at h
@@ -48,7 +48,7 @@ theorem conditional_observation_CDF_mass_error {Ω : Type*} [MeasurableSpace Ω]
   letI instConditionedProbability : IsProbabilityMeasure (cond μ E) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos μ hpos)
   letI instObservedProbability : IsProbabilityMeasure ((cond μ E).map X) :=
-    Measure.isProbabilityMeasure_map hX.aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff hX.aemeasurable).mpr inferInstance)
   have h := conditional_observation_CDF_error μ E hE hpos hX rate hr t
   rw [SharpConditioningDiscrete.measureTotalVariation_eq_mass] at h
   have he : InfiniteMassCoupling.observableLaw ((cond μ E).map X) id=conditionalObservableLaw μ E X := by

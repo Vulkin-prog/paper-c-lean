@@ -25,11 +25,11 @@ def bulkLaw (sites : Finset ℕ) (hs : sites.Nonempty) : Measure Record :=
   (labelMeasure sites hs).map (bulkLabel sites)
 
 instance instProbabilityBorderLaw : IsProbabilityMeasure borderLaw :=
-  Measure.isProbabilityMeasure_map (measurable_of_countable borderLabel).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable borderLabel).aemeasurable).mpr inferInstance)
 
 instance instProbabilityBulkLaw (sites : Finset ℕ) (hs : sites.Nonempty) :
     IsProbabilityMeasure (bulkLaw sites hs) :=
-  Measure.isProbabilityMeasure_map (measurable_of_countable (bulkLabel sites)).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable (bulkLabel sites)).aemeasurable).mpr inferInstance)
 
 /-- Both mixture weights may move or oscillate with the prefix size. -/
 def mixedLaw (sites : Finset ℕ) (hs : sites.Nonempty) (L : ℕ) : Measure Record :=

@@ -70,7 +70,7 @@ theorem censor_target_tv_le (sites : Finset ℕ) (hs : sites.Nonempty) (R : ℕ)
     measureTotalVariation ((labelMeasure sites hs).map (censorLabel sites R))
       (labelMeasure sites hs) ≤ 1/(sites.card : ℝ) := by
   letI instProbabilityCensored : IsProbabilityMeasure ((labelMeasure sites hs).map (censorLabel sites R)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   apply (measureTotalVariation_le_iff _ _ _).mpr
   intro A hA
   rw [map_measureReal_apply (measurable_of_countable _) hA]

@@ -49,9 +49,9 @@ theorem conditionedJointDistance_nonneg (M L : ℕ) (delta : ℝ) (V : InfiniteS
   letI instProbabilityJoint : IsProbabilityMeasure
       ((cond infiniteRademacherMeasure A).map (fun omega =>
         (V omega,spatialMarkedSource (bulkStarts M L delta) L omega))) :=
-    Measure.isProbabilityMeasure_map (hV.prodMk (measurable_spatialMarkedSource _ _)).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (hV.prodMk (measurable_spatialMarkedSource _ _)).aemeasurable).mpr inferInstance)
   letI instProbabilityRecord : IsProbabilityMeasure ((cond infiniteRademacherMeasure A).map V) :=
-    Measure.isProbabilityMeasure_map hV.aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff hV.aemeasurable).mpr inferInstance)
   exact measureTotalVariation_nonneg _ _
 
 /-- The finite atom average gives the actual stable joint bound with one inverse event mass. -/

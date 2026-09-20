@@ -36,7 +36,7 @@ theorem conditionalKernel_disintegrate (μ : @Measure Ω mΩ) [IsFiniteMeasure �
     (μ.trim hF) ⊗ₘ conditionalKernel (mΩ := mΩ) μ F W =
       @Measure.map Ω (Ω × β) mΩ (F.prod mβ) (fun ω => (ω,W ω)) μ := by
   rw [trim_eq_map hF]
-  exact compProd_map_condDistrib (mβ := F) (X := id) (Y := W) hW.aemeasurable
+  exact compProd_map_condDistrib (mβ := F) (X := id) (Y := W) (measurable_id'' hF).aemeasurable hW.aemeasurable
 
 /-- This is the actual conditional distribution, identified with conditional expectations. -/
 theorem conditionalKernel_ae_eq_condExp (μ : @Measure Ω mΩ) [IsFiniteMeasure μ]

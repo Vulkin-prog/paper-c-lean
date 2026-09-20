@@ -41,7 +41,7 @@ theorem hasLaw_totalSpatialWeight (N L : ℕ) :
     HasLaw (totalSpatialWeight N) (geometricCompoundMeasure (fullRate N L)) (spatialTargetMeasure N L) := by
   refine ⟨(measurable_of_countable _).aemeasurable,?_⟩
   letI : IsProbabilityMeasure ((spatialTargetMeasure N L).map (totalSpatialWeight N)) :=
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
   apply natural_law_eq_of_unit_transforms
   intro z hz
   rw [integral_map (measurable_of_countable _).aemeasurable

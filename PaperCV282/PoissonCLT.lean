@@ -18,7 +18,7 @@ noncomputable section
 
 def centeredScaledPoissonLaw (rate : ℝ≥0) (scale : ℝ) : ProbabilityMeasure ℝ :=
   ⟨(poissonMeasure rate).map (fun k : ℕ => ((k : ℝ) - (rate : ℝ)) / scale),
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)⟩
 
 theorem charFun_centeredScaledPoissonLaw (rate : ℝ≥0) (scale t : ℝ) :
     charFun (centeredScaledPoissonLaw rate scale : Measure ℝ) t =
@@ -136,7 +136,7 @@ theorem centeredPoisson_tendsto_of_rate_ratio (rates : ℕ → ℝ≥0) (base : 
 /-- The actual Poisson law, regarded as a probability law on the real line. -/
 def realPoissonLaw (rate : ℝ≥0) : ProbabilityMeasure ℝ :=
   ⟨(poissonMeasure rate).map (fun n : ℕ => (n : ℝ)),
-    Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)⟩
 
 theorem realPoissonLaw_tendsto (rates : ℕ → ℝ≥0) (rate : ℝ≥0)
     (hrates : Tendsto (fun n => (rates n : ℝ)) atTop (𝓝 (rate : ℝ))) :

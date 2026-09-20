@@ -45,9 +45,10 @@ theorem hasLaw_bulkGridSite (M L : ℕ) (delta : ℝ) (hs : (bulkStarts M L delt
   apply Measure.ext_of_singleton
   intro x
   rw [Measure.map_apply (measurable_bulkGridSite M L delta hs) (measurableSet_singleton _)]
+  let i : Fin (bulkStarts M L delta).card :=
+    (intervalSiteEquiv ⌈(M : ℝ)^delta⌉₊ (M-L+1)).symm x
   have he : bulkGridSite M L delta hs ⁻¹' {x} =
-      {u | gridSite (bulkStarts M L delta).card (Finset.card_pos.mpr hs) u =
-        (intervalSiteEquiv ⌈(M : ℝ)^delta⌉₊ (M-L+1)).symm x} := by
+      {u | gridSite (bulkStarts M L delta).card (Finset.card_pos.mpr hs) u = i} := by
     ext u
     simp only [bulkGridSite,Set.mem_preimage,Set.mem_singleton_iff,Set.mem_setOf_eq]
     exact (intervalSiteEquiv ⌈(M : ℝ)^delta⌉₊ (M-L+1)).apply_eq_iff_eq_symm_apply

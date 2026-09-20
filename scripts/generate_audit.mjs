@@ -119,7 +119,7 @@ if (
 }
 
 const auditConfig = JSON.parse(fs.readFileSync(auditConfigPath, 'utf8'));
-if (auditConfig.schema_version !== 5) {
+if (auditConfig.schema_version !== 6) {
   throw new Error('unsupported audit_config.json schema_version');
 }
 requirePlainObject(auditConfig.project, 'project');
@@ -152,6 +152,33 @@ if (
 }
 if (!/^[0-9a-f]{64}$/.test(coreSourceMetadata.digest_sha256 ?? '')) {
   throw new Error('audit_config.json has an invalid core_source.digest_sha256');
+}
+if (coreSourceMetadata.snapshot_kind !== 'migrated_current_core') {
+  throw new Error('audit_config.json has an invalid core_source.snapshot_kind');
+}
+requireNonemptyString(coreSourceMetadata.toolchain, 'core_source.toolchain');
+// These immutable identities describe the pre-migration source, not the current
+// digest below. Historical qualification never transfers to a different core.
+const historicalCoreBaseline = {
+  source_commit: '9286f4a954ac128ba3d5edd1c1d25203f45c099f',
+  same_core_merge_commit: 'ee2ac789764fe5d9fd19c96c6c0778a693b129a0',
+  toolchain: 'leanprover/lean4:v4.32.0',
+  mathlib_revision: '81a5d257c8e410db227a6665ed08f64fea08e997',
+  fileset: ['PaperC.lean', 'PaperC/**/*.lean'],
+  file_count: 382,
+  digest_sha256: '3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137',
+  qualification_transfers_to_current_source: false,
+};
+const configuredHistoricalCore = requirePlainObject(
+  coreSourceMetadata.historical_baseline,
+  'core_source.historical_baseline',
+);
+if (
+  Object.keys(configuredHistoricalCore).length !== Object.keys(historicalCoreBaseline).length ||
+  Object.entries(historicalCoreBaseline).some(([key, value]) =>
+    JSON.stringify(configuredHistoricalCore[key]) !== JSON.stringify(value))
+) {
+  throw new Error('immutable historical core baseline differs from its recorded source');
 }
 
 if (!Array.isArray(auditConfig.sources) || auditConfig.sources.length === 0) {
@@ -300,6 +327,9 @@ if (configuredLeanToolchain !== configuredToolchain.lean.toolchain) {
     `lean-toolchain mismatch: configured ${configuredToolchain.lean.toolchain}, ` +
     `found ${configuredLeanToolchain}`,
   );
+}
+if (coreSourceMetadata.toolchain !== configuredLeanToolchain) {
+  throw new Error('current core toolchain differs from the configured Lean toolchain');
 }
 const lakeManifest = JSON.parse(
   fs.readFileSync(path.join(projectRoot, 'lake-manifest.json'), 'utf8'),
@@ -1032,7 +1062,7 @@ for (const relativePath of sourceFiles) {
 const digest = sourceDigest.digest('hex');
 if (digest !== coreSourceMetadata.digest_sha256) {
   throw new Error(
-    `frozen v${coreSourceMetadata.base_version} core digest mismatch: ` +
+    `frozen current core digest mismatch: ` +
     `configured ${coreSourceMetadata.digest_sha256}, computed ${digest}`,
   );
 }
@@ -3225,6 +3255,7 @@ const formalization = {
   verification: {
     formalization_template: formalizationTemplate,
     toolchain: configuredToolchain,
+    core_source: coreSourceMetadata,
     comparator: {
       source_snapshot_comparator_state:
         comparatorMetadata.source_snapshot_comparator_state,
@@ -3560,7 +3591,7 @@ const auditMarkdownContent =
   updateGeneratedBridgeRegistry(currentAuditMarkdown);
 
 const manifest = {
-  schema_version: 10,
+  schema_version: 11,
   project: 'paper_c_lean',
   project_metadata: auditConfig.project,
   project_version: versionMatch[1],
@@ -3569,6 +3600,7 @@ const manifest = {
   sources: auditConfig.sources,
   audit_file: 'AuditCheck.lean',
   import: 'PaperC',
+  core_source: coreSourceMetadata,
   core_source_base_version: coreSourceMetadata.base_version,
   core_source_fileset: coreSourceFileset,
   core_source_file_count: sourceFiles.length,

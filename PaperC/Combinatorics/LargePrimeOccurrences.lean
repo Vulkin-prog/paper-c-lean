@@ -36,7 +36,7 @@ theorem mem_primeOccurrences
     {x y L p : ℕ} {v : Occurrence L} :
     v ∈ primeOccurrences x y L p ↔
       parityVec (twoStartCompleteVertexLabel x y L v) p = 1 := by
-  simp [primeOccurrences]
+  simp only [primeOccurrences, Finset.mem_filter, Finset.mem_univ, true_and]
 
 /-- Membership in the occurrence set gives a nonzero parity coordinate. -/
 theorem parityVec_ne_zero_of_mem

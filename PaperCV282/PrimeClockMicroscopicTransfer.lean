@@ -32,7 +32,7 @@ theorem microscopicPrimeClockLaw_probability (L : ℕ) :
       (cond infiniteRademacherMeasure (microscopicEvent L)) :=
     cond_isProbabilityMeasure (ConditionedCountableLaw.measure_ne_zero_of_real_pos _
       (microscopicProbability_pos L))
-  exact Measure.isProbabilityMeasure_map (measurable_primeOvershoot L).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_primeOvershoot L).aemeasurable).mpr inferInstance)
 
 /-- The border law is exactly the standard nonnegative geometric law. -/
 theorem conditionalPrimeClockLaw_eq_geometric (L : ℕ) :

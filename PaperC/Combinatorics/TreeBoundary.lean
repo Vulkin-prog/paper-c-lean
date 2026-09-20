@@ -138,7 +138,8 @@ theorem trailEdges_subset_edgeFinset {G : SimpleGraph V} [DecidableRel G.Adj]
     hp.edgesFinset ⊆ G.edgeFinset := by
   intro e he
   rw [SimpleGraph.mem_edgeFinset]
-  exact p.edges_subset_edgeSet (by simpa using he)
+  change e ∈ p.edges at he
+  exact p.edges_subset_edgeSet he
 
 /--
 The boundary of a trail with distinct endpoints consists exactly of its two endpoints.
@@ -350,8 +351,11 @@ theorem deleteRoot_evenCompletion (r : V) (S : Finset {v : V // v ≠ r}) :
     deleteRoot r (evenCompletion r S).1 = S := by
   ext v
   simp only [deleteRoot, Finset.mem_filter, Finset.mem_univ, true_and]
-  simp only [evenCompletion]
-  split_ifs <;> simp [nonRootValueFinset, v.2]
+  by_cases h : Even (nonRootValueFinset r S).card
+  · simp only [evenCompletion, h, ↓reduceDIte]
+    simp [nonRootValueFinset, v.2]
+  · simp only [evenCompletion, h, ↓reduceDIte]
+    simp [nonRootValueFinset, v.2]
 
 @[simp]
 theorem evenCompletion_deleteRoot (r : V) (S : EvenVertexSubset V) :

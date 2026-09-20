@@ -80,6 +80,7 @@ theorem componentLeftCount_add_rightCount
         (componentVertices x y L C).filter
           (fun v ↦ ¬IsLeftOccurrence v) := by
     ext v
+    simp only [Finset.mem_filter]
     cases v <;>
       simp [IsLeftOccurrence, IsRightOccurrence]
   unfold componentLeftCount componentRightCount

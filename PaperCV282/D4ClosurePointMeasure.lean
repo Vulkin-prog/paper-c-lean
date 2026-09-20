@@ -64,7 +64,7 @@ def integerPointLaw (theta : ℝ) : Measure (Measure (ℝ × ℤ)) :=
   (integerSpatialSampleMeasure theta).map integerPointMeasure
 
 instance instProbabilityIntegerPointLaw (theta : ℝ) : IsProbabilityMeasure (integerPointLaw theta) :=
-  Measure.isProbabilityMeasure_map measurable_integerPointMeasure.aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff measurable_integerPointMeasure.aemeasurable).mpr inferInstance)
 
 theorem integerPointRow_level (sample : IntegerSpatialSample) (r k : ℤ) :
     integerPointRow sample r (Set.univ ×ˢ {k}) = if r = k then ((sample r).1 : ℝ≥0∞) else 0 := by

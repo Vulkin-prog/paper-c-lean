@@ -36,7 +36,8 @@ theorem finite_word_probability_le_defect {M x B : ℕ} (hx : 2 ≤ x)
     congr 2
     apply congrArg Finset.card
     ext omega
-    simp [finiteWordEvent]
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and]
+    exact Iff.rfl
   rw [hp] at h
   push_cast at h
   have hab := le_abs_self (((uniformEventProbability (fun omega : SampleSpace M =>

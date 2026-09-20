@@ -77,6 +77,16 @@ theorem touchingProbability_eq_eta_mul_two_pow_rho_div
   let b := touchingRhs L
   have hnormalized :=
     affineFiber_normalized_card_identity A b
+  have hsolutionCard :
+      Fintype.card (Solution A b) =
+        (Finset.univ.filter fun ω :
+          SampleSpace (dyadicCutoff N (2 * L)) =>
+            A ω = b).card := by
+    rw [Fintype.card_subtype]
+    apply congrArg Finset.card
+    ext ω
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and]
+    rfl
   have hnormalizedQ :
       (2 : ℚ) ^ (2 * L) *
           (Fintype.card (Solution A b) : ℚ) =
@@ -95,15 +105,6 @@ theorem touchingProbability_eq_eta_mul_two_pow_rho_div
             ((relationEta A b : ℚ) *
               (2 : ℚ) ^ relationRho A) := by
       exact_mod_cast hnormalized
-    have hsolutionCard :
-        Fintype.card (Solution A b) =
-          (Finset.univ.filter fun ω :
-            SampleSpace (dyadicCutoff N (2 * L)) =>
-              A ω = b).card := by
-      rw [Fintype.card_subtype]
-      apply congrArg Finset.card
-      ext ω
-      simp [solutionSet]
     rw [hsolutionCard]
     simpa only [Fintype.card_sum, Fintype.card_fin, two_mul] using
       hnormalizedQ'
@@ -116,9 +117,10 @@ theorem touchingProbability_eq_eta_mul_two_pow_rho_div
   have hpow :
       (2 : ℚ) ^ (2 * L) ≠ 0 :=
     pow_ne_zero _ (by norm_num)
+  rw [hsolutionCard] at hnormalizedQ
   dsimp only [A, b] at hnormalizedQ ⊢
   apply (div_eq_div_iff hcard hpow).2
-  simpa [solutionSet, mul_assoc, mul_left_comm, mul_comm] using
+  simpa [mul_assoc, mul_left_comm, mul_comm] using
     hnormalizedQ
 
 /--

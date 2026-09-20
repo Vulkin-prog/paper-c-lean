@@ -103,9 +103,9 @@ theorem observed_distance_le_joint (μ : @Measure Ω mΩ) [IsProbabilityMeasure 
     measureTotalVariation (μ.map W) ν ≤
       measureTotalVariation ((@Measure.map Ω (γ × β) mΩ _ (fun ω => (V ω,W ω)) μ)) (((@Measure.map Ω γ mΩ _ V μ)).prod ν) := by
   letI instProbabilityRecordedMap : IsProbabilityMeasure ((@Measure.map Ω γ mΩ _ V μ)) :=
-    Measure.isProbabilityMeasure_map hV.aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff hV.aemeasurable).mpr inferInstance)
   letI instProbabilityJointMap : IsProbabilityMeasure ((@Measure.map Ω (γ × β) mΩ _ (fun ω => (V ω,W ω)) μ)) :=
-    Measure.isProbabilityMeasure_map (hV.prodMk hW).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (hV.prodMk hW).aemeasurable).mpr inferInstance)
   have h := measureTotalVariation_map_le ((@Measure.map Ω (γ × β) mΩ _ (fun ω => (V ω,W ω)) μ)) (((@Measure.map Ω γ mΩ _ V μ)).prod ν)
     (measurable_snd (α := γ) (β := β))
   rw [Measure.map_map measurable_snd (hV.prodMk hW), Measure.map_snd_prod, measure_univ, one_smul] at h

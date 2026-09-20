@@ -13,8 +13,8 @@ local instance instProbabilityInfinite : IsProbabilityMeasure infiniteRademacher
   infer_instance
 
 instance instProbabilitySourceJoint (M L K : ℕ) (delta : ℝ) : IsProbabilityMeasure (sourceJoint M L K delta) :=
-  Measure.isProbabilityMeasure_map ((measurable_actualClockRecord L K).prodMk
-    (measurable_spatialMarkedSource _ _)).aemeasurable
+  ((Measure.isProbabilityMeasure_map_iff ((measurable_actualClockRecord L K).prodMk
+    (measurable_spatialMarkedSource _ _)).aemeasurable).mpr inferInstance)
 
 def sourceSparseEvent (M L K : ℕ) (delta : ℝ) : Set InfiniteSample :=
   (fun omega => (actualClockRecord L K omega,spatialMarkedSource (bulkStarts M L delta) L omega)) ⁻¹'
@@ -71,7 +71,7 @@ theorem conditionalGammaLaw_probability {M L : ℕ} (delta : ℝ) (hLM : L≤M) 
     exact Set.subset_union_left
   letI instProbabilityConditionalHit : IsProbabilityMeasure (cond infiniteRademacherMeasure (hitEvent M L)) :=
     cond_isProbabilityMeasure (ConditionedCountableLaw.measure_ne_zero_of_real_pos _ hh)
-  exact Measure.isProbabilityMeasure_map (measurable_gamma M L delta).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_gamma M L delta).aemeasurable).mpr inferInstance)
 
 end
 end PaperC.V282.CrossoverSparseSource

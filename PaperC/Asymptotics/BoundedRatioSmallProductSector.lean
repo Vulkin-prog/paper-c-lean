@@ -128,7 +128,7 @@ theorem canonicalResidualComponentCount_le_logQuotient
       (L + 2) ^ primes.card =
           ∏ _p ∈ primes, (L + 2) := by simp
       _ ≤ ∏ p ∈ primes, p :=
-        Finset.prod_le_prod
+        Finset.prod_le_prod₀
           (fun _p _hp ↦ Nat.zero_le _)
           hfactor
   have hdPow : 2 ^ d ≤ L + 2 := by

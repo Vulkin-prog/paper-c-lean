@@ -27,7 +27,7 @@ theorem sourceLaw_probability {M L : ℕ} (delta : ℝ) {A : Set InfiniteSample}
   rw [AffineCrossoverModel.sourceLaw_conditioned A hA]
   letI _instProbabilityConditional : IsProbabilityMeasure (cond infiniteRademacherMeasure (A∩hitEvent M L)) :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
-  exact Measure.isProbabilityMeasure_map (measurable_gamma M L delta).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_gamma M L delta).aemeasurable).mpr inferInstance)
 
 theorem capped_cemetery_mass (nu : Measure Record) (K : ℕ) :
     (nu.map (capBorder K)).real {none}=nu.real {none} := by
@@ -41,12 +41,8 @@ theorem source_cemetery_le {M L : ℕ} (delta : ℝ) (alpha : ℝ≥0) {A : Set 
     (AffineCrossoverModel.sourceLaw (AffineCrossoverModel.conditionedMeasure A) M L delta).real {none}≤
       AffineCrossoverModel.cappedDistance (AffineCrossoverModel.conditionedMeasure A) M L 0 delta alpha := by
   letI _instProbabilitySource := sourceLaw_probability delta hA hpos
-  letI _instProbabilityCappedSource := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverModel.sourceLaw (AffineCrossoverModel.conditionedMeasure A) M L delta)
-    (measurable_of_countable (capBorder 0)).aemeasurable
-  letI _instProbabilityCappedTarget := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverTarget.targetLaw M L delta alpha)
-    (measurable_of_countable (capBorder 0)).aemeasurable
+  letI _instProbabilityCappedSource := ((Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverModel.sourceLaw (AffineCrossoverModel.conditionedMeasure A) M L delta) (measurable_of_countable (capBorder 0)).aemeasurable).mpr inferInstance)
+  letI _instProbabilityCappedTarget := ((Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverTarget.targetLaw M L delta alpha) (measurable_of_countable (capBorder 0)).aemeasurable).mpr inferInstance)
   have h := discrepancy_le
     ((AffineCrossoverModel.sourceLaw (AffineCrossoverModel.conditionedMeasure A) M L delta).map (capBorder 0))
     ((AffineCrossoverTarget.targetLaw M L delta alpha).map (capBorder 0)) {none} (measurableSet_singleton _)
@@ -70,18 +66,11 @@ theorem statistic_tv_le {Beta : Type*} [MeasurableSpace Beta]
   letI _instProbabilityConditional : IsProbabilityMeasure mu :=
     cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hpos)
   letI _instProbabilitySource := sourceLaw_probability delta hA hpos
-  letI _instProbabilitySourceObserved := Measure.isProbabilityMeasure_map (μ := mu) hg.aemeasurable
-  letI _instProbabilityMiddle := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverModel.sourceLaw (AffineCrossoverModel.conditionedMeasure A) M L delta)
-    (measurable_of_countable f).aemeasurable
-  letI _instProbabilityTargetObserved := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverTarget.targetLaw M L delta alpha) (measurable_of_countable f).aemeasurable
-  letI _instProbabilityCappedSource := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverModel.sourceLaw (AffineCrossoverModel.conditionedMeasure A) M L delta)
-    (measurable_of_countable (capBorder 0)).aemeasurable
-  letI _instProbabilityCappedTarget := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverTarget.targetLaw M L delta alpha)
-    (measurable_of_countable (capBorder 0)).aemeasurable
+  letI _instProbabilitySourceObserved := ((Measure.isProbabilityMeasure_map_iff (μ := mu) hg.aemeasurable).mpr inferInstance)
+  letI _instProbabilityMiddle := ((Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverModel.sourceLaw (AffineCrossoverModel.conditionedMeasure A) M L delta) (measurable_of_countable f).aemeasurable).mpr inferInstance)
+  letI _instProbabilityTargetObserved := ((Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverTarget.targetLaw M L delta alpha) (measurable_of_countable f).aemeasurable).mpr inferInstance)
+  letI _instProbabilityCappedSource := ((Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverModel.sourceLaw (AffineCrossoverModel.conditionedMeasure A) M L delta) (measurable_of_countable (capBorder 0)).aemeasurable).mpr inferInstance)
+  letI _instProbabilityCappedTarget := ((Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverTarget.targetLaw M L delta alpha) (measurable_of_countable (capBorder 0)).aemeasurable).mpr inferInstance)
   have hc := map_tv_le_of_ae_eq_off mu ({omega | gamma M L delta omega=none}∪B) hg
     ((measurable_of_countable f).comp (measurable_gamma M L delta)) (by
       filter_upwards [ae_cond_mem (μ := infiniteRademacherMeasure) (hA.inter (measurableSet_hitEvent M L))] with omega hh

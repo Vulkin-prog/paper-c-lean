@@ -40,7 +40,6 @@ theorem microscopicRecord_restrict_eq {Y L : ℕ} (hcut : 2*L^2+L≤Y) (omega : 
       have hs := startAt_restrictToFinite_iff omega hc
       simp only [finiteMicroscopicRecord,microscopicRecord,hx,ite_false,hm,ite_true,
         max_eq_left (Nat.zero_le _),hs,infiniteStartEvent,Set.mem_setOf_eq]
-      split_ifs <;> rfl
     · simp only [finiteMicroscopicRecord,microscopicRecord,hx,ite_false,hm,
         max_eq_left (Nat.zero_le _)]
 
@@ -103,10 +102,10 @@ theorem microscopicJointDistance_nonneg (M L : ℕ) (delta : ℝ) :
   letI instProbabilityJoint : IsProbabilityMeasure
       (infiniteRademacherMeasure.map (fun omega =>
         (microscopicRecord L 0 omega,startField (bulkStarts M L delta) L omega))) :=
-    Measure.isProbabilityMeasure_map ((measurable_microscopicRecord L 0).prodMk
-      (measurable_startField _ _)).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff ((measurable_microscopicRecord L 0).prodMk
+      (measurable_startField _ _)).aemeasurable).mpr inferInstance)
   letI instProbabilityRecord : IsProbabilityMeasure (infiniteRademacherMeasure.map (microscopicRecord L 0)) :=
-    Measure.isProbabilityMeasure_map (measurable_microscopicRecord L 0).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_microscopicRecord L 0).aemeasurable).mpr inferInstance)
   exact measureTotalVariation_nonneg _ _
 
 /-- Equation (7.17), in the stronger relative form o(lambda), for the actual microscopic record. -/

@@ -67,7 +67,6 @@ theorem infinitePrefixStartCount_eq_border_add (M L : ℕ) (omega : InfiniteSamp
     rw [borderEvent_eq_prefix]
     rfl
   simp only [hb,infiniteStartEvent,Set.mem_setOf_eq]
-  rfl
 
 /-- The actual longest-run void event is exactly the absence of border and contained starts. -/
 theorem longest_lt_iff_border_and_no_start {M L : ℕ} (hLM : L ≤ M)

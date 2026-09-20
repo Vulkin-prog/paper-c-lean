@@ -356,7 +356,7 @@ theorem componentLeftProduct_le_cutoff_pow_card
         leftOccurrenceFactor pair.1.1 L v) ≤
         ∏ _v ∈ componentVertices pair.1.1 pair.1.2 L C,
           boundedRatioCutoff M L :=
-      Finset.prod_le_prod
+      Finset.prod_le_prod₀
         (fun _v _hv => Nat.zero_le _)
         (fun v _hv => leftOccurrenceFactor_le_cutoff hN pair v)
     _ = boundedRatioCutoff M L ^
@@ -378,7 +378,7 @@ theorem componentRightProduct_le_cutoff_pow_card
         rightOccurrenceFactor pair.1.2 L v) ≤
         ∏ _v ∈ componentVertices pair.1.1 pair.1.2 L C,
           boundedRatioCutoff M L :=
-      Finset.prod_le_prod
+      Finset.prod_le_prod₀
         (fun _v _hv => Nat.zero_le _)
         (fun v _hv => rightOccurrenceFactor_le_cutoff hN pair v)
     _ = boundedRatioCutoff M L ^
@@ -400,7 +400,7 @@ theorem componentVertexProduct_le_cutoff_pow_card
         twoStartCompleteVertexLabel pair.1.1 pair.1.2 L v) ≤
         ∏ _v ∈ componentVertices pair.1.1 pair.1.2 L C,
           boundedRatioCutoff M L :=
-      Finset.prod_le_prod
+      Finset.prod_le_prod₀
         (fun _v _hv => Nat.zero_le _)
         (fun v _hv => twoStartCompleteVertexLabel_le_cutoff hN pair v)
     _ = boundedRatioCutoff M L ^

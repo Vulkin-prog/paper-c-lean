@@ -1,0 +1,531 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-09-09T19:13:42.190902+00:00",
+  "status": "local_proof_validation_passed",
+  "scope": "Lean compilation, exact axiom audits, local strict interface comparison and static source checks. Not official Palomar or dual-kernel qualification.",
+  "base_commit": "9286f4a954ac128ba3d5edd1c1d25203f45c099f",
+  "toolchain": {
+    "lean": "leanprover/lean4:v4.33.1",
+    "lean_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+    "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "lake_manifest_sha256": "4aa81c109e7dae6bef11cb312cac7587353d07844c7e21cf0dd27eaafacd08ed"
+  },
+  "source_snapshot": {
+    "path": "lean-sources.json",
+    "sha256": "3f70b36f9bb48135fb4dd0bf36e1e00c2e5757b97dfbd099a4b66b9579452ab1",
+    "count": 1171
+  },
+  "core_source": {
+    "base_version": "0.48.1",
+    "fileset": [
+      "PaperC.lean",
+      "PaperC/**/*.lean"
+    ],
+    "file_count": 382,
+    "digest_sha256": "081fb4c78b76d0cfc5da9fd505ff8226b051269d6ebdc5e2bdc4ee207a8b4d69",
+    "snapshot_kind": "migrated_current_core",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "historical_baseline": {
+      "source_commit": "9286f4a954ac128ba3d5edd1c1d25203f45c099f",
+      "same_core_merge_commit": "ee2ac789764fe5d9fd19c96c6c0778a693b129a0",
+      "toolchain": "leanprover/lean4:v4.32.0",
+      "mathlib_revision": "81a5d257c8e410db227a6665ed08f64fea08e997",
+      "fileset": [
+        "PaperC.lean",
+        "PaperC/**/*.lean"
+      ],
+      "file_count": 382,
+      "digest_sha256": "3505665c32c33ddc5508994964f8623911ae83720b814f2fe4b7573bccba4137",
+      "qualification_transfers_to_current_source": false
+    }
+  },
+  "changed_mathematical_source_files": [
+    {
+      "path": "PaperC/Affine/Normalization.lean",
+      "sha256": "5b683a784d3707474aeada5a297f089aa0f4159c4aa7eaa72f27a610a5537809"
+    },
+    {
+      "path": "PaperC/Affine/RelationalPrimeAssignment.lean",
+      "sha256": "7903cafbb75bed43225a95ddc91b80e12c687f961578f217463755c08bc23bfc"
+    },
+    {
+      "path": "PaperC/Affine/StartDefectRank.lean",
+      "sha256": "7afc64cf74f3c7ec9d7f51b212df1c18f3f71dbe5bbafc1c44bee0a3fefa0c10"
+    },
+    {
+      "path": "PaperC/Affine/TouchingDefectRank.lean",
+      "sha256": "e8e65f3c380b2c69b6679c6851d8c499da04e8d65645c50b8ca6cb91bc7b4ded"
+    },
+    {
+      "path": "PaperC/Arithmetic/LowZonePrimePivots.lean",
+      "sha256": "185ec4daae8f5ce696ceca7887df4068317fafb9b0f2f548e9d45e55b9483b28"
+    },
+    {
+      "path": "PaperC/Asymptotics/BoundedRatioTerminalClosure.lean",
+      "sha256": "0352986718a191260fe5d86db10ca7ec65f961045f396c81de54c56474488533"
+    },
+    {
+      "path": "PaperC/Asymptotics/TheoremSixteenTwo.lean",
+      "sha256": "fb53620f3037181628706ef3a4bd008ceafdc3aed1121bc5a51159c76a9a68fe"
+    },
+    {
+      "path": "PaperC/Coding/AlignedComponentCode.lean",
+      "sha256": "8417fcc137ef96d9556308951c9047c7fdf89462bfc9c825678e9298537138d6"
+    },
+    {
+      "path": "PaperC/Combinatorics/LargePrimeOccurrences.lean",
+      "sha256": "a506963c08b702ea14d47fa423d0d0e611832f5f1859b00e653b1d38bfa4656e"
+    },
+    {
+      "path": "PaperC/Combinatorics/SectionElevenPartition.lean",
+      "sha256": "cc6f5b54a06c21197b0fa3700a17530feaaf4bf08238459fda595e2d2bb48537"
+    },
+    {
+      "path": "PaperC/Combinatorics/TreeBoundary.lean",
+      "sha256": "b5f7f3c51665645836798f4fa1b8a389a341c275830e3361f08956466905136c"
+    },
+    {
+      "path": "PaperC/Diophantine/HalterKochConductorDescent.lean",
+      "sha256": "33fae640ea8437224a53b5d56b7544dad07ae174756fb2366312febcb564d2ed"
+    },
+    {
+      "path": "PaperC/LinearAlgebra/CanonicalSmallRows.lean",
+      "sha256": "9b02bf402224f723b21a474f1976c2904794e47d557027beb7104c3d2ca613a6"
+    },
+    {
+      "path": "PaperC/LinearAlgebra/PrivatePivots.lean",
+      "sha256": "fd57fc26f40407d2f21a337ba8ab32cd2dc73d3a802b2d11d2edfb3be8306cc4"
+    },
+    {
+      "path": "PaperC/Probability/ConditionalDependencyGraph.lean",
+      "sha256": "3cb47e22cc69ac4caa2bb65e39fb8972626c0558371f47a913fbdfe6349ebe20"
+    },
+    {
+      "path": "PaperC/Probability/ConditionalStartProbability.lean",
+      "sha256": "3859d7fb15f3890ff09a6d1b06d5f06f610fa0b8d9b7bf876ef4a1fd2f776932"
+    },
+    {
+      "path": "PaperC/Probability/DefectFirstMoment.lean",
+      "sha256": "04b1cd0245b97f478168f1ff561292368b81142ce58293a080234413d2127355"
+    },
+    {
+      "path": "PaperC/Probability/FiniteCylinderCountTransport.lean",
+      "sha256": "622e530ef52ef4251d34961f57deb8ee59aba4c8a18554722c799a378266c0de"
+    },
+    {
+      "path": "PaperC/Probability/IndependentThinning.lean",
+      "sha256": "1a29f41871765bc273e0985a8ae685fe1350849937f7dc894076ebd2030c2757"
+    },
+    {
+      "path": "PaperC/Probability/TouchingProbability.lean",
+      "sha256": "e02e1b510e0502add4a5010612c02ca16d0a0f0a74569a4010ff3d267569df5c"
+    },
+    {
+      "path": "PaperCV282/AffineBorderPrimeClock.lean",
+      "sha256": "39c04327b209eca1f216c0d2028d0b9adab9d3ebc099ad4386eba25d41f8f891"
+    },
+    {
+      "path": "PaperCV282/AffineCrossoverLocationSource.lean",
+      "sha256": "9440d8867fe1c4cdf40bef73b62e3cac81d759cb7e99e5c0fafb7160df9f2e9d"
+    },
+    {
+      "path": "PaperCV282/AggregateCoordinateIdentities.lean",
+      "sha256": "ca07d0e254b74a6daa19da7c4644f6a837189f484f3ded6729752259f2167363"
+    },
+    {
+      "path": "PaperCV282/AllStartFieldTransfer.lean",
+      "sha256": "b4279c616022e0a23a46b393ed7f501c7d4d32c6ca8c8308c2e18f4b6bef8b30"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedSource.lean",
+      "sha256": "18cc7a7f2ee115b87fc4dca888ff6d36982bd4697417da4d31f26ea55fa1a318"
+    },
+    {
+      "path": "PaperCV282/BulkMarkedTypes.lean",
+      "sha256": "f1f4436168800f2992db547751a24bfaee946988957692ea83c87bb1aabc4940"
+    },
+    {
+      "path": "PaperCV282/BulkMicroscopicRecord.lean",
+      "sha256": "79b0aa8d50f1dfcd868d73a59a347833f32a5a97355e396d54b71b5543f74a9b"
+    },
+    {
+      "path": "PaperCV282/ConditionalFieldTransfer.lean",
+      "sha256": "925e1eb78fc16cfc6d2d9063cc80039476496e27247bdba74a005816133bf91d"
+    },
+    {
+      "path": "PaperCV282/CrossoverLocationGrid.lean",
+      "sha256": "3c8d3cc70e7ba35ae4ab1b905f84d01706d1566298ee3c4b32bdff3a967b0b92"
+    },
+    {
+      "path": "PaperCV282/CrossoverLocationTransfer.lean",
+      "sha256": "cb579475675e10edb0190eb7963c6e7d0ec32bd8a1153378f5713528d22fff38"
+    },
+    {
+      "path": "PaperCV282/D4ClosureLaplaceSource.lean",
+      "sha256": "06f3dc555f5daa817641822e1b76a830ee4efa5ba11655f6f56240ab63f52752"
+    },
+    {
+      "path": "PaperCV282/DictionaryFieldDeletion.lean",
+      "sha256": "50ff3b8f0432486ee0eec6153a75c6317716457eaeb769dec7362d0b4f989436"
+    },
+    {
+      "path": "PaperCV282/ExactMarkedModel.lean",
+      "sha256": "d3b5137f2417798d7b8639d15b0d2d7ca68ebd8061e2c99138ce835eb1e0e223"
+    },
+    {
+      "path": "PaperCV282/IndependentDefectParameters.lean",
+      "sha256": "a6c5f7924f8c5714eef46d1070ea2729dd8a5c56e65a3d6ab2c561180fc345b1"
+    },
+    {
+      "path": "PaperCV282/InfiniteMaskedScalarTransfer.lean",
+      "sha256": "7bcf059f338d0db6a26f390f880793e9dd003825982ca1add7bd507b3ababb70"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateFilling.lean",
+      "sha256": "740dc7cf4555f5218435cbf7308adccc25280ab038a3effa784d62053cbeb794"
+    },
+    {
+      "path": "PaperCV282/MacroAggregatePaths.lean",
+      "sha256": "8faeeedad375dab2f5452a735f05f23470f5d322e7b8731cce14c75696292a2f"
+    },
+    {
+      "path": "PaperCV282/MacroAggregateTruncation.lean",
+      "sha256": "ea0bd4f5f7dd62655540fe4da0def9c36382e69ce48425ffd3a03585a218ac3b"
+    },
+    {
+      "path": "PaperCV282/MacroTransportUnsigned.lean",
+      "sha256": "bc1acd784de88c728231df50490502774a838257bdd3c665553de18e6f566e0d"
+    },
+    {
+      "path": "PaperCV282/MaskedScalarCoupling.lean",
+      "sha256": "28a5d59c0f9bd54e84d4cf693507a7bcf47121a40e6e96ad2809adb6056b95c2"
+    },
+    {
+      "path": "PaperCV282/MicroscopicPrivatePrimes.lean",
+      "sha256": "5da8df12ccdc1013041ab06979d6b99375459854c5091002041b87cf2f5739d8"
+    },
+    {
+      "path": "PaperCV282/MovingMarkedSource.lean",
+      "sha256": "acab14da9d3961ea0cd6c7ebfc096583aea96325cadb1b0c9c6ca4f4efd33f1a"
+    },
+    {
+      "path": "PaperCV282/PoissonResolvedPast.lean",
+      "sha256": "6156ae5743321cea5ddfdc12e8f77f224bc2f923e5d75ed766b2325ffbffbaba"
+    },
+    {
+      "path": "PaperCV282/PrefixLongestGeometry.lean",
+      "sha256": "f384ae35879d5456f4a978ba64953d488eff3b32a3e820b420683bc873e5647a"
+    },
+    {
+      "path": "PaperCV282/PrimeClockEvents.lean",
+      "sha256": "4917a64cf86759507a0f8c8ce4a4c2b00c27da263606a8e6ed992d129e387af7"
+    },
+    {
+      "path": "PaperCV282/RarePrefixGeometry.lean",
+      "sha256": "3073732dcd34e6aabf99035b5ce0319f741484414e156ac9fad5af3349490366"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedPoissonIdentification.lean",
+      "sha256": "af6693a088578f52b4c550fdb7928bb88aa0f059879278faee6da3b16c84d082"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedSource.lean",
+      "sha256": "c27e6ff428d4d367a26edc5c4df680d430cb816384d6c4ff5e39a81fd9f94100"
+    },
+    {
+      "path": "PaperCV282/SpatialMarkedTypes.lean",
+      "sha256": "b3aa4bdd84c8b957f1595e1bf277466d777cccd7be8de8f63ec2ee5ec99666fd"
+    },
+    {
+      "path": "PaperCV282/UnsignedMarkedRelations.lean",
+      "sha256": "a75d3f7d3581ea439ba3b6458d6a8ee24586115091efb350df8f4903dd573e13"
+    },
+    {
+      "path": "PaperCV282/WindowValues.lean",
+      "sha256": "321df47724e1add529d9601c95377c1c50f47446c18474af7a51a11df7e541c7"
+    },
+    {
+      "path": "SolutionV3Patterns.lean",
+      "sha256": "a74c527d32b981c3cffa5e042b8f77ca7efb78c72431d000149fd7e128f0fe5a"
+    }
+  ],
+  "build": {
+    "status": "passed",
+    "exit_code": 0,
+    "lake_jobs": 9895,
+    "targets": [
+      "PaperC",
+      "PaperCV11",
+      "PaperCV282",
+      "Challenge",
+      "Solution",
+      "ChallengeTransfer",
+      "SolutionTransfer",
+      "ChallengeTheoremOneTwo",
+      "SolutionTheoremOneTwo",
+      "ChallengeTheoremOneFour",
+      "SolutionTheoremOneFour",
+      "ChallengeTheoremSixteenTwo",
+      "SolutionTheoremSixteenTwo",
+      "ChallengeV3CriticalField",
+      "SolutionV3CriticalField",
+      "ChallengeV3Patterns",
+      "SolutionV3Patterns",
+      "ChallengeV3Limits",
+      "SolutionV3Limits",
+      "ChallengeV3Boundary",
+      "SolutionV3Boundary",
+      "ChallengeV3Crossover",
+      "SolutionV3Crossover"
+    ],
+    "log": "lean4331-full-build-15.log",
+    "log_sha256": "b6b6d8575cf841838a24d25c2d01a7d11b29f36a5467ff5efc4ce7306b53a35f"
+  },
+  "axiom_audits": [
+    {
+      "name": "core",
+      "status": "passed",
+      "exit_code": 0,
+      "printed_declarations": 4074,
+      "source": "AuditCheck.lean",
+      "source_sha256": "06b0e98117320a6fb9fae4cd4ff67ace97619a82f64ced2ef617ee58df6b3d79",
+      "log": "lean4331-core-audit.log",
+      "log_sha256": "0c827583d25f14198aa585c76a37d6112adfc77190a2056d8a6425dfe1ae030f",
+      "verification": "lean4331-core-audit-check.log",
+      "verification_sha256": "9d0307c3e54c07df8695bfbf049aab088520a23b6c2bc05d406b25397d5036ce"
+    },
+    {
+      "name": "v11",
+      "status": "passed",
+      "exit_code": 0,
+      "printed_declarations": 7,
+      "source": "PaperCV11/Audit.lean",
+      "source_sha256": "b5ef4eb17dd3d6d30646d8cc1a1e2db25c539f04ebae1358b578c0c9b4001612",
+      "log": "lean4331-v11-audit.log",
+      "log_sha256": "615cb8d01c58cd474e975c41c18d37c665999a89132aa9da4fc2c76ca2468713",
+      "verification": "lean4331-v11-audit-check.json",
+      "verification_sha256": "385165cbd555bbcd5cc7731a0ab3e438d0d9e5b9d865bc4c9935b5ef0f35eb3c"
+    },
+    {
+      "name": "v282",
+      "status": "passed",
+      "exit_code": 0,
+      "printed_declarations": 6094,
+      "source": "PaperCV282/Audit.lean",
+      "source_sha256": "fe1de53d464c9e6985d89d0001a02d9c29d86e16052b24fb221408d7d4cb3c08",
+      "log": "lean4331-v282-audit.log",
+      "log_sha256": "110b5d7852d4999348053c93a214b18b2eb3d2115228cd046ba0314a57358d32",
+      "verification": "lean4331-v282-audit-check.log",
+      "verification_sha256": "c7bcb712fee75441276ffa0cf17bba82947a808d47b9742c7caf1cefced49f8d"
+    }
+  ],
+  "axiom_allowlist": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "audit_counts_are_not_deduplicated": true,
+  "strict_interface_comparison": {
+    "status": "passed",
+    "configurations": 10,
+    "selected_declarations": 80,
+    "source_and_olean_stable": true,
+    "receipt": "strict-boundary.json",
+    "receipt_sha256": "12297a9447da795aa9ad4dc25b2f89da8e10df7bb125d44e81117c59c28fdfce",
+    "official_qualification": false
+  },
+  "literature_premises": {
+    "count": 7,
+    "unchanged": true,
+    "discharged_by_migration": false
+  },
+  "local_derivation_exception": {
+    "file": "PaperC/Combinatorics/SectionElevenPartition.lean",
+    "command": "set_option backward.isDefEq.respectTransparency.types false in deriving instance Fintype for ResidualSector",
+    "reviewed_generated_declarations": 46,
+    "names_displayed_types_axioms_equal_across_versions": true,
+    "project_wide_option": false
+  },
+  "remaining_external_work": [
+    "Palomar canonical Mathlib ancestry admission (upstream PR128 was open on 2026-09-09).",
+    "Official Comparator and NanoDa replay at a frozen migrated commit has not been executed.",
+    "Registry renderability issue134 is separate; no rendering success or new registration is claimed."
+  ],
+  "historical_4_32_evidence_preserved": true,
+  "static_checks": [
+    {
+      "name": "core_source_digest",
+      "status": "passed",
+      "log": "lean4331-frozen-core-source.log",
+      "log_sha256": "6844edd47c50f01d89b79350152ba841d0b40a517aac6e3caf5c172ac81639bb"
+    },
+    {
+      "name": "deterministic_generation",
+      "status": "passed",
+      "log": "lean4331-frozen-generated.log",
+      "log_sha256": "44c81c6c19ef2bfb992d489a85466cf4f25ad69cbbe5ebe80b6962148958b774"
+    },
+    {
+      "name": "pdf_identity",
+      "status": "passed",
+      "log": "lean4331-final-pdf-check.log",
+      "log_sha256": "29c89ac7616f423097c48b1ea741a81ba9f189cfcb73160707a08d17f74b6290"
+    },
+    {
+      "name": "literature_certificates",
+      "status": "passed",
+      "log": "lean4331-final-literature-check.log",
+      "log_sha256": "5fff897c7c191ee08cd063655d01cec9c1e276ea709869542977ee5ad408ae26"
+    },
+    {
+      "name": "root_guard_tests",
+      "status": "passed",
+      "log": "lean4331-frozen-root-tests.log",
+      "log_sha256": "ddd8c097059b532ec0ac45a4d2091fcf75dcba9f63219eb833494f32d655ba45"
+    },
+    {
+      "name": "v282_source",
+      "status": "passed",
+      "log": "lean4331-frozen-v282-source.log",
+      "log_sha256": "9d4264e6b4345f4469f49884d2478f07bda4274f174c2eaac2f98d8a3b8a3261"
+    },
+    {
+      "name": "v282_tests_8",
+      "status": "passed",
+      "log": "lean4331-frozen-v282-tests.log",
+      "log_sha256": "5cf7c3d59f6dcfbb214bde6ecf1ac160b77dce585563e1f47cffbadab1096283"
+    },
+    {
+      "name": "v3_source",
+      "status": "passed",
+      "log": "lean4331-frozen-v3-source.log",
+      "log_sha256": "f993dd74d34680b5b088a3ea5ef1f2e6603be811f5e2203f319ce744ca1fbbad"
+    },
+    {
+      "name": "v3_tests_19",
+      "status": "passed",
+      "log": "lean4331-frozen-v3-tests-hardened.log",
+      "log_sha256": "8878b4178f8065de0c58a39fdca282f3c98a9cac257cfb3b69e48351cbc8eff5"
+    },
+    {
+      "name": "exporter_identity_tests_8",
+      "status": "passed",
+      "log": "lean4331-frozen-exporter-tests.log",
+      "log_sha256": "f41dcd6bb4c47a8cfd051c6146cc5c4ce810845249725ce89362bfcb2b60bb01"
+    },
+    {
+      "name": "checkout_identity_tests_3_for_two_runners",
+      "status": "passed",
+      "log": "lean4331-frozen-checkout-tests.log",
+      "log_sha256": "ad563b51af82e643aa84c356cfdd5f6c701c5789b861700d9ceb72ef1327448e"
+    },
+    {
+      "name": "workflow_and_runner_shell_syntax",
+      "status": "passed",
+      "log": "lean4331-frozen-workflow-shells.log",
+      "log_sha256": "7ee12e5b8a702d7ee80e99518d5f5b34dadf4a2d50ad8e63f26be58a82da246e"
+    },
+    {
+      "name": "official_v3_static_preflight",
+      "status": "passed",
+      "log": "lean4331-frozen-v3-official-preflight.log",
+      "log_sha256": "4bc13c549f1af78646e1884bdd05a358b837ff05caa658ff215beda93ce03c77"
+    }
+  ],
+  "official_metadata_preflight": {
+    "status": "static_preflight_passed",
+    "kernel_qualification": false,
+    "editorial_qualification": false,
+    "metadata_only": false,
+    "official_contract_checked": true,
+    "submission_contract": "c605f23466450a52999fcfb3c6d68ed8febc56bf",
+    "policy_snapshot": "42cc43f70b1b019d20d4b64e9016396e666a6bc7",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "selected_declarations": 69,
+    "families": 5,
+    "import_closure_sources": 8690,
+    "local_receipt": "lean4331-frozen-v3-official-preflight.json",
+    "local_receipt_sha256": "94a355b50b5375fec9782ff26c34694618064b0a09c60fbb4df711676de99461"
+  },
+  "checked_tooling_and_metadata": [
+    {
+      "path": ".github/workflows/reproducibility.yml",
+      "sha256": "c1b121849ad53ca22cf2f067a9f02a1b8f081d28beb21d82eb7c339a8cf2366d"
+    },
+    {
+      "path": "palomar/verify-comparator.sh",
+      "sha256": "b19e6ebac2096f5645507fb89d98aa5ebeed3240e431acd26409d1424dc95979"
+    },
+    {
+      "path": "palomar/v3prel/verify-comparator.sh",
+      "sha256": "0f200ba00947f9451ff4962e757a7876db21ea9d2955a3b582b964b13106d848"
+    },
+    {
+      "path": "palomar/check_exporter_toolchain.py",
+      "sha256": "07e30d726ac8d4be748c9a5dd9b56a793947fc578e55427930ad8094b5b892ce"
+    },
+    {
+      "path": "scripts/test_checkout_exact.py",
+      "sha256": "ca4a4affd4ebf31e8778b6d88091830e4f214079b589212be9eba33e9fe8ea7a"
+    },
+    {
+      "path": "scripts/test_lean4export_toolchain.py",
+      "sha256": "fc56beb147382dea7bd9faa0db292096ed256156228b9b6525611c878f1428c5"
+    },
+    {
+      "path": "scripts/check_v3prel_candidates.py",
+      "sha256": "6453e3955f7bed92d2bbfd16f5b5f90d7a8086920c6041d5b2c22c16872c7fee"
+    },
+    {
+      "path": "scripts/test_check_v3prel_candidates.py",
+      "sha256": "c1d3976ca06219043d0172478ed6c85093d5893d2bcf5ff1c7ccb487df84dfae"
+    },
+    {
+      "path": "scripts/check_v282_audit.py",
+      "sha256": "cca85df71616f8cb17ff90dc41bb08cbad963395cdd1cb637077b1064dc08419"
+    },
+    {
+      "path": "scripts/test_v282_audit.py",
+      "sha256": "d5fe781c27f6bc1f373686b9f75e38961878d7d5cdcfb7af0b55dc24e4261b54"
+    },
+    {
+      "path": "scripts/generate_audit.mjs",
+      "sha256": "52a6a4ef11d0ec4179c662829091fe06651198eec5d78bb9790aa9706bcf6615"
+    },
+    {
+      "path": "scripts/test_audit_root_guards.mjs",
+      "sha256": "0f500794511d22524516fcb01871ebcc9f8ddf4c320f0188b0a82748377312dc"
+    },
+    {
+      "path": "audit_config.json",
+      "sha256": "a9ce6c501ca8119d402dc0b492d07122a68a8e637efc146a2dca1bf89aa24482"
+    },
+    {
+      "path": "audit_manifest.json",
+      "sha256": "6f8788ec395fae6d4e8f64c7dfde50609480e017bca883bfe55b2bc030ed0b87"
+    },
+    {
+      "path": "formalization.yaml",
+      "sha256": "9e24ac25748510abfd868f51d6ac7e1709909af3ae7e23c0e91efc971356ff1e"
+    },
+    {
+      "path": "PaperCV282/source_manifest.json",
+      "sha256": "dde988f48f2d76479c65f55d541af6f347247e149f0c82433389f595849d9aa9"
+    }
+  ],
+  "cached_tool_sources": {
+    "exact_head_required": true,
+    "tracked_index_and_worktree_changes_rejected": true,
+    "rejection_preserves_cache": true
+  },
+  "final_static_receipt": {
+    "local_file": "lean4331-frozen-static-result.json",
+    "sha256": "e54d38d5817c891bbc4ab955c94df678f1fca251fc9f94bbbe42d4bf7fd2cb8f"
+  },
+  "tooling_review": {
+    "status": "passed",
+    "local_file": "lean4331-tooling-final-review.json",
+    "sha256": "54fd5f5f7c1ecaea1b74f1c143a81963e1cdb432ec10c8fa11eb85b77b419bbd"
+  }
+}

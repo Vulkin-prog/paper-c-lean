@@ -31,10 +31,8 @@ theorem mixedLaw_censor_tv_le (M L : ℕ) (sites : Finset ℕ) (hs : sites.Nonem
     (hsites : ∀x∈sites,x≤M-L+1) (alpha : ℝ≥0) :
     measureTotalVariation ((AffineCrossoverTarget.mixedLaw sites hs L alpha).map (censorRecord M L))
       (AffineCrossoverTarget.mixedLaw sites hs L alpha)≤1/(sites.card : ℝ) := by
-  letI _instProbabilityCensoredMixed := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverTarget.mixedLaw sites hs L alpha) (measurable_of_countable (censorRecord M L)).aemeasurable
-  letI _instProbabilityCensoredBulk := Measure.isProbabilityMeasure_map
-    (μ := bulkLaw sites hs) (measurable_of_countable (censorRecord M L)).aemeasurable
+  letI _instProbabilityCensoredMixed := ((Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverTarget.mixedLaw sites hs L alpha) (measurable_of_countable (censorRecord M L)).aemeasurable).mpr inferInstance)
+  letI _instProbabilityCensoredBulk := ((Measure.isProbabilityMeasure_map_iff (μ := bulkLaw sites hs) (measurable_of_countable (censorRecord M L)).aemeasurable).mpr inferInstance)
   apply (measureTotalVariation_le_iff _ _ _).mpr
   intro S hS
   have hb : borderLaw.real (censorRecord M L ⁻¹' S)=borderLaw.real S := by
@@ -80,10 +78,8 @@ theorem censoredDistance_le {M L : ℕ} (delta : ℝ) (alpha : ℝ≥0) {A : Set
     censoredDistance M L delta A alpha≤
       actualDistance (conditionedMeasure A) M L delta alpha+1/((bulkStarts M L delta).card : ℝ) := by
   letI _instProbabilityGamma := AffineCrossoverLocationTransfer.sourceLaw_probability delta hA hpos
-  letI _instProbabilityCensoredGamma := Measure.isProbabilityMeasure_map
-    (μ := sourceLaw (conditionedMeasure A) M L delta) (measurable_of_countable (censorRecord M L)).aemeasurable
-  letI _instProbabilityCensoredTarget := Measure.isProbabilityMeasure_map
-    (μ := AffineCrossoverTarget.targetLaw M L delta alpha) (measurable_of_countable (censorRecord M L)).aemeasurable
+  letI _instProbabilityCensoredGamma := ((Measure.isProbabilityMeasure_map_iff (μ := sourceLaw (conditionedMeasure A) M L delta) (measurable_of_countable (censorRecord M L)).aemeasurable).mpr inferInstance)
+  letI _instProbabilityCensoredTarget := ((Measure.isProbabilityMeasure_map_iff (μ := AffineCrossoverTarget.targetLaw M L delta alpha) (measurable_of_countable (censorRecord M L)).aemeasurable).mpr inferInstance)
   rw [censoredDistance,censoredSourceLaw_eq M L delta hA]
   have htri := variation_triangle ((sourceLaw (conditionedMeasure A) M L delta).map (censorRecord M L))
     ((AffineCrossoverTarget.targetLaw M L delta alpha).map (censorRecord M L))

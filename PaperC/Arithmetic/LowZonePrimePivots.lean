@@ -267,8 +267,9 @@ theorem startCompleteVertexLabel_lowZoneSquareVertex
       (Nat.sqrt (x - 1) + 1) ^ 2 := by
   have hoff :=
     lowZoneSquareOffset_pos_le hx hgap
-  simp only [startCompleteVertexLabel, lowZoneSquareVertex]
-  rw [if_neg hoff.1.ne']
+  have hne : (lowZoneSquareVertex x L hx hgap).val ≠ 0 := hoff.1.ne'
+  rw [startCompleteVertexLabel, if_neg hne]
+  change x + (lowZoneSquareOffset x - 1) = (Nat.sqrt (x - 1) + 1) ^ 2
   unfold lowZoneSquareOffset
   have hlower :
       x - 1 < (Nat.sqrt (x - 1) + 1) ^ 2 :=
@@ -622,12 +623,14 @@ private theorem valueBit_single
     ⟨⟨p, Nat.lt_succ_of_le hpM⟩, hp⟩
   rw [valueBit]
   rw [Fintype.sum_eq_single q]
-  · simp [q]
+  · simp [Pi.single, Function.update, q]
+    intro hne
+    exact (hne rfl).elim
   · intro r hrq
     have hrq' :
         r ≠ (⟨⟨p, Nat.lt_succ_of_le hpM⟩, hp⟩ : PrimeUpTo M) := by
       simpa only [q] using hrq
-    simp [Pi.single_apply, hrq']
+    simp [Pi.single, Function.update, hrq']
 
 /--
 Every genuine row relation satisfies every intermediate-prime boundary

@@ -80,7 +80,7 @@ theorem stopped_mark_product_transform (rate : ℝ≥0) (mu : Measure X)
     apply HasFiniteIntegral.of_bounded (C := 1)
     exact Filter.Eventually.of_forall fun sample => by
       rw [norm_prod]
-      exact Finset.prod_le_one (fun i _ => norm_nonneg _) (fun i _ => hf (sample.2 i))
+      exact Finset.prod_le_one₀ (fun i _ => norm_nonneg _) (fun i _ => hf (sample.2 i))
   rw [markSampleMeasure, integral_prod _ hint]
   simp_rw [integral_fixed_mark_product mu f hfmeas]
   exact integral_poisson_complex_powers _ _
@@ -174,7 +174,7 @@ theorem hasLaw_categoryCounts {I : Type*} [Fintype I] [DecidableEq I]
   refine ⟨(measurable_categoryCounts category hcmeas).aemeasurable, ?_⟩
   letI : IsProbabilityMeasure
       ((markSampleMeasure rate mu).map (categoryCounts category)) :=
-    Measure.isProbabilityMeasure_map (measurable_categoryCounts category hcmeas).aemeasurable
+    ((Measure.isProbabilityMeasure_map_iff (measurable_categoryCounts category hcmeas).aemeasurable).mpr inferInstance)
   apply CompoundPoissonMarking.count_vector_law_eq_of_unit_transforms
   intro z hz
   rw [integral_map (measurable_categoryCounts category hcmeas).aemeasurable

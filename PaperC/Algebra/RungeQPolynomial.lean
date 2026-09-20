@@ -150,7 +150,7 @@ theorem coeff_integerSplitProduct_natAbs_le
               ∏ i ∈ t, (γ i).natAbs := by
             exact int_natAbs_finset_prod t γ
           _ ≤ ∏ _i ∈ t, R := by
-            apply Finset.prod_le_prod
+            apply Finset.prod_le_prod₀
             · intro i _
               exact Nat.zero_le _
             · intro i _

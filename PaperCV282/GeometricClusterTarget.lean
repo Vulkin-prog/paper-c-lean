@@ -28,7 +28,7 @@ def geometricClusterMeasure : Measure ℕ :=
 
 instance instProbabilityGeometricCluster : IsProbabilityMeasure geometricClusterMeasure := by
   unfold geometricClusterMeasure
-  exact Measure.isProbabilityMeasure_map (measurable_of_countable _).aemeasurable
+  exact ((Measure.isProbabilityMeasure_map_iff (measurable_of_countable _).aemeasurable).mpr inferInstance)
 
 theorem geometricClusterMeasure_zero : geometricClusterMeasure {0} = 0 := by
   rw [geometricClusterMeasure, Measure.map_apply (measurable_of_countable _)

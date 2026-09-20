@@ -60,7 +60,7 @@ theorem spatialPointEmbedding_sampledConfiguration {X : Type*} (N : ℕ)
 
 def spatialPointTargetLaw (N L : ℕ) : ProbabilityMeasure (PointMeasure (ℝ × (ℕ × F₂))) :=
   ⟨(spatialTargetMeasure N L).map (spatialPointEmbedding N),
-    Measure.isProbabilityMeasure_map (measurable_spatialPointEmbedding N).aemeasurable⟩
+    ((Measure.isProbabilityMeasure_map_iff (measurable_spatialPointEmbedding N).aemeasurable).mpr inferInstance)⟩
 
 theorem spatialPointTargetLaw_eq_poissonPointLaw (N L : ℕ) (hN : 0 < N) :
     spatialPointTargetLaw N L = poissonPointLaw (fullRate N L) spatialMarkMeasure

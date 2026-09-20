@@ -149,39 +149,14 @@ theorem natCard_idealDivisors_eq_prod_factorCounts
 
 /-! ## Coprime assembly of factor-count products -/
 
-/- `CancelCommMonoidWithZero` was split into a data class and a
-proposition-valued cancellation mixin in Lean 4.32.  Keeping this small
-compatibility layer preserves the public type of `factorCountProduct` while
-allowing its implicit argument to be synthesized from the new classes. -/
-set_option linter.deprecated false
-section CancelCommMonoidWithZeroCompatibility
-
-attribute [class] CancelCommMonoidWithZero
-
-private instance (priority := 100) oldCancelCommMonoidWithZeroOfNew
-    {R : Type*} [CommMonoidWithZero R] [IsCancelMulZero R] :
-    CancelCommMonoidWithZero R where
-  toCommMonoidWithZero := inferInstance
-  toIsLeftCancelMulZero := inferInstance
-
-private instance (priority := 100) oldCancelCommMonoidWithZeroToNew
-    {R : Type*} [self : CancelCommMonoidWithZero R] :
-    CommMonoidWithZero R := self.toCommMonoidWithZero
-
-private instance (priority := 100) oldCancelCommMonoidWithZeroToIsCancel
-    {R : Type*} [self : CancelCommMonoidWithZero R] : IsCancelMulZero R :=
-  self.toIsLeftCancelMulZero.to_isCancelMulZero
-
 /-- The product occurring in the exact divisor-cardinality formula. -/
 noncomputable def factorCountProduct
-    {R : Type*} [CancelCommMonoidWithZero R]
+    {R : Type*} [CommMonoidWithZero R] [IsCancelMulZero R]
     [NormalizationMonoid R] [UniqueFactorizationMonoid R]
     (x : R) : ℕ :=
   ∏ p ∈ (UniqueFactorizationMonoid.normalizedFactors x).toFinset,
     ((UniqueFactorizationMonoid.normalizedFactors x).count p + 1)
 
-end CancelCommMonoidWithZeroCompatibility
-set_option linter.deprecated true
 
 /-- The normalized factors of coprime elements are disjoint.  This
 semiring-level form applies to the multiplicative semiring of ideals. -/
@@ -460,7 +435,7 @@ theorem prod_factorCountProduct_rationalPrimePowerIdeal_le
         factorCountProduct (rationalPrimePowerIdeal K n p)) ≤
       ∏ p ∈ n.primeFactors,
         (n.factorization p + 1) ^ 2 := by
-  apply Finset.prod_le_prod
+  apply Finset.prod_le_prod₀
   · intro p hp
     omega
   intro p hp

@@ -3,7 +3,11 @@
 The `PaperCV282` namespace is retained to preserve theorem names and imports.
 Its current source is the supplied V3PREL article and companion, archived in
 [manuscripts/v3prel](../manuscripts/v3prel/README.md). The historical `PaperC`
-core retains authority `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
+core authority remains recorded at `b3cf107d2df629453a5da8e84f2bad29eea0bf94`.
+The [Lean 4.33.1 migration](../docs/LEAN_4_33_1_MIGRATION.md) has passed its
+complete local build, three kernel audits and 80 strict interface checks.
+The mathematical scope below is unchanged; the original 4.32.0 records
+remain historical evidence. No new Palomar qualification is asserted.
 
 Batch25 audits all **59 numbered article results and, separately, 8 companion
 results**, together with the unnumbered conclusions; see the
@@ -33,8 +37,13 @@ The baseline v2.8.2 PDFs below are historical inputs. Their identities are recor
 | `paper_C_version_2_8_2_en.pdf` | 52 | `263682a1f2aa8301f06bf811fea1f81f42cd4493ccc4e1b94242a66cacfbd623` |
 | `paper_C_version_2_8_2_technical_companion_en.pdf` | 23 | `60d6f110aa057ebd9b1c79eaa291bc42759b5f021ef03807d9405a7ec473b094` |
 
-The original pins remain **Lean 4.32.0 and mathlib v4.32.0**, mathlib revision
-`81a5d257c8e410db227a6665ed08f64fea08e997`. No toolchain upgrade is needed.
+The current pins are **Lean 4.33.1** and **mathlib v4.33.1**, revision
+`0df444a360eaa60ab8c11dca51a86af692955474`. The
+[local validation receipt](../migration_evidence/lean-4.33.1/validation.json)
+records the successful build and checks for the migrated source snapshot.
+The original Lean 4.32.0 / mathlib v4.32.0 revision
+`81a5d257c8e410db227a6665ed08f64fea08e997` remains part of the historical
+provenance and must not be substituted into new verification receipts.
 
 The 753 mathematical modules contain **6094 named declarations: 4539 theorems, 1039 definitions and 516 named instances**. Batch25 adds the formal Stein counterexample; the candidate interfaces are counted separately.
 
@@ -45,7 +54,7 @@ pinned versions. The kernel transcript permits only `propext`,
 Lean kernel verification; importing a historical conditional interface does
 not introduce its assumptions into an independently proved endpoint.
 
-With dependencies available:
+For the overlays, after the target dependencies are available:
 
 ```sh
 lake build PaperCV11 PaperCV282
@@ -55,8 +64,12 @@ python3 scripts/check_v282_audit.py --log PaperCV282-Audit.log
 python3 -m unittest discover -s scripts -p 'test_v282_audit.py'
 ```
 
-Build outcomes and remote checks are recorded separately for the exact
-published commit. They do not constitute a new Palomar qualification.
+The [migration guide](../docs/LEAN_4_33_1_MIGRATION.md#reproducing-local-validation)
+also lists the retained core, ten Challenge/Solution pairs and all three
+audits. All 23 library targets build under Lean 4.33.1; the V282 audit covers
+6,094 declarations. The separate local strict check passes for 80 selected
+declarations. Official Comparator/NanoDa qualification remains unestablished
+for this migrated snapshot.
 
 ## Mathematical coverage
 

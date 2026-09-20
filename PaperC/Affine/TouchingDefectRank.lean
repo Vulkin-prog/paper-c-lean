@@ -286,12 +286,14 @@ private theorem valueBit_single
     ⟨⟨p, Nat.lt_succ_of_le hpM⟩, hp⟩
   rw [valueBit]
   rw [Fintype.sum_eq_single q]
-  · simp [q]
+  · simp [Pi.single, Function.update, q]
+    intro hne
+    exact (hne rfl).elim
   · intro r hrq
     have hrq' :
         r ≠ (⟨⟨p, Nat.lt_succ_of_le hpM⟩, hp⟩ : PrimeUpTo M) := by
       simpa only [q] using hrq
-    simp [Pi.single_apply, hrq']
+    simp [Pi.single, Function.update, hrq']
 
 /-- Prime-coordinate equation satisfied by every touching-system relation. -/
 private theorem touching_relation_prime_equation

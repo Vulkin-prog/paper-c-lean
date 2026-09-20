@@ -88,7 +88,9 @@ theorem containedStarts_nonempty_iff (M L : ℕ) (omega : InfiniteSample) :
 theorem firstStart_eq_iff_of_hit {M L : ℕ} {omega : InfiniteSample}
     (h : omega∈hitEvent M L) (x : ℕ) :
     firstStart M L omega=x ↔ x∈containedStarts M L omega ∧ ∀j<x,j∉containedStarts M L omega := by
-  rw [firstStart,dif_pos ((containedStarts_nonempty_iff M L omega).mpr h),Nat.find_eq_iff]
+  rw [firstStart,dif_pos ((containedStarts_nonempty_iff M L omega).mpr h)]
+  exact Nat.find_eq_iff (p := fun n => n ∈ containedStarts M L omega)
+    ((containedStarts_nonempty_iff M L omega).mpr h)
 
 theorem firstStart_mem {M L : ℕ} {omega : InfiniteSample} (h : omega∈hitEvent M L) :
     firstStart M L omega∈containedStarts M L omega :=

@@ -179,7 +179,7 @@ theorem central_resolved_future (hStein : DirectionalSteinFactorsStatement)
       cond_isProbabilityMeasure (measure_ne_zero_of_real_pos _ hk.1)
     letI instProbabilityResolvedFuture : IsProbabilityMeasure
         (resolvedFutureLaw (sizes k) (lengths k) (counts k) (C k)) :=
-      Measure.isProbabilityMeasure_map (measurable_actualFuturePath (sizes k) (lengths k)).aemeasurable
+      ((Measure.isProbabilityMeasure_map_iff (measurable_actualFuturePath (sizes k) (lengths k)).aemeasurable).mpr inferInstance)
     exact measureTotalVariation_nonneg _ _
   apply squeeze_zero' hnonneg (hfinal.mono fun _ h => h.2)
   simpa only [Function.comp_def] using hlim
