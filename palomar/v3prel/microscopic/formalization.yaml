@@ -205,11 +205,16 @@ fidelity:
     is assumed. The empirical count theorem is almost sure for each fixed alpha and tau. The full-vector
     obstruction holds for every realization on changing finite vector spaces. Arbitrary measurable common
     deterministic readouts are selected; no claim of registering every ancillary Appendix F lemma is made.
+    The compared coefficient assertion also proves source measurability and target probability
+    normalization. The target construction exposes its countable flattening measurability and a proved
+    probability instance. The common-readout assertion additionally proves measurability of the
+    composite source readout and probability normalization of both image laws.
 review:
   status: agent-reviewed
   notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
     checks are recorded separately in qualification evidence. There is no independent human peer review
-    or claimed Palomar decision.
+    or claimed Palomar decision. The probability and measurability guarantees were audited and exposed
+    in the standalone interface after the Limits review; this is not a prediction of registration.
 alignment:
   namespace: PaperCV3Audit.Microscopic
   statements:

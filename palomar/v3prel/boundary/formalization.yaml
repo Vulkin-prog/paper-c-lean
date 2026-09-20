@@ -221,11 +221,15 @@ fidelity:
     The paper states its results without theorem-level premises, whereas the Lean endpoints explicitly
     consume the displayed literature propositions. Those hypotheses are not proved by kernel checking
     the conditional results.
+    The selected exact-border declaration also proves measurability and positive probability of the
+    border and microscopic events, normalization of their conditional laws and all mesoscopic record
+    pushforwards, and measurability and mass-sum one of every prefix count law.
 review:
   status: agent-reviewed
   notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
     checks are recorded separately in qualification evidence. There is no independent human peer review
-    or claimed Palomar decision.
+    or claimed Palomar decision. The probability and measurability guarantees were audited and exposed
+    in the standalone interface after the Limits review; this is not a prediction of registration.
 alignment:
   namespace: PaperCV3Audit
   statements:

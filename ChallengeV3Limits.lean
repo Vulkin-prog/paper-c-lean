@@ -631,15 +631,30 @@ theorem paper_c_v3_limits_d4_full_half_count_law (theta : ℝ) (m : ℤ) :
     HasLaw (Limits.fullHalfCount m) (poissonMeasure (Limits.integerHalfRate theta m))
       (Limits.integerSpatialSampleMeasure theta) := by sorry
 
-/-- PaperCV282/D4ClosureSpatialIdentification.lean:halfLinePointLaw_eq_poisson. -/
+/-- D.4 complete upper law, including measurability and probability normalization. -/
 theorem paper_c_v3_limits_d4_entire_upper_point_law (theta : ℝ) (m : ℤ) :
-    Limits.upperPointLaw theta m=Limits.poissonHalfPointLaw theta m := by sorry
+    Measurable (Limits.halfLinePointConfiguration m) ∧
+    Measurable Limits.poissonHalfPoints ∧
+    IsProbabilityMeasure (Limits.upperPointLaw theta m) ∧
+    IsProbabilityMeasure (Limits.poissonHalfPointLaw theta m) ∧
+    Limits.upperPointLaw theta m=Limits.poissonHalfPointLaw theta m := by
+  sorry
 
-/-- PaperCV282/D4ClosureSpatialIdentification.lean:conditional_halfLinePointConfiguration. -/
+/-- D.4 conditional upper law, with positive conditioning mass and genuine probability laws. -/
 theorem paper_c_v3_limits_d4_conditional_upper_point_law (theta : ℝ) (m : ℤ) (n : ℕ) :
+    0 < (Limits.integerSpatialSampleMeasure theta)
+      {sample | Limits.fullHalfCount m sample=n} ∧
+    Measurable (Limits.fixedHalfPoints n) ∧
+    AEMeasurable (Limits.halfLinePointConfiguration m)
+      (cond (Limits.integerSpatialSampleMeasure theta)
+        {sample | Limits.fullHalfCount m sample=n}) ∧
+    IsProbabilityMeasure ((cond (Limits.integerSpatialSampleMeasure theta)
+      {sample | Limits.fullHalfCount m sample=n}).map (Limits.halfLinePointConfiguration m)) ∧
+    IsProbabilityMeasure (Limits.fixedHalfPointLaw n) ∧
     (cond (Limits.integerSpatialSampleMeasure theta)
       {sample | Limits.fullHalfCount m sample=n}).map (Limits.halfLinePointConfiguration m)=
-      Limits.fixedHalfPointLaw n := by sorry
+      Limits.fixedHalfPointLaw n := by
+  sorry
 
 /-- PaperCV282/D4ClosureWholeRestriction.lean:ae_halfLinePointConfiguration_is_restriction. -/
 theorem paper_c_v3_limits_d4_half_line_is_whole_restriction (theta : ℝ) (m : ℤ) :

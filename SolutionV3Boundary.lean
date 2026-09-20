@@ -156,6 +156,19 @@ def hardRate (M L : ℕ) (epsilon eta : ℝ) : ℝ := (fullRate M L : ℝ)*
   (Real.exp (-saddleCutoff 1 (Real.log M)+eta*saddleNu 1 (Real.log M))+
     (M : ℝ)^(-(1/(3 : ℝ))+epsilon))
 def upperAdditiveConstant (epsilon : ℝ) : ℝ := 3+epsilon+Real.log (2/Real.log 2)/Real.log 2
+/-- Measurability and normalization of every boundary/prefix law used below. -/
+def ProbabilityLaws (L : ℕ) : Prop :=
+  MeasurableSet (borderEvent L) ∧ MeasurableSet (microscopicEvent L) ∧
+  0 < infiniteRademacherMeasure.real (borderEvent L) ∧
+  0 < microscopicProbability L ∧
+  IsProbabilityMeasure (cond infiniteRademacherMeasure (borderEvent L)) ∧
+  IsProbabilityMeasure (cond infiniteRademacherMeasure (microscopicEvent L)) ∧
+  (∀ T : ℕ, MeasurableSet (enlargedEvent L T) ∧
+    0 < infiniteRademacherMeasure.real (enlargedEvent L T) ∧
+    Measurable (microscopicRecord L T) ∧
+    IsProbabilityMeasure ((cond infiniteRademacherMeasure (enlargedEvent L T)).map (microscopicRecord L T)) ∧
+    IsProbabilityMeasure ((cond infiniteRademacherMeasure (microscopicEvent L)).map (microscopicRecord L T))) ∧
+  (∀ M : ℕ, Measurable (prefixCount M L) ∧ HasSum (prefixLaw M L) 1)
 end Boundary
 
 open Boundary Analysis
@@ -209,8 +222,34 @@ private theorem hardRate_eq (M L : ℕ) (epsilon eta : ℝ) : hardRate M L epsil
   rfl
 
 theorem v3_boundary_exact (L : ℕ) :
+    ProbabilityLaws L ∧
     infiniteRademacherMeasure.real (borderEvent L)=((2 : ℝ)⁻¹)^Nat.primeCounting L := by
-  exact PaperC.V282.MicroscopicBorderEvents.equation_seven_one L
+  refine ⟨?_, PaperC.V282.MicroscopicBorderEvents.equation_seven_one L⟩
+  have hb := PaperC.V282.MicroscopicBorderEvents.borderEvent_probability_pos L
+  have hm := PaperC.V282.MicroscopicNonvacancy.microscopicProbability_pos L
+  letI : IsProbabilityMeasure (cond infiniteRademacherMeasure (borderEvent L)) :=
+    cond_isProbabilityMeasure (PaperC.V282.ConditionedCountableLaw.measure_ne_zero_of_real_pos _ hb)
+  letI : IsProbabilityMeasure (cond infiniteRademacherMeasure (microscopicEvent L)) :=
+    cond_isProbabilityMeasure (PaperC.V282.ConditionedCountableLaw.measure_ne_zero_of_real_pos _ hm)
+  refine ⟨PaperC.V282.MicroscopicBorderEvents.measurableSet_borderEvent L,
+    PaperC.V282.MicroscopicNonvacancy.measurableSet_microscopicEvent L,
+    hb, hm, inferInstance, inferInstance, ?_, ?_⟩
+  · intro T
+    have hp := PaperC.V282.MesoscopicStability.enlargedEvent_probability_pos L T
+    have hf : Measurable (microscopicRecord L T) :=
+      PaperC.V282.MesoscopicStability.measurable_microscopicRecord L T
+    letI : IsProbabilityMeasure (cond infiniteRademacherMeasure (enlargedEvent L T)) :=
+      cond_isProbabilityMeasure (PaperC.V282.ConditionedCountableLaw.measure_ne_zero_of_real_pos _ hp)
+    exact ⟨PaperC.V282.MesoscopicStability.measurableSet_enlargedEvent L T, hp, hf,
+      (Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance,
+      (Measure.isProbabilityMeasure_map_iff hf.aemeasurable).mpr inferInstance⟩
+  · intro M
+    have hf : Measurable (prefixCount M L) := by
+      rw [prefixCount_eq]
+      apply measurable_to_countable'
+      intro k
+      exact PaperC.CorollaryPrefixLaw.measurableSet_infinitePrefixStartCountEvent M L k
+    exact ⟨hf, PaperC.V282.InfiniteMassCoupling.hasSum_observableLaw infiniteRademacherMeasure hf⟩
 
 theorem v3_boundary_microscopic (hLS : UniformPrimeDivisorStatement) (hShorey : ShoreySquareProductStatement)
     (hPNT : PrimeNumberTheoremRemainder) :

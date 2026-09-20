@@ -231,11 +231,17 @@ fidelity:
     all distinct-site category transversals. The obstruction is an eventual lower bound along prime q,
     with the exact window 2^(q-1+floor(log_2 q)). G.6–G.8 remain in the underlying development; they are
     not separately selected declarations in this configuration.
+    The exact Palm assertion additionally proves the actual source coefficients, source and presence-
+    event measurability, target and conditional probability normalization, and strictly positive Palm
+    presence probability on regular configurations. The full-deficit assertion also proves that both
+    countable mass functions have sum one. The target construction exposes a proved probability
+    instance.
 review:
   status: agent-reviewed
   notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
     checks are recorded separately in qualification evidence. There is no independent human peer review
-    or claimed Palomar decision.
+    or claimed Palomar decision. The probability and measurability guarantees were audited and exposed
+    in the standalone interface after the Limits review; this is not a prediction of registration.
 alignment:
   namespace: PaperCV3Audit.Palm
   statements:

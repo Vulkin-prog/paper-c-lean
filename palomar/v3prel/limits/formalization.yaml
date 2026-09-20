@@ -6,7 +6,9 @@ project:
     a Gaussian distribution-function bound, moderate deviations, and relative local or tail estimates
     for the multiplicative source under the stated information budgets. The whole integer-level point
     process has locally finite but infinite total mass; its complete upper-half laws, conditioning on
-    a fixed count and extreme phases are included. The intrinsic probability estimates are proved internally.
+    a fixed count and extreme phases are included. The two upper-half law assertions include proved
+    measurability and probability normalization; conditioning on every finite count has positive mass.
+    The intrinsic probability estimates are proved internally.
     Their arithmetic applications use, as applicable, the prime number theorem, scalar Stein bounds, the
     Poisson process estimate of Arratia, Goldstein and Gordon, and Barbour's corrected multivariate Stein
     bounds.
@@ -124,7 +126,9 @@ status:
     a Gaussian distribution-function bound, moderate deviations, and relative local or tail estimates
     for the multiplicative source under the stated information budgets. The whole integer-level point
     process has locally finite but infinite total mass; its complete upper-half laws, conditioning on
-    a fixed count and extreme phases are included. The intrinsic probability estimates are proved internally.
+    a fixed count and extreme phases are included. The two upper-half law assertions include proved
+    measurability and probability normalization; conditioning on every finite count has positive mass.
+    The intrinsic probability estimates are proved internally.
     Their arithmetic applications use, as applicable, the prime number theorem, scalar Stein bounds, the
     Poisson process estimate of Arratia, Goldstein and Gordon, and Barbour's corrected multivariate Stein
     bounds. Intentional proof placeholders occur only in the Challenge. Literature inputs remain explicit
@@ -390,7 +394,10 @@ fidelity:
     budgets. D.4 is represented by the same whole integer-level point measure, its complete compact-test
     Laplace functional and actual upper-half restrictions. A separate vague-topology convergence declaration
     is not selected. The total upper-half count is Poisson; conditioning on any count n yields n iid uniform
-    positions and independent nonnegative geometric marks. A constant sign is a dummy coordinate in this
+    positions and independent nonnegative geometric marks. Both selected upper-point-law assertions
+    explicitly prove measurability of their maps and probability normalization of both sides; the
+    conditional assertion also proves positive mass of the conditioning event for every finite count.
+    These are conclusions, not extra hypotheses. A constant sign is a dummy coordinate in this
     unmarked D.4 representation, not a claimed random sign. The half-line construction is totalized on
     a null set, with its equality to the whole-process restriction proved almost everywhere. The extreme
     endpoint is the actual source event. Saddle roots and finite source configurations are selected by
@@ -401,7 +408,9 @@ review:
   status: agent-reviewed
   notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
     checks are recorded separately in qualification evidence. There is no independent human peer review
-    or claimed Palomar decision.
+    or claimed Palomar acceptance. Following the automated review of 20 September 2026, the two D.4
+    upper-point-law statements were strengthened to expose their measurability and probability guarantees
+    in the compared interface. The correction requires a new submission and review.
 alignment:
   namespace: PaperCV3Audit
   statements:

@@ -187,11 +187,25 @@ def hardRate (M L : ℕ) (epsilon eta : ℝ) : ℝ := (fullRate M L : ℝ)*
   (Real.exp (-saddleCutoff 1 (Real.log M)+eta*saddleNu 1 (Real.log M))+
     (M : ℝ)^(-(1/(3 : ℝ))+epsilon))
 def upperAdditiveConstant (epsilon : ℝ) : ℝ := 3+epsilon+Real.log (2/Real.log 2)/Real.log 2
+/-- Measurability and normalization of every boundary/prefix law used below. -/
+def ProbabilityLaws (L : ℕ) : Prop :=
+  MeasurableSet (borderEvent L) ∧ MeasurableSet (microscopicEvent L) ∧
+  0 < infiniteRademacherMeasure.real (borderEvent L) ∧
+  0 < microscopicProbability L ∧
+  IsProbabilityMeasure (cond infiniteRademacherMeasure (borderEvent L)) ∧
+  IsProbabilityMeasure (cond infiniteRademacherMeasure (microscopicEvent L)) ∧
+  (∀ T : ℕ, MeasurableSet (enlargedEvent L T) ∧
+    0 < infiniteRademacherMeasure.real (enlargedEvent L T) ∧
+    Measurable (microscopicRecord L T) ∧
+    IsProbabilityMeasure ((cond infiniteRademacherMeasure (enlargedEvent L T)).map (microscopicRecord L T)) ∧
+    IsProbabilityMeasure ((cond infiniteRademacherMeasure (microscopicEvent L)).map (microscopicRecord L T))) ∧
+  (∀ M : ℕ, Measurable (prefixCount M L) ∧ HasSum (prefixLaw M L) 1)
 end Boundary
 
 open Boundary Analysis
 
 theorem v3_boundary_exact (L : ℕ) :
+    ProbabilityLaws L ∧
     infiniteRademacherMeasure.real (borderEvent L)=((2 : ℝ)⁻¹)^Nat.primeCounting L := by
   sorry
 

@@ -246,6 +246,12 @@ def flattenRows (sites : Finset ℕ) (rows : ({x : ℕ // x ∈ sites} × F₂) 
 /-- Independent Poisson atoms with rates 2^(-L-e-2), for every excess e and sign. -/
 def target (sites : Finset ℕ) (L : ℕ) : Measure (Config sites) :=
   (Measure.pi (fun _ : {x : ℕ // x ∈ sites} × F₂ => configurationMeasure (1/2^(L+1)))).map (flattenRows sites)
+/-- The complete target is a genuine probability law on the discrete configuration space. -/
+theorem measurable_flattenRows (sites : Finset ℕ) : Measurable (flattenRows sites) :=
+  measurable_of_countable _
+instance instProbabilityTarget (sites : Finset ℕ) (L : ℕ) : IsProbabilityMeasure (target sites L) := by
+  unfold target
+  exact (Measure.isProbabilityMeasure_map_iff (measurable_flattenRows sites).aemeasurable).mpr inferInstance
 /-- Actual start positions 2,...,M-L+1; the exceptional left border is excluded. -/
 def interior (M L : ℕ) : Finset ℕ := (Finset.Icc 1 (M-L)).image (fun j => j+1)
 def distance (M L : ℕ) (A : Set InfiniteSample) : ℝ :=
@@ -406,9 +412,14 @@ open Analysis Boundary
 
 /-- The source is the literal signed exact-run configuration, for every realization. -/
 theorem exact_source_coefficients (sites : Finset ℕ) (L : ℕ) (omega : InfiniteSample) (j : MarkIndex sites) :
+    Measurable (source sites L) ∧ IsProbabilityMeasure (target sites L) ∧
     source sites L omega j =
       if ExactLengthEvent (infiniteValueBit omega) j.1.val (L+j.2.1+1) ∧
         infiniteValueBit omega j.1.val=j.2.2 then 1 else 0 := by
+  have hm : Measurable (source sites L) := by
+    rw [source_eq]
+    exact PaperC.V282.BulkMarkedSource.measurable_spatialMarkedSource sites L
+  refine ⟨hm, inferInstance, ?_⟩
   rw [source_eq]
   simp only [PaperC.V282.BulkMarkedSource.spatialMarkedSource_apply,
     PaperC.V282.BulkMarkedSource.spatialMarkedValue,PaperC.V282.ExactMarkedModel.signedMarkValue]
@@ -502,8 +513,19 @@ open Analysis Boundary
 theorem common_readout {α : Type*} [MeasurableSpace α]
     (M L : ℕ) (A : Set InfiniteSample) (hpos : 0 < infiniteRademacherMeasure.real A)
     (stat : Config (interior M L) → α) (hstat : Measurable stat) :
+    Measurable (stat ∘ source (interior M L) L) ∧
+    IsProbabilityMeasure ((cond infiniteRademacherMeasure A).map (stat ∘ source (interior M L) L)) ∧
+    IsProbabilityMeasure ((target (interior M L) L).map stat) ∧
     measureTV ((cond infiniteRademacherMeasure A).map (stat ∘ source (interior M L) L))
       ((target (interior M L) L).map stat) ≤ distance M L A := by
+  have hm : Measurable (source (interior M L) L) := by
+    rw [source_eq]
+    exact PaperC.V282.BulkMarkedSource.measurable_spatialMarkedSource _ _
+  letI : IsProbabilityMeasure (cond infiniteRademacherMeasure A) :=
+    cond_isProbabilityMeasure (PaperC.V282.ConditionedCountableLaw.measure_ne_zero_of_real_pos _ hpos)
+  refine ⟨hstat.comp hm,
+    (Measure.isProbabilityMeasure_map_iff (hstat.comp hm).aemeasurable).mpr inferInstance,
+    (Measure.isProbabilityMeasure_map_iff hstat.aemeasurable).mpr inferInstance, ?_⟩
   rw [source_eq,target_eq,distance_eq]
   exact PaperC.Prel8.MicroscopicReadouts.measurable_readout_le M L A hpos stat hstat
 
