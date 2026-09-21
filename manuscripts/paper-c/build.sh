@@ -2,13 +2,13 @@
 # Rebuild the article and companion, with independent local bibliographies.
 set -euo pipefail
 cd "$(dirname "$0")"
-export TZ=UTC LC_ALL=C.UTF-8 SOURCE_DATE_EPOCH=1789862400 FORCE_SOURCE_DATE=1
+export TZ=UTC LC_ALL=C.UTF-8 SOURCE_DATE_EPOCH=1789948800 FORCE_SOURCE_DATE=1
 for tool in pdflatex biber python3; do
   command -v "$tool" >/dev/null || { echo "Missing dependency: $tool" >&2; exit 1; }
 done
 mkdir -p build_reports
-main=paper_c_version_3PREL9_en
-comp=paper_c_version_3PREL9_technical_companion_en
+main=paper_c_version_3_en
+comp=paper_c_version_3_technical_companion_en
 for doc in "$main" "$comp"; do
   rm -f "$doc".{aux,toc,out,log,pdf,fls,fdb_latexmk,bcf,bbl,blg,run.xml}
 done

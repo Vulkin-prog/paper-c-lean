@@ -2,11 +2,11 @@
 \input{preamble.tex}
 \fancyhead[L]{Technical companion: long runs and rare patterns}
 \hypersetup{pdftitle={Technical companion to Long runs and rare patterns of a random completely multiplicative function}}
-\externaldocument[][nocite]{paper_c_version_3PREL9_en}
+\externaldocument[][nocite]{paper_c_version_3_en}
 \title{\textbf{Technical companion to}\\[2mm]
 \large\emph{Long runs and rare patterns of a random\\completely multiplicative function}}
 \author{Brice Pouly}
-\date{Version 3PREL9}
+\date{Version 3}
 \makeatletter
 \patchcmd{\@maketitle}{\vskip 2em}{\vskip 0pt}{}{}
 \makeatother
@@ -18,7 +18,7 @@ This research received substantial assistance from AI systems; see the
 \hyperref[sec:ai-assistance]{declaration at the end of the article}.
 \end{minipage}\medskip
 \begin{abstract}
-This companion completes the proof package for the article, Version 3PREL9.
+This companion completes the proof package for the article, Version 3.
 Appendices A--E give the growing-degree Runge and bounded-height Pell
 calculations, prime cutoffs, scalar smoothing, marked and dictionary
 comparisons, conditional kernels, and the boundary and relative-bulk
@@ -38,9 +38,10 @@ consequence of Appendix F, never an input to its proof.
 \noindent\textbf{Reading convention.} The two documents form one proof package.
 Appendix letters and bibliographic numbers are local; unqualified
 numbered statements refer to the article. All unlabelled logarithms are
-natural. The article's formalization statement records the completed
-relative correspondence and its analytic-input boundary; it is not a
-claim that all external results have been proved in Lean.
+natural. The scope, explicit literature inputs and limitations of the Lean
+development, together with its seven Palomar registrations, are described in the
+article's section
+\hyperref[sec:formalization]{``Formalization and Palomar registrations''}.
 
 \tableofcontents
 \clearpage
@@ -57,14 +58,11 @@ claim that all external results have been proved in Lean.
 \input{companion/F_microscopic_pivots.tex}
 \input{companion/G_palm_complements.tex}
 \section*{Availability and declaration}
-This companion belongs to Version 3PREL9 of \emph{Long runs and rare
-patterns of a random completely multiplicative function}. Its sources
-and bibliography accompany the article in the same package. The
-\hyperref[sec:ai-assistance]{declaration in the article} records the AI
-assistance and the author's responsibility. The supplied formalization
-correspondence records mathematical realignment of 3PREL8 relative to its
-explicit inputs. In particular the analytic Stein solution in
-\cref{supp:pivot:lem:palm} remains a formal input. No new Lean build or
-Palomar qualification is reported for this editorial edition.
+The scope, explicit literature inputs and limitations of the Lean development,
+together with its seven Palomar registrations, are described in the article's
+section \hyperref[sec:formalization]{``Formalization and Palomar registrations''}.
+The article also records the \hyperref[sec:ai-assistance]{use of AI assistance and
+the author's responsibility}. This companion and the article form one proof
+package, with their sources and bibliography available together.
 \printbibliography[heading=bibintoc,title={References}]
 \end{document}

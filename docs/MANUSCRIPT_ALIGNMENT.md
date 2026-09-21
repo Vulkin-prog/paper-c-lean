@@ -2,20 +2,31 @@
 
 The [article and companion](../manuscripts/paper-c/README.md) are aligned with the
 existing Lean development, **relative to its explicit literature inputs and
-documented proof substitutions**. The supplied manuscript is dated 20 September
-2026 (3PREL9). No Lean theorem or hypothesis has been changed for this integration.
+documented proof substitutions**. This is the published Version 3 of
+21 September 2026, DOI [10.5281/zenodo.22872154](https://doi.org/10.5281/zenodo.22872154).
+No Lean theorem, proof or hypothesis has changed for the publication update.
 
-The independent source comparison finds 96 numbered statement blocks: 95 are
-unchanged after whitespace/comment normalization, and G.2 makes three ambient
-hypotheses explicit. Of 90 proof blocks, 14 have changed. The source comparison
-also covers prose outside these blocks; the count alone is not a proof review.
+Compared with the manuscript at the latest registered commit,
+`409779f46c0599edcd9ae1f973dd931b1d0a1cea`, all **96 numbered statements are
+unchanged** after whitespace/comment normalization. Of 90 proof blocks, 89
+are textually unchanged; the remaining edit replaces “whose proof above is
+unchanged” with “proved independently above” without changing the argument.
+The other edits concern publication metadata, cross-document references and
+the new formalization section, including all seven Palomar identifiers.
+
+The correspondence also preserves the earlier mathematical review against its
+fixed baseline: 95 of 96 statements were unchanged, G.2 made three ambient
+hypotheses explicit, and 14 of 90 proof blocks had been revised. The table below
+records that review. These baseline counts must not be mistaken for changes
+introduced by the published edition. Prose outside numbered blocks is included
+in the review; the counts alone do not establish mathematical correspondence.
 
 [MANUSCRIPT_ALIGNMENT.json](MANUSCRIPT_ALIGNMENT.json) binds every current TeX
 file and statement to its exact bytes and to the existing
 [numbered correspondence](FORMALIZATION_COVERAGE_V3PREL8.md) and
 [unnumbered review](UNNUMBERED_REVIEW_V3PREL8.md). Statement labels are the joining
-keys; old page numbers must not be used as current locators. The 337 numerical
-labels retain their keys in the source comparison.
+keys; old page numbers must not be used as current locators. The 337 existing
+label keys are preserved; the publication adds `sec:formalization`.
 
 ## Review of mathematical changes
 
@@ -39,20 +50,24 @@ Optional stronger bounds from the working notes have not become new manuscript
 claims. The written scalar-tail argument remains independent of the microscopic
 comparison; the Palm consequences are not used to prove that comparison.
 
-## Validation and publication boundary
+## Validation and registration boundary
 
-`python3 scripts/check_current_manuscript.py` verifies all 28 delivered files,
+`python3 scripts/check_current_manuscript.py` verifies all 29 delivered files,
 the local TeX inputs, the complete numbered comparison, the changed proof blocks,
-and the source identities recorded in the existing final Lean receipt. This is
-a source-alignment check, not a new Lean build or a replay of Comparator/NanoDa.
-The prior build and axiom-audit evidence remains tied to its original snapshot.
+and the source identities recorded in the existing final Lean receipt. It also
+checks the published version DOI, fixed PDF identities and seven Palomar
+identifiers. This is a source-alignment check, not a new Lean build or a replay
+of Comparator/NanoDa. Prior build and axiom-audit evidence remains tied to its
+original snapshot.
 
-The supplied PDFs have not been regenerated during integration: Biber is not
-available in the current environment. Their byte identity with the author's
-archive is checked; no independent PDF reproducibility claim is made.
+The published PDFs and source archive were downloaded from the Zenodo record
+and checked against its checksums. The PDFs have not been regenerated during
+integration: Biber is not available in the current environment. Their byte
+identity is checked; no independent PDF reproducibility claim is made.
 
-The Palomar dossiers still need their expanded statement selections and fresh
-qualification. After the author's first submissions, the manuscript will receive
-the Palomar references. The published PDFs, sources and Zenodo version DOI will
-then replace this manuscript package, and the submission metadata can reference
-that published edition. No future DOI or Palomar identifier is preassigned here.
+All seven Palomar version 1 registrations are recorded in the
+[submission guide](PALOMAR_SUBMISSIONS.md#current-registration-status) and the
+published article. The version 2 metadata now identifies the published edition
+and retains the same 89 selected Lean declarations. The publication commit
+must pass its own qualification before submission under the existing identifiers;
+preparing metadata does not constitute a version 2 registration.

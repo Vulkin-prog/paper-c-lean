@@ -24,8 +24,7 @@ TOOLCHAIN = "leanprover/lean4:v4.34.0"
 MATHLIB_TAG = "v4.34.0"
 MATHLIB_COMMIT = "5ed2965256430c3649e86755f9576b54eca72435"
 AXIOMS = ["propext", "Quot.sound", "Classical.choice"]
-PDF_HASHES = {'paper_c_version_3PREL9_en.pdf': '74bd843886f2038865dc97a6d09f6b58be0898d5571b10de86faa26372524370',
- 'paper_c_version_3PREL9_technical_companion_en.pdf': '6162f9d9f2cc0b0e8d72c7ad93471a0d307334c4a775d80b503b9478bb32cc39'}
+PDF_HASHES = check_current_manuscript.PDF_HASHES
 REGISTRY = {'critical_field': {'challenge_module': 'ChallengeV3CriticalField',
                     'solution_module': 'SolutionV3CriticalField',
                     'theorem_names': ['PaperCV3Audit.CriticalField.exact_source_coefficients',
@@ -343,7 +342,7 @@ def source_snapshot(root):
     check_current_manuscript.check(root)
     base = root/'manuscripts/paper-c'
     manifest = read_json(contained(base,'manifest.json'))
-    require(manifest.get('version') == '3PREL9', 'wrong manuscript version')
+    require(manifest.get('version') == '3', 'wrong manuscript version')
     seen, rows = set(), []
     for entry in manifest['files']:
         name = entry['path']; require(name not in seen, f'duplicate source file: {name}'); seen.add(name)
@@ -418,6 +417,9 @@ def metadata_contract(path, config, family):
     sources = metadata.get('sources',[])
     require(sources and any(s.get('relationship') in ('adapts','formalizes','independently-proves') for s in sources), f'{family}: no substantive source')
     prose = json.dumps(sources,ensure_ascii=False)
+    require(any(s.get('id') == 'https://doi.org/' + check_current_manuscript.PUBLICATION_DOI
+                and s.get('relationship') == 'adapts' for s in sources),
+            f'{family}: published V3 DOI missing')
     for name, digest in PDF_HASHES.items():
         require(name in prose and digest in prose, f'{family}: source PDF provenance missing: {name}')
     status = metadata.get('status',{})

@@ -1,0 +1,63 @@
+{
+  "publication_doi": "https://doi.org/10.5281/zenodo.22872154",
+  "status": "version_1_registered_version_2_prepared",
+  "basis": "Author confirmations on 20–21 September 2026, also listed in the published Version 3 article.",
+  "entries": [
+    {
+      "family": "critical_field",
+      "identifier": "PALOMAR-2026-09-20-000003",
+      "registered_version": 1,
+      "next_submission_version": 2,
+      "comparator_config": "comparator/v3prel_critical_field.json",
+      "metadata": "palomar/v3prel/critical_field/formalization.yaml"
+    },
+    {
+      "family": "patterns",
+      "identifier": "PALOMAR-2026-09-20-000004",
+      "registered_version": 1,
+      "next_submission_version": 2,
+      "comparator_config": "comparator/v3prel_patterns.json",
+      "metadata": "palomar/v3prel/patterns/formalization.yaml"
+    },
+    {
+      "family": "limits",
+      "identifier": "PALOMAR-2026-09-20-000007",
+      "registered_version": 1,
+      "next_submission_version": 2,
+      "comparator_config": "comparator/v3prel_limits.json",
+      "metadata": "palomar/v3prel/limits/formalization.yaml"
+    },
+    {
+      "family": "boundary",
+      "identifier": "PALOMAR-2026-09-20-000011",
+      "registered_version": 1,
+      "next_submission_version": 2,
+      "comparator_config": "comparator/v3prel_boundary.json",
+      "metadata": "palomar/v3prel/boundary/formalization.yaml"
+    },
+    {
+      "family": "crossover",
+      "identifier": "PALOMAR-2026-09-20-000012",
+      "registered_version": 1,
+      "next_submission_version": 2,
+      "comparator_config": "comparator/v3prel_crossover.json",
+      "metadata": "palomar/v3prel/crossover/formalization.yaml"
+    },
+    {
+      "family": "microscopic",
+      "identifier": "PALOMAR-2026-09-21-000002",
+      "registered_version": 1,
+      "next_submission_version": 2,
+      "comparator_config": "comparator/v3prel_microscopic.json",
+      "metadata": "palomar/v3prel/microscopic/formalization.yaml"
+    },
+    {
+      "family": "palm",
+      "identifier": "PALOMAR-2026-09-21-000003",
+      "registered_version": 1,
+      "next_submission_version": 2,
+      "comparator_config": "comparator/v3prel_palm.json",
+      "metadata": "palomar/v3prel/palm/formalization.yaml"
+    }
+  ]
+}

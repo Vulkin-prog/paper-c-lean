@@ -3,15 +3,16 @@
 The current selection contains **89 declarations in seven configurations**,
 using **Lean 4.34.0 and Mathlib v4.34.0**. The [README](../README.md) links the
 article, companion, editable sources and publication records. All seven
-metadata files identify the current manuscript by immutable source URL and
-SHA-256, and include the author's structured ORCID.
+metadata files identify the published Version 3 with DOI
+[10.5281/zenodo.22872154](https://doi.org/10.5281/zenodo.22872154) and PDF
+SHA-256 values, and include the author's structured ORCID.
 
 ## Fields for the submissions
 
 For each submission use repository **`https://github.com/Vulkin-prog/paper-c-lean`**,
 a validated **full 40-character commit SHA**, and the configuration below.
-For the remaining Palm submission, use the merged prose-correction commit after
-its qualification jobs succeed. Existing registered snapshots stay immutable.
+For the version 2 updates, use the merged publication commit after its
+qualification jobs succeed. Existing version 1 registrations remain unchanged.
 
 | Entry | Comparator configuration | Selected results |
 |---|---|---:|
@@ -47,17 +48,19 @@ be repeated in the mathematical description. These metadata files are specific
 to the selected configuration; the generated root audit metadata is not the
 metadata for these submissions.
 
-For a family that already has an **issued registry identifier**, choose the
-next version of that identifier where appropriate. A queued or failed attempt
-without an issued identifier is not an existing registration. The two additional
-families are prepared as new registrations. Record the identifiers actually
-issued by Palomar; none is inferred or invented here.
+All seven families now have issued version 1 identifiers. For each update,
+fill the **existing Palomar ID** with its identifier below and request the next
+version (version 2). Do not leave that field blank or create a new entry.
+Keep Project path empty and use the same configuration and metadata paths.
+The prepared files do not assert that version 2 has already been registered.
 
 ## Current registration status
 
 The author confirmed the following issued identifiers on 20–21 September 2026,
 in submission order. This table records the author's confirmations; it does not
-assert an independent public-registry check.
+assert an independent public-registry check. All seven identifiers also appear
+in the published Version 3 article. The [machine-readable register](../palomar/v3prel/registrations.json)
+contains the matching configuration paths and planned next versions.
 
 | Family | Issued identifier | Version |
 |---|---|---:|
@@ -67,6 +70,7 @@ assert an independent public-registry check.
 | Boundary | `PALOMAR-2026-09-20-000011` | 1 |
 | Crossover | `PALOMAR-2026-09-20-000012` | 1 |
 | Microscopic | `PALOMAR-2026-09-21-000002` | 1 |
+| Palm | `PALOMAR-2026-09-21-000003` | 1 |
 
 Keep these registrations. Their future publication updates should use these
 identifiers and the next version, rather than creating duplicates.
@@ -90,7 +94,8 @@ The selected declaration now has a mathematical docstring in both
 the deleted-site interpretation, the weighted equality, the precise regularity
 restriction, the arbitrary measurable outside event, and the positive small-prime
 conditioning assumption. The metadata locates the companion's exact equation.
-No Lean statement, proof, definition, dependency pin or manuscript is changed.
+That correction changed no Lean statement, proof, definition, dependency pin
+or manuscript.
 
 The next attempt, at commit `3ecbfb8122b15f40ffd01a51736b1e56dccb0ff8`,
 also passed mechanical verification and rendering. Its automated review on
@@ -124,10 +129,10 @@ No manuscript revision or further formal hypothesis is introduced.
 The [statement-alignment policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/prompts/02-statement-alignment.md)
 explicitly includes selected declaration docstrings among eligible narrative
 sources. The detailed account is placed there, leaving the project abstract
-concise. The other abstracts' publication refresh remains deferred to the V2
-update after the final paper is supplied.
+concise. All seven abstracts have now been refreshed for the version 2 update
+with the published paper's context and the formalization's explicit premises.
 
-Local validation on 21 September 2026: the Palm Challenge and Solution build
+Validation of the earlier prose correction on 21 September 2026: the Palm Challenge and Solution build
 successfully; after removing comments, both files have exactly the same Lean
 tokens as commit `3ecbfb8122b15f40ffd01a51736b1e56dccb0ff8`. The manuscript
 identity check, full seven-family source preflight with the pinned official
@@ -136,12 +141,11 @@ The Comparator source guard also passes, and all nine selected declaration
 docstrings match between Challenge and Solution. These are local checks, not
 a new dual-kernel receipt or a Palomar review.
 
-After merging and qualification, submit Palm using the new full commit SHA,
-`comparator/v3prel_palm.json`, and
-`palomar/v3prel/palm/formalization.yaml`. Leave Project path and the existing
-Palomar ID field empty: this is still a first registration, not a V2 update.
-The rejected attempt can be withdrawn. A fresh automated review remains required;
-the prose correction does not itself constitute editorial acceptance.
+The corrected Palm dossier was subsequently registered as
+`PALOMAR-2026-09-21-000003`, version 1, at commit
+`409779f46c0599edcd9ae1f973dd931b1d0a1cea`. Its publication update must use that
+existing identifier and request version 2. The earlier rejected attempts are
+not additional registrations.
 
 ## Exact mathematical selection
 
@@ -227,7 +231,7 @@ records its separate replay. The [remaining-dossier qualification](../palomar/v3
 records the 33 declarations in Boundary, Crossover, Microscopic and Palm after
 their interface audit. After merging, the candidate workflow automatically
 repeats qualification on `main`; use the full SHA of that successful merged commit
-for the remaining submissions.
+for the version 2 submissions.
 
 ## Relation to earlier registrations
 
@@ -244,8 +248,8 @@ acceptance. Current-family identifiers confirmed by the author are recorded abov
 
 ## Publication sequence
 
-The author submits the prepared entries, adds the issued references to the
-paper, and publishes the paper on Zenodo. After receiving the published files
-and the exact V3 DOI, update the manuscript package, README and all seven
-metadata files, verify the new snapshot, and prepare the planned Palomar version
-updates. The [publication plan](V3_PUBLICATION_PLAN.md) records this sequence.
+The published Version 3 includes the seven issued Palomar references. Its files
+and DOI are integrated in the manuscript package, README and submission metadata.
+After merging and validating the publication update, submit the next versions
+under the existing identifiers. The [publication status](V3_PUBLICATION_PLAN.md)
+also records the planned Cambridge Version 3 reference.

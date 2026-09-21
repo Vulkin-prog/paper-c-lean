@@ -1,0 +1,73 @@
+\section*{Formalization and Palomar registrations}
+\phantomsection\label{sec:formalization}
+\addcontentsline{toc}{section}{Formalization and Palomar registrations}
+A companion formalization in Lean~4 covers the principal arithmetic constructions
+and probabilistic conclusions of this article and its technical companion.
+The development uses Lean~4.34.0 and Mathlib~v4.34.0 and is available in the
+\href{https://github.com/Vulkin-prog/paper-c-lean}{\texttt{paper-c-lean} repository}.
+It includes explicit definitions of the random model, conditioning events,
+observables and comparison laws, together with proofs and reproducible verification
+instructions. The repository's correspondence between the manuscripts and Lean
+statements records the precise coverage, hypotheses and proof substitutions.
+
+The formalization is relative to seven explicit literature inputs: scalar Poisson
+Stein factors; finite Arratia--Goldstein--Gordon process comparison; the prime
+number theorem remainder; multivariate Poisson Stein solution bounds; the uniform
+prime-divisor estimate of Laishram--Shorey; Shorey's square-product exclusion; and
+the Nicolas--Robin divisor bound. These propositions are hypotheses of the formal
+theorems that use them; their proofs are not supplied by this development. In
+particular, the analytic Stein solution used in \cref{supp:pivot:lem:palm} remains
+an input to its Lean proof. The finite coupling argument is formally checked
+under this premise, while the semigroup construction given in the companion is
+outside that formal proof. This is a limitation of formal coverage, not an
+additional assumption in the written argument.
+
+The formal proofs contain no proof placeholders and use only Lean's standard
+foundational axioms \texttt{propext}, \texttt{Classical.choice} and
+\texttt{Quot.sound}. This foundational check does not discharge the literature
+hypotheses above. The written proofs and the formal development provide
+complementary accounts, whose precise correspondence is documented in the
+repository.
+
+\Needspace{17\baselineskip}
+Seven Palomar registrations cover a selection of 89 declarations from the
+development. All entries below are version~1; the counts refer to the registered
+selection, not to the total number of results in the repository.
+
+\begin{center}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X r l@{}}
+\toprule
+\textbf{Scope} & \textbf{Count} & \textbf{Palomar identifier} \\
+\midrule
+Critical Poisson fields and conditional transfers & 16 &
+\href{https://palomar-registry.org/entry?id=PALOMAR-2026-09-20-000003\&version=1}{\texttt{PALOMAR-2026-09-20-000003}} \\
+Word dictionaries, exact marks and compound clusters & 11 &
+\href{https://palomar-registry.org/entry?id=PALOMAR-2026-09-20-000004\&version=1}{\texttt{PALOMAR-2026-09-20-000004}} \\
+Threshold staircases and the Poisson--Gaussian bridge & 29 &
+\href{https://palomar-registry.org/entry?id=PALOMAR-2026-09-20-000007\&version=1}{\texttt{PALOMAR-2026-09-20-000007}} \\
+Microscopic boundary, prefixes and longest runs & 7 &
+\href{https://palomar-registry.org/entry?id=PALOMAR-2026-09-20-000011\&version=1}{\texttt{PALOMAR-2026-09-20-000011}} \\
+Microscopic--bulk crossover and conditional affine laws & 11 &
+\href{https://palomar-registry.org/entry?id=PALOMAR-2026-09-20-000012\&version=1}{\texttt{PALOMAR-2026-09-20-000012}} \\
+Microscopic signed fields and empirical Poisson laws & 6 &
+\href{https://palomar-registry.org/entry?id=PALOMAR-2026-09-21-000002\&version=1}{\texttt{PALOMAR-2026-09-21-000002}} \\
+Regular configurations, Palm deficits and cumulant obstructions & 9 &
+\href{https://palomar-registry.org/entry?id=PALOMAR-2026-09-21-000003\&version=1}{\texttt{PALOMAR-2026-09-21-000003}} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Each registration identifies a precise set of formal statements and a fixed
+repository revision. Comparator checks agreement between the selected statements
+and their proved counterparts; the proofs are checked by Lean and independently
+replayed through NanoDa. Palomar's separate editorial review assesses the
+correspondence with the informal account and the mathematical interest of the
+submission. That review is automated and does not constitute independent human
+peer review. The registrations document the verification of the selected formal
+results under their stated hypotheses; they do not certify every argument or
+claim in the article and companion. The verification and review protocol is
+specified in
+\href{https://github.com/PalomarRegistry/PalomarPolicy/blob/main/docs/specification.md}{\texttt{PalomarPolicy}}.

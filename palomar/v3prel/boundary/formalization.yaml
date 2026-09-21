@@ -1,14 +1,15 @@
 version: v0.4
 project:
   name: Microscopic boundary, prefixes and longest runs
-  description: The exact left-border probability is 2^(-pi(L)), and the microscopic non-vacancy probability
-    satisfies 0 <= q_L/2^(-pi(L)) - 1 <= 2^(-pi(L)/256) for sufficiently large L. The results give conditional
-    localization and uniqueness, stability under changes of mesoscopic cutoff, and a quantitative Poisson
-    law for runs contained in a finite prefix. They yield the critical longest-run distribution and asymmetric
-    almost-sure envelopes for all integer prefix lengths. The exact border identity needs no literature
-    hypothesis. The asymptotic results use, as applicable, scalar Stein bounds, the prime number theorem,
-    the uniform prime-divisor estimate of Laishram and Shorey, Shorey's square-product exclusion, and
-    the divisor bound of Nicolas and Robin.
+  description: For a random completely multiplicative function with independent symmetric signs at the
+    primes, the beginning of the positive integers has a special role in the occurrence of long constant
+    runs. The probability of a positive run of length L at the left border is exactly 2^(-pi(L)), where
+    pi counts primes. The microscopic non-vacancy probability has this leading term with a quantified
+    relative error. The results give conditional localization and uniqueness, stability under mesoscopic
+    cutoffs, a Poisson law for runs contained in finite prefixes, and critical distributions and almost-sure
+    envelopes for the longest run. The exact border identity has no literature premise; the asymptotic
+    statements use the specified Stein, prime number theorem, Laishram–Shorey, Shorey and Nicolas–Robin
+    inputs.
   authors:
   - name: Brice Pouly
     github: Vulkin-prog
@@ -29,29 +30,31 @@ sources:
   - name: Brice Pouly
     github: Vulkin-prog
     orcid: 0009-0008-8491-2467
-  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_en.pdf
+  id: https://doi.org/10.5281/zenodo.22872154
   type: paper
   location: 'Section 7, results 7.1–7.5; microscopic border, prefix counts and longest runs. Exact source:
-    manuscripts/paper-c/paper_c_version_3PREL9_en.pdf; SHA-256 74bd843886f2038865dc97a6d09f6b58be0898d5571b10de86faa26372524370.'
+    manuscripts/paper-c/paper_c_version_3_en.pdf; SHA-256 365dc309cc54ae7b957cff247093d2d58db9ab1333d36054b9b465473bee0db7.'
   relationship: adapts
   license: CC-BY-4.0
   author_endorsement: participated
-  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
-    be incorporated after the author supplies them.
+  note: Published Version 3, 21 September 2026. The article and technical companion are files of the same
+    Zenodo record. The repository preserves the published PDF bytes and the corresponding LaTeX sources;
+    manifest.json records their identities and original download filenames.
 - title: Technical companion to Long runs and rare patterns of a random completely multiplicative function
   authors:
   - name: Brice Pouly
     github: Vulkin-prog
     orcid: 0009-0008-8491-2467
-  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf
+  id: https://doi.org/10.5281/zenodo.22872154
   type: paper
-  location: 'Boundary arithmetic and almost-sure prefix consequences. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf;
-    SHA-256 6162f9d9f2cc0b0e8d72c7ad93471a0d307334c4a775d80b503b9478bb32cc39.'
+  location: 'Boundary arithmetic and almost-sure prefix consequences. Exact source: manuscripts/paper-c/paper_c_version_3_technical_companion_en.pdf;
+    SHA-256 31f286e642c97b81303b2c7b8f055858c46941d8f7ba5dae605cfccd52f36207.'
   relationship: adapts
   license: CC-BY-4.0
   author_endorsement: participated
-  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
-    be incorporated after the author supplies them.
+  note: Published Version 3, 21 September 2026. The article and technical companion are files of the same
+    Zenodo record. The repository preserves the published PDF bytes and the corresponding LaTeX sources;
+    manifest.json records their identities and original download filenames.
 - title: Poisson approximation of Rademacher functionals by the Chen-Stein method and Malliavin calculus
   authors:
   - Kai Krokowski
@@ -105,8 +108,8 @@ sources:
   id: https://doi.org/10.5281/zenodo.21736676
   type: paper
   relationship: background
-  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
-    author manuscript; the final paper DOI will be added after publication.
+  note: Concept DOI for all versions of the paper and companion. The version-specific DOI for the published
+    Version 3 is https://doi.org/10.5281/zenodo.22872154.
 - title: Critical Poisson fields for long constant stretches of a random completely multiplicative function,
     Cambridge Open Engage version 2
   authors:
@@ -115,8 +118,8 @@ sources:
   type: paper
   location: Published 4 September 2026, version 2.
   relationship: background
-  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
-    author manuscript; the final paper DOI will be added after publication.
+  note: Cambridge Open Engage Version 2. This is a separate earlier publication record, not the version-specific
+    identifier of the published Version 3 on Zenodo.
 related_formalizations: []
 status:
   scope: 7 selected declarations in ChallengeV3Boundary, an autonomous Mathlib-only Challenge, with proofs
@@ -129,7 +132,8 @@ status:
     the prime number theorem, the uniform prime-divisor estimate of Laishram and Shorey, Shorey's square-product
     exclusion, and the divisor bound of Nicolas and Robin. Intentional proof placeholders occur only in
     the Challenge. Literature inputs remain explicit theorem arguments and are not discharged by kernel
-    validation. No Palomar editorial approval or registration is asserted.
+    validation. Version 1 is registered as PALOMAR-2026-09-20-000011. This metadata prepares a version
+    2 publication update with the same declaration selection; no version 2 decision is asserted.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -220,16 +224,18 @@ fidelity:
     not individually restate every microscopic arithmetic lemma, the prime-clock law or the entire article.
     The paper states its results without theorem-level premises, whereas the Lean endpoints explicitly
     consume the displayed literature propositions. Those hypotheses are not proved by kernel checking
-    the conditional results.
-    The selected exact-border declaration also proves measurability and positive probability of the
-    border and microscopic events, normalization of their conditional laws and all mesoscopic record
-    pushforwards, and measurability and mass-sum one of every prefix count law.
+    the conditional results. The selected exact-border declaration also proves measurability and positive
+    probability of the border and microscopic events, normalization of their conditional laws and all
+    mesoscopic record pushforwards, and measurability and mass-sum one of every prefix count law.
 review:
   status: agent-reviewed
-  notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
-    checks are recorded separately in qualification evidence. There is no independent human peer review
-    or claimed Palomar decision. The probability and measurability guarantees were audited and exposed
-    in the standalone interface after the Limits review; this is not a prediction of registration.
+  notes: Source-to-interface bridges and selected statements were checked during preparation.
+    Mechanical checks are recorded separately in qualification evidence; this preparation review is
+    not an independent human peer review. Probability and measurability guarantees are exposed in
+    the standalone interface. The published Version 3 files and source correspondence were checked
+    for this update. Selected Lean statements and proofs are unchanged from the registered version
+    1. The new commit requires its own mechanical verification and version 2 review; version 2
+    acceptance is not asserted.
 alignment:
   namespace: PaperCV3Audit
   statements:

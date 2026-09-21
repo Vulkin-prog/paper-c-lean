@@ -23,13 +23,16 @@ def safe_path(value):
 def check(root=ROOT, *, directory='manuscripts/v3prel8', version='3PREL8'):
     base = root / directory
     top = {name.replace('3PREL8', version) for name in TOP}
+    if version == '3':
+        top.add('formalization_v3_en.tex')
+    expected_count = 29 if version == '3' else 28
     manifest = json.loads((base / 'manifest.json').read_text())
     if manifest['version'] != version:
         raise ValueError('Wrong manuscript version')
     entries = manifest['files']
     names = [str(safe_path(x['path'])) for x in entries]
-    if len(names) != 28 or len(set(names)) != 28:
-        raise ValueError('Expected exactly 28 distinct delivered files')
+    if len(names) != expected_count or len(set(names)) != expected_count:
+        raise ValueError(f'Expected exactly {expected_count} distinct delivered files')
     actual = {p.relative_to(base).as_posix() for p in base.rglob('*') if p.is_file()}
     if actual != set(names) | {'README.md', 'manifest.json'}:
         raise ValueError('Unexpected or missing public payload file')
@@ -62,7 +65,7 @@ def check(root=ROOT, *, directory='manuscripts/v3prel8', version='3PREL8'):
             inputs.add(target)
     if 'references.bib' not in inputs:
         raise ValueError('Bibliography not connected to the delivered sources')
-    return {'files': len(names), 'compilation_inputs': 26, 'pdfs': 2, 'status': 'verified'}
+    return {'files': len(names), 'compilation_inputs': len(names)-2, 'pdfs': 2, 'status': 'verified'}
 
 
 if __name__ == '__main__':

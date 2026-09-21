@@ -4,10 +4,15 @@ project:
   - name: Brice Pouly
     github: Vulkin-prog
     orcid: 0009-0008-8491-2467
-  description: Quantitative comparison of the actual position/excess/sign field at growing intensity,
-    retaining the original small-prime conditioning; same-grid dyadic restriction and common measurable
-    readouts. Along literal dyadic scales, empirical window counts converge almost surely to Poisson,
-    while empirical full vectors have a positive total-variation obstruction.
+  description: For a random completely multiplicative function with independent symmetric signs at the
+    primes, the full field of long-run positions, exact excess lengths and signs can be compared with
+    an independent Poisson target in a controlled regime of growing intensity. The comparison preserves
+    the original small-prime conditioning and extends to dyadic restrictions on the same grid and common
+    measurable observables. For fixed admissible window parameters, almost every realization satisfies
+    an empirical Poisson law for window counts along dyadic scales. A separate support argument gives
+    a positive total-variation obstruction for empirical full vectors. The quantitative arithmetic comparisons
+    use explicit prime number theorem, Laishram–Shorey, Shorey, Nicolas–Robin and finite-carrier analytic
+    Stein inputs; the vector support obstruction requires none of these literature premises.
   license: Apache-2.0
   name: Microscopic signed fields and empirical Poisson laws
   responsible_maintainers:
@@ -25,29 +30,31 @@ sources:
   - name: Brice Pouly
     github: Vulkin-prog
     orcid: 0009-0008-8491-2467
-  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_en.pdf
+  id: https://doi.org/10.5281/zenodo.22872154
   type: paper
-  location: 'Theorem 7.7, Corollary 7.8a and Remark 7.8b. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_en.pdf;
-    SHA-256 74bd843886f2038865dc97a6d09f6b58be0898d5571b10de86faa26372524370.'
+  location: 'Theorem 7.7, Corollary 7.8a and Remark 7.8b. Exact source: manuscripts/paper-c/paper_c_version_3_en.pdf;
+    SHA-256 365dc309cc54ae7b957cff247093d2d58db9ab1333d36054b9b465473bee0db7.'
   relationship: adapts
   license: CC-BY-4.0
   author_endorsement: participated
-  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
-    be incorporated after the author supplies them.
+  note: Published Version 3, 21 September 2026. The article and technical companion are files of the same
+    Zenodo record. The repository preserves the published PDF bytes and the corresponding LaTeX sources;
+    manifest.json records their identities and original download filenames.
 - title: Technical companion to Long runs and rare patterns of a random completely multiplicative function
   authors:
   - name: Brice Pouly
     github: Vulkin-prog
     orcid: 0009-0008-8491-2467
-  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf
+  id: https://doi.org/10.5281/zenodo.22872154
   type: paper
-  location: 'Appendix F; full signed field, dyadic restriction and common readouts. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf;
-    SHA-256 6162f9d9f2cc0b0e8d72c7ad93471a0d307334c4a775d80b503b9478bb32cc39.'
+  location: 'Appendix F; full signed field, dyadic restriction and common readouts. Exact source: manuscripts/paper-c/paper_c_version_3_technical_companion_en.pdf;
+    SHA-256 31f286e642c97b81303b2c7b8f055858c46941d8f7ba5dae605cfccd52f36207.'
   relationship: adapts
   license: CC-BY-4.0
   author_endorsement: participated
-  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
-    be incorporated after the author supplies them.
+  note: Published Version 3, 21 September 2026. The article and technical companion are files of the same
+    Zenodo record. The repository preserves the published PDF bytes and the corresponding LaTeX sources;
+    manifest.json records their identities and original download filenames.
 - title: Newman's Short Proof of the Prime Number Theorem
   authors:
   - Don Zagier
@@ -103,8 +110,8 @@ sources:
   id: https://doi.org/10.5281/zenodo.21736676
   type: paper
   relationship: background
-  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
-    author manuscript; the final paper DOI will be added after publication.
+  note: Concept DOI for all versions of the paper and companion. The version-specific DOI for the published
+    Version 3 is https://doi.org/10.5281/zenodo.22872154.
 - title: Critical Poisson fields for long constant stretches of a random completely multiplicative function,
     Cambridge Open Engage version 2
   authors:
@@ -113,8 +120,8 @@ sources:
   type: paper
   location: Published 4 September 2026, version 2.
   relationship: background
-  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
-    author manuscript; the final paper DOI will be added after publication.
+  note: Cambridge Open Engage Version 2. This is a separate earlier publication record, not the version-specific
+    identifier of the published Version 3 on Zenodo.
 related_formalizations: []
 status:
   axioms:
@@ -176,7 +183,9 @@ status:
     and common measurable readouts. Along literal dyadic scales, empirical window counts converge almost
     surely to Poisson, while empirical full vectors have a positive total-variation obstruction. Intentional
     proof placeholders occur only in the Challenge. Literature inputs remain explicit theorem arguments
-    and are not discharged by kernel validation. No Palomar editorial approval or registration is asserted.
+    and are not discharged by kernel validation. Version 1 is registered as PALOMAR-2026-09-21-000002.
+    This metadata prepares a version 2 publication update with the same declaration selection; no version
+    2 decision is asserted.
   sorry_count: 0
   sorry_in_definitions: 0
 automation:
@@ -205,16 +214,19 @@ fidelity:
     is assumed. The empirical count theorem is almost sure for each fixed alpha and tau. The full-vector
     obstruction holds for every realization on changing finite vector spaces. Arbitrary measurable common
     deterministic readouts are selected; no claim of registering every ancillary Appendix F lemma is made.
-    The compared coefficient assertion also proves source measurability and target probability
-    normalization. The target construction exposes its countable flattening measurability and a proved
-    probability instance. The common-readout assertion additionally proves measurability of the
-    composite source readout and probability normalization of both image laws.
+    The compared coefficient assertion also proves source measurability and target probability normalization.
+    The target construction exposes its countable flattening measurability and a proved probability instance.
+    The common-readout assertion additionally proves measurability of the composite source readout and
+    probability normalization of both image laws.
 review:
   status: agent-reviewed
-  notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
-    checks are recorded separately in qualification evidence. There is no independent human peer review
-    or claimed Palomar decision. The probability and measurability guarantees were audited and exposed
-    in the standalone interface after the Limits review; this is not a prediction of registration.
+  notes: Source-to-interface bridges and selected statements were checked during preparation.
+    Mechanical checks are recorded separately in qualification evidence; this preparation review is
+    not an independent human peer review. Probability and measurability guarantees are exposed in
+    the standalone interface. The published Version 3 files and source correspondence were checked
+    for this update. Selected Lean statements and proofs are unchanged from the registered version
+    1. The new commit requires its own mechanical verification and version 2 review; version 2
+    acceptance is not asserted.
 alignment:
   namespace: PaperCV3Audit.Microscopic
   statements:
