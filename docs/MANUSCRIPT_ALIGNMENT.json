@@ -1,5 +1,5 @@
 {
-  "version": "3PREL9",
+  "version": "3",
   "status": "source_alignment_reviewed_relative_to_existing_explicit_inputs",
   "lean_changes_required": false,
   "new_lean_build": false,
@@ -32,36 +32,36 @@
   },
   "files": [
     {
-      "source": "manuscripts/paper-c/paper_c_version_3PREL9_en.tex",
-      "sha256": "69ff9716d4b6dd6467a8046c0bf8e5691dca18b577fc25ef496ed59507d1e9b0",
+      "source": "manuscripts/paper-c/paper_c_version_3_en.tex",
+      "sha256": "7b1011b104e8a2e91998f06d7ae09dfc989be2fb9954e5fab31730fac3713fc0",
       "baseline": "manuscripts/v3prel8/paper_c_version_3PREL8_en.tex",
       "baseline_sha256": "92368c622fe068fb6b99b3795e678eeba363a8538b1b37738aaad5df9658c162",
       "changed": true
     },
     {
-      "source": "manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.tex",
-      "sha256": "6c62c39fa8e823a850b4c69987236843fe8550f7826add63123798a1f4302587",
+      "source": "manuscripts/paper-c/paper_c_version_3_technical_companion_en.tex",
+      "sha256": "93cbbb996427a84eb2c9eb3a92b03d0d9911ed4ed0b32e898f65915e9eee4e1d",
       "baseline": "manuscripts/v3prel8/paper_c_version_3PREL8_technical_companion_en.tex",
       "baseline_sha256": "229b42d26674c1dd789239297e1d7080c5839b1b9a8caface3ede0c9a7f1c0cb",
       "changed": true
     },
     {
       "source": "manuscripts/paper-c/preamble.tex",
-      "sha256": "b2a46bab6ae7e84054d3a1bd4bc0892fedfbf7e61e5433e30da19094dbf43e57",
+      "sha256": "d9dcfd4b55786afa0b02fb6e601086ad894afc49c269a37e9eedf49ca331e72c",
       "baseline": "manuscripts/v3prel8/preamble.tex",
       "baseline_sha256": "b24c6dc3f68ae8525d73dd41c47b5c2299f04e0977e0fe875e7f03913df0aa20",
       "changed": true
     },
     {
       "source": "manuscripts/paper-c/declarations.tex",
-      "sha256": "8b624d470f1a9811249ea772bf940be1323cf6214e431c62e2387d200425fbf0",
+      "sha256": "0a9e46575b3df2d177e334e4441b0774791a93311f7afe72795523b919ec9a41",
       "baseline": "manuscripts/v3prel8/declarations.tex",
       "baseline_sha256": "e716ee52213847a719ff2974580c1b5c72a987a930977006403e3311beb24915",
       "changed": true
     },
     {
       "source": "manuscripts/paper-c/companion/00_external_inputs.tex",
-      "sha256": "05348dd8cb3645411c49fc56309be949e921f6f9ac448becbe1941b7e78ceefe",
+      "sha256": "f94b6d9b9256a2424f0b9546cfa15852c0e6815b8f1a76fd223a7eed19c91412",
       "baseline": "manuscripts/v3prel8/companion/00_external_inputs.tex",
       "baseline_sha256": "d46bb227e43c6a29949f1e1b641a7b8d0ab90e4eabc5bff8f2edef7731570301",
       "changed": true
@@ -166,7 +166,7 @@
     },
     {
       "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
-      "sha256": "479f7958528476caf496735c11220da3e0b4219af58e23c97443dd4130838614",
+      "sha256": "e223c6957a54bce1c27f7fedacb0e90f5a6b79df33c336677b7e0394b5f7118f",
       "baseline": "manuscripts/v3prel8/sections/07_prefix_boundary.tex",
       "baseline_sha256": "9fe91b223adaacf78c7d76cf21fc9c14d741072c94b0ecdaf2d27949a8096a39",
       "changed": true
@@ -191,6 +191,13 @@
       "baseline": "manuscripts/v3prel8/sections/08_discussion.tex",
       "baseline_sha256": "60d6bad2b2c10366b91a2501a7b3dfda1ff8e6cdb1df20a51b53182c75d7ac9a",
       "changed": false
+    },
+    {
+      "source": "manuscripts/paper-c/formalization_v3_en.tex",
+      "sha256": "dfa9bb6eafc7ac2c4c4d151da6a26c397a9cfff106244863fb83078b749866e0",
+      "baseline": null,
+      "baseline_sha256": null,
+      "changed": true
     }
   ],
   "numbered": [
@@ -1226,7 +1233,7 @@
       "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
       "proof_index": 7,
       "old_sha256": "73b3c4dc4f6ad48bbb9c2553cd53ab8a71c6f50b6f6bbb020203d6019c46caa1",
-      "new_sha256": "6e9dff8c6e14b2f8df2bb3fcfda73d9f8256eaa6383f329a61526f674396795b"
+      "new_sha256": "9bc738536e6b2f7a3dd544a8bfe745ae850c64c3dc3a52ffd0211cdffe648915"
     },
     {
       "source": "manuscripts/paper-c/sections/07a_empirical_poisson.tex",
@@ -1307,5 +1314,55 @@
       "declaration": "strong_good_probability_le",
       "scope": "Literal membership in the stronger good set, with the natural floor of the real threshold, discharges all individual kernel predicates. Together with the previous CRT allocation and single-support proofs, this closes G.2."
     }
-  ]
+  ],
+  "publication_doi": "10.5281/zenodo.22872154",
+  "publication_review": {
+    "prior_commit": "409779f46c0599edcd9ae1f973dd931b1d0a1cea",
+    "numbered_statements_unchanged": 96,
+    "proof_blocks": 90,
+    "proof_blocks_text_unchanged": 89,
+    "proof_change": "Only \"whose proof above is unchanged\" becomes \"proved independently above\" in the microscopic theorem proof; the dependency and mathematical argument are unchanged.",
+    "editorial_files": [
+      {
+        "source": "manuscripts/paper-c/paper_c_version_3_en.tex",
+        "prior_source": "manuscripts/paper-c/paper_c_version_3PREL9_en.tex",
+        "prior_sha256": "69ff9716d4b6dd6467a8046c0bf8e5691dca18b577fc25ef496ed59507d1e9b0",
+        "change": "editorial only"
+      },
+      {
+        "source": "manuscripts/paper-c/paper_c_version_3_technical_companion_en.tex",
+        "prior_source": "manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.tex",
+        "prior_sha256": "6c62c39fa8e823a850b4c69987236843fe8550f7826add63123798a1f4302587",
+        "change": "editorial only"
+      },
+      {
+        "source": "manuscripts/paper-c/preamble.tex",
+        "prior_source": "manuscripts/paper-c/preamble.tex",
+        "prior_sha256": "b2a46bab6ae7e84054d3a1bd4bc0892fedfbf7e61e5433e30da19094dbf43e57",
+        "change": "editorial only"
+      },
+      {
+        "source": "manuscripts/paper-c/declarations.tex",
+        "prior_source": "manuscripts/paper-c/declarations.tex",
+        "prior_sha256": "8b624d470f1a9811249ea772bf940be1323cf6214e431c62e2387d200425fbf0",
+        "change": "editorial only"
+      },
+      {
+        "source": "manuscripts/paper-c/companion/00_external_inputs.tex",
+        "prior_source": "manuscripts/paper-c/companion/00_external_inputs.tex",
+        "prior_sha256": "05348dd8cb3645411c49fc56309be949e921f6f9ac448becbe1941b7e78ceefe",
+        "change": "editorial only"
+      },
+      {
+        "source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+        "prior_source": "manuscripts/paper-c/sections/07_prefix_boundary.tex",
+        "prior_sha256": "479f7958528476caf496735c11220da3e0b4219af58e23c97443dd4130838614",
+        "change": "editorial only"
+      },
+      {
+        "source": "manuscripts/paper-c/formalization_v3_en.tex",
+        "change": "new formalization and registry presentation; no mathematical statement or proof"
+      }
+    ]
+  }
 }

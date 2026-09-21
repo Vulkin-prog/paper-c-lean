@@ -35,6 +35,7 @@ jobs:
           python -m pip install --disable-pip-version-check --require-hashes --no-deps -r "$policy_root/requirements.txt"
           python -m unittest discover -s scripts -p 'test_check_v3prel_candidates.py' -v
           python -m unittest discover -s scripts -p 'test_v3prel_sources.py' -v
+          python -m unittest discover -s scripts -p 'test_current_manuscript.py' -v
           python scripts/check_v3prel_candidates.py --metadata-only --contract-root "$policy_root" --receipt "$RUNNER_TEMP/v3prel-metadata.json"
       - name: Save the metadata receipt
         if: always()

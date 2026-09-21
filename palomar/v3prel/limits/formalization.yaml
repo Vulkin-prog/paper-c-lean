@@ -1,17 +1,14 @@
 version: v0.4
 project:
   name: Threshold staircases and the Poisson–Gaussian bridge
-  description: Joint Poisson–Gaussian limits for conditioned run counts, with an autoregressive Gaussian
-    target and independent normal innovations. Quantitative results give local Poisson probabilities,
-    a Gaussian distribution-function bound, moderate deviations, and relative local or tail estimates
-    for the multiplicative source under the stated information budgets. The whole integer-level point
-    process has locally finite but infinite total mass; its complete upper-half laws, conditioning on
-    a fixed count and extreme phases are included. The two upper-half law assertions include proved
-    measurability and probability normalization; conditioning on every finite count has positive mass.
-    The intrinsic probability estimates are proved internally.
-    Their arithmetic applications use, as applicable, the prime number theorem, scalar Stein bounds, the
-    Poisson process estimate of Arratia, Goldstein and Gordon, and Barbour's corrected multivariate Stein
-    bounds.
+  description: For a random completely multiplicative function with independent symmetric signs at the
+    primes, counts of long runs at several length thresholds exhibit a transition from Poisson to Gaussian
+    behavior. The results describe joint limits across the threshold staircase, with an autoregressive
+    Gaussian target and independent normal innovations. Quantitative estimates cover local probabilities,
+    central approximation and moderate deviations, together with conditional transfers under the stated
+    information budgets. The associated integer-level point process includes upper-half laws, conditioning
+    on a fixed finite count and extreme phases. Arithmetic applications retain explicit prime number theorem
+    and scalar, process or multivariate Poisson approximation inputs, as applicable.
   authors:
   - name: Brice Pouly
     github: Vulkin-prog
@@ -32,29 +29,31 @@ sources:
   - name: Brice Pouly
     github: Vulkin-prog
     orcid: 0009-0008-8491-2467
-  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_en.pdf
+  id: https://doi.org/10.5281/zenodo.22872154
   type: paper
-  location: 'Sections 4–6; threshold staircase and Poisson–Gaussian consequences. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_en.pdf;
-    SHA-256 74bd843886f2038865dc97a6d09f6b58be0898d5571b10de86faa26372524370.'
+  location: 'Sections 4–6; threshold staircase and Poisson–Gaussian consequences. Exact source: manuscripts/paper-c/paper_c_version_3_en.pdf;
+    SHA-256 365dc309cc54ae7b957cff247093d2d58db9ab1333d36054b9b465473bee0db7.'
   relationship: adapts
   license: CC-BY-4.0
   author_endorsement: participated
-  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
-    be incorporated after the author supplies them.
+  note: Published Version 3, 21 September 2026. The article and technical companion are files of the same
+    Zenodo record. The repository preserves the published PDF bytes and the corresponding LaTeX sources;
+    manifest.json records their identities and original download filenames.
 - title: Technical companion to Long runs and rare patterns of a random completely multiplicative function
   authors:
   - name: Brice Pouly
     github: Vulkin-prog
     orcid: 0009-0008-8491-2467
-  id: https://github.com/Vulkin-prog/paper-c-lean/blob/b3cf9aa27700d784efc61e6f82a92cef53320c40/manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf
+  id: https://doi.org/10.5281/zenodo.22872154
   type: paper
-  location: 'Appendix D, including D.1 and D.4. Exact source: manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf;
-    SHA-256 6162f9d9f2cc0b0e8d72c7ad93471a0d307334c4a775d80b503b9478bb32cc39.'
+  location: 'Appendix D, including D.1 and D.4. Exact source: manuscripts/paper-c/paper_c_version_3_technical_companion_en.pdf;
+    SHA-256 31f286e642c97b81303b2c7b8f055858c46941d8f7ba5dae605cfccd52f36207.'
   relationship: adapts
   license: CC-BY-4.0
   author_endorsement: participated
-  note: Author manuscript of 20 September 2026. The final publication and its version-specific DOI will
-    be incorporated after the author supplies them.
+  note: Published Version 3, 21 September 2026. The article and technical companion are files of the same
+    Zenodo record. The repository preserves the published PDF bytes and the corresponding LaTeX sources;
+    manifest.json records their identities and original download filenames.
 - title: 'Two moments suffice for Poisson approximations: the Chen--Stein method'
   authors:
   - Richard Arratia
@@ -106,8 +105,8 @@ sources:
   id: https://doi.org/10.5281/zenodo.21736676
   type: paper
   relationship: background
-  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
-    author manuscript; the final paper DOI will be added after publication.
+  note: Concept DOI for all versions of the paper and companion. The version-specific DOI for the published
+    Version 3 is https://doi.org/10.5281/zenodo.22872154.
 - title: Critical Poisson fields for long constant stretches of a random completely multiplicative function,
     Cambridge Open Engage version 2
   authors:
@@ -116,8 +115,8 @@ sources:
   type: paper
   location: Published 4 September 2026, version 2.
   relationship: background
-  note: Publication record for the paper. This DOI is not a version-specific identifier for the current
-    author manuscript; the final paper DOI will be added after publication.
+  note: Cambridge Open Engage Version 2. This is a separate earlier publication record, not the version-specific
+    identifier of the published Version 3 on Zenodo.
 related_formalizations: []
 status:
   scope: 29 selected declarations in ChallengeV3Limits, an autonomous Mathlib-only Challenge, with proofs
@@ -126,14 +125,14 @@ status:
     a Gaussian distribution-function bound, moderate deviations, and relative local or tail estimates
     for the multiplicative source under the stated information budgets. The whole integer-level point
     process has locally finite but infinite total mass; its complete upper-half laws, conditioning on
-    a fixed count and extreme phases are included. The two upper-half law assertions include proved
-    measurability and probability normalization; conditioning on every finite count has positive mass.
-    The intrinsic probability estimates are proved internally.
-    Their arithmetic applications use, as applicable, the prime number theorem, scalar Stein bounds, the
-    Poisson process estimate of Arratia, Goldstein and Gordon, and Barbour's corrected multivariate Stein
-    bounds. Intentional proof placeholders occur only in the Challenge. Literature inputs remain explicit
-    theorem arguments and are not discharged by kernel validation. No Palomar editorial approval or registration
-    is asserted.
+    a fixed count and extreme phases are included. The two upper-half law assertions include proved measurability
+    and probability normalization; conditioning on every finite count has positive mass. The intrinsic
+    probability estimates are proved internally. Their arithmetic applications use, as applicable, the
+    prime number theorem, scalar Stein bounds, the Poisson process estimate of Arratia, Goldstein and
+    Gordon, and Barbour's corrected multivariate Stein bounds. Intentional proof placeholders occur only
+    in the Challenge. Literature inputs remain explicit theorem arguments and are not discharged by kernel
+    validation. Version 1 is registered as PALOMAR-2026-09-20-000007. This metadata prepares a version
+    2 publication update with the same declaration selection; no version 2 decision is asserted.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -394,23 +393,25 @@ fidelity:
     budgets. D.4 is represented by the same whole integer-level point measure, its complete compact-test
     Laplace functional and actual upper-half restrictions. A separate vague-topology convergence declaration
     is not selected. The total upper-half count is Poisson; conditioning on any count n yields n iid uniform
-    positions and independent nonnegative geometric marks. Both selected upper-point-law assertions
-    explicitly prove measurability of their maps and probability normalization of both sides; the
-    conditional assertion also proves positive mass of the conditioning event for every finite count.
-    These are conclusions, not extra hypotheses. A constant sign is a dummy coordinate in this
-    unmarked D.4 representation, not a claimed random sign. The half-line construction is totalized on
-    a null set, with its equality to the whole-process restriction proved almost everywhere. The extreme
-    endpoint is the actual source event. Saddle roots and finite source configurations are selected by
-    epsilon, with uniqueness bridges proved in the solution. Only the explicit process AGG, scalar Stein,
-    corrected directional Stein and ordinary PNT propositions are used where required; none assumes the
-    desired arithmetic or limit conclusion. No new Lean axiom is introduced.
+    positions and independent nonnegative geometric marks. Both selected upper-point-law assertions explicitly
+    prove measurability of their maps and probability normalization of both sides; the conditional assertion
+    also proves positive mass of the conditioning event for every finite count. These are conclusions,
+    not extra hypotheses. A constant sign is a dummy coordinate in this unmarked D.4 representation, not
+    a claimed random sign. The half-line construction is totalized on a null set, with its equality to
+    the whole-process restriction proved almost everywhere. The extreme endpoint is the actual source
+    event. Saddle roots and finite source configurations are selected by epsilon, with uniqueness bridges
+    proved in the solution. Only the explicit process AGG, scalar Stein, corrected directional Stein and
+    ordinary PNT propositions are used where required; none assumes the desired arithmetic or limit conclusion.
+    No new Lean axiom is introduced.
 review:
   status: agent-reviewed
-  notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
-    checks are recorded separately in qualification evidence. There is no independent human peer review
-    or claimed Palomar acceptance. Following the automated review of 20 September 2026, the two D.4
-    upper-point-law statements were strengthened to expose their measurability and probability guarantees
-    in the compared interface. The correction requires a new submission and review.
+  notes: Source-to-interface bridges and selected statements were checked during preparation.
+    Mechanical checks are recorded separately in qualification evidence; this preparation review is
+    not an independent human peer review. Both D.4 upper-point-law statements expose their
+    measurability and probability guarantees in the compared interface. The published Version 3
+    files and source correspondence were checked for this update. Selected Lean statements and
+    proofs are unchanged from the registered version 1. The new commit requires its own mechanical
+    verification and version 2 review; version 2 acceptance is not asserted.
 alignment:
   namespace: PaperCV3Audit
   statements:

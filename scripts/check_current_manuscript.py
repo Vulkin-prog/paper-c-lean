@@ -14,6 +14,18 @@ from check_v3prel8_coverage import blocks, check as check_baseline
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOF = re.compile(r'\\begin\{proof\}(.*?)\\end\{proof\}', re.S)
+PUBLICATION_DOI = '10.5281/zenodo.22872154'
+ARCHIVE_SHA256 = '768a03f7640c791f4901d54d38286a328d2f04b9aaad552231920e7d575cd1b1'
+PDF_HASHES = {
+    'paper_c_version_3_en.pdf': '365dc309cc54ae7b957cff247093d2d58db9ab1333d36054b9b465473bee0db7',
+    'paper_c_version_3_technical_companion_en.pdf': '31f286e642c97b81303b2c7b8f055858c46941d8f7ba5dae605cfccd52f36207',
+}
+PALOMAR_IDS = [
+    'PALOMAR-2026-09-20-000003', 'PALOMAR-2026-09-20-000004',
+    'PALOMAR-2026-09-20-000007', 'PALOMAR-2026-09-20-000011',
+    'PALOMAR-2026-09-20-000012', 'PALOMAR-2026-09-21-000002',
+    'PALOMAR-2026-09-21-000003',
+]
 
 
 def digest(data):
@@ -33,11 +45,41 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def check_publication(root=ROOT):
+    payload = check_payload(root, directory='manuscripts/paper-c', version='3')
+    base = root / 'manuscripts/paper-c'
+    manifest = json.loads((base / 'manifest.json').read_text())
+    require(manifest['publication']['doi'] == PUBLICATION_DOI, 'Wrong published DOI')
+    require(manifest['publication']['record_url'] == 'https://zenodo.org/records/22872154'
+            and manifest['publication']['publication_date'] == '2026-09-21',
+            'Wrong published record or date')
+    require(manifest['archive_sha256'] == ARCHIVE_SHA256, 'Wrong published source archive')
+    downloads = manifest['publication']['pdf_downloads']
+    require(len(downloads) == 2 and {x['path'] for x in downloads} == set(PDF_HASHES),
+            'Published PDF download inventory differs')
+    for name, expected in PDF_HASHES.items():
+        content = (base / name).read_bytes()
+        require(digest(content) == expected, f'Wrong published PDF: {name}')
+        download = next(x for x in downloads if x['path'] == name)
+        remote = name.replace('.pdf', '(1).pdf')
+        require(download['remote_name'] == remote and download['sha256'] == expected
+                and download['md5'] == hashlib.md5(content).hexdigest()
+                and download['size_bytes'] == len(content)
+                and download['url'] == 'https://zenodo.org/api/records/22872154/files/' + remote + '/content',
+                f'Stale published download provenance: {name}')
+    formalization = (base / 'formalization_v3_en.tex').read_text()
+    ids = re.findall(r'PALOMAR-\d{4}-\d{2}-\d{2}-\d{6}', formalization)
+    require(set(ids) == set(PALOMAR_IDS), 'Published Palomar identifiers differ')
+    require('version~1' in formalization, 'Published registration version missing')
+    return {**payload, 'publication_doi': PUBLICATION_DOI}
+
+
 def check(root=ROOT):
-    payload = check_payload(root, directory='manuscripts/paper-c', version='3PREL9')
+    payload = check_publication(root)
     check_baseline(root)
     data = json.loads((root / 'docs/MANUSCRIPT_ALIGNMENT.json').read_text())
-    require(data['version'] == '3PREL9', 'Unexpected manuscript version')
+    require(data['version'] == '3' and data['publication_doi'] == PUBLICATION_DOI,
+            'Unexpected manuscript version or DOI')
     for record in data['baseline_evidence']:
         require(digest((root / record['path']).read_bytes()) == record['sha256'],
                 f'Stale baseline evidence: {record["path"]}')
@@ -81,6 +123,15 @@ def check(root=ROOT):
     proof_count = same_proofs = 0
     old_labels, new_labels = [], []
     for record in records:
+        if record['baseline'] is None:
+            require(record['source'] == 'manuscripts/paper-c/formalization_v3_en.tex',
+                    'Unreviewed added TeX source')
+            text = (root / record['source']).read_text()
+            require(digest(text.encode()) == record['sha256'] and record['changed']
+                    and record['baseline_sha256'] is None, 'Stale publication section')
+            require(not PROOF.findall(clean(text)), 'New proof block needs mathematical review')
+            new_labels.extend(re.findall(r'\\label\{([^}]+)\}', clean(text)))
+            continue
         a_path, b_path = root / record['baseline'], root / record['source']
         a, b = a_path.read_bytes(), b_path.read_bytes()
         require(digest(a) == record['baseline_sha256'] and digest(b) == record['sha256'],
@@ -100,7 +151,8 @@ def check(root=ROOT):
                                        'old_sha256': digest(x.encode()),
                                        'new_sha256': digest(y.encode())})
     require(changed_proofs == data['changed_proof_blocks'], 'Stale proof-block review')
-    require(sorted(old_labels) == sorted(new_labels), 'Manuscript label keys changed')
+    require(sorted(old_labels + ['sec:formalization']) == sorted(new_labels),
+            'Unreviewed manuscript label changes')
     counts = {'statements': 96, 'unchanged_statements': 95, 'clarified_statements': 1,
               'proof_blocks': proof_count, 'unchanged_proof_blocks': same_proofs}
     require(counts == data['counts'], 'Incorrect comparison counts')

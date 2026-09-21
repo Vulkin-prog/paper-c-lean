@@ -1,37 +1,41 @@
-# Paper C — article, companion and editable sources
+# Paper C — published article, companion and sources
 
 *Long runs and rare patterns of a random completely multiplicative function*,
-by Brice Pouly.
+by Brice Pouly. **Version 3, published 21 September 2026.**
 
-- [Article](paper_c_version_3PREL9_en.pdf)
-- [Technical companion](paper_c_version_3PREL9_technical_companion_en.pdf)
-- [Correspondence with the Lean development](../../docs/MANUSCRIPT_ALIGNMENT.md)
+- [Published record and version DOI](https://doi.org/10.5281/zenodo.22872154)
+- [Article](paper_c_version_3_en.pdf)
+- [Technical companion](paper_c_version_3_technical_companion_en.pdf)
+- [Correspondence with Lean](../../docs/MANUSCRIPT_ALIGNMENT.md)
 - [Explicit literature inputs](../../PaperCV282/LITERATURE_INPUTS.md)
 
-This is the author-supplied manuscript of 20 September 2026, labelled 3PREL9.
-The two PDFs and 26 compilation inputs are preserved byte for byte.
-[manifest.json](manifest.json) identifies their exact contents and the supplied
-archive. This directory is the public manuscript entry point; the final
-published files and version-specific DOI will be incorporated after publication.
+The two PDFs and all 27 compilation inputs are copied byte for byte from the
+Zenodo record and its source archive. [manifest.json](manifest.json) records
+SHA-256 values, the source-archive identity, and the original PDF download
+names and checksums. The Zenodo PDF names contain `(1)`; their local names
+omit this suffix to match the published source build and cross-document links.
+The PDF contents are unchanged. Source-archive documentation and checksum lists
+are represented by this README and the manifest; no build products or working
+notes are included.
 
-The two PDF filenames are kept together and unchanged to preserve their mutual
-links. Nested archives, other papers, internal revision notes, duplicate exports,
-diagnostic programs, build products and contact sheets are excluded. This is the
-minimal source package, not a mirror of the author's complete working release.
+The article's [formalization section](formalization_v3_en.tex) lists the seven
+Palomar version 1 registrations and the formalization's explicit limitations.
+The manuscript uses the CC-BY-4.0 licence stated by the Zenodo record.
 
-From the repository root, verify the package and its formal correspondence with:
+Verify the delivered bytes, source dependencies and mathematical correspondence
+from the repository root:
 
 ```sh
 python3 scripts/check_current_manuscript.py
 ```
 
-To rebuild the PDFs, copy this directory to a disposable working directory and
-run `bash build.sh` there. The script regenerates both PDFs, so do not run it over
-the delivered pair. It requires pdfLaTeX, Biber, Python 3 and the TeX packages
-listed in `preamble.tex`. Both documents must be built together for their cross
-references. No other paper or earlier PDF is a compilation dependency.
+To rebuild both PDFs, copy this directory to a disposable working directory and
+run `bash build.sh` there. The script regenerates the PDFs, so do not run it over
+the published pair. It requires pdfLaTeX, Biber, Python 3 and the TeX packages
+listed in `preamble.tex`. Both documents must be built together for cross
+references. No previous PDF or external article is a compilation dependency.
 
-The integration checks establish file identity, local source completeness and
-the recorded statement correspondence. They are not a fresh PDF rebuild or a
-Palomar qualification. The seven literature propositions remain explicit theorem
-arguments, including the analytic Stein input used for F.2.
+Integration verified the Zenodo checksums, source correspondence, and the
+published formalization pages. It did not regenerate the PDF pair; Biber was
+not available locally. The seven literature propositions remain explicit formal
+premises, including the analytic Stein solution used for F.2.

@@ -3,26 +3,25 @@
 *Long runs and rare patterns of a random completely multiplicative function*
 and its technical companion, by [Brice Pouly](https://orcid.org/0009-0008-8491-2467).
 
-This repository contains the mathematical development, the article and companion
+This repository contains the mathematical development, the published Version 3 article and companion
 with their editable sources, and seven Palomar submission interfaces. The
-[source-to-Lean correspondence](docs/MANUSCRIPT_ALIGNMENT.md) records the current
+[source-to-Lean correspondence](docs/MANUSCRIPT_ALIGNMENT.md) records the published
 manuscript's results and the precise scope of their formalization.
 
 | Paper and source material | Link |
 |---|---|
-| Article | [PDF](manuscripts/paper-c/paper_c_version_3PREL9_en.pdf) |
-| Technical companion | [PDF](manuscripts/paper-c/paper_c_version_3PREL9_technical_companion_en.pdf) |
+| Article | [PDF](manuscripts/paper-c/paper_c_version_3_en.pdf) |
+| Technical companion | [PDF](manuscripts/paper-c/paper_c_version_3_technical_companion_en.pdf) |
 | Editable sources and file identities | [Manuscript package](manuscripts/paper-c/README.md) |
-| Zenodo paper record, all versions | [10.5281/zenodo.21736676](https://doi.org/10.5281/zenodo.21736676) |
-| Cambridge Open Engage paper record | [10.33774/coe-2026-z3l74-v2](https://doi.org/10.33774/coe-2026-z3l74-v2) |
+| Published paper and companion, Version 3 | [10.5281/zenodo.22872154](https://doi.org/10.5281/zenodo.22872154) |
+| Cambridge Open Engage, Version 2 | [10.33774/coe-2026-z3l74-v2](https://doi.org/10.33774/coe-2026-z3l74-v2) |
 | Formalization record, all versions | [10.5281/zenodo.21735481](https://doi.org/10.5281/zenodo.21735481) |
 
-The repository currently includes the author's manuscript of 20 September 2026.
-The publication links identify the available paper records; they do not identify
-this manuscript as the published V3. The published files, version-specific paper
-DOI will be added when available. The first six Palomar identifiers, confirmed by
-the author, are recorded in the
-[submission guide](docs/PALOMAR_SUBMISSIONS.md#current-registration-status).
+The article and companion were published on Zenodo on **21 September 2026**.
+The repository preserves their published PDF bytes and editable sources.
+The Cambridge link identifies its separate Version 2 record; the Zenodo DOI
+above identifies the published Version 3. The paper DOI and the formalization
+archive DOI refer to different records.
 
 ## Abstract
 
@@ -72,20 +71,21 @@ Solution proofs contain no placeholders. The permitted kernel axioms are
 `propext`, `Classical.choice` and `Quot.sound`. Intentional placeholders in the
 standalone Challenges specify the obligations checked by Comparator.
 
-## Palomar submission families
+## Palomar registrations
 
-The seven configurations select **89 declarations**. This is the registration
-selection, not a count of all results proved in the repository.
+Seven **version 1 registrations** cover **89 selected declarations**. These
+counts describe the registered selection, not all results in the development.
+The publication metadata is prepared for version 2 updates of these same entries.
 
-| Family | Declarations | Configuration | Metadata |
+| Family | Declarations | Palomar record (version 1) | Configuration and metadata |
 |---|---:|---|---|
-| Critical fields and information-adapted conditioning | 16 | [critical_field](comparator/v3prel_critical_field.json) | [metadata](palomar/v3prel/critical_field/formalization.yaml) |
-| Typical dictionaries, exact marks and compound clusters | 11 | [patterns](comparator/v3prel_patterns.json) | [metadata](palomar/v3prel/patterns/formalization.yaml) |
-| Threshold staircase and Poisson–Gaussian bridge | 29 | [limits](comparator/v3prel_limits.json) | [metadata](palomar/v3prel/limits/formalization.yaml) |
-| Boundary, prefixes and longest runs | 7 | [boundary](comparator/v3prel_boundary.json) | [metadata](palomar/v3prel/boundary/formalization.yaml) |
-| Microscopic–bulk crossover | 11 | [crossover](comparator/v3prel_crossover.json) | [metadata](palomar/v3prel/crossover/formalization.yaml) |
-| Microscopic signed fields and empirical laws | 6 | [microscopic](comparator/v3prel_microscopic.json) | [metadata](palomar/v3prel/microscopic/formalization.yaml) |
-| Regular configurations, Palm deficits and cumulants | 9 | [palm](comparator/v3prel_palm.json) | [metadata](palomar/v3prel/palm/formalization.yaml) |
+| Critical fields and information-adapted conditioning | 16 | [PALOMAR-2026-09-20-000003](https://palomar-registry.org/entry?id=PALOMAR-2026-09-20-000003&version=1) | [configuration](comparator/v3prel_critical_field.json) · [metadata](palomar/v3prel/critical_field/formalization.yaml) |
+| Typical dictionaries, exact marks and compound clusters | 11 | [PALOMAR-2026-09-20-000004](https://palomar-registry.org/entry?id=PALOMAR-2026-09-20-000004&version=1) | [configuration](comparator/v3prel_patterns.json) · [metadata](palomar/v3prel/patterns/formalization.yaml) |
+| Threshold staircase and Poisson–Gaussian bridge | 29 | [PALOMAR-2026-09-20-000007](https://palomar-registry.org/entry?id=PALOMAR-2026-09-20-000007&version=1) | [configuration](comparator/v3prel_limits.json) · [metadata](palomar/v3prel/limits/formalization.yaml) |
+| Boundary, prefixes and longest runs | 7 | [PALOMAR-2026-09-20-000011](https://palomar-registry.org/entry?id=PALOMAR-2026-09-20-000011&version=1) | [configuration](comparator/v3prel_boundary.json) · [metadata](palomar/v3prel/boundary/formalization.yaml) |
+| Microscopic–bulk crossover | 11 | [PALOMAR-2026-09-20-000012](https://palomar-registry.org/entry?id=PALOMAR-2026-09-20-000012&version=1) | [configuration](comparator/v3prel_crossover.json) · [metadata](palomar/v3prel/crossover/formalization.yaml) |
+| Microscopic signed fields and empirical laws | 6 | [PALOMAR-2026-09-21-000002](https://palomar-registry.org/entry?id=PALOMAR-2026-09-21-000002&version=1) | [configuration](comparator/v3prel_microscopic.json) · [metadata](palomar/v3prel/microscopic/formalization.yaml) |
+| Regular configurations, Palm deficits and cumulants | 9 | [PALOMAR-2026-09-21-000003](https://palomar-registry.org/entry?id=PALOMAR-2026-09-21-000003&version=1) | [configuration](comparator/v3prel_palm.json) · [metadata](palomar/v3prel/palm/formalization.yaml) |
 
 The [submission guide](docs/PALOMAR_SUBMISSIONS.md) records the exact scope,
 submission fields and validation procedure. Each selected configuration has its
@@ -118,7 +118,8 @@ compilation, statement comparison and the Lean/NanoDa checks.
 
 Cite the published paper version together with the exact formalization commit
 or Palomar record used. Paper and software DOIs are distinct. The
-[publication plan](docs/V3_PUBLICATION_PLAN.md) describes the pending updates.
+[publication status](docs/V3_PUBLICATION_PLAN.md) records the publication and
+the remaining Palomar version 2 submission step.
 
 The Lean project uses the [Apache-2.0 licence](LICENSE). The manuscript retains
 its [own licence and declarations](manuscripts/paper-c/declarations.tex).

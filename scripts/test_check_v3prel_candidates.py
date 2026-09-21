@@ -103,6 +103,15 @@ class CandidateGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(guard.InvalidCandidate, 'author identity/ORCID'):
             guard.metadata_contract(altered, config, 'microscopic')
 
+    def test_metadata_cannot_replace_version_doi_by_concept_doi(self):
+        config = guard.REGISTRY['palm']
+        original = guard.ROOT/'palomar/v3prel/palm/formalization.yaml'
+        altered = self.root/'formalization.yaml'
+        altered.write_text(original.read_text().replace('10.5281/zenodo.22872154',
+                                                       '10.5281/zenodo.21736676'))
+        with self.assertRaisesRegex(guard.InvalidCandidate, 'published V3 DOI missing'):
+            guard.metadata_contract(altered, config, 'palm')
+
     def test_fixed_registry_rejects_changed_config(self):
         p=self.root/'comparator/v3prel_critical_field.json';p.parent.mkdir();d=copy.deepcopy(guard.REGISTRY['critical_field']);d['enable_nanoda']=False;p.write_text(json.dumps(d))
         with self.assertRaises(guard.InvalidCandidate): guard.check_family(self.root,'critical_field')
