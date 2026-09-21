@@ -243,22 +243,36 @@ fidelity:
     additional cardinality cutoff in this identity. The small-prime conditioning event
     must have positive probability and L must be at least one. The identity itself has
     no literature premise.
+    ChallengeV3Palm.lean now gives shared mathematical notation and a concrete docstring
+    for every selected declaration. The full deficit uses the exp(total rate) Palm void;
+    the retained comparison instead uses the Bernoulli-normalized void and displays all
+    four error terms. The eventual bound is uniform in the event and retained set, with
+    explicit arithmetic and analytic Stein premises. Its exponent epsilon is positive;
+    decay of the power error uses epsilon below one third. The two retention counts use
+    only PNT and do not require an event realizing the information parameter.
 review:
   status: agent-reviewed
   notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
     checks are recorded separately in qualification evidence. There is no independent human peer review
     or claimed Palomar decision. The probability and measurability guarantees were audited and exposed
     in the standalone interface after the Limits review; this is not a prediction of registration.
+    Following the Palm prose reviews, all nine selected docstrings were checked against
+    their exact inequalities, quantifier order, cutoffs and literature premises. The Lean
+    statements and proofs remain unchanged; this narrative check is not a Palomar decision.
 alignment:
   namespace: PaperCV3Audit.Palm
   statements:
-  - source: 'Microscopic regime and the regular/Palm refinement discussed with Section 7. Appendix G:
-      G.1 stronger retention, G.3 regular target, G.4–G.5 Palm comparisons, G.9 absolute-cumulant obstruction.'
+  - source: 'Appendix G exact configuration masses: source coefficients, probability guarantees and
+      the source-target Palm mass identity.
+      Concrete statement and hypotheses: the selected declaration docstring and module
+      account in ChallengeV3Palm.lean.'
     lean: PaperCV3Audit.Palm.source_target_palm_mass
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
-  - source: 'Microscopic regime and the regular/Palm refinement discussed with Section 7. Appendix G:
-      G.1 stronger retention, G.3 regular target, G.4–G.5 Palm comparisons, G.9 absolute-cumulant obstruction.'
+  - source: 'Appendix G full-target Palm deficit: normalization of both masses and the
+      TV-minus-deficit sandwich bounded by target irregularity.
+      Concrete statement and hypotheses: the selected declaration docstring and module
+      account in ChallengeV3Palm.lean.'
     lean: PaperCV3Audit.Palm.full_deficit_comparison
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
@@ -269,33 +283,45 @@ alignment:
     lean: PaperCV3Audit.Palm.ordinary_deletion
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
-  - source: 'Microscopic regime and the regular/Palm refinement discussed with Section 7. Appendix G:
-      G.1 stronger retention, G.3 regular target, G.4–G.5 Palm comparisons, G.9 absolute-cumulant obstruction.'
+  - source: 'Appendix G normalized void comparison: full TV versus retained normalized deficit with
+      source deletion, target deletion, target irregularity and normalization errors.
+      Concrete statement and hypotheses: the selected declaration docstring and module
+      account in ChallengeV3Palm.lean.'
     lean: PaperCV3Audit.Palm.full_retained_normalized_comparison
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
-  - source: 'Microscopic regime and the regular/Palm refinement discussed with Section 7. Appendix G:
-      G.1 stronger retention, G.3 regular target, G.4–G.5 Palm comparisons, G.9 absolute-cumulant obstruction.'
+  - source: 'Appendix G normalized void completion, using the microscopic comparison: uniform
+      eventual one-sided deficit bound with four arithmetic literature premises and the
+      finite-carrier Stein input.
+      Concrete statement and hypotheses: the selected declaration docstring and module
+      account in ChallengeV3Palm.lean.'
     lean: PaperCV3Audit.Palm.normalized_deficit_eventually
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
-  - source: 'Microscopic regime and the regular/Palm refinement discussed with Section 7. Appendix G:
-      G.1 stronger retention, G.3 regular target, G.4–G.5 Palm comparisons, G.9 absolute-cumulant obstruction.'
+  - source: 'Appendix G.9: positive lower bound on normalized all-order absolute centered cumulant
+      activity on prime scales for the original good set.
+      Concrete statement and hypotheses: the selected declaration docstring and module
+      account in ChallengeV3Palm.lean.'
     lean: PaperCV3Audit.Palm.original_cumulant_obstruction
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
-  - source: 'Microscopic regime and the regular/Palm refinement discussed with Section 7. Appendix G:
-      G.1 stronger retention, G.3 regular target, G.4–G.5 Palm comparisons, G.9 absolute-cumulant obstruction.'
+  - source: 'Appendix G.9: the same prime-scale cumulant lower bound for every fixed nonnegative stronger-retention parameter.
+      Concrete statement and hypotheses: the selected declaration docstring and module
+      account in ChallengeV3Palm.lean.'
     lean: PaperCV3Audit.Palm.retained_cumulant_obstruction
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
-  - source: 'Microscopic regime and the regular/Palm refinement discussed with Section 7. Appendix G:
-      G.1 stronger retention, G.3 regular target, G.4–G.5 Palm comparisons, G.9 absolute-cumulant obstruction.'
+  - source: 'Appendix G.1: weighted additional-deletion count and total omitted-site count, uniform
+      in the length and information budget under PNT.
+      Concrete statement and hypotheses: the selected declaration docstring and module
+      account in ChallengeV3Palm.lean.'
     lean: PaperCV3Audit.Palm.stronger_retention_counts
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
-  - source: 'Microscopic regime and the regular/Palm refinement discussed with Section 7. Appendix G:
-      G.1 stronger retention, G.3 regular target, G.4–G.5 Palm comparisons, G.9 absolute-cumulant obstruction.'
+  - source: 'Appendix G.3: probability of target irregularity tends to zero in the
+      diverging-intensity regime, with the left-boundary convention and stronger retention.
+      Concrete statement and hypotheses: the selected declaration docstring and module
+      account in ChallengeV3Palm.lean.'
     lean: PaperCV3Audit.Palm.regular_target_probability
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
