@@ -20,8 +20,8 @@ manuscript's results and the precise scope of their formalization.
 The repository currently includes the author's manuscript of 20 September 2026.
 The publication links identify the available paper records; they do not identify
 this manuscript as the published V3. The published files, version-specific paper
-DOI will be added when available. The first two Palomar identifiers, confirmed by
-the author and awaiting public-index visibility, are recorded in the
+DOI will be added when available. The first six Palomar identifiers, confirmed by
+the author, are recorded in the
 [submission guide](docs/PALOMAR_SUBMISSIONS.md#current-registration-status).
 
 ## Abstract

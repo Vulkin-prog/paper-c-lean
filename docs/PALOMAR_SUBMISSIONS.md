@@ -10,9 +10,8 @@ SHA-256, and include the author's structured ORCID.
 
 For each submission use repository **`https://github.com/Vulkin-prog/paper-c-lean`**,
 a validated **full 40-character commit SHA**, and the configuration below.
-For the remaining submissions, use the merged correction commit after its
-qualification jobs succeed. In particular, the rejected Limits snapshot must
-be replaced by the corrected one. Existing registered snapshots stay immutable.
+For the remaining Palm submission, use the merged prose-correction commit after
+its qualification jobs succeed. Existing registered snapshots stay immutable.
 
 | Entry | Comparator configuration | Selected results |
 |---|---|---:|
@@ -56,27 +55,62 @@ issued by Palomar; none is inferred or invented here.
 
 ## Current registration status
 
-The author confirmed the following issued identifiers on 20 September 2026,
-in submission order. Their public-index visibility was still pending when
-reported; this table does not assert an independent public-registry check.
+The author confirmed the following issued identifiers on 20–21 September 2026,
+in submission order. This table records the author's confirmations; it does not
+assert an independent public-registry check.
 
 | Family | Issued identifier | Version |
 |---|---|---:|
 | Critical field | `PALOMAR-2026-09-20-000003` | 1 |
 | Patterns | `PALOMAR-2026-09-20-000004` | 1 |
+| Limits | `PALOMAR-2026-09-20-000007` | 1 |
+| Boundary | `PALOMAR-2026-09-20-000011` | 1 |
+| Crossover | `PALOMAR-2026-09-20-000012` | 1 |
+| Microscopic | `PALOMAR-2026-09-21-000002` | 1 |
 
 Keep these registrations. Their future publication updates should use these
 identifiers and the next version, rather than creating duplicates.
 
-The Limits attempt passed mechanical verification but was rejected by automated
-review on 20 September 2026. The correction strengthens the two D.4 upper-point-law
-statements with proved measurability and probability normalization, and proves
-positive conditioning mass. After merging and qualification, submit Limits as
-a **new submission with the existing Palomar ID field left blank**. The rejected
-attempt did not issue an identifier. See the [review follow-up](PALOMAR_REVIEW_FOLLOWUP.md)
-for the correction and the separate Mathlib-cache warning. The subsequent
-[audit of the four remaining dossiers](PALOMAR_REMAINING_DOSSIERS_AUDIT.md) exposes
-the corresponding probability and measurability guarantees before submission.
+The corrected Limits dossier passed review and was registered as listed above.
+The [Limits review follow-up](PALOMAR_REVIEW_FOLLOWUP.md) records its earlier
+probability-law correction and the separate Mathlib-cache warning. The subsequent
+[audit of the four remaining dossiers](PALOMAR_REMAINING_DOSSIERS_AUDIT.md) records
+the corresponding probability and measurability guarantees.
+
+### Palm: ordinary-deletion prose correction
+
+The Palm attempt passed mechanical verification but automated review on
+21 September 2026 at 05:14:57 UTC requested an assessable informal account of
+`PaperCV3Audit.Palm.ordinary_deletion`. No identifier has been reported for this
+attempt. The review explicitly said that the Lean statement need not change.
+
+The selected declaration now has a mathematical docstring in both
+[ChallengeV3Palm.lean](../ChallengeV3Palm.lean) and
+[SolutionV3Palm.lean](../SolutionV3Palm.lean). It defines the retained field,
+the deleted-site interpretation, the weighted equality, the precise regularity
+restriction, the arbitrary measurable outside event, and the positive small-prime
+conditioning assumption. The metadata locates the companion's exact equation.
+No Lean statement, proof, definition, dependency pin or manuscript is changed.
+
+The [statement-alignment policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/prompts/02-statement-alignment.md)
+explicitly includes selected declaration docstrings among eligible narrative
+sources. The detailed account is placed there, leaving the project abstract
+concise. The other abstracts' publication refresh remains deferred to the V2
+update after the final paper is supplied.
+
+Local validation on 21 September 2026: the Palm Challenge and Solution build
+successfully; after removing comments, both files have exactly the same Lean
+tokens as commit `d8edbc44654f623fc68df92612c26a6ef9a90ec2`. The manuscript
+identity check, full seven-family source preflight with the pinned official
+metadata contract, and all 25 candidate/source regression tests pass.
+These are local checks, not a new dual-kernel receipt or a Palomar review.
+
+After merging and qualification, submit Palm using the new full commit SHA,
+`comparator/v3prel_palm.json`, and
+`palomar/v3prel/palm/formalization.yaml`. Leave Project path and the existing
+Palomar ID field empty: this is still a first registration, not a V2 update.
+The rejected attempt can be withdrawn. A fresh automated review remains required;
+the prose correction does not itself constitute editorial acceptance.
 
 ## Exact mathematical selection
 

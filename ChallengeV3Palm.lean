@@ -393,6 +393,48 @@ theorem full_deficit_comparison {C L E Y : ℕ} (sites : Finset ℕ) (hL : 1≤L
       (target sites L).real {z | ¬RegularPlant sites C L E Y z} := by
   sorry
 
+/-- Ordinary deletion identity for the exact signed run field (companion Appendix G,
+Proposition `supp:palm:prop:palm`, equation `supp:palm:eq:averaged-deletion`).
+
+Let S be the finite set `sites` of retained run-start positions and let
+Z = `source sites L` record all exact runs on S, including their excess e >= 0
+(actual length L+e) and sign. Let P_A be the original Rademacher law conditioned
+on `traceEvent C Y A`. Here A is any predicate on the signs of primes at most Y
+in the finite cylinder of primes at most C; `hA` requires this event to have
+strictly positive probability. Assume L >= 1. No literature or asymptotic
+hypothesis is needed for this exact identity.
+
+The sum is restricted to R = `RegularPlant sites C L E Y`: a configuration z
+must admit an enumeration of planted marks (j,e,sign) with j >= 2, e <= E,
+and j-1+(L+E+1) <= C. Each raw vertex in each maximal support
+j-1,...,j+L+E must have a prime greater than Y occurring to odd valuation
+there and dividing no other raw vertex occurrence in the whole plant.
+There is no additional bound K on the number of planted marks in this theorem.
+
+Write Occ(z) = `presence sites L z` for the event that every planted exact
+signed run occurs, without excluding additional runs. For regular z its P_A
+probability is proved positive. Write P_A^z for P_A conditioned on Occ(z),
+q(z) = `targetMass sites L z` for the independent Poisson target mass, and
+mu = |S|/2^L = `totalRate sites L`. Define
+v_S(z) = P_A^z(Z=z) and v_no_O(z) = P_A^z({Z=z} \ O), where
+O = `outside` is any measurable event in the original sample space.
+No independence from A, Occ(z), or Z is required. The assertion is exactly
+
+  sum_{z in R} q(z) exp(mu) (v_S(z) - v_no_O(z)) = P_A(Z in R and O).
+
+For deletion of sites outside S in a larger finite observation window, take O
+to be the measurable event that a run of length at least L starts at one of
+those deleted sites. Deleting those coordinates removes the requirement that
+no run occur there: v_S allows outside occurrences, while v_no_O also requires
+absence outside S. Thus their weighted difference is the ordinary conditional
+probability of an outside occurrence together with regularity of the retained
+configuration. It is consequently at most P_A(O); this upper bound is an
+immediate consequence of the displayed equality and event inclusion.
+
+The cancellation uses the proved identity q(z) exp(mu) = P_A(Occ(z)) on R.
+Each summand becomes P_A(Z=z and O); summing the disjoint configuration events
+gives the right-hand side. The error is therefore not multiplied by exp(mu).
+-/
 theorem ordinary_deletion {C L E Y : ℕ} (sites : Finset ℕ) (hL : 1≤L)
     (A : SmallSample C Y → Prop) (hA : 0 < infiniteRademacherMeasure.real (traceEvent C Y A))
     (outside : Set InfiniteSample) (houtside : MeasurableSet outside) :
