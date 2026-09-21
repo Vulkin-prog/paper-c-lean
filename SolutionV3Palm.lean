@@ -555,7 +555,7 @@ strictly positive probability. Assume L >= 1. No literature or asymptotic
 hypothesis is needed for this exact identity.
 
 The sum is restricted to R = `RegularPlant sites C L E Y`: a configuration z
-must admit an enumeration of planted marks (j,e,sign) with j >= 2, e <= E,
+must have an enumeration of planted marks (j,e,sign) with j >= 2, e <= E,
 and j-1+(L+E+1) <= C. Each raw vertex in each maximal support
 j-1,...,j+L+E must have a prime greater than Y occurring to odd valuation
 there and dividing no other raw vertex occurrence in the whole plant.
