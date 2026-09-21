@@ -248,8 +248,8 @@ acceptance. Current-family identifiers confirmed by the author are recorded abov
 
 ## Publication sequence
 
-The author submits the prepared entries, adds the issued references to the
-paper, and publishes the paper on Zenodo. After receiving the published files
-and the exact V3 DOI, update the manuscript package, README and all seven
-metadata files, verify the new snapshot, and prepare the planned Palomar version
-updates. The [publication plan](V3_PUBLICATION_PLAN.md) records this sequence.
+The published Version 3 includes the seven issued Palomar references. Its files
+and DOI are integrated in the manuscript package, README and submission metadata.
+After merging and validating the publication update, submit the next versions
+under the existing identifiers. The [publication status](V3_PUBLICATION_PLAN.md)
+also records the planned Cambridge Version 3 reference.

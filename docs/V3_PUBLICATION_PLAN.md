@@ -24,9 +24,11 @@ The published paper itself includes all seven identifiers.
 - A [registration manifest](../palomar/v3prel/registrations.json) mapping each
   registered version 1 entry to its planned version 2 update.
 
-The Cambridge Open Engage DOI currently linked identifies Version 2 there.
-No Cambridge Version 3 DOI has been supplied or inferred. The Zenodo paper DOI
-is distinct from the separately archived formalization DOI.
+Cambridge Open Engage Version 3 is planned. The README reserves its reference
+as forthcoming, with the DOI awaiting confirmation. The existing Cambridge
+Version 2 citation remains explicitly identified as background in the Palomar
+metadata. The Zenodo paper DOI is distinct from the separately archived
+formalization DOI.
 
 ## Remaining author step
 

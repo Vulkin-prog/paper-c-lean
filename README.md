@@ -14,14 +14,14 @@ manuscript's results and the precise scope of their formalization.
 | Technical companion | [PDF](manuscripts/paper-c/paper_c_version_3_technical_companion_en.pdf) |
 | Editable sources and file identities | [Manuscript package](manuscripts/paper-c/README.md) |
 | Published paper and companion, Version 3 | [10.5281/zenodo.22872154](https://doi.org/10.5281/zenodo.22872154) |
-| Cambridge Open Engage, Version 2 | [10.33774/coe-2026-z3l74-v2](https://doi.org/10.33774/coe-2026-z3l74-v2) |
+| Cambridge Open Engage, Version 3 | Forthcoming — DOI to be confirmed |
 | Formalization record, all versions | [10.5281/zenodo.21735481](https://doi.org/10.5281/zenodo.21735481) |
 
 The article and companion were published on Zenodo on **21 September 2026**.
 The repository preserves their published PDF bytes and editable sources.
-The Cambridge link identifies its separate Version 2 record; the Zenodo DOI
-above identifies the published Version 3. The paper DOI and the formalization
-archive DOI refer to different records.
+The Cambridge Open Engage Version 3 reference will be added once its DOI is
+confirmed. The paper DOI and the formalization archive DOI refer to different
+records.
 
 ## Abstract
 
