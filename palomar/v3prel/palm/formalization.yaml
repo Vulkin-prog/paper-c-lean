@@ -236,6 +236,13 @@ fidelity:
     presence probability on regular configurations. The full-deficit assertion also proves that both
     countable mass functions have sum one. The target construction exposes a proved probability
     instance.
+    The ordinary_deletion declaration docstring in ChallengeV3Palm.lean gives the exact
+    weighted identity and its deletion interpretation. Its outside argument is an arbitrary
+    measurable event; the deleted-site occurrence event is the paper's specialization.
+    RegularPlant includes the private-prime, excess and finite-cylinder bounds, with no
+    additional cardinality cutoff in this identity. The small-prime conditioning event
+    must have positive probability and L must be at least one. The identity itself has
+    no literature premise.
 review:
   status: agent-reviewed
   notes: Source-to-interface bridges and selected statements were checked during preparation. Mechanical
@@ -255,8 +262,10 @@ alignment:
     lean: PaperCV3Audit.Palm.full_deficit_comparison
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
-  - source: 'Microscopic regime and the regular/Palm refinement discussed with Section 7. Appendix G:
-      G.1 stronger retention, G.3 regular target, G.4–G.5 Palm comparisons, G.9 absolute-cumulant obstruction.'
+  - source: 'Companion Appendix G, Proposition supp:palm:prop:palm, equation
+      supp:palm:eq:averaged-deletion. The selected ordinary_deletion docstring in
+      ChallengeV3Palm.lean explains the general measurable-event identity and its
+      specialization to a run starting outside the retained sites.'
     lean: PaperCV3Audit.Palm.ordinary_deletion
     module: SolutionV3Palm
     status: proved with the explicit literature premises in the statement, if any
