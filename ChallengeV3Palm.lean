@@ -34,6 +34,52 @@ import Mathlib.RingTheory.PowerSeries.Binomial
 import Mathlib.RingTheory.PowerSeries.Trunc
 import Mathlib.Tactic
 
+/-! # Regular configurations, Palm comparisons and cumulant obstructions
+
+The nine selected declarations below describe the exact signed run field of a
+random completely multiplicative Rademacher function. The following notation
+is used in their mathematical accounts; the definitions are given in this module.
+
+For a finite set S of run-start positions, Z_S = `source S L` retains each
+exact length L+e and sign, for all e >= 0. P_A denotes the original prime-sign
+law conditioned on `traceEvent C Y A`: A depends only on prime signs with
+p <= C and p <= Y, and this event must have positive probability. Q_S denotes
+the independent Poisson target, with intensity 2^(-L-e-2) for each signed atom.
+Write p = 2^(-L), mu_S = |S|p, q_S(z) = Q_S({z}), and
+Delta_S = (1/2) sum_z |P_A(Z_S=z) - q_S(z)|.
+
+R_S = `RegularPlant S C L E Y` consists of enumerated planted marks (j,e,sign)
+with j >= 2, e <= E and j+L+E <= C. Each raw vertex in every support
+j-1,...,j+L+E has a prime > Y occurring to odd valuation there and dividing
+no other raw vertex occurrence of the plant. Such configurations have distinct
+sites. Write |z| = `totalSize S z`; R_{S,K} also requires |z| <= K.
+The empty configuration is included. The source and target themselves retain
+all excesses; E restricts the regular configurations in the averages.
+
+Occ(z) prescribes presence of every exact signed run in z, without forbidding
+other runs. On R_S its conditional probability is positive. The Palm void is
+v_S(z) = P_A(Z_S=z | Occ(z)). Set
+ r_S(z) = v_S(z)/(1-p)^(|S|-|z|),
+ D_S = sum_{z in R_S} q_S(z) max(1-exp(mu_S)v_S(z),0), and
+ Dnorm_{S,K} = sum_{z in R_{S,K}} q_S(z) max(1-r_S(z),0).
+These are `fullDeficit`, `normalizedVoid` and `voidDeficit` in the statements.
+For L >= 1 the denominator is positive; regularity gives |z| <= |S|.
+
+For the asymptotic statements put H = log M, u = `saddleParameter 1 H`,
+V = `saddleCutoff 1 H`, nu = `saddleNu 1 H` = H/V, Y = floor(exp V),
+n = M-L (natural subtraction), lambda = n/2^L, and
+E_M = `excess M L I` = ceil((I+V+log(2+M/2^L))/log 2).
+The length/information regime means
+ betaMin H <= L+1 <= betaMax H, I >= 0, lambda >= 1,
+ I+log(lambda) <= V-c nu.
+G0 = `goodSites M L I` uses left-boundary labels j in {1,...,n}:
+j+1 >= ceil(sqrt M), and each j+a for 0 <= a <= L+E_M+1 has an
+odd-valuation prime above Y. Gtheta = `strongerGood M L I theta` further
+requires the product of all odd-valuation primes > Y at each such vertex to
+exceed floor(exp(theta H/u)). These labels j correspond to actual starts j+1;
+the Palm sets S instead use actual start positions.
+-/
+
 namespace PaperCV3Audit
 noncomputable section
 local instance instDecidableProp (P : Prop) : Decidable P := Classical.propDecidable P
@@ -368,6 +414,19 @@ end Palm
 
 namespace Palm
 open Analysis Boundary Microscopic
+/-- Exact conditional arithmetic-to-Poisson Palm mass identity.
+
+Use Z_S, P_A, Q_S, mu_S, R_S and Occ(z) from the module account. For any
+finite S, natural C,E,Y, L >= 1, any positive-probability small-prime event A,
+and every z in R_S, the theorem proves
+ P_A(Z_S=z) = q_S(z) exp(mu_S) P_A(Z_S=z | Occ(z)).
+There is no bound on |z| beyond regularity and no literature premise.
+It also proves that each coefficient of Z_S is the indicator of the actual
+exact signed run, that Z_S and Occ(z) are measurable, that Q_S and both
+conditional measures are probability measures, and that P_A(Occ(z)) > 0.
+Thus the displayed Palm probability is conditioning on an event of positive
+mass. The factorization uses the private primes of the regular plant.
+-/
 theorem source_target_palm_mass {C L E Y : ℕ} (sites : Finset ℕ) (hL : 1≤L)
     (A : SmallSample C Y → Prop) (hA : 0 < infiniteRademacherMeasure.real (traceEvent C Y A))
     (z : Config sites) (hz : RegularPlant sites C L E Y z) :
@@ -385,6 +444,22 @@ theorem source_target_palm_mass {C L E Y : ℕ} (sites : Finset ℕ) (hL : 1≤L
         {w | source sites L w=z}) := by
   sorry
 
+/-- TV-minus-deficit sandwich on the full countable marked target.
+
+For any finite S, natural C,E,Y, L >= 1 and positive-probability small-prime
+event A, use the module notation Delta_S, R_S and
+ D_S = sum_{z in R_S} q_S(z) max(1-exp(mu_S)v_S(z),0).
+The two conclusions about total mass are sum_z P_A(Z_S=z)=1 and sum_z q_S(z)=1
+(the `HasSum` assertions). The principal inequalities are exactly
+ 0 <= Delta_S - D_S <= Q_S(z not in R_S).
+The comparison concerns the full source and full target, with all excesses;
+only the deficit average is restricted to private-prime regular plants with
+excess <= E and their supports in the cylinder C. There is no K cutoff here.
+No literature, large-M, or target-regularity-in-probability assumption is used.
+The right-hand side is the target exceptional probability, with no exp(mu_S)
+multiplier. In particular, target regularity alone does not show Delta_S tends
+to zero: the remaining quantity D_S must also be controlled.
+-/
 theorem full_deficit_comparison {C L E Y : ℕ} (sites : Finset ℕ) (hL : 1≤L)
     (A : SmallSample C Y → Prop) (hA : 0 < infiniteRademacherMeasure.real (traceEvent C Y A)) :
     HasSum (sourceMass sites L A) 1 ∧ HasSum (targetMass sites L) 1 ∧
@@ -446,6 +521,27 @@ theorem ordinary_deletion {C L E Y : ℕ} (sites : Finset ℕ) (hL : 1≤L)
         ({w | RegularPlant sites C L E Y (source sites L w)} ∩ outside) := by
   sorry
 
+/-- Full-to-retained TV comparison with four explicit error terms.
+
+Let s be a subset of a finite set t of actual run-start positions. For natural
+C,E,Y,K, L >= 1 and any positive-probability small-prime event A, use the
+module notation Delta_t and Dnorm_{s,K}. The theorem states exactly
+ |Delta_t - Dnorm_{s,K}| <= d_A + delta + epsilon_reg + eta,
+where the four nonnegative error terms are
+ d_A = P_A(a run of length at least L starts at some position in t minus s),
+ delta = |t minus s|p,
+ epsilon_reg = Q_s(z not in R_{s,K}),
+ eta = Kp + |s|p^2/(1-p), with p=2^(-L).
+The first is `hitEvent`'s ordinary conditional probability, the second is
+`maskRate`, the third is `exceptionalMass`, and the last is `penalty`.
+R_{s,K} imposes the private-prime, cylinder and excess conditions of RegularPlant
+as well as |z| <= K. The normalized void r_s divides the Palm void by the
+independent Bernoulli empty-site factor (1-p)^(|s|-|z|); it is not exp(mu_s)v_s.
+L >= 1 makes 0 < p < 1, and regularity ensures |z| <= |s|. There is no
+assumption that s itself is a particular good set, or that K <= |s|.
+Empty finite sets are allowed. This finite inequality needs no literature or
+asymptotic premise; it neither assumes nor asserts that its errors are small.
+-/
 theorem full_retained_normalized_comparison {C L E Y K : ℕ} {s t : Finset ℕ}
     (hst : s⊆t) (hL : 1≤L) (A : SmallSample C Y → Prop)
     (hA : 0 < infiniteRademacherMeasure.real (traceEvent C Y A)) :
@@ -457,6 +553,34 @@ theorem full_retained_normalized_comparison {C L E Y K : ℕ} {s t : Finset ℕ}
       exceptionalMass (targetMass s L) (boundedRegular s C L E Y K)+penalty s L K := by
   sorry
 
+/-- Uniform eventual upper bound for the normalized Palm deficit.
+
+Assume the displayed literature propositions for Laishram-Shorey's uniform
+prime-divisor estimate, Shorey's square-product exclusion, the prime number
+theorem remainder and the Nicolas-Robin divisor bound. Fix
+0 < betaMin < betaMax, 0 < c' < c and epsilon > 0. There exists one Mzero
+such that for every M >= Mzero, every natural L >= 1 and real I satisfying
+the length/information regime in the module account, the following holds.
+
+Set C = `sourceCylinder M L I` = 2M+L+E_M+2 and Y = floor(exp V).
+Choose any small-prime event A with positive probability, with I equal to
+minus the logarithm of that probability. Require `SteinInput M L I`: existence
+of solutions to the multivariate Poisson Stein equation for every indicator
+test on the finite carrier G0 x {0,...,E_M} x F2, with rates 2^(-L-e-2),
+entrywise second differences bounded by one and the weighted quadratic Hessian
+bound in `DirectionalSolutionBounds`. This is an analytic solution premise,
+not an assumed arithmetic Poisson comparison.
+
+For EVERY subset S of the actual start positions {2,...,M-L+1} and EVERY
+natural E, put K=ceil(2 lambda) and form Dnorm_{S,K} using C,L,E,Y. Then
+ Dnorm_{S,K} <= 10 exp(-c' nu) + 4 M^(-1/3+epsilon) + M^(-1/2).
+The threshold Mzero is chosen before L,I,A,S,E; in particular this is uniform
+in the conditioning event and the retained set. S need not equal G0 or Gtheta
+and E need not equal E_M (which is the cutoff in the Stein premise).
+The conclusion is a one-sided bound on the averaged positive deficit, not a
+uniform two-sided relative Palm estimate for every plant. The stated bound
+holds for every epsilon > 0; its power term tends to zero when epsilon < 1/3.
+-/
 theorem normalized_deficit_eventually
     (hLS : UniformPrimeDivisorStatement) (hShorey : ShoreySquareProductStatement)
     (hPNT : PrimeNumberTheoremRemainder) (hNR : DivisorLogBoundStatement)
@@ -578,14 +702,43 @@ end Palm
 
 namespace Palm
 open Analysis Boundary Microscopic
-/-- G.9: positive normalized lower bound for the original good set, on prime scales. -/
+/-- G.9: normalized absolute cumulant activity on prime scales.
+
+Assume the prime number theorem remainder. For every epsilon > 0, for all
+sufficiently large natural q that are prime, set
+ M_q=2^(q-1+floor(log_2 q)), L_q=q-1, E_q=excess(M_q,L_q,0),
+ C_q=M_q+(L_q+E_q+1), and G=goodSites(M_q,L_q,0). The assertion is
+ (log M_q)/M_q * activity(C_q,L_q,E_q,G) >= c_star-epsilon,
+where c_star=(log 2)/2*(log 3-1) > 0.
+Activity is the finite sum over all distinct-site sets of signed low-category
+indices of size at least two of 2^(size-1) times the absolute joint cumulant.
+Cumulants are defined by the finite partition recursion from centered moments
+under uniform independent prime signs up to C_q; the exact categories have
+excess <= E_q and use run starts j+1 for left-boundary labels j in G.
+All orders, not only pairs, are included. The conclusion is along prime q,
+not every integer q; it obstructs small normalized absolute cumulant activity
+and is not a lower bound on total variation. There is no Stein premise.
+-/
 theorem original_cumulant_obstruction (hPNT : PrimeNumberTheoremRemainder)
     {epsilon : ℝ} (hepsilon : 0<epsilon) :
     ∀ᶠ q : ℕ in atTop, q.Prime → obstructionConstant-epsilon ≤
       Real.log (primeWindow q)/(primeWindow q:ℝ)*activity (primeCylinder q) (q-1) (primeExcess q) (original q) := by
   sorry
 
-/-- G.9: stronger fixed retention leaves the same leading obstruction constant. -/
+/-- G.9: the same cumulant lower bound after stronger retention.
+
+With the prime-scale definitions, centered cumulant activity and positive
+constant c_star in `original_cumulant_obstruction`, replace G by
+Gtheta=strongerGood(M_q,q-1,0,theta). Assume the prime number theorem remainder,
+fix any theta >= 0 and epsilon > 0. For every sufficiently large prime q,
+ (log M_q)/M_q * activity(C_q,q-1,E_q,Gtheta) >= c_star-epsilon.
+The threshold may depend on the fixed theta and epsilon. No upper restriction
+theta < c is imposed in this theorem, and no small-prime conditioning event
+or Stein premise is required. The retained indicators and their centered
+moments are the actual finite prime-sign objects, with every cumulant order
+at least two included. This remains a cumulant-activity obstruction, not a
+failure of the separately established Poisson approximation.
+-/
 theorem retained_cumulant_obstruction (hPNT : PrimeNumberTheoremRemainder)
     {theta : ℝ} (htheta : 0≤theta) {epsilon : ℝ} (hepsilon : 0<epsilon) :
     ∀ᶠ q : ℕ in atTop, q.Prime → obstructionConstant-epsilon ≤
@@ -607,6 +760,25 @@ end Palm
 
 namespace Palm
 open Analysis Boundary Microscopic
+/-- G.1: weighted additional deletions and total omitted-site count.
+
+Assume the prime number theorem remainder. Fix 0 < betaMin < betaMax and
+0 <= theta < c. There is one Mzero such that, for every M >= Mzero and all
+L,I in the length/information regime in the module account, both bounds hold:
+ p * |G0 minus Gtheta| <= exp(-((c-theta)/2) nu),
+ |{1,...,M-L} minus Gtheta| <= ceil(sqrt M) + M exp(-V+(theta+1)nu).
+Here p=2^(-L), G0 is `goodSites M L I` and Gtheta is
+`strongerGood M L I theta`, with the literal Y and E_M specified in the module
+account. In particular, retention compares the product of odd-valuation primes
+above Y at every raw vertex with floor(exp(theta H/u)); it does not change Y.
+The first bound weights only the additionally omitted sites by the base rate;
+the second counts all omitted left-boundary labels, including the initial
+short segment and sites already absent from G0. Natural subtraction is used
+in M-L. No separate L >= 1 hypothesis occurs; the positive logarithmic lower
+band ensures it eventually. The threshold precedes L and I. I is a nonnegative
+budget parameter here: there is no event A or equality I=-log P(A) in this
+counting statement, and no Stein or other literature premise beyond PNT.
+-/
 theorem stronger_retention_counts (hPNT : PrimeNumberTheoremRemainder)
     (betaMin betaMax theta c : ℝ) (hmin : 0 < betaMin) (hband : betaMin < betaMax)
     (htheta : 0 ≤ theta) (htc : theta < c) :
@@ -621,6 +793,23 @@ theorem stronger_retention_counts (hPNT : PrimeNumberTheoremRemainder)
           (-saddleCutoff 1 (Real.log M)+(theta+1)*saddleNu 1 (Real.log M)) := by
   sorry
 
+/-- G.3: the full target is regular with probability tending to one.
+
+Assume the prime number theorem remainder and fix 0 < betaMin < betaMax and
+0 < theta < c. Let L(M) and I(M) eventually satisfy the length/information
+regime in the module account, and require lambda(M)=(M-L(M))/2^L(M) to tend
+to infinity. Under the full target Q on the left-boundary grid {1,...,M-L(M)},
+ Q(z is not regularConfiguration(M,L(M),I(M),theta)) tends to zero.
+In this predicate z is a sum of k planted atoms, k <= ceil(2 lambda); every
+label belongs to Gtheta, every excess is <= E_M, and the raw supports
+j,...,j+L+E_M+1 have private odd-valuation primes above Y. The target retains
+all excesses, so excessive marks contribute to the exceptional probability.
+This is the left-boundary convention j, before conversion to run starts j+1;
+it is distinct from the shifted RegularPlant predicate used in the Palm sums.
+There is no source conditioning event or Stein premise. This assertion about
+the target alone neither asserts source regularity nor proves small source-to-
+target total variation; the Palm comparisons retain their deficit term.
+-/
 theorem regular_target_probability (hPNT : PrimeNumberTheoremRemainder)
     (betaMin betaMax c theta : ℝ) (hmin : 0<betaMin) (hband : betaMin<betaMax)
     (htheta : 0<theta) (htc : theta<c) (L : ℕ → ℕ) (I : ℕ → ℝ)

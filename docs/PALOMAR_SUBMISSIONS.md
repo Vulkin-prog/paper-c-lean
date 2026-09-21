@@ -77,7 +77,7 @@ probability-law correction and the separate Mathlib-cache warning. The subsequen
 [audit of the four remaining dossiers](PALOMAR_REMAINING_DOSSIERS_AUDIT.md) records
 the corresponding probability and measurability guarantees.
 
-### Palm: ordinary-deletion prose correction
+### Palm: complete mathematical narrative
 
 The Palm attempt passed mechanical verification but automated review on
 21 September 2026 at 05:14:57 UTC requested an assessable informal account of
@@ -92,6 +92,35 @@ restriction, the arbitrary measurable outside event, and the positive small-prim
 conditioning assumption. The metadata locates the companion's exact equation.
 No Lean statement, proof, definition, dependency pin or manuscript is changed.
 
+The next attempt, at commit `3ecbfb8122b15f40ffd01a51736b1e56dccb0ff8`,
+also passed mechanical verification and rendering. Its automated review on
+21 September 2026 at 07:05:14 UTC requested concrete accounts of four further
+selected results: `full_deficit_comparison`, `full_retained_normalized_comparison`,
+`normalized_deficit_eventually`, and `stronger_retention_counts`. This was another
+narrative finding; the review stated that their Lean statements need not change.
+
+The follow-up supplies shared notation in the module documentation and exact
+accounts for **all nine selected declarations**, in both Challenge and Solution.
+The existing ordinary-deletion account is retained. The scope check covers:
+
+| Declaration (under `PaperCV3Audit.Palm`) | Concrete account and domain checked |
+|---|---|
+| `source_target_palm_mass` | Exact mass identity and all coefficient, measurability, probability and positivity conclusions; positive small-prime event and regular plant. |
+| `full_deficit_comparison` | Both masses sum to one; TV minus the full deficit lies between zero and target irregularity; no extra cardinality cutoff or literature premise. |
+| `ordinary_deletion` | Exact weighted identity for any measurable outside event; deleted-site interpretation and conditioning assumptions. |
+| `full_retained_normalized_comparison` | Absolute TV-minus-normalized-deficit bound and all four errors; arbitrary nested finite sets and cardinality cutoff, with positive normalizers. |
+| `normalized_deficit_eventually` | Exact constants and exponents; threshold before the event, sites and excess cutoff; four arithmetic literature inputs and the actual finite-carrier Stein premise. |
+| `original_cumulant_obstruction` | Exact prime scales, positive constant, centered moments, all cumulant orders and PNT premise. |
+| `retained_cumulant_obstruction` | Same obstruction for fixed theta >= 0; no theta < c restriction in this theorem. |
+| `stronger_retention_counts` | Both cardinality estimates, floors and ceilings, logarithmic regime, theta range and PNT-only premise. |
+| `regular_target_probability` | Diverging intensity, eventual regime, positive theta, mark and population cutoffs, and left-boundary labeling. |
+
+The full and Bernoulli-normalized deficits are explicitly distinguished. The
+bound with exponent `-1/3 + epsilon` is stated for every positive epsilon;
+its power error tends to zero when epsilon is below one third. The target
+regularity result alone is not presented as a source approximation theorem.
+No manuscript revision or further formal hypothesis is introduced.
+
 The [statement-alignment policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/792c7c0b9e798bd02719e795ef11fa2b5929e067/prompts/02-statement-alignment.md)
 explicitly includes selected declaration docstrings among eligible narrative
 sources. The detailed account is placed there, leaving the project abstract
@@ -100,10 +129,12 @@ update after the final paper is supplied.
 
 Local validation on 21 September 2026: the Palm Challenge and Solution build
 successfully; after removing comments, both files have exactly the same Lean
-tokens as commit `d8edbc44654f623fc68df92612c26a6ef9a90ec2`. The manuscript
+tokens as commit `3ecbfb8122b15f40ffd01a51736b1e56dccb0ff8`. The manuscript
 identity check, full seven-family source preflight with the pinned official
 metadata contract, and all 25 candidate/source regression tests pass.
-These are local checks, not a new dual-kernel receipt or a Palomar review.
+The Comparator source guard also passes, and all nine selected declaration
+docstrings match between Challenge and Solution. These are local checks, not
+a new dual-kernel receipt or a Palomar review.
 
 After merging and qualification, submit Palm using the new full commit SHA,
 `comparator/v3prel_palm.json`, and
